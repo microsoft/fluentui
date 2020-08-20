@@ -49,7 +49,7 @@ describe('makeVariants', () => {
   it('can render primary variant', () => {
     wrapper = mount(<Foo primary />);
 
-    expect(wrapper.getDOMNode().getAttribute('class')).toEqual('Button-base-primary-0');
+    expect(wrapper.getDOMNode().getAttribute('class')).toEqual(' Button-base-primary-0');
     expect(_stylesheet.getRules()).toEqual('.Button-base-primary-0{--button-background:green;}');
   });
 

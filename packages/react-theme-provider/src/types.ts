@@ -58,7 +58,7 @@ export type FontTokens = Partial<{
 /**
  * A token set can provide a single string or object, mapping additional sub-parts of a token set.
  */
-export type TokenSetType = { [key: string]: string | TokenSetType | undefined };
+export type TokenSetType = { [key: string]: TokenSetType | string | number | undefined };
 
 /**
  * Recursive partial type.
@@ -110,7 +110,9 @@ export interface Theme extends IPartialTheme {
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
-export interface PartialTheme extends RecursivePartial<Theme> {}
+export interface PartialTheme extends Omit<Theme, 'tokens'> {
+  tokens?: RecursivePartial<Tokens>;
+}
 
 /**
  * Typing containing the definition for the `style` and `tokens` props that will be extended for the calculation of the

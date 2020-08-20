@@ -4,12 +4,11 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
 import { ColorTokenSet } from '@fluentui/react-theme-provider';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { SlotProps } from '@fluentui/react-compose';
+import { TokenSetType } from '@fluentui/react-theme-provider';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -38,24 +37,10 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+export type ButtonState = ButtonProps;
 
 // @public (undocumented)
-export interface ButtonSlots extends BaseSlots {
-    // (undocumented)
-    icon: React.ElementType;
-    // (undocumented)
-    loader: React.ElementType;
-}
-
-// @public (undocumented)
-export interface ButtonState extends ButtonProps {
-    // (undocumented)
-    buttonRef?: React.RefObject<HTMLButtonElement>;
-}
-
-// @public (undocumented)
-export type ButtonTokenSet = ColorTokenSet & {
+export type ButtonTokenSet = TokenSetType & ColorTokenSet & {
     padding: string;
     margin: string;
     height: string;
@@ -86,6 +71,15 @@ export type ButtonTokenSet = ColorTokenSet & {
         transform: string;
         transition: string;
     };
+};
+
+// @public (undocumented)
+export type ButtonVariants = {
+    base: ButtonTokenSet;
+    primary: ButtonTokenSet;
+    iconOnly: ButtonTokenSet;
+    circular: ButtonTokenSet;
+    fluid: ButtonTokenSet;
 };
 
 // @public (undocumented)
@@ -179,27 +173,23 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ToggleButtonSlotProps = SlotProps<ToggleButtonSlots, ToggleButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
-
-// @public (undocumented)
-export interface ToggleButtonSlots extends ButtonSlots {
-}
-
-// @public (undocumented)
 export interface ToggleButtonState extends ToggleButtonProps {
 }
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
     state: Record<string, any>;
-    render: (state: import("./Button.types").ButtonState) => JSX.Element;
+    render: (state: ButtonProps) => JSX.Element;
 };
 
 // @public (undocumented)
 export const useButtonClasses: (state: Record<string, any>) => void;
 
 // @public
-export const useButtonState: (draftState: ButtonState) => void;
+export const useButtonState: (draftState: import("./Button.types").ButtonProps) => void;
+
+// @public (undocumented)
+export const useButtonVariants: (state: Record<string, any>) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
@@ -232,9 +222,9 @@ export const useSplitButtonClasses: (state: Record<string, any>) => void;
 export const useSplitButtonState: (state: SplitButtonState) => void;
 
 // @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
-    render: (state: import("../Button").ButtonState) => JSX.Element;
+    render: (state: import("../Button").ButtonProps) => JSX.Element;
 };
 
 // @public (undocumented)
@@ -243,7 +233,7 @@ export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
 // Warnings were encountered during analysis:
 //
-// lib/components/Button/Button.types.d.ts:65:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
+// lib/components/Button/Button.types.d.ts:64:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -3,6 +3,7 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
+export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -48,6 +49,8 @@ export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export * from './components/Chat/ChatMessageDetails';
+export * from './components/Chat/ChatMessageHeader';
+export * from './components/Chat/ChatMessageReadStatus';
 
 export * from './components/Checkbox/Checkbox';
 

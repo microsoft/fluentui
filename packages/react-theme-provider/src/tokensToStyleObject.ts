@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { TokenSetType } from './types';
 
 export const tokensToStyleObject = (

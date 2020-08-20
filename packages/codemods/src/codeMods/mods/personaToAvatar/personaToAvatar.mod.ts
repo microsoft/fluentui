@@ -10,6 +10,7 @@ import {
 } from 'ts-morph';
 import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
 import { CodeMod } from '../../types';
+import { Ok, Err } from '../../../helpers/result';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
 
@@ -169,9 +170,9 @@ const PersonaToAvatarMod: CodeMod = {
       renamePrimaryTextProp(file);
       renameRenderCoin(file);
     } catch (e) {
-      return { success: false };
+      return Err({ reason: 'Error', log: JSON.stringify(e) });
     }
-    return { success: true };
+    return Ok({ logs: ['Replaced Persona with Avatar'] });
   },
   version: '100000',
   name: 'PersonaToAvatar',

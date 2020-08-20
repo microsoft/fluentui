@@ -9,7 +9,7 @@ import { ILineChartProps, IBasestate, IChildProps } from '../LineChart/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
-import { calloutData, createYAxis } from '../../utilities/index';
+import { calloutData } from '../../utilities/index';
 import { ChartHelper } from '../CommonComponents/ChartHelper';
 
 export interface IRefArrayData {
@@ -36,7 +36,9 @@ export interface IContainerValues {
   shouldResize: boolean;
   reqID: number;
 }
-export interface IAreaChartState extends IBasestate {}
+export interface IAreaChartState extends IBasestate {
+  _maxOfYVal: number;
+}
 
 export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,10 +55,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   private _circleId: string;
   private _uniqueCallOutID: string;
   private containerHeight: number;
-  private containerWidth: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any;
-  private yAxisElement: SVGElement | null;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
 
   public constructor(props: ILineChartProps) {
@@ -69,6 +69,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       isLegendHovered: false,
       refSelected: null,
       YValueHover: [],
+      _maxOfYVal: 0,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
@@ -89,7 +90,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
       this.dataSet = this._createDataSet();
       this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
-      this._drawGraph(this.containerHeight, this.containerWidth);
+      this._drawGraph(this.containerHeight);
       this._isGraphDraw = false;
     }
   }
@@ -135,11 +136,11 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         calloutProps={calloutProps}
         legendBars={legends}
         isXAxisDateType={isDateType}
+        maxOfYVal={this.state._maxOfYVal}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this.containerHeight = props.containerHeight!;
-          this.containerWidth = props.containerWidth!;
           return <g id={`graphGElement_${this._uniqueIdForGraph}`} />;
         }}
       />
@@ -194,7 +195,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
     this._xAxisScale = xAxis;
-    this._drawGraph(containerHeight, containerWidth);
+    this._drawGraph(containerHeight);
   };
 
   private _onLegendClick(customMessage: string): void {
@@ -276,6 +277,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
@@ -396,9 +398,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     return shouldHighlight ? 'visibility' : 'hidden';
   };
 
-  private _drawGraph = (containerHeight: number, containerWidth: number): void => {
+  private _drawGraph = (containerHeight: number): void => {
     d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
-    const { showYAxisGridLines, yAxisTickCount, yAxisTickFormat } = this.props;
     const that = this;
     const xScale = this._xAxisScale;
     const chartContainer = d3Select(`#graphGElement_${this._uniqueIdForGraph}`)
@@ -424,20 +425,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     });
 
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    const yAxisParams = {
-      margins: this.margins,
-      containerWidth: containerWidth,
-      containerHeight: containerHeight,
-      yAxisElement: this.yAxisElement,
-      yAxisTickFormat: yAxisTickFormat!,
-      yAxisTickCount: yAxisTickCount ? yAxisTickCount : 4,
-      finalYMaxVal: maxOfYVal,
-      finalYMinVal: 0,
-      tickPadding: 10,
-      showYAxisGridLines: showYAxisGridLines!,
-      data: this._points,
-    };
-    createYAxis(yAxisParams);
+    this.setState({ _maxOfYVal: maxOfYVal });
 
     const yScale = d3ScaleLinear()
       .range([containerHeight - this.margins.bottom, this.margins.top])

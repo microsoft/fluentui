@@ -26,7 +26,7 @@
   vertical-align: middle;
 
   background: var(--button-background, white);
-  color: var(--button-contentColor, rgb(44, 38, 33));
+  color: var(--button-contentColor, #2c2621);
 
   border-color: var(--button-borderColor);
   border-radius: var(--button-borderRadius);
@@ -49,7 +49,7 @@
   @include focus-border(
     $padding: -1px,
     $color: var(--button-focusColor),
-    $thickness: var(--button-focus-width, 2px),
+    $thickness: var(--button-focusWidth, 2px),
     $radius: var(--button-borderRadius)
   );
 
@@ -103,10 +103,9 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
-
-    --button-pressed-transform: scale(0.98);
   }
 
+  // TODO: confirm if we should support size prop.
   &._size_smallest {
     --button-minHeight: var(--button-size-smallest);
   }
@@ -126,6 +125,7 @@
   &._size_larger {
     --button-minHeight: var(--button-size-larger);
   }
+
   &._size_largest {
     --button-minHeight: var(--button-size-largest);
   }
@@ -150,8 +150,8 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &._disabled {
-    color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
+  ._disabled & {
+    color: var(--button-disabled-iconColor);
   }
 }
 
@@ -168,7 +168,7 @@
   box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
 
   .icon {
-    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
+    color: var(--button-hovered-iconColor, var(--button-iconColor));
   }
 }
 
@@ -182,6 +182,6 @@
   transition: var(--button-pressed-transition);
 
   .icon {
-    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
+    color: var(--button-pressed-iconColor, var(--button-iconColor));
   }
 }
