@@ -72,6 +72,10 @@ export interface Tokens {
   [key: string]: TokenSetType;
 }
 
+export type Variants = {
+  [variantName: string]: RecursivePartial<TokenSetType> | undefined;
+};
+
 /**
  * A prepared (fully expanded) theme object.
  */
@@ -94,9 +98,7 @@ export interface Theme extends IPartialTheme {
    * Variants provide a way for theme to map a variant name to a set of token values.
    */
   variants?: {
-    [componentName: string]: {
-      [variantName: string]: VariantDefinition;
-    };
+    [componentName: string]: Variants;
   };
 
   /**
@@ -104,11 +106,6 @@ export interface Theme extends IPartialTheme {
    */
   stylesheets?: string[];
 }
-
-type VariantDefinition = {
-  className?: string;
-  tokens?: TokenSetType;
-};
 
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.

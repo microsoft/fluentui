@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet, TokenSetType } from '@fluentui/react-theme-provider';
 import { RecursivePartial } from '../../utils/tempTypes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
@@ -90,51 +89,51 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokenSet>;
   };
 
-export interface ButtonState extends ButtonProps {
-  buttonRef?: React.RefObject<HTMLButtonElement>;
-}
+export type ButtonState = ButtonProps;
 
-export interface ButtonSlots extends BaseSlots {
-  icon: React.ElementType;
-  loader: React.ElementType;
-}
+export type ButtonTokenSet = TokenSetType &
+  ColorTokenSet & {
+    /* sizing */
+    padding: string;
+    margin: string;
+    height: string;
+    minWidth: string;
+    maxWidth: string;
+    minHeight: string;
+    contentGap: string;
+    iconSize: string;
+    borderRadius: string;
+    borderWidth: string;
+    boxShadow: string;
+    width: string;
 
-export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+    size: {
+      smallest: string;
+      smaller: string;
+      small: string;
+      regular: string;
+      large: string;
+      larger: string;
+      largest: string;
+    };
 
-export type ButtonTokenSet = ColorTokenSet & {
-  /* sizing */
-  padding: string;
-  margin: string;
-  height: string;
-  minWidth: string;
-  maxWidth: string;
-  minHeight: string;
-  contentGap: string;
-  iconSize: string;
-  borderRadius: string;
-  borderWidth: string;
-  boxShadow: string;
-  width: string;
-
-  size: {
-    smallest: string;
-    smaller: string;
-    small: string;
-    regular: string;
-    large: string;
-    larger: string;
-    largest: string;
-  };
-
-  transform: string;
-  transition: string;
-
-  fontFamily: string;
-  fontSize: string;
-  fontWeight: string;
-
-  pressed: {
     transform: string;
     transition: string;
+
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+
+    pressed: {
+      transform: string;
+      transition: string;
+    };
   };
+
+export type ButtonVariants = {
+  base: ButtonTokenSet;
+  primary: ButtonTokenSet;
+  iconOnly: ButtonTokenSet;
+  circular: ButtonTokenSet;
+  fluid: ButtonTokenSet;
 };

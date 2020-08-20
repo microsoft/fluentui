@@ -8,3 +8,4 @@ export * from './getStyleFromPropsAndOptions';
 export * from './mergeThemes';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';
+export * from './makeVariants';

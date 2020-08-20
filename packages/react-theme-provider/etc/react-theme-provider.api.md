@@ -4,11 +4,9 @@
 
 ```ts
 
-import * as CSS from 'csstype';
 import { IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import * as PropTypes from 'prop-types';
-import * as React_2 from 'react';
+import * as React from 'react';
 
 // @public
 export type ColorTokens = Partial<{
@@ -45,7 +43,13 @@ export type FontTokens = Partial<{
 }>;
 
 // @public (undocumented)
+export type GenericDictionary = Record<string, any>;
+
+// @public (undocumented)
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+
+// @public (undocumented)
+export const makeVariants: <TTokenSetType extends TokenSetType>(componentName: string, prefix: string, defaultVariants: Variants) => (state: Record<string, any>) => void;
 
 // @public
 export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
@@ -68,7 +72,7 @@ export interface StyleOptions<TProps> {
 // @public
 export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
-    style?: React_2.CSSProperties;
+    style?: React.CSSProperties;
     // (undocumented)
     tokens?: TTokens;
 }
@@ -91,10 +95,8 @@ export interface Theme extends IPartialTheme {
 }
 
 // @public
-export const ThemeProvider: React_2.ForwardRefExoticComponent<ThemeProviderProps & React_2.RefAttributes<HTMLDivElement>>;
+export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-//
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
     styleRenderer?: <TStyleSet>(styleSet: TStyleSet) => {
@@ -128,10 +130,15 @@ export const useInlineTokens: (draftState: {
 // @public
 export const useTheme: () => Theme;
 
+// @public (undocumented)
+export type Variants = {
+    [variantName: string]: TokenSetType;
+};
+
 
 // Warnings were encountered during analysis:
 //
-// lib/types.d.ts:89:13 - (ae-forgotten-export) The symbol "VariantDefinition" needs to be exported by the entry point index.d.ts
+// lib/types.d.ts:92:13 - (ae-forgotten-export) The symbol "VariantDefinition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

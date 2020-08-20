@@ -1,13 +1,13 @@
 import { useTheme } from './useTheme';
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { TokenSetType } from './types';
+import { TokenSetType, Variants } from './types';
 import { mergeStyles, IStyle } from '@uifabric/merge-styles';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 const parseVariants = (
-  variants: Record<string, TokenSetType> | undefined,
+  variants: Variants | undefined,
   state: GenericDictionary,
   variantKeys: string[],
   variantObjects: TokenSetType[],
@@ -16,7 +16,7 @@ const parseVariants = (
     for (const variantName of Object.keys(variants)) {
       if (variants[variantName] && (variantName === 'base' || state[variantName])) {
         variantKeys.push(variantName);
-        variantObjects.push(variants[variantName]);
+        variantObjects.push(variants[variantName]!);
       }
     }
   }
@@ -25,7 +25,7 @@ const parseVariants = (
 export const makeVariants = <TTokenSetType extends TokenSetType>(
   componentName: string,
   prefix: string,
-  defaultVariants: Record<string, TTokenSetType>,
+  defaultVariants: Variants,
 ) => {
   // Guarantee uniqueness of class name map.
   // const id = getId('variant_' + componentName);

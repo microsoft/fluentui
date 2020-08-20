@@ -1,7 +1,7 @@
-import { ButtonTokenSet } from './Button.types';
-import { RecursivePartial } from '../../utils/tempTypes';
+import { ButtonVariants } from './Button.types';
+import { RecursivePartial } from '@fluentui/react-theme-provider';
 
-export const buttonVariants: Record<string, RecursivePartial<ButtonTokenSet>> = {
+export const buttonVariants: RecursivePartial<ButtonVariants> = {
   base: {
     size: {
       smallest: '24px',
