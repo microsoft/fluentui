@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useCallback, useImperativeHandle, useRef } from 'react';
 import { useControlledState } from '../../Foundation';
 import { getRTL, KeyCodes } from '../../Utilities';
