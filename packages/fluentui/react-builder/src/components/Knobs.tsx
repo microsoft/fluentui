@@ -36,6 +36,37 @@ const sizeRamp = [
   designUnit * 6.5,
   designUnit * 6.75,
 ];
+const designUnitLarge = 4;
+const sizeRampLarge = [
+  designUnitLarge * 0,
+  designUnitLarge * 0.25,
+  designUnitLarge * 0.5,
+  designUnitLarge * 0.75,
+  designUnitLarge * 1,
+  designUnitLarge * 1.25,
+  designUnitLarge * 1.5,
+  designUnitLarge * 1.75,
+  designUnitLarge * 2,
+  designUnitLarge * 2.25,
+  designUnitLarge * 2.5,
+  designUnitLarge * 2.75,
+  designUnitLarge * 3,
+  designUnitLarge * 3.25,
+  designUnitLarge * 3.5,
+  designUnitLarge * 3.75,
+  designUnitLarge * 4,
+  designUnitLarge * 4.25,
+  designUnitLarge * 4.5,
+  designUnitLarge * 4.75,
+  designUnitLarge * 5,
+  designUnitLarge * 5.25,
+  designUnitLarge * 5.5,
+  designUnitLarge * 5.75,
+  designUnitLarge * 6,
+  designUnitLarge * 6.25,
+  designUnitLarge * 6.5,
+  designUnitLarge * 6.75,
+];
 
 const knobs = [
   { kind: 'divider', label: 'Border' },
@@ -65,14 +96,14 @@ const knobs = [
 
   { kind: 'divider', label: 'Dimensions' },
 
-  { kind: 'slider', label: 'width', ramp: sizeRamp },
-  { kind: 'slider', label: 'height', ramp: sizeRamp },
+  { kind: 'slider', label: 'width', ramp: sizeRampLarge },
+  { kind: 'slider', label: 'height', ramp: sizeRampLarge },
 
-  { kind: 'slider', label: 'minWidth', ramp: sizeRamp },
-  { kind: 'slider', label: 'minHeight', ramp: sizeRamp },
+  { kind: 'slider', label: 'minWidth', ramp: sizeRampLarge },
+  { kind: 'slider', label: 'minHeight', ramp: sizeRampLarge },
 
-  { kind: 'slider', label: 'maxWidth', ramp: sizeRamp },
-  { kind: 'slider', label: 'maxHeight', ramp: sizeRamp },
+  { kind: 'slider', label: 'maxWidth', ramp: sizeRampLarge },
+  { kind: 'slider', label: 'maxHeight', ramp: sizeRampLarge },
 ];
 
 const rowStyle = { padding: '0.1rem 0.25rem' };
@@ -161,9 +192,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
                     step={1}
                     min={0}
                     max={knob.ramp.length - 1}
-                    {...(currentValue && {
-                      value: knob.ramp.indexOf(parseFloat(currentValue)),
-                    })}
+                    value={currentValue ? knob.ramp.indexOf(parseFloat(currentValue)) : 0}
                     onChange={(e, data) => {
                       onPropChange({
                         jsonTreeElement,
