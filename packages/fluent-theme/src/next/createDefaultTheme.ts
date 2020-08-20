@@ -39,12 +39,6 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--accent-borderColor)',
       iconColor: 'var(--accent-iconColor)',
     },
-    focused: {
-      background: 'var(--accent-background)',
-      borderColor: 'var(--accent-borderColor)',
-      contentColor: 'var(--accent-contentColor)',
-      iconColor: 'var(--accent-iconColor)',
-    },
     checked: {
       background: 'var(--acent-pressed-background)',
       contentColor: 'var(--acent-pressed-contentColor)',
@@ -101,12 +95,6 @@ export const defaultTokens: Tokens = {
       background: '#edebe9',
       borderColor: '#8a8886',
       contentColor: '#201f1e',
-      iconColor: 'var(--button-iconColor)',
-    },
-    focused: {
-      background: 'var(--button-background)',
-      borderColor: 'var(--button-borderColor)',
-      contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
     },
     checked: {

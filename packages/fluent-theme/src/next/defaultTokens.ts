@@ -28,12 +28,6 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--accent-borderColor)',
       iconColor: 'var(--accent-iconColor)',
     },
-    focused: {
-      background: 'var(--accent-background)',
-      borderColor: 'var(--accent-borderColor)',
-      contentColor: 'var(--accent-contentColor)',
-      iconColor: 'var(--accent-iconColor)',
-    },
     checked: {
       background: 'var(--acent-pressed-background)',
       contentColor: 'var(--acent-pressed-contentColor)',
