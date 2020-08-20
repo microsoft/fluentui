@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { FlexProps, FlexState } from './Flex.types';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';

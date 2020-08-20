@@ -12,7 +12,7 @@ export {
   IBasestate,
   IChildProps,
 } from '../../types/IDataPoint';
-import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '@uifabric/charting';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '../CommonComponents/index';
 import { ILegendsProps } from '../Legends/index';
 
 // export interface ILineChart {}
