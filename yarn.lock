@@ -1384,55 +1384,6 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@fluentui/react-button@^0.9.0":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-button/-/react-button-0.9.4.tgz#cf1707eb50f53b916091d8d7114cc5cfea25cbb2"
-  integrity sha512-cEAUJmkVjUMch3C//Lnh/qshdkWViSMGJ6O+sLmMT/5qry6LuDjwkZqYuF6X3ezVRvWKG2QrgvVc/JG3gBYIWA==
-  dependencies:
-    "@fluentui/keyboard-key" "^0.2.10"
-    "@fluentui/react-compose" "^0.16.0"
-    "@fluentui/react-icons" "^0.1.48"
-    "@fluentui/react-theme-provider" "^0.7.3"
-    "@microsoft/load-themed-styles" "^1.10.26"
-    "@uifabric/react-hooks" "^7.8.2"
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/utilities" "^7.28.0"
-    office-ui-fabric-react "^7.128.3"
-    tslib "^1.10.0"
-
-"@fluentui/react-compose@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-compose/-/react-compose-0.16.0.tgz#493af9c6e1b2c3699ed4fdbd7f3de7236c75eba9"
-  integrity sha512-/UJhLi6WMoBpAbNS/SGeVy8WvJ/rQOqZBC34EGjm2D30UQlyRbQ2l/CEvsKnvI4lk0ZxBgXqFPFF/jVh0Om7rQ==
-  dependencies:
-    "@types/classnames" "^2.2.9"
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/utilities" "^7.28.0"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
-"@fluentui/react-icons@^0.1.48":
-  version "0.1.48"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-0.1.48.tgz#3ee77fe1c9cab39960d8daeab8f5de236f536bf9"
-  integrity sha512-0RggbvYm14MlgxcE1d8FZvdWR37l6xbUJT/gNBo5HoA0JB4LlKcqDLVuvmjgvyohsAtjcMCRT6v/UivMeRuOVA==
-  dependencies:
-    "@microsoft/load-themed-styles" "^1.10.26"
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/utilities" "^7.28.0"
-    tslib "^1.10.0"
-
-"@fluentui/react-theme-provider@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-0.7.3.tgz#1bdf36f4a3224b69277ff2886187547e147da59b"
-  integrity sha512-AYmup541Uik8ZBvH7mp/YmwKWJIu0BeItGMWLcCutPduVwq7GB2GMWVdnv5/2o3ttyReJeyhIkOqAXs5sJC7ig==
-  dependencies:
-    "@fluentui/react-stylesheets" "^0.1.16"
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/styling" "^7.14.13"
-    "@uifabric/utilities" "^7.28.0"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
