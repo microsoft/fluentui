@@ -104,14 +104,11 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
 
   const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
 
-  const { styles: resolvedStyles, classes } = useStyles<DropdownSearchInputStylesProps>(
-    DropdownSearchInput.displayName,
-    {
-      className: dropdownSearchInputClassName,
-      mapPropsToStyles: () => ({ inline }),
-      mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    },
-  );
+  const { styles: resolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
+    className: dropdownSearchInputClassName,
+    mapPropsToStyles: () => ({ inline }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+  });
 
   const handleFocus = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onFocus', e, props);
@@ -137,7 +134,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
       onKeyUp={handleKeyUp}
       {...unhandledProps}
       wrapper={{
-        className: cx(dropdownSearchInputSlotClassNames.wrapper, classes.root),
+        className: cx(dropdownSearchInputSlotClassNames.wrapper, className),
         styles: resolvedStyles.root,
         ...accessibilityComboboxProps,
         ...unhandledProps.wrapper,
