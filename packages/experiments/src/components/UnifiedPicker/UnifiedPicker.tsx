@@ -125,7 +125,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
-    const draggedItemIndex = selectedItems.indexOf(item);
+    const draggedItemIndex = itemIndex ? itemIndex! : -1;
     setDraggedIndex(draggedItemIndex);
     if (event) {
       const dataList = event?.dataTransfer?.items;

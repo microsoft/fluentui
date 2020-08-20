@@ -36,19 +36,19 @@ export const useSelectedItems = <T extends {}>(
     const currentItems: T[] = [...items];
     const updatedItems: T[] = [];
 
-    currentItems.forEach(item => {
-      const currentIndex = currentItems.indexOf(item);
+    for (let i = 0; i < currentItems.length; i++) {
+      const item = currentItems[i];
       // If this is the insert before index, insert the dragged items, then the current item
-      if (currentIndex === insertIndex) {
+      if (i === insertIndex) {
         itemsToAdd.forEach(draggedItem => {
           updatedItems.push(draggedItem);
         });
         updatedItems.push(item);
-      } else if (!indicesToRemove.includes(currentIndex)) {
+      } else if (!indicesToRemove.includes(i)) {
         // only insert items into the new list that are not being dragged
         updatedItems.push(item);
       }
-    });
+    }
     setSelectedItems(updatedItems);
     selection.setItems(updatedItems);
   };
