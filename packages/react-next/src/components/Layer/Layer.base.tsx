@@ -10,18 +10,16 @@ import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [unmountFunction],
-  );
-};
+// const useUnmount = (unmountFunction: () => void) => {
+//   const unmountRef = React.useRef(unmountFunction);
+//   unmountRef.current = unmountFunction;
+//   React.useEffect(
+//     () => () => {
+//       unmountRef.current?.();
+//     },
+//     [unmountFunction],
+//   );
+// };
 
 function useDebugWarnings(props: ILayerProps) {
   if (process.env.NODE_ENV !== 'production') {
@@ -35,6 +33,21 @@ function useDebugWarnings(props: ILayerProps) {
 }
 
 let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
+
+const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
+  // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
+  // mouseEnter and mouseLeave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
+  // event name rather than ev.bubble.
+  if (
+    ev.eventPhase === Event.BUBBLING_PHASE &&
+    ev.type !== 'mouseenter' &&
+    ev.type !== 'mouseleave' &&
+    ev.type !== 'touchstart' &&
+    ev.type !== 'touchend'
+  ) {
+    ev.stopPropagation();
+  }
+};
 
 function getFilteredEvents() {
   if (!filteredEventProps) {
@@ -79,21 +92,6 @@ function getFilteredEvents() {
   return filteredEventProps;
 }
 
-const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
-  // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
-  // mouseEnter and mouseLeave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
-  // event name rather than ev.bubble.
-  if (
-    ev.eventPhase === Event.BUBBLING_PHASE &&
-    ev.type !== 'mouseenter' &&
-    ev.type !== 'mouseleave' &&
-    ev.type !== 'touchstart' &&
-    ev.type !== 'touchend'
-  ) {
-    ev.stopPropagation();
-  }
-};
-
 export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, ref) => {
   const [layerHostId, setLayerHostId] = React.useState<string | undefined>();
   const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
@@ -120,6 +118,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     isNotHost: !hostId,
   });
 
+  // Returns the user provided hostId props element, the default target selector, or undefined if their is no document.
   const getHost = React.useCallback((): Node | undefined => {
     // If the document object is undefined, return an undefined host.
     if (!doc) {
@@ -138,17 +137,20 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     }
   }, [doc, hostId]);
 
+  // Runs user provided onLayerWillUnmount prop and removes the current layer element's parentNode.
   const removeLayerElement = React.useCallback((): void => {
     // Check if the user provided a onLayerWillUnmount prop and then call it.
     onLayerWillUnmount?.();
 
     // Remove any existing parentNode from the layer element state value.
-    if (currentLayerElement?.parentNode) {
-      currentLayerElement.parentNode.removeChild(currentLayerElement);
+    if (currentLayerElement && currentLayerElement.parentNode) {
+      if (currentLayerElement.parentNode) {
+        currentLayerElement.parentNode.removeChild(currentLayerElement);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onLayerWillUnmount]);
+  }, [currentLayerElement, onLayerWillUnmount]);
 
+  // If a doc or host exists, removes any previous existing layer parentNodes and then updates them.
   const createLayerElement = React.useCallback(() => {
     const host = getHost();
 
@@ -170,14 +172,11 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
 
     setLayerHostId(hostId);
     setCurrentLayerElement(layerElement);
-    console.log(currentLayerElement);
-
     onLayerMounted?.();
     onLayerDidMount?.();
   }, [
-    classNames.root,
     currentLayerElement,
-
+    classNames.root,
     doc,
     getHost,
     hostId,
@@ -187,6 +186,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     removeLayerElement,
   ]);
 
+  // onComponentMount
   React.useEffect(() => {
     // On initial render:
     // Create a new layer element
@@ -200,23 +200,34 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   }, []);
 
   React.useEffect(() => {
+    // When hostId and layerHodstId mutate:
     // If the the user's hostID prop doesn't equal the state layerHostId, re-create a new layer element.
     if (hostId !== layerHostId) {
       createLayerElement();
     }
-  }, [createLayerElement, hostId, layerHostId]);
+
+    // componentWillUnmount
+    return () => {
+      removeLayerElement();
+      // Check if the user provided a hostId prop and unregister the layer with the ID.
+      if (hostId) {
+        unregisterLayer(hostId, createLayerElement);
+      }
+    };
+  }, [currentLayerElement, createLayerElement, hostId, layerHostId, removeLayerElement]);
 
   useDebugWarnings(props);
 
-  useUnmount(() => {
-    // When the component unmounts:
-    // Remove existing layer elements.
-    removeLayerElement();
-    // Check if the user provided a hostId prop and unregister the layer with the ID.
-    if (hostId) {
-      unregisterLayer(hostId, createLayerElement);
-    }
-  });
+  // When the component unmounts, remove existing layer element parent nodes and unregister the layer.
+  // useUnmount(() => {
+  //   // When the component unmounts:
+  //   // Remove existing layer elements.
+  //   removeLayerElement();
+  //   // Check if the user provided a hostId prop and unregister the layer with the ID.
+  //   if (hostId) {
+  //     unregisterLayer(hostId, createLayerElement);
+  //   }
+  // });
 
   return (
     <span className="ms-layer" ref={mergedRef}>
