@@ -1,3 +1,9 @@
-let { createConfig } = require('@uifabric/build/jest/jest-resources');
+let { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
+let path = require('path');
 
-module.exports = createConfig();
+const config = createConfig({
+  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
+  snapshotSerializers: [resolveMergeStylesSerializer()],
+});
+
+module.exports = config;

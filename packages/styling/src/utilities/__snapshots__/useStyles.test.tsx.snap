@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useStyles can refer to styles from a custom theme 1`] = `
+<div
+  className=
+
+      {
+        background: purple;
+      }
+/>
+`;
+
+exports[`useStyles can refer to styles from the default theme 1`] = `
+<div
+  className=
+
+      {
+        background: #0078d4;
+      }
+/>
+`;

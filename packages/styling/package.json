@@ -29,8 +29,14 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.4",
     "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^7.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
@@ -38,5 +44,11 @@
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/utilities": "^7.29.0",
     "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
   }
 }

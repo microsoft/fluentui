@@ -20,6 +20,7 @@ import { IStyleSheetConfig } from '@uifabric/merge-styles';
 import { keyframes } from '@uifabric/merge-styles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
+import * as React from 'react';
 import { Stylesheet } from '@uifabric/merge-styles';
 
 // @public (undocumented)
@@ -710,6 +711,9 @@ export const ThemeSettingName = "theme";
 
 // @public
 export function unregisterIcons(iconNames: string[]): void;
+
+// @public (undocumented)
+export function useStyles<TStyleSet extends IStyleSet<TStyleSet>>(styleFunction: (theme: ITheme) => TStyleSet, dependencies?: React.DependencyList): IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export namespace ZIndexes {
