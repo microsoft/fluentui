@@ -80,13 +80,10 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     this.resetSelectedItem();
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void {
     this.scrollSelected();
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
-    if (newProps.suggestions) {
-      this.setState({ suggestions: newProps.suggestions }, () => {
+    if (oldProps.suggestions && oldProps.suggestions !== this.props.suggestions) {
+      this.setState({ suggestions: this.props.suggestions }, () => {
         this.resetSelectedItem();
       });
     }
