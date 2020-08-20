@@ -3,7 +3,7 @@ import path from 'path';
 import through2 from 'through2';
 import Vinyl from 'vinyl';
 
-import { getComponentInfo } from './util';
+import getComponentInfo, { GetComponentInfoOptions } from './util/getComponentInfo';
 
 import config from '../../config';
 
@@ -11,8 +11,10 @@ const { paths } = config;
 
 const pluginName = 'gulp-react-docgen';
 
-export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
-  through2.obj(function bufferContents(file, enc, cb) {
+type DocGenPluginOptions = Pick<GetComponentInfoOptions, 'tsconfigPath' | 'ignoredParentInterfaces'>;
+
+export default function reactDocGen(options: DocGenPluginOptions) {
+  return through2.obj(function bufferContents(file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -25,7 +27,7 @@ export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
 
     try {
       const infoFilename = file.basename.replace(/\.tsx$/, '.info.json');
-      const contents = getComponentInfo(tsConfigPath, file.path, ignoredInterfaces);
+      const contents = getComponentInfo({ ...options, filePath: file.path });
 
       // Forcing the base & cwd to be paths.docsSrc('componentInfo') to make sure this is cached & restored at the
       // right location. While abs path is important for the first write, the relative calculation is important to
@@ -58,3 +60,4 @@ export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
       this.emit('error', pluginError);
     }
   });
+}
