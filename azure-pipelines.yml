@@ -14,9 +14,12 @@ jobs:
   - job: BuildTestLint
     workspace:
       clean: all
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
     variables:
       puppeteer_skip_chromium_download: true
       skip_sass_binary_download_for_ci: true
+      SASS_BINARY_DIR: $(SourcesDirectory)
     steps:
       - template: azure-pipelines.tools.yml
 
