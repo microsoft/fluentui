@@ -18,7 +18,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn
+          yarn --verbose
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -59,7 +59,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn
+          yarn --verbose
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
