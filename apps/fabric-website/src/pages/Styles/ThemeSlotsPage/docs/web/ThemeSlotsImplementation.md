@@ -31,6 +31,8 @@ return <Component styles={styles} ... />;
 ##### Example
 
 ```tsx
+import { getTheme } from '@fluentui/react';
+
 const theme = getTheme();
 const styles = {
   root: [

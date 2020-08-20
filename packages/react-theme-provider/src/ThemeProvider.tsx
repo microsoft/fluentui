@@ -1,21 +1,24 @@
 import * as React from 'react';
 import cx from 'classnames';
+import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
-import { PartialTheme, Theme } from './types';
+import { Theme } from './types';
+import { ThemeProviderProps } from './ThemeProvider.types';
 import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
+import { getTokens } from './getTokens';
 
-/**
- * Props for the ThemeProvider component.
- */
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Defines the theme provided by the user.
-   */
-  theme?: PartialTheme | Theme;
+function createCustomizerContext(theme: Theme): ICustomizerContext {
+  return {
+    customizations: {
+      inCustomizerContext: true,
+      settings: { theme },
+      scopedSettings: theme.components || {},
+    },
+  };
 }
 
 /**
@@ -30,7 +33,11 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     const parentTheme = useTheme();
 
     // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<Theme>(() => mergeThemes(parentTheme, theme), [parentTheme, theme]);
+    const fullTheme = React.useMemo<Theme>(() => {
+      const mergedTheme = mergeThemes<Theme>(parentTheme, theme);
+      mergedTheme.tokens = getTokens(mergedTheme);
+      return mergedTheme;
+    }, [parentTheme, theme]);
 
     // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
@@ -46,7 +53,9 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     // Provide the theme in case it's required through context.
     return (
       <ThemeContext.Provider value={fullTheme}>
-        <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
+        <CustomizerContext.Provider value={createCustomizerContext(fullTheme)}>
+          <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
+        </CustomizerContext.Provider>
       </ThemeContext.Provider>
     );
   },

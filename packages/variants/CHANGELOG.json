@@ -2,6 +2,21 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/variants_v7.1.117",
+      "version": "7.1.117",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/variants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/variants_v7.1.94",
       "version": "7.1.94",

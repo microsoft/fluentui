@@ -103,7 +103,12 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      {createShorthand(Text, label, { defaultProps: () => getA11yProps('label', {}) })}
+      {createShorthand(Text, label, {
+        defaultProps: () =>
+          getA11yProps('label', {
+            className: classes.label,
+          }),
+      })}
 
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
@@ -165,6 +170,7 @@ DatepickerCalendarHeader.propTypes = {
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
+  openCalendarTitle: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,

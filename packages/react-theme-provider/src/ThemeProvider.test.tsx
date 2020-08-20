@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
-import { Theme } from './types';
+import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from './mergeThemes';
+import { createDefaultTheme } from './createDefaultTheme';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -32,6 +33,20 @@ describe('ThemeProvider', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('can handle a partial theme', () => {
+    const partialTheme: PartialTheme = {
+      tokens: {
+        foo: {
+          background: 'red',
+        },
+      },
+    };
+
+    const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders a div with styling', () => {
     const component = renderer.create(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
     const tree = component.toJSON();
@@ -55,7 +70,6 @@ describe('ThemeProvider', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();
-
       return null;
     };
 
@@ -65,6 +79,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    expect(resolvedTheme).toEqual(lightTheme);
+    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    expect(resolvedTheme).toEqual(expectedTheme);
   });
 });

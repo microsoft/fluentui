@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { ExampleSource } from '../../../types';
 import { componentAPIs as APIdefinitions, ComponentAPIs } from './componentAPIs';
-import getExampleModule from './getExampeModule';
+import getExampleModule from './getExampleModule';
 
 export type ComponentSourceManagerRenderProps = ComponentSourceManagerState & {
   defaultExport: React.ElementType;

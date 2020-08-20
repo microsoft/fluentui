@@ -2,6 +2,117 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.88",
+      "version": "8.0.0-alpha.88",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating OverflowSet to a function component inside React-Next.",
+            "author": "czearing@outlook.com",
+            "commit": "14bd6229c4c4aa73c36361cbfeb844d347071c71",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating ChoiceGroup and ChoiceGroupOption to a function component inside React-Next",
+            "author": "czearing@outlook.com",
+            "commit": "c8d88b5e1de7fcfdbb3f4b2619d71056ea54c60c",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate ComboBox to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "1d3109d99b18693c24a8a87312dd6bb23ecd43f4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Layer to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "a85b522d234294351561e0b2e9fcc28e233b27ef",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.87",
+      "version": "8.0.0-alpha.87",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix ESLint TODOs in CalloutContent",
+            "author": "miclo@microsoft.com",
+            "commit": "5c64f924a4d4a87089b127ff065db3818f31c3fb",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "fix publishing by syncing packages (#12715)",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.86",
+      "version": "8.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix casing for utilities folder",
+            "author": "xgao@microsoft.com",
+            "commit": "25bf42e97cc676794bef61b5c442bc8fc90123f0",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.85",
+      "version": "8.0.0-alpha.85",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy ContextualMenu to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "e34570d86cd27872c5b76c06022757afbaf22707",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Enable eslint-plugin-react-hooks in react-next and fix a few bugs",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.84",
+      "version": "8.0.0-alpha.84",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update ThemeProvider to support v7 theme",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Dropdown: Correctly updating set-size when number of options updates after first render.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "44befb4af953e60cfb3d5c27dbfc5736bd40a452",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2020 05:47:07 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.83",
       "version": "8.0.0-alpha.83",
