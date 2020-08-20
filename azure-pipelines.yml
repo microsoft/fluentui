@@ -16,12 +16,13 @@ jobs:
       clean: all
     variables:
       puppeteer_skip_chromium_download: true
+      skip_sass_binary_download_for_ci: true
       sass_binary_dir: $(Build.SourcesDirectory)
     steps:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn
+          yarn --verbose
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
