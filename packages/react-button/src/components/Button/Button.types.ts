@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
-import { RecursivePartial } from '../../utils/tempTypes';
+import { ColorTokenSet, RecursivePartial } from '@fluentui/theme';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -87,7 +86,7 @@ export type ButtonProps = ComponentProps &
     /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
     // text?: boolean;
 
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: ButtonTokenSet;
   };
 
 export interface ButtonState extends ButtonProps {
@@ -101,40 +100,35 @@ export interface ButtonSlots extends BaseSlots {
 
 export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
-export type ButtonTokenSet = ColorTokenSet & {
-  /* sizing */
-  padding: string;
-  margin: string;
-  height: string;
-  minWidth: string;
-  maxWidth: string;
-  minHeight: string;
-  contentGap: string;
-  iconSize: string;
-  borderRadius: string;
-  borderWidth: string;
-  boxShadow: string;
-  width: string;
+export type ButtonTokenSet = RecursivePartial<
+  ColorTokenSet & {
+    size: {
+      smallest: string;
+      smaller: string;
+      small: string;
+      regular: string;
+      large: string;
+      larger: string;
+      largest: string;
+    };
 
-  size: {
-    smallest: string;
-    smaller: string;
-    small: string;
-    regular: string;
-    large: string;
-    larger: string;
-    largest: string;
-  };
-
-  transform: string;
-  transition: string;
-
-  fontFamily: string;
-  fontSize: string;
-  fontWeight: string;
-
-  pressed: {
-    transform: string;
+    padding: string;
+    margin: string;
+    height: string;
+    minHeight: string;
+    width: string;
+    contentGap: string;
+    borderRadius: string;
+    borderWidth: string;
+    boxShadow: string;
+    iconSize: string | number;
     transition: string;
-  };
-};
+
+    dividerLength: string;
+    dividerThickness: string;
+
+    fontFamily: string;
+    fontSize: string | number;
+    fontWeight: string | number;
+  }
+>;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
-import { PartialTheme } from './types';
+import { PartialTheme } from './ThemeProvider.types';
 
 const lightTheme: PartialTheme = {
   tokens: {

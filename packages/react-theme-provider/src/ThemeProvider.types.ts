@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Theme, PartialTheme } from './types';
+import { Theme, PartialTheme } from '@fluentui/theme';
+
+export { Theme, PartialTheme } from '@fluentui/theme';
 
 /**
  * Props for the ThemeProvider component.

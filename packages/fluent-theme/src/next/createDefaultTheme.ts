@@ -1,4 +1,4 @@
-import { Theme, Tokens } from './types';
+import { Tokens, Theme } from '@fluentui/theme';
 import { createTheme } from '@uifabric/styling';
 import { getTokens } from './getTokens';
 

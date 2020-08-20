@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { Theme } from './types';
+import { Theme } from '@fluentui/theme';
 
 export const ThemeContext = React.createContext<Theme | undefined>(undefined);

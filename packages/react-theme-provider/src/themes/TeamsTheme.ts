@@ -1,5 +1,6 @@
-import { PartialTheme } from '../types';
+import { PartialTheme } from '@fluentui/theme';
 
+// TODO: move this to @fluentui/teams-theme
 export const TeamsTheme: PartialTheme = {
   tokens: {
     accent: {

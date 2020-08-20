@@ -1,11 +1,9 @@
 import { useContext } from 'react';
 import { useCustomizationSettings } from '@uifabric/utilities';
 import { ITheme } from '@uifabric/styling';
+import { Theme } from '@fluentui/theme';
+import { FluentTheme } from '@uifabric/fluent-theme';
 import { ThemeContext } from './ThemeContext';
-import { Theme } from './types';
-import { createDefaultTheme } from './createDefaultTheme';
-
-const defaultTheme = createDefaultTheme();
 
 /**
  * Get theme from CustomizerContext or Customizations singleton.
@@ -28,5 +26,5 @@ export const useTheme = (): Theme => {
     return legacyTheme;
   }
 
-  return defaultTheme;
+  return FluentTheme;
 };

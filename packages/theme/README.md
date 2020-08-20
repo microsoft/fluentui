@@ -1,11 +1,18 @@
 # @fluentui/theme
 
-**Theme components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Basic building blocks for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui) Themes**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
-To import Theme components:
+Define your own theme based on an existing theme:
 
 ```js
-import { ComponentName } from '@fluentui/theme';
+import { FluentTheme } from '@fluentui/fluent-theme';
+import { Theme, mergeThemes } from '@fluentui/theme';
+
+export const MyTheme: Theme = mergeThemes(FluentTheme, {
+  tokens: {
+    button: {
+      padding: '0 24px',
+    },
+  },
+});
 ```

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
-import { Theme, PartialTheme } from './types';
+import { mergeThemes } from '@fluentui/theme';
+import { FluentTheme } from '@uifabric/fluent-theme/lib/next';
+import { ThemeProvider } from './ThemeProvider';
+import { Theme, PartialTheme } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes } from './mergeThemes';
-import { createDefaultTheme } from './createDefaultTheme';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -79,7 +79,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    const expectedTheme = mergeThemes(FluentTheme, lightTheme);
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 });

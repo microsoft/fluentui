@@ -26,6 +26,8 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "@fluentui/theme": "^0.1.0",
+    "@fluentui/react-button": "^0.10.1",
     "@uifabric/merge-styles": "^7.16.7",
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/styling": "^7.15.1",
