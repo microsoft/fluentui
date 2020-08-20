@@ -55,6 +55,23 @@ describe('getDayGrid', () => {
     expect(resultUTC).toMatchSnapshot();
   });
 
+  it('returns matrix with days when in negative date ranges', () => {
+    // date corresponds to Sunday July 23 year -0377. Use a number because if creating a new date using
+    // the string representation, date will become "Invalid Date"
+    const date = new Date(-74046586022000);
+    const options: IDayGridOptions = {
+      selectedDate: date,
+      navigatedDate: date,
+      firstDayOfWeek: DayOfWeek.Sunday,
+      firstWeekOfYear: FirstWeekOfYear.FirstDay,
+      dateRangeType: DateRangeType.Day,
+    };
+
+    const result = DateGrid.getDayGrid(options);
+    const resultUTC = result.map(week => week.map(day => normalizeDay(day)));
+    expect(resultUTC).toMatchSnapshot();
+  });
+
   it('returns grid starting with proper day', () => {
     const result = DateGrid.getDayGrid({ ...defaultOptions, firstDayOfWeek: DayOfWeek.Wednesday });
     expect(result[0][0].originalDate.getDay()).toBe(DayOfWeek.Wednesday);
