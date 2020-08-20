@@ -18,6 +18,7 @@ jobs:
       disable_opencollective: true
       electron_skip_binary_download: true
       puppeteer_skip_chromium_download: true
+      scarf_analytics: false
     steps:
       - template: azure-pipelines.tools.yml
 
