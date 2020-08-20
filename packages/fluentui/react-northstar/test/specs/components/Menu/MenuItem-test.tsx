@@ -21,7 +21,7 @@ describe('MenuItem', () => {
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
-console.log(111);
+const noop = () => {};noop();
 
 
 
