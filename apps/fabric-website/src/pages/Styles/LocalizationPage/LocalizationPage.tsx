@@ -37,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           ),
         },
         {
-          sectionName: 'Directional Icons',
+          sectionName: 'Directional icons',
           content: (
             <>
               <p>

@@ -1,8 +1,8 @@
 {
-  "type": "patch",
-  "comment": "Add back UHF link style overrides via Customizer",
+  "type": "minor",
+  "comment": "Markdown: add support for custom HTML",
   "packageName": "@uifabric/example-app-base",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-08-14T21:42:53.217Z"
+  "date": "2020-08-19T06:23:58.195Z"
 }
