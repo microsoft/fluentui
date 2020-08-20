@@ -363,7 +363,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            // eslint-disable-next-line react/jsx-no-bind
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
             className={this._classNames.container}

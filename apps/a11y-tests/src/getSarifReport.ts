@@ -1,3 +1,4 @@
+import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';

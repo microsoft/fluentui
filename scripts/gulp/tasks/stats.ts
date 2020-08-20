@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { task, parallel, series } from 'gulp';
+import { task, series } from 'gulp';
 import { log, PluginError } from 'gulp-util';
 import _ from 'lodash';
 import webpack from 'webpack';
@@ -127,7 +127,7 @@ task('stats:build:bundle', async () => {
   writeCurrentStats(currentStatsFilePath, results);
 });
 
-task('stats', series(parallel('build:docs:component-info'), 'stats:build:bundle'));
+task('stats', series('stats:build:bundle'));
 
 function readSummaryPerfStats() {
   return _.chain(require(paths.perfDist('result.json')))

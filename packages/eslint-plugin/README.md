@@ -62,6 +62,10 @@ The rule requires an options object containing:
 - `max` (required): the maximum line length
 - `ignorePatterns` (optional): ignore the line if it matches any of these regular expressions
 
+### `no-global-react`
+
+Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
+
 ### `no-tslint-comments`
 
 Ban `tslint:disable` and `tslint:enable` comments.

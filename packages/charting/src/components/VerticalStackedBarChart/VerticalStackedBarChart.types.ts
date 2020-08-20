@@ -3,6 +3,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IVerticalStackedChartProps } from '../../types/index';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IVerticalStackedBarChartProps {
   /**
@@ -111,6 +112,10 @@ export interface IVerticalStackedBarChartProps {
    * tickPadding - used for space between x line and tick valeus
    */
   XAxistickPadding?: number;
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IVerticalStackedBarChartStyleProps {

@@ -3,6 +3,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
+import { ILegendsProps } from '../Legends/index';
 
 export { IDataPoint, IVerticalBarChartDataPoint } from '../../types/IDataPoint';
 
@@ -121,6 +122,10 @@ export interface IVerticalBarChartProps {
    * tickPadding - used for space between x line and tick valeus
    */
   XAxistickPadding?: number;
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IVerticalBarChartStyleProps {

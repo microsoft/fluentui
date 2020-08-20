@@ -1,8 +1,18 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.6)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.0..@uifabric/azure-themes_v7.3.6)
+
+### Patches
+
+- Messagebar palette update, defaultbutton as primiary styling fix ([PR #14459](https://github.com/microsoft/fluentui/pull/14459) by jagaheri@microsoft.com)
+- fix publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.0)
 
