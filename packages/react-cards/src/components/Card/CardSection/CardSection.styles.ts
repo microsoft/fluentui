@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames } from 'office-ui-fabric-react';
 import { ICardSectionComponent, ICardSectionStylesReturnType, ICardSectionTokenReturnType } from './CardSection.types';
 
 const GlobalClassNames = {

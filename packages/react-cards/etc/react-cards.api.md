@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IBaseProps } from '@uifabric/utilities';
+import { IBaseProps } from 'office-ui-fabric-react';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentStyles } from '@uifabric/foundation';
 import { ISlotProp } from '@uifabric/foundation';
