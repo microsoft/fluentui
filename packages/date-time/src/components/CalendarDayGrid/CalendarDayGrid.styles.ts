@@ -108,6 +108,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       color: palette.neutralPrimary,
       cursor: 'pointer',
       position: 'relative',
+      userSelect: 'none',
       selectors: {
         [HighContrastSelector]: {
           color: 'WindowText',

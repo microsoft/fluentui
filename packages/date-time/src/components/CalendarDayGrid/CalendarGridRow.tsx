@@ -24,8 +24,11 @@ export interface ICalendarGridRowProps extends ICalendarDayGridProps {
     left: boolean,
     right: boolean,
   ): string;
-  getDayInfosInRangeOfDay(dayToCompare: IDayInfo): IDayInfo[];
+  getDayInfosInRangeOfDay(dayToCompare: IDayInfo, daysToSelectInDayView?: number): IDayInfo[];
   getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
+  onDragSelectStart(startDay: IDayInfo): void;
+  onDragSelectOverDay(day: IDayInfo): void;
+  onDragSelectEnd(endDay: IDayInfo): void;
 }
 
 export const CalendarGridRow = (props: ICalendarGridRowProps): JSX.Element => {

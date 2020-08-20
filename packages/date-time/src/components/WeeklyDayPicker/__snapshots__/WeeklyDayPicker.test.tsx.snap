@@ -137,6 +137,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             text-align: center;
             width: 196px;
           }
+      onMouseLeave={[Function]}
       role="grid"
     >
       <tbody>
@@ -162,6 +163,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -222,6 +224,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -282,6 +285,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -342,6 +346,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -402,6 +407,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -462,6 +468,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -522,6 +529,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -596,6 +604,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -707,6 +716,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -818,6 +828,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -929,6 +940,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1040,6 +1052,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1151,6 +1164,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1262,6 +1276,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1378,6 +1393,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1505,6 +1521,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1632,6 +1649,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1759,6 +1777,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1887,6 +1906,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2054,6 +2074,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2177,6 +2198,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2316,6 +2338,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2423,6 +2446,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2530,6 +2554,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2637,6 +2662,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2744,6 +2770,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2851,6 +2878,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2958,6 +2986,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3270,6 +3299,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             text-align: center;
             width: 196px;
           }
+      onMouseLeave={[Function]}
       role="grid"
     >
       <tbody>
@@ -3295,6 +3325,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3355,6 +3386,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3415,6 +3447,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3475,6 +3508,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3535,6 +3569,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3595,6 +3630,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3655,6 +3691,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3729,6 +3766,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3840,6 +3878,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -3951,6 +3990,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4062,6 +4102,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4173,6 +4214,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4284,6 +4326,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4395,6 +4438,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4511,6 +4555,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4638,6 +4683,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4766,6 +4812,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -4933,6 +4980,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5056,6 +5104,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5179,6 +5228,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5302,6 +5352,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5441,6 +5492,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5548,6 +5600,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5655,6 +5708,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5762,6 +5816,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5869,6 +5924,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -5976,6 +6032,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -6083,6 +6140,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: relative;
+                  user-select: none;
                   width: 28px;
                 }
                 @media screen and (-ms-high-contrast: active){& {

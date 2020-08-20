@@ -183,6 +183,13 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
    * marked.
    */
   getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+
+  /**
+   * Enables ability to select arbitrary dates using click and drag. If enabled, will override setting for
+   * `dateRangeType` and assume dateRangeType = Day, and override `daysToSelectInDayView` with however many days get
+   * selected
+   */
+  enableClickAndDragToSelect?: boolean;
 }
 
 export interface ICalendarDayGridStyleProps {

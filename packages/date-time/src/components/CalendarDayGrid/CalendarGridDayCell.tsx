@@ -41,6 +41,10 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   onNavigateDate,
   getDayInfosInRangeOfDay,
   getRefsFromDayInfos,
+  onDragSelectStart,
+  onDragSelectOverDay,
+  onDragSelectEnd,
+  enableClickAndDragToSelect,
 }): JSX.Element => {
   const cornerStyle = weekCorners?.[weekIndex + '_' + dayIndex] ?? '';
   const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
@@ -107,8 +111,10 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   };
 
   const onMouseOverDay = (ev: React.MouseEvent<HTMLElement>) => {
-    const dayInfos = getDayInfosInRangeOfDay(day);
+    const daysToHighlight = enableClickAndDragToSelect ? 1 : undefined;
+    const dayInfos = getDayInfosInRangeOfDay(day, daysToHighlight);
     const dayRefs = getRefsFromDayInfos(dayInfos);
+    onDragSelectOverDay(day);
 
     dayRefs.forEach((dayRef: HTMLElement, index: number) => {
       if (dayRef) {
@@ -145,6 +151,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   const onMouseDownDay = (ev: React.MouseEvent<HTMLElement>) => {
     const dayInfos = getDayInfosInRangeOfDay(day);
     const dayRefs = getRefsFromDayInfos(dayInfos);
+    onDragSelectStart(day);
 
     dayRefs.forEach((dayRef: HTMLElement) => {
       if (dayRef) {
@@ -156,6 +163,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   const onMouseUpDay = (ev: React.MouseEvent<HTMLElement>) => {
     const dayInfos = getDayInfosInRangeOfDay(day);
     const dayRefs = getRefsFromDayInfos(dayInfos);
+    onDragSelectEnd(day);
 
     dayRefs.forEach((dayRef: HTMLElement) => {
       if (dayRef) {

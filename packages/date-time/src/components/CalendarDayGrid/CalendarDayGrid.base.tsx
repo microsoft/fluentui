@@ -9,6 +9,7 @@ import {
   IDay,
   DAYS_IN_WEEK,
   compareDates,
+  addDays,
 } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
@@ -16,6 +17,7 @@ import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { usePrevious, useId } from '@uifabric/react-hooks';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
+import TimeConstants from '@fluentui/date-time-utilities/lib/dateValues/timeConstants';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 
@@ -254,8 +256,22 @@ export const CalendarDayGridBase = React.forwardRef(
 
     const activeDescendantId = useId();
 
+    const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState<number | undefined>(
+      props.daysToSelectInDayView,
+    );
+    React.useEffect(() => {
+      setDaysToSelectInDayView(props.daysToSelectInDayView);
+    }, [props.daysToSelectInDayView]);
+
+    const [selectedDate, setSelectedDate] = React.useState<Date>(props.selectedDate);
+    React.useEffect(() => {
+      setSelectedDate(props.selectedDate);
+    }, [props.selectedDate]);
+
+    const propsToUse = { ...props, daysToSelectInDayView, selectedDate };
+
     const onSelectDate = (selectedDate: Date): void => {
-      const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates } = props;
+      const { firstDayOfWeek, minDate, maxDate, workWeekDays, restrictedDates } = props;
       const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
       let dateRange = getDateRangeArray(
@@ -277,9 +293,9 @@ export const CalendarDayGridBase = React.forwardRef(
 
     const [daysRef, getSetRefCallback] = useDayRefs();
 
-    const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
+    const weeks = useWeeks(propsToUse, onSelectDate, getSetRefCallback);
     const animateBackwards = useAnimateBackwards(weeks);
-    const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
+    const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(propsToUse);
 
     React.useImperativeHandle(
       props.componentRef,
@@ -298,9 +314,13 @@ export const CalendarDayGridBase = React.forwardRef(
      * to set classnames on all relevant child refs to apply the styling
      *
      */
-    const getDayInfosInRangeOfDay = (dayToCompare: IDayInfo): IDayInfo[] => {
+    const getDayInfosInRangeOfDay = (dayToCompare: IDayInfo, daysToSelectInDayView?: number): IDayInfo[] => {
       // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-      const dateRangeHoverType = getDateRangeTypeToUse(props.dateRangeType, props.workWeekDays);
+      const dateRangeHoverType = getDateRangeTypeToUse(
+        props.dateRangeType,
+        props.workWeekDays,
+        props.enableClickAndDragToSelect,
+      );
 
       // gets all the dates for the given date range type that are in the same date range as the given day
       const dateRange = getDateRangeArray(
@@ -308,7 +328,7 @@ export const CalendarDayGridBase = React.forwardRef(
         dateRangeHoverType,
         props.firstDayOfWeek,
         props.workWeekDays,
-        props.daysToSelectInDayView,
+        daysToSelectInDayView ?? props.daysToSelectInDayView,
       ).map((date: Date) => date.getTime());
 
       // gets all the day refs for the given dates
@@ -326,6 +346,93 @@ export const CalendarDayGridBase = React.forwardRef(
       dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => daysRef.current[dayInfo.key]);
 
       return dayRefs;
+    };
+
+    const differenceInDays = (firstDay: Date, secondDay: Date) => {
+      return (secondDay.getTime() - firstDay.getTime()) / TimeConstants.MillisecondsInOneDay;
+    };
+
+    const currentDay = React.useRef<IDayInfo | null>();
+    const initiallySelectedDays = React.useRef<IDayInfo[]>([]);
+    const numberDaysSelected = React.useRef<number>(0);
+    const previousSelectedDays = React.useRef<IDayInfo[] | null>();
+    const onDragSelectStart = (startDay: IDayInfo): void => {
+      if (!props.enableClickAndDragToSelect) {
+        return;
+      }
+      initiallySelectedDays.current = [];
+      weeks.forEach(week =>
+        week.forEach(day => {
+          if (day.isSelected) {
+            initiallySelectedDays.current.push(day);
+            day.isSelected = false;
+          }
+        }),
+      );
+
+      currentDay.current = startDay;
+      setSelectedDate(startDay.originalDate);
+    };
+
+    const onDragSelectOverDay = (day: IDayInfo): void => {
+      if (!props.enableClickAndDragToSelect || compareDates(day.originalDate, selectedDate)) {
+        return;
+      }
+
+      if (currentDay.current) {
+        let difference = differenceInDays(currentDay.current.originalDate, day.originalDate);
+        if (numberDaysSelected.current != difference) {
+          numberDaysSelected.current = difference;
+          let startOfRange = currentDay.current;
+          const lengthOfRange = Math.abs(difference) + 1;
+
+          if (difference <= 0) {
+            // find the day in weeks corresponding to the actual start of range, since we went backwards
+            weeks.forEach(week =>
+              week.forEach(day => {
+                if (
+                  currentDay.current &&
+                  compareDates(day.originalDate, addDays(currentDay.current.originalDate, difference))
+                ) {
+                  startOfRange = day;
+                }
+              }),
+            );
+          }
+
+          setDaysToSelectInDayView(lengthOfRange);
+          setSelectedDate(startOfRange.originalDate);
+
+          if (previousSelectedDays.current) {
+            previousSelectedDays.current.forEach(day => (day.isSelected = false));
+          }
+          const selectedDays = getDayInfosInRangeOfDay(startOfRange, lengthOfRange);
+          selectedDays.forEach(day => (day.isSelected = true));
+          previousSelectedDays.current = selectedDays;
+        }
+      }
+    };
+
+    const onDragSelectEnd = (endDay: IDayInfo): void => {
+      if (!props.enableClickAndDragToSelect) {
+        return;
+      }
+
+      if (currentDay.current && onSelectDate) {
+        onSelectDate(selectedDate);
+      }
+      currentDay.current = null;
+      initiallySelectedDays.current = [];
+    };
+
+    const onMouseLeave = (ev: React.MouseEvent<HTMLTableElement>) => {
+      if (currentDay.current) {
+        const currentDays = getDayInfosInRangeOfDay(currentDay.current, numberDaysSelected.current);
+        currentDays.forEach(day => (day.isSelected = false));
+      }
+      initiallySelectedDays.current.forEach(day => (day.isSelected = true));
+      setDaysToSelectInDayView(props.daysToSelectInDayView);
+      currentDay.current = null;
     };
 
     const {
@@ -361,6 +468,10 @@ export const CalendarDayGridBase = React.forwardRef(
       weekCorners,
       getDayInfosInRangeOfDay,
       getRefsFromDayInfos,
+      onDragSelectStart,
+      onDragSelectOverDay,
+      onDragSelectEnd,
+      daysToSelectInDayView,
     } as const;
 
     return (
@@ -372,6 +483,7 @@ export const CalendarDayGridBase = React.forwardRef(
           aria-labelledby={labelledBy}
           aria-activedescendant={activeDescendantId}
           role="grid"
+          onMouseLeave={onMouseLeave}
         >
           <tbody>
             <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
@@ -415,7 +527,15 @@ CalendarDayGridBase.displayName = 'CalendarDayGridBase';
  * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
  * work weeks, we'll just show week view instead.
  */
-function getDateRangeTypeToUse(dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined): DateRangeType {
+function getDateRangeTypeToUse(
+  dateRangeType: DateRangeType,
+  workWeekDays: DayOfWeek[] | undefined,
+  enableClickAndDragToSelect: boolean | undefined,
+): DateRangeType {
+  if (enableClickAndDragToSelect) {
+    return DateRangeType.Day;
+  }
+
   if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
     const sortedWWDays = workWeekDays.slice().sort();
     let isContiguous = true;
