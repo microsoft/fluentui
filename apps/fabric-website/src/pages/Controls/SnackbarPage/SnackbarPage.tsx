@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPageSectionProps, Markdown } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { SnackbarPageProps } from './SnackbarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';

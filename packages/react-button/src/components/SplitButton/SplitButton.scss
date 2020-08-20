@@ -1,57 +1,36 @@
 @import '~@fluentui/common-styles/dist/sass/focusBorder';
 
-:root {
-  /* divider variables */
-  --button-dividerColor: rgba(0, 0, 0, 0.1);
-  --button-dividerLength: var(--button-minHeight);
-  --button-dividerThickness: var(--button-borderWidth);
-
-  --accent-dividerColor: var(--button-dividerColor);
-}
-
 .root {
-  --button-contentGap: 0;
-  --button-padding: 0;
-
-  --button-dividerLength: var(--button-minHeight);
-
   width: auto;
+  padding: 0;
 
-  &._circular {
-    > .button {
-      border-top-left-radius: var(--button-borderRadius);
-      border-bottom-left-radius: var(--button-borderRadius);
-    }
-
-    > .menuButton {
-      border-top-right-radius: var(--button-borderRadius);
-      border-bottom-right-radius: var(--button-borderRadius);
-    }
+  > *:not(:first-child) {
+    margin-left: 0;
   }
 
-  &._fluid {
-    > .button {
-      flex-grow: 1;
-      justify-content: flex-end;
-    }
+  // TODO: confirm if we should support size prop.
+  &._size_smallest {
+    --button-dividerLength: var(--button-size-smallest);
   }
 
-  &._iconOnly {
-    > .button {
-      --button-padding: 0;
-      --button-width: var(--button-height, var(--button-minHeight));
-
-      align-items: center;
-      display: inline-flex;
-      justify-content: center;
-      width: var(--button-width);
-    }
+  &._size_smaller {
+    --button-dividerLength: var(--button-size-smaller);
   }
 
-  &._primary {
-    > .divider {
-      --button-dividerColor: var(--accent-dividerColor);
-    }
+  &._size_small {
+    --button-dividerLength: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-dividerLength: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-dividerLength: var(--button-size-larger);
+  }
+
+  &._size_largest {
+    --button-dividerLength: var(--button-size-largest);
   }
 }
 
@@ -75,10 +54,31 @@
 }
 
 .button {
-  --button-contentGap: 10px;
-  --button-padding: 0 16px;
+  > *:not(:first-child) {
+    margin-left: var(--button-contentGap);
+  }
 
   padding: var(--button-padding);
+
+  ._circular & {
+    border-top-left-radius: var(--button-borderRadius);
+    border-bottom-left-radius: var(--button-borderRadius);
+  }
+
+  ._fluid & {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  ._iconOnly & {
+    --button-padding: 0;
+    --button-width: var(--button-height, var(--button-minHeight));
+
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    width: var(--button-width);
+  }
 }
 
 .menuButton {
@@ -86,12 +86,25 @@
   --button-width: var(--button-height, var(--button-minHeight));
 
   width: var(--button-width);
+
+  ._circular & {
+    border-top-right-radius: var(--button-borderRadius);
+    border-bottom-right-radius: var(--button-borderRadius);
+  }
 }
 
 .divider {
   border-left: var(--button-dividerThickness) solid var(--button-dividerColor);
   height: var(--button-dividerLength);
   width: 0px;
+
+  ._primary & {
+    --button-dividerColor: var(--accent-dividerColor);
+  }
+
+  ._disabled & {
+    --button-dividerColor: var(--accent-disabled-dividerColor);
+  }
 }
 
 /* selectors */

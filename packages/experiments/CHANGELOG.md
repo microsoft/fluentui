@@ -1,8 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.3..@uifabric/experiments_v7.29.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.2..@uifabric/experiments_v7.28.3)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.28.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.2)
 

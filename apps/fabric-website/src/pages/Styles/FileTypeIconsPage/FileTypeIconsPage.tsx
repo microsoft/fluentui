@@ -39,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 }
               </Markdown>
 
-              <MarkdownHeader as="h3">When should I use File type icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use file type icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -136,7 +136,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
 
         {
-          sectionName: 'File-type icon examples',
+          sectionName: 'Examples',
           content: (
             <>
               <ul className={styles.iconList}>

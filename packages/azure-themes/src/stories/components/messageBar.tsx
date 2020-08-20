@@ -168,7 +168,6 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
           styles={choiceGroupStyles}
           label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
           selectedKey={choice}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={(e, v) => setChoice(v!.key)}
           options={choiceOptions}
         />

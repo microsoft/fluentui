@@ -1,8 +1,17 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.117](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.117)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.94..@uifabric/variants_v7.1.117)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.1.59](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.59)
 
