@@ -19,7 +19,7 @@ jobs:
 
       - script: |
           yarn
-        displayName: PUPPETEER_SKIP_DOWNLOAD=true yarn
+        displayName: PUPPETEER_SKIP_DOWNLOAD=true yarn --verbose
 
       - template: .devops/templates/pr-target-branch.yml
 
