@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/';
 import { useCustomizationSettings } from '@uifabric/utilities';
