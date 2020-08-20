@@ -90,7 +90,7 @@ export interface ChatMessageProps
   details?: ShorthandValue<ChatMessageDetailsProps>;
 
   /** Message read status indicator */
-  readIndicator?: ShorthandValue<ChatMessageReadStatusProps>;
+  readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -177,7 +177,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     variables,
     header,
     details,
-    readIndicator,
+    readStatus,
     unstable_overflow: overflow,
   } = props;
   const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
@@ -340,7 +340,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     defaultProps: () => ({ mine }),
   });
 
-  const readIndicatorElement = createShorthand(ChatMessageReadStatus, readIndicator, {});
+  const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
@@ -378,7 +378,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
               {messageContent}
               {reactionGroupPosition === 'end' && reactionGroupElement}
               {badgePosition === 'end' && badgeElement}
-              {readIndicatorElement}
+              {readStatusElement}
             </>
           )}
         </ElementType>,
