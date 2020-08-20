@@ -129,7 +129,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   });
 
   const dayGridOptions = {
-    selectedDate,
+    selectedDate: selectedDate || today || new Date(),
     navigatedDate: gridNavigatedDate,
     weeksToShow: props.weeksToShow,
     firstDayOfWeek: props.firstDayOfWeek,

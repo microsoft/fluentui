@@ -23,7 +23,6 @@ const Usage = () => (
       }
       examplePath="components/Datepicker/Usage/DatepickerParseExample"
     />
-
     <ComponentExample
       title="First day of week"
       description={
@@ -32,6 +31,17 @@ const Usage = () => (
         </>
       }
       examplePath="components/Datepicker/Usage/DatepickerFirstWeekDayExample"
+    />
+    <ComponentExample
+      title="Standalone DatepickerCalendar"
+      description={
+        <>
+          One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. In that case, the developer
+          needs to take care of the
+          <code>selectedDate</code> state control.
+        </>
+      }
+      examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendar"
     />
   </ExampleSection>
 );
