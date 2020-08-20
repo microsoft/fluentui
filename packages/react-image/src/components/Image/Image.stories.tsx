@@ -12,24 +12,34 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
   return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
 };
 
-export const ImageAppearanceVariations = () => (
-  <>
+export const ImageAppearanceShape = () => (
+  <Stack horizontal>
+    <Image alt="Ade's avatar" src="/images/avatar/ade.jpg" height={200} width={200} />
+    <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={200} width={200} />
+    <Image alt="Laura's avatar" circular src="/images/avatar/laura.jpg" height={200} width={200} />
+  </Stack>
+);
+
+export const ImageVariationsBorder = () => (
+  <Stack horizontal>
     <Stack horizontal>
       <Image alt="Ade's avatar" src="/images/avatar/ade.jpg" height={200} width={200} />
-      <Stack>
-        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={24} width={24} />
-        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={36} width={36} />
-        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={96} width={96} />
-      </Stack>
-      <Image alt="Laura's avatar" circular src="/images/avatar/laura.jpg" height={150} width={150} />
+      <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={200} width={200} />
+      <Image alt="Laura's avatar" circular src="/images/avatar/laura.jpg" height={200} width={200} />
     </Stack>
     <Stack horizontal>
-      <Image alt="Ade's avatar" src="/images/avatar/ade.jpg" height={150} width={150} />
-      <Image alt="Chris's avatar" bordered src="/images/avatar/chris.jpg" height={150} width={150} />
-      <Image alt="Laura's avatar" bordered rounded src="/images/avatar/chris.jpg" height={150} width={150} />
-      <Image bordered circular src="/images/avatar/chris.jpg" height={150} width={150} />
+      <Image alt="Ade's avatar" bordered src="/images/avatar/ade.jpg" height={200} width={200} />
+      <Image alt="Chris's avatar" bordered rounded src="/images/avatar/chris.jpg" height={200} width={200} />
+      <Image alt="Laura's avatar" bordered circular src="/images/avatar/laura.jpg" height={200} width={200} />
     </Stack>
-  </>
+  </Stack>
+);
+
+export const ImageVariationsFallback = () => (
+  <Stack horizontal>
+    <Image alt="Ade's avatar" bordered src="/images/avatar/ade.jpg" height={200} width={200} />
+    <Image alt="Non-existing avatar" bordered src="/images/avatar/non-existing-png.jpg" height={200} width={200} />
+  </Stack>
 );
 
 export const ImageLayoutFit = () => (
@@ -78,4 +88,11 @@ export const ImageLayoutFit = () => (
       <Image src="https://via.placeholder.com/600x200" fit="cover" />
     </div>
   </>
+);
+
+export const ImageFluid = () => (
+  <Stack horizontal>
+    <Image fluid src="https://via.placeholder.com/900x50" />
+    <Image fluid src="https://via.placeholder.com/100x100" />
+  </Stack>
 );
