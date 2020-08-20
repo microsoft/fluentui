@@ -355,6 +355,7 @@ DatepickerCalendar.propTypes = {
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,
