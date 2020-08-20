@@ -1,4 +1,4 @@
-import { IPartialTheme } from '@uifabric/styling';
+import { IPartialTheme } from './ITheme';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**

@@ -2,7 +2,6 @@
   "name": "@fluentui/theme",
   "version": "0.1.0",
   "description": "Basic building blocks for Fluent UI React Component themes",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -28,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -43,9 +42,9 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/styling": "^7.15.0",
-    "@uifabric/utilities": "^7.29.0",
-    "@uifabric/set-version": "^7.0.21",
+    "@uifabric/merge-styles": "^7.16.7",
+    "@uifabric/utilities": "^7.29.1",
+    "@uifabric/set-version": "^7.0.22",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
