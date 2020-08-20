@@ -33,3 +33,25 @@ import {
 ```
 
 If you override theme settings, you need to do this before accessing theme colors. Otherwise you won't get a notification that the theme changed.
+
+## Using styling with React components
+
+Themes can be accessed using the `useStyles` hook. This hook abstracts rendering css given the theme object:
+
+```jsx
+import { useStyles } from '@uifabric/styling';
+
+const Foo = props => {
+  const classes = useStyles(theme => ({
+    root: {
+      background: theme.semanticColors.bodyBackground,
+      selectors: {
+        ':hover': {
+          background: theme.semanticColors.bodyBackgroundHovered
+      }
+    },
+  }));
+
+  return <div className={classes.root} />;
+};
+```
