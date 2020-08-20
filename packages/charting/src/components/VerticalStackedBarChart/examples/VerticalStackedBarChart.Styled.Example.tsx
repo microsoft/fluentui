@@ -28,11 +28,11 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
       { chartData: firstChartPoints, xAxisPoint: 'Jan' },
       { chartData: secondChartPoints, xAxisPoint: 'Feb month' },
       { chartData: thirdChartPoints, xAxisPoint: 'March' },
-      { chartData: firstChartPoints, xAxisPoint: 'I am April Month' },
+      { chartData: firstChartPoints, xAxisPoint: 'I am April Moanth and Iam long text' },
       { chartData: thirdChartPoints, xAxisPoint: 'May' },
       { chartData: firstChartPoints, xAxisPoint: 'June' },
       { chartData: secondChartPoints, xAxisPoint: 'July' },
-      { chartData: thirdChartPoints, xAxisPoint: 'August' },
+      { chartData: thirdChartPoints, xAxisPoint: 'August Month 2020' },
       { chartData: firstChartPoints, xAxisPoint: 'September' },
     ];
 

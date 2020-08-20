@@ -1,9 +1,12 @@
 import { ILineChartPoints, ILineChartDataPoint, IEventsAnnotationProps } from '@uifabric/charting';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
+import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, event as d3Event } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
+
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
+type StringAxis = D3Axis<string>;
 
 export interface IMargins {
   /**
@@ -22,6 +25,13 @@ export interface IMargins {
    * Bottom margin for the chart.
    */
   bottom?: number;
+}
+
+export interface IWrapLabelProps {
+  node: SVGGElement | null;
+  xAxis: NumericAxis | StringAxis;
+  noOfCharsToTruncate: number;
+  showXAxisLablesTooltip: boolean;
 }
 
 export interface IXAxisParams {
@@ -296,8 +306,7 @@ export function fitContainer(containerParams: IFitContainerParams) {
   return containerValues;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createWrapOfXLabels(wrapLabelProps: any) {
+export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
   if (node === null) {
     return;
@@ -378,4 +387,36 @@ export function createWrapOfXLabels(wrapLabelProps: any) {
     }
   });
   return removeVal > 0 ? removeVal : 0;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function tooltipOfXAxislabels(xAxistooltipProps: any) {
+  const { selectedTooltip, tooltipCls, xAxis } = xAxistooltipProps;
+  while (selectedTooltip[0]) {
+    // removing multiple elemnts
+    selectedTooltip[0].remove();
+  }
+  const div = d3Select('body')
+    .append('div')
+    .attr('id', 'tooltipId')
+    .attr('class', tooltipCls)
+    .style('opacity', 0);
+  const tickObject = xAxis!.selectAll('.tick')._groups[0];
+  const tickObjectLength = Object.keys(tickObject).length;
+  for (let i = 0; i < tickObjectLength; i++) {
+    const d1 = tickObject[i];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = d3Select(d1).data();
+    d3Select(d1)
+      .on('mouseover', d => {
+        div.style('opacity', 0.9);
+        div
+          .html(data)
+          .style('left', d3Event.pageX + 'px')
+          .style('top', d3Event.pageY - 28 + 'px');
+      })
+      .on('mouseout', d => {
+        div.style('opacity', 0);
+      });
+  }
 }

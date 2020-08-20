@@ -20,7 +20,7 @@ import {
   IGVSingleDataPoint,
   IGVBarChartSeriesPoint,
 } from '../../types/index';
-import { createWrapOfXLabels } from '../../utilities/index';
+import { createWrapOfXLabels, tooltipOfXAxislabels } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -76,7 +76,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
-  private _noOfCharsToTruncate: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxis: any;
   private _xAxisTickPadding: number;
@@ -221,7 +220,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
     this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
-    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
   }
 
   private _fitParentContainer(calledFromDidMount?: boolean): void {
@@ -436,35 +434,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
 
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const temp = document.getElementsByClassName('tooltip-47');
-      while (temp[0]) {
-        // removing multiple elemnts
-        temp[0].remove();
-      }
-      const div = d3Select('body')
-        .append('div')
-        .attr('id', 'tooltipId')
-        .attr('class', this._classNames.tooltip)
-        .style('opacity', 0);
-
-      const tickObject = this._xAxis.selectAll('.tick')._groups[0];
-      const tickObjectLength = Object.keys(tickObject).length;
-      for (let i = 0; i < tickObjectLength; i++) {
-        const d1 = tickObject[i];
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const data: any = d3Select(d1).data();
-        d3Select(d1)
-          .on('mouseover', d => {
-            div.style('opacity', 0.9);
-            div
-              .html(data)
-              .style('left', d3Event.pageX + 'px')
-              .style('top', d3Event.pageY - 28 + 'px');
-          })
-          .on('mouseout', d => {
-            div.style('opacity', 0);
-          });
-      }
+      const tooltipProps = {
+        selectedTooltip: document.getElementsByClassName('tooltip-47'),
+        tooltipCls: this._classNames.tooltip!,
+        xAxis: this._xAxis,
+      };
+      tooltipOfXAxislabels(tooltipProps);
     }
   };
 
@@ -649,8 +624,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const wrapLabelProps = {
       node: node,
       xAxis: xAxis,
-      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip,
-      noOfCharsToTruncate: this._noOfCharsToTruncate,
+      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+      noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
     };
     let temp = 0;
     if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
