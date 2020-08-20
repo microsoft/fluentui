@@ -1,9 +1,9 @@
-import { isRestrictedDate, IDayGridOptions, ICalendarStrings } from '@fluentui/date-time-utilities';
+import { isRestrictedDate, IRestrictedDatesOptions, ICalendarStrings } from '@fluentui/date-time-utilities';
 
 export const validateDate = (
   futureSelectedDate: Date,
   futureFormattedDate: string,
-  calendarOptions: IDayGridOptions,
+  calendarOptions: IRestrictedDatesOptions,
   dateFormatting: ICalendarStrings,
   required: boolean,
 ): string => {
