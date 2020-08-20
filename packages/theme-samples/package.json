@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/theme-samples",
-  "version": "7.0.126",
+  "version": "7.1.1",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,13 +22,13 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.21",
-    "@uifabric/variants": "^7.1.117",
-    "office-ui-fabric-react": "^7.128.3",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/variants": "^7.2.1",
+    "office-ui-fabric-react": "^7.129.1",
     "tslib": "^1.10.0"
   }
 }

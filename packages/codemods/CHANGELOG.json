@@ -2,6 +2,36 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/codemods_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "bug fixes in renameProp",
+            "author": "t-dama@microsoft.com",
+            "commit": "e86f2f53ca9632c0b0ba31dda967649c1d0f585a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/codemods_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support for non-json codemod creation",
+            "author": "t-dama@microsoft.com",
+            "commit": "ab168f6af25c5fd601671ef93d95e89084f16e32",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/codemods_v0.8.0",
       "version": "0.8.0",

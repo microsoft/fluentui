@@ -19,7 +19,6 @@ import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compa
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
-import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { ILabelStyleProps } from 'office-ui-fabric-react/src/components/Label/Label.types';
@@ -1465,13 +1464,9 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
-    // @deprecated
-    doNotContainWithinFocusZone?: boolean;
-    // @deprecated
-    focusZoneProps?: IFocusZoneProps_2;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -2261,21 +2256,7 @@ export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
-    constructor(props: IOverflowSetProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+export const OverflowSetBase: React.ForwardRefExoticComponent<Pick<IOverflowSetProps, "vertical" | "key" | "items" | "styles" | "className" | "role" | "componentRef" | "onRenderItem" | "overflowSide" | "overflowItems" | "onRenderOverflowButton" | "keytipSequences" | "itemSubMenuProvider"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const Persona: React.FunctionComponent<IPersonaProps>;

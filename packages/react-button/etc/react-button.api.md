@@ -232,7 +232,7 @@ export const useSplitButtonClasses: (state: Record<string, any>) => void;
 export const useSplitButtonState: (state: SplitButtonState) => void;
 
 // @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
