@@ -88,9 +88,7 @@ export interface Theme extends IPartialTheme {
     stylesheets?: string[];
     tokens?: Tokens;
     variants?: {
-        [componentName: string]: {
-            [variantName: string]: VariantDefinition;
-        };
+        [componentName: string]: Variants;
     };
 }
 
@@ -132,13 +130,9 @@ export const useTheme: () => Theme;
 
 // @public (undocumented)
 export type Variants = {
-    [variantName: string]: TokenSetType;
+    [variantName: string]: RecursivePartial<TokenSetType> | undefined;
 };
 
-
-// Warnings were encountered during analysis:
-//
-// lib/types.d.ts:92:13 - (ae-forgotten-export) The symbol "VariantDefinition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
