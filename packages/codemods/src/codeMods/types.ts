@@ -52,7 +52,7 @@ export type PropTransform = (
   node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
   replacementName: string,
-) => void;
+) => Result<string, NoOp>;
 
 /**
  * Enum that defines the cases by which this codemod can
