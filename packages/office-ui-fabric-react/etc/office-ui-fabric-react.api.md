@@ -146,9 +146,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseExtendedPickerProps<any>): Partial<IBaseExtendedPickerProps<any>> | null;
     // (undocumented)
     readonly highlightedItems: T[];
     // (undocumented)
@@ -186,11 +188,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -252,8 +252,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
@@ -395,7 +393,11 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): Partial<IBaseSelectedItemsListState<any>> | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -428,10 +430,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     protected root: HTMLElement;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -1557,9 +1555,13 @@ export interface IBaseExtendedPickerProps<T> {
 // @public (undocumented)
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
+    floatingPickerProps: IBaseFloatingPickerProps<T>;
+    // (undocumented)
     queryString: string | null;
     // (undocumented)
     selectedItems: T[] | null;
+    // (undocumented)
+    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     suggestionItems: T[] | null;
 }
@@ -1737,6 +1739,8 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 export interface IBaseSelectedItemsListState<T = any> {
     // (undocumented)
     items: T[];
+    // (undocumented)
+    selection: Selection;
 }
 
 // @public (undocumented)
@@ -9215,7 +9219,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -9256,9 +9260,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 // @public (undocumented)
 export class SuggestionsController<T> {
