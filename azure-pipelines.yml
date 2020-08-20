@@ -14,11 +14,13 @@ jobs:
   - job: BuildTestLint
     workspace:
       clean: all
+    variables:
+      puppeteer_skip_download: true
     steps:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          PUPPETEER_SKIP_DOWNLOAD=true yarn --verbose
+          yarn --verbose
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
