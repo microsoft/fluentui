@@ -5,12 +5,13 @@
 Define your own theme based on an existing theme:
 
 ```js
-import { FluentTheme } from '@fluentui/fluent-theme';
-import { Theme, mergeThemes } from '@fluentui/theme';
+import { createTheme } from '@uifabric/styling';
+import { Theme, mergeThemes, FontWeights } from '@fluentui/theme';
 
-export const MyTheme: Theme = mergeThemes(FluentTheme, {
+export const MyTheme: Theme = mergeThemes(createTheme(), {
   tokens: {
     button: {
+      fontWeight: FontWeights.semibold,
       padding: '0 24px',
     },
   },

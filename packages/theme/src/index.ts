@@ -1,3 +1,3 @@
 export * from './types';
 export * from './mergeThemes';
-export * from './constants';
+export * from './constants/index';

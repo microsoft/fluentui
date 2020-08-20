@@ -1,7 +1,7 @@
 import { Customizations, merge, getWindow } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles, IEffects } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
-import { DefaultPalette, DefaultSpacing, DefaultEffects } from '../index';
+import { DefaultPalette, DefaultSpacing, DefaultEffects } from './index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
 

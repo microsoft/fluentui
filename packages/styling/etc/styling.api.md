@@ -6,9 +6,9 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
-import { DefaultEffects } from '@fluentui/theme/lib/constants';
-import { DefaultPalette } from '@fluentui/theme/lib/constants';
-import { DefaultSpacing } from '@fluentui/theme/lib/constants';
+import { DefaultEffects } from '@fluentui/theme/lib/constants/index';
+import { DefaultPalette } from '@fluentui/theme/lib/constants/index';
+import { DefaultSpacing } from '@fluentui/theme/lib/constants/index';
 import { fontFace } from '@uifabric/merge-styles';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
