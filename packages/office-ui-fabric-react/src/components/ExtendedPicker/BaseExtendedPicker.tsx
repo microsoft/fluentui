@@ -14,6 +14,8 @@ export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
   selectedItems: T[] | null;
   suggestionItems: T[] | null;
+  floatingPickerProps: IBaseFloatingPickerProps<T>;
+  selectedItemsListProps: IBaseSelectedItemsListProps<T>;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
@@ -25,8 +27,28 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<Autofill>();
   protected selection: Selection;
-  protected floatingPickerProps: IBaseFloatingPickerProps<T>;
-  protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+
+  public static getDerivedStateFromProps(newProps: IBaseExtendedPickerProps<any>) {
+    const updatedState: Partial<IBaseExtendedPickerProps<any>> = {};
+    let hasUpdate: boolean = false;
+
+    if (newProps.floatingPickerProps) {
+      updatedState.floatingPickerProps = newProps.floatingPickerProps;
+      hasUpdate = true;
+    }
+
+    if (newProps.selectedItemsListProps) {
+      updatedState.selectedItemsListProps = newProps.selectedItemsListProps;
+      hasUpdate = true;
+    }
+
+    if (newProps.selectedItems) {
+      updatedState.selectedItems = newProps.selectedItems;
+      hasUpdate = true;
+    }
+
+    return hasUpdate ? updatedState : null;
+  }
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -44,10 +66,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
         : null,
+      floatingPickerProps: this.props.floatingPickerProps,
+      selectedItemsListProps: this.props.selectedItemsListProps,
     };
-
-    this.floatingPickerProps = this.props.floatingPickerProps;
-    this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
   public get items(): any {
@@ -56,20 +77,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
   public componentDidMount(): void {
     this.forceUpdate();
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: P): void {
-    if (newProps.floatingPickerProps) {
-      this.floatingPickerProps = newProps.floatingPickerProps;
-    }
-
-    if (newProps.selectedItemsListProps) {
-      this.selectedItemsListProps = newProps.selectedItemsListProps;
-    }
-
-    if (newProps.selectedItems) {
-      this.setState({ selectedItems: newProps.selectedItems });
-    }
   }
 
   public focus(): void {
@@ -135,6 +142,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         {this.renderFloatingPicker()}
       </div>
     );
+  }
+
+  protected get floatingPickerProps(): IBaseFloatingPickerProps<T> {
+    return this.state.floatingPickerProps;
+  }
+
+  protected get selectedItemsListProps(): IBaseSelectedItemsListProps<T> {
+    return this.state.selectedItemsListProps;
   }
 
   protected onSelectionChange = (): void => {

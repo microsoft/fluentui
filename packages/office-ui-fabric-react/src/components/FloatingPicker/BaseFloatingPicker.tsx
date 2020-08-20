@@ -126,12 +126,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     this.isComponentMounted = false;
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
-    if (newProps.suggestionItems) {
-      this.updateSuggestions(newProps.suggestionItems);
-    }
-  }
-
   public completeSuggestion = (): void => {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
       this.onChange(this.suggestionsControl.current.currentSuggestion!.item);
@@ -157,6 +151,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   protected renderSuggestions(): JSX.Element | null {
     const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
+    if (this.props.suggestionItems) {
+      this.suggestionStore.updateSuggestions(this.props.suggestionItems!);
+    }
     return this.state.suggestionsVisible ? (
       <Callout
         className={styles.callout}
