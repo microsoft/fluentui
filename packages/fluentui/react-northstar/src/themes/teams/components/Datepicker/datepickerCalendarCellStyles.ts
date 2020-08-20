@@ -18,8 +18,8 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
     return {
       textAlign: 'center',
-      minHeight: v.calendarCellHeight,
-      minWidth: v.calendarCellWidth,
+      height: v.calendarCellHeight,
+      width: v.calendarCellWidth,
 
       borderRadius: v.calendarCellBorderRadius,
       cursor: 'pointer',

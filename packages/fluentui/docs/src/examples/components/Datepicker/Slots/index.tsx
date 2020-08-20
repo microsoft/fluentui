@@ -27,7 +27,7 @@ const Usage = () => (
     <ComponentExample
       title="Clearable Input"
       description="The user can clear selected date by clicking on the cancel button."
-      examplePath="components/Datepicker/States/DatepickerExampleClearable"
+      examplePath="components/Datepicker/Slots/DatepickerExampleClearable"
     />
   </ExampleSection>
 );
