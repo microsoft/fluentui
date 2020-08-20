@@ -29,8 +29,7 @@
     "start-test": "just-scripts jest-watch",
     "update-sass-theme-files": "node ./scripts/generateDefaultThemeSassFiles.js",
     "update-snapshots": "just-scripts jest -u",
-    "update-api": "just-scripts update-api",
-    "codepen": "node ../../scripts/local-codepen.js"
+    "update-api": "just-scripts update-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.3",

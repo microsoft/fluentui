@@ -23,7 +23,6 @@
     "bundlesizecollect": "cd scripts && just-scripts bundle-size-collect",
     "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
     "clean": "lerna run clean --stream",
-    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "code-style": "lerna run code-style --stream",
     "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
     "change": "beachball change --scope \"!packages/fluentui/*\"",
