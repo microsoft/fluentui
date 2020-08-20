@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "updated with master and resolved conflicts",
+  "comment": "Common utility added for wrapping of x axis labels and support added for vertical and stacked vertical bar chart. Along with this, IE 11 support updated for wrapping of x axis labels",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-08-20T08:00:20.417Z"
 }
