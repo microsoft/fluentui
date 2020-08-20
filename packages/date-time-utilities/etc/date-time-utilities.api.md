@@ -147,6 +147,7 @@ export interface ICalendarStrings extends IDateFormatting {
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
+    selectDateInputPlaceholder: string;
     selectedDateFormatString?: string;
     todayDateFormatString?: string;
     weekNumberFormatString?: string;
