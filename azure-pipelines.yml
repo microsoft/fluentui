@@ -15,6 +15,7 @@ jobs:
     workspace:
       clean: all
     variables:
+      disable_opencollective: true
       puppeteer_skip_chromium_download: true
       skip_sass_binary_download_for_ci: true
       sass_binary_dir: $(Build.SourcesDirectory)
