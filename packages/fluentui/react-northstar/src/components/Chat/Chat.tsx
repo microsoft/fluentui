@@ -118,6 +118,6 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
 Chat.MessageDetails = ChatMessageDetails;
-Chat.MessageReadStatusIndicator = ChatMessageReadStatus;
+Chat.MessageReadStatus = ChatMessageReadStatus;
 
 Chat.create = createShorthandFactory({ Component: Chat });
