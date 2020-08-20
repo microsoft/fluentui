@@ -25,5 +25,5 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
    * Allows the style rendering to be overridden to use your css in js mechanism
    * of choice.
    */
-  // styleRenderer?: (styleSet: StyleSet) => ClassNameSet;
+  styleRenderer?: <TStyleSet>(styleSet: TStyleSet) => { [key in keyof TStyleSet]: string };
 }

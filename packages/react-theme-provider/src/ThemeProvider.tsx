@@ -29,7 +29,7 @@ function getTokens(theme: Theme): Tokens | undefined {
 }
 
 /**
- * ThemeProvider, used for providing css variables and registering stylesheets.
+ * ThemeProvider, used for providing a theme, consisting of css variables and stylesheets.
  */
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
   (

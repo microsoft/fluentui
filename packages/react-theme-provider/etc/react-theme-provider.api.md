@@ -4,9 +4,11 @@
 
 ```ts
 
+import * as CSS from 'csstype';
 import { IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import * as React_2 from 'react';
 
 // @public
 export type ColorTokens = Partial<{
@@ -54,7 +56,7 @@ export interface PartialTheme extends RecursivePartial<Theme> {
 
 // @public
 export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
 };
 
 // @public (undocumented)
@@ -66,7 +68,7 @@ export interface StyleOptions<TProps> {
 // @public
 export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
-    style?: React.CSSProperties;
+    style?: React_2.CSSProperties;
     // (undocumented)
     tokens?: TTokens;
 }
@@ -79,17 +81,25 @@ export interface Theme extends IPartialTheme {
             styles?: IStyleFunctionOrObject<any, any>;
         };
     };
-    // (undocumented)
     stylesheets?: string[];
-    // (undocumented)
     tokens?: Tokens;
+    variants?: {
+        [componentName: string]: {
+            [variantName: string]: VariantDefinition;
+        };
+    };
 }
 
 // @public
-export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
+export const ThemeProvider: React_2.ForwardRefExoticComponent<ThemeProviderProps & React_2.RefAttributes<HTMLDivElement>>;
 
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+//
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+    styleRenderer?: <TStyleSet>(styleSet: TStyleSet) => {
+        [key in keyof TStyleSet]: string;
+    };
     theme?: PartialTheme | Theme;
 }
 
@@ -118,6 +128,10 @@ export const useInlineTokens: (draftState: {
 // @public
 export const useTheme: () => Theme;
 
+
+// Warnings were encountered during analysis:
+//
+// lib/types.d.ts:89:13 - (ae-forgotten-export) The symbol "VariantDefinition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

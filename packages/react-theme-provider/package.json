@@ -47,6 +47,7 @@
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/styling": "^7.14.13",
     "@uifabric/utilities": "^7.28.0",
+    "@uifabric/merge-styles": "^7.16.6",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },

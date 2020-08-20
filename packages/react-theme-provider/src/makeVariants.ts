@@ -22,25 +22,26 @@ const parseVariants = (
   }
 };
 
-export const makeVariants = (componentName: string, prefix: string, defaultVariants: Record<string, TokenSetType>) => {
+export const makeVariants = <TTokenSetType extends TokenSetType>(
+  componentName: string,
+  prefix: string,
+  defaultVariants: Record<string, TTokenSetType>,
+) => {
   // Guarantee uniqueness of class name map.
   // const id = getId('variant_' + componentName);
   const variantToClassName: Record<string, string> = {}; // useThemeSettings(id);
 
   return (state: GenericDictionary) => {
+    // Grab the theme.
     const theme = useTheme();
     const variantKeys: string[] = [];
     const variantObjects: TokenSetType[] = [];
-    let themeVariants: Record<string, TokenSetType> | undefined = undefined;
-
-    if (theme && theme.components && theme.components[componentName]) {
-      themeVariants = theme.variants[componentName];
-    }
+    const themeVariants = theme?.variants?.[componentName];
 
     parseVariants(defaultVariants, state, variantKeys, variantObjects);
     parseVariants(themeVariants, state, variantKeys, variantObjects);
 
-    const key = variantKeys.join('-');
+    const key = `${componentName}-${variantKeys.join('-')}`;
     let className = variantToClassName[key];
 
     if (!className) {
@@ -55,7 +56,7 @@ export const makeVariants = (componentName: string, prefix: string, defaultVaria
         return obj;
       });
 
-      // shouldn't be here; call register instead.
+      // TODO: call theme.mergeStyles(tokens as IStyle);
       className = variantToClassName[key] = mergeStyles(tokens as IStyle[]);
     }
 
