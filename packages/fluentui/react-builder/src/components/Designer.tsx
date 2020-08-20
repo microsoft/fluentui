@@ -73,6 +73,7 @@ type DesignerAction =
   | { type: 'SELECT_PARENT' }
   | { type: 'DELETE_SELECTED_COMPONENT' }
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
+  | { type: 'COMPONENT_STYLE_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
@@ -177,6 +178,23 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
+        treeChanged = true;
+      }
+      break;
+
+    case 'COMPONENT_STYLE_CHANGE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
+      const treeComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
+      if (treeComponent) {
+        if (!treeComponent.props) {
+          treeComponent.props = {};
+        }
+        if (!treeComponent.props.styles) {
+          treeComponent.props.styles = {};
+        }
+        treeComponent.props.styles[action.propName] = action.propValue;
         treeChanged = true;
       }
       break;
@@ -372,12 +390,21 @@ export const Designer: React.FunctionComponent = () => {
 
   const handlePropChange = React.useCallback(
     ({ jsonTreeElement, name, value }) => {
-      dispatch({
-        type: 'PROP_CHANGE',
-        component: jsonTreeElement,
-        propName: name,
-        propValue: value,
-      });
+      if (name.includes('design-')) {
+        dispatch({
+          type: 'COMPONENT_STYLE_CHANGE',
+          component: jsonTreeElement,
+          propName: name.replace('design-', ''),
+          propValue: `${value}rem`,
+        });
+      } else {
+        dispatch({
+          type: 'PROP_CHANGE',
+          component: jsonTreeElement,
+          propName: name,
+          propValue: value,
+        });
+      }
     },
     [dispatch],
   );
