@@ -8,7 +8,7 @@ const DatepickerCellExample = () => {
       calendar={{
         calendarCell: {
           children: (ComponentType, props) =>
-            props.isToday ? (
+            props.today ? (
               <Tooltip content="TODAY!" trigger={<ComponentType {...props} />} />
             ) : (
               <ComponentType {...props} />
