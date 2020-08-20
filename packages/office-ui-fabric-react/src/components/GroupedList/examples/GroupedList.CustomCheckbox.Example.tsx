@@ -8,21 +8,24 @@ import {
 } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { IObjectWithKey } from '../../DetailsList';
 
 const groupCount = 3;
 const groupDepth = 1;
 
 const groupProps: IGroupRenderProps = {
-  onRenderHeader: (props: IGroupHeaderProps): JSX.Element => (
+  onRenderHeader: (props?: IGroupHeaderProps): JSX.Element => (
     <GroupHeader onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox} {...props} />
   ),
 };
 
-const onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps) => <Toggle checked={props.checked} />;
+const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => (
+  <Toggle checked={props ? props.checked : undefined} />
+);
 
 export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
   const items = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
@@ -39,19 +42,20 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         }),
       ),
   );
-  const selection = useConst(() => new Selection({ items }));
+  const selection = (useConst(() => new Selection({ items })) as unknown) as ISelection<IObjectWithKey>;
 
   const onRenderCell = React.useCallback(
-    (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => (
-      <DetailsRow
-        columns={columns}
-        groupNestingDepth={nestingDepth}
-        item={item}
-        itemIndex={itemIndex}
-        selection={selection}
-        selectionMode={SelectionMode.multiple}
-      />
-    ),
+    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode =>
+      item && itemIndex ? (
+        <DetailsRow
+          columns={columns}
+          groupNestingDepth={nestingDepth}
+          item={item}
+          itemIndex={itemIndex}
+          selection={selection}
+          selectionMode={SelectionMode.multiple}
+        />
+      ) : null,
     [columns, selection],
   );
 
