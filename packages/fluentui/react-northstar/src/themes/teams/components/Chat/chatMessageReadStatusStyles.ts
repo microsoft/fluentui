@@ -9,8 +9,8 @@ export const chatMessageReadStatusStyles: ComponentSlotStylesPrepared<
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
-    right: v.readStatusIndicatorRightPoistion,
-    bottom: v.readStatusIndicatorBottomPoistion,
+    right: v.rightPoistion,
+    bottom: v.bottomPoistion,
     ':after': {
       content: `"${p.title}"`,
       ...(screenReaderContainerStyles as ICSSInJSStyle),

@@ -1,11 +1,11 @@
 import { pxToRem } from '../../../../utils';
 
 export interface ChatMessageReadStatusVariables {
-  readStatusIndicatorRightPoistion?: string;
-  readStatusIndicatorBottomPoistion?: string;
+  rightPoistion?: string;
+  bottomPoistion?: string;
 }
 
 export const chatMessageReadStatusVariables = (siteVars): ChatMessageReadStatusVariables => ({
-  readStatusIndicatorRightPoistion: pxToRem(-24),
-  readStatusIndicatorBottomPoistion: pxToRem(0),
+  rightPoistion: pxToRem(-24),
+  bottomPoistion: pxToRem(0),
 });
