@@ -49,7 +49,7 @@ export type FontTokens = Partial<{
 }>;
 
 // @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 // @public
 export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
@@ -118,11 +118,11 @@ export type TokenSetType = {
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: import("react").CSSProperties | undefined) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
 
 // @public
 export const useInlineTokens: (draftState: {
-    style?: import("react").CSSProperties | undefined;
+    style?: React.CSSProperties | undefined;
     tokens?: TokenSetType | undefined;
 }, prefix: string) => void;
 
