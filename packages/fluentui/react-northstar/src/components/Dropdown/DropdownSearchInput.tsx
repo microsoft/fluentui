@@ -2,7 +2,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-
+import cx from 'classnames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
@@ -104,11 +104,14 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
 
   const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
 
-  const { styles: resolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
-    className: dropdownSearchInputClassName,
-    mapPropsToStyles: () => ({ inline }),
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-  });
+  const { styles: resolvedStyles, classes } = useStyles<DropdownSearchInputStylesProps>(
+    DropdownSearchInput.displayName,
+    {
+      className: dropdownSearchInputClassName,
+      mapPropsToStyles: () => ({ inline }),
+      mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    },
+  );
 
   const handleFocus = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onFocus', e, props);
@@ -134,7 +137,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
       onKeyUp={handleKeyUp}
       {...unhandledProps}
       wrapper={{
-        className: dropdownSearchInputSlotClassNames.wrapper,
+        className: cx(dropdownSearchInputSlotClassNames.wrapper, classes.root),
         styles: resolvedStyles.root,
         ...accessibilityComboboxProps,
         ...unhandledProps.wrapper,
