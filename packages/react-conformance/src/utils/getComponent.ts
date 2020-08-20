@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
 
 const getDisplayName = (Component: React.ElementType) => {

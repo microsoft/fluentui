@@ -19,11 +19,13 @@ export const defaultTokens: Tokens = {
     contentColor: '#ffffff',
     borderColor: 'transparent',
     iconColor: '#ffffff',
+    dividerColor: '#ffffff',
     disabled: {
       background: '#f3f2f1',
       contentColor: '#c8c6c4',
       borderColor: 'var(--accent-disabled-background)',
       iconColor: 'var(--accent-disabled-contentColor)',
+      dividerColor: '#c8c6c4',
     },
     hovered: {
       background: '#106ebe',
@@ -87,6 +89,7 @@ export const defaultTokens: Tokens = {
       borderColor: '#f3f2f1',
       contentColor: '#a19f9d',
       iconColor: 'var(--button-disabled-contentColor)',
+      dividerColor: '#c8c6c4',
     },
     hovered: {
       background: '#f3f2f1',
