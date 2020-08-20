@@ -28,7 +28,7 @@ const siteInfo = [
   },
   {
     package: '@fluentui/react-image',
-    link: './react-button/dist-storybook/index.html',
+    link: './react-image/dist-storybook/index.html',
     icon: 'FileImage',
     title: 'Image',
   },
