@@ -4,10 +4,13 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
+import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -38,8 +41,43 @@ storiesOf('Button Next', module)
     </Button>
   ));
 
+storiesOf('Button Next - Teams Theme', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Button>Hello, world</Button>)
+  .addStory('Primary', () => <Button primary>Hello, world</Button>)
+  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled>
+      Hello, world
+    </Button>
+  ))
+  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>);
+
 storiesOf('Button Next - With icon before content', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -80,6 +118,7 @@ storiesOf('Button Next - With icon before content', module)
 
 storiesOf('Button Next - With icon after content', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -124,6 +163,7 @@ storiesOf('Button Next - With icon after content', module)
 
 storiesOf('Button Next - Circular', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -168,6 +208,7 @@ storiesOf('Button Next - Circular', module)
 
 storiesOf('Button Next - Icon only', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -212,6 +253,7 @@ storiesOf('Button Next - Icon only', module)
 
 storiesOf('Button Next - Fluid', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -256,6 +298,7 @@ storiesOf('Button Next - Fluid', module)
 
 storiesOf('Button Next - Inverted', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -300,6 +343,7 @@ storiesOf('Button Next - Inverted', module)
 
 storiesOf('Button Next - Loading', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -344,6 +388,7 @@ storiesOf('Button Next - Loading', module)
 
 storiesOf('Button Next - Sizes', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -398,6 +443,7 @@ storiesOf('Button Next - Sizes', module)
 
 storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

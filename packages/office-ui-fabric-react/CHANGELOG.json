@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "office-ui-fabric-react_v7.129.0",
+      "version": "7.129.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Export new theming variables, and fix theming variable generation script",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "office-ui-fabric-react_v7.128.3",
       "version": "7.128.3",

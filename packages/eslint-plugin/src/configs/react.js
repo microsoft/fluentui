@@ -47,6 +47,7 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
+    '@fluentui/no-global-react': 'error',
     '@fluentui/max-len': [
       'error',
       {

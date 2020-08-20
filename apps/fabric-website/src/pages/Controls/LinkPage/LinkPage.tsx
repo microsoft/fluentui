@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPageSectionProps, Markdown } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { LinkPageProps } from './LinkPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
@@ -79,7 +79,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                         ],
                         kind: 'property' as 'property',
                         description:
-                          'The URL that is opened when the link is clicked.  This value supersedes the onPress callback when both are present.\n',
+                          'The URL that is opened when the link is clicked. This value supercedes the onPress callback when both are present.\n',
                         deprecated: false,
                       },
                     ],

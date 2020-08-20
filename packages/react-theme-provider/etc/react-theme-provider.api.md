@@ -35,6 +35,12 @@ export type ColorTokenStates = Partial<{
     checkedPressed: ColorTokens;
 }>;
 
+// @public
+export const createDefaultTheme: () => Theme;
+
+// @public (undocumented)
+export const FluentTheme: Theme;
+
 // @public (undocumented)
 export type FontTokens = Partial<{
     fontFamily: string;
@@ -43,7 +49,7 @@ export type FontTokens = Partial<{
 }>;
 
 // @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 // @public
 export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
@@ -72,6 +78,9 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     tokens?: TTokens;
 }
+
+// @public (undocumented)
+export const TeamsTheme: PartialTheme;
 
 // @public
 export interface Theme extends IPartialTheme {
@@ -105,15 +114,15 @@ export interface Tokens {
 
 // @public
 export type TokenSetType = {
-    [key: string]: string | TokenSetType | undefined;
+    [key: string]: TokenSetType | string | number | undefined;
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: import("react").CSSProperties | undefined) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
 
 // @public
 export const useInlineTokens: (draftState: {
-    style?: import("react").CSSProperties | undefined;
+    style?: React.CSSProperties | undefined;
     tokens?: TokenSetType | undefined;
 }, prefix: string) => void;
 

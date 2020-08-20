@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IViewportState } from '../Viewport/Viewport.types';
 
 /**

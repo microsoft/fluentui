@@ -1,8 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.10..@uifabric/charting_v3.1.0)
+
+### Minor changes
+
+- focusing the legends based on the the prop 'allowFocusOnLegends' and exposing all the new prop 'legendProps' on all the charts which are using legends form which they can manipulate the respective lengends with this prop ([PR #14463](https://github.com/microsoft/fluentui/pull/14463) by v-sivsar@microsoft.com)
+
+### Patches
+
+- For Stacked area chart need to calculate highest Y value based on given input data(after processing the data only). This needs to be send charthelper. ([PR #14521](https://github.com/microsoft/fluentui/pull/14521) by v-jasha@microsoft.com)
 
 ## [3.0.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.10)
 
