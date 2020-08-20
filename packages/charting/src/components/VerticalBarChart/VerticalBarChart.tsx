@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
