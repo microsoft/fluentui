@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove references to React global (add explicit imports)",
+  "packageName": "@fluentui/react-compose",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-19T21:28:53.035Z"
+}

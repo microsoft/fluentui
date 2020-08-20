@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/fabric-website_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/fabric-website_v7.13.25",
       "version": "7.13.25",

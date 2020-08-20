@@ -58,7 +58,7 @@ export type FontTokens = Partial<{
 /**
  * A token set can provide a single string or object, mapping additional sub-parts of a token set.
  */
-export type TokenSetType = { [key: string]: string | TokenSetType | undefined };
+export type TokenSetType = { [key: string]: TokenSetType | string | number | undefined };
 
 /**
  * Recursive partial type.

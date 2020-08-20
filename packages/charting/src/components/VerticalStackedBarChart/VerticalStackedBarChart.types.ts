@@ -3,6 +3,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IVerticalStackedChartProps } from '../../types/index';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IVerticalStackedBarChartProps {
   /**
@@ -86,6 +87,11 @@ export interface IVerticalStackedBarChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IVerticalStackedBarChartStyleProps {

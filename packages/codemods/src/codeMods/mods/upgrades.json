@@ -4,6 +4,7 @@
     {
       "name": "Renaming 'isDisabled' to 'disabled' in Dropdown",
       "type": "renameProp",
+      "version": "100000",
       "options": {
         "from": {
           "importName": "Dropdown",

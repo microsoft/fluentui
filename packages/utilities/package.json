@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.28.0",
+  "version": "7.29.0",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,7 +38,7 @@
     "@types/sinon": "2.2.2",
     "@uifabric/build": "^7.0.0",
     "@uifabric/jest-serializer-merge-styles": "^7.0.35",
-    "@uifabric/test-utilities": "^7.0.37",
+    "@uifabric/test-utilities": "^7.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",

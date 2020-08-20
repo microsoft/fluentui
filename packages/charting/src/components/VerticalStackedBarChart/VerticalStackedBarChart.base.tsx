@@ -343,6 +343,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };

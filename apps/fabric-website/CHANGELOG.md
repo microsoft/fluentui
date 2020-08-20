@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.25..@uifabric/fabric-website_v7.14.0)
+
+### Patches
+
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
 
 ## [7.13.25](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.25)
 

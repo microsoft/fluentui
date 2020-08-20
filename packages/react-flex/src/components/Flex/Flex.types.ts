@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ColorTokenSet } from '@fluentui/react-theme-provider';
 

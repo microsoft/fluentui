@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.129.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.129.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.3..office-ui-fabric-react_v7.129.0)
+
+### Patches
+
+- Export new theming variables, and fix theming variable generation script ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
 
 ## [7.128.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.3)
 

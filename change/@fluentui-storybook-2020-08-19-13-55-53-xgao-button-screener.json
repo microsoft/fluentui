@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update withThemeProvider with options/parameters support",
+  "packageName": "@fluentui/storybook",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-19T20:55:53.718Z"
+}
