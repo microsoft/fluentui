@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { PieChartBase } from './PieChart.base';

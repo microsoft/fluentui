@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated.",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-10T07:23:55.241Z"
-}

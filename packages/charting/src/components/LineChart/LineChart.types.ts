@@ -12,7 +12,8 @@ export {
   IBasestate,
   IChildProps,
 } from '../../types/IDataPoint';
-import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '@uifabric/charting';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '../CommonComponents/index';
+import { ILegendsProps } from '../Legends/index';
 
 // export interface ILineChart {}
 
@@ -153,6 +154,11 @@ export interface ILineChartProps extends Partial<IChartHelperProps> {
    * Margins for the chart
    */
   margins?: IMargins;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IEventsAnnotationProps {

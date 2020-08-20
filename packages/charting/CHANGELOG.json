@@ -2,6 +2,59 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/charting_v3.1.0",
+      "version": "3.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "focusing the legends based on the the prop 'allowFocusOnLegends' and exposing all the new prop 'legendProps' on all the charts which are using legends form which they can manipulate the respective lengends with this prop",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ceaea48955dae4c53a711851df5f07aa8905ba3f",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "For Stacked area chart need to calculate highest Y value based on given input data(after processing the data only). This needs to be send charthelper.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4104c1b810cb7c44bd08de9024f7fc7d947962e7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/charting_v3.0.10",
+      "version": "3.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/charting_v3.0.7",
+      "version": "3.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "530cd421124afefdbf87013a1583a4a3149681ba",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@uifabric/charting_v3.0.5",
       "version": "3.0.5",

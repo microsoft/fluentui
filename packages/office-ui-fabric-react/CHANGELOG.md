@@ -1,8 +1,57 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.129.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.129.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.3..office-ui-fabric-react_v7.129.0)
+
+### Patches
+
+- Export new theming variables, and fix theming variable generation script ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.128.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.1..office-ui-fabric-react_v7.128.3)
+
+### Patches
+
+- StackItem: Fixing issue #12592 - StackItem does not use its `padding` token ([PR #14554](https://github.com/microsoft/fluentui/pull/14554) by pavanpadavala@hotmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.128.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.1)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.0..office-ui-fabric-react_v7.128.1)
+
+### Patches
+
+- Pickers: Update to be concurrent compatible ([PR #14491](https://github.com/microsoft/fluentui/pull/14491) by joschect@microsoft.com)
+- Link: Fixing High Contrast styling of links rendered as buttons. ([PR #14497](https://github.com/microsoft/fluentui/pull/14497) by humbertomakotomorimoto@gmail.com)
+
+## [7.128.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.0)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.127.1..office-ui-fabric-react_v7.128.0)
+
+### Minor changes
+
+- BasePicker's onDismiss can now return a boolean to decide if an item is selected ([PR #14302](https://github.com/microsoft/fluentui/pull/14302) by t-jamle@microsoft.com)
+
+## [7.127.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.127.1)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.127.0..office-ui-fabric-react_v7.127.1)
+
+### Patches
+
+- CommandBar: Show tooltipHost.content when iconMode = true even when text/name is provided in commandBarItemProps ([PR #14323](https://github.com/microsoft/fluentui/pull/14323) by prandala@microsoft.com)
+- Dropdown: Correctly updating set-size when number of options updates after first render. ([PR #14415](https://github.com/microsoft/fluentui/pull/14415) by humbertomakotomorimoto@gmail.com)
+- Tooltip: Stopping propagation when clicking Esc on tooltip host. ([PR #14476](https://github.com/microsoft/fluentui/pull/14476) by humbertomakotomorimoto@gmail.com)
 
 ## [7.127.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.127.0)
 

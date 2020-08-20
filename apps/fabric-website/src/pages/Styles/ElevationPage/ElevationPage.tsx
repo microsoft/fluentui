@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-import { Markdown, Table, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, Table, IPageSectionProps, MarkdownCode } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ElevationPageProps, depthUsage } from './ElevationPage.doc';
 import * as styles from './ElevationPage.module.scss';
@@ -41,13 +41,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 
@@ -105,9 +99,14 @@ function _renderDepthsTable() {
         const depth = depthUsage.filter(x => x.level === row.level)[0];
         switch (column.title) {
           case 'Core class':
-            return `ms-depth-${row.level}`;
+            return <MarkdownCode>ms-depth-{row.level}</MarkdownCode>;
           case 'React variable':
-            return `Depths.depth${row.level}`;
+            return (
+              <>
+                <MarkdownCode>DefaultEffects.elevation{row.level}</MarkdownCode> or{' '}
+                <MarkdownCode>Depths.depth{row.level}</MarkdownCode>
+              </>
+            );
           case 'Usage':
             return (
               <ul className={styles.usageList}>

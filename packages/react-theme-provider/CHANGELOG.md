@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.8.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.7.3..@fluentui/react-theme-provider_v0.8.0)
+
+### Minor changes
+
+- add Teams/Fluent/default themes; Convert v7 theme to tokens. ([PR #14500](https://github.com/microsoft/fluentui/pull/14500) by xgao@microsoft.com)
+
+## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.7.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.7.0..@fluentui/react-theme-provider_v0.7.3)
+
+### Patches
+
+- ThemeProvider: RecursivePartial now correctly works. ([PR #14562](https://github.com/microsoft/fluentui/pull/14562) by dzearing@hotmail.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.7.0)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.6.0..@fluentui/react-theme-provider_v0.7.0)
+
+### Minor changes
+
+- Support v7 theme (ITheme) ([PR #14398](https://github.com/microsoft/fluentui/pull/14398) by xgao@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.6.0)
 

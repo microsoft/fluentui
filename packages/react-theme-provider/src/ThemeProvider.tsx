@@ -4,10 +4,12 @@ import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
-import { PartialTheme, Theme, Tokens } from './types';
+import { Theme } from './types';
+import { ThemeProviderProps } from './ThemeProvider.types';
 import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
+import { getTokens } from './getTokens';
 
 function createCustomizerContext(theme: Theme): ICustomizerContext {
   return {
@@ -17,24 +19,6 @@ function createCustomizerContext(theme: Theme): ICustomizerContext {
       scopedSettings: theme.components || {},
     },
   };
-}
-
-function getTokens(theme: Theme): Tokens | undefined {
-  // TODO: ensure only used tokens are converted before shipping Fluent v8.
-  const { components, schemes, rtl, isInverted, tokens, ...passThroughTokens } = theme;
-  const preparedTokens = { ...passThroughTokens, ...tokens };
-
-  return preparedTokens as Tokens;
-}
-
-/**
- * Props for the ThemeProvider component.
- */
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Defines the theme provided by the user.
-   */
-  theme?: PartialTheme | Theme;
 }
 
 /**
@@ -49,11 +33,15 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     const parentTheme = useTheme();
 
     // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<Theme>(() => mergeThemes(parentTheme, theme), [parentTheme, theme]);
+    const fullTheme = React.useMemo<Theme>(() => {
+      const mergedTheme = mergeThemes<Theme>(parentTheme, theme);
+      mergedTheme.tokens = getTokens(mergedTheme);
+      return mergedTheme;
+    }, [parentTheme, theme]);
 
     // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => tokensToStyleObject(getTokens(fullTheme), undefined, { ...style }),
+      () => tokensToStyleObject(fullTheme.tokens, undefined, { ...style }),
       [fullTheme, style],
     );
 

@@ -7,7 +7,7 @@ import { nullRender } from './nullRender';
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
  * collections.
  *
- * The root is always derived from the `as` prop.
+ * The root is always derived from the `as` prop.react-avatar
  *
  * Slots will render as null if they are rendered as primitives with undefined children.
  *

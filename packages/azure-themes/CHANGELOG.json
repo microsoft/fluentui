@@ -2,6 +2,27 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.3.6",
+      "version": "7.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Messagebar palette update, defaultbutton as primiary styling fix",
+            "author": "jagaheri@microsoft.com",
+            "commit": "4388199c13687c6113b21de4b17704d6e62cba99",
+            "package": "@uifabric/azure-themes"
+          },
+          {
+            "comment": "fix publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@uifabric/azure-themes_v7.3.0",
       "version": "7.3.0",

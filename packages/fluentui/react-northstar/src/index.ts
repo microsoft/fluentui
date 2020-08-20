@@ -3,6 +3,7 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
+export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -118,6 +119,12 @@ export * from './components/Layout/Layout';
 
 export * from './components/List/List';
 export * from './components/List/ListItem';
+export * from './components/List/ListItemContent';
+export * from './components/List/ListItemContentMedia';
+export * from './components/List/ListItemEndMedia';
+export * from './components/List/ListItemHeader';
+export * from './components/List/ListItemHeaderMedia';
+export * from './components/List/ListItemMedia';
 
 export * from './components/Menu/Menu';
 export * from './components/Menu/MenuItem';
@@ -144,6 +151,9 @@ export * from './components/Skeleton/Skeleton';
 export * from './components/Skeleton/SkeletonLine';
 export * from './components/Skeleton/SkeletonShape';
 export * from './components/Skeleton/SkeletonButton';
+export * from './components/Skeleton/SkeletonText';
+export * from './components/Skeleton/SkeletonInput';
+export * from './components/Skeleton/SkeletonAvatar';
 
 export * from './components/Slider/Slider';
 
@@ -171,10 +181,6 @@ export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
 export * from './components/Toolbar/ToolbarRadioGroup';
-
-export * from './components/HierarchicalTree/HierarchicalTree';
-export * from './components/HierarchicalTree/HierarchicalTreeItem';
-export * from './components/HierarchicalTree/HierarchicalTreeTitle';
 
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
