@@ -16,7 +16,7 @@ export class ComponentTestFacade implements TestFacade {
   }
 
   public slotExists(selector: string) {
-    return selector === 'root' || document.getElementById(selector);
+    return selector === 'root' || !!document.getElementById(selector);
   }
 
   public attributeExists(selector: string, attributeName: string) {
