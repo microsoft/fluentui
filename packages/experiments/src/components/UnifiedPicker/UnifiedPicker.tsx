@@ -86,33 +86,41 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
-  const _dropItemsAt = (insertIndex: number, s: string): void => {
-    if (props.selectedItemsListProps.getDeserializedItems) {
-      const newItems = props.selectedItemsListProps.getDeserializedItems(s);
-      let indicesToRemove: number[] = [];
-      // If we are moving items within the same picker, remove them from their old places as well
-      if (draggedIndex > -1) {
-        indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
-      }
-      if (props.selectedItemsListProps.dropItemsAt) {
-        props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
-      }
-      dropItemsAt(insertIndex, newItems, indicesToRemove);
+  const _dropItemsAt = (insertIndex: number, newItems: T[]): void => {
+    let indicesToRemove: number[] = [];
+    // If we are moving items within the same picker, remove them from their old places as well
+    if (draggedIndex > -1) {
+      indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
     }
+    if (props.selectedItemsListProps.dropItemsAt) {
+      props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
+    }
+    dropItemsAt(insertIndex, newItems, indicesToRemove);
   };
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
+    const insertIndex = selectedItems.indexOf(item);
+    let isDropHandled = false;
     if (event?.dataTransfer) {
       event.preventDefault();
       const data = event.dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
           data[i].getAsString((s: string) => {
-            const insertIndex = selectedItems.indexOf(item);
-            _dropItemsAt(insertIndex, s);
+            if (props.selectedItemsListProps.getDeserializedItems) {
+              const newItems = props.selectedItemsListProps.getDeserializedItems(s);
+              _dropItemsAt(insertIndex, newItems);
+              isDropHandled = true;
+            }
           });
         }
       }
+    }
+    if (!isDropHandled && draggedIndex > -1) {
+      const newItems = focusedItemIndices.includes(draggedIndex)
+        ? (getSelectedItems() as T[])
+        : [selectedItems[draggedIndex]];
+      _dropItemsAt(insertIndex, newItems);
     }
   };
 
