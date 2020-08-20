@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "IE11 support for xAxis labels and utility added",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T12:12:45.047Z"
+}
