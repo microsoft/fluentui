@@ -34,7 +34,7 @@ import {
 
 If you override theme settings, you need to do this before accessing theme colors. Otherwise you won't get a notification that the theme changed.
 
-## Using styling with React components
+## Create classes for React components based on theme
 
 Themes can be accessed using the `useStyles` hook. This hook abstracts rendering css given the theme object:
 
