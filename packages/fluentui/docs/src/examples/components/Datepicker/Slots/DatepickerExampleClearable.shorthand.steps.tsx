@@ -1,4 +1,4 @@
-import { inputSlotClassNames, buttonClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
+import { buttonClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -8,7 +8,7 @@ const config: ScreenerTestsConfig = {
         .click(`.${buttonClassName}`)
         .click(`.${datepickerCalendarCellClassName}:nth-child(15)`)
         .snapshot('Shows selected date in input with clear possibility.')
-        .click(`.${inputSlotClassNames.icon}`)
+        .click(`.${buttonClassName}__icon`)
         .snapshot('Shows cleared input.')
         .click(`.${buttonClassName}`)
         .snapshot('Shows cleared calendar.'),
