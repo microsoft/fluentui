@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { ReactTestRenderer, act } from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
-
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownBase } from './Dropdown.base';

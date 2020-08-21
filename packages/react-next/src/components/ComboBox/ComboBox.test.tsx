@@ -4,7 +4,6 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
-import { safeCreate } from '@uifabric/test-utilities';
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';

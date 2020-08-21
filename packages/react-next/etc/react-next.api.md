@@ -2101,7 +2101,7 @@ export const LayerBase: React.ForwardRefExoticComponent<ILayerProps & React.RefA
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const LayerHost: React.MemoExoticComponent<(props: ILayerHostProps) => JSX.Element>;
+export const LayerHost: (props: ILayerHostProps) => JSX.Element;
 
 // @public (undocumented)
 export const Link: React.FunctionComponent<ILinkProps>;
