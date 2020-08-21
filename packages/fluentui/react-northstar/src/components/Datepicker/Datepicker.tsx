@@ -170,7 +170,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   };
 
   const [error, setError] = React.useState<string>(() =>
-    validateDate(selectedDate, formattedDate, restrictedDatesOptions, dateFormatting, props.required),
+    !!props.selectedDate || !!props.defaultSelectedDate
+      ? validateDate(selectedDate, formattedDate, restrictedDatesOptions, dateFormatting, props.required)
+      : '',
   );
 
   const calendarOptions: IDayGridOptions = {
