@@ -38,9 +38,6 @@ const RUSSIAN_OPTIONS: IComboBoxOption[] = [
 
 const returnUndefined = () => undefined;
 
-let wrapper: ReactWrapper<IComboBoxProps, IComboBoxState, unknown> | undefined;
-let domNode: HTMLElement | undefined;
-
 const createNodeMock = (el: React.ReactElement<{}>) => {
   return {
     __events__: {},
@@ -52,22 +49,6 @@ describe('ComboBox', () => {
     spyOn(ReactDOM, 'createPortal').and.callFake(element => {
       return element;
     });
-  });
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-    if (domNode) {
-      try {
-        ReactDOM.unmountComponentAtNode(domNode.parentElement!);
-        domNode.parentElement!.removeChild(domNode);
-      } catch (ex) {
-        // ignore
-      }
-      domNode = undefined;
-    }
   });
 
   it('Renders correctly', () => {
@@ -229,7 +210,7 @@ describe('ComboBox', () => {
 
   it('Can change items in uncontrolled case', () => {
     const ref = React.createRef<HTMLDivElement>();
-    domNode = renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
+    renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
 
     const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
     ReactTestUtils.Simulate.click(buttonElement);
