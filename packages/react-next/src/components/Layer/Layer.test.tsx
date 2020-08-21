@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
-import { act } from 'react-test-renderer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
 import { safeCreate } from '@uifabric/test-utilities';
