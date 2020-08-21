@@ -269,7 +269,6 @@ exports[`Component Examples renders Button.Compound.Example.tsx correctly 1`] = 
           color: inherit;
         }
         @media screen and (-ms-high-contrast: active){&:active .ms-Button-description {
-          -ms-high-contrast-adjust: none;
           background-color: WindowText;
           color: Window;
         }
@@ -339,7 +338,6 @@ exports[`Component Examples renders Button.Compound.Example.tsx correctly 1`] = 
                 line-height: 100%;
               }
               @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
                 background-color: WindowText;
                 color: Window;
               }

@@ -26,7 +26,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         color: #004578;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
@@ -72,7 +71,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               speak: none;
             }
             @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
               color: WindowText;
             }
         data-icon-name="Info"
@@ -99,7 +97,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             min-width: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            -ms-high-contrast-adjust: none;
             color: WindowText;
           }
       id="MessageBar0"
@@ -113,6 +110,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             }
             & span a {
               padding-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
             }
       />
     </div>

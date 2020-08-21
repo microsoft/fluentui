@@ -144,7 +144,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             },
           },
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none',
             background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
             color: 'WindowText',
@@ -179,7 +178,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       color: semanticColors[iconColor[messageBarType]],
       selectors: {
         [HighContrastSelector]: {
-          MsHighContrastAdjust: 'none',
           color: 'WindowText',
         },
       },
@@ -194,7 +192,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         ...fonts.small,
         selectors: {
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none',
             color: 'WindowText',
           },
         },
@@ -210,6 +207,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         selectors: {
           '& span a': {
             paddingLeft: 4,
+          },
+          [HighContrastSelector]: {
+            color: 'WindowText',
           },
         },
       },

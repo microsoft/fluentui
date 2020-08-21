@@ -81,7 +81,6 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             backgroundColor: 'WindowText',
             color: 'Window',
-            MsHighContrastAdjust: 'none',
           },
         },
       },
@@ -103,7 +102,6 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none',
           },
         },
       },
@@ -115,7 +113,6 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none',
           },
         },
       },
