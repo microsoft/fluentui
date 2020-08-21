@@ -1597,12 +1597,6 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IRatingState {
-    // (undocumented)
-    rating: number | null | undefined;
-}
-
-// @public (undocumented)
 export interface IRatingStyleProps {
     // (undocumented)
     disabled?: boolean;
@@ -2394,13 +2388,7 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-    constructor(props: IRatingProps);
-    // (undocumented)
-    static defaultProps: IRatingProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const RatingBase: React.ForwardRefExoticComponent<IRatingProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum RatingSize {

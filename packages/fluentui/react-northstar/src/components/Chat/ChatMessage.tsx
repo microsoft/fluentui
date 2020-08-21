@@ -418,6 +418,7 @@ ChatMessage.propTypes = {
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
+  readStatus: customPropTypes.itemShorthand,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
