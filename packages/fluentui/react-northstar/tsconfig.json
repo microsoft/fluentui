@@ -37,6 +37,12 @@
     },
     {
       "path": "../react-proptypes"
+    },
+    {
+      "path": "../../react-compose/src"
+    },
+    {
+      "path": "../../react-button/src"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
-import { mergeProps } from '@fluentui/react-compose/lib/next';
+import { mergeProps } from '@fluentui/react-compose';
 import { ComponentWithAs, ShorthandConfig, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ import { Loader, LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
-import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
+import { useButton } from '@fluentui/react-button';
 
 export interface ButtonProps
   extends UIComponentProps,

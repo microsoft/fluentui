@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { rollup as lernaAliases } from 'lerna-alias';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
 
@@ -15,6 +16,12 @@ let __BASENAME__ = process.env.PR_DEPLOY
   : '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
+
+const webpackAliases = {};
+
+Object.entries(lernaAliases({ sourceDirectory: false })).forEach(([packageName, packagePath]) => {
+  webpackAliases[`^${packageName}`] = path.join(packagePath, `src`);
+});
 
 const envConfig = {
   env,
@@ -154,6 +161,7 @@ const config = {
   isRoot,
   /** Package name the task is running against: default to react if running at root, or cwd otherwise */
   package: packageName,
+  webpackAliases,
 };
 
 export default config;
