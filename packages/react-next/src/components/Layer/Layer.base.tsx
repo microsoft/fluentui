@@ -12,9 +12,12 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, ref) => {
   const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
+
   const rootRef = React.useRef<HTMLSpanElement>(null);
   const mergedRef = useMergedRefs(rootRef, ref);
+
   const doc = useDocument();
+
   const {
     eventBubblingEnabled,
     styles,
@@ -29,13 +32,13 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     insertFirst,
   } = props;
 
-  const [layerHostId, setLayerHostId] = React.useState<string | undefined>(hostId);
-
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
     isNotHost: !hostId,
   });
+
+  const [layerHostId, setLayerHostId] = React.useState<string | undefined>(hostId);
 
   // Returns the user provided hostId props element, the default target selector, or undefined if their is no document.
   const getHost = React.useCallback((): Node | undefined => {
@@ -66,7 +69,6 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   const createLayerElement = React.useCallback(() => {
     const host = getHost();
 
-    // If both the document object and host are undefined then don't return anything.
     if (!doc || !host) {
       return;
     }
@@ -106,10 +108,10 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
       createLayerElement();
     }
 
-    // componentWillUnmount
+    // On component unmount:
+    // Remove the layer element and unregister the layer if a hostId prop was provided.
     return () => {
       removeLayerElement();
-      // Check if the user provided a hostId prop and unregister the layer with the ID.
       if (hostId) {
         unregisterLayer(hostId, createLayerElement);
       }
@@ -130,6 +132,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     </span>
   );
 });
+
 LayerBase.displayName = 'LayerBase';
 
 let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
