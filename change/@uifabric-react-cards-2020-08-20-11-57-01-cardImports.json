@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "react-cards: Updating imports to remove duplicated dependencies.",
+  "packageName": "@uifabric/react-cards",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T18:57:01.750Z"
+}
