@@ -93,7 +93,6 @@ function getFilteredEvents() {
 }
 
 export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, ref) => {
-  const [layerHostId, setLayerHostId] = React.useState<string | undefined>();
   const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
   const rootRef = React.useRef<HTMLSpanElement>(null);
   const mergedRef = useMergedRefs(rootRef, ref);
@@ -111,6 +110,8 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     onLayerWillUnmount,
     insertFirst,
   } = props;
+
+  const [layerHostId, setLayerHostId] = React.useState<string | undefined>(hostId);
 
   const classNames = getClassNames(styles!, {
     theme: theme!,

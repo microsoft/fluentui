@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
 import { Layer } from './Layer';
+import { act } from 'react-test-renderer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
+import { safeCreate } from '@uifabric/test-utilities';
 
 const ReactDOM = require('react-dom');
 
@@ -22,15 +23,13 @@ describe('Layer', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
 
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer>Content</Layer>, component => {
+      const tree = component!.toJSON();
+      expect(tree).toMatchSnapshot();
+      ReactDOM.createPortal = createPortal;
     });
-
-    const component = renderer.create(<Layer>Content</Layer>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-    ReactDOM.createPortal = createPortal;
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {
@@ -68,11 +67,11 @@ describe('Layer', () => {
     const appElement = document.createElement('div');
 
     try {
-      ReactTestUtils.act(() => {
-        document.body.appendChild(appElement);
-      });
+      document.body.appendChild(appElement);
 
-      ReactDOM.render(<App />, appElement);
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<App />, appElement);
+      });
 
       const parentElement = appElement.querySelector('#parent');
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { ReactTestRenderer } from 'react-test-renderer';
+import { ReactTestRenderer, act } from 'react-test-renderer';
 import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
