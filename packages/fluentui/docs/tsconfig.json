@@ -15,7 +15,8 @@
       "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
-    "types": ["node", "webpack-env", "screener-runner"]
+    "types": ["node", "webpack-env", "screener-runner"],
+    "skipLibCheck": true
   },
   "include": ["./src"]
 }

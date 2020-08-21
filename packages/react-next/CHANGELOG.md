@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.89)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.88..@fluentui/react-next_v8.0.0-alpha.89)
+
+### Changes
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.88)
 
