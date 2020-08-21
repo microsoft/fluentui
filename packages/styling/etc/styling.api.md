@@ -6,9 +6,8 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
-import { DefaultEffects } from '@fluentui/theme/lib/constants/index';
-import { DefaultPalette } from '@fluentui/theme/lib/constants/index';
-import { DefaultSpacing } from '@fluentui/theme/lib/constants/index';
+import { DefaultEffects } from '@fluentui/theme/lib/constants/DefaultEffects';
+import { DefaultPalette } from '@fluentui/theme/lib/constants/DefaultPalette';
 import { fontFace } from '@uifabric/merge-styles';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
@@ -72,8 +71,6 @@ export { DefaultEffects }
 export const DefaultFontStyles: IFontStyles;
 
 export { DefaultPalette }
-
-export { DefaultSpacing }
 
 // @public (undocumented)
 export const EdgeChromiumHighContrastSelector = "@media screen and (forced-colors: active)";
