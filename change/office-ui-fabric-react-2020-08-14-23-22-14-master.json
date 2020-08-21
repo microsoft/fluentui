@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Custom Layout for Contextual Menu",
-  "packageName": "office-ui-fabric-react",
-  "email": "michael.mao99@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-15T03:22:14.968Z"
-}
