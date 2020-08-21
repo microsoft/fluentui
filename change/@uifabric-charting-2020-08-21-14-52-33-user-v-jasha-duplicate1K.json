@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "duplicating 1k issue resolved",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-08-21T09:22:33.508Z"
+}
