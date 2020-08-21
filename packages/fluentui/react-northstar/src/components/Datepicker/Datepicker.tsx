@@ -36,6 +36,7 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -228,13 +229,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
     onClick: (e): void => {
-      if (preventOpeningOnClick && !openState) {
+      if (!allowManualInput) {
+        // Keep popup open in case we can only enter the date through calendar.
+        setPreventClosing(true);
+        setOpenState(true);
+      } else if (preventOpeningOnClick && !openState) {
         setPreventOpeningOnClick(false);
       } else if (!openState) {
         setOpenState(true);
-      } // Keep popup open in case we can only enter the date through calendar.
-      else if (allowManualInput) {
-        setOpenState(false);
       }
 
       _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -271,6 +273,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       }
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
+    },
+    onKeyPress: e => {
+      if (!allowManualInput) {
+        const keyCode = getCode(e);
+
+        if (keyCode === keyboardKey.Enter) {
+          setPreventClosing(true);
+          setOpenState(true);
+        }
+      }
     },
   });
 
