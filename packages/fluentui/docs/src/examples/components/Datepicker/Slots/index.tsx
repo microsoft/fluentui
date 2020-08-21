@@ -24,6 +24,15 @@ const Usage = () => (
       }
       examplePath="components/Datepicker/Slots/DatepickerHeaderCellExample"
     />
+    <ComponentExample
+      title="Custom header slot"
+      description={
+        <>
+          <code>header</code> inside <code>calendar</code> prop can be used for customizing datepicker header
+        </>
+      }
+      examplePath="components/Datepicker/Slots/DatepickerHeaderExample"
+    />
   </ExampleSection>
 );
 
