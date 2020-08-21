@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
-import Button from '@material-ui/core/Button';
+import * as MUI from '@material-ui/core';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
@@ -17,10 +17,18 @@ export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone',
 export const DRAGGING_ELEMENTS = {
   // MATERIAL Elements
   MaterialButton: (
-    <Button variant="contained" color="primary">
+    <MUI.Button variant="contained" color="primary">
       Hello World
-    </Button>
+    </MUI.Button>
   ),
+  MaterialButtonGroup: (
+    <MUI.ButtonGroup color="primary" aria-label="outlined primary button group">
+      <MUI.Button>One</MUI.Button>
+      <MUI.Button>Two</MUI.Button>
+      <MUI.Button>Three</MUI.Button>
+    </MUI.ButtonGroup>
+  ),
+  MaterialCheckbox: <MUI.FormControlLabel control={<MUI.Checkbox name="checkedA" />} label="Secondary" />,
 
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -398,10 +406,12 @@ export const DRAGGING_ELEMENTS = {
 };
 
 export const resolveComponent = (displayName): React.ElementType => {
-  if (displayName === 'WithStyles(ForwardRef(Button))') {
-    return Button;
-  }
-  return FUI[displayName] || FUIIcons[displayName] || displayName;
+  return (
+    FUI[displayName] ||
+    FUIIcons[displayName] ||
+    MUI[displayName.replace('WithStyles(ForwardRef(', '').replace('))', '')] ||
+    displayName
+  );
 };
 
 // FIXME: breaks for <button>btn</button>
