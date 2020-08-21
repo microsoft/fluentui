@@ -104,12 +104,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -118,31 +113,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
@@ -206,12 +192,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -220,31 +201,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
@@ -376,12 +348,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -390,31 +357,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
@@ -555,12 +513,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -569,31 +522,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
@@ -646,12 +590,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -660,31 +599,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
@@ -737,12 +667,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
-              }
-              @media screen and (-ms-high-contrast: white-on-black){& {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){& {
-                color: #00009F;
+                color: LinkText;
               }
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -751,31 +676,22 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active {
+                color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
-                color: #FFFF00;
-              }
-              @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
-                color: #00009F;
+              @media screen and (-ms-high-contrast: active){&:active:hover {
+                color: LinkText;
               }
               &:focus {
                 color: #0078d4;
