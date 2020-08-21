@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
+import { renderIntoDocument } from '../../common/testUtilities';
 import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
@@ -37,8 +37,6 @@ const RUSSIAN_OPTIONS: IComboBoxOption[] = [
 ];
 
 const returnUndefined = () => undefined;
-
-type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<unknown>, unknown>;
 
 let wrapper: ReactWrapper<IComboBoxProps, IComboBoxState, unknown> | undefined;
 let domNode: HTMLElement | undefined;
@@ -91,37 +89,49 @@ describe('ComboBox', () => {
   });
 
   it('Can flip between enabled and disabled.', () => {
-    wrapper = mount(<ComboBox disabled={false} options={DEFAULT_OPTIONS} />);
+    safeCreate(<ComboBox disabled={false} options={DEFAULT_OPTIONS} />, container => {
+      expect(container.root.findAll(node => node.props.className?.split?.(' ')?.includes?.('is-disabled')).length).toBe(
+        0,
+      );
 
-    expectMissing(wrapper, '.ms-ComboBox.is-disabled');
-    expectOne(wrapper, '[data-is-interactable=true]');
+      expect(
+        container.root.findAll(node => typeof node.type === 'string' && node.props['data-is-interactable'] === true)
+          .length,
+      ).toBe(1);
 
-    wrapper.setProps({ disabled: true });
+      renderer.act(() => {
+        container.update(<ComboBox disabled={true} options={DEFAULT_OPTIONS} />);
+      });
 
-    expectOne(wrapper, '.ms-ComboBox.is-disabled');
-    expectOne(wrapper, '[data-is-interactable=false]');
+      expect(container.root.findAll(node => node.props.className?.split?.(' ')?.includes?.('is-disabled')).length).toBe(
+        2,
+      );
+      expect(
+        container.root.findAll(node => typeof node.type === 'string' && node.props['data-is-interactable'] === false)
+          .length,
+      ).toBe(1);
+    });
   });
 
   it('Renders no selected item in default case', () => {
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} />);
-
-    expect(wrapper.find('input[role="combobox"]').text()).toEqual('');
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('');
+    });
   });
 
   it('Renders a selected item in uncontrolled case', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement: InputElementWrapper = comboBoxRoot.find('input');
-
-    expect(inputElement.props().value).toEqual('1');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('1');
+    });
   });
 
   it('Renders a selected item in controlled case', () => {
-    wrapper = mount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement: InputElementWrapper = comboBoxRoot.find('input');
-
-    expect(inputElement.props().value).toEqual('1');
+    safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('1');
+    });
   });
 
   it('Renders a selected item with zero key', () => {
@@ -129,10 +139,10 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
-
-    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    expect(inputElement.props().value).toEqual('zero');
+    safeCreate(<ComboBox selectedKey={0} options={options} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('zero');
+    });
   });
 
   it('changes to a selected key change the input', () => {
@@ -140,13 +150,14 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
-
-    expect(wrapper.find('input').props().value).toEqual('zero');
-
-    wrapper.setProps({ selectedKey: 1 });
-
-    expect(wrapper.find('input').props().value).toEqual('one');
+    safeCreate(<ComboBox selectedKey={0} options={options} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('zero');
+      renderer.act(() => {
+        container.update(<ComboBox selectedKey={1} options={options} />);
+      });
+      expect(input.props.value).toEqual('one');
+    });
   });
 
   it('changes to a selected item on key change', () => {
@@ -154,22 +165,23 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
-
-    expect(wrapper.find('input').props().value).toEqual('zero');
-
-    wrapper.setProps({ selectedKey: null });
-
-    expect(wrapper.find('input').props().value).toEqual('');
+    safeCreate(<ComboBox selectedKey={0} options={options} />, container => {
+      const input = container.root.findByType('input');
+      expect(input.props.value).toEqual('zero');
+      renderer.act(() => {
+        container.update(<ComboBox selectedKey={null} options={options} />);
+      });
+      expect(input.props.value).toEqual('');
+    });
   });
 
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
-    wrapper = mount(<ComboBox placeholder={placeholder} options={DEFAULT_OPTIONS} />);
-
-    const inputElement = wrapper.find('.ms-ComboBox input').getDOMNode() as HTMLInputElement;
-    expect(inputElement.placeholder).toEqual(placeholder);
-    expect(inputElement.value).toEqual('');
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} placeholder={placeholder} />, container => {
+      const inputElement = container.root.findByType('input');
+      expect(inputElement.props.placeholder).toEqual(placeholder);
+      expect(inputElement.props.value).toEqual('');
+    });
   });
 
   // it('Does not automatically add new options when allowFreeform is on in controlled case', () => {
@@ -202,148 +214,161 @@ describe('ComboBox', () => {
   // });
 
   it('Renders a default value with options', () => {
-    wrapper = mount(<ComboBox text="1" options={DEFAULT_OPTIONS} />);
-
-    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    expect(inputElement.props().value).toEqual('1');
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} text="1" />, container => {
+      const inputElement = container.root.findByType('input');
+      expect(inputElement.props.value).toEqual('1');
+    });
   });
 
   it('Renders a default value with no options', () => {
-    wrapper = mount(<ComboBox options={[]} text="1" />);
-
-    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    expect(inputElement.props().value).toEqual('1');
+    safeCreate(<ComboBox options={[]} text="1" />, container => {
+      const inputElement = container.root.findByType('input');
+      expect(inputElement.props.value).toEqual('1');
+    });
   });
 
   it('Can change items in uncontrolled case', () => {
-    domNode = renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
+    const ref = React.createRef<HTMLDivElement>();
+    domNode = renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
 
-    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
     ReactTestUtils.Simulate.click(buttonElement);
 
-    const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+    const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
     ReactTestUtils.Simulate.click(secondItemElement);
 
-    const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
+    const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('2');
   });
 
   it('Does not automatically change items in controlled case', () => {
-    domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
+    const ref = React.createRef<HTMLDivElement>();
+    renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
 
-    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
     ReactTestUtils.Simulate.click(buttonElement);
 
-    const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+    const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
     ReactTestUtils.Simulate.click(secondItemElement);
 
-    const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
+    const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('1');
   });
 
   it('Multiselect does not mutate props', () => {
-    domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect />);
+    const ref = React.createRef<HTMLDivElement>();
+    renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect ref={ref} />);
 
-    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
     ReactTestUtils.Simulate.click(buttonElement);
 
-    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-    ReactTestUtils.Simulate.change(buttons[1]);
+    const buttons = ref.current?.querySelectorAll('.ms-ComboBox-option > input');
+    ReactTestUtils.Simulate.change(buttons![1]);
 
     expect(!!DEFAULT_OPTIONS[1].selected).toEqual(false);
   });
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'f');
+        expect(input.props.value).toBe('Foo');
+      },
     );
-
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Foo');
   });
 
   it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'f');
+        expect(input.props.value).toBe('Foo');
+      },
     );
-
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Foo');
   });
 
   it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" allowFreeform={false} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'п');
+        expect(input.props.value).toBe('папа');
+      },
     );
-
-    wrapper.find('input').simulate('input', { target: { value: 'п' } });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('папа');
   });
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'f');
+        expect(input.props.value).toBe('f');
+      },
     );
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('f');
   });
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'f');
+        expect(input.props.value).toBe('One');
+      },
     );
-    wrapper.find('input').simulate('keydown', { which: 'f' });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, '');
+        simulateKeydown(input, KeyCodes.enter);
+        expect(input.props.value).toBe('');
+      },
     );
-    ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('');
   });
 
   it('Cannot insert an empty string in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, '');
+        simulateKeydown(input, KeyCodes.enter);
+        expect(input.props.value).toBe('One');
+      },
     );
-
-    ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete off and allowFreeform on', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, '');
+        simulateKeydown(input, KeyCodes.enter);
+        expect(input.props.value).toBe('');
+      },
     );
-    ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('');
   });
 
   it('Cannot insert an empty string in uncontrolled case with autoComplete and allowFreeform off', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, '');
+        simulateKeydown(input, KeyCodes.enter);
+        expect(input.props.value).toBe('One');
+      },
     );
-    ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
   });
 
   // jeremy
@@ -352,17 +377,16 @@ describe('ComboBox', () => {
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete and allowFreeform on',
     () => {
-      wrapper = mount(
+      safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
+        container => {
+          const input = container.root.findByType('input');
+          simulateInputEvent(input, 'f');
+          simulateInputEvent(input, '');
+          simulateKeydown(input, KeyCodes.enter);
+          expect(input.props.value).toBe('');
+        },
       );
-
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = 'f';
-      wrapper.find('input').simulate('input', { target: { value: 'f' } });
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-      wrapper.find('input').simulate('input', { target: { value: '' } });
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('');
     },
   );
 
@@ -370,17 +394,16 @@ describe('ComboBox', () => {
     'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete on and allowFreeform off',
     () => {
-      wrapper = mount(
+      safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />,
+        container => {
+          const input = container.root.findByType('input');
+          simulateInputEvent(input, 'f');
+          simulateInputEvent(input, '');
+          simulateKeydown(input, KeyCodes.enter);
+          expect(input.props.value).toBe('Foo');
+        },
       );
-
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = 'f';
-      wrapper.find('input').simulate('input', { target: { value: 'f' } });
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-      wrapper.find('input').simulate('input', { target: { value: '' } });
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('Foo');
     },
   );
 
@@ -388,17 +411,16 @@ describe('ComboBox', () => {
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete off and allowFreeform on',
     () => {
-      wrapper = mount(
+      safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
+        container => {
+          const input = container.root.findByType('input');
+          simulateInputEvent(input, 'f');
+          simulateInputEvent(input, '');
+          simulateKeydown(input, KeyCodes.enter);
+          expect(input.props.value).toBe('');
+        },
       );
-
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = 'f';
-      wrapper.find('input').simulate('input', { target: { value: 'f' } });
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-      wrapper.find('input').simulate('input', { target: { value: '' } });
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('');
     },
   );
 
@@ -406,59 +428,65 @@ describe('ComboBox', () => {
     'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete and allowFreeform off',
     () => {
-      wrapper = mount(
+      safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />,
+        container => {
+          const input = container.root.findByType('input');
+          simulateInputEvent(input, 'f');
+          simulateInputEvent(input, '');
+          simulateKeydown(input, KeyCodes.enter);
+          expect(input.props.value).toBe('One');
+        },
       );
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = 'f';
-      wrapper.find('input').simulate('input', { target: { value: 'f' } });
-      ((wrapper.find('input').instance() as unknown) as HTMLInputElement).value = '';
-      wrapper.find('input').simulate('input', { target: { value: '' } });
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('One');
     },
   );
 
   it('Can change selected option with keyboard', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Foo');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.down);
+      expect(input.props.value).toEqual('Foo');
+    });
   });
 
   it('Can change selected option with keyboard, looping from top to bottom', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Bar');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.up);
+      expect(input.props.value).toEqual('Bar');
+    });
   });
 
   it('Can change selected option with keyboard, looping from bottom to top', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="3" options={DEFAULT_OPTIONS2} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
+    safeCreate(<ComboBox defaultSelectedKey="3" options={DEFAULT_OPTIONS2} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.down);
+      expect(input.props.value).toEqual('One');
+    });
   });
 
   it('Can change selected option with keyboard, looping from top to bottom', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Bar');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.up);
+      expect(input.props.value).toEqual('Bar');
+    });
   });
 
   it('Cannot insert text while disabled', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.a });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.a);
+      expect(input.props.value).toEqual('One');
+    });
   });
 
   it('Cannot change selected option with keyboard while disabled', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />, container => {
+      const input = container.root.findByType('input');
+      simulateKeydown(input, KeyCodes.down);
+      expect(input.props.value).toEqual('One');
+    });
   });
 
   it('Cannot expand the menu when clicking on the input while disabled', () => {
