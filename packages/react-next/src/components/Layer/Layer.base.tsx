@@ -99,6 +99,16 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     if (hostId) {
       registerLayer(hostId, createLayerElement);
     }
+
+    // On component unmount:
+    // Remove previous layer elements and unregister the layer if a hostId prop was provided.
+    return () => {
+      removeLayerElement();
+
+      if (hostId) {
+        unregisterLayer(hostId, createLayerElement);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 
@@ -107,16 +117,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     if (hostId !== layerHostId) {
       createLayerElement();
     }
-
-    // On component unmount:
-    // Remove the layer element and unregister the layer if a hostId prop was provided.
-    return () => {
-      removeLayerElement();
-      if (hostId) {
-        unregisterLayer(hostId, createLayerElement);
-      }
-    };
-  }, [currentLayerElement, createLayerElement, hostId, layerHostId, removeLayerElement]);
+  }, [createLayerElement, hostId, layerHostId]);
 
   useDebugWarnings(props);
 

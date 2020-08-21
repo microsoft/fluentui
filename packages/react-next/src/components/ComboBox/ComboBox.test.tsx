@@ -4,7 +4,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
-
+import { safeCreate } from '@uifabric/test-utilities';
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
@@ -212,10 +212,14 @@ describe('ComboBox', () => {
     domNode = renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
     const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-    ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(secondItemElement);
+    });
 
     const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('2');
@@ -225,10 +229,14 @@ describe('ComboBox', () => {
     domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
 
     const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-    ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(secondItemElement);
+    });
 
     const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('1');
@@ -238,10 +246,14 @@ describe('ComboBox', () => {
     domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect />);
 
     const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-    ReactTestUtils.Simulate.change(buttons[1]);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.change(buttons[1]);
+    });
 
     expect(!!DEFAULT_OPTIONS[1].selected).toEqual(false);
   });
@@ -607,7 +619,9 @@ describe('ComboBox', () => {
     );
 
     const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const callout = document.querySelector('.ms-Callout')!;
     expect(callout).toBeDefined();
@@ -824,6 +838,7 @@ describe('ComboBox', () => {
         onMenuDismissed={onMenuDismissedMock}
       />,
     );
+
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
 
     // Find menu
@@ -833,16 +848,20 @@ describe('ComboBox', () => {
 
     // Open combobox
     const buttonElement = comboBoxRoot.find('button');
-    buttonElement.simulate('click');
+    ReactTestUtils.act(() => {
+      buttonElement.simulate('click');
+    });
     expect(onMenuOpenMock.mock.calls.length).toBe(1);
 
     // Close combobox
-    buttonElement.simulate('click');
+    ReactTestUtils.act(() => {
+      buttonElement.simulate('click');
+    });
     expect(onMenuDismissedMock.mock.calls.length).toBe(1);
 
     // Ensure menu is still there
     const calloutAfterClose = document.querySelector('.ms-Callout')!;
-    expect(calloutAfterClose).toBeDefined();
+    expect(calloutAfterClose).toBeTruthy();
     expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
   });
 
