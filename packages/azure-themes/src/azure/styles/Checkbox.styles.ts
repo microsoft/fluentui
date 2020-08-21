@@ -38,7 +38,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       disabled &&
         checked && {
           borderColor: extendedSemanticColors.checkBoxDisabled,
-          backgroundColor: extendedSemanticColors.checkBoxDisabled,
+          backgroundColor: extendedSemanticColors.checkBoxCheckedDisabledBackground,
         },
     ],
     checkmark: [

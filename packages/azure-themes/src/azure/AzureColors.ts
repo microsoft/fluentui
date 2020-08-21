@@ -246,6 +246,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_484644,
+      background: BaseColors.GRAY_484644,
     },
   },
   controlOutlines: {
@@ -423,7 +424,8 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       hoverBorder: BaseColors.PURPLE_800080,
     },
     disabled: {
-      border: BaseColors.GRAY_484644,
+      border: BaseColors.GREEN_0AFF00,
+      background: BaseColors.TRANSPARENT,
     },
   },
   controlOutlines: {
@@ -602,11 +604,12 @@ export const LightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
+      background: BaseColors.GRAY_C8C6C4,
     },
   },
   controlOutlines: {
     rest: BaseColors.GRAY_323130,
-    disabled: BaseColors.GRAY_C8C6C4,
+    disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
     error: BaseColors.RED_E00B1C,
@@ -780,11 +783,12 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
+      background: BaseColors.TRANSPARENT,
     },
   },
   controlOutlines: {
     rest: BaseColors.BLACK,
-    disabled: BaseColors.GRAY_C8C6C4,
+    disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.PURPLE_800080,
     error: BaseColors.RED_E00B1C,

@@ -20,8 +20,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
           paddingTop: '5px',
         },
         '.ms-Button:hover': {
-          backgroundColor: semanticColors.bodyBackground,
-          color: extendedSemanticColors.primaryButtonTextHovered,
+          backgroundColor: semanticColors.buttonBackgroundHovered,
         },
         '&.is-open': {
           borderColor: semanticColors.focusBorder,
@@ -43,14 +42,19 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       },
     },
     rootDisabled: {
+      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       selectors: {
         '.ms-Button': {
-          backgroundColor: semanticColors.disabledBackground,
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
           color: semanticColors.inputText,
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.disabledBackground,
           color: semanticColors.inputText,
+        },
+        '.ms-ComboBox-Input': {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+          color: semanticColors.primaryButtonTextDisabled,
         },
       },
     },
