@@ -113,12 +113,14 @@ export const RatingBase = React.forwardRef<HTMLDivElement, IRatingProps>((props,
       } as IFocusZoneProps)
     : undefined;
 
-  const getStarId = (index: number): string => {
-    return id + '-star-' + index;
-  };
+  const getStarId = React.useCallback(
+    (index: number): string => {
+      return id + '-star-' + index;
+    },
+    [id],
+  );
 
   const onFocus = (value: number, ev: React.FocusEvent<HTMLElement>): void => {
-    // const currentRating = getRating();
     if (Math.ceil(rating!) !== value) {
       setRating(value);
       onChange?.(ev, value);
