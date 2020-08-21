@@ -6,6 +6,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Usage = () => (
   <ExampleSection title="Usage">
     <ComponentExample
+      title="No Input Placeholder"
+      description="User can decide to not display the guiding placeholder in the input field."
+      examplePath="components/Datepicker/Usage/DatepickerNoInputPlaceholderExample"
+    />
+    <ComponentExample
       title="Custom formatting"
       description={
         <>

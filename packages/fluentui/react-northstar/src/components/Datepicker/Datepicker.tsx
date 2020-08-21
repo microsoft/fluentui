@@ -73,9 +73,6 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
    */
   onDateChangeError?: ComponentEventHandler<DatepickerProps & { error: string }>;
 
-  /** Text placeholder for the input field. */
-  placeholder?: string;
-
   /** Target dates can be also entered through the input field. */
   allowManualInput?: boolean;
 
@@ -132,6 +129,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
     goToToday: props.goToToday,
     openCalendarTitle: props.openCalendarTitle,
+    inputPlaceholder: props.inputPlaceholder,
     prevMonthAriaLabel: props.prevMonthAriaLabel,
     nextMonthAriaLabel: props.nextMonthAriaLabel,
     prevYearAriaLabel: props.prevYearAriaLabel,
@@ -297,6 +295,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         >
           {createShorthand(Input, input, {
             defaultProps: () => ({
+              placeholder: props.inputPlaceholder,
               disabled: props.disabled,
               error: !!error,
               value: formattedDate,
@@ -352,7 +351,6 @@ Datepicker.propTypes = {
   required: PropTypes.bool,
   onDateChange: PropTypes.func,
   onDateChangeError: PropTypes.func,
-  placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
   fallbackToLastCorrectDateOnBlur: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
@@ -390,6 +388,7 @@ Datepicker.propTypes = {
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,
