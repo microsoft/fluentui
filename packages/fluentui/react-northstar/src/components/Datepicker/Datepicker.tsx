@@ -282,6 +282,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           setPreventClosing(true);
           setOpenState(true);
         }
+
+        _.invoke(predefinedProps, 'onKeyPress', e, predefinedProps);
       }
     },
   });
