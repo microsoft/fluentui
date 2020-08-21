@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.8.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.8.0..@fluentui/react-theme-provider_v0.8.1)
+
+### Patches
+
+- Fix default button tokens ([PR #14612](https://github.com/microsoft/fluentui/pull/14612) by xgao@microsoft.com)
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.8.0)
 

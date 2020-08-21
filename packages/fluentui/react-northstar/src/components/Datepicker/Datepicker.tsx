@@ -174,6 +174,19 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     validateDate(selectedDate, formattedDate, restrictedDatesOptions, dateFormatting, props.required),
   );
 
+  const calendarOptions: IDayGridOptions = {
+    selectedDate: selectedDate ?? props.today ?? new Date(),
+    navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
+    firstDayOfWeek: props.firstDayOfWeek,
+    firstWeekOfYear: props.firstWeekOfYear,
+    dateRangeType: props.dateRangeType,
+    daysToSelectInDayView: props.daysToSelectInDayView,
+    today: props.today,
+    showWeekNumbers: props.showWeekNumbers,
+    workWeekDays: props.workWeekDays,
+    ...restrictedDatesOptions,
+  };
+
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -195,19 +208,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     }),
     rtl: context.rtl,
   });
-
-  const calendarOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
-    navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
-    firstDayOfWeek: props.firstDayOfWeek,
-    firstWeekOfYear: props.firstWeekOfYear,
-    dateRangeType: props.dateRangeType,
-    daysToSelectInDayView: props.daysToSelectInDayView,
-    today: props.today,
-    showWeekNumbers: props.showWeekNumbers,
-    workWeekDays: props.workWeekDays,
-    ...restrictedDatesOptions,
-  };
 
   const overrideDatepickerCalendarProps = (predefinedProps: DatepickerCalendarProps): DatepickerCalendarProps => ({
     onDateChange: (e, itemProps) => {
@@ -251,7 +251,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
       }
 
-      _.invoke(predefinedProps, 'onChange', e, target);
+      _.invoke(predefinedProps, 'onChange', e, predefinedProps);
     },
     onBlur: e => {
       if (props.fallbackToLastCorrectDateOnBlur && !!error) {
