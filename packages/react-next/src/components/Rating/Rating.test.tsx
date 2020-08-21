@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-// import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
