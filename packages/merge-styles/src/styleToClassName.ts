@@ -82,6 +82,22 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
+function extractSelector(currentSelector: string, rules: IRuleSet = { __order: [] }, selector: string, value: IStyle) {
+  if (selector.indexOf('@') === 0) {
+    selector = selector + '{' + currentSelector;
+    extractRules([value], rules, selector);
+  } else if (selector.indexOf(',') > -1) {
+    expandCommaSeparatedGlobals(selector)
+      .split(',')
+      .map((s: string) => s.trim())
+      .forEach((separatedSelector: string) =>
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector)),
+      );
+  } else {
+    extractRules([value], rules, expandSelector(selector, currentSelector));
+  }
+}
+
 function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
@@ -105,35 +121,27 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       extractRules(arg, rules, currentSelector);
     } else {
       for (const prop in arg as any) {
+        const propValue = (arg as any)[prop];
+
         if (prop === 'selectors') {
+          // every child is a selector.
           const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
           for (let newSelector in selectors) {
             if (selectors.hasOwnProperty(newSelector)) {
-              const selectorValue = selectors[newSelector];
-
-              if (newSelector.indexOf('@') === 0) {
-                newSelector = newSelector + '{' + currentSelector;
-                extractRules([selectorValue], rules, newSelector);
-              } else if (newSelector.indexOf(',') > -1) {
-                expandCommaSeparatedGlobals(newSelector)
-                  .split(',')
-                  .map((s: string) => s.trim())
-                  .forEach((separatedSelector: string) =>
-                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector)),
-                  );
-              } else {
-                extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
-              }
+              extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
             }
           }
+        } else if (typeof propValue === 'object') {
+          // prop is a selector.
+          extractSelector(currentSelector, rules, prop, propValue);
         } else {
-          if ((arg as any)[prop] !== undefined) {
+          if (propValue !== undefined) {
             // Else, add the rule to the currentSelector.
             if (prop === 'margin' || prop === 'padding') {
-              expandQuads(currentRules, prop, (arg as any)[prop]);
+              expandQuads(currentRules, prop, propValue);
             } else {
-              (currentRules as any)[prop] = (arg as any)[prop] as any;
+              (currentRules as any)[prop] = propValue;
             }
           }
         }
