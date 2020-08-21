@@ -253,15 +253,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onChange', e, target);
     },
-    onFocus: e => {
-      if (!allowManualInput) {
-        setOpenState(true);
-        setPreventClosing(true);
-        e.preventDefault();
-      }
-
-      _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
-    },
     onBlur: e => {
       if (props.fallbackToLastCorrectDateOnBlur && !!error) {
         const futureFormattedDate = valueFormatter(selectedDate);
