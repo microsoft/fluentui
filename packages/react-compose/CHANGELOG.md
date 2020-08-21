@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.17.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.16.0..@fluentui/react-compose_v0.17.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.16.0)
 
