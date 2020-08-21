@@ -89,13 +89,11 @@ Additionally, **style objects** can contain selectors under the `selectors` prop
 ```tsx
 let style = {
   backgroundColor: 'red',
-  selectors: {
-    ':hover': {
-      backgroundColor: 'blue';
-    },
-    '.parent &': { /* parent selector */ },
-    '& .child': { /* child selector */ }
-  }
+  ':hover': {
+    backgroundColor: 'blue';
+  },
+  '.parent &': { /* parent selector */ },
+  '& .child': { /* child selector */ }
 };
 ```
 
@@ -162,15 +160,13 @@ export const MyComponent = () => {
 
 ### Basic pseudo-selectors (:hover, :active, etc)
 
-Custom selectors can be defined within `IStyle` definitions under the `selectors` section:
+Custom selectors can be defined within `IStyle` definitions:
 
 ```tsx
 {
   background: 'red',
-  selectors: {
-    ':hover': {
-      background: 'green'
-    }
+  ':hover': {
+    background: 'green'
   }
 }
 ```
@@ -192,15 +188,14 @@ In some cases, you may need to use parent or child selectors. To do so, you can 
 
 ```tsx
 {
-  selectors: {
-    // selector relative to parent
-    '.ms-Fabric--isFocusVisible &': {
-      background: 'red'
-    }
-    // selector for child
-    '& .child' {
-      background: 'green'
-    }
+  // selector relative to parent
+  '.ms-Fabric--isFocusVisible &': {
+    background: 'red'
+  }
+
+  // selector for child
+  '& .child' {
+    background: 'green'
   }
 }
 ```
@@ -224,10 +219,8 @@ To register a selector globally, wrap it in a `:global()` wrapper:
 
 ```tsx
 {
-  selectors: {
-    ':global(button)': {
-      overflow: 'visible'
-    }
+  ':global(button)': {
+    overflow: 'visible'
   }
 }
 ```
@@ -239,13 +232,11 @@ Media queries can be applied via selectors. For example, this style will produce
 ```tsx
 mergeStyles({
   background: 'red',
-  selectors: {
-    '@media(max-width: 600px)': {
-      background: 'green',
-    },
-    '@supports(display: grid)': {
-      display: 'grid',
-    },
+  '@media(max-width: 600px)': {
+    background: 'green',
+  },
+  '@supports(display: grid)': {
+    display: 'grid',
   },
 });
 ```
@@ -307,10 +298,8 @@ mergeStyleSets({
   child: [
     classNames.child,
     {
-      selectors: {
-        [`.${classNames.root}:hover &`]: {
-          background: 'green',
-        },
+      [`.${classNames.root}:hover &`]: {
+        background: 'green',
       },
     },
   ],
