@@ -3,6 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -547,7 +548,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
       .tickPadding(5)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickValues(domains);
 
     this._showYAxisGridLines &&
