@@ -96,9 +96,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
       id="MessageBar0"
       role="status"
     >
@@ -110,9 +107,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             }
             & span a {
               padding-left: 4px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
             }
       />
     </div>

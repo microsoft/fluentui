@@ -190,11 +190,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexGrow: 1,
         margin: 8,
         ...fonts.small,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'WindowText',
-          },
-        },
       },
       !onDismiss && {
         marginRight: 12,
@@ -207,9 +202,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         selectors: {
           '& span a': {
             paddingLeft: 4,
-          },
-          [HighContrastSelector]: {
-            color: 'WindowText',
           },
         },
       },
