@@ -18,6 +18,8 @@ import {
   compareDatePart,
   getMonthStart,
   getMonthEnd,
+  isAfterMaxDate,
+  isBeforeMinDate,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -199,6 +201,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       // if no dates available in initial direction, try going backwards
       findAvailableDateOptions.direction = -direction;
       newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+    }
+
+    if (isAfterMaxDate(targetDate, dayGridOptions)) {
+      newNavigatedDate = props.maxDate;
+    } else if (isBeforeMinDate(targetDate, dayGridOptions)) {
+      newNavigatedDate = props.minDate;
     }
 
     return newNavigatedDate;
