@@ -4,9 +4,9 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
-      "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
-      "@fluentui/react-compose": ["packages/react-compose/src/index"],
-      "@fluentui/react-button": ["packages/react-button/src/index"],
+      "@fluentui/keyboard-key": ["packages/keyboard-key/src"],
+      "@fluentui/react-compose": ["packages/react-compose/src"],
+      "@fluentui/react-button": ["packages/react-button/src"],
       "@uifabric/merge-styles": ["packages/merge-styles/src"],
       "@uifabric/set-version": ["packages/set-version/src"],
       "@uifabric/utilities": ["packages/utilities/src"],

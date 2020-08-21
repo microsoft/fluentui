@@ -1,5 +1,5 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
-import { mergeProps } from '@fluentui/react-compose';
+import { mergeProps } from '@fluentui/react-compose/next';
 import { ComponentWithAs, ShorthandConfig, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';

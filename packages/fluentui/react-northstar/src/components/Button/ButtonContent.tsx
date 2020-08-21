@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStyles, useFluentContext, ComponentWithAs } from '@fluentui/react-bindings';
-import { mergeProps } from '@fluentui/react-compose';
+import { mergeProps } from '@fluentui/react-compose/next';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { commonPropTypes, SizeValue } from '../../utils';
 import { BoxProps } from '../Box/Box';

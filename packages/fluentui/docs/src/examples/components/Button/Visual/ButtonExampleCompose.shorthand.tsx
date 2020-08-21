@@ -18,7 +18,7 @@ import {
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
 import { useFluentContext } from '@fluentui/react-bindings';
-import { mergeProps } from '@fluentui/react-compose';
+import { mergeProps } from '@fluentui/react-compose/next';
 
 //
 // Components
