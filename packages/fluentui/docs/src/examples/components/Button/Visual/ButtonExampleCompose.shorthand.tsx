@@ -7,7 +7,7 @@ import {
   Header,
   Provider,
   ButtonContent,
-  ButtonContentProps,
+  // ButtonContentProps,
   // ShorthandValue,
   // ButtonContentStylesProps,
   useButton,
