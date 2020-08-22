@@ -8,7 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, IObjectWithKey, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
@@ -27,7 +27,7 @@ const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => (
 );
 
 export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
-  const items = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
+  const items: IObjectWithKey[] = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
   const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
   const columns = useConst(() =>
     Object.keys(items[0])
@@ -41,20 +41,19 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         }),
       ),
   );
-  const selection = (useConst(() => new Selection({ items })) as unknown) as ISelection<IObjectWithKey>;
+  const selection = useConst(() => new Selection({ items }));
 
   const onRenderCell = React.useCallback(
-    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode =>
-      item && itemIndex ? (
-        <DetailsRow
-          columns={columns}
-          groupNestingDepth={nestingDepth}
-          item={item}
-          itemIndex={itemIndex}
-          selection={selection}
-          selectionMode={SelectionMode.multiple}
-        />
-      ) : null,
+    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
+      <DetailsRow
+        columns={columns}
+        groupNestingDepth={nestingDepth}
+        item={item}
+        itemIndex={itemIndex!}
+        selection={selection}
+        selectionMode={SelectionMode.multiple}
+      />
+    ),
     [columns, selection],
   );
 
