@@ -133,7 +133,7 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
               }
             }
-          } else if (typeof propValue === 'object') {
+          } else if (propValue && typeof propValue === 'object') {
             // prop is a selector.
             extractSelector(currentSelector, rules, prop, propValue);
           } else {
