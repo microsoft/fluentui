@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.types';
+import { ButtonGridCell } from '../../utilities/buttonGrid/ButtonGridCell';
+import { IButtonGridCellProps } from '../../utilities/buttonGrid/ButtonGridCell.types';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import {
@@ -58,7 +58,7 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
-class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
+class ColorCell extends ButtonGridCell<IColorCellProps, IButtonGridCellProps<IColorCellProps>> {}
 
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
   public static defaultProps: Partial<IColorPickerGridCellProps> = {

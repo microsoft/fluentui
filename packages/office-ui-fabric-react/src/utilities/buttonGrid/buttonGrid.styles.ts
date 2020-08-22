@@ -1,4 +1,4 @@
-import { IButtonGridStyleProps, IButtonGridStyles } from './buttonGrid.types';
+import { IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
 export const getStyles = (props: IButtonGridStyleProps): IButtonGridStyles => {
   return {

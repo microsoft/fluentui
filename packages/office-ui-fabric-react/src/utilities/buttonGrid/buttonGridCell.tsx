@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { IButtonGridCellProps } from './buttonGridCell.types';
+import { IButtonGridCellProps } from './ButtonGridCell.types';
 import { CommandButton } from '../../Button';
 
 export class ButtonGridCell<T, P extends IButtonGridCellProps<T>> extends React.Component<P, {}> {

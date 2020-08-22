@@ -1,1 +1,1 @@
-export * from './utilities/grid/index';
+export * from './utilities/buttonGrid/index';

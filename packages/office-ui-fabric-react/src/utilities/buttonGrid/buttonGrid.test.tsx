@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ButtonGridBase } from './buttonGrid.base';
-import { getStyles } from './buttonGrid.styles';
+import { ButtonGridBase } from './ButtonGrid.base';
+import { getStyles } from './ButtonGrid.styles';
 import { DefaultButton } from '../../Button';
 import { shallow } from 'enzyme';
 

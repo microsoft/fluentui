@@ -8,7 +8,7 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IButtonGrid, IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './buttonGrid.types';
+import { IButtonGrid, IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
 const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 
