@@ -20,7 +20,8 @@ export interface IRawStyle extends IRawStyleBase {
   displayName?: string;
 
   /**
-   * Custom selectors for the style.
+   * @deprecated - The selectors wrapper is no longer required. You may add selectors as siblings to other
+   * style properties, like most css-in-js libraries support.
    */
   selectors?: {
     [key: string]: IStyle;
