@@ -13,7 +13,7 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { ButtonGrid } from '../../utilities/buttonGrid/ButtonGrid';
+import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';

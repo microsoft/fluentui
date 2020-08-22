@@ -3,6 +3,6 @@
   "comment": "Renaming Grid utility to ButtonGrid.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "minor",
   "date": "2020-08-22T01:07:24.885Z"
 }

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { ButtonGridCell } from '../../utilities/buttonGrid/ButtonGridCell';
-import { IButtonGridCellProps } from '../../utilities/buttonGrid/ButtonGridCell.types';
+import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
+import { IButtonGridCellProps } from '../../utilities/ButtonGrid/ButtonGridCell.types';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import {
