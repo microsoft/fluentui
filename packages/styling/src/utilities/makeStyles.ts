@@ -1,4 +1,4 @@
-import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { mergeStyleSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/';
 import { useCustomizationSettings } from '@uifabric/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
@@ -35,6 +35,10 @@ const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
   graphNode.set(path[path.length - 1], value);
 };
 
+let _seed = 0;
+
+Stylesheet.getInstance().onReset(() => _seed++);
+
 export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(
   styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
 ): () => IProcessedStyleSet<TStyleSet> {
@@ -44,7 +48,7 @@ export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(
   return () => {
     const win = useWindow();
     const theme = useCustomizationSettings(['theme']).theme;
-    const path = theme ? [win, theme] : [win];
+    const path = theme ? [_seed, win, theme] : [_seed, win];
     let value = graphGet(graph, path);
 
     if (!value) {

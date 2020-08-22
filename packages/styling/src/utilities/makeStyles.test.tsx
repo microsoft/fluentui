@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { makeStyles } from './makeStyles';
 import { Customizer } from '@uifabric/utilities';
-import { createTheme } from '../styles/theme';
+import { createTheme, loadTheme } from '../styles/theme';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { safeMount } from '@uifabric/test-utilities';
+import { mount, ReactWrapper } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 
 describe('makeStyles', () => {
-  const _stylesheet: Stylesheet = Stylesheet.getInstance();
-
-  _stylesheet.setConfig({ injectionMode: InjectionMode.none });
+  const stylesheet: Stylesheet = Stylesheet.getInstance();
 
   const useThemedStyles = makeStyles(theme => ({
     root: {
@@ -35,12 +35,13 @@ describe('makeStyles', () => {
   };
 
   beforeEach(() => {
-    _stylesheet.reset();
+    stylesheet.setConfig({ injectionMode: InjectionMode.none });
+    stylesheet.reset();
   });
 
   it('can refer to styles from the default theme', () => {
     safeMount(<ThemeStyledComponent />);
-    expect(_stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}');
+    expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}');
   });
 
   it('can refer to styles from a custom theme', () => {
@@ -55,11 +56,29 @@ describe('makeStyles', () => {
         <ThemeStyledComponent />
       </Customizer>,
     );
-    expect(_stylesheet.getRules()).toEqual('.root-0{background:purple;}');
+    expect(stylesheet.getRules()).toEqual('.root-0{background:purple;}');
   });
 
   it('can render static styles', () => {
     safeMount(<StaticStyledComponent />);
-    expect(_stylesheet.getRules()).toEqual('.root-0{background:yellow;}');
+    expect(stylesheet.getRules()).toEqual('.root-0{background:yellow;}');
+  });
+
+  it('can update when loadTheme is called', () => {
+    let wrapper: ReactWrapper;
+
+    act(() => {
+      wrapper = mount(<ThemeStyledComponent />);
+    });
+
+    expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}');
+
+    act(() => {
+      loadTheme(createTheme({ palette: { themePrimary: 'red' } }));
+    });
+
+    expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}.root-1{background:red;}');
+
+    wrapper!.unmount();
   });
 });
