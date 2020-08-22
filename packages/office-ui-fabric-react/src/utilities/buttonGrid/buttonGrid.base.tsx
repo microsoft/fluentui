@@ -8,14 +8,14 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
+import { IButtonGrid, IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './buttonGrid.types';
 
-const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
+const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 
-export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
+export class ButtonGridBase extends React.Component<IButtonGridProps, {}> implements IButtonGrid {
   private _id: string;
 
-  constructor(props: IGridProps) {
+  constructor(props: IButtonGridProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -95,3 +95,8 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
     );
   }
 }
+
+/**
+ * @deprecated - use ButtonGridBase instead
+ */
+export const GridBase = ButtonGridBase;
