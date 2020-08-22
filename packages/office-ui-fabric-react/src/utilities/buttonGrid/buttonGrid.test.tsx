@@ -15,8 +15,8 @@ const DEFAULT_ITEMS: any[] = [
   { id: 'h', text: '3,1' },
 ];
 
-describe('buttonGrid', () => {
-  it('Can render a buttonGrid with width of four', () => {
+describe('ButtonGrid', () => {
+  it('Can render a ButtonGrid with width of four', () => {
     const wrapper = shallow(
       <ButtonGridBase
         items={DEFAULT_ITEMS}
@@ -33,7 +33,7 @@ describe('buttonGrid', () => {
     expect(wrapper.find('[aria-posinset]').length).toEqual(0);
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
-  it('Can render a buttonGrid with width of 2', () => {
+  it('Can render a ButtonGrid with width of 2', () => {
     const wrapper = shallow(
       <ButtonGridBase
         items={DEFAULT_ITEMS}
@@ -50,7 +50,7 @@ describe('buttonGrid', () => {
     expect(wrapper.find('[aria-posinset]').length).toEqual(0);
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
-  it('Can render a buttonGrid with posInSet and setSize', () => {
+  it('Can render a ButtonGrid with posInSet and setSize', () => {
     const wrapper = shallow(
       <ButtonGridBase
         items={DEFAULT_ITEMS}

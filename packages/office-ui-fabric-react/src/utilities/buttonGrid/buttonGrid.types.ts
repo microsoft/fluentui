@@ -11,7 +11,7 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
   componentRef?: IRefObject<IButtonGrid>;
 
   /**
-   * Items to display in a buttonGrid with the specified number of columns.
+   * Items to display in a ButtonGrid with the specified number of columns.
    */
   items: any[];
 
@@ -32,25 +32,25 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
   shouldFocusCircularNavigate?: boolean;
 
   /**
-   * If false (the default), the buttonGrid is contained inside a FocusZone.
+   * If false (the default), the ButtonGrid is contained inside a FocusZone.
    * If true, a FocusZone is not used.
    * @default false
    */
   doNotContainWithinFocusZone?: boolean;
 
   /**
-   * Class name for the FocusZone container for the buttonGrid.
+   * Class name for the FocusZone container for the ButtonGrid.
    * @deprecated Use `styles.focusedContainer` to define styling for the focus zone container
    */
   containerClassName?: string;
 
   /**
-   * Handler for when focus leaves the buttonGrid.
+   * Handler for when focus leaves the ButtonGrid.
    */
   onBlur?: () => void;
 
   /**
-   * Position this buttonGrid is in the parent set (index in a parent menu, for example)
+   * Position this ButtonGrid is in the parent set (index in a parent menu, for example)
    */
   ariaPosInSet?: number;
 
@@ -81,31 +81,31 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
 }
 
 /**
- * Properties required to build the styles for the buttonGrid component.
+ * Properties required to build the styles for the ButtonGrid component.
  */
 export interface IButtonGridStyleProps {
   /**
-   * Theme to apply to the buttonGrid.
+   * Theme to apply to the ButtonGrid.
    */
   theme: ITheme;
 }
 
 /**
- * Styles for the buttonGrid Component.
+ * Styles for the ButtonGrid Component.
  */
 export interface IButtonGridStyles {
   /**
-   * Style for the table container of a buttonGrid.
+   * Style for the table container of a ButtonGrid.
    */
   root: IStyle;
 
   /**
-   * Style for the table cells of the buttonGrid.
+   * Style for the table cells of the ButtonGrid.
    */
   tableCell: IStyle;
 
   /**
-   * Style for the FocusZone container for the buttonGrid.
+   * Style for the FocusZone container for the ButtonGrid.
    */
   focusedContainer?: IStyle;
 }
@@ -116,7 +116,7 @@ export interface IButtonGridStyles {
 export interface IGrid extends IButtonGrid {}
 
 /**
- * @deprecated - use ISwIButtonGridPropsatchGridProps instead.
+ * @deprecated - use IButtonGridProps instead.
  */
 export interface IGridProps extends IButtonGridProps {}
 
