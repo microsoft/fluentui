@@ -84,7 +84,7 @@ let style = {
 };
 ```
 
-Additionally, **style objects** can contain selectors under the `selectors` property:
+Additionally, **style objects** can contain selectors:
 
 ```tsx
 let style = {
