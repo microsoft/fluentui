@@ -13,4 +13,4 @@ export {
 } from './icons';
 
 export { getIconClassName } from './getIconClassName';
-export * from './useStyles';
+export * from './makeStyles';

@@ -36,21 +36,21 @@ If you override theme settings, you need to do this before accessing theme color
 
 ## Create classes for React components based on theme
 
-Themes can be accessed using the `useStyles` hook. This hook abstracts rendering css given the theme object:
+Themes can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
 
 ```jsx
-import { useStyles } from '@uifabric/styling';
+import { makeStyles } from '@uifabric/styling';
 
-const Foo = props => {
-  const classes = useStyles(theme => ({
+const useFooStyles = makeStyles(theme => ({
     root: {
       background: theme.semanticColors.bodyBackground,
-      selectors: {
-        ':hover': {
-          background: theme.semanticColors.bodyBackgroundHovered
-      }
+      ':hover': {
+        background: theme.semanticColors.bodyBackgroundHovered
     },
-  }));
+}));
+
+const Foo = props => {
+  const classes = useFooStyles();
 
   return <div className={classes.root} />;
 };

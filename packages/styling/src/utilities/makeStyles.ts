@@ -1,0 +1,58 @@
+import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { ITheme } from '../interfaces/';
+import { useCustomizationSettings } from '@uifabric/utilities';
+import { useWindow } from '@fluentui/react-window-provider';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
+  for (const key of path) {
+    graphNode = graphNode.get(key);
+
+    if (!graphNode) {
+      return;
+    }
+  }
+
+  return graphNode;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
+  for (let i = 0; i < path.length - 1; i++) {
+    const key = path[i];
+
+    let current = graphNode.get(key);
+
+    if (!current) {
+      current = new Map();
+
+      graphNode.set(key, current);
+    }
+
+    graphNode = current;
+  }
+
+  graphNode.set(path[path.length - 1], value);
+};
+
+export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(
+  styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
+): () => IProcessedStyleSet<TStyleSet> {
+  // Create graph of inputs to map to output.
+  const graph = new Map();
+
+  return () => {
+    const win = useWindow();
+    const theme = useCustomizationSettings(['theme']).theme;
+    const path = theme ? [win, theme] : [win];
+    let value = graphGet(graph, path);
+
+    if (!value) {
+      const styles = typeof styleOrFunction !== 'function' ? styleOrFunction : styleOrFunction(theme);
+      value = mergeStyleSets(styles);
+      graphSet(graph, path, value);
+    }
+
+    return value;
+  };
+}
