@@ -1,5 +1,6 @@
 import { SourceFile } from 'ts-morph';
 import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities/index';
+// import { Ok } from '../../../helpers/result';
 
 export interface ComponentToCompat {
   // Old exact path
@@ -27,18 +28,21 @@ export interface CompatMap {
 
 export function repathNamedImports(file: SourceFile, namedImportMap: { [key: string]: string }, indexPath: string) {
   const imports = getImportsByPath(file, indexPath);
-  imports.forEach(imp => {
-    imp.getNamedImports().forEach(namedImp => {
-      if (namedImportMap[namedImp.getName()]) {
-        appendOrCreateNamedImport(file, namedImportMap[namedImp.getName()], [namedImp.getStructure()]);
-        namedImp.remove();
-      }
-    });
+  return imports.then(ports => {
+    return ports.map(imp => {
+      imp.getNamedImports().forEach(namedImp => {
+        if (namedImportMap[namedImp.getName()]) {
+          appendOrCreateNamedImport(file, namedImportMap[namedImp.getName()], [namedImp.getStructure()]);
+          namedImp.remove();
+        }
+      });
 
-    // Remove the index import if it no longer has any named imports.
-    if (imp.getNamedImports().length === 0) {
-      imp.remove();
-    }
+      // Remove the index import if it no longer has any named imports.
+      if (imp.getNamedImports().length === 0) {
+        imp.remove();
+      }
+      return imp;
+    });
   });
 }
 
