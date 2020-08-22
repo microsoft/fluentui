@@ -133,9 +133,11 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
               }
             }
-          } else if (propValue && typeof propValue === 'object') {
+          } else if (typeof propValue === 'object') {
             // prop is a selector.
-            extractSelector(currentSelector, rules, prop, propValue);
+            if (propValue !== null) {
+              extractSelector(currentSelector, rules, prop, propValue);
+            }
           } else {
             if (propValue !== undefined) {
               // Else, add the rule to the currentSelector.
