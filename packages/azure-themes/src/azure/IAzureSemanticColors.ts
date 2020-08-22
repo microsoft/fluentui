@@ -104,6 +104,7 @@ export interface IAzureSemanticColors {
     };
     disabled: {
       border: string;
+      background: string;
     };
   };
   controlOutlines: {
