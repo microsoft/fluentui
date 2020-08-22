@@ -51,6 +51,30 @@ describe('print', () => {
     );
   });
 
+  it('can format, sort, and indent the class names without selectors wrapper', () => {
+    const classNames = mergeStyles('ms-GlobalClassName', {
+      color: 'white',
+      background: 'red',
+      ':hover': {
+        background: 'green',
+      },
+    });
+
+    expect(print(classNames, () => '', indent)).toEqual(
+      [
+        '',
+        indent('ms-GlobalClassName'),
+        indent('{'),
+        indent('  background: red;'),
+        indent('  color: white;'),
+        indent('}'),
+        indent('&:hover {'),
+        indent('  background: green;'),
+        indent('}'),
+      ].join('\n'),
+    );
+  });
+
   it('can expand animation class names', () => {
     const fadeInClassName = keyframes({
       from: { opacity: 0 },
