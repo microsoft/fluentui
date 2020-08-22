@@ -121,27 +121,29 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       extractRules(arg, rules, currentSelector);
     } else {
       for (const prop in arg as any) {
-        const propValue = (arg as any)[prop];
+        if ((arg as any).hasOwnProperty(prop)) {
+          const propValue = (arg as any)[prop];
 
-        if (prop === 'selectors') {
-          // every child is a selector.
-          const selectors: { [key: string]: IStyle } = (arg as any).selectors;
+          if (prop === 'selectors') {
+            // every child is a selector.
+            const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
-          for (let newSelector in selectors) {
-            if (selectors.hasOwnProperty(newSelector)) {
-              extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
+            for (const newSelector in selectors) {
+              if (selectors.hasOwnProperty(newSelector)) {
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
+              }
             }
-          }
-        } else if (typeof propValue === 'object') {
-          // prop is a selector.
-          extractSelector(currentSelector, rules, prop, propValue);
-        } else {
-          if (propValue !== undefined) {
-            // Else, add the rule to the currentSelector.
-            if (prop === 'margin' || prop === 'padding') {
-              expandQuads(currentRules, prop, propValue);
-            } else {
-              (currentRules as any)[prop] = propValue;
+          } else if (typeof propValue === 'object') {
+            // prop is a selector.
+            extractSelector(currentSelector, rules, prop, propValue);
+          } else {
+            if (propValue !== undefined) {
+              // Else, add the rule to the currentSelector.
+              if (prop === 'margin' || prop === 'padding') {
+                expandQuads(currentRules, prop, propValue);
+              } else {
+                (currentRules as any)[prop] = propValue;
+              }
             }
           }
         }
