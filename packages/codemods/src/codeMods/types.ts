@@ -91,7 +91,6 @@ export type RenamePropModType = {
     from: {
       importName: string;
       toRename: string;
-      paths?: string[];
     };
     to: {
       replacementName: string;
