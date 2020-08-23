@@ -39,6 +39,12 @@ let _seed = 0;
 
 Stylesheet.getInstance().onReset(() => _seed++);
 
+/**
+ * Registers a css object, optionally as a function of the theme.
+ *
+ * @param styleOrFunction - Either a css javascript object, or a function which takes in `ITheme`
+ * and returns a css javascript object.
+ */
 export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(
   styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
 ): () => IProcessedStyleSet<TStyleSet> {
