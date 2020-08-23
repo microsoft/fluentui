@@ -16,20 +16,16 @@ function createConfig(config, onlyProduction) {
     {
       entry,
 
-      externals: [
-        {
-          react: 'React',
-        },
-        {
-          'react-dom': 'ReactDOM',
-        },
-      ],
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
 
       resolve: {
         alias: {
-          '@fluentui/react$': path.join(__dirname, 'lib'),
-          '@fluentui/react/src': path.join(__dirname, 'src'),
-          '@fluentui/react/lib': path.join(__dirname, 'lib'),
+          '@fluentui/react-next$': path.join(__dirname, 'lib'),
+          '@fluentui/react-next/src': path.join(__dirname, 'src'),
+          '@fluentui/react-next/lib': path.join(__dirname, 'lib'),
           'Props.ts.js': 'Props',
           'Example.tsx.js': 'Example',
         },

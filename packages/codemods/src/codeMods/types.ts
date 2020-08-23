@@ -1,9 +1,14 @@
 import { SourceFile, JsxExpression, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
+import { Result } from '../helpers/result';
 
-export interface CodeModResult {
-  success?: boolean;
+export interface ModResult {
+  logs: string[];
 }
-
+export type NoOp = {
+  reason: string;
+  log?: string;
+};
+export type CodeModResult = Result<ModResult, NoOp>;
 export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
@@ -70,13 +75,14 @@ export enum SpreadPropInStatement {
    in configMod.ts. */
 export type CodeModMapType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (file: SourceFile, mod: any) => () => void;
+  [key: string]: (mod: any) => (file: SourceFile) => void;
 };
 
 /* Type definition for a CodeMod object representing a renameProp mod. */
 export type RenamePropModType = {
   name: string;
   type: 'renameProp';
+  version?: string;
   options: {
     from: {
       importName: string;
@@ -94,6 +100,7 @@ export type RenamePropModType = {
 export type RepathImportModType = {
   name: string;
   type: 'repathImport';
+  version?: string;
   options: {
     from: {
       searchString: string | RegExp;
@@ -112,4 +119,10 @@ export type ModTypes = RenamePropModType | RepathImportModType;
 export type UpgradeJSONType = {
   name: string;
   upgrades: ModTypes[];
+};
+
+/* Type storing codemod metadata. */
+export type ModOptions = {
+  name: string;
+  version: string;
 };

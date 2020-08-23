@@ -45,7 +45,18 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     };
     return (
       <div>
-        <DonutChart data={data} innerRadius={55} />
+        <DonutChart
+          data={data}
+          innerRadius={55}
+          legendProps={{
+            overflowProps: {
+              focusZoneProps: {
+                'aria-label': 'Legends container',
+              },
+            },
+            allowFocusOnLegends: true,
+          }}
+        />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>

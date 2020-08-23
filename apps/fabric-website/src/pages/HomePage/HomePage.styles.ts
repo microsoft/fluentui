@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString, FontWeights } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, FontWeights } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -45,14 +45,9 @@ export const monoFont =
 const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link, &:visited';
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
-  const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
+  const { theme, className, isMountedOffset, isInverted } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const beforeColorObj = beforeColor && getColorFromString(beforeColor);
-  const beforeAlt = beforeColorObj && getShade(beforeColorObj, Shade.Shade6).str;
-  const afterColorObj = afterColor && getColorFromString(afterColor);
-  const afterAlt = afterColorObj && getShade(afterColorObj, Shade.Shade6).str;
 
   const sectionAnimation: IStyle = [
     {
