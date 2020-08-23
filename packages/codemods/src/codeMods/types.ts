@@ -4,10 +4,14 @@ import { Result } from '../helpers/result';
 export interface ModResult {
   logs: string[];
 }
+
 export type NoOp = {
   reason: string;
   log?: string;
 };
+
+export type ModFunctionResult<T> = Result<T, NoOp>;
+
 export type CodeModResult = Result<ModResult, NoOp>;
 export interface CodeMod<T = SourceFile> {
   /**
@@ -52,7 +56,7 @@ export type PropTransform = (
   node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
   replacementName: string,
-) => void;
+) => Result<string, NoOp>;
 
 /**
  * Enum that defines the cases by which this codemod can
