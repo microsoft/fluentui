@@ -1,7 +1,6 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import * as StyleConstants from '../Constants';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
@@ -10,7 +9,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,

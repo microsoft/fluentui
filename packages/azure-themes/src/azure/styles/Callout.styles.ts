@@ -1,6 +1,5 @@
 import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabric-react/lib/Callout';
 import { Depths } from '../AzureDepths';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
@@ -16,7 +15,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
     },
     calloutMain: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

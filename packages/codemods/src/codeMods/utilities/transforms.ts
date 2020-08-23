@@ -1,6 +1,7 @@
 import { PropTransform, ValueMap } from '../types';
 import { JsxExpression, SyntaxKind, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
 import { renamePropInSpread } from './helpers/propHelpers';
+import { Err, Ok } from '../../../src/helpers/result';
 
 /*
 Steps to writing a transform:
@@ -48,9 +49,11 @@ export function boolTransform(newValue?: boolean, map?: ValueMap<string>): PropT
       if (toChange) {
         const oldText = toChange.getText();
         toChange.replaceWithText(map ? map[oldText] : newValue !== undefined ? newValue.toString() : toRename);
+        return Ok('Prop value transformed successfully');
       }
+      return Err({ reason: 'Could not access prop value to transform.' });
     } else {
-      renamePropInSpread(
+      return renamePropInSpread(
         element as JsxOpeningElement | JsxSelfClosingElement,
         toRename,
         replacementName,
@@ -74,9 +77,11 @@ export function stringTransform(newValue?: string, map?: ValueMap<string>): Prop
       if (toChange) {
         const oldText = toChange.getText();
         toChange.replaceWithText(map ? `'${map[oldText]}'` : newValue ? newValue : toRename);
+        return Ok('Prop value transformed successfully');
       }
+      return Err({ reason: 'Could not access prop value to transform.' });
     } else {
-      renamePropInSpread(
+      return renamePropInSpread(
         element as JsxOpeningElement | JsxSelfClosingElement,
         toRename,
         replacementName,
@@ -100,9 +105,11 @@ export function numberTransform(newValue?: number, map?: ValueMap<string>): Prop
       if (toChange) {
         const oldText = toChange.getText();
         toChange.replaceWithText(map ? map[oldText] : newValue !== undefined ? newValue.toString() : toRename);
+        return Ok('Prop value transformed successfully');
       }
+      return Err({ reason: 'Could not access prop value to transform.' });
     } else {
-      renamePropInSpread(
+      return renamePropInSpread(
         element as JsxOpeningElement | JsxSelfClosingElement,
         toRename,
         replacementName,
@@ -123,16 +130,18 @@ export function enumTransform(map: ValueMap<string>): PropTransform {
     replacementName: string,
   ) => {
     if (!map) {
-      return;
+      return Err({ reason: 'Cannot perform an enum transform without a map!' });
     }
     if (elementNotInSpread(element)) {
       const toChange = getValueToChange(element as JsxExpression);
       if (toChange) {
         const oldText = toChange.getText();
         toChange.replaceWithText(map[oldText]);
+        return Ok('Prop value transformed successfully');
       }
+      return Err({ reason: 'Could not access prop value to transform.' });
     } else {
-      renamePropInSpread(element as JsxOpeningElement | JsxSelfClosingElement, toRename, replacementName, map);
+      return renamePropInSpread(element as JsxOpeningElement | JsxSelfClosingElement, toRename, replacementName, map);
     }
   };
 }

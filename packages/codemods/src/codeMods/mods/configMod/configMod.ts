@@ -86,10 +86,9 @@ const codeModMap: CodeModMapType = {
               .substring(0, (mod.options.from.searchString as string).length - 2),
           )
         : mod.options.from.searchString;
-      const imports = getImportsByPath(file, searchString);
-      imports.forEach(val => {
-        repathImport(val, mod.options.to.replacementValue);
-      });
+      return getImportsByPath(file, searchString).then(v =>
+        v.map(imp => repathImport(imp, mod.options.to.replacementValue)),
+      );
     };
   },
 };
