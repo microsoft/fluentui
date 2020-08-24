@@ -11,10 +11,13 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": []
+    "importHelpers": true,
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"]
   },
   "include": ["src"]
 }
