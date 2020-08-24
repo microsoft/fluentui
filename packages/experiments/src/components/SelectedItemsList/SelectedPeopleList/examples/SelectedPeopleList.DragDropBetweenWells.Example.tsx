@@ -44,9 +44,9 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
       const data = event.dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === 'persona') {
-          data[i].getAsString((s: string) => {
+          data[i].getAsString((dropText: string) => {
             people.forEach(suggestionItem => {
-              if (suggestionItem.text === s) {
+              if (suggestionItem.text === dropText) {
                 _insertBeforeItem(item, suggestionItem);
               }
             });
@@ -59,8 +59,8 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
     if (event) {
       const dataList = event?.dataTransfer?.items;
-      const str = (item as IPersonaProps).text;
-      dataList?.add(str || '', 'persona');
+      const personaText = (item as IPersonaProps).text;
+      dataList?.add(personaText || '', 'persona');
     }
   };
 
@@ -91,7 +91,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
     (items: IPersona[]) => {
       const currentSelectedItemsCopy = [...currentSelectedItems];
       items.forEach(item => {
-        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        let indexToRemove = currentSelectedItemsCopy.indexOf(item);
         currentSelectedItemsCopy.splice(indexToRemove, 1);
         setCurrentSelectedItems([...currentSelectedItemsCopy]);
       });

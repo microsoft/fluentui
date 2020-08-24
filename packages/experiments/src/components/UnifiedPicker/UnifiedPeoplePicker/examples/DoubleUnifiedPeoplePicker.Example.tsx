@@ -122,11 +122,11 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
-  const _getSerializedItems = (items: IPersonaProps[]): string => {
-    return _getItemsCopyText(items); // Do we want to combine these or have them be separate?
+  const _serializeItemsForDrag = (items: IPersonaProps[]): string => {
+    return _getItemsCopyText(items);
   };
 
-  const _getDeserializedItems = (input: string): IPersonaProps[] => {
+  const _deserializeItemsFromDrop = (input: string): IPersonaProps[] => {
     // Turn the dropped text into items
     const newItems: IPersonaProps[] = [];
     if (input !== null) {
@@ -210,8 +210,8 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
-    getSerializedItems: _getSerializedItems,
-    getDeserializedItems: _getDeserializedItems,
+    serializeItemsForDrag: _serializeItemsForDrag,
+    deserializeItemsFromDrop: _deserializeItemsFromDrop,
     dropItemsAt: _dropItemsAt,
   } as ISelectedPeopleListProps<IPersonaProps>;
 

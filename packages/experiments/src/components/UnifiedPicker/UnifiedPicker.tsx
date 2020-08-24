@@ -106,9 +106,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const data = event.dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
-          data[i].getAsString((s: string) => {
-            if (props.selectedItemsListProps.getDeserializedItems) {
-              const newItems = props.selectedItemsListProps.getDeserializedItems(s);
+          data[i].getAsString((dropText: string) => {
+            if (props.selectedItemsListProps.deserializeItemsFromDrop) {
+              const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
               _dropItemsAt(insertIndex, newItems);
               isDropHandled = true;
             }
@@ -129,10 +129,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(draggedItemIndex);
     if (event) {
       const dataList = event?.dataTransfer?.items;
-      if (props.selectedItemsListProps.getSerializedItems && props.customClipboardType) {
+      if (props.selectedItemsListProps.serializeItemsForDrag && props.customClipboardType) {
         const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
-        const str = props.selectedItemsListProps.getSerializedItems(draggedItems);
-        dataList?.add(str, props.customClipboardType);
+        const dragText = props.selectedItemsListProps.serializeItemsForDrag(draggedItems);
+        dataList?.add(dragText, props.customClipboardType);
       }
     }
   };
