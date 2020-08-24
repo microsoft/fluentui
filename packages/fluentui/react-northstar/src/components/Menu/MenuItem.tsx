@@ -297,21 +297,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
 
-    const rootHandlers: React.HTMLAttributes<HTMLElement> = {
-      ...(on === 'hover' && {
-        onMouseEnter: e => {
-          setWhatInputSource(context.target, 'mouse');
-          trySetMenuOpen(true, e);
-          _.invoke(props, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props);
-        },
-        onMouseLeave: e => {
-          trySetMenuOpen(false, e);
-          _.invoke(props, 'onMouseLeave', e, props);
-        },
-      }),
-    };
-
     const handleWrapperBlur = (e: React.FocusEvent) => {
       if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
         trySetMenuOpen(false, e);
@@ -349,8 +334,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
       performClick(e);
 
-          _.invoke(props, 'onClick', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props);
+      _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemSelect', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -412,7 +397,23 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
     };
 
-    const getRootHandlers = () => (wrapper ? {} : { onClick: handleClick, ...rootHandlers });
+    const rootHandlers: React.HTMLAttributes<HTMLElement> = {
+      ...(!wrapper && {
+        onClick: handleClick,
+        ...(on === 'hover' && {
+          onMouseEnter: e => {
+            setWhatInputSource(context.target, 'mouse');
+            trySetMenuOpen(true, e);
+            _.invoke(props, 'onMouseEnter', e, props);
+            _.invoke(parentProps, 'onItemSelect', e, props);
+          },
+          onMouseLeave: e => {
+            trySetMenuOpen(false, e);
+            _.invoke(props, 'onMouseLeave', e, props);
+          },
+        }),
+      }),
+    };
 
     const trySetMenuOpen = (
       newValue: boolean,
@@ -446,7 +447,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             onFocus: handleFocus,
             ...unhandledProps,
           })}
-          {...getRootHandlers()}
+          {...rootHandlers}
         >
           {childrenExist(children) ? (
             children
