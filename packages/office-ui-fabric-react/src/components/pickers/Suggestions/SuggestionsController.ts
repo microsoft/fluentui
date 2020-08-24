@@ -77,7 +77,7 @@ export class SuggestionsController<T> {
   }
 
   public hasSelectedSuggestion(): boolean {
-    return this.currentSuggestion ? true : false;
+    return this.currentSuggestion && this.currentSuggestion.selected ? true : false;
   }
 
   public removeSuggestion(index: number): void {
@@ -86,7 +86,7 @@ export class SuggestionsController<T> {
 
   public createGenericSuggestion(itemToConvert: ISuggestionModel<T> | T) {
     const itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
-    this.currentSuggestion = itemToAdd;
+    this.currentSuggestion = { ...itemToAdd, selected: true };
   }
 
   public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {

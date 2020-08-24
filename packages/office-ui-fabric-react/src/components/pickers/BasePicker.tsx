@@ -495,13 +495,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // Only set suggestionloading to false after there has been time for the new suggestions to flow
     // to the suggestions list. This is to ensure that the suggestions are available before aria-activedescendant
     // is set so that screen readers will read out the first selected option.
-    this.setState(
-      {
+    if (updatedValue === '') {
+      this.suggestionStore.deselectAllSuggestions();
+      this.forceUpdate();
+      this.setState({
+        suggestedDisplayValue: '',
+        suggestionsVisible: true,
+      }, function () { return this.setState({ suggestionsLoading: false }); });
+    } else {
+      this.setState({
         suggestedDisplayValue: itemValue,
         suggestionsVisible: this._getShowSuggestions(),
-      },
-      () => this.setState({ suggestionsLoading: false }),
-    );
+      }, function () { return this.setState({ suggestionsLoading: false }); });
+    }
   }
 
   protected onChange(items?: T[]) {
