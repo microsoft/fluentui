@@ -16,7 +16,6 @@ const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyle
 
 export interface IMessageBarState {
   labelId?: string;
-  showContent?: boolean;
   expandSingleLine?: boolean;
 }
 
@@ -44,8 +43,6 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     initializeComponentRef(this);
     this.state = {
       labelId: getId('MessageBar'),
-      // eslint-disable-next-line react/no-unused-state
-      showContent: false,
       expandSingleLine: false,
     };
   }
