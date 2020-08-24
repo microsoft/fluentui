@@ -28,35 +28,16 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/enzyme": "3.10.3",
     "@types/jest": "~24.9.0",
-    "@types/react-dom": "16.8.4",
-    "@types/react-test-renderer": "^16.0.0",
-    "@types/react": "16.8.25",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.36",
-    "@uifabric/test-utilities": "^7.1.1",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "enzyme": "~3.10.0",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "react": "16.8.6"
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react-window-provider": "^0.2.1",
     "@fluentui/theme": "^0.1.0",
     "@uifabric/merge-styles": "^7.16.7",
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/utilities": "^7.29.1",
     "tslib": "^1.10.0"
-  },
-  "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
   }
 }

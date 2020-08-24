@@ -29,7 +29,6 @@ import { IStyle } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import { IStyleSheetConfig } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme/lib/types/ITheme';
-import { ITheme as ITheme_2 } from '@fluentui/theme';
 import { keyframes } from '@uifabric/merge-styles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
@@ -386,9 +385,6 @@ export { keyframes }
 
 // @public
 export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
-
-// @public
-export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(styleOrFunction: TStyleSet | ((theme: ITheme_2) => TStyleSet)): () => IProcessedStyleSet<TStyleSet>;
 
 export { mergeStyles }
 

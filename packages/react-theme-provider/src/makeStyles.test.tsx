@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from './makeStyles';
 import { Customizer } from '@uifabric/utilities';
-import { createTheme, loadTheme } from '../styles/theme';
+import { createTheme, loadTheme } from '@uifabric/styling';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { safeMount } from '@uifabric/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';
