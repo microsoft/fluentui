@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.111.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.111.2)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.110.24..@uifabric/react-cards_v0.111.2)
+
+### Patches
+
+- react-cards: Updating imports to remove duplicated dependencies. ([PR #14639](https://github.com/microsoft/fluentui/pull/14639) by humbertomakotomorimoto@gmail.com)
 
 ## [0.110.24](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.110.24)
 

@@ -1,5 +1,5 @@
-import { PartialTheme, Theme } from './types';
 import { merge } from '@uifabric/utilities';
+import { PartialTheme, Theme } from './types/index';
 
 /**
  * Merges multiple themes.

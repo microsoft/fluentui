@@ -30,6 +30,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   checkBoxCheck: HighContrastDarkSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: HighContrastDarkSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: HighContrastDarkSemanticColors.checkBox.rest.hover,
+  checkBoxCheckedDisabledBackground: HighContrastDarkSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: HighContrastDarkSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: HighContrastDarkSemanticColors.checkBox.checked.background,
   checkBoxIndeterminateDefaultChecked: HighContrastDarkSemanticColors.checkBox.checked.default,
@@ -128,7 +129,7 @@ export const AzureThemeHighContrastDark: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   },
   palette: {

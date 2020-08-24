@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "office-ui-fabric-react_v7.130.0",
+      "version": "7.130.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Custom Layout for Contextual Menu",
+            "author": "michael.mao99@gmail.com",
+            "commit": "133cb47d985143631d1c62807f2295a8c04beccf",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "office-ui-fabric-react_v7.129.0",
       "version": "7.129.0",
