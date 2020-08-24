@@ -6,10 +6,11 @@ If you want to learn more about the mods themselves, [check out the official REA
 
 ## CodeMod Writing Overview
 
-There are two principal ways of writing your own codemods:
+There are three principal ways of writing your own codemods:
 
 - **Config-based codemod**: Probably the easier way to create a codemod, the config-based codemod reads in the contents of the json file `upgrades.json`, and returns a ready-to-run codemod to the user. To learn more about the specifics of the file configurations, [check out the custom types file](../src/codemods/types.ts)
-- **Custom codemod**: For developers who want more flexibility with their codemods, they have the option to create their own mods by wrapping codemod _utilities_ together in a function and passing said function into the `createCodeMod()` function, which will return a ready-to-run codemod. We'll go through an example of this later.
+- **Custom codemod with createCodeMod()**: For developers who want more flexibility with their codemods, they have the option to create their own mods by wrapping codemod _utilities_ together in a function and passing said function into the `createCodeMod()` function, which will return a ready-to-run codemod. We'll go through an example of this later.
+- **Custom codemod manual creation**: The last strategy involves creating a codemod yourself with no helper functions. This allows to maximal flexibility, especially WRT error handling, but it's the least user-friendly for new modders.
 
 Here are the current features our codemods support:
 
@@ -18,7 +19,7 @@ Here are the current features our codemods support:
 
 ## Writing Your First CodeMod
 
-Let's say you were responsible for renaming the `toggled` prop in Fluent's `Dropdown` component to `checked`. There are **two** easy ways to do it!
+Let's say you were responsible for renaming the `toggled` prop in Fluent's `Dropdown` component to `checked`. There are **three** easy ways to do it!
 
 Feel free to try this out on your local branch of fluent! I've set up the files for you :).
 
@@ -32,7 +33,7 @@ Feel free to try this out on your local branch of fluent! I've set up the files 
   "upgrades": [
     {
       "name": // What upgrade are you running?
-      "type": // Currently renameProp | repathImport
+      "type": // The type of mod you want to generate. This type affects what mod options are available
       "version": // Mod version, as a string
       "options": {
         "from": {
@@ -65,7 +66,40 @@ const func = function(file: SourceFile) {
 };
 ```
 
-- You can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and run and test your codemod! Invoke the function `createCodeMod(options: ModOptions, mod: (file: SourceFile) => void)`, which accepts a struct containing a name and a version string, as well as the wrapper function that you just created. The return type is a single codemod!
+- You can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and run and test your codemod! Invoke the function `createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>)`, which accepts a struct containing a name and a version string, as well as the wrapper function that you just created. The return type is a single codemod!
+- Handling that `Result` return type isn't too tricky! Take a look at the return types of the utilities you're given -- they're often results too, which allows for you to pick out error / success messages and wrap them in result you return. To return a `Result` of type `ModResult, NoOp`, you'll simply have to return the constructor `Ok({ logs: [some success messages]})` when you know a mod has completed running, or `Err({ reason: 'why this mod failed' })`, if you encounter a place where you know a mod has failed. Feel free to checkout existing codemods for examples.
+
+### Creating a CodeMod Manually
+
+- There is also a third way to create a codemod, which is how most of the existing codemods are written. For an example, check out [../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts](../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts).
+  - Namely, this method actually explicitly creates a codemod object, allowing for the most flexibility possible. Here's a template for making your own:
+
+```typescript=
+//some imports
+
+const newCodeModName: CodeMod = {
+  run: (file: SourceFile) => {
+    try {
+      // Body of your codemod
+    } catch (e) {
+      return Err({ reason: /* display error e */ });
+    }
+    return Ok({ logs: [/* list of made changes */] });
+  },
+  version: /*some version string*/,
+  name: 'newCodeModName',
+  enabled: true,
+};
+
+export default newCodeModName;
+```
+
+- If you export the mod name as the default object, it will get detected and run if you run all codemods!
+
+### Good Mod-Writing Practices
+
+- Because codemod utilities aren't always perfect (due to bugs / limitations of ts-morph), it's very important to have effective logging so that clients / testers know what worked and what didn't when modding.
+- This primarily involves returning a meaningful codemod result from your codemod `run()` function. Inside `run()`, the better you log your successes and failures (by either compiling the changelog of a given mod in a list and returning it in Ok() or returning an actionable error message in Err()), the easier time devs in the future will have when working with your mod!
 
 ### Testing Your CodeMods
 

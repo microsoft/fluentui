@@ -79,7 +79,7 @@ export enum SpreadPropInStatement {
    in configMod.ts. */
 export type CodeModMapType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (mod: any) => (file: SourceFile) => void;
+  [key: string]: (mod: any) => (file: SourceFile) => Result<ModResult, NoOp>;
 };
 
 /* Type definition for a CodeMod object representing a renameProp mod. */
