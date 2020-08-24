@@ -233,27 +233,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       initialValue: false,
     });
 
-    const getTriggerProps = () => {
-      const triggerProps: any = {};
-
-      /**
-       * The hover is adding the mouseEnter, mouseLeave events
-       */
-      if (on === 'hover') {
-        triggerProps.onMouseEnter = e => {
-          setWhatInputSource(context.target, 'mouse');
-          trySetMenuOpen(true, e);
-          _.invoke({ onMouseEnter: parentProps.onItemSelect, ...props }, 'onMouseEnter', e, props);
-        };
-        triggerProps.onMouseLeave = e => {
-          trySetMenuOpen(false, e);
-          _.invoke(props, 'onMouseLeave', e, props);
-        };
-      }
-
-      return triggerProps;
-    };
-
     const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
     const ElementType = getElementType(props);
@@ -318,7 +297,19 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
 
-    const triggerProps = getTriggerProps();
+    const triggerProps: React.HTMLAttributes<HTMLElement> = {
+      ...(on === 'hover' && {
+        onMouseEnter: e => {
+          setWhatInputSource(context.target, 'mouse');
+          trySetMenuOpen(true, e);
+          _.invoke({ onMouseEnter: parentProps.onItemSelect, ...props }, 'onMouseEnter', e, props);
+        },
+        onMouseLeave: e => {
+          trySetMenuOpen(false, e);
+          _.invoke(props, 'onMouseLeave', e, props);
+        },
+      }),
+    };
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
       if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
