@@ -9,7 +9,6 @@ import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { renderIntoDocument } from '../../common/testUtilities';
 import { safeCreate } from '@uifabric/test-utilities';
-import { render } from 'enzyme';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
