@@ -5,8 +5,6 @@ import { IPivotItemProps } from './PivotItem.types';
 const COMPONENT_NAME = 'PivotItem';
 
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
-  public readonly name = COMPONENT_NAME;
-
   constructor(props: IPivotItemProps) {
     super(props);
 
