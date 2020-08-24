@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "7.4.15",
+  "version": "7.5.1",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,7 +23,7 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -33,8 +33,8 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.21",
-    "@uifabric/styling": "^7.14.13",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/styling": "^7.15.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,6 +1,5 @@
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '../AzureType';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcrumbStyles> => {
   const { theme } = props;
@@ -27,7 +26,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
       },
     },
     itemLink: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       outline: 'none',
       fontWeight: FontWeights.regular,
       color: semanticColors.link,

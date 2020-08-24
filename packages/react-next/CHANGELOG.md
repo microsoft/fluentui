@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.89)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.88..@fluentui/react-next_v8.0.0-alpha.89)
+
+### Changes
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.88)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.87..@fluentui/react-next_v8.0.0-alpha.88)
+
+### Changes
+
+- Updating OverflowSet to a function component inside React-Next. ([PR #13077](https://github.com/microsoft/fluentui/pull/13077) by czearing@outlook.com)
+- Updating ChoiceGroup and ChoiceGroupOption to a function component inside React-Next ([PR #14319](https://github.com/microsoft/fluentui/pull/14319) by czearing@outlook.com)
+- Migrate ComboBox to react-next ([PR #14540](https://github.com/microsoft/fluentui/pull/14540) by miclo@microsoft.com)
+- Moving Layer to react-next, in preparation for converting to a function component. ([PR #14568](https://github.com/microsoft/fluentui/pull/14568) by czearing@outlook.com)
 
 ## [8.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.87)
 

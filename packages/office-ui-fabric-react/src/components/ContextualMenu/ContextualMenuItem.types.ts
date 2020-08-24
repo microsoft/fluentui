@@ -244,3 +244,30 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
    */
   linkContentMenu: IStyle;
 }
+
+export interface IContextualMenuItemRenderFunctions {
+  /**
+   * Rendering function for check mark icon
+   */
+  renderCheckMarkIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for item icon
+   */
+  renderItemIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for item label
+   */
+  renderItemName: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for secondary text label
+   */
+  renderSecondaryText: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for submenu icon
+   */
+  renderSubMenuIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+}
