@@ -91,7 +91,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
     (items: IPersona[]) => {
       const currentSelectedItemsCopy = [...currentSelectedItems];
       items.forEach(item => {
-        let indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
         currentSelectedItemsCopy.splice(indexToRemove, 1);
         setCurrentSelectedItems([...currentSelectedItemsCopy]);
       });
