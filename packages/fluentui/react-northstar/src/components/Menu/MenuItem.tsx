@@ -40,7 +40,6 @@ import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from 
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
-import { PopupEvents, PopupEventsArray } from '../Popup/Popup';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -123,8 +122,8 @@ export interface MenuItemProps
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
-  /** Events triggering the popup. */
-  on?: PopupEvents | PopupEventsArray;
+  /** Events triggering the menu open. */
+  on?: 'hover';
 
   /** Shorthand for the submenu. */
   menu?:
@@ -188,8 +187,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const parentProps = (useContextSelectors(MenuContext, {
       active: v => v.activeIndex === inputProps.index,
-      onItemClick: v => v.onItemClick,
-      onMouseEnter: v => v.onMouseEnter,
+      onItemSelect: v => v.onItemSelect,
       variables: v => v.variables,
       menuSlot: v => v.slots.menu,
       slotProps: v => v.slotProps.item,
@@ -240,14 +238,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       const normalizedOn = _.isArray(on) ? on : [on];
 
       /**
-       * The hover is adding the mouseEnter, mouseLeave, blur and click event (always opening on click)
-       * If hover and context are provided, there is no need to add onClick
+       * The hover is adding the mouseEnter, mouseLeave events
        */
       if (_.includes(normalizedOn, 'hover')) {
         triggerProps.onMouseEnter = e => {
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
-          _.invoke({ onMouseEnter: parentProps.onMouseEnter, ...props }, 'onMouseEnter', e, props);
+          _.invoke({ onMouseEnter: parentProps.onItemSelect, ...props }, 'onMouseEnter', e, props);
         };
         triggerProps.onMouseLeave = e => {
           trySetMenuOpen(false, e);
@@ -361,7 +358,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
       performClick(e);
 
-      _.invoke({ onClick: parentProps.onItemClick, ...props }, 'onClick', e, props);
+      _.invoke({ onClick: parentProps.onItemSelect, ...props }, 'onClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -578,6 +575,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     handledProps: [
       'accessibility',
       'as',
+      'on',
       'children',
       'className',
       'content',
@@ -624,6 +622,7 @@ MenuItem.propTypes = {
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
+  on: PropTypes.oneOf(['hover']),
   iconOnly: PropTypes.bool,
   index: PropTypes.number,
   itemPosition: PropTypes.number,
