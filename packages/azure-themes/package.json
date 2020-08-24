@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.4.0",
+  "version": "7.4.2",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,16 +23,16 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-data": "^7.1.2",
-    "@uifabric/react-hooks": "^7.9.0",
+    "@uifabric/example-data": "^7.1.3",
+    "@uifabric/react-hooks": "^7.9.1",
     "react": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.16.6",
-    "@uifabric/set-version": "^7.0.21",
-    "office-ui-fabric-react": "^7.129.0",
+    "@uifabric/merge-styles": "^7.16.7",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.130.0",
     "tslib": "^1.10.0"
   }
 }

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-button_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix SplitButton styles",
+            "author": "xgao@microsoft.com",
+            "commit": "9bf73ea3bd03c9f695b899651fb327d90db3d0bc",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "@fluentui/react-button_v0.10.0",
       "version": "0.10.0",

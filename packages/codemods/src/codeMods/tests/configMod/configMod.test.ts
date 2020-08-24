@@ -23,11 +23,14 @@ describe('Tests a simple data-driven codeMod', () => {
     const mods = Maybe(createCodeModsFromJson());
     if (mods.something) {
       runMods(mods.value, project.getSourceFiles(), result => {
-        if (result.error) {
-          console.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
-        } else {
-          console.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`);
-        }
+        result.result.resolve(
+          v => {
+            console.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`, v.logs);
+          },
+          e => {
+            console.warn(`Mod ${result.mod.name} did not run on file ${result.file.getBaseName()} for: `, e.reason);
+          },
+        );
       });
     }
     /* Test for renameProp. */

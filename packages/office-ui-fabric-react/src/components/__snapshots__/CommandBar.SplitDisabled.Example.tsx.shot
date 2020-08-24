@@ -420,7 +420,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               speak: none;
                             }
                             {
-                              @media screen and (-ms-high-contrast:  active);
                               color: #323130;
                               flex-shrink: 0;
                               font-size: 12px;
@@ -432,8 +431,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-top: 0;
                               text-align: center;
                             }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
+                            }
                             {
-                              @media screen and (-ms-high-contrast:  active);
                               color: #605e5c;
                               flex-shrink: 0;
                               font-size: 12px;
@@ -444,6 +445,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
@@ -748,7 +752,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         ms-Button
                         is-disabled
                         {
-                          @media screen and (forced-colors:  active);
                           background-color: #ffffff;
                           border-bottom-right-radius: 0;
                           border-left: none;
@@ -806,6 +809,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           border: none;
                           color: GrayText;
                         }
+                        @media screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
+                        }
                     data-is-focusable={false}
                     disabled={false}
                     onClick={[Function]}
@@ -848,7 +854,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               speak: none;
                             }
                             {
-                              @media screen and (-ms-high-contrast:  active);
                               color: #a19f9d;
                               flex-shrink: 0;
                               font-size: 12px;
@@ -860,8 +865,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-top: 0;
                               text-align: center;
                             }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
+                            }
                             {
-                              @media screen and (-ms-high-contrast:  active);
                               color: #605e5c;
                               flex-shrink: 0;
                               font-size: 12px;
@@ -872,6 +879,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
