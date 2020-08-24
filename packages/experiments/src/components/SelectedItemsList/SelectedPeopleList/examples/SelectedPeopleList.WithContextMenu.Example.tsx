@@ -95,6 +95,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
       },
       () => {
         /* clipboard write failed */
+        throw new Error();
       },
     );
   };
