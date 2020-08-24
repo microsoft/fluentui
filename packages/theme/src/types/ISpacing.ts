@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  * @internal This is an experimental interface and will be changed post design review.
  * {@docCategory ISpacing}

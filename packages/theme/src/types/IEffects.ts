@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  * Decorative styles in a theme
  * {@docCategory IEffects}
