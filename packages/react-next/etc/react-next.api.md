@@ -1296,16 +1296,6 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IMessageBarState {
-    // (undocumented)
-    expandSingleLine?: boolean;
-    // (undocumented)
-    labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
-}
-
-// @public (undocumented)
 export interface IMessageBarStyleProps {
     actions?: boolean;
     className?: string;
@@ -2246,13 +2236,7 @@ export const MeasuredContext: React.Context<{
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-    constructor(props: IMessageBarProps);
-    // (undocumented)
-    static defaultProps: IMessageBarProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const MessageBarBase: React.ForwardRefExoticComponent<IMessageBarProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum MessageBarType {

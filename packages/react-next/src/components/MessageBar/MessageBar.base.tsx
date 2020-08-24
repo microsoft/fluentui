@@ -7,6 +7,8 @@ import { useId, useBoolean } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
+const COMPONENT_NAME = 'MessageBar';
+
 const ICON_MAP = {
   [MessageBarType.info]: 'Info',
   [MessageBarType.warning]: 'Info',
@@ -201,3 +203,4 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
 
   return isMultiline ? renderMultiLine : renderSingleLine;
 });
+MessageBarBase.displayName = COMPONENT_NAME;
