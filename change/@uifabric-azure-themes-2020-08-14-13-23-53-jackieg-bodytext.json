@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Body text font size clean up, <Text>",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T20:23:53.230Z"
+}
