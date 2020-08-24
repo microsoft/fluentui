@@ -1,5 +1,4 @@
 import { IPivotStyleProps, IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -47,7 +46,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         height: 36,
       },
       !rootIsLarge && {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
       },
       !rootIsTabs && {
         selectors: {
@@ -87,7 +86,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     ],
     linkIsSelected: [
       !rootIsLarge && {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         height: 36,
       },
       !rootIsTabs && {

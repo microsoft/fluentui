@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Move Fluent theme constants to @fluentui/theme package.",
+  "packageName": "@uifabric/fluent-theme",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T23:04:34.626Z"
+}

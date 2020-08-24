@@ -1600,6 +1600,76 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
+export interface IRating {
+}
+
+// @public
+export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+    allowZeroStars?: boolean;
+    ariaLabelFormat?: string;
+    // @deprecated
+    ariaLabelId?: string;
+    componentRef?: IRefObject<IRating>;
+    // (undocumented)
+    getAriaLabel?: (rating: number, max: number) => string;
+    icon?: string;
+    max?: number;
+    // @deprecated
+    min?: number;
+    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
+    // @deprecated (undocumented)
+    onChanged?: (rating: number) => void;
+    rating?: number;
+    readOnly?: boolean;
+    size?: RatingSize;
+    styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
+    theme?: ITheme;
+    unselectedIcon?: string;
+}
+
+// @public (undocumented)
+export interface IRatingState {
+    // (undocumented)
+    rating: number | null | undefined;
+}
+
+// @public (undocumented)
+export interface IRatingStyleProps {
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    readOnly?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IRatingStyles {
+    // (undocumented)
+    labelText: IStyle;
+    // (undocumented)
+    ratingButton: IStyle;
+    // (undocumented)
+    ratingFocusZone: IStyle;
+    // (undocumented)
+    ratingStar: IStyle;
+    // (undocumented)
+    ratingStarBack: IStyle;
+    // (undocumented)
+    ratingStarFront: IStyle;
+    // (undocumented)
+    ratingStarIsLarge: IStyle;
+    // (undocumented)
+    ratingStarIsSmall: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    rootIsLarge: IStyle;
+    // (undocumented)
+    rootIsSmall: IStyle;
+}
+
+// @public (undocumented)
 export interface IResizeGroup {
     remeasure(): void;
 }
@@ -2363,6 +2433,26 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 };
 
 // @public (undocumented)
+export const Rating: React.FunctionComponent<IRatingProps>;
+
+// @public (undocumented)
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
+    constructor(props: IRatingProps);
+    // (undocumented)
+    static defaultProps: IRatingProps;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum RatingSize {
+    // (undocumented)
+    Large = 1,
+    // (undocumented)
+    Small = 0
+}
+
+// @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -2546,7 +2636,6 @@ export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Pickers";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
-export * from "office-ui-fabric-react/lib/Rating";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/Selection";
