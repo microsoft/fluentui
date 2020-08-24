@@ -235,7 +235,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const getTriggerProps = () => {
       const triggerProps: any = {};
-      const normalizedOn = _.isArray(on) ? on : [on];
 
       /**
        * The hover is adding the mouseEnter, mouseLeave events
