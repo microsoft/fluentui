@@ -420,6 +420,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
     };
 
+    const getRootHandlers = () => (wrapper ? {} : { onClick: handleClick, ...triggerProps });
+
     const trySetMenuOpen = (
       newValue: boolean,
       e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
@@ -452,7 +454,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             onFocus: handleFocus,
             ...unhandledProps,
           })}
-          {...(!wrapper && { onClick: handleClick, ...triggerProps })}
+          {...getRootHandlers()}
         >
           {childrenExist(children) ? (
             children
