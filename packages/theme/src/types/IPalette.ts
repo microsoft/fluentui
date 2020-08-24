@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  * Fluent UI color palette.
  * {@docCategory IPalette}

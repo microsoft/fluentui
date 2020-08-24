@@ -6,17 +6,29 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
+import { DefaultEffects } from '@fluentui/theme/lib/constants/DefaultEffects';
+import { DefaultPalette } from '@fluentui/theme/lib/constants/DefaultPalette';
 import { fontFace } from '@uifabric/merge-styles';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
+import { IEffects } from '@fluentui/theme/lib/types/IEffects';
 import { IFontFace } from '@uifabric/merge-styles';
+import { IFontStyles } from '@fluentui/theme/lib/types/IFontStyles';
 import { IFontWeight } from '@uifabric/merge-styles';
 import { InjectionMode } from '@uifabric/merge-styles';
+import { IPalette } from '@fluentui/theme/lib/types/IPalette';
+import { IPartialTheme } from '@fluentui/theme/lib/types/ITheme';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
+import { IScheme } from '@fluentui/theme/lib/types/ITheme';
+import { ISchemeNames } from '@fluentui/theme/lib/types/ITheme';
+import { ISemanticColors } from '@fluentui/theme/lib/types/ISemanticColors';
+import { ISemanticTextColors } from '@fluentui/theme/lib/types/ISemanticTextColors';
+import { ISpacing } from '@fluentui/theme/lib/types/ISpacing';
 import { IStyle } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import { IStyleSheetConfig } from '@uifabric/merge-styles';
+import { ITheme } from '@fluentui/theme/lib/types/ITheme';
 import { keyframes } from '@uifabric/merge-styles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
@@ -53,14 +65,12 @@ export function createFontStyles(localeCode: string | null): IFontStyles;
 // @public
 export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
-// @public (undocumented)
-export const DefaultEffects: IEffects;
+export { DefaultEffects }
 
 // @public (undocumented)
 export const DefaultFontStyles: IFontStyles;
 
-// @public (undocumented)
-export const DefaultPalette: IPalette;
+export { DefaultPalette }
 
 // @public (undocumented)
 export const EdgeChromiumHighContrastSelector = "@media screen and (forced-colors: active)";
@@ -289,48 +299,11 @@ export namespace IconFontSizes {
 
 export { ICSPSettings }
 
-// @public
-export interface IEffects {
-    elevation16: string;
-    elevation4: string;
-    elevation64: string;
-    elevation8: string;
-    roundedCorner2: string;
-    roundedCorner4: string;
-    roundedCorner6: string;
-}
+export { IEffects }
 
 export { IFontFace }
 
-// @public
-export interface IFontStyles {
-    // (undocumented)
-    large: IRawStyle;
-    // (undocumented)
-    medium: IRawStyle;
-    // (undocumented)
-    mediumPlus: IRawStyle;
-    // (undocumented)
-    mega: IRawStyle;
-    // (undocumented)
-    small: IRawStyle;
-    // (undocumented)
-    smallPlus: IRawStyle;
-    // (undocumented)
-    superLarge: IRawStyle;
-    // (undocumented)
-    tiny: IRawStyle;
-    // (undocumented)
-    xLarge: IRawStyle;
-    // @deprecated (undocumented)
-    xLargePlus: IRawStyle;
-    // (undocumented)
-    xSmall: IRawStyle;
-    // (undocumented)
-    xxLarge: IRawStyle;
-    // @deprecated (undocumented)
-    xxLargePlus: IRawStyle;
-}
+export { IFontStyles }
 
 export { IFontWeight }
 
@@ -382,236 +355,23 @@ export interface IIconSubsetRecord extends IIconSubset {
 
 export { InjectionMode }
 
-// @public
-export interface IPalette {
-    accent: string;
-    black: string;
-    blackTranslucent40: string;
-    blue: string;
-    blueDark: string;
-    blueLight: string;
-    blueMid: string;
-    green: string;
-    greenDark: string;
-    greenLight: string;
-    magenta: string;
-    magentaDark: string;
-    magentaLight: string;
-    neutralDark: string;
-    neutralLight: string;
-    neutralLighter: string;
-    neutralLighterAlt: string;
-    neutralPrimary: string;
-    neutralPrimaryAlt: string;
-    neutralQuaternary: string;
-    neutralQuaternaryAlt: string;
-    neutralSecondary: string;
-    neutralSecondaryAlt: string;
-    neutralTertiary: string;
-    neutralTertiaryAlt: string;
-    orange: string;
-    orangeLight: string;
-    orangeLighter: string;
-    purple: string;
-    purpleDark: string;
-    purpleLight: string;
-    red: string;
-    redDark: string;
-    teal: string;
-    tealDark: string;
-    tealLight: string;
-    themeDark: string;
-    themeDarkAlt: string;
-    themeDarker: string;
-    themeLight: string;
-    themeLighter: string;
-    themeLighterAlt: string;
-    themePrimary: string;
-    themeSecondary: string;
-    themeTertiary: string;
-    white: string;
-    whiteTranslucent40: string;
-    yellow: string;
-    yellowDark: string;
-    yellowLight: string;
-}
+export { IPalette }
 
-// @public (undocumented)
-export type IPartialTheme = {
-    palette?: Partial<IPalette>;
-    fonts?: Partial<IFontStyles>;
-    defaultFontStyle?: IRawStyle;
-    semanticColors?: Partial<ISemanticColors>;
-    isInverted?: boolean;
-    disableGlobalClassNames?: boolean;
-    rtl?: boolean;
-    spacing?: Partial<ISpacing>;
-    effects?: Partial<IEffects>;
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
-};
+export { IPartialTheme }
 
 export { IProcessedStyleSet }
 
 export { IRawStyle }
 
-// @public (undocumented)
-export interface IScheme {
-    disableGlobalClassNames: boolean;
-    // (undocumented)
-    effects: IEffects;
-    // (undocumented)
-    fonts: IFontStyles;
-    // (undocumented)
-    isInverted: boolean;
-    // (undocumented)
-    palette: IPalette;
-    // (undocumented)
-    rtl?: boolean;
-    // (undocumented)
-    semanticColors: ISemanticColors;
-    // @internal
-    spacing: ISpacing;
-}
+export { IScheme }
 
-// Warning: (ae-internal-missing-underscore) The name "ISchemeNames" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
+export { ISchemeNames }
 
-// @public
-export interface ISemanticColors extends ISemanticTextColors {
-    accentButtonBackground: string;
-    blockingBackground: string;
-    blockingIcon: string;
-    bodyBackground: string;
-    bodyBackgroundChecked: string;
-    bodyBackgroundHovered: string;
-    bodyDivider: string;
-    bodyFrameBackground: string;
-    bodyFrameDivider: string;
-    bodyStandoutBackground: string;
-    buttonBackground: string;
-    buttonBackgroundChecked: string;
-    buttonBackgroundCheckedHovered: string;
-    buttonBackgroundDisabled: string;
-    buttonBackgroundHovered: string;
-    buttonBackgroundPressed: string;
-    buttonBorder: string;
-    buttonBorderDisabled: string;
-    cardShadow: string;
-    cardShadowHovered: string;
-    cardStandoutBackground: string;
-    defaultStateBackground: string;
-    disabledBackground: string;
-    disabledBorder: string;
-    errorBackground: string;
-    errorIcon: string;
-    focusBorder: string;
-    infoBackground: string;
-    infoIcon: string;
-    inputBackground: string;
-    inputBackgroundChecked: string;
-    inputBackgroundCheckedHovered: string;
-    inputBorder: string;
-    inputBorderHovered: string;
-    inputFocusBorderAlt: string;
-    inputForegroundChecked: string;
-    inputIcon: string;
-    inputIconDisabled: string;
-    inputIconHovered: string;
-    inputPlaceholderBackgroundChecked: string;
-    listBackground: string;
-    listHeaderBackgroundHovered: string;
-    listHeaderBackgroundPressed: string;
-    listItemBackgroundChecked: string;
-    listItemBackgroundCheckedHovered: string;
-    listItemBackgroundHovered: string;
-    listText: string;
-    menuBackground: string;
-    menuDivider: string;
-    menuHeader: string;
-    menuIcon: string;
-    // @deprecated (undocumented)
-    menuItemBackgroundChecked: string;
-    menuItemBackgroundHovered: string;
-    menuItemBackgroundPressed: string;
-    menuItemText: string;
-    menuItemTextHovered: string;
-    messageLink: string;
-    messageLinkHovered: string;
-    primaryButtonBackground: string;
-    primaryButtonBackgroundDisabled: string;
-    primaryButtonBackgroundHovered: string;
-    primaryButtonBackgroundPressed: string;
-    primaryButtonBorder: string;
-    severeWarningBackground: string;
-    severeWarningIcon: string;
-    smallInputBorder: string;
-    successBackground: string;
-    successIcon: string;
-    variantBorder: string;
-    variantBorderHovered: string;
-    warningBackground: string;
-    // @deprecated (undocumented)
-    warningHighlight: string;
-    warningIcon: string;
-}
+export { ISemanticColors }
 
-// @public (undocumented)
-export interface ISemanticTextColors {
-    accentButtonText: string;
-    actionLink: string;
-    actionLinkHovered: string;
-    bodySubtext: string;
-    bodyText: string;
-    bodyTextChecked: string;
-    buttonText: string;
-    buttonTextChecked: string;
-    buttonTextCheckedHovered: string;
-    buttonTextDisabled: string;
-    buttonTextHovered: string;
-    buttonTextPressed: string;
-    disabledBodySubtext: string;
-    disabledBodyText: string;
-    disabledSubtext: string;
-    disabledText: string;
-    errorText: string;
-    inputPlaceholderText: string;
-    inputText: string;
-    inputTextHovered: string;
-    link: string;
-    linkHovered: string;
-    listText: string;
-    // @deprecated (undocumented)
-    listTextColor: string;
-    messageText: string;
-    primaryButtonText: string;
-    primaryButtonTextDisabled: string;
-    primaryButtonTextHovered: string;
-    primaryButtonTextPressed: string;
-    // @deprecated (undocumented)
-    successText: string;
-    // @deprecated (undocumented)
-    warningText: string;
-}
+export { ISemanticTextColors }
 
-// Warning: (ae-internal-missing-underscore) The name "ISpacing" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export interface ISpacing {
-    // (undocumented)
-    l1: string;
-    // (undocumented)
-    l2: string;
-    // (undocumented)
-    m: string;
-    // (undocumented)
-    s1: string;
-    // (undocumented)
-    s2: string;
-}
+export { ISpacing }
 
 export { IStyle }
 
@@ -619,13 +379,7 @@ export { IStyleSet }
 
 export { IStyleSheetConfig }
 
-// @public (undocumented)
-export interface ITheme extends IScheme {
-    // @internal
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
-}
+export { ITheme }
 
 export { keyframes }
 
@@ -733,8 +487,6 @@ export namespace ZIndexes {
 
 // Warnings were encountered during analysis:
 //
-// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:7:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationSingle" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:8:5 - (ae-forgotten-export) The symbol "_createDefaultAnimation" needs to be exported by the entry point index.d.ts

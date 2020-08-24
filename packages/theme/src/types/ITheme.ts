@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
