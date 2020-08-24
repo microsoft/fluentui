@@ -116,8 +116,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
-  // TODO: make new date instances, so they are less mutable
-  const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(navigatedDate || today || new Date());
+  const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(
+    () => new Date((navigatedDate || today || new Date()).getTime()),
+  );
+  const [shouldFocusInDayGrid, setShouldFocusInDayGrid] = React.useState<boolean>(true);
 
   const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
     className: datepickerCalendarClassName,
@@ -260,6 +262,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     const newNavigatedDate = contstraintNavigatedDate(initialDate, targetDate, direction);
 
     if (newNavigatedDate) {
+      setShouldFocusInDayGrid(true);
       setGridNavigatedDate(newNavigatedDate);
     }
 
@@ -267,8 +270,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   };
 
   React.useEffect(() => {
-    focusDateRef.current?.focus();
-  }, [grid]);
+    if (shouldFocusInDayGrid) {
+      focusDateRef.current?.focus();
+    }
+  }, [grid, shouldFocusInDayGrid]);
 
   const renderWeekRow = (week: IDay[]) =>
     _.map(week, (day: IDay) =>
