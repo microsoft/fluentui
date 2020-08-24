@@ -466,6 +466,28 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       </Ref>
     );
 
+    const handleWrapperOverrides = predefinedProps => ({
+      onBlur: (e: React.FocusEvent) => {
+        handleWrapperBlur(e);
+        _.invoke(predefinedProps, 'onBlur', e, props);
+      },
+      onClick: (e: React.MouseEvent) => {
+        handleClick(e);
+        _.invoke(predefinedProps, 'onClick', e, props);
+      },
+      ...(on === 'hover' && {
+        onMouseEnter: e => {
+          setWhatInputSource(context.target, 'mouse');
+          trySetMenuOpen(true, e);
+          _.invoke({ onMouseEnter: parentProps.onItemSelect, ...predefinedProps }, 'onMouseEnter', e, props);
+        },
+        onMouseLeave: e => {
+          trySetMenuOpen(false, e);
+          _.invoke(predefinedProps, 'onMouseLeave', e, props);
+        },
+      }),
+    });
+
     const maybeSubmenu =
       menu && active && menuOpen ? (
         <>
@@ -491,16 +513,14 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     if (wrapper) {
       const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
         defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
-        overrideProps: () => ({
+        overrideProps: predefinedProps => ({
           children: (
             <>
               {menuItemInner}
               {maybeSubmenu}
             </>
           ),
-          onClick: handleClick,
-          onBlur: handleWrapperBlur,
-          ...triggerProps,
+          ...handleWrapperOverrides(predefinedProps),
         }),
       });
 
