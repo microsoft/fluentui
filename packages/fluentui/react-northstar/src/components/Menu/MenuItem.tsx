@@ -28,6 +28,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
+  setWhatInputSource,
 } from '../../utils';
 import { Menu, MenuProps, MenuShorthandKinds } from './Menu';
 import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
@@ -39,6 +40,7 @@ import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from 
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
+import { PopupEvents, PopupEventsArray } from '../Popup/Popup';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -121,6 +123,9 @@ export interface MenuItemProps
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
+  /** Events triggering the popup. */
+  on?: PopupEvents | PopupEventsArray;
+
   /** Shorthand for the submenu. */
   menu?:
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
@@ -184,6 +189,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const parentProps = (useContextSelectors(MenuContext, {
       active: v => v.activeIndex === inputProps.index,
       onItemClick: v => v.onItemClick,
+      onMouseEnter: v => v.onMouseEnter,
       variables: v => v.variables,
       menuSlot: v => v.slots.menu,
       slotProps: v => v.slotProps.item,
@@ -219,6 +225,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
+      on,
     } = props;
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
@@ -227,6 +234,29 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       value: props.menuOpen,
       initialValue: false,
     });
+
+    const getTriggerProps = () => {
+      const triggerProps: any = {};
+      const normalizedOn = _.isArray(on) ? on : [on];
+
+      /**
+       * The hover is adding the mouseEnter, mouseLeave, blur and click event (always opening on click)
+       * If hover and context are provided, there is no need to add onClick
+       */
+      if (_.includes(normalizedOn, 'hover')) {
+        triggerProps.onMouseEnter = e => {
+          setWhatInputSource(context.target, 'mouse');
+          trySetMenuOpen(true, e);
+          _.invoke({ onMouseEnter: parentProps.onMouseEnter, ...props }, 'onMouseEnter', e, props);
+        };
+        triggerProps.onMouseLeave = e => {
+          trySetMenuOpen(false, e);
+          _.invoke(props, 'onMouseLeave', e, props);
+        };
+      }
+
+      return triggerProps;
+    };
 
     const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
@@ -291,6 +321,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
+
+    const triggerProps = getTriggerProps();
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
       if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
@@ -423,7 +455,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             onFocus: handleFocus,
             ...unhandledProps,
           })}
-          {...(!wrapper && { onClick: handleClick })}
+          {...(!wrapper && { onClick: handleClick, ...triggerProps })}
         >
           {childrenExist(children) ? (
             children
@@ -479,6 +511,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           ),
           onClick: handleClick,
           onBlur: handleWrapperBlur,
+          ...triggerProps,
         }),
       });
 

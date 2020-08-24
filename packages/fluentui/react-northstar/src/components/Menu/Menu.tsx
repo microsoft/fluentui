@@ -242,6 +242,15 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       [actualProps, setActiveIndex],
     );
 
+    const handleMouseEnter = React.useCallback(
+      (e, itemProps) => {
+        const { index } = itemProps;
+        setActiveIndex(e, index);
+        _.invoke(actualProps.current, 'onMouseEnter', e, itemProps);
+      },
+      [actualProps, setActiveIndex],
+    );
+
     const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
       onClick: (e, itemProps) => {
         handleClick(e, itemProps);
@@ -296,6 +305,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
       onItemClick: handleClick,
+      onMouseEnter: handleMouseEnter,
       variables,
 
       slotProps: {
