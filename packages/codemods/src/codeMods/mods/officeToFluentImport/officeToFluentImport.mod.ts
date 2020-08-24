@@ -8,11 +8,17 @@ const newString = '@fluentui/react';
 
 const RepathOfficeToFluentImports: CodeMod = {
   run: (file: SourceFile) => {
-    const imports = getImportsByPath(file, searchString);
-    imports.forEach(val => {
-      repathImport(val, newString, searchString);
-    });
-    return Ok({ logs: ['Replaced office-ui-fabric-react imports with @fluentui'] });
+    return getImportsByPath(file, searchString)
+      .then(imports => imports.map(val => repathImport(val, newString, searchString)))
+      .then(v =>
+        v.map(r =>
+          r.resolve(
+            i => i.getModuleSpecifierValue(),
+            e => e.reason,
+          ),
+        ),
+      )
+      .chain(v => Ok({ logs: v }));
   },
   name: 'RepathOfficeImportsToFluent',
   version: '1.0.0',

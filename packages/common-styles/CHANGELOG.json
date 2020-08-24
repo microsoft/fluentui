@@ -2,6 +2,21 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/common-styles_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@fluentui/common-styles_v0.2.0",
       "version": "0.2.0",

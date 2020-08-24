@@ -1,16 +1,16 @@
-import { useCallback, useImperativeHandle, useRef } from 'react';
+import * as React from 'react';
 import { getControlledDerivedProps, useControlledState } from '../../Foundation';
 import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
 export const useToggleState: IToggleComponent['state'] = props => {
-  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+  const toggleButtonRef = React.useRef<HTMLButtonElement | null>(null);
 
   const [checked, setChecked] = useControlledState(props, 'checked', {
     defaultPropName: 'defaultChecked',
     defaultPropValue: false,
   });
 
-  useImperativeHandle(props.componentRef, () => ({
+  React.useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       toggleButtonRef.current && toggleButtonRef.current.focus();
     },
@@ -18,7 +18,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
 
   const { disabled, onChange } = props;
 
-  const _onClick = useCallback(
+  const _onClick = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>) => {
       if (!disabled) {
         // Only update the state if the user hasn't provided it.

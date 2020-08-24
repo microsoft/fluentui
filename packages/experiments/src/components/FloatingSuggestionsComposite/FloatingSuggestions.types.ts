@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle } from '@uifabric/styling';
 import {

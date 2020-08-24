@@ -1,5 +1,4 @@
 import { ISuggestionItemProps, ISuggestionsItemStyles, ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { FontSizes } from '../AzureType';
 
 export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps>): Partial<ISuggestionsItemStyles> => {
   const { theme } = props;
@@ -9,7 +8,7 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
   const { semanticColors } = theme;
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
