@@ -8594,6 +8594,8 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
     constructor(props: IPivotItemProps);
     // (undocumented)
+    readonly name = "PivotItem";
+    // (undocumented)
     render(): JSX.Element;
 }
 
