@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { IRawStyle } from '@uifabric/merge-styles';
 
 /**

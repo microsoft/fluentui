@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { ISemanticTextColors } from './ISemanticTextColors';
 
 // WARNING: The comment below must use valid markdown, or it will break the website.
