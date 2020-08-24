@@ -9,3 +9,4 @@ export * from './tokensToStyleObject';
 export * from './useInlineTokens';
 export { createDefaultTheme } from './createDefaultTheme';
 export * from './themes';
+export * from './makeStyles';
