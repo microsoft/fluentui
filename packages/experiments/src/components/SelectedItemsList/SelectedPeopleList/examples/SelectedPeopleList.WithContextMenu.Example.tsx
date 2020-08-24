@@ -8,7 +8,6 @@ import {
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
-  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
@@ -35,7 +34,9 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
       {
         key: 'copy',
         text: 'Copy',
-        onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+        onClick: () => {
+          this._copyToClipboard(this._getCopyItemsText([item]));
+        },
       },
     ],
     itemComponent: TriggerOnContextMenu(SelectedPersona),
@@ -85,6 +86,17 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
     });
+  };
+
+  private _copyToClipboard = (copyString: string): void => {
+    navigator.clipboard.writeText(copyString).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+      },
+    );
   };
 
   private _getCopyItemsText(items: IPersonaProps[]): string {
