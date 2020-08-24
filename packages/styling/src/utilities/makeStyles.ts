@@ -1,5 +1,5 @@
 import { mergeStyleSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
-import { ITheme } from '../interfaces/ITheme';
+import { ITheme } from '@fluentui/theme';
 import { useCustomizationSettings } from '@uifabric/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 
