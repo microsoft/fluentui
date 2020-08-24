@@ -302,7 +302,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         onMouseEnter: e => {
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
-          _.invoke({ onMouseEnter: parentProps.onItemSelect, ...props }, 'onMouseEnter', e, props);
+          _.invoke(props, 'onMouseEnter', e, props);
+          _.invoke(parentProps, 'onItemSelect', e, props);
         },
         onMouseLeave: e => {
           trySetMenuOpen(false, e);
