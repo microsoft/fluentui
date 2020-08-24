@@ -35,11 +35,9 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           background: Highlight;
           border-color: Highlight;
         }
-    data-is-draggable={false}
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={0}
-    draggable={false}
     role="listitem"
   >
     <div
@@ -544,11 +542,9 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           background: Highlight;
           border-color: Highlight;
         }
-    data-is-draggable={false}
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={1}
-    draggable={false}
     role="listitem"
   >
     <div
@@ -1032,7 +1028,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
   role="list"
 >
   <div
-    aria-labelledby="selectedItemPersona-id__36"
+    aria-labelledby="selectedItemPersona-id__16"
     className=
         ms-PickerPersona-container
         {
@@ -1219,7 +1215,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               max-width: 100%;
               min-width: 0px;
             }
-        id="selectedItemPersona-id__36"
+        id="selectedItemPersona-id__16"
       >
         <div
           className=
@@ -1539,7 +1535,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
     </div>
   </div>
   <div
-    aria-labelledby="selectedItemPersona-id__37"
+    aria-labelledby="selectedItemPersona-id__24"
     className=
         ms-PickerPersona-container
         {
@@ -1726,7 +1722,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               max-width: 100%;
               min-width: 0px;
             }
-        id="selectedItemPersona-id__37"
+        id="selectedItemPersona-id__24"
       >
         <div
           className=
