@@ -629,6 +629,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             &:focus {
               color: #0078d4;
             }
+            @media screen and (-ms-high-contrast: active){&:focus {
+              color: LinkText;
+            }
         href="https://bing.com"
         onClick={[Function]}
         target="_blank"

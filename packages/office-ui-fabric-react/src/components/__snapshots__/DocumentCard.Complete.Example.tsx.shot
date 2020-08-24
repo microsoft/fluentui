@@ -172,6 +172,9 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 &:focus {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
+                }
                 &::-moz-focus-inner {
                   border: 0;
                 }
@@ -291,6 +294,9 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 &:focus {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
+                }
                 &::-moz-focus-inner {
                   border: 0;
                 }
@@ -409,6 +415,9 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
                 &:focus {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
                 }
                 &::-moz-focus-inner {
                   border: 0;

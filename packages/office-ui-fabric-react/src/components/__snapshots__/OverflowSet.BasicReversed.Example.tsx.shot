@@ -242,6 +242,9 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           &:focus {
             color: #0078d4;
           }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
+          }
       onClick={[Function]}
       role="menuitem"
       type="button"
@@ -326,6 +329,9 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           &:focus {
             color: #0078d4;
           }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
+          }
       onClick={[Function]}
       role="menuitem"
       type="button"
@@ -409,6 +415,9 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"

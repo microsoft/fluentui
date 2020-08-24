@@ -197,6 +197,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       &:focus {
                         color: #201f1e;
                       }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
+                      }
                       &::-moz-focus-inner {
                         border: 0;
                       }
@@ -361,6 +364,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       }
                       &:focus {
                         color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -527,6 +533,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       &:focus {
                         color: #201f1e;
                       }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
+                      }
                       &::-moz-focus-inner {
                         border: 0;
                       }
@@ -691,6 +700,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       }
                       &:focus {
                         color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -945,6 +957,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       }
                       &:focus {
                         color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1373,6 +1388,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       &:focus {
                         color: #201f1e;
                       }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
+                      }
                       &::-moz-focus-inner {
                         border: 0;
                       }
@@ -1627,6 +1645,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       &:focus {
                         color: #201f1e;
                       }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
+                      }
                       &::-moz-focus-inner {
                         border: 0;
                       }
@@ -1860,6 +1881,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       }
                       &:focus {
                         color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2219,6 +2243,9 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       }
                       &:focus {
                         color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        color: LinkText;
                       }
                       &::-moz-focus-inner {
                         border: 0;

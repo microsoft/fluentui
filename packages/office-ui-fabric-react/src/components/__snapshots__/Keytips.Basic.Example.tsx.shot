@@ -1201,6 +1201,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   &:focus {
                     color: #0078d4;
                   }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
+                  }
               data-ktp-execute-target="ktp-a-2"
               data-ktp-target="ktp-a-2"
               href="http://www.bing.com"

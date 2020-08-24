@@ -49,6 +49,9 @@ exports[`Link renders Link correctly 1`] = `
       &:focus {
         color: #0078d4;
       }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
+      }
   href="#"
   onClick={[Function]}
 >
@@ -127,6 +130,9 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       &:focus {
         color: #0078d4;
       }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
+      }
   onClick={[Function]}
 >
   I'm a div
@@ -182,6 +188,9 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   href="#"
   onClick={[Function]}
@@ -259,6 +268,9 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
   type="button"
@@ -440,6 +452,9 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
 >

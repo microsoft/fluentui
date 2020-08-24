@@ -105,6 +105,12 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           '&:focus': {
             color: linkColor,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
           },
         },
       },

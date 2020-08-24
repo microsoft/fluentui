@@ -133,6 +133,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
+              }
           onClick={[Function]}
           type="button"
         >
@@ -220,6 +223,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               &:focus {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
               }
           onClick={[Function]}
           type="button"
@@ -376,6 +382,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               &:focus {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
               }
           onClick={[Function]}
           type="button"
@@ -542,6 +551,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
+              }
           onClick={[Function]}
           type="button"
         >
@@ -619,6 +631,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
+              }
           onClick={[Function]}
           type="button"
         >
@@ -695,6 +710,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               &:focus {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus {
+                color: LinkText;
               }
           onClick={[Function]}
           type="button"

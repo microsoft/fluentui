@@ -591,6 +591,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   &:focus {
                     color: #0078d4;
                   }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
+                  }
                   &::-moz-focus-inner {
                     border: 0;
                   }
@@ -710,6 +713,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   &:focus {
                     color: #0078d4;
                   }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
+                  }
                   &::-moz-focus-inner {
                     border: 0;
                   }
@@ -828,6 +834,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   &:focus {
                     color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
                   }
                   &::-moz-focus-inner {
                     border: 0;

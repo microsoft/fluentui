@@ -1121,6 +1121,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 &:focus {
                                   color: #0078d4;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
+                                }
                             onClick={[Function]}
                             type="button"
                           >
@@ -1655,6 +1658,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -2191,6 +2197,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 &:focus {
                                   color: #0078d4;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
+                                }
                             onClick={[Function]}
                             type="button"
                           >
@@ -2725,6 +2734,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -3261,6 +3273,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 &:focus {
                                   color: #0078d4;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
+                                }
                             onClick={[Function]}
                             type="button"
                           >
@@ -3795,6 +3810,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -4331,6 +4349,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 &:focus {
                                   color: #0078d4;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
+                                }
                             onClick={[Function]}
                             type="button"
                           >
@@ -4866,6 +4887,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 &:focus {
                                   color: #0078d4;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
+                                }
                             onClick={[Function]}
                             type="button"
                           >
@@ -5400,6 +5424,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
