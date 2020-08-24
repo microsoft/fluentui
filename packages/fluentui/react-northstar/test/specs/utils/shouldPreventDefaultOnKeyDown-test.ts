@@ -1,6 +1,6 @@
 import { shouldPreventDefaultOnKeyDown } from '../../../src/utils/shouldPreventDefaultOnKeyDown';
 
-describe('fontSizeUtility', () => {
+describe('shouldPreventDefaultOnKeyDown', () => {
   it('handles proper keys', () => {
     expect(shouldPreventDefaultOnKeyDown(new KeyboardEvent('keydown', { key: 'Backspace' }))).toBe(false);
     expect(shouldPreventDefaultOnKeyDown(new KeyboardEvent('keydown', { key: 'Delete' }))).toBe(false);
