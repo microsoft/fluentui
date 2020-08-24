@@ -65,7 +65,7 @@
     "@fluentui/react-icons": "^0.2.1",
     "@fluentui/react-tabs": "^0.3.2",
     "@fluentui/react-theme-provider": "^0.8.1",
-    "@fluentui/react-window-provider": "^0.2.0",
+    "@fluentui/react-window-provider": "^0.2.1",
     "@uifabric/date-time": "^7.15.2",
     "@uifabric/icons": "^7.4.1",
     "@uifabric/merge-styles": "^7.16.7",
