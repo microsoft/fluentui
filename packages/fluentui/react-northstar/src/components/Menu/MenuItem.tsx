@@ -297,7 +297,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
 
-    const triggerProps: React.HTMLAttributes<HTMLElement> = {
+    const rootHandlers: React.HTMLAttributes<HTMLElement> = {
       ...(on === 'hover' && {
         onMouseEnter: e => {
           setWhatInputSource(context.target, 'mouse');
@@ -410,7 +410,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
     };
 
-    const getRootHandlers = () => (wrapper ? {} : { onClick: handleClick, ...triggerProps });
+    const getRootHandlers = () => (wrapper ? {} : { onClick: handleClick, ...rootHandlers });
 
     const trySetMenuOpen = (
       newValue: boolean,
