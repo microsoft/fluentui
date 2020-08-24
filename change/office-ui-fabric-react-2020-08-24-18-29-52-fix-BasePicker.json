@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix(BasePicker): suggestion list is opened event if the inputvalue is empty",
+  "packageName": "office-ui-fabric-react",
+  "email": "tdetugny@clever-age.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-24T16:29:52.488Z"
+}
