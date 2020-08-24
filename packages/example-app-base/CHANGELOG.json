@@ -2,6 +2,29 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Markdown: add support for custom HTML",
+            "author": "elcraig@microsoft.com",
+            "commit": "da80ad676c5bf4ba3e0713944040ab26c3a15ec4",
+            "package": "@uifabric/example-app-base"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "@uifabric/example-app-base_v7.13.0",
       "version": "7.13.0",

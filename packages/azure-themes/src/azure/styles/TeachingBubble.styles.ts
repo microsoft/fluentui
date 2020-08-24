@@ -90,7 +90,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
           color: extendedSemanticColors.teachingBubbleBackground,
         },
         '.ms-Button-label': {
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
         },
       },
     },
@@ -98,7 +98,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       backgroundColor: extendedSemanticColors.teachingBubbleBackground,
       selectors: {
         '.ms-Button-label': {
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
         },
         '&:hover': {
           backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,

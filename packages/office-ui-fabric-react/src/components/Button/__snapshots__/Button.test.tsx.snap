@@ -308,7 +308,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             speak: none;
           }
           {
-            @media screen and (-ms-high-contrast:  active);
             color: #605e5c;
             flex-shrink: 0;
             font-size: 12px;
@@ -319,6 +318,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: GrayText;
           }
       data-icon-name="ChevronDown"
       role="presentation"

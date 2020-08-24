@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.130.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.130.0)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.129.0..office-ui-fabric-react_v7.130.0)
+
+### Minor changes
+
+- Custom Layout for Contextual Menu ([PR #14546](https://github.com/microsoft/fluentui/pull/14546) by michael.mao99@gmail.com)
 
 ## [7.129.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.129.0)
 
