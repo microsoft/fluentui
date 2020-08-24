@@ -34,7 +34,7 @@ import {
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
 import { useMergedRefs } from '@uifabric/react-hooks';
-import { getPropsWithDefaults } from '../../utilities';
+import { getPropsWithDefaults } from '../../utilities/index';
 
 export interface IComboBoxState {
   /** The open state */
