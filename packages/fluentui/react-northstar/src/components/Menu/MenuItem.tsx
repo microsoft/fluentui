@@ -240,7 +240,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       /**
        * The hover is adding the mouseEnter, mouseLeave events
        */
-      if (_.includes(normalizedOn, 'hover')) {
+      if (on === 'hover') {
         triggerProps.onMouseEnter = e => {
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
