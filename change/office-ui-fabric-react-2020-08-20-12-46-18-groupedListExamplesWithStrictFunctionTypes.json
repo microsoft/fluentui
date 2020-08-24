@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "GroupedList: Fixing errors in the examples that are triggered when the tsconfig strictFunctionTypes rule is turned on.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T19:46:18.424Z"
+}
