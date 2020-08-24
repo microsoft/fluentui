@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding `makeStyles` hook factory to leverage contextual themes in rendering styling.",
-  "packageName": "@uifabric/styling",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "minor",
-  "date": "2020-08-20T20:45:42.593Z"
-}
