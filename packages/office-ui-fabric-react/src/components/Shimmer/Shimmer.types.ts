@@ -2,9 +2,6 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-/**
- * {@docCategory Shimmer}
- */
 export interface IShimmer {}
 
 /**
@@ -13,8 +10,7 @@ export interface IShimmer {}
  */
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Optional callback to access the IShimmer interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * @deprecated
    */
   componentRef?: IRefObject<IShimmer>;
 
