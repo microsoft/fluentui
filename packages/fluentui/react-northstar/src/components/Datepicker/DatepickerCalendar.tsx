@@ -120,17 +120,22 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     () => new Date((navigatedDate || today || new Date()).getTime()),
   );
 
-  const normalizeDate = (date: Date): Date => {
+  const normalizeDateInGrid = (date: Date): Date => {
     const result = new Date(date.getTime());
     result.setDate(1);
     return result;
   };
 
-  const [normalizedGridDate, setNormalizedGridDate] = React.useState<Date>(() => normalizeDate(gridNavigatedDate));
-
-  React.useEffect(() => {
-    setNormalizedGridDate(normalizeDate(gridNavigatedDate));
-  }, [gridNavigatedDate]);
+  const getRidOfSecondsMinutesHours = (date: Date): Date => {
+    const result = new Date(date.getTime());
+    result.setSeconds(0, 0);
+    result.setMinutes(0);
+    result.setHours(0);
+    return result;
+  };
+  const [normalizedGridDate, setNormalizedGridDate] = React.useState<Date>(() =>
+    normalizeDateInGrid(gridNavigatedDate),
+  );
 
   const [shouldFocusInDayGrid, setShouldFocusInDayGrid] = React.useState<boolean>(true);
 
@@ -146,7 +151,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   });
 
   const dayGridOptions = {
-    selectedDate: selectedDate || today || new Date(),
+    selectedDate: getRidOfSecondsMinutesHours(selectedDate || today || new Date()),
     navigatedDate: normalizedGridDate,
     weeksToShow: props.weeksToShow,
     firstDayOfWeek: props.firstDayOfWeek,
@@ -165,6 +170,20 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     const grid = getDayGrid(dayGridOptions);
     return grid.slice(1, grid.length - 1); // slicing off first and last weeks, cause we don't use them for transitions
   }, [dayGridOptions]);
+
+  React.useEffect(() => {
+    const newNormalizedDate = normalizeDateInGrid(gridNavigatedDate);
+
+    if (compareDatePart(newNormalizedDate, normalizedGridDate)) {
+      // Do not change the grid immediately the month changes but only once the date stops being visible.
+      const gridContainsNavigatedDate = visibleGrid.find(week =>
+        week.find(day => compareDatePart(day.originalDate, gridNavigatedDate) === 0),
+      );
+      if (!gridContainsNavigatedDate) {
+        setNormalizedGridDate(newNormalizedDate);
+      }
+    }
+  }, [gridNavigatedDate, visibleGrid, normalizedGridDate]);
 
   const dateFormatting = {
     formatDay: props.formatDay,
@@ -237,11 +256,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
     if (newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);
+      setShouldFocusInDayGrid(false);
+      setNormalizedGridDate(normalizeDateInGrid(newNavigatedDate));
     }
   };
 
-  const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(gridNavigatedDate)) >= 0 : false;
-  const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(gridNavigatedDate), maxDate) >= 0 : false;
+  const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(normalizedGridDate)) >= 0 : false;
+  const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(normalizedGridDate), maxDate) >= 0 : false;
 
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);
@@ -327,8 +348,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       >
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
-            label: formatMonthYear(gridNavigatedDate, dateFormatting),
-            'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
+            label: formatMonthYear(normalizedGridDate, dateFormatting),
+            'aria-label': formatMonthYear(normalizedGridDate, dateFormatting),
             disabledNextButton: nextMonthOutOfBounds,
             disabledPreviousButton: prevMonthOutOfBounds,
             ...dateFormatting,
