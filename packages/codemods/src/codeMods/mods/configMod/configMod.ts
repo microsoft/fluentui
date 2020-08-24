@@ -7,8 +7,9 @@ import {
   RepathImportModType,
   CodeModMapType,
   ModOptions,
+  RenameImportType,
 } from '../../types';
-import { findJsxTag, renameProp, getImportsByPath, repathImport } from '../../utilities/index';
+import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
 const jsonObj: UpgradeJSONType = require('../upgrades.json');
@@ -89,6 +90,11 @@ const codeModMap: CodeModMapType = {
       return getImportsByPath(file, searchString).then(v =>
         v.map(imp => repathImport(imp, mod.options.to.replacementValue)),
       );
+    };
+  },
+  renameImport: function(mod: RenameImportType) {
+    return function(file: SourceFile) {
+      renameImport(file, mod.options.from.originalImport, mod.options.to.renamedImport);
     };
   },
 };

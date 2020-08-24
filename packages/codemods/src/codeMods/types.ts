@@ -115,8 +115,23 @@ export type RepathImportModType = {
   };
 };
 
+/* Type definition for a CodeMod object representing a renameImport mod. */
+export type RenameImportType = {
+  name: string;
+  type: 'renameImport';
+  version?: string;
+  options: {
+    from: {
+      originalImport: string;
+    };
+    to: {
+      renamedImport: string;
+    };
+  };
+};
+
 /* upgrades.json internal mods are of this type: a union of supported types. */
-export type ModTypes = RenamePropModType | RepathImportModType;
+export type ModTypes = RenamePropModType | RepathImportModType | RenameImportType;
 
 /* Type of the upgrades.json object */
 export type UpgradeJSONType = {

@@ -8,8 +8,8 @@ If you want to learn more about the mods themselves, [check out the official REA
 
 There are two principal ways of writing your own codemods:
 
-- **Config-based codemod**: Probably the easier way to create a codemod, the config-based codemod just reads in the contents of the json file `upgrades.json`, and returns a ready-to-run codemod to the user. To learn more about the valid mod configurations, [check out the custom types file](../src/codemods/types.ts)
-- **Custom codemod**: For developers who want more flexibility with their codemods, they have the option to create their own mods by wrapping codemod _utilities_ together in a function and passing said function into the `createCodeMod()` function, which will return a ready-to-run codemod.
+- **Config-based codemod**: Probably the easier way to create a codemod, the config-based codemod reads in the contents of the json file `upgrades.json`, and returns a ready-to-run codemod to the user. To learn more about the specifics of the file configurations, [check out the custom types file](../src/codemods/types.ts)
+- **Custom codemod**: For developers who want more flexibility with their codemods, they have the option to create their own mods by wrapping codemod _utilities_ together in a function and passing said function into the `createCodeMod()` function, which will return a ready-to-run codemod. We'll go through an example of this later.
 
 Here are the current features our codemods support:
 
@@ -48,7 +48,7 @@ Feel free to try this out on your local branch of fluent! I've set up the files 
 }
 ```
 
-- Once you fill out this file, you can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and test your codemod! Invoke the function `createCodeModFromJson()`, which will turn whatever exists in `upgrades.json` into a list of codemods. Check out ##Testing Your Codemods## for more info on how to run!
+- Once you fill out this file, you can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and test your codemod! Invoke the function `createCodeModFromJson()`, which will turn whatever exists in `upgrades.json` into a list of codemods. Check out ##Testing Your Codemods## for more info on how to verify it works!
 
 ### Custom CodeMods
 
@@ -69,7 +69,7 @@ const func = function(file: SourceFile) {
 
 ### Testing Your CodeMods
 
-###### If you're still writing your first codemod, stay in `configMod.test.ts`.
+###### If you're writing your first codemod, do this work in `configMod.test.ts`.
 
 - Before you run your codemod, you'll need to specify files to run on! The following code will do:
 
@@ -103,7 +103,7 @@ expect(somePredicate).toBeTruthy(); // Test fails if SOMEPREDICATE is false
 expect(somePredicate).toBeFalsy(); // Test fails if SOMEPREDICATE is true.
 ```
 
-- Unfortunately, to write tests for your codemods, you'll need to know a little bit of `ts-morph` to be able to navigate the AST and examine the renamed props. Here's some code to get you started that uses existing utilities to return an array of JSX elements that contain the components in question:
+- Unfortunately, to write tests for your codemods, you'll need to know a little bit of `ts-morph` to be able to navigate the AST and examine the renamed props. Here's some code to get you started that uses existing utilities to return an array of JSX elements that contain the components in the dropdown mock file:
 
 ```typescript=
 const file = const file = project.getSourceFileOrThrow(DropdownPropsFile);
