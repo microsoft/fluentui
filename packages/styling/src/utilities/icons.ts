@@ -214,7 +214,7 @@ export function setIconOptions(options: Partial<IIconOptions>): void {
 }
 
 let _missingIcons: string[] = [];
-let _missingIconsTimer: ReturnType<typeof setTimeout> | undefined;
+let _missingIconsTimer: number | undefined = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
   const options = _iconSettings.__options;
