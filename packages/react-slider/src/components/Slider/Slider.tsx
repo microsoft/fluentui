@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { styled, css, memoizeFunction } from '../../Utilities';
+import { styled, css, memoizeFunction } from '@uifabric/utilities';
+import { getGlobalClassNames, ITheme } from '@uifabric/styling';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { SliderBase } from './Slider.base';
-import { getGlobalClassNames, ITheme } from '../../Styling';
 import * as classes from './Slider.scss';
 
 const GlobalClassNames = {

@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyleFunctionOrObject, IRefObject } from '@uifabric/utilities';
 
 /**
  * {@docCategory Slider}
@@ -11,13 +13,10 @@ export interface ISlider {
   focus: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ISliderState = any;
-
 /**
  * {@docCategory Slider}
  */
-export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
+export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

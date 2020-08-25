@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
 import { SliderVerticalExample } from './examples/Slider.Vertical.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
 const SliderVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Vertical.Example.tsx') as string;
