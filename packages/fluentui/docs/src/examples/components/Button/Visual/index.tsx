@@ -7,6 +7,7 @@ const Types = () => (
   <NonPublicSection title="Visual tests">
     <ComponentExample examplePath="components/Button/Visual/ButtonExampleCompose" />
     <ComponentExample examplePath="components/Button/Visual/ButtonExampleUseCss" />
+    <ComponentExample examplePath="components/Button/Visual/ButtonExampleComposition" />
   </NonPublicSection>
 );
 
