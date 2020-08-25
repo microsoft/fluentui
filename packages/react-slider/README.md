@@ -7,5 +7,9 @@ These are not production-ready components and **should never be used in product*
 To import React Slider components:
 
 ```js
-import { ComponentName } from '@fluentui/react-slider';
+import { Slider } from '@fluentui/react-slider';
+
+const App = () => {
+  return <Slider label="Slider" min={0} max={50} />;
+};
 ```
