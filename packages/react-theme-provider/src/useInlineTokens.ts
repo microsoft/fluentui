@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TokenSetType } from './types';
+import { TokenSetType } from '@fluentui/theme';
 import { tokensToStyleObject } from './tokensToStyleObject';
 
 /**

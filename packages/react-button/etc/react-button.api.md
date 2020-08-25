@@ -5,9 +5,10 @@
 ```ts
 
 import { BaseSlots } from '@fluentui/react-compose';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SlotProps } from '@fluentui/react-compose';
 
@@ -240,10 +241,6 @@ export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElem
 // @public (undocumented)
 export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/components/Button/Button.types.d.ts:65:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

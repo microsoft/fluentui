@@ -66,7 +66,7 @@ export function useId(prefix?: string, providedId?: string): string;
 export function useMergedRefs<T>(...refs: (Ref<T> | undefined)[]): (instance: T) => void;
 
 // @public
-export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
 // @public
 export function usePrevious<T>(value: T): T | undefined;
