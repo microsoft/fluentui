@@ -2395,17 +2395,17 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.15.2":
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.15.2.tgz#ee2862a6c4b516b5ad4d272a7427f7ab8ede2009"
-  integrity sha512-+0fr39Js88SqMgE6LBlnP33bYve5PiAbonRS5+DypAYORHC7yNbSBntDsv5fJYvzU+H2w7N87Ctjvd/OEWidng==
+"@microsoft/fast-element@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.16.0.tgz#0c60394d54f37478a359d9965d6c102c1e09bbf1"
+  integrity sha512-cW8Vj1+VpwRPoC7wK0gG7GCt5W4ZcluUPJZfcOHA7ViVPMaW50Fkfv+jrunJLXCw1FuXE5caIUh2h/8aorYgRA==
 
-"@microsoft/fast-foundation@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.6.0.tgz#2557a0ab2d42df12b51290bcb9675d210d5d319b"
-  integrity sha512-swG0GEI4kFkOD8zx6No3Zu4Nre2EUKWpzHXum1ZNFpQhrjo0arggCJkYFOzCHlyrfniqoNUgkcH5xLmr6O5ucw==
+"@microsoft/fast-foundation@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.7.0.tgz#084102ca3ee3ded043db1fccd6e98edebe4b1981"
+  integrity sha512-hJmzCdsX6s+BT/HRj5OhUMSUGZ27WCbCE7sXVE+0BU7NeQPYY1w6sG0sJz9fu8UBLsuesU7aWpVCEpVu277K6g==
   dependencies:
-    "@microsoft/fast-element" "^0.15.2"
+    "@microsoft/fast-element" "^0.16.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
@@ -4177,10 +4177,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
-"@types/markdown-to-jsx@6.9.0":
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/@types/markdown-to-jsx/-/markdown-to-jsx-6.9.0.tgz#799fb134f91ffe585dba826f3029101910750de4"
-  integrity sha512-LO/oxz+ZfwBDciiVGqLhhdyeWt196kgICe0QS88K1a2u/FgUF1QkeMAm4zdnAo1kNgo2KgFP1Uqy2IiPJLWppA==
+"@types/markdown-to-jsx@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/@types/markdown-to-jsx/-/markdown-to-jsx-6.11.0.tgz#a19e458a9415763859f2c92c4c5b07a80bea8c14"
+  integrity sha512-OFFHQ3LK+g8lSfwdqjXBbrGFdgH/MYXhzIYSOJ5xapT++eEhRx7wOfY3xxtktVtQyQtsB7Wljs7IDGgKfurm2A==
   dependencies:
     "@types/react" "*"
 
@@ -4412,6 +4412,13 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/read-pkg-up@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@types/read-pkg-up/-/read-pkg-up-6.0.0.tgz#7926c93cf14d906e9829a859e790323d0f338684"
+  integrity sha512-F9AikSDYJdlbKOX78vTHyKcMkuGRU661Dao0zkqD5j36dBRf1+FaOa+MRQvGFZOyMcoOBChf563wK0/LCeBH5g==
+  dependencies:
+    read-pkg-up "*"
 
 "@types/resolve@0.0.8":
   version "0.0.8"
@@ -16234,12 +16241,12 @@ markdown-table@^2.0.0:
   dependencies:
     repeat-string "^1.0.0"
 
-markdown-to-jsx@6.6.1:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-6.6.1.tgz#858b37f8a92526b1f3407593ff77c95927720bef"
-  integrity sha1-hYs3+KklJrHzQHWT/3fJWSdyC+8=
+markdown-to-jsx@6.11.4:
+  version "6.11.4"
+  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-6.11.4.tgz#b4528b1ab668aef7fe61c1535c27e837819392c5"
+  integrity sha512-3lRCD5Sh+tfA52iGgfs/XZiw33f7fFX9Bn55aNnVNUd2GzLDkOWyKYYD8Yju2B1Vn+feiEdgJs8T6Tg0xNokPw==
   dependencies:
-    prop-types "^15.5.10"
+    prop-types "^15.6.2"
     unquote "^1.1.0"
 
 markdown-to-jsx@^6.9.1, markdown-to-jsx@^6.9.3:
@@ -20082,6 +20089,15 @@ read-package-tree@^5.1.6:
     readdir-scoped-modules "^1.0.0"
     util-promisify "^2.1.0"
 
+read-pkg-up@*, read-pkg-up@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
+  integrity sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==
+  dependencies:
+    find-up "^4.1.0"
+    read-pkg "^5.2.0"
+    type-fest "^0.8.1"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -20141,7 +20157,7 @@ read-pkg@^3.0.0:
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
 
-read-pkg@^5.1.1:
+read-pkg@^5.1.1, read-pkg@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-5.2.0.tgz#7bf295438ca5a33e56cd30e053b34ee7250c93cc"
   integrity sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg==
@@ -23598,7 +23614,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.7.2:
+typescript@3.7.2, typescript@~3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
   integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
@@ -23607,11 +23623,6 @@ typescript@^3.9.0:
   version "3.9.7"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
-
-typescript@~3.7.2:
-  version "3.7.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.4.tgz#1743a5ec5fef6a1fa9f3e4708e33c81c73876c19"
-  integrity sha512-A25xv5XCtarLwXpcDNZzCGvW2D1S3/bACratYBx2sax8PefsFhlYmkQicKHvpYflFS8if4zne5zT5kpJ7pzuvw==
 
 ua-parser-js@0.7.21, ua-parser-js@^0.7.18:
   version "0.7.21"
@@ -24574,7 +24585,7 @@ webpack-virtual-modules@^0.2.0:
   dependencies:
     debug "^3.0.0"
 
-webpack@4.35.0, webpack@^4.33.0, webpack@^4.35.0, webpack@^4.38.0, webpack@^4.43.0:
+webpack@4.43.0, webpack@^4.33.0, webpack@^4.38.0, webpack@^4.43.0:
   version "4.43.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.43.0.tgz#c48547b11d563224c561dad1172c8aa0b8a678e6"
   integrity sha512-GW1LjnPipFW2Y78OOab8NJlCflB7EFskMih2AHdvjbpKMeDJqEgSx24cXXXiPS65+WSwVyxtDsJH6jGX2czy+g==

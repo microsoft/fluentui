@@ -8,7 +8,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'fluentbuild'
+pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
@@ -26,6 +26,11 @@ jobs:
       - script: |
           yarn checkchange
         displayName: check change
+
+      ## manually call this since lage is now used and it calls lint per package, not per repo
+      - script: |
+          yarn prelint
+        displayName: do syncpack and no-tslint checks
 
       ## only do scoped builds with PRs
       - script: |

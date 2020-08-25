@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
@@ -56,7 +57,7 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
-export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ILegend {
   /**
    * Defines the title of the legend
    */
@@ -86,6 +87,11 @@ export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    * The shape for the legend
    */
   shape?: LegendShape;
+
+  /**
+   *  native button props for the legend button
+   */
+  nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 export interface ILegendStyleProps {
@@ -146,6 +152,12 @@ export interface ILegendsProps {
    * Prop that takes the active legend
    */
   selectedLegend?: string;
+
+  /**
+   * prop that decides if legends are focusable
+   * @default false
+   */
+  allowFocusOnLegends?: boolean;
 }
 
 /**

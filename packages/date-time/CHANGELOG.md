@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.4](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.4)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.2..@uifabric/date-time_v7.14.4)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.2)
 

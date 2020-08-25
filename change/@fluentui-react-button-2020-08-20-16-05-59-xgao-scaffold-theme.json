@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Use new theme package.",
+  "packageName": "@fluentui/react-button",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T23:05:01.578Z"
+}

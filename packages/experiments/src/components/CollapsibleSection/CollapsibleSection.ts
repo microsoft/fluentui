@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { CollapsibleSectionView } from './CollapsibleSection.view';
 import { useCollapsibleSectionState } from './CollapsibleSection.state';
 import { collapsibleSectionStyles } from './CollapsibleSection.styles';

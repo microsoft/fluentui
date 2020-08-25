@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added document type to element parameter within on.ts utility.",
+  "packageName": "@uifabric/utilities",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-29T19:49:08.552Z"
+}
