@@ -1,8 +1,8 @@
-import * as classes from './Checkbox.scss';
 import { createClassResolver, ClassFunction } from '@fluentui/react-compose';
 import { useGlobalClassNames } from '@fluentui/react-theme-provider/lib/useGlobalClassNames';
-import { css } from '../../Utilities';
+import { css } from '@uifabric/utilities';
 import { ICheckboxClasses } from './Checkbox.types';
+import * as classes from './Checkbox.scss';
 
 const GlobalClassNames: Omit<ICheckboxClasses, 'input'> = {
   root: 'ms-Checkbox',

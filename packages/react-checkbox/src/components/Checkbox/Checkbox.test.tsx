@@ -4,7 +4,7 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
-import { IRefObject, resetIds } from '../../Utilities';
+import { IRefObject, resetIds } from '@uifabric/utilities';
 import { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
@@ -16,7 +16,7 @@ const checkboxRef: IRefObject<ICheckbox> = (ref: ICheckbox | null) => {
 const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checked, setChecked] = React.useState(false);
-  const onChange = (ev: React.FormEvent<HTMLElement>, newChecked: boolean): void => {
+  const onChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, newChecked?: boolean): void => {
     // On first change, clear the indeterminate state and don't modify the checked state
     indeterminate ? setIndeterminate(false) : setChecked(!!newChecked);
   };

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
-import { Stack } from '@fluentui/react-next/lib/Stack';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
@@ -20,6 +20,6 @@ export const CheckboxBasicExample: React.FunctionComponent = () => {
   );
 };
 
-function _onChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+function _onChange(ev?: React.FormEvent<HTMLElement | HTMLInputElement>, isChecked?: boolean) {
   console.log(`The option has been changed to ${isChecked}.`);
 }
