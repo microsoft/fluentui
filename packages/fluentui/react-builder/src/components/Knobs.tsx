@@ -126,11 +126,25 @@ type DesignKnobProps = {
     name: string;
     value: string;
   }) => void;
+  onStyleChange: ({
+    jsonTreeElement,
+    name,
+    value,
+  }: {
+    jsonTreeElement: JSONTreeElement;
+    name: string;
+    value: string;
+  }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
 };
 
-export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
+export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
+  onPropChange,
+  onStyleChange,
+  info,
+  jsonTreeElement,
+}) => {
   const [menuActivePane, setMenuActivePane] = React.useState('props');
   return (
     <div>
@@ -203,9 +217,9 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
                     max={knob.ramp.length - 1}
                     value={currentValue ? knob.ramp.indexOf(parseFloat(currentValue)) : 0}
                     onChange={(e, data) => {
-                      onPropChange({
+                      onStyleChange({
                         jsonTreeElement,
-                        name: `design-${knob.label}`,
+                        name: knob.label,
                         value: `${knob.ramp[+data.value]}rem`,
                       });
                     }}
@@ -218,7 +232,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
                   content={
                     <ComponentExampleColorPicker
                       onChange={(color: string) => {
-                        onPropChange({ jsonTreeElement, name: `design-${knob.label}`, value: color });
+                        onStyleChange({ jsonTreeElement, name: knob.label, value: color });
                       }}
                       variableValue={knob.label}
                     />

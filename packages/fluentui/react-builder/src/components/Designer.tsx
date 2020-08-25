@@ -59,6 +59,7 @@ type DesignerState = {
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
+  themeOverrides: any;
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
 };
@@ -186,17 +187,19 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
 
-      const treeComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
-      if (treeComponent) {
-        if (!treeComponent.props) {
-          treeComponent.props = {};
-        }
-        if (!treeComponent.props.styles) {
-          treeComponent.props.styles = {};
-        }
-        treeComponent.props.styles[action.propName] = action.propValue;
-        treeChanged = true;
+      if (!draftState.themeOverrides?.componentStyles) {
+        draftState.themeOverrides.componentStyles = {};
       }
+
+      if (!draftState.themeOverrides?.componentStyles[action.component.displayName]) {
+        draftState.themeOverrides.componentStyles[action.component.displayName] = {};
+      }
+
+      if (!draftState.themeOverrides?.componentStyles[action.component.displayName].root) {
+        draftState.themeOverrides.componentStyles[action.component.displayName].root = {};
+      }
+
+      draftState.themeOverrides.componentStyles[action.component.displayName].root[action.propName] = action.propValue;
       break;
 
     case 'SWITCH_TO_STORE':
@@ -298,6 +301,7 @@ export const Designer: React.FunctionComponent = () => {
       showCode: false,
       code: null,
       codeError: null,
+      themeOverrides: {},
       history: [],
       redo: [],
     };
@@ -321,6 +325,7 @@ export const Designer: React.FunctionComponent = () => {
     showCode,
     code,
     codeError,
+    themeOverrides,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
@@ -390,21 +395,24 @@ export const Designer: React.FunctionComponent = () => {
 
   const handlePropChange = React.useCallback(
     ({ jsonTreeElement, name, value }) => {
-      if (name.includes('design-')) {
-        dispatch({
-          type: 'COMPONENT_STYLE_CHANGE',
-          component: jsonTreeElement,
-          propName: name.replace('design-', ''),
-          propValue: value,
-        });
-      } else {
-        dispatch({
-          type: 'PROP_CHANGE',
-          component: jsonTreeElement,
-          propName: name,
-          propValue: value,
-        });
-      }
+      dispatch({
+        type: 'PROP_CHANGE',
+        component: jsonTreeElement,
+        propName: name,
+        propValue: value,
+      });
+    },
+    [dispatch],
+  );
+
+  const handleComponentStyleChange = React.useCallback(
+    ({ jsonTreeElement, name, value }) => {
+      dispatch({
+        type: 'COMPONENT_STYLE_CHANGE',
+        component: jsonTreeElement,
+        propName: name.replace('design-', ''),
+        propValue: value,
+      });
     },
     [dispatch],
   );
@@ -647,6 +655,7 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  themeOverrides={themeOverrides}
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -712,6 +721,7 @@ export const Designer: React.FunctionComponent = () => {
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
+                onStyleChange={handleComponentStyleChange}
                 info={selectedComponentInfo}
                 jsonTreeElement={selectedJSONTreeElement}
               />

@@ -25,6 +25,7 @@ export type CanvasProps = {
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  themeOverrides?: any;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -44,6 +45,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
+  themeOverrides,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -296,16 +298,18 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             )}
             <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
-              {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-              {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {draggingElement && (
-                <EventListener
-                  type="scroll"
-                  listener={() => !hideDropSelector && setHideDropSelector(true)}
-                  target={document}
-                />
-              )}
-              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              <Provider theme={themeOverrides} target={document}>
+                {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+                {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+                {draggingElement && (
+                  <EventListener
+                    type="scroll"
+                    listener={() => !hideDropSelector && setHideDropSelector(true)}
+                    target={document}
+                  />
+                )}
+                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              </Provider>
             </Provider>
           </>
         )}

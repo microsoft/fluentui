@@ -1,19 +1,32 @@
-import * as React from 'react';
-import { Accordion } from '@fluentui/react-northstar';
+import React from 'react';
+import { Button, Label, Provider } from '@fluentui/react-northstar';
+import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
-const panels = [
-  {
-    key: 'p',
-    title: 'What is a point?',
-    content: 'Use the haptic SDD circuit, then you can index the redundant pixel!',
+const theme = `{
+  componentVariables: {
+    Button: {
+      height: '24px',
+      minWidth: '24px',
+      borderRadius: '8px',
+      color: 'darkred',
+      secondaryColor: '#ffffff',
+      secondaryBorderColor: 'transparent',
+      secondaryBackgroundColor: '#6699CC',
+      secondaryBackgroundColorHover: '#91A3B0',
+    },
   },
-  {
-    key: 'd',
-    title: 'What is a dimension of a point?',
-    content: 'We need to copy the primary USB firewall!',
-  },
-];
+  }`;
 
-const AccordionExample = () => <Accordion defaultActiveIndex={[0]} panels={panels} />;
+const provider = () => (
+  <Provider theme={theme}>
+    <div>
+      <Button content="Button" />
+      <Button icon={<AddIcon />} iconOnly primary />
+      <Button icon={<EmailIcon />} content="Send email" secondary />
+      <EmojiIcon size="larger" />
+      <Label content="Label with icon" icon={<CloseIcon />} />
+    </div>
+  </Provider>
+);
 
-export default AccordionExample;
+export default provider;
