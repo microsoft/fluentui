@@ -122,9 +122,6 @@ export interface MenuItemProps
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
-  /** Events triggering the menu open. */
-  on?: 'hover';
-
   /** Shorthand for the submenu. */
   menu?:
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
@@ -223,7 +220,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
-      on,
     } = props;
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
@@ -399,18 +395,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const rootHandlers: React.HTMLAttributes<HTMLElement> = {
       ...(!wrapper && {
         onClick: handleClick,
-        ...(on === 'hover' && {
-          onMouseEnter: e => {
-            setWhatInputSource(context.target, 'mouse');
-            trySetMenuOpen(true, e);
-            _.invoke(props, 'onMouseEnter', e, props);
-            _.invoke(parentProps, 'onItemSelect', e, props);
-          },
-          onMouseLeave: e => {
-            trySetMenuOpen(false, e);
-            _.invoke(props, 'onMouseLeave', e, props);
-          },
-        }),
+        onMouseEnter: e => {
+          setWhatInputSource(context.target, 'mouse');
+          trySetMenuOpen(true, e);
+          setMenuOpen(true);
+          _.invoke(props, 'onMouseEnter', e, props);
+          _.invoke(parentProps, 'onItemSelect', e, props);
+        },
       }),
     };
 
@@ -477,18 +468,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         handleClick(e);
         _.invoke(predefinedProps, 'onClick', e, props);
       },
-      ...(on === 'hover' && {
-        onMouseEnter: e => {
-          setWhatInputSource(context.target, 'mouse');
-          trySetMenuOpen(true, e);
-          _.invoke(predefinedProps, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props);
-        },
-        onMouseLeave: e => {
-          trySetMenuOpen(false, e);
-          _.invoke(predefinedProps, 'onMouseLeave', e, props);
-        },
-      }),
+      onMouseEnter: e => {
+        setWhatInputSource(context.target, 'mouse');
+        trySetMenuOpen(true, e);
+        performClick(e);
+        _.invoke(parentProps, 'onItemSelect', e, props);
+        _.invoke(predefinedProps, 'onMouseEnter', e, props);
+      },
     });
 
     const maybeSubmenu =
@@ -590,7 +576,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     handledProps: [
       'accessibility',
       'as',
-      'on',
       'children',
       'className',
       'content',
@@ -637,7 +622,6 @@ MenuItem.propTypes = {
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
-  on: PropTypes.oneOf(['hover']),
   iconOnly: PropTypes.bool,
   index: PropTypes.number,
   itemPosition: PropTypes.number,
