@@ -122,9 +122,6 @@ export interface MenuItemProps
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
-  /** Events triggering the menu open. */
-  on?: 'hover';
-
   /** Shorthand for the submenu. */
   menu?:
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
@@ -223,10 +220,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
-      on,
     } = props;
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
-
+    const [openedByHover, setOpenedByHover] = React.useState(false);
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
       value: props.menuOpen,
@@ -318,12 +314,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
           // submenu was clicked => close it and propagate
           trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
-        } else {
+        } else if (!openedByHover) {
           // the menuItem element was clicked => toggle the open/close and stop propagation
           trySetMenuOpen(active ? !menuOpen : true, e);
           e.stopPropagation();
           e.preventDefault();
         }
+        setOpenedByHover(false);
       }
     };
 
@@ -399,18 +396,20 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const rootHandlers: React.HTMLAttributes<HTMLElement> = {
       ...(!wrapper && {
         onClick: handleClick,
-        ...(on === 'hover' && {
-          onMouseEnter: e => {
+        onMouseEnter: e => {
+          if (menu && !menuOpen) {
             setWhatInputSource(context.target, 'mouse');
             trySetMenuOpen(true, e);
-            _.invoke(props, 'onMouseEnter', e, props);
             _.invoke(parentProps, 'onItemSelect', e, props);
-          },
-          onMouseLeave: e => {
+          }
+          _.invoke(props, 'onMouseEnter', e, props);
+        },
+        onMouseLeave: e => {
+          if (openedByHover) {
             trySetMenuOpen(false, e);
-            _.invoke(props, 'onMouseLeave', e, props);
-          },
-        }),
+          }
+          _.invoke(props, 'onMouseLeave', e, props);
+        },
       }),
     };
 
@@ -477,18 +476,20 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         handleClick(e);
         _.invoke(predefinedProps, 'onClick', e, props);
       },
-      ...(on === 'hover' && {
-        onMouseEnter: e => {
+      onMouseEnter: (e: React.MouseEvent) => {
+        if (menu && !menuOpen) {
           setWhatInputSource(context.target, 'mouse');
-          trySetMenuOpen(true, e);
-          _.invoke(predefinedProps, 'onMouseEnter', e, props);
+          trySetMenuOpen(true, e, () => setOpenedByHover(true));
           _.invoke(parentProps, 'onItemSelect', e, props);
-        },
-        onMouseLeave: e => {
+        }
+        _.invoke(predefinedProps, 'onMouseEnter', e, props);
+      },
+      onMouseLeave: (e: React.MouseEvent) => {
+        if (openedByHover) {
           trySetMenuOpen(false, e);
-          _.invoke(predefinedProps, 'onMouseLeave', e, props);
-        },
-      }),
+        }
+        _.invoke(predefinedProps, 'onMouseLeave', e, props);
+      },
     });
 
     const maybeSubmenu =
@@ -590,7 +591,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     handledProps: [
       'accessibility',
       'as',
-      'on',
       'children',
       'className',
       'content',
@@ -637,7 +637,6 @@ MenuItem.propTypes = {
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
-  on: PropTypes.oneOf(['hover']),
   iconOnly: PropTypes.bool,
   index: PropTypes.number,
   itemPosition: PropTypes.number,
