@@ -7,7 +7,7 @@ export const validateDate = (
   dateFormatting: ICalendarStrings,
   required: boolean,
 ): string => {
-  if (futureSelectedDate) {
+  if (futureSelectedDate && !isNaN(futureSelectedDate.getTime())) {
     if (isRestrictedDate(futureSelectedDate, calendarOptions)) {
       return dateFormatting.isOutOfBoundsErrorMessage;
     }
