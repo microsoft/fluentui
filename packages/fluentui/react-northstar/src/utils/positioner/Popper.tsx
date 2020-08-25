@@ -78,6 +78,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
 
   const popperInstanceRef = React.useRef<PopperJs.Instance>();
   const contentRef = React.useRef<HTMLElement>(null);
+  const originalStateRef = React.useRef<'fixed' | 'absolute'>('absolute');
 
   const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
   const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
@@ -103,7 +104,19 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
       return;
     }
 
+    const setInitPositionToFix = ({ state }: { state: Partial<PopperJs.State> }) => {
+      originalStateRef.current = state.options.strategy;
+      state.options.strategy = 'fixed';
+      return () => {};
+    };
+
+    const unsetInitPositionToFix = ({ state }: { state: Partial<PopperJs.State> }) => {
+      state.options.strategy = originalStateRef.current;
+      return () => {};
+    };
+
     const handleUpdate = ({ state }: { state: Partial<PopperJs.State> }) => {
+      // console.log('Popper  handleUpdate', window.getComputedStyle(contentRef.current).position);
       // PopperJS performs computations that might update the computed placement: auto positioning, flipping the
       // placement in case the popper box should be rendered at the edge of the viewport and does not fit
       if (state.placement !== latestPlacement.current) {
@@ -182,6 +195,22 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'afterWrite' as PopperJs.ModifierPhases,
           fn: handleUpdate,
         },
+
+        {
+          name: 'setInitPositionToFix',
+          enabled: true,
+          phase: 'beforeWrite' as PopperJs.ModifierPhases,
+          effect: setInitPositionToFix,
+          requires: ['computeStyles'],
+        },
+
+        {
+          name: 'unsetInitPositionToFix',
+          enabled: true,
+          phase: 'afterWrite' as PopperJs.ModifierPhases,
+          effect: unsetInitPositionToFix,
+          requires: ['applyStyles'],
+        },
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };
@@ -222,6 +251,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   );
 
   useIsomorphicLayoutEffect(() => {
+    // console.log('Popper  useIsomorphicLayoutEffect', window.getComputedStyle(contentRef.current).position);
     createInstance();
     return destroyInstance;
   }, [createInstance]);
