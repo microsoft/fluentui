@@ -1,4 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -36,11 +36,10 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<DatepickerBehaviorProps>;
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -192,7 +191,15 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
-    actionHandlers: {},
+    actionHandlers: {
+      open: e => {
+        if (!allowManualInput) {
+          e.preventDefault();
+          setPreventClosing(true);
+          setOpenState(true);
+        }
+      },
+    },
     rtl: context.rtl,
   });
 
@@ -274,18 +281,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
     },
-    onKeyPress: e => {
-      if (!allowManualInput) {
-        const keyCode = getCode(e);
-
-        if (keyCode === keyboardKey.Enter) {
-          setPreventClosing(true);
-          setOpenState(true);
-        }
-
-        _.invoke(predefinedProps, 'onKeyPress', e, predefinedProps);
-      }
-    },
   });
 
   const element = (
@@ -298,14 +293,15 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           })}
         >
           {createShorthand(Input, input, {
-            defaultProps: () => ({
-              placeholder: props.inputPlaceholder,
-              disabled: props.disabled,
-              error: !!error,
-              value: formattedDate,
-              readOnly: !allowManualInput,
-              required: props.required,
-            }),
+            defaultProps: () =>
+              getA11yProps('input', {
+                placeholder: props.inputPlaceholder,
+                disabled: props.disabled,
+                error: !!error,
+                value: formattedDate,
+                readOnly: !allowManualInput,
+                required: props.required,
+              }),
             overrideProps: overrideInputProps,
           })}
           {createShorthand(Popup, popup, {
@@ -408,6 +404,8 @@ Datepicker.propTypes = {
 };
 
 Datepicker.defaultProps = {
+  accessibility: datepickerBehavior,
+
   calendar: {},
   popup: {},
   input: {},
