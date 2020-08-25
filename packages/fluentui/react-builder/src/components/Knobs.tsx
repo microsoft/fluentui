@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Divider, Slider, Menu, Popup, Text, Flex } from '@fluentui/react-northstar';
+import { Divider, Slider, Menu, Popup, Text, Flex, Checkbox } from '@fluentui/react-northstar';
 import { ComponentExampleColorPicker } from '@fluentui/docs-components';
 import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
@@ -130,13 +130,16 @@ type DesignKnobProps = {
     jsonTreeElement,
     name,
     value,
+    componentOnly,
   }: {
     jsonTreeElement: JSONTreeElement;
     name: string;
     value: string;
+    componentOnly: boolean;
   }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
+  themeOverrides: any;
 };
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
@@ -144,8 +147,10 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
   onStyleChange,
   info,
   jsonTreeElement,
+  themeOverrides,
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState('props');
+  const [componentStyleOnly, setComponentStyleOnly] = React.useState(false);
   return (
     <div>
       <Menu
@@ -198,69 +203,91 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
             );
           })}
 
-      {menuActivePane === 'design' &&
-        _.map(knobs, knob => {
-          const currentValue =
-            (jsonTreeElement.props && jsonTreeElement.props.styles && jsonTreeElement.props.styles[knob.label]) ||
-            '#000';
+      {menuActivePane === 'design' && (
+        <>
+          <Checkbox
+            label="Style only this component"
+            toggle
+            checked={componentStyleOnly}
+            onChange={(e, data) => setComponentStyleOnly(!componentStyleOnly)}
+          />
+          {_.map(knobs, knob => {
+            const currentValue =
+              (componentStyleOnly &&
+                jsonTreeElement.props &&
+                jsonTreeElement.props.style &&
+                jsonTreeElement.props.style[knob.label]) ||
+              (themeOverrides.componentStyles &&
+                themeOverrides.componentStyles[jsonTreeElement.type] &&
+                themeOverrides.componentStyles[jsonTreeElement.type].root &&
+                themeOverrides.componentStyles[jsonTreeElement.type].root[knob.label]) ||
+              '';
 
-          return (
-            <div key={knob.label} style={{ ...rowStyle, marginBottom: '0.5rem' }}>
-              {knob.kind === 'slider' ? (
-                <>
-                  <code style={{ float: 'right' }}>{JSON.stringify(currentValue, null, 2)}</code>
-                  <div>{knob.label}</div>
-                  <Slider
-                    fluid
-                    step={1}
-                    min={0}
-                    max={knob.ramp.length - 1}
-                    value={currentValue ? knob.ramp.indexOf(parseFloat(currentValue)) : 0}
-                    onChange={(e, data) => {
-                      onStyleChange({
-                        jsonTreeElement,
-                        name: knob.label,
-                        value: `${knob.ramp[+data.value]}rem`,
-                      });
-                    }}
-                  />
-                </>
-              ) : knob.kind === 'divider' ? (
-                <Divider content={knob.label} style={{ width: '100%' }} />
-              ) : knob.kind === 'color' ? (
-                <Popup
-                  content={
-                    <ComponentExampleColorPicker
-                      onChange={(color: string) => {
-                        onStyleChange({ jsonTreeElement, name: knob.label, value: color });
+            return (
+              <div key={knob.label} style={{ ...rowStyle, marginBottom: '0.5rem' }}>
+                {knob.kind === 'slider' ? (
+                  <>
+                    <code style={{ float: 'right' }}>{JSON.stringify(currentValue, null, 2)}</code>
+                    <div>{knob.label}</div>
+                    <Slider
+                      fluid
+                      step={1}
+                      min={0}
+                      max={knob.ramp.length - 1}
+                      value={currentValue ? knob.ramp.indexOf(parseFloat(currentValue)) : 0}
+                      onChange={(e, data) => {
+                        onStyleChange({
+                          jsonTreeElement,
+                          name: knob.label,
+                          value: `${knob.ramp[+data.value]}rem`,
+                          componentOnly: componentStyleOnly,
+                        });
                       }}
-                      variableValue={knob.label}
                     />
-                  }
-                  position="below"
-                  align="end"
-                  trigger={
-                    <Flex>
-                      <div
-                        style={{
-                          width: '1.2rem',
-                          height: '1.2rem',
-                          marginTop: 'auto',
-                          marginRight: '0.5rem',
-                          background: `${currentValue}`,
-                          border: '1px solid #000',
+                  </>
+                ) : knob.kind === 'divider' ? (
+                  <Divider content={knob.label} style={{ width: '100%' }} />
+                ) : knob.kind === 'color' ? (
+                  <Popup
+                    content={
+                      <ComponentExampleColorPicker
+                        onChange={(color: string) => {
+                          onStyleChange({
+                            jsonTreeElement,
+                            name: knob.label,
+                            value: color,
+                            componentOnly: componentStyleOnly,
+                          });
                         }}
+                        variableValue={knob.label}
                       />
-                      <Text content={knob.label} />
-                    </Flex>
-                  }
-                />
-              ) : (
-                <div>UNKNOWN</div>
-              )}
-            </div>
-          );
-        })}
+                    }
+                    position="below"
+                    align="end"
+                    trigger={
+                      <Flex>
+                        <div
+                          style={{
+                            width: '1.2rem',
+                            height: '1.2rem',
+                            marginTop: 'auto',
+                            marginRight: '0.5rem',
+                            background: `${currentValue}`,
+                            border: '1px solid #000',
+                          }}
+                        />
+                        <Text content={knob.label} />
+                      </Flex>
+                    }
+                  />
+                ) : (
+                  <div>UNKNOWN</div>
+                )}
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
