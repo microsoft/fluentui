@@ -48,6 +48,19 @@ export const ToggleButtonCss = () => (
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <ToggleButtonVariants iconOnly />
 
+    <Text>A button can be both `circular` and `iconOnly`.</Text>
+    <ToggleButtonVariants circular iconOnly />
+
+    <Text>A button can blend into its background using the `ghost` prop</Text>
+    <Stack horizontal>
+      <ToggleButton ghost icon="X">
+        Hello, world
+      </ToggleButton>
+      <ToggleButton ghost disabled icon="X">
+        Hello, world
+      </ToggleButton>
+    </Stack>
+
     <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
     <div className={classes.vStack}>
       <ToggleButtonVariants iconPosition="before" />

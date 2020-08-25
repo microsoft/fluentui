@@ -61,6 +61,16 @@ export const MenuButtonCss = () => (
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <MenuButtonVariants iconOnly />
 
+    <Text>A button can blend into its background using the `ghost` prop</Text>
+    <Stack horizontal>
+      <MenuButton ghost icon="X" menu={menuProps}>
+        Hello, world
+      </MenuButton>
+      <MenuButton ghost disabled icon="X" menu={menuProps}>
+        Hello, world
+      </MenuButton>
+    </Stack>
+
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <MenuButtonVariants loading />
 

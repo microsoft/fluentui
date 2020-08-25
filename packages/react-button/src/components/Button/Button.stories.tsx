@@ -80,6 +80,16 @@ export const ButtonCss = () => (
     <Text>A button can be both `circular` and `iconOnly`.</Text>
     <ButtonVariants circular iconOnly />
 
+    <Text>A button can blend into its background using the `ghost` prop</Text>
+    <Stack horizontal>
+      <Button ghost icon="X">
+        Hello, world
+      </Button>
+      <Button ghost disabled icon="X">
+        Hello, world
+      </Button>
+    </Stack>
+
     <Text>An icon button can format its Icon to appear before or after its content.</Text>
     <Stack>
       <ButtonVariants iconPosition="before" />
