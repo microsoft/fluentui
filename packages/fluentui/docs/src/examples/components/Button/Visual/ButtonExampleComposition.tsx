@@ -25,7 +25,7 @@ const useTertieryButtonStyles = (props, ...rest) => {
 };
 
 const TertieryButton: React.FC<TertieryButtonProps> = props => {
-  const { className, ...rest } = props;
+  const { className, tertiery, ...rest } = props;
 
   const resolvedClasses = useTertieryButtonStyles(props);
 
@@ -54,11 +54,11 @@ const useTertieryCompactButtonStyles = (props, ...rest) => {
 };
 
 const TertieryCompactButton: React.FC<TertieryCompactButton> = props => {
-  const { className, ...rest } = props;
+  const { className, tertiery, ...rest } = props;
 
   const resolvedClasses = useTertieryCompactButtonStyles(props);
 
-  return <TertieryButton className={resolvedClasses} {...rest} />;
+  return <Button className={resolvedClasses} {...rest} />;
 };
 
 const ButtonExampleUseCss = () => {
