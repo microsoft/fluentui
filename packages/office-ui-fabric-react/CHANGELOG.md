@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.131.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.131.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.130.0..office-ui-fabric-react_v7.131.0)
+
+### Minor changes
+
+- Checkbox: removed `selectors` wrappers in the styles, as they're no longer required. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
+
+### Patches
+
+- GroupedList: Fixing errors in the examples that are triggered when the tsconfig strictFunctionTypes rule is turned on. ([PR #14640](https://github.com/microsoft/fluentui/pull/14640) by humbertomakotomorimoto@gmail.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14710](https://github.com/microsoft/fluentui/pull/14710) by czearing@outlook.com)
 
 ## [7.130.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.130.0)
 

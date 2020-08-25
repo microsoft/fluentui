@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.91)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.89..@fluentui/react-next_v8.0.0-alpha.91)
+
+### Changes
+
+- Copying teachingBubble to react-next, in preparation for converting to a function component. ([PR #14220](https://github.com/microsoft/fluentui/pull/14220) by czearing@outlook.com)
+- Moving Rating to react-next, in preparation for converting to a function component. ([PR #14700](https://github.com/microsoft/fluentui/pull/14700) by czearing@outlook.com)
 
 ## [8.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.89)
 
