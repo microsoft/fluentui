@@ -265,6 +265,19 @@ export interface ICalendarStrings {
    * Aria-label format string for the week number header. Should have 1 string param e.g. "week number \{0\}"
    */
   weekNumberFormatString?: string;
+
+  /**
+   * Aria-label format string for the header button in the month picker. Should have 1 string param, e.g. "`{0}`,
+   * select to change the year". This aria-label will only be applied if the year picker is enabled; otherwise
+   * the label will default to the header string, e.g. "2019".
+   */
+  monthPickerHeaderAriaLabel?: string;
+
+  /**
+   * Aria-label format string for the header button in the year picker.
+   * Should have 1 string param, e.g. "`{0}`, select to change the month"
+   */
+  yearPickerHeaderAriaLabel?: string;
 }
 
 /**

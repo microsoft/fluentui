@@ -3,6 +3,7 @@ import { IEventsAnnotationProps, ILineChartPoints, ILineChartDataPoint } from '.
 import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 
 export interface IMargins {
@@ -203,7 +204,7 @@ export function createYAxis(yAxisParams: IYAxisParams) {
   const yAxis = d3AxisLeft(yAxisScale)
     .tickPadding(tickPadding)
     .tickValues(domainValues);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount, 's');
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
   showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
     ? d3Select(yAxisElement)

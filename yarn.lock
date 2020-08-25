@@ -1384,6 +1384,25 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/eslint-plugin@^0.53.1":
+  version "0.53.4"
+  resolved "https://registry.yarnpkg.com/@fluentui/eslint-plugin/-/eslint-plugin-0.53.4.tgz#bf8eb7ac1b724bb5cc5b468353dfdc2d0b27355d"
+  integrity sha512-tjTQkN5HOAQWQFEJycTFmXuccZlqO7HUsKaNzv+tFE7E56heI895XnN5JZYRHtc6F9gsoxbR6iT1dLeiSREf1w==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^3.4.0"
+    "@typescript-eslint/experimental-utils" "^3.4.0"
+    "@typescript-eslint/parser" "^3.4.0"
+    eslint-config-airbnb "^18.1.0"
+    eslint-config-prettier "^6.11.0"
+    eslint-import-resolver-typescript "^2.0.0"
+    eslint-plugin-deprecation "^1.1.0"
+    eslint-plugin-import "^2.21.0"
+    eslint-plugin-jest "^23.13.2"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-react "^7.20.0"
+    eslint-plugin-react-hooks "^4.0.8"
+    jju "^1.4.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -5178,11 +5197,6 @@ ajv@^6.12.0, ajv@~6.12.3:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
-
-all@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/all/-/all-0.0.0.tgz#fb2aa75d4759d40e39ecbb118fabf0cc11ff554f"
-  integrity sha1-+yqnXUdZ1A457LsRj6vwzBH/VU8=
 
 amdefine@>=0.0.4:
   version "1.0.1"

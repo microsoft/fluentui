@@ -100,8 +100,5 @@
     "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
-  },
-  "dependencies": {
-    "all": "0.0.0"
   }
 }

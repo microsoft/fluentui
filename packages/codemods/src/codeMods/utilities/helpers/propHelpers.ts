@@ -40,7 +40,7 @@ export function renamePropInSpread(
         const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
         const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
-          return Err({ reason: 'Invalid spread prop. Could access internal identifiers successfully.' });
+          return Err({ reason: 'Invalid spread prop. Could not access internal identifiers successfully.' });
         }
         /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;

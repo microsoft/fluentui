@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Checkbox: removed `selectors` wrappers in the styles, as they're no longer required.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-21T23:29:36.933Z"
-}

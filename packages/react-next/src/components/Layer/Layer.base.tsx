@@ -139,7 +139,7 @@ let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, 
 
 const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
   // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
-  // mouseEnter and mouseLeave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
+  // mouseenter and mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
   // event name rather than ev.bubble.
   if (
     ev.eventPhase === Event.BUBBLING_PHASE &&
