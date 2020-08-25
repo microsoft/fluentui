@@ -225,7 +225,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
-      _.invoke(predefinedProps, 'onDateChange', e, { itemProps, value: targetDay.originalDate });
+      _.invoke(props, 'onDateChange', e, { itemProps, value: targetDay.originalDate });
     },
   });
 
