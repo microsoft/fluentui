@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/test-utilities",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.36",
+    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
