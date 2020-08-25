@@ -112,6 +112,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLElement>();
 
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
@@ -151,9 +152,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     value: props.calendarOpenState,
     initialValue: false,
   });
-
-  const [preventClosing, setPreventClosing] = React.useState<boolean>();
-  const [preventOpeningOnClick, setPreventOpeningOnClick] = React.useState<boolean>();
 
   const [selectedDate, setSelectedDate] = useAutoControlled<Date | undefined>({
     defaultValue: props.defaultSelectedDate,
@@ -195,7 +193,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       open: e => {
         if (!allowManualInput) {
           e.preventDefault();
-          setPreventClosing(true);
           setOpenState(true);
         }
       },
@@ -236,13 +233,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
     onClick: (e): void => {
-      if (!allowManualInput) {
+      if (allowManualInput) {
+        setOpenState(!openState);
+      } else {
         // Keep popup open in case we can only enter the date through calendar.
-        setPreventClosing(true);
-        setOpenState(true);
-      } else if (preventOpeningOnClick && !openState) {
-        setPreventOpeningOnClick(false);
-      } else if (!openState) {
         setOpenState(true);
       }
 
@@ -301,6 +295,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 value: formattedDate,
                 readOnly: !allowManualInput,
                 required: props.required,
+                ref: inputRef,
               }),
             overrideProps: overrideInputProps,
           })}
@@ -315,19 +310,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                if (preventClosing) {
-                  setPreventClosing(false);
-
-                  if (!open) {
-                    return;
-                  }
+                // In case the event is a click on input, we ignore such events as it should be directly handled by input.
+                if (!(e.type === 'click' && e.target === inputRef?.current)) {
+                  setOpenState(open);
+                  _.invoke(predefinedProps, 'onOpenChange', e, { open });
                 }
-                if (!open) {
-                  setPreventOpeningOnClick(true);
-                }
-
-                setOpenState(open);
-                _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
           })}
