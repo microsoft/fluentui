@@ -1,5 +1,5 @@
-import { ILineChartPoints, ILineChartDataPoint, IEventsAnnotationProps } from '@uifabric/charting';
 import { max as d3Max, min as d3Min } from 'd3-array';
+import { IEventsAnnotationProps, ILineChartPoints, ILineChartDataPoint } from '../components/LineChart/index';
 import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';

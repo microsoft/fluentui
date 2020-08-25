@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject, ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';

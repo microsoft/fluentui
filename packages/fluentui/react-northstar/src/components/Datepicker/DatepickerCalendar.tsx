@@ -10,10 +10,14 @@ import {
   DEFAULT_CALENDAR_STRINGS,
   ICalendarStrings,
   IDayGridOptions,
+  IAvailableDateOptions,
   findAvailableDate,
   compareDates,
   addDays,
   addWeeks,
+  compareDatePart,
+  getMonthStart,
+  getMonthEnd,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -72,10 +76,6 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
-const dayInGrid = (grid: IDay[][], findDate: Date) => {
-  return _.flatten(grid).some(day => compareDates(day.originalDate, findDate));
-};
-
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
@@ -98,10 +98,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     navigatedDate,
     firstDayOfWeek,
     today,
-    onDateChange,
     formatMonthDayYear,
     formatMonthYear,
     shortDays,
+    days,
+    minDate,
+    maxDate,
+    restrictedDates,
   } = props;
 
   const ElementType = getElementType(props);
@@ -175,25 +178,62 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const focusDateRef = React.useRef(null);
 
-  const changeMonth = (nextMonth: boolean) => {
-    const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
-    setGridNavigatedDate(updatedGridNavigatedDate);
+  const contstraintNavigatedDate = (initialDate: Date, targetDate: Date, direction: number) => {
+    if (!targetDate) {
+      // if we couldn't find a target date at all, do nothing
+      return undefined;
+    }
+
+    const findAvailableDateOptions: IAvailableDateOptions = {
+      initialDate,
+      targetDate,
+      direction,
+      restrictedDates,
+      minDate,
+      maxDate,
+    };
+
+    let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+
+    if (!newNavigatedDate) {
+      // if no dates available in initial direction, try going backwards
+      findAvailableDateOptions.direction = -direction;
+      newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+    }
+
+    return newNavigatedDate;
   };
+
+  const changeMonth = (nextMonth: boolean) => {
+    const direction = nextMonth ? 1 : -1;
+    const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
+
+    const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, updatedGridNavigatedDate, direction);
+
+    if (newNavigatedDate) {
+      setGridNavigatedDate(newNavigatedDate);
+    }
+  };
+
+  const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(gridNavigatedDate)) >= 0 : false;
+  const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(gridNavigatedDate), maxDate) >= 0 : false;
 
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);
     const initialDate = day.originalDate;
     let targetDate: Date | null = null;
+    const skipWeekOnArrowNavigation = false;
     let direction = 1; // by default search forward
 
     switch (keyCode) {
       case keyboardKey.ArrowDown: {
         targetDate = addWeeks(initialDate, 1);
+        direction = skipWeekOnArrowNavigation ? 7 : 1;
         break;
       }
       case keyboardKey.ArrowUp: {
         targetDate = addWeeks(initialDate, -1);
-        direction = -1;
+        direction = skipWeekOnArrowNavigation ? -7 : -1;
         break;
       }
       case keyboardKey.ArrowLeft: {
@@ -206,29 +246,23 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         break;
       }
       default:
-        break;
+        return;
     }
 
-    if (!targetDate) {
-      // if we couldn't find a target date at all, do nothing
-      return;
+    const newNavigatedDate = contstraintNavigatedDate(initialDate, targetDate, direction);
+
+    if (newNavigatedDate) {
+      setGridNavigatedDate(newNavigatedDate);
     }
-    const newNavigateDate = findAvailableDate({
-      initialDate,
-      targetDate,
-      direction,
-    });
-    if (!dayInGrid(visibledGrid, newNavigateDate)) {
-      setGridNavigatedDate(newNavigateDate);
-      e.preventDefault();
-    }
+
+    e.preventDefault();
   };
 
   React.useEffect(() => {
     focusDateRef.current?.focus();
   }, [grid]);
 
-  const renderWeekRow = week =>
+  const renderWeekRow = (week: IDay[]) =>
     _.map(week, (day: IDay) =>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
@@ -237,17 +271,19 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             key: day.key,
             'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
             selected: day.isSelected,
-            disabled: !day.isInMonth,
+            disabled: !day.isInBounds,
+            quiet: !day.isInMonth,
+            today: compareDates(day.originalDate, props.today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
-            onDateChange(e, { ...predefinedProps, value: day });
+            _.invoke(props, 'onDateChange', e, { ...props, value: day });
             _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
           },
           onKeyDown: e => {
             handleKeyDown(e, day);
-            _.invoke(predefinedProps, 'onKeyDown', e, { ...predefinedProps, value: day });
+            _.invoke(predefinedProps, 'onKeyDown', e, { ...props, value: day });
           },
         }),
       }),
@@ -264,6 +300,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate, dateFormatting),
+            'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
+            disabledNextButton: nextMonthOutOfBounds,
+            disabledPreviousButton: prevMonthOutOfBounds,
+            ...dateFormatting,
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
@@ -274,14 +314,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               changeMonth(true);
               _.invoke(predefinedProps, 'onNextClick', e, data);
             },
-            ...dateFormatting,
           }),
         })}
         {createShorthand(
           Grid,
           {},
           {
-            overrideProps: () =>
+            defaultProps: () =>
               getA11yProps('calendarGrid', {
                 rows: visibledGrid.length + 1, // additional row for header
                 columns: DAYS_IN_WEEK,
@@ -291,6 +330,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                         defaultProps: () =>
                           getA11yProps('calendarHeaderCell', {
+                            'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             key: dayNumber,
                           }),
@@ -350,6 +390,7 @@ DatepickerCalendar.propTypes = {
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,

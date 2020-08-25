@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';

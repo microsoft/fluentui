@@ -1,257 +1,68 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
-import { IKeytipProps } from '../../Keytip';
-import {
-  initializeComponentRef,
-  classNamesFunction,
-  divProperties,
-  elementContains,
-  focusFirstChild,
-  getNativeProps,
-  warnMutuallyExclusive,
-} from '../../Utilities';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { IProcessedStyleSet } from '../../Styling';
-import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
-import {
-  IOverflowSet,
-  IOverflowSetItemProps,
-  IOverflowSetProps,
-  IOverflowSetStyles,
-  IOverflowSetStyleProps,
-} from './OverflowSet.types';
+import { IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps, IOverflowSet } from './OverflowSet.types';
+import { classNamesFunction, divProperties, elementContains, getNativeProps, focusFirstChild } from '../../Utilities';
+import { OverflowButton } from './OverflowButton';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
 
-export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
-  private _focusZone = React.createRef<IFocusZone>();
-  private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
-  private _keytipManager: KeytipManager = KeytipManager.getInstance();
-  private _divContainer = React.createRef<HTMLDivElement>();
-  private _classNames: IProcessedStyleSet<IOverflowSetStyles>;
+const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject<HTMLDivElement>) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    (): IOverflowSet => ({
+      focus: (): boolean => {
+        let focusSucceeded = false;
+        if (divContainer.current) {
+          focusSucceeded = focusFirstChild(divContainer.current);
+        }
+        return focusSucceeded;
+      },
+      focusElement: (childElement?: HTMLElement) => {
+        let focusSucceeded = false;
+        if (!childElement) {
+          return false;
+        }
+        if (divContainer.current && elementContains(divContainer.current, childElement)) {
+          childElement.focus();
+          focusSucceeded = document.activeElement === childElement;
+        }
+        return focusSucceeded;
+      },
+    }),
+    [divContainer],
+  );
+};
 
-  constructor(props: IOverflowSetProps) {
-    super(props);
+export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  const divContainer = React.useRef<HTMLDivElement>(null);
+  const mergedRef = useMergedRefs(divContainer, forwardedRef);
+  useComponentRef(props, divContainer);
 
-    initializeComponentRef(this);
-    warnMutuallyExclusive(COMPONENT_NAME, props, {
-      doNotContainWithinFocusZone: 'focusZoneProps',
-    });
-  }
+  const { items, overflowItems, className, styles, vertical, role, overflowSide = 'end' } = props;
 
-  public render(): JSX.Element {
-    const {
-      items,
-      overflowItems,
-      className,
-      // eslint-disable-next-line deprecation/deprecation
-      focusZoneProps,
-      styles,
-      vertical,
-      // eslint-disable-next-line deprecation/deprecation
-      doNotContainWithinFocusZone,
-      role,
-      overflowSide = 'end',
-    } = this.props;
+  const classNames: IProcessedStyleSet<IOverflowSetStyles> = getClassNames(styles, { className, vertical });
 
-    this._classNames = getClassNames(styles, { className, vertical });
+  const showOverflow = !!overflowItems && overflowItems.length > 0;
 
-    let Tag;
-    let uniqueComponentProps;
-
-    if (doNotContainWithinFocusZone) {
-      Tag = 'div';
-      uniqueComponentProps = {
-        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
-        ref: this._divContainer,
-      };
-    } else {
-      Tag = FocusZone;
-      uniqueComponentProps = {
-        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
-        ...focusZoneProps,
-        componentRef: this._focusZone,
-        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
-      };
-    }
-
-    const showOverflow = overflowItems && overflowItems.length > 0;
-
-    return (
-      <Tag
-        role={role || 'group'}
-        aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
-        {...uniqueComponentProps}
-        className={this._classNames.root}
-      >
-        {overflowSide === 'start' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
-        {items && this._onRenderItems(items)}
-        {overflowSide === 'end' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
-      </Tag>
-    );
-  }
-
-  /**
-   * Sets focus to the first tabbable item in the OverflowSet.
-   * @param forceIntoFirstElement - If true, focus will be forced into the first element,
-   * even if focus is already in theOverflowSet
-   * @returns True if focus could be set to an active element, false if no operation was taken.
-   */
-  public focus(forceIntoFirstElement?: boolean): boolean {
-    let focusSucceeded = false;
-
-    // eslint-disable-next-line deprecation/deprecation
-    if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.current) {
-        focusSucceeded = focusFirstChild(this._divContainer.current);
-      }
-    } else if (this._focusZone.current) {
-      focusSucceeded = this._focusZone.current.focus(forceIntoFirstElement);
-    }
-
-    return focusSucceeded;
-  }
-
-  /**
-   * Sets focus to a specific child element within the OverflowSet.
-   * @param childElement - The child element within the zone to focus.
-   * @returns True if focus could be set to an active element, false if no operation was taken.
-   */
-  public focusElement(childElement?: HTMLElement): boolean {
-    let focusSucceeded = false;
-
-    if (!childElement) {
-      return false;
-    }
-
-    // eslint-disable-next-line deprecation/deprecation
-    if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
-        childElement.focus();
-        focusSucceeded = document.activeElement === childElement;
-      }
-    } else if (this._focusZone.current) {
-      focusSucceeded = this._focusZone.current.focusElement(childElement);
-    }
-
-    return focusSucceeded;
-  }
-
-  // Add keytip register/unregister handlers to lifecycle functions to correctly manage persisted keytips
-  public componentDidMount() {
-    this._registerPersistedKeytips();
-  }
-
-  public componentWillUnmount() {
-    this._unregisterPersistedKeytips();
-  }
-
-  public UNSAFE_componentWillUpdate() {
-    this._unregisterPersistedKeytips();
-  }
-
-  public componentDidUpdate() {
-    this._registerPersistedKeytips();
-  }
-
-  private _registerPersistedKeytips() {
-    Object.keys(this._persistedKeytips).forEach((key: string) => {
-      const keytip = this._persistedKeytips[key];
-      const uniqueID = this._keytipManager.register(keytip, true);
-      // Update map
-      this._persistedKeytips[uniqueID] = keytip;
-      delete this._persistedKeytips[key];
-    });
-  }
-
-  private _unregisterPersistedKeytips() {
-    // Delete all persisted keytips saved
-    Object.keys(this._persistedKeytips).forEach((uniqueID: string) => {
-      this._keytipManager.unregister(this._persistedKeytips[uniqueID], uniqueID, true);
-    });
-    this._persistedKeytips = {};
-  }
-
-  private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
-    return items.map((item, i) => {
-      return (
-        <div key={item.key} className={this._classNames.item}>
-          {this.props.onRenderItem(item)}
-        </div>
-      );
-    });
-  };
-
-  private _onRenderOverflowButtonWrapper = (items?: IOverflowSetItemProps[]): JSX.Element => {
-    const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: this._classNames.overflowButton,
-    };
-
-    const overflowKeytipSequences = this.props.keytipSequences;
-    let newOverflowItems: IOverflowSetItemProps[] = [];
-
-    if (overflowKeytipSequences) {
-      items &&
-        items.forEach(overflowItem => {
-          const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
-          if (keytip) {
-            // Create persisted keytip
-            const persistedKeytip: IKeytipProps = {
-              content: keytip.content,
-              keySequences: keytip.keySequences,
-              disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
-              hasDynamicChildren: keytip.hasDynamicChildren,
-              hasMenu: keytip.hasMenu,
-            };
-
-            if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
-              // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-              persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
-                this._keytipManager,
-                overflowKeytipSequences,
-                overflowItem.keytipProps && overflowItem.keytipProps.keySequences,
-              );
-            } else {
-              // If the keytip doesn't have a submenu, just execute the original function
-              persistedKeytip.onExecute = keytip.onExecute;
-            }
-
-            // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
-            // uniqueID will get updated on register
-            this._persistedKeytips[persistedKeytip.content] = persistedKeytip;
-
-            // Add the overflow sequence to this item
-            const newOverflowItem = {
-              ...overflowItem,
-              keytipProps: {
-                ...keytip,
-                overflowSetSequence: overflowKeytipSequences,
-              },
-            };
-            newOverflowItems.push(newOverflowItem);
-          } else {
-            // Nothing to change, add overflowItem to list
-            newOverflowItems.push(overflowItem);
-          }
-        });
-    } else if (items) {
-      newOverflowItems = items;
-    }
-    return <div {...wrapperDivProps}>{this.props.onRenderOverflowButton(newOverflowItems)}</div>;
-  };
-
-  /**
-   * Gets the subMenu for an overflow item
-   * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getSubMenuForItem(item: IOverflowSetItemProps): any[] | undefined {
-    if (this.props.itemSubMenuProvider) {
-      return this.props.itemSubMenuProvider(item);
-    }
-    if (item.subMenuProps) {
-      return item.subMenuProps.items;
-    }
-    return undefined;
-  }
-}
+  return (
+    <div
+      role={role || 'group'}
+      aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
+      className={classNames.root}
+      ref={mergedRef}
+      {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
+    >
+      {overflowSide === 'start' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
+      {items &&
+        items.map((item, i) => (
+          <div key={item.key} className={classNames.item}>
+            {props.onRenderItem(item)}
+          </div>
+        ))}
+      {overflowSide === 'end' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
+    </div>
+  );
+});
+OverflowSetBase.displayName = COMPONENT_NAME;
