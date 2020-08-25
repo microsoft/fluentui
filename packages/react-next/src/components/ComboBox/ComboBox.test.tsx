@@ -48,6 +48,9 @@ const createNodeMock = (el: React.ReactElement<{}>) => {
   };
 };
 
+// Rendering Callouts require the current window to have focus
+jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
+
 describe('ComboBox', () => {
   afterEach(() => {
     if (wrapper) {
