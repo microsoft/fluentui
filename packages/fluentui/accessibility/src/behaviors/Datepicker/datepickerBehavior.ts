@@ -5,7 +5,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * @description
  * Behavior for a datepicker component
  * @specification
- * Provides action key mappings.
+ * Triggers 'open' action with 'Enter' on 'input'.
  */
 
 export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props => ({
