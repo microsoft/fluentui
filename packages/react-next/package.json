@@ -34,8 +34,8 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^0.2.0",
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/common-styles": "^0.2.5",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
