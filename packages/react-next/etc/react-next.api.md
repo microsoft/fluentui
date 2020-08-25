@@ -1253,10 +1253,22 @@ export enum ImageLoadState {
     notLoaded = 0
 }
 
-// @public
+// @public (undocumented)
 export interface IMaskedTextFieldState {
-    displayValue: string;
-    maskCursorPosition?: number;
+    // (undocumented)
+    changeSelectionData: {
+        changeType: 'default' | 'backspace' | 'delete' | 'textPasted';
+        selectionStart: number;
+        selectionEnd: number;
+    } | null;
+    // (undocumented)
+    isFocused: boolean;
+    // Warning: (ae-forgotten-export) The symbol "IMaskValue" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    maskCharData: IMaskValue[];
+    // (undocumented)
+    moveCursorOnMouseUp: boolean;
 }
 
 // @public (undocumented)
@@ -2143,37 +2155,7 @@ export type LinkSlotProps = {
 };
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: ITextFieldProps);
-    // (undocumented)
-    blur(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: ITextFieldProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    select(): void;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    setSelectionEnd(value: number): void;
-    // (undocumented)
-    setSelectionRange(start: number, end: number): void;
-    // (undocumented)
-    setSelectionStart(value: number): void;
-    // (undocumented)
-    setValue(newValue: string): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
-    // (undocumented)
-    readonly value: string | undefined;
-}
+export const MaskedTextField: React.ForwardRefExoticComponent<ITextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{

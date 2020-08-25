@@ -43,7 +43,6 @@ const useComponentRef = (
        */
       get value() {
         let initialValue = '';
-
         for (let i = 0; i < maskCharData.length; i++) {
           if (!maskCharData[i].value) {
             return undefined;
