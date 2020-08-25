@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/theme",
+  "entries": [
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/theme_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial checkin for theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    }
+  ]
+}

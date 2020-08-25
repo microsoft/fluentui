@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { css, getId } from '../../Utilities';
-import { IGridCellProps } from './GridCell.types';
+import { css } from '../../Utilities';
+import { IButtonGridCellProps } from './ButtonGridCell.types';
 import { CommandButton } from '../../Button';
 
-export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
+export class ButtonGridCell<T, P extends IButtonGridCellProps<T>> extends React.Component<P, {}> {
   public static defaultProps = {
     disabled: false,
-    id: getId('gridCell'),
   };
 
   public render(): JSX.Element {
@@ -97,3 +96,8 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     }
   };
 }
+
+/**
+ * @deprecated - use ButtonGridCell instead
+ */
+export const GridCell = ButtonGridCell;

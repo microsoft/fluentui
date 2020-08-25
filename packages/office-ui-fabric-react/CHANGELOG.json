@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "office-ui-fabric-react_v7.131.0",
+      "version": "7.131.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedList: Fixing errors in the examples that are triggered when the tsconfig strictFunctionTypes rule is turned on.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0186369a141f44c8ce54a45cf7770d84cc64d33c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Renaming Grid utility to ButtonGrid.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Checkbox: removed `selectors` wrappers in the styles, as they're no longer required.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5b987c2dacab9ebddda7c3966e03521e974fbd63",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2020 12:34:55 GMT",
       "tag": "office-ui-fabric-react_v7.130.0",
       "version": "7.130.0",
