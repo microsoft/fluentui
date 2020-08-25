@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding test to ensure styles with selectors not wrapped in a selectors node still serialize.",
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-21T23:28:51.786Z"
+}

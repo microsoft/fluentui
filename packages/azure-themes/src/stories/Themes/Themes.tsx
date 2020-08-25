@@ -64,7 +64,7 @@ const Example = () => (
       <PrimaryButton disabled text="PrimaryButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
       <CompoundButton disabled primary text="CompoundButton primary disabled" />
-
+      <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
       <ButtonCommandBarExample />
