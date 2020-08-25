@@ -48,6 +48,7 @@ describe('Shimmer', () => {
   });
 
   it('removes Shimmer animation div when data is loaded', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let component: any;
     const shimmer = mount(
       <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'} componentRef={ref => (component = ref)}>
