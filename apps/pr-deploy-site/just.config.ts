@@ -18,6 +18,7 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 const dependencies = [
   '@fluentui/docs',
   '@fluentui/react-button',
+  '@fluentui/react-checkbox',
   '@fluentui/react-image',
   '@fluentui/react-next',
   '@fluentui/react-slider',
