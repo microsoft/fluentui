@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
 import { ITextField, ITextFieldProps } from '../TextField.types';
-import { KeyCodes } from '../../../Utilities';
+import { KeyCodes, IRefObject } from '../../../Utilities';
 import {
   clearNext,
   clearPrev,
   clearRange,
+  DEFAULT_MASK_FORMAT_CHARS,
   getLeftFormatIndex,
   getMaskDisplay,
   getRightFormatIndex,
@@ -20,7 +21,7 @@ export interface IMaskedTextFieldState {
   isFocused: boolean;
   moveCursorOnMouseUp: boolean;
   changeSelectionData: {
-    changeType: InputChangeType;
+    changeType: 'default' | 'backspace' | 'delete' | 'textPasted';
     selectionStart: number;
     selectionEnd: number;
   } | null;
@@ -28,13 +29,76 @@ export interface IMaskedTextFieldState {
 
 const COMPONENT_NAME = 'MaskedTextField';
 
-export const DEFAULT_MASK_CHAR = '_';
+const useComponentRef = (
+  componentRef: IRefObject<ITextField> | undefined,
+  maskCharData: IMaskValue[],
+  textField: React.RefObject<ITextField>,
+  setValue: (newValue: string) => void,
+) => {
+  React.useImperativeHandle(
+    componentRef,
+    () => ({
+      /**
+       * @returns The value of all filled format characters or undefined if not all format characters are filled
+       */
+      get value() {
+        let initialValue = '';
 
-type InputChangeType = 'default' | 'backspace' | 'delete' | 'textPasted';
+        for (let i = 0; i < maskCharData.length; i++) {
+          if (!maskCharData[i].value) {
+            return undefined;
+          }
+          initialValue += maskCharData[i].value;
+        }
+        return initialValue;
+      },
+
+      get selectionStart() {
+        return textField.current && textField.current.selectionStart !== null ? textField.current.selectionStart : -1;
+      },
+
+      get selectionEnd() {
+        return textField.current?.selectionEnd ? textField.current?.selectionEnd : -1;
+      },
+
+      setValue(newValue: string) {
+        return setValue(newValue);
+      },
+
+      focus() {
+        textField.current?.focus?.();
+      },
+
+      blur() {
+        textField.current?.blur?.();
+      },
+
+      select() {
+        textField.current?.select?.();
+      },
+
+      setSelectionStart(value: number) {
+        textField.current?.setSelectionStart?.(value);
+      },
+
+      setSelectionEnd(value: number) {
+        textField.current?.setSelectionEnd?.(value);
+      },
+
+      setSelectionRange(start: number, end: number) {
+        textField.current?.setSelectionRange?.(start, end);
+      },
+    }),
+    [maskCharData, setValue, textField],
+  );
+};
+
+export const DEFAULT_MASK_CHAR = '_';
 
 export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>((props, ref) => {
   const textField = React.useRef<ITextField>(null);
   const {
+    componentRef,
     value,
     onFocus,
     onBlur,
@@ -44,9 +108,10 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
     onPaste,
     onKeyDown,
     mask,
-    maskFormat,
-    maskChar,
+    maskChar = DEFAULT_MASK_CHAR,
+    maskFormat = DEFAULT_MASK_FORMAT_CHARS,
   } = props;
+
   const internalState = useConst<IMaskedTextFieldState>(() => ({
     maskCharData: parseMask(mask, maskFormat),
     isFocused: false,
@@ -56,13 +121,13 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
 
   /** The index into the rendered value of the first unfilled format character */
   const [maskCursorPosition, setMaskCursorPosition] = React.useState<number | undefined>();
+
   /**
    * The mask string formatted with the input value.
    * This is what is displayed inside the TextField
    * @example
    *  `Phone Number: 12_ - 4___`
    */
-
   const [displayValue, setDisplayValue] = React.useState<string>(
     getMaskDisplay(mask, internalState.maskCharData, maskChar),
   );
@@ -82,174 +147,201 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
     }
   };
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onFocus?.(event);
-    internalState.isFocused = true;
+  const handleFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      onFocus?.(event);
+      internalState.isFocused = true;
 
-    // Move the cursor position to the leftmost unfilled position
-    for (let i = 0; i < internalState.maskCharData.length; i++) {
-      if (!internalState.maskCharData[i].value) {
-        setMaskCursorPosition(internalState.maskCharData[i].displayIndex);
-        break;
-      }
-    }
-  };
-
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onBlur?.(event);
-    internalState.isFocused = false;
-    internalState.moveCursorOnMouseUp = true;
-  };
-
-  const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
-    onMouseDown?.(event);
-    if (!internalState.isFocused) {
-      internalState.moveCursorOnMouseUp = true;
-    }
-  };
-
-  const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
-    onMouseUp?.(event);
-    // Move the cursor on mouseUp after focusing the textField
-    if (internalState.moveCursorOnMouseUp) {
-      internalState.moveCursorOnMouseUp = false;
-      // Move the cursor position to the rightmost unfilled position
+      // Move the cursor position to the leftmost unfilled position
       for (let i = 0; i < internalState.maskCharData.length; i++) {
         if (!internalState.maskCharData[i].value) {
           setMaskCursorPosition(internalState.maskCharData[i].displayIndex);
           break;
         }
       }
-    }
-  };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onFocus, internalState.maskCharData],
+  );
 
-  const handleInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, inputValue: string) => {
-    if (internalState.changeSelectionData === null && textField.current) {
-      internalState.changeSelectionData = {
-        changeType: 'default',
-        selectionStart: textField.current.selectionStart !== null ? textField.current.selectionStart : -1,
-        selectionEnd: textField.current.selectionEnd !== null ? textField.current.selectionEnd : -1,
-      };
-    }
-    if (!internalState.changeSelectionData) {
-      return;
-    }
+  const handleBlur = React.useCallback(
+    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      onBlur?.(event);
+      internalState.isFocused = false;
+      internalState.moveCursorOnMouseUp = true;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onBlur],
+  );
 
-    // The initial value of cursorPos does not matter
-    let cursorPos = 0;
-    const { changeType, selectionStart, selectionEnd } = internalState.changeSelectionData;
-
-    if (changeType === 'textPasted') {
-      const charsSelected = selectionEnd - selectionStart;
-      const charCount = inputValue.length + charsSelected - displayValue.length;
-      const startPos = selectionStart;
-      const pastedString = inputValue.substr(startPos, charCount);
-
-      // Clear any selected characters
-      if (charsSelected) {
-        internalState.maskCharData = clearRange(internalState.maskCharData, selectionStart, charsSelected);
+  const handleMouseDown = React.useCallback(
+    (event: React.MouseEvent<HTMLInputElement>) => {
+      onMouseDown?.(event);
+      if (!internalState.isFocused) {
+        internalState.moveCursorOnMouseUp = true;
       }
-      cursorPos = insertString(internalState.maskCharData, startPos, pastedString);
-    } else if (changeType === 'delete' || changeType === 'backspace') {
-      // isDel is true If the characters are removed LTR, otherwise RTL
-      const isDel = changeType === 'delete';
-      const charCount = selectionEnd - selectionStart;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onMouseDown, internalState.isFocused],
+  );
 
-      if (charCount) {
-        // charCount is > 0 if range was deleted
-        internalState.maskCharData = clearRange(internalState.maskCharData, selectionStart, charCount);
-        cursorPos = getRightFormatIndex(internalState.maskCharData, selectionStart);
-      } else {
-        // If charCount === 0, there was no selection and a single character was deleted
-        if (isDel) {
-          internalState.maskCharData = clearNext(internalState.maskCharData, selectionStart);
-          cursorPos = getRightFormatIndex(internalState.maskCharData, selectionStart);
-        } else {
-          internalState.maskCharData = clearPrev(internalState.maskCharData, selectionStart);
-          cursorPos = getLeftFormatIndex(internalState.maskCharData, selectionStart);
+  const handleMouseUp = React.useCallback(
+    (event: React.MouseEvent<HTMLInputElement>) => {
+      onMouseUp?.(event);
+      // Move the cursor on mouseUp after focusing the textField
+      if (internalState.moveCursorOnMouseUp) {
+        internalState.moveCursorOnMouseUp = false;
+        // Move the cursor position to the rightmost unfilled position
+        for (let i = 0; i < internalState.maskCharData.length; i++) {
+          if (!internalState.maskCharData[i].value) {
+            setMaskCursorPosition(internalState.maskCharData[i].displayIndex);
+            break;
+          }
         }
       }
-    } else if (inputValue.length > displayValue.length) {
-      // This case is if the user added characters
-      const charCount = inputValue.length - displayValue.length;
-      const startPos = selectionEnd - charCount;
-      const enteredString = inputValue.substr(startPos, charCount);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onMouseUp, internalState.moveCursorOnMouseUp, internalState.maskCharData],
+  );
 
-      cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
-    } else if (inputValue.length <= displayValue.length) {
-      /**
-       * This case is reached only if the user has selected a block of 1 or more
-       * characters and input a character replacing the characters they've selected.
-       */
-      const charCount = 1;
-      const selectCount = displayValue.length + charCount - inputValue.length;
-      const startPos = selectionEnd - charCount;
-      const enteredString = inputValue.substr(startPos, charCount);
-
-      // Clear the selected range
-      internalState.maskCharData = clearRange(internalState.maskCharData, startPos, selectCount);
-      // Insert the printed character
-      cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
-    }
-
-    internalState.changeSelectionData = null;
-
-    const newValue = getMaskDisplay(mask, internalState.maskCharData, maskChar);
-
-    setDisplayValue(newValue);
-    setMaskCursorPosition(cursorPos);
-
-    // Perform onChange after input has been processed. Return value is expected to be the displayed text
-    onChange?.(ev, newValue);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const { current } = textField;
-    onKeyDown?.(event);
-
-    internalState.changeSelectionData = null;
-    if (current && current.value) {
-      const { keyCode, ctrlKey, metaKey } = event;
-
-      // Ignore ctrl and meta keydown
-      if (ctrlKey || metaKey) {
+  const handleInputChange = React.useCallback(
+    (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, inputValue: string) => {
+      if (internalState.changeSelectionData === null && textField.current) {
+        internalState.changeSelectionData = {
+          changeType: 'default',
+          selectionStart: textField.current.selectionStart !== null ? textField.current.selectionStart : -1,
+          selectionEnd: textField.current.selectionEnd !== null ? textField.current.selectionEnd : -1,
+        };
+      }
+      if (!internalState.changeSelectionData) {
         return;
       }
 
-      // On backspace or delete, store the selection and the keyCode
-      if (keyCode === KeyCodes.backspace || keyCode === KeyCodes.del) {
-        const selectionStart = (event.target as HTMLInputElement).selectionStart;
-        const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+      // The initial value of cursorPos does not matter
+      let cursorPos = 0;
+      const { changeType, selectionStart, selectionEnd } = internalState.changeSelectionData;
 
-        // Check if backspace or delete press is valid.
-        if (
-          !(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0) &&
-          !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < current.value.length)
-        ) {
+      if (changeType === 'textPasted') {
+        const charsSelected = selectionEnd - selectionStart;
+        const charCount = inputValue.length + charsSelected - displayValue.length;
+        const startPos = selectionStart;
+        const pastedString = inputValue.substr(startPos, charCount);
+
+        // Clear any selected characters
+        if (charsSelected) {
+          internalState.maskCharData = clearRange(internalState.maskCharData, selectionStart, charsSelected);
+        }
+        cursorPos = insertString(internalState.maskCharData, startPos, pastedString);
+      } else if (changeType === 'delete' || changeType === 'backspace') {
+        // isDel is true If the characters are removed LTR, otherwise RTL
+        const isDel = changeType === 'delete';
+        const charCount = selectionEnd - selectionStart;
+
+        if (charCount) {
+          // charCount is > 0 if range was deleted
+          internalState.maskCharData = clearRange(internalState.maskCharData, selectionStart, charCount);
+          cursorPos = getRightFormatIndex(internalState.maskCharData, selectionStart);
+        } else {
+          // If charCount === 0, there was no selection and a single character was deleted
+          if (isDel) {
+            internalState.maskCharData = clearNext(internalState.maskCharData, selectionStart);
+            cursorPos = getRightFormatIndex(internalState.maskCharData, selectionStart);
+          } else {
+            internalState.maskCharData = clearPrev(internalState.maskCharData, selectionStart);
+            cursorPos = getLeftFormatIndex(internalState.maskCharData, selectionStart);
+          }
+        }
+      } else if (inputValue.length > displayValue.length) {
+        // This case is if the user added characters
+        const charCount = inputValue.length - displayValue.length;
+        const startPos = selectionEnd - charCount;
+        const enteredString = inputValue.substr(startPos, charCount);
+
+        cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
+      } else if (inputValue.length <= displayValue.length) {
+        /**
+         * This case is reached only if the user has selected a block of 1 or more
+         * characters and input a character replacing the characters they've selected.
+         */
+        const charCount = 1;
+        const selectCount = displayValue.length + charCount - inputValue.length;
+        const startPos = selectionEnd - charCount;
+        const enteredString = inputValue.substr(startPos, charCount);
+
+        // Clear the selected range
+        internalState.maskCharData = clearRange(internalState.maskCharData, startPos, selectCount);
+        // Insert the printed character
+        cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
+      }
+
+      internalState.changeSelectionData = null;
+
+      const newValue = getMaskDisplay(mask, internalState.maskCharData, maskChar);
+
+      setDisplayValue(newValue);
+      setMaskCursorPosition(cursorPos);
+
+      // Perform onChange after input has been processed. Return value is expected to be the displayed text
+      onChange?.(ev, newValue);
+    },
+    [displayValue.length, internalState, mask, maskChar, onChange],
+  );
+
+  const handleKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const { current } = textField;
+      onKeyDown?.(event);
+
+      internalState.changeSelectionData = null;
+      if (current && current.value) {
+        const { keyCode, ctrlKey, metaKey } = event;
+
+        // Ignore ctrl and meta keydown
+        if (ctrlKey || metaKey) {
           return;
         }
 
-        internalState.changeSelectionData = {
-          changeType: keyCode === KeyCodes.backspace ? 'backspace' : 'delete',
-          selectionStart: selectionStart !== null ? selectionStart : -1,
-          selectionEnd: selectionEnd !== null ? selectionEnd : -1,
-        };
+        // On backspace or delete, store the selection and the keyCode
+        if (keyCode === KeyCodes.backspace || keyCode === KeyCodes.del) {
+          const selectionStart = (event.target as HTMLInputElement).selectionStart;
+          const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+
+          // Check if backspace or delete press is valid.
+          if (
+            !(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0) &&
+            !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < current.value.length)
+          ) {
+            return;
+          }
+
+          internalState.changeSelectionData = {
+            changeType: keyCode === KeyCodes.backspace ? 'backspace' : 'delete',
+            selectionStart: selectionStart !== null ? selectionStart : -1,
+            selectionEnd: selectionEnd !== null ? selectionEnd : -1,
+          };
+        }
       }
-    }
-  };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onKeyDown],
+  );
 
-  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
-    onPaste?.(event);
+  const handlePaste = React.useCallback(
+    (event: React.ClipboardEvent<HTMLInputElement>) => {
+      onPaste?.(event);
 
-    const selectionStart = (event.target as HTMLInputElement).selectionStart;
-    const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
-    // Store the paste selection range
-    internalState.changeSelectionData = {
-      changeType: 'textPasted',
-      selectionStart: selectionStart !== null ? selectionStart : -1,
-      selectionEnd: selectionEnd !== null ? selectionEnd : -1,
-    };
-  };
+      const selectionStart = (event.target as HTMLInputElement).selectionStart;
+      const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+      // Store the paste selection range
+      internalState.changeSelectionData = {
+        changeType: 'textPasted',
+        selectionStart: selectionStart !== null ? selectionStart : -1,
+        selectionEnd: selectionEnd !== null ? selectionEnd : -1,
+      };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onPaste],
+  );
 
   const previousProps = usePrevious(props);
 
@@ -259,18 +351,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       value !== undefined && setValue(value);
       setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
     }
-  }, [
-    internalState.maskCharData,
-    mask,
-    maskChar,
-    maskFormat,
-    previousProps?.mask,
-    previousProps?.maskChar,
-    previousProps?.maskFormat,
-    previousProps?.value,
-    setValue,
-    value,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [internalState.maskCharData, mask, maskChar, maskFormat, previousProps?.mask, previousProps?.value, value]);
 
   React.useEffect(() => {
     // Move the cursor to the start of the mask format on update
@@ -281,12 +363,16 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
 
   React.useEffect(() => {
     value !== undefined && setValue(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useComponentRef(componentRef, internalState.maskCharData, textField, setValue);
 
   return (
     <TextField
       {...props}
-      ref={ref}
+      // Once Textfield is converted to a function component, ref should be passed.
+      // ref={ref}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseDown={handleMouseDown}
