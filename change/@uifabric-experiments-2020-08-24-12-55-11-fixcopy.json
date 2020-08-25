@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "update SelectedItemsList and UnifiedPicker to use Clipboard API for copy",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-24T19:55:11.416Z"
+}

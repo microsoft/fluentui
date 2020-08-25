@@ -31,8 +31,8 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     return s;
   });
 
-  const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
-    return (
+  const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+    return item && itemIndex ? (
       <DetailsRow
         columns={columns}
         groupNestingDepth={nestingDepth}
@@ -42,7 +42,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         selectionMode={SelectionMode.multiple}
         compact={isCompactMode}
       />
-    );
+    ) : null;
   };
 
   return (
