@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
 
-export interface IGridCellProps<T> {
+export interface IButtonGridCellProps<T> {
   /**
    * The option that will be made available to the user
    */
@@ -119,3 +119,8 @@ export interface IGridCellProps<T> {
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
+
+/**
+ * @deprecated - use IButtonGridCellProps instead
+ */
+export interface IGridCellProps<T> extends IButtonGridCellProps<T> {}
