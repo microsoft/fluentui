@@ -114,7 +114,7 @@ project.addSourceFileAtPaths(`${process.cwd()}addSomePathHere!`);
 project.addSourceFilesAtPaths(`${process.cwd()}someRegexPath`);
 ```
 
-- Once you have your codemod(s), to run them, you can use the function `runMods()`, which accepts an array of codemods, an array of source files, and a callback function that reports on the success of the mod. Here's what an invocation might look like:
+- Once you have your codemod(s), to run them, you can use the function `runMods()`, which accepts an array of codemods, an array of source files, and a callback function that reports on the success of the mod. **I've included it** in the config test file, but here's what the invocation looks like:
 
 ```typescript=
 runMods(codemodArray, project.getSourceFiles(), result => {
