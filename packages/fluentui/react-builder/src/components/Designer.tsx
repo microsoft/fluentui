@@ -395,7 +395,7 @@ export const Designer: React.FunctionComponent = () => {
           type: 'COMPONENT_STYLE_CHANGE',
           component: jsonTreeElement,
           propName: name.replace('design-', ''),
-          propValue: `${value}rem`,
+          propValue: value,
         });
       } else {
         dispatch({

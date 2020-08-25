@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Divider, Slider, Menu } from '@fluentui/react-northstar';
+import { Divider, Slider, Menu, Popup, Text, Flex } from '@fluentui/react-northstar';
+import { ComponentExampleColorPicker } from '@fluentui/docs-components';
 import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from '../config';
@@ -69,9 +70,16 @@ const sizeRampLarge = [
 ];
 
 const knobs = [
+  { kind: 'divider', label: 'Colors' },
+
+  { kind: 'color', label: 'background' },
+  { kind: 'color', label: 'color' },
+  { kind: 'color', label: 'borderColor' },
+
   { kind: 'divider', label: 'Border' },
 
   { kind: 'slider', label: 'borderRadius', ramp: sizeRamp },
+  { kind: 'slider', label: 'borderWidth', ramp: sizeRamp },
 
   { kind: 'divider', label: 'Position' },
 
@@ -116,7 +124,7 @@ type DesignKnobProps = {
   }: {
     jsonTreeElement: JSONTreeElement;
     name: string;
-    value: number;
+    value: string;
   }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
@@ -179,7 +187,8 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
       {menuActivePane === 'design' &&
         _.map(knobs, knob => {
           const currentValue =
-            jsonTreeElement.props && jsonTreeElement.props.styles && jsonTreeElement.props.styles[knob.label];
+            (jsonTreeElement.props && jsonTreeElement.props.styles && jsonTreeElement.props.styles[knob.label]) ||
+            '#000';
 
           return (
             <div key={knob.label} style={{ ...rowStyle, marginBottom: '0.5rem' }}>
@@ -197,13 +206,41 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
                       onPropChange({
                         jsonTreeElement,
                         name: `design-${knob.label}`,
-                        value: knob.ramp[+data.value],
+                        value: `${knob.ramp[+data.value]}rem`,
                       });
                     }}
                   />
                 </>
               ) : knob.kind === 'divider' ? (
                 <Divider content={knob.label} style={{ width: '100%' }} />
+              ) : knob.kind === 'color' ? (
+                <Popup
+                  content={
+                    <ComponentExampleColorPicker
+                      onChange={(color: string) => {
+                        onPropChange({ jsonTreeElement, name: `design-${knob.label}`, value: color });
+                      }}
+                      variableValue={knob.label}
+                    />
+                  }
+                  position="below"
+                  align="end"
+                  trigger={
+                    <Flex>
+                      <div
+                        style={{
+                          width: '1.2rem',
+                          height: '1.2rem',
+                          marginTop: 'auto',
+                          marginRight: '0.5rem',
+                          background: `${currentValue}`,
+                          border: '1px solid #000',
+                        }}
+                      />
+                      <Text content={knob.label} />
+                    </Flex>
+                  }
+                />
               ) : (
                 <div>UNKNOWN</div>
               )}

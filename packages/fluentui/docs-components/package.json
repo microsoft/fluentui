@@ -12,6 +12,7 @@
     "prismjs": "^1.16.0",
     "prop-types": "^15.7.2",
     "react-ace": "^5.1.2",
+    "color": "^3.1.2",
     "react-element-to-jsx-string": "^14.0.2"
   },
   "devDependencies": {
