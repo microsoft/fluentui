@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## BREAKING CHANGES
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
+- Set menu item that contain submenu to always open on hover @assuncaocharles ([#14730](https://github.com/microsoft/fluentui/pull/14730))
 
 ### Fixes
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
@@ -37,7 +38,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add base `SkeletonText` component @assuncaocharles ([#14460](https://github.com/microsoft/fluentui/pull/14460))
 - Add styling for `Datepicker` component @karymes ([#14469](https://github.com/microsoft/fluentui/pull/14469))
 - Add `readStatus` slot to `ChatMessage` @assuncaocharles ([#14585](https://github.com/microsoft/fluentui/pull/14585))
-- Set menu item that contain submenu to always open on hover @assuncaocharles ([#14730](https://github.com/microsoft/fluentui/pull/14730))
 
 ### Documentation
 - Edited left side menu in UI builder @vyhnalekl ([#14436](https://github.com/microsoft/fluentui/pull/14436))
