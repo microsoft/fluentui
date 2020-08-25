@@ -47,7 +47,8 @@ export interface ISwatchColorPickerProps {
   colorCells: IColorCellProps[];
 
   /**
-   * @deprecated Use `defaultSelectedId`
+* @deprecated Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled
+
    */
   isControlled?: boolean;
 
@@ -69,7 +70,7 @@ export interface ISwatchColorPickerProps {
    * If `id` and `color` are unspecified, there is no selected cell.
    * (e.g. the user executed the currently selected cell to unselect it)
    */
-  onChange?: (event: React.FormEvent<HTMLElement>, color?: string) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, color?: string, id?: string) => void;
   /**
    * Callback for when the user hovers over a color cell.
    * If `id` and `color` are unspecified, cells are no longer being hovered.
@@ -93,19 +94,9 @@ export interface ISwatchColorPickerProps {
   ariaPosInSet?: number;
 
   /**
-   * @deprecated Use `ariaPosInSet`
-   */
-  positionInSet?: number;
-
-  /**
    * Size of the parent set (size of parent menu, for example)
    */
   ariaSetSize?: number;
-
-  /**
-   * @deprecated Use `ariaSetSize`
-   */
-  setSize?: number;
 
   /**
    * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).

@@ -6,8 +6,7 @@ import { useId } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
 export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const id = props.id || useId();
+  const id = useId(undefined, props.id);
 
   const {
     items,
@@ -37,7 +36,6 @@ export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) =
 
   const content = (
     <table
-      ref={doNotContainWithinFocusZone ? (ref as React.Ref<HTMLTableElement>) : undefined}
       aria-posinset={ariaPosInSet}
       aria-setsize={ariaSetSize}
       id={id}
@@ -48,10 +46,10 @@ export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) =
       <tbody>
         {rowsOfItems.map((rows: [], rowIndex: number) => {
           return (
-            <tr role={'row'} key={id + '-' + rowIndex + '-row'}>
+            <tr role={'row'} key={rowIndex + '-row'}>
               {rows.map((cell, cellIndex: number) => {
                 return (
-                  <td role={'presentation'} key={id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
+                  <td role={'presentation'} key={cellIndex + '-cell'} className={classNames.tableCell}>
                     {onRenderItem(cell, cellIndex)}
                   </td>
                 );

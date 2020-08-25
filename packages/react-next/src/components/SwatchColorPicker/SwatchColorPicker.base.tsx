@@ -11,7 +11,7 @@ import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 import { IGridProps } from '../../utilities/grid/Grid.types';
 
-export interface ISwatchColorPickerState {
+interface ISwatchColorPickerState {
   isNavigationIdle: boolean;
   cellFocused: boolean;
   navigationIdleTimeoutId: number | undefined;
@@ -28,8 +28,8 @@ function useDebugWarnings(props: ISwatchColorPickerProps) {
     useWarnings({
       name: COMPONENT_NAME,
       props,
-      mutuallyExclusive: { focusOnHover: 'onHover' },
-      deprecations: { positionInSet: 'ariaPosInSet', setSize: 'ariaSetSize' },
+      mutuallyExclusive: { focusOnHover: 'onHover', selectedId: 'defaultSelectedId' },
+      deprecations: { isControlled: "selectedId' or 'defaultSelectedId" },
     });
   }
 }
@@ -38,12 +38,12 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
   const defaultId = useId('swatchColorPicker');
   const id = props.id || defaultId;
 
-  const internalState = useConst<ISwatchColorPickerState>(() => ({
+  const internalState = useConst<ISwatchColorPickerState>({
     isNavigationIdle: true,
     cellFocused: false,
     navigationIdleTimeoutId: undefined,
     navigationIdleDelay: 250,
-  }));
+  });
 
   const { setTimeout, clearTimeout } = useSetTimeout();
 
@@ -53,10 +53,6 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     colorCells,
     cellShape = 'circle',
     columnCount,
-    // eslint-disable-next-line deprecation/deprecation
-    ariaPosInSet = props.positionInSet,
-    // eslint-disable-next-line deprecation/deprecation
-    ariaSetSize = props.setSize,
     shouldFocusCircularNavigate = true,
     className,
     disabled = false,
@@ -64,14 +60,21 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     styles,
     cellMargin = 10,
     defaultSelectedId,
+    focusOnHover,
+    mouseLeaveParentSelector,
     onChange,
     onCellHovered,
+    onCellFocused,
+    getColorGridCellStyles,
+    cellHeight,
+    cellWidth,
+    cellBorderWidth,
   } = props;
 
   /**
    *  Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
    */
-  const getItemsWithIndex = React.useMemo(() => {
+  const itemsWithIndex = React.useMemo(() => {
     return colorCells.map((item, index) => {
       return { ...item, index: index };
     });
@@ -96,26 +99,28 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    * make sure to clear the pending focused stated
    */
   const onSwatchColorPickerBlur = React.useCallback((): void => {
-    if (props.onCellFocused) {
+    if (onCellFocused) {
       internalState.cellFocused = false;
-      props.onCellFocused();
+      onCellFocused();
     }
-  }, [props, internalState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onCellFocused]);
 
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
    */
   const onMouseEnter = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
-      if (!props.focusOnHover) {
-        return !internalState.isNavigationIdle || !!props.disabled;
+      if (!focusOnHover) {
+        return !internalState.isNavigationIdle || !!disabled;
       }
-      if (internalState.isNavigationIdle && !props.disabled) {
+      if (internalState.isNavigationIdle && !disabled) {
         ev.currentTarget.focus();
       }
       return true;
     },
-    [props.focusOnHover, internalState.isNavigationIdle, props.disabled],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [focusOnHover, disabled],
   );
 
   /**
@@ -123,21 +128,21 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    */
   const onMouseMove = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
-      if (!props.focusOnHover) {
-        return !internalState.isNavigationIdle || !!props.disabled;
+      if (!focusOnHover) {
+        return !internalState.isNavigationIdle || !!disabled;
       }
 
       const targetElement = ev.currentTarget as HTMLElement;
 
       // If navigation is idle and the targetElement is the focused element bail out
-      // if (!this.isNavigationIdle || (document && targetElement === (document.activeElement as HTMLElement))) {
       if (internalState.isNavigationIdle && !(document && targetElement === (document.activeElement as HTMLElement))) {
         targetElement.focus();
       }
 
       return true;
     },
-    [props.focusOnHover, internalState.isNavigationIdle, props.disabled],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [focusOnHover, disabled],
   );
 
   /**
@@ -145,9 +150,9 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    */
   const onMouseLeave = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      const parentSelector = props.mouseLeaveParentSelector;
+      const parentSelector = mouseLeaveParentSelector;
 
-      if (!props.focusOnHover || !parentSelector || !internalState.isNavigationIdle || props.disabled) {
+      if (!focusOnHover || !parentSelector || !internalState.isNavigationIdle || disabled) {
         return;
       }
 
@@ -178,7 +183,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         }
       }
     },
-    [internalState.isNavigationIdle, props.disabled, props.focusOnHover, props.mouseLeaveParentSelector],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [disabled, focusOnHover, mouseLeaveParentSelector],
   );
 
   /**
@@ -199,7 +205,6 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    */
   const onGridCellFocused = React.useCallback(
     (item?: IColorCellProps): void => {
-      const { onCellFocused } = props;
       if (onCellFocused) {
         if (item) {
           internalState.cellFocused = true;
@@ -210,7 +215,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         }
       }
     },
-    [internalState, props],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onCellFocused],
   );
 
   /**
@@ -218,19 +224,20 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    */
   const onCellClick = React.useCallback(
     (item: IColorCellProps): void => {
-      if (props.disabled) {
+      if (disabled) {
         return;
       }
 
       if (item.id !== selectedId) {
-        if (props.onCellFocused && internalState.cellFocused) {
+        if (onCellFocused && internalState.cellFocused) {
           internalState.cellFocused = false;
-          props.onCellFocused();
+          onCellFocused();
         }
         setSelectedId(item.id);
       }
     },
-    [internalState, props, selectedId, setSelectedId],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [disabled, onCellFocused, selectedId],
   );
 
   /**
@@ -248,14 +255,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     internalState.navigationIdleTimeoutId = setTimeout(() => {
       internalState.isNavigationIdle = true;
     }, internalState.navigationIdleDelay);
-  }, [internalState, clearTimeout, setTimeout]);
-
-  /**
-   * Callback to make sure we don't update the hovered element during mouse wheel
-   */
-  const onWheel = React.useCallback((): void => {
-    setNavigationTimeout();
-  }, [setNavigationTimeout]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Callback used to handle KeyCode events
@@ -271,7 +272,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         setNavigationTimeout();
       }
     },
-    [setNavigationTimeout],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   /**
@@ -280,48 +282,31 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    * @returns - Element representing the item
    */
 
-  const renderOption = React.useCallback(
-    (item: IColorCellProps): JSX.Element => {
-      return (
-        <ColorPickerGridCell
-          item={item}
-          idPrefix={id}
-          color={item.color}
-          styles={props.getColorGridCellStyles}
-          disabled={disabled}
-          onClick={onCellClick}
-          onHover={onGridCellHovered}
-          onFocus={onGridCellFocused}
-          selected={selectedId === item.id}
-          circle={cellShape === 'circle'}
-          label={item.label}
-          onMouseEnter={onMouseEnter}
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
-          onWheel={onWheel}
-          onKeyDown={onKeyDown}
-          height={props.cellHeight}
-          width={props.cellWidth}
-          borderWidth={props.cellBorderWidth}
-        />
-      );
-    },
-    [
-      selectedId,
-      props,
-      cellShape,
-      disabled,
-      id,
-      onCellClick,
-      onGridCellFocused,
-      onGridCellHovered,
-      onKeyDown,
-      onMouseEnter,
-      onMouseLeave,
-      onMouseMove,
-      onWheel,
-    ],
-  );
+  const renderOption = (item: IColorCellProps): JSX.Element => {
+    return (
+      <ColorPickerGridCell
+        item={item}
+        idPrefix={id}
+        color={item.color}
+        styles={getColorGridCellStyles}
+        disabled={disabled}
+        onClick={onCellClick}
+        onHover={onGridCellHovered}
+        onFocus={onGridCellFocused}
+        selected={selectedId === item.id}
+        circle={cellShape === 'circle'}
+        label={item.label}
+        onMouseEnter={onMouseEnter}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        onWheel={setNavigationTimeout}
+        onKeyDown={onKeyDown}
+        height={cellHeight}
+        width={cellWidth}
+        borderWidth={cellBorderWidth}
+      />
+    );
+  };
 
   if (colorCells.length < 1 || columnCount < 1) {
     return null;
@@ -332,11 +317,10 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       {...((props as unknown) as IGridProps)}
       ref={ref}
       id={id}
-      items={getItemsWithIndex}
+      items={itemsWithIndex}
       columnCount={columnCount}
+      // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={renderOption}
-      ariaPosInSet={ariaPosInSet}
-      ariaSetSize={ariaSetSize}
       shouldFocusCircularNavigate={shouldFocusCircularNavigate}
       doNotContainWithinFocusZone={doNotContainWithinFocusZone}
       onBlur={onSwatchColorPickerBlur}

@@ -95,18 +95,18 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     },
     [disabled],
   );
+
   // Render the core of a color cell
-  const onRenderColorOption = React.useCallback(
-    (colorOption: IColorCellProps): JSX.Element => {
-      // Build an SVG for the cell with the given shape and color properties
-      return (
-        <svg className={classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
-          {props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
-        </svg>
-      );
-    },
-    [classNames.svg, props.circle],
-  );
+  const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
+    const svgClassName = classNames.svg;
+
+    // Build an SVG for the cell with the given shape and color properties
+    return (
+      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
+        {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
+      </svg>
+    );
+  };
 
   return (
     <GridCell
@@ -115,6 +115,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
       key={item.id}
       disabled={disabled}
       role={'gridcell'}
+      // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={onRenderColorOption}
       selected={selected}
       onClick={onClick}

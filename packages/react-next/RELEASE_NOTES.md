@@ -72,8 +72,8 @@ TODO: document any API or functionality changes
 
 ### SwatchColorPicker
 
-- Added an onChange prop and deprecated onColorChanged.
-- Deprecated isControlled.
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`.
 
 ## Other notable changes
 

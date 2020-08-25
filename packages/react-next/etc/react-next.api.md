@@ -1924,29 +1924,13 @@ export interface ISwatchColorPickerProps {
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
-    onChange?: (event: React.FormEvent<HTMLElement>, color?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, color?: string, id?: string) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
-    // @deprecated (undocumented)
-    positionInSet?: number;
     selectedId?: string;
-    // @deprecated (undocumented)
-    setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ISwatchColorPickerState {
-    // (undocumented)
-    cellFocused: boolean;
-    // (undocumented)
-    isNavigationIdle: boolean;
-    // (undocumented)
-    navigationIdleDelay: number;
-    // (undocumented)
-    navigationIdleTimeoutId: number | undefined;
 }
 
 // @public

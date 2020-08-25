@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { css, getId } from '../../Utilities';
+import { css } from '../../Utilities';
 import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../compat/Button';
+import { useId } from '@uifabric/react-hooks';
 
 export const GridCell = <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => {
+  const defaultId = useId('gridCell');
   const {
     item,
-    id = getId('gridCell'),
+    id = defaultId,
     className,
     role,
     selected,
@@ -17,78 +19,74 @@ export const GridCell = <T, P extends IGridCellProps<T>>(props: IGridCellProps<T
     index,
     label,
     getClassNames,
+    onClick,
+    onHover,
+    onMouseMove,
+    onMouseLeave,
+    onMouseEnter,
+    onFocus,
   } = props;
 
-  const _onClick = React.useCallback((): void => {
-    const { onClick } = props as P;
-
+  const handleClick = React.useCallback((): void => {
     if (onClick && !disabled) {
       onClick(item);
     }
-  }, [disabled, item, props]);
+  }, [disabled, item, onClick]);
 
-  const _onMouseEnter = React.useCallback(
+  const handleMouseEnter = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      const { onHover, onMouseEnter } = props as P;
-
       const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
 
       if (!didUpdateOnEnter && onHover && !disabled) {
         onHover(item);
       }
     },
-    [disabled, item, props],
+    [disabled, item, onHover, onMouseEnter],
   );
 
-  const _onMouseMove = React.useCallback(
+  const handleMouseMove = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      const { onHover, onMouseMove } = props as P;
-
       const didUpdateOnMove = onMouseMove && onMouseMove(ev);
 
       if (!didUpdateOnMove && onHover && !disabled) {
         onHover(item);
       }
     },
-    [disabled, item, props],
+    [disabled, item, onHover, onMouseMove],
   );
 
-  const _onMouseLeave = React.useCallback(
+  const handleMouseLeave = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      const { onMouseLeave, onHover } = props as P;
-
       const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
 
       if (!didUpdateOnLeave && onHover && !disabled) {
         onHover();
       }
     },
-    [disabled, props],
+    [disabled, onHover, onMouseLeave],
   );
 
-  const _onFocus = React.useCallback((): void => {
-    const { onFocus } = props as P;
-
+  const handleFocus = React.useCallback((): void => {
     if (onFocus && !disabled) {
       onFocus(item);
     }
-  }, [disabled, item, props]);
+  }, [disabled, item, onFocus]);
 
   return (
     <CommandButton
       id={id}
       data-index={index}
-      data-is-focusable={true}
+      data-is-focusable
       disabled={disabled}
       className={css(className, {
         ['' + cellIsSelectedStyle]: selected,
         ['' + cellDisabledStyle]: disabled,
       })}
-      onClick={_onClick}
-      onMouseEnter={_onMouseEnter}
-      onMouseMove={_onMouseMove}
-      onMouseLeave={_onMouseLeave}
-      onFocus={_onFocus}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
       role={role}
       aria-selected={selected}
       ariaLabel={label}
