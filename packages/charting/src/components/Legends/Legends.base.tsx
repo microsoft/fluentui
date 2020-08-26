@@ -84,7 +84,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
-    const { allowFocusOnLegends } = this.props;
+    const { allowFocusOnLegends = true } = this.props;
     const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
       return {
         ...(allowFocusOnLegends && {
@@ -113,7 +113,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
-    const { overflowProps, allowFocusOnLegends } = this.props;
+    const { overflowProps, allowFocusOnLegends = true } = this.props;
     return (
       <OverflowSet
         {...(allowFocusOnLegends && { role: 'listbox' })}
@@ -179,7 +179,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
-    const { allowFocusOnLegends } = this.props;
+    const { allowFocusOnLegends = true } = this.props;
     const overflowHoverCardLegends: JSX.Element[] = [];
     expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
       const hoverCardElement = this._renderButton(legend, index, true);
@@ -199,7 +199,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderOverflowItems = (legends: ILegend[]) => {
-    const { allowFocusOnLegends = false } = this.props;
+    const { allowFocusOnLegends = true } = this.props;
     const items: IContextualMenuItem[] = [];
     legends.forEach((legend: ILegend, i: number) => {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
@@ -298,7 +298,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderButton = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
-    const { allowFocusOnLegends = false } = this.props;
+    const { allowFocusOnLegends = true } = this.props;
     const legend: ILegend = {
       title: data.title,
       color: data.color,

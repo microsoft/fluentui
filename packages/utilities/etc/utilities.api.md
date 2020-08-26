@@ -51,11 +51,11 @@ export class Async {
     clearImmediate(id: number, targetElement?: Element | null): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
-    debounce<T extends Function>(func: T, wait?: number, options?: {
+    debounce<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         maxWait?: number;
         trailing?: boolean;
-    }): ICancelable<T> & (() => void);
+    }): ICancelable<T> & T;
     dispose(): void;
     // (undocumented)
     protected _logError(e: any): void;
@@ -64,10 +64,10 @@ export class Async {
     setImmediate(callback: () => void, targetElement?: Element | null): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
-    throttle<T extends Function>(func: T, wait?: number, options?: {
+    throttle<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         trailing?: boolean;
-    }): T | (() => void);
+    }): T;
     }
 
 // @public
@@ -419,8 +419,8 @@ export interface IBaseProps<T = any> {
 }
 
 // @public (undocumented)
-export type ICancelable<T> = {
-    flush: () => T;
+export type ICancelable<T extends (...args: any[]) => any> = {
+    flush: () => ReturnType<T>;
     cancel: () => void;
     pending: () => boolean;
 };

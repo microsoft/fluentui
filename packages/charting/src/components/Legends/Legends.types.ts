@@ -167,7 +167,7 @@ export interface ILegendsProps {
 
   /**
    * prop that decides if legends are focusable
-   * @default false
+   * @default true
    */
   allowFocusOnLegends?: boolean;
 }

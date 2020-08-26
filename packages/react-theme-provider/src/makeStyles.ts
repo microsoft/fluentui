@@ -1,4 +1,4 @@
-import { mergeStyleSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
+import { mergeStyleSets, Stylesheet, IStyle } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { useCustomizationSettings } from '@uifabric/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
@@ -37,6 +37,7 @@ const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
 
 let _seed = 0;
 
+// If the stylesheet reset call is made, invalidate the cache keys.
 Stylesheet.getInstance().onReset(() => _seed++);
 
 /**
@@ -45,9 +46,9 @@ Stylesheet.getInstance().onReset(() => _seed++);
  * @param styleOrFunction - Either a css javascript object, or a function which takes in `ITheme`
  * and returns a css javascript object.
  */
-export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(
+export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
-): () => IProcessedStyleSet<TStyleSet> {
+): () => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.
   const graph = new Map();
 

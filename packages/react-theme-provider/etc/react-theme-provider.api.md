@@ -5,8 +5,7 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
-import { IProcessedStyleSet } from '@uifabric/merge-styles';
-import { IStyleSet } from '@uifabric/merge-styles';
+import { IStyle } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
@@ -23,7 +22,11 @@ export const FluentTheme: Theme;
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 // @public
-export function makeStyles<TStyleSet extends IStyleSet<TStyleSet>>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => IProcessedStyleSet<TStyleSet>;
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {
+    [key in keyof TStyleSet]: string;
+};
 
 export { PartialTheme }
 
