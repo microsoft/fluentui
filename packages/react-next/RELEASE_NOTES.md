@@ -49,6 +49,10 @@ TODO: document any API or functionality changes
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
 
+### Shimmer
+
+- Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+
 ### TeachingBubble
 
 - Removed unused defaultProps from TeachingBubbleContent.

@@ -1791,10 +1791,6 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
 }
 
 // @public (undocumented)
-export interface IShimmer {
-}
-
-// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -1925,7 +1921,6 @@ export interface IShimmerLineStyles {
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
-    componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
@@ -1933,11 +1928,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
     theme?: ITheme;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerState {
-    contentLoaded?: boolean;
 }
 
 // @public
@@ -2628,17 +2618,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
-    constructor(props: IShimmerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IShimmerProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IShimmerProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerBase: React.ForwardRefExoticComponent<IShimmerProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
