@@ -92,5 +92,16 @@ export class E2EApi {
     await this.page.setViewport({ height, width, ...size });
   };
 
+  // Once we update puppeteer we should replace this by using https://pptr.dev/#?product=Puppeteer&version=v5.2.1&show=api-mousewheeloptions
+  public simulatePageMove = async () => {
+    await this.page.evaluate(_ => {
+      const type = 'move';
+      const event = document.createEvent('Event') as TouchEvent;
+      event.initEvent(`touch${type}`, true, true);
+
+      document.dispatchEvent(event);
+    });
+  };
+
   public wait = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 }
