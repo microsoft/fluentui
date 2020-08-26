@@ -2,7 +2,6 @@
   "name": "@fluentui/react-link",
   "version": "0.1.0",
   "description": "Fluent UI React Link component",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
