@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Deprecating componentRef as Shimmer doesn't use any public methods.",
+  "comment": "Deprecating Shimmer's componentRef as it doesn't use any public methods.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
