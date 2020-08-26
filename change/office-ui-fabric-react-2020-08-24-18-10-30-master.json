@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "adding aria label on button to clarify what it does",
+  "packageName": "office-ui-fabric-react",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-25T01:10:30.036Z"
+}

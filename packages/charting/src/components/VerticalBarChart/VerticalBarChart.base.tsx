@@ -3,6 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -251,7 +252,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = axis
       .tickPadding(5)
       .tickValues(domains)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }

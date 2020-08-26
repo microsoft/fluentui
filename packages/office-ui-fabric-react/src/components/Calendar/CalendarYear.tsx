@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL } from '../../Utilities';
+import { KeyCodes, css, getRTL, format } from '../../Utilities';
 import { ICalendarIconStrings } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
@@ -22,6 +22,7 @@ export interface ICalendarYearStrings {
   rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
+  headerAriaLabelFormatString?: string;
 }
 
 export interface ICalendarYear {
@@ -294,11 +295,16 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, any> {
     if (onHeaderSelect) {
       const strings = this.props.strings || DefaultCalendarYearStrings;
       const rangeAriaLabel = strings.rangeAriaLabel;
-      const ariaLabel = rangeAriaLabel
+      const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? (rangeAriaLabel as string)
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
+
+      const ariaLabel = strings.headerAriaLabelFormatString
+        ? format(strings.headerAriaLabelFormatString, currentDateRange)
+        : currentDateRange;
+
       return (
         <div
           className={css(

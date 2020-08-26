@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Link: Making High Contrast styling adhere to system settings.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-22T00:14:51.598Z"
+}
