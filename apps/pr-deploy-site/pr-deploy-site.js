@@ -51,6 +51,12 @@ const siteInfo = [
     title: 'Slider',
   },
   {
+    package: '@fluentui/react-link',
+    link: './react-link/dist-storybook/index.html',
+    icon: 'Link',
+    title: 'Link',
+  },
+  {
     package: '@fluentui/react-next',
     link: './react-next/dist-storybook/index.html',
     icon: 'DoubleChevronRight12',
