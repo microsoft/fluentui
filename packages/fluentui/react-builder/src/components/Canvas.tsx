@@ -9,6 +9,8 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderText } from './ReaderText';
 
+const showNarration = false;
+
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
   jsonTree: JSONTreeElement;
@@ -311,7 +313,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 />
               )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
+              {showNarration && selectedComponent && (
+                <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
+              )}
             </Provider>
           </>
         )}
