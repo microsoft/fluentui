@@ -31,19 +31,13 @@ function isInteractiveFilter(node: Node) {
  */
 export function useTrigger(props: UseTriggerOptions): React.ReactElement | null {
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
-  const element = trigger ? React.Children.only(trigger) : null;
+  const element = trigger ? (React.Children.only(trigger) as React.ReactElement) : null;
 
   if (process.env.NODE_ENV !== 'production') {
-    if (element !== null) {
-      if (!React.isValidElement(element)) {
-        throw new Error('useTrigger(): An invalid value was passed, please pass a valid React element as a trigger');
-      }
-
-      if (ReactIs.isFragment(element)) {
-        throw new Error(
-          'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
-        );
-      }
+    if (ReactIs.isFragment(element)) {
+      throw new Error(
+        'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
+      );
     }
 
     // Hooks are used only for dev mode validations and will be removed in production builds
@@ -84,7 +78,12 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
       }
     }, []);
 
-    return element ? <Ref innerRef={ref}>{element as React.ReactElement}</Ref> : null;
+    return element ? (
+      /* This is required as components may call handlers via `trigger.props`, Ref will pass unhandled props down */
+      <Ref {...element.props} innerRef={ref}>
+        {element}
+      </Ref>
+    ) : null;
   }
 
   return element as React.ReactElement | null;
