@@ -2,7 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
-import { usePrevious, useSetTimeout, useConst } from '@uifabric/react-hooks';
+import { useSetTimeout, useConst } from '@uifabric/react-hooks';
 
 const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 const COMPONENT_NAME = 'Shimmer';
@@ -40,8 +40,6 @@ export const ShimmerBase = React.forwardRef<HTMLDivElement, IShimmerProps>((prop
   const internalState = useConst<{ lastTimeoutId: number }>(() => ({
     lastTimeoutId: 0,
   }));
-
-  const previousProps = usePrevious(props);
 
   const { setTimeout, clearTimeout } = useSetTimeout();
 
