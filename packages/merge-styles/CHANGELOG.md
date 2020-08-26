@@ -1,8 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.17.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.16.1..@uifabric/merge-styles_v7.17.0)
+
+### Minor changes
+
+- Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
 
 ## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.16.1)
 

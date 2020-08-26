@@ -17,9 +17,9 @@ import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '../SelectedItemsList/index';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
+
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -221,11 +221,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onCopy = () => {
+  const _onCopy = (ev: React.ClipboardEvent<HTMLInputElement>) => {
     if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
       const copyItems = selection.getSelection() as T[];
       const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
-      copyToClipboard(copyString);
+      ev.clipboardData.setData('text/plain', copyString);
+      ev.preventDefault();
     }
   };
   const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {

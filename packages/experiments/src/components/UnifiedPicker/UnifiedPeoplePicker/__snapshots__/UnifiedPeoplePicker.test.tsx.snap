@@ -12,7 +12,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -127,7 +127,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -177,7 +177,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             role="list"
           >
             <div
-              aria-labelledby="selectedItemPersona-id__3"
+              aria-labelledby="selectedItemPersona-id__2"
               className=
                   ms-PickerPersona-container
                   {
@@ -367,7 +367,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         max-width: 100%;
                         min-width: 0px;
                       }
-                  id="selectedItemPersona-id__3"
+                  id="selectedItemPersona-id__2"
                 >
                   <div
                     className=
