@@ -59,6 +59,61 @@ export function getTokens(theme: Theme): Tokens {
         },
       },
 
+      // ghost is currently only mapped for primary button to use.
+      ghost: {
+        background: semanticColors?.bodyBackground,
+        borderColor: 'transparent',
+        contentColor: palette?.neutralPrimary,
+        iconColor: palette?.themeDarkAlt,
+        menuIconColor: palette?.neutralSecondary,
+
+        checked: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        disabled: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralTertiary,
+          iconColor: 'inherit',
+        },
+
+        expanded: {
+          contentColor: palette?.themePrimary,
+        },
+
+        focused: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralPrimary,
+          iconColor: palette?.themeDarkAlt,
+        },
+
+        hovered: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        pressed: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+      },
+
       body: {
         background: semanticColors?.bodyBackground,
       },
