@@ -1,8 +1,7 @@
-import { menuClassName } from '@fluentui/react-northstar';
+import { menuItemWrapperClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  menu: `.${menuClassName}`,
-  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
+  item: (itemIndex: number) => `.${menuItemWrapperClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -13,7 +12,7 @@ const config: ScreenerTestsConfig = {
         .hover(selectors.item(1))
         .click(selectors.item(1))
         .snapshot('Hovers 1st item, open menu and kep it open on click')
-        .hover(selectors.item(2))
+        .hover(selectors.item(3))
         .snapshot('Hovers 2nd item, open submenu'),
   ],
 };
