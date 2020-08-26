@@ -17,6 +17,7 @@ export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDisp
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
 export { useStateManager } from './hooks/useStateManager';
 export * from './hooks/useStyles';
+export { useTriggerElement } from './hooks/useTriggerElement';
 export { useUnhandledProps } from './hooks/useUnhandledProps';
 
 export { RendererContext } from './renderer/RendererContext';
@@ -29,6 +30,7 @@ export * from './styles/types';
 export { getTelemetry as deprecated_getTelemetry, useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';
 
+export { childrenExist } from './utils/childrenExist';
 export { getElementType } from './utils/getElementType';
 export { getUnhandledProps } from './utils/getUnhandledProps';
 export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
