@@ -39,11 +39,9 @@
     text-overflow: inherit;
     user-select: text;
 
-    @include high-contrast-black-on-white {
-      color: #ffff00;
-    }
-    @include high-contrast-white-on-black {
-      color: #00009f;
+    @include high-contrast {
+      color: LinkText;
+      -ms-high-contrast-adjust: none;
     }
   }
 
@@ -63,10 +61,18 @@
     &:active:hover {
       color: var($semanticColorsLinkHovered);
       text-decoration: underline;
+
+      @include high-contrast {
+        color: LinkText;
+      }
     }
 
     &:focus {
       color: var($semanticColorsLink);
+
+      @include high-contrast {
+        color: LinkText;
+      }
     }
   }
 }
