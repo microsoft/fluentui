@@ -216,6 +216,10 @@ export * from './components/Card/CardFooter';
 export * from './components/Card/CardColumn';
 export * from './components/Card/CardExpandableBox';
 
+// TODO: what to do with these exports?
+export * from './components/Datepicker/validateDate';
+export * from './components/Datepicker/navigateToNewDate';
+
 export * from './components/Datepicker/Datepicker';
 export * from './components/Datepicker/DatepickerCalendar';
 export * from './components/Datepicker/DatepickerCalendarHeader';
