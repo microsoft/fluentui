@@ -4,7 +4,9 @@
 
 ```ts
 
+import { BaseButton } from 'office-ui-fabric-react/lib/Button';
 import { BaseSlots } from '@fluentui/react-compose';
+import { Button } from 'office-ui-fabric-react/lib/Button';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
@@ -1288,6 +1290,66 @@ export interface IMenuItemStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
+export interface IMessageBar {
+}
+
+// @public (undocumented)
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
+    actions?: JSX.Element;
+    // @deprecated
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IMessageBar>;
+    dismissButtonAriaLabel?: string;
+    dismissIconProps?: IIconProps;
+    isMultiline?: boolean;
+    messageBarIconProps?: IIconProps;
+    messageBarType?: MessageBarType;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    overflowButtonAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
+    theme?: ITheme;
+    truncated?: boolean;
+}
+
+// @public (undocumented)
+export interface IMessageBarState {
+    // (undocumented)
+    expandSingleLine?: boolean;
+    // (undocumented)
+    labelId?: string;
+    // (undocumented)
+    showContent?: boolean;
+}
+
+// @public (undocumented)
+export interface IMessageBarStyleProps {
+    actions?: boolean;
+    className?: string;
+    expandSingleLine?: boolean;
+    isMultiline?: boolean;
+    messageBarType?: MessageBarType;
+    onDismiss?: boolean;
+    theme: ITheme;
+    truncated?: boolean;
+}
+
+// @public (undocumented)
+export interface IMessageBarStyles {
+    actions?: IStyle;
+    content?: IStyle;
+    dismissal?: IStyle;
+    dismissSingleLine?: IStyle;
+    expand?: IStyle;
+    expandSingleLine?: IStyle;
+    icon?: IStyle;
+    iconContainer?: IStyle;
+    innerText?: IStyle;
+    root?: IStyle;
+    text?: IStyle;
+}
+
+// @public (undocumented)
 export interface IModal {
     focus: () => void;
 }
@@ -2357,6 +2419,28 @@ export const MeasuredContext: React.Context<{
 }>;
 
 // @public (undocumented)
+export const MessageBar: React.FunctionComponent<IMessageBarProps>;
+
+// @public (undocumented)
+export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
+    constructor(props: IMessageBarProps);
+    // (undocumented)
+    static defaultProps: IMessageBarProps;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export enum MessageBarType {
+    blocked = 2,
+    error = 1,
+    info = 0,
+    severeWarning = 3,
+    success = 4,
+    warning = 5
+}
+
+// @public (undocumented)
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
@@ -2809,7 +2893,6 @@ export * from "office-ui-fabric-react/lib/Label";
 export * from "office-ui-fabric-react/lib/Layer";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
-export * from "office-ui-fabric-react/lib/MessageBar";
 export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
