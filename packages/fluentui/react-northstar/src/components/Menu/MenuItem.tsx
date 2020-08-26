@@ -1,5 +1,5 @@
 import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
-import { useEventListener, EventListener } from '@fluentui/react-component-event-listener';
+import { EventListener } from '@fluentui/react-component-event-listener';
 import {
   compose,
   focusAsync,
@@ -304,14 +304,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
     };
 
-    useEventListener({
-      target: context.target,
-      type: 'scroll',
-      listener: e => {
-        if (!isSubmenuOpen()) return;
-        trySetMenuOpen(false, (e as unknown) as React.MouseEvent);
-      },
-    });
+    const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
+      if (!isSubmenuOpen()) return;
+      trySetMenuOpen(false, e);
+    };
 
     const outsideClickHandler = (e: MouseEvent) => {
       if (!isSubmenuOpen()) return;
@@ -426,7 +422,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const trySetMenuOpen = (
       newValue: boolean,
-      e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
+      e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent | TouchEvent | WheelEvent,
       onStateChanged?: any,
     ) => {
       setMenuOpen(newValue);
@@ -520,6 +516,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             </Popper>
           </Ref>
           <EventListener listener={outsideClickHandler} target={context.target} type="click" />
+          <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+          <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
         </>
       ) : null;
 
