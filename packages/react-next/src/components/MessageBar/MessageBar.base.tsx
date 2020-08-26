@@ -72,6 +72,15 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
     return 'polite';
   }, [messageBarType]);
 
+  const getRegionProps = React.useCallback(() => {
+    const hasActions = !!actions || !!onDismiss;
+    const regionProps = {
+      'aria-describedby': labelId,
+      role: 'region',
+    };
+    return hasActions ? regionProps : {};
+  }, [actions, onDismiss, labelId]);
+
   const getDismissDiv = React.useMemo((): JSX.Element | null => {
     if (onDismiss) {
       return (
@@ -88,119 +97,42 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
     return null;
   }, [classNames.dismissal, dismissButtonAriaLabel, dismissIconProps, onDismiss]);
 
-  const getDismissSingleLine = React.useMemo((): JSX.Element | null => {
-    if (onDismiss) {
-      return <div className={classNames.dismissSingleLine}>{getDismissDiv}</div>;
-    }
-    return null;
-  }, [classNames.dismissSingleLine, getDismissDiv, onDismiss]);
-
-  const getExpandSingleLine = React.useMemo((): JSX.Element | null => {
-    if (!actions && truncated) {
-      return (
-        <div className={classNames.expandSingleLine}>
-          <IconButton
-            disabled={false}
-            className={classNames.expand}
-            onClick={toggleExpandSingleLine}
-            iconProps={iconProps}
-            ariaLabel={overflowButtonAriaLabel}
-            aria-expanded={expandSingleLine}
-          />
+  return (
+    <div ref={ref} className={classNames.root} {...getRegionProps()}>
+      <div className={classNames.content}>
+        <div className={classNames.iconContainer} aria-hidden>
+          {messageBarIconProps ? (
+            <Icon {...messageBarIconProps} className={css(classNames.icon, messageBarIconProps.className)} />
+          ) : (
+            <Icon iconName={ICON_MAP[messageBarType!]} className={classNames.icon} />
+          )}
         </div>
-      );
-    }
-    return null;
-  }, [
-    actions,
-    classNames.expand,
-    classNames.expandSingleLine,
-    expandSingleLine,
-    iconProps,
-    overflowButtonAriaLabel,
-    toggleExpandSingleLine,
-    truncated,
-  ]);
-
-  const getIconSpan = React.useMemo((): JSX.Element => {
-    return (
-      <div className={classNames.iconContainer} aria-hidden>
-        {messageBarIconProps ? (
-          <Icon {...messageBarIconProps} className={css(classNames.icon, messageBarIconProps.className)} />
-        ) : (
-          <Icon iconName={ICON_MAP[messageBarType!]} className={classNames.icon} />
-        )}
-      </div>
-    );
-  }, [classNames.icon, classNames.iconContainer, messageBarIconProps, messageBarType]);
-
-  const renderInnerText = React.useMemo((): JSX.Element => {
-    return (
-      <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority()}>
-        <span className={classNames.innerText} {...nativeProps}>
-          <DelayedRender>
-            <span>{children}</span>
-          </DelayedRender>
-        </span>
-      </div>
-    );
-  }, [children, classNames.innerText, classNames.text, getAnnouncementPriority, labelId, nativeProps]);
-
-  const getRegionProps = React.useCallback(() => {
-    const hasActions = !!getActionsDiv() || !!getDismissDiv;
-    const regionProps = {
-      'aria-describedby': labelId,
-      role: 'region',
-    };
-    return hasActions ? regionProps : {};
-  }, [getActionsDiv, getDismissDiv, labelId]);
-
-  const renderMultiLine = React.useMemo((): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> => {
-    return (
-      <div ref={ref} className={classNames.root} {...getRegionProps()}>
-        <div className={classNames.content}>
-          {getIconSpan}
-          {renderInnerText}
-          {getDismissDiv}
+        <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority()}>
+          <span className={classNames.innerText} {...nativeProps}>
+            <DelayedRender>
+              <span>{children}</span>
+            </DelayedRender>
+          </span>
         </div>
-        {getActionsDiv()}
+        {!isMultiline &&
+          (getActionsDiv() ||
+            (!actions && truncated && (
+              <div className={classNames.expandSingleLine}>
+                <IconButton
+                  disabled={false}
+                  className={classNames.expand}
+                  onClick={toggleExpandSingleLine}
+                  iconProps={iconProps}
+                  ariaLabel={overflowButtonAriaLabel}
+                  aria-expanded={expandSingleLine}
+                />
+              </div>
+            )) ||
+            (onDismiss && <div className={classNames.dismissSingleLine}>{getDismissDiv}</div>))}
+        {isMultiline && getDismissDiv}
       </div>
-    );
-  }, [
-    classNames.content,
-    classNames.root,
-    getActionsDiv,
-    getDismissDiv,
-    getIconSpan,
-    getRegionProps,
-    ref,
-    renderInnerText,
-  ]);
-
-  const renderSingleLine = React.useMemo((): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> => {
-    return (
-      <div ref={ref} className={classNames.root} {...getRegionProps()}>
-        <div className={classNames.content}>
-          {getIconSpan}
-          {renderInnerText}
-          {getExpandSingleLine}
-          {getActionsDiv}
-          {getDismissSingleLine}
-        </div>
-      </div>
-    );
-  }, [
-    classNames.content,
-    classNames.root,
-    getActionsDiv,
-    getDismissSingleLine,
-    getExpandSingleLine,
-    getIconSpan,
-    getRegionProps,
-    ref,
-    renderInnerText,
-  ]);
-
-  return isMultiline ? renderMultiLine : renderSingleLine;
+      {isMultiline && getActionsDiv()}
+    </div>
+  );
 });
 MessageBarBase.displayName = COMPONENT_NAME;
