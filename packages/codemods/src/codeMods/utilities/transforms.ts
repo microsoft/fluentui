@@ -1,7 +1,7 @@
 import { PropTransform, ValueMap } from '../types';
 import { JsxExpression, SyntaxKind, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
 import { renamePropInSpread } from './helpers/propHelpers';
-import { Err, Ok } from '../../../src/helpers/result';
+import { Err, Ok } from '../../helpers/result';
 
 /*
 Steps to writing a transform:

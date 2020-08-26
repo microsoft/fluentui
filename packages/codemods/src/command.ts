@@ -2,8 +2,7 @@ import yarr from 'yargs';
 import { Maybe } from './helpers/maybe';
 import { CodeMod, ModRunnerConfigType } from './codeMods/types';
 import { getModFilter, getModExcludeFilter } from './modRunner/modFilter';
-
-const configObj: ModRunnerConfigType = require('./modRunner/modConfig.json');
+import { Glob } from 'glob';
 
 export interface CommandParserResult<T = CodeMod> {
   shouldExit?: boolean;
@@ -54,17 +53,40 @@ export class CommandParser {
     if (parsed.help) {
       return { shouldExit: true, modsFilter: () => true };
     }
+    /* Attempt to locate the modConfig file in the user's repo. */
+    const foundJsonFile = getModRunnerConfig();
+    let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
+    if (parsed.config) {
+      console.log('Configuration detected. Attempting to run mods from config...');
+      if (!foundJsonFile || foundJsonFile.length !== 1) {
+        console.log('Error, could not locate correct config file. Aborting...');
+        return { shouldExit: true, modsFilter: () => true };
+      } else {
+        configObj = require(foundJsonFile[0]);
+      }
+    }
 
     const filts = {
       stringFilter: parsed.config ? Maybe(configObj.stringFilters) : Maybe(parsed.modNames),
       regexFilter: parsed.config ? Maybe(configObj.regexFilters) : Maybe(parsed.modPatterns),
     };
 
-    const filter = parsed.excludeMods ? getModExcludeFilter(filts) : getModFilter(filts);
+    const shouldExclude: boolean = parsed.config ? !configObj.includeMods : parsed.excludeMods;
+    const filter = shouldExclude ? getModExcludeFilter(filts) : getModFilter(filts);
 
     return {
       shouldExit: false,
       modsFilter: filter,
     };
   }
+}
+
+function getModRunnerConfig(): string[] {
+  const foundJsonFile = new Glob('/**/modConfig.json', {
+    absolute: false,
+    root: process.cwd(),
+    ignore: ['**/node_modules/**'],
+    sync: true,
+  });
+  return foundJsonFile.found;
 }
