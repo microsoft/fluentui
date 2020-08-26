@@ -11,10 +11,10 @@ const config: ScreenerTestsConfig = {
     (builder, keys) =>
       builder
         .hover(selectors.item(1))
-        .snapshot('Hovers 1st item, open menu')
+        .click(selectors.item(1))
+        .snapshot('Hovers 1st item, open menu and kep it open on click')
         .hover(selectors.item(2))
-        .click(selectors.item(2))
-        .snapshot('Hovers 2nd item, open submenu and keep it open on click'),
+        .snapshot('Hovers 2nd item, open submenu'),
   ],
 };
 
