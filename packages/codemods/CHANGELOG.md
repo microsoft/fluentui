@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.4)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.2..@fluentui/codemods_v0.9.4)
+
+### Patches
+
+- Add docs for codemod writing ([PR #14718](https://github.com/microsoft/fluentui/pull/14718) by t-dama@microsoft.com)
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.2)
 
