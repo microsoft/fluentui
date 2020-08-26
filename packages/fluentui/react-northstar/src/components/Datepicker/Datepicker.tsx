@@ -1,4 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -36,11 +36,10 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<DatepickerBehaviorProps>;
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -79,13 +78,13 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** The component automatically overrides faulty manual input upon blur. */
   fallbackToLastCorrectDateOnBlur?: boolean;
 
-  /** Should calendar be initially opened or closed. */
+  /** Initial 'calendarOpenState' value. */
   defaultCalendarOpenState?: boolean;
 
   /** Controls the calendar's open state. */
   calendarOpenState?: boolean;
 
-  /** Controls whether there is a date that is selected by default. */
+  /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
   /** Controls the calendar's selectedDate. */
@@ -113,6 +112,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLElement>();
 
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
@@ -153,9 +153,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     initialValue: false,
   });
 
-  const [preventClosing, setPreventClosing] = React.useState<boolean>();
-  const [preventOpeningOnClick, setPreventOpeningOnClick] = React.useState<boolean>();
-
   const [selectedDate, setSelectedDate] = useAutoControlled<Date | undefined>({
     defaultValue: props.defaultSelectedDate,
     value: props.selectedDate,
@@ -192,7 +189,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
-    actionHandlers: {},
+    actionHandlers: {
+      open: e => {
+        if (!allowManualInput) {
+          e.preventDefault();
+          setOpenState(true);
+        }
+      },
+    },
     rtl: context.rtl,
   });
 
@@ -218,7 +222,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
-      _.invoke(predefinedProps, 'onDateChange', e, { itemProps, value: targetDay.originalDate });
+      _.invoke(props, 'onDateChange', e, { itemProps, value: targetDay.originalDate });
     },
   });
 
@@ -229,13 +233,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
     onClick: (e): void => {
-      if (!allowManualInput) {
+      if (allowManualInput) {
+        setOpenState(!openState);
+      } else {
         // Keep popup open in case we can only enter the date through calendar.
-        setPreventClosing(true);
-        setOpenState(true);
-      } else if (preventOpeningOnClick && !openState) {
-        setPreventOpeningOnClick(false);
-      } else if (!openState) {
         setOpenState(true);
       }
 
@@ -274,18 +275,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
     },
-    onKeyPress: e => {
-      if (!allowManualInput) {
-        const keyCode = getCode(e);
-
-        if (keyCode === keyboardKey.Enter) {
-          setPreventClosing(true);
-          setOpenState(true);
-        }
-
-        _.invoke(predefinedProps, 'onKeyPress', e, predefinedProps);
-      }
-    },
   });
 
   const element = (
@@ -298,14 +287,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           })}
         >
           {createShorthand(Input, input, {
-            defaultProps: () => ({
-              placeholder: props.inputPlaceholder,
-              disabled: props.disabled,
-              error: !!error,
-              value: formattedDate,
-              readOnly: !allowManualInput,
-              required: props.required,
-            }),
+            defaultProps: () =>
+              getA11yProps('input', {
+                placeholder: props.inputPlaceholder,
+                disabled: props.disabled,
+                error: !!error,
+                value: formattedDate,
+                readOnly: !allowManualInput,
+                required: props.required,
+                ref: inputRef,
+              }),
             overrideProps: overrideInputProps,
           })}
           {createShorthand(Popup, popup, {
@@ -319,19 +310,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                if (preventClosing) {
-                  setPreventClosing(false);
-
-                  if (!open) {
-                    return;
-                  }
+                // In case the event is a click on input, we ignore such events as it should be directly handled by input.
+                if (!(e.type === 'click' && e.target === inputRef?.current)) {
+                  setOpenState(open);
+                  _.invoke(predefinedProps, 'onOpenChange', e, { open });
                 }
-                if (!open) {
-                  setPreventOpeningOnClick(true);
-                }
-
-                setOpenState(open);
-                _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
           })}
@@ -409,6 +392,8 @@ Datepicker.propTypes = {
 };
 
 Datepicker.defaultProps = {
+  accessibility: datepickerBehavior,
+
   calendar: {},
   popup: {},
   input: {},

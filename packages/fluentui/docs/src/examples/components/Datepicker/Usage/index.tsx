@@ -23,7 +23,8 @@ const Usage = () => (
       title="Custom parsing"
       description={
         <>
-          <code>parseDate</code> prop can be used for custom parsing date string from the input field
+          <code>parseDate</code> prop can be used for custom parsing date string from the input field. The custom
+          parsing drops all x in the iputted string.
         </>
       }
       examplePath="components/Datepicker/Usage/DatepickerParseExample"
@@ -38,15 +39,24 @@ const Usage = () => (
       examplePath="components/Datepicker/Usage/DatepickerFirstWeekDayExample"
     />
     <ComponentExample
-      title="Standalone DatepickerCalendar"
+      title="Standalone DatepickerCalendar with Button"
       description={
         <>
-          One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. In that case, the developer
-          needs to take care of the
-          <code>selectedDate</code> state control.
+          One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. The way to achieve this is
+          through slot props.
         </>
       }
-      examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendar"
+      examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendarButton"
+    />
+    <ComponentExample
+      title="Standalone DatepickerCalendar with Input"
+      description={
+        <>
+          One can also use the <code>DatepickerCalendar</code> without <code>Button</code>. The way to achieve this is
+          through slot props.
+        </>
+      }
+      examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendarInput"
     />
   </ExampleSection>
 );
