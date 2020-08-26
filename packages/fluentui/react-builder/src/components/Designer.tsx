@@ -31,7 +31,6 @@ import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
-import { DownloadIcon } from '@fluentui/react-icons-northstar';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -682,19 +681,7 @@ export const Designer: React.FunctionComponent = () => {
                       </Button>
                     </>
                   )}
-                  <Button.Group>
-                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
-                    &emsp;
-                    {jsonTreeOrigin === 'store' && (
-                      <Button
-                        content="Download"
-                        icon={<DownloadIcon />}
-                        as="a"
-                        href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonTree))}`}
-                        download="jsonTree.json"
-                      />
-                    )}
-                  </Button.Group>
+                  {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
                 </div>,
               ]}
               style={{
