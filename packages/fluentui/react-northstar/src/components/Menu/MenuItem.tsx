@@ -326,7 +326,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
         } else {
           // the menuItem element was clicked => toggle the open/close and stop propagation
-          trySetMenuOpen(active ? !menuOpen : true, e);
+          trySetMenuOpen(active && on !== 'hover' ? !menuOpen : true, e);
           e.stopPropagation();
           e.preventDefault();
         }
