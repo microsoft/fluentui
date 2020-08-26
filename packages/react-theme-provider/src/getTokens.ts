@@ -13,7 +13,6 @@ export function getTokens(theme: Theme): Tokens {
     rtl,
     isInverted,
     disableGlobalClassNames,
-    defaultFontStyle,
     tokens,
     stylesheets,
     ...passThroughTokens
@@ -109,5 +108,5 @@ export function getTokens(theme: Theme): Tokens {
     tokens,
   );
 
-  return { ...(passThroughTokens as Tokens), ...preparedTokens };
+  return { ...((passThroughTokens as unknown) as Tokens), ...preparedTokens };
 }
