@@ -12,7 +12,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
   React.useEffect(() => {
     if (ref.current) {
       const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
-      setText(t);
+      setText(`Narration: ${t}`);
     }
   }, [setText, ref, selector]);
 
