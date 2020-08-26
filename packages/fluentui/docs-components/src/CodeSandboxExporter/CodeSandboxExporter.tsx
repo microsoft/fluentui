@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CodeSandboxer from 'react-codesandboxer';
 
-import { ComponentSourceManagerLanguage } from '../../ComponentSourceManager';
+import { CodeSandboxImport, CodeSandboxLanguage } from './types';
 import { appTemplate } from './indexTemplates';
-import createPackageJson from './createPackageJson';
+import { createPackageJson } from './createPackageJson';
 
 export enum CodeSandboxState {
   Default = 'DEFAULT',
@@ -11,24 +11,22 @@ export enum CodeSandboxState {
   Success = 'SUCCESS',
 }
 
-type ComponentControlsCodeSandboxProps = {
+type CodeSandboxExporterProps = {
   children: (state: CodeSandboxState, onClick?: (e: React.SyntheticEvent) => void) => React.ReactNode;
   exampleCode: string;
-  exampleLanguage: ComponentSourceManagerLanguage;
+  exampleLanguage: CodeSandboxLanguage;
   exampleName: string;
+  imports: Record<string, CodeSandboxImport>;
 };
 
-type ComponentControlsCodeSandboxState = {
+type CodeSandboxExporterState = {
   exampleCode: string;
   examplePath: string;
   state: CodeSandboxState;
   sandboxUrl: string;
 };
 
-class ComponentControlsCodeSandbox extends React.Component<
-  ComponentControlsCodeSandboxProps,
-  ComponentControlsCodeSandboxState
-> {
+export class CodeSandboxExporter extends React.Component<CodeSandboxExporterProps, CodeSandboxExporterState> {
   state = {
     exampleCode: '',
     examplePath: '',
@@ -38,9 +36,9 @@ class ComponentControlsCodeSandbox extends React.Component<
   codeSandboxerRef = React.createRef<{ deployToCSB: Function }>();
 
   static getDerivedStateFromProps(
-    props: ComponentControlsCodeSandboxProps,
-    state: ComponentControlsCodeSandboxState,
-  ): Partial<ComponentControlsCodeSandboxState> {
+    props: CodeSandboxExporterProps,
+    state: CodeSandboxExporterState,
+  ): Partial<CodeSandboxExporterState> {
     const shouldKeepState = props.exampleCode === state.exampleCode;
 
     return {
@@ -76,7 +74,7 @@ class ComponentControlsCodeSandbox extends React.Component<
   };
 
   render() {
-    const { children, exampleLanguage, exampleCode, exampleName } = this.props;
+    const { children, exampleLanguage, exampleCode, exampleName, imports } = this.props;
     const { examplePath, state } = this.state;
 
     const main = exampleLanguage === 'ts' ? 'index.tsx' : 'index.js';
@@ -91,7 +89,7 @@ class ComponentControlsCodeSandbox extends React.Component<
           name={exampleName}
           providedFiles={{
             [main]: { content: appTemplate },
-            'package.json': createPackageJson(main, exampleCode, exampleLanguage),
+            'package.json': createPackageJson(main, exampleCode, exampleLanguage, imports),
           }}
           skipRedirect
           ref={this.codeSandboxerRef}
@@ -105,5 +103,3 @@ class ComponentControlsCodeSandbox extends React.Component<
     );
   }
 }
-
-export default ComponentControlsCodeSandbox;
