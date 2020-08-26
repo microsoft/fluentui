@@ -1,8 +1,9 @@
 import yarr from 'yargs';
 import { Maybe } from './helpers/maybe';
-import { CodeMod, ModRunnerConfigType } from './codeMods/types';
+import { CodeMod, ModRunnerConfigType, NoOp } from './codeMods/types';
 import { getModFilter, getModExcludeFilter } from './modRunner/modFilter';
 import { Glob } from 'glob';
+import { Result, Err, Ok } from './helpers/result';
 
 export interface CommandParserResult<T = CodeMod> {
   shouldExit?: boolean;
@@ -53,16 +54,15 @@ export class CommandParser {
     if (parsed.help) {
       return { shouldExit: true, modsFilter: () => true };
     }
-    /* Attempt to locate the modConfig file in the user's repo. */
-    const foundJsonFile = getModRunnerConfig();
     let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
     if (parsed.config) {
-      console.log('Configuration detected. Attempting to run mods from config...');
-      if (!foundJsonFile || foundJsonFile.length !== 1) {
-        console.log('Error, could not locate correct config file. Aborting...');
-        return { shouldExit: true, modsFilter: () => true };
+      /* Attempt to locate the modConfig file in the user's repo. */
+      const configResult = runConfig();
+      if (configResult.ok) {
+        configObj = configResult.value;
       } else {
-        configObj = require(foundJsonFile[0]);
+        console.log(configResult.value);
+        return { shouldExit: true, modsFilter: () => true };
       }
     }
 
@@ -78,6 +78,18 @@ export class CommandParser {
       shouldExit: false,
       modsFilter: filter,
     };
+  }
+}
+
+function runConfig(): Result<ModRunnerConfigType, NoOp> {
+  const foundJsonFile = getModRunnerConfig();
+  let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
+  console.log('Configuration detected. Attempting to run mods from config...');
+  if (!foundJsonFile || foundJsonFile.length !== 1) {
+    return Err({ reason: 'Error, could not locate correct config file.' });
+  } else {
+    configObj = require(foundJsonFile[0]);
+    return Ok(configObj);
   }
 }
 
