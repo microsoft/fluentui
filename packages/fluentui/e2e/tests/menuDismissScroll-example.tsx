@@ -13,7 +13,9 @@ const MenuDismissScroll = () => {
           {
             key: 'news',
             content: 'News',
-            items: ['1', '2'],
+            menu: {
+              items: ['1', '2'],
+            },
           },
         ]}
       />
