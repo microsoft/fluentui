@@ -79,12 +79,12 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
     }, []);
 
     return element ? (
-      /* This is required as components may call handlers via `trigger.props`, Ref will pass unhandled props down */
-      <Ref {...element.props} innerRef={ref}>
+      /* Required as components may call handlers via `trigger.props`, Ref will pass unhandled props down */
+      <Ref {...(element as React.ReactElement).props} innerRef={ref}>
         {element}
       </Ref>
     ) : null;
   }
 
-  return element as React.ReactElement | null;
+  return element;
 }
