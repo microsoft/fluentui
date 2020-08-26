@@ -6,7 +6,7 @@ import {
   useAutoControlled,
   useTelemetry,
   useFluentContext,
-  useTrigger,
+  useTriggerElement,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -507,7 +507,7 @@ export const Popup: React.FC<PopupProps> &
     }
   });
 
-  const triggerNode = useTrigger(props);
+  const triggerNode = useTriggerElement(props);
   const triggerProps = getTriggerProps(triggerNode);
 
   const contentElement = (

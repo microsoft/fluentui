@@ -18,7 +18,7 @@ export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDisp
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
 export { useStateManager } from './hooks/useStateManager';
 export * from './hooks/useStyles';
-export { useTrigger } from './hooks/useTrigger';
+export { useTriggerElement } from './hooks/useTriggerElement';
 export { useUnhandledProps } from './hooks/useUnhandledProps';
 
 export { RendererContext } from './renderer/RendererContext';

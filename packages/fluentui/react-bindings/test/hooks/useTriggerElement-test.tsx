@@ -1,14 +1,14 @@
-import { useTrigger } from '@fluentui/react-bindings';
+import { useTriggerElement } from '@fluentui/react-bindings';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
 import * as consoleUtil from '../consoleUtil';
 
 const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = props => {
-  return useTrigger(props);
+  return useTriggerElement(props);
 };
 
-describe('useTrigger', () => {
+describe('useTriggerElement', () => {
   it('"children" can be null', () => {
     const wrapper = mount(<TestComponent>{null}</TestComponent>);
 

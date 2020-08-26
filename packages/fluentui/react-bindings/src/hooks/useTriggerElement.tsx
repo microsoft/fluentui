@@ -4,7 +4,7 @@ import * as ReactIs from 'react-is';
 
 import { childrenExist } from '../utils/childrenExist';
 
-type UseTriggerOptions = {
+type UseTriggerElementOptions = {
   children?: React.ReactNode;
   trigger?: React.ReactElement;
 };
@@ -29,14 +29,14 @@ function isInteractiveFilter(node: Node) {
  * `children` or `trigger` props will always pass a valid React element to what additional props and handlers can
  * be applied.
  */
-export function useTrigger(props: UseTriggerOptions): React.ReactElement | null {
+export function useTriggerElement(props: UseTriggerElementOptions): React.ReactElement | null {
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
   const element = trigger ? (React.Children.only(trigger) as React.ReactElement) : null;
 
   if (process.env.NODE_ENV !== 'production') {
     if (ReactIs.isFragment(element)) {
       throw new Error(
-        'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
+        'useTriggerElement(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
       );
     }
 
@@ -50,10 +50,11 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
         if (isDisabledInteractive(ref.current)) {
           console.warn(
             [
-              'useTrigger(): Disabled elements should used as a "trigger" accurately as it may lead to unexpected',
-              'behavior as pointer events are ignored on disabled elements. Please wrap your "trigger" with an',
-              'additional element like a "div" if you need to show tooltips or popups on disabled elements, an example',
-              'is available in docs: https://fluentsite.z22.web.core.windows.net/components/tooltip/definition#usage-disabled-trigger',
+              'useTriggerElement(): Disabled elements should used as a "trigger" accurately as it may lead to ',
+              'unexpected behavior as pointer events are ignored on disabled elements. Please wrap your "trigger" with',
+              'an additional element like a "div" if you need to show tooltips or popups on disabled elements, an',
+              'example is available in docs:',
+              'https://fluentsite.z22.web.core.windows.net/components/tooltip/definition#usage-disabled-trigger',
             ].join(' '),
           );
         }
@@ -69,8 +70,9 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
           if (nodeStyles?.pointerEvents !== 'none') {
             throw new Error(
               [
-                'useTrigger(): A disabled element should have explicit "pointer-events: "none" in its styles due a bug',
-                'in Chrome that breaks "onMouseLeave" event in React: https://github.com/facebook/react/issues/19692',
+                'useTriggerElement(): A disabled element should have explicit "pointer-events: "none" in its styles',
+                'due a bug in Chrome that breaks "onMouseLeave" event in React:',
+                'https://github.com/facebook/react/issues/19692',
               ].join(' '),
             );
           }

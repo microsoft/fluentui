@@ -4,7 +4,7 @@ import {
   useAutoControlled,
   useTelemetry,
   useFluentContext,
-  useTrigger,
+  useTriggerElement,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -122,7 +122,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
     initialValue: false,
   });
-  const triggerElement = useTrigger(props);
+  const triggerElement = useTriggerElement(props);
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
