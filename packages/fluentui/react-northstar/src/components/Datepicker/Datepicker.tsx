@@ -78,13 +78,13 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** The component automatically overrides faulty manual input upon blur. */
   fallbackToLastCorrectDateOnBlur?: boolean;
 
-  /** Should calendar be initially opened or closed. */
+  /** Initial 'calendarOpenState' value. */
   defaultCalendarOpenState?: boolean;
 
   /** Controls the calendar's open state. */
   calendarOpenState?: boolean;
 
-  /** Controls whether there is a date that is selected by default. */
+  /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
   /** Controls the calendar's selectedDate. */
