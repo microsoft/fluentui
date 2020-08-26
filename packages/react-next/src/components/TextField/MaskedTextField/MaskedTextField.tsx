@@ -32,7 +32,7 @@ const COMPONENT_NAME = 'MaskedTextField';
 const useComponentRef = (
   componentRef: IRefObject<ITextField> | undefined,
   maskCharData: IMaskValue[],
-  textField: React.RefObject<ITextField>,
+  textField: ITextField | null,
   setValue: (newValue: string) => void,
 ) => {
   React.useImperativeHandle(
@@ -54,11 +54,11 @@ const useComponentRef = (
       },
 
       get selectionStart(): number | null {
-        return textField.current && textField.current.selectionStart !== null ? textField.current.selectionStart : -1;
+        return textField && textField.selectionStart !== null ? textField.selectionStart : -1;
       },
 
       get selectionEnd(): number | null {
-        return textField.current?.selectionEnd ? textField.current?.selectionEnd : -1;
+        return textField && textField.selectionEnd ? textField.selectionEnd : -1;
       },
 
       setValue(newValue: string): void {
@@ -66,27 +66,27 @@ const useComponentRef = (
       },
 
       focus(): void {
-        textField.current?.focus?.();
+        textField && textField.focus();
       },
 
       blur(): void {
-        textField.current?.blur?.();
+        textField && textField.blur();
       },
 
       select(): void {
-        textField.current?.select?.();
+        textField && textField.select();
       },
 
       setSelectionStart(value: number): void {
-        textField.current?.setSelectionStart?.(value);
+        textField && textField.setSelectionStart(value);
       },
 
       setSelectionEnd(value: number): void {
-        textField.current?.setSelectionEnd?.(value);
+        textField && textField.setSelectionEnd(value);
       },
 
       setSelectionRange(start: number, end: number): void {
-        textField.current?.setSelectionRange?.(start, end);
+        textField && textField.setSelectionRange(start, end);
       },
     }),
     [maskCharData, setValue, textField],
@@ -97,7 +97,6 @@ export const DEFAULT_MASK_CHAR = '_';
 
 export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>((props, ref) => {
   const textField = React.useRef<ITextField>(null);
-  // const mergedRefs = useMergedRefs(textField, ref);
 
   const {
     componentRef,
@@ -354,23 +353,16 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       value !== undefined && setValue(value);
       setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mask, maskChar, maskFormat, value, setValue]);
-
-  React.useEffect(() => {
     // Move the cursor to the start of the mask format on update
     if (internalState.isFocused && maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maskCursorPosition]);
+  }, [mask, maskChar, maskFormat, maskCursorPosition, value, setValue]);
 
-  React.useEffect(() => {
-    value !== undefined && setValue(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  value !== undefined && setValue(value);
 
-  useComponentRef(componentRef, internalState.maskCharData, textField, setValue);
+  useComponentRef(componentRef, internalState.maskCharData, textField.current, setValue);
 
   return (
     <TextField
