@@ -30,6 +30,8 @@ import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { ErrorBoundary } from './ErrorBoundary';
+import { InsertComponent } from './InsertComponent';
+import { DownloadIcon } from '@fluentui/react-icons-northstar';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -48,6 +50,12 @@ function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
 }
 
+const focusTreeTitle = uuid => {
+  // TODO: use refs
+  const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
+  element && element.focus();
+};
+
 type JSONTreeOrigin = 'store' | 'url';
 
 type DesignerState = {
@@ -61,6 +69,7 @@ type DesignerState = {
   codeError: string | null;
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
+  insertComponent: { uuid: string; where: string; parentUuid?: string };
 };
 
 type DesignerAction =
@@ -79,7 +88,10 @@ type DesignerAction =
   | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
-  | { type: 'REDO' };
+  | { type: 'REDO' }
+  | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
+  | { type: 'CLOSE_ADD_DIALOG' }
+  | { type: 'ADD_COMPONENT'; component: string };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -234,6 +246,47 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       }
       break;
 
+    case 'OPEN_ADD_DIALOG': {
+      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
+      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+      break;
+    }
+
+    case 'CLOSE_ADD_DIALOG':
+      draftState.insertComponent = null;
+      break;
+
+    case 'ADD_COMPONENT': {
+      const element = resolveDraggingElement(action.component);
+
+      let parent: JSONTreeElement = undefined;
+      let index = 0;
+      const { where, uuid, parentUuid } = draftState.insertComponent;
+      draftState.insertComponent = null;
+
+      if (where === 'first') {
+        parent = draftState.jsonTree;
+      } else if (where === 'child') {
+        parent = jsonTreeFindElement(draftState.jsonTree, uuid);
+      } else {
+        parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
+        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
+        if (index === -1) {
+          index = 0;
+        } else {
+          where === 'after' && index++;
+        }
+      }
+
+      resolveDrop(element, parent, index);
+
+      draftState.selectedJSONTreeElementUuid = element.uuid;
+      draftState.selectedComponentInfo = componentInfoContext.byDisplayName[element.displayName];
+      treeChanged = true;
+      setTimeout(() => focusTreeTitle(element.uuid));
+      break;
+    }
+
     default:
       throw new Error(`Invalid action ${action}`);
   }
@@ -282,6 +335,7 @@ export const Designer: React.FunctionComponent = () => {
       codeError: null,
       history: [],
       redo: [],
+      insertComponent: null,
     };
   });
 
@@ -303,6 +357,7 @@ export const Designer: React.FunctionComponent = () => {
     showCode,
     code,
     codeError,
+    insertComponent,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
@@ -475,6 +530,24 @@ export const Designer: React.FunctionComponent = () => {
     [hotkeys],
   );
 
+  const handleOpenAddComponentDialog = React.useCallback(
+    (uuid: string, where: string) => {
+      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
+    },
+    [dispatch],
+  );
+
+  const handleCloseAddComponentDialog = React.useCallback(() => {
+    dispatch({ type: 'CLOSE_ADD_DIALOG' });
+  }, [dispatch]);
+
+  const handleAddComponent = React.useCallback(
+    (component: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component });
+    },
+    [dispatch],
+  );
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -494,6 +567,9 @@ export const Designer: React.FunctionComponent = () => {
       }}
     >
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
+      {insertComponent && (
+        <InsertComponent onDismiss={handleCloseAddComponentDialog} onComponentAdded={handleAddComponent} />
+      )}
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -555,15 +631,27 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-          <Divider style={{ margin: '1rem' }} />
-          <ComponentTree
-            tree={jsonTree}
-            selectedComponent={selectedComponent}
-            onSelectComponent={handleSelectComponent}
-            onCloneComponent={handleCloneComponent}
-            onMoveComponent={handleMoveComponent}
-            onDeleteComponent={handleDeleteComponent}
-          />
+          <div role="complementary" aria-label="Component tree">
+            <Divider style={{ margin: '1rem' }} />
+            {jsonTree?.props?.children?.length > 0 ? (
+              <ComponentTree
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                onSelectComponent={handleSelectComponent}
+                onCloneComponent={handleCloneComponent}
+                onMoveComponent={handleMoveComponent}
+                onDeleteComponent={handleDeleteComponent}
+                onAddComponent={handleOpenAddComponentDialog}
+              />
+            ) : (
+              <Button
+                text
+                content="Insert first component"
+                fluid
+                onClick={() => handleOpenAddComponentDialog('', 'first')}
+              />
+            )}
+          </div>
         </div>
 
         <div
@@ -594,7 +682,19 @@ export const Designer: React.FunctionComponent = () => {
                       </Button>
                     </>
                   )}
-                  {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <Button.Group>
+                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                    &emsp;
+                    {jsonTreeOrigin === 'store' && (
+                      <Button
+                        content="Download"
+                        icon={<DownloadIcon />}
+                        as="a"
+                        href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonTree))}`}
+                        download="jsonTree.json"
+                      />
+                    )}
+                  </Button.Group>
                 </div>,
               ]}
               style={{
@@ -620,6 +720,7 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  role="main"
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -627,7 +728,7 @@ export const Designer: React.FunctionComponent = () => {
             {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
-                  <div>
+                  <div role="complementary" aria-label="Code editor">
                     <React.Suspense fallback={<div>Loading...</div>}>
                       <CodeEditor
                         code={code}
@@ -657,7 +758,11 @@ export const Designer: React.FunctionComponent = () => {
                   </div>
                 )}
                 {showJSONTree && (
-                  <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
+                  <div
+                    role="complementary"
+                    aria-label="JSON tree"
+                    style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
+                  >
                     <h3 style={{ margin: 0 }}>JSON Tree</h3>
                     <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
                   </div>
@@ -669,6 +774,8 @@ export const Designer: React.FunctionComponent = () => {
 
         {selectedComponentInfo && (
           <div
+            role="complementary"
+            aria-label="Component properties"
             style={{
               width: '20rem',
               padding: '1rem',
