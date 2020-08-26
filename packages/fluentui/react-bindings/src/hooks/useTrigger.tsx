@@ -51,11 +51,10 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
         if (isDisabledInteractive(ref.current)) {
           console.warn(
             [
-              'useTrigger(): Disabled elements should used as a "trigger" accurately as it may lead to unexpected' +
-                'behavior as pointer events are ignored on disabled elements.',
-              'Please wrap your "trigger" with an additional element like a "div" if you need to show tooltips or' +
-                'popups on disabled elements, an example is available in docs:',
-              'https://fluentsite.z22.web.core.windows.net/components/tooltip/definition#usage-disabled-trigger',
+              'useTrigger(): Disabled elements should used as a "trigger" accurately as it may lead to unexpected',
+              'behavior as pointer events are ignored on disabled elements. Please wrap your "trigger" with an',
+              'additional element like a "div" if you need to show tooltips or popups on disabled elements, an example',
+              'is available in docs: https://fluentsite.z22.web.core.windows.net/components/tooltip/definition#usage-disabled-trigger',
             ].join(' '),
           );
         }

@@ -52,6 +52,7 @@ describe('useTrigger', () => {
   });
 
   it('"trigger" with "disabled" will produce a warning', () => {
+    consoleUtil.disableOnce();
     const warn = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
 
     mount(
