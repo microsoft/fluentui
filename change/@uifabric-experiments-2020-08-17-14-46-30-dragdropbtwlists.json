@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Drag drop between SelectedItemLists",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-17T21:46:30.132Z"
+}
