@@ -10,7 +10,7 @@ export interface IShimmer {}
  */
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * @deprecated
+   * @deprecated No longer used.
    */
   componentRef?: IRefObject<IShimmer>;
 

@@ -7025,6 +7025,7 @@ export interface IShimmerLineStyles {
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
+    // @deprecated (undocumented)
     componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
