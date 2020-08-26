@@ -296,3 +296,24 @@ export function fitContainer(containerParams: IFitContainerParams) {
   };
   return containerValues;
 }
+
+/**
+ * This function takes two paramerter
+ * 1. an array of strings
+ * 2. a string value
+ * if the value is not present in the given array then it will return the new
+ * array by appending the value to the present arrray.
+ *
+ * if the value is already present in  the given array then it will return the new
+ * array by deleteing the value from the the array
+ * @param array
+ * @param value
+ */
+export function silceOrAppendToArray(array: string[], value: string): string[] {
+  const pos = array.indexOf(value);
+  if (pos === -1) {
+    return [...array, value];
+  } else {
+    return array.slice(0, pos).concat(array.slice(pos + 1));
+  }
+}
