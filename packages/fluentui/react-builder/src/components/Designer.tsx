@@ -438,7 +438,8 @@ export const Designer: React.FunctionComponent = () => {
 
   const switchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
-    // FIXME: remove tree_lz from current URL
+    const url = window.location.href.split('#')[0];
+    window.history.pushState('', document.title, url);
   }, [dispatch]);
 
   const hotkeys = {
