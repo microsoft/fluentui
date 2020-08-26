@@ -41,50 +41,51 @@ const useComponentRef = (
       /**
        * @returns The value of all filled format characters or undefined if not all format characters are filled
        */
-      get value() {
-        let initialValue = '';
+      get value(): string | undefined {
+        let value = '';
+
         for (let i = 0; i < maskCharData.length; i++) {
           if (!maskCharData[i].value) {
             return undefined;
           }
-          initialValue += maskCharData[i].value;
+          value += maskCharData[i].value;
         }
-        return initialValue;
+        return value;
       },
 
-      get selectionStart() {
+      get selectionStart(): number | null {
         return textField.current && textField.current.selectionStart !== null ? textField.current.selectionStart : -1;
       },
 
-      get selectionEnd() {
+      get selectionEnd(): number | null {
         return textField.current?.selectionEnd ? textField.current?.selectionEnd : -1;
       },
 
-      setValue(newValue: string) {
+      setValue(newValue: string): void {
         return setValue(newValue);
       },
 
-      focus() {
+      focus(): void {
         textField.current?.focus?.();
       },
 
-      blur() {
+      blur(): void {
         textField.current?.blur?.();
       },
 
-      select() {
+      select(): void {
         textField.current?.select?.();
       },
 
-      setSelectionStart(value: number) {
+      setSelectionStart(value: number): void {
         textField.current?.setSelectionStart?.(value);
       },
 
-      setSelectionEnd(value: number) {
+      setSelectionEnd(value: number): void {
         textField.current?.setSelectionEnd?.(value);
       },
 
-      setSelectionRange(start: number, end: number) {
+      setSelectionRange(start: number, end: number): void {
         textField.current?.setSelectionRange?.(start, end);
       },
     }),
@@ -96,6 +97,8 @@ export const DEFAULT_MASK_CHAR = '_';
 
 export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>((props, ref) => {
   const textField = React.useRef<ITextField>(null);
+  // const mergedRefs = useMergedRefs(textField, ref);
+
   const {
     componentRef,
     value,
@@ -160,7 +163,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onFocus, internalState.maskCharData],
+    [onFocus],
   );
 
   const handleBlur = React.useCallback(
@@ -181,7 +184,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onMouseDown, internalState.isFocused],
+    [onMouseDown],
   );
 
   const handleMouseUp = React.useCallback(
@@ -200,7 +203,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onMouseUp, internalState.moveCursorOnMouseUp, internalState.maskCharData],
+    [onMouseUp],
   );
 
   const handleInputChange = React.useCallback(
@@ -283,7 +286,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       // Perform onChange after input has been processed. Return value is expected to be the displayed text
       onChange?.(ev, newValue);
     },
-    [displayValue.length, internalState, mask, maskChar, onChange],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [displayValue.length, mask, maskChar, onChange],
   );
 
   const handleKeyDown = React.useCallback(
@@ -351,14 +355,15 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [internalState.maskCharData, mask, maskChar, maskFormat, previousProps?.mask, previousProps?.value, value]);
+  }, [mask, maskChar, maskFormat, value, setValue]);
 
   React.useEffect(() => {
     // Move the cursor to the start of the mask format on update
     if (internalState.isFocused && maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
     }
-  }, [internalState.isFocused, maskCursorPosition]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [maskCursorPosition]);
 
   React.useEffect(() => {
     value !== undefined && setValue(value);
@@ -370,8 +375,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   return (
     <TextField
       {...props}
-      // Once Textfield is converted to a function component, ref should be passed.
-      // ref={ref}
+      elementRef={ref}
+      componentRef={textField}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseDown={handleMouseDown}
@@ -380,7 +385,6 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       onKeyDown={handleKeyDown}
       onPaste={handlePaste}
       value={displayValue || ''}
-      componentRef={textField}
     />
   );
 });

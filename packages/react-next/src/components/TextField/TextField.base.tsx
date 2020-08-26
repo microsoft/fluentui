@@ -4,11 +4,11 @@ import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   Async,
-  DelayedRender,
-  IStyleFunctionOrObject,
   classNamesFunction,
+  DelayedRender,
   getId,
   getNativeProps,
+  IStyleFunctionOrObject,
   initializeComponentRef,
   inputProperties,
   isControlled,
@@ -216,7 +216,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div ref={this.props.elementRef} className={this._classNames.root}>
         <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={this._classNames.fieldGroup}>
