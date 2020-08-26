@@ -254,7 +254,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const focusDateRef = React.useRef(null);
 
   const changeMonth = (nextMonth: boolean) => {
-    const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Month', nextMonth ? 1 : -1, restrictedDatesOptions);
+    const newNavigatedDate = navigateToNewDate(normalizedGridDate, 'Month', nextMonth ? 1 : -1, restrictedDatesOptions);
 
     if (!!newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);
@@ -289,6 +289,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             quiet: !day.isInMonth,
             today: compareDates(day.originalDate, props.today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
+            onFocus: () => setGridNavigatedDate(day.originalDate),
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
