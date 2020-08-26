@@ -4,7 +4,7 @@ import { Menu } from 'src/components/Menu/Menu';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
-import { MenuItem } from 'src/components/Menu/MenuItem';
+import { MenuItem, MenuItemProps } from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import { SpacebarKey } from '@fluentui/keyboard-key';
@@ -52,6 +52,37 @@ describe('Menu', () => {
         .first()
         .simulate('click');
       expect(items[0].onClick).toHaveBeenCalled();
+    });
+
+    it('should open on hover and keep open on click', () => {
+      const items: MenuItemProps[] = getNestedItems();
+      items[1].on = 'hover';
+      const menuItems = mountWithProvider(<Menu items={items} />).find('MenuItem');
+
+      expect(
+        menuItems
+          .at(1)
+          .at(0)
+          .find('a')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('false');
+
+      menuItems
+        .at(1)
+        .simulate('mouseover')
+        .simulate('click');
+
+      expect(
+        menuItems
+          .at(1)
+          .at(0)
+          .find('a')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('true');
     });
 
     it('does not call onClick handler for disabled item', () => {
