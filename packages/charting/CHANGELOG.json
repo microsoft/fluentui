@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@uifabric/charting_v3.1.4",
+      "version": "3.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Y axis ticks values duplicating issue resolved. removed ticks() and added tickFormat()",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f2d157fb9232e925e38fad5c29de7af2d28a35a9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/charting_v3.1.3",
+      "version": "3.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating ButtonGrid ID snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/charting_v3.1.1",
       "version": "3.1.1",

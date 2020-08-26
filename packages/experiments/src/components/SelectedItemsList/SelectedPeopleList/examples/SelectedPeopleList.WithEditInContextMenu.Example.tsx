@@ -11,7 +11,6 @@ import {
   EditableItem,
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
-  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
@@ -54,7 +53,9 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
         {
           key: 'copy',
           text: 'Copy',
-          onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+          onClick: () => {
+            this._copyToClipboard(this._getCopyItemsText([item]));
+          },
         },
         {
           key: 'edit',
@@ -110,6 +111,18 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
     });
+  };
+
+  private _copyToClipboard = (copyString: string): void => {
+    navigator.clipboard.writeText(copyString).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+        throw new Error();
+      },
+    );
   };
 
   private _getCopyItemsText(items: IPersonaProps[]): string {

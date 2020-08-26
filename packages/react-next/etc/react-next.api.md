@@ -27,6 +27,7 @@ import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -34,7 +35,6 @@ import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilit
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
@@ -474,6 +474,11 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public
+export interface ICircle extends IShimmerElement {
+    height?: number;
 }
 
 // @public (undocumented)
@@ -1084,6 +1089,12 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     isClickableOutsideFocusTrap?: boolean;
 }
 
+// @public
+export interface IGap extends IShimmerElement {
+    height?: number;
+    width?: number | string;
+}
+
 // @public (undocumented)
 export interface IImage {
 }
@@ -1139,6 +1150,12 @@ export interface IImageStyleProps {
 export interface IImageStyles {
     image: IStyle;
     root: IStyle;
+}
+
+// @public
+export interface ILine extends IShimmerElement {
+    height?: number;
+    width?: number | string;
 }
 
 // @public (undocumented)
@@ -1826,6 +1843,175 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
 }
 
 // @public (undocumented)
+export interface IShimmer {
+}
+
+// @public (undocumented)
+export interface IShimmerCircle {
+}
+
+// @public
+export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement> {
+    // @deprecated
+    borderStyle?: IRawStyle;
+    componentRef?: IRefObject<IShimmerCircle>;
+    height?: number;
+    styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export type IShimmerCircleStyleProps = {
+    theme: ITheme;
+    height?: number;
+    borderStyle?: IRawStyle;
+};
+
+// @public
+export interface IShimmerCircleStyles {
+    root?: IStyle;
+    svg?: IStyle;
+}
+
+// @public
+export interface IShimmerColors {
+    background?: string;
+    shimmer?: string;
+    shimmerWave?: string;
+}
+
+// @public
+export interface IShimmerElement {
+    height?: number;
+    type: ShimmerElementType;
+    verticalAlign?: 'top' | 'center' | 'bottom';
+    width?: number | string;
+}
+
+// @public (undocumented)
+export interface IShimmerElementsGroup {
+}
+
+// @public
+export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
+    backgroundColor?: string;
+    componentRef?: IRefObject<IShimmerElementsGroup>;
+    flexWrap?: boolean;
+    rowHeight?: number;
+    shimmerElements?: IShimmerElement[];
+    styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
+    theme?: ITheme;
+    width?: string;
+}
+
+// @public
+export interface IShimmerElementsGroupStyleProps {
+    flexWrap?: boolean;
+    theme: ITheme;
+}
+
+// @public
+export interface IShimmerElementsGroupStyles {
+    root?: IStyle;
+}
+
+// @public (undocumented)
+export interface IShimmerGap {
+}
+
+// @public
+export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
+    // @deprecated
+    borderStyle?: IRawStyle;
+    componentRef?: IRefObject<IShimmerGap>;
+    height?: number;
+    styles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
+    theme?: ITheme;
+    width?: number | string;
+}
+
+// @public
+export type IShimmerGapStyleProps = {
+    theme: ITheme;
+    height?: number;
+    borderStyle?: IRawStyle;
+};
+
+// @public
+export interface IShimmerGapStyles {
+    root?: IStyle;
+}
+
+// @public (undocumented)
+export interface IShimmerLine {
+}
+
+// @public
+export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
+    // @deprecated
+    borderStyle?: IRawStyle;
+    componentRef?: IRefObject<IShimmerLine>;
+    height?: number;
+    styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
+    theme?: ITheme;
+    width?: number | string;
+}
+
+// @public
+export type IShimmerLineStyleProps = {
+    theme: ITheme;
+    height?: number;
+    borderStyle?: IRawStyle;
+};
+
+// @public
+export interface IShimmerLineStyles {
+    bottomLeftCorner?: IStyle;
+    bottomRightCorner?: IStyle;
+    root?: IStyle;
+    topLeftCorner?: IStyle;
+    topRightCorner?: IStyle;
+}
+
+// @public
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IShimmer>;
+    customElementsGroup?: React.ReactNode;
+    isDataLoaded?: boolean;
+    shimmerColors?: IShimmerColors;
+    shimmerElements?: IShimmerElement[];
+    styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
+    theme?: ITheme;
+    width?: number | string;
+}
+
+// @public (undocumented)
+export interface IShimmerState {
+    contentLoaded?: boolean;
+}
+
+// @public
+export interface IShimmerStyleProps {
+    className?: string;
+    isDataLoaded?: boolean;
+    shimmerColor?: string;
+    shimmerWaveColor?: string;
+    theme: ITheme;
+    transitionAnimationInterval?: number;
+}
+
+// @public
+export interface IShimmerStyles {
+    dataWrapper?: IStyle;
+    root?: IStyle;
+    screenReaderText?: IStyle;
+    shimmerGradient?: IStyle;
+    shimmerWrapper?: IStyle;
+}
+
+// @public (undocumented)
 export interface ISlider {
     // (undocumented)
     focus: () => void;
@@ -2090,7 +2276,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 };
 
 // @public (undocumented)
-export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+export interface ITextFieldStyles {
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;
@@ -2507,6 +2693,60 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 }
 
 // @public (undocumented)
+export const Shimmer: React.FunctionComponent<IShimmerProps>;
+
+// @public (undocumented)
+export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
+    constructor(props: IShimmerProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IShimmerProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IShimmerProps;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
+
+// @public (undocumented)
+export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
+
+// @public
+export enum ShimmerElementsDefaultHeights {
+    circle = 24,
+    gap = 16,
+    line = 16
+}
+
+// @public (undocumented)
+export const ShimmerElementsGroup: React.FunctionComponent<IShimmerElementsGroupProps>;
+
+// @public (undocumented)
+export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps>;
+
+// @public
+export enum ShimmerElementType {
+    circle = 2,
+    gap = 3,
+    line = 1
+}
+
+// @public (undocumented)
+export const ShimmerGap: React.FunctionComponent<IShimmerGapProps>;
+
+// @public (undocumented)
+export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps>;
+
+// @public (undocumented)
+export const ShimmerLine: React.FunctionComponent<IShimmerLineProps>;
+
+// @public (undocumented)
+export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
+
+// @public (undocumented)
 export const sizeBoolean: (size: PersonaSize) => {
     isSize8: boolean;
     isSize10: boolean;
@@ -2666,7 +2906,6 @@ export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/Selection";
 export * from "office-ui-fabric-react/lib/Separator";
-export * from "office-ui-fabric-react/lib/Shimmer";
 export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
 export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";

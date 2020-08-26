@@ -66,3 +66,25 @@ export const App = () => (
   </ThemeProvider>
 );
 ```
+
+## Create classes for React components based on theme
+
+Themes can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
+
+```jsx
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useFooStyles = makeStyles(theme => ({
+    root: {
+      background: theme.semanticColors.bodyBackground,
+      ':hover': {
+        background: theme.semanticColors.bodyBackgroundHovered
+    },
+}));
+
+const Foo = props => {
+  const classes = useFooStyles();
+
+  return <div className={classes.root} />;
+};
+```

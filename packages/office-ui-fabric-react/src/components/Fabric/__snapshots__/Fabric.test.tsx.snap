@@ -105,7 +105,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-1"
+        id="checkbox-0"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -135,7 +135,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-1"
+        htmlFor="checkbox-0"
       >
         <div
           className=
@@ -286,7 +286,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-2"
+          id="checkbox-1"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -316,7 +316,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-2"
+          htmlFor="checkbox-1"
         >
           <div
             className=
@@ -467,7 +467,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-3"
+            id="checkbox-2"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -497,7 +497,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-3"
+            htmlFor="checkbox-2"
           >
             <div
               className=
@@ -651,7 +651,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-4"
+        id="checkbox-3"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -681,7 +681,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-4"
+        htmlFor="checkbox-3"
       >
         <div
           className=
@@ -832,7 +832,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-5"
+          id="checkbox-4"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -862,7 +862,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-5"
+          htmlFor="checkbox-4"
         >
           <div
             className=
@@ -1013,7 +1013,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-6"
+            id="checkbox-5"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1043,7 +1043,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-6"
+            htmlFor="checkbox-5"
           >
             <div
               className=
@@ -1202,7 +1202,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-7"
+        id="checkbox-6"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1232,7 +1232,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-7"
+        htmlFor="checkbox-6"
       >
         <div
           className=
@@ -1383,7 +1383,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-8"
+          id="checkbox-7"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1413,7 +1413,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-8"
+          htmlFor="checkbox-7"
         >
           <div
             className=
@@ -1564,7 +1564,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-9"
+            id="checkbox-8"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1594,7 +1594,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-9"
+            htmlFor="checkbox-8"
           >
             <div
               className=
@@ -1748,7 +1748,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-10"
+        id="checkbox-9"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1778,7 +1778,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-10"
+        htmlFor="checkbox-9"
       >
         <div
           className=
@@ -1929,7 +1929,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-11"
+          id="checkbox-10"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1959,7 +1959,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-11"
+          htmlFor="checkbox-10"
         >
           <div
             className=
@@ -2110,7 +2110,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-12"
+            id="checkbox-11"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2140,7 +2140,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-12"
+            htmlFor="checkbox-11"
           >
             <div
               className=
@@ -2299,7 +2299,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-13"
+        id="checkbox-12"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -2329,7 +2329,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-13"
+        htmlFor="checkbox-12"
       >
         <div
           className=
@@ -2480,7 +2480,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-14"
+          id="checkbox-13"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2510,7 +2510,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-14"
+          htmlFor="checkbox-13"
         >
           <div
             className=
@@ -2661,7 +2661,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-15"
+            id="checkbox-14"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2691,7 +2691,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-15"
+            htmlFor="checkbox-14"
           >
             <div
               className=
@@ -2845,7 +2845,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-16"
+        id="checkbox-15"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -2875,7 +2875,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-16"
+        htmlFor="checkbox-15"
       >
         <div
           className=
@@ -3026,7 +3026,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-17"
+          id="checkbox-16"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3056,7 +3056,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-17"
+          htmlFor="checkbox-16"
         >
           <div
             className=
@@ -3207,7 +3207,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-18"
+            id="checkbox-17"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -3237,7 +3237,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-18"
+            htmlFor="checkbox-17"
           >
             <div
               className=
