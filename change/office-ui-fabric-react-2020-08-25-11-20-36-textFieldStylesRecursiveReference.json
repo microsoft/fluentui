@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "TextField: Removing recursive reference in ITextFieldStyles.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-25T18:20:33.822Z"
-}

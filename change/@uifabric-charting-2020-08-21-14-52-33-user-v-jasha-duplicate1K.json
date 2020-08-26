@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Y axis ticks values duplicating issue resolved. removed ticks() and added tickFormat()",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-21T09:22:33.508Z"
-}

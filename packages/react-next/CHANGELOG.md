@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.92)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.91..@fluentui/react-next_v8.0.0-alpha.92)
+
+### Changes
+
+- Link: Making High Contrast styling adhere to system settings. ([PR #14709](https://github.com/microsoft/fluentui/pull/14709) by humbertomakotomorimoto@gmail.com)
+- TextField: Removing recursive reference in ITextFieldStyles. ([PR #14739](https://github.com/microsoft/fluentui/pull/14739) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.91)
 
