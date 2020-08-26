@@ -1,4 +1,5 @@
 import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import { useEventListener, EventListener } from '@fluentui/react-component-event-listener';
 import {
   compose,
   focusAsync,
@@ -13,7 +14,7 @@ import {
   ComponentWithAs,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
-import { EventListener } from '@fluentui/react-component-event-listener';
+
 import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -302,6 +303,15 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         trySetMenuOpen(false, e);
       }
     };
+
+    useEventListener({
+      target: context.target,
+      type: 'scroll',
+      listener: e => {
+        if (!isSubmenuOpen()) return;
+        trySetMenuOpen(false, (e as unknown) as React.MouseEvent);
+      },
+    });
 
     const outsideClickHandler = (e: MouseEvent) => {
       if (!isSubmenuOpen()) return;
