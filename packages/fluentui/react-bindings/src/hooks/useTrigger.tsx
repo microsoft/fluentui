@@ -26,34 +26,35 @@ function isInteractiveFilter(node: Node) {
 
 export function useTrigger(props: UseTriggerOptions): React.ReactElement | null {
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
+  const element = trigger ? React.Children.only(trigger) : null;
 
-  if (!trigger) {
-    return null;
-  }
+  if (element !== null) {
+    if (!React.isValidElement(element)) {
+      throw new Error('useTrigger(): An invalid value was passed, please pass a valid React element as a trigger');
+    }
 
-  const element = React.Children.only(trigger);
-
-  if (!React.isValidElement(element)) {
-    throw new Error('useTrigger(): An invalid value was passed, please pass a valid React element as a trigger');
-  }
-
-  if (ReactIs.isFragment(element)) {
-    throw new Error(
-      'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
-    );
+    if (ReactIs.isFragment(element)) {
+      throw new Error(
+        'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
+      );
+    }
   }
 
   if (process.env.NODE_ENV !== 'production') {
+    // Hooks are used only for dev mode validations and will be removed in production builds
+    /* eslint-disable react-hooks/rules-of-hooks */
+
     const ref = React.useRef<HTMLElement>() as React.RefObject<HTMLElement | HTMLButtonElement>;
 
     React.useEffect(() => {
       if (ref.current) {
         if (isDisabledInteractive(ref.current)) {
-          throw new Error(
+          console.warn(
             [
-              'useTrigger(): Disabled elements can not be used as a "trigger" as it may lead to unexpected behavior as',
-              'pointer events are ignored on disabled elements.',
-              'Please wrap your "trigger" with an additional element like a "div", an example is available in docs:',
+              'useTrigger(): Disabled elements should used as a "trigger" accurately as it may lead to unexpected' +
+                'behavior as pointer events are ignored on disabled elements.',
+              'Please wrap your "trigger" with an additional element like a "div" if you need to show tooltips or' +
+                'popups on disabled elements, an example is available in docs:',
               'https://fluentsite.z22.web.core.windows.net/components/tooltip/definition#usage-disabled-trigger',
             ].join(' '),
           );
@@ -79,8 +80,8 @@ export function useTrigger(props: UseTriggerOptions): React.ReactElement | null 
       }
     }, []);
 
-    return <Ref innerRef={ref}>{element}</Ref>;
+    return element ? <Ref innerRef={ref}>{element as React.ReactElement}</Ref> : null;
   }
 
-  return element;
+  return element as React.ReactElement | null;
 }
