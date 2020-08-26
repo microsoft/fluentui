@@ -217,7 +217,6 @@ export { ThumbtackIcon } from './components/ThumbtackIcon';
 export { ThumbtackSlashIcon } from './components/ThumbtackSlashIcon';
 export { TiltPanZoomIcon } from './components/TiltPanZoomIcon';
 export { ToDoListIcon } from './components/ToDoListIcon';
-export { ToggleIcon } from './components/ToggleIcon';
 export { TranscriptIcon } from './components/TranscriptIcon';
 export { TranslationIcon } from './components/TranslationIcon';
 export { TrashCanIcon } from './components/TrashCanIcon';
