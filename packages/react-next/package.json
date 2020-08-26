@@ -63,6 +63,7 @@
     "@fluentui/react-checkbox": "^0.1.1",
     "@fluentui/react-compose": "^0.17.2",
     "@fluentui/react-focus": "^7.13.3",
+    "@fluentui/react-link": "^0.1.0",
     "@fluentui/react-icons": "^0.2.2",
     "@fluentui/react-slider": "^0.1.1",
     "@fluentui/react-tabs": "^0.4.0",
