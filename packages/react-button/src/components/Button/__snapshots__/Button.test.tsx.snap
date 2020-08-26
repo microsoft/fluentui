@@ -2,7 +2,7 @@
 
 exports[`Button renders a default state 1`] = `
 <button
-  className=""
+  className="ms-Button root-45"
 >
   <span>
     Default button
