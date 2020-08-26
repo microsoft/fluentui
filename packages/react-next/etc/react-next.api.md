@@ -2022,66 +2022,6 @@ export interface IShimmerStyles {
 }
 
 // @public (undocumented)
-export interface ISlider {
-    // (undocumented)
-    focus: () => void;
-    // (undocumented)
-    value: number | undefined;
-}
-
-// @public (undocumented)
-export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
-    'aria-label'?: string;
-    // @deprecated
-    ariaLabel?: string;
-    ariaValueText?: (value: number) => string;
-    buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
-    className?: string;
-    componentRef?: IRefObject<ISlider>;
-    defaultValue?: number;
-    disabled?: boolean;
-    label?: string;
-    max?: number;
-    min?: number;
-    onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-    originFromZero?: boolean;
-    showValue?: boolean;
-    snapToStep?: boolean;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
-    theme?: ITheme;
-    value?: number;
-    valueFormat?: (value: number) => string;
-    vertical?: boolean;
-}
-
-// @public (undocumented)
-export type ISliderState = any;
-
-// @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
-};
-
-// @public (undocumented)
-export interface ISliderStyles {
-    activeSection: IStyle;
-    container: IStyle;
-    inactiveSection: IStyle;
-    line: IStyle;
-    lineContainer: IStyle;
-    root: IStyle;
-    slideBox: IStyle;
-    thumb: IStyle;
-    titleLabel: IStyle;
-    valueLabel: IStyle;
-    zeroTick: IStyle;
-}
-
-// @public (undocumented)
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -2473,9 +2413,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 }
 
 // @public (undocumented)
-export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-
-// @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
@@ -2783,12 +2720,6 @@ export const sizeToPixels: {
     [key: number]: number;
 };
 
-// @public (undocumented)
-export const Slider: React.FunctionComponent<ISliderProps>;
-
-// @public (undocumented)
-export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "aria-label" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
-
 // @public
 export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
@@ -2879,6 +2810,7 @@ export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-button/lib/MenuButton";
 export * from "@fluentui/react-button/lib/SplitButton";
 export * from "@fluentui/react-button/lib/ToggleButton";
+export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@fluentui/react-theme-provider";
 export * from "@uifabric/date-time/lib/Calendar";
