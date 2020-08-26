@@ -4,14 +4,13 @@ import { SliderVerticalExample } from './examples/Slider.Vertical.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
-const SliderVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Vertical.Example.tsx') as string;
+const SliderBasicExampleCode = require('!raw-loader!@fluentui/react-slider/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
+const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-slider/src/components/Slider/examples/Slider.Vertical.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/undefined',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-slider/src/components/undefined',
   examples: [
     {
       title: 'Horizontal sliders',
@@ -24,10 +23,10 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderVerticalExample />,
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-slider/src/components/Slider/docs/SliderOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-slider/src/components/Slider/docs/SliderDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-slider/src/components/Slider/docs/SliderDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
