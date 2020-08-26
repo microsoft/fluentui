@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/fluent-theme_v7.2.3",
+      "version": "7.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Fluent theme constants to @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/fluent-theme_v7.1.132",
       "version": "7.1.132",

@@ -33,7 +33,6 @@ import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilit
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
@@ -2225,7 +2224,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 };
 
 // @public (undocumented)
-export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+export interface ITextFieldStyles {
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;

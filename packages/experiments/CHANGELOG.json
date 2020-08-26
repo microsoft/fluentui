@@ -2,6 +2,37 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/experiments_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating ButtionGrid ID snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixing drag drop infinite loop",
+            "author": "nebhatna@microsoft.com",
+            "commit": "44850ca3834a8441475679787e58f112f413a11f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update SelectedItemsList and UnifiedPicker to use Clipboard API for copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2c399e0135ba08a7baac75303b405d57b6102a07",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/experiments_v7.29.1",
       "version": "7.29.1",

@@ -40,6 +40,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `on` property to `MenuItem` to open in on hover @assuncaocharles ([#14714](https://github.com/microsoft/fluentui/pull/14714))
 
 ### Documentation
+- Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
 - Edited left side menu in UI builder @vyhnalekl ([#14436](https://github.com/microsoft/fluentui/pull/14436))
 - Fixed issue with a drop near the edge of iframe in UI builder @vyhnalekl ([#14440](https://github.com/microsoft/fluentui/pull/14440))
 - Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
@@ -49,6 +50,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Removed props JSON from right side menu @vyhnalekl ([#14503](https://github.com/microsoft/fluentui/pull/14503))
 - Fixed top's component debug frame above iframe @vyhnalekl ([#14329](https://github.com/microsoft/fluentui/pull/14329))
 - Hide drop selector on scroll in iframe (UI builder) @vyhnalekl ([#14443](https://github.com/microsoft/fluentui/pull/14443))
+- Add export to CodeSandbox feature (UI builder) @vyhnalekl ([#14558](https://github.com/microsoft/fluentui/pull/14558))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
