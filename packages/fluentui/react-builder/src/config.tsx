@@ -559,7 +559,7 @@ const packageImportList: Record<string, CodeSandboxImport> = {
 export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
   if (tree.props?.icon) {
     const iconModule =
-      (tree.moduleName === '@fluentui/react-northstar' && '@fluentui/react-icons-northstar') || 'ErrorNoPackage';
+      tree.moduleName === '@fluentui/react-northstar' ? '@fluentui/react-icons-northstar' : 'ErrorNoPackage';
     if (imports.hasOwnProperty(iconModule)) {
       if (!imports[iconModule].includes(tree.props?.icon.type)) {
         imports[iconModule].push(tree.props?.icon.type);
