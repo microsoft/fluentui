@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
 export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-selected': !!props.selected,
+      'aria-selected': props.selected || false,
       ...(props.disabled && { 'aria-disabled': true }),
     },
   },
