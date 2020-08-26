@@ -3,7 +3,6 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
-import { safeCreate } from '@uifabric/test-utilities';
 
 describe('MessageBar', () => {
   const noop = () => {
