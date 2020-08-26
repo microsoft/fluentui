@@ -57,7 +57,7 @@ export class CommandParser {
     let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
     if (parsed.config) {
       /* Attempt to locate the modConfig file in the user's repo. */
-      const configResult = runConfig();
+      const configResult = getModRunnerConfig();
       if (configResult.ok) {
         configObj = configResult.value;
       } else {
@@ -81,24 +81,19 @@ export class CommandParser {
   }
 }
 
-function runConfig(): Result<ModRunnerConfigType, NoOp> {
-  const foundJsonFile = getModRunnerConfig();
-  let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
-  console.log('Configuration detected. Attempting to run mods from config...');
-  if (!foundJsonFile || foundJsonFile.length !== 1) {
-    return Err({ reason: 'Error, could not locate correct config file.' });
-  } else {
-    configObj = require(foundJsonFile[0]);
-    return Ok(configObj);
-  }
-}
-
-function getModRunnerConfig(): string[] {
+function getModRunnerConfig(): Result<ModRunnerConfigType, NoOp> {
   const foundJsonFile = new Glob('/**/modConfig.json', {
     absolute: false,
     root: process.cwd(),
     ignore: ['**/node_modules/**'],
     sync: true,
   });
-  return foundJsonFile.found;
+  let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
+  console.log('Configuration detected. Attempting to run mods from config...');
+  if (!foundJsonFile.found || foundJsonFile.found.length !== 1) {
+    return Err({ reason: 'Error, could not locate correct config file.' });
+  } else {
+    configObj = require(foundJsonFile.found[0]);
+    return Ok(configObj);
+  }
 }
