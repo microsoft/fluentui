@@ -57,32 +57,24 @@ describe('Menu', () => {
     it('should open on hover and keep open on click', () => {
       const items: MenuItemProps[] = getNestedItems();
       items[1].on = 'hover';
-      const menuItems = mountWithProvider(<Menu items={items} />).find('MenuItem');
+      const menu = mountWithProvider(<Menu items={items} />);
 
-      expect(
-        menuItems
-          .at(1)
-          .at(0)
-          .find('a')
-          .first()
-          .getDOMNode()
-          .getAttribute('aria-expanded'),
-      ).toBe('false');
+      expect(menu.find('MenuItem').length).toBe(2);
 
-      menuItems
+      menu
+        .find('MenuItem')
         .at(1)
-        .simulate('mouseover')
+        .simulate('mouseenter');
+
+      expect(menu.find('MenuItem').length).toBe(4);
+
+      menu
+        .find('MenuItem')
+        .at(1)
+        .simulate('mouseenter')
         .simulate('click');
 
-      expect(
-        menuItems
-          .at(1)
-          .at(0)
-          .find('a')
-          .first()
-          .getDOMNode()
-          .getAttribute('aria-expanded'),
-      ).toBe('true');
+      expect(menu.find('MenuItem').length).toBe(4);
     });
 
     it('does not call onClick handler for disabled item', () => {
