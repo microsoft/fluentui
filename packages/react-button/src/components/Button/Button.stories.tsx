@@ -32,6 +32,12 @@ const ButtonVariants = (props: ButtonProps) => (
     <Button {...props} primary disabled icon="X">
       Hello, world
     </Button>
+    <Button {...props} ghost icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} ghost disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
 
@@ -72,6 +78,12 @@ export const ButtonCss = () => (
       <Button fluid primary disabled icon="X">
         Hello, world
       </Button>
+      <Button fluid ghost icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost disabled icon="X">
+        Hello, world
+      </Button>
     </Stack>
 
     <Text>A button can contain only an icon using the `iconOnly` prop.</Text>
@@ -79,16 +91,6 @@ export const ButtonCss = () => (
 
     <Text>A button can be both `circular` and `iconOnly`.</Text>
     <ButtonVariants circular iconOnly />
-
-    <Text>A button can blend into its background using the `ghost` prop</Text>
-    <Stack horizontal>
-      <Button ghost icon="X">
-        Hello, world
-      </Button>
-      <Button ghost disabled icon="X">
-        Hello, world
-      </Button>
-    </Stack>
 
     <Text>An icon button can format its Icon to appear before or after its content.</Text>
     <Stack>

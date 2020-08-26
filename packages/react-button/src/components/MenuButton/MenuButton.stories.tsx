@@ -31,6 +31,12 @@ const MenuButtonVariants = (props: MenuButtonProps) => (
     <MenuButton {...props} icon="O" primary disabled menu={menuProps}>
       Hello, world
     </MenuButton>
+    <MenuButton {...props} icon="O" ghost menu={menuProps}>
+      Hello, world
+    </MenuButton>
+    <MenuButton {...props} icon="O" ghost disabled menu={menuProps}>
+      Hello, world
+    </MenuButton>
   </div>
 );
 
@@ -56,20 +62,19 @@ export const MenuButtonCss = () => (
       <MenuButton fluid primary disabled menu={menuProps}>
         Hello, world
       </MenuButton>
+      <MenuButton fluid ghost menu={menuProps}>
+        Hello, world
+      </MenuButton>
+      <MenuButton fluid ghost disabled menu={menuProps}>
+        Hello, world
+      </MenuButton>
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <MenuButtonVariants iconOnly />
 
-    <Text>A button can blend into its background using the `ghost` prop</Text>
-    <Stack horizontal>
-      <MenuButton ghost icon="X" menu={menuProps}>
-        Hello, world
-      </MenuButton>
-      <MenuButton ghost disabled icon="X" menu={menuProps}>
-        Hello, world
-      </MenuButton>
-    </Stack>
+    <Text>A button can be both `circular` and `iconOnly`.</Text>
+    <MenuButtonVariants circular iconOnly />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <MenuButtonVariants loading />

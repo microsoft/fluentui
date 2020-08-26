@@ -35,6 +35,12 @@ storiesOf('Button Next', module)
   .addStory('Default', () => <Button>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
   .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Ghost', () => <Button ghost>Hello, world</Button>)
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost>
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled>
       Hello, world
@@ -110,6 +116,16 @@ storiesOf('Button Next - With icon before content', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon="X">
       Hello, world
@@ -152,6 +168,16 @@ storiesOf('Button Next - With icon after content', module)
   ))
   .addStory('Disabled', () => (
     <Button disabled icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost', () => (
+    <Button ghost icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon="X" iconPosition="after">
       Hello, world
     </Button>
   ))
@@ -200,6 +226,16 @@ storiesOf('Button Next - Circular', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button circular ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button circular disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button circular primary disabled icon="X">
       Hello, world
@@ -242,6 +278,16 @@ storiesOf('Button Next - Icon only', module)
   ))
   .addStory('Disabled', () => (
     <Button iconOnly disabled icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost', () => (
+    <Button iconOnly ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button iconOnly disabled ghost icon="X">
       Hello, world
     </Button>
   ))
@@ -290,6 +336,16 @@ storiesOf('Button Next - Fluid', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button fluid ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button fluid disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button fluid primary disabled icon="X">
       Hello, world
@@ -335,6 +391,16 @@ storiesOf('Button Next - Inverted', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button inverted ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button inverted disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button inverted primary disabled icon="X">
       Hello, world
@@ -377,6 +443,16 @@ storiesOf('Button Next - Loading', module)
   ))
   .addStory('Disabled', () => (
     <Button loading disabled icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost', () => (
+    <Button loading ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button loading disabled ghost icon="X">
       Hello, world
     </Button>
   ))
@@ -468,6 +544,10 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
   .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
   .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Ghost', () => <Button ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));

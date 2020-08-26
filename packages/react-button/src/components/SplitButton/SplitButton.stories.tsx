@@ -31,6 +31,12 @@ const SplitButtonVariants = (props: SplitButtonProps) => (
     <SplitButton {...props} primary disabled menu={menuProps}>
       Hello, world
     </SplitButton>
+    <SplitButton {...props} ghost menu={menuProps}>
+      Hello, world
+    </SplitButton>
+    <SplitButton {...props} ghost disabled menu={menuProps}>
+      Hello, world
+    </SplitButton>
   </div>
 );
 
@@ -56,20 +62,19 @@ export const SplitButtonCss = () => (
       <SplitButton fluid primary disabled menu={menuProps}>
         Hello, world
       </SplitButton>
+      <SplitButton fluid ghost menu={menuProps}>
+        Hello, world
+      </SplitButton>
+      <SplitButton fluid ghost disabled menu={menuProps}>
+        Hello, world
+      </SplitButton>
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <SplitButtonVariants iconOnly icon="X" />
 
-    <Text>A button can blend into its background using the `ghost` prop</Text>
-    <Stack horizontal>
-      <SplitButton ghost icon="X" menu={menuProps}>
-        Hello, world
-      </SplitButton>
-      <SplitButton ghost disabled icon="X" menu={menuProps}>
-        Hello, world
-      </SplitButton>
-    </Stack>
+    <Text>A button can be both `circular` and `iconOnly`.</Text>
+    <SplitButtonVariants circular iconOnly icon="X" />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <SplitButtonVariants loading />
