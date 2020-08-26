@@ -26,7 +26,7 @@ export interface ILineChartState extends IBasestate {
   selectedLegendPoints: ILineChartPoints[];
   // This is a boolean value which is set to true
   // when at least one legend is selected
-  islegendSelected: boolean;
+  isSelectedLegend: boolean;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -56,7 +56,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       selectedLegend: '',
       isCalloutVisible: false,
       selectedLegendPoints: [],
-      islegendSelected: false,
+      isSelectedLegend: false,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData || [];
@@ -204,7 +204,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const points = values.length === totalLegendsLength ? [] : values;
     this.setState({
       selectedLegendPoints: isLegendMultiSelectEnabled ? points : [],
-      islegendSelected: points.length >= 1 ? true : false,
+      isSelectedLegend: points.length >= 1 ? true : false,
     });
     const selectedLegendTitlesToPass = points.map((item: ILineChartPoints) => item.legend);
     this._handleLegendClick(point, selectedLegendTitlesToPass);
@@ -213,7 +213,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _onHoverCardHide = () => {
     this.setState({
       selectedLegendPoints: [],
-      islegendSelected: false,
+      isSelectedLegend: false,
     });
   };
 
@@ -293,7 +293,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.state.activeLegend === legendVal ||
           this.state.activeLegend === '' ||
           this.state.selectedLegendPoints.length > 0 ||
-          this.state.isLegendSelected
+          this.state.isSelectedLegend
         ) {
           lines.push(
             <line
