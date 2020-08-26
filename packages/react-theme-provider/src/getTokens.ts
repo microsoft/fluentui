@@ -64,7 +64,7 @@ export function getTokens(theme: Theme): Tokens {
       },
 
       button: {
-        fontWeight: fonts?.medium?.fontWeight,
+        fontWeight: 600, // fonts?.medium?.fontWeight,
         fontSize: fonts?.medium?.fontSize,
         fontFamily: fonts?.medium?.fontFamily,
         iconSize: fonts?.mediumPlus?.fontSize,
