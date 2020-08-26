@@ -318,7 +318,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           getA11yProps('calendarCell', {
             content: day.date,
             key: day.key,
-            'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
+            'aria-label': props.calendarCellFormatString.format(
+              formatMonthDayYear(day.originalDate, dateFormatting),
+              days[day.originalDate.getDay()],
+            ),
             selected: day.isSelected,
             disabled: !day.isInBounds,
             quiet: !day.isInMonth,
@@ -452,6 +455,7 @@ DatepickerCalendar.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
+  calendarCellFormatString: PropTypes.string,
 };
 
 DatepickerCalendar.defaultProps = {

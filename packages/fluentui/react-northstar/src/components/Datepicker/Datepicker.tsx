@@ -405,6 +405,7 @@ Datepicker.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
+  calendarCellFormatString: PropTypes.string,
 };
 
 Datepicker.defaultProps = {
