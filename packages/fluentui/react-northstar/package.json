@@ -21,6 +21,7 @@
     "@fluentui/state": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
     "@popperjs/core": "^2.4.2",
+    "@uifabric/utilities": "^7.29.1",
     "classnames": "^2.2.6",
     "compute-scroll-into-view": "1.0.11",
     "downshift": "5.0.5",

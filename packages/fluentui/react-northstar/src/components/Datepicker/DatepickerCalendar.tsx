@@ -42,6 +42,7 @@ import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './Datep
 import { DatepickerCalendarCellProps, DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { format } from '@uifabric/utilities';
 
 export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDayGridOptions> {
   /** Calendar can have header. */
@@ -318,7 +319,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           getA11yProps('calendarCell', {
             content: day.date,
             key: day.key,
-            'aria-label': props.calendarCellFormatString.format(
+            'aria-label': format(
+              props.calendarCellFormatString,
               formatMonthDayYear(day.originalDate, dateFormatting),
               days[day.originalDate.getDay()],
             ),
