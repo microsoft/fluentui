@@ -24,23 +24,28 @@ function isInteractiveFilter(node: Node) {
   return isDisabledInteractive(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
 }
 
+/**
+ * Performs consistent checks for components that are using `trigger` pattern (`Tooltip`, `Popup`). Ensures that
+ * `children` or `trigger` props will always pass a valid React element to what additional props and handlers can
+ * be applied.
+ */
 export function useTrigger(props: UseTriggerOptions): React.ReactElement | null {
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
   const element = trigger ? React.Children.only(trigger) : null;
 
-  if (element !== null) {
-    if (!React.isValidElement(element)) {
-      throw new Error('useTrigger(): An invalid value was passed, please pass a valid React element as a trigger');
-    }
-
-    if (ReactIs.isFragment(element)) {
-      throw new Error(
-        'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
-      );
-    }
-  }
-
   if (process.env.NODE_ENV !== 'production') {
+    if (element !== null) {
+      if (!React.isValidElement(element)) {
+        throw new Error('useTrigger(): An invalid value was passed, please pass a valid React element as a trigger');
+      }
+
+      if (ReactIs.isFragment(element)) {
+        throw new Error(
+          'useTrigger(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
+        );
+      }
+    }
+
     // Hooks are used only for dev mode validations and will be removed in production builds
     /* eslint-disable react-hooks/rules-of-hooks */
 
