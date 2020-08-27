@@ -9,7 +9,7 @@ import {
 } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { UnifiedPicker } from '../UnifiedPicker';
 
-const UnifiedPeoplePickerInner = (props: IUnifiedPeoplePickerProps, ref): JSX.Element => {
+export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
   const renderSelectedItems = React.useCallback(
     (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
       return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
@@ -30,12 +30,9 @@ const UnifiedPeoplePickerInner = (props: IUnifiedPeoplePickerProps, ref): JSX.El
 
   return (
     <UnifiedPicker
-      ref={ref}
       {...props}
       onRenderSelectedItems={renderSelectedItems}
       onRenderFloatingSuggestions={renderFloatingPeopleSuggestions}
     />
   );
 };
-
-export const UnifiedPeoplePicker = React.forwardRef(UnifiedPeoplePickerInner);

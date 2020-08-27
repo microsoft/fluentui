@@ -210,7 +210,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   return (
     <>
       <UnifiedPeoplePicker
-        ref={ref}
+        componentRef={ref}
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         inputProps={inputProps}
