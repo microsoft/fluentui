@@ -161,9 +161,12 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
-    let lastCharIndex = filterText.length - 1;
-    let lastChar = filterText[lastCharIndex];
-    if (lastChar == ';' || lastChar == ',') {
+    // Clear the input if the user types a semicolon or comma
+    // This is meant to be an example of using the forward ref,
+    // feel free to comment out if it impacts your testing
+    const lastCharIndex = filterText.length - 1;
+    const lastChar = filterText[lastCharIndex];
+    if (lastChar === ';' || lastChar === ',') {
       ref.current?.clearInput();
     }
 
