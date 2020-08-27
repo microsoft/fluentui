@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Toggle } from '@fluentui/react-next/lib/Toggle';
-import { Stack, IStackTokens } from '@fluentui/react-next/lib/Stack';
+import { Toggle } from '@fluentui/react-toggle/lib/Toggle';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
@@ -35,6 +35,6 @@ export const ToggleBasicExample: React.FunctionComponent = () => {
   );
 };
 
-function _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Move Toggle from react-next to react-toggle",
+  "packageName": "@fluentui/react-toggle",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-27T17:20:00.414Z"
+}
