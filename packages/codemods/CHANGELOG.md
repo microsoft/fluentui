@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.10.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.4..@fluentui/codemods_v0.10.0)
+
+### Minor changes
+
+- add support for a config-based codemod execution ([PR #14765](https://github.com/microsoft/fluentui/pull/14765) by t-dama@microsoft.com)
 
 ## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.4)
 
