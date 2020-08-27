@@ -37,3 +37,8 @@ export const DatepickerCalendarHeaderAction = compose<
     },
   }),
 });
+
+DatepickerCalendarHeaderAction.defaultProps = {
+  ...Button.defaultProps,
+  icon: {},
+};

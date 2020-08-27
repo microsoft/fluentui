@@ -15,7 +15,6 @@ const DatepickerHeaderExample = () => {
                   direction={'previous'}
                   title={props.prevMonthAriaLabel}
                   disabled={props.disabledPreviousButton}
-                  icon={{}}
                 />
                 <Text content={props.label} styles={{ paddingTop: pxToRem(5) }} />
                 <Datepicker.CalendarHeaderAction
@@ -23,7 +22,6 @@ const DatepickerHeaderExample = () => {
                   direction={'next'}
                   title={props.nextMonthAriaLabel}
                   disabled={props.disabledNextButton}
-                  icon={{}}
                 />
               </Flex>
             );
