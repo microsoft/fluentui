@@ -164,5 +164,6 @@ packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Toggle/ @xugao
 packages/react-next/src/components/Toggle/ @xugao
+packages/react-toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

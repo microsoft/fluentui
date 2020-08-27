@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
-import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '../../Utilities';
+import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@uifabric/utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ useStaticStyles: true });
@@ -10,7 +10,7 @@ const COMPONENT_NAME = 'Toggle';
 
 export const useToggle = (
   props: IToggleProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
@@ -34,6 +34,7 @@ export const useToggle = (
     styles,
     theme,
   } = props;
+
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked, onChange);
 
   const classNames = getClassNames(styles!, {

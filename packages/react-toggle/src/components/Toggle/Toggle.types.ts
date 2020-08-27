@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
  * {@docCategory Toggle}

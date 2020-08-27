@@ -66,6 +66,7 @@
     "@fluentui/react-link": "^0.1.0",
     "@fluentui/react-icons": "^0.2.2",
     "@fluentui/react-slider": "^0.1.1",
+    "@fluentui/react-toggle": "^0.1.0",
     "@fluentui/react-tabs": "^0.4.0",
     "@fluentui/react-theme-provider": "^0.9.1",
     "@fluentui/react-window-provider": "^0.2.2",

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Toggle } from '@fluentui/react-next/lib/Toggle';
-import { Icon } from '@fluentui/react-next/lib/Icon';
-import { Stack, IStackTokens } from '@fluentui/react-next/lib/Stack';
-import { TooltipHost } from '@fluentui/react-next/lib/Tooltip';
+import { Toggle } from '@fluentui/react-toggle/lib/Toggle';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
@@ -41,6 +41,6 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
   );
 };
 
-function _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }
