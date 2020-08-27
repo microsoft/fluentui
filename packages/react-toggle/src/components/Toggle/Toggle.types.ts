@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
  * {@docCategory Toggle}
@@ -85,7 +87,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Callback issued when the value changes.
    */
-  onChange?: (event: React.MouseEvent<HTMLElement> | undefined, checked?: boolean) => void;
+  onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
 
   /**
    * @deprecated Use `onChange` instead.
