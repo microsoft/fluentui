@@ -6,7 +6,6 @@
 
 import { BaseButton } from 'office-ui-fabric-react/lib/Button';
 import { Button } from 'office-ui-fabric-react/lib/Button';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
@@ -17,7 +16,6 @@ import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/compo
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -2060,71 +2058,6 @@ export interface ITextFieldSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface IToggle {
-    // (undocumented)
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IToggleOptions {
-}
-
-// @public
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
-    ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
-    checked?: boolean;
-    componentRef?: IRefObject<IToggle>;
-    defaultChecked?: boolean;
-    disabled?: boolean;
-    inlineLabel?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
-    label?: string | JSX.Element;
-    // @deprecated (undocumented)
-    offAriaLabel?: string;
-    offText?: string;
-    // @deprecated (undocumented)
-    onAriaLabel?: string;
-    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
-    // @deprecated (undocumented)
-    onChanged?: (checked: boolean) => void;
-    onText?: string;
-    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
-    styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type IToggleSlotProps = {
-    [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-// @public (undocumented)
-export interface IToggleSlots {
-}
-
-// @public
-export interface IToggleStyleProps {
-    checked?: boolean;
-    className?: string;
-    disabled?: boolean;
-    inlineLabel?: boolean;
-    onOffMissing?: boolean;
-    theme: ITheme;
-}
-
-// @public
-export interface IToggleStyles {
-    container: IStyle;
-    label: IStyle;
-    pill: IStyle;
-    root: IStyle;
-    text: IStyle;
-    thumb: IStyle;
-}
-
-// @public (undocumented)
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -2579,16 +2512,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
-
-// @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
-
-// @public (undocumented)
-export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
@@ -2616,6 +2540,7 @@ export * from "@fluentui/react-link/lib/Link";
 export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
