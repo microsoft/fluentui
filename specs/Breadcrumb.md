@@ -16,27 +16,13 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 ## API
 
-### Props
-
-## &lt;Breadcrumb&gt; Properties <a href="#breadcrumb-properties" id="breadcrumb-properties"></a>
-
-| Attribute Name | Type                                     | Default Value | Description                                                                                 |     |
-| -------------- | ---------------------------------------- | ------------- | ------------------------------------------------------------------------------------------- | --- |
-| `items`        | `ShorthandValue<BreadcrumbItemProps>[]`  |               | A `BreadcrumbItem` collection of items to represent the current path within the application |     |
-| `divider`      | `ShorthandValue<BreadcrumbDividerProps>` | `/`           | Represents the custom item to be used as divider between the `BreadcrumbItem`               |     |
-
-## &lt;Breadcrumb.Item&gt; Properties <a href="#breadcrumbItem-line-properties" id="breadcrumbItem-line-properties"></a>
-
-| Property Name | Type     | Default Value | Description                                                                      |
-| ------------- | -------- | ------------- | -------------------------------------------------------------------------------- |
-| `href`        | `string` |               | link to redirect when clicked in the item if not provided render an text element |
-| `content`     | `string` |               | The text to be displayed.                                                        |
+## Props
 
 ## &lt;Breadcrumb.Divider&gt; Properties <a href="#breadcrumb-divider-properties" id="breadcrumb-divider-properties"></a>
 
-| Property Name | Type     | Default Value | Description                                       |
-| ------------- | -------- | ------------- | ------------------------------------------------- |
-| `icon`        | `custom` |               | The icon to be rendered as boundary for the items |
+| Property Name | Type             | Default Value | Description                                       |
+| ------------- | ---------------- | ------------- | ------------------------------------------------- |
+| `content`     | `ShorthandValue` | `/`           | The icon to be rendered as boundary for the items |
 
 ## Slots
 
@@ -49,13 +35,6 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 #### Public usage
 
 ```jsx
-<Breadcrumb divider="->" items={[
-  {
-    content: '',
-    href: ''
-  }
-]}>
-
 <Breadcrumb>
   <Breadcrumb.Item />
   <Breadcrumb.Divider />
@@ -67,33 +46,27 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 ```jsx
 const Breadcrumb = () => (
-  <nav class="breadcrumb-ui" aria-label="...">
-    <ol>
-      <li></li>
-    </ol>
+  <nav role="navigation" class="breadcrumb-ui" aria-label="...">
+    <div role="list">{children}</div>
   </nav>
 );
 
-const BreadcrumbItem = () => <a></a>;
+const BreadcrumbItem = () => <div role="listitem">{children}</div>;
 
-const BreadcrumbDivider = () => <span />;
+const BreadcrumbDivider = () => <span aria-hidden="true">{children}</span>;
 ```
+
+`Breadcrumb` will support only `children` api.
 
 ### DOM structure
 
 ```html
 <nav id="breadcrumb" class="breadcrumb-ui" aria-label="Breadcrumb">
-  <ol>
-    <li>
-      <a class="breadcrumb-ui__item" href=""></a>
-    </li>
-    <li>
-      <span class="breadcrumb-ui__divider"></span>
-    </li>
-    <li>
-      <a class="breadcrumb-ui__item" href="" aria-current="page"></a>
-    </li>
-  </ol>
+  <div role="list">
+    <div role="listitem" class="breadcrumb-ui__item"></div>
+    <span aria-hidden="true" class="breadcrumb-ui__divider"></span>
+    <div role="listitem" class="breadcrumb-ui__item"></div>
+  </div>
 </nav>
 ```
 
