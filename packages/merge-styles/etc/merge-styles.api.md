@@ -97,7 +97,7 @@ export interface IRawFontStyle {
     fontSynthesis?: ICSSRule | string;
     fontVariant?: ICSSRule | string;
     fontVariantAlternates?: ICSSRule | string;
-    fontWeight?: IFontWeight;
+    fontWeight?: IFontWeight | string;
 }
 
 // @public

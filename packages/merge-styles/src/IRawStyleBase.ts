@@ -236,7 +236,7 @@ export interface IRawFontStyle {
    * Specifies the weight or boldness of the font.
    * See CSS 3 'font-weight' property https://www.w3.org/TR/css-fonts-3/#propdef-font-weight
    */
-  fontWeight?: IFontWeight;
+  fontWeight?: IFontWeight | string;
 }
 
 /**
