@@ -1,4 +1,4 @@
-import { IPartialTheme } from './ITheme';
+import { IPartialTheme, ITheme } from './ITheme';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
@@ -71,25 +71,27 @@ export interface Tokens {
   [key: string]: TokenSetType;
 }
 
+export interface ComponentStyles {
+  [componentName: string]: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    styles?: IStyleFunctionOrObject<any, any>;
+  };
+}
+
 /**
  * A prepared (fully expanded) theme object.
  */
-export interface Theme extends IPartialTheme {
-  components?: {
-    [componentName: string]: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      styles?: IStyleFunctionOrObject<any, any>;
-    };
-  };
-
+export interface Theme extends ITheme {
+  components?: ComponentStyles;
   tokens?: Tokens;
-
   stylesheets?: string[];
 }
 
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
-export interface PartialTheme extends Omit<Theme, 'tokens'> {
+export interface PartialTheme extends IPartialTheme {
+  components?: ComponentStyles;
   tokens?: RecursivePartial<Tokens>;
+  stylesheets?: string[];
 }

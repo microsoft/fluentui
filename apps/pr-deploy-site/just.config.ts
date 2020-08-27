@@ -18,8 +18,11 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 const dependencies = [
   '@fluentui/docs',
   '@fluentui/react-button',
+  '@fluentui/react-checkbox',
   '@fluentui/react-image',
+  '@fluentui/react-link',
   '@fluentui/react-next',
+  '@fluentui/react-slider',
   '@fluentui/react-tabs',
   '@uifabric/charting',
   '@uifabric/date-time',
