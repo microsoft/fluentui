@@ -8,4 +8,8 @@ To import React Checkbox components:
 
 ```js
 import { Checkbox } from '@fluentui/react-checkbox';
+
+const App = () => {
+  return <Checkbox label="Checkbox" />;
+};
 ```

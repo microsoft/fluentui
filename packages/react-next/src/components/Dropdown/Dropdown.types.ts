@@ -6,7 +6,7 @@ import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilit
 import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
 
