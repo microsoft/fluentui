@@ -11,7 +11,7 @@ import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
 // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
-const isAutofocusAllowed = (node: Node, reactInstanceKey: string): boolean => {
+const isAutofocusEnabled = (node: Node, reactInstanceKey: string): boolean => {
   return (
     (node.nodeName === 'BUTTON' ||
       node.nodeName === 'INPUT' ||
@@ -221,7 +221,6 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'afterWrite' as PopperJs.ModifierPhases,
           fn: handleUpdate,
         },
-
         {
           name: 'setInitPositionToFix',
           enabled: true,
@@ -289,12 +288,13 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
         const reactInstanceKey = getReactInstanceKey(contentNode);
         const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
           acceptNode: node =>
-            isAutofocusAllowed(node, reactInstanceKey) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
+            isAutofocusEnabled(node, reactInstanceKey) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
         });
 
         while (treeWalker.nextNode()) {
           const node = treeWalker.currentNode;
-          throw new Error([node, 'Node with autoFocus', 'in Popper would cause window', 'scroll to jump'].join(' '));
+          // eslint-disable-next-line no-console
+          console.warn(node, ['Node with autoFocus', 'in Popper would cause window', 'scroll to jump'].join(' '));
         }
       }
     }, []);

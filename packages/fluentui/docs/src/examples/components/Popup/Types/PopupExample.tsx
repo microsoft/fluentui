@@ -70,7 +70,6 @@ const LoremParagraph = () => (
 const PopupExample = () => (
   <Popup
     trigger={<Button content="Show popup" />}
-    positionFixed
     content={{
       // eslint-disable-next-line jsx-a11y/no-autofocus
       content: <input autoFocus value="This popup is rendered next to the trigger." />,
