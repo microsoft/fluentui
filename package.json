@@ -44,6 +44,8 @@
     "rebuild": "node ./scripts/invalidate-just-cache.js && npm run build",
     "release:fluentui:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
+    "runto": "node ./scripts/monorepo/runTo.js",
+    "run:published": "node ./scripts/monorepo/runPublished.js",
     "satisfied": "satisfied --skip-invalid",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",

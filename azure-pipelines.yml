@@ -50,12 +50,6 @@ jobs:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: Deploy
     workspace:
       clean: all
@@ -105,13 +99,9 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: ScreenerFluent
+    workspace:
+      clean: all
     steps:
       - template: azure-pipelines.tools.yml
 
@@ -126,12 +116,6 @@ jobs:
         displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
 
   - job: Screener
     workspace:
@@ -157,9 +141,3 @@ jobs:
           SCREENER_API_KEY: $(screener.key)
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
