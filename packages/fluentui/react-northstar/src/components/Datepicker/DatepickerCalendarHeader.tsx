@@ -51,10 +51,10 @@ export interface DatepickerCalendarHeaderProps
   /** Shorthand for the button that navigates to the next calendar screen. */
   nextButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
 
-  /** Decides whether next button is actionable._align_baseline */
+  /** Decides whether next button is actionable._align_baseline. */
   disabledNextButton?: boolean;
 
-  /** Decides whether previous button is actionable._align_baseline */
+  /** Decides whether previous button is actionable._align_baseline. */
   disabledPreviousButton?: boolean;
 }
 
