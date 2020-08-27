@@ -39,6 +39,12 @@ const siteInfo = [
     title: 'Image',
   },
   {
+    package: '@fluentui/react-toggle',
+    link: './react-toggle/dist-storybook/index.html',
+    icon: 'ToggleLeft',
+    title: 'Toggle',
+  },
+  {
     package: '@fluentui/react-tabs',
     link: './react-tabs/dist-storybook/index.html',
     icon: 'BrowserTab',
