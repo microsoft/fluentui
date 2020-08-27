@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update release notes for Pivot",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-24T23:18:22.698Z"
+}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.9.1)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.9.0..@fluentui/react-theme-provider_v0.9.1)
+
+### Patches
+
+- Fix Theme and PartialTheme typing. ([PR #14741](https://github.com/microsoft/fluentui/pull/14741) by xgao@microsoft.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.9.0)
 

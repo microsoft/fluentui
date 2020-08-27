@@ -21,6 +21,7 @@
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
+    "react-is": "^16.6.3",
     "stylis": "^3.5.4",
     "stylis-plugin-rtl": "^1.0.0"
   },
