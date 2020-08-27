@@ -20,9 +20,9 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 ## &lt;Breadcrumb.Divider&gt; Properties <a href="#breadcrumb-divider-properties" id="breadcrumb-divider-properties"></a>
 
-| Property Name | Type             | Default Value | Description                                       |
-| ------------- | ---------------- | ------------- | ------------------------------------------------- |
-| `content`     | `ShorthandValue` | `/`           | The icon to be rendered as boundary for the items |
+| Property Name | Type             | Default Value | Description                                          |
+| ------------- | ---------------- | ------------- | ---------------------------------------------------- |
+| `content`     | `ShorthandValue` | `/`           | The content to be rendered as boundary for the items |
 
 ## Slots
 
