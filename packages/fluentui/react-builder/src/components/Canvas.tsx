@@ -24,7 +24,7 @@ export type CanvasProps = {
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
-  onDeleteComponent?: () => void;
+  onDeleteSelectedComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
@@ -44,7 +44,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   selectedComponent,
   onCloneComponent,
   onMoveComponent,
-  onDeleteComponent,
+  onDeleteSelectedComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
@@ -288,7 +288,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 componentName={selectedComponent.displayName}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
-                onDelete={onDeleteComponent}
+                onDelete={onDeleteSelectedComponent}
                 onGoToParent={onGoToParentComponent}
               />
             )}

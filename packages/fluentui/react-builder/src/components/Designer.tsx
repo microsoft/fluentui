@@ -452,7 +452,7 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const handleDeleteComponent = React.useCallback(() => {
+  const handleDeleteSelectedComponent = React.useCallback(() => {
     dispatch({ type: 'DELETE_SELECTED_COMPONENT' });
   }, [dispatch]);
 
@@ -499,7 +499,7 @@ export const Designer: React.FunctionComponent = () => {
     'Ctrl+z': handleUndo,
     'Shift+P': handleGoToParentComponent,
     'Ctrl+Shift+Z': handleRedo,
-    Delete: handleDeleteComponent,
+    Delete: handleDeleteSelectedComponent,
     'Shift+D': () => {
       setMode('design');
     },
@@ -639,7 +639,7 @@ export const Designer: React.FunctionComponent = () => {
                 onSelectComponent={handleSelectComponent}
                 onCloneComponent={handleCloneComponent}
                 onMoveComponent={handleMoveComponent}
-                onDeleteComponent={handleDeleteComponent}
+                onDeleteSelectedComponent={handleDeleteSelectedComponent}
                 onAddComponent={handleOpenAddComponentDialog}
               />
             ) : (
@@ -705,7 +705,7 @@ export const Designer: React.FunctionComponent = () => {
                   selectedComponent={selectedComponent}
                   onCloneComponent={handleCloneComponent}
                   onMoveComponent={handleMoveComponent}
-                  onDeleteComponent={handleDeleteComponent}
+                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
                   role="main"
                 />
