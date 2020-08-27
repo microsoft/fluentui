@@ -197,7 +197,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: Record<string, any>) => void;
+export const useButtonClasses: (state: any) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
