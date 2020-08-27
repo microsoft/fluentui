@@ -39,6 +39,12 @@ const siteInfo = [
     title: 'Tabs',
   },
   {
+    package: '@fluentui/react-slider',
+    link: './react-slider/dist-storybook/index.html',
+    icon: 'Slider',
+    title: 'Slider',
+  },
+  {
     package: '@fluentui/react-next',
     link: './react-next/dist-storybook/index.html',
     icon: 'DoubleChevronRight12',

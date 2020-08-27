@@ -20,6 +20,7 @@ const dependencies = [
   '@fluentui/react-button',
   '@fluentui/react-image',
   '@fluentui/react-next',
+  '@fluentui/react-slider',
   '@fluentui/react-tabs',
   '@uifabric/charting',
   '@uifabric/date-time',

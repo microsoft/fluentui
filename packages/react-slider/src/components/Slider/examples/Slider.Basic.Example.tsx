@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-next/lib/Slider';
-import { IStackTokens, Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
+import { Slider } from '@fluentui/react-slider';
+import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };

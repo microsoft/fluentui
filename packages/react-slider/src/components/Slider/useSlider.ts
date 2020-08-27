@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { ISliderProps, ISliderStyleProps, ISliderStyles, ISliderState } from './Slider.types';
+import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
-import { KeyCodes, css, getRTL, getRTLSafeKeyCode, on } from '../../Utilities';
-import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import {
+  KeyCodes,
+  css,
+  getRTL,
+  getRTLSafeKeyCode,
+  on,
+  classNamesFunction,
+  getNativeProps,
+  divProperties,
+} from '@uifabric/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -54,7 +62,7 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
   );
 };
 
-export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => ISliderState = (props, ref) => {
+export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
   const {
     step = 1,
     className,
@@ -78,7 +86,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
-    (ev: React.FormEvent<HTMLElement>, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
+    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
   );
 
   // Ensure that value is always a number and is clamped by min/max.
@@ -226,13 +234,13 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
   const onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
       disposables.current.push(
-        on(window, 'mousemove', onMouseMoveOrTouchMove, true),
-        on(window, 'mouseup', onMouseUpOrTouchEnd, true),
+        on(window, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(window, 'mouseup', onMouseUpOrTouchEnd as (ev: Event) => void, true),
       );
     } else if (event.type === 'touchstart') {
       disposables.current.push(
-        on(window, 'touchmove', onMouseMoveOrTouchMove, true),
-        on(window, 'touchend', onMouseUpOrTouchEnd, true),
+        on(window, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(window, 'touchend', onMouseUpOrTouchEnd as (ev: Event) => void, true),
       );
     }
     toggleUseShowTransitions();
