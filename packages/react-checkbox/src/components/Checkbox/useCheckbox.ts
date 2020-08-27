@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { mergeSlotProp } from '@fluentui/react-compose';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
+import { useFocusRects } from '@uifabric/utilities';
 import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
-import { useFocusRects } from '../../Utilities';
 
-export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
+export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>): ICheckboxState => {
   const {
     disabled,
     inputProps,

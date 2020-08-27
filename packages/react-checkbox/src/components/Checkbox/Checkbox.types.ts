@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
 import { ISvgIconProps } from '@fluentui/react-icons';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Checkbox class interface.
