@@ -6,29 +6,20 @@ import { initializeComponentRef } from '../../Utilities';
 
 export interface IBaseSelectedItemsListState<T = any> {
   items: T[];
-  selection: Selection;
 }
 
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
+  private _defaultSelection: Selection;
 
   public static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>) {
-    const updatedState: Partial<IBaseSelectedItemsListState<any>> = {};
-
-    let hasUpdate: boolean = false;
-
     if (newProps.selectedItems) {
-      updatedState.items = newProps.selectedItems;
-      hasUpdate = true;
-    }
-    if (newProps.selection) {
-      updatedState.selection = newProps.selection;
-      hasUpdate = true;
+      return { items: newProps.selectedItems };
     }
 
-    return hasUpdate ? updatedState : null;
+    return null;
   }
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -37,12 +28,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
     // Create a new selection if one is not specified
-    const selection = this.props.selection
-      ? (this.props.selection as Selection)
-      : new Selection({ onSelectionChanged: this.onSelectionChanged });
+    this._defaultSelection = new Selection({ onSelectionChanged: this.onSelectionChanged });
     this.state = {
       items: items,
-      selection: selection,
     };
   }
 
@@ -172,11 +160,10 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   }
 
   protected get selection(): Selection {
-    return this.state.selection;
-  }
-
-  protected set selection(select: Selection) {
-    this.setState({ selection: select });
+    if (this.props.selection !== null && this.props.selection !== undefined) {
+      return this.props.selection!;
+    }
+    return this._defaultSelection;
   }
 
   protected renderItems = (): JSX.Element[] => {

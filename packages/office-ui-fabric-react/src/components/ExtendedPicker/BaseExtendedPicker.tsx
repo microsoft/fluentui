@@ -14,8 +14,6 @@ export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
   selectedItems: T[] | null;
   suggestionItems: T[] | null;
-  floatingPickerProps: IBaseFloatingPickerProps<T>;
-  selectedItemsListProps: IBaseSelectedItemsListProps<T>;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
@@ -31,16 +29,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   public static getDerivedStateFromProps(newProps: IBaseExtendedPickerProps<any>) {
     const updatedState: Partial<IBaseExtendedPickerProps<any>> = {};
     let hasUpdate: boolean = false;
-
-    if (newProps.floatingPickerProps) {
-      updatedState.floatingPickerProps = newProps.floatingPickerProps;
-      hasUpdate = true;
-    }
-
-    if (newProps.selectedItemsListProps) {
-      updatedState.selectedItemsListProps = newProps.selectedItemsListProps;
-      hasUpdate = true;
-    }
 
     if (newProps.selectedItems) {
       updatedState.selectedItems = newProps.selectedItems;
@@ -66,8 +54,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
         : null,
-      floatingPickerProps: this.props.floatingPickerProps,
-      selectedItemsListProps: this.props.selectedItemsListProps,
     };
   }
 
@@ -145,11 +131,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   }
 
   protected get floatingPickerProps(): IBaseFloatingPickerProps<T> {
-    return this.state.floatingPickerProps;
+    return this.props.floatingPickerProps;
   }
 
   protected get selectedItemsListProps(): IBaseSelectedItemsListProps<T> {
-    return this.state.selectedItemsListProps;
+    return this.props.selectedItemsListProps;
   }
 
   protected onSelectionChange = (): void => {
