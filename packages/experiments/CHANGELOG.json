@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/experiments_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Drag drop between SelectedItemLists",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ffec1c2a0f98cadfc5d07e625eee644b2a31f1dc",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/experiments_v7.30.0",
       "version": "7.30.0",

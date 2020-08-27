@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "IE11 support for xAxis labels and utility created for x axis labels wrapping",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-20T12:12:45.047Z"
-}
