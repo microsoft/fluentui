@@ -76,6 +76,7 @@
     "@uifabric/react-hooks": "^7.10.0",
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/styling": "^7.15.3",
+    "@fluentui/react-window-provider": "^0.2.2",
     "@uifabric/utilities": "^7.30.0",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
