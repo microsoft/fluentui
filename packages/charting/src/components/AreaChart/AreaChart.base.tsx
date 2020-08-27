@@ -1,21 +1,17 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { ILineChartProps, IBasestate, IChildProps } from '../LineChart/index';
+import { IAreaChartProps } from '../AreaChart/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
-import { calloutData } from '../../utilities/index';
+import { calloutData, getMinMaxOfXAxis, getXAxisType } from '../../utilities/index';
 import { ChartHelper } from '../CommonComponents/ChartHelper';
+import { IRefArrayData, IBasestate, IChildProps, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
 
-export interface IRefArrayData {
-  legendText?: string;
-  refElement?: SVGGElement;
-}
 export interface IAreaChartAreaPoint {
   xVal: string | number;
   values: IAreaChartDataSetPoint;
@@ -40,7 +36,7 @@ export interface IAreaChartState extends IBasestate {
   _maxOfYVal: number;
 }
 
-export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartState> {
+export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _points: ILineChartPoints[];
@@ -59,7 +55,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   private _xAxisScale: any;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
 
-  public constructor(props: ILineChartProps) {
+  public constructor(props: IAreaChartProps) {
     super(props);
     this.state = {
       activeLegend: '',
@@ -80,7 +76,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     this.dataSet = this._createDataSet();
   }
 
-  public componentDidUpdate(prevProps: ILineChartProps): void {
+  public componentDidUpdate(prevProps: IAreaChartProps): void {
     if (
       prevProps.data !== this.props.data ||
       prevProps.height !== this.props.height ||
@@ -100,22 +96,20 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    let isDateType = false;
-    if (this._points && this._points.length > 0) {
-      this._points.forEach((chartData: ILineChartPoints) => {
-        if (chartData.data.length > 0) {
-          isDateType = chartData.data[0].x instanceof Date;
-          return;
-        }
-      });
-    }
-
+    const isXAxisDateType = getXAxisType(this._points);
     this._keys = this._createKeys();
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
     const tickParams = {
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+    const yMax = d3Max(this._points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
+    })!;
+    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
+    })!;
+
     const calloutProps = {
       target: this.state.refSelected,
       isCalloutVisible: this.state.isCalloutVisible,
@@ -130,13 +124,13 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     return (
       <ChartHelper
         {...this.props}
-        points={this._points}
         tickParams={tickParams}
         getGraphData={this._isGraphDraw && this._getGraphData}
         calloutProps={calloutProps}
         legendBars={legends}
-        isXAxisDateType={isDateType}
-        maxOfYVal={this.state._maxOfYVal}
+        isXAxisDateType={isXAxisDateType}
+        yMinMaxValues={{ yMin: yMin, yMax: this.state._maxOfYVal || yMax }}
+        xMinMaxValues={getMinMaxOfXAxis(isXAxisDateType, this._points)}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -344,7 +338,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
     ) {
       this._refArray.forEach((obj: IRefArrayData) => {
-        if (obj.legendText === refArrayIndex) {
+        if (obj.index === refArrayIndex) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
@@ -365,7 +359,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     xAxisCalloutData: string,
   ) => {
     this._uniqueCallOutID = circleId;
-    this._refArray.push({ legendText: circleId, refElement: d3Event.target });
+    this._refArray.push({ index: circleId, refElement: d3Event.target });
     d3Select('#' + circleId)
       .attr('fill', '#fff')
       .attr('r', 8)
@@ -425,7 +419,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       });
       stackedData.push(currentStack);
     });
-
+    // For stacked area chart, y max will be calculated as - max of addition of each chart value at x point
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
     this.setState({ _maxOfYVal: maxOfYVal });
 

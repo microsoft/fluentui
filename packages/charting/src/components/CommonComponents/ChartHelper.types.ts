@@ -1,98 +1,11 @@
 import * as React from 'react';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IMargins } from '../../utilities/index';
-import { IChildProps, ILineChartPoints } from '../../types/IDataPoint';
+import { IChildProps, ICommonChartStyleProps, ICommonChartStyles, ICommonChartProps } from '../../types/ICommonTypes';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-export interface IChartHelperStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
+export interface IChartHelperStyleProps extends ICommonChartStyleProps {}
 
-  /**
-   * Additional CSS class(es) to apply to the Chart.
-   */
-  className?: string;
-
-  /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
-   * Color of the chart.
-   */
-  color?: string;
-}
-
-export interface IChartHelperStyles {
-  /**
-   *  Style for the root element.
-   */
-  root?: IStyle;
-
-  /**
-   * Style for the element containing the x-axis.
-   */
-  xAxis?: IStyle;
-
-  /**
-   * Style for the element containing the y-axis.
-   */
-  yAxis?: IStyle;
-
-  /**
-   * Style for legend container
-   */
-  legendContainer?: IStyle;
-
-  /**
-   * line hover box css
-   */
-  hover?: IStyle;
-
-  /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: IStyle;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: IStyle;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutDateTimeContainer?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutInfoContainer?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutBlockContainer?: IStyle;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutlegendText?: IStyle;
-}
+export interface IChartHelperStyles extends ICommonChartStyles {}
 
 export interface IYValueHover {
   legend?: string;
@@ -100,19 +13,22 @@ export interface IYValueHover {
   color?: string;
 }
 
-export interface IChartHelperProps {
+export interface IChartHelperProps extends ICommonChartProps {
   /**
    * Data to render in the chart.
    */
-  points: ILineChartPoints[];
-
-  /**
-   * the format in for the data on y-axis. For data object this can be specified to your requirement.
-   *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
-   * Please look at https://github.com/d3/d3-format for all the formats supported
-   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yAxisTickFormat?: any;
+  points?: any;
+
+  yMinMaxValues: {
+    yMin: number;
+    yMax: number;
+  };
+
+  xMinMaxValues: {
+    xMin: number | Date;
+    xMax: number | Date;
+  };
 
   /**
    * Legend data to render as child to wrap component
@@ -120,61 +36,9 @@ export interface IChartHelperProps {
   legendBars: JSX.Element;
 
   /**
-   * Maximum value of Y-axis Domain value.
-   * Used for axis building.
-   * If not given, will take maximum of given data.
-   */
-  maxOfYVal?: number;
-
-  /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
-   * minimum  data value point in y-axis
-   */
-  yMinValue?: number;
-
-  /**
-   * maximum data value point in y-axis
-   */
-  yMaxValue?: number;
-
-  /** decides wether to show/hide legends
-   * @defaultvalue false
-   */
-  hideLegend?: boolean;
-
-  /**
-   * this prop takes its parent as a HTML element to define the width and height of the line chart
-   */
-  parentRef?: HTMLElement | null;
-
-  /**
-   * Additional CSS class(es) to apply to the Chart.
-   */
-  className?: string;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IChartHelperStyleProps, IChartHelperStyles>;
-
-  /**
-   * Margins for the chart
-   */
-  margins?: IMargins;
 
   /**
    * Maximum value of X-axis Domain value.
@@ -189,15 +53,6 @@ export interface IChartHelperProps {
    * If not given, will take maximum of given data.
    */
   domainXMax?: number;
-
-  /**
-   * Number of ticks on the y-axis.
-   * Tick count should be factor of difference between (yMinValue, yMaxValue)
-   * @default 4
-   */
-  yAxisTickCount?: number;
-
-  hideTooltip?: boolean;
 
   /**
    * Type of x axis

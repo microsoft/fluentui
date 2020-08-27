@@ -9,10 +9,10 @@ import {
   createDateXAxis,
   createYAxis,
   fitContainer,
-  IMargins,
   IXAxisParams,
   IYAxisParams,
 } from '../../utilities/index';
+import { IMargins } from '../../types/ICommonTypes';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IChartHelperStyleProps, IChartHelperStyles>();
@@ -71,7 +71,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, points, maxOfYVal, calloutProps, yAxisTickFormat } = this.props;
+    const { theme, className, styles, calloutProps, yAxisTickFormat, yMinMaxValues, xMinMaxValues } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -80,7 +80,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
       containerWidth: this.state.containerWidth,
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
-      points: points,
+      xMinMaxValues,
     };
 
     const YAxisParams = {
@@ -90,13 +90,11 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
       yAxisElement: this.yAxisElement,
       yAxisTickFormat: yAxisTickFormat!,
       yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: this.props.yMinValue!,
-      yMaxValue: this.props.yMaxValue!,
-      finalYMaxVal: maxOfYVal,
-      finalYMinVal: 0,
+      yMinValue: this.props.yMinValue || 0,
+      yMaxValue: this.props.yMaxValue || 0,
       tickPadding: 10,
       showYAxisGridLines: true,
-      points,
+      yMinMaxValues,
     };
 
     this._getData(XAxisParams, YAxisParams);

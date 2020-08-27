@@ -1,6 +1,8 @@
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { IEventsAnnotationProps, ILineChartPoints, ILineChartDataPoint } from '../components/LineChart/index';
+import { IEventsAnnotationProps } from '../components/LineChart/index';
+import { ILineChartPoints, ILineChartDataPoint } from '../types/index';
+import { IMargins } from '../types/ICommonTypes';
 import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -15,37 +17,19 @@ export interface IWrapLabelProps {
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
 }
-export interface IMargins {
-  /**
-   * left margin for the chart.
-   */
-  left?: number;
-  /**
-   * Right margin for the chart.
-   */
-  right?: number;
-  /**
-   * Top margin for the chart.
-   */
-  top?: number;
-  /**
-   * Bottom margin for the chart.
-   */
-  bottom?: number;
-}
 
 export interface IXAxisParams {
   margins: IMargins;
   containerWidth: number;
+  xMinMaxValues: {
+    xMin: number | Date;
+    xMax: number | Date;
+  };
   xAxisElement?: SVGElement | null;
-  domainXMin?: number | Date | null;
-  domainXMax?: number | Date | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
   tickSize?: number;
   tickPadding?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points?: any;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[];
@@ -53,8 +37,10 @@ export interface ITickParams {
 }
 
 export interface IYAxisParams {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points?: any;
+  yMinMaxValues: {
+    yMin: number;
+    yMax: number;
+  };
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
@@ -62,8 +48,6 @@ export interface IYAxisParams {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
   yAxisTickCount: number;
-  finalYMaxVal?: number;
-  finalYMinVal?: number;
   yMaxValue?: number;
   yMinValue?: number;
   tickPadding?: number;
@@ -89,8 +73,7 @@ export interface IFitContainerParams {
 
 export function createNumericXAxis(xAxisParams: IXAxisParams) {
   const {
-    domainXMin,
-    domainXMax,
+    xMinMaxValues,
     margins,
     containerWidth,
     showRoundOffXTickValues = false,
@@ -98,22 +81,9 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     tickPadding = 10,
     xAxisCount = 10,
     xAxisElement,
-    points,
   } = xAxisParams;
-  const xMinVal = domainXMin
-    ? domainXMin
-    : d3Min(points, (point: ILineChartPoints) => {
-        return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number);
-      })!;
-  const xMaxVal = domainXMax
-    ? domainXMax
-    : d3Max(points, (point: ILineChartPoints) => {
-        return d3Max(point.data, (item: ILineChartDataPoint) => {
-          return item.x as number;
-        });
-      })!;
   const xAxisScale = d3ScaleLinear()
-    .domain([xMinVal, xMaxVal])
+    .domain([xMinMaxValues.xMin, xMinMaxValues.xMax])
     .range([margins.left!, containerWidth - margins.right!]);
   showRoundOffXTickValues && xAxisScale.nice();
 
@@ -131,32 +101,17 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
 }
 
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
-  const xAxisData: Date[] = [];
-  let sDate = new Date();
-  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-  let lDate = new Date(-8640000000000000);
-  xAxisParams.points.forEach((singleLineChartData: ILineChartPoints) => {
-    singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-      xAxisData.push(point.x as Date);
-      if (point.x < sDate) {
-        sDate = point.x as Date;
-      }
-      if (point.x > lDate) {
-        lDate = point.x as Date;
-      }
-    });
-  });
-
+  const { xMinMaxValues, margins, containerWidth, xAxisElement } = xAxisParams;
   const xAxisScale = d3ScaleTime()
-    .domain([sDate, lDate])
-    .range([xAxisParams.margins.left!, xAxisParams.containerWidth - xAxisParams.margins.right!]);
+    .domain([xMinMaxValues.xMin, xMinMaxValues.xMax])
+    .range([margins.left!, containerWidth - margins.right!]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
     .tickPadding(10);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
-  if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement)
+  if (xAxisElement) {
+    d3Select(xAxisElement)
       .call(xAxis)
       .selectAll('text');
   }
@@ -174,8 +129,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
 
 export function createYAxis(yAxisParams: IYAxisParams) {
   const {
-    finalYMaxVal = 0,
-    finalYMinVal = 0,
+    yMinMaxValues,
     yAxisElement = null,
     yMaxValue = 0,
     yMinValue = 0,
@@ -188,24 +142,10 @@ export function createYAxis(yAxisParams: IYAxisParams) {
     yAxisTickCount = 4,
     eventAnnotationProps,
     eventLabelHeight,
-    points,
   } = yAxisParams;
-  let finalYmax: number;
-  let finalYmin: number;
-  if (finalYMaxVal || finalYMinVal) {
-    finalYmax = finalYMaxVal!;
-    finalYmin = finalYMinVal!;
-  } else {
-    const yMax = d3Max(points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
-    const yMin = d3Min(points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
 
-    finalYmax = yMax > yMaxValue! ? yMax : yMaxValue!;
-    finalYmin = yMin < yMinValue! ? 0 : yMinValue!;
-  }
+  const finalYmax = yMinMaxValues.yMax > yMaxValue ? yMinMaxValues.yMax : yMaxValue!;
+  const finalYmin = yMinMaxValues.yMin < yMinValue ? 0 : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
@@ -415,4 +355,73 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
         div.style('opacity', 0);
       });
   }
+}
+
+export function getMinMaxOfXAxis(
+  isXAxisDateType: boolean,
+  points: ILineChartPoints[],
+): { xMin: number | Date; xMax: number | Date } {
+  let xMin: number | Date;
+  let xMax: number | Date;
+  if (isXAxisDateType) {
+    const xAxisData: Date[] = [];
+    let sDate = new Date();
+    // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
+    let lDate = new Date(-8640000000000000);
+    points.forEach((singleLineChartData: ILineChartPoints) => {
+      singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
+        xAxisData.push(point.x as Date);
+        if (point.x < sDate) {
+          sDate = point.x as Date;
+        }
+        if (point.x > lDate) {
+          lDate = point.x as Date;
+        }
+      });
+    });
+    xMin = sDate;
+    xMax = lDate;
+  } else {
+    xMin = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+    })!;
+
+    xMax = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
+        return item.x as number;
+      });
+    })!;
+  }
+
+  return {
+    xMin,
+    xMax,
+  };
+}
+
+export function getMinMaxOfYAxis(points: ILineChartPoints[]): { yMin: number; yMax: number } {
+  const yMax = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
+  })!;
+  const yMin = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
+  })!;
+
+  return {
+    yMin,
+    yMax,
+  };
+}
+
+export function getXAxisType(points: ILineChartPoints[]): boolean {
+  let isXAxisDateType: boolean = false;
+  if (points && points.length > 0) {
+    points.forEach((chartData: ILineChartPoints) => {
+      if (chartData.data.length > 0) {
+        isXAxisDateType = chartData.data[0].x instanceof Date;
+        return;
+      }
+    });
+  }
+  return isXAxisDateType;
 }

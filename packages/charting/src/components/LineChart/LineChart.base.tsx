@@ -3,10 +3,11 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps } from './LineChart.types';
+import { ILineChartProps } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, IMargins } from '../../utilities/index';
+import { ILineChartPoints, IMargins, IBasestate, IChildProps } from '../../types/index';
+import { calloutData, getMinMaxOfXAxis, getMinMaxOfYAxis, getXAxisType } from '../../utilities/index';
 import { ChartHelper } from '../CommonComponents/ChartHelper';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -85,15 +86,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { tickValues, tickFormat, eventAnnotationProps } = this.props;
     this._points = this.props.data.lineChartData || [];
 
-    let dataType = false;
-    if (this._points && this._points.length > 0) {
-      this._points.forEach((chartData: ILineChartPoints) => {
-        if (chartData.data.length > 0) {
-          dataType = chartData.data[0].x instanceof Date;
-          return;
-        }
-      });
-    }
+    const isXAxisDateType = getXAxisType(this._points);
+
     const legendBars = this._createLegends(this._points!);
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
@@ -109,15 +103,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickValues: tickValues,
       tickFormat: tickFormat,
     };
+
     return (
       <ChartHelper
         {...this.props}
-        points={this._points}
+        yMinMaxValues={getMinMaxOfYAxis(this._points)}
+        xMinMaxValues={getMinMaxOfXAxis(isXAxisDateType, this._points)}
         getGraphData={this._getLinesData}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isXAxisDateType={dataType}
+        isXAxisDateType={isXAxisDateType}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
