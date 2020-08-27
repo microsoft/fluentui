@@ -87,7 +87,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
-  /** Controls the calendar's selectedDate. */
+  /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
 }
 
