@@ -21,7 +21,7 @@ addParameters({
 
 initializeIcons();
 
-const req = require.context('../src/components', true, /\.Example\.tsx$/);
+const req = require.context('../src', true, /\.Example\.tsx$/);
 
 function loadStories() {
   const stories = new Map();

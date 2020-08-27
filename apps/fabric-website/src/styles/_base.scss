@@ -124,9 +124,4 @@
       width: 125px;
     }
   }
-
-  /* Hide the YouTube TOC link being shown incorrectly by the shared footer. */
-  a[href="https://www.youtube.com/t/terms"] {
-    display: none !important;
-  }
 }

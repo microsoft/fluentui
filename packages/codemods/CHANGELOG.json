@@ -2,6 +2,57 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/codemods_v0.9.4",
+      "version": "0.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add docs for codemod writing",
+            "author": "t-dama@microsoft.com",
+            "commit": "6d5f745892797a758f367efc63c51f6adc6ef340",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "@fluentui/codemods_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CodeMods: Improve logging and more result implementation",
+            "author": "joschect@microsoft.com",
+            "commit": "a3ca595598c82a1e828efeb31d3df0b4be332e58",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "add Maybe to prop utilities",
+            "author": "t-dama@microsoft.com",
+            "commit": "21b027b98d4e7d28fd505784f6e31076a5f7afab",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/codemods_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "bug fixes in renameProp",
+            "author": "t-dama@microsoft.com",
+            "commit": "e86f2f53ca9632c0b0ba31dda967649c1d0f585a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "@fluentui/codemods_v0.9.0",
       "version": "0.9.0",

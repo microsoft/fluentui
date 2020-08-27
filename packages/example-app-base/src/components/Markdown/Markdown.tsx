@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
+import MarkdownToJsx, { MarkdownProps as MarkdownToJsxProps } from 'markdown-to-jsx';
 import { DefaultButton, Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
 import { DisplayToggle } from '../DisplayToggle/index';
 import * as MDTable from '../MarkdownTable/index';
@@ -8,6 +8,7 @@ import { MarkdownHeader } from './MarkdownHeader';
 import { MarkdownParagraph } from './MarkdownParagraph';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
 import { MarkdownLink } from './MarkdownLink';
+import { MarkdownPre } from './MarkdownPre';
 
 const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
   const imageStyles: Partial<IImageStyles> = {
@@ -25,18 +26,18 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props =>
 
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
-const MarkdownBase: React.FunctionComponent<IMarkdownProps> & { displayName?: string } = props => {
+const MarkdownBase: React.FunctionComponent<IMarkdownProps> = props => {
   const { styles, theme, children } = props;
   const classNames = getClassNames(styles, { theme: theme! });
   return (
     <div className={classNames.root}>
-      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles)}>{children}</MarkdownToJsx>
+      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles, props)}>{children}</MarkdownToJsx>
     </div>
   );
 };
 MarkdownBase.displayName = 'Markdown';
 
-function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): MarkdownProps {
+function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles, props: IMarkdownProps): MarkdownToJsxProps {
   return {
     options: {
       overrides: {
@@ -71,6 +72,10 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
         p: {
           component: MarkdownParagraph,
           props: { styles: subComponentStyles.paragraph },
+        },
+        pre: {
+          component: MarkdownPre,
+          props: { enableRenderHtmlBlock: props.enableRenderHtmlBlock },
         },
         a: {
           component: MarkdownLink,
@@ -111,6 +116,7 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
         DisplayToggle: {
           component: DisplayToggle,
         },
+        ...props.overrides,
       },
     },
   };

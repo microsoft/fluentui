@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';

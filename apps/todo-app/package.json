@@ -12,7 +12,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
@@ -20,11 +20,11 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.21",
+    "@uifabric/set-version": "^7.0.22",
     "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.129.0",
+    "office-ui-fabric-react": "^7.132.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

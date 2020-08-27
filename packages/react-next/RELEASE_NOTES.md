@@ -38,6 +38,9 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
+  - Removed deprecated styles prop `linkIsSelected?: boolean;`.
+  - Removed styles prop `rootIsLarge` and added `linkSize` instead.
+  - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
   - TODO: enumerate all removed props
 
 ### Slider
@@ -48,6 +51,11 @@ TODO: document any API or functionality changes
 
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
+
+### TeachingBubble
+
+- Removed unused defaultProps from TeachingBubbleContent.
+- Removed rootElementRef from public api.
 
 ### Others
 

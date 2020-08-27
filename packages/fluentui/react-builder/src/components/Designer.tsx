@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -21,6 +22,7 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
+  getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -328,7 +330,10 @@ export const Designer: React.FunctionComponent = () => {
   const handleDragStart = React.useCallback(
     (info, e) => {
       dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-      dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName, info.moduleName) });
+      dispatch({
+        type: 'DRAG_START',
+        component: resolveDraggingElement(info.displayName, info.moduleName),
+      });
     },
     [dispatch],
   );
@@ -438,7 +443,8 @@ export const Designer: React.FunctionComponent = () => {
 
   const switchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
-    // FIXME: remove tree_lz from current URL
+    const url = window.location.href.split('#')[0];
+    window.history.pushState('', document.title, url);
   }, [dispatch]);
 
   const hotkeys = {
@@ -481,6 +487,8 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement?.uuid &&
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
+
+  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
 
   return (
     <div
@@ -595,6 +603,33 @@ export const Designer: React.FunctionComponent = () => {
                     </>
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <CodeSandboxExporter
+                    exampleCode={codeSandboxData.code}
+                    exampleLanguage="js"
+                    exampleName="uibuilder"
+                    imports={codeSandboxData.imports}
+                  >
+                    {(state, onCodeSandboxClick) => {
+                      const codeSandboxContent =
+                        state === CodeSandboxState.Default
+                          ? 'CodeSandbox'
+                          : state === CodeSandboxState.Loading
+                          ? 'Exporting...'
+                          : 'Click to open';
+
+                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
+
+                      return (
+                        <Button
+                          loading={state === CodeSandboxState.Loading}
+                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
+                          onClick={onCodeSandboxClick}
+                          icon={codeSandboxIcon}
+                          content={codeSandboxContent}
+                        />
+                      );
+                    }}
+                  </CodeSandboxExporter>
                 </div>,
               ]}
               style={{

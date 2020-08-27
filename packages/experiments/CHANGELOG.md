@@ -1,8 +1,30 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.29.1..@uifabric/experiments_v7.30.0)
+
+### Minor changes
+
+- update SelectedItemsList and UnifiedPicker to use Clipboard API for copy ([PR #14724](https://github.com/microsoft/fluentui/pull/14724) by elvonspa@microsoft.com)
+
+### Patches
+
+- Fixing drag drop infinite loop ([PR #14637](https://github.com/microsoft/fluentui/pull/14637) by nebhatna@microsoft.com)
+
+## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.3..@uifabric/experiments_v7.29.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
 

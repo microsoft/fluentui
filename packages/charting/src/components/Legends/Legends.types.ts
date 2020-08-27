@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
@@ -154,7 +155,7 @@ export interface ILegendsProps {
 
   /**
    * prop that decides if legends are focusable
-   * @default false
+   * @default true
    */
   allowFocusOnLegends?: boolean;
 }

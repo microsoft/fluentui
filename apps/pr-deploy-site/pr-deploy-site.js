@@ -27,10 +27,28 @@ const siteInfo = [
     title: 'Button',
   },
   {
+    package: '@fluentui/react-checkbox',
+    link: './react-checkbox/dist-storybook/index.html',
+    icon: 'CheckboxComposite',
+    title: 'Checkbox',
+  },
+  {
+    package: '@fluentui/react-image',
+    link: './react-image/dist-storybook/index.html',
+    icon: 'FileImage',
+    title: 'Image',
+  },
+  {
     package: '@fluentui/react-tabs',
     link: './react-tabs/dist-storybook/index.html',
     icon: 'BrowserTab',
     title: 'Tabs',
+  },
+  {
+    package: '@fluentui/react-slider',
+    link: './react-slider/dist-storybook/index.html',
+    icon: 'Slider',
+    title: 'Slider',
   },
   {
     package: '@fluentui/react-next',

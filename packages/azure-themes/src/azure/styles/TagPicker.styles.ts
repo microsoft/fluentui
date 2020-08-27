@@ -1,5 +1,4 @@
 import { IBasePickerStyles, IBasePickerStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -12,7 +11,7 @@ export const TagPickerStyles = (props: IBasePickerStyleProps): Partial<IBasePick
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       border: `${StyleConstants.borderWidth} solid ${StyleConstants.transparent}`,
       backgroundColor: StyleConstants.transparent,
       selectors: {

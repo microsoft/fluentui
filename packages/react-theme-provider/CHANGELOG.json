@@ -2,6 +2,69 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Theme and PartialTheme typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "e5f362d4c0dca7d9a7648d76b121d1d39331c59c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move mergeThemes and Theme related typings to new theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Adding `makeStyles` helper to register styles as a function of the theme.",
+            "author": "dzearing@hotmail.com",
+            "commit": "46f1add2165e357c71291281a65ebc0fcb095994",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updated typings for makeStyles so that it can more correctly resolve style inputs.",
+            "author": "dzearing@hotmail.com",
+            "commit": "af039939f1de57e9db36cee2a4943f583956301f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix default button tokens",
+            "author": "xgao@microsoft.com",
+            "commit": "9bf73ea3bd03c9f695b899651fb327d90db3d0bc",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "@fluentui/react-theme-provider_v0.8.0",
       "version": "0.8.0",

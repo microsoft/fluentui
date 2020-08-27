@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.9.1)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.9.0..@fluentui/react-theme-provider_v0.9.1)
+
+### Patches
+
+- Fix Theme and PartialTheme typing. ([PR #14741](https://github.com/microsoft/fluentui/pull/14741) by xgao@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.9.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.8.1..@fluentui/react-theme-provider_v0.9.0)
+
+### Minor changes
+
+- Move mergeThemes and Theme related typings to new theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
+- Adding `makeStyles` helper to register styles as a function of the theme. ([PR #14641](https://github.com/microsoft/fluentui/pull/14641) by dzearing@hotmail.com)
+- Updated typings for makeStyles so that it can more correctly resolve style inputs. ([PR #14727](https://github.com/microsoft/fluentui/pull/14727) by dzearing@hotmail.com)
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.8.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.8.0..@fluentui/react-theme-provider_v0.8.1)
+
+### Patches
+
+- Fix default button tokens ([PR #14612](https://github.com/microsoft/fluentui/pull/14612) by xgao@microsoft.com)
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.8.0)
 

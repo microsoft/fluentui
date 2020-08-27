@@ -2,6 +2,79 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "office-ui-fabric-react_v7.132.0",
+      "version": "7.132.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: Making High Contrast styling adhere to system settings.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "86d4db5cd2c9cc05add3ea6966461f8b526a576b",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "adding aria label on button to clarify what it does",
+            "author": "lorejoh12@gmail.com",
+            "commit": "f1854a37e1f6850e37a455a7b09434d757899b1b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "TextField: Removing recursive reference in ITextFieldStyles.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "3d6b4b8d2eb889bb9f80f571f05a72d252548159",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "office-ui-fabric-react_v7.131.0",
+      "version": "7.131.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedList: Fixing errors in the examples that are triggered when the tsconfig strictFunctionTypes rule is turned on.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0186369a141f44c8ce54a45cf7770d84cc64d33c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Renaming Grid utility to ButtonGrid.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Checkbox: removed `selectors` wrappers in the styles, as they're no longer required.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5b987c2dacab9ebddda7c3966e03521e974fbd63",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "office-ui-fabric-react_v7.130.0",
+      "version": "7.130.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Custom Layout for Contextual Menu",
+            "author": "michael.mao99@gmail.com",
+            "commit": "133cb47d985143631d1c62807f2295a8c04beccf",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Aug 2020 12:44:33 GMT",
       "tag": "office-ui-fabric-react_v7.129.0",
       "version": "7.129.0",

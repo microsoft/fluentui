@@ -1,5 +1,4 @@
 import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
@@ -10,7 +9,7 @@ export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   return {
     root: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         color: extendedSemanticColors.labelText,
       },
       disabled && {

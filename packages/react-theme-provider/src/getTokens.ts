@@ -1,4 +1,4 @@
-import { Tokens, Theme } from './types';
+import { Tokens, Theme } from '@fluentui/theme';
 import { defaultTokens } from './createDefaultTheme';
 import { merge } from '@uifabric/utilities';
 
@@ -13,7 +13,6 @@ export function getTokens(theme: Theme): Tokens {
     rtl,
     isInverted,
     disableGlobalClassNames,
-    defaultFontStyle,
     tokens,
     stylesheets,
     ...passThroughTokens
@@ -30,6 +29,7 @@ export function getTokens(theme: Theme): Tokens {
         borderColor: semanticColors?.primaryButtonBorder,
         contentColor: semanticColors?.primaryButtonText,
         iconColor: palette?.white,
+        dividerColor: palette?.white,
 
         hovered: {
           background: semanticColors?.primaryButtonBackgroundHovered,
@@ -44,6 +44,7 @@ export function getTokens(theme: Theme): Tokens {
         disabled: {
           background: semanticColors?.primaryButtonBackgroundDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
+          dividerColor: palette?.neutralTertiaryAlt,
         },
 
         checked: {
@@ -73,6 +74,7 @@ export function getTokens(theme: Theme): Tokens {
         background: semanticColors?.buttonBackground,
         borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonText,
+        dividerColor: palette?.neutralTertiaryAlt,
 
         hovered: {
           background: semanticColors?.buttonBackgroundHovered,
@@ -106,5 +108,5 @@ export function getTokens(theme: Theme): Tokens {
     tokens,
   );
 
-  return { ...(passThroughTokens as Tokens), ...preparedTokens };
+  return { ...((passThroughTokens as unknown) as Tokens), ...preparedTokens };
 }
