@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature",
+  "packageName": "@uifabric/experiments",
+  "email": "v-gorraj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-27T13:01:06.584Z"
+}
