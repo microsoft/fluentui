@@ -48,7 +48,7 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 #### Public usage
 
-```tsx
+```jsx
 <Breadcrumb divider="->" items={[
   {
     content: '',
@@ -65,7 +65,7 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 #### Internal representation
 
-```typescript
+```jsx
 const Breadcrumb = () => (
   <nav class="breadcrumb-ui" aria-label="...">
     <ol>
