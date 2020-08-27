@@ -1,6 +1,7 @@
 import { IStyle } from '@uifabric/merge-styles';
-import { ITheme } from '@fluentui/theme';
+import { ITheme, Theme } from '@fluentui/theme';
 import { makeStyles } from './makeStyles';
+import { StyleRenderer } from './styleRenderers/types';
 
 /**
  * The `makeClasses` helper encapsulates `makeStyles`, and given a style map which follows
@@ -38,8 +39,8 @@ export const makeClasses = <TStyleSet extends { [key: string]: IStyle }>(
   const useStyles = makeStyles(styleOrFunction);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (state: any) => {
-    const classes = useStyles();
+  return (state: any, theme?: Theme, renderer?: StyleRenderer) => {
+    const classes = useStyles(theme, renderer);
     const classNames = Object.keys(classes);
 
     for (const className of classNames) {

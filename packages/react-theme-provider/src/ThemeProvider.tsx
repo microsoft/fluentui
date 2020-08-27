@@ -1,62 +1,29 @@
 import * as React from 'react';
-import cx from 'classnames';
-import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { useStylesheet } from '@fluentui/react-stylesheets';
-import { mergeThemes, Theme } from '@fluentui/theme';
-import { tokensToStyleObject } from './tokensToStyleObject';
-import { ThemeContext } from './ThemeContext';
 import { ThemeProviderProps } from './ThemeProvider.types';
-import { useTheme } from './useTheme';
-import * as classes from './ThemeProvider.scss';
-import { getTokens } from './getTokens';
-
-function createCustomizerContext(theme: Theme): ICustomizerContext {
-  return {
-    customizations: {
-      inCustomizerContext: true,
-      settings: { theme },
-      scopedSettings: theme.components || {},
-    },
-  };
-}
+import { useThemeProviderClasses } from './ThemeProvider.styles';
+import { useThemeProvider } from './useThemeProvider';
+import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
+import { useThemeVariables } from './useThemeVariables';
 
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
  */
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
-  (
-    { theme, style, className, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
-    ref: React.Ref<HTMLDivElement>,
-  ) => {
-    // Pull contextual theme.
-    const parentTheme = useTheme();
+  (props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {
+    const { render, state } = useThemeProvider(props, ref, {
+      // The renderer default value is required to be defined, so if you're recomposing
+      // this component, be sure to do so.
+      renderer: mergeStylesRenderer,
+    });
 
-    // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<Theme>(() => {
-      const mergedTheme = mergeThemes<Theme>(parentTheme, theme);
-      mergedTheme.tokens = getTokens(mergedTheme);
-      return mergedTheme;
-    }, [parentTheme, theme]);
+    // Render styles.
+    useThemeProviderClasses(state, state.theme, state.renderer);
 
-    // Generate the inline style object only when merged theme mutates.
-    const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => tokensToStyleObject(fullTheme.tokens, undefined, { ...style }),
-      [fullTheme, style],
-    );
+    // Render tokens as css variables.
+    useThemeVariables(state);
 
-    const rootClass = cx(className, classes.root) || undefined;
-
-    // Register stylesheets as needed.
-    useStylesheet(fullTheme.stylesheets);
-
-    // Provide the theme in case it's required through context.
-    return (
-      <ThemeContext.Provider value={fullTheme}>
-        <CustomizerContext.Provider value={createCustomizerContext(fullTheme)}>
-          <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
-        </CustomizerContext.Provider>
-      </ThemeContext.Provider>
-    );
+    // Render component.
+    return render(state);
   },
 );
 

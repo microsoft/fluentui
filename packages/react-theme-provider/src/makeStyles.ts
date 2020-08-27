@@ -1,7 +1,10 @@
-import { mergeStyleSets, Stylesheet, IStyle } from '@uifabric/merge-styles';
-import { ITheme } from '@fluentui/theme';
-import { useCustomizationSettings } from '@uifabric/utilities';
+// :( todo: this needs to be ... removed or abstracted.
+import { Stylesheet, IStyle } from '@uifabric/merge-styles';
+import { Theme } from '@fluentui/theme';
 import { useWindow } from '@fluentui/react-window-provider';
+import { useTheme } from './useTheme';
+import { useStyleRenderer } from './styleRenderers/useStyleRenderer';
+import { StyleRenderer } from './styleRenderers/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
@@ -35,9 +38,9 @@ const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
   graphNode.set(path[path.length - 1], value);
 };
 
-let _seed = 0;
-
+// TODO: this needs to be removed or abstracted.
 // If the stylesheet reset call is made, invalidate the cache keys.
+let _seed = 0;
 Stylesheet.getInstance().onReset(() => _seed++);
 
 /**
@@ -47,20 +50,26 @@ Stylesheet.getInstance().onReset(() => _seed++);
  * and returns a css javascript object.
  */
 export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
-  styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
-): () => { [key in keyof TStyleSet]: string } {
+  styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
+): (theme?: Theme, renderer?: StyleRenderer) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.
   const graph = new Map();
 
-  return () => {
+  return (theme?: Theme, renderer?: StyleRenderer) => {
     const win = useWindow();
-    const theme = useCustomizationSettings(['theme']).theme;
+
+    // Expected: theme is either always provided or never.
+    theme = theme || useTheme();
+    renderer = renderer || useStyleRenderer();
+
     const path = theme ? [_seed, win, theme] : [_seed, win];
     let value = graphGet(graph, path);
 
     if (!value) {
       const styles = typeof styleOrFunction !== 'function' ? styleOrFunction : styleOrFunction(theme);
-      value = mergeStyleSets(styles);
+
+      value = renderer.renderStyles(styles, { targetWindow: win!, rtl: !!theme.rtl });
+      // value = mergeStyleSets(styles);
       graphSet(graph, path, value);
     }
 

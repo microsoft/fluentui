@@ -24,12 +24,12 @@ export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fl
 // @public
 export const makeClasses: <TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any) => void;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any, theme?: Theme | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme) => {
     [key in keyof TStyleSet]: string;
 };
 
@@ -59,8 +59,16 @@ export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps &
 
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+    // Warning: (ae-forgotten-export) The symbol "StyleRenderer" needs to be exported by the entry point index.d.ts
+    renderer?: StyleRenderer;
+    targetWindow?: Window | null;
     theme?: PartialTheme | Theme;
 }
+
+// @public
+export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
+    theme: Theme;
+};
 
 // @public (undocumented)
 export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
@@ -73,6 +81,18 @@ export const useInlineTokens: (draftState: {
 
 // @public
 export const useTheme: () => Theme;
+
+// @public
+export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLElement>, defaultProps: ThemeProviderProps) => {
+    state: ThemeProviderState;
+    render: (state: ThemeProviderState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useThemeProviderClasses: (state: any, theme?: import("@fluentui/theme").Theme | undefined) => void;
+
+// @public (undocumented)
+export const useThemeProviderState: (draftState: ThemeProviderState) => void;
 
 
 // (No @packageDocumentation comment for this package)
