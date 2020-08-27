@@ -55,7 +55,7 @@ describe('felaDisableAnimationsPlugin', () => {
     ).toMatchObject({ margin: '0px 10px' });
   });
 
-  test('keeps fallback values', () => {
+  test('keeps unrelated fallback values', () => {
     expect(
       felaDisableAnimationsPlugin(stylesWithFallbackValues, 'RULE', undefined, {
         disableAnimations: true,
