@@ -355,6 +355,60 @@ export function getTokens(theme: Theme): Tokens {
           width: '100%',
         },
       },
+
+      // TODO: This will be moved out as a text variant.
+      text: {
+        variant: {
+          caption: {
+            fontSize: '12px',
+            fontWeight: '400',
+            lineHeight: '14px',
+          },
+          body: {
+            fontSize: '14px',
+            fontWeight: '400',
+            lineHeight: '20px',
+          },
+
+          subHeadline: {
+            fontSize: '16px',
+            fontWeight: '600',
+            lineHeight: '22px',
+          },
+          headline: {
+            fontSize: '20px',
+            fontWeight: '600',
+            lineHeight: '28px',
+          },
+
+          title3: {
+            fontSize: '24px',
+            fontWeight: '600',
+            lineHeight: '32px',
+          },
+          title2: {
+            fontSize: '28px',
+            fontWeight: '600',
+            lineHeight: '36px',
+          },
+          title1: {
+            fontSize: '32px',
+            fontWeight: '600',
+            lineHeight: '40px',
+          },
+
+          largeTitle: {
+            fontSize: '40px',
+            fontWeight: '600',
+            lineHeight: '52px',
+          },
+          display: {
+            fontSize: '68px',
+            fontWeight: '600',
+            lineHeight: '92px',
+          },
+        },
+      },
     },
     tokens,
   );
