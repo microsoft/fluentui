@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Customizer, Link, ILinkStyleProps, ThemeProvider } from '@fluentui/react-next';
+import { Customizer, Link, ILinkStyleProps } from '@fluentui/react-next';
 
 const customStyles = { root: { background: 'lightblue' } };
 const themedStyles = (props: ILinkStyleProps) => ({
@@ -16,28 +16,26 @@ const scopedSettings = { Link: { styles: customStyles } };
 storiesOf('Link Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener
-        steps={new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .executeScript(
-            "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-          )
-          .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
-          .snapshot('focus', { cropTo: '.testWrapper' })
-          .executeScript(
-            "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-          )
-          .hover('.ms-Link')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('.ms-Link')
-          .hover('.ms-Link')
-          .snapshot('click', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('.ms-Link')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Link')
+        .hover('.ms-Link')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory(
     'Root',
