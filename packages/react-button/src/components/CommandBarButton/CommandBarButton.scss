@@ -1,0 +1,48 @@
+@import '~@fluentui/common-styles/dist/sass/themeCssVariables';
+@import '~@fluentui/common-styles/dist/sass/highContrast';
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
+
+.root {
+  --button-background: var(--palette-white);
+  --button-contentColor: var(--palette-neutralPrimary);
+  --button-borderWidth: 0;
+  --button-borderRadius: 0;
+
+  @include fonts-medium;
+
+  @include focus-border($padding: 3, $color: transparent);
+
+  @include high-contrast {
+    @include focus-border($padding: 4, $thickness: 0, $color: transparent);
+    $border: none;
+  }
+
+  &._pressed {
+    --button-background: var(--palette-neutralLight);
+    --button-contentColor: var(--palette-neutralDark);
+  }
+
+  &._expanded {
+    --button-background: var(--palette-neutralLight);
+    --button-contentColor: var(--palette-neutralDark);
+  }
+
+  &._disabled {
+    --button-background: var(--palette-white);
+
+    @include high-contrast {
+      --button-background: Window;
+      --button-contentColor: GrayText;
+    }
+  }
+}
+
+.root:hover {
+  --button-background: var(--palette-neutralLighter);
+  --button-contentColor: var(--palette-neutralDark);
+
+  @include high-contrast {
+    --button-contentColor: Highlight;
+  }
+  @include high-contrast-edge-chromium-no-adjust;
+}
