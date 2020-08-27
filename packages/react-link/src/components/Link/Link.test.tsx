@@ -2,8 +2,8 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { create } from '@uifabric/utilities/lib/test';
-import { Customizer } from '../../Utilities';
-import { createTheme } from '../../Styling';
+import { Customizer } from '@uifabric/utilities';
+import { createTheme } from '@uifabric/styling';
 
 import { Link } from './Link';
 
