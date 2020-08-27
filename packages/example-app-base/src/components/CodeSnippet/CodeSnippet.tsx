@@ -38,7 +38,7 @@ style['hljs-comment'] = style['hljs-quote'] = {
 };
 
 style['hljs-built_in'] = style['builtin-name'] = {
-  color: FluentTheme.palette.themeDarker,
+  color: FluentTheme?.palette.themeDarker,
 };
 
 style['hljs-link'] = style['hljs-regexp'] = {
