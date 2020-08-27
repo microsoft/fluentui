@@ -92,7 +92,7 @@ type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
-  | { type: 'ADD_COMPONENT'; component: string };
+  | { type: 'ADD_COMPONENT'; component: string; module: string };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -258,7 +258,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'ADD_COMPONENT': {
-      const element = resolveDraggingElement(action.component);
+      const element = resolveDraggingElement(action.component, action.module);
 
       let parent: JSONTreeElement = undefined;
       let index = 0;
@@ -547,8 +547,8 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const handleAddComponent = React.useCallback(
-    (component: string) => {
-      dispatch({ type: 'ADD_COMPONENT', component });
+    (component: string, module: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component, module });
     },
     [dispatch],
   );
