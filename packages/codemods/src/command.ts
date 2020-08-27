@@ -4,6 +4,7 @@ import { CodeMod, ModRunnerConfigType, NoOp } from './codeMods/types';
 import { getModFilter, getModExcludeFilter } from './modRunner/modFilter';
 import { Glob } from 'glob';
 import { Result, Err, Ok } from './helpers/result';
+import { getEnabledMods, getModsPaths } from './modRunner/runnerUtilities';
 
 export interface CommandParserResult<T = CodeMod> {
   shouldExit?: boolean;
@@ -28,7 +29,7 @@ export const yargsParse = (passedArgs: string[]) => {
       alias: 'r',
       type: 'string',
       array: true,
-      description: 'A list of strings of mod names to exclude',
+      description: 'a list of strings of mod names to exclude',
     })
     .option('excludeMods', {
       alias: 'e',
@@ -44,6 +45,12 @@ export const yargsParse = (passedArgs: string[]) => {
       default: false,
       description: 'switches modrunner to get args from the config file modConfig.json. False by default.',
     })
+    .option('list', {
+      alias: 'l',
+      type: 'boolean',
+      default: false,
+      description: 'lists the existing codemods, as well as their enabled status.',
+    })
     .parse(passedArgs);
 };
 /* Class responsible for parsing the npx command that runs codemods on a repo.
@@ -52,6 +59,14 @@ export class CommandParser {
   public parseArgs(passedIn: string[]): CommandParserResult {
     const parsed = yargsParse(passedIn);
     if (parsed.help) {
+      return { shouldExit: true, modsFilter: () => true };
+    }
+    if (parsed.list) {
+      const mods = getEnabledMods(console, getModsPaths);
+      console.log('Here are the enabled code mod names:\n');
+      mods.forEach(mod => {
+        console.log(mod.name);
+      });
       return { shouldExit: true, modsFilter: () => true };
     }
     let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
