@@ -3,7 +3,7 @@ import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { ContextualMenu, useFocusRects } from 'office-ui-fabric-react';
-import { useButtonClasses } from '../Button/Button';
+import { useButtonClasses } from '../Button/index';
 import { useMenuButtonClasses } from '../MenuButton/MenuButton';
 import { SplitButtonProps } from './SplitButton.types';
 import * as classes from './SplitButton.scss';

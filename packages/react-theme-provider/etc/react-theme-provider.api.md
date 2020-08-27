@@ -22,6 +22,11 @@ export const FluentTheme: Theme;
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 // @public
+export const makeClasses: <TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any) => void;
+
+// @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {

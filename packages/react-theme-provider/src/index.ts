@@ -10,3 +10,4 @@ export * from './useInlineTokens';
 export { createDefaultTheme } from './createDefaultTheme';
 export * from './themes';
 export * from './makeStyles';
+export * from './makeClasses';
