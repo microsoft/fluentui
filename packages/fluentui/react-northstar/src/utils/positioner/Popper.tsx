@@ -10,6 +10,29 @@ import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
+// https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
+const isAutofocusAllowed = (node: Node, reactInstanceKey: string): boolean => {
+  return (
+    (node.nodeName === 'BUTTON' ||
+      node.nodeName === 'INPUT' ||
+      node.nodeName === 'SELECT' ||
+      node.nodeName === 'TEXTAREA') &&
+    node[reactInstanceKey].pendingProps.autoFocus
+  );
+};
+
+const getReactInstanceKey = (elm: HTMLElement): string => {
+  if (!elm) return null;
+
+  for (const k in elm) {
+    if (k.startsWith('__reactInternalInstance$')) {
+      return k;
+    }
+  }
+
+  return null;
+};
+
 /**
  * Memoize a result using deep equality. This hook has two advantages over
  * React.useMemo: it uses deep equality to compare memo keys, and it guarantees
@@ -104,6 +127,10 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
       return;
     }
 
+    // We are setting the position to `fixed` in the first calculation
+    // To prevent scroll jumps in case of the content with managed focus
+    // setInitPositionToFix sets the position to `fixed` before applyStyles modifier
+    // unsetInitPositionToFix restores the original position after applyStyles modifier
     const setInitPositionToFix = ({ state }: { state: Partial<PopperJs.State> }) => {
       originalStateRef.current = state.options.strategy;
       state.options.strategy = 'fixed';
@@ -116,7 +143,6 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     };
 
     const handleUpdate = ({ state }: { state: Partial<PopperJs.State> }) => {
-      // console.log('Popper  handleUpdate', window.getComputedStyle(contentRef.current).position);
       // PopperJS performs computations that might update the computed placement: auto positioning, flipping the
       // placement in case the popper box should be rendered at the edge of the viewport and does not fit
       if (state.placement !== latestPlacement.current) {
@@ -251,10 +277,28 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   );
 
   useIsomorphicLayoutEffect(() => {
-    // console.log('Popper  useIsomorphicLayoutEffect', window.getComputedStyle(contentRef.current).position);
     createInstance();
     return destroyInstance;
   }, [createInstance]);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (contentRef.current) {
+        const contentNode = contentRef.current;
+        const reactInstanceKey = getReactInstanceKey(contentNode);
+        const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
+          acceptNode: node =>
+            isAutofocusAllowed(node, reactInstanceKey) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
+        });
+
+        while (treeWalker.nextNode()) {
+          const node = treeWalker.currentNode;
+          throw new Error([node, 'Node with autoFocus', 'in Popper would cause window', 'scroll to jump'].join(' '));
+        }
+      }
+    }, []);
+  }
 
   useUpdateIsomorphicLayoutEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
 

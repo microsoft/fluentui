@@ -224,11 +224,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(gridNavigatedDate), maxDate) >= 0 : false;
 
   React.useEffect(() => {
-    // console.log(
-    //   'DatepickerCalender focus',
-    //   window.getComputedStyle(document.querySelector('.ui-popup__content')).position,
-    // );
-
     focusDateRef.current?.focus();
   }, [grid]);
 

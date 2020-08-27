@@ -8,7 +8,6 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     zIndex: v.zIndex,
-    position: 'fixed',
 
     ...(p.pointing && {
       pointerEvents: 'none',
