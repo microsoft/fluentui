@@ -60,6 +60,8 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
+  const ref = React.useRef();
+
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     item: IFloatingSuggestionItemProps<IPersonaProps>,
@@ -159,6 +161,12 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
+    let lastCharIndex = filterText.length - 1;
+    let lastChar = filterText[lastCharIndex];
+    if (lastChar == ';' || lastChar == ',') {
+      ref.current?.clearInput();
+    }
+
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
@@ -199,6 +207,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   return (
     <>
       <UnifiedPeoplePicker
+        ref={ref}
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         inputProps={inputProps}
