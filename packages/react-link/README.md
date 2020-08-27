@@ -8,4 +8,8 @@ To import React Link components:
 
 ```js
 import { Link } from '@fluentui/react-link';
+
+const App = () => {
+  return <Link href="https://www.bing.com">anchor</Link>;
+};
 ```

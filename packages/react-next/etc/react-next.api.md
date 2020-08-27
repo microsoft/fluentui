@@ -1057,89 +1057,6 @@ export interface ILine extends IShimmerElement {
 }
 
 // @public (undocumented)
-export interface ILink {
-    focus(): void;
-}
-
-// @public (undocumented)
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-    // (undocumented)
-    [index: string]: any;
-    // (undocumented)
-    as?: React.ElementType;
-    // (undocumented)
-    autoFocus?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    download?: any;
-    // (undocumented)
-    form?: string;
-    // (undocumented)
-    formAction?: string;
-    // (undocumented)
-    formEncType?: string;
-    // (undocumented)
-    formMethod?: string;
-    // (undocumented)
-    formNoValidate?: boolean;
-    // (undocumented)
-    formTarget?: string;
-    // (undocumented)
-    href?: string;
-    // (undocumented)
-    hrefLang?: string;
-    // (undocumented)
-    media?: string;
-    // (undocumented)
-    name?: string;
-    // (undocumented)
-    rel?: string;
-    // (undocumented)
-    target?: string;
-    // (undocumented)
-    type?: string;
-    // (undocumented)
-    value?: string | string[] | number;
-}
-
-// @public (undocumented)
-export interface ILinkOptions {
-}
-
-// @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
-    componentRef?: IRefObject<ILink>;
-    disabled?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
-    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILinkSlots {
-}
-
-// @public (undocumented)
-export interface ILinkStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    isButton?: boolean;
-    // (undocumented)
-    isDisabled?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ILinkStyles {
-    // (undocumented)
-    root: IStyle;
-}
-
-// @public (undocumented)
 export const Image: React.FunctionComponent<IImageProps>;
 
 // @public (undocumented)
@@ -2218,17 +2135,6 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const Link: React.FunctionComponent<ILinkProps>;
-
-// @public (undocumented)
-export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
-
-// @public (undocumented)
-export type LinkSlotProps = {
-    [key in keyof ILinkSlots]: ILinkProps[key];
-};
-
-// @public (undocumented)
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
     constructor(props: ITextFieldProps);
     // (undocumented)
@@ -2681,9 +2587,6 @@ export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div"
 // @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
 
-// @public
-export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
-
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
@@ -2709,6 +2612,7 @@ export * from "@fluentui/react-button/lib/MenuButton";
 export * from "@fluentui/react-button/lib/SplitButton";
 export * from "@fluentui/react-button/lib/ToggleButton";
 export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-link/lib/Link";
 export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@fluentui/react-theme-provider";
