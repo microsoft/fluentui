@@ -5,7 +5,7 @@ import { useToggleButton } from './useToggleButton';
 import { useFocusRects } from '@uifabric/utilities';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import * as toggleButtonClasses from './ToggleButton.scss';
-import { useButtonClasses } from '../Button/Button';
+import { useButtonClasses } from '../Button/index';
 
 export const useToggleButtonClasses = makeClasses(toggleButtonClasses);
 
