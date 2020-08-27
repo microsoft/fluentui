@@ -74,7 +74,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
                       marginLeft: '2px',
                     }}
                   >
-                    {info.displayName}
+                    {info.displayName.split('.')[1]}
                   </Box>
                 ),
               })),

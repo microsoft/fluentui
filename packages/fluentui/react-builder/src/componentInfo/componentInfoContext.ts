@@ -32,12 +32,15 @@ export const componentInfoContext: {
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
   next.moduleName = '@fluentui/react-northstar';
+  next.displayName = `Fluent.${next.displayName}`;
+  next.parentDisplayName = `Fluent.${next.parentDisplayName}`;
   acc[next.displayName] = next;
   return acc;
 }, {});
 
 fabricComponents.forEach(item => {
   item.moduleName = '@fluentui/react/lib/Button';
+  item.displayName = `Fabric.${item.displayName}`;
   componentInfoContext.byDisplayName[item.displayName] = item;
 });
 

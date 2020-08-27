@@ -15,44 +15,61 @@ type FiberNavigator = FUI.FiberNavigator;
 const projectPackageJson = require('@fluentui/react-northstar/package.json');
 const sandboxPackageJson = require('@fluentui/code-sandbox/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
+const fabricPackageJson = require('@fluentui/react/package.json');
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Surfaces: ['Fluent.Popup', 'Fluent.Dialog'],
   Content: [
-    'Text',
-    'Image',
-    'Avatar',
-    'Header',
-    'Divider',
-    'Embed',
-    'Alert',
-    'Attachment',
-    'Datepicker',
-    'Label',
-    'Loader',
-    'Reaction',
-    'Chat',
-    'SvgIcon',
-    'Status',
-    'Tooltip',
-    'Video',
+    'Fluent.Text',
+    'Fluent.Image',
+    'Fluent.Avatar',
+    'Fluent.Header',
+    'Fluent.Divider',
+    'Fluent.Embed',
+    'Fluent.Alert',
+    'Fluent.Attachment',
+    'Fluent.Datepicker',
+    'Fluent.Label',
+    'Fluent.Loader',
+    'Fluent.Reaction',
+    'Fluent.Chat',
+    'Fluent.SvgIcon',
+    'Fluent.Status',
+    'Fluent.Tooltip',
+    'Fluent.Video',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
-  Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
-  FabricActionable: ['FabricButton', 'FabricDefaultButton', 'FabricActionButton'],
+  Layouts: ['Fluent.Box', 'Fluent.Flex', 'Fluent.Grid', 'Fluent.Layout', 'Fluent.Table', 'Fluent.ItemLayout'],
+  Forms: [
+    'Fluent.Input',
+    'Fluent.Dropdown',
+    'Fluent.Form',
+    'Fluent.Checkbox',
+    'Fluent.RadioGroup',
+    'Fluent.Slider',
+    'Fluent.TextArea',
+  ],
+  Actionable: ['Fluent.Button', 'Fluent.MenuButton', 'Fluent.SplitButton', 'Fluent.Menu', 'Fluent.Toolbar'],
+  Containers: [
+    'Fluent.Card',
+    'Fluent.Carousel',
+    'Fluent.Accordion',
+    'Fluent.Segment',
+    'Fluent.List',
+    'Fluent.Tree',
+    'Fluent.HierarchicalTree',
+  ],
+  FabricActionable: ['Fabric.PrimaryButton', 'Fabric.DefaultButton', 'Fabric.ActionButton'],
 };
 
 export const DRAGGING_ELEMENTS = {
   // Fabric Elements
-  FabricButton: <FabricButtons.PrimaryButton>I am a fabric button.</FabricButtons.PrimaryButton>,
+  'Fabric.PrimaryButton': <FabricButtons.PrimaryButton>I am a fabric button.</FabricButtons.PrimaryButton>,
 
-  FabricDefaultButton: <FabricButtons.DefaultButton>I am a fabric default button.</FabricButtons.DefaultButton>,
+  'Fabric.DefaultButton': <FabricButtons.DefaultButton>I am a fabric default button.</FabricButtons.DefaultButton>,
 
-  FabricActionButton: <FabricButtons.ActionButton>I am a fabric action button.</FabricButtons.ActionButton>,
+  'Fabric.ActionButton': <FabricButtons.ActionButton>I am a fabric action button.</FabricButtons.ActionButton>,
 
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -61,7 +78,7 @@ export const DRAGGING_ELEMENTS = {
 
   // TODO: sort
 
-  ButtonGroup: (
+  'Fluent.ButtonGroup': (
     <FUI.ButtonGroup
       buttons={[
         {
@@ -94,19 +111,19 @@ export const DRAGGING_ELEMENTS = {
   // CardTopControls: <FUI.CardTopControls />,
 
   // FLUENT v0 COMPONENTS
-  Accordion: {
+  'Fluent.Accordion': {
     props: {
       panels: [{ title: 'Accordion title', content: 'Accordion content' }],
     } as FUI.AccordionProps,
   },
 
-  Alert: {
+  'Fluent.Alert': {
     props: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
   },
 
   // Animation: { props: { name: 'fade' } as FUI.AnimationProps },
 
-  Attachment: {
+  'Fluent.Attachment': {
     props: {
       icon: <FUIIcons.WordIcon />,
       header: 'A file attachment',
@@ -114,7 +131,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.AttachmentProps,
   },
 
-  Avatar: {
+  'Fluent.Avatar': {
     props: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
   },
 
@@ -123,9 +140,9 @@ export const DRAGGING_ELEMENTS = {
   // },
 
   // this can be ReactElement directly 👍
-  Button: <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
+  'Fluent.Button': <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
 
-  Carousel: {
+  'Fluent.Carousel': {
     props: {
       getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
       items: [
@@ -143,7 +160,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.CarouselProps,
   },
 
-  Chat: {
+  'Fluent.Chat': {
     props: {
       items: [
         {
@@ -167,7 +184,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ChatProps,
   },
 
-  Checkbox: {
+  'Fluent.Checkbox': {
     props: { label: 'Checkbox' } as FUI.CheckboxProps,
   },
 
@@ -175,7 +192,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Design: { props: { config: {} } as FUI.DesignProps },
 
-  Dialog: {
+  'Fluent.Dialog': {
     props: {
       trigger: <FUI.Button>Open Dialog</FUI.Button>,
       header: 'Header',
@@ -188,11 +205,11 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.DialogProps,
   },
 
-  Divider: {
+  'Fluent.Divider': {
     props: { content: 'Divider' } as FUI.DividerProps,
   },
 
-  Dropdown: {
+  'Fluent.Dropdown': {
     props: {
       placeholder: 'Dropdown',
       items: ['Item 1', 'Item 2', 'Item 3'],
@@ -201,13 +218,13 @@ export const DRAGGING_ELEMENTS = {
 
   // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
-  Flex: {
+  'Fluent.Flex': {
     props: {} as FUI.FlexProps,
   },
 
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
-  Form: {
+  'Fluent.Form': {
     props: {
       fields: [
         {
@@ -241,27 +258,27 @@ export const DRAGGING_ELEMENTS = {
 
   // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
-  Header: {
+  'Fluent.Header': {
     props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
   },
 
   // Icon: { props: { name: 'like' } as FUI.IconProps },
 
-  Image: {
+  'Fluent.Image': {
     props: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
   },
 
-  Input: {
+  'Fluent.Input': {
     props: { placeholder: 'Type...' } as FUI.InputProps,
   },
 
   // ItemLayout: { props: { content: 'ItemLayout' } as FUI.ItemLayoutProps },
 
-  Label: {
+  'Fluent.Label': {
     props: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
   },
 
-  Layout: {
+  'Fluent.Layout': {
     props: {
       debug: true,
       start: 'Start content.',
@@ -270,7 +287,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.LayoutProps,
   },
 
-  List: {
+  'Fluent.List': {
     props: {
       items: [
         {
@@ -298,19 +315,19 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ListProps,
   },
 
-  Loader: {
+  'Fluent.Loader': {
     props: {
       label: 'Loading...',
     } as FUI.LoaderProps,
   },
 
-  Menu: {
+  'Fluent.Menu': {
     props: {
       items: ['Item 1', 'Item 2', 'Item 3'],
     } as FUI.MenuProps,
   },
 
-  MenuButton: {
+  'Fluent.MenuButton': {
     props: {
       trigger: <FUI.Button>MenuButton</FUI.Button>,
       menu: [
@@ -325,7 +342,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.MenuButtonProps,
   },
 
-  Popup: {
+  'Fluent.Popup': {
     props: {
       trigger: <FUI.Button>Show Popup</FUI.Button>,
       content: 'Hello from popup!',
@@ -336,7 +353,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Provider: { props: { content: 'Provider' } as FUI.ProviderProps},
 
-  RadioGroup: {
+  'Fluent.RadioGroup': {
     props: {
       items: [
         { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -346,31 +363,31 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.RadioGroupProps,
   },
 
-  Reaction: {
+  'Fluent.Reaction': {
     props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
-  Segment: {
+  'Fluent.Segment': {
     props: { content: 'Segment' } as FUI.SegmentProps,
   },
 
-  Slider: {
+  'Fluent.Slider': {
     props: {} as FUI.SliderProps,
   },
 
   // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
 
-  Status: {
+  'Fluent.Status': {
     props: { state: 'success' } as FUI.StatusProps,
   },
 
   // Table: { props: { content: 'Table' } as FUI.TableProps },
 
-  Text: {
+  'Fluent.Text': {
     props: { content: 'Text' } as FUI.TextProps,
   },
 
-  TextArea: {
+  'Fluent.TextArea': {
     props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
   },
 
@@ -378,7 +395,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
 
-  Tree: {
+  'Fluent.Tree': {
     props: {
       items: [
         {
@@ -434,7 +451,10 @@ const resolveImport = {
 
 export const resolveComponent = (displayName, moduleName): React.ElementType => {
   if (moduleName) {
-    return resolveImport[moduleName][displayName.replace('Customized', '')];
+    return (
+      resolveImport[moduleName][displayName.split('.')[1]?.replace('Customized', '')] ||
+      resolveImport[moduleName][displayName.replace('Customized', '')]
+    );
   }
   return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
@@ -472,10 +492,10 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   return {
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
-    type: displayName,
     moduleName: module,
     displayName,
     ...jsonTreeElement,
+    type: displayName,
   };
 };
 
@@ -559,6 +579,7 @@ export const renderJSONTreeToJSXElement = (
     ...modifiedTree.props,
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
+    'module-name': modifiedTree.moduleName,
   });
 };
 
@@ -566,6 +587,10 @@ const packageImportList: Record<string, CodeSandboxImport> = {
   '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,
     required: false,
+  },
+  '@fluentui/react': {
+    version: fabricPackageJson.version,
+    required: true,
   },
   '@fluentui/react-northstar': {
     version: projectPackageJson.version,
@@ -598,19 +623,19 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
   }
   if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
     if (imports.hasOwnProperty(tree.moduleName)) {
-      if (!imports[tree.moduleName].includes(tree.displayName)) {
-        imports[tree.moduleName].push(tree.displayName);
+      if (!imports[tree.moduleName].includes(tree.displayName.split('.')[1])) {
+        imports[tree.moduleName].push(tree.displayName.split('.')[1]);
       }
     } else {
-      imports[tree.moduleName] = [tree.displayName];
+      imports[tree.moduleName] = [tree.displayName.split('.')[1]];
     }
   }
-
-  tree.props?.children?.forEach(item => {
-    if (typeof item !== 'string') {
-      imports = JSONTreeToImports(item, imports);
-    }
-  });
+  Array.isArray(tree.props?.children) &&
+    tree.props?.children?.forEach(item => {
+      if (typeof item !== 'string') {
+        imports = JSONTreeToImports(item, imports);
+      }
+    });
   return imports;
 };
 
@@ -620,6 +645,10 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
+      required: true,
+    },
+    '@fluentui/react-northstar': {
+      version: projectPackageJson.version,
       required: true,
     },
     react: {
@@ -636,11 +665,16 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     },
   };
   for (const [module, components] of Object.entries(imports)) {
-    codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    packageImports[module] = packageImportList[module];
+    if (module === '@fluentui/react/lib/Button') {
+      codeSandboxExport += `import * as Fabric from "${module}";\n`;
+      packageImports['@fluentui/react'] = packageImportList['@fluentui/react'];
+    } else {
+      codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
+      packageImports[module] = packageImportList[module];
+    }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
-  ${code} \n);}`;
+  ${code.replaceAll('<Customized', '<Fabric.').replaceAll('</Customized', '</Fabric.')} \n);}`; //TODO: what if there is '<Customized' somewhere as a  text
 
   return { code: codeSandboxExport, imports: packageImports };
 };

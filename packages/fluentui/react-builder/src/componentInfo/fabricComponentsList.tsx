@@ -5,11 +5,11 @@ export const fabricComponents: ComponentInfo[] = [
     constructorName: 'FabricDefaultButton',
     componentClassName: 'FabricDefaultButton',
     implementsCreateShorthand: false,
-    displayName: 'FabricDefaultButton',
+    displayName: 'DefaultButton',
     filename: 'N/A',
     filenameWithoutExt: 'N/A',
     docblock: {
-      description: 'N/A',
+      description: 'V7 Default Button from @fluentui/react',
       tags: [
         {
           description: 'N/A',
@@ -64,11 +64,11 @@ export const fabricComponents: ComponentInfo[] = [
     constructorName: 'PrimaryButton',
     componentClassName: 'FabricButton',
     implementsCreateShorthand: false,
-    displayName: 'FabricButton',
+    displayName: 'PrimaryButton',
     filename: 'N/A',
     filenameWithoutExt: 'N/A',
     docblock: {
-      description: 'N/A',
+      description: 'V7 Primary Button from @fluentui/react',
       tags: [
         {
           description: 'N/A',
@@ -123,11 +123,11 @@ export const fabricComponents: ComponentInfo[] = [
     constructorName: 'FabricActionButton',
     componentClassName: 'FabricActionButton',
     implementsCreateShorthand: false,
-    displayName: 'FabricActionButton',
+    displayName: 'ActionButton',
     filename: 'N/A',
     filenameWithoutExt: 'N/A',
     docblock: {
-      description: 'N/A',
+      description: 'V7 Actiob Button from @fluentui/react',
       tags: [
         {
           description: 'N/A',
