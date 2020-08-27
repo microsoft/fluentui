@@ -6,6 +6,10 @@ const stylesWithAnimationShorthand: ICSSInJSStyle = {
   margin: '0px 10px',
 };
 
+const stylesWithFallbackValues: ICSSInJSStyle = {
+  display: ['grid', '-ms-grid'],
+};
+
 const stylesWithAnimationProps: ICSSInJSStyle = {
   animationName: 'k1',
   animationDuration: '1s',
@@ -49,5 +53,13 @@ describe('felaDisableAnimationsPlugin', () => {
         disableAnimations: true,
       }),
     ).toMatchObject({ margin: '0px 10px' });
+  });
+
+  test('keeps fallback values', () => {
+    expect(
+      felaDisableAnimationsPlugin(stylesWithFallbackValues, 'RULE', undefined, {
+        disableAnimations: true,
+      }),
+    ).toMatchObject({ display: ['grid', '-ms-grid'] });
   });
 });
