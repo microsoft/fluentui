@@ -59,7 +59,7 @@ export function getTokens(theme: Theme): Tokens {
         },
       },
 
-      // ghost is currently only mapped for primary button to use.
+      // ghost is currently only mapped for ghost button to use.
       ghost: {
         background: semanticColors?.bodyBackground,
         borderColor: 'transparent',
