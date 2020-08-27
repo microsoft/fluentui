@@ -49,7 +49,7 @@ export const yargsParse = (passedArgs: string[]) => {
       alias: 'l',
       type: 'boolean',
       default: false,
-      description: 'lists the existing codemods, as well as their enabled status.',
+      description: 'lists the provided enabled codemods.',
     })
     .parse(passedArgs);
 };
