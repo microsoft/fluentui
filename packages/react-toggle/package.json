@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/storybook": "^0.3.3",
+    "@fluentui/storybook": "^0.3.4",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -45,9 +45,9 @@
     "@uifabric/react-hooks": "^7.10.0",
     "@fluentui/react-compose": "^0.17.2",
     "@uifabric/set-version": "^7.0.22",
-    "@uifabric/styling": "^7.15.2",
+    "@uifabric/styling": "^7.15.3",
     "@uifabric/utilities": "^7.30.0",
-    "office-ui-fabric-react": "^7.131.0",
+    "office-ui-fabric-react": "^7.132.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
