@@ -98,7 +98,7 @@ export interface ILinkStyles {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
+export const LinkBase: React.ForwardRefExoticComponent<Pick<ILinkProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type LinkSlotProps = {
