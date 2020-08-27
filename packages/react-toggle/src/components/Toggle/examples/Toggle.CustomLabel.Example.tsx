@@ -41,6 +41,6 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
   );
 };
 
-function _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean | undefined) {
+function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }

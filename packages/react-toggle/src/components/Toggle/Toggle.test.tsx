@@ -64,7 +64,7 @@ describe('Toggle', () => {
 
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
-    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean | undefined) => {
+    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled?: boolean) => {
       isToggledValue = isToggled;
     };
 
