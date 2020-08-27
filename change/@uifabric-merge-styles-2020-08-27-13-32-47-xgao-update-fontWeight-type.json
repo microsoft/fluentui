@@ -3,6 +3,6 @@
   "comment": "Update IRawStyleBase tying to allow css variables (string) as acceptable values.",
   "packageName": "@uifabric/merge-styles",
   "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "minor",
   "date": "2020-08-27T20:32:47.535Z"
 }
