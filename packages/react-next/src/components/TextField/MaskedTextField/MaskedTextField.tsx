@@ -14,7 +14,7 @@ import {
   insertString,
   parseMask,
 } from './inputMask';
-import { useConst, usePrevious } from '@uifabric/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 
 export interface IMaskedTextFieldState {
   maskCharData: IMaskValue[];
@@ -149,8 +149,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   };
 
   const handleFocus = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      onFocus?.(event);
+    (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      onFocus?.(ev);
       internalState.isFocused = true;
 
       // Move the cursor position to the leftmost unfilled position
@@ -166,8 +166,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   );
 
   const handleBlur = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      onBlur?.(event);
+    (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      onBlur?.(ev);
       internalState.isFocused = false;
       internalState.moveCursorOnMouseUp = true;
     },
@@ -176,8 +176,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   );
 
   const handleMouseDown = React.useCallback(
-    (event: React.MouseEvent<HTMLInputElement>) => {
-      onMouseDown?.(event);
+    (ev: React.MouseEvent<HTMLInputElement>) => {
+      onMouseDown?.(ev);
       if (!internalState.isFocused) {
         internalState.moveCursorOnMouseUp = true;
       }
@@ -187,8 +187,8 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   );
 
   const handleMouseUp = React.useCallback(
-    (event: React.MouseEvent<HTMLInputElement>) => {
-      onMouseUp?.(event);
+    (ev: React.MouseEvent<HTMLInputElement>) => {
+      onMouseUp?.(ev);
       // Move the cursor on mouseUp after focusing the textField
       if (internalState.moveCursorOnMouseUp) {
         internalState.moveCursorOnMouseUp = false;
@@ -290,13 +290,12 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   );
 
   const handleKeyDown = React.useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>) => {
-      const { current } = textField;
-      onKeyDown?.(event);
+    (ev: React.KeyboardEvent<HTMLInputElement>) => {
+      onKeyDown?.(ev);
 
       internalState.changeSelectionData = null;
-      if (current && current.value) {
-        const { keyCode, ctrlKey, metaKey } = event;
+      if (textField.current && textField.current.value) {
+        const { keyCode, ctrlKey, metaKey } = ev;
 
         // Ignore ctrl and meta keydown
         if (ctrlKey || metaKey) {
@@ -305,13 +304,13 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
 
         // On backspace or delete, store the selection and the keyCode
         if (keyCode === KeyCodes.backspace || keyCode === KeyCodes.del) {
-          const selectionStart = (event.target as HTMLInputElement).selectionStart;
-          const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+          const selectionStart = (ev.target as HTMLInputElement).selectionStart;
+          const selectionEnd = (ev.target as HTMLInputElement).selectionEnd;
 
           // Check if backspace or delete press is valid.
           if (
             !(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0) &&
-            !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < current.value.length)
+            !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < textField.current.value.length)
           ) {
             return;
           }
@@ -329,11 +328,11 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
   );
 
   const handlePaste = React.useCallback(
-    (event: React.ClipboardEvent<HTMLInputElement>) => {
-      onPaste?.(event);
+    (ev: React.ClipboardEvent<HTMLInputElement>) => {
+      onPaste?.(ev);
 
-      const selectionStart = (event.target as HTMLInputElement).selectionStart;
-      const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+      const selectionStart = (ev.target as HTMLInputElement).selectionStart;
+      const selectionEnd = (ev.target as HTMLInputElement).selectionEnd;
       // Store the paste selection range
       internalState.changeSelectionData = {
         changeType: 'textPasted',
@@ -345,22 +344,20 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
     [onPaste],
   );
 
-  const previousProps = usePrevious(props);
+  React.useEffect(() => {
+    internalState.maskCharData = parseMask(mask, maskFormat);
+    value !== undefined && setValue(value);
+    setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only run when mask and value update.
+  }, [mask, value]);
 
   React.useEffect(() => {
-    if (mask !== previousProps?.mask || value !== previousProps?.value) {
-      internalState.maskCharData = parseMask(mask, maskFormat);
-      value !== undefined && setValue(value);
-      setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
-    }
     // Move the cursor to the start of the mask format on update
     if (internalState.isFocused && maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mask, maskChar, maskFormat, maskCursorPosition, value, setValue]);
-
-  value !== undefined && setValue(value);
+  }, [maskCursorPosition]);
 
   useComponentRef(componentRef, internalState.maskCharData, textField.current, setValue);
 
