@@ -86,7 +86,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       {
         borderColor: extendedSemanticColors.rowBorder,
         color: semanticColors.listText,
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
       },
       !isSelected && [
         {

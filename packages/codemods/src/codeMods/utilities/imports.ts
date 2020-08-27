@@ -1,13 +1,16 @@
 import { SourceFile, ImportDeclaration, ImportSpecifierStructure } from 'ts-morph';
-import { ModFunctionResult } from '../types';
-import { Ok, Err } from '../../helpers/result';
+import { ModFunctionResult, ModResult, NoOp } from '../types';
+import { Ok, Err, Result } from '../../helpers/result';
 
-export function renameImport(file: SourceFile, originalImport: string, renamedImport: string) {
+export function renameImport(file: SourceFile, originalImport: string, renamedImport: string): Result<ModResult, NoOp> {
   const imps = file.getImportDeclarations().filter(cond => {
     return cond.getNamedImports().some(val => {
       return val.getText() === originalImport;
     });
   });
+  if (imps.length === 0) {
+    return Err({ reason: 'No matching imports could be found.' });
+  }
   imps[0].getNamedImports().forEach(name => {
     if (name.getText() === originalImport) {
       name.renameAlias(renamedImport);
@@ -15,6 +18,7 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
     }
   });
   imps[0].addNamedImport(renamedImport);
+  return Ok({ logs: [`Renamed import ${originalImport} successfully.`] });
 }
 
 /**

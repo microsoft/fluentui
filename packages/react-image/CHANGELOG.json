@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-image_v0.4.2",
+      "version": "0.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat(react-image): improve accessibility, align with design spec",
+            "author": "olfedias@microsoft.com",
+            "commit": "e15ddb80624e29f8da90c5be67d974d47e5cfb51",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/react-image_v0.3.0",
       "version": "0.3.0",

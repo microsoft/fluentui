@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving messageBar into react-next for future function component conversion.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-25T22:00:45.145Z"
+}
