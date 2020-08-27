@@ -36,6 +36,7 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
+import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -95,6 +96,22 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
+const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
+  if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
+    return format(
+      localizationStrings.inputBoundedFormatString,
+      formatMonthDayYear(restrictedOptions.minDate),
+      formatMonthDayYear(restrictedOptions.maxDate),
+    );
+  } else if (!!restrictedOptions.minDate) {
+    return format(localizationStrings.inputMinBoundedFormatString, formatMonthDayYear(restrictedOptions.minDate));
+  } else if (!!restrictedOptions.maxDate) {
+    return format(localizationStrings.inputMaxBoundedFormatString, formatMonthDayYear(restrictedOptions.maxDate));
+  } else {
+    return localizationStrings.inputAriaLabel;
+  }
+};
+
 /**
  * A Datepicker is used to display dates.
  * This component is currently UNSTABLE!
@@ -142,6 +159,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     weekNumberFormatString: props.weekNumberFormatString,
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
+    calendarCellFormatString: props.calendarCellFormatString,
+    inputAriaLabel: props.inputAriaLabel,
+    inputBoundedFormatString: props.inputBoundedFormatString,
+    inputMinBoundedFormatString: props.inputMinBoundedFormatString,
+    inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
@@ -296,6 +318,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 readOnly: !allowManualInput,
                 required: props.required,
                 ref: inputRef,
+                'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
               }),
             overrideProps: overrideInputProps,
           })}
@@ -389,6 +412,11 @@ Datepicker.propTypes = {
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
   calendarCellFormatString: PropTypes.string,
+
+  inputAriaLabel: PropTypes.string,
+  inputBoundedFormatString: PropTypes.string,
+  inputMinBoundedFormatString: PropTypes.string,
+  inputMaxBoundedFormatString: PropTypes.string,
 };
 
 Datepicker.defaultProps = {
