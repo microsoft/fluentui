@@ -7,8 +7,8 @@ import { GroupedVerticalBarChartBasic2Example } from './examples/GroupedVertical
 import { GroupedVerticalBarChartStyledExample } from './examples/GroupedVerticalBarChart.Styled.Example';
 
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic.Example.tsx') as string;
-const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Styled.Example.tsx') as string;
+const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.132.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.132.0)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.131.0..office-ui-fabric-react_v7.132.0)
+
+### Minor changes
+
+- adding aria label on button to clarify what it does ([PR #14728](https://github.com/microsoft/fluentui/pull/14728) by lorejoh12@gmail.com)
+- TextField: Removing recursive reference in ITextFieldStyles. ([PR #14739](https://github.com/microsoft/fluentui/pull/14739) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Link: Making High Contrast styling adhere to system settings. ([PR #14709](https://github.com/microsoft/fluentui/pull/14709) by humbertomakotomorimoto@gmail.com)
 
 ## [7.131.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.131.0)
 

@@ -4231,7 +4231,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.13.tgz#ccebcdb990bd6139cd16e84c39dc2fb1023ca90c"
   integrity sha512-pMCcqU2zT4TjqYFrWtYHKal7Sl30Ims6ulZ4UFXxI4xbtQqK/qqKwkDoBFCfooRqqmRu9vY3xaJRwxSh673aYg==
 
-"@types/node@8.10.54", "@types/node@^8.0.19", "@types/node@^8.10.30":
+"@types/node@8.10.54", "@types/node@^8.0.19":
   version "8.10.54"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.54.tgz#1c88eb253ac1210f1a5876953fb70f7cc4928402"
   integrity sha512-kaYyLYf6ICn6/isAyD4K1MyWWd5Q3JgH6bnMN089LUx88+s4W8GvK9Q6JMBVu5vsFFp7pMdSxdKmlBXwH/VFRg==
@@ -17075,17 +17075,6 @@ next-tick@^1.0.0, next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
-
-ngrok@^3.0.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/ngrok/-/ngrok-3.2.1.tgz#b9db022fce862711122e404b4763145eb6387aa3"
-  integrity sha512-gbRPHmAfBgIsgRGXE25c3NZXZXs4mpgPuQSPSq02r8QBk4VMoByiLJXKXrUCQm37x/Kfl8cIsWreWDgdNobtOQ==
-  dependencies:
-    "@types/node" "^8.10.30"
-    decompress-zip "^0.3.2"
-    request "^2.88.0"
-    request-promise-native "^1.0.5"
-    uuid "^3.3.2"
 
 nice-try@^1.0.4:
   version "1.0.5"

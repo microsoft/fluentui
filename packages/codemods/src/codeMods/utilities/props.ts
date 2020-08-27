@@ -2,7 +2,7 @@ import { renamePropInSpread } from './helpers/propHelpers';
 import { JsxOpeningElement, JsxSelfClosingElement, SyntaxKind } from 'ts-morph';
 import { Maybe } from '../../helpers/maybe';
 import { PropTransform, NoOp } from '../types';
-import { Result, Ok, Err } from '../../../src/helpers/result';
+import { Result, Ok, Err } from '../../helpers/result';
 
 export function renameProp(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],

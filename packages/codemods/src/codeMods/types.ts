@@ -144,3 +144,13 @@ export type ModOptions = {
   name: string;
   version: string;
 };
+
+/* A configuration type for running codemods, stored in modConfig.json.
+   Users can specify either string or regex filters to specify which mods
+   they want to run. They can also specify whether they want their selected
+   mods to be included OR excluded when running mods. */
+export type ModRunnerConfigType = {
+  stringFilters: string[];
+  regexFilters: string[];
+  includeMods: boolean;
+};
