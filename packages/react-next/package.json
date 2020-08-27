@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.91",
+  "version": "8.0.0-alpha.92",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -48,7 +48,7 @@
     "@uifabric/jest-serializer-merge-styles": "^7.1.0",
     "@uifabric/test-utilities": "^7.1.2",
     "@fluentui/react-conformance": "^0.1.0",
-    "@fluentui/storybook": "^0.3.3",
+    "@fluentui/storybook": "^0.3.4",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -59,20 +59,22 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.10.3",
+    "@fluentui/react-button": "^0.10.4",
+    "@fluentui/react-checkbox": "^0.1.0",
     "@fluentui/react-compose": "^0.17.2",
-    "@fluentui/react-focus": "^7.13.2",
+    "@fluentui/react-focus": "^7.13.3",
     "@fluentui/react-icons": "^0.2.2",
-    "@fluentui/react-tabs": "^0.3.3",
-    "@fluentui/react-theme-provider": "^0.9.0",
+    "@fluentui/react-slider": "^0.1.0",
+    "@fluentui/react-tabs": "^0.3.4",
+    "@fluentui/react-theme-provider": "^0.9.1",
     "@fluentui/react-window-provider": "^0.2.2",
-    "@uifabric/date-time": "^7.15.3",
-    "@uifabric/icons": "^7.4.2",
+    "@uifabric/date-time": "^7.15.4",
+    "@uifabric/icons": "^7.4.3",
     "@uifabric/merge-styles": "^7.17.0",
     "@uifabric/react-hooks": "^7.10.0",
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/utilities": "^7.30.0",
-    "office-ui-fabric-react": "^7.131.0",
+    "office-ui-fabric-react": "^7.132.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

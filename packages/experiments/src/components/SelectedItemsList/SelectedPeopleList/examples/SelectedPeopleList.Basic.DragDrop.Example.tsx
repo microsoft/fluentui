@@ -5,7 +5,8 @@ import { IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import { SelectedPeopleList } from '@uifabric/experiments/lib/SelectedItemsList';
 import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '@uifabric/merge-styles';
 import { IDragDropEvents, Selection } from 'office-ui-fabric-react';
 
 export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {
