@@ -22,7 +22,6 @@ storiesOf('Link', module)
         .hover('.ms-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Link')
-        .hover('.ms-Link')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end()}
     >
