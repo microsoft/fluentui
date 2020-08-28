@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.15)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.2..@uifabric/file-type-icons_v7.4.15)
+
+### Patches
+
+- Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available. ([PR #14569](https://github.com/microsoft/fluentui/pull/14569) by caperez@microsoft.com)
 
 ## [7.4.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.2)
 

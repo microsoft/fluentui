@@ -14,7 +14,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Ref } from '@fluentui/react-component-ref';
-
 import {
   childrenExist,
   createShorthandFactory,
@@ -22,6 +21,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
+  shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -145,9 +145,10 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         e.stopPropagation();
-
         handleTitleClick(e);
       },
       focusParent: e => {

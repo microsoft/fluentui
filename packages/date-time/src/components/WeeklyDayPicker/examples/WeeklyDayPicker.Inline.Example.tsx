@@ -26,7 +26,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<{}, IWeeklyDay
         </div>
         <WeeklyDayPicker
           onSelectDate={this._onSelectDate}
-          firstDayOfWeek={DayOfWeek.Sunday}
+          firstDayOfWeek={DayOfWeek.Wednesday}
           strings={defaultWeeklyDayPickerStrings}
           initialDate={this.state.selectedDate}
         />

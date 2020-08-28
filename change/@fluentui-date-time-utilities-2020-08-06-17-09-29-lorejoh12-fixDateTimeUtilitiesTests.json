@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "date time utilities unit tests were timezone dependent, because the start date was right on the border between two months and when getting run locally the dates convert to local time zone. changing initial date fixes it",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-07T00:09:29.892Z"
-}

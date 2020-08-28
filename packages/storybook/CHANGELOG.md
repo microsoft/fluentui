@@ -1,8 +1,53 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.3.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.3.0..@fluentui/storybook_v0.3.1)
+
+### Patches
+
+- Update withThemeProvider with options/parameters support ([PR #14612](https://github.com/microsoft/fluentui/pull/14612) by xgao@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.3.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.2.9..@fluentui/storybook_v0.3.0)
+
+### Patches
+
+- Move v8 themes to react-theme-provider ([PR #14500](https://github.com/microsoft/fluentui/pull/14500) by xgao@microsoft.com)
+
+## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.2.9)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.2.6..@fluentui/storybook_v0.2.9)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.2.6)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.2.5..@fluentui/storybook_v0.2.6)
+
+### Patches
+
+- update ThemeProvider to support v7 theme ([PR #14398](https://github.com/microsoft/fluentui/pull/14398) by xgao@microsoft.com)
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.2.5)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.2.0..@fluentui/storybook_v0.2.5)
+
+### Patches
+
+- Adding divider customization in Fluent v8 theme. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.2.0)
 

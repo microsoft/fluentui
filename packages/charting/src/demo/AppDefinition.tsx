@@ -9,6 +9,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/AreaChart/AreaChartPage').AreaChart,
+          key: 'AreaChart',
+          name: 'AreaChart',
+          url: '#/examples/areachart',
+        },
+        {
           component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
           name: 'LineChart',
@@ -49,6 +55,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'StackedBarChart',
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart',
+        },
+        {
+          component: require<any>('../components/GroupedVerticalBarChart/GroupedVerticalBarChartPage')
+            .GroupedVerticalBarChart,
+          key: 'GroupedVerticalBarChart',
+          name: 'GroupedVerticalBarChart',
+          url: '#/examples/GroupedVerticalBarChart',
         },
       ],
     },

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { HoverCard, HoverCardType, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, find, getNativeProps, buttonProperties } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -82,8 +82,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
+    const { allowFocusOnLegends = true } = this.props;
     const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
       return {
+        ...(allowFocusOnLegends && {
+          nativeButtonProps: getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(legend, buttonProperties, [
+            'title',
+          ]),
+          'aria-setsize': this.props.legends.length,
+          'aria-posinset': index + 1,
+        }),
         title: legend.title,
         action: legend.action!,
         hoverAction: legend.hoverAction!,
@@ -101,9 +109,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
-    const { overflowProps } = this.props;
+    const { overflowProps, allowFocusOnLegends = true } = this.props;
     return (
       <OverflowSet
+        {...(allowFocusOnLegends && { role: 'listbox' })}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
@@ -166,6 +175,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
+    const { allowFocusOnLegends = true } = this.props;
     const overflowHoverCardLegends: JSX.Element[] = [];
     expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
       const hoverCardElement = this._renderButton(legend, index, true);
@@ -173,6 +183,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const hoverCardData = (
       <FocusZone
+        {...(allowFocusOnLegends && { role: 'listbox' })}
         direction={FocusZoneDirection.vertical}
         {...this.props.focusZonePropsInHoverCard}
         className="hoverCardRoot"
@@ -184,6 +195,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderOverflowItems = (legends: ILegend[]) => {
+    const { allowFocusOnLegends = true } = this.props;
     const items: IContextualMenuItem[] = [];
     legends.forEach((legend: ILegend, i: number) => {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
@@ -245,9 +257,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
-          data-is-focusable={false}
+          {...(allowFocusOnLegends && {
+            'aria-expanded': this.state.isHoverCardVisible,
+            'aria-label': `${items.length} ${overflowString}`,
+          })}
+          data-is-focusable={allowFocusOnLegends}
         >
           {items.length} {overflowString}
         </div>
@@ -278,6 +293,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderButton = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
+    const { allowFocusOnLegends = true } = this.props;
     const legend: ILegend = {
       title: data.title,
       color: data.color,
@@ -307,16 +323,22 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
     return (
       <button
+        {...(allowFocusOnLegends && {
+          'aria-selected': this.state.selectedLegend === legend.title,
+          role: 'option',
+          'aria-label': legend.title,
+          'aria-setsize': data['aria-setsize'],
+          'aria-posinset': data['aria-posinset'],
+        })}
+        {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
         key={index}
         className={classNames.legend}
-        /* eslint-disable react/jsx-no-bind */
         onClick={onClickHandler}
         onMouseOver={onHoverHandler}
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
-        data-is-focusable={false}
-        /* eslint-enable react/jsx-no-bind */
+        data-is-focusable={allowFocusOnLegends}
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>

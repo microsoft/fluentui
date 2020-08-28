@@ -152,16 +152,28 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  color: LinkText;
+                }
                 &:hover {
                   color: #0078d4;
                   text-decoration: underline;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: LinkText;
                 }
                 &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active:hover {
+                  color: LinkText;
+                }
                 &:focus {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -262,16 +274,28 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  color: LinkText;
+                }
                 &:hover {
                   color: #0078d4;
                   text-decoration: underline;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: LinkText;
                 }
                 &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active:hover {
+                  color: LinkText;
+                }
                 &:focus {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -372,16 +396,28 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  color: LinkText;
+                }
                 &:hover {
                   color: #0078d4;
                   text-decoration: underline;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: LinkText;
                 }
                 &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
+                @media screen and (-ms-high-contrast: active){&:active:hover {
+                  color: LinkText;
+                }
                 &:focus {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus {
+                  color: LinkText;
                 }
                 &::-moz-focus-inner {
                   border: 0;

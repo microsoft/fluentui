@@ -1,298 +1,232 @@
 import * as React from 'react';
-
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedPeoplePicker } from 'office-ui-fabric-react/lib/ExtendedPicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import {
-  SuggestionsStore,
-  FloatingPeoplePicker,
-  IBaseFloatingPickerProps,
-  IBaseFloatingPickerSuggestionProps,
-} from 'office-ui-fabric-react/lib/FloatingPicker';
-import {
-  ISelectedPeopleProps,
-  SelectedPeopleList,
-  IExtendedPersonaProps,
-} from 'office-ui-fabric-react/lib/SelectedItemsList';
-import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
-import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { SuggestionsStore, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
+import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 
-export interface IPeoplePickerExampleState {
-  peopleList: IPersonaProps[];
-  mostRecentlyUsed: IPersonaProps[];
-  searchMoreAvailable: boolean;
-}
+const theme = getTheme();
 
-interface IClassNames {
-  picker: IStyle;
-  headerItem: IStyle;
-  footerItem: IStyle;
-  to: IStyle;
-}
+const startsWith = (text: string, filterText: string): boolean => {
+  return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+};
 
-export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeoplePickerExampleState> {
-  private _picker = React.createRef<ExtendedPeoplePicker>();
-  private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
-  private _selectedItemsListProps: ISelectedPeopleProps;
-  private _focusZoneProps: IFocusZoneProps;
-  private _suggestionProps: IBaseFloatingPickerSuggestionProps;
-  private _classNames: IProcessedStyleSet<IClassNames>;
+const classNames = mergeStyleSets({
+  picker: { maxWidth: 400, marginBottom: 15 },
+  headerItem: {
+    borderBottom: '1px solid ' + theme.palette.neutralLight,
+    padding: '8px 12px',
+  },
+  footerItem: {
+    borderBottom: '1px solid ' + theme.palette.neutralLight,
+    height: 60,
+    paddingLeft: 12,
+  },
+  to: { padding: '0 10px' },
+});
 
-  constructor(props: {}) {
-    super(props);
+const focusZoneProps = {
+  shouldInputLoseFocusOnArrowKey: () => true,
+  handleTabKey: FocusZoneTabbableElements.all,
+};
 
-    this.state = {
-      peopleList: people,
-      mostRecentlyUsed: mru,
-      searchMoreAvailable: true,
-    };
+export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
+  const picker = React.useRef<ExtendedPeoplePicker>(null);
+  const [peopleList, setPeopleList] = React.useState<IPersonaProps[]>(people);
+  const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);
+  const [searchMoreAvailable, setSearchMoreAvailable] = React.useState<boolean>(true);
 
-    this._suggestionProps = {
-      showRemoveButtons: true,
-      headerItemsProps: [
-        {
-          renderItem: () => {
-            const picker = this._picker.current;
-            return (
-              <div className={this._classNames.headerItem}>
-                Use this address: {picker && picker.inputElement ? picker.inputElement.value : ''}
-              </div>
-            );
-          },
-          shouldShow: () => {
-            const picker = this._picker.current;
-            return !!(picker && picker.inputElement) && picker.inputElement.value.indexOf('@') > -1;
-          },
-          onExecute: () => {
-            const picker = this._picker.current;
-            const floatingPicker = picker && picker.floatingPicker.current;
-            if (floatingPicker) {
-              floatingPicker.forceResolveSuggestion();
-            }
-          },
-          ariaLabel: 'Use the typed address',
+  const getEditingItemText = (item: IExtendedPersonaProps): string => {
+    return item.text as string;
+  };
+
+  const onSetFocusButtonClicked = React.useCallback((): void => {
+    picker.current?.focus();
+  }, []);
+
+  const onExpandItem = (item: IExtendedPersonaProps): void => {
+    const selectedItemsList = picker.current?.selectedItemsList.current;
+    if (selectedItemsList) {
+      (selectedItemsList as SelectedPeopleList).replaceItem(item, getExpandedGroupItems(item));
+    }
+  };
+
+  const onRemoveSuggestion = (item: IPersonaProps): void => {
+    const itemIndex = peopleList.indexOf(item);
+    const itemMruIndex = mostRecentlyUsed.indexOf(item);
+    if (itemIndex >= 0) {
+      setPeopleList(peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1)));
+    }
+    if (itemMruIndex >= 0) {
+      setMostRecentlyUsed(mostRecentlyUsed.slice(0, itemMruIndex).concat(mostRecentlyUsed.slice(itemMruIndex + 1)));
+    }
+  };
+
+  const onFilterChanged = (filterText: string, currentPersonas?: IPersonaProps[]): Promise<IPersonaProps[]> | null => {
+    let filteredPersonas: IPersonaProps[] = [];
+    if (filterText) {
+      filteredPersonas = peopleList.filter((item: IPersonaProps) => startsWith(item.text || '', filterText));
+      filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
+    }
+    return convertResultsToPromise(filteredPersonas);
+  };
+
+  const returnMostRecentlyUsed = (): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
+    let currentMostRecentlyUsed = mostRecentlyUsed;
+    const items = picker.current?.items || [];
+    currentMostRecentlyUsed = removeDuplicates(currentMostRecentlyUsed, items);
+    return convertResultsToPromise(currentMostRecentlyUsed);
+  };
+
+  const onCopyItems = (items: IExtendedPersonaProps[]): string => {
+    return items.map(item => item.text).join(', ');
+  };
+
+  const shouldShowForceResolve = (): boolean => {
+    const floatingPicker = picker.current?.floatingPicker.current;
+    return !!floatingPicker && validateInput(floatingPicker.inputText) && floatingPicker.suggestions.length === 0;
+  };
+
+  const shouldShowSuggestedContacts = (): boolean => {
+    return picker.current?.inputElement?.value === '';
+  };
+
+  const listContainsPersona = (persona: IPersonaProps, personas?: IPersonaProps[]): boolean => {
+    return !!personas && personas.some((item: IPersonaProps) => item.text === persona.text);
+  };
+
+  const removeDuplicates = (personas: IPersonaProps[], possibleDupes?: IPersonaProps[]): IPersonaProps[] => {
+    return personas.filter((persona: IPersonaProps) => !listContainsPersona(persona, possibleDupes));
+  };
+
+  const onInputChanged = (): void => {
+    setSearchMoreAvailable(true);
+  };
+
+  const convertResultsToPromise = (results: IPersonaProps[]): Promise<IPersonaProps[]> => {
+    return new Promise<IPersonaProps[]>(resolve => setTimeout(() => resolve(results), 150));
+  };
+
+  const validateInput = (input: string): boolean => {
+    return input.indexOf('@') !== -1;
+  };
+
+  const getExpandedGroupItems = (item: IExtendedPersonaProps): IExtendedPersonaProps[] => {
+    return item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
+  };
+
+  const suggestionProps = useConst({
+    showRemoveButtons: true,
+    headerItemsProps: [
+      {
+        renderItem: () => {
+          return (
+            <div className={classNames.headerItem}>Use this address: {picker.current?.inputElement?.value || ''}</div>
+          );
         },
-        {
-          renderItem: () => {
-            return <div className={this._classNames.headerItem}>Suggested Contacts</div>;
-          },
-          shouldShow: this._shouldShowSuggestedContacts,
+        shouldShow: () => {
+          return !!picker.current?.inputElement && picker.current.inputElement.value.indexOf('@') > -1;
         },
-      ],
-      footerItemsProps: [
-        {
-          renderItem: () => {
-            return <div className={this._classNames.footerItem}>No results</div>;
-          },
-          shouldShow: () => {
-            const picker = this._picker.current;
-            const floatingPicker = picker && picker.floatingPicker.current;
-            return !!floatingPicker && floatingPicker.suggestions.length === 0;
-          },
+        onExecute: () => {
+          const floatingPicker = picker.current?.floatingPicker.current;
+          if (floatingPicker) {
+            floatingPicker.forceResolveSuggestion();
+          }
         },
-        {
-          renderItem: () => {
-            return <div className={this._classNames.footerItem}>Search for more</div>;
-          },
-          onExecute: () => {
-            this.setState({ searchMoreAvailable: false });
-          },
-          shouldShow: () => {
-            return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts();
-          },
-          ariaLabel: 'Search more',
+        ariaLabel: 'Use the typed address',
+      },
+      {
+        renderItem: () => {
+          return <div className={classNames.headerItem}>Suggested Contacts</div>;
         },
-      ],
-      shouldSelectFirstItem: () => {
-        return !this._shouldShowSuggestedContacts();
+        shouldShow: shouldShowSuggestedContacts,
       },
-    };
-
-    this._floatingPickerProps = {
-      suggestionsStore: new SuggestionsStore<IPersonaProps>(),
-      onResolveSuggestions: this._onFilterChanged,
-      getTextFromItem: (persona: IPersonaProps) => persona.text || '',
-      pickerSuggestionsProps: this._suggestionProps,
-      key: 'normal',
-      onRemoveSuggestion: this._onRemoveSuggestion,
-      onValidateInput: this._validateInput,
-      onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-      showForceResolve: this._shouldShowForceResolve,
-      onInputChanged: this._onInputChanged,
-      onSuggestionsHidden: () => {
-        console.log('FLOATINGPICKER: hidden');
+    ],
+    footerItemsProps: [
+      {
+        renderItem: () => {
+          return <div className={classNames.footerItem}>No results</div>;
+        },
+        shouldShow: () => {
+          const floatingPicker = picker.current?.floatingPicker.current;
+          return !!floatingPicker && floatingPicker.suggestions.length === 0;
+        },
       },
-      onSuggestionsShown: () => {
-        console.log('FLOATINGPICKER: shown');
+      {
+        renderItem: () => {
+          return <div className={classNames.footerItem}>Search for more</div>;
+        },
+        onExecute: () => {
+          setSearchMoreAvailable(false);
+        },
+        shouldShow: () => {
+          return searchMoreAvailable && !shouldShowSuggestedContacts();
+        },
+        ariaLabel: 'Search more',
       },
-    };
+    ],
+    shouldSelectFirstItem: () => {
+      return !shouldShowSuggestedContacts();
+    },
+  });
 
-    this._selectedItemsListProps = {
-      onCopyItems: this._onCopyItems,
-      onExpandGroup: this._onExpandItem,
-      removeMenuItemText: 'Remove',
-      copyMenuItemText: 'Copy name',
-      editMenuItemText: 'Edit',
-      getEditingItemText: this._getEditingItemText,
-      onRenderFloatingPicker: FloatingPeoplePicker,
-      floatingPickerProps: this._floatingPickerProps,
-    };
+  const floatingPickerProps = {
+    suggestionsStore: new SuggestionsStore<IPersonaProps>(),
+    onResolveSuggestions: onFilterChanged,
+    getTextFromItem: (persona: IPersonaProps) => persona.text || '',
+    pickerSuggestionsProps: suggestionProps,
+    key: 'normal',
+    onRemoveSuggestion: onRemoveSuggestion,
+    onValidateInput: validateInput,
+    onZeroQuerySuggestion: returnMostRecentlyUsed,
+    showForceResolve: shouldShowForceResolve,
+    onInputChanged: onInputChanged,
+    onSuggestionsHidden: () => {
+      console.log('FLOATINGPICKER: hidden');
+    },
+    onSuggestionsShown: () => {
+      console.log('FLOATINGPICKER: shown');
+    },
+  };
 
-    this._focusZoneProps = {
-      shouldInputLoseFocusOnArrowKey: () => true,
-      handleTabKey: FocusZoneTabbableElements.all,
-    };
-  }
+  const selectedItemsListProps = {
+    onCopyItems: onCopyItems,
+    onExpandGroup: onExpandItem,
+    removeMenuItemText: 'Remove',
+    copyMenuItemText: 'Copy name',
+    editMenuItemText: 'Edit',
+    getEditingItemText: getEditingItemText,
+    onRenderFloatingPicker: FloatingPeoplePicker,
+    floatingPickerProps: floatingPickerProps,
+  };
 
-  public render(): JSX.Element {
-    const theme = getTheme();
-    this._classNames = mergeStyleSets({
-      picker: { maxWidth: 400, marginBottom: 15 },
-      headerItem: {
-        borderBottom: '1px solid ' + theme.palette.neutralLight,
-        padding: '8px 12px',
-      },
-      footerItem: {
-        borderBottom: '1px solid ' + theme.palette.neutralLight,
-        height: 60,
-        paddingLeft: 12,
-      },
-      to: { padding: '0 10px' },
-    });
-
-    return (
-      <div>
-        {this._renderExtendedPicker()}
-        <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
-      </div>
-    );
-  }
-
-  private _renderExtendedPicker(): JSX.Element {
-    return (
+  return (
+    <div>
       <ExtendedPeoplePicker
-        floatingPickerProps={this._floatingPickerProps}
-        selectedItemsListProps={this._selectedItemsListProps}
+        floatingPickerProps={floatingPickerProps}
+        selectedItemsListProps={selectedItemsListProps}
         onRenderFloatingPicker={FloatingPeoplePicker}
         onRenderSelectedItems={SelectedPeopleList}
-        className={this._classNames.picker}
+        className={classNames.picker}
         key="normal"
         inputProps={{
           onBlur: () => console.log('onBlur called'),
           onFocus: () => console.log('onFocus called'),
           'aria-label': 'People Picker',
         }}
-        componentRef={this._picker}
-        headerComponent={this._renderHeader()}
-        focusZoneProps={this._focusZoneProps}
+        componentRef={picker}
+        headerComponent={
+          <div className={classNames.to} data-is-focusable>
+            To:
+          </div>
+        }
+        focusZoneProps={focusZoneProps}
       />
-    );
-  }
-
-  private _renderHeader(): JSX.Element {
-    return (
-      <div className={this._classNames.to} data-is-focusable={true}>
-        To:
-      </div>
-    );
-  }
-
-  private _getEditingItemText = (item: IExtendedPersonaProps): string => {
-    return item.text as string;
-  };
-
-  private _onSetFocusButtonClicked = (): void => {
-    if (this._picker.current) {
-      this._picker.current.focus();
-    }
-  };
-
-  private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    const picker = this._picker.current;
-    const selectedItemsList = picker && picker.selectedItemsList.current;
-    if (selectedItemsList) {
-      (selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item));
-    }
-  };
-
-  private _onRemoveSuggestion = (item: IPersonaProps): void => {
-    const { peopleList, mostRecentlyUsed: mruState } = this.state;
-    const itemIndex = peopleList.indexOf(item);
-    const itemMruIndex = mruState.indexOf(item);
-
-    const stateUpdate = {} as IPeoplePickerExampleState;
-    if (itemIndex >= 0) {
-      stateUpdate.peopleList = peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1));
-    }
-    if (itemMruIndex >= 0) {
-      stateUpdate.mostRecentlyUsed = mruState.slice(0, itemMruIndex).concat(mruState.slice(itemMruIndex + 1));
-    }
-    this.setState(stateUpdate);
-  };
-
-  private _onFilterChanged = (
-    filterText: string,
-    currentPersonas?: IPersonaProps[],
-  ): Promise<IPersonaProps[]> | null => {
-    let filteredPersonas: IPersonaProps[] = [];
-    if (filterText) {
-      filteredPersonas = this.state.peopleList.filter((item: IPersonaProps) =>
-        _startsWith(item.text || '', filterText),
-      );
-      filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-    }
-
-    return this._convertResultsToPromise(filteredPersonas);
-  };
-
-  private _returnMostRecentlyUsed = (): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
-    let { mostRecentlyUsed } = this.state;
-    const items = (this._picker.current && this._picker.current.items) || [];
-    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, items);
-    return this._convertResultsToPromise(mostRecentlyUsed);
-  };
-
-  private _onCopyItems(items: IExtendedPersonaProps[]): string {
-    return items.map(item => item.text).join(', ');
-  }
-
-  private _shouldShowForceResolve = (): boolean => {
-    const picker = this._picker.current;
-    const floatingPicker = picker && picker.floatingPicker.current;
-    return !!floatingPicker && this._validateInput(floatingPicker.inputText) && floatingPicker.suggestions.length === 0;
-  };
-
-  private _shouldShowSuggestedContacts = (): boolean => {
-    const picker = this._picker.current;
-    return !!(picker && picker.inputElement) && picker.inputElement.value === '';
-  };
-
-  private _listContainsPersona(persona: IPersonaProps, personas?: IPersonaProps[]): boolean {
-    return !!personas && personas.some((item: IPersonaProps) => item.text === persona.text);
-  }
-
-  private _removeDuplicates(personas: IPersonaProps[], possibleDupes?: IPersonaProps[]): IPersonaProps[] {
-    return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
-  }
-
-  private _onInputChanged = (): void => {
-    this.setState({ searchMoreAvailable: true });
-  };
-
-  private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
-    return new Promise<IPersonaProps[]>(resolve => setTimeout(() => resolve(results), 150));
-  }
-
-  private _validateInput = (input: string): boolean => {
-    return input.indexOf('@') !== -1;
-  };
-
-  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
-    return item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
-  }
-}
-
-function _startsWith(text: string, filterText: string): boolean {
-  return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-}
+      <PrimaryButton text="Set focus" onClick={onSetFocusButtonClicked} />
+    </div>
+  );
+};

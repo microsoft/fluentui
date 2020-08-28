@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps } from '@uifabric/utilities';
-import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
+import { IStackSlot, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
 
 /**

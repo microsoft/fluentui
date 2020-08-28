@@ -3,6 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -124,21 +125,15 @@ export class VerticalStackedBarChartBase extends React.Component<
       height: this.state.containerHeight,
     };
     return (
-      <div
-        className={this._classNames.root}
-        // eslint-disable-next-line react/jsx-no-bind
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-      >
+      <div className={this._classNames.root} ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}>
         <FocusZone direction={FocusZoneDirection.vertical}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
               className={this._classNames.xAxis}
             />
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               transform={`translate(${this.margins.left}, 0)`}
               className={this._classNames.yAxis}
@@ -147,11 +142,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {
-          <div
-            // eslint-disable-next-line react/jsx-no-bind
-            ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-            className={this._classNames.legendContainer}
-          >
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {legends}
           </div>
         }
@@ -267,7 +258,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(5)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickValues(domains);
     return yAxis;
   }
@@ -346,6 +337,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
@@ -461,13 +453,11 @@ export class VerticalStackedBarChartBase extends React.Component<
           width={this._barWidth}
           height={yBarScale(point.data) > 0 ? yBarScale(point.data) : 0}
           fill={color}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend, refArrayIndexNumber);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
@@ -477,7 +467,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onBarHover.bind(
             this,
             point.legend,
@@ -489,7 +478,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           )}
           aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
@@ -501,7 +489,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             point.yAxisCalloutData!,
           )}
           onBlur={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
         />
       );

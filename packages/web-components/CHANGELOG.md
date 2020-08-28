@@ -1,8 +1,55 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 06 Aug 2020 22:49:13 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.5..@fluentui/web-components_v0.1.7)
+
+### Patches
+
+- fix: apply badge appearance styling to control not host element ([PR #14539](https://github.com/microsoft/fluentui/pull/14539) by chhol@microsoft.com)
+- update fast element version to leverage latest changes ([PR #14573](https://github.com/microsoft/fluentui/pull/14573) by chhol@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.4..@fluentui/web-components_v0.1.5)
+
+### Patches
+
+- fix: add full width to text-area and text-field controls to expand properly with component ([PR #14492](https://github.com/microsoft/fluentui/pull/14492) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.4)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.3..@fluentui/web-components_v0.1.4)
+
+### Patches
+
+- fix: ensure radio control does not shrink ([PR #14473](https://github.com/microsoft/fluentui/pull/14473) by chhol@microsoft.com)
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.3)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.2..@fluentui/web-components_v0.1.3)
+
+### Patches
+
+- fix: tab should have pointer as cursor ([PR #14421](https://github.com/microsoft/fluentui/pull/14421) by chhol@microsoft.com)
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.2)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.1..@fluentui/web-components_v0.1.2)
+
+### Patches
+
+- Fix min-width to be equals to thumb size ([PR #14400](https://github.com/microsoft/fluentui/pull/14400) by barahonajm@outlook.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.1)
 

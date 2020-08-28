@@ -2,7 +2,7 @@
 
 exports[`Button renders a default state 1`] = `
 <button
-  style={Object {}}
+  className=""
 >
   <span>
     Default button

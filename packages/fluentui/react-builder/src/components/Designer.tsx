@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button } from '@fluentui/react-northstar';
+import { Text, Button, Divider } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -21,6 +22,7 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
+  getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -221,13 +223,17 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'UNDO':
-      draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.history.pop();
+      if (draftState.history.length > 0) {
+        draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.history.pop();
+      }
       break;
 
     case 'REDO':
-      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.redo.pop();
+      if (draftState.redo.length > 0) {
+        draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.redo.pop();
+      }
       break;
 
     default:
@@ -324,7 +330,10 @@ export const Designer: React.FunctionComponent = () => {
   const handleDragStart = React.useCallback(
     (info, e) => {
       dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-      dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName) });
+      dispatch({
+        type: 'DRAG_START',
+        component: resolveDraggingElement(info.displayName, info.moduleName),
+      });
     },
     [dispatch],
   );
@@ -434,8 +443,43 @@ export const Designer: React.FunctionComponent = () => {
 
   const switchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
-    // FIXME: remove tree_lz from current URL
+    const url = window.location.href.split('#')[0];
+    window.history.pushState('', document.title, url);
   }, [dispatch]);
+
+  const hotkeys = {
+    'Ctrl+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Ctrl+Shift+Z': handleRedo,
+    Delete: handleDeleteComponent,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      let command = '';
+      command += e.altKey ? 'Alt+' : '';
+      command += e.ctrlKey | e.metaKey ? 'Ctrl+' : '';
+      command += e.shiftKey ? 'Shift+' : '';
+      command += e.key;
+      hotkeys.hasOwnProperty(command) && hotkeys[command]();
+    },
+    [hotkeys],
+  );
 
   const selectedComponent =
     !draggingElement &&
@@ -443,6 +487,8 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement?.uuid &&
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
+
+  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
 
   return (
     <div
@@ -455,6 +501,7 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <EventListener type="keydown" listener={handleKeyDown} target={document} />
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -516,6 +563,7 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+          <Divider style={{ margin: '1rem' }} />
           <ComponentTree
             tree={jsonTree}
             selectedComponent={selectedComponent}
@@ -555,6 +603,33 @@ export const Designer: React.FunctionComponent = () => {
                     </>
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <CodeSandboxExporter
+                    exampleCode={codeSandboxData.code}
+                    exampleLanguage="js"
+                    exampleName="uibuilder"
+                    imports={codeSandboxData.imports}
+                  >
+                    {(state, onCodeSandboxClick) => {
+                      const codeSandboxContent =
+                        state === CodeSandboxState.Default
+                          ? 'CodeSandbox'
+                          : state === CodeSandboxState.Loading
+                          ? 'Exporting...'
+                          : 'Click to open';
+
+                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
+
+                      return (
+                        <Button
+                          loading={state === CodeSandboxState.Loading}
+                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
+                          onClick={onCodeSandboxClick}
+                          icon={codeSandboxIcon}
+                          content={codeSandboxContent}
+                        />
+                      );
+                    }}
+                  </CodeSandboxExporter>
                 </div>,
               ]}
               style={{
@@ -571,6 +646,7 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
+                  onKeyDown={handleKeyDown}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
@@ -640,7 +716,6 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-            <pre>{JSON.stringify(selectedJSONTreeElement.props, null, 2)}</pre>
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {selectedJSONTreeElement && (
               <Knobs

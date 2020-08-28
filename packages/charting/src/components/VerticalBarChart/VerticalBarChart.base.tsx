@@ -3,6 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -125,7 +126,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return (
       <div
         id="VerticalBarChart"
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
@@ -133,14 +133,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
               id="xAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               className={this._classNames.xAxis}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
             />
             <g
               id="yAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
@@ -149,11 +147,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           </svg>
         </FocusZone>
         {!hideLegend && (
-          <div
-            // eslint-disable-next-line react/jsx-no-bind
-            ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-            className={this._classNames.legendContainer}
-          >
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {legends!}
           </div>
         )}
@@ -251,7 +245,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = d3AxisLeft(yAxisScale)
       .tickPadding(5)
       .tickValues(domains)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }
@@ -376,11 +370,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           data-is-focusable={true}
           height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
           }}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
@@ -392,7 +384,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           )}
           aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
@@ -438,7 +429,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           aria-labelledby={this._calloutId}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,
@@ -525,6 +515,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return legends;

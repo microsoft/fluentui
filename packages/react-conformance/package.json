@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^0.53.2",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
