@@ -59,6 +59,7 @@ npx <tarFileName>
   - `-n` Specify name(s) of codemod(s) to run. You can find these names in `codemods/src/codemods/mods`. Make sure that they are `enabled` before running them, or else they won't run!
   - `-r` Specify regex pattern(s) to identify mod(s) to run.
   - `-e` Boolean flag that flips the inclusion of the specify mods. Use this flag with the selective flags `-n` or `-r` to opt to _exclude_ the selected mods rather than include them.
+  - `-l` List the names of all enabled codemods. Mods that exist but aren't enabled will not appear, as running them would do nothing.
   - `-c` For developers who don't want to worry about the command line, they can create a `modConfig.json` file in their repo. The template for the file looks like this, where `stringFilters` and `regexFilters` would correspond to inputs following `-n` and `-c`, respectively:
   ```jsonld=
   {

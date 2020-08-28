@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix undefined FluentTheme due to circular dep",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-26T19:39:37.522Z"
-}
