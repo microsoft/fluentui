@@ -25,18 +25,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   protected input = React.createRef<Autofill>();
   protected selection: Selection;
 
-  public static getDerivedStateFromProps(newProps: IBaseExtendedPickerProps<any>) {
-    const updatedState: Partial<IBaseExtendedPickerProps<any>> = {};
-    let hasUpdate: boolean = false;
-
-    if (newProps.selectedItems) {
-      updatedState.selectedItems = newProps.selectedItems;
-      hasUpdate = true;
-    }
-
-    return hasUpdate ? updatedState : null;
-  }
-
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
