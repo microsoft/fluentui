@@ -1,7 +1,6 @@
 import { makeClasses } from '@fluentui/react-theme-provider';
 
 export const useButtonClasses = makeClasses({
-  displayName: 'Button',
   root: [
     'ms-Button',
     {
@@ -28,10 +27,10 @@ export const useButtonClasses = makeClasses({
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
 
-      paddingLeft: 16, // 'var(--button-padding)',
-      paddingRight: 16, // 'var(--button-padding)',
-      paddingTop: 0, // 'var(--button-padding)',
-      paddingBottom: 0, // 'var(--button-padding)',
+      paddingLeft: 'var(--button-paddingLeft)',
+      paddingRight: 'var(--button-paddingRight)',
+      paddingTop: 'var(--button-paddingTop)',
+      paddingBottom: 'var(--button-paddingBottom)',
 
       transition: 'var(--button-transition)',
       whiteSpace: 'var(--button-whiteSpace, nowrap)',
@@ -46,10 +45,10 @@ export const useButtonClasses = makeClasses({
         //'&::after': {
         content: '""',
         position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
+        left: -1,
+        right: -1,
+        top: -1,
+        bottom: -1,
         borderWidth: 'var(--button-focusWidth, 1.6px)',
         borderStyle: 'solid',
         borderColor: 'var(--button-focusColor, black)',
@@ -83,6 +82,19 @@ export const useButtonClasses = makeClasses({
 
         '.ms-Button-icon': {
           color: 'var(--button-pressed-iconColor, var(--button-iconColor))',
+        },
+      },
+
+      '&[aria-disabled=true]': {
+        pointerEvents: 'none',
+        opacity: 'var(--button-disabled-opacity)',
+        backgroundColor: 'var(--button-disabled-background)',
+        color: 'var(--button-disabled-contentColor)',
+        borderColor: 'var(--button-disabled-borderColor)',
+        boxShadow: 'var(--button-disabled-boxShadow)',
+
+        '.ms-Button-icon': {
+          color: 'var(--button-disabled-iconColor)',
         },
       },
     },
@@ -131,11 +143,10 @@ export const useButtonClasses = makeClasses({
 
   _iconOnly: {
     '--button-width': 'var(--button-height, var(--button-minHeight))',
-    '--button-padding': 0,
-    paddingLeft: 0, // 'var(--button-padding)',
-    paddingRight: 0, // 'var(--button-padding)',
-    paddingTop: 0, // 'var(--button-padding)',
-    paddingBottom: 0, // 'var(--button-padding)',
+    '--button-paddingTop': 0,
+    '--button-paddingLeft': 0,
+    '--button-paddingBottom': 0,
+    '--button-paddingRight': 0,
   },
 
   _circular: {
@@ -175,18 +186,5 @@ export const useButtonClasses = makeClasses({
   // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_largest: {
     '--button-minHeight': 'var(--button-size-largest)',
-  },
-
-  _disabled: {
-    pointerEvents: 'none',
-    opacity: 'var(--button-disabled-opacity)',
-    backgroundColor: 'var(--button-disabled-background)',
-    color: 'var(--button-disabled-contentColor)',
-    borderColor: 'var(--button-disabled-borderColor)',
-    boxShadow: 'var(--button-disabled-boxShadow)',
-
-    '.ms-Button-icon': {
-      color: 'var(--button-disabled-iconColor)',
-    },
   },
 });
