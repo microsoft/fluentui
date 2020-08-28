@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T12:26:38.564Z"
+}

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.93)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.92..@fluentui/react-next_v8.0.0-alpha.93)
+
+### Changes
+
+- Move Slider from react-next to react-slider ([PR #14750](https://github.com/microsoft/fluentui/pull/14750) by xgao@microsoft.com)
+- Update release notes for Pivot ([PR #14725](https://github.com/microsoft/fluentui/pull/14725) by xgao@microsoft.com)
+- Moving messageBar into react-next for future function component conversion. ([PR #14747](https://github.com/microsoft/fluentui/pull/14747) by czearing@outlook.com)
+- Moving Shimmer to react-next for future function component conversion. ([PR #14748](https://github.com/microsoft/fluentui/pull/14748) by czearing@outlook.com)
+- Move Checkbox from react-next to react-checkbox. ([PR #14751](https://github.com/microsoft/fluentui/pull/14751) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.92)
 

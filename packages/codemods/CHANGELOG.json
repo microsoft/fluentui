@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/codemods_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add support for a config-based codemod execution",
+            "author": "t-dama@microsoft.com",
+            "commit": "45f173b8e21f7af712d6bcec1001b67e6abb78c3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Aug 2020 12:35:38 GMT",
       "tag": "@fluentui/codemods_v0.9.4",
       "version": "0.9.4",

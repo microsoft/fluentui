@@ -19,11 +19,11 @@ schedules:
       include:
         - master
 
+workspace:
+  clean: all
+
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+  - template: azure-pipelines.tools.yml
 
   - script: |
       git config user.name "Fluent UI Build"
@@ -40,8 +40,20 @@ steps:
     displayName: yarn generate-version-files
 
   - script: |
-      yarn buildci:prod
-    displayName: yarn buildci:prod (Create production build)
+      yarn run:published build --production
+    displayName: yarn build (Create production build)
+
+  - script: |
+      yarn run:published test --production
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn run:published bundle --production
+    displayName: yarn bundle
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
