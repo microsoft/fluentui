@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/charting_v3.2.0",
+      "version": "3.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3f3818c11395a0c860915d941d2ad94ecb0c2077",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@uifabric/charting_v3.1.5",
       "version": "3.1.5",
