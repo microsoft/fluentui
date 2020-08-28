@@ -96,6 +96,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -131,6 +132,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -166,6 +168,7 @@ exports[`PersonaCoin renders a red coin 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -397,6 +400,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;

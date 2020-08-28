@@ -108,6 +108,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: inherit;
           font-size: 14px;

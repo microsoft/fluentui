@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Color needs to respect global semantic colors",
+  "comment": "Text: Color should respect global semantic colors",
   "packageName": "office-ui-fabric-react",
   "email": "nilpatel@microsoft.com",
   "dependentChangeType": "patch",
