@@ -32,9 +32,9 @@ export const defaultTests: TestObject = {
       const { componentPath, Component, displayName } = testInfo;
       const componentFile = require(componentPath);
       if (testInfo.useDefaultExport) {
-        expect(componentFile.default).toStrictEqual(Component);
+        expect(componentFile.default).toEqual(Component);
       } else {
-        expect(componentFile[displayName]).toStrictEqual(Component);
+        expect(componentFile[displayName]).toEqual(Component);
       }
     });
   },
@@ -84,7 +84,7 @@ export const defaultTests: TestObject = {
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
         const indexFile = require(path.join(rootPath, 'src', 'index'));
 
-        expect(indexFile[displayName]).toStrictEqual(Component);
+        expect(indexFile[displayName]).toEqual(Component);
       });
     }
   },
@@ -97,7 +97,7 @@ export const defaultTests: TestObject = {
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
         const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
-        expect(topLevelFile[displayName]).toStrictEqual(Component);
+        expect(topLevelFile[displayName]).toEqual(Component);
       });
     }
   },
@@ -112,7 +112,7 @@ export const defaultTests: TestObject = {
       it(`is a static property of its parent`, () => {
         const parentComponentFile = require(path.join(componentFolder, dirName));
         const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
-        expect(ParentComponent[displayName]).toStrictEqual(Component);
+        expect(ParentComponent[displayName]).toEqual(Component);
       });
     }
   },
