@@ -12,9 +12,9 @@ export class SlotRule implements Rule {
     return this;
   };
 
-  public afterEvent = (eventName: string, ...args: any[]) => {
+  public afterEvent = (eventName: string, event: Event) => {
     this.data.afterEvent = eventName;
-    this.data.afterEventData = args;
+    this.data.afterEventData = event;
     this.data.checkEvent = true;
     return this;
   };

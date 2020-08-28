@@ -20,38 +20,40 @@ export class ComponentTestFacade implements TestFacade {
   }
 
   public attributeExists(selector: string, attributeName: string) {
-    return this.slotExists(selector) && selector === 'root'
-      ? this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null
-      : document.getElementById(selector).getAttribute(attributeName) !== undefined &&
-          document.getElementById(selector).getAttribute(attributeName) !== null;
+    if (this.slotExists(selector) && selector === 'root') {
+      return this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null;
+    }
+
+    const element = document.getElementById(selector);
+    if (element)
+      return element.getAttribute(attributeName) !== undefined && element.getAttribute(attributeName) !== null;
+
+    return false;
   }
 
   public attributeHasValue(selector: string, attributeName: string, value: PropValue) {
-    return this.attributeExists(selector, attributeName) && selector === 'root'
-      ? this.actual.getAttribute(attributeName) === value
-      : document.getElementById(selector).getAttribute(attributeName) === value;
+    if (this.attributeExists(selector, attributeName) && selector === 'root') {
+      return this.actual.getAttribute(attributeName) === value;
+    }
+
+    const element = document.getElementById(selector);
+    if (element) return element.getAttribute(attributeName) === value;
+
+    return false;
   }
 
   public getAttributeValue = (selector: string, attributeName: string) => {
-    return selector === 'root'
-      ? (this.actual.getAttribute(attributeName) as PropValue)
-      : (document.getElementById(selector).getAttribute(attributeName) as PropValue);
+    if (selector === 'root') {
+      return this.actual.getAttribute(attributeName) as PropValue;
+    }
+    const element = document.getElementById(selector);
+    if (element) return element.getAttribute(attributeName) as PropValue;
+
+    return null;
   };
 
-  // TODO: convert args to event
-  public afterEvent(selector: string, eventName: string, args: any[]) {
-    // const key = 13;
-    this.actual.dispatchEvent(
-      new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
-    // return this.slotExists(selector) && selector === 'root'
-    //   ? this.actual.dispatchEvent(eventName === 'onKeyDown' ? new KeyboardEvent('keydown', args[0]) : new MouseEvent('click', {}))
-    //   : document.getElementById(selector) !== undefined &&
-    //   document.getElementById(selector).dispatchEvent(eventName === 'onKeyDown' ? new KeyboardEvent('keydown', args[0]) : new MouseEvent('click', args[0]));
+  public afterEvent(selector: string, eventName: string, event: Event) {
+    this.actual.dispatchEvent(event);
   }
 
   public forProps = (props: Props) => {

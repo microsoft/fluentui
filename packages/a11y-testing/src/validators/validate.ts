@@ -34,7 +34,7 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
 };
 
 export const validateBehavior = (rules: Rule[], testFacade: TestFacade) => {
-  const errors = [];
+  const errors: any[] = [];
   rules.map(rule => {
     try {
       if (rule instanceof SlotRule) {

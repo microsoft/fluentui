@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TestFacade, Props, PropValue } from './validators';
+import { TestFacade, Props, PropValue } from '../types';
 import { render, act } from '@testing-library/react';
 
 function setup(useSomething: Function, state: any) {
@@ -31,7 +31,8 @@ export class HookTestFacade implements TestFacade {
   }
 
   public attributeHasValue(slotName: string, attributeName: string, value: PropValue) {
-    // TODO: toString() is added just so it would match the component test facade
+    // toString() is added just so it would match the component test facade
+    // on components aria-attr values are strings, for example: aria-hidden="true"
     return this.attributeExists(slotName, attributeName) && slotName === 'root'
       ? this.state[attributeName].toString() === value.toString()
       : this.state[slotName][attributeName].toString() === value.toString();
@@ -45,10 +46,10 @@ export class HookTestFacade implements TestFacade {
     return new HookTestFacade(this.hook, { ...this.state, ...props });
   };
 
-  public afterEvent = (slotName: string, eventName: string, args: any[]) => {
+  public afterEvent = (slotName: string, eventName: string, event: Event) => {
     const keyHandler = slotName === 'root' ? this.state[eventName] : this.state[slotName][eventName];
     if (keyHandler && typeof keyHandler === 'function') {
-      act(() => keyHandler(...args));
+      act(() => keyHandler(event));
     }
   };
 }

@@ -15,7 +15,7 @@ export interface Slot {
   description: string;
   hidden: boolean;
   afterEvent: string;
-  afterEventData: any[];
+  afterEventData: Event;
   checkEvent: boolean;
 }
 
@@ -25,5 +25,5 @@ export interface TestFacade {
   attributeHasValue(slotName: string, attributeName: string, value: PropValue): boolean;
   getAttributeValue(slotName: string, attribute: string): PropValue;
   forProps(props: Props): TestFacade;
-  afterEvent(slotName: string, eventName: string, args: any[]): void;
+  afterEvent(slotName: string, eventName: string, event: Event): void;
 }
