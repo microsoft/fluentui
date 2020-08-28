@@ -63,20 +63,18 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
         const treeWalker = ref.current.ownerDocument?.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
           acceptNode: isInteractiveFilter,
         });
-        if (treeWalker) {
-          while (treeWalker.nextNode()) {
-            const node = treeWalker.currentNode;
-            const nodeStyles = node.ownerDocument?.defaultView?.getComputedStyle(node as Element);
+        while (treeWalker?.nextNode()) {
+          const node = treeWalker.currentNode;
+          const nodeStyles = node.ownerDocument?.defaultView?.getComputedStyle(node as Element);
 
-            if (nodeStyles?.pointerEvents !== 'none') {
-              throw new Error(
-                [
-                  'useTriggerElement(): A disabled element should have explicit "pointer-events: "none" in its styles',
-                  'due a bug in Chrome that breaks "onMouseLeave" event in React:',
-                  'https://github.com/facebook/react/issues/19692',
-                ].join(' '),
-              );
-            }
+          if (nodeStyles?.pointerEvents !== 'none') {
+            throw new Error(
+              [
+                'useTriggerElement(): A disabled element should have explicit "pointer-events: "none" in its styles',
+                'due a bug in Chrome that breaks "onMouseLeave" event in React:',
+                'https://github.com/facebook/react/issues/19692',
+              ].join(' '),
+            );
           }
         }
       }
