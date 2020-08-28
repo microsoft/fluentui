@@ -119,6 +119,11 @@ export interface IBaseFloatingSuggestionsProps<T> {
    */
   selectedSuggestionIndex?: number;
   /**
+   * If set, the picker will be this width. If not, picker will be as wide as necessary
+   * to fully display input values.
+   */
+  pickerWidth?: string;
+  /**
    * Arrow key callback
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;

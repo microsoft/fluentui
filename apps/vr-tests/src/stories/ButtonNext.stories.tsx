@@ -15,10 +15,6 @@ storiesOf('Button Next', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -27,6 +23,11 @@ storiesOf('Button Next', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -35,6 +36,12 @@ storiesOf('Button Next', module)
   .addStory('Default', () => <Button>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
   .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Ghost', () => <Button ghost>Hello, world</Button>)
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost>
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled>
       Hello, world
@@ -48,10 +55,6 @@ storiesOf('Button Next - Teams Theme', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -60,6 +63,11 @@ storiesOf('Button Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -82,10 +90,6 @@ storiesOf('Button Next - With icon before content', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -94,6 +98,12 @@ storiesOf('Button Next - With icon before content', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+
         .end()}
     >
       {story()}
@@ -110,6 +120,16 @@ storiesOf('Button Next - With icon before content', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon="X">
       Hello, world
@@ -123,10 +143,6 @@ storiesOf('Button Next - With icon after content', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -135,6 +151,11 @@ storiesOf('Button Next - With icon after content', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -155,6 +176,16 @@ storiesOf('Button Next - With icon after content', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button ghost icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon="X" iconPosition="after">
       Hello, world
@@ -168,10 +199,6 @@ storiesOf('Button Next - Circular', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -180,6 +207,11 @@ storiesOf('Button Next - Circular', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -200,6 +232,16 @@ storiesOf('Button Next - Circular', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button circular ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button circular disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button circular primary disabled icon="X">
       Hello, world
@@ -213,10 +255,6 @@ storiesOf('Button Next - Icon only', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -225,6 +263,11 @@ storiesOf('Button Next - Icon only', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -245,6 +288,16 @@ storiesOf('Button Next - Icon only', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button iconOnly ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button iconOnly disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button iconOnly primary disabled icon="X">
       Hello, world
@@ -258,10 +311,6 @@ storiesOf('Button Next - Fluid', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -270,6 +319,11 @@ storiesOf('Button Next - Fluid', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -290,6 +344,16 @@ storiesOf('Button Next - Fluid', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button fluid ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button fluid disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button fluid primary disabled icon="X">
       Hello, world
@@ -303,10 +367,6 @@ storiesOf('Button Next - Inverted', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -315,6 +375,11 @@ storiesOf('Button Next - Inverted', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -335,6 +400,16 @@ storiesOf('Button Next - Inverted', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button inverted ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button inverted disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button inverted primary disabled icon="X">
       Hello, world
@@ -348,10 +423,6 @@ storiesOf('Button Next - Loading', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -360,6 +431,11 @@ storiesOf('Button Next - Loading', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -380,6 +456,16 @@ storiesOf('Button Next - Loading', module)
       Hello, world
     </Button>
   ))
+  .addStory('Ghost', () => (
+    <Button loading ghost icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <Button loading disabled ghost icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button loading primary disabled icon="X">
       Hello, world
@@ -393,10 +479,6 @@ storiesOf('Button Next - Sizes', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -405,6 +487,11 @@ storiesOf('Button Next - Sizes', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -448,10 +535,6 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -460,6 +543,11 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
         .end()}
     >
       {story()}
@@ -468,6 +556,10 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
   .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
   .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Ghost', () => <Button ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Ghost Disabled', () => (
+    <Button disabled ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));

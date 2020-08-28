@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
 - Fix `Menu` underlined focus style @assuncaocharles ([#14525](https://github.com/microsoft/fluentui/pull/14525))
 - Do not always `preventDefault()` in `RadioGroupItem` @layershifter ([#14717](https://github.com/microsoft/fluentui/pull/14717))
+- Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -39,6 +40,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add styling for `Datepicker` component @karymes ([#14469](https://github.com/microsoft/fluentui/pull/14469))
 - Add `readStatus` slot to `ChatMessage` @assuncaocharles ([#14585](https://github.com/microsoft/fluentui/pull/14585))
 - Add `on` property to `MenuItem` to open in on hover @assuncaocharles ([#14714](https://github.com/microsoft/fluentui/pull/14714))
+- Added icons `FilterIcon`, `MicrophoneDisabledIcon`, `OptionsIcon`, `ReactionsIcon` @TanelVari ([#14745](https://github.com/microsoft/fluentui/pull/14745))
 
 ### Documentation
 - Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
@@ -52,6 +54,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fixed top's component debug frame above iframe @vyhnalekl ([#14329](https://github.com/microsoft/fluentui/pull/14329))
 - Hide drop selector on scroll in iframe (UI builder) @vyhnalekl ([#14443](https://github.com/microsoft/fluentui/pull/14443))
 - Add export to CodeSandbox feature (UI builder) @vyhnalekl ([#14558](https://github.com/microsoft/fluentui/pull/14558))
+- Fix unresolved imports error when `moduleName` is missing (UI builder) @vyhnalekl ([#14796](https://github.com/microsoft/fluentui/pull/14796))
+- Fixed incorrect margin and padding after drag&drop (UI builder) @vyhnalekl ([#14384](https://github.com/microsoft/fluentui/pull/14384))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
