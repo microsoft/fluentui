@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-link",
+  "entries": [
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-link_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Link from react-next to react-link.",
+            "author": "xgao@microsoft.com",
+            "commit": "90080297164e1f0c4b590876781df9274dc8e7ee",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    }
+  ]
+}

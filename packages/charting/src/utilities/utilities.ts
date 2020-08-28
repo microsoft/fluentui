@@ -1,6 +1,6 @@
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { IEventsAnnotationProps, ILineChartPoints, ILineChartDataPoint } from '../components/LineChart/index';
-import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -87,7 +87,9 @@ export interface IFitContainerParams {
   container: HTMLDivElement | null | HTMLElement;
 }
 
-export function createNumericXAxis(xAxisParams: IXAxisParams) {
+export const additionalMarginRight: number = 20;
+
+export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     domainXMin,
     domainXMax,
@@ -113,8 +115,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
         });
       })!;
   const xAxisScale = d3ScaleLinear()
-    .domain([xMinVal, xMaxVal])
-    .range([margins.left!, containerWidth - margins.right!]);
+    .domain(isRtl ? [xMaxVal, xMinVal] : [xMinVal, xMaxVal])
+    .range([margins.left!, containerWidth - margins.right! - (isRtl ? additionalMarginRight : 0)]);
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -130,7 +132,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   return xAxisScale;
 }
 
-export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
+export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
   const xAxisData: Date[] = [];
   let sDate = new Date();
   // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
@@ -148,8 +150,11 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   });
 
   const xAxisScale = d3ScaleTime()
-    .domain([sDate, lDate])
-    .range([xAxisParams.margins.left!, xAxisParams.containerWidth - xAxisParams.margins.right!]);
+    .domain(isRtl ? [lDate, sDate] : [sDate, lDate])
+    .range([
+      xAxisParams.margins.left!,
+      xAxisParams.containerWidth - xAxisParams.margins.right! - (isRtl ? additionalMarginRight : 0),
+    ]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
     .tickPadding(10);
@@ -172,7 +177,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
   return dataPointsArray;
 }
 
-export function createYAxis(yAxisParams: IYAxisParams) {
+export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     finalYMaxVal = 0,
     finalYMinVal = 0,
@@ -210,9 +215,8 @@ export function createYAxis(yAxisParams: IYAxisParams) {
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const yAxis = d3AxisLeft(yAxisScale)
-    .tickPadding(tickPadding)
-    .tickValues(domainValues);
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis.tickPadding(tickPadding).tickValues(domainValues);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
   showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
@@ -304,6 +308,27 @@ export function fitContainer(containerParams: IFitContainerParams) {
     reqID: animatedId,
   };
   return containerValues;
+}
+
+/**
+ * This function takes two paramerter
+ * 1. an array of strings
+ * 2. a string value
+ * if the value is not present in the given array then it will return the new
+ * array by appending the value to the present arrray.
+ *
+ * if the value is already present in  the given array then it will return the new
+ * array by deleteing the value from the the array
+ * @param array
+ * @param value
+ */
+export function silceOrAppendToArray(array: string[], value: string): string[] {
+  const pos = array.indexOf(value);
+  if (pos === -1) {
+    return [...array, value];
+  } else {
+    return array.slice(0, pos).concat(array.slice(pos + 1));
+  }
 }
 
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {

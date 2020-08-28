@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add forwardRef to UnifiedPicker",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-27T19:29:09.800Z"
+}

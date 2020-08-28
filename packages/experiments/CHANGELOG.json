@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/experiments_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make the floating sugggestions picker have an optional fixed width",
+            "author": "sadelson@microsoft.com",
+            "commit": "b283a05ad788a990243ba3eef4525fda0b1d3420",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@uifabric/experiments_v7.31.0",
       "version": "7.31.0",

@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "office-ui-fabric-react_v7.133.0",
+      "version": "7.133.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios.",
+            "author": "ololubek@microsoft.com",
+            "commit": "53993cc503c2c9d7d7c52a801ba90a564c303edd",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fixing negative date navigation by changing the date clone method from using strings to using the date object itself",
+            "author": "lorejoh12@gmail.com",
+            "commit": "5fbb948524f5c80cf59378e57ac898fabd6f3273",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "fixing callout positioning when screen is too small to position and DirectionalHint = left* or right* due to using last value from for loop",
+            "author": "lorejoh12@gmail.com",
+            "commit": "20c62631b4a829de1f04ca0c33dda3242abaa09f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Aug 2020 12:35:38 GMT",
       "tag": "office-ui-fabric-react_v7.132.0",
       "version": "7.132.0",
