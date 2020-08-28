@@ -84,6 +84,8 @@ export * from './MenuButton/menuButtonBehavior';
 
 export * from './SplitButton/splitButtonBehavior';
 
+export * from './Skeleton/skeletonBehavior';
+
 export * from './Tree/treeBehavior';
 export * from './Tree/treeItemBehavior';
 export * from './Tree/treeTitleBehavior';

@@ -94,6 +94,7 @@ import {
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
   datepickerCalendarCellBehavior,
+  skeletonBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -192,5 +193,6 @@ testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior)
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
+testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
 
 testHelper.run(behaviorMenuItems);
