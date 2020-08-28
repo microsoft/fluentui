@@ -675,7 +675,9 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
-  ${code.replaceAll('<Customized', '<Fabric.').replaceAll('</Customized', '</Fabric.')} \n);}`; // TODO: what if there is '<Customized' somewhere as a  text
+  ${code
+    .replace(new RegExp('<Customized', 'g'), '<Fabric.')
+    .replace(new RegExp('</Customized', 'g'), '</Fabric.')} \n);}`; // TODO: what if there is '<Customized' somewhere as a  text
 
   return { code: codeSandboxExport, imports: packageImports };
 };
