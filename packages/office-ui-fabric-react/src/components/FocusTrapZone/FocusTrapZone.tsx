@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { modalize } from '@uifabric/utilities';
 import {
   elementContains,
   getNativeProps,
@@ -20,6 +21,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   private _firstBumper = React.createRef<HTMLDivElement>();
   private _lastBumper = React.createRef<HTMLDivElement>();
   private _hasFocus: boolean = false;
+  private _unmodalize?: () => void;
 
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
@@ -34,9 +36,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   public componentDidMount(): void {
     this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
+
+    if (!this.props.disabled && this._root.current && this.props.enableAriaHiddenSiblings) {
+      this._unmodalize = modalize(this._root.current);
+    }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
@@ -58,10 +63,16 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
       // Emulate what happens when a FocusTrapZone gets mounted.
       this._bringFocusIntoZone();
+      if (!this._unmodalize && this._root.current && this.props.enableAriaHiddenSiblings) {
+        this._unmodalize = modalize(this._root.current);
+      }
     } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       // Emulate what happens when a FocusTrapZone gets unmounted.
       this._returnFocusToInitiator();
+      if (this._unmodalize) {
+        this._unmodalize();
+      }
     }
   }
 
@@ -86,6 +97,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       this._disposeFocusHandler = undefined;
     }
 
+    if (this._unmodalize) {
+      this._unmodalize();
+    }
+
     // Dispose of element references so the DOM Nodes can be garbage-collected
     delete this._previouslyFocusedElementInTrapZone;
     delete this._previouslyFocusedElementOutsideTrapZone;
@@ -96,6 +111,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
         position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them

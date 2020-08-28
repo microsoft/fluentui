@@ -27,6 +27,7 @@ export const PivotSeparateExample = () => {
       <Pivot
         aria-label="Separately Rendered Content Pivot Example"
         selectedKey={selectedKey}
+        // eslint-disable-next-line react/jsx-no-bind
         onLinkClick={handleLinkClick}
         headersOnly={true}
         getTabId={getTabId}

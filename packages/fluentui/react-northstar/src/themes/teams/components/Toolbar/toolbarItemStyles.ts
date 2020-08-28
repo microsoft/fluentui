@@ -1,11 +1,11 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ToolbarItemStylesProps } from '../../../../components/Toolbar/ToolbarItem';
 import { ToolbarVariables } from './toolbarVariables';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { getColorScheme } from '../../colors';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, ToolbarVariables> = {
+export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     const { borderWidth } = siteVariables;
@@ -46,6 +46,7 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
         color: v.foregroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.backgroundDisabled,
         cursor: 'default',
+        pointerEvents: 'none',
         ':hover': {
           // empty to overwrite all existing hover styles
         },
@@ -53,5 +54,3 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
     };
   },
 };
-
-export default toolbarItemStyles;

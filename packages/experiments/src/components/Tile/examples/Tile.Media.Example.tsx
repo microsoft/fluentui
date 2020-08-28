@@ -96,7 +96,6 @@ const ITEMS: { name: JSX.Element; activity: JSX.Element }[] = [
   },
 ];
 
-// tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
 interface IImageTileProps {
@@ -137,7 +136,6 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
   return (
     <div
       className={css(TileExampleStyles.tile)}
-      // tslint:disable-next-line:jsx-ban-props
       style={{
         width: `${props.tileSize.width}px`,
         height: `${props.tileSize.height}px`,

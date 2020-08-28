@@ -4,11 +4,11 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
 import { ButtonStylesProps } from '../../../../components/Button/Button';
 import { ButtonVariables } from './buttonVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { faster, ultraFast } from '../../animations/durations';
 
-const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
+export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -268,5 +268,3 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     }),
   }),
 };
-
-export default buttonStyles;

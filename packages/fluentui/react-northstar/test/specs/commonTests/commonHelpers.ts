@@ -1,4 +1,4 @@
-export default (testName, Component) => {
+export const commonHelpers = (testName, Component) => {
   const throwError = msg => {
     throw new Error(`${testName}: ${msg} \n  Component: ${Component && Component.name}`);
   };

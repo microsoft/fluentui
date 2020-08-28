@@ -2,7 +2,7 @@ import { LabelVariables, labelColorAreas } from '../../../teams/components/Label
 import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 import { SiteVariablesPrepared } from '@fluentui/styles';
 
-export default (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
+export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
   return {
     colorScheme: pickValuesFromColorScheme(
       extendColorScheme(siteVars.colorScheme, {

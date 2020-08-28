@@ -47,7 +47,7 @@ const getXSpacingStyles = (xSpacing: SvgIconXSpacing, horizontalSpace: string): 
   }
 };
 
-const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
+export const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     speak: 'none',
     verticalAlign: 'middle',
@@ -83,7 +83,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
     };
   },
 
-  svg: ({ props: { size, disabled, rotate }, variables: v }): ICSSInJSStyle => {
+  svg: ({ props: { size, disabled, rotate }, variables: v, rtl }): ICSSInJSStyle => {
     const iconSizeInRems = getIconSize(size, v);
 
     return {
@@ -96,7 +96,11 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
         fill: v.disabledColor,
       }),
 
-      transform: `rotate(${rotate}deg)`,
+      // Manual flipping to make it compatible with Emotion and Fela in the same time
+      transform: `rotate(${rotate}deg) /* @noflip */`,
+      ...(rtl && {
+        transform: `rotate(${-1 * rotate}deg) /* @noflip */`,
+      }),
     };
   },
 
@@ -105,7 +109,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
     return {
       ...callable(svgIconStyles.svg)(config),
       ...(rtl && {
-        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`,
+        transform: `scaleX(-1) rotate(${props.rotate}deg) /* @noflip */`,
       }),
     };
   },
@@ -114,5 +118,3 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
     fill: v.redColor,
   }),
 };
-
-export default svgIconStyles;

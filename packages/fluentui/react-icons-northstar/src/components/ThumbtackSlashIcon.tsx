@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ThumbtackSlashIcon = createSvgIcon({
+export const ThumbtackSlashIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -99,5 +99,3 @@ const ThumbtackSlashIcon = createSvgIcon({
   ),
   displayName: 'ThumbtackSlashIcon',
 });
-
-export default ThumbtackSlashIcon;

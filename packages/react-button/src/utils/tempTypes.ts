@@ -23,10 +23,10 @@ export type ComposeRender<TProps, TOptions> = (
   options?: TOptions,
 ) => JSX.Element;
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ClassDictionary = any;
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
@@ -41,7 +41,7 @@ export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
 
 export type ComposedComponent<
   TProps = {},
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TOptions = ComposeOptions<any, any, any, any>
 > = React.ForwardRefExoticComponent<TProps> & {
   options: TOptions;

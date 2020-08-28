@@ -12,7 +12,8 @@ function getExtraTscParams(args) {
   return {
     pretty: true,
     target: 'es5',
-    ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }),
+    // sourceMap must be true for inlineSources and sourceRoot to work
+    ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
   };
 }
 

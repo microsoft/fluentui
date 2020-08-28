@@ -9,7 +9,7 @@ const examplePersona: IPersonaSharedProps = {
   optionalText: 'Available at 4:00pm',
 };
 
-const scenario = (
+const Scenario = () => (
   <Persona
     {...examplePersona}
     size={PersonaSize.size32}
@@ -19,4 +19,4 @@ const scenario = (
   />
 );
 
-export default scenario;
+export default Scenario;

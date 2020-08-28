@@ -16,6 +16,6 @@ const menuProps = {
   ],
 };
 
-const scenario = <DefaultButton text="I am a button" menuProps={menuProps} />;
+const Scenario = () => <DefaultButton text="I am a button" menuProps={menuProps} />;
 
-export default scenario;
+export default Scenario;

@@ -1,10 +1,7 @@
 import * as React from 'react';
-
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { OverflowSetBase } from './OverflowSet.base';
 
 /**
  * {@docCategory OverflowSet}
@@ -31,7 +28,7 @@ export interface IOverflowSet {
 /**
  * {@docCategory OverflowSet}
  */
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
@@ -69,32 +66,15 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
   /**
    * Method to call when trying to render an item.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderOverflowButton: IRenderFunction<any[]>;
-
-  /**
-   * Custom properties for OverflowSet's FocusZone.
-   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
-   * Use one or the other.
-   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
-   */
-  focusZoneProps?: IFocusZoneProps;
-
-  /**
-   * If true do not contain the OverflowSet inside of a FocusZone,
-   * otherwise the OverflowSet will contain a FocusZone.
-   * If this is set to true focusZoneProps will be ignored.
-   * Use one or the other.
-   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
-   */
-  doNotContainWithinFocusZone?: boolean;
 
   /**
    * The role for the OverflowSet.
@@ -112,7 +92,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * If not provided, will use 'item.subMenuProps.items' by default.
    * This is only used if your overflow set has keytips.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
 
   /**
@@ -157,6 +137,6 @@ export interface IOverflowSetItemProps {
   /**
    * Any additional properties to use when custom rendering menu items.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propertyName: string]: any;
 }

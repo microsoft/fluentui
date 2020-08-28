@@ -1,4 +1,4 @@
-import createManager from '../createManager';
+import { createManager } from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type CarouselActions = {

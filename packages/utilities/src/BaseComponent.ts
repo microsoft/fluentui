@@ -21,7 +21,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
   /**
    * @deprecated Use React's error boundaries instead.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public static onError: (errorMessage?: string, ex?: any) => void;
 
   /**
@@ -31,24 +31,22 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    */
   protected _skipComponentRefResolution: boolean;
 
-  // tslint:disable:variable-name
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[] | null;
   private __resolves: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
   private __className: string;
-  // tslint:enable:variable-name
 
   /**
    * BaseComponent constructor
    * @param props - The props for the component.
    * @param context - The context for the component.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: TProps, context?: any) {
     super(props, context);
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentDidMount',
       'shouldComponentUpdate',
@@ -157,9 +155,8 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     }
 
     if (!this.__resolves[refName]) {
-      // tslint:disable-next-line:no-any
       this.__resolves[refName] = (ref: React.ReactNode) => {
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return ((this as any)[refName] = ref);
       };
     }
@@ -223,7 +220,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
       }
 
       if (typeof ref === 'object') {
-        // tslint:disable:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (ref as any).current = value;
       }
     }
@@ -235,30 +232,29 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   let classMethod = (obj as any)[methodName];
   let prototypeMethod = (prototype as any)[methodName];
-  // tslint:enable:no-any
 
   if (classMethod || prototypeMethod) {
-    // tslint:disable-next-line:no-any
-    (obj as any)[methodName] = function(): any {
+    (obj as any)[methodName] = function(...args: any[]): any {
+      /* eslint-enable @typescript-eslint/no-explicit-any */
       let retVal;
 
       if (prototypeMethod) {
-        retVal = prototypeMethod.apply(this, arguments);
+        retVal = prototypeMethod.apply(this, args);
       }
       if (classMethod !== prototypeMethod) {
-        retVal = classMethod.apply(this, arguments);
+        retVal = classMethod.apply(this, args);
       }
 
       return retVal;

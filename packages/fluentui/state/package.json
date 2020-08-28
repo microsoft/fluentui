@@ -1,15 +1,17 @@
 {
   "name": "@fluentui/state",
   "description": "A set of utils to create framework agnostic and reusable state managers",
-  "version": "0.49.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6"
+    "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import compose from './compose';
 import { mount, shallow } from 'enzyme';
+import compose from './compose';
+import { mergeProps } from './mergeProps';
+import { ComposePreparedOptions } from './types';
 
 describe('compose', () => {
   interface ToggleProps extends React.AllHTMLAttributes<{}> {
@@ -9,12 +11,17 @@ describe('compose', () => {
     checked?: boolean;
   }
 
+  const useToggle = (props: ToggleProps) => props;
+
   const Toggle = compose<'div', ToggleProps, {}, {}, {}>(
-    (props: React.HTMLAttributes<HTMLDivElement>, ref: React.Ref<HTMLDivElement>) => {
-      return <div ref={ref} {...props} />;
+    (props: React.HTMLAttributes<HTMLDivElement>, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions) => {
+      const { state } = options;
+      const { slots, slotProps } = mergeProps(state, options);
+      return <slots.root ref={ref} {...slotProps.root} />;
     },
     {
       slots: {},
+      state: useToggle,
       handledProps: ['checked'],
       displayName: 'Toggle',
     },
@@ -28,15 +35,15 @@ describe('compose', () => {
   });
 
   it('can recompose a component', () => {
-    const NewToggle = compose(Toggle, { displayName: 'NewToggle' });
-    const wrapper = mount(<Toggle id="foo" />);
+    const NewToggle = compose<'div', ToggleProps, {}, {}, {}>(Toggle, { displayName: 'NewToggle' });
+    const wrapper = mount(<NewToggle id="foo" />);
 
     expect(wrapper.html()).toMatch('<div id="foo"></div>');
     expect(NewToggle.displayName).toEqual('NewToggle');
   });
 
   it('can pass shorthandConfig via composeOptions', () => {
-    const BaseComponent = compose(
+    const BaseComponent = compose<'div', { content?: string }, {}, {}, {}>(
       (props, ref, composeOptions) => {
         return (
           <div
@@ -53,9 +60,9 @@ describe('compose', () => {
       },
     );
 
-    const ComposedComponent = compose(BaseComponent, {
+    const ComposedComponent = compose<'div', { slot?: string }, {}, {}, {}>(BaseComponent, {
       shorthandConfig: {
-        mappedProp: 'as',
+        mappedProp: 'slot',
       },
     });
 
@@ -64,7 +71,20 @@ describe('compose', () => {
 
     expect(wrapper.prop('data-mapped-prop')).toEqual('content');
     expect(wrapper.prop('data-allows-jsx')).toEqual(false);
-    expect(composedWrapper.prop('data-mapped-prop')).toEqual('as');
+    expect(composedWrapper.prop('data-mapped-prop')).toEqual('slot');
     expect(composedWrapper.prop('data-allows-jsx')).toEqual(false);
+  });
+
+  it('can recompose the state of a component', () => {
+    const useNewToggle = (props: ToggleProps) => {
+      return { ...props, 'data-new-state': 'NewToggle' };
+    };
+    const NewToggle = compose<'div', ToggleProps, {}, {}, {}>(Toggle, {
+      displayName: 'NewToggle',
+      state: useNewToggle,
+    });
+    const wrapper = mount(<NewToggle id="foo" />);
+    expect(wrapper.html()).toMatch('<div id="foo" data-new-state="NewToggle"></div>');
+    expect(NewToggle.displayName).toEqual('NewToggle');
   });
 });

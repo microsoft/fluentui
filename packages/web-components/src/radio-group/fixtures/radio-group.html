@@ -1,0 +1,82 @@
+<fluent-design-system-provider use-defaults>
+  <h1>Radio Group</h1>
+
+  <h4>Defaults</h4>
+  <div>
+    <fluent-radio-group name="numbers">
+      <label style="color: --var(neutral-foreground-rest);" slot="label">
+        Numbers
+      </label>
+      <fluent-radio value="one">One</fluent-radio>
+      <fluent-radio value="two">Two</fluent-radio>
+    </fluent-radio-group>
+  </div>
+
+  <h4>Single radio</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <fluent-radio-group name="players">
+      <label style="color: --var(neutral-foreground-rest);" slot="label">
+        Best basketball players
+      </label>
+      <fluent-radio value="airjordan">Michael Jordan</fluent-radio>
+    </fluent-radio-group>
+  </div>
+
+  <h4>With label outside group</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label1">Outside label</label>
+    <fluent-radio-group required="true" aria-labelledby="label1" name="fruits">
+      <fluent-radio value="apples">Apples</fluent-radio>
+      <fluent-radio value="oranges">Oranges</fluent-radio>
+      <fluent-radio value="bananas">Bananas</fluent-radio>
+      <fluent-radio value="kiwi">Kiwi</fluent-radio>
+      <fluent-radio value="grapefruit">Grapefruit</fluent-radio>
+      <fluent-radio value="mango">Mango</fluent-radio>
+      <fluent-radio value="blueberries">Blueberries</fluent-radio>
+      <fluent-radio value="strawberries">Strawberries</fluent-radio>
+      <fluent-radio value="pineapple">Pineapple</fluent-radio>
+    </fluent-radio-group>
+  </div>
+
+  <h4>Within toolbar</h4>
+  <div role="toolbar" style="display: flex; flex-direction: column; margin-top: 12px;">
+    <div style="display: flex; flex-direction: row; align-items: stretch; width: 100%;">
+      <button style="width: 40px; margin-right: 4px;">go</button>
+      <fluent-radio-group required="true" name="navigation">
+        <fluent-radio value="back">back</fluent-radio>
+        <fluent-radio value="forward">forward</fluent-radio>
+        <fluent-radio value="refresh">refresh</fluent-radio>
+      </fluent-radio-group>
+      <button style="width: 40px; margin-left: 4px;">stop</button>
+    </div>
+  </div>
+
+  <h4>Disabled</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label2">Disabled radio group</label>
+    <fluent-radio-group disabled aria-labelledby="label2" name="cars">
+      <fluent-radio value="lambo">Lamborghini</fluent-radio>
+      <fluent-radio value="ferari">Ferari</fluent-radio>
+    </fluent-radio-group>
+  </div>
+
+  <h4>Readonly</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label3">readonly radio group</label>
+    <fluent-radio-group readonly aria-labelledby="label3" name="office">
+      <fluent-radio value="word">Word</fluent-radio>
+      <fluent-radio value="excel">Excel</fluent-radio>
+    </fluent-radio-group>
+  </div>
+
+  <h4>Preset value</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label4">Preset selected-value</label>
+    <fluent-radio-group value="maverick" aria-labelledby="label4" name="best-pilot">
+      <fluent-radio value="ice-man">Ice Man</fluent-radio>
+      <fluent-radio value="maverick">Maverick</fluent-radio>
+      <fluent-radio value="viper">Viper</fluent-radio>
+      <fluent-radio value="jester">Jester</fluent-radio>
+    </fluent-radio-group>
+  </div>
+</fluent-design-system-provider>

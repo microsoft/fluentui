@@ -14,7 +14,13 @@ const items: IBreadcrumbItem[] = [
   { text: 'Folder 2', key: 'f2', onClick: _onBreadcrumbItemClicked },
   { text: 'Folder 3', key: 'f3', onClick: _onBreadcrumbItemClicked },
   { text: 'Folder 4 (non-clickable)', key: 'f4' },
-  { text: 'Folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
+  { text: 'Folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 6', key: 'f6', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 7', key: 'f7', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 8', key: 'f8', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 9', key: 'f9', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 10', key: 'f10', onClick: _onBreadcrumbItemClicked },
+  { text: 'Folder 11', key: 'f11', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
 ];
 const itemsWithHref: IBreadcrumbItem[] = [
   // Normally each breadcrumb would have a unique href, but to make the navigation less disruptive
@@ -40,7 +46,7 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
       <Label styles={labelStyles}>With items rendered as buttons</Label>
       <Breadcrumb
         items={items}
-        maxDisplayedItems={3}
+        maxDisplayedItems={10}
         ariaLabel="Breadcrumb with items rendered as buttons"
         overflowAriaLabel="More links"
       />

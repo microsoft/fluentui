@@ -1,0 +1,4 @@
+- Use Size 24 Persona in text fields in read mode or in experiences such as multi-column list view which need compact Persona representations.
+- Use Size 32 Persona in text fields in edit mode.
+- Use Size 32, Size 40, and Size 48 Personas in menus and list views.
+- Use Size 72 and Size 100 Personas in profile cards and views.

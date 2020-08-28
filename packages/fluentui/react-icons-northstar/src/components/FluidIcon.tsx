@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const FluidIcon = createSvgIcon({
+export const FluidIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
@@ -22,5 +22,3 @@ const FluidIcon = createSvgIcon({
   ),
   displayName: 'FluidIcon',
 });
-
-export default FluidIcon;

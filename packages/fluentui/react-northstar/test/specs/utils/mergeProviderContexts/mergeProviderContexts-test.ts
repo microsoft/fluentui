@@ -1,22 +1,23 @@
-import mergeProviderContexts, { mergePerformanceOptions, mergeRenderers } from 'src/utils/mergeProviderContexts';
-import { felaRenderer } from 'src/utils/felaRenderer';
+import { ProviderContextInput } from '@fluentui/react-bindings';
+import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 
-describe('mergeRenderers', () => {
-  test(`always uses "next" renderer`, () => {
-    const next = jest.fn();
-    expect(mergeRenderers(felaRenderer, next as any)).toBe(next);
+describe('getRenderer', () => {
+  const createRenderer = jest.fn().mockImplementation(target => ({ target }));
+
+  test(`without "target" defaults to a document`, () => {
+    // will be "undefined" as we call createRenderer() with "undefined"
+    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
   });
 
-  test(`always returns pre-created renderer for main document`, () => {
-    expect(mergeRenderers(jest.fn() as any, null, document)).toBe(felaRenderer);
+  test(`with "target" equals a default document will use its renderer`, () => {
+    // will be "undefined" as we call createRenderer() with "undefined"
+    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
   });
 
-  test(`creates a new renderer for a new document and keeps it`, () => {
+  test(`creates a new renderer for a new "target" and keeps it`, () => {
     const target = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-    const renderer = mergeRenderers(jest.fn() as any, null, target);
 
-    expect(renderer).toHaveProperty('renderRule');
-    expect(mergeRenderers(jest.fn() as any, null, target)).toBe(renderer);
+    expect(getRenderer(createRenderer, target)).toHaveProperty('target', target);
   });
 });
 
@@ -45,23 +46,25 @@ describe('mergePerformanceOptions', () => {
 });
 
 describe('mergeContexts', () => {
+  const createRenderer = jest.fn();
+
   test(`always returns an object`, () => {
-    expect(mergeProviderContexts({}, {})).toMatchObject({});
-    expect(mergeProviderContexts(null, null)).toMatchObject({});
-    expect(mergeProviderContexts(undefined, undefined)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, {}, {})).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, null, null)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, undefined, undefined)).toMatchObject({});
 
-    expect(mergeProviderContexts(null, undefined)).toMatchObject({});
-    expect(mergeProviderContexts(undefined, null)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, null, undefined)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, undefined, null)).toMatchObject({});
 
-    expect(mergeProviderContexts({}, undefined)).toMatchObject({});
-    expect(mergeProviderContexts(undefined, {})).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, {}, undefined)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, undefined, {})).toMatchObject({});
 
-    expect(mergeProviderContexts({}, null)).toMatchObject({});
-    expect(mergeProviderContexts(null, {})).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, {}, null)).toMatchObject({});
+    expect(mergeProviderContexts(createRenderer, null, {})).toMatchObject({});
   });
 
   test('gracefully handles merging a theme in with undefined values', () => {
-    const target = {
+    const target: ProviderContextInput = {
       theme: {
         siteVariables: { color: 'black' },
         componentVariables: { Button: { color: 'black' } },
@@ -70,21 +73,21 @@ describe('mergeContexts', () => {
       rtl: true,
       disableAnimations: false,
     };
-    const source = {
+    const source: ProviderContextInput = {
       theme: undefined,
       rtl: undefined,
       disableAnimations: undefined,
     };
-    expect(() => mergeProviderContexts(target, source)).not.toThrow();
+    expect(() => mergeProviderContexts(createRenderer, target, source)).not.toThrow();
   });
 
   test('gracefully handles merging onto a theme with undefined values', () => {
-    const target = {
+    const target: ProviderContextInput = {
       theme: undefined,
       rtl: undefined,
       disableAnimations: undefined,
     };
-    const source = {
+    const source: ProviderContextInput = {
       theme: {
         siteVariables: { color: 'black' },
         componentVariables: { Button: { color: 'black' } },
@@ -93,6 +96,6 @@ describe('mergeContexts', () => {
       rtl: true,
       disableAnimations: false,
     };
-    expect(() => mergeProviderContexts(target, source)).not.toThrow();
+    expect(() => mergeProviderContexts(createRenderer, target, source)).not.toThrow();
   });
 });

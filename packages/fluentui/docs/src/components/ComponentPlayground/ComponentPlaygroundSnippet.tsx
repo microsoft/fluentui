@@ -1,7 +1,5 @@
-import { CodeSnippet, CodeSnippetProps } from '@fluentui/docs-components';
+import { CodeSnippet, CodeSnippetProps, renderElementToJSX } from '@fluentui/docs-components';
 import * as React from 'react';
-
-import renderElementToJSX from '../ExampleSnippet/renderElementToJSX';
 
 type ComponentPlaygroundSnippetProps = {
   element?: React.ReactElement;

@@ -486,6 +486,7 @@ describe('ComboBox', () => {
     );
     const comboBoxRoot = wrapper.find('.ms-ComboBox-Input').find('input');
     comboBoxRoot.simulate('focus');
+    comboBoxRoot.simulate('keyup');
     expect(onMenuOpenMock.mock.calls.length).toBe(1);
   });
 
@@ -546,7 +547,7 @@ describe('ComboBox', () => {
       'input',
     ) as HTMLInputElement;
     if (input === null) {
-      throw 'ComboBox input element is null';
+      throw new Error('ComboBox input element is null');
     }
 
     // Simulate typing one character into the ComboBox input
@@ -585,15 +586,7 @@ describe('ComboBox', () => {
     });
     const initialOption = { key: '1', text: 'Text' };
 
-    wrapper = mount(
-      <ComboBox
-        options={[initialOption]}
-        autoComplete="on"
-        allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
-        onChange={onChange}
-      />,
-    );
+    wrapper = mount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform={true} onChange={onChange} />);
     const inputElement: InputElementWrapper = wrapper.find('input');
     inputElement.simulate('input', { target: { value: 't' } });
     inputElement.simulate('input', { target: { value: 'e' } });
@@ -630,7 +623,6 @@ describe('ComboBox', () => {
         autoComplete="off"
         allowFreeform={true}
         text="hikari"
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
@@ -653,7 +645,6 @@ describe('ComboBox', () => {
         options={DEFAULT_OPTIONS}
         autoComplete="off"
         allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
@@ -735,6 +726,29 @@ describe('ComboBox', () => {
     const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
       if (previous !== '') {
         return previous + ', ' + current.text;
+      }
+      return current.text;
+    }, '');
+
+    expect((inputElement.instance() as any).value).toEqual(compare);
+  });
+
+  it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(
+      <ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />,
+    );
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[2]);
+    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
+      if (previous !== '') {
+        return previous + '; ' + current.text;
       }
       return current.text;
     }, '');
@@ -851,13 +865,13 @@ describe('ComboBox', () => {
       />,
     );
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS], [0, 1, 2]);
     inputElement.simulate('focus');
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS], [0, 1, 2]);
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS], [0, 1, 2]);
     inputElement.simulate('blur');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [0, 1, 2, 3]);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [0, 1, 2, 3]);
   });
 
   // Adds currentPendingValue to options and makes it selected onBlur
@@ -873,19 +887,20 @@ describe('ComboBox', () => {
       <ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />,
     );
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], []);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('focus');
-    expect((componentRef.current as ComboBox).state.focused).toEqual(true);
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('keyup', { which: 10 });
+    expect((componentRef.current as ComboBox).state.focusState).toEqual('focused');
+    _verifyStateVariables(componentRef, 'focused', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    _verifyStateVariables(componentRef, 'focused', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('blur');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
     inputElement.simulate('focus');
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
     // This should toggle the checkbox off. With multi-select the currentPendingValue is not reset on input change
     // because it would break keyboard accessibility
@@ -897,7 +912,7 @@ describe('ComboBox', () => {
     inputElement.simulate('blur');
     _verifyStateVariables(
       componentRef,
-      false,
+      'none',
       [
         ...DEFAULT_OPTIONS,
         {
@@ -919,32 +934,32 @@ describe('ComboBox', () => {
     };
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], []);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('focus');
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS], []);
     inputElement.simulate('blur');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
     inputElement.simulate('focus');
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, 'focusing', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
     const buttonElement: any = wrapper.find('.ms-ComboBox button')! as any;
     buttonElement.simulate('click');
     const secondItem = document.querySelector('.ms-ComboBox-option[data-index="2"]')!;
     ReactTestUtils.Simulate.click(secondItem);
 
     inputElement.simulate('blur');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [2]);
+    _verifyStateVariables(componentRef, 'none', [...DEFAULT_OPTIONS, { ...comboBoxOption }], [2]);
   });
 
   function _verifyStateVariables(
     componentRef: React.RefObject<any>,
-    isFocused: boolean,
+    focusState: 'none' | 'focused' | 'focusing',
     currentOptions: IComboBoxOption[],
     selectedIndices?: number[],
   ): void {
-    expect((componentRef.current as ComboBox).state.focused).toEqual(isFocused);
+    expect((componentRef.current as ComboBox).state.focusState).toEqual(focusState);
     expect((componentRef.current as ComboBox).state.selectedIndices).toEqual(selectedIndices);
     expect((componentRef.current as ComboBox).state.currentOptions).toEqual(currentOptions);
   }

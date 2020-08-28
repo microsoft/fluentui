@@ -1,26 +1,27 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
-import { Theme } from './types';
+import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes } from './mergeThemes';
+import { mergeThemes } from '@fluentui/theme';
+import { createDefaultTheme } from './createDefaultTheme';
 
-const lightTheme: Theme = mergeThemes({
+const lightTheme = mergeThemes({
   stylesheets: [],
   tokens: {
     body: {
-      fill: 'white',
-      text: 'black',
+      background: 'white',
+      contentColor: 'black',
     },
   },
 });
 
-const darkTheme: Theme = mergeThemes({
+const darkTheme = mergeThemes({
   tokens: {
     body: {
-      fill: 'black',
-      text: 'white',
+      background: 'black',
+      contentColor: 'white',
     },
   },
 });
@@ -28,6 +29,20 @@ const darkTheme: Theme = mergeThemes({
 describe('ThemeProvider', () => {
   it('renders a div', () => {
     const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can handle a partial theme', () => {
+    const partialTheme: PartialTheme = {
+      tokens: {
+        foo: {
+          background: 'red',
+        },
+      },
+    };
+
+    const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -55,7 +70,6 @@ describe('ThemeProvider', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();
-
       return null;
     };
 
@@ -65,6 +79,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    expect(resolvedTheme).toEqual(lightTheme);
+    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    expect(resolvedTheme).toEqual(expectedTheme);
   });
 });

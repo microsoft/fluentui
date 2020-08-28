@@ -1,5 +1,5 @@
 import { UseKnobOptions } from './types';
-import useKnob from './useKnob';
+import { useKnob } from './useKnob';
 
 type UseNumberKnobSpecificOptions = {
   min?: number | string;
@@ -9,7 +9,7 @@ type UseNumberKnobSpecificOptions = {
 
 type UseNumberKnobOptions<T> = UseKnobOptions<T> & UseNumberKnobSpecificOptions;
 
-const useStringKnob = (options: UseNumberKnobOptions<number>) => {
+export const useNumberKnob = (options: UseNumberKnobOptions<number>) => {
   const { initialValue = 0, min = 0, max = undefined, step = '1', ...rest } = options;
 
   return useKnob<number, Required<UseNumberKnobSpecificOptions>>({
@@ -21,5 +21,3 @@ const useStringKnob = (options: UseNumberKnobOptions<number>) => {
     ...rest,
   });
 };
-
-export default useStringKnob;

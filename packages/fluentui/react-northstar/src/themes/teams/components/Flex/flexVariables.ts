@@ -6,7 +6,7 @@ type PaddingValues = Record<FlexProps['padding'], string>;
 
 export type FlexVariables = GapValues & PaddingValues;
 
-export default (): FlexVariables => ({
+export const flexVariables = (): FlexVariables => ({
   // GAP VALUES
   'gap.smaller': pxToRem(8),
   'gap.small': pxToRem(10),

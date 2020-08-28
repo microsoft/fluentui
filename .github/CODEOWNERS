@@ -25,15 +25,17 @@ jest.config.js @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-azure-pipelines.yml @ecraig12345
-azure-pipelines.*.yml @ecraig12345
-.appveyor.yml @ecraig12345
+*.yml @ecraig12345
+.eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan
 
 #### Fluent UI
 packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @dzearing @pompomon @silviuavram @jurokapsiar
+
+#### Web Components
+packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Deprecated API Files
 *.api.ts @natalieethell
@@ -50,10 +52,12 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk
-packages/date-time @lorejoh @evlevy
+packages/date-time @lorejoh12 @evlevy @pompomon
+packages/date-time-utilities @lorejoh12 @evlevy @pompomon
+packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation/ @JasonGore
+packages/foundation/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 packages/lists/ @dzearing @aditima
@@ -64,10 +68,10 @@ packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
-packages/tslint-rules/ @ecraig12345
 packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 
 ### Fabric
 # common/
@@ -81,19 +85,20 @@ packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
 packages/react-next/src/components/Button/ @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
+packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
 packages/office-ui-fabric-react/src/components/Check/ @dzearing @xugao
 packages/office-ui-fabric-react/src/components/Checkbox/ @khmakoto @xugao
 packages/react-next/src/components/Checkbox/ @khmakoto @xugao
+packages/react-checkbox/ @khmakoto @xugao
 packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
 packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
 packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
-packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh
+packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
 packages/office-ui-fabric-react/src/components/DetailsList/ @dzearing
 packages/office-ui-fabric-react/src/components/Dialog/ @joschect
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
@@ -114,6 +119,7 @@ packages/office-ui-fabric-react/src/components/Label/ @khmakoto
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon
 packages/office-ui-fabric-react/src/components/Link/ @khmakoto
 packages/react-next/src/components/Link/ @khmakoto
+packages/react-link/ @khmakoto
 packages/office-ui-fabric-react/src/components/List/ @dzearing
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
@@ -130,6 +136,7 @@ packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtenno
 packages/office-ui-fabric-react/src/components/pickers/  @joschect
 packages/office-ui-fabric-react/src/components/Pivot/ @behowell
 packages/react-next/src/components/Pivot/ @behowell
+packages/react-tabs/ @behowell
 packages/office-ui-fabric-react/src/components/Popup/ @joschect
 packages/react-next/src/components/Popup/ @joschect
 packages/office-ui-fabric-react/src/components/ProgressIndicator/ @aneeshack4
@@ -143,6 +150,7 @@ packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1 @atneik
 packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Slider/ @joschect
 packages/react-next/src/components/Slider/ @joschect
+packages/react-slider/ @joschect
 packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
 packages/react-next/src/components/SpinButton/ @khmakoto
 packages/office-ui-fabric-react/src/components/Spinner/ @aneeshack4
@@ -156,5 +164,6 @@ packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Toggle/ @xugao
 packages/react-next/src/components/Toggle/ @xugao
+packages/react-toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

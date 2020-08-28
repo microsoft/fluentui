@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes } from '../../types';
-import menuItemBehavior from '../Menu/menuItemBehavior';
+import { menuItemBehavior } from '../Menu/menuItemBehavior';
 
 /**
  * @description
@@ -22,11 +22,9 @@ import menuItemBehavior from '../Menu/menuItemBehavior';
  * Triggers 'closeMenu' action with 'ArrowLeft' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper'.
  */
-const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
+export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
   return menuItemBehavior({ ...props, vertical: true });
 };
-
-export default toolbarMenuItemBehavior;
 
 export type ToolbarMenuItemBehaviorProps = {
   /** Indicated if menu item has submenu. TODO: fix types for all behaviours */

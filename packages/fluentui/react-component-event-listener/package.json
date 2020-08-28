@@ -1,20 +1,21 @@
 {
   "name": "@fluentui/react-component-event-listener",
   "description": "React components for binding events on the global scope.",
-  "version": "0.49.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
-    "prop-types": "^15.7.2"
+    "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/react": "16.8.25",
     "@types/simulant": "^0.2.0",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "simulant": "^0.2.2"
+    "simulant": "^0.2.2",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

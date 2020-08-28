@@ -18,7 +18,7 @@ export type RadioGroupItemVariables = {
   padding: string;
 };
 
-export default (siteVars: any): RadioGroupItemVariables => ({
+export const radioGroupItemVariables = (siteVars: any): RadioGroupItemVariables => ({
   colorDisabled: siteVars.colors.grey[250],
 
   textFontSize: siteVars.fontSizes.medium,

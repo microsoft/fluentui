@@ -82,8 +82,7 @@
       bottom: 0;
       right: 0;
       pointer-events: none;
-      border: 2px solid;
-      border-color: $ms-color-white;
+      border: 2px solid $ms-color-white;
     }
   }
 
@@ -160,8 +159,7 @@
       bottom: 0;
       right: 0;
       pointer-events: none;
-      border: 2px solid;
-      border-color: $ms-color-white;
+      border: 2px solid $ms-color-white;
     }
   }
 }

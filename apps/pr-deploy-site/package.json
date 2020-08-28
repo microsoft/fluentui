@@ -5,24 +5,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "test": "just-scripts test",
+    "generate:site": "just-scripts generate:site",
     "just": "just-scripts"
   },
   "license": "MIT",
-  "dependencies": {
-    "@fluentui/docs": "^0.49.0",
-    "@uifabric/charting": "^2.2.28",
-    "@uifabric/date-time": "^7.8.94",
-    "@uifabric/experiments": "^7.25.2",
-    "@uifabric/fabric-website": "^7.10.64",
-    "@uifabric/fabric-website-resources": "^7.6.75",
-    "office-ui-fabric-react": "^7.117.3",
-    "perf-test": "^7.0.0",
-    "theming-designer": "^7.0.0",
-    "todo-app": "^7.0.0"
-  },
   "devDependencies": {
     "@uifabric/build": "^7.0.0"
   }

@@ -1,0 +1,42 @@
+{
+  "name": "@fluentui/codemods",
+  "version": "0.11.0",
+  "description": "Tool enabling easy upgrades to new Fluent UI versions",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "bin": {
+    "upgrade": "./bin/upgrade.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@types/jest": "~24.9.0",
+    "@types/node": "^10.3.2",
+    "@uifabric/build": "^7.0.0",
+    "@types/react": "16.8.25",
+    "@types/semver": "^5.5.0"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0",
+    "office-ui-fabric-react": "^7.133.0",
+    "react": "16.8.6",
+    "semver": "^6.2.0",
+    "ts-morph": "^6.0.0",
+    "glob": "^7.1.2",
+    "yargs": "^13.2.4"
+  }
+}

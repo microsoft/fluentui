@@ -1,8 +1,49 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { useMergedRefs } from './useMergedRefs';
 
 describe('useMergedRefs', () => {
+  let wrapper: ReactWrapper | undefined;
+
+  afterEach(() => {
+    if (wrapper && wrapper.exists()) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+  });
+
+  it('always returns the same ref (refs should be immutable)', () => {
+    let lastMergedRef;
+    const refFunc = () => null;
+    const TestComponent: React.FunctionComponent = () => {
+      lastMergedRef = useMergedRefs<boolean>(refFunc);
+      return null;
+    };
+
+    wrapper = mount(<TestComponent />);
+    const ref1 = lastMergedRef;
+    wrapper.setProps({});
+    const ref2 = lastMergedRef;
+
+    expect(ref1).toBe(ref2);
+  });
+
+  it('always mutates the ref when 1 or more merged refs mutate', () => {
+    let lastMergedRef;
+
+    const TestComponent: React.FunctionComponent = () => {
+      lastMergedRef = useMergedRefs<boolean>(() => ({}));
+      return null;
+    };
+
+    wrapper = mount(<TestComponent />);
+    const ref1 = lastMergedRef;
+    wrapper.setProps({});
+    const ref2 = lastMergedRef;
+
+    expect(ref1).not.toBe(ref2);
+  });
+
   it('updates all provided refs', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
     let refValue: boolean | null = null;
@@ -11,7 +52,7 @@ describe('useMergedRefs', () => {
       mergedRef(true);
       return null;
     };
-    mount(<TestComponent />);
+    wrapper = mount(<TestComponent />);
 
     expect(refObject.current).toBe(true);
     expect(refValue).toBe(true);
@@ -20,7 +61,7 @@ describe('useMergedRefs', () => {
   it('reuses the same ref callback if refs remain stable', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
 
-    // tslint:disable-next-line:no-empty
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const refValueFunc = (val: boolean) => {};
 
     let refCallback: Function | undefined = undefined;
@@ -29,7 +70,7 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    const wrapper = mount(<TestComponent />);
+    wrapper = mount(<TestComponent />);
 
     const firstRefCallback = refCallback;
 
@@ -51,7 +92,7 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    const wrapper = mount(<TestComponent />);
+    wrapper = mount(<TestComponent />);
 
     let secondRefValue: boolean | null = null;
     refValueFunc = (val: boolean) => (secondRefValue = val);

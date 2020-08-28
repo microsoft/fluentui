@@ -108,6 +108,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       {
         color: semanticColors.bodyText,
         margin: '0',
+        minHeight: fonts.xLarge.fontSize,
         padding: '16px 46px 20px 24px',
         lineHeight: 'normal',
         selectors: {

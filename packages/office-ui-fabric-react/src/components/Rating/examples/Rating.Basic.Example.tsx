@@ -44,6 +44,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         size={RatingSize.Large}
         rating={largeStarRating}
         getAriaLabel={getRatingComponentAriaLabel}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onLargeStarChange}
         ariaLabelFormat={'Select {0} of {1} stars'}
       />
@@ -53,6 +54,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         min={1}
         max={5}
         rating={smallStarRating}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onSmallStarChange}
         getAriaLabel={getRatingComponentAriaLabel}
         ariaLabelFormat={'Select {0} of {1} stars'}
@@ -62,6 +64,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         min={1}
         max={10}
         rating={tenStarRating}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onTenStarChange}
         getAriaLabel={getRatingComponentAriaLabel}
         ariaLabelFormat={'Select {0} of {1} stars'}
@@ -82,6 +85,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         min={1}
         max={5}
         rating={customIconStarRating}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onCustomIconStarChange}
         getAriaLabel={getRatingComponentAriaLabel}
         ariaLabelFormat={'Select {0} of {1} stars'}
@@ -93,6 +97,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         min={1}
         max={5}
         rating={themedStarRating}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onThemedStarChange}
         getAriaLabel={getRatingComponentAriaLabel}
         ariaLabelFormat={'Select {0} of {1} stars'}

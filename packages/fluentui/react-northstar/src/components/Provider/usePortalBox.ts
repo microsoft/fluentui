@@ -1,7 +1,7 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import isBrowser from '../../utils/isBrowser';
+import { isBrowser } from '../../utils/isBrowser';
 
 type UsePortalBoxOptions = {
   className: string;
@@ -11,7 +11,7 @@ type UsePortalBoxOptions = {
 
 export const PortalBoxContext = React.createContext<HTMLDivElement>(null);
 
-const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
+export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
   const { className, rtl, target } = options;
 
   const element: HTMLDivElement | null = React.useMemo(() => {
@@ -49,5 +49,3 @@ const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
 
   return element;
 };
-
-export default usePortalBox;

@@ -35,9 +35,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -62,9 +60,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -89,9 +85,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -116,9 +110,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -143,9 +135,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -165,9 +155,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -193,7 +181,6 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderDetailsHeader={(props: IDetailsHeaderProps, defaultRenderer?: IRenderFunction<IDetailsHeaderProps>) => {
           return defaultRenderer!({
             ...props,
@@ -205,9 +192,7 @@ describe('DetailsColumn', () => {
             },
           });
         }}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -227,9 +212,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -252,9 +235,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );

@@ -11,7 +11,7 @@ export interface ISVGIconProps {
   iconColor?: string;
 }
 
-export const AndroidLogo = (props?: ISVGIconProps) => {
+export const androidLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -23,40 +23,28 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M21 25C21 27.2093 19.2093 29 17 29C14.7907 29 13 27.2093 13 25C13 22.7907 14.7907 21 17 21C19.2093 21 21 22.7907 21 25Z"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M53 25C53 27.2093 51.2093 29 49 29C46.7907 29 45 27.2093 45 25C45 22.7907 46.7907 21 49 21C51.2093 21 53 22.7907 53 25Z"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
       />
-      <path d="M17 13L9 1" stroke="white" stroke-width="2" />
-      <path d="M49 13L57 1" stroke="white" stroke-width="2" />
-      <path d="M1 40.8001H65" stroke="white" stroke-width="2" />
-      <path
-        d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url('#paint0_angular')"
-        stroke-width="2"
-      />
-      <defs>
-        <radialGradient id="paint0_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
+      <path d="M17 13L9 1" stroke="white" strokeWidth="2" />
+      <path d="M49 13L57 1" stroke="white" strokeWidth="2" />
+      <path d="M1 40.8001H65" stroke="white" strokeWidth="2" />
+      <path d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65" strokeWidth="2" />
     </svg>
   );
 };
 
-export const WindowsLogo = (props?: ISVGIconProps) => {
+export const windowsLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -67,29 +55,14 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
       viewBox="0 0 66 68"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M29.0001 6V62" stroke="white" stroke-width="2" />
-      <path d="M1 34.0001H65" stroke="white" stroke-width="2" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint1_angular)"
-        stroke-width="2"
-        stroke-linecap="square"
-      />
-      <defs>
-        <radialGradient id="paint1_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
+      <path d="M29.0001 6V62" stroke="white" strokeWidth="2" />
+      <path d="M1 34.0001H65" stroke="white" strokeWidth="2" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M1 10L65 2V66L1 58V10Z" strokeWidth="2" strokeLinecap="square" />
     </svg>
   );
 };
 
-export const MacLogo = (props?: ISVGIconProps) => {
+export const macLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -100,29 +73,20 @@ export const MacLogo = (props?: ISVGIconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M41 65C37 53 37 45 37 33H29C29 29 29 17 37 1" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M17 17V25" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M49 17V25" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M53 41C49 45 41 49 33 49C25 49 17 45 13 41" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M41 65C37 53 37 45 37 33H29C29 29 29 17 37 1" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M17 17V25" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M49 17V25" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M53 41C49 45 41 49 33 49C25 49 17 45 13 41" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint2_angular)"
-        stroke-width="2"
-        stroke-linecap="square"
+        strokeWidth="2"
+        strokeLinecap="square"
       />
-      <defs>
-        <radialGradient id="paint2_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const AppleLogo = (props?: ISVGIconProps) => {
+export const appleLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -133,40 +97,31 @@ export const AppleLogo = (props?: ISVGIconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M57 25C57 20.5782 53.4218 17 49 17" stroke="white" stroke-width="2" />
-      <path d="M41 25C41 20.5782 44.5782 17 49 17" stroke="white" stroke-width="2" />
-      <path d="M41 25C41 29.4218 44.5782 33 49 33" stroke="white" stroke-width="2" />
-      <path d="M57 41C57 36.5782 53.4218 33 49 33" stroke="white" stroke-width="2" />
-      <path d="M57 41C57 45.4218 53.4218 49 49 49" stroke="white" stroke-width="2" />
-      <path d="M41 41C41 45.4218 44.5782 49 49 49" stroke="white" stroke-width="2" />
-      <path d="M33 25C33 20.5782 29.4218 17 25 17" stroke="white" stroke-width="2" />
-      <path d="M17 25C17 20.5782 20.5782 17 25 17" stroke="white" stroke-width="2" />
-      <path d="M33 41C33 45.4218 29.4218 49 25 49" stroke="white" stroke-width="2" />
-      <path d="M17 41C17 45.4218 20.5782 49 25 49" stroke="white" stroke-width="2" />
-      <path d="M16.9998 25V41" stroke="white" stroke-width="2" />
-      <path d="M32.9998 25V41" stroke="white" stroke-width="2" />
-      <path d="M9.2 29V49" stroke="white" stroke-width="2" />
-      <path d="M9.2 17V21" stroke="white" stroke-width="2" />
+      <path d="M57 25C57 20.5782 53.4218 17 49 17" stroke="white" strokeWidth="2" />
+      <path d="M41 25C41 20.5782 44.5782 17 49 17" stroke="white" strokeWidth="2" />
+      <path d="M41 25C41 29.4218 44.5782 33 49 33" stroke="white" strokeWidth="2" />
+      <path d="M57 41C57 36.5782 53.4218 33 49 33" stroke="white" strokeWidth="2" />
+      <path d="M57 41C57 45.4218 53.4218 49 49 49" stroke="white" strokeWidth="2" />
+      <path d="M41 41C41 45.4218 44.5782 49 49 49" stroke="white" strokeWidth="2" />
+      <path d="M33 25C33 20.5782 29.4218 17 25 17" stroke="white" strokeWidth="2" />
+      <path d="M17 25C17 20.5782 20.5782 17 25 17" stroke="white" strokeWidth="2" />
+      <path d="M33 41C33 45.4218 29.4218 49 25 49" stroke="white" strokeWidth="2" />
+      <path d="M17 41C17 45.4218 20.5782 49 25 49" stroke="white" strokeWidth="2" />
+      <path d="M16.9998 25V41" stroke="white" strokeWidth="2" />
+      <path d="M32.9998 25V41" stroke="white" strokeWidth="2" />
+      <path d="M9.2 29V49" stroke="white" strokeWidth="2" />
+      <path d="M9.2 17V21" stroke="white" strokeWidth="2" />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint3_angular)"
-        stroke-width="2"
+        strokeWidth="2"
       />
-      <defs>
-        <radialGradient id="paint3_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const WebLogo = (props?: ISVGIconProps) => {
+export const webLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -178,36 +133,27 @@ export const WebLogo = (props?: ISVGIconProps) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M49 33C49 50.6733 41.8364 65 33 65C24.1636 65 17 50.6733 17 33C17 15.3267 24.1636 1 33 1C41.8364 1 49 15.3267 49 33Z"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="square"
+        strokeWidth="2"
+        strokeLinecap="square"
       />
-      <path d="M5 17.2H61" stroke="white" stroke-width="2" />
-      <path d="M5 49.2H61" stroke="white" stroke-width="2" />
+      <path d="M5 17.2H61" stroke="white" strokeWidth="2" />
+      <path d="M5 49.2H61" stroke="white" strokeWidth="2" />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint4_angular)"
-        stroke-width="2"
-        stroke-linecap="square"
+        strokeWidth="2"
+        strokeLinecap="square"
       />
-      <defs>
-        <radialGradient id="paint4_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const CrossPlatformLogo = (props?: ISVGIconProps) => {
+export const crossPlatformLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
@@ -218,29 +164,14 @@ export const CrossPlatformLogo = (props?: ISVGIconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M25 57H49" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M33 49V57" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint0_angular)" stroke-width="2" stroke-linecap="square" />
-      <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M9 29H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M9 57L57 9" stroke="white" stroke-width="2" stroke-linecap="square" />
-      <path d="M9 49V57H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M57 17V9H49" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" />
-      <defs>
-        <radialGradient
-          id="paint0_angular"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(33 25) scale(32 24)"
-        >
-          <stop offset="0.125191" stop-color="#CF8FFF" />
-          <stop offset="0.375179" stop-color="#0078D4" />
-          <stop offset="0.62518" stop-color="#4FE5FF" />
-          <stop offset="0.874595" stop-color="#69E56E" />
-        </radialGradient>
-      </defs>
+      <path d="M25 57H49" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M33 49V57" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M1 25V1H65V49H25" strokeWidth="2" strokeLinecap="square" />
+      <path d="M25 25H1V65H25V25Z" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M9 29H17" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M9 57L57 9" stroke="white" strokeWidth="2" strokeLinecap="square" />
+      <path d="M9 49V57H17" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M57 17V9H49" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square" />
     </svg>
   );
 };

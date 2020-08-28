@@ -5,8 +5,8 @@ import { defaultComposeOptions } from './defaultComposeOptions';
 export function mergeComposeOptions(
   input: Input,
   inputOptions: ComposeOptions,
-  parentOptions: ComposePreparedOptions = defaultComposeOptions,
-): ComposePreparedOptions {
+  parentOptions: Required<ComposePreparedOptions> = defaultComposeOptions,
+): Required<ComposePreparedOptions> {
   const mapPropsToSlotPropsChain = inputOptions.slotProps
     ? [...parentOptions.slotProps, inputOptions.slotProps]
     : parentOptions.slotProps;
@@ -29,9 +29,19 @@ export function mergeComposeOptions(
       return mergedSlotProps;
     }, {});
 
+  const inputClasses = Array.isArray(inputOptions.classes) ? inputOptions.classes : [inputOptions.classes];
+
+  const state: ComposePreparedOptions['state'] = (props, ref, options) => {
+    if (inputOptions.state) {
+      return inputOptions.state(parentOptions.state(props, ref, options), ref, options);
+    }
+
+    return parentOptions.state(props, ref, options);
+  };
+
   return {
     className: inputOptions.className || parentOptions.className,
-    classes: [...parentOptions.classes, inputOptions.classes],
+    classes: [...parentOptions.classes, ...inputClasses],
 
     displayName: inputOptions.displayName || parentOptions.displayName,
     displayNames: computeDisplayNames(inputOptions, parentOptions),
@@ -52,6 +62,8 @@ export function mergeComposeOptions(
     },
 
     slotProps: mapPropsToSlotPropsChain,
+
+    state,
 
     resolveSlotProps,
 

@@ -1,3 +1,1 @@
-import menuVariables from './menuVariables';
-
-export default menuVariables;
+export { menuVariables as menuItemIconVariables } from './menuVariables';

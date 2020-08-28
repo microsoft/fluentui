@@ -5,9 +5,11 @@ import {
   renderFolderCoverWithLayout,
   IFolderCoverProps,
   SharedSignal,
+  initializeFolderCovers,
 } from '@uifabric/experiments';
 import { ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 
+initializeFolderCovers();
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
 }
@@ -142,6 +144,40 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           folderCoverSize="small"
           folderCoverType="media"
           metadata={15}
+          signal={<SharedSignal />}
+        />
+        <h3>Large Linked Cover</h3>
+        <FolderCoverWithImage
+          isFluent={false}
+          originalImageSize={{
+            width: 200,
+            height: 150,
+          }}
+          folderCoverSize="large"
+          folderCoverType="linked"
+          metadata={20}
+          signal={<SharedSignal />}
+        />
+        <h3>Small Linked Cover</h3>
+        <FolderCoverWithImage
+          isFluent={false}
+          originalImageSize={{
+            width: 200,
+            height: 150,
+          }}
+          folderCoverSize="small"
+          folderCoverType="linked"
+          metadata={15}
+        />
+        <h3>Small Linked Cover -- signal icon only</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150,
+          }}
+          folderCoverSize="small"
+          folderCoverType="linked"
           signal={<SharedSignal />}
         />
       </div>

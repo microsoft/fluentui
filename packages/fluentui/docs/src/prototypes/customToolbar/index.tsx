@@ -81,7 +81,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
 
     /* eslint-disable no-console */
     console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
-    console.table(telemetry.performance);
+    console.log(telemetry.performance);
     /* eslint-enable no-console */
   });
 

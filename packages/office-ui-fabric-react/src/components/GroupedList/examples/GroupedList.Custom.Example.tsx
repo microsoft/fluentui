@@ -29,28 +29,41 @@ const classNames = mergeStyleSets({
   },
 });
 
-const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
-  const toggleCollapse = (): void => {
-    props.onToggleCollapse!(props.group!);
-  };
-  return (
-    <div className={classNames.header}>
-      This is a custom header for {props.group!.name}
-      &nbsp; (<Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>)
-    </div>
-  );
+const onRenderHeader = (props?: IGroupHeaderProps): JSX.Element | null => {
+  if (props) {
+    const toggleCollapse = (): void => {
+      props.onToggleCollapse!(props.group!);
+    };
+    return (
+      <div className={classNames.header}>
+        This is a custom header for {props.group!.name}
+        &nbsp; (
+        <Link
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={toggleCollapse}
+        >
+          {props.group!.isCollapsed ? 'Expand' : 'Collapse'}
+        </Link>
+        )
+      </div>
+    );
+  }
+
+  return null;
 };
 
-const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
-  return (
-    <div data-selection-index={itemIndex}>
-      <span className={classNames.name}>{item.name}</span>
+const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+  return item ? (
+    <div role="row" data-selection-index={itemIndex}>
+      <span role="cell" className={classNames.name}>
+        {item.name}
+      </span>
     </div>
-  );
+  ) : null;
 };
 
-const onRenderFooter = (props: IGroupFooterProps): JSX.Element => {
-  return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
+const onRenderFooter = (props?: IGroupFooterProps): JSX.Element | null => {
+  return props ? <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div> : null;
 };
 
 const groupedListProps = {

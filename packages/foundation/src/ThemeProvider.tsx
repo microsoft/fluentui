@@ -19,10 +19,10 @@ export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (prop
   // TODO: consider merging implementation with theme-proto, which only stores a reference / scheme name to theme
   //   in context and uses quick global store accessor to trigger change by passing in theme object as child and
   //   triggering re-render. (perf benefits need verification)
-  // tslint:disable-next-line:typedef
   const contextTransform: ICustomizerProps['contextTransform'] = context => {
     return getThemedContext(context, scheme, theme);
   };
 
+  // eslint-disable-next-line react/jsx-no-bind
   return <Customizer {...rest} contextTransform={contextTransform} />;
 };

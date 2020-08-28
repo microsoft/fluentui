@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-utilities",
+  "entries": [
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-utilities_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Scaffolding @fluentui/react-utilities package.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5369cd681a47a6b5640b0387d7db9367bdd6f1ba",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    }
+  ]
+}

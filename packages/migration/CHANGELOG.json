@@ -2,6 +2,66 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/migration_v7.0.24",
+      "version": "7.0.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/migration"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/migration_v7.0.23",
+      "version": "7.0.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/migration"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/migration_v7.0.22",
+      "version": "7.0.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/migration"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/migration_v7.0.20",
+      "version": "7.0.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up dependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/migration"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/migration_v7.0.18",
       "version": "7.0.18",

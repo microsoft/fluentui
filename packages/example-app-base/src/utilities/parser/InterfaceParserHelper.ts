@@ -1,5 +1,3 @@
-/* tslint:disable:no-switch-case-fall-through */
-
 import { BaseParser } from './BaseParser';
 import { IInterfaceProperty, InterfacePropertyType } from './interfaces';
 

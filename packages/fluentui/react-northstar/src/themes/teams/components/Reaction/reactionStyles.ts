@@ -6,7 +6,7 @@ import { ReactionVariables } from './reactionVariables';
 
 const contentClassNameSelector = `& .${reactionSlotClassNames.content}`;
 
-const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, ReactionVariables> = {
+export const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, ReactionVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     cursor: 'pointer',
     background: 'transparent',
@@ -52,5 +52,3 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, ReactionV
     fontSize: v.contentFontSize,
   }),
 };
-
-export default reactionStyles;

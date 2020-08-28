@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/utilities/dateValues/TimeConstants';
+export * from '@fluentui/date-time-utilities/lib/dateValues/timeConstants';

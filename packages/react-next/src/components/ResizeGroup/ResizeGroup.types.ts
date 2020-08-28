@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ResizeGroupBase } from './ResizeGroup.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -24,7 +23,7 @@ export interface IResizeGroup {
 /**
  * {@docCategory ResizeGroup}
  */
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -61,14 +60,14 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * with the same `cacheKey` will be assumed to take up the same width and will prevent measurements.
    * The type of `cacheKey` is a string.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 
   /**
    * Function to render the data. Called when rendering the contents to the screen and when
    * rendering in a hidden div to measure the size of the contents.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderData: (data: any) => JSX.Element;
 
   /**
@@ -76,7 +75,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * If there are no more scaling steps to apply, it should return undefined to prevent
    * an infinite render loop.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onReduceData: (prevData: any) => any;
 
   /**
@@ -84,7 +83,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * container has more room than the previous render and we may be able to fit more content. If there are no more
    * scaling operations to perform on teh data, it should return undefined to prevent an infinite render loop.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onGrowData?: (prevData: any) => any;
 
   /**
@@ -93,7 +92,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * dropped as a result of onReduceData or to count the number of renders that an implementation of
    * onReduceData triggers.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dataDidRender?: (renderedData: any) => void;
 }
 

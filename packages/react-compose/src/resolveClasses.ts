@@ -1,7 +1,5 @@
-import { ComposePreparedOptions, ClassDictionary, GenericDictionary } from './types';
-import { MergePropsResult } from './mergeProps';
+import { ComposePreparedOptions, ClassDictionary, GenericDictionary, MergePropsResult } from './types';
 import { appendClasses } from './appendClasses';
-
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,
  * merges them into a final result, and distributes classnames to slotProps within the given
@@ -15,7 +13,7 @@ export function resolveClasses<TState>(
 
   for (const classFunctionOrObject of classes) {
     const classObj: ClassDictionary | undefined =
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots as any) : classFunctionOrObject;
 
     if (classObj) {
@@ -27,7 +25,7 @@ export function resolveClasses<TState>(
     }
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   appendToSlotClassName(slotProps, 'root', (state as any).className);
 
   return result;

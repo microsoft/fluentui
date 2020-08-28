@@ -17,7 +17,7 @@ const dropdownControlledExampleOptions = [
 ];
 
 export const DropdownControlledExample: React.FunctionComponent = () => {
-  const [selectedItem, setSelectedItem] = React.useState();
+  const [selectedItem, setSelectedItem] = React.useState<IDropdownOption>();
 
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
     setSelectedItem(item);
@@ -27,6 +27,7 @@ export const DropdownControlledExample: React.FunctionComponent = () => {
     <Dropdown
       label="Controlled example"
       selectedKey={selectedItem ? selectedItem.key : undefined}
+      // eslint-disable-next-line react/jsx-no-bind
       onChange={onChange}
       placeholder="Select an option"
       options={dropdownControlledExampleOptions}

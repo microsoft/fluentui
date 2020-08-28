@@ -14,18 +14,17 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
-  WithAsProp,
-  ComponentEventHandler,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+  ComponentWithAs,
+  getElementType,
+  useTelemetry,
+  useFluentContext,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
@@ -89,9 +88,12 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
   content: boolean;
 };
 
-export const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
+/**
+ * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
+ */
+export const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
   setStart();
   const {
@@ -126,7 +128,7 @@ export const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
     mapPropsToBehavior: () => ({
       hasContent: !!content,
       canBeCollapsed,
-      as,
+      as: String(as),
       active,
       disabled,
       accordionContentId,
@@ -247,8 +249,3 @@ AccordionTitle.defaultProps = {
 };
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-/**
- * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
- */
-export default withSafeTypeForAs<typeof AccordionTitle, AccordionTitleProps>(AccordionTitle);

@@ -1,0 +1,39 @@
+@import '../Button/Button.scss';
+
+/*
+ * Have the layer that creates the menu not take out any extra space inside of the button.
+ * We need to specify `.root >` to avoid specificity problems.
+ */
+.root > .menuIcon + * {
+  margin-left: 0;
+}
+
+.root {
+  &._ghost {
+    --button-menuIconColor: var(--ghost-menuIconColor);
+
+    &._expanded {
+      --button-contentColor: var(--ghost-expanded-contentColor);
+    }
+  }
+}
+
+.menuIcon {
+  color: var(--button-menuIconColor);
+
+  ._disabled & {
+    color: var(--button-disabled-menuIconColor);
+  }
+}
+
+.root:hover {
+  .menuIcon {
+    color: var(--button-hovered-menuIconColor, var(--button-menuIconColor));
+  }
+}
+
+.root:active {
+  .menuIcon {
+    color: var(--button-hovered-menuIconColor, var(--button-menuIconColor));
+  }
+}

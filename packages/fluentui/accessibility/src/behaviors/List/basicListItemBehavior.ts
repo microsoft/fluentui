@@ -8,13 +8,10 @@ import { ListItemBehaviorProps } from './listItemBehavior';
  * @specification
  * Adds role='listitem'.
  */
-
-const basicListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
+export const basicListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'listitem',
     },
   },
 });
-
-export default basicListItemBehavior;

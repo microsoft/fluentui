@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react';
 
-const scenario = <Slider />;
+const Scenario = () => <Slider />;
 
-export default scenario;
+export default Scenario;

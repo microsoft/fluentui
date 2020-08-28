@@ -54,23 +54,40 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 
 const codepenHeader = `const {
   createTheme,
+  Checkbox,
   Customizations,
   DefaultButton,
+  Fabric,
+  loadTheme,
+  Pivot,
+  PivotItem,
   PrimaryButton,
-  Toggle,
-  TooltipHost
+  Stack,
+  Toggle
 } = Fabric;\n\n`;
-const codepenSamples = `\n\nclass Content extends React.Component {
-    public render()
-    {
-      Customizations.applySettings({ theme: myTheme });
-      return (
-        <div>
-          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
-          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
-        </div>
-      );
-    }
+const codepenSamples = `\n\n
+const Content = () => {
+    Customizations.applySettings({ theme: myTheme });
+    return (
+      <Fabric applyThemeToBody>
+        <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
+          <Pivot>
+            <PivotItem headerText="Home" />
+            <PivotItem headerText="Pages" />
+            <PivotItem headerText="Documents" />
+            <PivotItem headerText="Activity" />
+          </Pivot>
+          <Stack horizontal gap={8}>
+            <DefaultButton text="DefaultButton"/>
+            <PrimaryButton text="PrimaryButton"/>
+          </Stack>
+          <Toggle label="Enabled"/>
+          <Toggle label="Disabled" disabled={true}/>
+          <Checkbox label="Checkbox"/>
+          <Checkbox checked label="Checkbox Checked" />
+        </Stack>
+      </Fabric>
+    );
 }
 ReactDOM.render(<Content />,document.getElementById('content'));`;
 
@@ -106,14 +123,14 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             | Fluent UI Theme Designer
           </Link>
         </Stack>
-        <PrimaryButton text="Export theme" onClick={this.showPanel} />
+        <PrimaryButton text="Export theme" onClick={this._showPanel} />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this.hidePanel}
+          onDismiss={this._hidePanel}
           headerText="Export theme"
           closeButtonAriaLabel="Close"
-          onRenderFooterContent={this.onRenderFooterContent}
+          onRenderFooterContent={this._onRenderFooterContent}
         >
           <span>
             <p>
@@ -156,7 +173,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   }
 
-  private exportToJson = () => {
+  private _exportToJson = () => {
     const themeRules = this.props.themeRules!;
 
     // strip out the unnecessary shade slots from the final output theme
@@ -176,13 +193,13 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
 
     this.setState({
-      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
+      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), undefined, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
       themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme),
     });
   };
 
-  private onRenderFooterContent = () => {
+  private _onRenderFooterContent = () => {
     return (
       <div>
         <CodepenComponent
@@ -193,12 +210,12 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   };
 
-  private showPanel = () => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
-    this.exportToJson();
+    this._exportToJson();
   };
 
-  private hidePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

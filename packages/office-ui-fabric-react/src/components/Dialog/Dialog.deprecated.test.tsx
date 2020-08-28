@@ -5,8 +5,6 @@ import * as renderer from 'react-test-renderer';
 import { setWarningCallback } from '../../Utilities';
 import { DialogBase } from './Dialog.base';
 
-// tslint:disable:deprecation
-
 describe('Dialog deprecated props', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test

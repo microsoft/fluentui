@@ -12,7 +12,6 @@ const classNames = mergeStyleSets({
 });
 
 export const ActivityItemPersonaExample: React.FunctionComponent = () => {
-  // tslint:disable:jsx-no-lambda
   const activityItemExamples: (IActivityItemProps & { key: string | number })[] = [
     {
       key: 1,

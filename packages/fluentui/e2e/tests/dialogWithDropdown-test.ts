@@ -5,6 +5,7 @@ const outerTrigger = `#${selectors.outerTrigger}`;
 const dropdownSelector = `#${selectors.dropdown}`;
 const dialogHeader = `#${selectors.dialogHeader}`;
 const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
 
 describe('Dialog scroll', () => {
   beforeEach(async () => {
@@ -30,6 +31,16 @@ describe('Dialog scroll', () => {
     expect(await e2e.exists(dropdownSelector)).toBe(true);
     await e2e.clickOn(dialogHeader);
     await e2e.pressKey('Escape');
+    expect(await e2e.exists(dropdownSelector)).toBe(false);
+  });
+
+  it('should close when ESC pressed in the closed dropdown', async () => {
+    await e2e.clickOn(outerTrigger); // open dialog
+    await e2e.focusOn(dropdownSelector);
+    await e2e.pressKey('ArrowDown'); // open list
+    expect(await e2e.exists(dropdownList)).toBe(true);
+    await e2e.pressKey('Escape'); // closes list
+    await e2e.pressKey('Escape'); // closes dialog
     expect(await e2e.exists(dropdownSelector)).toBe(false);
   });
 });

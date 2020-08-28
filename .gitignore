@@ -2,6 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
+packages/fluentui/*/componentInfo
 packages/fluentui/docs/src/componentInfo
 packages/fluentui/docs/src/componentMenu.json
 packages/fluentui/docs/src/behaviorMenu.json
@@ -147,3 +148,11 @@ rush.json
 
 # Copied monaco-editor files
 /packages/monaco-editor/esm
+
+.eslintcache
+
+# Rollup cache
+.rollupcache
+
+# tsdoc
+tsdoc-metadata.json

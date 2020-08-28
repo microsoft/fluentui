@@ -9,7 +9,6 @@ import { IStyleOptions } from './IStyleOptions';
 
 const DISPLAY_NAME = 'displayName';
 
-// tslint:disable-next-line:no-any
 type IDictionary = { [key: string]: any };
 
 interface IRuleSet {
@@ -83,6 +82,22 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
+function extractSelector(currentSelector: string, rules: IRuleSet = { __order: [] }, selector: string, value: IStyle) {
+  if (selector.indexOf('@') === 0) {
+    selector = selector + '{' + currentSelector;
+    extractRules([value], rules, selector);
+  } else if (selector.indexOf(',') > -1) {
+    expandCommaSeparatedGlobals(selector)
+      .split(',')
+      .map((s: string) => s.trim())
+      .forEach((separatedSelector: string) =>
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector)),
+      );
+  } else {
+    extractRules([value], rules, expandSelector(selector, currentSelector));
+  }
+}
+
 function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
@@ -105,40 +120,32 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
     } else if (Array.isArray(arg)) {
       extractRules(arg, rules, currentSelector);
     } else {
-      // tslint:disable-next-line:no-any
       for (const prop in arg as any) {
-        if (prop === 'selectors') {
-          // tslint:disable-next-line:no-any
-          const selectors: { [key: string]: IStyle } = (arg as any).selectors;
+        if ((arg as any).hasOwnProperty(prop)) {
+          const propValue = (arg as any)[prop];
 
-          for (let newSelector in selectors) {
-            if (selectors.hasOwnProperty(newSelector)) {
-              const selectorValue = selectors[newSelector];
+          if (prop === 'selectors') {
+            // every child is a selector.
+            const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
-              if (newSelector.indexOf('@') === 0) {
-                newSelector = newSelector + '{' + currentSelector;
-                extractRules([selectorValue], rules, newSelector);
-              } else if (newSelector.indexOf(',') > -1) {
-                expandCommaSeparatedGlobals(newSelector)
-                  .split(',')
-                  .map((s: string) => s.trim())
-                  .forEach((separatedSelector: string) =>
-                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector)),
-                  );
-              } else {
-                extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
+            for (const newSelector in selectors) {
+              if (selectors.hasOwnProperty(newSelector)) {
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
               }
             }
-          }
-        } else {
-          if ((arg as any)[prop] !== undefined) {
-            // Else, add the rule to the currentSelector.
-            if (prop === 'margin' || prop === 'padding') {
-              // tslint:disable-next-line:no-any
-              expandQuads(currentRules, prop, (arg as any)[prop]);
-            } else {
-              // tslint:disable-next-line:no-any
-              (currentRules as any)[prop] = (arg as any)[prop] as any;
+          } else if (typeof propValue === 'object') {
+            // prop is a selector.
+            if (propValue !== null) {
+              extractSelector(currentSelector, rules, prop, propValue);
+            }
+          } else {
+            if (propValue !== undefined) {
+              // Else, add the rule to the currentSelector.
+              if (prop === 'margin' || prop === 'padding') {
+                expandQuads(currentRules, prop, propValue);
+              } else {
+                (currentRules as any)[prop] = propValue;
+              }
             }
           }
         }

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const ExcelIcon = createSvgIcon({
+export const ExcelIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path fill="#21a366" d="M20 2H9.333A1.333 1.333 0 0 0 8 3.333V9l12 7 6 2.532L32 16V9z" />
@@ -26,5 +26,3 @@ const ExcelIcon = createSvgIcon({
   ),
   displayName: 'ExcelIcon',
 });
-
-export default ExcelIcon;

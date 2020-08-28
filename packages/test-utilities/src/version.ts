@@ -1,4 +1,4 @@
-// @uifabric/test-utilities@7.0.5
-// Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
+// Do not modify this file; it is generated as part of publish.
+// The checked in version is a placeholder only and will not be updated.
 import { setVersion } from '@uifabric/set-version';
-setVersion('@uifabric/test-utilities', '7.0.5');
+setVersion('@uifabric/test-utilities', '0.0.0');

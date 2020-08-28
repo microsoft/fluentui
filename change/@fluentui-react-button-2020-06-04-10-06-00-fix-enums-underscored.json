@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adjusting styling to adhere to conventions.",
-  "packageName": "@fluentui/react-button",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-04T17:05:43.101Z"
-}

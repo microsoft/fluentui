@@ -1,15 +1,18 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
-import { useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
+import {
+  useAccessibility,
+  useAutoControlled,
+  useTelemetry,
+  useFluentContext,
+  useTriggerElement,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
-  childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -19,7 +22,7 @@ import {
   getOrGenerateIdFromShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ALIGNMENTS,
   POSITIONS,
@@ -29,8 +32,8 @@ import {
   Alignment,
   Position,
 } from '../../utils/positioner';
-import PortalInner from '../Portal/PortalInner';
-import TooltipContent, { TooltipContentProps } from './TooltipContent';
+import { PortalInner } from '../Portal/PortalInner';
+import { TooltipContent, TooltipContentProps } from './TooltipContent';
 
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
@@ -87,18 +90,17 @@ export const tooltipClassName = 'ui-tooltip';
  * @accessibility
  * Implements [ARIA Tooltip](https://www.w3.org/TR/wai-aria-practices-1.1/#tooltip) design pattern.
  */
-const Tooltip: React.FC<TooltipProps> &
+export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
   setStart();
 
   const {
     accessibility,
     align,
-    children,
     content,
     flipBoundary,
     mountNode,
@@ -106,6 +108,7 @@ const Tooltip: React.FC<TooltipProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     target,
@@ -119,6 +122,7 @@ const Tooltip: React.FC<TooltipProps> &
 
     initialValue: false,
   });
+  const triggerElement = useTriggerElement(props);
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -196,9 +200,6 @@ const Tooltip: React.FC<TooltipProps> &
     }
   };
 
-  const triggerNode: React.ReactElement | undefined = childrenExist(children) ? children : trigger;
-  const triggerElement = triggerNode && React.Children.only(triggerNode);
-
   const triggerProps: React.HTMLAttributes<HTMLElement> = {
     onFocus: (e, ...args) => {
       if (isFromKeyboard()) {
@@ -235,6 +236,7 @@ const Tooltip: React.FC<TooltipProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           enabled={open}
@@ -283,6 +285,7 @@ Tooltip.propTypes = {
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
@@ -299,5 +302,3 @@ Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 Tooltip.Content = TooltipContent;
 
 Tooltip.create = createShorthandFactory({ Component: Tooltip, mappedProp: 'content' });
-
-export default Tooltip;

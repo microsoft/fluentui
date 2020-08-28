@@ -3,8 +3,9 @@ import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
 import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -108,8 +109,8 @@ export const pointingBeak = ({
   };
 };
 
-const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
 
     const colors = getColorScheme(v.colorScheme, null, primary);
@@ -119,7 +120,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
       display: 'block',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-
+      overflow: 'hidden',
       ...(pointing &&
         vertical && {
           border: '1px solid transparent',
@@ -140,6 +141,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'visible',
       }),
 
       // active styles
@@ -177,13 +179,18 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
               ...(iconOnly && {
                 borderColor: v.borderColorActive || colors.borderActive,
               }),
-
-              ...(underlined && active && underlinedItem(colors.foregroundActive)),
             }
           : {
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
+        ...(underlined && {
+          ...getBorderFocusStyles({ variables: siteVariables }),
+          ':focus-visible': {
+            ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
+            borderColor: v.borderColorActive,
+          },
+        }),
       }),
 
       ':focus': {
@@ -215,5 +222,3 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 };
-
-export default menuItemStyles;

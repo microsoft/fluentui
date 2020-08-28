@@ -23,7 +23,7 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'doNotNavigateNextParentItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
  */
-const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
+export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',
@@ -60,5 +60,3 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
     },
   },
 });
-
-export default menuItemAsToolbarButtonBehavior;

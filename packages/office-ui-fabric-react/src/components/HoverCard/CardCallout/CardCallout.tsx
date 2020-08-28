@@ -40,7 +40,7 @@ export const CardCallout = (props: ICardCalloutProps) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {trapFocus ? (
         <FocusTrapCallout
           {...mergedCalloutProps}
@@ -55,6 +55,6 @@ export const CardCallout = (props: ICardCalloutProps) => {
       ) : (
         <Callout {...mergedCalloutProps}>{content}</Callout>
       )}
-    </React.Fragment>
+    </>
   );
 };

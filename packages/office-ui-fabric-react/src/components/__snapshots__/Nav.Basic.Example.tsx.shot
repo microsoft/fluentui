@@ -217,7 +217,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -246,10 +245,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -382,7 +381,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          border: none;
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -411,10 +409,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           color: #004578;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: transparent;
+                          border: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){&:focus {
-                          border-color: WindowText;
+                          border: 1px solid WindowText;
                         }
                         .ms-Nav-compositeLink:hover & {
                           background-color: #f3f2f1;
@@ -539,7 +537,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          border: none;
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -558,11 +555,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           outline: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: transparent;
-                          color: grayText;
+                          border: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){&:focus {
-                          border-color: WindowText;
+                          border: 1px solid WindowText;
                         }
                     data-is-focusable={false}
                     disabled={true}
@@ -683,7 +679,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -712,10 +707,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -845,7 +840,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -874,10 +868,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -1002,7 +996,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1021,11 +1014,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       outline: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
-                      color: grayText;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                 data-is-focusable={false}
                 disabled={true}
@@ -1141,7 +1133,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1170,10 +1161,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -1293,7 +1284,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1322,10 +1312,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, getNativeProps, htmlElementProperties } from '@uifabric/utilities';
-import { classes } from './SvgIcon.styles';
+import * as classes from './SvgIcon.scss';
 import { ISvgIconProps } from './SvgIcon.types';
 import { SvgIconCreateFnParams } from './types';
 

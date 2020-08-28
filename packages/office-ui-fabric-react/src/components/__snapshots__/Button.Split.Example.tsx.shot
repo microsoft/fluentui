@@ -88,11 +88,17 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -170,7 +176,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -422,11 +427,17 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -505,7 +516,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -775,11 +785,17 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -860,7 +876,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1117,11 +1132,20 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       data-is-focusable={true}
       onFocusCapture={[Function]}
@@ -1187,7 +1211,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1305,6 +1328,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                 background-color: Window;
                 border-color: GrayText;
+                color: GrayText;
+              }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
                 color: GrayText;
               }
               @media screen and (-ms-high-contrast: active){& {

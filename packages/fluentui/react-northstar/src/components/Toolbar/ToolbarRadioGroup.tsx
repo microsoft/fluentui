@@ -11,6 +11,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
@@ -18,8 +19,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   ChildrenComponentProps,
@@ -29,9 +28,9 @@ import {
   childrenExist,
   commonPropTypes,
 } from '../../utils';
-import { ProviderContextPrepared, ShorthandCollection } from '../../types';
-import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
-import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
+import { ShorthandCollection } from '../../types';
+import { ToolbarDivider, ToolbarDividerProps } from './ToolbarDivider';
+import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarRadioGroupItemShorthandKinds = {
@@ -62,9 +61,9 @@ export const toolbarRadioGroupClassName = 'ui-toolbars'; // FIXME: required by g
  * @accessibility
  * Implements [ARIA RadioGroup](https://www.w3.org/TR/wai-aria-practices/#radiobutton) design pattern.
  */
-const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps, {}, {}>(
+export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -213,5 +212,3 @@ ToolbarRadioGroup.propTypes = {
 ToolbarRadioGroup.defaultProps = {
   accessibility: toolbarRadioGroupBehavior,
 };
-
-export default ToolbarRadioGroup;

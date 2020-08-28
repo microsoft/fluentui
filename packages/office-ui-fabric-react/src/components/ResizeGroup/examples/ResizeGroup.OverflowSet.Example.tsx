@@ -118,6 +118,7 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
         items={data.primary}
         overflowItems={data.overflow.length ? data.overflow : null}
         onRenderItem={onRenderItem}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderOverflowButton={onRenderOverflowButton}
         styles={overflowSetStyles}
       />
@@ -134,8 +135,10 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
         role="tabpanel"
         aria-label="Resize Group with an Overflow Set"
         data={dataToRender}
+        // eslint-disable-next-line react/jsx-no-bind
         onReduceData={onReduceData}
         onGrowData={onGrowDataEnabled ? onGrowData : undefined}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderData={onRenderData}
       />
       <div className={styles.settingsGroup}>
@@ -146,6 +149,7 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
           <Dropdown
             label="Number of items to render"
             selectedKey={numberOfItems.toString()}
+            // eslint-disable-next-line react/jsx-no-bind
             onChange={onNumberOfItemsChanged}
             options={dropdownOptions}
           />

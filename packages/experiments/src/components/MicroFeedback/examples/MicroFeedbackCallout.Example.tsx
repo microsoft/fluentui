@@ -32,8 +32,10 @@ export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
           likeQuestion={followUpOnLike}
           likeIconTitle="Like"
           dislikeIconTitle="Dislike"
+          /* eslint-disable react/jsx-no-bind */
           sendFeedback={sendFeedbackCallback}
           sendFollowUpIndex={sendFollowupIndexCallback}
+          /* eslint-enable react/jsx-no-bind */
           thanksText="Thank you!"
         />
       </div>

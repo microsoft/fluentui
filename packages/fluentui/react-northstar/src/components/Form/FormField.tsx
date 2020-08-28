@@ -10,19 +10,19 @@ import {
   commonPropTypes,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Text, TextProps } from '../Text/Text';
+import { Input } from '../Input/Input';
+import { Box, BoxProps } from '../Box/Box';
 import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Text, { TextProps } from '../Text/Text';
-import Input from '../Input/Input';
-import Box, { BoxProps } from '../Box/Box';
-import { getElementType, useUnhandledProps, useTelemetry, useStyles, useAccessibility } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useTelemetry,
+  useStyles,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 
 export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -56,12 +56,6 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** Message to be shown when input has error */
   errorMessage?: ShorthandValue<TextProps>;
-
-  /** Indicator to be shown together with error message */
-  errorIndicator?: ShorthandValue<BoxProps>;
-
-  /** Indicator to be shown when field is required and non-empty */
-  successIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const formFieldClassName = 'ui-form__field';
@@ -71,8 +65,11 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
   hasErrorMessage: boolean;
 };
 
-const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticProps<FormFieldProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A FormField represents a Form element containing a label and an input.
+ */
+export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();
 
@@ -205,13 +202,7 @@ FormField.handledProps = Object.keys(FormField.propTypes) as any;
 
 FormField.defaultProps = {
   accessibility: formFieldBehavior,
-  as: 'div',
   control: { as: Input },
 };
 
 FormField.create = createShorthandFactory({ Component: FormField, mappedProp: 'label' });
-
-/**
- * A FormField represents a Form element containing a label and an input.
- */
-export default withSafeTypeForAs<typeof FormField, FormFieldProps>(FormField);

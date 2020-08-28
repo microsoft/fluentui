@@ -1,7 +1,7 @@
 import { codes } from './codes';
 import { getCode, getKey, keyboardKey } from './index';
 
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('keyboardKey', () => {
   it('has a key/value for every value/key in codes', () => {

@@ -6,6 +6,7 @@ import Types from './Types';
 import Variations from './Variations';
 import State from './State';
 import Usage from './Usage';
+import UsageVisual from './Visual';
 
 const DropdownExamples = () => (
   <>
@@ -15,6 +16,7 @@ const DropdownExamples = () => (
     <Rtl />
     <Performance />
     <Usage />
+    <UsageVisual />
   </>
 );
 

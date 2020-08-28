@@ -1,6 +1,6 @@
-import parseValue from './utils/parseRangeValue';
+import { parseValue } from './utils/parseRangeValue';
 import { UseKnobOptions } from './types';
-import useKnob from './useKnob';
+import { useKnob } from './useKnob';
 
 type UseRangeKnobSpecificOptions = {
   min?: number | string;
@@ -10,7 +10,7 @@ type UseRangeKnobSpecificOptions = {
 };
 type UseRangeKnobOptions<T> = UseKnobOptions<T> & UseRangeKnobSpecificOptions;
 
-const useRangeKnob = <T extends number | string>(options: UseRangeKnobOptions<T>) => {
+export const useRangeKnob = <T extends number | string>(options: UseRangeKnobOptions<T>) => {
   const { initialValue = 3 as T, min = 0, max = parseValue(initialValue), step = 1, ...rest } = options;
   const unit = `${initialValue}`.replace(`${parseValue(initialValue)}`, '');
 
@@ -24,5 +24,3 @@ const useRangeKnob = <T extends number | string>(options: UseRangeKnobOptions<T>
     ...rest,
   });
 };
-
-export default useRangeKnob;

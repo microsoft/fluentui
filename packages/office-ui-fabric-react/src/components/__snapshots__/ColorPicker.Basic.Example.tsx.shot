@@ -437,6 +437,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
                         }
+                        @media screen and (forced-colors: active){&:hover {
+                          forced-color-adjust: none;
+                        }
                   >
                     <input
                       aria-invalid={false}
@@ -482,6 +485,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
+                          @media screen and (-ms-high-contrast: active){& {
+                            background: Window;
+                            color: WindowText;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -490,6 +497,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                            color: GrayText;
                           }
                           &:-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
@@ -500,6 +510,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
+                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                            color: GrayText;
+                          }
                           &::-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -508,6 +521,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                            color: GrayText;
                           }
                       id="TextField1"
                       onBlur={[Function]}
@@ -593,6 +609,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
                         }
+                        @media screen and (forced-colors: active){&:hover {
+                          forced-color-adjust: none;
+                        }
                   >
                     <input
                       aria-invalid={false}
@@ -638,6 +657,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
+                          @media screen and (-ms-high-contrast: active){& {
+                            background: Window;
+                            color: WindowText;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -646,6 +669,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                            color: GrayText;
                           }
                           &:-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
@@ -656,6 +682,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
+                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                            color: GrayText;
+                          }
                           &::-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -664,6 +693,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                            color: GrayText;
                           }
                       id="TextField4"
                       onBlur={[Function]}
@@ -749,6 +781,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
                         }
+                        @media screen and (forced-colors: active){&:hover {
+                          forced-color-adjust: none;
+                        }
                   >
                     <input
                       aria-invalid={false}
@@ -794,6 +829,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
+                          @media screen and (-ms-high-contrast: active){& {
+                            background: Window;
+                            color: WindowText;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -802,6 +841,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                            color: GrayText;
                           }
                           &:-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
@@ -812,6 +854,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
+                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                            color: GrayText;
+                          }
                           &::-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -820,6 +865,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                            color: GrayText;
                           }
                       id="TextField7"
                       onBlur={[Function]}
@@ -905,6 +953,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
                         }
+                        @media screen and (forced-colors: active){&:hover {
+                          forced-color-adjust: none;
+                        }
                   >
                     <input
                       aria-invalid={false}
@@ -950,6 +1001,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
+                          @media screen and (-ms-high-contrast: active){& {
+                            background: Window;
+                            color: WindowText;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -958,6 +1013,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                            color: GrayText;
                           }
                           &:-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
@@ -968,6 +1026,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
+                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                            color: GrayText;
+                          }
                           &::-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -976,6 +1037,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                            color: GrayText;
                           }
                       id="TextField10"
                       onBlur={[Function]}
@@ -1061,6 +1125,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
                         }
+                        @media screen and (forced-colors: active){&:hover {
+                          forced-color-adjust: none;
+                        }
                   >
                     <input
                       aria-invalid={false}
@@ -1106,6 +1173,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
+                          @media screen and (-ms-high-contrast: active){& {
+                            background: Window;
+                            color: WindowText;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -1114,6 +1185,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                            color: GrayText;
                           }
                           &:-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
@@ -1124,6 +1198,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
+                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                            color: GrayText;
+                          }
                           &::-ms-input-placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -1132,6 +1209,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                            color: GrayText;
                           }
                       id="TextField13"
                       onBlur={[Function]}
@@ -1260,7 +1340,10 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 border-color: Highlight;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
+                background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="Toggle16"
@@ -1277,7 +1360,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   border-color: transparent;
                   border-radius: 50%;
                   border-style: solid;
-                  border-width: .28em;
+                  border-width: 6px;
                   box-sizing: border-box;
                   display: block;
                   height: 12px;
@@ -1441,7 +1524,11 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 20px;
                     }
                     @media screen and (-ms-high-contrast: active){&:before {
+                      background: Window;
                       border-color: Highlight;
+                    }
+                    @media screen and (forced-colors: active){&:before {
+                      forced-color-adjust: none;
                     }
                     &:after {
                       border-color: #0078d4;
@@ -1462,6 +1549,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     }
                     @media screen and (-ms-high-contrast: active){&:after {
                       border-color: Highlight;
+                    }
+                    @media screen and (forced-colors: active){&:after {
+                      forced-color-adjust: none;
                     }
                 htmlFor="ChoiceGroup17-alpha"
               >

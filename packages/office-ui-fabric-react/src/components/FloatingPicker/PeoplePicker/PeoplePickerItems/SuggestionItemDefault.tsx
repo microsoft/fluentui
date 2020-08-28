@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
 import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';

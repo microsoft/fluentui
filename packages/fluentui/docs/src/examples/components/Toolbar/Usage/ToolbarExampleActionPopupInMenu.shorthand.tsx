@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, Form } from '@fluentui/react-northstar';
+import { Toolbar, Button, Form, Input } from '@fluentui/react-northstar';
 import { MoreIcon, ItalicIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
 
 const CustomPopup = ({ onConfirm }) => {
@@ -14,6 +14,10 @@ const CustomPopup = ({ onConfirm }) => {
           key: 'first-name',
           required: true,
           inline: true,
+          control: {
+            as: Input,
+            showSuccessIndicator: false,
+          },
         },
         {
           control: {

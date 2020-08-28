@@ -121,25 +121,25 @@ export interface IStackProps
    * Defines the spacing between Stack children.
    * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
    * If 'column gap' is omitted, it's set to the same value as 'row gap'.
-   * @deprecated Use 'childrenGap' token instead.
+   * @deprecated Use `childrenGap` token in `IStackTokens` instead.
    */
   gap?: number | string;
 
   /**
    * Defines the maximum width that the Stack can take.
-   * @deprecated Use 'maxWidth' token instead.
+   * @deprecated Use `maxWidth` token in `IStackTokens` instead.
    */
   maxWidth?: number | string;
 
   /**
    * Defines the maximum height that the Stack can take.
-   * @deprecated Use 'maxHeight' token instead.
+   * @deprecated Use `maxHeight` token in `IStackTokens` instead.
    */
   maxHeight?: number | string;
 
   /**
    * Defines the inner padding of the Stack.
-   * @deprecated Use 'padding' token instead.
+   * @deprecated Use `padding` token in `IStackTokens` instead.
    */
   padding?: number | string;
 

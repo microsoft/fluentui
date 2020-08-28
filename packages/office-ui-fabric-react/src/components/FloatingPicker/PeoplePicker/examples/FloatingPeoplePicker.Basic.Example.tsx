@@ -90,17 +90,27 @@ export const FloatingPeoplePickerTypesExample: React.FunctionComponent = () => {
   return (
     <>
       <div style={searchBoxWrapperStyling} ref={inputElementRef}>
-        <SearchBox placeholder="Search for person" onChange={onSearchChange} value={searchValue} onFocus={onFocus} />
+        <SearchBox
+          placeholder="Search for person"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onSearchChange}
+          value={searchValue}
+          // eslint-disable-next-line react/jsx-no-bind
+          onFocus={onFocus}
+        />
       </div>
       <FloatingPeoplePicker
         suggestionsStore={suggestionsStore}
+        // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}
         key="normal"
+        // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
         componentRef={picker}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onPickerChange}
         inputElement={inputElementRef.current}
         resolveDelay={300}

@@ -29,6 +29,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     onFloatingSuggestionsDismiss,
     targetElement,
     calloutProps,
+    pickerWidth,
     onKeyDown,
   } = props;
 
@@ -47,6 +48,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
           isBeakVisible={false}
           gapSpace={5}
           target={targetElement}
+          // eslint-disable-next-line react/jsx-no-bind
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}
           directionalHint={DirectionalHint.bottomLeftEdge}
@@ -68,6 +70,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             suggestionsContainerAriaLabel={suggestionsContainerAriaLabel}
             selectedSuggestionIndex={selectedSuggestionIndex}
             suggestionsHeaderText={suggestionsHeaderText}
+            pickerWidth={pickerWidth}
           />
         </Callout>
       ) : null}

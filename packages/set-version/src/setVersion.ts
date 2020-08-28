@@ -13,7 +13,7 @@ try {
 
 export function setVersion(packageName: string, packageVersion: string): void {
   if (typeof _win !== 'undefined') {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const packages = ((_win as any).__packages__ = (_win as any).__packages__ || {});
 
     // We allow either the global packages or local packages caches to invalidate so testing can

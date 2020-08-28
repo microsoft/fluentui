@@ -18,9 +18,6 @@ jobs:
       - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
 
-      - script: yarn workspace office-ui-fabric-react just webpack
-        displayName: yarn bundle OUFR
-
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
 
@@ -30,22 +27,10 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact ActivityItem stats.json file for comparing performance'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/office-ui-fabric-react-ActivityItem.stats.json'
-          ArtifactName: activityitemstatsdrop
-
-      - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact dist folder upon build for debug'
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact office-ui-fabric-react.js from dist folder'
-        inputs:
-          PathtoPublish: 'packages/office-ui-fabric-react/dist/office-ui-fabric-react.js'
-          ArtifactName: oufrdrop
 
   - job: lightrail
     pool: server

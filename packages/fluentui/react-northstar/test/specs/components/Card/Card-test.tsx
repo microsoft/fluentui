@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from 'src/components/Card/Card';
+import { Card } from 'src/components/Card/Card';
 import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent as mount } from 'test/utils';
 

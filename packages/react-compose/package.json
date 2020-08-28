@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "0.7.0",
+  "version": "0.18.0",
   "description": "Fluent UI React component composition.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,16 +25,21 @@
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@types/enzyme": "3.10.3",
+    "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/test-utilities": "^7.2.0",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
-    "@uifabric/set-version": "^7.0.13",
-    "@uifabric/utilities": "^7.20.3",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/utilities": "^7.31.0",
     "tslib": "^1.10.0",
     "classnames": "^2.2.6"
   },

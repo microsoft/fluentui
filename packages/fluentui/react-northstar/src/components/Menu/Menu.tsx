@@ -5,6 +5,7 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
+  useFluentContext,
   useAutoControlled,
   useStyles,
   useTelemetry,
@@ -16,9 +17,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
+
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler } from '../../types';
 import {
   childrenExist,
   createShorthand,
@@ -30,12 +30,12 @@ import {
   rtlTextContainer,
   ShorthandFactory,
 } from '../../utils';
-import MenuItem, { MenuItemProps } from './MenuItem';
-import MenuDivider, { MenuDividerProps } from './MenuDivider';
-import MenuItemIcon from './MenuItemIcon';
-import MenuItemContent from './MenuItemContent';
-import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
-import MenuItemWrapper from './MenuItemWrapper';
+import { MenuItem, MenuItemProps } from './MenuItem';
+import { MenuDivider, MenuDividerProps } from './MenuDivider';
+import { MenuItemIcon } from './MenuItemIcon';
+import { MenuItemContent } from './MenuItemContent';
+import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
+import { MenuItemWrapper } from './MenuItemWrapper';
 import { MenuContextProvider, MenuContextValue } from './menuContext';
 
 export type MenuShorthandKinds = {
@@ -154,7 +154,7 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  */
 export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
     const {
@@ -295,7 +295,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
-      onItemClick: handleClick,
+      onItemSelect: handleClick,
       variables,
 
       slotProps: {
@@ -435,5 +435,3 @@ Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
-
-export default Menu;

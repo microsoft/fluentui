@@ -99,7 +99,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       alphaSliderHidden: 'alphaType',
     });
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (strings.hue) {
       // warnDeprecations can't handle nested deprecated props
       warn("ColorPicker property 'strings.hue' was used but has been deprecated. Use 'strings.hueAriaLabel' instead.");
@@ -117,14 +117,14 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const defaultStrings = ColorPickerBase.defaultProps.strings as Required<IColorPickerStrings>;
 
     this._textLabels = {
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       r: props.redLabel || strings.red || defaultStrings.red,
       g: props.greenLabel || strings.green || defaultStrings.green,
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
       hex: props.hexLabel || strings.hex || defaultStrings.hex,
       t: strings.transparency || defaultStrings.transparency,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
     };
 
     this._strings = {
@@ -159,7 +159,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className,
       styles,
       alphaType,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       alphaSliderHidden = alphaType === 'none',
     } = props;
     const { color } = this.state;
@@ -196,7 +196,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               <ColorSlider
                 className="is-hue"
                 type="hue"
-                // tslint:disable-next-line:deprecation
+                // eslint-disable-next-line deprecation/deprecation
                 ariaLabel={strings.hue || strings.hueAriaLabel}
                 value={color.h}
                 onChange={this._onHChanged}

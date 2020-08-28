@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useCallback, useImperativeHandle, useRef } from 'react';
 import { useControlledState } from '../../Foundation';
 import { getRTL, KeyCodes } from '../../Utilities';
@@ -29,7 +30,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
       ev.preventDefault();
       ev.stopPropagation();
     },
-    [collapsed],
+    [collapsed, setCollapsed],
   );
 
   const _onKeyDown = useCallback(
@@ -47,7 +48,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
         ev.stopPropagation();
       }
     },
-    [collapsed],
+    [collapsed, setCollapsed],
   );
 
   const _onRootKeyDown = useCallback((ev: React.KeyboardEvent<Element>) => {

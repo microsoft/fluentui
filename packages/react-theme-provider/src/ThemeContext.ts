@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ThemePrepared } from './types';
-import { createDefaultTheme } from './createDefaultTheme';
+import { Theme } from './types';
 
-export const ThemeContext = React.createContext<ThemePrepared>(createDefaultTheme());
+export const ThemeContext = React.createContext<Theme | undefined>(undefined);

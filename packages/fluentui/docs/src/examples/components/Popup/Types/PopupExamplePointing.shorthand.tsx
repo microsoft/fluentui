@@ -18,7 +18,7 @@ const PopupWithButton = props => (
     trigger={
       <Button
         icon={props.icon}
-        styles={{ padding: props.padding, height: '64px', minWidth: '64px' }}
+        styles={{ padding: props.padding, height: '64px', minWidth: '64px', ...props.styles }}
         title="Show popup"
       />
     }
@@ -104,12 +104,20 @@ const PopupExamplePointing = () => (
   <Grid
     styles={{
       gridTemplateColumns: 'repeat(3, 30px)',
-      msGridColumns: '30px 80px 30px 80px 30px',
+      msGridColumns: '100px 100px 100px',
+      msGridRows: '80px 80px 80px',
     }}
     variables={{ padding: '30px', gridGap: '80px' }}
   >
-    {triggers.map(({ position, align, icon, padding }) => (
-      <PopupWithButton align={align} icon={icon} key={`${position}-${align}`} padding={padding} position={position} />
+    {triggers.map(({ position, align, icon, padding }, index) => (
+      <PopupWithButton
+        styles={{ msGridColumn: (index % 3) + 1, msGridRow: ((index / 3) | 0) + 1 }}
+        align={align}
+        icon={icon}
+        key={`${position}-${align}`}
+        padding={padding}
+        position={position}
+      />
     ))}
   </Grid>
 );

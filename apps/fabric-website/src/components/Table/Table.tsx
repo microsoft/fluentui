@@ -58,6 +58,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
         {cell.value}
       </td>
     ) : (
+      // eslint-disable-next-line react/no-danger
       <td className={cell.className} key={index} dangerouslySetInnerHTML={{ __html: cell.html }} />
     );
   }
@@ -67,8 +68,8 @@ export class Table extends React.Component<ITableProps, ITableState> {
       <table className={styles.table}>
         <thead>
           <tr>
-            {content.headers.map((heading, headingIndex) => (
-              <th key={headingIndex}>{this._capitalizeFirstLetter(heading)}</th>
+            {content.headers.map(heading => (
+              <th key={heading}>{this._capitalizeFirstLetter(heading)}</th>
             ))}
           </tr>
         </thead>

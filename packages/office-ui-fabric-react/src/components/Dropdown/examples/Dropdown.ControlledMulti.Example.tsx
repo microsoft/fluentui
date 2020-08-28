@@ -32,6 +32,7 @@ export const DropdownControlledMultiExample: React.FunctionComponent = () => {
       placeholder="Select options"
       label="Multi-select controlled example"
       selectedKeys={selectedKeys}
+      // eslint-disable-next-line react/jsx-no-bind
       onChange={onChange}
       multiSelect
       options={DropdownControlledMultiExampleOptions}

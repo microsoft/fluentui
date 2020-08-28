@@ -39,6 +39,7 @@ export const ListPageProps: IDocPageProps = {
 
   allowNativeProps: true,
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

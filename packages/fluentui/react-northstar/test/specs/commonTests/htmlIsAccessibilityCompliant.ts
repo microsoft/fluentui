@@ -14,7 +14,7 @@ interface AxeExpect extends jest.Expect {
 const expectAxe = expect as AxeExpect;
 expect.extend(toHaveNoViolations);
 
-export default async (jsx: React.ReactElement<any>) => {
+export const htmlIsAccessibilityCompliant = async (jsx: React.ReactElement<any>) => {
   const html = ReactDOMServer.renderToString(React.createElement(EmptyThemeProvider, null, jsx));
   const results = await axe(html);
   expectAxe(results).toHaveNoViolations();

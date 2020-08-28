@@ -1,12 +1,23 @@
+import * as React from 'react';
 import { ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from 'office-ui-fabric-react';
 import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
 import { IMarkdownCodeStyleProps } from './MarkdownCode';
 import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
+import { MarkdownOptions } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   className?: string;
   children?: React.ReactNode;
+
+  /**
+   * If true, using a code block with language name `renderhtml` will render the contents as HTML.
+   * This is to work around markdown-to-jsx's limited support for nested HTML elements.
+   */
+  enableRenderHtmlBlock?: boolean;
+
+  /** Additional component overrides for markdown rendering */
+  overrides?: MarkdownOptions['overrides'];
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;
@@ -24,7 +35,7 @@ export interface IMarkdownStyles {
 
 export interface IMarkdownSubComponentStyles {
   // TODO: remove anys
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   header: IStyleFunctionOrObject<IMarkdownHeaderStyleProps, any>;
   paragraph: IStyleFunctionOrObject<IMarkdownParagraphStyleProps, any>;
   code: IStyleFunctionOrObject<IMarkdownCodeStyleProps, any>;

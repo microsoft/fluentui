@@ -15,7 +15,33 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
   }
 
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
+    const { disabled, keytipProps } = this.props;
+
+    if (keytipProps) {
+      return (
+        <KeytipData
+          keytipProps={keytipProps}
+          ariaDescribedBy={(this.props as { 'aria-describedby': string })['aria-describedby']}
+          disabled={disabled}
+        >
+          {(keytipAttributes: any): JSX.Element => this._renderContent(keytipAttributes)}
+        </KeytipData>
+      );
+    }
+
+    return this._renderContent();
+  }
+
+  public focus() {
+    const { current } = this._link;
+
+    if (current && current.focus) {
+      current.focus();
+    }
+  }
+
+  private _renderContent = (keytipAttributes: any = {}): JSX.Element => {
+    const { disabled, children, className, href, theme, styles } = this.props;
 
     const classNames = getClassNames(styles!, {
       className,
@@ -27,34 +53,18 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
     const RootType = this._getRootType(this.props);
 
     return (
-      <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={(this.props as { 'aria-describedby': string })['aria-describedby']}
-        disabled={disabled}
+      <RootType
+        {...keytipAttributes}
+        {...this._adjustPropsForRootType(RootType, this.props)}
+        className={classNames.root}
+        onClick={this._onClick}
+        ref={this._link}
+        aria-disabled={disabled}
       >
-        {(keytipAttributes: any): JSX.Element => (
-          <RootType
-            {...keytipAttributes}
-            {...this._adjustPropsForRootType(RootType, this.props)}
-            className={classNames.root}
-            onClick={this._onClick}
-            ref={this._link}
-            aria-disabled={disabled}
-          >
-            {children}
-          </RootType>
-        )}
-      </KeytipData>
+        {children}
+      </RootType>
     );
-  }
-
-  public focus() {
-    const { current } = this._link;
-
-    if (current && current.focus) {
-      current.focus();
-    }
-  }
+  };
 
   private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { onClick, disabled } = this.props;
@@ -73,7 +83,19 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
-    const { children, as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
+    const {
+      children,
+      as,
+      disabled,
+      target,
+      href,
+      theme,
+      getStyles,
+      styles,
+      componentRef,
+      keytipProps,
+      ...restProps
+    } = props;
 
     // RootType will be a string if we're dealing with an html component
     if (typeof RootType === 'string') {

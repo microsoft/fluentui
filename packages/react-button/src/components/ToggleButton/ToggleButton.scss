@@ -1,0 +1,46 @@
+/**
+ * Slot definitions
+ *
+ * Slot definitions must align to the names of the slots themselves. They should:
+ *
+ * 1. Contain the actual css property definitions (E.g. background-color: {value})
+ * 2. Property definitions should map to tokens using the format: {component}-{property}
+ * 3. Avoid hard coding values unless there are absolutely no use cases to change
+ *    the property value.
+ * 4. Order hardcoded css values first, tokens based second. This way we can identify
+ *    what is hardcoded easily.
+ */
+.root {
+  /**
+   * Modifiers
+   *
+   * Modifiers must align to the props on the component. They should:
+   *
+   * 1. Redefine the values for {component}-{property} tokens.
+   * 2. Map property definitions to variables using the format: {component}-{property}
+   * 3. Avoid defining styles directly.
+   */
+  &._checked {
+    --button-background: var(--button-checked-background);
+    --button-contentColor: var(--button-checked-contentColor);
+
+    --button-hovered-background: var(--button-checkedHovered-background);
+    --button-hovered-contentColor: var(--button-checkedHovered-contentColor);
+
+    &._primary {
+      --button-background: var(--accent-checked-background);
+      --button-contentColor: var(--accent-checked-contentColor);
+
+      --button-hovered-background: var(--accent-checkedHovered-background);
+      --button-hovered-contentColor: var(--accent-checkedHovered-contentColor);
+    }
+
+    &._ghost {
+      --button-background: var(--ghost-checked-background);
+      --button-contentColor: var(--ghost-checked-contentColor);
+
+      --button-hovered-background: var(--ghost-checkedHovered-background);
+      --button-hovered-contentColor: var(--ghost-checkedHovered-contentColor);
+    }
+  }
+}

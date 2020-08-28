@@ -2,6 +2,141 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/styling_v7.15.2",
+      "version": "7.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Fluent theme constants to @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/styling_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/styling_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new card semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "0bae11fc8b91cdbf1cf9d0d78dfe5c0e77766367",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/styling_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high contrast Edge Chormium selector to remove unneeded condition.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/styling_v7.13.3",
+      "version": "7.13.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/styling_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new rounded corners to theme",
+            "author": "phkuo@microsoft.com",
+            "commit": "38f0dbf9228795618bc9c483f37527ae0b7e05d6",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/styling_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "@uifabric/styling_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure theme.ts is already included when importing from styling package",
+            "author": "xgao@microsoft.com",
+            "commit": "8e8238585646a6e308916ded83f539022d0a66fe",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/styling_v7.12.16",
+      "version": "7.12.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getGlobalClassNames: correct return type",
+            "author": "xgao@microsoft.com",
+            "commit": "fdb7c21dc40542421b1f165323753326f8cf8807",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@uifabric/styling_v7.12.15",
       "version": "7.12.15",

@@ -24,7 +24,7 @@ import {
 } from './properties';
 import * as React from 'react';
 
-const nativeElementMap: Record<string, string[]> = {
+const nativeElementMap: Record<string, Record<string, number>> = {
   label: labelProperties,
   audio: audioProperties,
   video: videoProperties,
@@ -54,9 +54,9 @@ const nativeElementMap: Record<string, string[]> = {
  * @param props - Props object
  * @param excludedPropNames - List of props to disallow
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
-  tagName: keyof React.ReactHTML,
+  tagName: string,
   props: {},
   excludedPropNames?: string[],
 ): TAttributes {

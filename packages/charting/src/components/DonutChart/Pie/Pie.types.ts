@@ -1,7 +1,11 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint } from '../index';
 
 export interface IPieProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
   /**
    * Width of the Pie.
    */
@@ -25,7 +29,7 @@ export interface IPieProps {
   /**
    * shape for pie.
    */
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   pie?: any;
   /**
    * Defines the function that is executed upon hovering over the legend
@@ -66,6 +70,11 @@ export interface IPieProps {
    * props for inside donut value
    */
   valueInsideDonut?: string | number;
+
+  /**
+   * id of the focused arc
+   */
+  focusedArcId?: string;
 }
 
 export interface IPieStyles {

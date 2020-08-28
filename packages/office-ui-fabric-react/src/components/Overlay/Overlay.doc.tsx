@@ -25,7 +25,9 @@ export const OverlayPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md'),
   isHeaderVisible: true,

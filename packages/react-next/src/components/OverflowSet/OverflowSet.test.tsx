@@ -1,9 +1,9 @@
 import { shallow } from 'enzyme';
 import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
-import { CommandBarButton } from '../../Button';
+import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
@@ -36,7 +36,7 @@ describe('OverflowSet', () => {
     test('basicSnapshot', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
       );
       const tree = component.toJSON();
@@ -46,7 +46,7 @@ describe('OverflowSet', () => {
     test('snapshot with classname', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet className="foobar" onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
       );
       const tree = component.toJSON();
@@ -56,7 +56,7 @@ describe('OverflowSet', () => {
     test('snapshot with classname and vertical layout', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet
           className="foobar"
           vertical={true}
@@ -89,7 +89,7 @@ describe('OverflowSet', () => {
 
   describe('keytip tests', () => {
     let overflowSet: ReactWrapper;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let overflowKeytips: any;
     let items: IOverflowSetItemProps[];
     let overflowItems: IOverflowSetItemProps[];
@@ -103,7 +103,7 @@ describe('OverflowSet', () => {
       );
     };
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onRenderOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
       return (
         <CommandBarButton
@@ -375,7 +375,7 @@ describe('OverflowSet', () => {
     });
 
     describe('with submenus', () => {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let item3: any;
       beforeEach(() => {
         item3 = { ...overflowItems[0] };
@@ -560,7 +560,7 @@ describe('OverflowSet', () => {
             },
           ];
 
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
             // Overflow button which delays 2s before opening the menu
             // This simulates latency when opening the menu

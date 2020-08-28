@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import Popup, { PopupEvents } from 'src/components/Popup/Popup';
+import { Popup, PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
 import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Popup', () => {
   implementsPopperProps(Popup, {
@@ -46,7 +46,7 @@ describe('Popup', () => {
       <Popup trigger={<span id={triggerId}> text to trigger popup </span>} content={{ id: contentId }} on={onProp} />,
     );
     // check popup open on key press
-    const popupTriggerElement = popup.find(`#${triggerId}`);
+    const popupTriggerElement = popup.find(`span#${triggerId}`);
     popupTriggerElement.simulate(openEvent.event, { keyCode: openEvent.keyCode });
 
     expect(getPopupContent(popup).exists()).toBe(true);
@@ -55,6 +55,21 @@ describe('Popup', () => {
     popupTriggerElement.simulate(closeEvent.event, { keyCode: closeEvent.keyCode });
     expect(getPopupContent(popup).exists()).toBe(false);
   };
+
+  describe('trigger', () => {
+    test('is called on click when on includes hover', () => {
+      const spy = jest.fn();
+
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(1);
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover', 'focus']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+  });
 
   describe('onOpenChange', () => {
     test('is called on click', () => {
@@ -127,7 +142,7 @@ describe('Popup', () => {
           on="context"
         />,
       );
-      const popupTriggerElement = popup.find(`#${triggerId}`);
+      const popupTriggerElement = popup.find(`span#${triggerId}`);
       popupTriggerElement.simulate('click');
 
       expect(getPopupContent(popup).exists()).toBe(false);
@@ -195,14 +210,14 @@ describe('Popup', () => {
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
-        domEvent.keyDown(`#${triggerId}`, { keyCode: keyboardKey.Enter });
+        domEvent.keyDown(`span#${triggerId}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBeDefined();
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
-        domEvent.keyDown(`#${triggerId2}`, { keyCode: keyboardKey.Enter });
+        domEvent.keyDown(`span#${triggerId2}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBe(null);
@@ -248,7 +263,7 @@ describe('Popup', () => {
       );
 
       // open popup
-      const popupTriggerElement = popup.find(`#${triggerId}`);
+      const popupTriggerElement = popup.find(`span#${triggerId}`);
       popupTriggerElement.simulate('keydown', { keyCode: keyboardKey.Enter });
 
       // when popup open, check that stopPropagation is called when keyboard events are invoked

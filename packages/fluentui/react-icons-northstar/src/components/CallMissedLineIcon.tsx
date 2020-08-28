@@ -1,9 +1,9 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 import cx from 'classnames';
 
-const CallMissedLineIcon = createSvgIcon({
+export const CallMissedLineIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -18,5 +18,3 @@ const CallMissedLineIcon = createSvgIcon({
   ),
   displayName: 'CallMissedLineIcon',
 });
-
-export default CallMissedLineIcon;

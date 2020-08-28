@@ -31,7 +31,7 @@ export interface ITableColumnProps {
 }
 
 export interface ITableRowProps {
-  // tslint:disable-next-line no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

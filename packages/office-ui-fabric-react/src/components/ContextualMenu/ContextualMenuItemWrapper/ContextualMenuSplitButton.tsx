@@ -129,7 +129,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -140,11 +140,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     const itemProps: IContextualMenuItem = {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       name: item.name,
       text: item.text || item.name,
       secondaryText: item.secondaryText,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
@@ -180,7 +180,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitIconButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
+    classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
     index: number,
     keytipAttributes: any,
   ) {

@@ -6,7 +6,7 @@ import {
   LogInspectorProps,
   KnobNumberKnobComponentProps,
 } from './types';
-import parseValue from './utils/parseRangeValue';
+import { parseValue } from './utils/parseRangeValue';
 
 const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
   <div
@@ -23,7 +23,15 @@ const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
 );
 
 const KnobControl: React.FunctionComponent<KnobComponentProps> = props => (
-  <span style={{ verticalAlign: 'middle', width: '150px' }}>{props.children}</span>
+  <span
+    style={{
+      verticalAlign: 'middle',
+      width: 150,
+      overflow: 'hidden',
+    }}
+  >
+    {props.children}
+  </span>
 );
 
 const KnobLabel: React.FunctionComponent<KnobComponentProps> = props => (
@@ -152,7 +160,7 @@ const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
   </>
 );
 
-const defaultComponents: KnobComponents = {
+export const defaultComponents: KnobComponents = {
   KnobControl,
   KnobField,
   KnobLabel,
@@ -165,5 +173,3 @@ const defaultComponents: KnobComponents = {
 
   LogInspector,
 };
-
-export default defaultComponents;

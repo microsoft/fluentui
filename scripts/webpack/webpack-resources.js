@@ -72,14 +72,15 @@ module.exports = {
   webpack,
 
   /**
-   * @param {string} packageName - name of the package
-   * @param {boolean} isProduction - whether it's a production build
-   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
-   * @param {boolean} [onlyProduction] - whether to only generate the production config
-   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps
-   * @returns {webpack.Configuration[]} array of configs
+   * @param {string} packageName - name of the package.
+   * @param {boolean} isProduction - whether it's a production build.
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {boolean} [onlyProduction] - whether to only generate the production config.
+   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
+   * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
+   * @returns {webpack.Configuration[]} array of configs.
    */
-  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
+  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -128,7 +129,7 @@ module.exports = {
 
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
-            plugins: getPlugins(packageName, true),
+            plugins: getPlugins(packageName, true, profile),
           },
           customConfig,
         ),
@@ -235,24 +236,18 @@ module.exports = {
   },
 };
 
-function getPlugins(bundleName, isProduction) {
+function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
   const plugins = [];
 
-  if (isProduction) {
+  if (isProduction && profile) {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
-        generateStatsFile: true,
-        statsOptions: {
-          source: false,
-          reasons: false,
-          chunks: false,
-        },
-        statsFilename: bundleName + '.stats.json',
+        generateStatsFile: false,
         logLevel: 'warn',
       }),
     );

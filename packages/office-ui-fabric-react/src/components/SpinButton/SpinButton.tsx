@@ -122,7 +122,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     if (newProps.value !== undefined) {
       // Value from props is considered pre-validated
@@ -355,9 +354,12 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     return String(newValue);
   };
 
-  private _onIncrement = (value: string): string | void => {
+  private _onIncrement = (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ): string | void => {
     if (this.props.onIncrement) {
-      return this.props.onIncrement(value);
+      return this.props.onIncrement(value, event);
     } else {
       return this._defaultOnIncrement(value);
     }
@@ -373,9 +375,12 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     return String(newValue);
   };
 
-  private _onDecrement = (value: string): string | void => {
+  private _onDecrement = (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ): string | void => {
     if (this.props.onDecrement) {
-      return this.props.onDecrement(value);
+      return this.props.onDecrement(value, event);
     } else {
       return this._defaultOnDecrement(value);
     }
@@ -447,13 +452,18 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
+   * @param event - The event that triggered the updateValue
    */
   private _updateValue = (
     shouldSpin: boolean,
     stepDelay: number,
-    stepFunction: (value: string) => string | void,
+    stepFunction: (
+      value: string,
+      event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    ) => string | void,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ): void => {
-    const newValue: string | void = stepFunction(this.value || '');
+    const newValue: string | void = stepFunction(this.value || '', event);
     if (newValue !== undefined) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
@@ -465,7 +475,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     if (shouldSpin) {
       this._currentStepFunctionHandle = this._async.setTimeout(() => {
-        this._updateValue(shouldSpin, this._stepDelay, stepFunction);
+        this._updateValue(shouldSpin, this._stepDelay, stepFunction, event);
       }, stepDelay);
     }
   };
@@ -508,11 +518,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     switch (event.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
-        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!, event);
         break;
       case KeyCodes.down:
         spinDirection = KeyboardSpinDirection.down;
-        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!, event);
         break;
       case KeyCodes.enter:
         this._validate(event);
@@ -545,11 +555,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
   };
 
-  private _onIncrementMouseDown = (): void => {
-    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+  private _onIncrementMouseDown = (event: React.MouseEvent<HTMLElement>): void => {
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!, event);
   };
 
-  private _onDecrementMouseDown = (): void => {
-    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+  private _onDecrementMouseDown = (event: React.MouseEvent<HTMLElement>): void => {
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!, event);
   };
 }

@@ -11,7 +11,7 @@ import {
   IPivotItemProps,
   Label,
   Icon,
-  ThemeProvider,
+  Fabric,
 } from '@fluentui/react-next';
 
 storiesOf('Pivot Next', module)
@@ -20,22 +20,20 @@ storiesOf('Pivot Next', module)
   ))
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('.ms-Pivot-link.is-selected')
-          .snapshot('hover-selected', { cropTo: '.testWrapper' })
-          .hover('.ms-Pivot-link:not(.is-selected)')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('.ms-Pivot-link:not(.is-selected)')
-          .hover('.ms-Pivot-link.is-selected')
-          .snapshot('click', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Pivot-link.is-selected')
+        .snapshot('hover-selected', { cropTo: '.testWrapper' })
+        .hover('.ms-Pivot-link:not(.is-selected)')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Pivot-link:not(.is-selected)')
+        .hover('.ms-Pivot-link.is-selected')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory('Basic', () => (
     <Pivot aria-label="Basic Pivot Example">
@@ -66,7 +64,7 @@ storiesOf('Pivot Next', module)
       </PivotItem>
       <PivotItem
         headerText="Customized Rendering"
-        itemIcon="Globe"
+        itemIcon="Airplane"
         itemCount={10}
         onRenderItemLink={_customRenderer}
       >
@@ -124,14 +122,96 @@ storiesOf('Pivot Next', module)
     </Pivot>
   ));
 
+storiesOf('Pivot Next Overflow', module)
+  .addDecorator(story => (
+    <div style={{ display: 'flex' }}>
+      <div id="testWrapper" className="testWrapper" style={{ padding: '10px 10px 200px' }}>
+        {story()}
+      </div>
+    </div>
+  ))
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .executeScript('document.getElementById("testWrapper").style.width = "500px"')
+        .snapshot('Medium', { cropTo: '.testWrapper' })
+        .executeScript('document.getElementById("testWrapper").style.width = "750px"')
+        .snapshot('Wide', { cropTo: '.testWrapper' })
+        .executeScript('document.getElementById("testWrapper").style.width = "250px"')
+        .click('.ms-Pivot-overflowMenuButton')
+        .click('.ms-Pivot-linkInMenu[data-last-tab]')
+        .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
+        .click('.ms-Pivot-overflowMenuButton')
+        .hover('.ms-Pivot-overflowMenuButton')
+        .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Basic', () => (
+    <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu">
+      <PivotItem headerText="My Files">
+        <Label>Pivot #1</Label>
+      </PivotItem>
+      <PivotItem itemCount={23} itemIcon="Recent">
+        <Label>Pivot #2</Label>
+      </PivotItem>
+      <PivotItem headerText="Placeholder" itemIcon="Globe">
+        <Label>Pivot #3</Label>
+      </PivotItem>
+      <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
+        <Label>Pivot #4</Label>
+      </PivotItem>
+      <PivotItem
+        headerText="Custom Renderer"
+        itemIcon="Airplane"
+        onRenderItemLink={_customRenderer}
+      >
+        <Label>Pivot #5</Label>
+      </PivotItem>
+      <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
+        <Label>Pivot #6</Label>
+      </PivotItem>
+    </Pivot>
+  ))
+  .addStory('Tabs - RTL', () => (
+    <Fabric dir="rtl">
+      <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu" linkFormat="tabs">
+        <PivotItem headerText="My Files">
+          <Label>Pivot #1</Label>
+        </PivotItem>
+        <PivotItem itemCount={23} itemIcon="Recent">
+          <Label>Pivot #2</Label>
+        </PivotItem>
+        <PivotItem headerText="Placeholder" itemIcon="Globe">
+          <Label>Pivot #3</Label>
+        </PivotItem>
+        <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
+          <Label>Pivot #4</Label>
+        </PivotItem>
+        <PivotItem
+          headerText="Custom Renderer"
+          itemIcon="Airplane"
+          onRenderItemLink={_customRenderer}
+        >
+          <Label>Pivot #5</Label>
+        </PivotItem>
+        <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
+          <Label>Pivot #6</Label>
+        </PivotItem>
+      </Pivot>
+    </Fabric>
+  ));
+
 function _customRenderer(
   link: IPivotItemProps,
   defaultRenderer: (link: IPivotItemProps) => JSX.Element,
 ): JSX.Element {
   return (
-    <span>
-      {defaultRenderer(link)}
-      <Icon iconName="Airplane" style={{ color: 'red' }} />
+    <span style={{ flex: '0 1 100%' }}>
+      {defaultRenderer({ ...link, itemIcon: undefined })}
+      <Icon iconName={link.itemIcon} style={{ color: 'red' }} />
     </span>
   );
 }

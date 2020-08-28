@@ -2,12 +2,12 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
 import { EmbedStylesProps, embedSlotClassNames } from '../../../../components/Embed/Embed';
 import { EmbedVariables } from './embedVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import playIndicatorUrl from './playIndicatorUrl';
-import pauseIndicatorUrl from './pauseIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { playIndicatorUrl } from './playIndicatorUrl';
+import { pauseIndicatorUrl } from './pauseIndicatorUrl';
 
-export default {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+export const embedStyles: ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVariables> = {
+  root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {

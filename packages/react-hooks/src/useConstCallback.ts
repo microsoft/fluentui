@@ -9,7 +9,7 @@ import * as React from 'react';
  * @param callback - The callback. Only the first value passed is respected.
  * @returns The callback. The identity of this callback will always be the same.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T {
   const ref = React.useRef<T>();
   if (!ref.current) {

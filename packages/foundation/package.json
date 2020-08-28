@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "7.7.22",
+  "version": "7.9.0",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,30 +27,28 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/sinon": "2.2.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.26",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-hooks-testing-library": "^0.5.0",
-    "react-test-renderer": "^16.3.0",
-    "sinon": "^4.1.3"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/set-version": "^7.0.13",
-    "@uifabric/styling": "^7.12.15",
-    "@uifabric/utilities": "^7.20.3",
+    "@uifabric/merge-styles": "^7.18.0",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/styling": "^7.16.0",
+    "@uifabric/utilities": "^7.31.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

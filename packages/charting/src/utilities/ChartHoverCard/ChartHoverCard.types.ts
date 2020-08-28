@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react';
+import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 export interface IChartHoverCardProps {
   /**
    * X  value for hover card
@@ -19,6 +19,14 @@ export interface IChartHoverCardProps {
    * color for hover card
    */
   color?: string;
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IChartHoverCardStyleProps, IChartHoverCardStyles>;
 }
 
 export interface IChartHoverCardStyles {
@@ -55,4 +63,21 @@ export interface IChartHoverCardStyles {
    * styles for callout y-content
    */
   calloutContentY?: IStyle;
+}
+
+export interface IChartHoverCardStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
+  /**
+   * color for hover card
+   */
+  color?: string;
+
+  /**
+   * X  value for hover card
+   */
+  XValue?: string;
 }

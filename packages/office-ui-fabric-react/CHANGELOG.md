@@ -1,8 +1,467 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Jun 2020 12:35:08 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.133.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.133.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.132.0..office-ui-fabric-react_v7.133.0)
+
+### Minor changes
+
+- Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios. ([PR #13621](https://github.com/microsoft/fluentui/pull/13621) by ololubek@microsoft.com)
+
+### Patches
+
+- fixing negative date navigation by changing the date clone method from using strings to using the date object itself ([PR #14647](https://github.com/microsoft/fluentui/pull/14647) by lorejoh12@gmail.com)
+- fixing callout positioning when screen is too small to position and DirectionalHint = left* or right* due to using last value from for loop ([PR #14771](https://github.com/microsoft/fluentui/pull/14771) by lorejoh12@gmail.com)
+
+## [7.132.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.132.0)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.131.0..office-ui-fabric-react_v7.132.0)
+
+### Minor changes
+
+- adding aria label on button to clarify what it does ([PR #14728](https://github.com/microsoft/fluentui/pull/14728) by lorejoh12@gmail.com)
+- TextField: Removing recursive reference in ITextFieldStyles. ([PR #14739](https://github.com/microsoft/fluentui/pull/14739) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Link: Making High Contrast styling adhere to system settings. ([PR #14709](https://github.com/microsoft/fluentui/pull/14709) by humbertomakotomorimoto@gmail.com)
+
+## [7.131.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.131.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.130.0..office-ui-fabric-react_v7.131.0)
+
+### Minor changes
+
+- Checkbox: removed `selectors` wrappers in the styles, as they're no longer required. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
+
+### Patches
+
+- GroupedList: Fixing errors in the examples that are triggered when the tsconfig strictFunctionTypes rule is turned on. ([PR #14640](https://github.com/microsoft/fluentui/pull/14640) by humbertomakotomorimoto@gmail.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14710](https://github.com/microsoft/fluentui/pull/14710) by czearing@outlook.com)
+
+## [7.130.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.130.0)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.129.0..office-ui-fabric-react_v7.130.0)
+
+### Minor changes
+
+- Custom Layout for Contextual Menu ([PR #14546](https://github.com/microsoft/fluentui/pull/14546) by michael.mao99@gmail.com)
+
+## [7.129.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.129.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.3..office-ui-fabric-react_v7.129.0)
+
+### Patches
+
+- Export new theming variables, and fix theming variable generation script ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.128.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.1..office-ui-fabric-react_v7.128.3)
+
+### Patches
+
+- StackItem: Fixing issue #12592 - StackItem does not use its `padding` token ([PR #14554](https://github.com/microsoft/fluentui/pull/14554) by pavanpadavala@hotmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.128.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.1)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.0..office-ui-fabric-react_v7.128.1)
+
+### Patches
+
+- Pickers: Update to be concurrent compatible ([PR #14491](https://github.com/microsoft/fluentui/pull/14491) by joschect@microsoft.com)
+- Link: Fixing High Contrast styling of links rendered as buttons. ([PR #14497](https://github.com/microsoft/fluentui/pull/14497) by humbertomakotomorimoto@gmail.com)
+
+## [7.128.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.0)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.127.1..office-ui-fabric-react_v7.128.0)
+
+### Minor changes
+
+- BasePicker's onDismiss can now return a boolean to decide if an item is selected ([PR #14302](https://github.com/microsoft/fluentui/pull/14302) by t-jamle@microsoft.com)
+
+## [7.127.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.127.1)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.127.0..office-ui-fabric-react_v7.127.1)
+
+### Patches
+
+- CommandBar: Show tooltipHost.content when iconMode = true even when text/name is provided in commandBarItemProps ([PR #14323](https://github.com/microsoft/fluentui/pull/14323) by prandala@microsoft.com)
+- Dropdown: Correctly updating set-size when number of options updates after first render. ([PR #14415](https://github.com/microsoft/fluentui/pull/14415) by humbertomakotomorimoto@gmail.com)
+- Tooltip: Stopping propagation when clicking Esc on tooltip host. ([PR #14476](https://github.com/microsoft/fluentui/pull/14476) by humbertomakotomorimoto@gmail.com)
+
+## [7.127.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.127.0)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.3..office-ui-fabric-react_v7.127.0)
+
+### Minor changes
+
+- ContextualMenu: Add another prop to allow users to override default focus restoring behavior. This fixes an issue where it would not restore focus correctly when contextualmenu is hidden. ([PR #14351](https://github.com/microsoft/fluentui/pull/14351) by joschect@microsoft.com)
+
+### Patches
+
+- Updating Announced, GroupedList, Coachmark, and ExtendedPeoplePicker examples to use function components ([PR #13912](https://github.com/microsoft/fluentui/pull/13912) by czearing@outlook.com)
+- Prettier fix. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+
+## [7.126.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.3)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.1..office-ui-fabric-react_v7.126.3)
+
+### Patches
+
+- Accessibility fix for links in dark mode ([PR #14270](https://github.com/microsoft/fluentui/pull/14270) by marygans@microsoft.com)
+- FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers. ([PR #14376](https://github.com/microsoft/fluentui/pull/14376) by humbertomakotomorimoto@gmail.com)
+- ContextualMenu: Modifying examples so that screen readers read the different ways to open a submenu. ([PR #14401](https://github.com/microsoft/fluentui/pull/14401) by humbertomakotomorimoto@gmail.com)
+- Fix input and label IDs not respected by choice group option. ([PR #14387](https://github.com/microsoft/fluentui/pull/14387) by supsing@microsoft.com)
+- Add HC styling to fix ProgressIndicator progress bar ([PR #14410](https://github.com/microsoft/fluentui/pull/14410) by ololubek@microsoft.com)
+- Add HC styling to make clickable and nonclickable items differentiable ([PR #14411](https://github.com/microsoft/fluentui/pull/14411) by ololubek@microsoft.com)
+
+## [7.126.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.1)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.0..office-ui-fabric-react_v7.126.1)
+
+### Patches
+
+- Updating Shimmer and Stack to function components. ([PR #13849](https://github.com/microsoft/fluentui/pull/13849) by czearing@outlook.com)
+- Updating Picker, TagPicker, and Selection examples to use function components. ([PR #14156](https://github.com/microsoft/fluentui/pull/14156) by czearing@outlook.com)
+- Spinner: Fix HC styling of spinner componet to show highlight color ([PR #14372](https://github.com/microsoft/fluentui/pull/14372) by ololubek@microsoft.com)
+
+## [7.126.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.0)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.125.0..office-ui-fabric-react_v7.126.0)
+
+### Minor changes
+
+- Adding useResponsiveMode hook within office-ui-fabric-react utilities. ([PR #14229](https://github.com/microsoft/fluentui/pull/14229) by czearing@outlook.com)
+
+### Patches
+
+- Add deprecation notices ([PR #13626](https://github.com/microsoft/fluentui/pull/13626) by miclo@microsoft.com)
+- Removing unused default props from TeachingBubbleContent. ([PR #14239](https://github.com/microsoft/fluentui/pull/14239) by czearing@outlook.com)
+- Toggle: fix thumb border width style ([PR #14361](https://github.com/microsoft/fluentui/pull/14361) by ololubek@microsoft.com)
+- Dropdown: Fixing multiselect scenarios not reading out aria-setsize and aria-posinset due to incorrect placement of role=option in Checkbox. ([PR #14367](https://github.com/microsoft/fluentui/pull/14367) by humbertomakotomorimoto@gmail.com)
+- Dropdown: Removing aria-required from multiselect scenarios since it's not allowed for role='button'. ([PR #14369](https://github.com/microsoft/fluentui/pull/14369) by humbertomakotomorimoto@gmail.com)
+
+## [7.125.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.125.0)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.3..office-ui-fabric-react_v7.125.0)
+
+### Minor changes
+
+- Remove all usage of string refs in OUFR ([PR #14342](https://github.com/microsoft/fluentui/pull/14342) by miclo@microsoft.com)
+
+### Patches
+
+- Add focuszone props to GroupedList and change details list to only use a single focus zone ([PR #14283](https://github.com/microsoft/fluentui/pull/14283) by mgodbolt@microsoft.com)
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Fix hc hover styling for checked checkbox to make checked state more visible on hover ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
+- Remove findDOMNode usage from DragDropHelper ([PR #14348](https://github.com/microsoft/fluentui/pull/14348) by miclo@microsoft.com)
+
+## [7.124.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.3)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.2..office-ui-fabric-react_v7.124.3)
+
+### Patches
+
+- update hc styling for Dropdown and ComboBox items to remove noisy borders ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
+
+## [7.124.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.0..office-ui-fabric-react_v7.124.2)
+
+### Patches
+
+- Add high contrast styling for command bar ([PR #14215](https://github.com/microsoft/fluentui/pull/14215) by ololubek@microsoft.com)
+
+## [7.124.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.10..office-ui-fabric-react_v7.124.0)
+
+### Minor changes
+
+- updated grouped list to be a11y compliant ([PR #11494](https://github.com/microsoft/fluentui/pull/11494) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Add noop transform to force gpu on mobile ([PR #13875](https://github.com/microsoft/fluentui/pull/13875) by miles@substantial.com)
+
+## [7.123.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.9)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.7..office-ui-fabric-react_v7.123.9)
+
+### Patches
+
+- ScrollablePane: fix pointer events on sticky'd elements ([PR #13744](https://github.com/microsoft/fluentui/pull/13744) by edwl@microsoft.com)
+- Add high contrast adjust selector to dropdown styles ([PR #14176](https://github.com/microsoft/fluentui/pull/14176) by ololubek@microsoft.com)
+
+## [7.123.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.7)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.6..office-ui-fabric-react_v7.123.7)
+
+### Patches
+
+- Updated doc content ([PR #13887](https://github.com/microsoft/fluentui/pull/13887) by mgodbolt@microsoft.com)
+- Add :after styles to fix ratio of suggested items in PeoplePicker on keyboard focus ([PR #14124](https://github.com/microsoft/fluentui/pull/14124) by ololubek@microsoft.com)
+
+## [7.123.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.4..office-ui-fabric-react_v7.123.6)
+
+### Patches
+
+- DetailsList: fix exception in DetailsRow when selection is undefined. ([PR #14088](https://github.com/microsoft/fluentui/pull/14088) by xgao@microsoft.com)
+- add document role to child of modal to fix VoiceOver issue ([PR #14096](https://github.com/microsoft/fluentui/pull/14096) by sarah.higley@microsoft.com)
+- Fix "rules of hooks" lint rule violations ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
+
+## [7.123.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.2..office-ui-fabric-react_v7.123.4)
+
+### Patches
+
+- Panel: pass missing event to onDismiss. ([PR #14075](https://github.com/microsoft/fluentui/pull/14075) by xgao@microsoft.com)
+
+## [7.123.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.2)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.0..office-ui-fabric-react_v7.123.2)
+
+### Patches
+
+- Fix onBlur event firing on every calendar day component bug ([PR #13992](https://github.com/microsoft/fluentui/pull/13992) by ololubek@microsoft.com)
+- removing unnecessary !important, fixing two linting errors, fixing high contrast bug in oufr calendar ([PR #14032](https://github.com/microsoft/fluentui/pull/14032) by lorejoh12@gmail.com)
+
+## [7.123.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.122.0..office-ui-fabric-react_v7.123.0)
+
+### Minor changes
+
+- Allow consumer of ContextualMenu control to override the role of internal list. ([PR #13908](https://github.com/microsoft/fluentui/pull/13908) by kinhln@microsoft.com)
+
+### Patches
+
+- Fix screen reader behavior on picker action buttons (#13291) ([PR #13627](https://github.com/microsoft/fluentui/pull/13627) by sarah.higley@microsoft.com)
+
+## [7.122.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.122.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.12..office-ui-fabric-react_v7.122.0)
+
+### Minor changes
+
+- Replace tslint with eslint; fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Add mutliSelectDelimiter property to ComboBox ([PR #13979](https://github.com/microsoft/fluentui/pull/13979) by cocahill@microsoft.com)
+
+### Patches
+
+- Keytip: add useKeytipRef hook. ([PR #13742](https://github.com/microsoft/fluentui/pull/13742) by xgao@microsoft.com)
+- ContextualMenu: Fix high contrast style for submenu icon ([PR #13843](https://github.com/microsoft/fluentui/pull/13843) by erabelle@microsoft.com)
+
+## [7.121.12](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.12)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.11..office-ui-fabric-react_v7.121.12)
+
+### Patches
+
+- Apply focusZone props to ContextualMenu. ([PR #13924](https://github.com/microsoft/fluentui/pull/13924) by kinhln@microsoft.com)
+- Prettier update. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
+- Slider: Fixing High Contrast styles. ([PR #13952](https://github.com/microsoft/fluentui/pull/13952) by ololubek@microsoft.com)
+- Applying cosmetic code updates from Prettier. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.121.11](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.11)
+
+Wed, 08 Jul 2020 12:34:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.10..office-ui-fabric-react_v7.121.11)
+
+### Patches
+
+- Removing console.log from MarqueeSelection Example. ([PR #13941](https://github.com/microsoft/fluentui/pull/13941) by czearing@outlook.com)
+
+## [7.121.10](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.10)
+
+Tue, 07 Jul 2020 12:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.9..office-ui-fabric-react_v7.121.10)
+
+### Patches
+
+- Combine labelId and StateTextId in labelledById and update tests ([PR #13886](https://github.com/microsoft/fluentui/pull/13886) by t-dama@microsoft.com)
+
+## [7.121.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.7)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.5..office-ui-fabric-react_v7.121.7)
+
+### Patches
+
+- Ensure ResizeGroup uses correct window for animation frame ([PR #13864](https://github.com/microsoft/fluentui/pull/13864) by tmichon@microsoft.com)
+- High contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix ChoiceGroup. ([PR #13846](https://github.com/microsoft/fluentui/pull/13846) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix Nav. ([PR #13850](https://github.com/microsoft/fluentui/pull/13850) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: Fix ContextualMenu. ([PR #13870](https://github.com/microsoft/fluentui/pull/13870) by xgao@microsoft.com)
+
+## [7.121.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.5)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.4..office-ui-fabric-react_v7.121.5)
+
+### Patches
+
+- SpinButton: pass through event information if the user spins up or down ([PR #13811](https://github.com/microsoft/fluentui/pull/13811) by makopch@microsoft.com)
+- ContextualMenu: Fixing issue where focus would not return to previously focused element and issue where error might occur if said previously focused element didn't have a focus method. ([PR #13813](https://github.com/microsoft/fluentui/pull/13813) by joschect@microsoft.com)
+- Convert KeytipTransitionModifier to type ([PR #13825](https://github.com/microsoft/fluentui/pull/13825) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.121.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.4)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.2..office-ui-fabric-react_v7.121.4)
+
+### Patches
+
+- PeoplePicker: Fix examples to properly remove duplicates ([PR #13366](https://github.com/microsoft/fluentui/pull/13366) by suprememilanfan@gmail.com)
+
+## [7.121.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.1..office-ui-fabric-react_v7.121.2)
+
+### Patches
+
+- KeytipData: convert to function component ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
+
+## [7.121.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.1)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.0..office-ui-fabric-react_v7.121.1)
+
+### Patches
+
+- Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link ([PR #13687](https://github.com/microsoft/fluentui/pull/13687) by xgao@microsoft.com)
+
+## [7.121.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.0)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.3..office-ui-fabric-react_v7.121.0)
+
+### Minor changes
+
+- Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios. ([PR #13621](https://github.com/microsoft/fluentui/pull/13621) by ololubek@microsoft.com)
+- Add new rounded corners to theme ([PR #13635](https://github.com/microsoft/fluentui/pull/13635) by phkuo@microsoft.com)
+
+## [7.120.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.3)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.2..office-ui-fabric-react_v7.120.3)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.120.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.1..office-ui-fabric-react_v7.120.2)
+
+### Patches
+
+- Prevent ContextualMenu from destroying existing menu items on every repaint ([PR #13357](https://github.com/microsoft/fluentui/pull/13357) by tmichon@microsoft.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
+
+## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.0..office-ui-fabric-react_v7.120.1)
+
+### Patches
+
+- modalization for FocusTrapZone ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.120.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.119.0..office-ui-fabric-react_v7.120.0)
+
+### Minor changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Update Details and Grouped list chevron to rotate in the correct direction for RTL. ([PR #13514](https://github.com/microsoft/fluentui/pull/13514) by bcoard@microsoft.com)
+- Combobox: Fix openOnKeyboard prop to work as expected ([PR #13520](https://github.com/microsoft/fluentui/pull/13520) by joschect@microsoft.com)
+- Fix some unnecessary DetailsList styles ([PR #13540](https://github.com/microsoft/fluentui/pull/13540) by phkuo@microsoft.com)
+
+## [7.119.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.119.0)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.1..office-ui-fabric-react_v7.119.0)
+
+### Minor changes
+
+- DocumentCard: add prop to open link in a new tab. ([PR #13076](https://github.com/microsoft/fluentui/pull/13076) by mahesh8488@gmail.com)
+- Add onGrowData to Breadcrumb ([PR #13447](https://github.com/microsoft/fluentui/pull/13447) by tmichon@microsoft.com)
+
+## [7.118.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.1)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.0..office-ui-fabric-react_v7.118.1)
+
+### Patches
+
+- Link: fix broken href in examples ([PR #13511](https://github.com/microsoft/fluentui/pull/13511) by ololubek@microsoft.com)
+
+## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.4..office-ui-fabric-react_v7.118.0)
+
+### Minor changes
+
+- Dialog: min height for title to ensure subtext doesn't overlap 'close' button. ([PR #13492](https://github.com/microsoft/fluentui/pull/13492) by jdh@microsoft.com)
+
+### Patches
+
+- Dropdown and ContextualMenu doc comment clarifications ([PR #13471](https://github.com/microsoft/fluentui/pull/13471) by elcraig@microsoft.com)
+- Picker/PeoplePicker: Fix issue where default value wouldn't trigger suggestions ([PR #13480](https://github.com/microsoft/fluentui/pull/13480) by joschect@microsoft.com)
+- Deprecating defaultSelectedIndex props in Pivot.types.ts. ([PR #13479](https://github.com/microsoft/fluentui/pull/13479) by czearing@outlook.com)
+
+## [7.117.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.4)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.3..office-ui-fabric-react_v7.117.4)
+
+### Patches
+
+- Fixing GroupedList custom example aria error. ([PR #13457](https://github.com/microsoft/fluentui/pull/13457) by humbertomakotomorimoto@gmail.com)
+- Stack: Clarifying deprecated message of props replaced by tokens. ([PR #13476](https://github.com/microsoft/fluentui/pull/13476) by humbertomakotomorimoto@gmail.com)
 
 ## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
 

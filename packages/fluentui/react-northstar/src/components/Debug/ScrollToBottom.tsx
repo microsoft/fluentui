@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class ScrollToBottom extends React.Component<any> {
+export class ScrollToBottom extends React.Component<any> {
   ref = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
@@ -15,5 +15,3 @@ class ScrollToBottom extends React.Component<any> {
     return <div ref={this.ref} {...this.props} />;
   }
 }
-
-export default ScrollToBottom;

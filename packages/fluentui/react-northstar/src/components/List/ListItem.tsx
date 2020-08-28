@@ -1,50 +1,54 @@
 import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box';
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
-  ShorthandValue,
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  ContentComponentProps,
+  createShorthand,
+} from '../../utils';
 import { ListContext, ListContextSubscribedValue } from './listContext';
+import { ListItemContent, ListItemContentProps } from './ListItemContent';
+import { ListItemContentMedia, ListItemContentMediaProps } from './ListItemContentMedia';
+import { ListItemEndMedia, ListItemEndMediaProps } from './ListItemEndMedia';
+import { ListItemHeader, ListItemHeaderProps } from './ListItemHeader';
+import { ListItemHeaderMedia, ListItemHeaderMediaProps } from './ListItemHeaderMedia';
+import { ListItemMedia, ListItemMediaProps } from './ListItemMedia';
 
 export interface ListItemSlotClassNames {
-  header: string;
-  headerMedia: string;
   headerWrapper: string;
-  content: string;
-  contentMedia: string;
   contentWrapper: string;
   main: string;
-  media: string;
-  endMedia: string;
 }
 
-export interface ListItemProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface ListItemProps extends UIComponentProps, ContentComponentProps<ShorthandValue<ListItemContentProps>> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ListItemBehaviorProps>;
-  contentMedia?: ShorthandValue<BoxProps>;
+  contentMedia?: ShorthandValue<ListItemContentMediaProps>;
   /** Toggle debug mode. */
   debug?: boolean;
-  header?: ShorthandValue<BoxProps>;
-  endMedia?: ShorthandValue<BoxProps>;
-  headerMedia?: ShorthandValue<BoxProps>;
+  header?: ShorthandValue<ListItemHeaderProps>;
+  headerMedia?: ShorthandValue<ListItemHeaderMediaProps>;
+  endMedia?: ShorthandValue<ListItemEndMediaProps>;
 
   /** A list item can appear more important and draw the user's attention. */
   important?: boolean;
-  media?: ShorthandValue<BoxProps>;
+  media?: ShorthandValue<ListItemMediaProps>;
 
   index?: number;
   /** A list item can indicate that it can be selected. */
@@ -66,32 +70,21 @@ export interface ListItemProps extends UIComponentProps, ContentComponentProps<S
   onClick?: ComponentEventHandler<ListItemProps>;
 }
 
-export type ListItemStylesProps = Pick<
-  ListItemProps,
-  'debug' | 'important' | 'navigable' | 'selectable' | 'selected' | 'truncateContent' | 'truncateHeader'
-> & {
-  hasContent?: boolean;
-  hasContentMedia?: boolean;
-  hasHeader?: boolean;
-  hasHeaderMedia?: boolean;
-};
+export type ListItemStylesProps = Pick<ListItemProps, 'debug' | 'important' | 'navigable' | 'selectable' | 'selected'>;
 
 export const listItemClassName = 'ui-list__item';
 export const listItemSlotClassNames: ListItemSlotClassNames = {
-  header: `${listItemClassName}__header`,
-  headerMedia: `${listItemClassName}__headerMedia`,
   headerWrapper: `${listItemClassName}__headerWrapper`,
   main: `${listItemClassName}__main`,
-  content: `${listItemClassName}__content`,
-  contentMedia: `${listItemClassName}__contentMedia`,
   contentWrapper: `${listItemClassName}__contentWrapper`,
-  media: `${listItemClassName}__media`,
-  endMedia: `${listItemClassName}__endMedia`,
 };
 
-const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
+/**
+ * A ListItem contains a single piece of content within a List.
+ */
+export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
   FluentComponentStaticProps<ListItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
   setStart();
@@ -145,7 +138,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     }),
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles<ListItemStylesProps>(ListItem.displayName, {
+  const { classes } = useStyles<ListItemStylesProps>(ListItem.displayName, {
     className: listItemClassName,
     mapPropsToStyles: () => ({
       debug,
@@ -153,13 +146,6 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       important,
       selectable,
       selected,
-      truncateContent,
-      truncateHeader,
-
-      hasContent: !!content,
-      hasContentMedia: !!contentMedia,
-      hasHeader: !!header,
-      hasHeaderMedia: !!headerMedia,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -173,40 +159,33 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     parentProps.onItemClick(e, props.index);
   };
 
-  const contentElement = Box.create(content, {
+  const contentElement = createShorthand(ListItemContent, content, {
     defaultProps: () => ({
-      className: listItemSlotClassNames.content,
-      styles: resolvedStyles.content,
+      hasContentMedia: !!contentMedia,
+      hasHeader: !!header,
+      truncate: truncateContent,
     }),
   });
-  const contentMediaElement = Box.create(contentMedia, {
+  const contentMediaElement = createShorthand(ListItemContentMedia, contentMedia);
+  const headerElement = createShorthand(ListItemHeader, header, {
     defaultProps: () => ({
-      className: listItemSlotClassNames.contentMedia,
-      styles: resolvedStyles.contentMedia,
+      hasContent: !!content,
+      hasHeaderMedia: !!headerMedia,
+      truncate: truncateHeader,
     }),
   });
-  const headerElement = Box.create(header, {
+  const headerMediaElement = createShorthand(ListItemHeaderMedia, headerMedia);
+  const endMediaElement = createShorthand(ListItemEndMedia, endMedia, {
     defaultProps: () => ({
-      className: listItemSlotClassNames.header,
-      styles: resolvedStyles.header,
+      navigable,
+      selectable,
     }),
   });
-  const headerMediaElement = Box.create(headerMedia, {
+  const mediaElement = createShorthand(ListItemMedia, media, {
     defaultProps: () => ({
-      className: listItemSlotClassNames.headerMedia,
-      styles: resolvedStyles.headerMedia,
-    }),
-  });
-  const endMediaElement = Box.create(endMedia, {
-    defaultProps: () => ({
-      className: listItemSlotClassNames.endMedia,
-      styles: resolvedStyles.endMedia,
-    }),
-  });
-  const mediaElement = Box.create(media, {
-    defaultProps: () => ({
-      className: listItemSlotClassNames.media,
-      styles: resolvedStyles.media,
+      hasContent: !!content,
+      hasHeader: !!header,
+      important,
     }),
   });
 
@@ -280,8 +259,3 @@ ListItem.propTypes = {
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
-
-/**
- * A ListItem contains a single piece of content within a List.
- */
-export default withSafeTypeForAs<typeof ListItem, ListItemProps, 'li'>(ListItem);

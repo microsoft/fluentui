@@ -123,6 +123,9 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+            @media screen and (forced-colors: active){&:hover {
+              forced-color-adjust: none;
+            }
       >
         <input
           aria-invalid={false}
@@ -167,6 +170,10 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               &::-ms-clear {
                 display: none;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -175,6 +182,9 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
               }
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
@@ -185,6 +195,9 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 font-weight: 400;
                 opacity: 1;
               }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -193,6 +206,9 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
               }
           id="TextField0"
           onBlur={[Function]}
@@ -235,7 +251,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               -webkit-overflow-scrolling: touch;
-              background: #ffffff;
               color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
@@ -303,11 +318,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               onMouseDownCapture={[Function]}
               onMouseMove={[Function]}
               role="row"
-              style={
-                Object {
-                  "minWidth": 200,
-                }
-              }
             >
               <div
                 aria-colindex={1}
@@ -961,33 +971,33 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
             role="presentation"
           >
             <div
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-                  {
-                    display: inline-block;
-                    min-height: 1px;
-                    min-width: 100%;
-                  }
-              data-focuszone-id="FocusZone5"
-              onBlur={[Function]}
-              onFocus={[Function]}
+              className="ms-SelectionZone"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDoubleClick={[Function]}
+              onFocusCapture={[Function]}
               onKeyDown={[Function]}
+              onKeyDownCapture={[Function]}
+              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
+              role="presentation"
             >
               <div
-                className="ms-SelectionZone"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onDoubleClick={[Function]}
-                onFocusCapture={[Function]}
+                className=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: inline-block;
+                      min-height: 1px;
+                      min-width: 100%;
+                    }
+                data-focuszone-id="FocusZone5"
+                onBlur={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
-                onKeyDownCapture={[Function]}
-                onMouseDown={[Function]}
                 onMouseDownCapture={[Function]}
-                role="presentation"
               >
                 <div
                   className="ms-List"

@@ -11,6 +11,7 @@ import {
   HighContrastSelectorWhite,
   getScreenSelector,
   ScreenWidthMinMedium,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -142,14 +143,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        [HighContrastSelector]: {
-          borderColor: 'Window',
-        },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           left: 0,
           top: 0,
           bottom: 0,
           right: 0,
+        },
+        [HighContrastSelector]: {
+          border: 'none',
         },
       },
     };
@@ -173,6 +174,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',
+          border: 'none',
         },
       },
     },
@@ -228,7 +230,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
 
               selectors: {
                 [HighContrastSelector]: {
-                  borderColor: 'Highlight',
                   color: 'Highlight',
                 },
               },
@@ -307,7 +308,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         border: 'none',
         color: semanticColors.disabledText,
         cursor: 'default',
-        selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } },
+        selectors: {
+          [HighContrastSelector]: {
+            border: '1px solid GrayText',
+            color: 'GrayText',
+            backgroundColor: 'Window',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     caretDownWrapper: [
@@ -326,7 +334,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     caretDown: [
       globalClassnames.caretDown,
       { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
-      disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } },
+      disabled && {
+        color: semanticColors.disabledText,
+        selectors: { [HighContrastSelector]: { color: 'GrayText' }, ...getEdgeChromiumNoHighContrastAdjustSelector() },
+      },
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
     callout: [
@@ -376,6 +387,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         padding: '0 8px',
         userSelect: 'none',
         textAlign: 'left',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     subComponentStyles: {

@@ -100,6 +100,9 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       />
     </div>
   </div>
@@ -180,6 +183,9 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
             }
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       />
     </div>
@@ -262,6 +268,9 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       />
     </div>
   </div>
@@ -342,6 +351,9 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
             }
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       />
     </div>

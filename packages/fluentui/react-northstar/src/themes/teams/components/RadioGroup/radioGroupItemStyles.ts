@@ -5,7 +5,7 @@ import {
 } from '../../../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,
@@ -19,7 +19,7 @@ const restHoverFocusTextColor = textColor => ({
   },
 });
 
-const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioGroupItemVariables> = {
+export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioGroupItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     position: 'relative',
     alignItems: 'center',
@@ -83,5 +83,3 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
     }),
   }),
 };
-
-export default radioStyles;

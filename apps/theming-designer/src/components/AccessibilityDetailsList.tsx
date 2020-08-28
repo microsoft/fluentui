@@ -117,6 +117,7 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
         disableSelectionZone={true}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderRow={onRenderRow}
         groupProps={{
           showEmptyGroups: true,

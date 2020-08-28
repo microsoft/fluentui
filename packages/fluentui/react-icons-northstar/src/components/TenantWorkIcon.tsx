@@ -1,10 +1,10 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
 // TODO: should we reconsider name
-const TenantWorkIcon = createSvgIcon({
+export const TenantWorkIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg className={classes.svg} viewBox="8 8 16 16" role="presentation" focusable="false">
       <path
@@ -19,5 +19,3 @@ const TenantWorkIcon = createSvgIcon({
   ),
   displayName: 'TenantWorkIcon',
 });
-
-export default TenantWorkIcon;

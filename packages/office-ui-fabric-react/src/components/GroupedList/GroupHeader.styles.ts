@@ -7,7 +7,7 @@ import {
   FontWeights,
   IconFontSizes,
 } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
@@ -180,7 +180,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             },
           ]
         : {
-            transform: 'rotate(90deg)',
+            transform: getRTL(theme) ? 'rotate(-90deg)' : 'rotate(90deg)',
             transformOrigin: '50% 50%',
             transition: 'transform .1s linear',
           },

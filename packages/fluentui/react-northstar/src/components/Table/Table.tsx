@@ -1,11 +1,13 @@
 import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useTelemetry,
   mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -18,18 +20,10 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import TableRow, { TableRowProps } from './TableRow';
-import TableCell from './TableCell';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import {
-  WithAsProp,
-  ShorthandCollection,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { TableRow, TableRowProps } from './TableRow';
+import { TableCell } from './TableCell';
+
+import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableSlotClassNames {
   header: string;
@@ -62,12 +56,31 @@ export const tableSlotClassNames: TableSlotClassNames = {
 
 export type TableStylesProps = never;
 
-export const Table: React.FC<WithAsProp<TableProps>> &
+/**
+ * A Table is used to display data in tabular layout
+ * * @accessibility
+ * Implements ARIA [Data Grid](https://www.w3.org/TR/wai-aria-practices/#dataGrid) design pattern for presenting tabular information.
+ * When gridcell contains actionable element, use [gridCellWithFocusableElementBehavior](/components/table/accessibility#grid-cell-with-focusable-element-behavior-ts). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
+ * Use [gridCellMultipleFocusableBehavior](/components/table/accessibility#gridCellMultipleFocusableBehavior), when gridcell contains:
+ * \- editable content
+ * \- multiple actionable elements
+ * \- component that utilizes arrow keys in its navigation, like menu button, dropdown, radio group, slider, etc.
+ * [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_inside)
+ * @accessibilityIssues
+ * [NVDA narrate table title(aria-label) twice](https://github.com/nvaccess/nvda/issues/10548)
+ * [Accessibility DOM > Table > gridcell > when gridcell is focused, then selected state is send to reader](https://bugs.chromium.org/p/chromium/issues/detail?id=1030378)
+ * [JAWS narrate grid name twice, once as table and second time as grid](https://github.com/FreedomScientific/VFO-standards-support/issues/346)
+ * [JAWS doesn't narrate grid column name, when focus is on actionable element in the cell] (https://github.com/FreedomScientific/VFO-standards-support/issues/348)
+ * [aria-sort is not output at child elements](https://github.com/FreedomScientific/VFO-standards-support/issues/319)
+ * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
+ * VoiceOver doesn't narrate aria-rowcount value in table or grid
+ */
+export const Table: ComponentWithAs<'div', TableProps> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
   setStart();
   const { children, rows, header, compact, accessibility, className, design, styles, variables } = props;
@@ -164,27 +177,5 @@ Table.propTypes = {
 Table.handledProps = Object.keys(Table.propTypes) as any;
 
 Table.defaultProps = {
-  as: 'div',
-  accessibility: tableBehavior as Accessibility,
+  accessibility: tableBehavior,
 };
-
-/**
- * A Table is used to display data in tabular layout
- * * @accessibility
- * Implements ARIA [Data Grid](https://www.w3.org/TR/wai-aria-practices/#dataGrid) design pattern for presenting tabular information.
- * When gridcell contains actionable element, use [gridCellWithFocusableElementBehavior](/components/table/accessibility#grid-cell-with-focusable-element-behavior-ts). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
- * Use [gridCellMultipleFocusableBehavior](/components/table/accessibility#gridCellMultipleFocusableBehavior), when gridcell contains:
- * \- editable content
- * \- multiple actionable elements
- * \- component that utilizes arrow keys in its navigation, like menu button, dropdown, radio group, slider, etc.
- * [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_inside)
- * @accessibilityIssues
- * [NVDA narrate table title(aria-label) twice](https://github.com/nvaccess/nvda/issues/10548)
- * [Accessibility DOM > Table > gridcell > when gridcell is focused, then selected state is send to reader](https://bugs.chromium.org/p/chromium/issues/detail?id=1030378)
- * [JAWS narrate grid name twice, once as table and second time as grid](https://github.com/FreedomScientific/VFO-standards-support/issues/346)
- * [JAWS doesn't narrate grid column name, when focus is on actionable element in the cell] (https://github.com/FreedomScientific/VFO-standards-support/issues/348)
- * [aria-sort is not output at child elements](https://github.com/FreedomScientific/VFO-standards-support/issues/319)
- * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
- * VoiceOver doesn't narrate aria-rowcount value in table or grid
- */
-export default withSafeTypeForAs<typeof Table, TableProps, 'div'>(Table);

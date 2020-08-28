@@ -3,7 +3,7 @@ import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import { Label } from '@fluentui/react-next/lib/Label';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
-import { IconButton } from '@fluentui/react-next/lib/Button';
+import { IconButton } from '@fluentui/react-next/lib/compat/Button';
 
 const exampleOptions: IDropdownOption[] = [
   { key: 'Header', text: 'Options', itemType: DropdownMenuItemType.Header },

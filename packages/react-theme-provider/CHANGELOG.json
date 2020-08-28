@@ -2,6 +2,255 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding ghost defaults to Fluent theme.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d9de3d77bb24ac881fa63b8cf72e6d56d53d97ad",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Theme and PartialTheme typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "e5f362d4c0dca7d9a7648d76b121d1d39331c59c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move mergeThemes and Theme related typings to new theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Adding `makeStyles` helper to register styles as a function of the theme.",
+            "author": "dzearing@hotmail.com",
+            "commit": "46f1add2165e357c71291281a65ebc0fcb095994",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updated typings for makeStyles so that it can more correctly resolve style inputs.",
+            "author": "dzearing@hotmail.com",
+            "commit": "af039939f1de57e9db36cee2a4943f583956301f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix default button tokens",
+            "author": "xgao@microsoft.com",
+            "commit": "9bf73ea3bd03c9f695b899651fb327d90db3d0bc",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Teams/Fluent/default themes; Convert v7 theme to tokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "1a7794c6e7933a5e1790a6a50eada3a0f9928216",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.7.3",
+      "version": "0.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ThemeProvider: RecursivePartial now correctly works.",
+            "author": "dzearing@hotmail.com",
+            "commit": "f155a92488fbe53ebeadd9b5b153d35a753e5647",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support v7 theme (ITheme)",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renaming TokenPlateSet to TokenColorSet",
+            "author": "dzearing@hotmail.com",
+            "commit": "59a535edb9ef5b85fada1259818a3758197ed27d",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding useInlineTokens hook.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move ThemeProvider from react-next to react-theme-provider's Compat folder",
+            "author": "behowell@microsoft.com",
+            "commit": "20caabd592970eef8431d4b47c923e54767e3d3e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding getStylesFromOptionsAndProps method to calculate the correct value for the style prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting utility to generate inline styles based on tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7026390333eeeb5bb1765bca68389b3b43312a49",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@fluentui/react-theme-provider_v0.1.6",
       "version": "0.1.6",

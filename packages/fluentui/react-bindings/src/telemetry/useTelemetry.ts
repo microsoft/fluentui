@@ -10,7 +10,7 @@ export const getTelemetry = (
   let end: number = -1;
 
   const setStart = () => {
-    if (telemetry && telemetry.enabled) {
+    if (telemetry?.enabled) {
       start = performance.now();
 
       if (!telemetry.performance[displayName]) {
@@ -22,6 +22,10 @@ export const getTelemetry = (
           msMin: Number.MAX_SAFE_INTEGER,
           msMax: 0,
 
+          msResolveVariablesTotal: 0,
+          msResolveStylesTotal: 0,
+          msRenderStylesTotal: 0,
+
           stylesRootCacheHits: 0,
           stylesSlotsCacheHits: 0,
         };
@@ -30,7 +34,7 @@ export const getTelemetry = (
   };
 
   const setEnd = () => {
-    if (telemetry && telemetry.enabled && start !== -1) {
+    if (telemetry?.enabled && start !== -1) {
       end = performance.now();
 
       const duration = end - start;
@@ -49,10 +53,8 @@ export const getTelemetry = (
   return { setStart, setEnd };
 };
 
-const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
+export const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
   const isFirstRenderRef = React.useRef<boolean>(true);
 
   return getTelemetry(displayName, telemetry, isFirstRenderRef);
 };
-
-export default useTelemetry;

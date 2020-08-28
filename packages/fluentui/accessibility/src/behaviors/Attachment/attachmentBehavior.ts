@@ -8,7 +8,7 @@ import { Accessibility } from '../../types';
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
+export const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
   attributes: {
     root: {
       tabIndex: 0,
@@ -25,5 +25,3 @@ const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
 });
 
 export type AttachmentBehaviorProps = never;
-
-export default attachmentBehavior;

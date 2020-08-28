@@ -31,6 +31,8 @@ const DayPickerStrings: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 
   isRequiredErrorMessage: 'Start date is required.',
 
@@ -73,9 +75,14 @@ export const DatePickerInputExample: React.FC = () => {
         firstDayOfWeek={firstDayOfWeek}
         strings={DayPickerStrings}
         value={value!}
+        // eslint-disable-next-line react/jsx-no-bind
         onSelectDate={onSelectDate}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        text="Clear"
+      />
     </div>
   );
 };

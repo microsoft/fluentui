@@ -3,23 +3,13 @@ import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Util
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
-import { Image, ImageFit } from '../../Image';
+import { Image } from '../../Image';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
 export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-  // Specify default props values
-  public static defaultProps = {
-    hasCondensedHeadline: false,
-    imageProps: {
-      imageFit: ImageFit.cover,
-      width: 364,
-      height: 130,
-    },
-  };
-
   public rootElement = React.createRef<HTMLDivElement>();
 
   constructor(props: ITeachingBubbleProps) {
@@ -55,7 +45,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,

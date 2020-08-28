@@ -10,8 +10,8 @@ import { TestImages } from '@uifabric/example-data';
 
 // Rendering allIcons tests that the icon package can initialize all icons from the cdn
 const allIcons: JSX.Element[] = [];
-// tslint:disable-next-line
-for (let iconName in (IconNames as any)['IconNames']) {
+// eslint-disable-next-line guard-for-in
+for (const iconName in (IconNames as any).IconNames) {
   allIcons.push(<Icon iconName={iconName} />);
 }
 

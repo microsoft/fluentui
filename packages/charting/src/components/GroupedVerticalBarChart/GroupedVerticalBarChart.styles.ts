@@ -1,7 +1,11 @@
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from './GroupedVerticalBarChart.types';
+import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { isIE11 } from 'office-ui-fabric-react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
-  const { theme, className, showXAxisPath, showYAxisPath, href } = props;
+  const { theme, className, showXAxisPath, showYAxisPath, href, isRtl } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -17,12 +21,27 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
 
     xAxis: {
       selectors: {
-        text: {
-          ...theme!.fonts.tiny,
-        },
+        text: [
+          theme!.fonts.tiny,
+          {
+            fontWeight: FontWeights.semibold,
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         line: {
           opacity: 0.2,
           width: '1px',
+          stroke: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
         path: {
           display: showXAxisPath ? 'block' : 'none',
@@ -32,16 +51,37 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
 
     yAxis: {
       selectors: {
-        text: {
-          ...theme.fonts.medium,
-        },
+        text: [
+          theme.fonts.tiny,
+          {
+            fontWeight: FontWeights.semibold,
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         line: {
           opacity: 0.2,
           width: '1px',
+          stroke: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
         path: {
           display: showYAxisPath ? 'block' : 'none',
         },
+        g: [
+          isRtl &&
+            !isIE11Var && {
+              textAnchor: 'end',
+            },
+        ],
       },
     },
 
@@ -51,6 +91,19 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     },
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
+    },
+
+    tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
     },
   };
 };

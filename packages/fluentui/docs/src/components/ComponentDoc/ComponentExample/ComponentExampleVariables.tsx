@@ -3,13 +3,11 @@ import {
   Grid,
   Header,
   Segment,
-  ProviderContextPrepared,
+  useFluentContext,
   ThemeComponentVariablesPrepared,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import ComponentExampleVariable, { ComponentExampleVariableProps } from './ComponentExampleVariable';
 import { mergeThemeVariables } from '@fluentui/styles';
@@ -33,7 +31,7 @@ const getGroupName = (variableName: string): string => {
 const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariablesProps> = props => {
   const { onChange, overriddenVariables, usedVariables } = props;
 
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
+  const { theme } = useFluentContext();
   const [hideUnused] = React.useState(true);
 
   const componentVariables: ThemeComponentVariablesPrepared = _.pickBy(

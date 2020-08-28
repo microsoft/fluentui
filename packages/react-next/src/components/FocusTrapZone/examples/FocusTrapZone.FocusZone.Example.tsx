@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { FocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
 import { Toggle, IToggle } from '@fluentui/react-next/lib/Toggle';

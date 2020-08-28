@@ -6,7 +6,6 @@ import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';
 
-/* tslint:disable:no-unused-variable */
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const brokenImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -25,13 +24,7 @@ describe('Image', () => {
   });
 
   it('renders an image', done => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ImageBase
-        src={testImage1x1}
-        // tslint:disable-next-line:jsx-no-lambda
-        onLoad={() => done()}
-      />,
-    );
+    const component = ReactTestUtils.renderIntoDocument(<ImageBase src={testImage1x1} onLoad={() => done()} />);
 
     const image = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
     ReactTestUtils.Simulate.load(image);
@@ -103,13 +96,7 @@ describe('Image', () => {
   });
 
   it('allows onError events to be attached', done => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ImageBase
-        src={brokenImage}
-        // tslint:disable-next-line:jsx-no-lambda
-        onError={() => done()}
-      />,
-    );
+    const component = ReactTestUtils.renderIntoDocument(<ImageBase src={brokenImage} onError={() => done()} />);
 
     const img = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
     ReactTestUtils.Simulate.error(img);

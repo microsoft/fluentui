@@ -1,8 +1,8 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
-import { Stack, IStackComponent } from 'office-ui-fabric-react';
+import { Stack, IStackComponent } from 'office-ui-fabric-react/lib/Stack';
+import { getNativeProps, htmlElementProperties, warn, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';
@@ -95,6 +95,7 @@ export const CardView: ICardComponent['view'] = props => {
   return (
     <Slots.root
       onClick={onClick}
+      // eslint-disable-next-line react/jsx-no-bind
       onKeyDown={_onKeyDown}
       role={onClick ? 'button' : 'presentation'}
       tabIndex={onClick ? 0 : -1}

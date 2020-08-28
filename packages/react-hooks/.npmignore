@@ -4,6 +4,8 @@
 *.test.*
 *.yml
 .editorconfig
+.eslintrc*
+.eslintcache
 .gitattributes
 .gitignore
 .vscode

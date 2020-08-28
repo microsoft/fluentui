@@ -49,7 +49,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             -webkit-overflow-scrolling: touch;
-            background: #ffffff;
             color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
@@ -117,11 +116,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
             onMouseDownCapture={[Function]}
             onMouseMove={[Function]}
             role="row"
-            style={
-              Object {
-                "minWidth": 100,
-              }
-            }
           >
             <div
               aria-colindex={1}
@@ -504,33 +498,33 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
           role="presentation"
         >
           <div
-            className=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  display: inline-block;
-                  min-height: 1px;
-                  min-width: 100%;
-                }
-            data-focuszone-id="FocusZone2"
-            onBlur={[Function]}
-            onFocus={[Function]}
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
             onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
+            role="presentation"
           >
             <div
-              className="ms-SelectionZone"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onDoubleClick={[Function]}
-              onFocusCapture={[Function]}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+                  {
+                    display: inline-block;
+                    min-height: 1px;
+                    min-width: 100%;
+                  }
+              data-focuszone-id="FocusZone2"
+              onBlur={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
-              onKeyDownCapture={[Function]}
-              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-List"

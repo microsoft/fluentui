@@ -9,23 +9,23 @@ export class Table extends React.Component<ITableProps> {
 
     return (
       <table className={css(styles.table, className)}>
-        <thead className={styles.thead}>
-          <tr className={styles.tr}>
+        <thead className={styles.head}>
+          <tr className={styles.row}>
             {columns.map((column: ITableColumnProps, columnIndex: number) => (
-              <th key={columnIndex} className={styles.th} style={this._colStyle(column)}>
+              <th key={columnIndex} className={styles.headerCell} style={this._colStyle(column)}>
                 {column.title}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className={styles.tbody}>
+        <tbody className={styles.body}>
           {rows.map((row: ITableRowProps, rowIndex: number) => (
-            <tr key={rowIndex} className={styles.tr}>
+            <tr key={rowIndex} className={styles.row}>
               {columns.map((column: ITableColumnProps, columnIndex: number) => {
                 const content =
                   (formatter && formatter(column, row)) || (column.rowProperty && row[column.rowProperty]);
                 return (
-                  <td key={`${rowIndex}-${columnIndex}`} className={styles.td} style={this._colStyle(column)}>
+                  <td key={`${rowIndex}-${columnIndex}`} className={styles.cell} style={this._colStyle(column)}>
                     {content}
                   </td>
                 );

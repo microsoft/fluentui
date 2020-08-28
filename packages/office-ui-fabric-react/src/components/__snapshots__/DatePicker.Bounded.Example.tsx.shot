@@ -93,6 +93,9 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
+                }
           >
             <input
               aria-expanded={false}
@@ -138,6 +141,10 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -146,6 +153,9 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -156,6 +166,9 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -164,6 +177,9 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="DatePicker0-label"
               onBlur={[Function]}

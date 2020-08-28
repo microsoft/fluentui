@@ -11,32 +11,6 @@ $usageListPadding: 24px;
 
 .sectionWrapper {
   max-width: $content-width + ($App-padding-sm * 2);
-
-  // UHF overrides
-  a:global(.ms-Link) {
-    color: $linkColor;
-    &:link {
-      color: $linkColor;
-    }
-    &:active,
-    &:hover,
-    &:active:hover {
-      color: $linkHoveredColor;
-    }
-  }
-
-  :global(.ms-MessageBar) a:global(.ms-Link) {
-    // Link colors need to be darker inside MessageBar
-    color: $ms-color-themeDark;
-    &:link {
-      color: $ms-color-themeDark;
-    }
-    &:active,
-    &:hover,
-    &:active:hover {
-      color: $linkHoveredColor;
-    }
-  }
 }
 
 .section {
@@ -157,6 +131,9 @@ $usageListPadding: 24px;
   &:focus-within {
     opacity: 1;
   }
+  @media (hover: none) {
+    opacity: 1;
+  }
 
   a:global(.ms-Button) {
     height: 20px;
@@ -182,6 +159,10 @@ $usageListPadding: 24px;
       opacity: 1;
     }
   }
+}
+
+.hiddenContent {
+  @include hiddenContent();
 }
 
 .subHeading,

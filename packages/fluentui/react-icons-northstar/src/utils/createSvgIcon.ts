@@ -1,8 +1,6 @@
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { useFluentContext, useStyles, getUnhandledProps } from '@fluentui/react-bindings';
 
-import { StylesContextValue, useStyles, getUnhandledProps } from '@fluentui/react-bindings';
 import { SvgIconCreateFnParams, SvgIconProps } from './types';
 
 export const svgIconClassName = 'ui-icon';
@@ -22,11 +20,11 @@ export const svgIconHandledProps: (keyof SvgIconProps)[] = [
   'xSpacing',
 ];
 
-const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
+export const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps> & {
     handledProps: (keyof (TProps & SvgIconProps))[];
   } = props => {
-    const context: StylesContextValue = React.useContext(ThemeContext);
+    const context = useFluentContext();
 
     const {
       alt,
@@ -79,5 +77,3 @@ const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: Svg
 
   return Component;
 };
-
-export default createSvgIcon;

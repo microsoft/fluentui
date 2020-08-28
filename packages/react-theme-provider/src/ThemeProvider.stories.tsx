@@ -1,29 +1,27 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
-import { Theme } from './types';
+import { PartialTheme } from './types';
 
-// tslint:disable:jsx-no-lambda
-
-const lightTheme: Theme = {
+const lightTheme: PartialTheme = {
   tokens: {
     body: {
-      fill: 'white',
-      text: 'black',
+      background: 'white',
+      contentColor: 'black',
       fontFamily: 'Segoe UI',
     },
   },
 };
 
-const darkTheme: Theme = {
+const darkTheme: PartialTheme = {
   tokens: {
     body: {
-      fill: 'black',
-      text: 'white',
+      background: 'black',
+      contentColor: 'white',
     },
   },
 };
 
-const themeWithStylesheets: Theme = {
+const themeWithStylesheets: PartialTheme = {
   stylesheets: ['.foo { font-family: var(--body-customFont); }'],
   tokens: {
     body: {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ClosedCaptionsIcon = createSvgIcon({
+export const ClosedCaptionsIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" className={classes.svg} viewBox="8 8 16 16">
       <path
@@ -18,5 +18,3 @@ const ClosedCaptionsIcon = createSvgIcon({
   ),
   displayName: 'ClosedCaptionsIcon',
 });
-
-export default ClosedCaptionsIcon;

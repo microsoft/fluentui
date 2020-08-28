@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
-const scenario = (
+const Scenario = () => (
   <Pivot aria-label="Basic Pivot Example">
     <PivotItem
       headerText="My Files"
@@ -21,4 +21,4 @@ const scenario = (
   </Pivot>
 );
 
-export default scenario;
+export default Scenario;

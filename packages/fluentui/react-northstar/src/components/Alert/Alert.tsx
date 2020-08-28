@@ -3,8 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   UIComponentProps,
   ContentComponentProps,
@@ -12,26 +11,20 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import { ButtonProps } from '../Button/Button';
-import Text, { TextProps } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 
-import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
-import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
+import { ButtonGroup, ButtonGroupProps } from '../Button/ButtonGroup';
+import { AlertDismissAction, AlertDismissActionProps } from './AlertDismissAction';
 import {
+  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
@@ -124,11 +117,17 @@ export const alertSlotClassNames: AlertSlotClassNames = {
   body: `${alertClassName}__body`,
 };
 
-export const Alert: React.FC<WithAsProp<AlertProps>> &
+/**
+ * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
+ *
+ * @accessibility
+ * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
+ */
+export const Alert: ComponentWithAs<'div', AlertProps> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
   setStart();
   const {
@@ -322,10 +321,3 @@ Alert.create = createShorthandFactory({
 });
 
 Alert.DismissAction = AlertDismissAction;
-/**
- * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
- *
- * @accessibility
- * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
- */
-export default withSafeTypeForAs<typeof Alert, AlertProps>(Alert);
