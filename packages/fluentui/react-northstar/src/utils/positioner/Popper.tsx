@@ -15,7 +15,7 @@ let reactInstanceKey: string;
 const getReactInstanceKey = (elm: Node): string => {
   if (!reactInstanceKey) {
     for (const k in elm) {
-      if (k.startsWith('__reactInternalInstance$')) {
+      if (k.indexOf('__reactInternalInstance$') === 0) {
         reactInstanceKey = k;
         break;
       }
@@ -59,7 +59,27 @@ const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElem
         while (treeWalker.nextNode()) {
           const node = treeWalker.currentNode;
           // eslint-disable-next-line no-console
-          console.warn(node, ['Node with autoFocus', 'in Popper would cause window', 'scroll to jump'].join(' '));
+          console.warn('<Popper>:', node);
+          // eslint-disable-next-line no-console
+          console.warn(
+            [
+              '<Popper>: ^ this node contains "autoFocus" prop on a React element. This can break the initial',
+              'positioning of an element and cause a window jump effect. This issue occurs because React polyfills',
+              '"autoFocus" behavior to solve inconsistencies between different browsers:',
+              'https://github.com/facebook/react/issues/11851#issuecomment-351787078',
+              '\n',
+              'However, ".focus()" in this case occurs before any other React effects will be executed',
+              '(React.useEffect(), componentDidMount(), etc.) and we can not prevent this behavior. If you really',
+              'want to use "autoFocus" please add "position: fixed" to styles of the element that is wrapped by',
+              '"Popper".',
+              `In general, it's not recommended to use "autoFocus" as it may break accessibility aspects:`,
+              'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-autofocus.md',
+              '\n',
+              'We suggest to use the "trapFocus" prop on Fluent components or a catch "ref" and then use',
+              '"ref.current.focus" in React.useEffect():',
+              'https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element',
+            ].join(' '),
+          );
         }
       }
       // We run this check once, no need to add deps here
