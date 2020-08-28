@@ -621,7 +621,7 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   };
   for (const [module, components] of Object.entries(imports)) {
     codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    if (module) {
+    if (packageImportList[module]) {
       packageImports[module] = packageImportList[module];
     } else {
       console.error(`Undefined module for export to codesandbox for components {${components.join(', ')}} `);
