@@ -8,7 +8,7 @@ function createDependencies(code: string, imports: Record<string, CodeSandboxImp
   // Will include only required packages intentionally like "react" or required by a current example
   const filteredPackages = _.pickBy(
     imports,
-    (declaration, name) => declaration.required || new RegExp(`from ['|"]${name}['|"]`).exec(code),
+    (declaration, name) => declaration && (declaration.required || new RegExp(`from ['|"]${name}['|"]`).exec(code)),
   );
 
   return {
