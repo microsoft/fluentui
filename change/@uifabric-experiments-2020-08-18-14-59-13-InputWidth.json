@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Make the floating sugggestions picker have an optional fixed width",
   "packageName": "@uifabric/experiments",
   "email": "sadelson@microsoft.com",
