@@ -3,11 +3,11 @@ import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class GroupedVerticalBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
+export class GroupedVerticalBarChartBasic2Example extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'LongLong text here It should Display all',
+        name: 'thirdGraph third Graphthir  dGraphthir dGraphthird Graphthird Graphthird Graphthird Graphthird Graph',
         series: [
           {
             key: 'series1',
@@ -28,7 +28,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'Just Checking',
+        name: 'Ju St',
         series: [
           {
             key: 'series1',
@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'Hello World!!!',
+        name: 'kowsar shaik',
         series: [
           {
             key: 'series1',
@@ -97,7 +97,14 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
 
     return (
       <div className={rootStyle}>
-        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines wrapXAxisLables />
+        <GroupedVerticalBarChart
+          data={data}
+          height={400}
+          width={650}
+          showYAxisGridLines
+          showXAxisLablesTooltip
+          noOfCharsToTruncate={6}
+        />
       </div>
     );
   }
