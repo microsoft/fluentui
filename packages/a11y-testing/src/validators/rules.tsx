@@ -19,6 +19,11 @@ export class SlotRule implements Rule {
     return this;
   };
 
+  public afterClick = () => {
+    this.data.checkClick = true;
+    return this;
+  };
+
   public hasAttribute = (expectedAttribute: string, expectedValue: PropValue) => {
     this.data.expectedAttribute = expectedAttribute;
     this.data.expectedValue = expectedValue;

@@ -21,6 +21,8 @@ export class BehaviorRule {
 export class ComponentTestFacade implements TestFacade {
     constructor(Component: React.FC, props: Props);
     // (undocumented)
+    afterClick(selector: string): void;
+    // (undocumented)
     afterEvent(selector: string, eventName: string, event: Event): void;
     // (undocumented)
     attributeExists(selector: string, attributeName: string): boolean;
@@ -37,6 +39,8 @@ export class ComponentTestFacade implements TestFacade {
 // @public (undocumented)
 export class HookTestFacade implements TestFacade {
     constructor(hook: Function, props: Props);
+    // (undocumented)
+    afterClick(selector: string): void;
     // (undocumented)
     afterEvent: (slotName: string, eventName: string, event: Event) => void;
     // (undocumented)
@@ -72,6 +76,8 @@ export interface Slot {
     // (undocumented)
     afterEventData: Event;
     // (undocumented)
+    checkClick: boolean;
+    // (undocumented)
     checkEvent: boolean;
     // (undocumented)
     description: string;
@@ -93,6 +99,8 @@ export interface Slot {
 export class SlotRule implements Rule {
     constructor(name: string);
     // (undocumented)
+    afterClick: () => this;
+    // (undocumented)
     afterEvent: (eventName: string, event: Event) => this;
     // (undocumented)
     description: (description: string) => this;
@@ -112,6 +120,8 @@ export class SlotRule implements Rule {
 
 // @public (undocumented)
 export interface TestFacade {
+    // (undocumented)
+    afterClick(slotName: string): void;
     // (undocumented)
     afterEvent(slotName: string, eventName: string, event: Event): void;
     // (undocumented)

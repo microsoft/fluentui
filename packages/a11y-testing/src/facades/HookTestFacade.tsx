@@ -52,4 +52,16 @@ export class HookTestFacade implements TestFacade {
       act(() => keyHandler(event));
     }
   };
+
+  public afterClick(selector: string): void {
+    this.afterEvent(
+      selector,
+      'onClick',
+      new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+  }
 }

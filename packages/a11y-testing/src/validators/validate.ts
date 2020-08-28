@@ -12,6 +12,10 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
       testFacade.afterEvent(slot.name, slot.afterEvent, slot.afterEventData);
     }
 
+    if (slot.checkClick) {
+      testFacade.afterClick(slot.name);
+    }
+
     if (slot.expectAttribute) {
       if (!testFacade.slotExists(slot.name)) {
         throw new Error(`Expected slot ${slot.name} does not exist`);

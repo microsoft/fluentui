@@ -52,8 +52,26 @@ export class ComponentTestFacade implements TestFacade {
     return null;
   };
 
+  // eventName is necessary only for the HookTestFacade
   public afterEvent(selector: string, eventName: string, event: Event) {
-    this.actual.dispatchEvent(event);
+    if (selector === 'root') {
+      this.actual.dispatchEvent(event);
+    }
+
+    const element = document.getElementById(selector);
+    if (element) element.dispatchEvent(event);
+  }
+
+  public afterClick(selector: string): void {
+    this.afterEvent(
+      selector,
+      'onClick',
+      new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
   }
 
   public forProps = (props: Props) => {

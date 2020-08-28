@@ -17,6 +17,7 @@ export interface Slot {
   afterEvent: string;
   afterEventData: Event;
   checkEvent: boolean;
+  checkClick: boolean;
 }
 
 export interface TestFacade {
@@ -26,4 +27,5 @@ export interface TestFacade {
   getAttributeValue(slotName: string, attribute: string): PropValue;
   forProps(props: Props): TestFacade;
   afterEvent(slotName: string, eventName: string, event: Event): void;
+  afterClick(slotName: string): void;
 }
