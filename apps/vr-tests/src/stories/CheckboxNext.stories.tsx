@@ -16,15 +16,13 @@ storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>,
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
