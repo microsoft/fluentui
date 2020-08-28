@@ -32,6 +32,12 @@ const ButtonVariants = (props: ButtonProps) => (
     <Button {...props} primary disabled icon="X">
       Hello, world
     </Button>
+    <Button {...props} ghost icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} ghost disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
 
@@ -70,6 +76,12 @@ export const ButtonCss = () => (
         Hello, world
       </Button>
       <Button fluid primary disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost disabled icon="X">
         Hello, world
       </Button>
     </Stack>
