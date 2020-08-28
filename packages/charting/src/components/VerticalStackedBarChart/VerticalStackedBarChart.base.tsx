@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { format as d3Format } from 'd3-format';
+import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -59,6 +60,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -117,6 +119,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       theme: theme!,
       className,
       legendColor: this.state.color,
+      isRtl: this._isRtl,
     });
 
     const svgDimensions = {
@@ -124,34 +127,24 @@ export class VerticalStackedBarChartBase extends React.Component<
       height: this.state.containerHeight,
     };
     return (
-      <div
-        className={this._classNames.root}
-        // eslint-disable-next-line react/jsx-no-bind
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-      >
+      <div className={this._classNames.root} ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}>
         <FocusZone direction={FocusZoneDirection.vertical}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
               className={this._classNames.xAxis}
             />
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
-              transform={`translate(${this.margins.left}, 0)`}
+              transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right : this.margins.left}, 0)`}
               className={this._classNames.yAxis}
             />
             <g>{bars}</g>
           </svg>
         </FocusZone>
         {
-          <div
-            // eslint-disable-next-line react/jsx-no-bind
-            ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-            className={this._classNames.legendContainer}
-          >
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {legends}
           </div>
         }
@@ -228,7 +221,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createNumericXAxis(dataset: IDataPoint[]): NumericAxis {
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
     const xAxisScale = d3ScaleLinear()
-      .domain([0, xMax])
+      .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
       // barWIdth/2 = for showing tick exactly middle of the bar
       .range([
@@ -246,7 +239,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createStringXAxis(dataset: IDataPoint[]): StringAxis {
     const xAxisScale = d3ScaleBand()
       .domain(dataset.map((point: IDataPoint) => point.x as string))
-      .range([this.margins.left, this.state.containerWidth - this.margins.right])
+      .range(
+        this._isRtl
+          ? [this.state.containerWidth - this.margins.right, this.margins.left]
+          : [this.margins.left, this.state.containerWidth - this.margins.right],
+      )
       .padding(0.1);
     const xAxis = d3AxisBottom(xAxisScale)
       .tickFormat((x: string, index: number) => dataset[index].x as string)
@@ -264,10 +261,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
-    const yAxis = d3AxisLeft(yAxisScale)
+    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+    const yAxis = axis
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(5)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickValues(domains);
     return yAxis;
   }
@@ -346,6 +344,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
@@ -461,13 +460,11 @@ export class VerticalStackedBarChartBase extends React.Component<
           width={this._barWidth}
           height={yBarScale(point.data) > 0 ? yBarScale(point.data) : 0}
           fill={color}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend, refArrayIndexNumber);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
@@ -477,7 +474,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onBarHover.bind(
             this,
             point.legend,
@@ -489,7 +485,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           )}
           aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
@@ -501,7 +496,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             point.yAxisCalloutData!,
           )}
           onBlur={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
         />
       );
@@ -519,7 +513,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
 
     const xBarScale = d3ScaleLinear()
-      .domain([0, xMax])
+      .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
       .range([this.margins.left, this.state.containerWidth - this.margins.right - this._barWidth]);
     const yBarScale = d3ScaleLinear()
@@ -539,7 +533,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     const endpointDistance = 0.5 * ((this.state.containerWidth - this.margins.right) / dataset.length);
     const xBarScale = d3ScaleLinear()
-      .domain([0, dataset.length - 1])
+      .domain(this._isRtl ? [dataset.length - 1, 0] : [0, dataset.length - 1])
       .range([
         this.margins.left + endpointDistance - 0.5 * this._barWidth,
         this.state.containerWidth - this.margins.right - endpointDistance - 0.5 * this._barWidth,

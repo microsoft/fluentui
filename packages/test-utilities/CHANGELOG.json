@@ -2,6 +2,36 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/test-utilities_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Making safeMount take the callback as optional.",
+            "author": "dzearing@hotmail.com",
+            "commit": "1037c4327a0fb0b8deb18f04c0d08ef49492c76a",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.37",
+      "version": "7.0.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix misleading docs for safeMount",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/test-utilities_v7.0.32",
       "version": "7.0.32",

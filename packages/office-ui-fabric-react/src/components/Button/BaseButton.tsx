@@ -676,7 +676,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.stopPropagation();
       };
-      // eslint-disable-next-line react/jsx-no-bind
       return <span className={classNames.divider} aria-hidden={true} onClick={onClick} />;
     }
     return null;

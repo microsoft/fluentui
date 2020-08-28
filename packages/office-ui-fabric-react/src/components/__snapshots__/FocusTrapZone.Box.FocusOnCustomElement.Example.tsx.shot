@@ -189,6 +189,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -608,16 +609,28 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               color: #004578;
               text-decoration: underline;
             }
+            @media screen and (-ms-high-contrast: active){&:active {
+              color: LinkText;
+            }
             &:hover {
               color: #004578;
               text-decoration: underline;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              color: LinkText;
             }
             &:active:hover {
               color: #004578;
               text-decoration: underline;
             }
+            @media screen and (-ms-high-contrast: active){&:active:hover {
+              color: LinkText;
+            }
             &:focus {
               color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus {
+              color: LinkText;
             }
         href="https://bing.com"
         onClick={[Function]}
@@ -627,6 +640,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       </a>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

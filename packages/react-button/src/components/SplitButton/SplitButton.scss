@@ -1,0 +1,159 @@
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
+
+.root {
+  width: auto;
+  padding: 0;
+
+  > *:not(:first-child) {
+    margin-left: 0;
+  }
+
+  // TODO: confirm if we should support size prop.
+  &._size_smallest {
+    --button-dividerLength: var(--button-size-smallest);
+  }
+
+  &._size_smaller {
+    --button-dividerLength: var(--button-size-smaller);
+  }
+
+  &._size_small {
+    --button-dividerLength: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-dividerLength: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-dividerLength: var(--button-size-larger);
+  }
+
+  &._size_largest {
+    --button-dividerLength: var(--button-size-largest);
+  }
+}
+
+.button,
+.menuButton {
+  align-items: center;
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  height: var(--button-height);
+  justify-content: center;
+  min-height: var(--button-minHeight);
+
+  @include focus-border($thickness: 0);
+}
+
+.button {
+  > *:not(:first-child) {
+    margin-left: var(--button-contentGap);
+  }
+
+  padding: var(--button-padding);
+
+  ._circular & {
+    border-top-left-radius: var(--button-borderRadius);
+    border-bottom-left-radius: var(--button-borderRadius);
+  }
+
+  ._fluid & {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  ._iconOnly & {
+    --button-padding: 0;
+    --button-width: var(--button-height, var(--button-minHeight));
+
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    width: var(--button-width);
+  }
+}
+
+.menuButton {
+  --button-padding: 0;
+  --button-width: var(--button-height, var(--button-minHeight));
+
+  width: var(--button-width);
+
+  ._circular & {
+    border-top-right-radius: var(--button-borderRadius);
+    border-bottom-right-radius: var(--button-borderRadius);
+  }
+}
+
+.divider {
+  border-left: var(--button-dividerThickness) solid var(--button-dividerColor);
+  height: var(--button-dividerLength);
+  width: 0px;
+
+  ._primary & {
+    --button-dividerColor: var(--accent-dividerColor);
+  }
+
+  ._disabled & {
+    --button-dividerColor: var(--accent-disabled-dividerColor);
+  }
+}
+
+/* selectors */
+
+.root:hover {
+  background: var(--button-background);
+  color: var(--button-contentColor);
+  border-color: var(--button-borderColor);
+  box-shadow: var(--button-boxShadow);
+
+  .icon {
+    color: var(--button-hovered-contentColor);
+  }
+}
+
+.root:active {
+  background: var(--button-background);
+  color: var(--button-contentColor);
+  border-color: var(--button-borderColor);
+  box-shadow: var(--button-boxShadow);
+
+  transform: var(--button-pressed-transform);
+  transition: var(--button-pressed-transition);
+
+  .icon {
+    color: var(--button-contentColor);
+  }
+}
+
+.button:hover,
+.menuButton:hover {
+  background: var(--button-hovered-background, var(--button-background));
+  color: var(--button-hovered-contentColor, var(--button-contentColor));
+  border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+  box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+
+  .icon {
+    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
+  }
+}
+
+.button:active,
+.menuButton:active {
+  background: var(--button-pressed-background, var(--button-hovered-background));
+  color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+  border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+  box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+
+  .icon {
+    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
+  }
+}

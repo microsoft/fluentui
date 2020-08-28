@@ -136,6 +136,7 @@ TextArea.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  inverted: PropTypes.bool,
 };
 
 TextArea.defaultProps = {

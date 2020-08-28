@@ -20,6 +20,7 @@ tsPaths.register({
 
 // load tasks in order of dependency usage
 require('./scripts/gulp/tasks/bundle');
+require('./scripts/gulp/tasks/component-info');
 require('./scripts/gulp/tasks/docs');
 require('./scripts/gulp/tasks/screener');
 require('./scripts/gulp/tasks/stats');

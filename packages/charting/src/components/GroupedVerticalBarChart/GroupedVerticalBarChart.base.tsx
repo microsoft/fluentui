@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { format as d3Format } from 'd3-format';
+import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-
+import { createWrapOfXLabels, tooltipOfXAxislabels } from '../../utilities/index';
 import {
   IGroupedVerticalBarChartProps,
   IGroupedVerticalBarChartStyleProps,
@@ -66,6 +67,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _refArray: IRefArrayData[];
   private _reqID: number;
   private _calloutId: string;
+  private _tooltipId: string;
   private _yMax: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
@@ -76,11 +78,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxis: any;
+  private _xAxisTickPadding: number;
+  private _removalValue: number = 0;
   private _isGraphDraw: boolean = true;
   private legendContainer: HTMLDivElement;
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -103,6 +110,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._adjustProps();
     this._uniqLineText = getId('GroupedVerticalChart_');
+    this._tooltipId = getId('GVBCTooltipId_');
   }
 
   public componentDidMount(): void {
@@ -151,17 +159,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
       href: this.props.href,
       width: this.state._width,
       height: this.state._height,
+      isRtl: this._isRtl,
     });
 
     const svgDimensions = {
       width: this.state.containerWidth || 600,
       height: this.state.containerHeight || 350,
     };
-
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
@@ -169,23 +176,20 @@ export class GroupedVerticalBarChartBase extends React.Component<
           <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
             <g
               id="xAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
               className={this._classNames.xAxis}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - 35 - this._removalValue})`}
             />
             <g
               id="yAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
-              transform={`translate(40, 0)`}
+              transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right - 10 : 40}, 0)`}
             />
             <g id={`barGElement_${this._uniqLineText}`} className="barGElement" />
           </svg>
         </FocusZone>
         <div
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: HTMLDivElement) => (this.legendContainer = e)}
           id={this._uniqLineText}
           className={this._classNames.legendContainer}
@@ -220,6 +224,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showXAxisPath = this.props.showXAxisPath || false;
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
+    this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
   }
 
   private _fitParentContainer(calledFromDidMount?: boolean): void {
@@ -353,7 +358,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
     const yBarScale = d3ScaleLinear()
       .domain([0, this._yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
     d3Select(`#firstGElementForBars_${this._uniqLineText}`).remove();
@@ -389,7 +394,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))
         .attr('x', (d: IGVSingleDataPoint) => this._xScale1(datasetKey)!)
         .attr('y', (d: IGVForBarChart) => {
-          return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
+          return this.state.containerHeight - this._removalValue - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
         .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
@@ -432,6 +437,19 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .on('blur', that._onBarLeave)
         .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
+
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: this._xAxis,
+      };
+      tooltipOfXAxislabels(tooltipProps);
+    }
   };
 
   private _createXAxisProperties = (): string[] => {
@@ -480,7 +498,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX0Scale = (xAxisLabels: string[]) => {
     const x0Axis = d3ScaleBand()
       .domain(xAxisLabels.map((label: string) => label))
-      .range([this.margins.left, this.state.containerWidth - this.margins.right])
+      .range(
+        this._isRtl
+          ? [this.state.containerWidth - this.margins.right, this.margins.left]
+          : [this.margins.left, this.state.containerWidth - this.margins.right],
+      )
       .padding(this._groupPadding / 100);
     return x0Axis;
   };
@@ -489,16 +511,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX1Scale = (xScale0: any): any => {
     return d3ScaleBand()
       .domain(this._keys)
-      .range([0, xScale0.bandwidth()])
+      .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
       .padding(0.05);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createx0Axis = (xScale0: any): any => {
-    const x0Axis = d3AxisBottom(xScale0).tickPadding(10);
+    const x0Axis = d3AxisBottom(xScale0).tickPadding(this._xAxisTickPadding);
 
     this._showXAxisGridLines &&
-      x0Axis.tickSizeInner(-(this.state.containerHeight - this.margins.bottom - this.margins.top));
+      x0Axis.tickSizeInner(-(this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top));
     return x0Axis;
   };
 
@@ -513,10 +535,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
-    const yAxis = d3AxisLeft(yAxisScale)
+      .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
+    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+    const yAxis = axis
       .tickPadding(5)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickValues(domains);
 
     this._showYAxisGridLines &&
@@ -603,6 +626,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
@@ -611,7 +635,18 @@ export class GroupedVerticalBarChartBase extends React.Component<
     if (node === null) {
       return;
     }
-    d3Select(node).call(xAxis);
+    this._xAxis = d3Select(node).call(xAxis);
+    const wrapLabelProps = {
+      node: node,
+      xAxis: xAxis,
+      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+      noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+    };
+    let temp = 0;
+    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+      temp = createWrapOfXLabels(wrapLabelProps) as number;
+    }
+    this._removalValue = temp;
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {

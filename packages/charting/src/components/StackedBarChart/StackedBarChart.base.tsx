@@ -6,7 +6,7 @@ import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 
@@ -260,13 +260,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <g
           key={index}
           className={this._classNames.opacityChangeOnHover}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,
@@ -277,7 +275,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,
@@ -286,7 +283,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onBarHover.bind(
             this,
             point.legend!,
@@ -297,7 +293,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
@@ -315,6 +310,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return [

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them.",
-  "packageName": "@fluentui/react-compose",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-28T21:16:10.856Z"
-}

@@ -15,11 +15,11 @@ export default [
     input: 'src/index-rollup.ts',
     output: [
       {
-        file: 'dist/fast-components-msft.js',
+        file: 'dist/web-components.js',
         format: 'esm',
       },
       {
-        file: 'dist/fast-components-msft.min.js',
+        file: 'dist/web-components.min.js',
         format: 'esm',
         plugins: [terser()],
       },

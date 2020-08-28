@@ -1,7 +1,7 @@
 # Fluent UI Web Components
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40microsoft%2Fweb-components.svg)](https://badge.fury.io/js/%40microsoft%2Fweb-components)
+[![npm version](https://badge.fury.io/js/%40fluentui%2Fweb-components.svg)](https://badge.fury.io/js/%40fluentui%2Fweb-components)
 
 `@fluentui/web-components` is a library of Web Components that _composes_ `@microsoft/fast-foundation` and supports Microsoft's Fluent design language.
 
@@ -22,7 +22,7 @@ yarn add @fluentui/web-components
 Within your JavaScript or TypeScript code, you can then import library APIs like this:
 
 ```ts
-import { FASTAnchor } from '@fluentui/web-components';
+import { FluentAnchor } from '@fluentui/web-components';
 ```
 
 Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](http://fast.design/docs/integrations/introduction).

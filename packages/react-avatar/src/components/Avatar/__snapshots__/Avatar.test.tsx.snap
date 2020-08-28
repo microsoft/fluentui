@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar renders a default state 1`] = `
+<span
+  className=""
+>
+  <span>
+    
+  </span>
+  <span
+    className=""
+  />
+</span>
+`;

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-01T01:51:41.901Z"
-}

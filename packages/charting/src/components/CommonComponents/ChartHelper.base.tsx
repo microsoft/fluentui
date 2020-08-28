@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps, IYValueHover } from './ChartHelper.types';
 
@@ -12,6 +12,7 @@ import {
   IMargins,
   IXAxisParams,
   IYAxisParams,
+  additionalMarginRight,
 } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
@@ -38,6 +39,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
   private yAxisElement: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
+  private _isRtl: boolean = getRTL();
 
   constructor(props: IChartHelperProps) {
     super(props);
@@ -106,6 +108,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
       width: this.state._width,
       height: this.state._height,
       className,
+      isRtl: this._isRtl,
     });
     const svgDimensions = {
       width: this.state.containerWidth,
@@ -114,9 +117,9 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
     const children = this.props.children({
       ...this.state,
       xScale: this.props.isXAxisDateType
-        ? createDateXAxis(XAxisParams, this.props.tickParams!)
-        : createNumericXAxis(XAxisParams),
-      yScale: createYAxis(YAxisParams),
+        ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
+        : createNumericXAxis(XAxisParams, this._isRtl),
+      yScale: createYAxis(YAxisParams, this._isRtl),
     });
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
@@ -124,13 +127,11 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
         id={this.idForGraph}
         className={this._classNames.root}
         role={'presentation'}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
@@ -139,22 +140,19 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
               className={this._classNames.xAxis}
             />
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
               id="yAxisGElement"
-              transform={`translate(40, 0)`}
+              transform={`translate(${
+                this._isRtl ? svgDimensions.width - this.margins.right! - additionalMarginRight : 40
+              }, 0)`}
               className={this._classNames.yAxis}
             />
             {children}
           </svg>
         </FocusZone>
-        <div
-          // eslint-disable-next-line react/jsx-no-bind
-          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-          className={this._classNames.legendContainer}
-        >
+        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
@@ -282,9 +280,14 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
 
   private _getData = (XAxisParams: IXAxisParams, YAxisParams: IYAxisParams) => {
     const axis = this.props.isXAxisDateType
-      ? createDateXAxis(XAxisParams, this.props.tickParams!)
-      : createNumericXAxis(XAxisParams);
+      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
+      : createNumericXAxis(XAxisParams, this._isRtl);
     this.props.getGraphData &&
-      this.props.getGraphData(axis, createYAxis(YAxisParams), this.state.containerHeight, this.state.containerWidth);
+      this.props.getGraphData(
+        axis,
+        createYAxis(YAxisParams, this._isRtl),
+        this.state.containerHeight,
+        this.state.containerWidth,
+      );
   };
 }

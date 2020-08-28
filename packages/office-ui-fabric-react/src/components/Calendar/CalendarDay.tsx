@@ -327,7 +327,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             [styles.monthSelection]: dateRangeType === DateRangeType.Month,
                           },
                         )}
-                        // eslint-disable-next-line react/jsx-no-bind
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day && day.isInBounds
@@ -364,7 +363,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           aria-readonly={true}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-                          // eslint-disable-next-line react/jsx-no-bind
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
@@ -839,7 +837,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
+        const originalDate = new Date(date);
         const dayInfo: IDayInfo = {
           key: date.toString(),
           date: date.getDate().toString(),

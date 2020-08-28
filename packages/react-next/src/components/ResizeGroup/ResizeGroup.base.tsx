@@ -455,6 +455,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
 
 function useDebugWarnings(props: IResizeGroupProps) {
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: COMPONENT_NAME,
       props,

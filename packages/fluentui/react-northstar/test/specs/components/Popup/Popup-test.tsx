@@ -46,7 +46,7 @@ describe('Popup', () => {
       <Popup trigger={<span id={triggerId}> text to trigger popup </span>} content={{ id: contentId }} on={onProp} />,
     );
     // check popup open on key press
-    const popupTriggerElement = popup.find(`#${triggerId}`);
+    const popupTriggerElement = popup.find(`span#${triggerId}`);
     popupTriggerElement.simulate(openEvent.event, { keyCode: openEvent.keyCode });
 
     expect(getPopupContent(popup).exists()).toBe(true);
@@ -142,7 +142,7 @@ describe('Popup', () => {
           on="context"
         />,
       );
-      const popupTriggerElement = popup.find(`#${triggerId}`);
+      const popupTriggerElement = popup.find(`span#${triggerId}`);
       popupTriggerElement.simulate('click');
 
       expect(getPopupContent(popup).exists()).toBe(false);
@@ -210,14 +210,14 @@ describe('Popup', () => {
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
-        domEvent.keyDown(`#${triggerId}`, { keyCode: keyboardKey.Enter });
+        domEvent.keyDown(`span#${triggerId}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBeDefined();
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
-        domEvent.keyDown(`#${triggerId2}`, { keyCode: keyboardKey.Enter });
+        domEvent.keyDown(`span#${triggerId2}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBe(null);
@@ -263,7 +263,7 @@ describe('Popup', () => {
       );
 
       // open popup
-      const popupTriggerElement = popup.find(`#${triggerId}`);
+      const popupTriggerElement = popup.find(`span#${triggerId}`);
       popupTriggerElement.simulate('keydown', { keyCode: keyboardKey.Enter });
 
       // when popup open, check that stopPropagation is called when keyboard events are invoked

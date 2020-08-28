@@ -2,6 +2,92 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Markdown: add support for custom HTML",
+            "author": "elcraig@microsoft.com",
+            "commit": "da80ad676c5bf4ba3e0713944040ab26c3a15ec4",
+            "package": "@uifabric/example-app-base"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/example-app-base_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add back UHF link style overrides via Customizer",
+            "author": "elcraig@microsoft.com",
+            "commit": "918461d4d5a90b1d0fbbaff95d3945ca0de31e3e",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.114",
+      "version": "7.12.114",
+      "comments": {
+        "patch": [
+          {
+            "comment": "@uifabric/example-app-base: Updating dependencies to resolve security issues.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0620a0da25ed3da40e6b092dbd3de69ff2edacd9",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.109",
+      "version": "7.12.109",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "Link: Update to use Text component",
+            "author": "marygans@microsoft.com",
+            "commit": "60bbc7434c612d338197107c29846e0f48115f04",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@uifabric/example-app-base_v7.12.106",
       "version": "7.12.106",
