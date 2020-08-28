@@ -96,7 +96,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -142,7 +141,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
               </div>
             </div>
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -186,7 +184,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -257,7 +254,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -297,7 +293,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -555,7 +550,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__0"
+                  id="id__5"
                 >
                   Test Secondary Button
                 </span>
@@ -703,7 +698,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__3"
+                  id="id__8"
                 >
                   Test Primary Button
                 </span>
@@ -853,7 +848,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
       </button>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -893,7 +887,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -939,7 +932,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -979,7 +971,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1054,7 +1045,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1094,7 +1084,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1203,7 +1192,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1280,7 +1268,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1351,7 +1338,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1391,7 +1377,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1468,7 +1453,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
       </div>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

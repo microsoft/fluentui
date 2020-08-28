@@ -73,6 +73,10 @@ TODO: document any API or functionality changes
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
 
+### FocusTrapZone
+
+- `FocusTrapZone's` `FocusStack` now takes an ID instead of component object.
+
 ## Other notable changes
 
 - `styles` prop backward compat solution.

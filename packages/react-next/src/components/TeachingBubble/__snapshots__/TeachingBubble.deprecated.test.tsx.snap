@@ -25,7 +25,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
     onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -283,7 +282,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__0"
+                  id="id__1"
                 >
                   Test Secondary Button
                 </span>
@@ -431,7 +430,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__3"
+                  id="id__4"
                 >
                   Test Primary Button
                 </span>
@@ -581,7 +580,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
       </button>
     </div>
     <div
-      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

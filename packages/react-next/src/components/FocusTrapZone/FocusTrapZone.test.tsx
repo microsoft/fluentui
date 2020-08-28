@@ -704,15 +704,14 @@ describe('FocusTrapZone', () => {
     it('Restores focus to FTZ when focusing outside FTZ', async () => {
       expect.assertions(2);
 
-      const { buttonB, buttonA, buttonZ2 } = setupTest({});
+      const { buttonA, buttonB, buttonZ2 } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
       });
-
       expect(lastFocusedElement).toBe(buttonB);
 
-      // Focusing outside trap brings focus back to FTZ
+      // Directly call window listener to simulate focus leaving FTZ.
       componentEventListeners.focus({
         target: buttonZ2,
         preventDefault: () => {
@@ -722,10 +721,6 @@ describe('FocusTrapZone', () => {
           /*noop*/
         },
       });
-      // With the current behavior of FocusTrapZone, buttonA will be expected to return as it is the first
-      // focusable element. In a later PR this should be addressed to ensure that it actually goes to the previous
-      // focused element and not first.
-
       expect(lastFocusedElement).toBe(buttonA);
     });
 
@@ -850,8 +845,7 @@ describe('FocusTrapZone', () => {
     }
 
     it('goes to previously focused element when focusing the FTZ', async () => {
-      // Should be changed to 4 once focusTrapZone returns to first focusable element.
-      expect.assertions(3);
+      expect.assertions(4);
 
       const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(true /*focusPreviouslyFocusedInnerElement*/);
 
@@ -879,11 +873,7 @@ describe('FocusTrapZone', () => {
         focusTrapZone.focus();
       });
 
-      // With the current behavior of FocusTrapZone, buttonA will be expected to return as it is the first
-      // focusable element. In a later PR this should be addressed to ensure that it actually goes to the previous
-      // focused element and not first.
-
-      // expect(lastFocusedElement).toBe(buttonB);
+      expect(lastFocusedElement).toBe(buttonB);
     });
 
     it('goes to first focusable element when focusing the FTZ', async () => {
