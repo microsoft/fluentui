@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "add wrapper styling to datepicker",
   "packageName": "@uifabric/date-time",
   "email": "kevin@infinite.red",
