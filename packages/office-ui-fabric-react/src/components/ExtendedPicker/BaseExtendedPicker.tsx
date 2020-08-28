@@ -40,13 +40,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   }
 
   public get items(): any {
-    if (this.props.selectedItems !== null && this.props.selectedItems !== undefined) {
-      return this.props.selectedItems;
-    }
-    if (this.selectedItemsList.current) {
-      return this.selectedItemsList.current.items;
-    }
-    return this.props.defaultSelectedItems;
+    return this.props.selectedItems ?? this.selectedItemsList.current?.items ?? this.props.defaultSelectedItems ?? null;
   }
 
   public componentDidMount(): void {

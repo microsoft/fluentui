@@ -150,8 +150,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IBaseExtendedPickerProps<any>): Partial<IBaseExtendedPickerProps<any>> | null;
-    // (undocumented)
     readonly highlightedItems: T[];
     // (undocumented)
     protected input: React.RefObject<Autofill>;
@@ -397,7 +395,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected copyItems(items: T[]): void;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): Partial<IBaseSelectedItemsListState<any>> | null;
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -429,7 +429,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
+    protected readonly selection: Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -1555,13 +1555,7 @@ export interface IBaseExtendedPickerProps<T> {
 // @public (undocumented)
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
-    floatingPickerProps: IBaseFloatingPickerProps<T>;
-    // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     suggestionItems: T[] | null;
 }
@@ -1739,8 +1733,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 export interface IBaseSelectedItemsListState<T = any> {
     // (undocumented)
     items: T[];
-    // (undocumented)
-    selection: Selection;
 }
 
 // @public (undocumented)

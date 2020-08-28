@@ -160,10 +160,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   }
 
   protected get selection(): Selection {
-    if (this.props.selection !== null && this.props.selection !== undefined) {
-      return this.props.selection!;
-    }
-    return this._defaultSelection;
+    return this.props.selection ?? this._defaultSelection;
   }
 
   protected renderItems = (): JSX.Element[] => {
