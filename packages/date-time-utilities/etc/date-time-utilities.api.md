@@ -136,6 +136,7 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 export interface ICalendarStrings extends IDateFormatting {
     closeButtonAriaLabel?: string;
     goToToday: string;
+    inputPlaceholder: string;
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;

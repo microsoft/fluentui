@@ -16,6 +16,7 @@ module.exports = {
   // matched relative to cwd
   ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-commonjs', 'node_modules', 'temp'],
   rules: {
+    '@fluentui/no-global-react': 'error',
     '@fluentui/no-tslint-comments': 'error',
 
     'react-hooks/exhaustive-deps': 'error',

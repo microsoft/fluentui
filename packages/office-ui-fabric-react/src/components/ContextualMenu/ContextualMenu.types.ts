@@ -14,6 +14,7 @@ import {
   IContextualMenuItemProps,
   IContextualMenuRenderItem,
   IContextualMenuItemStyleProps,
+  IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
@@ -492,6 +493,17 @@ export interface IContextualMenuItem {
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+
+  /**
+   * Method to customize sub-components rendering of this menu item.
+   *
+   * @param props - Props used to pass into render functions
+   * @param defaultRenders - Default render functions that renders default sub-components
+   */
+  onRenderContent?: (
+    props: IContextualMenuItemProps,
+    defaultRenders: IContextualMenuItemRenderFunctions,
+  ) => React.ReactNode;
 
   /**
    * A function to be executed on mouse down. This is executed before an `onClick` event and can

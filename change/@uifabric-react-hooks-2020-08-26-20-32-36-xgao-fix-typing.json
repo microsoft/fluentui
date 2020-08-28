@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix useControllableValue onChange event typing.",
+  "packageName": "@uifabric/react-hooks",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-27T03:32:36.922Z"
+}

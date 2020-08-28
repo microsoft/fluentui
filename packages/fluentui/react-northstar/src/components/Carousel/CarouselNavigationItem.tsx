@@ -204,7 +204,7 @@ CarouselNavigationItem.propTypes = {
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
 
 CarouselNavigationItem.defaultProps = {
-  accessibility: tabBehavior as Accessibility,
+  accessibility: tabBehavior,
   as: 'li',
   indicator: {},
 };
