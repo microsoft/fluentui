@@ -105,9 +105,6 @@ export type LinkSlotProps = {
     [key in keyof ILinkSlots]: ILinkProps[key];
 };
 
-// @public
-export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
-
 
 // (No @packageDocumentation comment for this package)
 
