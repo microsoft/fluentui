@@ -11,7 +11,7 @@ import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
 // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
-const isAutofocusEnabled = (node: Node, reactInstanceKey: string): boolean => {
+const hasAutofocusProp = (node: Node): boolean | undefined => {
   return (
     (node.nodeName === 'BUTTON' ||
       node.nodeName === 'INPUT' ||
@@ -22,7 +22,6 @@ const isAutofocusEnabled = (node: Node, reactInstanceKey: string): boolean => {
 };
 
 const getReactInstanceKey = (elm: HTMLElement): string => {
-  if (!elm) return null;
 
   for (const k in elm) {
     if (k.startsWith('__reactInternalInstance$')) {
@@ -285,10 +284,8 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     React.useEffect(() => {
       if (contentRef.current) {
         const contentNode = contentRef.current;
-        const reactInstanceKey = getReactInstanceKey(contentNode);
         const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
-          acceptNode: node =>
-            isAutofocusEnabled(node, reactInstanceKey) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
+          acceptNode: hasAutofocusProp,
         });
 
         while (treeWalker.nextNode()) {
