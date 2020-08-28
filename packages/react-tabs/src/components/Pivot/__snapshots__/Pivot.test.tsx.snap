@@ -11,6 +11,26 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -29,20 +49,22 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -53,12 +75,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -76,7 +98,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -85,11 +109,54 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="test"
       data-is-focusable={true}
@@ -117,10 +184,25 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             test
@@ -139,8 +221,8 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -148,11 +230,13 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -163,12 +247,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -186,7 +270,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -195,11 +281,44 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content="Test Link (20+)"
       data-is-focusable={true}
@@ -227,16 +346,36 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link
           </span>
           <span
-            className="ms-Pivot-count"
+            className=
+                ms-Pivot-count
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              (
             20+
@@ -249,7 +388,11 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -270,6 +413,26 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -288,20 +451,22 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -312,12 +477,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -335,7 +500,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -344,11 +511,54 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -376,10 +586,25 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -398,8 +623,8 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -407,11 +632,13 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -422,12 +649,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -445,7 +672,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -454,11 +683,44 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content="Test Link 2"
       data-is-focusable={true}
@@ -486,10 +748,25 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 2
@@ -501,7 +778,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -523,6 +804,26 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -541,20 +842,22 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -565,12 +868,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -588,7 +891,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -597,11 +902,54 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content=" (12)"
       data-is-focusable={true}
@@ -628,10 +976,25 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-count"
+            className=
+                ms-Pivot-count
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              (
             12
@@ -651,8 +1014,8 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -660,11 +1023,13 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -675,12 +1040,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -698,7 +1063,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -707,11 +1074,44 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content="Test Link (12)"
       data-is-focusable={true}
@@ -739,16 +1139,36 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link
           </span>
           <span
-            className="ms-Pivot-count"
+            className=
+                ms-Pivot-count
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              (
             12
@@ -768,8 +1188,8 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -777,11 +1197,13 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -792,12 +1214,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -815,7 +1237,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -824,11 +1248,44 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content="Text with icon xx"
       data-is-focusable={true}
@@ -856,7 +1313,17 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
             className="ms-Pivot-icon"
@@ -880,7 +1347,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             </i>
           </span>
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Text with icon
@@ -892,7 +1364,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -913,6 +1389,26 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -931,20 +1427,22 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -955,12 +1453,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -978,7 +1476,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -987,11 +1487,54 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -1019,10 +1562,25 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -1041,20 +1599,22 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -1065,12 +1625,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1088,7 +1648,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1097,11 +1659,44 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -1129,10 +1724,25 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             
@@ -1144,7 +1754,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -1166,6 +1780,26 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1183,37 +1817,40 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 0px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
             padding-top: 0;
             position: relative;
             text-align: center;
             text-decoration: none;
             user-select: none;
+            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1231,7 +1868,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #0078d4;
+            color: #ffffff;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1240,11 +1879,87 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:active {
+          &:focus {
             color: #000000;
+            outline-offset: -1px;
+            outline: none;
+          }
+          &:active {
+            background-color: #005a9e;
+            color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: auto;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -1272,10 +1987,25 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -1293,37 +2023,40 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 0px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
             padding-top: 0;
             position: relative;
             text-align: center;
             text-decoration: none;
             user-select: none;
+            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1341,7 +2074,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #0078d4;
+            color: #ffffff;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1350,11 +2085,77 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:active {
+          &:focus {
             color: #000000;
+            outline-offset: -1px;
+            outline: none;
+          }
+          &:active {
+            background-color: #005a9e;
+            color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: auto;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -1382,10 +2183,25 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             
@@ -1397,7 +2213,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -1417,6 +2237,26 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1435,20 +2275,22 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -1459,12 +2301,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1482,7 +2324,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1491,11 +2335,54 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -1523,10 +2410,25 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -1545,8 +2447,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -1554,11 +2456,13 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -1569,12 +2473,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1592,7 +2496,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1601,11 +2507,44 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -1633,10 +2572,25 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             
@@ -1648,7 +2602,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -1669,6 +2627,26 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1686,37 +2664,40 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 0px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
             padding-top: 0;
             position: relative;
             text-align: center;
             text-decoration: none;
             user-select: none;
+            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1734,7 +2715,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #0078d4;
+            color: #ffffff;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1743,11 +2726,87 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:active {
+          &:focus {
             color: #000000;
+            outline-offset: -1px;
+            outline: none;
+          }
+          &:active {
+            background-color: #005a9e;
+            color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: auto;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -1775,10 +2834,25 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -1796,9 +2870,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -1806,27 +2880,30 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 0px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
             padding-top: 0;
             position: relative;
             text-align: center;
             text-decoration: none;
             user-select: none;
+            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1844,7 +2921,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #0078d4;
+            color: #ffffff;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1853,11 +2932,77 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:active {
+          &:focus {
             color: #000000;
+            outline-offset: -1px;
+            outline: none;
+          }
+          &:active {
+            background-color: #005a9e;
+            color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: auto;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -1885,10 +3030,25 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             
@@ -1900,7 +3060,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >
@@ -1920,6 +3084,26 @@ exports[`Pivot supports JSX expressions 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          white-space: nowrap;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1937,8 +3121,8 @@ exports[`Pivot supports JSX expressions 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -1946,11 +3130,13 @@ exports[`Pivot supports JSX expressions 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 40px;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -1961,12 +3147,12 @@ exports[`Pivot supports JSX expressions 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -1984,7 +3170,9 @@ exports[`Pivot supports JSX expressions 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -1993,11 +3181,44 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -2025,10 +3246,25 @@ exports[`Pivot supports JSX expressions 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 1
@@ -2048,20 +3284,22 @@ exports[`Pivot supports JSX expressions 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 2px;
-            border: 1px solid transparent;
+            border-radius: 0px;
+            border: 0px;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
-            height: 40px;
+            font-weight: 600;
+            height: 44px;
+            line-height: 44px;
+            margin-right: 8px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -2072,12 +3310,12 @@ exports[`Pivot supports JSX expressions 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -2095,7 +3333,9 @@ exports[`Pivot supports JSX expressions 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #0078d4;
+            background-color: #f3f2f1;
+            color: #201f1e;
+            cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -2104,11 +3344,54 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
+          &:focus {
+            outline: none;
+          }
           &:active {
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          &:before {
+            background-color: #0078d4;
+            bottom: 0px;
+            content: "";
+            height: 2px;
+            left: 8px;
+            position: absolute;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+          }
+          &:after {
+            color: transparent;
+            content: attr(data-content);
+            display: block;
+            font-weight: 700;
+            height: 1px;
+            overflow: hidden;
+            visibility: hidden;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
+          }
+          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
+            visibility: visible;
+          }
+          @media screen and (-ms-high-contrast: active){&:before {
+            background-color: Highlight;
+          }
+          &:hover::before {
+            left: 0px;
+            right: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Highlight;
           }
       data-content="Test Link 3"
       data-is-focusable={true}
@@ -2136,10 +3419,25 @@ exports[`Pivot supports JSX expressions 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className="ms-Pivot-linkContent"
+          className=
+              ms-Pivot-linkContent
+              {
+                flex: 0 1 100%;
+              }
+              & > *  {
+                margin-left: 4px;
+              }
+              & > *:first-child {
+                margin-left: 0px;
+              }
         >
           <span
-            className="ms-Pivot-text"
+            className=
+                ms-Pivot-text
+                {
+                  display: inline-block;
+                  vertical-align: top;
+                }
           >
              
             Test Link 3
@@ -2151,7 +3449,11 @@ exports[`Pivot supports JSX expressions 1`] = `
   <div
     aria-hidden={false}
     aria-labelledby="Pivot0-Tab1"
-    className=""
+    className=
+
+        &[hidden] {
+          display: none;
+        }
     hidden={false}
     role="tabpanel"
   >

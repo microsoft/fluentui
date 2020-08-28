@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/merge-styles_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update IRawStyleBase tying to allow css variables (string) as acceptable values.",
+            "author": "xgao@microsoft.com",
+            "commit": "787a28b8ac5f9e6f42dfe9a0630f012fea3900bf",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/merge-styles_v7.17.0",
       "version": "7.17.0",

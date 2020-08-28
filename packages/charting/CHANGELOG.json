@@ -2,6 +2,42 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/charting_v3.2.0",
+      "version": "3.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3f3818c11395a0c860915d941d2ad94ecb0c2077",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/charting_v3.1.5",
+      "version": "3.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IE11 support for xAxis labels and utility created for x axis labels wrapping",
+            "author": "v-jasha@microsoft.com",
+            "commit": "65fd11320497a478b818dddf012ad1be92125176",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "making legends focusable by default.",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "68185d433019f773bfb3237ae887ff5ac6c1e769",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Aug 2020 12:35:38 GMT",
       "tag": "@uifabric/charting_v3.1.4",
       "version": "3.1.4",
