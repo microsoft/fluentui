@@ -424,13 +424,13 @@ export const resolveComponent = (displayName): React.ElementType => {
 
 // FIXME: breaks for <button>btn</button>
 const toJSONTreeElement = input => {
-  if (input?.$$typeof?.toString() === 'Symbol(react.forward_ref)') {
-    return {
-      $$typeof: 'Symbol(react.forward_ref)',
-      type: input.displayName,
-      defaultProps: toJSONTreeElement(input.defaultProps),
-    };
-  }
+  // if (input?.$$typeof?.toString() === 'Symbol(react.forward_ref)') {
+  //   return {
+  //     $$typeof: 'Symbol(react.forward_ref)',
+  //     type: input.displayName,
+  //     defaultProps: toJSONTreeElement(input.defaultProps),
+  //   };
+  // }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
@@ -447,6 +447,9 @@ const toJSONTreeElement = input => {
     } else if (_.isPlainObject(value)) {
       acc[key] = toJSONTreeElement(value);
     } else {
+      if (value?.toString() === 'Symbol(react.forward_ref)') {
+        value = 'Symbol(react.forward_ref)';
+      }
       acc[key] = value;
     }
   });
