@@ -3,10 +3,12 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { GroupedVerticalBarChartBasicExample } from './examples/GroupedVerticalBarChart.Basic.Example';
+import { GroupedVerticalBarChartBasic2Example } from './examples/GroupedVerticalBarChart.Basic2.Example';
 import { GroupedVerticalBarChartStyledExample } from './examples/GroupedVerticalBarChart.Styled.Example';
 
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic.Example.tsx') as string;
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Styled.Example.tsx') as string;
+const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,6 +20,9 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
           <div>
             <ExampleCard title="Grouped Vertical Bar Chart basic" code={GroupedVerticalBasicExampleCode}>
               <GroupedVerticalBarChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Grouped Vertical Bar Chart basic 2" code={GroupedVerticalBasic2ExampleCode}>
+              <GroupedVerticalBarChartBasic2Example />
             </ExampleCard>
             <ExampleCard title="Grouped Vertical Bar Chart Styled" code={GroupedVerticalStyledExampleCode}>
               <GroupedVerticalBarChartStyledExample />

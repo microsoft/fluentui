@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing callout positioning when screen is too small to position and DirectionalHint = left* or right* due to using last value from for loop",
-  "packageName": "office-ui-fabric-react",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-27T00:13:35.584Z"
-}
