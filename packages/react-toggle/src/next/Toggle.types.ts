@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
@@ -17,6 +17,11 @@ export interface IToggle {
  * {@docCategory Toggle}
  */
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * Render the root element as another type.
+   */
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
+
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
