@@ -66,7 +66,7 @@ describe('Shimmer', () => {
       shimmer => {
         expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
 
-        // update props to trigger the setTimeout in componentWillReceiveProps
+        // update props to trigger the setTimeout.
         ReactTestUtils.act(() => {
           shimmer.setProps({ isDataLoaded: true });
         });

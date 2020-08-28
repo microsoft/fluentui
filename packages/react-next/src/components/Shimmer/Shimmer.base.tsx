@@ -37,9 +37,9 @@ export const ShimmerBase = React.forwardRef<HTMLDivElement, IShimmerProps>((prop
     shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave,
   });
 
-  const internalState = useConst<{ lastTimeoutId: number }>(() => ({
+  const internalState = useConst({
     lastTimeoutId: 0,
-  }));
+  });
 
   const { setTimeout, clearTimeout } = useSetTimeout();
 
@@ -62,7 +62,7 @@ export const ShimmerBase = React.forwardRef<HTMLDivElement, IShimmerProps>((prop
         setContentLoaded(false);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only run when isDataLoaded changes.
   }, [isDataLoaded]);
 
   return (
