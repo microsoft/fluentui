@@ -74,6 +74,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     disabled?: boolean;
     // @deprecated
     doNotAllowFocusEventToPropagate?: boolean;
+    // @deprecated
     elementRef?: React.Ref<HTMLElement>;
     // @deprecated
     elementType?: any;
