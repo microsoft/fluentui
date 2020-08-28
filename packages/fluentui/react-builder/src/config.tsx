@@ -624,7 +624,9 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     if (packageImportList[module]) {
       packageImports[module] = packageImportList[module];
     } else {
-      console.error(`Undefined module for export to codesandbox for components {${components.join(', ')}} `);
+      console.error(
+        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
+      );
     }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
