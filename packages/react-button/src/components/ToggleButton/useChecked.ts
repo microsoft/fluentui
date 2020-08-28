@@ -18,7 +18,6 @@ export interface CheckedState {
 export const useChecked = <TDraftState extends CheckedState>(draftState: TDraftState) => {
   const { onClick, checked, defaultChecked, role } = draftState;
   const [checkedValue, setCheckedValue] = useControllableValue(checked, defaultChecked);
-
   // Ensure the state is the correct controlled/uncontrolled value.
   draftState.checked = checkedValue;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Props, PropValue, TestFacade } from '../../src/validators';
 import * as ReactDOM from 'react-dom';
+import { Props, PropValue, TestFacade } from '../types';
 
 export class ComponentTestFacade implements TestFacade {
   private actual: any;
@@ -37,6 +37,22 @@ export class ComponentTestFacade implements TestFacade {
       ? (this.actual.getAttribute(attributeName) as PropValue)
       : (document.getElementById(selector).getAttribute(attributeName) as PropValue);
   };
+
+  // TODO: convert args to event
+  public afterEvent(selector: string, eventName: string, args: any[]) {
+    // const key = 13;
+    this.actual.dispatchEvent(
+      new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    // return this.slotExists(selector) && selector === 'root'
+    //   ? this.actual.dispatchEvent(eventName === 'onKeyDown' ? new KeyboardEvent('keydown', args[0]) : new MouseEvent('click', {}))
+    //   : document.getElementById(selector) !== undefined &&
+    //   document.getElementById(selector).dispatchEvent(eventName === 'onKeyDown' ? new KeyboardEvent('keydown', args[0]) : new MouseEvent('click', args[0]));
+  }
 
   public forProps = (props: Props) => {
     return new ComponentTestFacade(this.Component, { ...this.props, ...props });
