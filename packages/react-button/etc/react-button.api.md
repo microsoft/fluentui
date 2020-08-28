@@ -31,6 +31,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
+    ghost?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokenSet>;
 };

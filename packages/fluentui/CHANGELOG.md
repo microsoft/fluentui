@@ -20,12 +20,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## BREAKING CHANGES
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
+- Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
 
 ### Fixes
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
 - Fix `Menu` underlined focus style @assuncaocharles ([#14525](https://github.com/microsoft/fluentui/pull/14525))
 - Do not always `preventDefault()` in `RadioGroupItem` @layershifter ([#14717](https://github.com/microsoft/fluentui/pull/14717))
+- Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))

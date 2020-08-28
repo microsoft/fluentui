@@ -55,6 +55,55 @@ export const defaultTokens: Tokens = {
     },
   },
 
+  // TODO: this should be a variant.
+  ghost: {
+    background: 'var(--body-background)',
+    borderColor: 'transparent',
+    contentColor: '#323130',
+    iconColor: '#106ebe',
+    menuIconColor: '#605e5c',
+
+    checked: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#000000',
+      iconColor: '#004578',
+    },
+    checkedHovered: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: 'var(--ghost-hovered-contentColor)',
+      iconColor: 'var(--ghost-hovered-iconColor)',
+    },
+    disabled: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#a19f9d',
+      iconColor: 'inherit',
+    },
+    expanded: {
+      contentColor: '#0078d4',
+    },
+    focused: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: 'var(--ghost-contentColor)',
+      iconColor: 'var(--ghost-iconColor)',
+    },
+    hovered: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#0078d4',
+      iconColor: '#0078d4',
+    },
+    pressed: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#000000',
+      iconColor: '#004578',
+    },
+  },
+
   // TODO: these should not be here.
   button: {
     size: {
@@ -88,6 +137,7 @@ export const defaultTokens: Tokens = {
     borderColor: '#8a8886',
     contentColor: '#323130',
     iconColor: 'inherit',
+    menuIconColor: 'inherit',
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
@@ -105,6 +155,7 @@ export const defaultTokens: Tokens = {
       borderColor: '#8a8886',
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
 
     pressed: {
@@ -112,6 +163,7 @@ export const defaultTokens: Tokens = {
       borderColor: '#8a8886',
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
 
     focused: {
@@ -119,6 +171,7 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--button-borderColor)',
       contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
 
     checked: {

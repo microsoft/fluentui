@@ -98,14 +98,6 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
     return (
       <div className={rootStyle}>
         <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines wrapXAxisLables />
-        <GroupedVerticalBarChart
-          data={data}
-          height={400}
-          width={650}
-          showYAxisGridLines
-          showXAxisLablesTooltip
-          noOfCharsToTruncate={6}
-        />
       </div>
     );
   }
