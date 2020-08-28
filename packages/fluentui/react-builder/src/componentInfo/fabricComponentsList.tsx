@@ -23,7 +23,7 @@ export const fabricComponents: ComponentInfo[] = [
     parentDisplayName: 'N/A',
     props: [
       {
-        defaultValue: 'I am a Fabric Button',
+        defaultValue: '',
         description: 'Text of the button',
         name: 'text',
         required: false,

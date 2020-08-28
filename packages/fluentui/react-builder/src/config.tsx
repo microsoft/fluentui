@@ -65,11 +65,11 @@ export const COMPONENT_GROUP = {
 
 export const DRAGGING_ELEMENTS = {
   // Fabric Elements
-  'Fabric.PrimaryButton': <FabricButtons.PrimaryButton>I am a fabric button.</FabricButtons.PrimaryButton>,
+  'Fabric.PrimaryButton': <FabricButtons.PrimaryButton text="I am a fabric button." />,
 
-  'Fabric.DefaultButton': <FabricButtons.DefaultButton>I am a fabric default button.</FabricButtons.DefaultButton>,
+  'Fabric.DefaultButton': <FabricButtons.DefaultButton text="I am a fabric default button." />,
 
-  'Fabric.ActionButton': <FabricButtons.ActionButton>I am a fabric action button.</FabricButtons.ActionButton>,
+  'Fabric.ActionButton': <FabricButtons.ActionButton text="I am a fabric action button." />,
 
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
