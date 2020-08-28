@@ -3,7 +3,12 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IChildProps, ICommonChartStyleProps, ICommonChartStyles, ICommonChartProps } from '../../types/ICommonTypes';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-export interface IChartHelperStyleProps extends ICommonChartStyleProps {}
+export interface IChartHelperStyleProps extends ICommonChartStyleProps {
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
+}
 
 export interface IChartHelperStyles extends ICommonChartStyles {}
 
@@ -20,11 +25,17 @@ export interface IChartHelperProps extends ICommonChartProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   points?: any;
 
+  /**
+   * Maximum and minuimum values for y axis domain
+   */
   yMinMaxValues: {
     yMin: number;
     yMax: number;
   };
 
+  /**
+   * Maximum and minimum values for x axis domain
+   */
   xMinMaxValues: {
     xMin: number | Date;
     xMax: number | Date;

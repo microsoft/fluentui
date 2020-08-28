@@ -250,7 +250,7 @@ function _flipToFit(
   return {
     elementRectangle: rect,
     targetEdge: positionData.targetEdge,
-    alignmentEdge: currentAlignment,
+    alignmentEdge: positionData.alignmentEdge,
   };
 }
 

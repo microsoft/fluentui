@@ -1,8 +1,11 @@
 import { IChartHelperStyleProps, IChartHelperStyles } from './ChartHelper.types';
 import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
+import { isIE11 } from 'office-ui-fabric-react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => {
-  const { className, theme } = props;
+  const { className, theme, isRtl } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -71,6 +74,12 @@ export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => 
             },
           },
         },
+        g: [
+          isRtl &&
+            !isIE11Var && {
+              textAnchor: 'end',
+            },
+        ],
       },
     },
     legendContainer: [

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
+
+### Minor changes
+
+- Drag drop between SelectedItemLists ([PR #14572](https://github.com/microsoft/fluentui/pull/14572) by elvonspa@microsoft.com)
 
 ## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
 

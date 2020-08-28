@@ -1,8 +1,11 @@
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
 import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
+import { isIE11 } from 'office-ui-fabric-react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
-  const { className, theme, shouldHighlight } = props;
+  const { className, theme, shouldHighlight, isRtl } = props;
 
   return {
     root: [
@@ -83,6 +86,12 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         path: {
           display: 'none',
         },
+        g: [
+          isRtl &&
+            !isIE11Var && {
+              textAnchor: 'end',
+            },
+        ],
       },
     },
 

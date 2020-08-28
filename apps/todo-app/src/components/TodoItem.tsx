@@ -12,10 +12,10 @@ import strings from './../strings';
 /**
  * TodoItem component using fabric-react component <FocusZone> <Checkbox> <IconButton> <DocumentCardActivity>.
  *
- * Link of FocusZone: https://fabricreact.azurewebsites.net/fabric-react/master/#examples/focuszone
- * Link of Checkbox: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/checkbox
- * Link of Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
- * Link of DocumentCardActivity: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/documentcard
+ * Link of FocusZone: https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone
+ * Link of Checkbox: https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox
+ * Link of Button: https://developer.microsoft.com/en-us/fluentui#/controls/web/button
+ * Link of DocumentCardActivity: https://developer.microsoft.com/en-us/fluentui#/controls/web/documentcard
  */
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   private static ANIMATION_TIMEOUT = 200;

@@ -1,7 +1,7 @@
 import { IEventsAnnotationProps } from '../components/LineChart/index';
 import { ILineChartPoints, ILineChartDataPoint } from '../types/index';
 import { IMargins } from '../types/ICommonTypes';
-import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
@@ -71,7 +71,9 @@ export interface IFitContainerParams {
   container: HTMLDivElement | null | HTMLElement;
 }
 
-export function createNumericXAxis(xAxisParams: IXAxisParams) {
+export const additionalMarginRight: number = 20;
+
+export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     xMinMaxValues,
     margins,
@@ -83,8 +85,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     xAxisElement,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
-    .domain([xMinMaxValues.xMin, xMinMaxValues.xMax])
-    .range([margins.left!, containerWidth - margins.right!]);
+    .domain(isRtl ? [xMinMaxValues.xMax, xMinMaxValues.xMin] : [xMinMaxValues.xMin, xMinMaxValues.xMax])
+    .range([margins.left!, containerWidth - margins.right! - (isRtl ? additionalMarginRight : 0)]);
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -100,11 +102,11 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   return xAxisScale;
 }
 
-export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
+export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
   const { xMinMaxValues, margins, containerWidth, xAxisElement } = xAxisParams;
   const xAxisScale = d3ScaleTime()
-    .domain([xMinMaxValues.xMin, xMinMaxValues.xMax])
-    .range([margins.left!, containerWidth - margins.right!]);
+    .domain(isRtl ? [xMinMaxValues.xMax, xMinMaxValues.xMin] : [xMinMaxValues.xMin, xMinMaxValues.xMax])
+    .range([margins.left!, containerWidth - margins.right! - (isRtl ? additionalMarginRight : 0)]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
     .tickPadding(10);
@@ -127,7 +129,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
   return dataPointsArray;
 }
 
-export function createYAxis(yAxisParams: IYAxisParams) {
+export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues,
     yAxisElement = null,
@@ -150,9 +152,8 @@ export function createYAxis(yAxisParams: IYAxisParams) {
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const yAxis = d3AxisLeft(yAxisScale)
-    .tickPadding(tickPadding)
-    .tickValues(domainValues);
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis.tickPadding(tickPadding).tickValues(domainValues);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
   showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
