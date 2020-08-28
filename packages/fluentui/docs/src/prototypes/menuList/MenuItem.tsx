@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useMenuContext } from './useMenu';
 import { useEventListener } from '../../../../react-component-event-listener';
-import { MenuList } from './MenuList';
 
 export function MenuItem({ children, index, submenu = null }) {
   const { currentIndex, dispatch } = useMenuContext();
@@ -29,11 +28,6 @@ export function MenuItem({ children, index, submenu = null }) {
       }}
     >
       {children}
-      {submenu && (
-        <MenuList open={currentIndex === index} triggerRef={itemRef}>
-          {submenu}
-        </MenuList>
-      )}
     </div>
   );
 }
