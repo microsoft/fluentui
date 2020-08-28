@@ -7,6 +7,7 @@ const Visual = () => (
   <NonPublicSection title="Visual tests">
     <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerOffset" />
     <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerMargin" />
+    <ComponentExample examplePath="components/Popup/Visual/PopupExampleContainerTransformed" />
   </NonPublicSection>
 );
 

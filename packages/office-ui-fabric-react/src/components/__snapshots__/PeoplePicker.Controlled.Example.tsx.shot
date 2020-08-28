@@ -148,7 +148,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -536,7 +535,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -918,7 +916,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1306,7 +1303,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1707,7 +1703,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -2162,7 +2157,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               border-color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -2203,7 +2198,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -2322,7 +2317,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               border-color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -2363,7 +2358,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

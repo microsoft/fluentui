@@ -3,7 +3,7 @@ import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBo
 
 const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export const SearchBoxSmallExample = () => (
   <SearchBox
     styles={searchBoxStyles}

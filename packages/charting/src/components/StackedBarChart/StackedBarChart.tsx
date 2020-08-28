@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 import { StackedBarChartBase } from './StackedBarChart.base';

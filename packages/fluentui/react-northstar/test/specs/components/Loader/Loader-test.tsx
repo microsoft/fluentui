@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Loader, { loaderClassName } from 'src/components/Loader/Loader';
+import { Loader, loaderClassName } from 'src/components/Loader/Loader';
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 import { act } from 'react-dom/test-utils';

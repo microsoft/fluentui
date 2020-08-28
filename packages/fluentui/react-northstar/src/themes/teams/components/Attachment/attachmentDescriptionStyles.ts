@@ -3,7 +3,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AttachmentDescriptionStylesProps } from '../../../../components/Attachment/AttachmentDescription';
 import { AttachmentVariables } from './attachmentVariables';
 
-const attachmentDescriptionStyles: ComponentSlotStylesPrepared<
+export const attachmentDescriptionStyles: ComponentSlotStylesPrepared<
   AttachmentDescriptionStylesProps,
   AttachmentVariables
 > = {
@@ -15,5 +15,3 @@ const attachmentDescriptionStyles: ComponentSlotStylesPrepared<
     lineHeight: v.descriptionLineHeight,
   }),
 };
-
-export default attachmentDescriptionStyles;

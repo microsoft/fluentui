@@ -147,6 +147,13 @@ describe('mergeComponentVariables', () => {
       const merged = mergeComponentVariables__PROD(target, source);
       expect(merged()._debug).toBe(undefined);
     });
+
+    test('useless frames are not created', () => {
+      const target = () => ({});
+
+      expect(mergeComponentVariables__PROD(target)).toBe(target);
+      expect(mergeComponentVariables__PROD(target, undefined)).toBe(target);
+    });
   });
 
   describe('dev version, debug disabled', () => {

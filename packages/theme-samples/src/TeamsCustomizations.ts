@@ -44,7 +44,7 @@ export const TeamsCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
-      // tslint:disable:no-any
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       tokens: (props: any) => {
         return [
           {

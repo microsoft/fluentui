@@ -18,11 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "lib": ["es2017"],
-    "types": ["jest", "node"],
-    "paths": {
-      "@uifabric/migration/lib/*": ["./src/*"],
-      "@uifabric/migration": ["./src"]
-    }
+    "types": ["jest", "node"]
   },
   "include": ["src"]
 }

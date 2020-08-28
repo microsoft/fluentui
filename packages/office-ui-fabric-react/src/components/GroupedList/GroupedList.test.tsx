@@ -213,7 +213,7 @@ describe('GroupedList', () => {
     wrapper.unmount();
   });
 
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line @fluentui/max-len
   it('renders the specified count of rows if "Show All" is to be displayed and all rows once "Show All" is clicked', () => {
     const _selection = new Selection();
     const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }];

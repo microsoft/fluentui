@@ -1,6 +1,4 @@
-/* tslint:disable */
 import { IPickerItemProps } from '../../../Pickers';
-/* tslint:enable */
 
 import { IExtendedPersonaProps } from '../../../SelectedItemsList';
 import { IPersonaProps } from '../../../Persona';

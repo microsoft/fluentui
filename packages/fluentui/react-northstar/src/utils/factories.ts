@@ -255,7 +255,7 @@ export function createShorthand<TInstance extends React.Component>(
   value?: ShorthandValue<PropsOf<TInstance>>,
   options?: CreateShorthandOptions<PropsOf<TInstance>>,
 ): React.ReactElement;
-export function createShorthand<E extends React.ElementType, P>(
+export function createShorthand<E extends keyof JSX.IntrinsicElements, P>(
   Component: ComponentWithAs<E, P> & {
     shorthandConfig?: ShorthandConfig<P>;
     fluentComposeConfig?: ComposePreparedOptions<P>;

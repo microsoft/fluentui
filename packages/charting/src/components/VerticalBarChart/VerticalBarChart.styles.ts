@@ -1,51 +1,93 @@
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
+import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
-  const { className, theme, width, height, shouldHighlight } = props;
-
-  const chartWidth = width + 50;
-  const chartPadding = 20;
-  const chartHeight = height + 50;
-  const xOffset = 30;
-  const yOffset = 23;
+  const { className, theme, shouldHighlight } = props;
 
   return {
     root: [
       theme.fonts.medium,
-      'ms-VerticalBarChart',
-      className,
       {
-        width: chartWidth + 2 * chartPadding,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
       },
+      className,
     ],
+
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
     },
-    chart: [
-      {
-        padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight,
-        boxSizing: 'content-box',
-      },
-    ],
+
     chartLabel: [
       {
         textAlign: 'center',
         ...theme.fonts.mediumPlus,
       },
     ],
-    xAxis: [
-      {
-        transform: `translate(${xOffset}px, ${height}px)`,
+
+    xAxis: {
+      selectors: {
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
+        line: {
+          opacity: 0.1,
+          width: '1px',
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              opacity: 0.1,
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
+        },
+        path: {
+          display: 'none',
+        },
       },
-    ],
+    },
+
+    yAxis: {
+      selectors: {
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
+        line: {
+          opacity: 0.2,
+          width: '1px',
+          stroke: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
+        },
+        path: {
+          display: 'none',
+        },
+      },
+    },
+
     xAxisTicks: [],
-    yAxis: [
-      {
-        transform: `translate(${yOffset}px, 0px)`,
-      },
-    ],
+
     yAxisTicks: [
       {
         transform: 'scaleX(-1)',
@@ -54,11 +96,6 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
     yAxisDomain: [
       {
         transform: 'scaleX(-1)',
-      },
-    ],
-    bars: [
-      {
-        transform: `translate(${xOffset}px, 0px)`,
       },
     ],
     legendContainer: {

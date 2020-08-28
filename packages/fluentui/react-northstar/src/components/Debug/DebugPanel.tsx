@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import DebugPanelItem from './DebugPanelItem';
-import FiberNavigator from './FiberNavigator';
+import { DebugPanelItem } from './DebugPanelItem';
+import { FiberNavigator } from './FiberNavigator';
 import { getValues, removeNulls } from './utils';
-import DebugComponentViewer from './DebugComponentViewer';
+import { DebugComponentViewer } from './DebugComponentViewer';
 
 export type DebugPanelProps = {
   cssStyles?: string[];
@@ -25,7 +25,7 @@ export type DebugPanelProps = {
   onFiberSelected: (fiberNav: FiberNavigator) => void;
 };
 
-const DebugPanel: React.FC<DebugPanelProps> = props => {
+export const DebugPanel: React.FC<DebugPanelProps> = props => {
   const {
     cssStyles,
     debugData: inputDebugData,
@@ -278,5 +278,3 @@ const debugPanelBody: React.CSSProperties = {
 const debugPanel: React.CSSProperties = {
   padding: '0 4px',
 };
-
-export default DebugPanel;

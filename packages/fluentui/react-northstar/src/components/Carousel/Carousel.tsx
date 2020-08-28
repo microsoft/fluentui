@@ -5,9 +5,8 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Ref } from '@fluentui/react-component-ref';
-import Animation from '../Animation/Animation';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Animation } from '../Animation/Animation';
+
 import {
   UIComponentProps,
   createShorthandFactory,
@@ -16,24 +15,18 @@ import {
   ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselItem, CarouselItemProps } from './CarouselItem';
+import { Text } from '../Text/Text';
+import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigation';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import CarouselItem, { CarouselItemProps } from './CarouselItem';
-import Text from '../Text/Text';
-import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigation';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
-import {
+  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
   useStateManager,
@@ -128,14 +121,22 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-const Carousel: React.FC<WithAsProp<CarouselProps>> &
+/**
+ * A Carousel displays data organised as a gallery.
+ *
+ * @accessibility
+ * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
+ * @accessibilityIssues
+ * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
+ */
+export const Carousel: ComponentWithAs<'div', CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
     NavigationItem: typeof CarouselNavigationItem;
     Paddle: typeof CarouselPaddle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
   const {
@@ -508,13 +509,3 @@ Carousel.create = createShorthandFactory({
   Component: Carousel,
   mappedArrayProp: 'items',
 });
-
-/**
- * A Carousel displays data organised as a gallery.
- *
- * @accessibility
- * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
- * @accessibilityIssues
- * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
- */
-export default withSafeTypeForAs<typeof Carousel, CarouselProps, 'div'>(Carousel);

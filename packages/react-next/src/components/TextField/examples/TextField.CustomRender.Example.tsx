@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { TextField, ITextFieldProps } from '@fluentui/react-next/lib/TextField';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react-next/lib/Button';
 import { Icon, IIconStyles } from '@fluentui/react-next/lib/Icon';
 import { Callout } from '@fluentui/react-next/lib/Callout';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
@@ -95,6 +95,7 @@ export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
       <TextField
         aria-labelledby={labelId}
         label="Custom label rendering"
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={onRenderLabel}
         description="Click the (i) icon!"
       />

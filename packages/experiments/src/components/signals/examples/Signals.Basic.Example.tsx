@@ -21,15 +21,16 @@ import {
   RecordSignal,
   NeedsRepublishingSignal,
   ItemScheduledSignal,
+  DesktopSignal,
+  DocumentsSignal,
+  PicturesSignal,
 } from '@uifabric/experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from 'office-ui-fabric-react';
 import { lorem } from '@uifabric/example-data';
 import * as SignalStylesModule from '../Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
 
-// tslint:disable-next-line:no-any
 const SignalStyles: any = SignalStylesModule;
-// tslint:disable-next-line:no-any
 const SignalsExampleStyles: any = SignalsExampleStylesModule;
 
 interface ISignalExampleProps {
@@ -123,6 +124,9 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
           <SignalExample name="Shared" signal={<SharedSignal />} />
           <SignalExample name="Needs Republishing" signal={<NeedsRepublishingSignal />} />
           <SignalExample name="Page Scheduled" signal={<ItemScheduledSignal />} />
+          <SignalExample name="Special Folder (Desktop)" signal={<DesktopSignal />} />
+          <SignalExample name="Special Folder (Documents)" signal={<DocumentsSignal />} />
+          <SignalExample name="Special Folder (Pictures)" signal={<PicturesSignal />} />
         </div>
       </div>
     );

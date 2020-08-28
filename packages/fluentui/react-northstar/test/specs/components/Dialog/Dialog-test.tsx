@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Dialog, { dialogSlotClassNames } from 'src/components/Dialog/Dialog';
-import Button from 'src/components/Button/Button';
+import { Dialog, dialogSlotClassNames } from 'src/components/Dialog/Dialog';
+import { Button } from 'src/components/Button/Button';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
 
 describe('Dialog', () => {

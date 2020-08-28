@@ -14,7 +14,7 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-controls=content-id' based on the property 'accordionContentId' to 'content' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'content'.
  */
-const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props => {
+export const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props => {
   const isHeading = /(h\d{1})$/.test(props.as);
   const forcedOpen = props.active && !props.canBeCollapsed;
   return {
@@ -40,8 +40,6 @@ const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props
     },
   };
 };
-
-export default accordionTitleBehavior;
 
 export type AccordionTitleBehaviorProps = {
   /** Element type. */

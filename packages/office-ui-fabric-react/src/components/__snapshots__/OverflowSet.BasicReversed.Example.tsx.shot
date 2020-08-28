@@ -79,7 +79,6 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -214,27 +213,37 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"
@@ -291,27 +300,37 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"
@@ -368,27 +387,37 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"

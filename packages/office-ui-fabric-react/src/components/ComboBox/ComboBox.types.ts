@@ -134,6 +134,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   text?: string;
 
   /**
+   * When multiple items are selected, this will be used to separate values in the combobox input.
+   *
+   * @defaultvalue ", "
+   */
+  multiSelectDelimiter?: string;
+
+  /**
    * The IconProps to use for the button aspect of the combobox
    */
   buttonIconProps?: IIconProps;

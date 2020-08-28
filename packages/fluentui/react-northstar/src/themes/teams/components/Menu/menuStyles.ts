@@ -4,7 +4,7 @@ import { MenuStylesProps } from '../../../../components/Menu/Menu';
 import { MenuVariables } from './menuVariables';
 import { getColorScheme } from '../../colors';
 
-const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = {
+export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { iconOnly, fluid, pointing, pills, primary, underlined, vertical, submenu } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
@@ -25,7 +25,7 @@ const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = 
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),
-        ...(!fluid && !submenu && { width: 'fit-content' }),
+        ...(!fluid && !submenu && { width: ['fit-content', 'auto'], display: 'inline-block' }),
         ...(iconOnly && {
           display: 'inline-block',
           width: 'auto',
@@ -45,5 +45,3 @@ const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = 
     };
   },
 };
-
-export default menuStyles;

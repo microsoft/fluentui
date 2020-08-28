@@ -10,10 +10,8 @@ export class Pie extends React.Component<IPieProps, {}> {
     pie: shape
       .pie()
       .sort(null)
-      // tslint:disable:no-any
-      .value((d: any) => {
-        return d.y;
-      }),
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      .value((d: any) => d.y),
   };
   private colors: scale.ScaleOrdinal<string | number, any>;
 
@@ -39,8 +37,8 @@ export class Pie extends React.Component<IPieProps, {}> {
 
     this.colors = scale.scaleOrdinal().range(colors!);
 
-    const piechart = pie(data),
-      translate = `translate(${width / 2}, ${height / 2})`;
+    const piechart = pie(data);
+    const translate = `translate(${width / 2}, ${height / 2})`;
 
     return (
       <svg width={width} height={height}>

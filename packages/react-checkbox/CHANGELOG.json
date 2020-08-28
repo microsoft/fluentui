@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-checkbox",
+  "entries": [
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-checkbox_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Checkbox from react-next to react-checkbox.",
+            "author": "xgao@microsoft.com",
+            "commit": "aa0811b0a7717043e011214fb7c81138f96dc15f",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    }
+  ]
+}

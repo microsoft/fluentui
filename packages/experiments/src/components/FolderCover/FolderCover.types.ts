@@ -3,7 +3,7 @@ import { IBaseProps, ISize } from '../../Utilities';
 
 export type FolderCoverSize = 'small' | 'large';
 
-export type FolderCoverType = 'default' | 'media';
+export type FolderCoverType = 'default' | 'media' | 'linked';
 
 export interface IFolderCoverChildrenProps {
   contentSize: ISize;
@@ -38,6 +38,6 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
   /**
    * The children to pass into the content area of the folder cover.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
 }

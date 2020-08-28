@@ -71,7 +71,7 @@ export interface CardVariables {
   selectedBoxShadow: string;
 }
 
-export default (siteVars): CardVariables => {
+export const cardVariables = (siteVars): CardVariables => {
   return {
     backgroundColor: siteVars.colorScheme.default.background1,
     backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled1,

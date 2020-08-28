@@ -1,5 +1,6 @@
 import React from 'react';
 import { mergeStyleSets, Stack, Toggle } from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
 import { EditorWrapper } from '../components/EditorWrapper';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
 
@@ -16,13 +17,12 @@ const classNames = mergeStyleSets({
 const width = 800;
 
 export const App: React.FunctionComponent = () => {
-  const [useEditor, setUseEditor] = React.useState<boolean>(true);
-  const onToggleChange = () => setUseEditor(!useEditor);
+  const [useEditor, { toggle: toggleUseEditor }] = useBoolean(true);
 
   return (
     <Stack styles={{ root: { width, margin: '0 auto' } }} tokens={{ childrenGap: 20 }}>
       <h1>Typescript + React editor</h1>
-      <Toggle inlineLabel label="Use editor" checked={useEditor} onChange={onToggleChange} />
+      <Toggle inlineLabel label="Use editor" checked={useEditor} onChange={toggleUseEditor} />
       <EditorWrapper
         code={example}
         editorClassName={classNames.component}

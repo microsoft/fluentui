@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/PositioningContainer';
+export * from './components/Coachmark/PositioningContainer';

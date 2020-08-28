@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
 import { mountWithProvider as mount } from 'test/utils';
 
-import Box from 'src/components/Box/Box';
+import { Box } from 'src/components/Box/Box';
 import { Props, ShorthandValue } from 'src/types';
 
 export interface ImplementsWrapperPropOptions {
@@ -14,7 +14,10 @@ type WrapperProps = {
   wrapper?: ShorthandValue<Props>;
 };
 
-const implementsWrapperProp = (Component: React.ComponentType<WrapperProps>, options: ImplementsWrapperPropOptions) => {
+export const implementsWrapperProp = (
+  Component: React.ComponentType<WrapperProps>,
+  options: ImplementsWrapperPropOptions,
+) => {
   const { wrapppedComponentSelector, WrapperComponent = Box } = options;
 
   const wrapperTests = (wrapper: ReactWrapper) => {
@@ -32,5 +35,3 @@ const implementsWrapperProp = (Component: React.ComponentType<WrapperProps>, opt
     });
   });
 };
-
-export default implementsWrapperProp;

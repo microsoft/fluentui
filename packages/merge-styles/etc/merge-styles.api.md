@@ -102,7 +102,9 @@ export interface IRawFontStyle {
 
 // @public
 export interface IRawStyle extends IRawStyleBase {
+    [key: string]: any;
     displayName?: string;
+    // @deprecated (undocumented)
     selectors?: {
         [key: string]: IStyle;
     };

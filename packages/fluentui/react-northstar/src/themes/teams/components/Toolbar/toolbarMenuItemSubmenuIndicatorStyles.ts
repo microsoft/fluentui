@@ -3,9 +3,9 @@ import { getColorScheme } from '../../colors';
 import { pxToRem } from '../../../../utils';
 import { ToolbarMenuItemSubmenuIndicatorStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 import { ToolbarVariables } from './toolbarVariables';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
 
-const toolbarMenuItemStyles: ComponentSlotStylesPrepared<
+export const toolbarMenuItemSubmenuIndicatorStyles: ComponentSlotStylesPrepared<
   ToolbarMenuItemSubmenuIndicatorStylesProps,
   ToolbarVariables
 > = {
@@ -22,8 +22,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<
       height: '100%',
       position: 'absolute',
       right: pxToRem(7),
+      top: 0,
     };
   },
 };
-
-export default toolbarMenuItemStyles;

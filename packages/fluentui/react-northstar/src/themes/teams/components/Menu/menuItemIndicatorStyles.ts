@@ -2,9 +2,9 @@ import { pxToRem } from '../../../../utils';
 import { MenuVariables } from './menuVariables';
 import { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
 
-const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
+export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v, rtl }) => {
     return {
       position: 'relative',
@@ -28,6 +28,7 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
       overflow: 'hidden',
       height: pxToRem(16),
       width: pxToRem(16),
+      backgroundSize: pxToRem(16),
 
       backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
 
@@ -48,5 +49,3 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
     };
   },
 };
-
-export default menuItemIndicatorStyles;

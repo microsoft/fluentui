@@ -73,6 +73,7 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
           label="Directional hint"
           selectedKey={directionalHint!}
           options={DIRECTION_OPTIONS}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onDirectionalChanged}
         />
       </div>

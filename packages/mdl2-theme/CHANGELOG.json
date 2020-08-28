@@ -2,6 +2,66 @@
   "name": "@uifabric/mdl2-theme",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.1.132",
+      "version": "0.1.132",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.1.110",
+      "version": "0.1.110",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.1.101",
+      "version": "0.1.101",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.1.97",
+      "version": "0.1.97",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/mdl2-theme_v0.1.71",
       "version": "0.1.71",

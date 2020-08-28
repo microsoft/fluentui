@@ -1,46 +1,63 @@
 import * as React from 'react';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonProps } from './ToggleButton.types';
 import * as classes from '../Button/Button.stories.scss';
 
 const ToggleButtonVariants = (props: ToggleButtonProps) => (
   <div className={classes.hStack}>
-    <ToggleButton {...props} content="Hello, world" icon="X" />
-    <ToggleButton {...props} primary content="Hello, world" icon="X" />
-    <ToggleButton {...props} disabled content="Hello, world" icon="X" />
-    <ToggleButton {...props} primary disabled content="Hello, world" icon="X" />
+    <ToggleButton {...props} icon="X">
+      Hello, world
+    </ToggleButton>
+    <ToggleButton {...props} primary icon="X">
+      Hello, world
+    </ToggleButton>
+    <ToggleButton {...props} disabled icon="X">
+      Hello, world
+    </ToggleButton>
+    <ToggleButton {...props} primary disabled icon="X">
+      Hello, world
+    </ToggleButton>
   </div>
 );
 
 export const ToggleButtonCss = () => (
-  <>
-    <h3>A button can appear round using the `circular` prop.</h3>
+  <Stack gap={20}>
+    <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
+    <ToggleButtonVariants />
+
+    <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
     <ToggleButtonVariants circular />
 
-    <h3>A button can fill the width of its container using the `fluid` prop.</h3>
+    <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
     <div className={classes.vStack}>
-      <ToggleButton fluid content="Hello, world" icon="X" />
-      <ToggleButton fluid primary content="Hello, world" icon="X" />
-      <ToggleButton fluid disabled content="Hello, world" icon="X" />
-      <ToggleButton fluid primary disabled content="Hello, world" icon="X" />
+      <ToggleButton fluid icon="X">
+        Hello, world
+      </ToggleButton>
+      <ToggleButton fluid primary icon="X">
+        Hello, world
+      </ToggleButton>
+      <ToggleButton fluid disabled icon="X">
+        Hello, world
+      </ToggleButton>
+      <ToggleButton fluid primary disabled icon="X">
+        Hello, world
+      </ToggleButton>
     </div>
 
-    <h3>A button can contain only an icon using the `iconOnly` prop.</h3>
+    <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <ToggleButtonVariants iconOnly />
 
-    <h3>An icon button can format its Icon to appear before or after its content.</h3>
+    <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
     <div className={classes.vStack}>
       <ToggleButtonVariants iconPosition="before" />
       <ToggleButtonVariants iconPosition="after" />
     </div>
 
-    <h3>A button can inherit its background and have a subtle appearance using the `inverted` prop.</h3>
-    <ToggleButtonVariants inverted />
-
-    <h3>A button can show a loading indicator using the `loading` prop.</h3>
+    <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <ToggleButtonVariants loading />
 
-    <h3>A button can be sized.</h3>
+    <Text variant="xLarge">A button can be sized.</Text>
     <div className={classes.vStack}>
       <ToggleButtonVariants size="smallest" />
       <ToggleButtonVariants size="smaller" />
@@ -49,5 +66,5 @@ export const ToggleButtonCss = () => (
       <ToggleButtonVariants size="larger" />
       <ToggleButtonVariants size="largest" />
     </div>
-  </>
+  </Stack>
 );

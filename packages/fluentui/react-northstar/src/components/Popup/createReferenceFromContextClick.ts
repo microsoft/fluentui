@@ -1,6 +1,6 @@
 import * as PopperJs from '@popperjs/core';
 
-const createReferenceFromContextClick = (nativeEvent: MouseEvent): PopperJs.VirtualElement => {
+export const createReferenceFromContextClick = (nativeEvent: MouseEvent): PopperJs.VirtualElement => {
   const left = nativeEvent.clientX;
   const top = nativeEvent.clientY;
   const right = left + 1;
@@ -22,5 +22,3 @@ const createReferenceFromContextClick = (nativeEvent: MouseEvent): PopperJs.Virt
     getBoundingClientRect,
   };
 };
-
-export default createReferenceFromContextClick;

@@ -19,7 +19,7 @@ exports[`Checkbox renders checked correctly 1`] = `
         border-color: #005a9e;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-        background: Window;
+        background: Highlight;
         border-color: Highlight;
       }
       @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -32,7 +32,7 @@ exports[`Checkbox renders checked correctly 1`] = `
         color: Window;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-        color: Highlight;
+        color: Window;
       }
       &:hover .ms-Checkbox-text {
         color: #201f1e;
@@ -123,7 +123,7 @@ exports[`Checkbox renders checked correctly 1`] = `
             background: Highlight;
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -164,7 +164,7 @@ exports[`Checkbox renders checked correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -311,7 +311,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             border-color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -352,7 +352,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -473,7 +473,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             border-color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -514,7 +514,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >

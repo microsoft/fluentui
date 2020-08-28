@@ -17,7 +17,7 @@ const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
  * Does not handle PageDown and PageUp.
  */
-const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
+export const chatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   attributes: {
     root: {},
   },
@@ -44,5 +44,3 @@ const getLastTabbableElement = (root: HTMLElement): HTMLElement => {
 };
 
 export type ChatBehaviorProps = never;
-
-export default ChatBehavior;

@@ -67,7 +67,7 @@ export interface ToolbarVariables {
   overlayZIndex: number;
 }
 
-export default (siteVars: any): ToolbarVariables => ({
+export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   colorScheme: pickValuesFromColorScheme(
     extendColorScheme(siteVars.colorScheme, {
       default: {

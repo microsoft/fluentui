@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { EventGroup } from '../../Utilities';
 
 /**
@@ -95,7 +94,7 @@ export interface IDragDropContext {
 }
 
 export interface IDragDropTarget {
-  root: React.ReactInstance;
+  root: HTMLElement;
   options: IDragDropOptions;
   key: string;
 }

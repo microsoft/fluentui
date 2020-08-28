@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackedBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
   public render(): JSX.Element {
@@ -102,13 +103,32 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
 
     const data: IVerticalStackedChartProps[] = [
       { chartData: firstChartPoints, xAxisPoint: 0 },
-      { chartData: secondChartPoints, xAxisPoint: 40 },
-      { chartData: thirdChartPoints, xAxisPoint: 62 },
-      { chartData: firstChartPoints, xAxisPoint: 83 },
-      { chartData: fourthChartPoints, xAxisPoint: 18 },
+      { chartData: secondChartPoints, xAxisPoint: 20 },
+      { chartData: thirdChartPoints, xAxisPoint: 40 },
+      { chartData: firstChartPoints, xAxisPoint: 60 },
+      { chartData: fourthChartPoints, xAxisPoint: 80 },
       { chartData: firstChartPoints, xAxisPoint: 100 },
     ];
 
-    return <VerticalStackedBarChart data={data} chartLabel="Card title" />;
+    const rootStyle = mergeStyles({ width: '600px', height: '350px' });
+
+    return (
+      <div className={rootStyle}>
+        <VerticalStackedBarChart
+          data={data}
+          chartLabel="Card title"
+          height={350}
+          width={600}
+          legendProps={{
+            overflowProps: {
+              focusZoneProps: {
+                'aria-label': 'Legends container',
+              },
+            },
+            allowFocusOnLegends: true,
+          }}
+        />
+      </div>
+    );
   }
 }

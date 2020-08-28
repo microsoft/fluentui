@@ -6,7 +6,9 @@ describe('createClassResolver', () => {
     slot1: 'slot1',
     slot2: 'slot2',
     _primary: 'primary',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     _size_small: 'small',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     _size_medium: 'medium',
   });
 

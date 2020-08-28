@@ -2,6 +2,57 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-icons_v0.1.36",
+      "version": "0.1.36",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-icons_v0.1.31",
+      "version": "0.1.31",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-icons"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-icons_v0.1.28",
+      "version": "0.1.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jun 2020 18:29:07 GMT",
       "tag": "@fluentui/react-icons_v0.1.27",
       "version": "0.1.27",

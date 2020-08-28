@@ -2,7 +2,7 @@ import { debugRoot } from '../../../../styles/debugStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ListStylesProps } from '../../../../components/List/List';
 
-const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
+export const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
   root: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugRoot()),
     display: p.horizontal ? 'inline-flex' : 'block',
@@ -13,5 +13,3 @@ const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
     }),
   }),
 };
-
-export default listStyles;

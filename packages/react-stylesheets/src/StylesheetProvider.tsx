@@ -11,12 +11,13 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
   const context = React.useContext(StylesheetContext);
   const mergedContext = React.useMemo<StylesheetContextType>(
     () => ({
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ...(context as any),
       ...props,
     }),
     // Only recompute the context to pass down if the parent passes a new one. Props should not
     // be mutating dynamically for a provider, or may be doing so accidentally. Avoid recomputations.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [context],
   );
 

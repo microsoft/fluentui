@@ -66,7 +66,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     this._pivotId = getId(PivotName);
     const links: IPivotItemProps[] = this._getPivotLinks(props).links;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
 
     let selectedKey: string | undefined;
@@ -179,7 +179,9 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         id={tabId}
         key={itemKey}
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onLinkClick.bind(this, itemKey)}
+        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={this._onKeyDown.bind(this, itemKey)}
         aria-label={link.ariaLabel}
         role="tab"

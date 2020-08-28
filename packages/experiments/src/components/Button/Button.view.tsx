@@ -1,4 +1,5 @@
 /** @jsx withSlots */
+import * as React from 'react';
 import { Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
@@ -7,7 +8,7 @@ import { FontIcon } from '../../utilities/factoryComponents';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 
 export const ButtonSlots: IButtonComponent['slots'] = props => ({
-  root: !!props.href ? 'a' : 'button',
+  root: props.href ? 'a' : 'button',
   icon: FontIcon,
   content: Text,
 });
@@ -70,11 +71,11 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
 
 interface IButtonRootType {
   htmlType: 'link' | 'button';
-  propertiesType: string[];
+  propertiesType: string[] | Record<string, number>;
 }
 
 function _deriveRootType(props: IButtonViewProps): IButtonRootType {
-  return !!props.href
+  return props.href
     ? { htmlType: 'link', propertiesType: anchorProperties }
     : { htmlType: 'button', propertiesType: buttonProperties };
 }

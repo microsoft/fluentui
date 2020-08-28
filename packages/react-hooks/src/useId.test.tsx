@@ -2,36 +2,25 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { resetIds } from '@uifabric/utilities';
 import { useId } from './useId';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useId', () => {
   afterEach(() => {
     resetIds();
   });
 
-  it('uses the same ID without prefix', () => {
+  it('uses prefix', () => {
+    let id: string | undefined;
     const TestComponent: React.FunctionComponent = () => {
-      const id = useId();
-      return <div id={id} />;
+      id = useId('foo');
+      return <div />;
     };
-    const wrapper = mount(<TestComponent />);
-    const firstId = wrapper.getDOMNode().id;
-    // Re-render the component
-    wrapper.update();
-    // ID should be the same
-    expect(wrapper.getDOMNode().id).toBe(firstId);
+    mount(<TestComponent />);
+    expect(id).toBeDefined();
+    expect(id).toMatch(/^foo/);
   });
 
-  it('uses the same ID with prefix', () => {
-    const TestComponent: React.FunctionComponent = () => {
-      const id = useId('foo');
-      return <div id={id} />;
-    };
-    const wrapper = mount(<TestComponent />);
-    const firstId = wrapper.getDOMNode().id;
-    expect(firstId).toMatch(/^foo/);
-    // Re-render the component
-    wrapper.update();
-    // ID should be the same
-    expect(wrapper.getDOMNode().id).toBe(firstId);
-  });
+  validateHookValueNotChanged('uses the same ID without prefix', () => [useId()]);
+
+  validateHookValueNotChanged('uses the same ID with prefix', () => [useId('foo')]);
 });

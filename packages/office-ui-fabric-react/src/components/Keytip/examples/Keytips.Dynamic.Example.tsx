@@ -35,8 +35,20 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
         child of Button 1 or Button 2. For this to work fully, Button 1 and Button 2 should have `hasDynamicChildren:
         true` in their keytip props
       </p>
-      <DefaultButton id="Button 1" text="Button 1" onClick={onClick} keytipProps={buttonOneKeytipProps} />
-      <DefaultButton id="Button 2" text="Button 2" onClick={onClick} keytipProps={buttonTwoKeytipProps} />
+      <DefaultButton
+        id="Button 1"
+        text="Button 1"
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        keytipProps={buttonOneKeytipProps}
+      />
+      <DefaultButton
+        id="Button 2"
+        text="Button 2"
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        keytipProps={buttonTwoKeytipProps}
+      />
       <div>
         <DefaultButton text={'Button 3, active button is: ' + currButton} keytipProps={buttonThreeKeytipProps} />
       </div>

@@ -77,7 +77,26 @@ module.exports = ({ config }) => {
 
   config.resolve.alias = getResolveAlias();
 
-  config.plugins.push(new HardSourceWebpackPlugin(), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));
+  config.plugins.push(
+    new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin.ExcludeModulePlugin([
+      {
+        // HardSource works with mini-css-extract-plugin but due to how
+        // mini-css emits assets, assets are not emitted on repeated builds with
+        // mini-css and hard-source together. Ignoring the mini-css loader
+        // modules, but not the other css loader modules, excludes the modules
+        // that mini-css needs rebuilt to output assets every time.
+        // https://github.com/mzgoddard/hard-source-webpack-plugin/issues/416
+        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+      },
+    ]),
+    new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
+  );
+
+  // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
+  if (process.env.TF_BUILD) {
+    config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
+  }
 
   config.optimization.minimize = false;
 

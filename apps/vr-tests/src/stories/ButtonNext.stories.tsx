@@ -3,8 +3,14 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
+import { AddIcon } from '@fluentui/react-icons';
+import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { withThemeProvider } from '@fluentui/storybook';
+import { FabricDecorator } from '../utilities';
 
 storiesOf('Button Next', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -13,17 +19,65 @@ storiesOf('Button Next', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" />)
-  .addStory('Primary', () => <Button primary content="Hello, world" />)
-  .addStory('Disabled', () => <Button disabled content="Hello, world" />)
-  .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" />);
+  .addStory('Default', () => <Button>Hello, world</Button>)
+  .addStory('Primary', () => <Button primary>Hello, world</Button>)
+  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled>
+      Hello, world
+    </Button>
+  ));
+
+storiesOf('Button Next - Teams Theme', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Button>Hello, world</Button>)
+  .addStory('Primary', () => <Button primary>Hello, world</Button>)
+  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled>
+      Hello, world
+    </Button>
+  ))
+  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>);
 
 storiesOf('Button Next - With icon before content', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -32,42 +86,84 @@ storiesOf('Button Next - With icon before content', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button disabled content="Hello, world" icon="X" />)
-  .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" icon="X" />);
-
-storiesOf('Button Next - With icon after content', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => <Button content="Hello, world" icon="X" iconPosition="after" />)
+  .addStory('Default', () => <Button icon="X">Hello, world</Button>)
   .addStory('Primary', () => (
-    <Button primary content="Hello, world" icon="X" iconPosition="after" />
+    <Button primary icon="X">
+      Hello, world
+    </Button>
   ))
   .addStory('Disabled', () => (
-    <Button disabled content="Hello, world" icon="X" iconPosition="after" />
+    <Button disabled icon="X">
+      Hello, world
+    </Button>
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled content="Hello, world" icon="X" iconPosition="after" />
+    <Button primary disabled icon="X">
+      Hello, world
+    </Button>
+  ));
+
+storiesOf('Button Next - With icon after content', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <Button icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button primary icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button disabled icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled icon="X" iconPosition="after">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Circular', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -76,19 +172,43 @@ storiesOf('Button Next - Circular', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button circular content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button circular primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button circular disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button circular icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button circular primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button circular disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button circular primary disabled content="Hello, world" icon="X" />
+    <Button circular primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Icon only', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -97,19 +217,43 @@ storiesOf('Button Next - Icon only', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button iconOnly content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button iconOnly primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button iconOnly disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button iconOnly icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button iconOnly primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button iconOnly disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button iconOnly primary disabled content="Hello, world" icon="X" />
+    <Button iconOnly primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Fluid', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -118,19 +262,43 @@ storiesOf('Button Next - Fluid', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button fluid content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button fluid primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button fluid disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button fluid icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button fluid primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button fluid disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button fluid primary disabled content="Hello, world" icon="X" />
+    <Button fluid primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Inverted', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -139,19 +307,43 @@ storiesOf('Button Next - Inverted', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button inverted content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button inverted primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button inverted disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button inverted icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button inverted primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button inverted disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button inverted primary disabled content="Hello, world" icon="X" />
+    <Button inverted primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Loading', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -160,19 +352,43 @@ storiesOf('Button Next - Loading', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button loading content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button loading primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button loading disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button loading icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button loading primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button loading disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button loading primary disabled content="Hello, world" icon="X" />
+    <Button loading primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Sizes', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -181,14 +397,77 @@ storiesOf('Button Next - Sizes', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Smallest', () => <Button content="Hello, world" icon="X" size="smallest" />)
-  .addStory('Smaller', () => <Button content="Hello, world" icon="X" size="smaller" />)
-  .addStory('Small', () => <Button content="Hello, world" icon="X" size="small" />)
-  .addStory('Large', () => <Button content="Hello, world" icon="X" size="large" />)
-  .addStory('Larger', () => <Button content="Hello, world" icon="X" size="larger" />)
-  .addStory('Largest', () => <Button content="Hello, world" icon="X" size="largest" />);
+  .addStory('Smallest', () => (
+    <Button icon="X" size="smallest">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Smaller', () => (
+    <Button icon="X" size="smaller">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Small', () => (
+    <Button icon="X" size="small">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Large', () => (
+    <Button icon="X" size="large">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Larger', () => (
+    <Button icon="X" size="larger">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Largest', () => (
+    <Button icon="X" size="largest">
+      Hello, world
+    </Button>
+  ));
+
+storiesOf('Button Next - With styled icon from react-icons via tokens', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ));

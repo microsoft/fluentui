@@ -8,7 +8,7 @@ const nullRenderer = () => null;
 describe('resolveSlotProps', () => {
   const selfSlot = { __self: defaultComposeOptions.slots.__self };
 
-  const defaultSlots = {
+  const getDefaultSlots = () => ({
     slots: {
       ...selfSlot,
       root: nullRenderer,
@@ -16,11 +16,11 @@ describe('resolveSlotProps', () => {
       slot2: nullRenderer,
       slot3: nullRenderer,
     },
-  };
+  });
 
   const defaultOptionsWithSlots: ComposePreparedOptions = {
     ...defaultComposeOptions,
-    ...defaultSlots,
+    ...getDefaultSlots(),
     classes: [{ root: 'root' }, () => ({ foo: 'foo' }), { bar: 'bar', baz: 'baz' }],
   };
 
@@ -59,14 +59,14 @@ describe('resolveSlotProps', () => {
     expect(
       resolveSlotProps(
         {
-          ...defaultSlots,
+          ...getDefaultSlots(),
           state,
           slotProps: {},
         },
         defaultOptionsWithSlots,
       ),
     ).toEqual({
-      ...defaultSlots,
+      ...getDefaultSlots(),
       state,
       slotProps: {
         root: {},
@@ -83,7 +83,7 @@ describe('resolveSlotProps', () => {
     expect(
       resolveSlotProps(
         {
-          ...defaultSlots,
+          ...getDefaultSlots(),
           slotProps: {},
           state,
         },
@@ -91,7 +91,46 @@ describe('resolveSlotProps', () => {
       ),
     ).toEqual({
       slots: {
-        ...defaultSlots.slots,
+        ...getDefaultSlots().slots,
+        slot1: React.Fragment,
+      },
+      state,
+      slotProps: {
+        root: {},
+        slot1: { children: slotContent },
+      },
+    });
+  });
+
+  it('provide children function correct params', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const renderFunction = (Component: React.ElementType, props: any) => {
+      expect(Component).toEqual(nullRenderer);
+      expect(props).toEqual({
+        className: 'slot1',
+        parentProp: 'parentProp',
+      });
+
+      return <button />;
+    };
+
+    const slotContent = <button />;
+    const state = { slot1: { className: 'slot1', children: renderFunction } };
+
+    expect(
+      resolveSlotProps(
+        {
+          ...getDefaultSlots(),
+          slotProps: {
+            slot1: { parentProp: 'parentProp' },
+          },
+          state,
+        },
+        defaultOptionsWithSlots,
+      ),
+    ).toEqual({
+      slots: {
+        ...getDefaultSlots().slots,
         slot1: React.Fragment,
       },
       state,
@@ -108,7 +147,7 @@ describe('resolveSlotProps', () => {
     expect(
       resolveSlotProps(
         {
-          ...defaultSlots,
+          ...getDefaultSlots(),
           slotProps: {},
           state,
         },
@@ -116,7 +155,7 @@ describe('resolveSlotProps', () => {
       ),
     ).toEqual({
       slots: {
-        ...defaultSlots.slots,
+        ...getDefaultSlots().slots,
         slot1: NullRender,
       },
       state,
@@ -133,7 +172,7 @@ describe('resolveSlotProps', () => {
       resolveSlotProps(
         {
           slots: {
-            ...defaultSlots.slots,
+            ...getDefaultSlots().slots,
             slot1: null,
           },
           slotProps: {},
@@ -143,7 +182,7 @@ describe('resolveSlotProps', () => {
       ),
     ).toEqual({
       slots: {
-        ...defaultSlots.slots,
+        ...getDefaultSlots().slots,
         slot1: NullRender,
       },
       state,
@@ -163,7 +202,7 @@ describe('resolveSlotProps', () => {
   //     resolveSlotProps(
   //       {
   //         slots: {
-  //           ...defaultSlots.slots,
+  //           ...getDefaultSlots().slots,
   //           slot1: null,
   //         },
   //         slotProps: {
@@ -177,7 +216,7 @@ describe('resolveSlotProps', () => {
   //     ),
   //   ).toEqual({
   //     slots: {
-  //       ...defaultSlots.slots,
+  //       ...getDefaultSlots().slots,
   //       slot1: NullRender,
   //     },
   //     state,

@@ -10,11 +10,17 @@ export interface IButtonExampleProps {
 const addFriendIcon: IIconProps = { iconName: 'AddFriend' };
 
 export const ButtonActionExample: React.FunctionComponent<IButtonExampleProps> = props => {
-  const { disabled, checked } = props;
+  const { disabled } = props;
 
   return (
-    <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={checked}>
-      Create account
-    </ActionButton>
+    <>
+      <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={false}>
+        Create account
+      </ActionButton>
+
+      <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={true}>
+        Button checked
+      </ActionButton>
+    </>
   );
 };

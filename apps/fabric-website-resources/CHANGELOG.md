@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.122](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.122)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.117..@uifabric/fabric-website-resources_v7.6.122)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.6.82](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.82)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.68..@uifabric/fabric-website-resources_v7.6.82)
+
+### Patches
+
+- Clean up dependencies and clarify verison file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
 
 ## [7.6.62](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.62)
 

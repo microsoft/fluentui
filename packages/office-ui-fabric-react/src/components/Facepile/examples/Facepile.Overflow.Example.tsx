@@ -63,6 +63,7 @@ export const FacepileOverflowExample: React.FunctionComponent = () => {
           step={1}
           showValue
           value={displayedPersonas}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onChangePersonaNumber}
         />
         <Dropdown
@@ -70,6 +71,7 @@ export const FacepileOverflowExample: React.FunctionComponent = () => {
           className={styles.dropdown}
           selectedKey={overflowButtonType}
           options={dropdownOptions}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onChangeType}
         />
       </div>

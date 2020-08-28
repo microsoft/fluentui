@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SliderVariables } from './sliderVariables';
 import { SliderStylesProps, sliderSlotClassNames } from '../../../../components/Slider/Slider';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 const selectors = {
   WEBKIT_THUMB: '::-webkit-slider-thumb',
@@ -26,7 +26,7 @@ const thumbFromPreviousSiblingSelector = `&+ .${sliderSlotClassNames.thumb}`;
 
 const getFluidStyles = (p: SliderStylesProps) => p.fluid && !p.vertical && { width: '100%' };
 
-const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariables> = {
+export const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     height: v.height,
 
@@ -129,5 +129,3 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
     ...(p.disabled && { background: v.disabledThumbColor }),
   }),
 };
-
-export default sliderStyles;

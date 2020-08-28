@@ -1,7 +1,12 @@
 import './version';
 
-export { ThemeProvider, ThemeProviderProps } from './ThemeProvider';
+export { ThemeProvider } from './ThemeProvider';
+export { ThemeProviderProps } from './ThemeProvider.types';
 export { useTheme } from './useTheme';
 export * from './types';
-export * from './mergeThemes';
+export * from './getStyleFromPropsAndOptions';
 export * from './tokensToStyleObject';
+export * from './useInlineTokens';
+export { createDefaultTheme } from './createDefaultTheme';
+export * from './themes';
+export * from './makeStyles';

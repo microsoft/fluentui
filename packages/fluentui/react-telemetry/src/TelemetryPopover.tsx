@@ -1,8 +1,7 @@
 import { useEventListener } from '@fluentui/react-component-event-listener';
-import { StylesContextInputValue, Telemetry } from '@fluentui/react-bindings';
+import { ProviderContextPrepared, Telemetry, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ThemeProvider } from 'react-fela';
 
 import * as styles from './styles';
 import { TelemetryTable } from './TelemetryTable';
@@ -38,7 +37,7 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
     type: 'keydown',
   });
 
-  const outgoingContext = React.useMemo<Partial<StylesContextInputValue>>(
+  const outgoingContext = React.useMemo<Partial<ProviderContextPrepared>>(
     () => ({
       performance: state.performanceFlags,
       telemetry,
@@ -48,31 +47,32 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
 
   return (
     <>
-      <ThemeProvider theme={outgoingContext} overwrite>
+      <Unstable_FluentContextProvider value={outgoingContext as ProviderContextPrepared}>
         {children}
-      </ThemeProvider>
+      </Unstable_FluentContextProvider>
 
       {state.visible &&
         ReactDOM.createPortal(
           <div style={styles.panel({ position: state.position })}>
             <div style={styles.controls()}>
               <div>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'left' })}>Left</button>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'right' })}>Right</button>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom' })}>Bottom</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'top-left' })}>↖</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'top-right' })}>↗</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom-left' })}>↙</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom-right' })}>↘</button>
               </div>
 
-              <button onClick={() => dispatch({ type: 'SET_VISIBILITY', value: false })}>X</button>
+              <button onClick={() => dispatch({ type: 'SET_VISIBILITY', value: false })}>✕</button>
             </div>
 
             {state.activeTab === 'telemetry' && (
               <TelemetryTable
-                expandStyles={state.tableExpandStyles}
+                expand={state.tableExpand}
                 componentFilter={state.tableComponentFilter}
                 sort={state.tableSort}
                 telemetry={telemetry}
                 onComponentFilterChange={filter => dispatch({ type: 'SET_TABLE_COMPONENT_FILTER', value: filter })}
-                onExpandStylesChange={show => dispatch({ type: 'SET_TABLE_EXPAND_STYLES', value: show })}
+                onExpandChange={(name, show) => dispatch({ type: 'SET_TABLE_EXPAND', name, value: show })}
                 onSortChange={value => dispatch({ type: 'SET_TABLE_SORT', value })}
               />
             )}
@@ -81,12 +81,6 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
                 flags={state.performanceFlags}
                 onChange={(name, value) => dispatch({ type: 'SET_PERFORMANCE_FLAG', name, value })}
               />
-            )}
-
-            {state.activeTab === 'help' && (
-              <div style={styles.help()}>
-                <b>TBD</b>
-              </div>
             )}
 
             <div style={styles.tabs()}>
@@ -101,12 +95,6 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
                 onClick={() => dispatch({ type: 'SET_TELEMETRY_TAB', tab: 'performance-flags' })}
               >
                 Performance flags
-              </button>
-              <button
-                style={styles.tab({ active: state.activeTab === 'help' })}
-                onClick={() => dispatch({ type: 'SET_TELEMETRY_TAB', tab: 'help' })}
-              >
-                Help
               </button>
             </div>
           </div>,

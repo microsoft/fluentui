@@ -34,7 +34,9 @@ export const SeparatorPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDonts.md'),
   isHeaderVisible: true,

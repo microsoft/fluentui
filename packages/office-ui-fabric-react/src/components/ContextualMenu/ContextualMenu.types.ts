@@ -14,6 +14,7 @@ import {
   IContextualMenuItemProps,
   IContextualMenuRenderItem,
   IContextualMenuItemStyleProps,
+  IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
@@ -213,7 +214,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to provide the classnames to style the contextual menu.
    * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Custom render function for a submenu. */
@@ -266,6 +267,15 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * This will only result in different behavior when `shouldFocusOnMount = false`.
    */
   delayUpdateFocusOnHover?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to and whether or not the popup currently
+   * contains focus. If this prop is provided, focus will not be restored automatically,
+   * you'll need to call originalElement.focus()
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
 
 /**
@@ -288,6 +298,7 @@ export interface IContextualMenuListProps {
   hasCheckmarks: boolean;
   hasIcons: boolean;
   defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
+  role?: string;
 }
 
 /**
@@ -427,7 +438,7 @@ export interface IContextualMenuItem {
     iconClassName?: string,
     subMenuClassName?: string,
     primaryDisabled?: boolean,
-  ) => // tslint:disable-next-line:deprecation
+  ) => // eslint-disable-next-line deprecation/deprecation
   IMenuItemClassNames;
 
   /**
@@ -440,7 +451,7 @@ export interface IContextualMenuItem {
    * Default value is the `getSplitButtonVerticalDividerClassNames` func defined in `ContextualMenu.classnames.ts`.
    * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
@@ -482,6 +493,17 @@ export interface IContextualMenuItem {
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+
+  /**
+   * Method to customize sub-components rendering of this menu item.
+   *
+   * @param props - Props used to pass into render functions
+   * @param defaultRenders - Default render functions that renders default sub-components
+   */
+  onRenderContent?: (
+    props: IContextualMenuItemProps,
+    defaultRenders: IContextualMenuItemRenderFunctions,
+  ) => React.ReactNode;
 
   /**
    * A function to be executed on mouse down. This is executed before an `onClick` event and can

@@ -1,21 +1,38 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "0.50.0",
-  "description": "Custom ESLint rules for Fluent UI",
+  "version": "0.54.0",
+  "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js src"
+  },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/experimental-utils": "^2.34.0"
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/experimental-utils": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-deprecation": "^1.1.0",
+    "eslint-plugin-import": "^2.21.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "jju": "^1.4.0"
   },
   "devDependencies": {
+    "@types/eslint": "^7.2.0",
+    "eslint": "^7.1.0",
     "typescript": "3.7.2"
   },
   "peerDependencies": {
+    "eslint": "^6.0.0 || ^7.0.0",
     "typescript": "^3.5.0"
   },
   "files": [

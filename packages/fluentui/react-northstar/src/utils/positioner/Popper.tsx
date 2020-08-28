@@ -4,9 +4,9 @@ import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import isBrowser from '../isBrowser';
-import getBoundary from './getBoundary';
-import getScrollParent from './getScrollParent';
+import { isBrowser } from '../isBrowser';
+import { getBoundary } from './getBoundary';
+import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
@@ -55,7 +55,7 @@ const useUpdateIsomorphicLayoutEffect: typeof React.useLayoutEffect = (effect, d
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
-const Popper: React.FunctionComponent<PopperProps> = props => {
+export const Popper: React.FunctionComponent<PopperProps> = props => {
   const {
     align,
     children,
@@ -65,6 +65,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     offset,
     overflowBoundary,
     pointerTargetRef,
+    popperRef,
     position,
     positionFixed,
     positioningDependencies = [],
@@ -75,7 +76,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 
   const proposedPlacement = getPlacement({ align, position, rtl });
 
-  const popperRef = React.useRef<PopperJs.Instance>();
+  const popperInstanceRef = React.useRef<PopperJs.Instance>();
   const contentRef = React.useRef<HTMLElement>(null);
 
   const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
@@ -185,7 +186,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
       onFirstUpdate: state => handleUpdate({ state }),
     };
 
-    popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
+    popperInstanceRef.current = PopperJs.createPopper(reference, contentRef.current, options);
   }, [
     contentRef,
     computedModifiers,
@@ -200,17 +201,25 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
   ]);
 
   const destroyInstance = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.destroy();
-      popperRef.current = null;
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.destroy();
+      popperInstanceRef.current = null;
     }
   }, []);
 
   const scheduleUpdate = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.update();
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.update();
     }
   }, []);
+
+  React.useImperativeHandle(
+    popperRef,
+    () => ({
+      updatePosition: scheduleUpdate,
+    }),
+    [scheduleUpdate],
+  );
 
   useIsomorphicLayoutEffect(() => {
     createInstance();
@@ -233,5 +242,3 @@ Popper.defaultProps = {
   positionFixed: false,
   positioningDependencies: [],
 };
-
-export default Popper;

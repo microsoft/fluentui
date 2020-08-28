@@ -1,11 +1,9 @@
-import { DialogProps } from '../../../../components/Dialog/Dialog';
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { DialogStylesProps } from '../../../../components/Dialog/Dialog';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DialogVariables } from './dialogVariables';
 
-type DialogStyleParams = ComponentStyleFunctionParam<DialogProps, DialogVariables>;
-
-export default {
-  root: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
+export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, DialogVariables> = {
+  root: ({ variables: v }): ICSSInJSStyle => ({
     background: v.rootBackground,
     border: v.border,
     borderRadius: v.rootBorderRadius,
@@ -32,7 +30,7 @@ export default {
     display: 'inline-block',
   }),
 
-  content: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
+  content: ({ variables: v }): ICSSInJSStyle => ({
     margin: v.contentMargin,
 
     gridColumn: '1 / span 2',
@@ -46,7 +44,7 @@ export default {
     width: '100%',
   }),
 
-  header: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
+  header: ({ variables: v }): ICSSInJSStyle => ({
     margin: v.headerMargin,
     gridRow: 1,
     msGridRow: 1,
@@ -57,7 +55,7 @@ export default {
     fontWeight: v.headerFontWeight,
   }),
 
-  headerAction: ({ variables: v }: DialogStyleParams) => ({
+  headerAction: ({ variables: v }) => ({
     gridRow: 1,
     msGridRow: 1,
     gridColumn: 2,
@@ -66,7 +64,7 @@ export default {
     margin: v.headerActionMargin,
   }),
 
-  overlay: ({ props: p, variables: v }: DialogStyleParams): ICSSInJSStyle => ({
+  overlay: ({ props: p, variables: v }): ICSSInJSStyle => ({
     alignItems: 'center',
     background: 'transparent',
     bottom: 0,

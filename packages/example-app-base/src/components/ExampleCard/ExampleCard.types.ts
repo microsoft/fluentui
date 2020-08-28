@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
@@ -66,9 +67,9 @@ export interface IExampleCardStyles {
 
 export interface IExampleCardSubComponentStyles {
   // TODO: replace with IDropdownStyles after TS 3 upgrade
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dropdowns: IStyleFunctionOrObject<IDropdownStyleProps, any>;
   // TODO: fix once button has full styling support
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   codeButtons: IStyleFunctionOrObject<any, any>;
 }

@@ -1,7 +1,5 @@
-import { CodeSnippet } from '@fluentui/docs-components';
+import { CodeSnippet, renderElementToJSX } from '@fluentui/docs-components';
 import * as React from 'react';
-
-import renderElementToJSX from './renderElementToJSX';
 
 export type ExampleSnippetProps = {
   children?: React.ReactElement;

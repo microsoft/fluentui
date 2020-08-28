@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -22,7 +23,7 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 ];
 
 describe('Dropdown', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
 
   beforeEach(() => {
@@ -44,7 +45,7 @@ describe('Dropdown', () => {
 
   describe('single-select', () => {
     it('Renders single-select Dropdown correctly', () => {
-      component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} />);
+      component = create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -443,7 +444,7 @@ describe('Dropdown', () => {
 
   describe('multi-select', () => {
     it('Renders multiselect Dropdown correctly', () => {
-      component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
+      component = create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });

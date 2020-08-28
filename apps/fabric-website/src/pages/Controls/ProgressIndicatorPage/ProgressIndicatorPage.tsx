@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ProgressIndicatorPageProps } from './ProgressIndicatorPage.doc';
-import { Platforms } from '../../../interfaces/Platforms';
 
 export const ProgressIndicatorPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

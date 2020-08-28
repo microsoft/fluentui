@@ -7,7 +7,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds attribute 'aria-labelledby' based on the property 'accordionTitleId' to 'root' slot.
  */
-const accordionContentBehavior: Accessibility<AccordionContentBehaviorProps> = props => {
+export const accordionContentBehavior: Accessibility<AccordionContentBehaviorProps> = props => {
   return {
     attributes: {
       root: {
@@ -16,8 +16,6 @@ const accordionContentBehavior: Accessibility<AccordionContentBehaviorProps> = p
     },
   };
 };
-
-export default accordionContentBehavior;
 
 export type AccordionContentBehaviorProps = {
   /** id of the accordion title element. */

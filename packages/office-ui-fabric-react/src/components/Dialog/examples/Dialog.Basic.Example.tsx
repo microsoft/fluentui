@@ -34,7 +34,7 @@ export const DialogBasicExample: React.FunctionComponent = () => {
       styles: dialogStyles,
       dragOptions: isDraggable ? dragOptions : undefined,
     }),
-    [isDraggable],
+    [isDraggable, labelId, subTextId],
   );
 
   return (

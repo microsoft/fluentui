@@ -3,15 +3,20 @@
 exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
 <div
   className=
-      ms-VerticalBarChart
+
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        width: 690px;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
       }
+  id="VerticalBarChart"
 >
   <div
     className=
@@ -25,40 +30,70 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
-      className=
-
-          {
-            box-sizing: content-box;
-            height: 400px;
-            padding-bottom: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 20px;
-            width: 650px;
-          }
+      height={350}
+      width={600}
     >
       <g
         className=
 
-            {
-              transform: translate(30px, 350px);
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
             }
+            @media screen and (-ms-high-contrast: white-on-black){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & line {
+              opacity: 0.1;
+              width: 1px;
+            }
+            @media screen and (-ms-high-contrast: white-on-black){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+        id="xAxisGElement"
+        transform="translate(0, 315)"
       />
       <g
         className=
 
-            {
-              transform: translate(23px, 0px);
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
             }
+            @media screen and (-ms-high-contrast: white-on-black){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & line {
+              opacity: 0.2;
+              stroke: #323130;
+              width: 1px;
+            }
+            @media screen and (-ms-high-contrast: white-on-black){& line {
+              stroke: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+        id="yAxisGElement"
+        transform="translate(40, 0)"
       />
       <g
-        className=
-
-            {
-              transform: translate(30px, 0px);
-            }
+        id="barGElement"
       >
         <rect
+          aria-labelledby="callout0"
           className=
 
               {
@@ -71,11 +106,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          width={15}
-          x={0}
-          y={350}
+          width={32}
+          x={56}
+          y={-35}
         />
         <rect
+          aria-labelledby="callout0"
           className=
 
               {
@@ -83,14 +119,14 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               }
           data-is-focusable={true}
           fill="rgb(0, 32, 80)"
-          height={340}
+          height={0}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          width={15}
-          x={585}
-          y={10}
+          width={32}
+          x={-68}
+          y={20}
         />
       </g>
     </svg>
@@ -197,6 +233,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -216,6 +253,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
+                          background-image: linear-gradient(to right, undefined, undefined);
                           opacity: ;
                         }
                   />
@@ -285,6 +323,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -304,6 +343,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
+                          background-image: linear-gradient(to right, undefined, undefined);
                           opacity: ;
                         }
                   />
@@ -330,5 +370,8 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

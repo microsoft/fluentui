@@ -1,5 +1,4 @@
-import * as _ from 'lodash';
-import isBrowser from './isBrowser';
+import { isBrowser } from './isBrowser';
 
 const DEFAULT_REM_SIZE_IN_PX = 16;
 
@@ -15,6 +14,9 @@ const getDocumentRemSize = (): number => {
 const getFontSizeValue = (size?: string | null): number | null => {
   return (size && parseFloat(size)) || null;
 };
+
+// A replacement for a Lodash's one, way more faster on our cases as handles specific scenario
+export const round = (n: number) => ((n * 10000 + (n > 0 ? 0.5 : -0.5)) << 0) / 10000;
 
 /**
  * Converts the provided px size to rem based on the default font size of 16px unless
@@ -42,5 +44,5 @@ export const pxToRem = (valueInPx: number, baseRemSize?: number): string => {
   const remSize = baseRemSize || _documentRemSize || DEFAULT_REM_SIZE_IN_PX;
   const convertedValueInRems = valueInPx / remSize;
 
-  return `${_.round(convertedValueInRems, 4)}rem`;
+  return `${round(convertedValueInRems)}rem`;
 };

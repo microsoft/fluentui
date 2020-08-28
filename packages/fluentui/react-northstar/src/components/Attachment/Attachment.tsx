@@ -6,6 +6,7 @@ import {
   mergeVariablesOverrides,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -13,10 +14,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, ProviderContextPrepared, ShorthandValue } from '../../types';
+import { ComponentEventHandler, ShorthandValue } from '../../types';
 import {
   createShorthandFactory,
   commonPropTypes,
@@ -25,11 +24,11 @@ import {
   createShorthand,
   ShorthandFactory,
 } from '../../utils';
-import AttachmentAction, { AttachmentActionProps } from './AttachmentAction';
-import AttachmentBody, { AttachmentBodyProps } from './AttachmentBody';
-import AttachmentDescription, { AttachmentDescriptionProps } from './AttachmentDescription';
-import AttachmentHeader, { AttachmentHeaderProps } from './AttachmentHeader';
-import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
+import { AttachmentAction, AttachmentActionProps } from './AttachmentAction';
+import { AttachmentBody, AttachmentBodyProps } from './AttachmentBody';
+import { AttachmentDescription, AttachmentDescriptionProps } from './AttachmentDescription';
+import { AttachmentHeader, AttachmentHeaderProps } from './AttachmentHeader';
+import { AttachmentIcon, AttachmentIconProps } from './AttachmentIcon';
 
 export interface AttachmentProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -73,9 +72,9 @@ export const attachmentClassName = 'ui-attachment';
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.
  */
-const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}>(
+export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -248,8 +247,3 @@ Attachment.Body = AttachmentBody;
 Attachment.Description = AttachmentDescription;
 Attachment.Header = AttachmentHeader;
 Attachment.Icon = AttachmentIcon;
-
-/**
- * An Attachment represents a file or media attachment, which may contain some metadata or actions.
- */
-export default Attachment;

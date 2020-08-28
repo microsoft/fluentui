@@ -6,7 +6,7 @@ import {
   LogInspectorProps,
   KnobNumberKnobComponentProps,
 } from './types';
-import parseValue from './utils/parseRangeValue';
+import { parseValue } from './utils/parseRangeValue';
 
 const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
   <div
@@ -160,7 +160,7 @@ const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
   </>
 );
 
-const defaultComponents: KnobComponents = {
+export const defaultComponents: KnobComponents = {
   KnobControl,
   KnobField,
   KnobLabel,
@@ -173,5 +173,3 @@ const defaultComponents: KnobComponents = {
 
   LogInspector,
 };
-
-export default defaultComponents;

@@ -49,8 +49,6 @@ export const SearchBoxPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

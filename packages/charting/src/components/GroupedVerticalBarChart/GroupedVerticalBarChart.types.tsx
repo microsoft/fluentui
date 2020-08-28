@@ -3,6 +3,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IGroupedVerticalBarChartData } from '../../types/index';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IGroupedVerticalBarChartProps {
   /**
@@ -110,6 +111,36 @@ export interface IGroupedVerticalBarChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
+
+  /**
+   * x Axis labels tick padding
+   * @default 10
+   */
+  xAxisTickPadding?: number;
+
+  /**
+   *@default false
+   *Used for to elipse x axis labes and show tooltip on x axis labels
+   */
+  showXAxisLablesTooltip?: boolean;
+
+  /**
+   * @default 4
+   * Used for X axis labels
+   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
+   */
+  noOfCharsToTruncate?: number;
+
+  /**
+   * @default false
+   * Used to display x axis labels values (whole value)
+   */
+  wrapXAxisLables?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {
@@ -179,4 +210,6 @@ export interface IGroupedVerticalBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  tooltip: IStyle;
 }

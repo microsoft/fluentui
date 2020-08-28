@@ -6,7 +6,7 @@ export interface GridVariables {
   padding?: string;
 }
 
-export default (): GridVariables => ({
+export const gridVariables = (): GridVariables => ({
   defaultColumnCount: 5,
   gridGap: undefined,
   padding: undefined,

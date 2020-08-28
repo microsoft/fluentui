@@ -33,6 +33,7 @@ export const TextFieldMultilineExample: React.FunctionComponent = () => {
         <TextField
           label="Switches from single to multiline if more than 50 characters are entered"
           multiline={multiline}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onChange}
         />
       </Stack>

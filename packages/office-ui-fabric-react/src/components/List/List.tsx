@@ -99,12 +99,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-  };
-
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
+  private _pageRefs: Record<string, unknown> = {};
   private _async: Async;
   private _events: EventGroup;
   private _estimatedPageHeight: number;
@@ -184,6 +181,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
     this._pageCache = {};
+  }
+
+  public get pageRefs(): Readonly<Record<string, unknown>> {
+    return this._pageRefs;
   }
 
   /**
@@ -339,7 +340,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     delete this._scrollElement;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
@@ -476,7 +476,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         page: page,
         className: 'ms-List-page',
         key: page.key,
-        ref: page.key,
+        ref: (newRef: unknown) => {
+          this._pageRefs[page.key] = newRef;
+        },
         style: pageStyle,
         role: 'presentation',
       },
@@ -766,7 +768,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    */
   private _measurePage(page: IPage<T>): boolean {
     let hasChangedHeight = false;
-    const pageElement = this.refs[page.key] as HTMLElement;
+    const pageElement = this._pageRefs[page.key] as HTMLElement;
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);

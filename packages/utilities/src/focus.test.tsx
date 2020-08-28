@@ -37,7 +37,7 @@ function _initialize(): void {
       <button />
     </div>,
   ) as HTMLElement;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (_element as any).isVisible = true;
 }
 

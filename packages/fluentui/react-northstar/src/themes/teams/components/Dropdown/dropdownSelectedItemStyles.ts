@@ -4,11 +4,14 @@ import {
 } from '../../../../components/Dropdown/DropdownSelectedItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
 
-const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemStylesProps, DropdownVariables> = {
+export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
+  DropdownSelectedItemStylesProps,
+  DropdownVariables
+> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
@@ -82,5 +85,3 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     },
   }),
 };
-
-export default dropdownSelectedItemStyles;

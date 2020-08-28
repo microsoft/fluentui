@@ -6,10 +6,10 @@ describe('removeAnchorLink', () => {
   });
 
   it('throws on null/undefined url', () => {
-    // tslint:disable:no-any
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     expect(() => removeAnchorLink(undefined as any)).toThrow();
     expect(() => removeAnchorLink(null as any)).toThrow();
-    // tslint:enable:no-any
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   });
 
   it('returns hashless url unmodified', () => {

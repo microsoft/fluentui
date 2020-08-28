@@ -6,10 +6,10 @@ describe('extractAnchorLink', () => {
   });
 
   it('throws on null/undefined url', () => {
-    // tslint:disable:no-any
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     expect(() => extractAnchorLink(undefined as any)).toThrow();
     expect(() => extractAnchorLink(null as any)).toThrow();
-    // tslint:enable:no-any
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   });
 
   it('returns empty string for url with no hash', () => {

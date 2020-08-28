@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-interface IRootStyles {
-  height: string;
-  width: string;
-}
 
 interface IStyledLineChartExampleState {
   width: number;
@@ -53,7 +47,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
-    const rootStyle: IRootStyles = {
+    const rootStyle = {
       width: `${this.state.width}px`,
       height: `${this.state.height}px`,
     };
@@ -63,7 +57,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <div className={mergeStyles(rootStyle)}>
+        <div style={rootStyle}>
           <LineChart
             data={data}
             strokeWidth={4}

@@ -4,9 +4,9 @@ import {
   alertDismissActionSlotClassNames,
 } from '../../../../components/Alert/AlertDismissAction';
 import { AlertVariables } from './alertVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import dismissIndicatorUrl from './dismissIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { dismissIndicatorUrl } from './dismissIndicatorUrl';
 import { getIntentColorsFromProps } from './alertStyles';
 import { faster } from '../../animations/durations';
 
@@ -19,7 +19,7 @@ const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSS
   };
 };
 
-const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionStylesProps, AlertVariables> = {
+export const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionStylesProps, AlertVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -42,7 +42,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       color: v.dismissActionColor || 'currentColor',
       outline: 0,
       padding: 0,
-      border: 0,
+      borderWidth: 0,
       backgroundColor: v.dismissActionBackgroundColor,
       borderRadius: v.borderRadius,
       display: 'inline-flex',
@@ -129,5 +129,3 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
     };
   },
 };
-
-export default alertDismissActionStyles;

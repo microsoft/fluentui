@@ -462,4 +462,51 @@ describe('BasePicker', () => {
 
     expect(getSuggestions(document)).toBeTruthy();
   });
+
+  it('navigates to search for more button', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+    const onValidateInput = () => {
+      return ValidationState.valid;
+    };
+
+    const createGenericItem = (str: string): ISimple => {
+      return {
+        key: str,
+        name: str,
+      };
+    };
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        createGenericItem={createGenericItem}
+        onValidateInput={onValidateInput}
+        pickerSuggestionsProps={{
+          searchForMoreText: 'More Options',
+        }}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'b';
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    expect(getSuggestions(document)).toBeDefined();
+
+    const moreButton = document.querySelector('[data-automationid=sug-searchForMore]') as HTMLElement;
+    expect(moreButton).toBeTruthy();
+    ReactTestUtils.Simulate.keyDown(input, { which: KeyCodes.up });
+
+    expect(moreButton.id).toEqual('sug-selectedAction');
+    expect(input.getAttribute('aria-activedescendant')).toEqual('sug-selectedAction');
+  });
 });

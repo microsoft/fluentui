@@ -4,9 +4,9 @@ import { mount } from 'enzyme';
 
 import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoin } from './index';
-import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { Icon, Image, Text } from 'office-ui-fabric-react';
 import { setRTL } from '../../Utilities';
+import { PersonaTestImages } from '../../common/TestImages';
 
 const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',
@@ -128,7 +128,6 @@ describe('PersonaCoin', () => {
 
   describe('image', () => {
     const testImage1x1 =
-      // tslint:disable-next-line:max-line-length
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
     it('renders empty alt text by default', () => {

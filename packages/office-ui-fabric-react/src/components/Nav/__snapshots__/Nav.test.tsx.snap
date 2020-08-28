@@ -215,7 +215,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -244,10 +243,10 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         color: #004578;
                       }
                       @media screen and (-ms-high-contrast: active){& {
-                        border-color: transparent;
+                        border: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus {
-                        border-color: WindowText;
+                        border: 1px solid WindowText;
                       }
                       .ms-Nav-compositeLink:hover & {
                         background-color: #f3f2f1;
@@ -373,7 +372,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -402,10 +400,10 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         color: #004578;
                       }
                       @media screen and (-ms-high-contrast: active){& {
-                        border-color: transparent;
+                        border: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus {
-                        border-color: WindowText;
+                        border: 1px solid WindowText;
                       }
                       .ms-Nav-compositeLink:hover & {
                         background-color: #f3f2f1;
@@ -593,7 +591,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -622,10 +619,10 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;

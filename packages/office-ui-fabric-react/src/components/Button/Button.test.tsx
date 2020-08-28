@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
@@ -40,13 +40,13 @@ describe('Button', () => {
   }
 
   it('renders DefaultButton correctly', () => {
-    const component = renderer.create(<DefaultButton text="Button" />);
+    const component = create(<DefaultButton text="Button" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ActionButton correctly', () => {
-    const component = renderer.create(<ActionButton>Button</ActionButton>);
+    const component = create(<ActionButton>Button</ActionButton>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -56,13 +56,13 @@ describe('Button', () => {
       content: 'A',
       keySequences: ['a'],
     };
-    const component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
+    const component = create(<DefaultButton text="Button" keytipProps={keytipProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CommandBarButton correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <CommandBarButton
         iconProps={{ iconName: 'Add' }}
         text="Create account"
@@ -87,7 +87,7 @@ describe('Button', () => {
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>,
     );
     const tree = component.toJSON();
@@ -95,9 +95,7 @@ describe('Button', () => {
   });
 
   it('renders IconButton correctly', () => {
-    const component = renderer.create(
-      <IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />,
-    );
+    const component = create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

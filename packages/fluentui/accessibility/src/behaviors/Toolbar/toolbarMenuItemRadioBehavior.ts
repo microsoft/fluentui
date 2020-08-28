@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  *  Adds attribute 'aria-disabled=true' based on the property 'disabled'.
  *  Adds role='menuitemradio'.
  */
-const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorProps> = props => ({
+export const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorProps> = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -26,8 +26,6 @@ const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorPr
     },
   },
 });
-
-export default toolbarMenuItemRadioBehavior;
 
 type ToolbarMenuItemRadioBehaviorProps = {
   active?: boolean;

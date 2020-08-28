@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const EmailIcon = createSvgIcon({
+export const EmailIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -22,5 +22,3 @@ const EmailIcon = createSvgIcon({
   ),
   displayName: 'EmailIcon',
 });
-
-export default EmailIcon;

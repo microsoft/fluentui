@@ -131,14 +131,25 @@ export const ListScrollingExample: React.FunctionComponent = () => {
         ariaLabel="Scroll To Mode"
         defaultSelectedKey={'auto'}
         options={dropdownOptions}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDropdownChange}
       />
       <div>
         Scroll item index:
-        <TextField value={selectedIndex.toString(10)} onChange={onChangeText} />
+        <TextField
+          value={selectedIndex.toString(10)}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onChangeText}
+        />
       </div>
       <div className={styles.container} data-is-scrollable>
-        <List componentRef={listRef} items={items} getPageHeight={getPageHeight} onRenderCell={onRenderCell} />
+        <List
+          componentRef={listRef}
+          items={items}
+          // eslint-disable-next-line react/jsx-no-bind
+          getPageHeight={getPageHeight}
+          onRenderCell={onRenderCell}
+        />
       </div>
     </FocusZone>
   );

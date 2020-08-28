@@ -37,7 +37,6 @@ interface IComboBoxBasicExampleState {
   dynamicErrorValue: number | string;
 }
 
-// tslint:disable:jsx-no-lambda
 export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExampleState> {
   private _basicComboBox = React.createRef<IComboBox>();
 

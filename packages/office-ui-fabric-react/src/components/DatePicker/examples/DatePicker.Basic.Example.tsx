@@ -30,6 +30,8 @@ const DayPickerStrings: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };
 
 const controlClass = mergeStyleSets({
@@ -89,6 +91,7 @@ export const DatePickerBasicExample: React.FC = () => {
           },
         ]}
         selectedKey={DayOfWeek[firstDayOfWeek!]}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDropdownChange}
       />
     </div>

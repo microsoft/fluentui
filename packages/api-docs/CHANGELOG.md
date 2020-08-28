@@ -1,8 +1,26 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.40](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.3.40)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.3.15..@uifabric/api-docs_v7.3.40)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.3.0)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.84..@uifabric/api-docs_v7.3.0)
+
+### Minor changes
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
 
 ## [7.2.68](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.68)
 

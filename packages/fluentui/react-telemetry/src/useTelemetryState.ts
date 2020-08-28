@@ -1,9 +1,10 @@
 import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-export type TelemetryPosition = 'left' | 'right' | 'bottom';
-export type TelemetryTabs = 'telemetry' | 'performance-flags' | 'help';
+export type TelemetryPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+export type TelemetryTabs = 'telemetry' | 'performance-flags';
 export type TelemetryTableSort = { column: string; direction: 'asc' | 'desc' };
+export type TelemetryTableExpandNames = 'styles' | 'total';
 
 export type TelemetryAction =
   | {
@@ -11,7 +12,7 @@ export type TelemetryAction =
       type: 'SET_PERFORMANCE_FLAG';
       value: boolean;
     }
-  | { type: 'SET_TABLE_EXPAND_STYLES'; value: boolean }
+  | { type: 'SET_TABLE_EXPAND'; value: boolean; name: TelemetryTableExpandNames }
   | { type: 'SET_TABLE_COMPONENT_FILTER'; value: string | undefined }
   | { type: 'SET_TABLE_SORT'; value: TelemetryTableSort | undefined }
   | { type: 'SET_TELEMETRY_TAB'; tab: TelemetryTabs }
@@ -24,7 +25,7 @@ export type TelemetryState = {
 
   tableComponentFilter: string | undefined;
   tableSort: TelemetryTableSort | undefined;
-  tableExpandStyles: boolean;
+  tableExpand: Record<TelemetryTableExpandNames, boolean>;
 
   position: TelemetryPosition;
   visible: boolean;
@@ -34,23 +35,29 @@ const stateReducer: React.Reducer<TelemetryState, TelemetryAction> = (prevState,
   switch (action.type) {
     case 'SET_PERFORMANCE_FLAG':
       return { ...prevState, performanceFlags: { ...prevState.performanceFlags, [action.name]: action.value } };
+
     case 'SET_TELEMETRY_TAB':
       return { ...prevState, activeTab: action.tab };
 
-    case 'SET_TABLE_EXPAND_STYLES':
-      return { ...prevState, tableExpandStyles: action.value };
+    case 'SET_TABLE_EXPAND':
+      return { ...prevState, tableExpand: { ...prevState.tableExpand, [action.name]: action.value } };
+
     case 'SET_TABLE_COMPONENT_FILTER':
       return { ...prevState, tableComponentFilter: action.value };
+
     case 'SET_TABLE_SORT':
       if (action.value) {
         return { ...prevState, tableSort: action.value };
       }
 
       return { ...prevState, tableSort: undefined };
+
     case 'SET_POSITION':
       return { ...prevState, position: action.value };
+
     case 'SET_VISIBILITY':
       return { ...prevState, visible: action.value };
+
     default:
       throw new Error('Not implemented');
   }
@@ -62,9 +69,12 @@ const defaultState: TelemetryState = {
 
   tableComponentFilter: undefined,
   tableSort: undefined,
-  tableExpandStyles: true,
+  tableExpand: {
+    styles: true,
+    total: false,
+  },
 
-  position: 'bottom',
+  position: 'bottom-right',
   visible: false,
 };
 

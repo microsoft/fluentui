@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { Customizer, createTheme, Checkbox, Fabric } from '@fluentui/react-next';
 import { mount } from 'enzyme';
 
@@ -8,13 +8,13 @@ const ltrTheme = createTheme({ rtl: false });
 
 describe('Fabric', () => {
   it('renders a Fabric component correctly', () => {
-    const component = renderer.create(<Fabric>test</Fabric>);
+    const component = create(<Fabric>test</Fabric>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a Fabric component with applyTheme correctly', () => {
-    const component = renderer.create(<Fabric applyTheme>test</Fabric>);
+    const component = create(<Fabric applyTheme>test</Fabric>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -47,19 +47,11 @@ describe('Fabric', () => {
       </div>
     );
     // Render with no theme context
-    const component = renderer.create(content);
+    const component = create(content);
     // Render in RTL context
-    const rtlComponent = renderer.create(
-      <Customizer disableThemeProvider settings={{ theme: rtlTheme }}>
-        {content}
-      </Customizer>,
-    );
+    const rtlComponent = create(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
     // Render in LTR Context
-    const ltrComponent = renderer.create(
-      <Customizer disableThemeProvider settings={{ theme: ltrTheme }}>
-        {content}
-      </Customizer>,
-    );
+    const ltrComponent = create(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
 
     const tree = component.toJSON();
     const rtlTree = rtlComponent.toJSON();
@@ -70,7 +62,7 @@ describe('Fabric', () => {
   });
 
   it('renders as a span using the "as" prop', () => {
-    const component = renderer.create(<Fabric as="span" />);
+    const component = create(<Fabric as="span" />);
 
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

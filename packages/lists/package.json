@@ -28,20 +28,18 @@
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/example-app-base": "^7.12.78",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.26",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/example-app-base": "^7.14.4",
+    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -50,8 +48,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/set-version": "^7.0.13",
-    "office-ui-fabric-react": "^7.120.0",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.132.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

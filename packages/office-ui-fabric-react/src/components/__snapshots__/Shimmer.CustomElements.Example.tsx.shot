@@ -69,7 +69,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={
@@ -540,7 +540,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={
@@ -956,7 +956,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={

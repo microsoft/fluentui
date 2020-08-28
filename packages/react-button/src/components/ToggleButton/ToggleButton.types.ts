@@ -1,5 +1,5 @@
-import { ComposeStandardStatics } from '../../utils/tempTypes';
-import { ComposeOptions } from '@fluentui/react-compose';
+import * as React from 'react';
+import { SlotProps } from '@fluentui/react-compose';
 import { ButtonProps, ButtonSlots } from '../Button/Button.types';
 
 export interface ToggleButtonProps extends ButtonProps {
@@ -22,9 +22,8 @@ export interface ToggleButtonState extends ToggleButtonProps {}
 
 export interface ToggleButtonSlots extends ButtonSlots {}
 
-export type ToggleButtonSlotProps = {
-  [key in keyof ToggleButtonSlots]: ToggleButtonProps[key];
-};
-
-export interface ToggleButtonOptions
-  extends ComposeOptions<ToggleButtonProps, ToggleButtonSlots, ToggleButtonSlotProps, ComposeStandardStatics> {}
+export type ToggleButtonSlotProps = SlotProps<
+  ToggleButtonSlots,
+  ToggleButtonProps,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>;

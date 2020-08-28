@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Move Link from react-next to react-link.",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-26T00:43:47.512Z"
+}

@@ -207,7 +207,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
           <ThemeProvider scheme={sideScheme}>
             <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
               <Text>{sideCaption}</Text>
-              <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
+              <Toggle offText={sideCaption} onText={sideCaption} onChange={this._toggleSide} />
               <CollapsibleSectionRecursiveExample />
             </Stack>
           </ThemeProvider>
@@ -218,7 +218,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
               <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
-                  <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
+                  <Toggle offText={topCaption} onText={topCaption} onChange={this._toggleTop} />
                 </Stack>
                 <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
               </Stack>
@@ -227,7 +227,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
               <Stack styles={regionStyles} verticalFill={true} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{bodyCaption}</Text>
-                  <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
+                  <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this._toggleBody} />
                 </Stack>
                 <ThemeProvider scheme="default">
                   <Stack.Item>
@@ -253,20 +253,20 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
     );
   }
 
-  private toggleBody = () => {
+  private _toggleBody = () => {
     this.setState((state: IThemingExampleState) => this.setState({ bodyToggle: !state.bodyToggle }));
   };
 
-  private toggleSide = () => {
+  private _toggleSide = () => {
     this.setState((state: IThemingExampleState) => this.setState({ sideToggle: !state.sideToggle }));
   };
 
-  private toggleTop = () => {
+  private _toggleTop = () => {
     this.setState((state: IThemingExampleState) => this.setState({ topToggle: !state.topToggle }));
   };
 }
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && (item.text || item.name));
 const items: ICommandBarItemProps[] = [
   {

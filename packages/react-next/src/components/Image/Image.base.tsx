@@ -20,15 +20,17 @@ function useLoadState(
   /* onImageLoad */ (ev: React.SyntheticEvent<HTMLImageElement>) => void,
   /* onImageError */ (ev: React.SyntheticEvent<HTMLImageElement>) => void,
 ] {
+  const { onLoadingStateChange, onLoad, onError, src } = props;
+
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
 
   React.useLayoutEffect(() => {
     // If the src property changes, reset the load state
-    if (loadState !== ImageLoadState.notLoaded) {
-      setLoadState(ImageLoadState.notLoaded);
-    }
-  }, [props.src]);
+    // (does nothing if the load state is already notLoaded)
+    setLoadState(ImageLoadState.notLoaded);
+  }, [src]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- intended to run every render
   React.useEffect(() => {
     if (loadState === ImageLoadState.notLoaded) {
       // testing if naturalWidth and naturalHeight are greater than zero is better than checking
@@ -36,8 +38,8 @@ function useLoadState(
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
       const isLoaded: boolean = imageElement.current
-        ? (props.src && imageElement.current.naturalWidth > 0 && imageElement.current.naturalHeight > 0) ||
-          (imageElement.current.complete && SVG_REGEX.test(props.src!))
+        ? (src && imageElement.current.naturalWidth > 0 && imageElement.current.naturalHeight > 0) ||
+          (imageElement.current.complete && SVG_REGEX.test(src!))
         : false;
 
       if (isLoaded) {
@@ -47,25 +49,26 @@ function useLoadState(
   });
 
   React.useEffect(() => {
-    props.onLoadingStateChange?.(loadState);
+    onLoadingStateChange?.(loadState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when loadState changes
   }, [loadState]);
 
   const onImageLoaded = React.useCallback(
     (ev: React.SyntheticEvent<HTMLImageElement>) => {
-      props.onLoad?.(ev);
-      if (props.src) {
+      onLoad?.(ev);
+      if (src) {
         setLoadState(ImageLoadState.loaded);
       }
     },
-    [props.src, props.onLoad],
+    [src, onLoad],
   );
 
   const onImageError = React.useCallback(
     (ev: React.SyntheticEvent<HTMLImageElement>) => {
-      props.onError?.(ev);
+      onError?.(ev);
       setLoadState(ImageLoadState.error);
     },
-    [props.src, props.onError],
+    [onError],
   );
 
   return [loadState, onImageLoaded, onImageError] as const;
@@ -179,8 +182,13 @@ function computeCoverStyle(
     // Determine the desired ratio using the width and height props.
     // If those props aren't available, measure measure the frame.
     let desiredRatio;
-    if (!!width && !!height && imageFit !== ImageFit.centerContain && imageFit !== ImageFit.centerCover) {
-      desiredRatio = (width as number) / (height as number);
+    if (
+      typeof width === 'number' &&
+      typeof height === 'number' &&
+      imageFit !== ImageFit.centerContain &&
+      imageFit !== ImageFit.centerCover
+    ) {
+      desiredRatio = width / height;
     } else {
       desiredRatio = frameElement.current.clientWidth / frameElement.current.clientHeight;
     }

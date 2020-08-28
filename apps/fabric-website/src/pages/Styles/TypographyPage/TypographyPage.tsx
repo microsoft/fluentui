@@ -6,6 +6,7 @@ import {
   Table,
   ITableRowProps,
   ITableColumnProps,
+  MarkdownCode,
 } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { TypographyPageProps, sizeUsage, weightUsage } from './TypographyPage.doc';
@@ -64,24 +65,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/TypographyImplementation.md`,
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
         },
         {
           sectionName: 'Customization',
           editUrl: `${baseUrl}/web/TypographyCustomization.md`,
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
         },
       ];
   }
@@ -91,39 +80,22 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
   return (
     <Table
       columns={[
-        {
-          title: 'Weight',
-          percentWidth: 10,
-        },
-        {
-          title: 'Example',
-          data: 'example',
-        },
-        {
-          title: 'Usage',
-          percentWidth: 20,
-        },
-        {
-          title: 'Core class',
-          percentWidth: 15,
-        },
-        {
-          title: 'React variable',
-          percentWidth: 20,
-          overflowX: 'auto',
-        },
+        { title: 'Weight', percentWidth: 10 },
+        { title: 'Example', data: 'example' },
+        { title: 'Usage', percentWidth: 20 },
+        { title: 'Core class', percentWidth: 15, overflowX: 'auto' },
+        { title: 'React variable', percentWidth: 20, overflowX: 'auto' },
       ]}
       rows={weights}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {
           case 'Weight':
             return `${row.name} (${row.weight})`;
           case 'Core class':
-            return `ms-fontWeight-${row.name.toLowerCase()}`;
+            return <MarkdownCode>ms-fontWeight-{row.name.toLowerCase()}</MarkdownCode>;
           case 'React variable':
-            return `FontWeights.${row.name.toLowerCase()}`;
+            return <MarkdownCode>FontWeights.{row.name.toLowerCase()}</MarkdownCode>;
           case 'Example':
             return (
               <span className={`ms-fontWeight-${row.name.toLowerCase()}`}>
@@ -144,39 +116,20 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
   return (
     <Table
       columns={[
-        {
-          title: 'Size',
-          data: 'size',
-          percentWidth: 10,
-        },
-        {
-          title: 'Example',
-          data: 'example',
-          overflowX: 'auto',
-        },
-        {
-          title: 'Usage',
-          percentWidth: 20,
-        },
-        {
-          title: 'Core class',
-          percentWidth: 15,
-        },
-        {
-          title: 'React variable',
-          percentWidth: 20,
-          overflowX: 'auto',
-        },
+        { title: 'Size', data: 'size', percentWidth: 10 },
+        { title: 'Example', data: 'example', overflowX: 'auto' },
+        { title: 'Usage', percentWidth: 20 },
+        { title: 'Core class', percentWidth: 15 },
+        { title: 'React variable', percentWidth: 20, overflowX: 'auto' },
       ]}
       rows={sizes}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {
           case 'Core class':
-            return `ms-fontSize-${row.size}`;
+            return <MarkdownCode>ms-fontSize-{row.size}</MarkdownCode>;
           case 'React variable':
-            return `FontSizes.size${row.size}`;
+            return <MarkdownCode>FontSizes.size{row.size}</MarkdownCode>;
           case 'Size':
             return `${row.size}px`;
           case 'Example':

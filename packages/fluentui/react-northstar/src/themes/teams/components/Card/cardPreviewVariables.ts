@@ -1,3 +1,1 @@
-import cardVariables from './cardVariables';
-
-export default cardVariables;
+export { cardVariables as cardPreviewVariables } from './cardVariables';

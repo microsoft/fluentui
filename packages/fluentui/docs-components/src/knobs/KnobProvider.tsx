@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import defaultComponents from './defaultComponents';
+import { defaultComponents } from './defaultComponents';
 import {
   KnobContext,
   KnobContextValue,
@@ -14,7 +14,7 @@ type KnobProviderProps = {
   components?: Partial<KnobComponents>;
 };
 
-const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
+export const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
   const { children, components } = props;
 
   const [knobs, setKnobs] = React.useState<KnobSet>({});
@@ -72,5 +72,3 @@ const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
 KnobProvider.defaultProps = {
   components: {},
 };
-
-export default KnobProvider;

@@ -4,7 +4,7 @@ import { classNamesFunction } from '../../Utilities';
 const getClassNames = classNamesFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles>();
 
 export const VerticalDividerBase = (props: IVerticalDividerProps) => {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const { styles, theme, getClassNames: deprecatedGetClassNames, className } = props;
   const classNames = getClassNames(styles, { theme: theme, getClassNames: deprecatedGetClassNames, className });
   return (

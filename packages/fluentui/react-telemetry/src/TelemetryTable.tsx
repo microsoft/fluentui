@@ -17,38 +17,37 @@ import {
 
 import * as styles from './styles';
 import { useIntervalUpdate } from './useIntervalUpdate';
-import { useTelemetryColumns } from './useTelemetryColumns';
+import { useTelemetryColumns, CellAlign } from './useTelemetryColumns';
 import { TelemetryDataTotals, useTelemetryData } from './useTelemetryData';
-import { TelemetryState } from './useTelemetryState';
+import { TelemetryState, TelemetryTableExpandNames } from './useTelemetryState';
 
 type TelemetryTableProps = {
   telemetry: Telemetry;
 
   componentFilter: TelemetryState['tableComponentFilter'];
-  expandStyles: TelemetryState['tableExpandStyles'];
+  expand: TelemetryState['tableExpand'];
   sort: TelemetryState['tableSort'];
 
   onComponentFilterChange: (filter: string) => void;
-  onExpandStylesChange: (show: boolean) => void;
+  onExpandChange: (name: TelemetryTableExpandNames, show: boolean) => void;
   onSortChange: (sort: TelemetryState['tableSort'] | undefined) => void;
 };
 
+type TelemetryHeaderGroup = HeaderGroup &
+  UseSortByColumnProps<{}> &
+  UseFiltersColumnProps<{}> & {
+    isShowDetails?: TelemetryTableExpandNames;
+    subgroup: 'styles' | 'timers';
+  };
+
 export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
-  const {
-    expandStyles,
-    componentFilter,
-    sort,
-    onComponentFilterChange,
-    onExpandStylesChange,
-    onSortChange,
-    telemetry,
-  } = props;
+  const { expand, componentFilter, sort, onComponentFilterChange, onExpandChange, onSortChange, telemetry } = props;
 
   const [interval, setInterval] = React.useState(2000);
   const tick = useIntervalUpdate(interval);
 
   const { data, totals } = useTelemetryData(telemetry, tick);
-  const columns = useTelemetryColumns(expandStyles);
+  const columns = useTelemetryColumns({ showStylesDetails: expand?.styles, showTotalDetails: expand?.total });
 
   const {
     getTableProps,
@@ -77,6 +76,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
       disableMultiSort: true,
 
       initialState: {
+        ...{ pageSize: 20 },
         ...(componentFilter && { filters: [{ id: 'componentName', value: componentFilter }] }),
         ...(sort && { sortBy: [{ id: sort.column, desc: sort.direction === 'desc' }] }),
       } as Partial<TableState>,
@@ -110,38 +110,39 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
         <thead>
           {headerGroups.map(group => (
             <tr {...group.getHeaderGroupProps()}>
-              {group.headers.map(
-                (
-                  column: HeaderGroup &
-                    UseSortByColumnProps<{}> &
-                    UseFiltersColumnProps<{}> & { isShowStyleDetails?: boolean },
-                ) => (
-                  <th
-                    {...column.getHeaderProps({
-                      style: styles.tableHeader({
-                        canFilter: column.canFilter,
-                        isShowStyleDetails: column.isShowStyleDetails,
-                      }),
-                    })}
-                  >
-                    <div {...column.getSortByToggleProps()}>
+              {group.headers.map((column: TelemetryHeaderGroup, index) => (
+                <th
+                  {...column.getHeaderProps({
+                    style: styles.tableHeader({
+                      isFirstInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index - 1] as TelemetryHeaderGroup)?.subgroup,
+                      isLastInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index + 1] as TelemetryHeaderGroup)?.subgroup,
+                      subgroup: column.subgroup,
+                    }),
+                  })}
+                >
+                  <div style={{ alignItems: 'center', display: 'flex' }}>
+                    <div {...column.getSortByToggleProps({ style: { flex: 1 } })}>
                       {column.render('Header')}
                       <span style={styles.tableSort()}>
                         {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
                       </span>
                     </div>
-                    {column.isShowStyleDetails && (
+                    {column.isShowDetails && (
                       <input
-                        checked={expandStyles}
-                        onChange={e => onExpandStylesChange(e.target.checked)}
+                        checked={expand?.[column.isShowDetails]}
+                        onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
                         style={styles.tableCheckbox()}
                         type="checkbox"
                       />
                     )}
                     {column.canFilter && <div>{column.render('Filter')}</div>}
-                  </th>
-                ),
-              )}
+                  </div>
+                </th>
+              ))}
             </tr>
           ))}
         </thead>
@@ -152,20 +153,29 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
 
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell: Cell & { column: UseSortByColumnProps<{}> & { showPercentage?: boolean } }) => (
-                  <td
-                    {...cell.getCellProps({
-                      style: styles.tableCell({
-                        canSort: cell.column.canSort,
-                        percentageRatio: cell.column.showPercentage
-                          ? cell.value / totals[cell.column.id as keyof TelemetryDataTotals]
-                          : undefined,
-                      }),
-                    })}
-                  >
-                    {cell.render('Cell')}
-                  </td>
-                ))}
+                {row.cells.map(
+                  (
+                    cell: Cell & {
+                      column: UseSortByColumnProps<{}> & {
+                        showPercentage?: boolean;
+                        align?: CellAlign;
+                      };
+                    },
+                  ) => (
+                    <td
+                      {...cell.getCellProps({
+                        style: styles.tableCell({
+                          align: cell.column.align,
+                          percentageRatio: cell.column.showPercentage
+                            ? cell.value / totals[cell.column.id as keyof TelemetryDataTotals]
+                            : undefined,
+                        }),
+                      })}
+                    >
+                      {cell.render('Cell')}
+                    </td>
+                  ),
+                )}
               </tr>
             );
           })}
@@ -174,7 +184,11 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
           {footerGroups.map(group => (
             <tr {...group.getFooterGroupProps()}>
               {group.headers.find((header: HeaderGroup & { Footer: React.ReactElement }) => header.Footer) &&
-                group.headers.map(column => <td {...column.getFooterProps()}>{column.render('Footer')}</td>)}
+                group.headers.map((column: HeaderGroup & { align?: CellAlign }) => (
+                  <td {...column.getFooterProps({ style: styles.tableFooterCell({ align: column.align }) })}>
+                    {column.render('Footer')}
+                  </td>
+                ))}
             </tr>
           ))}
         </tfoot>
@@ -191,11 +205,9 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             Collect telemetry
           </label>
         </div>
-
         <button onClick={() => telemetry.reset()} style={{ marginLeft: 10 }}>
           Clear data
         </button>
-
         <div>
           <label>Table refresh time</label>
           <select onChange={e => setInterval(Number(e.target.value))} style={{ marginLeft: 5 }} value={interval}>
@@ -205,14 +217,14 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             <option value="5000">5s</option>
           </select>
         </div>
-
+        <span>Total: {data.length} component(s)</span>
         <select
           value={pageSize}
           onChange={e => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[20, 30, 50, 100].map(pageSize => (
+          {[5, 10, 20, 30, 50, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>

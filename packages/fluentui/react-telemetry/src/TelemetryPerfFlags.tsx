@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StylesContextPerformance } from '@fluentui/react-bindings';
+import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
 
 import * as styles from './styles';
 
@@ -10,7 +10,7 @@ type TelemetryPerfFlagsProps = {
 
 export const TelemetryPerfFlags: React.FC<TelemetryPerfFlagsProps> = props => (
   <div style={styles.performanceFlags()}>
-    {Object.keys(props.flags).map(flag => (
+    {Object.keys(defaultPerformanceFlags).map(flag => (
       <div key={flag} style={styles.performanceFlag()}>
         <input
           checked={props.flags[flag as keyof StylesContextPerformance]}

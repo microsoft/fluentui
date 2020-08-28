@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const WindowMaximizeIcon = createSvgIcon({
+export const WindowMaximizeIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path d="M10 10h12v12H10V10zm11 11V11H11v10h10z" />
@@ -9,5 +9,3 @@ const WindowMaximizeIcon = createSvgIcon({
   ),
   displayName: 'WindowMaximizeIcon',
 });
-
-export default WindowMaximizeIcon;

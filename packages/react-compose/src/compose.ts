@@ -5,7 +5,7 @@ import { wasComposedPreviously } from './wasComposedPreviously';
 import { mergeComposeOptions } from './mergeComposeOptions';
 
 function compose<
-  TElementType extends React.ElementType,
+  TElementType extends keyof JSX.IntrinsicElements,
   TInputProps,
   TInputStylesProps,
   TParentProps,
@@ -20,11 +20,11 @@ function compose<
     wasComposedPreviously(input) ? input.fluentComposeConfig : undefined,
   );
 
-  const Component = (React.forwardRef<TElementType, TInputProps & TParentProps & { as?: React.ElementType }>(
+  const Component = (React.forwardRef<HTMLElement, TInputProps & TParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
+      return composeOptions.render(props, ref as React.Ref<HTMLDivElement>, {
         ...composeOptions,
-        state: composeOptions.state(props, composeOptions),
+        state: composeOptions.state(props, ref, composeOptions),
         slots: {
           ...composeOptions.slots,
           __self: Component,

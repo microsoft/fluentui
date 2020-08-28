@@ -1,8 +1,10 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -20,17 +22,8 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  withSafeTypeForAs,
-  WithAsProp,
-  ShorthandCollection,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -74,9 +67,12 @@ export type CarouselNavigationStylesProps = Required<
 
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
+/**
+ * A Carousel navigation helps switching between Carousel items.
+ */
+export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
   const {
@@ -190,8 +186,3 @@ CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
   mappedArrayProp: 'items',
 });
-
-/**
- * A Carousel navigation helps switching between Carousel items.
- */
-export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(CarouselNavigation);

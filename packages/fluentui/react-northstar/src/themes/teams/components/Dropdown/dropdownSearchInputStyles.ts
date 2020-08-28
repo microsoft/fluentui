@@ -2,7 +2,10 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownSearchInputStylesProps } from '../../../../components/Dropdown/DropdownSearchInput';
 import { DropdownVariables } from './dropdownVariables';
 
-const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInputStylesProps, DropdownVariables> = {
+export const dropdownSearchInputStyles: ComponentSlotStylesPrepared<
+  DropdownSearchInputStylesProps,
+  DropdownVariables
+> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     flexBasis: v.comboboxFlexBasis,
     flexGrow: 1,
@@ -18,5 +21,3 @@ const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInput
     }),
   }),
 };
-
-export default dropdownSearchInputStyles;

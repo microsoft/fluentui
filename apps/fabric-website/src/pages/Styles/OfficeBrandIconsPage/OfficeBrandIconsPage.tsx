@@ -10,9 +10,10 @@ const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
 const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
 
-const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
-const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
-const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
+const productIcons = require<
+  { icon: string; name: string }[]
+  // eslint-disable-next-line import/no-extraneous-dependencies
+>('@uifabric/fabric-website/lib/data/brand-icons-products.json');
 
 export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

@@ -15,12 +15,13 @@ const ComponentDocSee: any = ({ displayName }) => {
   return (
     <List styles={listStyle}>
       {/* Heads up! Still render empty lists to reserve the whitespace */}
-      <List.Item>
+      <List.Item index={0}>
         <Header color="grey" content={items.length > 0 ? 'See:' : ' '} />
       </List.Item>
-      {_.map(items, info => (
+      {_.map(items, (info, index) => (
         <List.Item
           as={Link}
+          index={index + 1}
           content={info.displayName}
           key={info.docblock.description}
           to={getComponentPathname(info)}

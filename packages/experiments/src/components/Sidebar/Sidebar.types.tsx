@@ -1,7 +1,4 @@
-/*!
- * Copyright (C) Microsoft Corporation. All rights reserved.
- */
-
+import * as React from 'react';
 import { IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';

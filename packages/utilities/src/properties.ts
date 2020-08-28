@@ -1,11 +1,23 @@
-import { filteredAssign } from './object';
+const toObjectMap = (...items: (string[] | Record<string, number>)[]) => {
+  const result: Record<string, number> = {};
+
+  for (const item of items) {
+    const keys = Array.isArray(item) ? item : Object.keys(item);
+
+    for (const key of keys) {
+      result[key] = 1;
+    }
+  }
+
+  return result;
+};
 
 /**
  * An array of events that are allowed on every html element type.
  *
  * @public
  */
-export const baseElementEvents = [
+export const baseElementEvents = toObjectMap([
   'onCopy',
   'onCut',
   'onPaste',
@@ -85,14 +97,14 @@ export const baseElementEvents = [
   'onPointerUp',
   'onGotPointerCapture',
   'onLostPointerCapture',
-];
+]);
 
 /**
  * An array of element attributes which are allowed on every html element type.
  *
  * @public
  */
-export const baseElementProperties = [
+export const baseElementProperties = toObjectMap([
   'accessKey', // global
   'children', // global
   'className', // global
@@ -103,6 +115,7 @@ export const baseElementProperties = [
   'htmlFor', // global
   'id', // global
   'lang', // global
+  'ref', // global
   'role', // global
   'style', // global
   'tabIndex', // global
@@ -110,30 +123,30 @@ export const baseElementProperties = [
   'translate', // global
   'spellCheck', // global
   'name', // global
-];
+]);
 
 /**
  * An array of HTML element properties and events.
  *
  * @public
  */
-export const htmlElementProperties = baseElementProperties.concat(baseElementEvents);
+export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents);
 
 /**
  * An array of LABEL tag properties and events.
  *
  * @public
  */
-export const labelProperties = htmlElementProperties.concat([
+export const labelProperties = toObjectMap(htmlElementProperties, [
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
 ]);
 
 /**
  * An array of AUDIO tag properties and events.
- *
+
  * @public
  */
-export const audioProperties = htmlElementProperties.concat([
+export const audioProperties = toObjectMap(htmlElementProperties, [
   'height', // canvas, embed, iframe, img, input, object, video
   'loop', // audio, video
   'muted', // audio, video
@@ -147,7 +160,7 @@ export const audioProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const videoProperties = audioProperties.concat([
+export const videoProperties = toObjectMap(audioProperties, [
   'poster', // video
 ]);
 
@@ -156,7 +169,7 @@ export const videoProperties = audioProperties.concat([
  *
  * @public
  */
-export const olProperties = htmlElementProperties.concat([
+export const olProperties = toObjectMap(htmlElementProperties, [
   'start', // ol
 ]);
 
@@ -165,7 +178,7 @@ export const olProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const liProperties = htmlElementProperties.concat([
+export const liProperties = toObjectMap(htmlElementProperties, [
   'value', // button, input, li, option, meter, progress, param
 ]);
 
@@ -174,7 +187,7 @@ export const liProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const anchorProperties = htmlElementProperties.concat([
+export const anchorProperties = toObjectMap(htmlElementProperties, [
   'download', // a, area
   'href', // a, area, base, link
   'hrefLang', // a, area, link
@@ -189,7 +202,7 @@ export const anchorProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const buttonProperties = htmlElementProperties.concat([
+export const buttonProperties = toObjectMap(htmlElementProperties, [
   'autoFocus', // button, input, select, textarea
   'disabled', // button, fieldset, input, optgroup, option, select, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
@@ -207,7 +220,7 @@ export const buttonProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const inputProperties = buttonProperties.concat([
+export const inputProperties = toObjectMap(buttonProperties, [
   'accept', // input
   'alt', // area, img, input
   'autoCapitalize', // input, textarea
@@ -239,7 +252,7 @@ export const inputProperties = buttonProperties.concat([
  *
  * @public
  */
-export const textAreaProperties = buttonProperties.concat([
+export const textAreaProperties = toObjectMap(buttonProperties, [
   'autoCapitalize', // input, textarea
   'cols', // textarea
   'dirname', // input, textarea
@@ -257,13 +270,13 @@ export const textAreaProperties = buttonProperties.concat([
  *
  * @public
  */
-export const selectProperties = buttonProperties.concat([
+export const selectProperties = toObjectMap(buttonProperties, [
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
   'multiple', // input, select
   'required', // input, select, textarea
 ]);
 
-export const optionProperties = htmlElementProperties.concat([
+export const optionProperties = toObjectMap(htmlElementProperties, [
   'selected', // option
   'value', // button, input, li, option, meter, progress, param
 ]);
@@ -273,7 +286,7 @@ export const optionProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const tableProperties = htmlElementProperties.concat([
+export const tableProperties = toObjectMap(htmlElementProperties, [
   'cellPadding', // table
   'cellSpacing', // table
 ]);
@@ -290,7 +303,7 @@ export const trProperties = htmlElementProperties;
  *
  * @public
  */
-export const thProperties = htmlElementProperties.concat([
+export const thProperties = toObjectMap(htmlElementProperties, [
   'rowSpan', // td, th
   'scope', // th
 ]);
@@ -300,18 +313,18 @@ export const thProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const tdProperties = htmlElementProperties.concat([
+export const tdProperties = toObjectMap(htmlElementProperties, [
   'colSpan', // td
   'headers', // td
   'rowSpan', // td, th
   'scope', // th
 ]);
 
-export const colGroupProperties = htmlElementProperties.concat([
+export const colGroupProperties = toObjectMap(htmlElementProperties, [
   'span', // col, colgroup
 ]);
 
-export const colProperties = htmlElementProperties.concat([
+export const colProperties = toObjectMap(htmlElementProperties, [
   'span', // col, colgroup
 ]);
 
@@ -320,7 +333,7 @@ export const colProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const formProperties = htmlElementProperties.concat([
+export const formProperties = toObjectMap(htmlElementProperties, [
   'acceptCharset', // form
   'action', // form
   'encType', // form
@@ -335,7 +348,7 @@ export const formProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const iframeProperties = htmlElementProperties.concat([
+export const iframeProperties = toObjectMap(htmlElementProperties, [
   'allow', // iframe
   'allowFullScreen', // iframe
   'allowPaymentRequest', // iframe
@@ -355,7 +368,7 @@ export const iframeProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const imgProperties = htmlElementProperties.concat([
+export const imgProperties = toObjectMap(htmlElementProperties, [
   'alt', // area, img, input
   'crossOrigin', // img
   'height', // canvas, embed, iframe, img, input, object, video
@@ -388,23 +401,39 @@ export const divProperties = htmlElementProperties;
  *
  * @public
  * @param props - The unfiltered input props
- * @param allowedPropsNames-  The array of allowed propnames.
+ * @param allowedPropsNames - The array or record of allowed prop names.
  * @returns The filtered props
  */
-export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getNativeProps<T extends Record<string, any>>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  props: Record<string, any>,
+  allowedPropNames: string[] | Record<string, number>,
+  excludedPropNames?: string[],
+): T {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
   // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
   // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
   // return native props.
   // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
-  return filteredAssign(
-    (propName: string) => {
-      return (
-        (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) &&
-        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0)
-      );
-    },
-    {},
-    props,
-  ) as T;
+
+  const isArray = Array.isArray(allowedPropNames);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: Record<string, any> = {};
+  const keys = Object.keys(props);
+
+  for (const key of keys) {
+    const isNativeProp =
+      (!isArray && (allowedPropNames as Record<string, number>)[key]) ||
+      (isArray && (allowedPropNames as string[]).indexOf(key) >= 0) ||
+      key.indexOf('data-') === 0 ||
+      key.indexOf('aria-') === 0;
+
+    if (isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      result[key] = props![key] as any;
+    }
+  }
+
+  return result as T;
 }

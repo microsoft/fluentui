@@ -38,6 +38,17 @@ module.exports = api => {
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', { useESModules }],
 
+    useESModules && 'babel-plugin-iife-wrap-react-components',
+    useESModules && [
+      'babel-plugin-annotate-pure-imports',
+      {
+        imports: {
+          '@fluentui/react-bindings': 'compose',
+          '@fluentui/react-context-selector': 'createContext',
+          '../utils/createSvgIcon': ['createSvgIcon'],
+        },
+      },
+    ],
     isDistBundle && 'lodash',
   ].filter(Boolean);
 

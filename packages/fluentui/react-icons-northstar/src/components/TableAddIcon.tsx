@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const TableAddIcon = createSvgIcon({
+export const TableAddIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg
       role="presentation"
@@ -24,5 +24,3 @@ const TableAddIcon = createSvgIcon({
   ),
   displayName: 'TableAddIcon',
 });
-
-export default TableAddIcon;

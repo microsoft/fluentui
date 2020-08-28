@@ -3,7 +3,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { TestDefinition, TestMethod, TestHelper } from './testHelper';
 
-const definitions: TestDefinition[] = [];
+export const definitions: TestDefinition[] = [];
 const testHelper = new TestHelper();
 
 const keysAndAliases = {
@@ -739,5 +739,3 @@ definitions.push({
     expect(parameters.behavior(propertyNotChecked).attributes.root.tabIndex).toBe(-1);
   },
 });
-
-export default definitions;

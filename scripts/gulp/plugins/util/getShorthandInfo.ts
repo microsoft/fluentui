@@ -47,6 +47,19 @@ const isShorthandExpression = (componentName: string, path: NodePath<t.Assignmen
   );
 };
 
+/**
+ * Checks that an expression is a compose() call.
+ */
+function isCompose(path: NodePath<t.Expression>): path is NodePath<t.CallExpression> {
+  if (path.isCallExpression()) {
+    if (path.get('callee').isIdentifier({ name: 'compose' })) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 const getShorthandInfo = (componentFile: t.File, componentName: string): ShorthandInfo => {
   let implementsCreateShorthand = false;
   let mappedShorthandProp: string = 'children';
@@ -78,6 +91,35 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
           // @ts-ignore
           t.assertStringLiteral(mappedProperty.value);
           mappedShorthandProp = (mappedProperty.value as t.StringLiteral).value;
+        }
+      }
+    },
+    VariableDeclarator(path) {
+      if (path.get('id').isIdentifier({ name: componentName })) {
+        if (isCompose(path.get('init'))) {
+          const composeConfigPath = path.get('init.arguments.1') as NodePath<t.ObjectExpression>;
+          const composePropertiesPaths = composeConfigPath.get('properties');
+
+          const shorthandConfigPath = composePropertiesPaths.find(
+            property =>
+              property.isObjectProperty() &&
+              (property.get('key') as NodePath<t.Identifier>).isIdentifier({ name: 'shorthandConfig' }),
+          ) as NodePath<t.ObjectProperty> | undefined;
+
+          if (shorthandConfigPath) {
+            const shorthandConfigPropertiesPaths = shorthandConfigPath.get('value.properties') as NodePath<
+              t.ObjectProperty
+            >[];
+            const shorthandMappedPropertyPath = shorthandConfigPropertiesPaths.find(property =>
+              (property.get('key') as NodePath<t.Identifier>).isIdentifier({ name: 'mappedProp' }),
+            );
+
+            if (shorthandMappedPropertyPath) {
+              // @ts-ignore
+              t.assertStringLiteral(shorthandMappedPropertyPath.node.value);
+              mappedShorthandProp = (shorthandMappedPropertyPath.node.value as t.StringLiteral).value;
+            }
+          }
         }
       }
     },

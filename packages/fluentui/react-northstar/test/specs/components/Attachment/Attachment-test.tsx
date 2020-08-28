@@ -4,11 +4,11 @@ import { isConformant, implementsShorthandProp, handlesAccessibility } from 'tes
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
 import { keyboardKey } from '@fluentui/keyboard-key';
 
-import Attachment, { attachmentClassName } from 'src/components/Attachment/Attachment';
-import AttachmentAction, { attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';
-import AttachmentDescription from 'src/components/Attachment/AttachmentDescription';
-import AttachmentHeader from 'src/components/Attachment/AttachmentHeader';
-import AttachmentIcon from 'src/components/Attachment/AttachmentIcon';
+import { Attachment, attachmentClassName } from 'src/components/Attachment/Attachment';
+import { AttachmentAction, attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';
+import { AttachmentDescription } from 'src/components/Attachment/AttachmentDescription';
+import { AttachmentHeader } from 'src/components/Attachment/AttachmentHeader';
+import { AttachmentIcon } from 'src/components/Attachment/AttachmentIcon';
 
 const attachmentImplementsShorthandProp = implementsShorthandProp(Attachment);
 

@@ -4,6 +4,6 @@ export interface ReactionGroupVariables {
   reactionSpacing: string;
 }
 
-export default (): ReactionGroupVariables => ({
+export const reactionGroupVariables = (): ReactionGroupVariables => ({
   reactionSpacing: pxToRem(8),
 });

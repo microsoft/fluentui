@@ -2,19 +2,18 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import cx from 'classnames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import Input from '../Input/Input';
-import { useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import { Input } from '../Input/Input';
+import {
+  ComponentWithAs,
+  useFluentContext,
+  useTelemetry,
+  useStyles,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
   input: string;
@@ -35,7 +34,7 @@ export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearc
   inline?: boolean;
 
   /** Ref for input DOM node. */
-  inputRef?: React.Ref<HTMLElement>;
+  inputRef?: React.Ref<HTMLInputElement>;
 
   /**
    * Called on input element focus.
@@ -81,9 +80,13 @@ export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassName
 
 export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputProps, 'inline'>>;
 
-const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>> &
+/**
+ * A DropdownSearchInput represents item of 'search' Dropdown.
+ * Used to display the search input field.
+ */
+export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
   setStart();
   const {
@@ -131,7 +134,7 @@ const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>> &
       onKeyUp={handleKeyUp}
       {...unhandledProps}
       wrapper={{
-        className: dropdownSearchInputSlotClassNames.wrapper,
+        className: cx(dropdownSearchInputSlotClassNames.wrapper, className),
         styles: resolvedStyles.root,
         ...accessibilityComboboxProps,
         ...unhandledProps.wrapper,
@@ -175,9 +178,3 @@ DropdownSearchInput.propTypes = {
 DropdownSearchInput.handledProps = Object.keys(DropdownSearchInput.propTypes) as any;
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });
-
-/**
- * A DropdownSearchInput represents item of 'search' Dropdown.
- * Used to display the search input field.
- */
-export default withSafeTypeForAs<typeof DropdownSearchInput, DropdownSearchInputProps>(DropdownSearchInput);

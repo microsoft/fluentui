@@ -52,9 +52,9 @@ export class SuggestionsStore<T> {
         ariaLabel:
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)
-            : ((suggestion as any) as ITag).name || // tslint:disable-line:no-any
+            : ((suggestion as any) as ITag).name ||
               (<IPersonaProps>suggestion).text ||
-              (<IPersonaProps>suggestion).primaryText, // tslint:disable-line:deprecation
+              (<IPersonaProps>suggestion).primaryText, // eslint-disable-line deprecation/deprecation
       };
     }
   };

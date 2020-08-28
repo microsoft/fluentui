@@ -73,10 +73,10 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
       keytipProps,
       label,
       ariaLabel,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       onAriaLabel,
       offAriaLabel,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       offText,
       onText,
       styles,
@@ -101,18 +101,53 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
     // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-    // 3. label
-    // 4. onText (if checked) or offText (if not checked)
+    // 3. label AND stateText, if existent
+
     let labelledById: string | undefined = undefined;
     if (!ariaLabel && !badAriaLabel) {
       if (label) {
         labelledById = labelId;
-      } else if (stateText) {
-        labelledById = stateTextId;
+      }
+      if (stateText) {
+        labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
       }
     }
 
     const ariaRole = this.props.role ? this.props.role : 'switch';
+
+    const renderPill = (keytipAttributes: any = {}) => (
+      <button
+        {...toggleNativeProps}
+        {...keytipAttributes}
+        className={classNames.pill}
+        disabled={disabled}
+        id={this._id}
+        type="button"
+        role={ariaRole}
+        ref={this._toggleButton}
+        aria-disabled={disabled}
+        aria-checked={checked}
+        aria-label={ariaLabel ? ariaLabel : badAriaLabel}
+        data-is-focusable={true}
+        onChange={this._noop}
+        onClick={this._onClick}
+        aria-labelledby={labelledById}
+      >
+        <span className={classNames.thumb} />
+      </button>
+    );
+
+    const pillContent = keytipProps ? (
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+        disabled={disabled}
+      >
+        {(keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
+      </KeytipData>
+    ) : (
+      renderPill()
+    );
 
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
@@ -123,34 +158,10 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         )}
 
         <div className={classNames.container}>
-          <KeytipData
-            keytipProps={keytipProps}
-            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
-            disabled={disabled}
-          >
-            {(keytipAttributes: any): JSX.Element => (
-              <button
-                {...toggleNativeProps}
-                {...keytipAttributes}
-                className={classNames.pill}
-                disabled={disabled}
-                id={this._id}
-                type="button"
-                role={ariaRole}
-                ref={this._toggleButton}
-                aria-disabled={disabled}
-                aria-checked={checked}
-                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
-                data-is-focusable={true}
-                onChange={this._noop}
-                onClick={this._onClick}
-                aria-labelledby={labelledById}
-              >
-                <span className={classNames.thumb} />
-              </button>
-            )}
-          </KeytipData>
+          {pillContent}
           {stateText && (
+            // This second "htmlFor" property is needed to allow the
+            // toggle's stateText to also trigger a state change when clicked.
             <Label htmlFor={this._id} className={classNames.text} id={stateTextId}>
               {stateText}
             </Label>
@@ -168,7 +179,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 

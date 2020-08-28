@@ -1,0 +1,9 @@
+@import '../Button/Button.scss';
+
+/*
+ * Have the layer that creates the menu not take out any extra space inside of the button.
+ * We need to specify `.root >` to avoid specificity problems.
+ */
+.root > .menuIcon + * {
+  margin-left: 0;
+}

@@ -81,7 +81,7 @@ export interface AlertVariables {
   focusBorderZIndex: string;
 }
 
-export default (siteVars: SiteVariablesPrepared): AlertVariables => {
+export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
   const minHeight = pxToRem(28);
 
   return {

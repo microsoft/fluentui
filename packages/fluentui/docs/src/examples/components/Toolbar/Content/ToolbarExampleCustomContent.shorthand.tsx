@@ -47,15 +47,11 @@ const ToolbarExampleCustomContentShorthand = () => (
         title: 'Bold',
       },
       {
-        key: 'custom-text',
-        content: <Text content="Text" />,
-        kind: 'custom',
-      },
-      {
         key: 'custom-focusable-text',
         content: <Text content="Focusable" />,
         focusable: true,
         kind: 'custom',
+        role: 'button',
       },
       {
         key: 'custom-button',

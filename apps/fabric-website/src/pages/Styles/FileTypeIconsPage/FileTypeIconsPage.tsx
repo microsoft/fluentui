@@ -9,11 +9,9 @@ import * as styles from './FileTypeIconsPage.module.scss';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
-const fabricCDN = 'https://static2.sharepointonline.com/files/fabric/assets';
 
-const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
-const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
-const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const documentIcons = require<{ name: string }[]>('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -41,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 }
               </Markdown>
 
-              <MarkdownHeader as="h3">When should I use File type icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use file type icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -138,7 +136,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
 
         {
-          sectionName: 'File-type icon examples',
+          sectionName: 'Examples',
           content: (
             <>
               <ul className={styles.iconList}>

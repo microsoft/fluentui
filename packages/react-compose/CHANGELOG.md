@@ -1,8 +1,131 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.17.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.16.0..@fluentui/react-compose_v0.17.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.16.0)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.3..@fluentui/react-compose_v0.16.0)
+
+### Minor changes
+
+- Updating readme. ([PR #14518](https://github.com/microsoft/fluentui/pull/14518) by dzearing@hotmail.com)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.3)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.2..@fluentui/react-compose_v0.14.3)
+
+### Patches
+
+- Adding null check in mergeProps. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.2)
+
+Mon, 10 Aug 2020 18:27:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.1..@fluentui/react-compose_v0.14.2)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.1)
+
+Mon, 10 Aug 2020 15:56:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.0..@fluentui/react-compose_v0.14.1)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.13.0..@fluentui/react-compose_v0.14.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.13.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.12.1..@fluentui/react-compose_v0.13.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.12.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.8..@fluentui/react-compose_v0.12.0)
+
+### Minor changes
+
+- Adding ComponentProps types which includes as and className. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.8)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.7..@fluentui/react-compose_v0.11.8)
+
+### Patches
+
+- Make __PRIVATE_PROPS optional to avoid assignment requirement ([PR #13845](https://github.com/microsoft/fluentui/pull/13845) by olfedias@microsoft.com)
+- Revert "resolveSlotProps: when slot/shorthand prop has JSX element as children, slot should be completely replaced by it (#13827)" ([PR #13882](https://github.com/microsoft/fluentui/pull/13882) by xgao@microsoft.com)
+
+## [0.11.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.7)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.6..@fluentui/react-compose_v0.11.7)
+
+### Patches
+
+- fix(compose): update types to provide better infers ([PR #13841](https://github.com/microsoft/fluentui/pull/13841) by olfedias@microsoft.com)
+
+## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.6)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.5..@fluentui/react-compose_v0.11.6)
+
+### Patches
+
+- resolveSlotProps: Making change so that if slot/shorthand prop has JSX element as children, slot is completely replaced by it. ([PR #13827](https://github.com/microsoft/fluentui/pull/13827) by xgao@microsoft.com)
+
+## [0.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.4)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.2..@fluentui/react-compose_v0.11.4)
+
+### Patches
+
+- provide correct props to children function as slot ([PR #13576](https://github.com/microsoft/fluentui/pull/13576) by xgao@microsoft.com)
+- Include typings for slots and slotProps in mergeProps typing ([PR #13571](https://github.com/microsoft/fluentui/pull/13571) by xgao@microsoft.com)
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.0..@fluentui/react-compose_v0.11.2)
+
+### Patches
+
+- Pass forwarded ref as param in state option ([PR #13570](https://github.com/microsoft/fluentui/pull/13570) by xgao@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.0)
 

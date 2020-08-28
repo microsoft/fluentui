@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL, IRefObject, initializeComponentRef } from '../../Utilities';
+import { KeyCodes, css, getRTL, IRefObject, initializeComponentRef, format } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -63,7 +63,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
     initializeComponentRef(this);
 
     this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
+    props.strings.shortMonths.forEach((month, index) => {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
@@ -114,6 +114,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
             nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
+            headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
           }}
           ref={this._onCalendarYearRef}
         />
@@ -132,6 +133,11 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
     const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
 
+    const yearString = dateTimeFormatter.formatYear(navigatedDate);
+    const headerAriaLabel = strings.monthPickerHeaderAriaLabel
+      ? format(strings.monthPickerHeaderAriaLabel, yearString)
+      : yearString;
+
     return (
       <div className={css('ms-DatePicker-monthPicker', styles.monthPicker)}>
         <div className={css('ms-DatePicker-header', styles.header)}>
@@ -144,7 +150,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
               )}
               onClick={this._onHeaderSelect}
               onKeyDown={this._onHeaderKeyDown}
-              aria-label={dateTimeFormatter.formatYear(navigatedDate)}
+              aria-label={headerAriaLabel}
               role="button"
               aria-atomic={true}
               aria-live="polite"

@@ -189,7 +189,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
 
-  const resetChoice = () => setChoice(undefined);
+  const resetChoice = React.useCallback(() => setChoice(undefined), []);
 
   return (
     <Stack {...horizontalStackProps}>
@@ -198,7 +198,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
           styles={choiceGroupStyles}
           label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
           selectedKey={choice}
-          // tslint:disable-next-line: jsx-no-lambda
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={(e, v) => setChoice(v!.key)}
           options={choiceOptions}
         />

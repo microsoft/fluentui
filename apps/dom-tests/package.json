@@ -2,44 +2,33 @@
   "name": "dom-tests",
   "version": "7.0.0",
   "private": true,
-  "description": "App for test that use real browser.",
+  "description": "App for tests that use the real browser.",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "jest-dom": "just-scripts ",
     "just": "just-scripts",
     "start": "just-scripts dev"
   },
   "dependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/experiments": "^7.26.3",
-    "@uifabric/set-version": "^7.0.13",
-    "es6-promise": "^4.1.0",
-    "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.120.0",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "tslib": "^1.10.0"
-  },
-  "devDependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
+    "@types/react": "16.8.25",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.78",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/example-app-base": "^7.14.4",
     "expect-puppeteer": "4.1.0",
     "jest-environment-node": "~24.9.0",
     "jest-environment-puppeteer": "^4.1.0",
     "jest-puppeteer": "^4.0.0",
-    "puppeteer": "^1.13.0"
+    "office-ui-fabric-react": "^7.132.0",
+    "puppeteer": "^1.13.0",
+    "react-dom": "16.8.6",
+    "react": "16.8.6",
+    "tslib": "^1.10.0"
   }
 }

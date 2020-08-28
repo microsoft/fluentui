@@ -2,6 +2,51 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Resolve side effects in keyboard-key/codes.ts",
+            "author": "connorjsmith101@gmail.com",
+            "commit": "6a33fd5c4919b378ce306c1877aa52d384a91019",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2020 12:46:29 GMT",
       "tag": "@fluentui/keyboard-key_v0.2.0",
       "version": "0.2.0",

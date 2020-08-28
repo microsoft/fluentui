@@ -13,18 +13,18 @@ import {
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
-  withSafeTypeForAs,
-  WithAsProp,
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useFluentContext,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
@@ -82,9 +82,12 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
   content: `${carouselNavigationItemClassName}__content`,
 };
 
-const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> &
+/**
+ * A CarouselItem is an actionable item within a Carousel.
+ */
+export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
 
@@ -201,7 +204,7 @@ CarouselNavigationItem.propTypes = {
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
 
 CarouselNavigationItem.defaultProps = {
-  accessibility: tabBehavior as Accessibility,
+  accessibility: tabBehavior,
   as: 'li',
   indicator: {},
 };
@@ -210,10 +213,3 @@ CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
   mappedArrayProp: 'content',
 });
-
-/**
- * A CarouselItem is an actionable item within a Carousel.
- */
-export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(
-  CarouselNavigationItem,
-);

@@ -11,7 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -24,7 +24,7 @@ export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
@@ -68,8 +68,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
-    const bars: JSX.Element[] = [];
-    data!.map((singleChartData: IChartProps, index: number) => {
+    const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
         barHeight!,
@@ -78,7 +77,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         hideDenominator![index],
         href,
       );
-      bars.push(<div key={index}>{singleChartBars}</div>);
+      return <div key={index}>{singleChartBars}</div>;
     });
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
@@ -89,22 +88,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {!hideTooltip && isCalloutVisible ? (
-          <Callout
-            gapSpace={15}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        ) : null}
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -255,7 +253,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this.state.refArray.map((obj: IRefArrayData) => {
+      this.state.refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === legendText) {
           this.setState({
             refSelected: obj.refElement,
@@ -298,12 +296,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
-    data.map((singleChartData: IChartProps, index: number) => {
+    data.forEach((singleChartData: IChartProps, index: number) => {
       const validChartData = singleChartData.chartData!.filter((_: IChartDataPoint) => !_.placeHolder);
       if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          validChartData!.map((point: IChartDataPoint) => {
+          validChartData!.forEach((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
             const checkSimilarLegends = actions.filter(
               (leg: ILegend) => leg.title === point.legend! && leg.color === color,
@@ -328,7 +326,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        validChartData!.map((point: IChartDataPoint) => {
+        validChartData!.forEach((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
           const checkSimilarLegends = actions.filter(
             (leg: ILegend) => leg.title === point.legend! && leg.color === color,
@@ -359,6 +357,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
   };
@@ -388,7 +387,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }

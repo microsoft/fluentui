@@ -1,6 +1,6 @@
 import { GlobalSettings } from '../GlobalSettings';
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ISettings = { [key: string]: any };
 export type ISettingsFunction = (settings: ISettings) => ISettings;
 
@@ -59,7 +59,7 @@ export class Customizations {
     properties: string[],
     scopeName?: string,
     localSettings: ICustomizations = NO_CUSTOMIZATIONS,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): any {
     const settings: ISettings = {};
     const localScopedSettings = (scopeName && localSettings.scopedSettings[scopeName]) || {};

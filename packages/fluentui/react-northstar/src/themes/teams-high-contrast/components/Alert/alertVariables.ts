@@ -1,6 +1,6 @@
 import { AlertVariables } from '../../../teams/components/Alert/alertVariables';
 
-export default (siteVars: any): Partial<AlertVariables> => {
+export const alertVariables = (siteVars: any): Partial<AlertVariables> => {
   return {
     backgroundColor: siteVars.colors.white,
     borderColor: siteVars.colors.white,

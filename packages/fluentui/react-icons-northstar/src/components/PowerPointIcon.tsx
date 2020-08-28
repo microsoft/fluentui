@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const PowerPointIcon = createSvgIcon({
+export const PowerPointIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path fill="#ed6c47" d="M18 2A14.041 14.041 0 0 0 4 16l17.737 3.737z" />
@@ -36,5 +36,3 @@ const PowerPointIcon = createSvgIcon({
   ),
   displayName: 'PowerPointIcon',
 });
-
-export default PowerPointIcon;

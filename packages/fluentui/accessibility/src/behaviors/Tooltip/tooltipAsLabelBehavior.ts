@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsDescriptionBehavior';
+import { tooltipAsDescriptionBehavior, TooltipBehaviorProps } from './tooltipAsDescriptionBehavior';
 
 /**
  * @description
@@ -12,7 +12,7 @@ import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsD
  * Adds attribute 'aria-labelledby' based on the property 'contentId' to 'trigger' slot. This can be overriden by providing 'aria-labelledby' property directly to the component.
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
-const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
+export const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const behaviorData = tooltipAsDescriptionBehavior(props);
   const { triggerAriaLabel } = props;
 
@@ -30,5 +30,3 @@ const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
 
   return behaviorData;
 };
-
-export default tooltipAsLabelBehavior;

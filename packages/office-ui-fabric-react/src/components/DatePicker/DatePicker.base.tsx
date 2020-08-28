@@ -115,7 +115,6 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     this._preventFocusOpeningPicker = false;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, value } = nextProps;
 

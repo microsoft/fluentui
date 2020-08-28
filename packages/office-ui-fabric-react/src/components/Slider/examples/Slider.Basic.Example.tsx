@@ -15,7 +15,14 @@ export const SliderBasicExample: React.FunctionComponent = () => {
       <Slider />
       <Slider label="Snapping slider example" min={0} max={50} step={10} defaultValue={20} showValue snapToStep />
       <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue disabled />
-      <Slider label="Controlled example" max={10} value={sliderValue} showValue onChange={sliderOnChange} />
+      <Slider
+        label="Controlled example"
+        max={10}
+        value={sliderValue}
+        showValue
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={sliderOnChange}
+      />
       <Slider
         label="Example with formatted value"
         max={100}

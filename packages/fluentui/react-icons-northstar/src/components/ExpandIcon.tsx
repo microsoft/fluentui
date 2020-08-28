@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ExpandIcon = createSvgIcon({
+export const ExpandIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg viewBox="8 8 16 16" role="presentation" className={classes.svg} focusable="false">
       <path
@@ -40,5 +40,3 @@ const ExpandIcon = createSvgIcon({
   ),
   displayName: 'ExpandIcon',
 });
-
-export default ExpandIcon;

@@ -6,7 +6,7 @@ export interface ISliderVerticalExampleState {
   value: number;
 }
 const stackTokens: IStackTokens = { childrenGap: 20 };
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export const SliderVerticalExample: React.FunctionComponent = () => {
   const marks = [
     {

@@ -1,3 +1,1 @@
-import buttonVariables from './buttonVariables';
-
-export default buttonVariables;
+export { buttonVariables as buttonContentVariables } from './buttonVariables';

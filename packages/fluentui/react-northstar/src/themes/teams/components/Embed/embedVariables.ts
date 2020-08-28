@@ -7,7 +7,7 @@ export interface EmbedVariables {
   zIndex: number;
 }
 
-export default (siteVariables): EmbedVariables => ({
+export const embedVariables = (siteVariables): EmbedVariables => ({
   controlColor: siteVariables.bodyBackground,
   controlBackgroundColor: 'rgba(0,0,0,.25)',
 

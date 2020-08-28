@@ -25,13 +25,14 @@ const descriptionStyle = mergeStyles({
   textOverflow: 'ellipsis',
 });
 
+const Divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={chevronStyle} />;
+
 export class ChicletBreadcrumbExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={chevronStyle} />;
     const breadcrumb = (
       <Breadcrumb
         items={[
@@ -42,7 +43,7 @@ export class ChicletBreadcrumbExample extends React.Component {
         ]}
         className={descriptionStyle}
         onRenderItem={this._onRenderItem}
-        dividerAs={divider}
+        dividerAs={Divider}
       />
     );
 

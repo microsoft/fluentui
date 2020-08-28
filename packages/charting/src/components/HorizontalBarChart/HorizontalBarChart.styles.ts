@@ -28,10 +28,10 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       strokeWidth: 2,
     },
     chartTitle: {
+      ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: '12px',
     },
     chartDataText: {
       fontWeight: FontWeights.bold,
