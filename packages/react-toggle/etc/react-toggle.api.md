@@ -76,7 +76,7 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ToggleBase: React.ForwardRefExoticComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
