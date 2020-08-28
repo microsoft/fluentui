@@ -71,7 +71,7 @@ export const App = () => (
 
 ### useTheme
 
-Theme can be accessed using `useTheme` hook. If you are specifically accessing theme to create classes/styles, you can use `makeStyles` below.
+Theme can be accessed using `useTheme` hook. If you are specifically accessing theme to create classes/styles, you can use `makeStyles` described below.
 
 ```jsx
 import { useTheme } from '@fluentui/react-theme-provider';
