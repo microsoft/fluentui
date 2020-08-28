@@ -5,10 +5,6 @@ import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
-const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
-
-const COMPONENT_NAME = 'MessageBar';
-
 const ICON_MAP = {
   [MessageBarType.info]: 'Info',
   [MessageBarType.warning]: 'Info',
@@ -16,6 +12,20 @@ const ICON_MAP = {
   [MessageBarType.blocked]: 'Blocked2',
   [MessageBarType.severeWarning]: 'Warning',
   [MessageBarType.success]: 'Completed',
+};
+
+const COMPONENT_NAME = 'MessageBar';
+
+const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
+
+const getAnnouncementPriority = (messageBarType: MessageBarType.info | MessageBarType): 'assertive' | 'polite' => {
+  switch (messageBarType) {
+    case MessageBarType.blocked:
+    case MessageBarType.error:
+    case MessageBarType.severeWarning:
+      return 'assertive';
+  }
+  return 'polite';
 };
 
 export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>((props, ref) => {
@@ -54,51 +64,11 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
   });
 
   const iconProps = { iconName: expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' };
-
-  const getActionsDiv = React.useCallback((): JSX.Element | null => {
-    if (actions) {
-      return <div className={classNames.actions}>{actions}</div>;
-    }
-    return null;
-  }, [actions, classNames.actions]);
-
-  const getAnnouncementPriority = React.useCallback((): 'assertive' | 'polite' => {
-    switch (messageBarType) {
-      case MessageBarType.blocked:
-      case MessageBarType.error:
-      case MessageBarType.severeWarning:
-        return 'assertive';
-    }
-    return 'polite';
-  }, [messageBarType]);
-
-  const getRegionProps = React.useCallback(() => {
-    const hasActions = !!actions || !!onDismiss;
-    const regionProps = {
-      'aria-describedby': labelId,
-      role: 'region',
-    };
-    return hasActions ? regionProps : {};
-  }, [actions, onDismiss, labelId]);
-
-  const getDismissDiv = React.useMemo((): JSX.Element | null => {
-    if (onDismiss) {
-      return (
-        <IconButton
-          disabled={false}
-          className={classNames.dismissal}
-          onClick={onDismiss}
-          iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
-          title={dismissButtonAriaLabel}
-          ariaLabel={dismissButtonAriaLabel}
-        />
-      );
-    }
-    return null;
-  }, [classNames.dismissal, dismissButtonAriaLabel, dismissIconProps, onDismiss]);
+  const regionProps = actions || onDismiss ? { 'aria-describedby': labelId, role: 'region' } : {};
+  const actionsDiv = actions ? <div className={classNames.actions}>{actions}</div> : null;
 
   return (
-    <div ref={ref} className={classNames.root} {...getRegionProps()}>
+    <div ref={ref} className={classNames.root} {...regionProps}>
       <div className={classNames.content}>
         <div className={classNames.iconContainer} aria-hidden>
           {messageBarIconProps ? (
@@ -107,7 +77,7 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
             <Icon iconName={ICON_MAP[messageBarType!]} className={classNames.icon} />
           )}
         </div>
-        <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority()}>
+        <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority(messageBarType)}>
           <span className={classNames.innerText} {...nativeProps}>
             <DelayedRender>
               <span>{children}</span>
@@ -115,7 +85,7 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
           </span>
         </div>
         {!isMultiline &&
-          (getActionsDiv() ||
+          (actionsDiv ||
             (!actions && truncated && (
               <div className={classNames.expandSingleLine}>
                 <IconButton
@@ -128,10 +98,32 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
                 />
               </div>
             )) ||
-            (onDismiss && <div className={classNames.dismissSingleLine}>{getDismissDiv}</div>))}
-        {isMultiline && getDismissDiv}
+            (onDismiss && (
+              <div className={classNames.dismissSingleLine}>
+                {onDismiss ? (
+                  <IconButton
+                    disabled={false}
+                    className={classNames.dismissal}
+                    onClick={onDismiss}
+                    iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+                    title={dismissButtonAriaLabel}
+                    ariaLabel={dismissButtonAriaLabel}
+                  />
+                ) : null}
+              </div>
+            )))}
+        {isMultiline && onDismiss ? (
+          <IconButton
+            disabled={false}
+            className={classNames.dismissal}
+            onClick={onDismiss}
+            iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+            title={dismissButtonAriaLabel}
+            ariaLabel={dismissButtonAriaLabel}
+          />
+        ) : null}
       </div>
-      {isMultiline && getActionsDiv()}
+      {isMultiline && actionsDiv}
     </div>
   );
 });
