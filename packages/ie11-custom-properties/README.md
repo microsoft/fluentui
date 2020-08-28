@@ -1,6 +1,6 @@
 # @fluentui/ie11-custom-properties
 
-**Ie11 Polyfill for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**IE11 CSS variables polyfill**
 
 Package to hold ie11 polyfill
 
