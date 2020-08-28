@@ -301,6 +301,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
+      pickerWidth: props.floatingSuggestionProps.pickerWidth ? props.floatingSuggestionProps.pickerWidth : '300px',
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,
