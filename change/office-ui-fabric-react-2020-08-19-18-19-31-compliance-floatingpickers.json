@@ -1,5 +1,6 @@
 {
   "type": "patch",
+  "comment": "FloatingPickers: Remove deprecated methods",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
