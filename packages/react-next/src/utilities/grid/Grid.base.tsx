@@ -30,7 +30,6 @@ export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) =
   const classNames = getClassNames(styles!, { theme: props.theme! });
 
   // Array to store the cells in the correct row index
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
@@ -44,12 +43,12 @@ export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) =
       className={classNames.root}
     >
       <tbody>
-        {rowsOfItems.map((rows: [], rowIndex: number) => {
+        {rowsOfItems.map((rows, rowIndex) => {
           return (
-            <tr role={'row'} key={rowIndex + '-row'}>
+            <tr role={'row'} key={rowIndex}>
               {rows.map((cell, cellIndex: number) => {
                 return (
-                  <td role={'presentation'} key={cellIndex + '-cell'} className={classNames.tableCell}>
+                  <td role="presentation" key={cellIndex + '-cell'} className={classNames.tableCell}>
                     {onRenderItem(cell, cellIndex)}
                   </td>
                 );

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets } from '../../Styling';
+import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
 import { getColorFromString } from 'office-ui-fabric-react/lib/Color';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components/Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from 'office-ui-fabric-react/lib/components/Button/BaseButton.classNames';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -55,46 +54,43 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     borderWidth,
   });
 
-  const getColorPickerGridCellButtonClassNames = React.useCallback(
-    (
-      theme: ITheme,
-      className: string,
-      variantClassName: string,
-      iconClassName: string | undefined,
-      menuIconClassName: string | undefined,
-      checked: boolean,
-    ): IButtonClassNames => {
-      const actionButtonStyles = getActionButtonStyles(theme);
-      return mergeStyleSets({
-        root: [
-          'ms-Button',
-          actionButtonStyles.root,
-          variantClassName,
-          className,
-          checked && ['is-checked', actionButtonStyles.rootChecked],
-          disabled && ['is-disabled', actionButtonStyles.rootDisabled],
-          !disabled &&
-            !checked && {
-              selectors: {
-                ':hover': actionButtonStyles.rootHovered,
-                ':focus': actionButtonStyles.rootFocused,
-                ':active': actionButtonStyles.rootPressed,
-              },
+  const getColorPickerGridCellButtonClassNames = (
+    theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    checked: boolean,
+  ): IButtonClassNames => {
+    const actionButtonStyles = getActionButtonStyles(theme);
+    return mergeStyleSets({
+      root: [
+        'ms-Button',
+        actionButtonStyles.root,
+        variantClassName,
+        className,
+        checked && ['is-checked', actionButtonStyles.rootChecked],
+        disabled && ['is-disabled', actionButtonStyles.rootDisabled],
+        !disabled &&
+          !checked && {
+            selectors: {
+              ':hover': actionButtonStyles.rootHovered,
+              ':focus': actionButtonStyles.rootFocused,
+              ':active': actionButtonStyles.rootPressed,
             },
-          disabled && checked && [actionButtonStyles.rootCheckedDisabled],
-          !disabled &&
-            checked && {
-              selectors: {
-                ':hover': actionButtonStyles.rootCheckedHovered,
-                ':active': actionButtonStyles.rootCheckedPressed,
-              },
+          },
+        disabled && checked && [actionButtonStyles.rootCheckedDisabled],
+        !disabled &&
+          checked && {
+            selectors: {
+              ':hover': actionButtonStyles.rootCheckedHovered,
+              ':active': actionButtonStyles.rootCheckedPressed,
             },
-        ],
-        flexContainer: ['ms-Button-flexContainer', actionButtonStyles.flexContainer],
-      });
-    },
-    [disabled],
-  );
+          },
+      ],
+      flexContainer: ['ms-Button-flexContainer', actionButtonStyles.flexContainer],
+    });
+  };
 
   // Render the core of a color cell
   const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
@@ -102,7 +98,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
 
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
+      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color)?.str}>
         {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );
@@ -123,6 +119,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
       onFocus={onFocus}
       label={item.label}
       className={classNames.colorCell}
+      // eslint-disable-next-line react/jsx-no-bind
       getClassNames={getColorPickerGridCellButtonClassNames}
       index={item.index}
       onMouseEnter={onMouseEnter}

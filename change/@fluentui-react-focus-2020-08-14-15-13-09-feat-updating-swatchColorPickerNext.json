@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Implementing createMergedRef inside FocusZone.",
   "packageName": "@fluentui/react-focus",
   "email": "czearing@outlook.com",

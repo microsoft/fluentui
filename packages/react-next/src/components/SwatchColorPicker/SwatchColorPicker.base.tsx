@@ -103,8 +103,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       internalState.cellFocused = false;
       onCellFocused();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onCellFocused]);
+  }, [internalState, onCellFocused]);
 
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
@@ -119,8 +118,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       }
       return true;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [focusOnHover, disabled],
+    [focusOnHover, internalState.isNavigationIdle, disabled],
   );
 
   /**
@@ -141,8 +139,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
 
       return true;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [focusOnHover, disabled],
+    [focusOnHover, internalState.isNavigationIdle, disabled],
   );
 
   /**
@@ -183,8 +180,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [disabled, focusOnHover, mouseLeaveParentSelector],
+    [disabled, focusOnHover, internalState.isNavigationIdle, mouseLeaveParentSelector],
   );
 
   /**
@@ -215,8 +211,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onCellFocused],
+    [internalState, onCellFocused],
   );
 
   /**
@@ -236,8 +231,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         setSelectedId(item.id);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [disabled, onCellFocused, selectedId],
+    [disabled, internalState, onCellFocused, selectedId, setSelectedId],
   );
 
   /**
@@ -255,8 +249,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     internalState.navigationIdleTimeoutId = setTimeout(() => {
       internalState.isNavigationIdle = true;
     }, internalState.navigationIdleDelay);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [clearTimeout, internalState, setTimeout]);
 
   /**
    * Callback used to handle KeyCode events
@@ -272,8 +265,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         setNavigationTimeout();
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [setNavigationTimeout],
   );
 
   /**
@@ -281,7 +273,6 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    * @param item - The item to render
    * @returns - Element representing the item
    */
-
   const renderOption = (item: IColorCellProps): JSX.Element => {
     return (
       <ColorPickerGridCell

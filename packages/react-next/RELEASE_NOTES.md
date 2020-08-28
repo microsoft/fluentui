@@ -75,8 +75,10 @@ TODO: document any API or functionality changes
 
 ### SwatchColorPicker
 
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
 - Added an `onChange` prop and deprecated `onColorChanged`.
-- Deprecated `isControlled`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ## Other notable changes
 

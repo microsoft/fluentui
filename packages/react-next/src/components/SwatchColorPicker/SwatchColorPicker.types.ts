@@ -47,8 +47,7 @@ export interface ISwatchColorPickerProps {
   colorCells: IColorCellProps[];
 
   /**
-* @deprecated Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled
-
+   * @deprecated Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled
    */
   isControlled?: boolean;
 
