@@ -167,4 +167,7 @@ const ButtonOverridesMissPerf = () => (
   </Provider>
 );
 
+ButtonOverridesMissPerf.iterations = 100;
+ButtonOverridesMissPerf.filename = 'ButtonOverridesMiss.perf.tsx';
+
 export default ButtonOverridesMissPerf;

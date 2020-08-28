@@ -215,4 +215,7 @@ const ButtonUseCssNestingPerf = () => {
   );
 };
 
+ButtonUseCssNestingPerf.iterations = 100;
+ButtonUseCssNestingPerf.filename = 'ButtonUseCssNesting.perf.tsx';
+
 export default ButtonUseCssNestingPerf;
