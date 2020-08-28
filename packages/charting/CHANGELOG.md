@@ -1,8 +1,36 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.2.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.5..@uifabric/charting_v3.2.0)
+
+### Minor changes
+
+- added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles ([PR #14584](https://github.com/microsoft/fluentui/pull/14584) by v-sivsar@microsoft.com)
+
+## [3.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.5)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.4..@uifabric/charting_v3.1.5)
+
+### Patches
+
+- IE11 support for xAxis labels and utility created for x axis labels wrapping ([PR #14628](https://github.com/microsoft/fluentui/pull/14628) by v-jasha@microsoft.com)
+- making legends focusable by default. ([PR #14731](https://github.com/microsoft/fluentui/pull/14731) by v-sivsar@microsoft.com)
+
+## [3.1.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.4)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.3..@uifabric/charting_v3.1.4)
+
+### Patches
+
+- Y axis ticks values duplicating issue resolved. removed ticks() and added tickFormat() ([PR #14657](https://github.com/microsoft/fluentui/pull/14657) by v-jasha@microsoft.com)
 
 ## [3.1.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.1)
 

@@ -79,6 +79,9 @@ export type ButtonProps = ComponentProps &
     /** A button can emphasize that it represents an alternative action. */
     secondary?: boolean;
 
+    /** A button can blend into its background to become less emphasized. */
+    ghost?: boolean;
+
     /** A button can be sized. */
     size?: SizeValue;
 

@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/fluent-theme_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix undefined FluentTheme due to circular dep",
+            "author": "xgao@microsoft.com",
+            "commit": "edaeccde05290fef32b2407ebbc09ab3fd711b6f",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/fluent-theme_v7.2.3",
       "version": "7.2.3",
