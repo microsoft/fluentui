@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "polish renameProp",
-  "packageName": "@fluentui/codemods",
-  "email": "t-dama@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-08T02:21:20.753Z"
-}

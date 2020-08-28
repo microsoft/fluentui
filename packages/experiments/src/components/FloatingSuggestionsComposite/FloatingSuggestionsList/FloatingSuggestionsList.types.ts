@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItemProps,
@@ -25,6 +26,7 @@ export interface IFloatingSuggestionsListProps<T> {
   onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;
+  pickerWidth?: string;
 }
 
 export interface IFloatingSuggestionsListStyleProps {}

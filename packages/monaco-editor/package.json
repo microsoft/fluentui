@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/monaco-editor",
-  "version": "0.5.15",
+  "version": "0.5.17",
   "description": "Version of monaco-editor with configuration helpers and transformed CSS files",
   "module": "./lib/monacoBundle.js",
   "typings": "./esm/vs/editor/editor.api.d.ts",
@@ -16,7 +16,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0",
     "monaco-editor": "0.19.0",
     "monaco-typescript": "3.6.1"

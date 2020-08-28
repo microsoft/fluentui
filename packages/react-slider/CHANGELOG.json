@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-slider",
+  "entries": [
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-slider_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Slider from react-next to react-slider",
+            "author": "xgao@microsoft.com",
+            "commit": "f5481bb6dc9e5ac7be4d278f2e8e00ce123fcb1f",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    }
+  ]
+}

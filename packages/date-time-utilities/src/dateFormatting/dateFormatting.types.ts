@@ -41,13 +41,13 @@ export interface IDateFormatting extends IDateGridStrings {
    * Format the month, day and year according to specified function.
    * Intended use case is localization.
    */
-  formatMonthDayYear: (date: Date) => string;
+  formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
   /**
    * Format the month and year according to specified function.
    * Intended use case is localization.
    */
-  formatMonthYear: (date: Date) => string;
+  formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
 
   /**
    * Parse date from string representation into Date type.
@@ -75,6 +75,16 @@ export interface ICalendarStrings extends IDateFormatting {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
+
+  /**
+   * Title for button to open the calendar.
+   */
+  openCalendarTitle: string;
+
+  /**
+   * Placeholder string for an unfilled input.
+   */
+  inputPlaceholder: string;
 
   /**
    * Aria-label for the "previous month" button in day picker.

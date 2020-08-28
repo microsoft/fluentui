@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IChartHelperProps, IChartHelperStyleProps, IChartHelperStyles } from './ChartHelper.types';
 import { ChartHelperBaseComponent } from './ChartHelper.base';

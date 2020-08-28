@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from 'office-ui-fabric-react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { Button } from '@fluentui/react-button';
 import { FabricDecorator } from '../utilities';
 
 storiesOf('ThemeProvider', module)
@@ -51,6 +52,28 @@ storiesOf('ThemeProvider', module)
       theme={{ components: { PrimaryButton: { styles: { root: { background: '#000' } } } } }}
     >
       <PrimaryButton>Customized styles</PrimaryButton>
+    </ThemeProvider>
+  ))
+  .addStory('Use tokens on new button', () => (
+    <ThemeProvider
+      theme={{
+        tokens: {
+          button: {
+            background: 'yellow',
+          },
+        },
+      }}
+    >
+      <Button>New Button customized with tokens</Button>
+    </ThemeProvider>
+  ))
+  .addStory('Use compat theme on new button', () => (
+    <ThemeProvider
+      theme={{
+        semanticColors: { buttonBackground: 'yellow' },
+      }}
+    >
+      <Button>New Button customized with compat theme</Button>
     </ThemeProvider>
   ));
 

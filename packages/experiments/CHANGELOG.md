@@ -1,8 +1,57 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
+
+### Minor changes
+
+- Drag drop between SelectedItemLists ([PR #14572](https://github.com/microsoft/fluentui/pull/14572) by elvonspa@microsoft.com)
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.29.1..@uifabric/experiments_v7.30.0)
+
+### Minor changes
+
+- update SelectedItemsList and UnifiedPicker to use Clipboard API for copy ([PR #14724](https://github.com/microsoft/fluentui/pull/14724) by elvonspa@microsoft.com)
+
+### Patches
+
+- Fixing drag drop infinite loop ([PR #14637](https://github.com/microsoft/fluentui/pull/14637) by nebhatna@microsoft.com)
+
+## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.3..@uifabric/experiments_v7.29.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.2..@uifabric/experiments_v7.28.3)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.28.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.2)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.0..@uifabric/experiments_v7.28.2)
+
+### Patches
+
+- Add two well example and fix Remove ctx menu example ([PR #14490](https://github.com/microsoft/fluentui/pull/14490) by sadelson@microsoft.com)
 
 ## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.0)
 

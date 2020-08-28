@@ -3,6 +3,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IGroupedVerticalBarChartData } from '../../types/index';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IGroupedVerticalBarChartProps {
   /**
@@ -111,6 +112,11 @@ export interface IGroupedVerticalBarChartProps {
    */
   hideTooltip?: boolean;
 
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
+
   /**
    * x Axis labels tick padding
    * @default 10
@@ -177,6 +183,11 @@ export interface IGroupedVerticalBarChartStyleProps {
    * Prop to display or transparent of y-axis path
    */
   showYAxisPath?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyles {

@@ -2,6 +2,36 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding datepicker input placeholder string.",
+            "author": "karymes@microsoft.com",
+            "commit": "d1c061ed9024da491ceb0f4efda5c751e89cb27f",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating localization defaults and changing type of formatting functions",
+            "author": "karymes@microsoft.com",
+            "commit": "e4e1b36c2724372d3ac6a3fe26c8a2cc1d038128",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/date-time-utilities_v7.4.1",
       "version": "7.4.1",

@@ -10,17 +10,28 @@ import {
   Block,
   VariableStatement,
 } from 'ts-morph';
-import { ValueMap, SpreadPropInStatement } from '../../types';
+import { ValueMap, SpreadPropInStatement, NoOp } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
+import { Result, Err, Ok } from '../../../helpers/result';
 
-/* Helper function to rename a prop if in a spread operator.  */
+/* Helper function to rename a prop if in a spread operator.
+
+   Known cases that can't be handled:
+   * If the prop is a union type with UNDEFINED, ts-morph might not pick
+     up on that union, so it will try and extract the component when it
+     might not exist -- this will cause an error.
+   * If the spread prop's TYPE comes from a local file that is imported,
+     ts-morph's getType() might not identify it, causing nothing to be changed.
+     If, instead, one uses getContextualType(), ts-morph tends to infer the prop
+     type as the default for the component, leading to potentially incorrect behavior.
+*/
 export function renamePropInSpread(
   element: JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
   replacementName: string,
   changeValueMap?: ValueMap<string>,
   replacementValue?: string,
-) {
+): Result<string, NoOp> {
   /* Step 1: Figure out which attribute contains the spread prop. */
   const allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
@@ -29,14 +40,17 @@ export function renamePropInSpread(
         const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
         const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
-          return;
+          return Err({ reason: 'Invalid spread prop. Could not access internal identifiers successfully.' });
         }
+        /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
-        /* Verify this attribute contains the name of our desired prop. */
-        if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
+        /* Verify this attribute contains the name of our desired prop and DOES NOT
+           contain the name of the replacement name. */
+        if (spreadContains(toRename, replacementName, spreadIsIdentifier, attribute)) {
           /* Step 3: Create names for your new potential objects. */
+          const componentName = element.getFirstChildByKind(SyntaxKind.Identifier)?.getText();
           const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
-          let newSpreadName = '__migProps';
+          let newSpreadName = `__mig${componentName}Props`;
           const newMapName = '__migEnumMap';
           /* Metadata in case we need to reacquire the current element (AST modification). */
           let newJSXFlag = false;
@@ -53,23 +67,20 @@ export function renamePropInSpread(
               blockContainer = containerMaybe.value;
               newJSXFlag = true;
             } else {
-              // eslint-disable-next-line no-throw-literal
-              throw 'attempt to create a new block around prop failed.';
+              return Err({ reason: 'Attempted to create a new block around prop failed.' });
             }
           }
 
           /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
           const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
           if (parentContainer === undefined) {
-            // eslint-disable-next-line no-throw-literal
-            throw 'unable to get parent container from block';
+            return Err({ reason: 'Unable to get parent container from block.' });
           }
 
           /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
           const insertIndex = blockContainer!.getChildIndex();
           if (insertIndex === undefined) {
-            // eslint-disable-next-line no-throw-literal
-            throw 'unable to find child index';
+            return Err({ reason: 'unable to find child index' });
           }
 
           /* Step 7: Look to see if the prop we're looking for exists already. Manually
@@ -121,6 +132,7 @@ export function renamePropInSpread(
               }
             }
           } else {
+            /* If a viable spread prop wasn't found, make a new one. */
             if (!propAlreadyExists(parentContainer, toRename)) {
               parentContainer.insertVariableStatement(
                 insertIndex,
@@ -186,6 +198,7 @@ export function renamePropInSpread(
       }
     }
   });
+  return Ok('Successfully modified the given prop in the spread operator');
 }
 
 /* Helper function that identifies the location of a spread prop within
@@ -238,7 +251,7 @@ function propAlreadyExists(parentContainer: Block, toRename: string): boolean {
 /* Looks to see if the spread prop in question already exists, and if so
    attempts to insert the desired prop into its decomposition. Returns TRUE
    if it successfully inserts OLDPROP into the spread deconstruction, false if otherwise. */
-function tryInsertExistingDecomposedProp(oldProp: string, statement: VariableStatement) {
+function tryInsertExistingDecomposedProp(oldProp: string, statement: VariableStatement): boolean {
   const decompObject = statement.getFirstDescendantByKind(SyntaxKind.ObjectBindingPattern);
   if (decompObject) {
     let objectText = decompObject.getText();
@@ -254,7 +267,7 @@ function tryInsertExistingDecomposedProp(oldProp: string, statement: VariableSta
    will be inserted following. */
 function createAuxiliaryVariable(kind: VariableDeclarationKind, varName: string, varValue: string) {
   return {
-    declarationKind: VariableDeclarationKind.Const,
+    declarationKind: kind,
     declarations: [
       {
         name: varName,
@@ -279,8 +292,15 @@ function createDeconstructedProp(newSpreadPropName: string, toRename: string, ol
 }
 
 /* Helper function that returns TRUE if the supplied spread object
-   contains the prop we're looking for. Else returns FALSE. */
-function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spreadProp: JsxAttributeLike): boolean {
+   contains the prop we're looking for AND if REPLACEMENTNAME cannot
+   be found in the prop. This is because standard props often contain
+   both old and new prop name. Else returns FALSE. */
+function spreadContains(
+  oldPropName: string,
+  replacementName: string,
+  spreadIsIdentifier: boolean,
+  spreadProp: JsxAttributeLike,
+): boolean {
   const element = spreadIsIdentifier
     ? spreadProp.getFirstChildByKind(SyntaxKind.Identifier)
     : spreadProp.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
@@ -291,6 +311,12 @@ function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spread
       .getProperties()
       .some(name => {
         return name.getName() === oldPropName;
+      }) &&
+    !element
+      .getType()!
+      .getProperties()
+      .some(name => {
+        return name.getName() === replacementName;
       })
   );
 }

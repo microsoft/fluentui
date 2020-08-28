@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IMultiStackedBarChartProps,

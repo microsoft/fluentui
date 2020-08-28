@@ -1,6 +1,7 @@
 import { FontWeights, getFocusOutlineStyle, IStyleFunction } from 'office-ui-fabric-react/lib/index';
 import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
+import { getLinkColors } from '../../utilities/getLinkColors';
 
 export const sideRailClassNames = {
   isActive: 'SideRail-isActive',
@@ -63,16 +64,15 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
     jumpLinkWrapper: {
       position: 'relative',
     },
-    jumpLink: {
-      color: theme.palette.neutralPrimary,
-      borderLeft: '2px solid transparent',
-      paddingLeft: 6, // 8px - 2px border
-      selectors: {
-        '&:focus': {
-          color: theme.palette.neutralPrimary,
-        },
+    jumpLink: [
+      {
+        borderLeft: '2px solid transparent',
+        paddingLeft: 6, // 8px - 2px border
       },
-    },
+      // Courtesty of UHF global styles and overrides of them in Page, we have to be very specific
+      // when overriding the colors. This utility helps.
+      getLinkColors(theme.palette.neutralPrimary, theme.semanticColors.linkHovered, theme.palette.neutralPrimary),
+    ],
     jumpLinkActive: {
       borderLeftColor: theme!.palette.themePrimary,
     },

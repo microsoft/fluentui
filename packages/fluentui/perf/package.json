@@ -6,7 +6,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@fluentui/docs": "^0.51.0",
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",

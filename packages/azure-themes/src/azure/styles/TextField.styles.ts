@@ -1,5 +1,4 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -44,16 +43,16 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       bottom: 2,
     },
     prefix: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     suffix: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     field: [
       {
         color: semanticColors.inputText,
         backgroundColor: semanticColors.inputBackground,
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,
