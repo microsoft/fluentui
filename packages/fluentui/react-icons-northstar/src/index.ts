@@ -244,7 +244,6 @@ export { WordColorIcon } from './components/WordColorIcon';
 export { WordIcon } from './components/WordIcon';
 export { WorkOrSchoolIcon } from './components/WorkOrSchoolIcon';
 export { YammerIcon } from './components/YammerIcon';
-export { ZoomIcon } from './components/ZoomIcon';
 export { ZoomInIcon } from './components/ZoomInIcon';
 export { ZoomOutIcon } from './components/ZoomOutIcon';
 export { ZoomToFitIcon } from './components/ZoomToFitIcon';
