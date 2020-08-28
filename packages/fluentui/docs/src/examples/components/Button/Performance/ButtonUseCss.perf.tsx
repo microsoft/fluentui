@@ -161,7 +161,7 @@ const ButtonUseCssPerf = () => {
   );
 };
 
-ButtonUseCssPerf.iterations = 100;
+ButtonUseCssPerf.iterations = 50;
 ButtonUseCssPerf.filename = 'ButtonUseCss.perf.tsx';
 
 export default ButtonUseCssPerf;
