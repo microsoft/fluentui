@@ -36,6 +36,7 @@ import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
+import MenuList from './prototypes/menuList/';
 
 const _Builder = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
@@ -148,6 +149,7 @@ const Routes = () => (
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
+                <Route exact path="/prototype-menu-list" component={MenuList} />
                 <Route
                   exact
                   path="/unstable-datepicker"

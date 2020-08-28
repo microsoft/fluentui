@@ -166,6 +166,15 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'menulist',
+    title: {
+      content: 'Menu List',
+      as: NavLink,
+      to: '/prototype-menu-list',
+    },
+    public: true,
+  },
+  {
     id: 'virtualized-table',
     title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
     public: true,
