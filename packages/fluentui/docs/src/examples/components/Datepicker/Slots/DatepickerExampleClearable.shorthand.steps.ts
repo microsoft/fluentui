@@ -6,7 +6,7 @@ const config: ScreenerTestsConfig = {
     builder =>
       builder
         .click(`.${inputClassName}`)
-        .click(`.${datepickerCalendarCellClassName}:nth-child(4)`)
+        .click(`.${datepickerCalendarCellClassName}:nth-child(10)`)
         .snapshot('Shows selected date in input with clear possibility.')
         .click(`.${inputClassName}__icon`)
         .snapshot('Shows cleared input.')
