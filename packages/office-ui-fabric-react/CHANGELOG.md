@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.133.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.133.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.132.0..office-ui-fabric-react_v7.133.0)
+
+### Minor changes
+
+- Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios. ([PR #13621](https://github.com/microsoft/fluentui/pull/13621) by ololubek@microsoft.com)
+
+### Patches
+
+- fixing negative date navigation by changing the date clone method from using strings to using the date object itself ([PR #14647](https://github.com/microsoft/fluentui/pull/14647) by lorejoh12@gmail.com)
+- fixing callout positioning when screen is too small to position and DirectionalHint = left* or right* due to using last value from for loop ([PR #14771](https://github.com/microsoft/fluentui/pull/14771) by lorejoh12@gmail.com)
 
 ## [7.132.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.132.0)
 
