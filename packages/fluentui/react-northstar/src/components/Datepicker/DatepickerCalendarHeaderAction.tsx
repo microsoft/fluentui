@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { buttonBehavior } from '@fluentui/accessibility';
 import { compose } from '@fluentui/react-bindings';
 import { ChevronEndIcon, ChevronStartIcon } from '@fluentui/react-icons-northstar';
 import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
@@ -39,6 +40,8 @@ export const DatepickerCalendarHeaderAction = compose<
 });
 
 DatepickerCalendarHeaderAction.defaultProps = {
-  ...Button.defaultProps,
+  as: 'button',
+  accessibility: buttonBehavior,
+  size: 'medium',
   icon: {},
 };
