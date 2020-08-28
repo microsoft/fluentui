@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing negative date navigation by changing the date clone method from using strings to using the date object itself",
+            "author": "lorejoh12@gmail.com",
+            "commit": "5fbb948524f5c80cf59378e57ac898fabd6f3273",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2020 12:34:55 GMT",
       "tag": "@fluentui/date-time-utilities_v7.6.0",
       "version": "7.6.0",

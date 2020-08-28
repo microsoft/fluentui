@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.1..@uifabric/azure-themes_v7.4.3)
+
+### Patches
+
+- Body text font size clean up, <Text> ([PR #14534](https://github.com/microsoft/fluentui/pull/14534) by jagaheri@microsoft.com)
 
 ## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.1)
 

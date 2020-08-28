@@ -1,8 +1,39 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.31.0..@uifabric/experiments_v7.32.0)
+
+### Minor changes
+
+- Make the floating sugggestions picker have an optional fixed width ([PR #14598](https://github.com/microsoft/fluentui/pull/14598) by sadelson@microsoft.com)
+
+## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
+
+### Minor changes
+
+- Drag drop between SelectedItemLists ([PR #14572](https://github.com/microsoft/fluentui/pull/14572) by elvonspa@microsoft.com)
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.29.1..@uifabric/experiments_v7.30.0)
+
+### Minor changes
+
+- update SelectedItemsList and UnifiedPicker to use Clipboard API for copy ([PR #14724](https://github.com/microsoft/fluentui/pull/14724) by elvonspa@microsoft.com)
+
+### Patches
+
+- Fixing drag drop infinite loop ([PR #14637](https://github.com/microsoft/fluentui/pull/14637) by nebhatna@microsoft.com)
 
 ## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
 

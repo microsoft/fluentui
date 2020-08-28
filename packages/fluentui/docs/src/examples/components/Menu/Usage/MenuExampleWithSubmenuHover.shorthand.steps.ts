@@ -1,7 +1,6 @@
 import { menuClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  menu: `.${menuClassName}`,
   item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
