@@ -1,5 +1,5 @@
 import { Customizations, merge, getWindow } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles, IEffects } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
@@ -9,7 +9,7 @@ import { IRawStyle } from '@uifabric/merge-styles';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
+  semanticColors: _makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
   disableGlobalClassNames: false,
@@ -20,7 +20,8 @@ export const ThemeSettingName = 'theme';
 
 export function initializeThemeInCustomizations(): void {
   if (!Customizations.getSettings([ThemeSettingName]).theme) {
-    const win: any = getWindow(); // tslint:disable-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win: any = getWindow();
 
     if (win?.FabricConfig?.theme) {
       _theme = createTheme(win.FabricConfig.theme);
@@ -123,6 +124,7 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
  */
 export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
+  let newEffects = { ...DefaultEffects, ...theme.effects };
 
   if (!theme.palette || !theme.palette.accent) {
     newPalette.accent = newPalette.themePrimary;
@@ -130,7 +132,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
   let newSemanticColors = {
-    ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
+    ..._makeSemanticColors(newPalette, newEffects, theme.semanticColors, !!theme.isInverted, depComments),
     ...theme.semanticColors,
   };
 
@@ -161,16 +163,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...DefaultSpacing,
       ...theme.spacing,
     },
-    effects: {
-      ...DefaultEffects,
-      ...theme.effects,
-    },
+    effects: newEffects,
   };
 }
 
-// Generates all the semantic slot colors based on the Fabric palette.
-// We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
+/** Generates all the semantic slot colors based on the theme so far
+ * We'll use these as fallbacks for semantic slots that the passed in theme did not define.
+ * The caller must still mix in the customized semantic slots at the end.
+ */
+function _makeSemanticColors(
+  p: IPalette,
+  e: IEffects,
+  s: Partial<ISemanticColors> | undefined,
+  isInverted: boolean,
+  depComments: boolean,
+): ISemanticColors {
   let toReturn: ISemanticColors = {
     // DEFAULTS
     bodyBackground: p.white,
@@ -187,6 +194,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledBodySubtext: p.neutralTertiaryAlt,
     disabledBorder: p.neutralTertiaryAlt,
     focusBorder: p.neutralSecondary,
+    cardStandoutBackground: p.white,
+    cardShadow: e.elevation4,
+    cardShadowHovered: '', // set in second pass
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLighterAlt,
@@ -286,12 +296,21 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
     successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
 
-    // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
+    // Deprecated slots, later pass by _fixDeprecatedSlots() for self-referential slots
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
     warningText: '',
     successText: !isInverted ? '#107C10' : '#92c353',
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight,
+
+    // mix in customized semantic slots for second pass
+    ...s,
+  };
+
+  // second pass for self-referential slots
+  toReturn = {
+    ...toReturn,
+    cardShadowHovered: !isInverted ? e.elevation8 : '0 0 1px ' + toReturn.variantBorderHovered,
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
@@ -304,15 +323,12 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
     dep = ' /* @deprecated */';
   }
 
-  // tslint:disable-next-line:deprecation
+  /* eslint-disable deprecation/deprecation */
   s.listTextColor = s.listText + dep;
-  // tslint:disable-next-line:deprecation
   s.menuItemBackgroundChecked += dep;
-  // tslint:disable-next-line:deprecation
   s.warningHighlight += dep;
-  // tslint:disable-next-line:deprecation
   s.warningText = s.messageText + dep;
-  // tslint:disable-next-line:deprecation
   s.successText += dep;
+  /* eslint-enable deprecation/deprecation */
   return s;
 }

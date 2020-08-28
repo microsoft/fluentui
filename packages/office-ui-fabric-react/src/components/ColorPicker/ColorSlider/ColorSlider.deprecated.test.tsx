@@ -5,8 +5,6 @@ import { ColorSlider } from './ColorSlider';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/index';
 import { setWarningCallback } from '../../../Utilities';
 
-// tslint:disable:deprecation
-
 describe('ColorSlider', () => {
   let component: renderer.ReactTestRenderer | undefined;
 

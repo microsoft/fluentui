@@ -45,6 +45,6 @@ export function moveImports(
     }
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return undefined as any;
 }

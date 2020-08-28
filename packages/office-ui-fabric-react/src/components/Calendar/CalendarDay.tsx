@@ -104,7 +104,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     this._onClose = this._onClose.bind(this);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps),
@@ -705,8 +704,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
 
   private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) {
     if (this.state.weeks) {
-      this.state.weeks.map((week: IDayInfo[], weekIndex: number) => {
-        week.map(day => {
+      this.state.weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+        week.forEach(day => {
           const ref = this.days[day.key];
           func(ref, day, weekIndex);
         });
@@ -838,7 +837,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
+        const originalDate = new Date(date);
         const dayInfo: IDayInfo = {
           key: date.toString(),
           date: date.getDate().toString(),

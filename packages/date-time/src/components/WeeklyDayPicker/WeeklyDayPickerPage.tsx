@@ -18,16 +18,10 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
               <WeeklyDayPickerInlineExample />
             </ExampleCard>
             <ExampleCard
-              title="Inline WeeklyDayPicker with externally controlled date"
-              code={WeeklyDayPickerInlineExampleCode}
-            >
-              <WeeklyDayPickerInlineExample showNavigateButtons={true} />
-            </ExampleCard>
-            <ExampleCard
               title="Inline WeeklyDayPicker that can be expanded to full month picker"
               code={WeeklyDayPickerInlineExpandableExampleCode}
             >
-              <WeeklyDayPickerInlineExpandableExample showExpandButton={true} weeksToShow={6} />
+              <WeeklyDayPickerInlineExpandableExample />
             </ExampleCard>
           </div>
         }

@@ -1,27 +1,27 @@
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useFluentContext,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as CustomPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  WithAsProp,
-  withSafeTypeForAs,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
-import CardBody from './CardBody';
-import CardColumn from './CardColumn';
-import CardFooter from './CardFooter';
-import CardHeader from './CardHeader';
-import CardPreview from './CardPreview';
-import CardTopControls from './CardTopControls';
-import CardExpandableBox from './CardExpandableBox';
+import { CardBody } from './CardBody';
+import { CardColumn } from './CardColumn';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardPreview } from './CardPreview';
+import { CardTopControls } from './CardTopControls';
+import { CardExpandableBox } from './CardExpandableBox';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -93,7 +93,15 @@ export type CardStylesProps = Pick<
 
 export const cardClassName = 'ui-card';
 
-const Card: React.FC<WithAsProp<CardProps>> &
+/**
+ * A Card is used to display data in sematically grouped way.
+ * * @accessibility
+ * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `aria-roledescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
+ * When card is actionable (i.e. has `onClick` property), use [cardFocusableBehavior](/components/card/accessibility#card-focusable). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
+ * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
+ *
+ */
+export const Card: ComponentWithAs<'div', CardProps> &
   FluentComponentStaticProps<CardProps> & {
     Header: typeof CardHeader;
     Body: typeof CardBody;
@@ -103,7 +111,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Column: typeof CardColumn;
     ExpandableBox: typeof CardExpandableBox;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
   const cardRef = React.useRef<HTMLElement>();
@@ -233,13 +241,3 @@ Card.Column = CardColumn;
 Card.ExpandableBox = CardExpandableBox;
 
 Card.create = createShorthandFactory({ Component: Card });
-
-/**
- * A Card is used to display data in sematically grouped way.
- * * @accessibility
- * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `aria-roledescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
- * When card is actionable (i.e. has `onClick` property), use [cardFocusableBehavior](/components/card/accessibility#card-focusable). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
- * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
- *
- */
-export default withSafeTypeForAs<typeof Card, CardProps, 'div'>(Card);

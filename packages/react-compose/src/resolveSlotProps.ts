@@ -16,7 +16,7 @@ export function resolveSlotProps<TProps, TState = TProps>(
 
   // Derive the default slot props from the config, if provided.
   options.slotProps.forEach(definition => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const nextSlotProps = definition(state as any);
 
     Object.keys(nextSlotProps).forEach(key => {
@@ -30,7 +30,7 @@ export function resolveSlotProps<TProps, TState = TProps>(
   // Iterate through slots and resolve shorthand values.
   Object.keys(slots).forEach((slotName: string) => {
     const slot = slots[slotName];
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const slotProp = (state as any)[slotName];
 
     if (slot && slotProp !== undefined && slotProp !== null) {

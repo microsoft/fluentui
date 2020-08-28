@@ -16,8 +16,8 @@ export type CanvasProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
+  onKeyDown?: (KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
-  onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -27,7 +27,7 @@ export type CanvasProps = {
   style?: React.CSSProperties;
 };
 
-const Canvas: React.FunctionComponent<CanvasProps> = ({
+export const Canvas: React.FunctionComponent<CanvasProps> = ({
   draggingElement,
   isExpanding,
   isSelecting,
@@ -35,8 +35,8 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDropPositionChange,
   onMouseMove,
   onMouseUp,
+  onKeyDown,
   onSelectComponent,
-  onSelectorHover,
   selectedComponent,
   onCloneComponent,
   onMoveComponent,
@@ -45,6 +45,8 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   style,
 }) => {
+  const [hideDropSelector, setHideDropSelector] = React.useState(false);
+
   const iframeId = React.useMemo(
     () =>
       `frame-${Math.random()
@@ -68,9 +70,10 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
+      hideDropSelector && setHideDropSelector(false);
       onMouseMove?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [iframeCoordinatesToWindowCoordinates, onMouseMove],
+    [iframeCoordinatesToWindowCoordinates, onMouseMove, hideDropSelector],
   );
 
   const handleMouseUp = React.useCallback(
@@ -80,9 +83,10 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
       e.preventDefault();
       e.stopPropagation();
 
+      hideDropSelector && setHideDropSelector(false);
       onMouseUp();
     },
-    [onMouseUp],
+    [onMouseUp, hideDropSelector],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -90,13 +94,6 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
     [onSelectComponent, jsonTree],
-  );
-
-  const handleSelectorHover = React.useCallback(
-    (fiberNav: FiberNavigator) => {
-      onSelectorHover?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
-    },
-    [onSelectorHover, jsonTree],
   );
 
   const handleCloneComponent = React.useCallback(
@@ -227,7 +224,7 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree]);
 
   return (
     <Frame
@@ -276,7 +273,6 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
               showElement={false}
               showCropMarks={false}
               onSelect={handleSelectComponent}
-              onHover={handleSelectorHover}
             />
             {selectedComponent && (
               <DebugFrame
@@ -295,12 +291,20 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
                 jsonTree={jsonTree}
                 mountDocument={document}
                 onDropPositionChange={onDropPositionChange}
+                hideSelector={hideDropSelector}
               />
             )}
-
+            <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {draggingElement && (
+                <EventListener
+                  type="scroll"
+                  listener={() => !hideDropSelector && setHideDropSelector(true)}
+                  target={document}
+                />
+              )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>
@@ -309,5 +313,3 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
     </Frame>
   );
 };
-
-export default Canvas;

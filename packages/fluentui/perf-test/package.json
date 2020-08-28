@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/perf-test",
   "description": "Perf tests for fluentui.",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "private": true,
   "dependencies": {
-    "office-ui-fabric-react": "^7.121.3"
+    "office-ui-fabric-react": "^7.132.0"
   },
   "scripts": {
     "build": "just-scripts build",
@@ -14,8 +14,8 @@
     "perf:test:base": "just-scripts perf-test --base"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.50.0",
-    "@fluentui/react-northstar": "^0.50.0",
+    "@fluentui/digest": "^0.51.0",
+    "@fluentui/react-northstar": "^0.51.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
@@ -25,7 +25,8 @@
     "just-scripts": "0.43.1",
     "node-fetch": "^2.6.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"

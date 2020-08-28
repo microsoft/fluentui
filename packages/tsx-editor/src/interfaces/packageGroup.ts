@@ -12,7 +12,8 @@ export interface IPackageGroup {
    * Load the module which will be made available under `globalName`.
    * The loader function can either return a promise or take a callback.
    */
-  loadGlobal: (() => Promise<any>) | ((cb: (globalResult: any) => void) => void); // tslint:disable-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  loadGlobal: (() => Promise<any>) | ((cb: (globalResult: any) => void) => void);
 
   /** Packages whose exports are available at runtime from `globalName` */
   packages: IPackage[];

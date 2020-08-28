@@ -6,11 +6,29 @@ describe('useMergedRefs', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
-    wrapper?.unmount();
-    wrapper = undefined;
+    if (wrapper && wrapper.exists()) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
   });
 
   it('always returns the same ref (refs should be immutable)', () => {
+    let lastMergedRef;
+    const refFunc = () => null;
+    const TestComponent: React.FunctionComponent = () => {
+      lastMergedRef = useMergedRefs<boolean>(refFunc);
+      return null;
+    };
+
+    wrapper = mount(<TestComponent />);
+    const ref1 = lastMergedRef;
+    wrapper.setProps({});
+    const ref2 = lastMergedRef;
+
+    expect(ref1).toBe(ref2);
+  });
+
+  it('always mutates the ref when 1 or more merged refs mutate', () => {
     let lastMergedRef;
 
     const TestComponent: React.FunctionComponent = () => {
@@ -23,7 +41,7 @@ describe('useMergedRefs', () => {
     wrapper.setProps({});
     const ref2 = lastMergedRef;
 
-    expect(ref1).toBe(ref2);
+    expect(ref1).not.toBe(ref2);
   });
 
   it('updates all provided refs', () => {
@@ -43,7 +61,7 @@ describe('useMergedRefs', () => {
   it('reuses the same ref callback if refs remain stable', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
 
-    // tslint:disable-next-line:no-empty
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const refValueFunc = (val: boolean) => {};
 
     let refCallback: Function | undefined = undefined;

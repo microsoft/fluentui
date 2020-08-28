@@ -19,7 +19,7 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
   return {
     root: [
       classNames.root,
-      'buttons' === format && {
+      format === 'buttons' && {
         listStyle: 'none',
         display: 'flex',
         flexDirection: 'column',

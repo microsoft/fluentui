@@ -62,6 +62,7 @@ const menuItems: IContextualMenuItem[] = [
       ],
     },
     text: 'Sharing',
+    ariaLabel: 'Sharing. Press enter, space or right arrow keys to open submenu.',
   },
   {
     key: 'navigation',

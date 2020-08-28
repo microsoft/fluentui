@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
-import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  useStyles,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+} from '@fluentui/react-bindings';
 
 export interface CardColumnProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -16,8 +22,12 @@ export interface CardColumnProps extends UIComponentProps, ChildrenComponentProp
 export type CardColumnStylesProps = never;
 export const cardColumnClassName = 'ui-card__column';
 
-const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticProps<CardColumnProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A CardColumn is used to display content in card as column
+ */
+export const CardColumn: ComponentWithAs<'div', CardColumnProps> &
+  FluentComponentStaticProps<CardColumnProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardColumn.displayName, context.telemetry);
   setStart();
 
@@ -63,8 +73,3 @@ CardColumn.propTypes = {
 CardColumn.handledProps = Object.keys(CardColumn.propTypes) as any;
 
 CardColumn.create = createShorthandFactory({ Component: CardColumn });
-
-/**
- * A CardColumn is used to display content in card as column
- */
-export default withSafeTypeForAs<typeof CardColumn, CardColumnProps, 'div'>(CardColumn);

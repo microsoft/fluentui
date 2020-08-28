@@ -9,7 +9,6 @@ export interface IButtonToggleExampleState {
   primaryCircularButtonToggled?: boolean;
 }
 
-// tslint:disable:jsx-no-lambda
 export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampleState> {
   constructor(props: {}) {
     super(props);

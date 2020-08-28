@@ -22,7 +22,7 @@ export const useCopyToClipboard = (value: string | (() => string), timeout: numb
   return [active, onCopy];
 };
 
-const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => {
+export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => {
   const { children, timeout, value } = props;
   const [active, onCopy] = useCopyToClipboard(value, timeout);
 
@@ -34,5 +34,3 @@ CopyToClipboard.propTypes = {
   timeout: PropTypes.number,
   value: PropTypes.string.isRequired,
 };
-
-export default CopyToClipboard;

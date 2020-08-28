@@ -10,7 +10,7 @@ export const borderWidthError = '2px';
 export const borderSolid = 'solid';
 export const borderNone = 'none';
 export const fontFamily =
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line @fluentui/max-len
   'Segoe UI, "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",sans-serif';
 export const fontWeightBold = '700';
 export const inputControlHeight = '24px';

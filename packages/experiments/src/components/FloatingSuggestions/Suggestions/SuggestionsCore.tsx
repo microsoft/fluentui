@@ -4,7 +4,6 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { SuggestionsItem } from './SuggestionsItem';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 /**

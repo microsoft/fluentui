@@ -1,3 +1,1 @@
-import tableVariables from './tableVariables';
-
-export default tableVariables;
+export { tableVariables as tableRowVariables } from './tableVariables';

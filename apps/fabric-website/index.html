@@ -156,7 +156,7 @@
     <script type="text/javascript">
       // @ts-check
       var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
-      var isDev = isLocal || getParameterByName('isDev') === '1';
+      var isDev = isLocal || getParameterByName('dev') === '1' || !!getParameterByName('strict');
       var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
       var devhost = getParameterByName('devhost');
       var entryPointFilename = 'fabric-sitev5';
@@ -245,12 +245,12 @@
 
       function loadAppScripts() {
         // Load app scripts (we don't need to load React because it's bundled)
-        loadScripts([appPath + entryPointFilename + '.js']);
+        loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: isProduction,
+          useMinified: !isDev,
         };
       }
 

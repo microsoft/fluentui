@@ -9,7 +9,7 @@ import {
 
 const variablesCache = new WeakMap<ThemePrepared, Record<string, ComponentVariablesObject>>();
 
-const resolveVariables = (
+export const resolveVariables = (
   displayNames: string[],
   theme: ThemePrepared,
   variables: ComponentVariablesInput | undefined,
@@ -69,5 +69,3 @@ const resolveVariables = (
     withDebugId(variables, 'props.variables'),
   )(theme.siteVariables);
 };
-
-export default resolveVariables;

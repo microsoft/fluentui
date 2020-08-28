@@ -10,7 +10,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
-const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
+export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-checked': !!props.checked,
@@ -28,8 +28,6 @@ const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
     },
   },
 });
-
-export default checkboxBehavior;
 
 export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */

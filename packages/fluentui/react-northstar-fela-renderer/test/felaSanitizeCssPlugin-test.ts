@@ -1,6 +1,6 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
 
-import felaSanitizeCss from '../src/felaSanitizeCssPlugin';
+import { felaSanitizeCssPlugin } from '../src/felaSanitizeCssPlugin';
 import { FelaRendererParam } from '../src/types';
 import * as consoleUtil from './consoleUtil';
 
@@ -15,7 +15,7 @@ const sanitize = (styles: ICSSInJSStyle, options: { sanitizeCss?: boolean } = {}
   };
   const renderer = (() => {}) as any;
 
-  return felaSanitizeCss(styles, 'RULE', renderer, felaParam);
+  return felaSanitizeCssPlugin(styles, 'RULE', renderer, felaParam);
 };
 
 const assertCssPropertyValue = (value: string, isValid: boolean) => {

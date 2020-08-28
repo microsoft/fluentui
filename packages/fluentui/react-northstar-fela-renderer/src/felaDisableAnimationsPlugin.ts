@@ -13,6 +13,10 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
   'animationPlayState',
 ];
 
+function isPlainObject(val: any) {
+  return val != null && typeof val === 'object' && Array.isArray(val) === false;
+}
+
 /**
  * Fela plugin for disabling animations. The animations are disabled or not based on the
  * props' disableAnimations param. If the value of the prop is true, all animation related
@@ -21,7 +25,7 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
  * Caution! Infinite recursion is possible in case if style object has links to self in the props
  * tree.
  */
-const felaDisableAnimationsPlugin = (
+export const felaDisableAnimationsPlugin = (
   styles: ICSSInJSStyle,
   type: string,
   renderer?: FelaRenderer,
@@ -35,7 +39,7 @@ const felaDisableAnimationsPlugin = (
         return acc;
       }
 
-      if (typeof cssPropertyValue === 'object') {
+      if (isPlainObject(cssPropertyValue)) {
         return {
           ...acc,
           [cssPropertyName]: felaDisableAnimationsPlugin(cssPropertyValue, type, renderer, props),
@@ -47,5 +51,3 @@ const felaDisableAnimationsPlugin = (
   }
   return styles;
 };
-
-export default felaDisableAnimationsPlugin;

@@ -1,3 +1,1 @@
-import toolbarVariables from './toolbarVariables';
-
-export default toolbarVariables;
+export { toolbarVariables as toolbarMenuVariables } from './toolbarVariables';

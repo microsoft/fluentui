@@ -315,11 +315,9 @@ function getDatePart(date: Date): Date {
 /**
  * Helper function to assist in date comparisons
  */
-function getDatePartHashValue(date: Date): number {
+export function getDatePartHashValue(date: Date): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
-  /* tslint:disable:no-bitwise */
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
-  /* tslint:enable:no-bitwise */
 }
 
 /**

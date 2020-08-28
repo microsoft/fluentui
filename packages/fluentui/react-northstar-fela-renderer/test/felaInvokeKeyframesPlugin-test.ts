@@ -1,5 +1,5 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import felaInvokeKeyframesPlugin from '../src/felaInvokeKeyframesPlugin';
+import { felaInvokeKeyframesPlugin } from '../src/felaInvokeKeyframesPlugin';
 
 describe('felaRenderKeyframesPlugin', () => {
   test('does not transform the animationName prop if it is already string', () => {

@@ -142,7 +142,7 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
 function _getLocalizedFontFamily(language: string | null): string {
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (LanguageToFontMap as any)[lang];
     }
   }

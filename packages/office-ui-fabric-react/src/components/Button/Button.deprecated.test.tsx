@@ -36,18 +36,15 @@ describe('Button', () => {
 
   describe('DefaultButton', () => {
     it('applies the correct aria attributes', () => {
-      let button: any;
-      let renderedDOM: any;
-
-      button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton description="Some awesome description" ariaDescription="Description on icon button">
           And this is the label
         </CompoundButton>,
       );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as HTMLElement;
       expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label').id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description').id);
+      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label')!.id);
+      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description')!.id);
     });
   });
 });

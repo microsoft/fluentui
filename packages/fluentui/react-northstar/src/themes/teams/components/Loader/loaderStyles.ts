@@ -12,7 +12,7 @@ const rootFlexDirections: ObjectOf<FlexDirectionProperty> = {
   end: 'row',
 };
 
-const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, LoaderVariables> = {
+export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, LoaderVariables> = {
   root: ({ props: p }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>): ICSSInJSStyle => ({
     alignItems: 'center',
     display: p.inline ? 'inline-flex' : 'flex',
@@ -80,5 +80,3 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, LoaderVariabl
     margin: pxToRem(10),
   }),
 };
-
-export default loaderStyles;

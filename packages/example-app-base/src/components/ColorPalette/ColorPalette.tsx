@@ -94,9 +94,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
       <li
         key={name}
         className={css(classNames.swatch, isSelected && classNames.swatchSelected)}
-        // tslint:disable-next-line jsx-no-lambda
         onClick={() => this._selectColor(color)}
-        // tslint:disable-next-line jsx-no-lambda
         onFocusCapture={() => this._selectColor(color)}
         style={{ backgroundColor: color.hex }}
         data-is-focusable={true}

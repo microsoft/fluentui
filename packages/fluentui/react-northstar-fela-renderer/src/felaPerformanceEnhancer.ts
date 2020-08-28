@@ -73,7 +73,7 @@ function generateDeclarationReference(
 
 //
 
-export default function felaPerformanceEnhancer(renderer: FelaRenderer) {
+export function felaPerformanceEnhancer(renderer: FelaRenderer) {
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
     { _className, ...style }: ICSSInJSStyle & { _className: string },
     pseudo: string = '',
@@ -100,6 +100,7 @@ export default function felaPerformanceEnhancer(renderer: FelaRenderer) {
           const combinedSupport = generateCombinedMediaQuery(support, property.slice(9).trim());
           classNames += renderer._renderStyleToClassNames(value, pseudo, media, combinedSupport);
         } else {
+          // eslint-disable-next-line no-console
           console.warn(`The object key "${property}" is not a valid nested key in Fela.
 Maybe you forgot to add a plugin to resolve it?
 Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information.`);

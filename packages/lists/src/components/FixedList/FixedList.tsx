@@ -119,5 +119,5 @@ export const FixedList = React.memo((props: IFixedListProps) => {
     pointerEvents: isScrolling ? 'none' : undefined,
   };
 
-  return <div style={style}>{children}</div>; // tslint:disable-line:jsx-ban-props
+  return <div style={style}>{children}</div>;
 });

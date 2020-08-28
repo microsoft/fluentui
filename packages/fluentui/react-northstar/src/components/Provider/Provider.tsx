@@ -1,12 +1,17 @@
 import * as _ from 'lodash';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   StylesContextPerformanceInput,
   RendererContext,
+  ProviderContextInput,
+  ProviderContextPrepared,
   Telemetry,
+  useFluentContext,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
+  Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
@@ -20,15 +25,12 @@ import {
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeProvider, ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
-import { WithAsProp, ProviderContextInput, ProviderContextPrepared, withSafeTypeForAs } from '../../types';
-import mergeContexts from '../../utils/mergeProviderContexts';
-import ProviderConsumer from './ProviderConsumer';
-import usePortalBox, { PortalBoxContext } from './usePortalBox';
+import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
+import { ProviderConsumer } from './ProviderConsumer';
+import { usePortalBox, PortalBoxContext } from './usePortalBox';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
   rtl?: boolean;
@@ -90,7 +92,7 @@ export const providerClassName = 'ui-provider';
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
-const Provider: React.FC<WithAsProp<ProviderProps>> & {
+export const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
@@ -119,15 +121,15 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     theme: props.theme,
   };
 
-  const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
+  const consumedContext = useFluentContext();
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
   const createRenderer = React.useContext(RendererContext);
 
-  const outgoingContext = mergeContexts(createRenderer, incomingContext, inputContext);
+  const outgoingContext = mergeProviderContexts(createRenderer, incomingContext, inputContext);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
-  if (!consumedContext || (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl))) {
+  if (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl)) {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
@@ -149,6 +151,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
     saveDebug: _.noop,
+    telemetry: undefined,
   });
 
   const element = usePortalBox({
@@ -185,11 +188,11 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
 
   return (
     <RenderProvider>
-      <ThemeProvider theme={outgoingContext} overwrite>
+      <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>
         </PortalBoxContext.Provider>
-      </ThemeProvider>
+      </Unstable_FluentContextProvider>
     </RenderProvider>
   );
 };
@@ -242,5 +245,3 @@ Provider.propTypes = {
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 
 Provider.Consumer = ProviderConsumer;
-
-export default withSafeTypeForAs<typeof Provider, ProviderProps>(Provider);

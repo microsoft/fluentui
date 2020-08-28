@@ -4,6 +4,7 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -16,8 +17,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   createShorthand,
@@ -28,16 +27,16 @@ import {
   commonPropTypes,
   childrenExist,
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
-import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
+import { partitionPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
-import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Popup, { PopupProps } from '../Popup/Popup';
+import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
+import { Popup, PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
 import { ToolbarItemShorthandKinds } from './Toolbar';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarItemWrapper, { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
-import ToolbarItemIcon, { ToolbarItemIconProps } from './ToolbarItemIcon';
+import { ToolbarItemWrapper, ToolbarItemWrapperProps } from './ToolbarItemWrapper';
+import { ToolbarItemIcon, ToolbarItemIconProps } from './ToolbarItemIcon';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -112,9 +111,9 @@ export const toolbarItemClassName = 'ui-toolbar__item';
 /**
  * A ToolbarItem renders Toolbar item as a button with an icon.
  */
-const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
+export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -127,12 +126,12 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
       children,
       disabled,
       popup,
-      menu,
       menuOpen,
       wrapper,
       styles,
       variables,
     } = props;
+    const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
@@ -283,26 +282,28 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
 
     const submenuElement = menuOpen ? (
       <Unstable_NestingAuto>
-        {(getRefs, nestingRef) => (
-          <>
-            <Ref
-              innerRef={(node: HTMLElement) => {
-                nestingRef.current = node;
-                menuRef.current = node;
-              }}
-            >
-              <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
-                <ToolbarVariablesProvider value={mergedVariables}>
-                  {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
-                    defaultProps: () => slotProps.menu,
-                    overrideProps: handleMenuOverrides(getRefs),
-                  })}
-                </ToolbarVariablesProvider>
-              </Popper>
-            </Ref>
-            <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
-          </>
-        )}
+        {(getRefs, nestingRef) => {
+          return (
+            <>
+              <Ref
+                innerRef={(node: HTMLElement) => {
+                  nestingRef.current = node;
+                  menuRef.current = node;
+                }}
+              >
+                <Popper align="start" position="above" targetRef={itemRef} {...positioningProps}>
+                  <ToolbarVariablesProvider value={mergedVariables}>
+                    {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
+                      defaultProps: () => slotProps.menu,
+                      overrideProps: handleMenuOverrides(getRefs),
+                    })}
+                  </ToolbarVariablesProvider>
+                </Popper>
+              </Ref>
+              <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
+            </>
+          );
+        }}
       </Unstable_NestingAuto>
     ) : null;
 
@@ -420,5 +421,3 @@ ToolbarItem.defaultProps = {
   accessibility: toolbarItemBehavior,
   wrapper: {},
 };
-
-export default ToolbarItem;

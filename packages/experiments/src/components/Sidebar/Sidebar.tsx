@@ -160,7 +160,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
 
     const ButtonAs = this._getButtonAs(item);
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const name = item.text || item.name;
 
     return (
@@ -210,7 +210,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
 
     const ButtonAs = this._getButtonAs(item);
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const name = item.text || item.name;
 
     return (
@@ -227,15 +227,15 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
           checked={numActiveChildren > 0 ? true : false}
           aria-current={numActiveChildren > 0 ? true : false}
           buttonAs={ButtonAs}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderContent={() => {
             return this._renderAccordionItems(item.items);
           }}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onOpen={() => {
             this.componentDidMount();
           }}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onClose={() => {
             this.componentDidMount();
           }}
@@ -274,7 +274,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
       return child;
     });
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const name = item.text || item.name;
 
     if (name) {
@@ -348,7 +348,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     };
   }
 
-  // tslint:disable-next-line:no-any
   private _getButtonAs(item?: ISidebarItemProps): any {
     if (item && item.buttonAs) {
       return item.buttonAs;
@@ -365,7 +364,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return className;
   }
 
-  // tslint:disable-next-line:no-any
   private _renderSidebarButtonMenuItem = (item: any, dismissMenu: () => void): JSX.Element | null => {
     return this._renderSidebarButton(item, true);
   };

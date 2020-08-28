@@ -1,1 +1,1 @@
-export { default } from './menuVariables';
+export { menuVariables as menuItemIconVariables } from './menuVariables';

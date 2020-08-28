@@ -1,4 +1,3 @@
-/* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import { setRTL, setWarningCallback } from '@uifabric/utilities';

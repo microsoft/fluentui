@@ -1,4 +1,4 @@
-import { assign, filteredAssign, mapEnumByName, values } from './object';
+import { assign, filteredAssign, mapEnumByName, values, omit } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -34,7 +34,7 @@ describe('filteredAssign', () => {
 
 describe('mapEnumByName', () => {
   it('iterates over all the strings of an enum', () => {
-    enum foo {
+    enum Foo {
       first,
       second,
       third,
@@ -42,7 +42,7 @@ describe('mapEnumByName', () => {
     }
 
     let result: string[] = [];
-    mapEnumByName(foo, (name: string) => {
+    mapEnumByName(Foo, (name: string) => {
       if (name) {
         result.push(name);
       } else {
@@ -66,5 +66,11 @@ describe('values', () => {
     expect(objValues).toContain(1);
     expect(objValues).toContain(2);
     expect(objValues).toContain(3);
+  });
+});
+
+describe('omit', () => {
+  it('can omit excluded props and leave non-excluded alone', () => {
+    expect(omit({ a: 1, b: 2 }, ['a'])).toEqual({ b: 2 });
   });
 });

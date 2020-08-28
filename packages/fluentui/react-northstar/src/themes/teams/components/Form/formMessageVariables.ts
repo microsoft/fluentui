@@ -1,7 +1,7 @@
 import { ItemType } from '../../../types';
 import { TeamsSchemeMappingWithAreas } from '../../types';
 import { pickValuesFromColorScheme } from '../../../colorUtils';
-import { stringLiteralsArray } from '../../../../utils';
+import { stringLiteralsArray, pxToRem } from '../../../../utils';
 
 export const formMessageColorAreas = stringLiteralsArray('foreground');
 
@@ -9,8 +9,10 @@ export type formMessageColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType
 
 export interface FormMessageVariables {
   colorScheme?: formMessageColorSchemeMapping;
+  paddingLeft?: string;
 }
 
-export default (siteVariables: any): FormMessageVariables => ({
+export const formMessageVariables = (siteVariables: any): FormMessageVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, formMessageColorAreas),
+  paddingLeft: pxToRem(12),
 });

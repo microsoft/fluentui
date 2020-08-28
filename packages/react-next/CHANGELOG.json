@@ -2,6 +2,739 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.93",
+      "version": "8.0.0-alpha.93",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move Slider from react-next to react-slider",
+            "author": "xgao@microsoft.com",
+            "commit": "f5481bb6dc9e5ac7be4d278f2e8e00ce123fcb1f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update release notes for Pivot",
+            "author": "xgao@microsoft.com",
+            "commit": "84fb66faa186229dfbf011555eb1447c2401fe24",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving messageBar into react-next for future function component conversion.",
+            "author": "czearing@outlook.com",
+            "commit": "bd56ce732b52aca5d12a34a1a606f23c3db3deb6",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Shimmer to react-next for future function component conversion.",
+            "author": "czearing@outlook.com",
+            "commit": "eab76cbb6cb27387fa08ba39281cdd8effc172fb",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Move Checkbox from react-next to react-checkbox.",
+            "author": "xgao@microsoft.com",
+            "commit": "aa0811b0a7717043e011214fb7c81138f96dc15f",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.92",
+      "version": "8.0.0-alpha.92",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Making High Contrast styling adhere to system settings.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "86d4db5cd2c9cc05add3ea6966461f8b526a576b",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "TextField: Removing recursive reference in ITextFieldStyles.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "3d6b4b8d2eb889bb9f80f571f05a72d252548159",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.91",
+      "version": "8.0.0-alpha.91",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying teachingBubble to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "6b6f285bfcd8c6f5df8077605d8ea6b82d45bd85",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Rating to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "22de5fc9f885265518357c53d4e69986580d4c9b",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "5212b755df96a7dabd809fa1580a6675db60943d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.89",
+      "version": "8.0.0-alpha.89",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.88",
+      "version": "8.0.0-alpha.88",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating OverflowSet to a function component inside React-Next.",
+            "author": "czearing@outlook.com",
+            "commit": "14bd6229c4c4aa73c36361cbfeb844d347071c71",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating ChoiceGroup and ChoiceGroupOption to a function component inside React-Next",
+            "author": "czearing@outlook.com",
+            "commit": "c8d88b5e1de7fcfdbb3f4b2619d71056ea54c60c",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate ComboBox to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "1d3109d99b18693c24a8a87312dd6bb23ecd43f4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Layer to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "a85b522d234294351561e0b2e9fcc28e233b27ef",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.87",
+      "version": "8.0.0-alpha.87",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix ESLint TODOs in CalloutContent",
+            "author": "miclo@microsoft.com",
+            "commit": "5c64f924a4d4a87089b127ff065db3818f31c3fb",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "fix publishing by syncing packages (#12715)",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.86",
+      "version": "8.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix casing for utilities folder",
+            "author": "xgao@microsoft.com",
+            "commit": "25bf42e97cc676794bef61b5c442bc8fc90123f0",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.85",
+      "version": "8.0.0-alpha.85",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy ContextualMenu to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "e34570d86cd27872c5b76c06022757afbaf22707",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Enable eslint-plugin-react-hooks in react-next and fix a few bugs",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.84",
+      "version": "8.0.0-alpha.84",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update ThemeProvider to support v7 theme",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Dropdown: Correctly updating set-size when number of options updates after first render.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "44befb4af953e60cfb3d5c27dbfc5736bd40a452",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.83",
+      "version": "8.0.0-alpha.83",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Re-exporting MenuButton, SplitButton and ToggleButton in react-next.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.80",
+      "version": "8.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e4928eb34675f5332995f886267f682cb7d5a34f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update Dropdown HC styling",
+            "author": "ololubek@microsoft.com",
+            "commit": "71d0f8fe22cd5af791702c327fc58368be3c25ba",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.78",
+      "version": "8.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Dropdown: Improving multiselect dropdown screen reader behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0c8f5780b187c3f533a179c79221d7ade32e05b9",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.76",
+      "version": "8.0.0-alpha.76",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: Fix thumb border-width style",
+            "author": "ololubek@microsoft.com",
+            "commit": "c7ffce2b0c530f073531a1989f28e9caa2163155",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate Coachmark and associated components to function components",
+            "author": "miclo@microsoft.com",
+            "commit": "3ac63363452364787abdcb0f59f17ed51ccc9088",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.75",
+      "version": "8.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: fix pill HC style when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "da3b655b635160de2f8a31d93f0d2780b26831a4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update HC hover styling to make checked state more apparent",
+            "author": "ololubek@microsoft.com",
+            "commit": "588aa8f8c6efac2dfe5d451241d7609e7add4153",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.74",
+      "version": "8.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Migrate Callout to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "373bd784f97799e19de88005bd6254467f52fe2b",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving ChoiceGroup to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "358fae3dc06eaec001254efc993ade6cb8a8fa46",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.73",
+      "version": "8.0.0-alpha.73",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Use useWarnings hook",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.72",
+      "version": "8.0.0-alpha.72",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
+            "author": "xgao@microsoft.com",
+            "commit": "eaada6f8e6499585952528ac8ebead0a8e7da906",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jul 2020 12:35:12 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.70",
+      "version": "8.0.0-alpha.70",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update Release Notes with comment about ref changes in function components",
+            "author": "miclo@microsoft.com",
+            "commit": "a35dce221bb1e179dbc068cff67d02f6b75e67f3",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating existing react-next examples to use the newest ones found inside of office-ui-fabric-react.",
+            "author": "czearing@outlook.com",
+            "commit": "0dfa86ddfc41052efb58c5de5eb760f0020c18f8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying teachingBubble to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "6b6f285bfcd8c6f5df8077605d8ea6b82d45bd85",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.69",
+      "version": "8.0.0-alpha.69",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding wrapper for isConformant package",
+            "author": "esteban.230@hotmail.com",
+            "commit": "fdc095fd93f528381650e1215bcf2bfe1ff9acf6",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Move ThemeProvider from react-next to react-theme-provider's Compat folder",
+            "author": "behowell@microsoft.com",
+            "commit": "20caabd592970eef8431d4b47c923e54767e3d3e",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.68",
+      "version": "8.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add high contrast adjust selector to dropdown styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ba783ab53821e4a70f61f823e87ca240a9665a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.67",
+      "version": "8.0.0-alpha.67",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move shared .scss files to @fluentui/common-styles",
+            "author": "behowell@microsoft.com",
+            "commit": "940524c755d5cf60ca3f80b705e30fca61b2d5ba",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.66",
+      "version": "8.0.0-alpha.66",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move Pivot to @fluentui/react-tabs package",
+            "author": "behowell@microsoft.com",
+            "commit": "1b833965d061b57d71cf621a006ed7ef13ccffd8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copy Callout code from OUFR to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "a8adc0333c14d3470e8c48567d30f0421c0977d4",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.65",
+      "version": "8.0.0-alpha.65",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.64",
+      "version": "8.0.0-alpha.64",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move useRefEffect hook to the react-hooks package.",
+            "author": "behowell@microsoft.com",
+            "commit": "0894e3feb752839bc00231bac7965df6125ea5f1",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.63",
+      "version": "8.0.0-alpha.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying Modal to react-next, in preparation for converting to function component.",
+            "author": "czearing@outlook.com",
+            "commit": "133b16d313c9d2fef08aee3bc7d9b319a40bed02",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.61",
+      "version": "8.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SpinButton: Updating to a function component within react-next.",
+            "author": "czearing@outlook.com",
+            "commit": "c369780b48c8f1479d91a35f5dbea69ea84dd830",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.60",
+      "version": "8.0.0-alpha.60",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jul 2020 12:41:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.59",
+      "version": "8.0.0-alpha.59",
+      "comments": {
+        "none": [
+          {
+            "comment": "react-next: update release notes.",
+            "author": "xgao@microsoft.com",
+            "commit": "60b7f03dba79aa178e98b4b9875c502041f21da7",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.59",
+      "version": "8.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Pivot: Implementing overflow by moving tabs into a menu when they don't fit onscreen.",
+            "author": "behowell@microsoft.com",
+            "commit": "9d4b5bea6d1c80629325ab821ea5e81d214ec553",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Remove KeytipData for Checkbox, Toggle, and Link.",
+            "author": "xgao@microsoft.com",
+            "commit": "d07846f717c51a003c496c9fcac49e52fc55c8f1",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.57",
+      "version": "8.0.0-alpha.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change react-next to export Calendar/DatePicker from date-time package",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jul 2020 12:34:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.55",
+      "version": "8.0.0-alpha.55",
+      "comments": {
+        "none": [
+          {
+            "comment": "repeat fix in useToggle.ts",
+            "author": "t-dama@microsoft.com",
+            "commit": "0154774e650c0a53b1a7e9fe056b6473bfc64948",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.53",
+      "version": "8.0.0-alpha.53",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating dependency for Slider test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Adding pre-copy.json step.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4d02c9112111b40532411757c37878124c581b38",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.52",
+      "version": "8.0.0-alpha.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "High contrast in Edge Chromium: fix TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.50",
+      "version": "8.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating SearchBox to a function component inside React-Next",
+            "author": "czearing@outlook.com",
+            "commit": "4e4d3fe97c54313f53afdf613261a966fcb214a5",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Checkbox: use CheckMark icon from react-icons",
+            "author": "xgao@microsoft.com",
+            "commit": "b5f72ca6a173041996033792afeb64ef1343f51b",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.49",
+      "version": "8.0.0-alpha.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Removing unnecessary code from storybook/preview.js.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51b26a4f868cee2fde2bc28b6067f5503d2c3db7",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jun 2020 12:50:17 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.48",
       "version": "8.0.0-alpha.48",

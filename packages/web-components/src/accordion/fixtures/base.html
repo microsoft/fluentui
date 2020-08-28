@@ -1,0 +1,384 @@
+<fluent-design-system-provider use-defaults>
+  <style>
+    .icon {
+      stroke: var(--accent-fill-rest);
+    }
+
+    fluent-accordion-item.disabled::part(button) {
+      pointer-events: none;
+    }
+  </style>
+  <h1>Accordion</h1>
+  <h4>Default</h4>
+  <fluent-accordion>
+    <fluent-accordion-item expanded>
+      <div slot="start">
+        <button>1</button>
+      </div>
+      <div slot="end">
+        <button>1</button>
+      </div>
+      <span slot="heading">Panel one</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel one content
+    </fluent-accordion-item>
+    <fluent-accordion-item>
+      <span slot="heading">Panel two</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel two content
+    </fluent-accordion-item>
+    <fluent-accordion-item expanded>
+      <span slot="heading">Panel three</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel three content
+    </fluent-accordion-item>
+  </fluent-accordion>
+  <h4>Single expand</h4>
+  <fluent-accordion expand-mode="single">
+    <fluent-accordion-item>
+      <div slot="start">
+        <button>1</button>
+      </div>
+      <div slot="end">
+        <button>1</button>
+      </div>
+      <span slot="heading">Panel one</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel one content
+    </fluent-accordion-item>
+    <fluent-accordion-item class="disabled">
+      <span slot="heading">Panel Two</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel two content
+    </fluent-accordion-item>
+    <fluent-accordion-item>
+      <span slot="heading">Panel three</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel three content
+    </fluent-accordion-item>
+  </fluent-accordion>
+  <h4>With disabled item</h4>
+  <fluent-accordion>
+    <fluent-accordion-item>
+      <div slot="start">
+        <button>1</button>
+      </div>
+      <div slot="end">
+        <button>1</button>
+      </div>
+      <span slot="heading">Panel two</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel one content
+    </fluent-accordion-item>
+    <fluent-accordion-item class="disabled">
+      <div slot="start">
+        <button>1</button>
+      </div>
+      <div slot="end">
+        <button>1</button>
+      </div>
+      <span slot="heading">Disabled</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Disabled content
+    </fluent-accordion-item>
+    <fluent-accordion-item expanded>
+      <div slot="start">
+        <button>1</button>
+      </div>
+      <div slot="end">
+        <button>1</button>
+      </div>
+      <span slot="heading">Panel three</span>
+      <svg
+        slot="collapsed-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg
+        slot="expanded-icon"
+        class="icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Panel three content
+    </fluent-accordion-item>
+  </fluent-accordion>
+</fluent-design-system-provider>

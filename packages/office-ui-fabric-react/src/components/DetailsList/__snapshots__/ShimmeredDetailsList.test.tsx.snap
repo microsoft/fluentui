@@ -334,33 +334,33 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone2"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone2"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className=
@@ -430,7 +430,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -617,7 +617,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -804,7 +804,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -991,7 +991,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1178,7 +1178,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1365,7 +1365,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1552,7 +1552,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1739,7 +1739,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1926,7 +1926,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -2113,7 +2113,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
-                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={

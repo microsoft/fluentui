@@ -11,14 +11,14 @@ export function mergeProps<
   TProps,
   TState = TProps,
   TSlots = GenericDictionary,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TSlotProps = { [key in keyof TSlots]: any }
 >(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps> {
   const result: MergePropsResult<TState> = {
     state: state,
     slots: {
       ...options.slots,
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       root: (state as any).as || options.slots.root || 'div',
     },
     slotProps: {},

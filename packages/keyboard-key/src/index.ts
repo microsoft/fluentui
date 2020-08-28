@@ -169,7 +169,7 @@ export interface KeyNames {
   ZoomOut: 251;
 }
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isObject = (val: any): val is KeyboardEventLike => {
   return val !== null && !Array.isArray(val) && typeof val === 'object';
 };
@@ -182,10 +182,10 @@ const isObject = (val: any): val is KeyboardEventLike => {
  */
 export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
   if (isObject(eventOrKey)) {
-    // tslint:disable-next-line:deprecation no-any
+    // eslint-disable-next-line deprecation/deprecation, @typescript-eslint/no-explicit-any
     return eventOrKey.keyCode || eventOrKey.which || (keyboardKey as any)[eventOrKey.key as string];
   }
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (keyboardKey as any)[eventOrKey as string];
 }
 
@@ -204,7 +204,7 @@ export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string
     return event.key;
   }
 
-  // tslint:disable-next-line: deprecation
+  // eslint-disable-next-line deprecation/deprecation
   let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
 
   if (Array.isArray(name)) {
@@ -228,12 +228,12 @@ for (const code in codes) {
   if (codes.hasOwnProperty(code)) {
     const value = codes[code];
     if (typeof value === 'string') {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (keyboardKey as any)[value] = Number(code);
     } else {
       // Array of valid values which map to the same code.
       for (let i = 0; i < value.length; i++) {
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (keyboardKey as any)[value[i]] = Number(code);
       }
     }

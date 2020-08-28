@@ -299,11 +299,11 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   };
 
   private _updateHeaderDragInfo = (itemIndex: number, event?: MouseEvent) => {
-    // tslint:disable:deprecation
+    /* eslint-disable deprecation/deprecation */
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
     }
-    // tslint:enable:deprecation
+    /* eslint-enable deprecation/deprecation */
     if (this.props.updateDragInfo) {
       this.props.updateDragInfo({ itemIndex }, event);
     }

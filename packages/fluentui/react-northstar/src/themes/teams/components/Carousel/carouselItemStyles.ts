@@ -3,7 +3,7 @@ import { CarouselItemStylesProps } from '../../../../components/Carousel/Carouse
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
-const carouselItemStyles: ComponentSlotStylesPrepared<CarouselItemStylesProps, CarouselVariables> = {
+export const carouselItemStyles: ComponentSlotStylesPrepared<CarouselItemStylesProps, CarouselVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     width: pxToRem(v.width),
     ':focus': {
@@ -11,5 +11,3 @@ const carouselItemStyles: ComponentSlotStylesPrepared<CarouselItemStylesProps, C
     },
   }),
 };
-
-export default carouselItemStyles;

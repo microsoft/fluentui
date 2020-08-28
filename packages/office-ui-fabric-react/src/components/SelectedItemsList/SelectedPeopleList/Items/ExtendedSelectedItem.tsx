@@ -4,7 +4,6 @@ import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './ExtendedSelectedItem.scss';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface IPeoplePickerItemState {
@@ -18,6 +17,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     super(props);
 
     initializeComponentRef(this);
+    // eslint-disable-next-line react/no-unused-state
     this.state = { contextualMenuVisible: false };
   }
 

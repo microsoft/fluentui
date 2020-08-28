@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
+import { toolbarMenuItemBehavior } from './toolbarMenuItemBehavior';
 import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 /**
@@ -13,7 +13,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
+export const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'menu',
@@ -38,5 +38,3 @@ const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
 });
 
 export type ToolbarMenuBehaviorProps = never;
-
-export default toolbarMenuBehavior;

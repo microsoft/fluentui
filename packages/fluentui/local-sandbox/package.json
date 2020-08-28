@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/local-sandbox",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.50.0"
+    "@fluentui/react-northstar": "^0.51.0"
   },
   "devDependencies": {
     "@types/react": "16.8.25",
@@ -24,7 +24,7 @@
     "source-map-loader": "^0.2.4",
     "terser-webpack-plugin": "^1.4.3",
     "typescript": "3.7.2",
-    "webpack": "4.35.0",
+    "webpack": "4.43.0",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10"
   },

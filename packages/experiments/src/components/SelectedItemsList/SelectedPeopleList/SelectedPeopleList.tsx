@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { SelectedItemsList } from '../SelectedItemsList';
 import { SelectedPersona } from './Items/SelectedPersona';
 import { ISelectedItemsListProps, ISelectedItemsList, BaseSelectedItem } from '../SelectedItemsList.types';

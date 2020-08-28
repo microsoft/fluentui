@@ -1,8 +1,6 @@
-import { ProviderContextPrepared } from '@fluentui/react-northstar';
+import { useFluentContext, Unstable_FluentContextProvider } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import useClassNamesListener from './useClassNamesListener';
 import useEnhancedRenderer, { UsedVariables } from './useEnhancedRenderer';
@@ -17,7 +15,7 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   const elementRef = React.useRef<HTMLDivElement>();
   const latestVariables = React.useRef<UsedVariables>({});
 
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const [enhancedContext, resolvedVariables] = useEnhancedRenderer(context);
 
   const onClassNamesChange = React.useCallback(() => {
@@ -34,9 +32,9 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   useClassNamesListener(elementRef, onClassNamesChange);
 
   return (
-    <ThemeContext.Provider value={enhancedContext}>
+    <Unstable_FluentContextProvider value={enhancedContext}>
       <div ref={elementRef}>{props.children}</div>
-    </ThemeContext.Provider>
+    </Unstable_FluentContextProvider>
   );
 };
 

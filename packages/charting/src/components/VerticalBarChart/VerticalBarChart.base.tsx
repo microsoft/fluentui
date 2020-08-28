@@ -3,11 +3,13 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { format as d3Format } from 'd3-format';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 import {
   IVerticalBarChartProps,
@@ -15,11 +17,10 @@ import {
   IVerticalBarChartStyles,
   IVerticalBarChartDataPoint,
 } from './VerticalBarChart.types';
-import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
-type numericAxis = D3Axis<number | { valueOf(): number }>;
-type stringAxis = D3Axis<string>;
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
+type StringAxis = D3Axis<string>;
 
 export interface IVerticalBarChartState {
   color: string;
@@ -29,7 +30,7 @@ export interface IVerticalBarChartState {
   isCalloutVisible: boolean;
   isLegendSelected: boolean;
   isLegendHovered: boolean;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   selectedLegendTitle: string;
   xCalloutValue?: string;
@@ -51,6 +52,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  private _calloutId: string;
   private legendContainer: HTMLDivElement;
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
@@ -73,6 +75,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       _width: this.props.width || 600,
       _height: this.props.height || 350,
     };
+    this._calloutId = getId('callout');
     this._refArray = [];
   }
 
@@ -148,22 +151,22 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             {legends!}
           </div>
         )}
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-          <Callout
-            gapSpace={10}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        ) : null}
+        <Callout
+          gapSpace={10}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -209,7 +212,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   }
 
-  private _createNumericXAxis(): numericAxis {
+  private _createNumericXAxis(): NumericAxis {
     const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
@@ -219,7 +222,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return xAxis;
   }
 
-  private _createStringXAxis(): stringAxis {
+  private _createStringXAxis(): StringAxis {
     const xAxisScale = d3ScaleBand()
       .domain(this._points.map((point: IVerticalBarChartDataPoint) => point.x as string))
       .range([this.margins.left, this.state.containerWidth - this.margins.right]);
@@ -229,7 +232,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return xAxis;
   }
 
-  private _createYAxis(): numericAxis {
+  private _createYAxis(): NumericAxis {
     const yMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!;
     const interval = Math.ceil(yMax / this._yAxisTickCount);
     const domains: Array<number> = [0];
@@ -242,7 +245,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = d3AxisLeft(yAxisScale)
       .tickPadding(5)
       .tickValues(domains)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }
@@ -309,7 +312,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this._refArray.map((obj: IRefArrayData, index: number) => {
+      this._refArray.forEach((obj: IRefArrayData, index: number) => {
         if (obj.legendText === legendText && refArrayIndexNumber === index) {
           this.setState({
             refSelected: obj.refElement,
@@ -366,7 +369,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           data-is-focusable={true}
-          height={yBarScale(point.y)!}
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
           }}
@@ -379,6 +382,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
+          aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(
             this,
@@ -423,7 +427,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           x={xBarScale(index)}
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
-          height={yBarScale(point.y)}
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
+          aria-labelledby={this._calloutId}
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,
@@ -477,14 +482,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }
 
   private _getLegendData(data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element {
     const actions: ILegend[] = [];
-    data.map((point: IVerticalBarChartDataPoint, _index: number) => {
+    data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       const color: string = point.color!;
       // mapping data to the format Legends component needs
 
@@ -510,19 +515,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return legends;
   }
 
-  private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
+  private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
     d3Select(node).call(xAxis);
   }
 
-  private _setYAxis(node: SVGElement | null, yAxis: numericAxis | stringAxis): void {
+  private _setYAxis(node: SVGElement | null, yAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }

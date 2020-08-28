@@ -2,6 +2,51 @@
   "name": "@uifabric/example-data",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "@uifabric/example-data_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding range function.",
+            "author": "czearing@outlook.com",
+            "commit": "aea3a8be1e98123cf840bc245274b84621635f4c",
+            "package": "@uifabric/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/example-data_v7.0.18",
+      "version": "7.0.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/example-data_v7.0.17",
+      "version": "7.0.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/example-data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/example-data_v7.0.15",
       "version": "7.0.15",

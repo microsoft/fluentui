@@ -19,7 +19,7 @@ type UseSelectorsRef<
  * It will only accept context created by `createContext`.
  * It will trigger re-render if only the selected value is referencially changed.
  */
-const useContextSelectors = <
+export const useContextSelectors = <
   Value,
   Properties extends string,
   Selectors extends Record<Properties, ContextSelector<Value, SelectedValue>>,
@@ -73,5 +73,3 @@ const useContextSelectors = <
 
   return selected;
 };
-
-export default useContextSelectors;

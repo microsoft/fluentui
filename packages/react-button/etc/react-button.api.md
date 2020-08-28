@@ -5,53 +5,45 @@
 ```ts
 
 import { BaseSlots } from '@fluentui/react-compose';
-import { ColorPlateSet } from '@fluentui/react-theme-provider';
-import { ComposeOptions } from '@fluentui/react-compose';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { ColorTokenSet } from '@fluentui/theme';
+import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/theme';
+import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SlotProps } from '@fluentui/react-compose';
 
-// @public (undocumented)
-export const Button: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
+// @public
+export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const ButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
-
-// Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface ButtonOptions extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {
-}
-
-// Warning: (ae-forgotten-export) The symbol "ComponentProps" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
+    icon?: ShorthandProps;
+    loader?: ShorthandProps;
+    children?: ShorthandProps;
+    href?: string;
+    target?: string;
     circular?: boolean;
-    content?: ShorthandValue<{}>;
     disabled?: boolean;
     fluid?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "ShorthandValue" needs to be exported by the entry point index.d.ts
-    icon?: ShorthandValue<{}>;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
-    loader?: ShorthandValue<{}>;
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
+    ghost?: boolean;
     size?: SizeValue;
-    // Warning: (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
-    tokens?: RecursivePartial<ButtonTokens>;
-}
+    tokens?: RecursivePartial<ButtonTokenSet>;
+};
+
+// @public
+export const buttonShorthandProps: string[];
 
 // @public (undocumented)
 export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export interface ButtonSlots extends BaseSlots {
-    // (undocumented)
-    content: React.ElementType;
     // (undocumented)
     icon: React.ElementType;
     // (undocumented)
@@ -60,15 +52,18 @@ export interface ButtonSlots extends BaseSlots {
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
+    // (undocumented)
+    buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 // @public (undocumented)
-export type ButtonTokens = ColorPlateSet & {
+export type ButtonTokenSet = ColorTokenSet & {
     padding: string;
     margin: string;
     height: string;
     minWidth: string;
     maxWidth: string;
+    minHeight: string;
     contentGap: string;
     iconSize: string;
     borderRadius: string;
@@ -91,21 +86,93 @@ export type ButtonTokens = ColorPlateSet & {
     fontWeight: string;
     pressed: {
         transform: string;
+        transition: string;
     };
 };
+
+// @public (undocumented)
+export interface CheckedState {
+    // (undocumented)
+    'aria-checked'?: React.AriaAttributes['aria-pressed'];
+    // (undocumented)
+    'aria-pressed'?: React.AriaAttributes['aria-pressed'];
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    defaultChecked?: boolean;
+    // (undocumented)
+    onClick?: React.DOMAttributes<HTMLElement>['onClick'];
+    // (undocumented)
+    role?: string;
+}
+
+// @public (undocumented)
+export type ExpandedState = {
+    ref?: React.Ref<unknown>;
+    expanded?: boolean;
+    defaultExpanded?: boolean;
+    onClick?: (ev: React.MouseEvent) => void;
+    onMenuDismiss?: () => void;
+    onKeyDown?: (ev: React.KeyboardEvent) => void;
+    'aria-expanded'?: boolean;
+    'aria-haspopup'?: boolean;
+    menu: {
+        target?: React.Ref<HTMLElement | undefined>;
+        onDismiss?: () => void;
+    };
+};
+
+// @public (undocumented)
+export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
+    menu?: ShorthandProps;
+    menuIcon?: ShorthandProps;
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    onMenuDismiss?: () => void;
+};
+
+// @public (undocumented)
+export const menuButtonShorthandProps: string[];
+
+// @public (undocumented)
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+    // (undocumented)
+    menu: ExpandedState['menu'];
+}
+
+// @public (undocumented)
+export type MenuButtonTokens = ButtonTokenSet;
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
-export const ToggleButton: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps>;
+export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const ToggleButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps & ButtonProps>;
-
-// @public (undocumented)
-export interface ToggleButtonOptions extends ComposeOptions<ToggleButtonProps, ToggleButtonSlots, ToggleButtonSlotProps, ComposeStandardStatics> {
+export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
+    button?: ShorthandProps;
+    divider?: ShorthandProps;
+    menuButton?: ShorthandProps;
 }
+
+// @public (undocumented)
+export const splitButtonShorthandProps: string[];
+
+// @public (undocumented)
+export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
+    // (undocumented)
+    menuButtonRef?: React.RefObject<HTMLButtonElement>;
+}
+
+// @public (undocumented)
+export type SplitButtonTokens = MenuButtonTokens;
+
+// @public
+export const ToggleButton: React.ForwardRefExoticComponent<Pick<ToggleButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface ToggleButtonProps extends ButtonProps {
@@ -125,13 +192,55 @@ export interface ToggleButtonState extends ToggleButtonProps {
 }
 
 // @public
-export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
+export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("./Button.types").ButtonState) => JSX.Element;
+};
 
-// Warning: (ae-forgotten-export) The symbol "ToggleProps" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ToggleState" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const useButtonClasses: (state: Record<string, any>) => void;
+
 // @public
-export const useToggle: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;
+export const useButtonState: (draftState: ButtonState) => void;
+
+// @public
+export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public (undocumented)
+export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
+
+// @public
+export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => {
+    state: MenuButtonState;
+    render: (state: MenuButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useMenuButtonClasses: (state: Record<string, any>) => void;
+
+// @public (undocumented)
+export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {
+    state: SplitButtonState;
+    render: (state: SplitButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useSplitButtonClasses: (state: Record<string, any>) => void;
+
+// @public (undocumented)
+export const useSplitButtonState: (state: SplitButtonState) => void;
+
+// @public (undocumented)
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("../Button").ButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
 
 // (No @packageDocumentation comment for this package)

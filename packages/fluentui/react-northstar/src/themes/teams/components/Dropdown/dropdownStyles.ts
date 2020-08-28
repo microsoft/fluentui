@@ -1,13 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { dropdownSlotClassNames, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import clearIndicatorUrl from './clearIndicatorUrl';
-import toggleIndicatorUrl from './toggleIndicatorUrl';
-import * as _ from 'lodash';
-
-type DropdownPropsAndState = DropdownProps & DropdownState;
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { clearIndicatorUrl } from './clearIndicatorUrl';
+import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
@@ -25,7 +22,7 @@ const transparentColorStyleObj: ICSSInJSStyle = {
   },
 };
 
-const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
+const getWidth = (p: DropdownStylesProps, v: DropdownVariables): string => {
   if (p.fluid) {
     return '100%';
   }
@@ -37,11 +34,7 @@ const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
   return v.width;
 };
 
-const isEmpty = prop => {
-  return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
-};
-
-const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariables> = {
+export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, DropdownVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
     ...(p.inline && { display: 'inline-flex' }),
   }),
@@ -50,7 +43,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-    ...(isEmpty(p.clearIndicator) && { backgroundImage: clearIndicatorUrl(v.color) }),
+    ...(p.isEmptyClearIndicator && { backgroundImage: clearIndicatorUrl(v.color) }),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
@@ -76,6 +69,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     borderRadius: v.containerBorderRadius,
     ...(p.open && p.position === 'above' && { borderRadius: v.openAboveContainerBorderRadius }),
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
+
     ':hover': {
       backgroundColor: v.backgroundColorHover,
       borderColor: v.borderColorHover,
@@ -84,6 +78,10 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
         borderColor: v.openBorderColorHover,
       }),
     },
+    ...(p.error && {
+      border: `${pxToRem(1)} solid ${v.borderError}`,
+      ':hover': { border: `${pxToRem(1)} solid ${v.borderError}` },
+    }),
     ':active': {
       backgroundColor: v.backgroundColor,
     },
@@ -146,7 +144,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     overflowY: 'auto',
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
-    ...(p.toggleIndicator && { paddingRight: v.toggleIndicatorSize }),
+    ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -245,5 +243,3 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     width: pxToRem(12),
   }),
 };
-
-export default dropdownStyles;

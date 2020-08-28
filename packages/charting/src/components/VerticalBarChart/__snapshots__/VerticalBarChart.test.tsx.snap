@@ -76,12 +76,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               fill: rgb(179, 179, 179);
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
               width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
-              opacity: 0.2;
               stroke: rgb(179, 179, 179);
             }
             & path {
@@ -94,6 +93,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         id="barGElement"
       >
         <rect
+          aria-labelledby="callout0"
           className=
 
               {
@@ -111,6 +111,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           y={-35}
         />
         <rect
+          aria-labelledby="callout0"
           className=
 
               {
@@ -118,7 +119,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               }
           data-is-focusable={true}
           fill="rgb(0, 32, 80)"
-          height={-55}
+          height={0}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
@@ -232,6 +233,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -321,6 +323,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -367,5 +370,8 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

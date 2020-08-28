@@ -51,10 +51,6 @@ export const TileLayoutSizes: {
 
 /**
  * A tile provides a frame for a potentially-selectable item which displays its contents prominently.
- *
- * @export
- * @class Tile
- * @extends {React.Component<ITileProps, ITileState>}
  */
 export class Tile extends React.Component<ITileProps, ITileState> {
   private _nameId: string;
@@ -63,7 +59,6 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _descriptionId: string;
   private _events: EventGroup;
 
-  // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
 
@@ -87,7 +82,6 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     this._events = new EventGroup(this);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ITileProps): void {
     const { selection, selectionIndex } = this.props;
 

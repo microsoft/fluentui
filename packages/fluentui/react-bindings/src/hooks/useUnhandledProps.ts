@@ -1,4 +1,4 @@
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 
 /**
  * Returns an object consisting of props beyond the scope of the Component.
@@ -8,7 +8,7 @@ import getUnhandledProps from '../utils/getUnhandledProps';
  * @param props - A ReactElement props object
  * @returns A shallow copy of the prop object
  */
-function useUnhandledProps(handledProps: string[], props: Record<string, any>): Record<string, any> {
+export function useUnhandledProps(handledProps: string[], props: Record<string, any>): Record<string, any> {
   if (process.env.NODE_ENV === 'test') {
     return getUnhandledProps(handledProps, {
       ...props,
@@ -18,5 +18,3 @@ function useUnhandledProps(handledProps: string[], props: Record<string, any>): 
 
   return getUnhandledProps(handledProps, props);
 }
-
-export default useUnhandledProps;

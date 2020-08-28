@@ -1,6 +1,6 @@
 import { StaticStyleFunction } from '@fluentui/styles';
 
-const globalStyles: StaticStyleFunction = siteVars => ({
+export const globalStyles: StaticStyleFunction = siteVars => ({
   body: {
     padding: siteVars.bodyPadding,
     margin: siteVars.bodyMargin,
@@ -17,6 +17,8 @@ const globalStyles: StaticStyleFunction = siteVars => ({
   '*:after': {
     boxSizing: 'border-box',
   },
+  /* Adding priority for HTML `hidden` attribute to be applied correctly */
+  '[hidden]': {
+    display: 'none!important',
+  },
 });
-
-export default globalStyles;

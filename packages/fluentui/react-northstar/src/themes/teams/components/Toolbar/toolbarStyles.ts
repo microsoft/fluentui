@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ToolbarVariables } from './toolbarVariables';
 import { ToolbarStylesProps } from '../../../../components/Toolbar/Toolbar';
 
-const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, ToolbarVariables> = {
+export const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, ToolbarVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'flex',
     alignItems: 'center',
@@ -22,5 +22,3 @@ const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, ToolbarVari
     flexGrow: 1,
   }),
 };
-
-export default toolbarStyles;

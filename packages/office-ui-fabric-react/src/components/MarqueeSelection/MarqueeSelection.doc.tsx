@@ -20,7 +20,9 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionBestPractices.md'),
   dos: '',
   donts: '',
   isHeaderVisible: true,

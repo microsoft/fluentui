@@ -4,10 +4,16 @@ import * as React from 'react';
 
 import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/accessibility';
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { getElementType, useStyles, useUnhandledProps, useTelemetry, useAccessibility } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { FluentComponentStaticProps } from '../../types';
+import {
+  ComponentWithAs,
+  getElementType,
+  useStyles,
+  useFluentContext,
+  useUnhandledProps,
+  useTelemetry,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 
 export interface VideoProps extends UIComponentProps {
   /**
@@ -38,8 +44,11 @@ export const videoClassName = 'ui-video';
 
 export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 
-const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProps<VideoProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A Video provides ability to embed video content.
+ */
+export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
 
@@ -111,8 +120,3 @@ Video.defaultProps = {
 };
 
 Video.handledProps = Object.keys(Video.propTypes) as any;
-
-/**
- * A Video provides ability to embed video content.
- */
-export default withSafeTypeForAs<typeof Video, VideoProps, 'video'>(Video);

@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
-import Dropdown from 'src/components/Dropdown/Dropdown';
+import { Dropdown } from 'src/components/Dropdown/Dropdown';
 import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
-import List from 'src/components/List/List';
+import { List } from 'src/components/List/List';
 
 jest.dontMock('@fluentui/keyboard-key');
 jest.useFakeTimers();
@@ -15,6 +16,7 @@ jest.useFakeTimers();
 describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
+    constructorName: 'Dropdown',
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
   });
   implementsShorthandProp(Dropdown)('list', List, {
@@ -287,7 +289,9 @@ describe('Dropdown', () => {
 
   describe('highlightedIndex', () => {
     afterEach(() => {
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
     it('is null when opened by click', () => {
@@ -647,12 +651,16 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
       keyDownOnItemsList('A');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
       keyDownOnItemsList('A');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
@@ -669,15 +677,19 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('L');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('E');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
+
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
     it('does not open with highlightedIndex after selecting item in multiple mode', () => {
@@ -1195,7 +1207,9 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent(`${items[itemToBeClickedIndex]} has been added`);
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
@@ -1213,7 +1227,9 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent(`${items[itemSelectedByDefaultIndex]} has been removed`);
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
@@ -1490,27 +1506,26 @@ describe('Dropdown', () => {
 
   describe('focused', () => {
     it('is "true" when focus is on trigger button', () => {
-      const { wrapper, focusTriggerButton } = renderDropdown();
+      const { rootNode, focusTriggerButton } = renderDropdown();
 
       focusTriggerButton();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
 
     it('is "true" when focus is on search input', () => {
-      const { wrapper, focusSearchInput } = renderDropdown({ search: true });
+      const { rootNode, focusSearchInput } = renderDropdown({ search: true });
 
       focusSearchInput();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
 
     it('is "true" when focus is on the list', () => {
-      const { wrapper, focusItemsList } = renderDropdown({ open: true });
-
+      const { rootNode, focusItemsList } = renderDropdown({ open: true });
       focusItemsList();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
   });
 
@@ -1561,7 +1576,6 @@ describe('Dropdown', () => {
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
-
       expect(preventDefault).toBeCalled();
     });
 

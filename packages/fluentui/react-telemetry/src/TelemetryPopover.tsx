@@ -1,8 +1,7 @@
 import { useEventListener } from '@fluentui/react-component-event-listener';
-import { StylesContextInputValue, Telemetry } from '@fluentui/react-bindings';
+import { ProviderContextPrepared, Telemetry, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ThemeProvider } from 'react-fela';
 
 import * as styles from './styles';
 import { TelemetryTable } from './TelemetryTable';
@@ -38,7 +37,7 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
     type: 'keydown',
   });
 
-  const outgoingContext = React.useMemo<Partial<StylesContextInputValue>>(
+  const outgoingContext = React.useMemo<Partial<ProviderContextPrepared>>(
     () => ({
       performance: state.performanceFlags,
       telemetry,
@@ -48,9 +47,9 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
 
   return (
     <>
-      <ThemeProvider theme={outgoingContext} overwrite>
+      <Unstable_FluentContextProvider value={outgoingContext as ProviderContextPrepared}>
         {children}
-      </ThemeProvider>
+      </Unstable_FluentContextProvider>
 
       {state.visible &&
         ReactDOM.createPortal(

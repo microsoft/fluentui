@@ -243,7 +243,7 @@ type Fiber = {
 
 const isDOMNode = e => e && typeof e.tagName === 'string' && e.nodeType === Node.ELEMENT_NODE;
 
-class FiberNavigator {
+export class FiberNavigator {
   __fiber: Fiber;
 
   static domNodeToReactFiber = (elm: HTMLElement): Fiber => {
@@ -462,5 +462,3 @@ class FiberNavigator {
     return this.isDOMComponent ? false : !!this.instance && !!this.instance.render && !!this.instance.setState;
   }
 }
-
-export default FiberNavigator;

@@ -12,7 +12,7 @@ export interface HeaderVariables {
   descriptionColor: string;
 }
 
-export default (siteVars: any): HeaderVariables => {
+export const headerVariables = (siteVars: any): HeaderVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, headerColorAreas),
     color: siteVars.colors.grey[750],

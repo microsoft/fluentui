@@ -16,6 +16,9 @@ export interface IDatePicker {
 
   /** Reset the state of the picker to the default */
   reset(): void;
+
+  /** Open the datepicker callout */
+  showDatePickerPopup(): void;
 }
 
 /**

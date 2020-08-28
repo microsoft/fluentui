@@ -7,13 +7,13 @@ import felaPluginRtl from 'fela-plugin-rtl';
 import * as React from 'react';
 import { RendererProvider } from 'react-fela';
 
-import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
-import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
-import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
-import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
-import felaPerformanceEnhancer from './felaPerformanceEnhancer';
-import felaSanitizeCss from './felaSanitizeCssPlugin';
-import felaStylisEnhancer from './felaStylisEnhancer';
+import { felaDisableAnimationsPlugin } from './felaDisableAnimationsPlugin';
+import { felaExpandCssShorthandsPlugin } from './felaExpandCssShorthandsPlugin';
+import { felaFocusVisibleEnhancer } from './felaFocusVisibleEnhancer';
+import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
+import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
+import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
+import { felaStylisEnhancer } from './felaStylisEnhancer';
 import { FelaRendererParam } from './types';
 
 let felaDevMode = false;
@@ -62,7 +62,7 @@ const rendererConfig = {
 
     // is necessary to prevent accidental style typos
     // from breaking ALL the styles on the page
-    felaSanitizeCss as TPlugin,
+    felaSanitizeCssPlugin as TPlugin,
 
     felaPluginPlaceholderPrefixer(),
     felaInvokeKeyframesPlugin as TPlugin,

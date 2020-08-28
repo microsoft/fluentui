@@ -15,9 +15,12 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
+    "test": "just-scripts test",
     "lint": "just-scripts lint"
   },
   "devDependencies": {
+    "@types/doctrine": "0.0.3",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -27,19 +30,20 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "jest": "~24.9.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
-    "react-is": "^16.6.3",
+    "doctrine": "^2.0.0",
     "lodash": "^4.17.15",
-    "react-docgen-typescript": "^1.16.6"
+    "react-docgen-typescript": "^1.16.6",
+    "react-is": "^16.6.3",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
@@ -48,6 +52,7 @@
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "^24.0.0",
     "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "react-dom": ">=16.8.0 <17.0.0",
+    "typescript": "^3.5.0"
   }
 }

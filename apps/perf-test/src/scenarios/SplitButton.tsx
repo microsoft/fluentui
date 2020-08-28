@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react';
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 
 const menuProps = {

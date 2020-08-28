@@ -348,7 +348,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     let diff: number | undefined = 0;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:

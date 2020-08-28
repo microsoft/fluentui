@@ -59,9 +59,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   private _onFocus(data: IChartDataPoint, id: string): void {
-    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.onFocusCallback!(data, id, this.currentRef.current);
-    }
+    this.props.onFocusCallback!(data, id, this.currentRef.current);
   }
 
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {

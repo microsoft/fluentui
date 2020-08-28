@@ -86,6 +86,9 @@ exports[`TextField snapshots renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <input
         aria-invalid={false}
@@ -131,6 +134,10 @@ exports[`TextField snapshots renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -139,6 +146,9 @@ exports[`TextField snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -149,6 +159,9 @@ exports[`TextField snapshots renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -157,6 +170,9 @@ exports[`TextField snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -208,6 +224,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
+        }
+        @media screen and (forced-colors: active){&:hover {
+          forced-color-adjust: none;
         }
   >
     <label
@@ -273,6 +292,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <div
         className=
@@ -289,6 +311,10 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span
@@ -346,6 +372,10 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -354,6 +384,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -364,6 +397,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -372,6 +408,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -396,6 +435,10 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span
@@ -458,6 +501,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
         }
+        @media screen and (forced-colors: active){&:hover {
+          forced-color-adjust: none;
+        }
   >
     <label
       className=
@@ -522,6 +568,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <div
         className=
@@ -538,6 +587,10 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span
@@ -595,6 +648,10 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -603,6 +660,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -613,6 +673,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -621,6 +684,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -645,6 +711,10 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span
@@ -756,6 +826,9 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <textarea
         aria-invalid={false}
@@ -804,6 +877,10 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -812,6 +889,9 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -822,6 +902,9 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -830,6 +913,9 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -930,6 +1016,9 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <textarea
         aria-invalid={false}
@@ -980,6 +1069,10 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -988,6 +1081,9 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -998,6 +1094,9 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1006,6 +1105,9 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -1106,6 +1208,9 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <textarea
         aria-invalid={false}
@@ -1154,6 +1259,10 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1162,6 +1271,9 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -1172,6 +1284,9 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1180,6 +1295,9 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -1232,6 +1350,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
+        }
+        @media screen and (forced-colors: active){&:hover {
+          forced-color-adjust: none;
         }
   >
     <label
@@ -1298,6 +1419,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <div
         className=
@@ -1314,6 +1438,10 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span
@@ -1371,6 +1499,10 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1379,6 +1511,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -1389,6 +1524,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1397,6 +1535,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}
@@ -1421,6 +1562,10 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               padding-right: 10px;
               padding-top: 0;
               white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
             }
       >
         <span

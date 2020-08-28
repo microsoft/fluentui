@@ -27,7 +27,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     const {
       barHeight,
       className,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       label = this.props.title, // Fall back to deprecated value.
       description,
       styles,

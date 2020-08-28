@@ -1,13 +1,13 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { TreeTitleStylesProps } from '../../../../components/Tree/TreeTitle';
 import { TreeTitleVariables } from './treeTitleVariables';
 import { pxToRem } from '../../../../utils';
-import checkboxIndicatorUrl from '../Checkbox/checkboxIndicatorUrl';
-import checkboxIndicatorIndeterminatedUrl from './checkboxIndicatorIndeterminatedUrl';
+import { checkboxIndicatorUrl } from '../Checkbox/checkboxIndicatorUrl';
+import { checkboxIndicatorIndeterminatedUrl } from './checkboxIndicatorIndeterminatedUrl';
 
-const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
+export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     padding: v.padding,
     cursor: 'pointer',
@@ -65,5 +65,3 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
       }),
   }),
 };
-
-export default treeTitleStyles;

@@ -9,7 +9,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Mar 20 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 20 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-20T00:00:00.000Z,
     },
     Object {
@@ -18,7 +18,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Mar 21 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 21 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-21T00:00:00.000Z,
     },
     Object {
@@ -27,7 +27,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Mar 22 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 22 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-22T00:00:00.000Z,
     },
     Object {
@@ -36,7 +36,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Mar 23 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 23 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-23T00:00:00.000Z,
     },
     Object {
@@ -45,7 +45,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Mar 24 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 24 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-24T00:00:00.000Z,
     },
     Object {
@@ -54,7 +54,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri Mar 25 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 25 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-25T00:00:00.000Z,
     },
     Object {
@@ -63,7 +63,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Mar 26 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 26 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-26T00:00:00.000Z,
     },
   ],
@@ -74,7 +74,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Mar 27 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 27 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-27T00:00:00.000Z,
     },
     Object {
@@ -83,7 +83,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Mar 28 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 28 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-28T00:00:00.000Z,
     },
     Object {
@@ -92,7 +92,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Mar 29 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 29 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-29T00:00:00.000Z,
     },
     Object {
@@ -101,7 +101,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Mar 30 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 30 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-30T00:00:00.000Z,
     },
     Object {
@@ -110,7 +110,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Mar 31 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 31 Mar 2016 00:00:00 GMT",
       "originalDate": 2016-03-31T00:00:00.000Z,
     },
     Object {
@@ -119,7 +119,7 @@ Array [
       "isInMonth": true,
       "isSelected": true,
       "isToday": false,
-      "key": "Fri Apr 01 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 01 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-01T00:00:00.000Z,
     },
     Object {
@@ -128,7 +128,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Apr 02 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 02 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-02T00:00:00.000Z,
     },
   ],
@@ -139,7 +139,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Apr 03 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 03 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-03T00:00:00.000Z,
     },
     Object {
@@ -148,7 +148,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Apr 04 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 04 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-04T00:00:00.000Z,
     },
     Object {
@@ -157,7 +157,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Apr 05 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 05 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-05T00:00:00.000Z,
     },
     Object {
@@ -166,7 +166,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Apr 06 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 06 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-06T00:00:00.000Z,
     },
     Object {
@@ -175,7 +175,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Apr 07 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 07 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-07T00:00:00.000Z,
     },
     Object {
@@ -184,7 +184,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri Apr 08 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 08 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-08T00:00:00.000Z,
     },
     Object {
@@ -193,7 +193,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Apr 09 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 09 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-09T00:00:00.000Z,
     },
   ],
@@ -204,7 +204,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Apr 10 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 10 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-10T00:00:00.000Z,
     },
     Object {
@@ -213,7 +213,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Apr 11 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 11 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-11T00:00:00.000Z,
     },
     Object {
@@ -222,7 +222,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Apr 12 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 12 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-12T00:00:00.000Z,
     },
     Object {
@@ -231,7 +231,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Apr 13 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 13 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-13T00:00:00.000Z,
     },
     Object {
@@ -240,7 +240,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Apr 14 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 14 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-14T00:00:00.000Z,
     },
     Object {
@@ -249,7 +249,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri Apr 15 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 15 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-15T00:00:00.000Z,
     },
     Object {
@@ -258,7 +258,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Apr 16 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 16 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-16T00:00:00.000Z,
     },
   ],
@@ -269,7 +269,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Apr 17 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 17 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-17T00:00:00.000Z,
     },
     Object {
@@ -278,7 +278,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Apr 18 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 18 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-18T00:00:00.000Z,
     },
     Object {
@@ -287,7 +287,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Apr 19 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 19 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-19T00:00:00.000Z,
     },
     Object {
@@ -296,7 +296,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Apr 20 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 20 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-20T00:00:00.000Z,
     },
     Object {
@@ -305,7 +305,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Apr 21 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 21 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-21T00:00:00.000Z,
     },
     Object {
@@ -314,7 +314,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri Apr 22 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 22 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-22T00:00:00.000Z,
     },
     Object {
@@ -323,7 +323,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Apr 23 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 23 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-23T00:00:00.000Z,
     },
   ],
@@ -334,7 +334,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun Apr 24 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 24 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-24T00:00:00.000Z,
     },
     Object {
@@ -343,7 +343,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon Apr 25 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 25 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-25T00:00:00.000Z,
     },
     Object {
@@ -352,7 +352,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue Apr 26 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 26 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-26T00:00:00.000Z,
     },
     Object {
@@ -361,7 +361,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed Apr 27 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 27 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-27T00:00:00.000Z,
     },
     Object {
@@ -370,7 +370,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu Apr 28 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 28 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-28T00:00:00.000Z,
     },
     Object {
@@ -379,7 +379,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri Apr 29 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 29 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-29T00:00:00.000Z,
     },
     Object {
@@ -388,7 +388,7 @@ Array [
       "isInMonth": true,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat Apr 30 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 30 Apr 2016 00:00:00 GMT",
       "originalDate": 2016-04-30T00:00:00.000Z,
     },
   ],
@@ -399,7 +399,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Sun May 01 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sun, 01 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-01T00:00:00.000Z,
     },
     Object {
@@ -408,7 +408,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Mon May 02 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Mon, 02 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-02T00:00:00.000Z,
     },
     Object {
@@ -417,7 +417,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Tue May 03 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Tue, 03 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-03T00:00:00.000Z,
     },
     Object {
@@ -426,7 +426,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Wed May 04 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Wed, 04 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-04T00:00:00.000Z,
     },
     Object {
@@ -435,7 +435,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Thu May 05 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Thu, 05 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-05T00:00:00.000Z,
     },
     Object {
@@ -444,7 +444,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Fri May 06 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Fri, 06 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-06T00:00:00.000Z,
     },
     Object {
@@ -453,7 +453,7 @@ Array [
       "isInMonth": false,
       "isSelected": false,
       "isToday": false,
-      "key": "Sat May 07 2016 00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "key": "Sat, 07 May 2016 00:00:00 GMT",
       "originalDate": 2016-05-07T00:00:00.000Z,
     },
   ],

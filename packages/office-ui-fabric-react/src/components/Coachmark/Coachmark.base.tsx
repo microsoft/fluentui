@@ -322,7 +322,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     );
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open

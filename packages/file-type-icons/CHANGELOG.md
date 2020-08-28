@@ -1,8 +1,45 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 24 Jun 2020 12:37:46 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.15)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.2..@uifabric/file-type-icons_v7.4.15)
+
+### Patches
+
+- Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available. ([PR #14569](https://github.com/microsoft/fluentui/pull/14569) by caperez@microsoft.com)
+
+## [7.4.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.2)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.1..@uifabric/file-type-icons_v7.4.2)
+
+### Patches
+
+- Replace tslint with eslint; fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.1)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.0..@uifabric/file-type-icons_v7.4.1)
+
+### Patches
+
+- Adding file icon mapping support for `osts` extension. ([PR #13970](https://github.com/microsoft/fluentui/pull/13970) by caperez@microsoft.com)
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.9..@uifabric/file-type-icons_v7.4.0)
+
+### Minor changes
+
+- Add special folder icon support for LinkedFolder ([PR #13946](https://github.com/microsoft/fluentui/pull/13946) by hemanp@microsoft.com)
+- Introduce FolderCover for linked folders ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
 
 ## [7.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.7)
 

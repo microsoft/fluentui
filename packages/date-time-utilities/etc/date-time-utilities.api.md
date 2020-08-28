@@ -55,6 +55,15 @@ export enum DayOfWeek {
 // @public (undocumented)
 export const DAYS_IN_WEEK = 7;
 
+// @public (undocumented)
+export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings;
+
+// @public (undocumented)
+export const DEFAULT_DATE_FORMATTING: IDateFormatting;
+
+// @public (undocumented)
+export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings;
+
 // @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
 
@@ -84,10 +93,13 @@ export const formatYear: (date: Date) => string;
 export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
 
 // @public
+export function getDatePartHashValue(date: Date): number;
+
+// @public
 export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
 
 // @public
-export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined) => DateRangeType;
+export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined, firstDayOfWeek: DayOfWeek) => DateRangeType;
 
 // @public
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
@@ -121,6 +133,37 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
+export interface ICalendarStrings extends IDateFormatting {
+    closeButtonAriaLabel?: string;
+    goToToday: string;
+    inputPlaceholder: string;
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+    monthPickerHeaderAriaLabel?: string;
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
+    openCalendarTitle: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
+    selectedDateFormatString?: string;
+    todayDateFormatString?: string;
+    weekNumberFormatString?: string;
+    yearPickerHeaderAriaLabel?: string;
+}
+
+// @public (undocumented)
+export interface IDateFormatting extends IDateGridStrings {
+    formatDay: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
+    formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
+    formatYear: (date: Date) => string;
+    parseDate: (date: string) => Date | null;
+}
+
+// @public (undocumented)
 export interface IDateGridStrings {
     days: string[];
     months: string[];
@@ -129,10 +172,23 @@ export interface IDateGridStrings {
 }
 
 // @public (undocumented)
+export interface IDatepickerOptions extends IRestrictedDatesOptions {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    markedDays?: Date[];
+    showWeekNumbers?: boolean;
+    today?: Date;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @public (undocumented)
 export interface IDay {
     date: string;
     isInBounds: boolean;
     isInMonth: boolean;
+    isMarked: boolean;
     isSelected: boolean;
     isToday: boolean;
     key: string;
@@ -140,17 +196,10 @@ export interface IDay {
 }
 
 // @public (undocumented)
-export interface IDayGridOptions extends IRestrictedDatesOptions {
-    dateRangeType: DateRangeType;
-    daysToSelectInDayView?: number;
-    firstDayOfWeek: DayOfWeek;
-    firstWeekOfYear: FirstWeekOfYear;
+export interface IDayGridOptions extends IDatepickerOptions {
     navigatedDate: Date;
     selectedDate: Date;
-    showWeekNumbers?: boolean;
-    today?: Date;
     weeksToShow?: number;
-    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -165,6 +214,9 @@ export const isAfterMaxDate: (date: Date, options: IRestrictedDatesOptions) => b
 
 // @public
 export const isBeforeMinDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
+
+// @public
+export const isContiguous: (days: DayOfWeek[], isSingleWeek: boolean, firstDayOfWeek: DayOfWeek) => boolean;
 
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;

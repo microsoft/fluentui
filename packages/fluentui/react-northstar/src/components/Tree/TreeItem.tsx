@@ -1,13 +1,19 @@
 import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useFluentContext,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { Ref } from '@fluentui/react-component-ref';
 
+import { Ref } from '@fluentui/react-component-ref';
 import {
   childrenExist,
   createShorthandFactory,
@@ -15,18 +21,16 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
+  shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandRenderFunction,
   ShorthandValue,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
-import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
@@ -101,8 +105,14 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
 export const treeItemClassName = 'ui-tree__item';
 
-const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps<TreeItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A TreeItem renders an item of a Tree.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ */
+export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
 
@@ -135,9 +145,10 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         e.stopPropagation();
-
         handleTitleClick(e);
       },
       focusParent: e => {
@@ -303,11 +314,3 @@ TreeItem.create = createShorthandFactory({
   Component: TreeItem,
   mappedProp: 'title',
 });
-
-/**
- * A TreeItem renders an item of a Tree.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- */
-export default withSafeTypeForAs<typeof TreeItem, TreeItemProps, 'li'>(TreeItem);

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const SyncIcon = createSvgIcon({
+export const SyncIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.filled, classes.filledPart)}>
@@ -18,5 +18,3 @@ const SyncIcon = createSvgIcon({
   ),
   displayName: 'SyncIcon',
 });
-
-export default SyncIcon;

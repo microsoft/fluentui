@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/mdl2-theme",
-  "version": "0.1.100",
+  "version": "0.2.4",
   "description": "MDL2 theming for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,14 +22,14 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2"
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.14",
-    "@uifabric/styling": "^7.13.2",
-    "@uifabric/variants": "^7.1.85",
-    "office-ui-fabric-react": "^7.121.3",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/styling": "^7.15.3",
+    "@uifabric/variants": "^7.2.4",
+    "office-ui-fabric-react": "^7.132.0",
     "tslib": "^1.10.0"
   }
 }

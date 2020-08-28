@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { AccordionTitleStylesProps } from '../../../../components/Accordion/AccordionTitle';
 import { AccordionVariables } from './accordionVariables';
-import activeIndicatorUrl from './activeIndicatorUrl';
+import { activeIndicatorUrl } from './activeIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProps, AccordionVariables> = {
+export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProps, AccordionVariables> = {
   root: ({ props: p }) => ({
     display: 'inline-block',
     verticalAlign: 'middle',
@@ -41,5 +41,3 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProp
     msGridColumn: '2',
   }),
 };
-
-export default accordionTitleStyles;

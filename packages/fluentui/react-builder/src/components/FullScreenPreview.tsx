@@ -3,7 +3,7 @@ import { Provider, teamsTheme } from '@fluentui/react-northstar';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderJSONTreeToJSXElement } from '../config';
 
-const FullScreenPreview: React.FunctionComponent = () => {
+export const FullScreenPreview: React.FunctionComponent = () => {
   const jsonTree = readTreeFromURL(window.location.href) || readTreeFromStore();
   return (
     <Provider theme={teamsTheme} target={document}>
@@ -11,5 +11,3 @@ const FullScreenPreview: React.FunctionComponent = () => {
     </Provider>
   );
 };
-
-export default FullScreenPreview;

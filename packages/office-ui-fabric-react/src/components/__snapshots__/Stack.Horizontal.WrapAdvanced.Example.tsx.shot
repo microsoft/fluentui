@@ -198,6 +198,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                   background-color: Highlight;
                 }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             data-is-focusable={true}
             id="Slider0"
             onKeyDown={[Function]}
@@ -475,6 +478,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                   background-color: Highlight;
                 }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             data-is-focusable={true}
             id="Slider1"
             onKeyDown={[Function]}
@@ -720,7 +726,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 width: 100%;
               }
               @media screen and (-ms-high-contrast: active){&:focus:after {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {
@@ -945,7 +950,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 width: 100%;
               }
               @media screen and (-ms-high-contrast: active){&:focus:after {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {
@@ -1170,7 +1174,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 width: 100%;
               }
               @media screen and (-ms-high-contrast: active){&:focus:after {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {

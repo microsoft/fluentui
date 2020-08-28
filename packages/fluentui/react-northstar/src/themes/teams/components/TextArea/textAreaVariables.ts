@@ -17,7 +17,7 @@ export interface TextAreaVariables {
   height: string;
 }
 
-export default (siteVars): TextAreaVariables => ({
+export const textAreaVariables = (siteVars): TextAreaVariables => ({
   margin: '0',
   padding: `${pxToRem(7)} ${pxToRem(12)}`,
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import * as d3 from 'd3-format';
 
 interface ILineChartBasicState {
   width: number;
@@ -37,8 +36,18 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 217000,
+              y: 216000,
               onDataPointClick: () => alert('click on 217000'),
+            },
+            {
+              x: new Date('2020-03-03T10:00:00.000Z'),
+              y: 218123,
+              onDataPointClick: () => alert('click on 217123'),
+            },
+            {
+              x: new Date('2020-03-03T11:00:00.000Z'),
+              y: 217124,
+              onDataPointClick: () => alert('click on 217124'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
@@ -112,6 +121,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+    const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
       <>
@@ -125,9 +135,9 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}
             yMaxValue={301}
-            yAxisTickFormat={d3.format('$,')}
             height={this.state.height}
             width={this.state.width}
+            margins={margins}
           />
         </div>
       </>

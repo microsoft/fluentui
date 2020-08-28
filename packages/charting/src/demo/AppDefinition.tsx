@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
@@ -8,6 +8,12 @@ export const AppDefinition: IAppDefinition = {
   examplePages: [
     {
       links: [
+        {
+          component: require<any>('../components/AreaChart/AreaChartPage').AreaChart,
+          key: 'AreaChart',
+          name: 'AreaChart',
+          url: '#/examples/areachart',
+        },
         {
           component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
@@ -49,6 +55,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'StackedBarChart',
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart',
+        },
+        {
+          component: require<any>('../components/GroupedVerticalBarChart/GroupedVerticalBarChartPage')
+            .GroupedVerticalBarChart,
+          key: 'GroupedVerticalBarChart',
+          name: 'GroupedVerticalBarChart',
+          url: '#/examples/GroupedVerticalBarChart',
         },
       ],
     },

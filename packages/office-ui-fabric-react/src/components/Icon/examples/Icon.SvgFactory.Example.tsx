@@ -28,7 +28,7 @@ const classes = mergeStyleSets({
 });
 
 const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
-  if (!!(ReactIcons as any)[exportName]?.displayName) {
+  if ((ReactIcons as any)[exportName]?.displayName) {
     acc.push((ReactIcons as any)[exportName] as React.FunctionComponent);
   }
 
@@ -46,13 +46,21 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
   return (
     <div>
       <div>
-        <PrimaryButton onClick={prevPage} disabled={page === 1}>
+        <PrimaryButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={prevPage}
+          disabled={page === 1}
+        >
           Prev
         </PrimaryButton>
         <span className={classes.navigationText}>
           Page {page} of {numOfPages}
         </span>
-        <PrimaryButton onClick={nextPage} disabled={page === numOfPages}>
+        <PrimaryButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={nextPage}
+          disabled={page === numOfPages}
+        >
           Next
         </PrimaryButton>
       </div>

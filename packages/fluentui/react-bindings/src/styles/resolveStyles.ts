@@ -40,7 +40,7 @@ const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
  * - rtl mode
  * - disable animations mode
  */
-const resolveStyles = (
+export const resolveStyles = (
   options: ResolveStylesOptions,
   resolvedVariables: ComponentVariablesObject,
 ): ResolveStylesResult => {
@@ -290,5 +290,3 @@ const resolveStyles = (
     classes,
   };
 };
-
-export default resolveStyles;

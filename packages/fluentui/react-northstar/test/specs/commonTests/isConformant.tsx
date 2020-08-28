@@ -11,7 +11,7 @@ import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
-import isExportedAtTopLevel from './isExportedAtTopLevel';
+import { isExportedAtTopLevel } from './isExportedAtTopLevel';
 import {
   assertBodyContains,
   consoleUtil,
@@ -19,7 +19,7 @@ import {
   mountWithProvider as mount,
   syntheticEvent,
 } from 'test/utils';
-import helpers from './commonHelpers';
+import { commonHelpers } from './commonHelpers';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
@@ -42,13 +42,15 @@ export interface Conformant {
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
   passesUnhandledPropsTo?: ComponentType<any>;
+  /** Child component that will receive ref. */
+  forwardsRefTo?: string | false;
 }
 
 /**
  * Assert Component conforms to guidelines that are applicable to all components.
  * @param Component - A component that should conform.
  */
-export default function isConformant(
+export function isConformant(
   Component: React.ComponentType<any> & {
     handledProps?: string[];
     autoControlledProps?: string[];
@@ -67,8 +69,9 @@ export default function isConformant(
     handlesAsProp = true,
     autoControlledProps = [],
     passesUnhandledPropsTo,
+    forwardsRefTo,
   } = options;
-  const { throwError } = helpers('isConformant', Component);
+  const { throwError } = commonHelpers('isConformant', Component);
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config
@@ -124,7 +127,7 @@ export default function isConformant(
   // This is pretty ugly because:
   // - jest doesn't support custom error messages
   // - jest will run all test
-  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
+  const infoJSONPath = `@fluentui/react-northstar/componentInfo/${constructorName}.info.json`;
 
   let info;
 
@@ -614,9 +617,12 @@ export default function isConformant(
     describe('compose', () => {
       describe('debug', () => {
         const displayName = 'ComposedComponent';
-        const ComposedComponent = compose(Component as ComposedComponent, {
-          displayName,
-        });
+        const ComposedComponent = compose<'div', { accessibility?: Accessibility }, {}, {}, {}>(
+          Component as ComposedComponent,
+          {
+            displayName,
+          },
+        );
 
         it('overrides default "displayName"', () => {
           expect(ComposedComponent.displayName).toBe(displayName);
@@ -693,16 +699,22 @@ export default function isConformant(
         });
       });
 
-      it('passes a ref to "root" element', () => {
-        const ComposedComponent = compose(Component as ComposedComponent);
-        const rootRef = jest.fn();
+      if (forwardsRefTo !== false) {
+        it('passes a ref to "root" element', () => {
+          const ComposedComponent = compose<'div', { accessibility?: Accessibility }, {}, {}, {}>(
+            Component as ComposedComponent,
+          );
+          const rootRef = jest.fn();
 
-        const wrapper = mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
-        const element = getComponent(wrapper);
+          const wrapper = forwardsRefTo
+            ? mount(<ComposedComponent {...requiredProps} ref={rootRef} />).find(forwardsRefTo as string)
+            : mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
 
-        expect(typeof element.type()).toBe('string');
-        expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
-      });
+          const element = getComponent(wrapper);
+          expect(typeof element.type()).toBe('string');
+          expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
+        });
+      }
     });
   }
 }

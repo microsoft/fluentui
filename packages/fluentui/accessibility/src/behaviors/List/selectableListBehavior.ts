@@ -12,7 +12,7 @@ import { ListBehaviorProps } from './listBehavior';
  * Adds attribute 'aria-orientation=horizontal' to 'root' slot if 'horizontal' property is true. Does not set the attribute otherwise.
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
+export const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'listbox',
@@ -29,5 +29,3 @@ const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
     },
   },
 });
-
-export default selectableListBehavior;

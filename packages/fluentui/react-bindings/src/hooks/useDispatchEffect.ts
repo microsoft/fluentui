@@ -7,7 +7,9 @@ type DispatchEffect<State> = (e: DispatchEvent, prevState: State, nextState: Sta
 
 type DispatchEvent = React.SyntheticEvent | Event;
 
-const useDispatchEffect = <State>(dispatchEffect: DispatchEffect<State>): [Dispatch<AnyAction>, SideEffect<State>] => {
+export const useDispatchEffect = <State>(
+  dispatchEffect: DispatchEffect<State>,
+): [Dispatch<AnyAction>, SideEffect<State>] => {
   const latestEffect = React.useRef<DispatchEffect<State>>(dispatchEffect);
   const latestEvent = React.useRef<DispatchEvent | null>(null);
 
@@ -25,5 +27,3 @@ const useDispatchEffect = <State>(dispatchEffect: DispatchEffect<State>): [Dispa
 
   return [dispatch, sideEffect];
 };
-
-export default useDispatchEffect;

@@ -91,6 +91,7 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
           step={1}
           showValue
           value={numberOfFaces}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onChangePersonaNumber}
         />
         <Dropdown
@@ -98,6 +99,7 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
           selectedKey={personaSize}
           className={styles.dropdown}
           options={dropdownOptions}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onChangePersonaSize}
         />
         <Checkbox

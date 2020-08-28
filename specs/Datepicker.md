@@ -46,6 +46,8 @@
 
 Consider having a single property to be a dictionary containing all needed localized strings.
 
+`renderCell` and `renderHeaderCell` are replaced with `calendarCell` and `calendarHeaderCell` shorthand components respectively in Fluent UI v0 implementation.
+
 ## Structure
 
 ### Proposed React structure

@@ -6,7 +6,7 @@ import { FelaRenderer, FelaRendererChange } from './types';
  * selector. Modifies generated selectors:
  * `.a:focus-visible {}` => `html[data-whatinput="keyboard"] a:focus`.
  */
-const felaFocusVisibleEnhancer = (renderer: FelaRenderer) => {
+export const felaFocusVisibleEnhancer = (renderer: FelaRenderer) => {
   const existingEmitChange = renderer._emitChange.bind(renderer);
 
   renderer._emitChange = (change: FelaRendererChange) => {
@@ -21,5 +21,3 @@ const felaFocusVisibleEnhancer = (renderer: FelaRenderer) => {
 
   return renderer;
 };
-
-export default felaFocusVisibleEnhancer;

@@ -5,7 +5,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {
   dynamicData: IChartProps;
-  colors: string[];
 }
 
 export class StackedBarChartDynamicExample extends React.Component<{}, IExampleState> {
@@ -57,12 +56,6 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           { legend: 'fourth', data: 87, color: DefaultPalette.greenLight },
         ],
       },
-      colors: [
-        DefaultPalette.blueLight,
-        DefaultPalette.yellow,
-        DefaultPalette.neutralSecondary,
-        DefaultPalette.greenLight,
-      ],
     };
 
     this._changeData = this._changeData.bind(this);

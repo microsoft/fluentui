@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import getScrollParent from 'src/utils/positioner/getScrollParent';
+import { getScrollParent } from 'src/utils/positioner/getScrollParent';
 
 const overflowStyles: Partial<CSSStyleDeclaration>[] = [
   { overflow: 'scroll' },

@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-const convertCssTimeToNumber = (time: string | undefined): number => {
+export const convertCssTimeToNumber = (time: string | undefined): number => {
   if (_.isNil(time) || time === 'initial' || time === 'inherit') {
     return 0;
   }
@@ -17,5 +17,3 @@ const convertCssTimeToNumber = (time: string | undefined): number => {
 
   return isNaN(number) ? 0 : multiplier * number;
 };
-
-export default convertCssTimeToNumber;

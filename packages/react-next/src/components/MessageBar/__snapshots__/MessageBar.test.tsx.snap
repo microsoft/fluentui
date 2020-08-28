@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBar renders MessageBar correctly 1`] = `
+<div
+  className=
+      ms-MessageBar
+      ms-MessageBar-multiline
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #f3f2f1;
+        color: #323130;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        min-height: 32px;
+        width: 100%;
+        word-break: break-word;
+      }
+      & .ms-Link {
+        color: #005A9E;
+      }
+      & .ms-Link:hover {
+        color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
+        background: Window;
+        border: 1px solid WindowText;
+        color: WindowText;
+      }
+>
+  <div
+    className=
+        ms-MessageBar-content
+        {
+          display: flex;
+          line-height: normal;
+          width: 100%;
+        }
+  >
+    <div
+      aria-hidden={true}
+      className=
+          ms-MessageBar-icon
+          {
+            display: flex;
+            flex-shrink: 0;
+            font-size: 16px;
+            margin-bottom: 8px;
+            margin-left: 12px;
+            margin-right: 0;
+            margin-top: 8px;
+            min-height: 16px;
+            min-width: 16px;
+          }
+    >
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: WindowText;
+            }
+        data-icon-name="Info"
+      >
+        
+      </i>
+    </div>
+    <div
+      aria-live="polite"
+      className=
+          ms-MessageBar-text
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-grow: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            margin-left: 8px;
+            margin-right: 12px;
+            margin-top: 8px;
+            min-width: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+          }
+      id="MessageBar0"
+      role="status"
+    >
+      <span
+        className=
+            ms-MessageBar-innerText
+            {
+              line-height: 16px;
+            }
+            & span a {
+              padding-left: 4px;
+            }
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,7 +1,7 @@
 import { FocusZoneDirection, FocusZoneProperties, FocusZoneTabbableElements } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import FocusZone from './FocusZone';
+import { FocusZone } from './FocusZone';
 
 /**
  * FocusZone component class interface.

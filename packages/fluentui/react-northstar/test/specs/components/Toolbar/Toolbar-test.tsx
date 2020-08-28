@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Toolbar from 'src/components/Toolbar/Toolbar';
+import { Toolbar } from 'src/components/Toolbar/Toolbar';
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 import { isConformant, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';

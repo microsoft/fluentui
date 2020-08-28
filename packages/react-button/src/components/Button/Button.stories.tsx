@@ -2,64 +2,121 @@ import * as React from 'react';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
-import { Stack, Text } from 'office-ui-fabric-react';
+
+/**
+ * Temporary Stack until there's one in its own package.
+ */
+const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
+  const { horizontal, ...rest } = props;
+
+  return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
+};
+
+/**
+ * Temporary Text until there's one in its own package.
+ */
+// eslint-disable-next-line jsx-a11y/heading-has-content -- content passed via children
+const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const ButtonVariants = (props: ButtonProps) => (
-  <div className={classes.hStack}>
-    <Button {...props} content="Hello, world" icon="X" />
-    <Button {...props} primary content="Hello, world" icon="X" />
-    <Button {...props} disabled content="Hello, world" icon="X" />
-    <Button {...props} primary disabled content="Hello, world" icon="X" />
-  </div>
+  <Stack horizontal>
+    <Button {...props} icon="O">
+      Hello, world
+    </Button>
+    <Button {...props} primary icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} disabled icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} primary disabled icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} ghost icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} ghost disabled icon="X">
+      Hello, world
+    </Button>
+  </Stack>
 );
 
+export const ButtonFocus = () => {
+  const buttonRef = React.useRef<HTMLElement | null>(null);
+  return (
+    <Stack>
+      <Button
+        onClick={() => {
+          buttonRef.current?.focus();
+        }}
+      >
+        Focus the other button
+      </Button>
+      <Button ref={buttonRef}>I get focused</Button>
+    </Stack>
+  );
+};
 export const ButtonCss = () => (
-  <Stack gap={20}>
-    <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
+  <Stack>
+    <Text>A button comes in default and `primary` flavors.</Text>
     <ButtonVariants />
 
-    <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
+    <Text>A button can appear round using the `circular` prop.</Text>
     <ButtonVariants circular />
 
-    <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
-    <div className={classes.vStack}>
-      <Button fluid content="Hello, world" icon="X" />
-      <Button fluid primary content="Hello, world" icon="X" />
-      <Button fluid disabled content="Hello, world" icon="X" />
-      <Button fluid primary disabled content="Hello, world" icon="X" />
-    </div>
+    <Text>A button can fill the width of its container using the `fluid` prop.</Text>
+    <Stack horizontal>
+      <Button fluid icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary icon="X">
+        Hello, world
+      </Button>
+      <Button fluid disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost disabled icon="X">
+        Hello, world
+      </Button>
+    </Stack>
 
-    <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
+    <Text>A button can contain only an icon using the `iconOnly` prop.</Text>
     <ButtonVariants iconOnly />
 
-    <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
+    <Text>A button can be both `circular` and `iconOnly`.</Text>
     <ButtonVariants circular iconOnly />
 
-    <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
-    <div className={classes.vStack}>
+    <Text>An icon button can format its Icon to appear before or after its content.</Text>
+    <Stack>
       <ButtonVariants iconPosition="before" />
       <ButtonVariants iconPosition="after" />
-    </div>
+    </Stack>
 
-    <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
+    <Text>A button can show a loading indicator using the `loading` prop.</Text>
     <ButtonVariants loading />
 
-    <Text variant="xLarge">A button can be sized.</Text>
-    <div className={classes.vStack}>
+    <Text>A button can be sized.</Text>
+    <Stack>
       <ButtonVariants size="smallest" />
       <ButtonVariants size="smaller" />
       <ButtonVariants size="small" />
       <ButtonVariants size="large" />
       <ButtonVariants size="larger" />
       <ButtonVariants size="largest" />
-    </div>
+    </Stack>
   </Stack>
 );
 
 export const ButtonTokens = () => (
-  <Stack gap={20}>
-    <Text variant="xLarge">A button can be colored using inline tokens.</Text>
-    <div className={classes.vStack}>
+  <Stack>
+    <Text>A button can be colored using inline tokens.</Text>
+    <Stack>
       <Button
         icon="O"
         tokens={{
@@ -87,8 +144,9 @@ export const ButtonTokens = () => (
             transform: 'none',
           },
         }}
-        content="Github: Open issue"
-      />
+      >
+        Github: Open issue
+      </Button>
       <Button
         tokens={{
           fontFamily: `"Amazon Ember", Arial, sans-serif`,
@@ -113,8 +171,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Amazon: Proceed to checkout"
-      />
+      >
+        Amazon: Proceed to checkout
+      </Button>
       <Button
         tokens={{
           borderWidth: '0px',
@@ -138,8 +197,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Netflix: Sign In"
-      />
+      >
+        Netflix: Sign In
+      </Button>
       <Button
         tokens={{
           height: '48px',
@@ -149,7 +209,6 @@ export const ButtonTokens = () => (
           fontFamily: 'Circular, Helvetica, Arial, sans-serif',
           fontSize: '14px',
           fontWeight: '700',
-
           background: 'rgb(29, 185, 84) none repeat scroll 0% 0% / auto padding-box border-box',
           contentColor: 'rgb(255, 255, 255)',
           borderColor: 'rgb(255, 255, 255)',
@@ -167,8 +226,9 @@ export const ButtonTokens = () => (
             borderColor: 'rgb(255, 255, 255)',
           },
         }}
-        content="Spotify: GET PREMIUM"
-      />
+      >
+        Spotify: GET PREMIUM
+      </Button>
       <Button
         tokens={{
           height: '52px',
@@ -182,26 +242,35 @@ export const ButtonTokens = () => (
           fontSize: '14px',
           fontWeight: '700',
         }}
-        content="Spotify: LEARN MORE"
-      />
-    </div>
-    <Text variant="xLarge">A tokenized button can be customized for any size or padding.</Text>
-    <div className={classes.vStack}>
-      <ButtonVariants
+      >
+        Spotify: LEARN MORE
+      </Button>
+    </Stack>
+    <Text>A tokenized button can be customized for any size or padding.</Text>
+    <Stack horizontal>
+      <Button
+        icon="O"
         tokens={{
           height: '24px',
           fontSize: '12px',
-          iconSize: '22px',
+          iconSize: '40px',
           padding: '0 8px',
+          contentGap: '4px',
         }}
-      />
-      <ButtonVariants
+      >
+        I'm a small button with a large icon
+      </Button>
+      <Button
+        icon="O"
         tokens={{
           height: '70px',
-          fontSize: '48px',
-          iconSize: '48px',
+          fontSize: '24px',
+          iconSize: '12px',
+          padding: '0 40px',
         }}
-      />
-    </div>
+      >
+        I'm a large button with a small icon
+      </Button>
+    </Stack>
   </Stack>
 );

@@ -9,7 +9,7 @@ const getDisplayName = (element: React.ReactElement<any>): string =>
   // function without a name, you should provide one
   (typeof element.type === 'function' ? 'NoDisplayName' : element.type);
 
-const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: boolean = false) => {
+export const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: boolean = false) => {
   let renderHasFunction;
 
   const jsxMarkup = reactElementToJSXString(element, {
@@ -52,5 +52,3 @@ const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: bo
 
   return jsxMarkup;
 };
-
-export default renderElementToJSX;

@@ -1,11 +1,17 @@
 {
   "buildCommand": "build:min",
   "packages": [
-    "packages/react-button",
-    "packages/fluentui/react-northstar",
     "packages/office-ui-fabric-react",
+    "packages/react-button",
+    "packages/react-icons",
     "packages/react-next",
-    "packages/react-icons"
-  ],  
-  "sandboxes": ["u0e3w"]
+    "packages/fluentui/react-bindings",
+    "packages/fluentui/react-northstar"
+  ],
+  "sandboxes": [
+    "u0e3w",
+    "/apps/codesandbox-react-template",
+    "/apps/codesandbox-react-next-template",
+    "/apps/codesandbox-react-northstar-template"
+  ]
 }

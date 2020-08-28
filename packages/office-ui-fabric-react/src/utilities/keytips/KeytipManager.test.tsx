@@ -168,7 +168,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
-      // tslint:disable-next-line:max-line-length
+      // eslint-disable-next-line @fluentui/max-len
       it('adds the keytip and does not raise persistedKeytipAdded event while delaying updates and not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
@@ -206,7 +206,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
-      // tslint:disable-next-line:max-line-length
+      // eslint-disable-next-line @fluentui/max-len
       it('removes a keytip and does not raise persistedKeytipRemoved event while delaying updates and not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {

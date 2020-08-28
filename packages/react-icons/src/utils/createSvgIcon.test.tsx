@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { default as createSvgIcon } from './createSvgIcon';
+import createSvgIcon from './createSvgIcon';
 
 const testSvg = () => <svg />;
 

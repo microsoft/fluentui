@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { GroupedList } from 'office-ui-fabric-react';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 const items = [
   {
     thumbnail: '//placehold.it/175x175',

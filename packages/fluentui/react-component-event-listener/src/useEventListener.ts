@@ -7,7 +7,7 @@ const isActionSupported = (
   method: 'addEventListener' | 'removeEventListener',
 ): element is Target => (element ? !!element[method] : false);
 
-const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>): void => {
+export const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>): void => {
   const { capture, listener, type, target, targetRef } = options;
 
   const latestListener = React.useRef<EventHandler<T>>(listener);
@@ -54,5 +54,3 @@ const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>
     };
   }, [capture, eventHandler, target, targetRef, type]);
 };
-
-export default useEventListener;

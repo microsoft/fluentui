@@ -2,6 +2,51 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/webpack-utils_v7.0.24",
+      "version": "7.0.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update stated webpack version to match actual version used",
+            "author": "elcraig@microsoft.com",
+            "commit": "d0dbdec3364f05e2862b61063dc5bcf981dc724a",
+            "package": "@uifabric/webpack-utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/webpack-utils_v7.0.18",
+      "version": "7.0.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/webpack-utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/webpack-utils_v7.0.17",
+      "version": "7.0.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/webpack-utils"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/webpack-utils_v7.0.12",
       "version": "7.0.12",

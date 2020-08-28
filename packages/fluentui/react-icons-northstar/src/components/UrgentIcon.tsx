@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { iconClassNames } from '../utils/iconClassNames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const UrgentIcon = createSvgIcon({
+export const UrgentIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" className={classes.svg} viewBox="8 8 16 16">
       <g>
@@ -20,5 +20,3 @@ const UrgentIcon = createSvgIcon({
   ),
   displayName: 'UrgentIcon',
 });
-
-export default UrgentIcon;

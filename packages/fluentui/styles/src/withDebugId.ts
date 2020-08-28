@@ -1,6 +1,6 @@
 import { isEnabled as isDebugEnabled } from './debugEnabled';
 
-const withDebugId =
+export const withDebugId =
   process.env.NODE_ENV === 'production'
     ? <T>(data: T, debugId: string): T => data
     : <T>(data: T, debugId: string): T => {
@@ -29,5 +29,3 @@ const withDebugId =
 
         return data;
       };
-
-export default withDebugId;

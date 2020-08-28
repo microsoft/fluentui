@@ -6,7 +6,7 @@ export interface ISliderBasicExampleState {
   value: number;
 }
 const stackTokens: IStackTokens = { childrenGap: 30 };
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class SliderExample extends React.Component<{}, ISliderBasicExampleState> {
   public state: ISliderBasicExampleState = { value: 0 };
   public render(): JSX.Element {

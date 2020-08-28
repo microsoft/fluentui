@@ -6,7 +6,7 @@ import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 
@@ -19,7 +19,7 @@ export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
@@ -154,22 +154,21 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <div>
             <svg className={this._classNames.chart}>
               <g>{bars[0]}</g>
-              {!hideTooltip && isCalloutVisible ? (
-                <Callout
-                  gapSpace={15}
-                  isBeakVisible={false}
-                  target={this.state.refSelected}
-                  setInitialFocus={true}
-                  directionalHint={DirectionalHint.topRightEdge}
-                  id={this._calloutId}
-                >
-                  <ChartHoverCard
-                    Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                    YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                    color={this.state.color}
-                  />
-                </Callout>
-              ) : null}
+              <Callout
+                gapSpace={15}
+                isBeakVisible={false}
+                target={this.state.refSelected}
+                setInitialFocus={true}
+                hidden={!(!hideTooltip && isCalloutVisible)}
+                directionalHint={DirectionalHint.topRightEdge}
+                id={this._calloutId}
+              >
+                <ChartHoverCard
+                  Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                  YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                  color={this.state.color}
+                />
+              </Callout>
             </svg>
           </div>
         </FocusZone>
@@ -311,6 +310,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return [
@@ -332,7 +332,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this.state.refArray.map((obj: IRefArrayData) => {
+      this.state.refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === legendText) {
           this.setState({
             refSelected: obj.refElement,
@@ -407,7 +407,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }

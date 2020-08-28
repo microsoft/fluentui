@@ -15,7 +15,7 @@ export interface ProviderVariables {
   scrollbarThumbHoverBorderSize: string;
 }
 
-export default (siteVariables): Partial<ProviderVariables> => ({
+export const providerVariables = (siteVariables): Partial<ProviderVariables> => ({
   background: siteVariables.bodyBackground,
   color: siteVariables.bodyColor,
 

@@ -36,6 +36,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of eidting
    */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   private SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
     <SelectedPersona canExpand={this._canExpandItem} getExpandedItems={this._getExpandedGroupItems} {...props} />
   );

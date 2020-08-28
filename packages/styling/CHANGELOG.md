@@ -1,8 +1,35 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 17 Jun 2020 16:07:40 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.15.2)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.14.1..@uifabric/styling_v7.15.2)
+
+### Patches
+
+- Move Fluent theme constants to @fluentui/theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.14.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.13.6..@uifabric/styling_v7.14.0)
+
+### Minor changes
+
+- Add new card semantic slots ([PR #13906](https://github.com/microsoft/fluentui/pull/13906) by phkuo@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.6)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.13.3..@uifabric/styling_v7.13.6)
+
+### Patches
+
+- Update high contrast Edge Chormium selector to remove unneeded condition. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.0)
 

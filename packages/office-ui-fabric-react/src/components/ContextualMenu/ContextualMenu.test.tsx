@@ -9,9 +9,10 @@ import * as Utilities from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
-import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
+import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
+import { IRenderFunction } from '@uifabric/utilities';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -457,7 +458,7 @@ describe('ContextualMenu', () => {
         key: 'TestKey1',
         split: true,
         onClick: () => {
-          alert('test');
+          console.log('test');
         },
         subMenuProps: {
           items: [
@@ -1039,6 +1040,36 @@ describe('ContextualMenu', () => {
       button.current!.openMenu();
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
     });
+
+    it('Menu should correctly return focus to previously focused element when dismissed', () => {
+      const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
+        </div>,
+      ) as HTMLElement;
+
+      // Get and make sure that the button is the active element
+      const btn = temp.querySelector('#btn')! as HTMLElement;
+      expect(btn).not.toEqual(null);
+      btn.focus();
+      expect(document.activeElement).toEqual(btn);
+
+      // Click the button and make sure that the menu has opened
+      ReactTestUtils.Simulate.click(btn);
+      const cm = document.querySelector('.ms-ContextualMenu-Callout');
+      expect(cm).not.toEqual(null);
+
+      // Get an item from the menu and make sure it's focused
+      const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+      const menuItem = menuList.querySelector('button');
+      menuItem!.focus();
+      expect(document.activeElement).toEqual(menuItem);
+      ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.escape });
+
+      // Ensure that the Menu has closed and that focus has returned to the button
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).toBeNull();
+      expect(document.activeElement).toEqual(btn);
+    });
   });
 
   describe('canAnyMenuItemsCheck', () => {
@@ -1232,6 +1263,49 @@ describe('ContextualMenu', () => {
         contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
+    });
+  });
+
+  describe('onRenderMenuList function tests', () => {
+    it('List has default role as menu.', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          text: 'TestText 1',
+          key: 'TestKey1',
+        },
+      ];
+
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+
+      expect(internalList).toBeTruthy();
+      expect(internalList.getAttribute('role')).toEqual('menu');
+    });
+
+    it('List applies role that is set by custom onRenderMenuList function.', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          text: 'TestText 1',
+          key: 'TestKey1',
+        },
+      ];
+
+      const onRenderMenuList: IRenderFunction<IContextualMenuListProps> = (props, defaultRender) => {
+        if (props) {
+          props.role = 'grid';
+        }
+        return defaultRender?.(props) ?? null;
+      };
+
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <ContextualMenu items={items} onRenderMenuList={onRenderMenuList} />,
+      );
+
+      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+
+      expect(internalList).toBeTruthy();
+      expect(internalList.getAttribute('role')).toEqual('grid');
     });
   });
 

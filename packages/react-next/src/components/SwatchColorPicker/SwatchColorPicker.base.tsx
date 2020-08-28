@@ -13,7 +13,7 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from '../../Utilities/grid/Grid';
+import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
@@ -86,7 +86,6 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
@@ -107,10 +106,10 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
-      // tslint:disable:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       ariaPosInSet = this.props.positionInSet,
+      // eslint-disable-next-line deprecation/deprecation
       ariaSetSize = this.props.setSize,
-      // tslint:enable:deprecation
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
@@ -260,10 +259,10 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
          * Edge and IE expose a setActive() function for focusable divs that
          * sets the page focus but does not scroll the parent element.
          */
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if ((elements[index] as any).setActive) {
           try {
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (elements[index] as any).setActive();
           } catch (e) {
             /* no-op */
@@ -281,7 +280,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Callback to make sure we don't update the hovered element during mouse wheel
    */
   private _onWheel = (): void => {
-    this.setNavigationTimeout();
+    this._setNavigationTimeout();
   };
 
   /**
@@ -294,7 +293,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       ev.which === KeyCodes.left ||
       ev.which === KeyCodes.right
     ) {
-      this.setNavigationTimeout();
+      this._setNavigationTimeout();
     }
   };
 
@@ -302,7 +301,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Sets a timeout so we won't process any mouse "hover" events
    * while navigating (via mouseWheel or arrowKeys)
    */
-  private setNavigationTimeout = () => {
+  private _setNavigationTimeout = () => {
     if (!this.isNavigationIdle && this.navigationIdleTimeoutId !== undefined) {
       this.async.clearTimeout(this.navigationIdleTimeoutId);
       this.navigationIdleTimeoutId = undefined;

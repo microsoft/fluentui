@@ -73,10 +73,9 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         line: {
           opacity: 0.2,
           width: '1px',
-          fill: theme.semanticColors.bodyText,
+          stroke: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
-              opacity: 0.2,
               stroke: 'rgb(179, 179, 179)',
             },
           },

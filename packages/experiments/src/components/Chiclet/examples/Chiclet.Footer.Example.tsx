@@ -63,7 +63,7 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;

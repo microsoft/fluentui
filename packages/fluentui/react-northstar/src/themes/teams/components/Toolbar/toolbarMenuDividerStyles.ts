@@ -3,7 +3,7 @@ import { ToolbarVariables } from './toolbarVariables';
 import { getColorScheme } from '../../colors';
 import { ToolbarMenuDividerStylesProps } from '../../../../components/Toolbar/ToolbarMenuDivider';
 
-const toolbarMenuDividerStyles: ComponentSlotStylesPrepared<ToolbarMenuDividerStylesProps, ToolbarVariables> = {
+export const toolbarMenuDividerStyles: ComponentSlotStylesPrepared<ToolbarMenuDividerStylesProps, ToolbarVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     return {
@@ -13,5 +13,3 @@ const toolbarMenuDividerStyles: ComponentSlotStylesPrepared<ToolbarMenuDividerSt
     };
   },
 };
-
-export default toolbarMenuDividerStyles;

@@ -121,7 +121,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               @media screen and (-ms-high-contrast: active){& {
                 border-color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -162,7 +162,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -256,7 +256,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
@@ -431,7 +430,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

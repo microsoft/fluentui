@@ -5,7 +5,7 @@ import { wasComposedPreviously } from './wasComposedPreviously';
 import { mergeComposeOptions } from './mergeComposeOptions';
 
 function compose<
-  TElementType extends React.ElementType,
+  TElementType extends keyof JSX.IntrinsicElements,
   TInputProps,
   TInputStylesProps,
   TParentProps,

@@ -1,9 +1,13 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import felaDisableAnimationsPlugin from '../src/felaDisableAnimationsPlugin';
+import { felaDisableAnimationsPlugin } from '../src/felaDisableAnimationsPlugin';
 
 const stylesWithAnimationShorthand: ICSSInJSStyle = {
   animation: 'k1',
   margin: '0px 10px',
+};
+
+const stylesWithFallbackValues: ICSSInJSStyle = {
+  display: ['grid', '-ms-grid'],
 };
 
 const stylesWithAnimationProps: ICSSInJSStyle = {
@@ -49,5 +53,13 @@ describe('felaDisableAnimationsPlugin', () => {
         disableAnimations: true,
       }),
     ).toMatchObject({ margin: '0px 10px' });
+  });
+
+  test('keeps unrelated fallback values', () => {
+    expect(
+      felaDisableAnimationsPlugin(stylesWithFallbackValues, 'RULE', undefined, {
+        disableAnimations: true,
+      }),
+    ).toMatchObject({ display: ['grid', '-ms-grid'] });
   });
 });

@@ -11,14 +11,13 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   createShorthand,
@@ -27,9 +26,9 @@ import {
   UIComponentProps,
   commonPropTypes,
 } from '../../utils';
-import { ComponentEventHandler, ProviderContextPrepared, ShorthandCollection, ShorthandValue } from '../../types';
-import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
-import ToolbarMenuRadioGroupWrapper, { ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
+import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
+import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
+import { ToolbarMenuRadioGroupWrapper, ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -63,9 +62,15 @@ export const toolbarMenuRadioGroupClassName = 'ui-toolbars'; // FIXME: required 
 /**
  * A ToolbarMenuRadioGroup renders ToolbarMenuItem as a group of mutually exclusive options.
  */
-const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarMenuRadioGroupStylesProps, {}, {}>(
+export const ToolbarMenuRadioGroup = compose<
+  'ul',
+  ToolbarMenuRadioGroupProps,
+  ToolbarMenuRadioGroupStylesProps,
+  {},
+  {}
+>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -168,5 +173,3 @@ ToolbarMenuRadioGroup.defaultProps = {
   accessibility: toolbarMenuRadioGroupBehavior,
   wrapper: {},
 };
-
-export default ToolbarMenuRadioGroup;

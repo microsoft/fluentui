@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface ChatMessageDetailsOwnProps {
   mine?: boolean;
@@ -14,7 +14,7 @@ export const chatMessageDetailsClassName = 'ui-chat__messagedetails';
 /**
  * An ChatMessageDetails provides a slot for details in the ChatMessage.
  */
-const ChatMessageDetails = compose<
+export const ChatMessageDetails = compose<
   'div',
   ChatMessageDetailsOwnProps,
   ChatMessageDetailsStylesProps,
@@ -34,5 +34,3 @@ const ChatMessageDetails = compose<
 });
 
 ChatMessageDetails.propTypes = commonPropTypes.createCommon();
-
-export default ChatMessageDetails;

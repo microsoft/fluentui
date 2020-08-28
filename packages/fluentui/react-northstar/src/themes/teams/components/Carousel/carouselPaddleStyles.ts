@@ -4,9 +4,9 @@ import {
   carouselPaddleSlotClassNames,
 } from '../../../../components/Carousel/CarouselPaddle';
 import { CarouselVariables } from './carouselVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import paddleIndicatorUrl from './paddleIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { paddleIndicatorUrl } from './paddleIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 import { faster, ultraFast } from '../../animations/durations';
 
@@ -19,7 +19,7 @@ const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJ
   };
 };
 
-const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProps, CarouselVariables> = {
+export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProps, CarouselVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -122,5 +122,3 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
     }),
   }),
 };
-
-export default carouselPaddleStyles;

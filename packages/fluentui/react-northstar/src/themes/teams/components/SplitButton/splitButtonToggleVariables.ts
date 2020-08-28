@@ -1,3 +1,1 @@
-import splitButtonVariables from './splitButtonVariables';
-
-export default splitButtonVariables;
+export { splitButtonVariables as splitButtonToggleVariables } from './splitButtonVariables';

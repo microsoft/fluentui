@@ -1,11 +1,9 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles, IRawStyle } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles } from '@uifabric/styling';
 
 export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
-  const { className, theme, headerIsClickable, showWeekNumbers, animateBackwards } = props;
+  const { className, theme, headerIsClickable, showWeekNumbers } = props;
   const { palette } = theme;
-
-  const headerAnimationStyle: IRawStyle = animateBackwards !== undefined ? AnimationStyles.fadeIn200 : {};
 
   const disabledStyle = {
     selectors: {
@@ -39,7 +37,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
     monthAndYear: [
       getFocusStyle(theme, { inset: 1 }),
       {
-        ...headerAnimationStyle,
+        ...AnimationStyles.fadeIn200,
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,

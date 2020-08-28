@@ -5,7 +5,6 @@ import {
   Async,
   Point,
   IRectangle,
-  assign,
   css,
   divProperties,
   elementContains,
@@ -125,7 +124,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
@@ -135,7 +133,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._disposables.forEach((dispose: () => void) => dispose());
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element
     // because we do not know if fabric has rendered a new element and disposed the old element.
@@ -200,7 +197,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
@@ -402,15 +399,14 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const expectsTarget = !!this.props.target;
 
     if (hostElement && calloutElement && (!expectsTarget || this._target)) {
-      let currentProps: IPositionProps | undefined;
-      currentProps = assign(currentProps, this.props);
-      currentProps!.bounds = this._getBounds();
-      currentProps!.target = this._target!;
+      const currentProps: IPositionProps = { ...(this.props as any) };
+      currentProps.bounds = this._getBounds();
+      currentProps.target = this._target!;
       // If there is a finalHeight given then we assume that the user knows and will handle
       // additional positioning adjustments so we should call positionCard
       const newPositions: ICalloutPositionedInfo = this.props.finalHeight
-        ? positionCard(currentProps!, hostElement, calloutElement, positions)
-        : positionCallout(currentProps!, hostElement, calloutElement, positions);
+        ? positionCard(currentProps, hostElement, calloutElement, positions)
+        : positionCallout(currentProps, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -518,13 +514,15 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
         this._targetWindow = getWindow(currentElement)!;
-      } else if (!!(target as MouseEvent).stopPropagation) {
+        // Cast to any prevents error about stopPropagation always existing
+      } else if ((target as any).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
-      } else if (!!(target as Element).getBoundingClientRect) {
+        // Same reason here
+      } else if ((target as any).getBoundingClientRect) {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
-        this._target = target as Element;
+        this._target = targetElement;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
         this._targetWindow = getWindow(this._target)!;

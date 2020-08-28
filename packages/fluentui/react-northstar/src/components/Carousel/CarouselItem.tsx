@@ -10,11 +10,18 @@ import {
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { useAccessibility, useTelemetry, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import { FluentComponentStaticProps } from '../../types';
+import {
+  ComponentWithAs,
+  useAccessibility,
+  useTelemetry,
+  useFluentContext,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface CarouselItemSlotClassNames {
   itemPositionText: string;
@@ -46,8 +53,15 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
   itemPositionText: `${carouselItemClassName}__itemPositionText`,
 };
 
-const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> & FluentComponentStaticProps<CarouselItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A Carousel displays data organised as a gallery.
+ *
+ * @accessibility
+ * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
+ */
+export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
+  FluentComponentStaticProps<CarouselItemProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
   setStart();
   const unhandledProps = useUnhandledProps(CarouselItem.handledProps, props);
@@ -126,11 +140,3 @@ CarouselItem.defaultProps = {
 CarouselItem.handledProps = Object.keys(CarouselItem.propTypes) as any;
 
 CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedProp: 'content' });
-
-/**
- * A Carousel displays data organised as a gallery.
- *
- * @accessibility
- * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
- */
-export default withSafeTypeForAs<typeof CarouselItem, CarouselItemProps, 'div'>(CarouselItem);

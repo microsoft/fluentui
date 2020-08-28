@@ -1,4 +1,4 @@
-export default (color: string, backgroundColor: string) =>
+export const checkboxIndicatorIndeterminatedUrl = (color: string, backgroundColor: string) =>
   `url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' role='presentation' style='background-color: ${escape(
     backgroundColor,
   )}; padding: 2px;' focusable='false' viewBox='8 8 22.5 22.5'%3E%3Cg%3E%3Cpath fill='${escape(

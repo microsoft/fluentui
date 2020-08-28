@@ -25,7 +25,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper', when orientation is vertical.
  */
-const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
+export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',
@@ -68,8 +68,6 @@ const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
     },
   },
 });
-
-export default menuItemBehavior;
 
 export type MenuItemBehaviorProps = {
   /** Indicated if menu item has submenu. */

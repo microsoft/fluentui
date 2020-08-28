@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IFacepilePersona } from 'office-ui-fabric-react/lib/Facepile';
-import { PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
+import { IFacepilePersona } from '../Facepile.types';
+import { PersonaInitialsColor } from '../../../Persona';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TestImages } from '@uifabric/example-data';
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
@@ -19,6 +20,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Alex Lundberg',
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
+      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
@@ -38,6 +40,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
+      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
@@ -59,6 +62,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
+      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
@@ -83,7 +87,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric2',
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     initialsColor: PersonaInitialsColor.red,
   },
   {

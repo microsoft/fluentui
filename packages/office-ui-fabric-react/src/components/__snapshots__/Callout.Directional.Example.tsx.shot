@@ -32,7 +32,7 @@ Array [
             border-color: #005a9e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
+            background: Highlight;
             border-color: Highlight;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -45,7 +45,7 @@ Array [
             color: Window;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
+            color: Window;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
@@ -136,7 +136,7 @@ Array [
                 background: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -177,7 +177,7 @@ Array [
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -324,6 +324,9 @@ Array [
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="Slider3"
@@ -586,6 +589,9 @@ Array [
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           data-is-focusable={true}
           id="Slider4"
           onKeyDown={[Function]}
@@ -793,7 +799,6 @@ Array [
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
@@ -977,7 +982,6 @@ Array [
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

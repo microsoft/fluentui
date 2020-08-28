@@ -38,6 +38,7 @@ export const ComboBoxErrorHandlingExample: React.FC = () => {
       <ComboBox
         label="ComboBox that errors when Option B is selected"
         options={comboBoxBasicOptions}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onChange}
         selectedKey={selectedKey}
         errorMessage={selectedKey === 'B' ? 'B is not an allowed option' : undefined}

@@ -2,8 +2,8 @@ import { ComponentStyleFunctionParam, emptyTheme, ThemeInput } from '@fluentui/s
 import * as React from 'react';
 import { mount } from 'enzyme';
 
-import Provider from 'src/components/Provider/Provider';
-import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
+import { Provider } from 'src/components/Provider/Provider';
+import { ProviderConsumer } from 'src/components/Provider/ProviderConsumer';
 
 const styleParam: ComponentStyleFunctionParam = {
   disableAnimations: false,

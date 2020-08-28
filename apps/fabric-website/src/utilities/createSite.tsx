@@ -19,7 +19,6 @@ import 'whatwg-fetch';
 
 import '../styles/styles.scss';
 
-// tslint:disable-next-line:no-any
 const corePackageData = require<any>('office-ui-fabric-core/package.json');
 const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
@@ -27,12 +26,10 @@ const corePackageVersion: string = (corePackageData && corePackageData.version) 
 initializeIcons();
 
 // @TODO: This doesn't appear to do anything right now. Investigate removing.
-// @ts-ignore
-const isProduction = process.argv.indexOf('--production') > -1;
+const isProduction = (process as any).argv.indexOf('--production') > -1;
 
-// tslint:disable-next-line no-any
 declare let Flight: any; // Flight & CDN configuration
-declare let __webpack_public_path__: string;
+declare let __webpack_public_path__: string; // eslint-disable-line @typescript-eslint/naming-convention
 
 if (!isLocal && Flight.baseCDNUrl) {
   __webpack_public_path__ = Flight.baseCDNUrl;

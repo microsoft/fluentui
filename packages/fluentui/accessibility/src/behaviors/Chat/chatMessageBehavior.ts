@@ -17,7 +17,7 @@ import { FocusZoneTabbableElements, FocusZoneDirection } from '../../focusZone/t
  * Focus is moved within the focusable children of the component using TAB key.
  * Does not handle PageDown and PageUp.
  */
-const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
+export const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -46,5 +46,3 @@ const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
 });
 
 export type ChatMessageBehaviorProps = never;
-
-export default chatMessageBehavior;

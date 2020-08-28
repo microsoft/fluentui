@@ -40,7 +40,7 @@ export interface IColorSwatch {
 
 export interface IColorSwatchCode {
   core: string;
-  react: string;
+  react?: string;
   themeSlot?: string;
 }
 

@@ -55,7 +55,7 @@ export const getSizeStyles = (sizeInPx: number, variables: StatusVariables) => {
   };
 };
 
-const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariables> = {
+export const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariables> = {
   root: ({ props: { color, size, state }, variables }): ICSSInJSStyle => {
     return {
       display: 'inline-flex',
@@ -90,5 +90,3 @@ const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariabl
     },
   }),
 };
-
-export default statusStyles;

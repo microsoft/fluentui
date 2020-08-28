@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardHeaderStylesProps } from '../../../../components/Card/CardHeader';
 
-const cardHeaderStyles: ComponentSlotStylesPrepared<CardHeaderStylesProps, CardVariables> = {
+export const cardHeaderStyles: ComponentSlotStylesPrepared<CardHeaderStylesProps, CardVariables> = {
   root: ({ variables: v, props: p }): ICSSInJSStyle => {
     return {
       display: 'flex',
@@ -12,5 +12,3 @@ const cardHeaderStyles: ComponentSlotStylesPrepared<CardHeaderStylesProps, CardV
     };
   },
 };
-
-export default cardHeaderStyles;

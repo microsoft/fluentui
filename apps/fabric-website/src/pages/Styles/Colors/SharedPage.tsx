@@ -6,6 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 const sharedColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-shared.json');
 
 export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = props => {

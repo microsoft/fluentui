@@ -2,6 +2,7 @@ export default [
   '@babel/runtime@7.1.2',
   '@babel/runtime@7.4.5',
   '@babel/runtime@7.7.6',
+  '@babel/runtime@7.10.4',
   '@emotion/hash@0.7.4',
   '@emotion/memoize@0.7.4',
   '@emotion/serialize@0.11.15',

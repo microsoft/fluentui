@@ -9,7 +9,7 @@ import {
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
-import Button from 'src/components/Button/Button';
+import { Button } from 'src/components/Button/Button';
 
 describe('Button', () => {
   isConformant(Button, {

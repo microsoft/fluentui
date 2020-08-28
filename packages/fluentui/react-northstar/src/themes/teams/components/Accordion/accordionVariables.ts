@@ -2,6 +2,6 @@ export interface AccordionVariables {
   color: string;
 }
 
-export default (siteVariables): AccordionVariables => ({
+export const accordionVariables = (siteVariables): AccordionVariables => ({
   color: siteVariables.bodyColor,
 });

@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  * Triggers 'moveFirst' action with 'Home' on 'root'.
  * Triggers 'moveLast' action with 'End' on 'root'.
  */
-const accordionBehavior: Accessibility = () => ({
+export const accordionBehavior: Accessibility = () => ({
   attributes: {
     root: {
       role: 'presentation',
@@ -34,5 +34,3 @@ const accordionBehavior: Accessibility = () => ({
 });
 
 export type AccordionBehaviorProps = never;
-
-export default accordionBehavior;

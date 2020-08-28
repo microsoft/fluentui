@@ -1,7 +1,7 @@
 import { InputVariables } from '../../../teams/components/Input/inputVariables';
 import { pxToRem } from '../../../../utils';
 
-export default (siteVars: any): Partial<InputVariables> => {
+export const inputVariables = (siteVars: any): Partial<InputVariables> => {
   return {
     borderColor: siteVars.bodyColor,
     borderWidth: `${pxToRem(1)} ${pxToRem(1)} ${pxToRem(2)} ${pxToRem(1)}`,

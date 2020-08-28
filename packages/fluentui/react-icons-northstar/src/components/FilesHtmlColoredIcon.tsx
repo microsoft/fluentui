@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const FilesHtmlColoredIcon = createSvgIcon({
+export const FilesHtmlColoredIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -22,5 +22,3 @@ const FilesHtmlColoredIcon = createSvgIcon({
   ),
   displayName: 'FilesHtmlColoredIcon',
 });
-
-export default FilesHtmlColoredIcon;

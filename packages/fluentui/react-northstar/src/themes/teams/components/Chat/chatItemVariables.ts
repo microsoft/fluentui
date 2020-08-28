@@ -6,7 +6,7 @@ export interface ChatItemVariables {
   messageMargin: string;
 }
 
-export default (): ChatItemVariables => ({
+export const chatItemVariables = (): ChatItemVariables => ({
   margin: pxToRem(8),
   gutterMargin: pxToRem(10),
   messageMargin: pxToRem(40),

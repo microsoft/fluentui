@@ -56,7 +56,7 @@ export interface EditorProps extends AceEditorProps {
 export const EDITOR_BACKGROUND_COLOR = '#2D2D2D';
 export const EDITOR_GUTTER_COLOR = '#272727';
 
-class Editor extends React.PureComponent<EditorProps> {
+export class Editor extends React.PureComponent<EditorProps> {
   editorRef = React.createRef<any>();
   name = `docs-editor-${_.uniqueId()}`;
 
@@ -120,5 +120,3 @@ class Editor extends React.PureComponent<EditorProps> {
     return <AceEditor {...this.props} name={this.name} onChange={this.handleChange} ref={this.editorRef} />;
   }
 }
-
-export default Editor;

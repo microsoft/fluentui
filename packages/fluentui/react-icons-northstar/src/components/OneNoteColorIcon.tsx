@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const OneNoteColorIcon = createSvgIcon({
+export const OneNoteColorIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path d="M26 11h-1v1h1a.96.96 0 0 1 .703.297A.928.928 0 0 1 27 13v2a.99.99 0 0 1-1 1h-1v1h1c.271 0 .505.099.703.297S27 17.729 27 18v2c0 .271-.099.505-.297.703S26.271 21 26 21h-1v1h1a.96.96 0 0 1 .703.297A.928.928 0 0 1 27 23v2a.99.99 0 0 1-1 1h-1v3.031c0 .271-.094.5-.281.688s-.417.281-.688.281H6.969c-.271 0-.5-.094-.688-.281S6 29.302 6 29.031V23H3.25c-.344 0-.635-.12-.875-.359A1.217 1.217 0 0 1 2 21.75v-11.5c0-.344.125-.635.375-.875.24-.25.531-.375.875-.375H6V2.969c0-.271.094-.5.281-.688S6.698 2 6.969 2h17.062c.271 0 .5.094.688.281s.281.417.281.688V7h1c.271 0 .505.099.703.297S27 7.729 27 8v2c0 .271-.099.505-.297.703S26.271 11 26 11M5.141 20h1.5v-4.812c0-.552-.016-.953-.047-1.203h.031c.031.073.073.156.125.25s.115.198.188.312L11.219 20h1.641v-8h-1.5v4.797c0 .26.005.484.016.672.01.177.026.312.047.406h-.031l-.141-.25a3.052 3.052 0 0 0-.203-.312L6.891 12h-1.75M7 29.031L24.031 29 24 3H6.969l.016 6h7.766c.344 0 .641.125.891.375.238.24.358.531.358.875v11.5c0 .344-.12.641-.359.891-.25.239-.547.359-.891.359H7v6.031z" />
@@ -32,5 +32,3 @@ const OneNoteColorIcon = createSvgIcon({
   ),
   displayName: 'OneNoteColorIcon',
 });
-
-export default OneNoteColorIcon;
