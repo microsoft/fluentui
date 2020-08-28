@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import * as _ from 'lodash';
 
 import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';

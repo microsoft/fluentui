@@ -11,18 +11,16 @@ export function merge<T = Object>(...objs: Object[]): T {
   const merged = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const customMergeFunction = (dest: any, src: any): any => {
+  const customMerge = (dest: any, src: any): any => {
     if (_.isArray(dest)) {
       return _.uniq(dest.concat(src));
     } else if (isObject(dest) && isObject(src)) {
-      const temp = {};
-      _.mergeWith(temp, dest, src, customMergeFunction);
-      return temp;
+      return _.mergeWith({}, dest, src, customMerge);
     }
     return dest;
   };
 
-  _.mergeWith(merged, ...objs, customMergeFunction);
+  _.mergeWith(merged, ...objs, customMerge);
 
   return merged as T;
 }
