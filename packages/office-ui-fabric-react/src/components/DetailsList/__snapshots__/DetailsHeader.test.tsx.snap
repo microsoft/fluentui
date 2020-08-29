@@ -1068,6 +1068,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
+        data-is-focusable={false}
         id="header2-check"
       />
     </span>
