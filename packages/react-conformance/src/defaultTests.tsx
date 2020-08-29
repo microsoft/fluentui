@@ -11,6 +11,18 @@ import consoleUtil from './utils/consoleUtil';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+function expectEqualComponent(actual: React.ComponentType, expected: React.ComponentType) {
+  // require()-ing the component path gives a different component instance gives a different one
+  // than was passed in, so we have to use toStrictEqual (deep comparison) rather than toBe
+  // (reference equality). Unfortunately for v0 components, sometimes the handledProps array comes
+  // in a different order (unclear why), so we have to sort it before comparing.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (actual as any).fluentComposeConfig?.handledProps?.sort?.();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (expected as any).fluentComposeConfig?.handledProps?.sort?.();
+  expect(actual).toStrictEqual(expected);
+}
+
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
@@ -32,9 +44,9 @@ export const defaultTests: TestObject = {
       const { componentPath, Component, displayName } = testInfo;
       const componentFile = require(componentPath);
       if (testInfo.useDefaultExport) {
-        expect(componentFile.default).toEqual(Component);
+        expectEqualComponent(componentFile.default, Component);
       } else {
-        expect(componentFile[displayName]).toEqual(Component);
+        expectEqualComponent(componentFile[displayName], Component);
       }
     });
   },
@@ -84,7 +96,7 @@ export const defaultTests: TestObject = {
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
         const indexFile = require(path.join(rootPath, 'src', 'index'));
 
-        expect(indexFile[displayName]).toEqual(Component);
+        expectEqualComponent(indexFile[displayName], Component);
       });
     }
   },
@@ -97,7 +109,7 @@ export const defaultTests: TestObject = {
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
         const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
-        expect(topLevelFile[displayName]).toEqual(Component);
+        expectEqualComponent(topLevelFile[displayName], Component);
       });
     }
   },
@@ -112,7 +124,7 @@ export const defaultTests: TestObject = {
       it(`is a static property of its parent`, () => {
         const parentComponentFile = require(path.join(componentFolder, dirName));
         const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
-        expect(ParentComponent[displayName]).toEqual(Component);
+        expectEqualComponent(ParentComponent[displayName], Component);
       });
     }
   },
