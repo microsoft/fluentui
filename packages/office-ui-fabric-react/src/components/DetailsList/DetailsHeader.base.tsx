@@ -252,7 +252,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                             ? `${this._id}-checkTooltip`
                             : undefined
                         }
-                        data-is-focusable={!isCheckboxHidden || undefined}
+                        data-is-focusable={!isCheckboxHidden || false}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}

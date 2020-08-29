@@ -366,7 +366,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       if (isCollapsedGroupSelectVisible === undefined) {
         isCollapsedGroupSelectVisible = true;
       }
-      const isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
+      const isSelectAllVisible = items.length && (isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded);
       selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
     }
 
