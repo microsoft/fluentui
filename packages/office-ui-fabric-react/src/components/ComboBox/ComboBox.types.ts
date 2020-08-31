@@ -5,7 +5,6 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
 import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
 import { IButtonProps } from '../Button/Button.types';
@@ -401,4 +400,24 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
    * Styles for the comboBox option text's wrapper.
    */
   optionTextWrapper: IStyle;
+}
+
+export interface IComboBoxClassNames {
+  container: string;
+  label: string;
+  root: string;
+  input: string;
+  errorMessage: string;
+  callout: string;
+  optionsContainer: string;
+  header: string;
+  divider: string;
+  optionsContainerWrapper: string;
+  screenReaderText: string;
+}
+
+export interface IComboBoxOptionClassNames {
+  optionText: string;
+  root: string;
+  optionTextWrapper: string;
 }

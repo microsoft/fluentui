@@ -2793,9 +2793,45 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
+export interface IComboBoxClassNames {
+    // (undocumented)
+    callout: string;
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    errorMessage: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    optionsContainer: string;
+    // (undocumented)
+    optionsContainerWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+}
+
+// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionClassNames {
+    // (undocumented)
+    optionText: string;
+    // (undocumented)
+    optionTextWrapper: string;
+    // (undocumented)
+    root: string;
 }
 
 // @public (undocumented)
@@ -2816,7 +2852,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
@@ -7129,6 +7164,24 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
+export interface ISpinButtonClassNames {
+    // (undocumented)
+    arrowBox: string;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    labelWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    spinButtonWrapper: string;
+}
+
+// @public (undocumented)
 export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -7144,7 +7197,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     defaultValue?: string;
     disabled?: boolean;
     downArrowButtonStyles?: Partial<IButtonStyles>;
-    // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
     iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
