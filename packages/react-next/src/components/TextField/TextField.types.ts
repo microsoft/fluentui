@@ -52,7 +52,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentRef?: IRefObject<ITextField>;
 
   /**
-   * Optional callback to access the root DOM element.
+   *  Optional callback to access the root DOM element.
+   *  @deprecated Temporary solution which will be replaced with ref in the V8 release.
    */
   elementRef?: React.Ref<HTMLDivElement>;
 
