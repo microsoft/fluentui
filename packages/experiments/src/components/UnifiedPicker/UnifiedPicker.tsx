@@ -74,6 +74,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
+  React.useImperativeHandle(props.componentRef, () => ({
+    clearInput: () => {
+      if (input.current) {
+        input.current.clear();
+      }
+    },
+    focus: () => {
+      if (input.current) {
+        input.current.focus();
+      }
+    },
+  }));
+
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
   const theme = getTheme();
   const dragEnterClass = mergeStyles({

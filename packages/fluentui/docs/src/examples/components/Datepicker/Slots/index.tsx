@@ -29,6 +29,15 @@ const Usage = () => (
       description="The user can clear selected date by clicking on the cancel button."
       examplePath="components/Datepicker/Slots/DatepickerExampleClearable"
     />
+    <ComponentExample
+      title="Custom header slot"
+      description={
+        <>
+          <code>header</code> inside <code>calendar</code> prop can be used for customizing datepicker header
+        </>
+      }
+      examplePath="components/Datepicker/Slots/DatepickerHeaderExample"
+    />
   </ExampleSection>
 );
 

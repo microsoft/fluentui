@@ -119,7 +119,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
-            icon: {},
             title: props.prevMonthAriaLabel,
             direction: 'previous',
             disabled: props.disabledPreviousButton,
@@ -134,7 +133,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
-            icon: {},
             title: props.nextMonthAriaLabel,
             direction: 'next',
             disabled: props.disabledNextButton,
