@@ -9,7 +9,6 @@ import {
   Customizer,
   useFocusRects,
 } from '../../Utilities';
-import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
