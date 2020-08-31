@@ -74,11 +74,6 @@ export type AvatarTokens = {
 
   /** Custom clip path for the avatar's image or label */
   clipPath?: string;
-
-  /** Square state */
-  square?: {
-    borderRadius?: string;
-  };
 };
 
 export type AvatarState = AvatarProps;

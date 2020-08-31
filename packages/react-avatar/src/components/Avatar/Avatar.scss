@@ -45,7 +45,7 @@
   vertical-align: top;
   text-align: center;
   padding: 0px;
-  border-radius: 99999px;
+  border-radius: var(--avatar-borderRadius);
   clip-path: var(--avatar-clipPath);
 }
 
@@ -61,18 +61,10 @@
 
 // Modifiers
 ._square {
-  .image {
-    border-radius: var(--avatar-square-borderRadius, calc(var(--avatar-size) / 12));
-  }
-
-  .label {
-    border-radius: var(--avatar-square-borderRadius, calc(var(--avatar-size) / 12));
-  }
+  --avatar-borderRadius: calc(var(--avatar-size) / 12);
 }
 
 ._display_icon {
-  .label {
-    // The icon should be half the size of the avatar
-    font-size: calc(var(--avatar-size) / 2);
-  }
+  // The icon should be half the size of the avatar
+  --avatar-fontSize: calc(var(--avatar-size) / 2);
 }
