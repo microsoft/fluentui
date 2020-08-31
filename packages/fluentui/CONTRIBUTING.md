@@ -141,41 +141,41 @@ lerna add @fluentui/react-proptypes packages/fluentui/react-northstar
 ```
 
 ## Development Notes
+
 I have been part of the FluentUI framework team for the past two months. During these months, I have tried to collect ideas, rules, guidelines and best practices that are not otherwise captured. Generally, the recommendation is that code and conformant test is the best way to learn up-to-date FluentUI idioms.
 
 ### Collection of Little Ideas
-* Changelog has a special format.
-* Always try to find the most relevant and similar component to get inspired by.
-* Try to extract [pure functions](https://en.wikipedia.org/wiki/Pure_function) outside of component's body; possibly into special files.
-* When developing date-time-utilities, one must run `yarn change` in the root and then  `yarn update-api` in the date-time-utilities folder.
-* Don't name boolean flags with 'is' prefix.
-* `Yarn build` is not necessary when working with FluentUI. You should just call `yarn` (resolve packages) and then `yarn start` (start application).
-* If you have issues with CI there is a [channel](https://teams.microsoft.com/l/channel/19%3a5b644df17ad64b89a6b7947969382baa%40thread.skype/Engineering%2520Systems?groupId=64c2bd5c-33c2-4898-918f-4a02a6ac98e1&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47) to report such issues.
-* For benchmarking javaScript, one can use the https://jsperf.com .
-* The `useAutoControlled` hook description:
-  * `defaultValue` comes from an outer scope and be defined by user, i.e. `defaultChecked`.
-  * `initialValue` is internal and will be used if there is no `defaultValue` or `value`.
-  * `value` should come from outer space and always wins.
 
+- Changelog has a special format.
+- Always try to find the most relevant and similar component to get inspired by.
+- Try to extract [pure functions](https://en.wikipedia.org/wiki/Pure_function) outside of component's body; possibly into special files.
+- When developing date-time-utilities, one must run `yarn change` in the root and then `yarn update-api` in the date-time-utilities folder.
+- Don't name boolean flags with 'is' prefix.
+- `Yarn build` is not necessary when working with FluentUI. You should just call `yarn` (resolve packages) and then `yarn start` (start application).
+- For benchmarking JavaScript, one can use the https://jsperf.com .
+- The `useAutoControlled` hook description:
+  - `defaultValue` comes from an outer scope and be defined by user, i.e. `defaultChecked`.
+  - `initialValue` is internal and will be used if there is no `defaultValue` or `value`.
+  - `value` should come from outer space and always wins.
 
 ### Collection of Concrete Topics
-* Testing
-  * For majority of components, visual test in combination with `isConformant` test is enough.
-  * Visual tests are based off examples. You can extend the examples by also providing 'steps' action tests.
-* Props
-  * Props should be a flattened object.
-  * Props should take advantage of optional properties in combination with defaultValues.
-* Event Handlers
-  * Going forward, we should use `onChange?: (e: React.SOME_EVENT<EL_TYPE>, data: DatepickerProps & { value: IDay }>)`. The currently used ComponentEventHandler uses React.SyntheticEvent and is able to reason about the proper type then.
-  * We use lodash's `_.invoke()`, the function ensures that the prop actually exists.
-  * We should work carefully with `event.preventDefault()`. Only invoke in necessary cases ([Example]( https://github.com/Semantic-Org/Semantic-UI-React/pull/4041)).
-* Styling
-  * When developing with different kind of themes, one should add the style to default theme and add partial classes to dark or high-contrast.
-* Slots
-  * TODO: createShorthand, ShorthandValue, etc.
-* Behavior
-  * When developing behaviors, one must add proper specification strings. The format of these strings is defined in regexpes in [the following file](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/accessibility/test/behaviors/testDefinitions.ts).
-  * TODO: focus, actions.
+
+- Testing
+  - For majority of components, visual test in combination with `isConformant` test is enough.
+  - Visual tests are based off examples. You can extend the examples by also providing 'steps' action tests.
+- Props
+  - Props should be a flattened object.
+  - Props should take advantage of optional properties in combination with defaultValues.
+- Event Handlers
+  - Going forward, we should use `onChange?: (e: React.SOME_EVENT<EL_TYPE>, data: DatepickerProps & { value: IDay }>)`. The currently used ComponentEventHandler uses React.SyntheticEvent and is able to reason about the proper type then.
+  - We use lodash's `_.invoke()`, the function ensures that the prop actually exists.
+  - We should work carefully with `event.preventDefault()`. Only invoke in necessary cases. In [Datepicker](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/react-northstar/src/components/Datepicker/DatepickerCalendar.tsx#L146), we wish to navigate grid cell navigation only explicitly within our code.
+- Styling
+  - When developing with different kind of themes, one should add the style to default theme and add partial classes to dark or high-contrast.
+- Behavior
+  - When developing behaviors, one must add proper specification strings. The format of these strings is defined in regexpes in [the following file](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/accessibility/test/behaviors/testDefinitions.ts).
+  - Focus and navigation should be handled by focusZone section of behaviors. The actual types and definitions are defined [here](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/accessibility/src/focusZone/types.ts).
+  - For sustainable keyboard keys handling, one needs to map actions to [key presses](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/accessibility/src/behaviors/Accordion/accordionBehavior.ts#L18). Then within component code, one needs to [define handling](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/react-northstar/src/components/Accordion/Accordion.tsx#L140) of these actions.
 
 [1]: https://nodejs.org/
 [2]: https://github.com/stardust-ui/accessibility/blob/master/CONTRIBUTING.md
