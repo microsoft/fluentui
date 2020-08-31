@@ -46,9 +46,7 @@ describe('Props Utilities Test', () => {
       const tags = findJsxTag(file, 'Persona');
       renameProp(tags, 'primaryText', 'Text', undefined);
       tags.forEach(val => {
-        val.getAttributes().forEach(att => {
-          expect(val.getText().includes('Text={primaryText}')).toBeTruthy();
-        });
+        expect(val.getText().includes('Text={primaryText}')).toBeTruthy();
       });
     });
 
@@ -110,14 +108,6 @@ describe('Props Utilities Test', () => {
           renameProp(tags, 'isDisabled', 'disabled', undefined, func);
           tags.forEach(tag => {
             expect(tag.getAttribute('isDisabled')).toBeFalsy();
-            const valMaybe = Maybe(tag.getAttribute('disabled'));
-            const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-            expect(val.something).toBeTruthy();
-            const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-            expect(propValueText.something).toBeTruthy();
-            if (propValueText.something) {
-              expect(propValueText.value).toEqual('isDisabled');
-            }
           });
         });
 

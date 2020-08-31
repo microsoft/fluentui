@@ -34,7 +34,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
   let date;
   if (weeksToShow && weeksToShow <= 4) {
     // if showing less than a full month, just use date == navigatedDate
-    date = new Date(navigatedDate.toString());
+    date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), navigatedDate.getDate());
   } else {
     date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
   }

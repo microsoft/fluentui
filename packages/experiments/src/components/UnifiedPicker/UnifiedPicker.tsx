@@ -17,8 +17,8 @@ import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '../SelectedItemsList/index';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -30,7 +30,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
-  const [draggedItem, setDraggedItem] = React.useState<T>();
+  const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
   });
@@ -75,15 +75,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   } = props;
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
-  const _insertBeforeItem = (item: T): void => {
-    const draggedItemIndex = selectedItems.indexOf(draggedItem!);
-    const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
-      ? [...focusedItemIndices]
-      : [draggedItemIndex];
-    const insertIndex = selectedItems.indexOf(item);
-    dropItemsAt(insertIndex, draggedItemsIndices);
-  };
-
   const theme = getTheme();
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
@@ -94,18 +85,64 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
+  const _dropItemsAt = (insertIndex: number, newItems: T[]): void => {
+    let indicesToRemove: number[] = [];
+    // If we are moving items within the same picker, remove them from their old places as well
+    if (draggedIndex > -1) {
+      indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
+    }
+    if (props.selectedItemsListProps.dropItemsAt) {
+      props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
+    }
+    dropItemsAt(insertIndex, newItems, indicesToRemove);
+  };
+
   const _onDrop = (item?: any, event?: DragEvent): void => {
-    if (draggedItem) {
-      _insertBeforeItem(item);
+    const insertIndex = selectedItems.indexOf(item);
+    let isDropHandled = false;
+    if (event?.dataTransfer) {
+      event.preventDefault();
+      const data = event.dataTransfer.items;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+          data[i].getAsString((dropText: string) => {
+            if (props.selectedItemsListProps.deserializeItemsFromDrop) {
+              const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
+              _dropItemsAt(insertIndex, newItems);
+              isDropHandled = true;
+            }
+          });
+        }
+      }
+    }
+    if (!isDropHandled && draggedIndex > -1) {
+      const newItems = focusedItemIndices.includes(draggedIndex)
+        ? (getSelectedItems() as T[])
+        : [selectedItems[draggedIndex]];
+      _dropItemsAt(insertIndex, newItems);
     }
   };
 
-  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
-    setDraggedItem(item);
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
+    const draggedItemIndex = itemIndex ? itemIndex! : -1;
+    setDraggedIndex(draggedItemIndex);
+    if (event) {
+      const dataList = event?.dataTransfer?.items;
+      if (props.selectedItemsListProps.serializeItemsForDrag && props.customClipboardType) {
+        const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
+        const dragText = props.selectedItemsListProps.serializeItemsForDrag(draggedItems);
+        dataList?.add(dragText, props.customClipboardType);
+      }
+    }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    setDraggedItem(undefined);
+    setDraggedIndex(-1);
+    if (event) {
+      const dataList = event?.dataTransfer?.items;
+      // Clear any remaining drag data
+      dataList?.clear();
+    }
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
@@ -183,11 +220,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onCopy = () => {
+  const _onCopy = (ev: React.ClipboardEvent<HTMLInputElement>) => {
     if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
       const copyItems = selection.getSelection() as T[];
       const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
-      copyToClipboard(copyString);
+      ev.clipboardData.setData('text/plain', copyString);
+      ev.preventDefault();
     }
   };
   const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
@@ -262,6 +300,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
+      pickerWidth: props.floatingSuggestionProps.pickerWidth ? props.floatingSuggestionProps.pickerWidth : '300px',
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,

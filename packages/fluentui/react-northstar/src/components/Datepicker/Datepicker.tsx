@@ -54,7 +54,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Datepicker shows it is currently unable to be interacted with. */
   disabled?: boolean;
 
-  /** Datepicker shows it is currently unable to be interacted with. */
+  /** Date needs to be entered, otherwise datepicker produces an error state. */
   required?: boolean;
 
   /**
@@ -88,7 +88,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
-  /** Controls the calendar's selectedDate. */
+  /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
 }
 

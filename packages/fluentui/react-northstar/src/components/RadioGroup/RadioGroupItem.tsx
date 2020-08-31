@@ -4,7 +4,13 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  ChildrenComponentProps,
+  commonPropTypes,
+  shouldPreventDefaultOnKeyDown,
+} from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
@@ -129,7 +135,9 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
     debugName: RadioGroupItem.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         handleClick(e);
       },
     },

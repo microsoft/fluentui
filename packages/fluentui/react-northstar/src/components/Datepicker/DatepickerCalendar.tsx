@@ -49,11 +49,11 @@ export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICale
   calendarHeaderCell?: ShorthandValue<DatepickerCalendarHeaderCellProps>;
 
   /**
-   * The currently selected date
+   * The currently selected date.
    */
   selectedDate?: Date;
   /**
-   * The currently navigated date
+   * The currently navigated date.
    */
   navigatedDate?: Date;
 

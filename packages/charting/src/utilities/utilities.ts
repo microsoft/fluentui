@@ -1,10 +1,20 @@
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { IEventsAnnotationProps, ILineChartPoints, ILineChartDataPoint } from '../components/LineChart/index';
-import { axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, event as d3Event } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
+type StringAxis = D3Axis<string>;
+
+export interface IWrapLabelProps {
+  node: SVGGElement | null;
+  xAxis: NumericAxis | StringAxis;
+  noOfCharsToTruncate: number;
+  showXAxisLablesTooltip: boolean;
+}
 export interface IMargins {
   /**
    * left margin for the chart.
@@ -77,7 +87,9 @@ export interface IFitContainerParams {
   container: HTMLDivElement | null | HTMLElement;
 }
 
-export function createNumericXAxis(xAxisParams: IXAxisParams) {
+export const additionalMarginRight: number = 20;
+
+export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     domainXMin,
     domainXMax,
@@ -103,8 +115,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
         });
       })!;
   const xAxisScale = d3ScaleLinear()
-    .domain([xMinVal, xMaxVal])
-    .range([margins.left!, containerWidth - margins.right!]);
+    .domain(isRtl ? [xMaxVal, xMinVal] : [xMinVal, xMaxVal])
+    .range([margins.left!, containerWidth - margins.right! - (isRtl ? additionalMarginRight : 0)]);
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -120,7 +132,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   return xAxisScale;
 }
 
-export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
+export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
   const xAxisData: Date[] = [];
   let sDate = new Date();
   // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
@@ -138,8 +150,11 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   });
 
   const xAxisScale = d3ScaleTime()
-    .domain([sDate, lDate])
-    .range([xAxisParams.margins.left!, xAxisParams.containerWidth - xAxisParams.margins.right!]);
+    .domain(isRtl ? [lDate, sDate] : [sDate, lDate])
+    .range([
+      xAxisParams.margins.left!,
+      xAxisParams.containerWidth - xAxisParams.margins.right! - (isRtl ? additionalMarginRight : 0),
+    ]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
     .tickPadding(10);
@@ -162,7 +177,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
   return dataPointsArray;
 }
 
-export function createYAxis(yAxisParams: IYAxisParams) {
+export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     finalYMaxVal = 0,
     finalYMinVal = 0,
@@ -200,10 +215,9 @@ export function createYAxis(yAxisParams: IYAxisParams) {
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const yAxis = d3AxisLeft(yAxisScale)
-    .tickPadding(tickPadding)
-    .tickValues(domainValues);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount, 's');
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis.tickPadding(tickPadding).tickValues(domainValues);
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
   showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
     ? d3Select(yAxisElement)
@@ -294,4 +308,115 @@ export function fitContainer(containerParams: IFitContainerParams) {
     reqID: animatedId,
   };
   return containerValues;
+}
+
+export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  if (node === null) {
+    return;
+  }
+  const axisNode = d3Select(node).call(xAxis);
+  let removeVal = 0;
+  const width = 10;
+  const arr: number[] = [];
+  axisNode.selectAll('.tick text').each(function() {
+    const text = d3Select(this);
+    const totalWord = text.text();
+    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const totalWordLength = text.text().length;
+    const words = text
+      .text()
+      .split(/\s+/)
+      .reverse();
+    arr.push(words.length);
+    let word: string = '';
+    let line: string[] = [];
+    let lineNumber: number = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+    const dy = parseFloat(text.attr('dy'));
+    let tspan = text
+      .text(null)
+      .append('tspan')
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('id', 'BaseSpan')
+      .attr('dy', dy + 'em');
+
+    if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'showDots')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(truncatedWord);
+    } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'LessLength')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(totalWord);
+    } else {
+      while ((word = words.pop()!)) {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          tspan = text
+            .append('tspan')
+            .attr('id', 'WordBreakId')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(word);
+        }
+      }
+      const maxDigit = Math.max(...arr);
+      let maxHeight: number = 12; // intial value to render corretly first time
+      axisNode.selectAll('text').each(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const outerHTMLElement = document.getElementById('WordBreakId') as any;
+        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+        const boxHeight = BoxCordinates && BoxCordinates.height;
+        if (boxHeight > maxHeight) {
+          maxHeight = boxHeight;
+        }
+      });
+      removeVal = (maxDigit - 3) * maxHeight; // we are getting more height if take direclty
+    }
+  });
+  return removeVal > 0 ? removeVal : 0;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function tooltipOfXAxislabels(xAxistooltipProps: any) {
+  const { tooltipCls, xAxis, id } = xAxistooltipProps;
+  const div = d3Select('body')
+    .append('div')
+    .attr('id', id)
+    .attr('class', tooltipCls)
+    .style('opacity', 0);
+  const tickObject = xAxis!.selectAll('.tick')._groups[0];
+  const tickObjectLength = Object.keys(tickObject).length;
+  for (let i = 0; i < tickObjectLength; i++) {
+    const d1 = tickObject[i];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = d3Select(d1).data();
+    d3Select(d1)
+      .on('mouseover', d => {
+        div.style('opacity', 0.9);
+        div
+          .html(data)
+          .style('left', d3Event.pageX + 'px')
+          .style('top', d3Event.pageY - 28 + 'px');
+      })
+      .on('mouseout', d => {
+        div.style('opacity', 0);
+      });
+  }
 }

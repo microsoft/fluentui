@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { mergeThemes, ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider';
+import { mergeThemes, PartialTheme } from '@fluentui/theme';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
