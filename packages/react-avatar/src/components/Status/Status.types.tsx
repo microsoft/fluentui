@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
 
-// tslint:disable-next-line:no-any
 export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Renders the status using a custom color to be inlined using  `style`.

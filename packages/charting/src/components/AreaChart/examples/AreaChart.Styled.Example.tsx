@@ -73,7 +73,7 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
 
     return (
       <div className={rootStyle}>
-        <AreaChart height={400} width={650} showYAxisGridLines={true} data={chartData} />
+        <AreaChart height={400} width={650} data={chartData} />
       </div>
     );
   }

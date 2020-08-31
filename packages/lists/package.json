@@ -36,8 +36,8 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/example-app-base": "^7.14.4",
-    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
+    "@uifabric/example-app-base": "^7.15.1",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -49,7 +49,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/set-version": "^7.0.22",
-    "office-ui-fabric-react": "^7.132.0",
+    "office-ui-fabric-react": "^7.133.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
