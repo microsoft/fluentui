@@ -147,6 +147,7 @@ export const Popup: React.FC<PopupProps> &
     trapFocus,
     trigger,
     unstable_pinned,
+    initialPositionFixed,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -520,6 +521,7 @@ export const Popup: React.FC<PopupProps> &
           popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
+          initialPositionFixed={initialPositionFixed}
           offset={offset}
           overflowBoundary={overflowBoundary}
           rtl={context.rtl}

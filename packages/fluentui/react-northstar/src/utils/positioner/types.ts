@@ -115,6 +115,12 @@ export interface PositioningProps {
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
   unstable_pinned?: boolean;
+
+  /**
+   * Sets initial position to fixed,
+   * which helps with window jumps in case content has managed focus
+   */
+  initialPositionFixed?: boolean;
 }
 
 export interface PopperProps extends PositioningProps {

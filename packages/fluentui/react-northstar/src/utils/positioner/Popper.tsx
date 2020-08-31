@@ -178,6 +178,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     rtl,
     targetRef,
     unstable_pinned,
+    initialPositionFixed,
   } = props;
 
   const proposedPlacement = getPlacement({ align, position, rtl });
@@ -289,7 +290,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'afterWrite' as PopperJs.ModifierPhases,
           fn: handleUpdate,
         },
-        ...popperInitialPositionFixModifiers,
+        ...(initialPositionFixed && popperInitialPositionFixModifiers),
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };
@@ -307,6 +308,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     targetRef,
     unstable_pinned,
     popperInitialPositionFixModifiers,
+    initialPositionFixed,
   ]);
 
   const destroyInstance = React.useCallback(() => {
@@ -349,5 +351,6 @@ Popper.defaultProps = {
   enabled: true,
   modifiers: [],
   positionFixed: false,
+  initialPositionFixed: false,
   positioningDependencies: [],
 };

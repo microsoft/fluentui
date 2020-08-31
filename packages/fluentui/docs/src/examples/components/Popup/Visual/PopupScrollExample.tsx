@@ -95,6 +95,7 @@ const ControlledPopupWithFocus = () => {
       onOpenChange={(e, { open }) => {
         setOpen(open);
       }}
+      initialPositionFixed
       content={
         <Ref innerRef={buttonToFocus}>
           <Button content="Click me!" />
