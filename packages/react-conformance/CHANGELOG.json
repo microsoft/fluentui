@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-conformance",
+  "entries": [
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-conformance_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating doctrine and modifying merge function to use lodash.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "268eff06b3e40b5d965f2187bbb1cd2110c6cb67",
+            "package": "@fluentui/react-conformance"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { useMergedRefs } from '@uifabric/react-hooks';
 import { classNamesFunction, useFocusRects } from '@uifabric/utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
-const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
+const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
 /**
  * The useLink hook processes the Link component props and returns
