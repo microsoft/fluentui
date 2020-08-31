@@ -8,7 +8,7 @@ import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
-import { PopperModifiers, PopperProps } from './types';
+import { PopperModifiers, PopperProps, PopperPositionFix, PopperJsInstance } from './types';
 
 let reactInstanceKey: string;
 
@@ -44,8 +44,8 @@ function hasAutofocusFilter(node: Node) {
 // To prevent scroll jumps in case of the content with managed focus
 // setInitPositionToFix sets the position to `fixed` before applyStyles modifier
 // unsetInitPositionToFix restores the original position after applyStyles modifier
-const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElement>) => {
-  const originalStateRef = React.useRef<'fixed' | 'absolute'>('absolute');
+const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElement>): PopperPositionFix => {
+  const originalStateRef = React.useRef<string>('absolute');
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -88,30 +88,22 @@ const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElem
   }
 
   return React.useMemo(
-    () => [
-      {
-        name: 'setInitPositionToFix',
-        enabled: true,
-        phase: 'beforeWrite' as PopperJs.ModifierPhases,
-        effect: ({ state }: { state: Partial<PopperJs.State> }) => {
-          originalStateRef.current = state.options.strategy;
-          state.options.strategy = 'fixed';
-          return () => {};
-        },
-        requires: ['computeStyles'],
+    () => ({
+      patch: (state: Partial<PopperJs.State>) => {
+        state.elements.popper.style['position'] = originalStateRef.current;
       },
-
-      {
-        name: 'unsetInitPositionToFix',
+      modifier: {
+        name: 'positionStyleFix',
         enabled: true,
         phase: 'afterWrite' as PopperJs.ModifierPhases,
         effect: ({ state }: { state: Partial<PopperJs.State> }) => {
-          state.options.strategy = originalStateRef.current;
+          originalStateRef.current = state.elements.popper.style['position'];
+          state.elements.popper.style['position'] = 'fixed';
           return () => {};
         },
-        requires: ['applyStyles'],
+        requires: [],
       },
-    ],
+    }),
     [],
   );
 };
@@ -178,14 +170,13 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     rtl,
     targetRef,
     unstable_pinned,
-    initialPositionFixed,
   } = props;
 
   const proposedPlacement = getPlacement({ align, position, rtl });
 
-  const popperInstanceRef = React.useRef<PopperJs.Instance>();
+  const popperInstanceRef = React.useRef<PopperJsInstance>();
   const contentRef = React.useRef<HTMLElement>(null);
-  const popperInitialPositionFixModifiers = usePopperInitialPositionFix(contentRef);
+  const popperInitialPositionFix = usePopperInitialPositionFix(contentRef);
 
   const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
   const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
@@ -290,12 +281,21 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'afterWrite' as PopperJs.ModifierPhases,
           fn: handleUpdate,
         },
-        ...(initialPositionFixed && popperInitialPositionFixModifiers),
+        popperInitialPositionFix.modifier,
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };
 
     popperInstanceRef.current = PopperJs.createPopper(reference, contentRef.current, options);
+    const originalForceUpdate = popperInstanceRef.current.forceUpdate;
+    popperInstanceRef.current.isFirstRun = true;
+    popperInstanceRef.current.forceUpdate = () => {
+      if (popperInstanceRef.current.isFirstRun) {
+        popperInitialPositionFix.patch(popperInstanceRef.current.state);
+        popperInstanceRef.current.isFirstRun = false;
+      }
+      originalForceUpdate();
+    };
   }, [
     contentRef,
     computedModifiers,
@@ -307,8 +307,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     proposedPlacement,
     targetRef,
     unstable_pinned,
-    popperInitialPositionFixModifiers,
-    initialPositionFixed,
+    popperInitialPositionFix,
   ]);
 
   const destroyInstance = React.useCallback(() => {
@@ -351,6 +350,5 @@ Popper.defaultProps = {
   enabled: true,
   modifiers: [],
   positionFixed: false,
-  initialPositionFixed: false,
   positioningDependencies: [],
 };
