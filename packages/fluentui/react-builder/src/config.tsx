@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isElement, isForwardRef } from 'react-is';
+import { isElement } from 'react-is';
 import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
@@ -424,13 +424,13 @@ export const resolveComponent = (displayName): React.ElementType => {
 
 // FIXME: breaks for <button>btn</button>
 const toJSONTreeElement = input => {
-  // if (input?.$$typeof?.toString() === 'Symbol(react.forward_ref)') {
-  //   return {
-  //     $$typeof: 'Symbol(react.forward_ref)',
-  //     type: input.displayName,
-  //     defaultProps: toJSONTreeElement(input.defaultProps),
-  //   };
-  // }
+  if (input?.as && _.isPlainObject(input.as)) {
+    return {
+      type: input.as.displayName,
+      props: { ...input, as: undefined },
+      $$typeof: 'Symbol(react.element)',
+    };
+  }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
@@ -447,9 +447,6 @@ const toJSONTreeElement = input => {
     } else if (_.isPlainObject(value)) {
       acc[key] = toJSONTreeElement(value);
     } else {
-      if (value?.toString() === 'Symbol(react.forward_ref)') {
-        value = 'Symbol(react.forward_ref)';
-      }
       acc[key] = value;
     }
   });
