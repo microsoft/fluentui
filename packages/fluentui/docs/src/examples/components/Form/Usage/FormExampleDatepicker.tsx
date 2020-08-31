@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form, Button } from '@fluentui/react-northstar';
 
 const FormExampleDatepicker = () => {
-  const [errorMessage, setErrorMessage] = React.useState('Default error message');
+  const [errorMessage, setErrorMessage] = React.useState(null);
   const errorMessageHandler = (e, v) => {
     setErrorMessage(v.error);
   };
