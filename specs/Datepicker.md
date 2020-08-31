@@ -573,7 +573,7 @@ Caching might help with the re-renders, but we need to think about first render.
 
 ## UI Fabric Datepicker vs. Fluent UI Datepicker
 
-In summer of 2020, the first version of FluentUI datepicker has been implemented.
+In the summer of 2020, the first version of FluentUI datepicker has been implemented.
 As the rest of the document suggests, the implementation has been inspired by both the industry as well as FabricUI and the current Teams implementation.
 
 These are some of the notable FluentUI vs. Fabric differences:
