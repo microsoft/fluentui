@@ -67,9 +67,56 @@ export const App = () => (
 );
 ```
 
-## Create classes for React components based on theme
+## Accessing theme
 
-Themes can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
+### useTheme
+
+Theme can be accessed using `useTheme` hook. If you are specifically accessing theme to create classes/styles, you can use `makeStyles` described below.
+
+```jsx
+import { useTheme } from '@fluentui/react-theme-provider';
+
+const Content = () => {
+  const theme = useTheme();
+  ...
+};
+
+export const App = () => (
+  <ThemeProvider>
+    <Content />
+  </ThemeProvider>
+);
+```
+
+### ThemeContext.Consumer
+
+Theme can be accessed in Class Component using `ThemeContext.Consumer`.
+
+```tsx
+import { Theme, ThemeContext } from '@fluentui/react-theme-provider';
+
+class Content extends React.Component {
+  public render() {
+    return (
+      <ThemeContext.Consumer>
+        {(theme: Theme | undefined) => {
+          ...
+        }}
+      </ThemeContext.Consumer>
+    );
+  }
+}
+
+export const App = () => (
+  <ThemeProvider>
+    <Content />
+  </ThemeProvider>
+);
+```
+
+### Create classes for React components based on theme
+
+Theme can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
 
 ```jsx
 import { makeStyles } from '@fluentui/react-theme-provider';
