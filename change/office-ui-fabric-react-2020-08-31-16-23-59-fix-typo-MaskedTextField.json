@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Fixing a typo in the MaskedTextField example.",
+  "comment": "Correcting a typo in MaskedTextField's example.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "none",
