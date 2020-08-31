@@ -42,6 +42,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `on` property to `MenuItem` to open in on hover @assuncaocharles ([#14714](https://github.com/microsoft/fluentui/pull/14714))
 - Added icons `FilterIcon`, `MicrophoneDisabledIcon`, `OptionsIcon`, `ReactionsIcon` @TanelVari ([#14745](https://github.com/microsoft/fluentui/pull/14745))
 - Add `foreground5` and `foreground6` in the colorScheme's default definition @assuncaocharles ([#14818](https://github.com/microsoft/fluentui/pull/14818))
+- Add `Form.Datepicker` component @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
 
 ### Documentation
 - Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
@@ -57,6 +58,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add export to CodeSandbox feature (UI builder) @vyhnalekl ([#14558](https://github.com/microsoft/fluentui/pull/14558))
 - Fix unresolved imports error when `moduleName` is missing (UI builder) @vyhnalekl ([#14796](https://github.com/microsoft/fluentui/pull/14796))
 - Fixed incorrect margin and padding after drag&drop (UI builder) @vyhnalekl ([#14384](https://github.com/microsoft/fluentui/pull/14384))
+- Add `Form.Datepicker` example with error message handler @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
