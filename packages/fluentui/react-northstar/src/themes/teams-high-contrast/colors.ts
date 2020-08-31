@@ -51,6 +51,8 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: colors.white,
     foreground3: colors.white,
     foreground4: colors.black,
+    foreground5: colors.grey[600],
+    foreground6: colors.grey[750],
 
     background: colors.black,
     background1: colors.black,
