@@ -10,6 +10,7 @@ export function MenuItem({ children, index, submenu = null }) {
     type: 'mouseenter',
     targetRef: itemRef,
     listener: e => {
+      itemRef.current.focus();
       dispatch({ type: 'SET_INDEX', index });
     },
   });

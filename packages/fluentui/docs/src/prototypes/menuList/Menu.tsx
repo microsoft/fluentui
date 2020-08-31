@@ -1,11 +1,25 @@
 import * as React from 'react';
 import { MenuContext, useMenuContext } from './useMenu';
+import { useEventListener } from '../../../../react-component-event-listener';
 
-export function Menu({ children, index = undefined }) {
+export const Menu = props => {
+  const { children, trigger = null, open = false, index = undefined } = props;
   const triggerRef = React.useRef();
+  const menuRef = React.useRef<HTMLDivElement>();
+
   const { currentIndex } = useMenuContext();
 
-  const [open, setOpen] = React.useState(false);
+  useEventListener({
+    type: 'keydown',
+    target: document,
+    listener: e => {
+      if (e.keyCode === 27) {
+        setOpen(false);
+      }
+    },
+  });
+
+  const [isOpen, setOpen] = React.useState(open);
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -23,13 +37,25 @@ export function Menu({ children, index = undefined }) {
     <MenuContext.Provider
       value={{
         currentIndex: state.currentIndex,
-        triggerRef,
+        triggerRef: trigger?.current ? trigger : triggerRef,
         dispatch,
-        open: index ? currentIndex === index : open,
+        open: index ? currentIndex === index : isOpen || open,
         setOpen,
+        menuRef,
       }}
     >
-      <div role="menu">{children}</div>
+      <div
+        role="menu"
+        tabIndex={0}
+        // onMouseEnter={() => {
+        //   // setOpen(true);
+        // }}
+        // onMouseLeave={() => {
+        //   setOpen(false);
+        // }}
+      >
+        {children}
+      </div>
     </MenuContext.Provider>
   );
-}
+};

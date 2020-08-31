@@ -17,7 +17,7 @@ export function MenuList({ children }) {
           isCircularNavigation
           shouldFocusInnerElementWhenReceivedFocus
         >
-          {children}
+          <div>{children}</div>
         </FocusZone>
       }
     />
