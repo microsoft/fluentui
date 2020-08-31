@@ -10,13 +10,14 @@ import {
 } from './CartesianChart.types';
 import {
   createNumericXAxis,
-  getMinMaxOfXAxis,
+  getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
 } from '../../utilities/index';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
@@ -80,11 +81,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this.props.getmargins(this.margins);
 
     const XAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
+      domainNRangeValues: getDomainNRangeValues(
+        points,
+        this.margins,
+        this.state.containerWidth,
+        chartType,
+        isXAxisDateType,
+        this._isRtl,
+      ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
-      xMinMaxValues: getMinMaxOfXAxis(points, chartType, isXAxisDateType),
     };
 
     const YAxisParams = {
@@ -160,32 +166,42 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
+          // need to handle for single callout (Future purpose)
           <Callout {...calloutProps}>
-            <div className={this._classNames.calloutContentRoot}>
-              <div
-                className={this._classNames.calloutDateTimeContainer}
-                style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-              >
-                <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+            {this.props.isMultiStackCallout ? (
+              <div className={this._classNames.calloutContentRoot}>
+                <div
+                  className={this._classNames.calloutDateTimeContainer}
+                  style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+                >
+                  <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+                </div>
+                <div
+                  className={this._classNames.calloutInfoContainer}
+                  style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+                >
+                  {calloutProps!.YValueHover &&
+                    calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+                      const isLast: boolean = index + 1 === yValues.length;
+                      return (
+                        <div
+                          key={`callout-content-${index}`}
+                          style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                        >
+                          {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-              <div
-                className={this._classNames.calloutInfoContainer}
-                style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-              >
-                {calloutProps!.YValueHover &&
-                  calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-                    const isLast: boolean = index + 1 === yValues.length;
-                    return (
-                      <div
-                        key={`callout-content-${index}`}
-                        style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
-                      >
-                        {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+            ) : (
+              <ChartHoverCard
+                XValue={calloutProps.XValue}
+                Legend={calloutProps.legend!}
+                YValue={calloutProps.YValue!}
+                color={calloutProps.color!}
+              />
+            )}
           </Callout>
         )}
       </div>

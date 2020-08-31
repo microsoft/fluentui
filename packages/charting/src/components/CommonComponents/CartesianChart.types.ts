@@ -297,16 +297,22 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getGraphData?: any;
   legendBars: JSX.Element;
+  barwidth?: number;
   isXAxisDateType: boolean;
   tickParams?: {
     tickValues?: number[] | Date[];
     tickFormat?: string;
   };
   children(props: IChildProps): React.ReactNode;
+  isMultiStackCallout: boolean;
   calloutProps: Partial<ICalloutProps> & {
     isCalloutVisible: boolean;
     id: string;
     YValueHover?: IYValueHover[];
     hoverXValue?: string | number | null;
+    legend?: string;
+    color?: string;
+    YValue?: string | number;
+    XValue?: string;
   };
 }

@@ -112,6 +112,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         points={this._points}
         chartType={ChartTypes.LineChart}
         isXAxisDateType={isXAxisDateType}
+        isMultiStackCallout
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
