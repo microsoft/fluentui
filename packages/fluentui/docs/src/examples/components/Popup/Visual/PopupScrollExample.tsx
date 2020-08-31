@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Popup, buttonClassName, Ref } from '@fluentui/react-northstar';
+import { Button, Popup, buttonClassName, Ref, Box } from '@fluentui/react-northstar';
 
 const LoremParagraph = () => (
   <p>
@@ -107,17 +107,53 @@ const ControlledPopupWithFocus = () => {
   );
 };
 
+const InlineControlledPopupWithFocus = () => {
+  const buttonToFocus = React.useRef<HTMLElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (open && buttonToFocus.current) {
+      buttonToFocus.current.focus();
+    }
+  }, [open, buttonToFocus]);
+
+  return (
+    <Popup
+      trigger={<Button content="Show controlled popup" title="InlineControlledPopupWithFocus" />}
+      open={open}
+      inline
+      onOpenChange={(e, { open }) => {
+        setOpen(open);
+      }}
+      content={
+        <Ref innerRef={buttonToFocus}>
+          <Button content="Click me!" />
+        </Ref>
+      }
+      trapFocus={{
+        disableFirstFocus: true,
+      }}
+    />
+  );
+};
+
 const PopupScrollExample = () => (
-  <>
+  <Box
+    styles={{
+      height: '500px',
+      overflow: 'scroll',
+    }}
+  >
     <LoremParagraph />
     <LoremParagraph />
     <LoremParagraph />
     <PopupWithTrapFocus />
     <ControlledPopupWithFocus />
+    <InlineControlledPopupWithFocus />
     <LoremParagraph />
     <LoremParagraph />
     <LoremParagraph />
-  </>
+  </Box>
 );
 
 export default PopupScrollExample;

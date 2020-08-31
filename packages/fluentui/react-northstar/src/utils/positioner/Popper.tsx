@@ -40,10 +40,11 @@ function hasAutofocusFilter(node: Node) {
   return hasAutofocusProp(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
 }
 
-// We are setting the position to `fixed` in the first calculation
+// We are setting the position to `fixed` in the first effect
 // To prevent scroll jumps in case of the content with managed focus
-// setInitPositionToFix sets the position to `fixed` before applyStyles modifier
-// unsetInitPositionToFix restores the original position after applyStyles modifier
+// Modifier sets the position to `fixed` before all other modifier effects
+// Patch updates `forceUpdate` Popper function
+// which restores the original position before the first forceUpdate call
 const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElement>): PopperPositionFix => {
   const originalStateRef = React.useRef<string>('absolute');
 
@@ -89,8 +90,16 @@ const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElem
 
   return React.useMemo(
     () => ({
-      patch: (state: Partial<PopperJs.State>) => {
-        state.elements.popper.style['position'] = originalStateRef.current;
+      patch: (popperInstance: PopperJsInstance) => {
+        const originalForceUpdate = popperInstance.forceUpdate;
+        popperInstance.isFirstRun = true;
+        popperInstance.forceUpdate = () => {
+          if (popperInstance.isFirstRun) {
+            popperInstance.state.elements.popper.style['position'] = originalStateRef.current;
+            popperInstance.isFirstRun = false;
+          }
+          originalForceUpdate();
+        };
       },
       modifier: {
         name: 'positionStyleFix',
@@ -287,15 +296,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     };
 
     popperInstanceRef.current = PopperJs.createPopper(reference, contentRef.current, options);
-    const originalForceUpdate = popperInstanceRef.current.forceUpdate;
-    popperInstanceRef.current.isFirstRun = true;
-    popperInstanceRef.current.forceUpdate = () => {
-      if (popperInstanceRef.current.isFirstRun) {
-        popperInitialPositionFix.patch(popperInstanceRef.current.state);
-        popperInstanceRef.current.isFirstRun = false;
-      }
-      originalForceUpdate();
-    };
+    popperInitialPositionFix.patch(popperInstanceRef.current);
   }, [
     contentRef,
     computedModifiers,

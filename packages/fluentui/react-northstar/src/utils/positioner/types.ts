@@ -169,7 +169,7 @@ export interface PopperChildrenProps {
 export type PopperShorthandProps = PositioningProps;
 
 export type PopperPositionFix = {
-  patch: (state: Partial<PopperJs.State>) => void;
+  patch: (popperInstance: PopperJsInstance) => void;
   modifier: ModifierProps<'positionStyleFix', {}>;
 };
 
