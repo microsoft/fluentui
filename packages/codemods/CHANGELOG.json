@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/codemods_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add list feature to codemods modruner",
+            "author": "t-dama@microsoft.com",
+            "commit": "ff8ef5b7d6b01e793c9fa99e20004330e5eb3f0a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@fluentui/codemods_v0.10.0",
       "version": "0.10.0",
