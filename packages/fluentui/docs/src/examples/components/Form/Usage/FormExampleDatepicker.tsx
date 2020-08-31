@@ -2,9 +2,12 @@ import * as React from 'react';
 import { Form, Button } from '@fluentui/react-northstar';
 
 const FormExampleDatepicker = () => {
-  const [errorMessage, setErrorMessage] = React.useState(null);
+  const [errorMessage, setErrorMessage] = React.useState('Default error message');
   const errorMessageHandler = (e, v) => {
     setErrorMessage(v.error);
+  };
+  const successMessageHandler = (e, v) => {
+    setErrorMessage(null);
   };
   return (
     <Form
@@ -12,7 +15,12 @@ const FormExampleDatepicker = () => {
         alert('Form submitted');
       }}
     >
-      <Form.Datepicker label="Select a date" errorMessage={errorMessage} onDateChangeError={errorMessageHandler} />
+      <Form.Datepicker
+        label="Select a date"
+        errorMessage={errorMessage}
+        onDateChangeError={errorMessageHandler}
+        onDateChange={successMessageHandler}
+      />
       <Form.Field>
         <Button>Submit</Button>
       </Form.Field>
