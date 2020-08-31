@@ -34,9 +34,9 @@ const getDir = ({ theme, dir }: IFabricProps) => {
 };
 
 export const FabricBase = React.forwardRef((props: IFabricProps, ref: React.Ref<HTMLDivElement>) => {
-  const { className, theme, applyTheme, applyThemeToBody } = props;
+  const { className, theme, applyTheme, applyThemeToBody, styles } = props;
 
-  const classNames = getClassNames(getStyles, {
+  const classNames = getClassNames(styles, {
     theme: theme!,
     applyTheme: applyTheme,
     className,
