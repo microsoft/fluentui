@@ -9,7 +9,7 @@ const config: ScreenerTestsConfig = {
         .click(`.${buttonClassName}`)
         .snapshot('Shows datepicker popup through button and error is shown.')
         .click(`.${datepickerCalendarCellClassName}:nth-child(15)`)
-        .snapshot('Shows selected date in input without error'),
+        .snapshot('Shows selected date in input without error.'),
   ],
 };
 
