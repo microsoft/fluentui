@@ -4,8 +4,6 @@
 
 ```ts
 
-import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { IComponentAs } from '@uifabric/utilities';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
@@ -26,7 +24,6 @@ export interface IToggleOptions {
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -82,10 +79,7 @@ export interface IToggleStyles {
 export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
-
-// @public (undocumented)
-export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const ToggleBase: React.ForwardRefExoticComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 
 // (No @packageDocumentation comment for this package)

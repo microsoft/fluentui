@@ -201,7 +201,7 @@ export interface ILineChartPoints {
   /**
    * Defines the function that is executed on clicking this legend
    */
-  onLegendClick?: (selectedLegend: string | null) => void;
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
 
   /**
    * Defines the function that is executed on clicking  line
