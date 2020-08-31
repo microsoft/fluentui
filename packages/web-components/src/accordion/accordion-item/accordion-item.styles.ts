@@ -20,7 +20,7 @@ export const AccordionItemStyles = css`
         line-height: var(--type-ramp-minus-1-line-height);
         border-bottom: calc(var(--outline-width) * 1px) solid ${neutralDividerRestBehavior.var};
     }
-    
+
     .region {
         display: none;
         padding: calc((6 + (var(--design-unit) * 2 * var(--density))) * 1px);
@@ -45,6 +45,7 @@ export const AccordionItemStyles = css`
         height: calc(${heightNumber} * 1px);
         color: ${neutralForegroundRestBehavior.var};
         cursor: pointer;
+        font-family: inherit:
     }
 
     .button:hover {
@@ -97,7 +98,7 @@ export const AccordionItemStyles = css`
     slot[name="expanded-icon"] {
         display: none;
     }
-    
+
     :host(.expanded) slot[name="expanded-icon"] {
         display: flex;
     }
