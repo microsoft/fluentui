@@ -1,56 +1,130 @@
+import * as React from 'react';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { ILegendsProps } from '../components/Legends/index';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { ILegendsProps } from '../Legends/index';
+import { IMargins, ILineChartPoints } from '../../types/index';
+import { ChartTypes } from '../../utilities/index';
 
-export interface IMargins {
+export interface ICartesianChartStyleProps {
   /**
-   * left margin for the chart.
+   * Theme (provided through customization.)
    */
-  left?: number;
-  /**
-   * Right margin for the chart.
-   */
-  right?: number;
-  /**
-   * Top margin for the chart.
-   */
-  top?: number;
-  /**
-   * Bottom margin for the chart.
-   */
-  bottom?: number;
-}
+  theme: ITheme;
 
-export interface IRefArrayData {
-  index?: string;
-  refElement?: SVGGElement;
-}
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
+  className?: string;
 
-export interface IBasestate {
-  _width?: number;
-  _height?: number;
-  activeLegend?: string;
+  /**
+   * Width of the chart.
+   */
+  width?: number;
+
+  /**
+   * Height of the chart.
+   */
+  height?: number;
+
+  /**
+   * Color of the chart.
+   */
   color?: string;
-  dataForHoverCard?: number;
-  isCalloutVisible: boolean;
-  isLegendSelected?: boolean;
-  isLegendHovered?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
-  hoverYValue?: string | number | null;
-  hoverXValue?: string | number | null;
-  xCalloutValue?: string;
-  yCalloutValue?: string;
-  lineColor?: string;
-  hoveredLineColor?: string;
-  selectedLegend?: string;
-  containerWidth?: number;
-  containerHeight?: number;
+
+  /**
+   * Link to redirect if click action for graph
+   */
+  href?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  shouldHighlight?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
-export interface ICommonChartProps {
+export interface ICartesianChartStyles {
+  /**
+   *  Style for the root element.
+   */
+  root?: IStyle;
+
+  /**
+   * Style for the element containing the x-axis.
+   */
+  xAxis?: IStyle;
+
+  /**
+   * Style for the element containing the y-axis.
+   */
+  yAxis?: IStyle;
+
+  /**
+   * Style for legend container
+   */
+  legendContainer?: IStyle;
+
+  /**
+   * line hover box css
+   */
+  hover?: IStyle;
+
+  /**
+   * styles for callout root-content
+   */
+  calloutContentRoot?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutDateTimeContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  tooltip?: IStyle;
+
+  /**
+   * Style for the chart Title.
+   */
+  chartTitle?: IStyle;
+
+  /**
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
+   */
+  opacityChangeOnHover?: IStyle;
+}
+
+export interface ICartesianChartProps {
   /**
    * Width of the chart.
    */
@@ -142,18 +216,6 @@ export interface ICommonChartProps {
   yAxisTickCount?: number;
 
   /**
-   * This prop used to draw X axis grid line on tha chart.
-   * @default false
-   */
-  showXAxisGridLines?: boolean;
-
-  /**
-   * This prop used to draw Y axis grid lines on the chart.
-   * @default false
-   */
-  showYAxisGridLines?: boolean;
-
-  /**
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
@@ -204,117 +266,17 @@ export interface ICommonChartProps {
    * Used to display x axis labels values (whole value)
    */
   wrapXAxisLables?: boolean;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
 }
 
-export interface ICommonChartStyles {
-  /**
-   *  Style for the root element.
-   */
-  root?: IStyle;
-
-  /**
-   * Style for the element containing the x-axis.
-   */
-  xAxis?: IStyle;
-
-  /**
-   * Style for the element containing the y-axis.
-   */
-  yAxis?: IStyle;
-
-  /**
-   * Style for legend container
-   */
-  legendContainer?: IStyle;
-
-  /**
-   * line hover box css
-   */
-  hover?: IStyle;
-
-  /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: IStyle;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: IStyle;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutDateTimeContainer?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutInfoContainer?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutBlockContainer?: IStyle;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutlegendText?: IStyle;
-
-  tooltip?: IStyle;
-
-  /**
-   * Style for the chart Title.
-   */
-  chartTitle?: IStyle;
-
-  /**
-   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
-   */
-  opacityChangeOnHover?: IStyle;
-}
-
-export interface ICommonChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the Chart.
-   */
-  className?: string;
-
-  /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
-   * Color of the chart.
-   */
+export interface IYValueHover {
+  legend?: string;
+  y?: number;
   color?: string;
-
-  /**
-   * Link to redirect if click action for graph
-   */
-  href?: string;
-
-  /**
-   * prop to check if the chart is selcted or hovered upon to determine opacity
-   */
-  shouldHighlight?: boolean;
 }
 
 export interface IChildProps {
@@ -324,4 +286,27 @@ export interface IChildProps {
   yScale?: any;
   containerHeight?: number;
   containerWidth?: number;
+}
+
+// Only used for Cartesian chart base
+export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  maxOfYVal?: number;
+  points: ILineChartPoints[];
+  chartType: ChartTypes;
+  getmargins: (margins: IMargins) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getGraphData?: any;
+  legendBars: JSX.Element;
+  isXAxisDateType: boolean;
+  tickParams?: {
+    tickValues?: number[] | Date[];
+    tickFormat?: string;
+  };
+  children(props: IChildProps): React.ReactNode;
+  calloutProps: Partial<ICalloutProps> & {
+    isCalloutVisible: boolean;
+    id: string;
+    YValueHover?: IYValueHover[];
+    hoverXValue?: string | number | null;
+  };
 }

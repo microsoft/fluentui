@@ -3,19 +3,14 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps } from './LineChart.types';
+import { ILineChartProps, IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { ILineChartPoints, IMargins, IBasestate, IChildProps } from '../../types/index';
-import { calloutData, getMinMaxOfXAxis, getMinMaxOfYAxis, getXAxisType } from '../../utilities/index';
-import { ChartHelper } from '../CommonComponents/ChartHelper';
+import { calloutData, ChartTypes, getXAxisType } from '../../utilities/index';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
-export interface IRefArrayData {
-  index?: string;
-  refElement?: SVGGElement;
-}
 export interface IContainerValues {
   width: number;
   height: number;
@@ -57,12 +52,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
-    this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 35,
-    };
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -105,15 +94,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     };
 
     return (
-      <ChartHelper
+      <CartesianChart
         {...this.props}
-        yMinMaxValues={getMinMaxOfYAxis(this._points)}
-        xMinMaxValues={getMinMaxOfXAxis(isXAxisDateType, this._points)}
-        getGraphData={this._getLinesData}
+        points={this._points}
+        chartType={ChartTypes.LineChart}
+        isXAxisDateType={isXAxisDateType}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isXAxisDateType={isXAxisDateType}
+        getmargins={this._getMargins}
+        getGraphData={this._getLinesData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -148,6 +138,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getLinesData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {

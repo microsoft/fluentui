@@ -1,10 +1,10 @@
-import { IChartHelperStyleProps, IChartHelperStyles } from './ChartHelper.types';
+import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 import { isIE11 } from 'office-ui-fabric-react';
 
 const isIE11Var: boolean = isIE11();
 
-export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => {
+export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
   const { className, theme, isRtl } = props;
   const { fonts } = theme!;
   return {

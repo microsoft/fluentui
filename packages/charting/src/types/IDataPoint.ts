@@ -1,3 +1,50 @@
+export interface IBasestate {
+  _width?: number;
+  _height?: number;
+  activeLegend?: string;
+  color?: string;
+  dataForHoverCard?: number;
+  isCalloutVisible: boolean;
+  isLegendSelected?: boolean;
+  isLegendHovered?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refSelected?: any;
+  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  hoverYValue?: string | number | null;
+  hoverXValue?: string | number | null;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
+  lineColor?: string;
+  hoveredLineColor?: string;
+  selectedLegend?: string;
+  containerWidth?: number;
+  containerHeight?: number;
+}
+
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
+}
+
+export interface IMargins {
+  /**
+   * left margin for the chart.
+   */
+  left?: number;
+  /**
+   * Right margin for the chart.
+   */
+  right?: number;
+  /**
+   * Top margin for the chart.
+   */
+  top?: number;
+  /**
+   * Bottom margin for the chart.
+   */
+  bottom?: number;
+}
+
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.

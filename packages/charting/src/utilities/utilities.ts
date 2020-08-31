@@ -1,6 +1,5 @@
 import { IEventsAnnotationProps } from '../components/LineChart/index';
 import { ILineChartPoints, ILineChartDataPoint } from '../types/index';
-import { IMargins } from '../types/ICommonTypes';
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
@@ -11,11 +10,38 @@ import * as d3TimeFormat from 'd3-time-format';
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type StringAxis = D3Axis<string>;
 
+export enum ChartTypes {
+  AreaChart = 1,
+  LineChart = 2,
+  VerticalBarChart = 3,
+  VerticalStackedBarChart = 4,
+  GroupedVerticalBarChart = 5,
+}
+
 export interface IWrapLabelProps {
   node: SVGGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
+}
+
+export interface IMargins {
+  /**
+   * left margin for the chart.
+   */
+  left?: number;
+  /**
+   * Right margin for the chart.
+   */
+  right?: number;
+  /**
+   * Top margin for the chart.
+   */
+  top?: number;
+  /**
+   * Bottom margin for the chart.
+   */
+  bottom?: number;
 }
 
 export interface IXAxisParams {
@@ -41,6 +67,7 @@ export interface IYAxisParams {
     yMin: number;
     yMax: number;
   };
+  maxOfYVal?: number;
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
@@ -51,7 +78,6 @@ export interface IYAxisParams {
   yMaxValue?: number;
   yMinValue?: number;
   tickPadding?: number;
-  showYAxisGridLines: boolean;
   eventAnnotationProps?: IEventsAnnotationProps;
   eventLabelHeight?: number;
 }
@@ -73,6 +99,12 @@ export interface IFitContainerParams {
 
 export const additionalMarginRight: number = 20;
 
+/**
+ * Create Numeric X axis
+ * @export
+ * @param {IXAxisParams} xAxisParams
+ * @param {boolean} isRtl
+ */
 export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     xMinMaxValues,
@@ -102,6 +134,13 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   return xAxisScale;
 }
 
+/**
+ * Creating Date x axis of the Chart
+ * @export
+ * @param {IXAxisParams} xAxisParams
+ * @param {ITickParams} tickParams
+ * @param {boolean} isRtl
+ */
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
   const { xMinMaxValues, margins, containerWidth, xAxisElement } = xAxisParams;
   const xAxisScale = d3ScaleTime()
@@ -129,33 +168,43 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
   return dataPointsArray;
 }
 
+/**
+ * Creating Y axis of the chart
+ * @export
+ * @param {IYAxisParams} yAxisParams
+ * @param {boolean} isRtl
+ */
 export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues,
     yAxisElement = null,
     yMaxValue = 0,
     yMinValue = 0,
-    showYAxisGridLines = false,
     containerHeight,
     containerWidth,
     margins,
     tickPadding = 12,
+    maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
     eventAnnotationProps,
     eventLabelHeight,
   } = yAxisParams;
 
-  const finalYmax = yMinMaxValues.yMax > yMaxValue ? yMinMaxValues.yMax : yMaxValue!;
+  // maxOFYVal coming from only area chart (If shoule calculate from processed data)
+  const tempVal = maxOfYVal || yMinMaxValues.yMax;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.yMin < yMinValue ? 0 : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).tickValues(domainValues);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
-  showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
     ? d3Select(yAxisElement)
         .call(yAxis)
@@ -222,29 +271,6 @@ export function getUnique(
     .filter((e: number) => arr[e])
     .map((e: number) => arr[e]);
   return unique;
-}
-
-export function fitContainer(containerParams: IFitContainerParams) {
-  const { legendContainer, container, containerWidth, containerHeight, hideLegend = false } = containerParams;
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const animatedId = requestAnimationFrame(() => {});
-  const legendContainerComputedStyles = getComputedStyle(legendContainer);
-  const legendContainerHeight =
-    (legendContainer.getBoundingClientRect().height || (!hideLegend ? 32 : 0)) +
-    parseFloat(legendContainerComputedStyles.marginTop || '0') +
-    parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
-  const containerClientRect = container!.getBoundingClientRect();
-  const currentContainerWidth = containerClientRect.width;
-  const currentContainerHeight = containerClientRect.height > legendContainerHeight ? containerClientRect.height : 350;
-  const containerValues = {
-    width: currentContainerWidth!,
-    height: currentContainerHeight! - legendContainerHeight!,
-    shouldResize:
-      containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight,
-    reqID: animatedId,
-  };
-  return containerValues;
 }
 
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
@@ -358,41 +384,39 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   }
 }
 
-export function getMinMaxOfXAxis(
-  isXAxisDateType: boolean,
-  points: ILineChartPoints[],
-): { xMin: number | Date; xMax: number | Date } {
-  let xMin: number | Date;
-  let xMax: number | Date;
-  if (isXAxisDateType) {
-    const xAxisData: Date[] = [];
-    let sDate = new Date();
-    // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-    let lDate = new Date(-8640000000000000);
-    points.forEach((singleLineChartData: ILineChartPoints) => {
-      singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-        xAxisData.push(point.x as Date);
-        if (point.x < sDate) {
-          sDate = point.x as Date;
-        }
-        if (point.x > lDate) {
-          lDate = point.x as Date;
-        }
-      });
+export function findDateMinMaxOfX(points: ILineChartPoints[]): { xMin: number | Date; xMax: number | Date } {
+  let sDate = new Date();
+  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
+  let lDate = new Date(-8640000000000000);
+  const xAxisData: Date[] = [];
+  points.forEach((singleLineChartData: ILineChartPoints) => {
+    singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
+      xAxisData.push(point.x as Date);
+      if (point.x < sDate) {
+        sDate = point.x as Date;
+      }
+      if (point.x > lDate) {
+        lDate = point.x as Date;
+      }
     });
-    xMin = sDate;
-    xMax = lDate;
-  } else {
-    xMin = d3Min(points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
-    })!;
+  });
 
-    xMax = d3Max(points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => {
-        return item.x as number;
-      });
-    })!;
-  }
+  return {
+    xMin: sDate,
+    xMax: lDate,
+  };
+}
+
+export function findNumericMinMaxOfX(points: ILineChartPoints[]): { xMin: number; xMax: number } {
+  const xMin = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+  })!;
+
+  const xMax = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as number;
+    });
+  })!;
 
   return {
     xMin,
@@ -400,7 +424,45 @@ export function getMinMaxOfXAxis(
   };
 }
 
-export function getMinMaxOfYAxis(points: ILineChartPoints[]): { yMin: number; yMax: number } {
+/**
+ * To find x axis domian min and max values
+ * @export
+ * @param {ILineChartPoints[]} points
+ * @param {ChartTypes} chartType
+ * @param {boolean} isXAxisDateType
+ * @returns {({ xMin: number | Date; xMax: number | Date })}
+ */
+export function getMinMaxOfXAxis(
+  points: ILineChartPoints[],
+  chartType: ChartTypes,
+  isXAxisDateType: boolean,
+): { xMin: number | Date; xMax: number | Date } {
+  let minMaxValues: { xMin: number | Date; xMax: number | Date };
+
+  if (isXAxisDateType) {
+    switch (chartType) {
+      case ChartTypes.AreaChart:
+      case ChartTypes.LineChart:
+        minMaxValues = findDateMinMaxOfX(points);
+        break;
+      default:
+        minMaxValues = { xMin: 0, xMax: 0 };
+    }
+  } else {
+    switch (chartType) {
+      case ChartTypes.AreaChart:
+      case ChartTypes.LineChart:
+        minMaxValues = findNumericMinMaxOfX(points);
+        break;
+      default:
+        minMaxValues = { xMin: 0, xMax: 0 };
+    }
+  }
+
+  return minMaxValues;
+}
+
+export function findNumericMinMaxOfY(points: ILineChartPoints[]): { yMin: number; yMax: number } {
   const yMax = d3Max(points, (point: ILineChartPoints) => {
     return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
   })!;
@@ -412,6 +474,29 @@ export function getMinMaxOfYAxis(points: ILineChartPoints[]): { yMin: number; yM
     yMin,
     yMax,
   };
+}
+
+/**
+ * finding Y axis domain min and max values
+ *
+ * @export
+ * @param {ILineChartPoints[]} points
+ * @param {ChartTypes} chartType
+ * @returns {{ yMin: number; yMax: number }}
+ */
+export function getMinMaxOfYAxis(points: ILineChartPoints[], chartType: ChartTypes): { yMin: number; yMax: number } {
+  let minMaxValues: { yMin: number; yMax: number };
+
+  switch (chartType) {
+    case ChartTypes.AreaChart:
+    case ChartTypes.LineChart:
+      minMaxValues = findNumericMinMaxOfY(points);
+      break;
+    default:
+      minMaxValues = { yMin: 0, yMax: 0 };
+  }
+
+  return minMaxValues;
 }
 
 export function getXAxisType(points: ILineChartPoints[]): boolean {

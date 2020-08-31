@@ -1,16 +1,23 @@
 import * as React from 'react';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IAreaChartProps } from '../AreaChart/index';
+import {
+  IAreaChartProps,
+  IChildProps,
+  IRefArrayData,
+  IBasestate,
+  ILineChartDataPoint,
+  ILineChartPoints,
+  IMargins,
+} from '../AreaChart/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { calloutData, getMinMaxOfXAxis, getXAxisType } from '../../utilities/index';
-import { ChartHelper } from '../CommonComponents/ChartHelper';
-import { IRefArrayData, IBasestate, IChildProps, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
+import { calloutData, getXAxisType, ChartTypes } from '../../utilities/index';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 export interface IAreaChartAreaPoint {
   xVal: string | number;
@@ -34,6 +41,7 @@ export interface IContainerValues {
 }
 export interface IAreaChartState extends IBasestate {
   _maxOfYVal: number;
+  isGraphDraw: boolean;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -45,7 +53,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _colors: string[];
   private _keys: string[];
   private _refArray: IRefArrayData[];
-  private _isGraphDraw: boolean = true;
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
@@ -53,7 +60,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private containerHeight: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any;
-  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private margins: IMargins;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -66,6 +73,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       refSelected: null,
       YValueHover: [],
       _maxOfYVal: 0,
+      isGraphDraw: true,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
@@ -81,13 +89,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       prevProps.data !== this.props.data ||
       prevProps.height !== this.props.height ||
       prevProps.width !== this.props.width ||
-      this._isGraphDraw
+      this.state.isGraphDraw
     ) {
       this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
       this.dataSet = this._createDataSet();
       this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
       this._drawGraph(this.containerHeight);
-      this._isGraphDraw = false;
     }
   }
 
@@ -103,12 +110,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    const yMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
-    })!;
-    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
-    })!;
 
     const calloutProps = {
       target: this.state.refSelected,
@@ -122,15 +123,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       setInitialFocus: true,
     };
     return (
-      <ChartHelper
+      <CartesianChart
         {...this.props}
-        tickParams={tickParams}
-        getGraphData={this._isGraphDraw && this._getGraphData}
+        points={this._points}
+        getmargins={this._getMargins}
+        chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
         isXAxisDateType={isXAxisDateType}
-        yMinMaxValues={{ yMin: yMin, yMax: this.state._maxOfYVal || yMax }}
-        xMinMaxValues={getMinMaxOfXAxis(isXAxisDateType, this._points)}
+        tickParams={tickParams}
+        maxOfYVal={this.state._maxOfYVal}
+        getGraphData={this.state.isGraphDraw && this._getGraphData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -186,10 +189,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return keys;
   };
 
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
     this._xAxisScale = xAxis;
-    this._drawGraph(containerHeight);
+    containerHeight && this._drawGraph(containerHeight);
   };
 
   private _onLegendClick(customMessage: string): void {
@@ -198,18 +205,20 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         this.setState({
           isLegendSelected: false,
           activeLegend: '',
+          isGraphDraw: true,
         });
       } else {
         this.setState({
           activeLegend: customMessage,
+          isGraphDraw: true,
         });
       }
     } else {
       this.setState({
         activeLegend: customMessage,
+        isGraphDraw: true,
       });
     }
-    this._isGraphDraw = true;
   }
 
   private _onLegendHover(customMessage: string): void {
@@ -217,8 +226,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this.setState({
         activeLegend: customMessage,
         isLegendHovered: true,
+        isGraphDraw: true,
       });
-      this._isGraphDraw = true;
     }
   }
 
@@ -228,8 +237,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         activeLegend: '',
         isLegendHovered: false,
         isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
+        isGraphDraw: true,
       });
-      this._isGraphDraw = true;
     }
   }
 
@@ -390,13 +399,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.activeLegend === selectedArea;
     }
-    this._isGraphDraw = true;
     return shouldHighlight ? 'visibility' : 'hidden';
   };
 
   private _drawGraph = (containerHeight: number): void => {
     d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
     const that = this;
+    that.setState({ isGraphDraw: false });
     const xScale = this._xAxisScale;
     const chartContainer = d3Select(`#graphGElement_${this._uniqueIdForGraph}`)
       .append('g')
@@ -424,7 +433,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this.setState({ _maxOfYVal: maxOfYVal });
 
     const yScale = d3ScaleLinear()
-      .range([containerHeight - this.margins.bottom, this.margins.top])
+      .range([containerHeight - this.margins.bottom!, this.margins.top!])
       .domain([0, maxOfYVal]);
 
     const area = d3Area()

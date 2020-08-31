@@ -1,9 +1,15 @@
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IChartProps } from '../../types/IDataPoint';
+import { IChartProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from '../../types/index';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
-import { ICommonChartStyleProps, ICommonChartStyles, ICommonChartProps } from '../../types/ICommonTypes';
+import {
+  ICartesianChartProps,
+  ICartesianChartStyleProps,
+  ICartesianChartStyles,
+  IChildProps,
+} from '../CommonComponents/index';
 
-export interface ILineChartProps extends ICommonChartProps {
+export { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
@@ -28,6 +34,6 @@ export interface IEventsAnnotationProps {
   mergedLabel: (count: number) => string;
 }
 
-export interface ILineChartStyles extends ICommonChartStyles {}
+export interface ILineChartStyles extends ICartesianChartStyles {}
 
-export interface ILineChartStyleProps extends ICommonChartStyleProps {}
+export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
