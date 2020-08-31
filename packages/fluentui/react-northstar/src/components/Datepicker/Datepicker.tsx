@@ -97,25 +97,28 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 export const datepickerClassName = 'ui-datepicker';
 
 const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
+  let formattedString = '';
   if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
-    return format(
+    formattedString = format(
       localizationStrings.inputBoundedFormatString,
       localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
       localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
     );
   } else if (!!restrictedOptions.minDate) {
-    return format(
+    formattedString = format(
       localizationStrings.inputMinBoundedFormatString,
       localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
     );
   } else if (!!restrictedOptions.maxDate) {
-    return format(
+    formattedString = format(
       localizationStrings.inputMaxBoundedFormatString,
       localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
     );
   } else {
-    return localizationStrings.inputAriaLabel;
+    formattedString = localizationStrings.inputAriaLabel;
   }
+
+  return formattedString;
 };
 
 /**
