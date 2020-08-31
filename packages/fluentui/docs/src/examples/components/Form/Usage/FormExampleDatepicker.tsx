@@ -1,27 +1,23 @@
 import * as React from 'react';
-import { Form, Datepicker, Button } from '@fluentui/react-northstar';
+import { Form, Button } from '@fluentui/react-northstar';
 
-const labelId = 'choose-friend-label';
-
-const FormExample = () => (
-  <Form
-    onSubmit={() => {
-      alert('Form submitted');
-    }}
-  >
-    <Form.Field
-      label={{ content: `Selecte a date:`, id: labelId }}
-      control={{
-        as: Datepicker,
-        'aria-labelledby': labelId,
+const FormExampleDatepicker = () => {
+  const [errorMessage, setErrorMessage] = React.useState(null);
+  const errorMessageHandler = (e, v) => {
+    setErrorMessage(v.error);
+  };
+  return (
+    <Form
+      onSubmit={() => {
+        alert('Form submitted');
       }}
-      name="chooseDate"
-      id="date-with-error"
-      errorMessage="Please select a date"
-      required
-    />
-    <Form.Field control={{ as: Button, content: 'Submit' }} />
-  </Form>
-);
+    >
+      <Form.Datepicker label="Select a date" errorMessage={errorMessage} onDateChangeError={errorMessageHandler} />
+      <Form.Field>
+        <Button>Submit</Button>
+      </Form.Field>
+    </Form>
+  );
+};
 
-export default FormExample;
+export default FormExampleDatepicker;

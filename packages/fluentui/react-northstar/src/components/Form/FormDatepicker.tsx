@@ -8,8 +8,8 @@ type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
 >;
-export interface FormDropdownProps extends SelectedFormFieldCustomProps, FormDatepickerOwnProps {}
-export type FormDropdownStylesProps = never;
+export interface FormDatepickerProps extends SelectedFormFieldCustomProps, FormDatepickerOwnProps {}
+export type FormDatepickerStylesProps = never;
 
 export const formDatepickerClassName = 'ui-form__datepicker';
 
@@ -19,7 +19,7 @@ export const formDatepickerClassName = 'ui-form__datepicker';
 export const FormDatepicker = compose<
   'div',
   DatepickerProps,
-  FormDropdownStylesProps,
+  FormDatepickerStylesProps,
   SelectedFormFieldCustomProps,
   {}
 >(_FormFieldBase, {
