@@ -1,12 +1,12 @@
 import { Dropdown, Divider } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const inputItems = ['Bruce Banner'];
+const inputItems = ['Bruce Wayne'];
 
 const DropdownCustomClearableExample = () => (
   <>
     <Dropdown
-      defaultValue="Bruce Banner"
+      defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
       placeholder="Select your hero"
@@ -14,7 +14,7 @@ const DropdownCustomClearableExample = () => (
     />
     <Divider />
     <Dropdown
-      defaultValue="Bruce Banner"
+      defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
       placeholder="Select your hero"
@@ -22,7 +22,7 @@ const DropdownCustomClearableExample = () => (
     />
     <Divider />
     <Dropdown
-      defaultValue="Bruce Banner"
+      defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
       placeholder="Select your hero"
@@ -30,7 +30,7 @@ const DropdownCustomClearableExample = () => (
     />
     <Divider />
     <Dropdown
-      defaultValue="Bruce Banner"
+      defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
       placeholder="Select your hero"
@@ -38,7 +38,7 @@ const DropdownCustomClearableExample = () => (
     />
     <Divider />
     <Dropdown
-      defaultValue="Bruce Banner"
+      defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
       placeholder="Select your hero"
