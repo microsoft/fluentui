@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IPageJson, ILinkToken, ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /**

@@ -1,23 +1,4 @@
 /**
- * TODO: Once theming is updated, consider removing all of this.
- *
- * Note: All :root rules must be literals, OR references to variables
- * defined as literals in the same scope. If you refer to variables,
- * they will be resolved on the :root element only; not at usage time.
-**/
-:root {
-  /* TODO: Remove. Colors should only be defined in the theme. */
-  --button-checked-background: rgb(225, 223, 221);
-  --button-checked-contentColor: var(--button-contentColor);
-  --button-checked-iconColor: var(--button-iconColor);
-
-  /* TODO: Remove. Accent should only be defined in the theme. */
-  --accent-checked-background: rgb(70, 71, 117);
-  --accent-checked-contentColor: var(--accent-contentColor);
-  --accent-checked-iconColor: var(--accent-iconColor);
-}
-
-/**
  * Slot definitions
  *
  * Slot definitions must align to the names of the slots themselves. They should:
@@ -42,9 +23,24 @@
   &._checked {
     --button-background: var(--button-checked-background);
     --button-contentColor: var(--button-checked-contentColor);
-    --button-iconColor: var(--button-checked-iconColor);
-    --accent-background: var(--accent-checked-background);
-    --accent-contentColor: var(--accent-checked-contentColor);
-    --accent-iconColor: var(--accent-checked-iconColor);
+
+    --button-hovered-background: var(--button-checkedHovered-background);
+    --button-hovered-contentColor: var(--button-checkedHovered-contentColor);
+
+    &._primary {
+      --button-background: var(--accent-checked-background);
+      --button-contentColor: var(--accent-checked-contentColor);
+
+      --button-hovered-background: var(--accent-checkedHovered-background);
+      --button-hovered-contentColor: var(--accent-checkedHovered-contentColor);
+    }
+
+    &._ghost {
+      --button-background: var(--ghost-checked-background);
+      --button-contentColor: var(--ghost-checked-contentColor);
+
+      --button-hovered-background: var(--ghost-checkedHovered-background);
+      --button-hovered-contentColor: var(--ghost-checkedHovered-contentColor);
+    }
   }
 }

@@ -50,6 +50,12 @@ export interface DatepickerCalendarHeaderProps
 
   /** Shorthand for the button that navigates to the next calendar screen. */
   nextButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
+
+  /** Decides whether next button is actionable._align_baseline. */
+  disabledNextButton?: boolean;
+
+  /** Decides whether previous button is actionable._align_baseline. */
+  disabledPreviousButton?: boolean;
 }
 
 export type DatepickerCalendarHeaderStylesProps = never;
@@ -103,14 +109,19 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      {createShorthand(Text, label, { defaultProps: () => getA11yProps('label', {}) })}
+      {createShorthand(Text, label, {
+        defaultProps: () =>
+          getA11yProps('label', {
+            className: classes.label,
+          }),
+      })}
 
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
-            icon: {},
             title: props.prevMonthAriaLabel,
             direction: 'previous',
+            disabled: props.disabledPreviousButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
@@ -122,9 +133,9 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
-            icon: {},
             title: props.nextMonthAriaLabel,
             direction: 'next',
+            disabled: props.disabledNextButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
@@ -148,6 +159,8 @@ DatepickerCalendarHeader.propTypes = {
   previousButton: customPropTypes.itemShorthand,
   onPreviousClick: PropTypes.func,
   onNextClick: PropTypes.func,
+  disabledNextButton: PropTypes.bool,
+  disabledPreviousButton: PropTypes.bool,
 
   formatDay: PropTypes.func,
   formatYear: PropTypes.func,
@@ -165,6 +178,8 @@ DatepickerCalendarHeader.propTypes = {
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
+  openCalendarTitle: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,

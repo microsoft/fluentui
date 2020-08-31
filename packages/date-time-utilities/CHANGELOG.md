@@ -1,8 +1,35 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.6.1)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.6.0..@fluentui/date-time-utilities_v7.6.1)
+
+### Patches
+
+- fixing negative date navigation by changing the date clone method from using strings to using the date object itself ([PR #14647](https://github.com/microsoft/fluentui/pull/14647) by lorejoh12@gmail.com)
+
+## [7.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.6.0)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.5.0..@fluentui/date-time-utilities_v7.6.0)
+
+### Minor changes
+
+- Adding datepicker input placeholder string. ([PR #14621](https://github.com/microsoft/fluentui/pull/14621) by karymes@microsoft.com)
+
+## [7.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.5.0)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.4.1..@fluentui/date-time-utilities_v7.5.0)
+
+### Minor changes
+
+- Updating localization defaults and changing type of formatting functions ([PR #14486](https://github.com/microsoft/fluentui/pull/14486) by karymes@microsoft.com)
 
 ## [7.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.4.1)
 

@@ -28,7 +28,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useConst } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -142,7 +142,7 @@ function useBounds(
       cachedBounds.current = currentBounds;
     }
     return cachedBounds.current;
-  }, [bounds, minPagePadding, target]);
+  }, [bounds, minPagePadding, target, targetRef, targetWindowRef]);
 
   return getBounds;
 }
@@ -157,9 +157,14 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
+
+  // Updating targetRef won't rerender the component, but it's recalcuated (if needed) with every render
+  // If it mutates, we want to re-run the effect
+  const currentTarget = targetRef.current;
+
   React.useEffect(() => {
     if (!maxHeight && !hidden) {
-      if (directionalHintFixed && targetRef.current) {
+      if (directionalHintFixed && currentTarget) {
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap: number = (gapSpace ?? 0) + (isBeakVisible && beakWidth ? beakWidth : 0);
@@ -174,7 +179,20 @@ function useMaxHeight(
     } else if (hidden) {
       setMaxHeight(undefined);
     }
-  }, [targetRef.current, gapSpace, beakWidth, directionalHint, getBounds, hidden]);
+  }, [
+    targetRef,
+    currentTarget,
+    gapSpace,
+    beakWidth,
+    getBounds,
+    hidden,
+    async,
+    coverTarget,
+    directionalHint,
+    directionalHintFixed,
+    isBeakVisible,
+    maxHeight,
+  ]);
 
   return maxHeight;
 }
@@ -187,7 +205,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number | undefined>();
 
-  const setHeightOffsetEveryFrame = (): void => {
+  const setHeightOffsetEveryFrame = React.useCallback((): void => {
     if (calloutElement.current && finalHeight) {
       setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
         const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
@@ -209,13 +227,13 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
         }
       }, calloutElement.current);
     }
-  };
+  }, [async, calloutElement, finalHeight]);
 
   React.useEffect(() => {
     if (!hidden) {
       setHeightOffsetEveryFrame();
     }
-  }, [finalHeight, hidden]);
+  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
 
   return heightOffset;
 }
@@ -275,7 +293,20 @@ function usePositions(
 
       return () => async.cancelAnimationFrame(timerId);
     }
-  }, [hidden, directionalHint]);
+  }, [
+    hidden,
+    directionalHint,
+    async,
+    calloutElement,
+    hostElement,
+    targetRef,
+    finalHeight,
+    getBounds,
+    onPositioned,
+    positions,
+    props,
+    target,
+  ]);
 
   return positions;
 }
@@ -289,8 +320,9 @@ function useAutoFocus(
   calloutElement: React.RefObject<HTMLDivElement>,
 ) {
   const async = useAsync();
+  const hasPositions = !!positions;
   React.useEffect(() => {
-    if (!hidden && setInitialFocus && positions && calloutElement.current) {
+    if (!hidden && setInitialFocus && hasPositions && calloutElement.current) {
       const timerId = async.requestAnimationFrame(
         () => focusFirstChild(calloutElement.current!),
         calloutElement.current,
@@ -298,7 +330,7 @@ function useAutoFocus(
 
       return () => async.cancelAnimationFrame(timerId);
     }
-  }, [hidden, !!positions]);
+  }, [hidden, hasPositions, async, calloutElement, setInitialFocus]);
 }
 
 /**
@@ -314,55 +346,58 @@ function useDismissHandlers(
   const isMouseDownOnPopup = React.useRef(false);
   const async = useAsync();
 
-  const mouseDownOnPopup = () => {
-    isMouseDownOnPopup.current = true;
-  };
-
-  const mouseUpOnPopup = () => {
-    isMouseDownOnPopup.current = false;
-  };
-
-  const dismissOnScroll = (ev: Event) => {
-    if (positions && !preventDismissOnScroll) {
-      dismissOnClickOrScroll(ev);
-    }
-  };
-
-  const dismissOnResize = (ev: Event) => {
-    if (!preventDismissOnResize) {
-      onDismiss?.(ev);
-    }
-  };
-
-  const dismissOnLostFocus = (ev: Event) => {
-    if (!preventDismissOnLostFocus) {
-      dismissOnClickOrScroll(ev);
-    }
-  };
-
-  const dismissOnClickOrScroll = (ev: Event) => {
-    const target = ev.target as HTMLElement;
-    const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
-
-    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
-    if (isEventTargetOutsideCallout && isMouseDownOnPopup.current) {
+  const mouseDownHandlers = useConst([
+    () => {
+      isMouseDownOnPopup.current = true;
+    },
+    () => {
       isMouseDownOnPopup.current = false;
-      return;
-    }
+    },
+  ] as const);
 
-    if (
-      (!targetRef.current && isEventTargetOutsideCallout) ||
-      (ev.target !== targetWindowRef.current &&
-        isEventTargetOutsideCallout &&
-        (!targetRef.current ||
-          'stopPropagation' in targetRef.current ||
-          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
-    ) {
-      onDismiss?.(ev);
-    }
-  };
+  const positionsExists = !!positions;
 
   React.useEffect(() => {
+    const dismissOnScroll = (ev: Event) => {
+      if (positionsExists && !preventDismissOnScroll) {
+        dismissOnClickOrScroll(ev);
+      }
+    };
+
+    const dismissOnResize = (ev: Event) => {
+      if (!preventDismissOnResize) {
+        onDismiss?.(ev);
+      }
+    };
+
+    const dismissOnLostFocus = (ev: Event) => {
+      if (!preventDismissOnLostFocus) {
+        dismissOnClickOrScroll(ev);
+      }
+    };
+
+    const dismissOnClickOrScroll = (ev: Event) => {
+      const target = ev.target as HTMLElement;
+      const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
+
+      // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
+      if (isEventTargetOutsideCallout && isMouseDownOnPopup.current) {
+        isMouseDownOnPopup.current = false;
+        return;
+      }
+
+      if (
+        (!targetRef.current && isEventTargetOutsideCallout) ||
+        (ev.target !== targetWindowRef.current &&
+          isEventTargetOutsideCallout &&
+          (!targetRef.current ||
+            'stopPropagation' in targetRef.current ||
+            (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+      ) {
+        onDismiss?.(ev);
+      }
+    };
+
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -381,14 +416,49 @@ function useDismissHandlers(
         };
       }
     }, 0);
-  }, [hidden]);
+  }, [
+    hidden,
+    async,
+    hostElement,
+    targetRef,
+    targetWindowRef,
+    onDismiss,
+    preventDismissOnLostFocus,
+    preventDismissOnResize,
+    preventDismissOnScroll,
+    positionsExists,
+  ]);
 
-  return [mouseDownOnPopup, mouseUpOnPopup] as const;
+  return mouseDownHandlers;
 }
 
 export const CalloutContentBase = React.memo(
   React.forwardRef((propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+    const {
+      styles,
+      style,
+      ariaLabel,
+      ariaDescribedBy,
+      ariaLabelledBy,
+      className,
+      isBeakVisible,
+      children,
+      beakWidth,
+      calloutWidth,
+      calloutMaxWidth,
+      finalHeight,
+      hideOverflow = !!finalHeight,
+      backgroundColor,
+      calloutMaxHeight,
+      onScroll,
+      // eslint-disable-next-line deprecation/deprecation
+      shouldRestoreFocus = true,
+      target,
+      hidden,
+      onLayerMounted,
+    } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
     const calloutElement = React.useRef<HTMLDivElement>(null);
@@ -410,35 +480,16 @@ export const CalloutContentBase = React.memo(
     useAutoFocus(props, positions, calloutElement);
 
     React.useEffect(() => {
-      if (!props.hidden) {
-        props.onLayerMounted?.();
+      if (!hidden) {
+        onLayerMounted?.();
       }
-    }, [props.hidden]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if hidden changes
+    }, [hidden]);
+
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!targetWindowRef.current) {
       return null;
     }
-    const {
-      styles,
-      style,
-      ariaLabel,
-      ariaDescribedBy,
-      ariaLabelledBy,
-      className,
-      isBeakVisible,
-      children,
-      beakWidth,
-      calloutWidth,
-      calloutMaxWidth,
-      finalHeight,
-      hideOverflow = !!finalHeight,
-      backgroundColor,
-      calloutMaxHeight,
-      onScroll,
-      // eslint-disable-next-line deprecation/deprecation
-      shouldRestoreFocus = true,
-      target,
-    } = props;
 
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
     const contentMaxHeight: number | undefined =

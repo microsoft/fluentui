@@ -2,6 +2,51 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/fluent-theme_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix undefined FluentTheme due to circular dep",
+            "author": "xgao@microsoft.com",
+            "commit": "edaeccde05290fef32b2407ebbc09ab3fd711b6f",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/fluent-theme_v7.2.3",
+      "version": "7.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Fluent theme constants to @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/fluent-theme_v7.1.132",
+      "version": "7.1.132",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/fluent-theme_v7.1.109",
       "version": "7.1.109",

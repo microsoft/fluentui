@@ -89,7 +89,7 @@ function useApplyThemeToBody(
         };
       }
     }
-  }, [bodyThemed]);
+  }, [bodyThemed, applyThemeToBody, rootElement]);
 
   return rootElement;
 }

@@ -64,12 +64,14 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       originalFocusedElement.current = undefined;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
   }, []);
 
   React.useEffect(() => {
     if (doesElementContainFocus(root.current!)) {
       containsFocus.current = true;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
   }, []);
 
   useOnEvent(
@@ -96,6 +98,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
       if (root.current && ev.relatedTarget && !root.current.contains(ev.relatedTarget as HTMLElement)) {
         containsFocus.current = false;
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
     }, []),
     true,
   );
@@ -114,7 +117,7 @@ export const Popup = React.forwardRef((props: IPopupProps, forwardedRef: React.R
 
   useRestoreFocus(props, root);
 
-  const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children } = props;
+  const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
   const needsVerticalScrollBar = useScrollbarAsync(props, root);
 
   const onKeyDown = React.useCallback(
@@ -122,8 +125,8 @@ export const Popup = React.forwardRef((props: IPopupProps, forwardedRef: React.R
       // eslint-disable-next-line deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.escape:
-          if (props.onDismiss) {
-            props.onDismiss(ev);
+          if (onDismiss) {
+            onDismiss(ev);
 
             ev.preventDefault();
             ev.stopPropagation();
@@ -132,7 +135,7 @@ export const Popup = React.forwardRef((props: IPopupProps, forwardedRef: React.R
           break;
       }
     },
-    [props.onDismiss],
+    [onDismiss],
   );
 
   useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Correctly updating set-size when number of options updates after first render.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-07T23:17:13.524Z"
-}

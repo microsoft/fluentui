@@ -4,58 +4,31 @@
 
 ```ts
 
-import { IPartialTheme } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { ColorTokenSet } from '@fluentui/theme';
+import { IStyle } from '@uifabric/merge-styles';
+import { ITheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
+import { Theme } from '@fluentui/theme';
+import { TokenSetType } from '@fluentui/theme';
 
 // @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    subTextColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-    opacity: string;
-}>;
+export const createDefaultTheme: () => Theme;
 
 // @public (undocumented)
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
-
-// @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export const FluentTheme: Theme;
 
 // @public (undocumented)
-export type FontTokens = Partial<{
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-}>;
-
-// @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 // @public
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
-
-// @public
-export interface PartialTheme extends RecursivePartial<Theme> {
-}
-
-// @public
-export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {
+    [key in keyof TStyleSet]: string;
 };
+
+export { PartialTheme }
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {
@@ -71,19 +44,13 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     tokens?: TTokens;
 }
 
-// @public
-export interface Theme extends IPartialTheme {
-    // (undocumented)
-    components?: {
-        [componentName: string]: {
-            styles?: IStyleFunctionOrObject<any, any>;
-        };
-    };
-    // (undocumented)
-    stylesheets?: string[];
-    // (undocumented)
-    tokens?: Tokens;
-}
+// @public (undocumented)
+export const TeamsTheme: PartialTheme;
+
+export { Theme }
+
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
@@ -94,24 +61,11 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 // @public (undocumented)
-export interface Tokens {
-    // (undocumented)
-    [key: string]: TokenSetType;
-    // (undocumented)
-    body: ColorTokenSet & TokenSetType;
-}
-
-// @public
-export type TokenSetType = {
-    [key: string]: string | TokenSetType | undefined;
-};
-
-// @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: import("react").CSSProperties | undefined) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
 
 // @public
 export const useInlineTokens: (draftState: {
-    style?: import("react").CSSProperties | undefined;
+    style?: React.CSSProperties | undefined;
     tokens?: TokenSetType | undefined;
 }, prefix: string) => void;
 

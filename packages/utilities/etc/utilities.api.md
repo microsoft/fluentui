@@ -51,11 +51,11 @@ export class Async {
     clearImmediate(id: number, targetElement?: Element | null): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
-    debounce<T extends Function>(func: T, wait?: number, options?: {
+    debounce<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         maxWait?: number;
         trailing?: boolean;
-    }): ICancelable<T> & (() => void);
+    }): ICancelable<T> & T;
     dispose(): void;
     // (undocumented)
     protected _logError(e: any): void;
@@ -64,10 +64,10 @@ export class Async {
     setImmediate(callback: () => void, targetElement?: Element | null): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
-    throttle<T extends Function>(func: T, wait?: number, options?: {
+    throttle<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         trailing?: boolean;
-    }): T | (() => void);
+    }): T;
     }
 
 // @public
@@ -133,6 +133,9 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 
 // @public
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
+
+// @public
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -416,8 +419,8 @@ export interface IBaseProps<T = any> {
 }
 
 // @public (undocumented)
-export type ICancelable<T> = {
-    flush: () => T;
+export type ICancelable<T extends (...args: any[]) => any> = {
+    flush: () => ReturnType<T>;
     cancel: () => void;
     pending: () => boolean;
 };
@@ -980,7 +983,7 @@ export { Omit }
 export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
 
 // @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+export function on(element: Element | Window | Document, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;

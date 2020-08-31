@@ -2,6 +2,36 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.54.0",
+      "version": "0.54.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add no-global-react rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.4",
+      "version": "0.53.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add rule to prevent accidental references to globals",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/eslint-plugin_v0.53.3",
       "version": "0.53.3",
