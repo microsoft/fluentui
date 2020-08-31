@@ -1,4 +1,5 @@
-export { childrenExist } from './childrenExist';
+export { childrenExist } from '@fluentui/react-bindings';
+
 export { rtlTextContainer } from './rtlTextContainer';
 export { stringLiteralsArray } from './stringLiteralsArray';
 export { getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';

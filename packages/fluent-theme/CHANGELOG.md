@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.5)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.2.3..@uifabric/fluent-theme_v7.2.5)
+
+### Patches
+
+- Fix undefined FluentTheme due to circular dep ([PR #14768](https://github.com/microsoft/fluentui/pull/14768) by xgao@microsoft.com)
+
+## [7.2.3](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.132..@uifabric/fluent-theme_v7.2.3)
+
+### Patches
+
+- Move Fluent theme constants to @fluentui/theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
 
 ## [7.1.132](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.132)
 

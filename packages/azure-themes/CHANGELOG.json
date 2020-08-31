@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Body text font size clean up, <Text>",
+            "author": "jagaheri@microsoft.com",
+            "commit": "b18df8a0cb88d05759e65508a40043ab5323a43f",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/azure-themes_v7.4.1",
       "version": "7.4.1",
