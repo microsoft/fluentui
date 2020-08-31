@@ -111,3 +111,27 @@ const codeModMap: CodeModMapType = {
     };
   },
 };
+
+/* ConfigMod is also an exportable code mod. All it does is wrap all of
+   the codemods from the json file into a single code mod, so that devs
+   can very easily run mods from json with a (npx fluent... -n "configMod"). */
+const configMod: CodeMod = {
+  run: (file: SourceFile) => {
+    const mods = getCodeModsFromJson();
+    if (mods === undefined || mods.length === 0) {
+      return Err({ reason: `failed to get any mods from json. Perhaps the file is missing or malformed?` });
+    }
+    mods.forEach(mod => {
+      const res = mod.run(file);
+      if (!res.ok) {
+        return Err({ reason: `code mod ${mod.name} failed to run on ${file.getBaseName()}` });
+      }
+    });
+    return Ok({ logs: [`ran modConfig successfully on ${file.getBaseName()}`] });
+  },
+  name: 'configMod',
+  version: '1.0.0',
+  enabled: true,
+};
+
+export default configMod;
