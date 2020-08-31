@@ -14,9 +14,7 @@ import {
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
-  useStaticStyles: true,
-});
+const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
 type Dimension = 'height' | 'width';
 type Position = 'bottom' | 'left' | 'right';

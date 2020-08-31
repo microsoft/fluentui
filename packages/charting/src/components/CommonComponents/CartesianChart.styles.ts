@@ -1,11 +1,11 @@
-import { IChartHelperStyleProps, IChartHelperStyles } from './ChartHelper.types';
+import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 import { isIE11 } from 'office-ui-fabric-react';
 
 const isIE11Var: boolean = isIE11();
 
-export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => {
-  const { className, theme, isRtl } = props;
+export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
+  const { className, theme, isRtl, shouldHighlight, href } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -33,7 +33,7 @@ export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => 
           },
         ],
         line: {
-          opacity: 0.1,
+          opacity: 0.2,
           stroke: theme.semanticColors.bodyText,
           width: '1px',
           selectors: {
@@ -65,7 +65,7 @@ export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => 
           display: 'none',
         },
         line: {
-          opacity: 0.1,
+          opacity: 0.2,
           fill: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
@@ -82,6 +82,12 @@ export const getStyles = (props: IChartHelperStyleProps): IChartHelperStyles => 
         ],
       },
     },
+
+    opacityChangeOnHover: {
+      opacity: shouldHighlight ? '' : '0.1',
+      cursor: href ? 'pointer' : 'default',
+    },
+
     legendContainer: [
       {
         marginTop: '8px',
