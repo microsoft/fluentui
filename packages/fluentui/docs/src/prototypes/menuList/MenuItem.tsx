@@ -48,6 +48,7 @@ export function MenuItem({ children, index, submenu = null }) {
       tabIndex={0}
       style={{
         cursor: 'pointer',
+        width: 80,
         ...(currentIndex === index && {
           background: 'grey',
         }),

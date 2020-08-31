@@ -29,8 +29,17 @@ export function MenuButton() {
             <MenuItem index={5}>Item 5</MenuItem>
           </MenuTrigger>
           <MenuList id="2">
-            <MenuItem index={1}>1</MenuItem>
-            <MenuItem index={2}>2</MenuItem>
+            <MenuItem index={1}>item 1</MenuItem>
+            <MenuItem index={2}>item 2</MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem index={3}>Item 3</MenuItem>
+              </MenuTrigger>
+              <MenuList id="2">
+                <MenuItem index={1}>1</MenuItem>
+                <MenuItem index={2}>2</MenuItem>
+              </MenuList>
+            </Menu>
           </MenuList>
         </Menu>
       </MenuList>
