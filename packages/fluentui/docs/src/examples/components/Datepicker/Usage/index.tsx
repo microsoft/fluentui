@@ -43,7 +43,7 @@ const Usage = () => (
       description={
         <>
           One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. The way to achieve this is
-          through slot props.
+          through Datepicker.type prop.
         </>
       }
       examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendarButton"
@@ -53,7 +53,7 @@ const Usage = () => (
       description={
         <>
           One can also use the <code>DatepickerCalendar</code> without <code>Button</code>. The way to achieve this is
-          through slot props.
+          through Datepicker.type prop.
         </>
       }
       examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendarInput"

@@ -38,6 +38,7 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
+export type DatepickerType = 'ButtonOnly' | 'InputOnly' | 'InputAndButton';
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
@@ -90,6 +91,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
+
+  /** Marks which type of datepicker should be rendered. */
+  type?: DatepickerType;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
@@ -175,7 +179,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
+  const {
+    calendar,
+    popup,
+    input,
+    className,
+    design,
+    styles,
+    variables,
+    formatMonthDayYear,
+    allowManualInput,
+    type,
+  } = props;
   const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
@@ -312,6 +327,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     },
   });
 
+  const triggerButtonElement =
+    type !== 'InputOnly' ? (
+      <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />
+    ) : null;
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -321,20 +341,21 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          {createShorthand(Input, input, {
-            defaultProps: () =>
-              getA11yProps('input', {
-                placeholder: props.inputPlaceholder,
-                disabled: props.disabled,
-                error: !!error,
-                value: formattedDate,
-                readOnly: !allowManualInput,
-                required: props.required,
-                ref: inputRef,
-                'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
-              }),
-            overrideProps: overrideInputProps,
-          })}
+          {type !== 'ButtonOnly' &&
+            createShorthand(Input, input, {
+              defaultProps: () =>
+                getA11yProps('input', {
+                  placeholder: props.inputPlaceholder,
+                  disabled: props.disabled,
+                  error: !!error,
+                  value: formattedDate,
+                  readOnly: !allowManualInput,
+                  required: props.required,
+                  ref: inputRef,
+                  'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
+                }),
+              overrideProps: overrideInputProps,
+            })}
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
               open: openState && !props.disabled,
@@ -342,7 +363,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               trapFocus: {
                 disableFirstFocus: true,
               },
-              trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />,
+              trigger: triggerButtonElement,
+              target: type === 'InputOnly' ? inputRef.current : null,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
@@ -435,6 +457,7 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
+  type: 'InputAndButton',
   calendar: {},
   popup: {},
   input: {},

@@ -19,6 +19,7 @@
     "@fluentui/react-northstar-emotion-renderer": "^0.51.0",
     "@fluentui/react-northstar-fela-renderer": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
+    "@fluentui/date-time-utilities": "^7.6.1",
     "@fluentui/react-telemetry": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
     "@mdx-js/react": "^1.5.5",
