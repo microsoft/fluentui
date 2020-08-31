@@ -216,6 +216,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     });
 
     return (
+      // eslint-disable-next-line deprecation/deprecation
       <div ref={this.props.elementRef} className={this._classNames.root}>
         <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
