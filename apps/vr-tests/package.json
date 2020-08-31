@@ -14,11 +14,11 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.11.1",
+    "@fluentui/react-button": "^0.11.2",
     "@fluentui/react-icons": "^0.3.0",
-    "@fluentui/react-next": "^8.0.0-alpha.95",
-    "@fluentui/react-theme-provider": "^0.10.0",
-    "@fluentui/storybook": "^0.4.1",
+    "@fluentui/react-next": "^8.0.0-alpha.96",
+    "@fluentui/react-theme-provider": "^0.11.0",
+    "@fluentui/storybook": "^0.4.2",
     "@uifabric/example-data": "^7.1.3",
     "@uifabric/experiments": "^7.32.1",
     "@uifabric/react-cards": "^0.112.1",
