@@ -12,7 +12,7 @@ const FormExampleDatepicker = () => {
   return (
     <Form
       onSubmit={() => {
-        alert('Form submitted');
+        alert('Form was submitted');
       }}
     >
       <Form.Datepicker
