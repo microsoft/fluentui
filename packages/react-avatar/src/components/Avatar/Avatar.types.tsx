@@ -58,7 +58,7 @@ export type AvatarTokens = {
   size?: string;
 
   /** Background fill when there is no image */
-  fill?: string;
+  background?: string;
 
   /** Border color */
   borderColor?: string;

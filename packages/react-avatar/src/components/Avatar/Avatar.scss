@@ -4,7 +4,7 @@
   --avatar-borderColor: transparent;
   --avatar-borderWidth: 0;
   --avatar-borderRadius: 9999px;
-  --avatar-fill: rgb(232, 232, 232);
+  --avatar-background: rgb(232, 232, 232);
 }
 
 // Root slot
@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--avatar-fill);
+  background-color: var(--avatar-background);
 
   font-size: var(--avatar-fontSize, calc(var(--avatar-size) / 2.333));
   width: var(--avatar-size);
