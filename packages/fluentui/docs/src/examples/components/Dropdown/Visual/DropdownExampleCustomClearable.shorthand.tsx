@@ -9,7 +9,7 @@ const DropdownCustomClearableExample = () => (
       defaultValue="Bruce Wayne"
       clearable
       items={inputItems}
-      placeholder="Select your hero"
+      placeholder="Select your super hero"
       clearIndicator={{ content: 'clear' }}
     />
     <Divider />
