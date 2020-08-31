@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { format as d3Format } from 'd3-format';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction, getId, getRTL } from '@uifabric/utilities';
+import { IProcessedStyleSet, IPalette } from '@uifabric/styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
@@ -17,6 +16,7 @@ import {
   IVerticalStackedBarChartStyles,
 } from './VerticalStackedBarChart.types';
 import { IVerticalStackedChartProps, IDataPoint, IVSChartDataPoint } from '../../types/index';
+import { createYAxis } from '../../utilities/utilities';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -109,7 +109,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xAxis: NumericAxis | StringAxis = isNumeric
       ? this._createNumericXAxis(dataset)
       : this._createStringXAxis(dataset);
-    const yAxis: NumericAxis = this._createYAxis(dataset);
     const legends: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     const bars: JSX.Element[] = this._getBars(this._points, dataset, isNumeric);
     const { isCalloutVisible } = this.state;
@@ -136,7 +135,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               className={this._classNames.xAxis}
             />
             <g
-              ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
+              ref={(node: SVGGElement | null) => this._createYAxis(dataset, node)}
               transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right : this.margins.left}, 0)`}
               className={this._classNames.yAxis}
             />
@@ -169,6 +168,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _adjustProps(): void {
+    this.margins = { ...this.margins, ...this.props.margins };
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 32;
     this._yAxisTickCount = this.props.yAxisTickCount || 5;
@@ -251,23 +251,21 @@ export class VerticalStackedBarChartBase extends React.Component<
     return xAxis;
   }
 
-  private _createYAxis(dataset: IDataPoint[]): NumericAxis {
-    const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
-    const interval = Math.ceil(yMax / this._yAxisTickCount);
-    const domains: Array<number> = [0];
-    while (domains[domains.length - 1] < yMax) {
-      domains.push(domains[domains.length - 1] + interval);
-    }
-    const yAxisScale = d3ScaleLinear()
-      .domain([0, domains[domains.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
-    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-    const yAxis = axis
-      .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right))
-      .tickPadding(5)
-      .tickFormat(d3Format('.2s'))
-      .tickValues(domains);
-    return yAxis;
+  private _createYAxis(dataset: IDataPoint[], node?: SVGElement | null) {
+    const yMax = this._getYMax(dataset);
+
+    return createYAxis({
+      margins: this.margins,
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight,
+      yAxisElement: node,
+      yAxisTickFormat: this.props.yAxisTickFormat,
+      yAxisTickCount: this._yAxisTickCount,
+      finalYMaxVal: yMax,
+      finalYMinVal: 0,
+      tickPadding: 10,
+      showYAxisGridLines: true,
+    }, this._isRtl)
   }
 
   private _onLegendClick(customMessage: string): void {
@@ -500,7 +498,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         />
       );
     });
-    return <g>{bar}</g>;
+    return <g key={indexNumber}>{bar}</g>;
   };
 
   private _createNumericBars = (
@@ -509,7 +507,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     indexNumber: number,
     href: string,
   ): JSX.Element => {
-    const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
+    const yMax = this._getYMax(dataset);
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
 
     const xBarScale = d3ScaleLinear()
@@ -529,7 +527,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     indexNumber: number,
     href: string,
   ): JSX.Element => {
-    const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
+    const yMax = this._getYMax(dataset);
 
     const endpointDistance = 0.5 * ((this.state.containerWidth - this.margins.right) / dataset.length);
     const xBarScale = d3ScaleLinear()
@@ -567,10 +565,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     axisNode.selectAll('text').attr('class', this._classNames.xAxisText!);
   }
 
-  private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {
-    if (node === null) {
-      return;
-    }
-    d3Select(node).call(yAxis);
+  private _getYMax(dataset: IDataPoint[]) {
+    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
   }
 }
