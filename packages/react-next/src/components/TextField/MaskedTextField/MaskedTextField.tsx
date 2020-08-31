@@ -61,9 +61,7 @@ const useComponentRef = (
         return textField && textField.selectionEnd ? textField.selectionEnd : -1;
       },
 
-      setValue(newValue: string): void {
-        return setValue(newValue);
-      },
+      setValue,
 
       focus(): void {
         textField && textField.focus();
@@ -100,7 +98,6 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
 
   const {
     componentRef,
-    value,
     onFocus,
     onBlur,
     onMouseDown,
@@ -111,6 +108,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
     mask,
     maskChar = DEFAULT_MASK_CHAR,
     maskFormat = DEFAULT_MASK_FORMAT_CHARS,
+    value,
   } = props;
 
   const internalState = useConst<IMaskedTextFieldState>(() => ({
@@ -161,8 +159,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onFocus],
+    [internalState, onFocus],
   );
 
   const handleBlur = React.useCallback(
@@ -171,8 +168,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       internalState.isFocused = false;
       internalState.moveCursorOnMouseUp = true;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onBlur],
+    [internalState, onBlur],
   );
 
   const handleMouseDown = React.useCallback(
@@ -182,8 +178,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
         internalState.moveCursorOnMouseUp = true;
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onMouseDown],
+    [internalState, onMouseDown],
   );
 
   const handleMouseUp = React.useCallback(
@@ -201,8 +196,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onMouseUp],
+    [internalState, onMouseUp],
   );
 
   const handleInputChange = React.useCallback(
@@ -285,8 +279,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       // Perform onChange after input has been processed. Return value is expected to be the displayed text
       onChange?.(ev, newValue);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [displayValue.length, mask, maskChar, onChange],
+    [displayValue.length, internalState, mask, maskChar, onChange],
   );
 
   const handleKeyDown = React.useCallback(
@@ -323,8 +316,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onKeyDown],
+    [internalState, onKeyDown],
   );
 
   const handlePaste = React.useCallback(
@@ -340,24 +332,32 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
         selectionEnd: selectionEnd !== null ? selectionEnd : -1,
       };
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onPaste],
+    [internalState, onPaste],
   );
 
+  // Updates the display value if mask or value props change.
   React.useEffect(() => {
     internalState.maskCharData = parseMask(mask, maskFormat);
     value !== undefined && setValue(value);
     setDisplayValue(getMaskDisplay(mask, internalState.maskCharData, maskChar));
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only run when mask and value update.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only update when mask or value changes.
   }, [mask, value]);
 
+  // Run before browser paint to avoid flickering from selection reset.
+  React.useLayoutEffect(() => {
+    // Move the cursor to position before paint.
+    if (maskCursorPosition !== undefined && textField.current) {
+      textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
+    }
+  }, [maskCursorPosition]);
+
+  // Run after browser paint.
   React.useEffect(() => {
-    // Move the cursor to the start of the mask format on update
+    // Move the cursor to the start of the mask format after values update.
     if (internalState.isFocused && maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maskCursorPosition]);
+  }, [internalState.isFocused, maskCursorPosition]);
 
   useComponentRef(componentRef, internalState.maskCharData, textField.current, setValue);
 
@@ -365,7 +365,6 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
     <TextField
       {...props}
       elementRef={ref}
-      componentRef={textField}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseDown={handleMouseDown}
@@ -374,6 +373,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>
       onKeyDown={handleKeyDown}
       onPaste={handlePaste}
       value={displayValue || ''}
+      componentRef={textField}
     />
   );
 });

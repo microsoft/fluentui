@@ -10,7 +10,7 @@ export const TextFieldMaskedExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={stackTokens}>
       <p>The mask has been modified here to allow "_"</p>
-      <MaskedTextField label="With input mask" mask="m\ask: ****" maskFormat={maskFormat} maskChar="?" />
+      <MaskedTextField label="With input mask" mask="mask: ****" maskFormat={maskFormat} maskChar="?" />
     </Stack>
   );
 };
