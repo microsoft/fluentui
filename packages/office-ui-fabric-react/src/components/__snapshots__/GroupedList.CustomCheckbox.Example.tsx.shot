@@ -53,7 +53,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
       >
         <div
           className="ms-List"
-          role="presentation"
+          role="treegrid"
         >
           <div
             className="ms-List-surface"
@@ -80,7 +80,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 0"
                     aria-level={1}
                     aria-posinset={1}
                     aria-setsize={3}
@@ -134,6 +133,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     data-is-focusable={true}
                     onClick={[Function]}
                     onKeyUp={[Function]}
+                    role="row"
                     style={Object {}}
                   >
                     <div
@@ -144,151 +144,156 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             display: flex;
                             height: 48px;
                           }
+                      role="presentation"
                     >
-                      <button
-                        aria-checked={false}
-                        className=
-                            ms-GroupHeader-check
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              cursor: default;
-                              display: flex;
-                              height: 48px;
-                              justify-content: center;
-                              margin-top: -1px;
-                              opacity: 0;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 1px;
-                              position: relative;
-                              width: 48px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus {
-                              opacity: 1;
-                            }
-                        data-is-focusable={false}
-                        data-selection-toggle={true}
-                        onClick={[Function]}
-                        role="checkbox"
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <div
+                        <button
+                          aria-checked={false}
                           className=
-                              ms-Toggle
-                              is-enabled
+                              ms-GroupHeader-check
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 14px;
-                                font-weight: 400;
-                                margin-bottom: 8px;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                cursor: default;
+                                display: flex;
+                                height: 48px;
+                                justify-content: center;
+                                margin-top: -1px;
+                                opacity: 0;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 1px;
+                                position: relative;
+                                width: 48px;
                               }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus {
+                                opacity: 1;
+                              }
+                          data-is-focusable={false}
+                          data-selection-toggle={true}
+                          onClick={[Function]}
+                          role="checkbox"
+                          type="button"
                         >
                           <div
                             className=
-                                ms-Toggle-innerContainer
+                                ms-Toggle
+                                is-enabled
                                 {
-                                  display: inline-flex;
-                                  position: relative;
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  margin-bottom: 8px;
                                 }
                           >
-                            <button
-                              aria-checked={false}
-                              checked={false}
+                            <div
                               className=
-                                  ms-Toggle-background
+                                  ms-Toggle-innerContainer
                                   {
-                                    align-items: center;
-                                    background: #ffffff;
-                                    border-radius: 10px;
-                                    border: 1px solid #605e5c;
-                                    box-sizing: border-box;
-                                    cursor: pointer;
-                                    display: flex;
-                                    font-size: 20px;
-                                    height: 20px;
-                                    outline: transparent;
-                                    padding-bottom: 0;
-                                    padding-left: 3px;
-                                    padding-right: 3px;
-                                    padding-top: 0;
+                                    display: inline-flex;
                                     position: relative;
-                                    transition: all 0.1s ease;
-                                    width: 40px;
                                   }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #ffffff;
-                                    bottom: -2px;
-                                    content: "";
-                                    left: -2px;
-                                    outline: 1px solid #605e5c;
-                                    position: absolute;
-                                    right: -2px;
-                                    top: -2px;
-                                    z-index: 1;
-                                  }
-                                  &:hover {
-                                    border-color: #323130;
-                                  }
-                                  &:hover .ms-Toggle-thumb {
-                                    background-color: #201f1e;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                                    border-color: Highlight;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
-                                    border-color: Highlight;
-                                  }
-                              data-is-focusable={true}
-                              id="Toggle3"
-                              onChange={[Function]}
-                              onClick={[Function]}
-                              role="switch"
-                              type="button"
                             >
-                              <span
+                              <button
+                                aria-checked={false}
+                                checked={false}
                                 className=
-                                    ms-Toggle-thumb
+                                    ms-Toggle-background
                                     {
-                                      background-color: #605e5c;
-                                      border-color: transparent;
-                                      border-radius: 50%;
-                                      border-style: solid;
-                                      border-width: 6px;
+                                      align-items: center;
+                                      background: #ffffff;
+                                      border-radius: 10px;
+                                      border: 1px solid #605e5c;
                                       box-sizing: border-box;
-                                      display: block;
-                                      height: 12px;
+                                      cursor: pointer;
+                                      display: flex;
+                                      font-size: 20px;
+                                      height: 20px;
+                                      outline: transparent;
+                                      padding-bottom: 0;
+                                      padding-left: 3px;
+                                      padding-right: 3px;
+                                      padding-top: 0;
+                                      position: relative;
                                       transition: all 0.1s ease;
-                                      width: 12px;
+                                      width: 40px;
                                     }
-                              />
-                            </button>
+                                    &::-moz-focus-inner {
+                                      border: 0;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus:after {
+                                      border: 1px solid #ffffff;
+                                      bottom: -2px;
+                                      content: "";
+                                      left: -2px;
+                                      outline: 1px solid #605e5c;
+                                      position: absolute;
+                                      right: -2px;
+                                      top: -2px;
+                                      z-index: 1;
+                                    }
+                                    &:hover {
+                                      border-color: #323130;
+                                    }
+                                    &:hover .ms-Toggle-thumb {
+                                      background-color: #201f1e;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                      border-color: Highlight;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                      border-color: Highlight;
+                                    }
+                                data-is-focusable={true}
+                                id="Toggle3"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                role="switch"
+                                type="button"
+                              >
+                                <span
+                                  className=
+                                      ms-Toggle-thumb
+                                      {
+                                        background-color: #605e5c;
+                                        border-color: transparent;
+                                        border-radius: 50%;
+                                        border-style: solid;
+                                        border-width: 6px;
+                                        box-sizing: border-box;
+                                        display: block;
+                                        height: 12px;
+                                        transition: all 0.1s ease;
+                                        width: 12px;
+                                      }
+                                />
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-dropIcon
@@ -305,6 +310,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Icon--Tag {
                               position: absolute;
                             }
+                        role="presentation"
                       >
                         <i
                           aria-hidden={true}
@@ -324,76 +330,79 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           
                         </i>
                       </div>
-                      <button
-                        aria-controls="GroupedListSection2"
-                        aria-expanded={true}
-                        aria-label="expand collapse group"
-                        className=
-                            ms-GroupHeader-expand
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              color: #605e5c;
-                              cursor: default;
-                              display: flex;
-                              font-size: 12px;
-                              height: 48px;
-                              justify-content: center;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 0px;
-                              position: relative;
-                              width: 36px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            &:hover {
-                              background-color: #edebe9;
-                            }
-                            &:active {
-                              background-color: #e1dfdd;
-                            }
-                        data-is-focusable={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <i
-                          aria-hidden={true}
+                        <button
+                          aria-expanded={true}
+                          aria-label="expand collapse group"
                           className=
-
+                              ms-GroupHeader-expand
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                display: inline-block;
-                                font-family: "FabricMDL2Icons-3";
-                                font-style: normal;
-                                font-weight: normal;
-                                speak: none;
-                                transform-origin: 50% 50%;
-                                transform: rotate(90deg);
-                                transition: transform .1s linear;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                color: #605e5c;
+                                cursor: default;
+                                display: flex;
+                                font-size: 12px;
+                                height: 48px;
+                                justify-content: center;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: relative;
+                                width: 36px;
                               }
-                          data-icon-name="ChevronRightMed"
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              &:hover {
+                                background-color: #edebe9;
+                              }
+                              &:active {
+                                background-color: #e1dfdd;
+                              }
+                          data-is-focusable={false}
+                          onClick={[Function]}
+                          type="button"
                         >
-                          
-                        </i>
-                      </button>
+                          <i
+                            aria-hidden={true}
+                            className=
+
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  display: inline-block;
+                                  font-family: "FabricMDL2Icons-3";
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  speak: none;
+                                  transform-origin: 50% 50%;
+                                  transform: rotate(90deg);
+                                  transition: transform .1s linear;
+                                }
+                            data-icon-name="ChevronRightMed"
+                          >
+                            
+                          </i>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-title
@@ -406,6 +415,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        role="gridcell"
                       >
                         <span>
                           group 0
@@ -430,7 +440,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection2"
-                    role="grid"
+                    role="presentation"
                   >
                     <div
                       className="ms-List-surface"
@@ -448,6 +458,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={1}
                             aria-selected={false}
                             className=
@@ -762,6 +773,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -780,7 +792,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -837,7 +849,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -894,7 +906,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-0 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -975,6 +987,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={2}
                             aria-selected={false}
                             className=
@@ -1289,6 +1302,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -1307,7 +1321,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1364,7 +1378,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1421,7 +1435,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-1 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1502,6 +1516,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={3}
                             aria-selected={false}
                             className=
@@ -1816,6 +1831,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -1834,7 +1850,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1891,7 +1907,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1948,7 +1964,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-2 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2049,7 +2065,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 1"
                     aria-level={1}
                     aria-posinset={2}
                     aria-setsize={3}
@@ -2103,6 +2118,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     data-is-focusable={true}
                     onClick={[Function]}
                     onKeyUp={[Function]}
+                    role="row"
                     style={Object {}}
                   >
                     <div
@@ -2113,151 +2129,156 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             display: flex;
                             height: 48px;
                           }
+                      role="presentation"
                     >
-                      <button
-                        aria-checked={false}
-                        className=
-                            ms-GroupHeader-check
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              cursor: default;
-                              display: flex;
-                              height: 48px;
-                              justify-content: center;
-                              margin-top: -1px;
-                              opacity: 0;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 1px;
-                              position: relative;
-                              width: 48px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus {
-                              opacity: 1;
-                            }
-                        data-is-focusable={false}
-                        data-selection-toggle={true}
-                        onClick={[Function]}
-                        role="checkbox"
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <div
+                        <button
+                          aria-checked={false}
                           className=
-                              ms-Toggle
-                              is-enabled
+                              ms-GroupHeader-check
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 14px;
-                                font-weight: 400;
-                                margin-bottom: 8px;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                cursor: default;
+                                display: flex;
+                                height: 48px;
+                                justify-content: center;
+                                margin-top: -1px;
+                                opacity: 0;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 1px;
+                                position: relative;
+                                width: 48px;
                               }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus {
+                                opacity: 1;
+                              }
+                          data-is-focusable={false}
+                          data-selection-toggle={true}
+                          onClick={[Function]}
+                          role="checkbox"
+                          type="button"
                         >
                           <div
                             className=
-                                ms-Toggle-innerContainer
+                                ms-Toggle
+                                is-enabled
                                 {
-                                  display: inline-flex;
-                                  position: relative;
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  margin-bottom: 8px;
                                 }
                           >
-                            <button
-                              aria-checked={false}
-                              checked={false}
+                            <div
                               className=
-                                  ms-Toggle-background
+                                  ms-Toggle-innerContainer
                                   {
-                                    align-items: center;
-                                    background: #ffffff;
-                                    border-radius: 10px;
-                                    border: 1px solid #605e5c;
-                                    box-sizing: border-box;
-                                    cursor: pointer;
-                                    display: flex;
-                                    font-size: 20px;
-                                    height: 20px;
-                                    outline: transparent;
-                                    padding-bottom: 0;
-                                    padding-left: 3px;
-                                    padding-right: 3px;
-                                    padding-top: 0;
+                                    display: inline-flex;
                                     position: relative;
-                                    transition: all 0.1s ease;
-                                    width: 40px;
                                   }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #ffffff;
-                                    bottom: -2px;
-                                    content: "";
-                                    left: -2px;
-                                    outline: 1px solid #605e5c;
-                                    position: absolute;
-                                    right: -2px;
-                                    top: -2px;
-                                    z-index: 1;
-                                  }
-                                  &:hover {
-                                    border-color: #323130;
-                                  }
-                                  &:hover .ms-Toggle-thumb {
-                                    background-color: #201f1e;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                                    border-color: Highlight;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
-                                    border-color: Highlight;
-                                  }
-                              data-is-focusable={true}
-                              id="Toggle5"
-                              onChange={[Function]}
-                              onClick={[Function]}
-                              role="switch"
-                              type="button"
                             >
-                              <span
+                              <button
+                                aria-checked={false}
+                                checked={false}
                                 className=
-                                    ms-Toggle-thumb
+                                    ms-Toggle-background
                                     {
-                                      background-color: #605e5c;
-                                      border-color: transparent;
-                                      border-radius: 50%;
-                                      border-style: solid;
-                                      border-width: 6px;
+                                      align-items: center;
+                                      background: #ffffff;
+                                      border-radius: 10px;
+                                      border: 1px solid #605e5c;
                                       box-sizing: border-box;
-                                      display: block;
-                                      height: 12px;
+                                      cursor: pointer;
+                                      display: flex;
+                                      font-size: 20px;
+                                      height: 20px;
+                                      outline: transparent;
+                                      padding-bottom: 0;
+                                      padding-left: 3px;
+                                      padding-right: 3px;
+                                      padding-top: 0;
+                                      position: relative;
                                       transition: all 0.1s ease;
-                                      width: 12px;
+                                      width: 40px;
                                     }
-                              />
-                            </button>
+                                    &::-moz-focus-inner {
+                                      border: 0;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus:after {
+                                      border: 1px solid #ffffff;
+                                      bottom: -2px;
+                                      content: "";
+                                      left: -2px;
+                                      outline: 1px solid #605e5c;
+                                      position: absolute;
+                                      right: -2px;
+                                      top: -2px;
+                                      z-index: 1;
+                                    }
+                                    &:hover {
+                                      border-color: #323130;
+                                    }
+                                    &:hover .ms-Toggle-thumb {
+                                      background-color: #201f1e;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                      border-color: Highlight;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                      border-color: Highlight;
+                                    }
+                                data-is-focusable={true}
+                                id="Toggle5"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                role="switch"
+                                type="button"
+                              >
+                                <span
+                                  className=
+                                      ms-Toggle-thumb
+                                      {
+                                        background-color: #605e5c;
+                                        border-color: transparent;
+                                        border-radius: 50%;
+                                        border-style: solid;
+                                        border-width: 6px;
+                                        box-sizing: border-box;
+                                        display: block;
+                                        height: 12px;
+                                        transition: all 0.1s ease;
+                                        width: 12px;
+                                      }
+                                />
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-dropIcon
@@ -2274,6 +2295,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Icon--Tag {
                               position: absolute;
                             }
+                        role="presentation"
                       >
                         <i
                           aria-hidden={true}
@@ -2293,76 +2315,79 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           
                         </i>
                       </div>
-                      <button
-                        aria-controls="GroupedListSection4"
-                        aria-expanded={true}
-                        aria-label="expand collapse group"
-                        className=
-                            ms-GroupHeader-expand
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              color: #605e5c;
-                              cursor: default;
-                              display: flex;
-                              font-size: 12px;
-                              height: 48px;
-                              justify-content: center;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 0px;
-                              position: relative;
-                              width: 36px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            &:hover {
-                              background-color: #edebe9;
-                            }
-                            &:active {
-                              background-color: #e1dfdd;
-                            }
-                        data-is-focusable={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <i
-                          aria-hidden={true}
+                        <button
+                          aria-expanded={true}
+                          aria-label="expand collapse group"
                           className=
-
+                              ms-GroupHeader-expand
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                display: inline-block;
-                                font-family: "FabricMDL2Icons-3";
-                                font-style: normal;
-                                font-weight: normal;
-                                speak: none;
-                                transform-origin: 50% 50%;
-                                transform: rotate(90deg);
-                                transition: transform .1s linear;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                color: #605e5c;
+                                cursor: default;
+                                display: flex;
+                                font-size: 12px;
+                                height: 48px;
+                                justify-content: center;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: relative;
+                                width: 36px;
                               }
-                          data-icon-name="ChevronRightMed"
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              &:hover {
+                                background-color: #edebe9;
+                              }
+                              &:active {
+                                background-color: #e1dfdd;
+                              }
+                          data-is-focusable={false}
+                          onClick={[Function]}
+                          type="button"
                         >
-                          
-                        </i>
-                      </button>
+                          <i
+                            aria-hidden={true}
+                            className=
+
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  display: inline-block;
+                                  font-family: "FabricMDL2Icons-3";
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  speak: none;
+                                  transform-origin: 50% 50%;
+                                  transform: rotate(90deg);
+                                  transition: transform .1s linear;
+                                }
+                            data-icon-name="ChevronRightMed"
+                          >
+                            
+                          </i>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-title
@@ -2375,6 +2400,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        role="gridcell"
                       >
                         <span>
                           group 1
@@ -2399,7 +2425,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection4"
-                    role="grid"
+                    role="presentation"
                   >
                     <div
                       className="ms-List-surface"
@@ -2417,6 +2443,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={4}
                             aria-selected={false}
                             className=
@@ -2731,6 +2758,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -2749,7 +2777,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2806,7 +2834,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2863,7 +2891,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-3 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2944,6 +2972,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={5}
                             aria-selected={false}
                             className=
@@ -3258,6 +3287,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -3276,7 +3306,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3333,7 +3363,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3390,7 +3420,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-4 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3471,6 +3501,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={6}
                             aria-selected={false}
                             className=
@@ -3785,6 +3816,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -3803,7 +3835,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3860,7 +3892,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3917,7 +3949,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-5 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4018,7 +4050,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 2"
                     aria-level={1}
                     aria-posinset={3}
                     aria-setsize={3}
@@ -4072,6 +4103,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     data-is-focusable={true}
                     onClick={[Function]}
                     onKeyUp={[Function]}
+                    role="row"
                     style={Object {}}
                   >
                     <div
@@ -4082,151 +4114,156 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             display: flex;
                             height: 48px;
                           }
+                      role="presentation"
                     >
-                      <button
-                        aria-checked={false}
-                        className=
-                            ms-GroupHeader-check
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              cursor: default;
-                              display: flex;
-                              height: 48px;
-                              justify-content: center;
-                              margin-top: -1px;
-                              opacity: 0;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 1px;
-                              position: relative;
-                              width: 48px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus {
-                              opacity: 1;
-                            }
-                        data-is-focusable={false}
-                        data-selection-toggle={true}
-                        onClick={[Function]}
-                        role="checkbox"
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <div
+                        <button
+                          aria-checked={false}
                           className=
-                              ms-Toggle
-                              is-enabled
+                              ms-GroupHeader-check
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 14px;
-                                font-weight: 400;
-                                margin-bottom: 8px;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                cursor: default;
+                                display: flex;
+                                height: 48px;
+                                justify-content: center;
+                                margin-top: -1px;
+                                opacity: 0;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 1px;
+                                position: relative;
+                                width: 48px;
                               }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus {
+                                opacity: 1;
+                              }
+                          data-is-focusable={false}
+                          data-selection-toggle={true}
+                          onClick={[Function]}
+                          role="checkbox"
+                          type="button"
                         >
                           <div
                             className=
-                                ms-Toggle-innerContainer
+                                ms-Toggle
+                                is-enabled
                                 {
-                                  display: inline-flex;
-                                  position: relative;
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  margin-bottom: 8px;
                                 }
                           >
-                            <button
-                              aria-checked={false}
-                              checked={false}
+                            <div
                               className=
-                                  ms-Toggle-background
+                                  ms-Toggle-innerContainer
                                   {
-                                    align-items: center;
-                                    background: #ffffff;
-                                    border-radius: 10px;
-                                    border: 1px solid #605e5c;
-                                    box-sizing: border-box;
-                                    cursor: pointer;
-                                    display: flex;
-                                    font-size: 20px;
-                                    height: 20px;
-                                    outline: transparent;
-                                    padding-bottom: 0;
-                                    padding-left: 3px;
-                                    padding-right: 3px;
-                                    padding-top: 0;
+                                    display: inline-flex;
                                     position: relative;
-                                    transition: all 0.1s ease;
-                                    width: 40px;
                                   }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #ffffff;
-                                    bottom: -2px;
-                                    content: "";
-                                    left: -2px;
-                                    outline: 1px solid #605e5c;
-                                    position: absolute;
-                                    right: -2px;
-                                    top: -2px;
-                                    z-index: 1;
-                                  }
-                                  &:hover {
-                                    border-color: #323130;
-                                  }
-                                  &:hover .ms-Toggle-thumb {
-                                    background-color: #201f1e;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                                    border-color: Highlight;
-                                  }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
-                                    border-color: Highlight;
-                                  }
-                              data-is-focusable={true}
-                              id="Toggle7"
-                              onChange={[Function]}
-                              onClick={[Function]}
-                              role="switch"
-                              type="button"
                             >
-                              <span
+                              <button
+                                aria-checked={false}
+                                checked={false}
                                 className=
-                                    ms-Toggle-thumb
+                                    ms-Toggle-background
                                     {
-                                      background-color: #605e5c;
-                                      border-color: transparent;
-                                      border-radius: 50%;
-                                      border-style: solid;
-                                      border-width: 6px;
+                                      align-items: center;
+                                      background: #ffffff;
+                                      border-radius: 10px;
+                                      border: 1px solid #605e5c;
                                       box-sizing: border-box;
-                                      display: block;
-                                      height: 12px;
+                                      cursor: pointer;
+                                      display: flex;
+                                      font-size: 20px;
+                                      height: 20px;
+                                      outline: transparent;
+                                      padding-bottom: 0;
+                                      padding-left: 3px;
+                                      padding-right: 3px;
+                                      padding-top: 0;
+                                      position: relative;
                                       transition: all 0.1s ease;
-                                      width: 12px;
+                                      width: 40px;
                                     }
-                              />
-                            </button>
+                                    &::-moz-focus-inner {
+                                      border: 0;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus:after {
+                                      border: 1px solid #ffffff;
+                                      bottom: -2px;
+                                      content: "";
+                                      left: -2px;
+                                      outline: 1px solid #605e5c;
+                                      position: absolute;
+                                      right: -2px;
+                                      top: -2px;
+                                      z-index: 1;
+                                    }
+                                    &:hover {
+                                      border-color: #323130;
+                                    }
+                                    &:hover .ms-Toggle-thumb {
+                                      background-color: #201f1e;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                      border-color: Highlight;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                      border-color: Highlight;
+                                    }
+                                data-is-focusable={true}
+                                id="Toggle7"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                role="switch"
+                                type="button"
+                              >
+                                <span
+                                  className=
+                                      ms-Toggle-thumb
+                                      {
+                                        background-color: #605e5c;
+                                        border-color: transparent;
+                                        border-radius: 50%;
+                                        border-style: solid;
+                                        border-width: 6px;
+                                        box-sizing: border-box;
+                                        display: block;
+                                        height: 12px;
+                                        transition: all 0.1s ease;
+                                        width: 12px;
+                                      }
+                                />
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-dropIcon
@@ -4243,6 +4280,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Icon--Tag {
                               position: absolute;
                             }
+                        role="presentation"
                       >
                         <i
                           aria-hidden={true}
@@ -4262,76 +4300,79 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           
                         </i>
                       </div>
-                      <button
-                        aria-controls="GroupedListSection6"
-                        aria-expanded={true}
-                        aria-label="expand collapse group"
-                        className=
-                            ms-GroupHeader-expand
-                            {
-                              align-items: center;
-                              background-color: transparent;
-                              background: none;
-                              border: none;
-                              color: #605e5c;
-                              cursor: default;
-                              display: flex;
-                              font-size: 12px;
-                              height: 48px;
-                              justify-content: center;
-                              outline: transparent;
-                              padding-bottom: 0px;
-                              padding-left: 0px;
-                              padding-right: 0px;
-                              padding-top: 0px;
-                              position: relative;
-                              width: 36px;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            &:hover {
-                              background-color: #edebe9;
-                            }
-                            &:active {
-                              background-color: #e1dfdd;
-                            }
-                        data-is-focusable={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        role="gridcell"
                       >
-                        <i
-                          aria-hidden={true}
+                        <button
+                          aria-expanded={true}
+                          aria-label="expand collapse group"
                           className=
-
+                              ms-GroupHeader-expand
                               {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                display: inline-block;
-                                font-family: "FabricMDL2Icons-3";
-                                font-style: normal;
-                                font-weight: normal;
-                                speak: none;
-                                transform-origin: 50% 50%;
-                                transform: rotate(90deg);
-                                transition: transform .1s linear;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                color: #605e5c;
+                                cursor: default;
+                                display: flex;
+                                font-size: 12px;
+                                height: 48px;
+                                justify-content: center;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: relative;
+                                width: 36px;
                               }
-                          data-icon-name="ChevronRightMed"
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              &:hover {
+                                background-color: #edebe9;
+                              }
+                              &:active {
+                                background-color: #e1dfdd;
+                              }
+                          data-is-focusable={false}
+                          onClick={[Function]}
+                          type="button"
                         >
-                          
-                        </i>
-                      </button>
+                          <i
+                            aria-hidden={true}
+                            className=
+
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  display: inline-block;
+                                  font-family: "FabricMDL2Icons-3";
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  speak: none;
+                                  transform-origin: 50% 50%;
+                                  transform: rotate(90deg);
+                                  transition: transform .1s linear;
+                                }
+                            data-icon-name="ChevronRightMed"
+                          >
+                            
+                          </i>
+                        </button>
+                      </div>
                       <div
                         className=
                             ms-GroupHeader-title
@@ -4344,6 +4385,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        role="gridcell"
                       >
                         <span>
                           group 2
@@ -4368,7 +4410,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection6"
-                    role="grid"
+                    role="presentation"
                   >
                     <div
                       className="ms-List-surface"
@@ -4386,6 +4428,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={7}
                             aria-selected={false}
                             className=
@@ -4700,6 +4743,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -4718,7 +4762,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4775,7 +4819,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4832,7 +4876,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-6 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4913,6 +4957,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={8}
                             aria-selected={false}
                             className=
@@ -5227,6 +5272,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -5245,7 +5291,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5302,7 +5348,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5359,7 +5405,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-7 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5440,6 +5486,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
+                            aria-level={2}
                             aria-rowindex={9}
                             aria-selected={false}
                             className=
@@ -5754,6 +5801,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             </div>
                             <span
                               className="ms-GroupSpacer"
+                              role="gridcell"
                               style={
                                 Object {
                                   "display": "inline-block",
@@ -5772,7 +5820,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={2}
+                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5829,7 +5877,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //placehold.it/150x150
                               </div>
                               <div
-                                aria-colindex={3}
+                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5886,7 +5934,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-8 Lorem ipsum dolor sit
                               </div>
                               <div
-                                aria-colindex={4}
+                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell

@@ -69,7 +69,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       theme,
       styles,
       className,
-      groupedListId,
       compact,
       ariaPosInSet,
       ariaSetSize,
@@ -106,7 +105,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
-        aria-label={group.ariaLabel || group.name}
+        role="row"
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
         data-is-focusable={true}
@@ -114,43 +113,46 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-expanded={!this.state.isCollapsed}
         aria-level={groupLevel + 1}
       >
-        <div className={this._classNames.groupHeaderContainer}>
+        <div className={this._classNames.groupHeaderContainer} role="presentation">
           {isSelectionCheckVisible ? (
-            <button
-              data-is-focusable={false}
-              type="button"
-              className={this._classNames.check}
-              role="checkbox"
-              aria-checked={currentlySelected}
-              data-selection-toggle={true}
-              onClick={this._onToggleSelectGroupClick}
-              {...selectAllButtonProps}
-            >
-              {onRenderCheckbox({ checked: currentlySelected, theme }, onRenderCheckbox)}
-            </button>
+            <div role="gridcell">
+              <button
+                data-is-focusable={false}
+                type="button"
+                className={this._classNames.check}
+                role="checkbox"
+                aria-checked={currentlySelected}
+                data-selection-toggle={true}
+                onClick={this._onToggleSelectGroupClick}
+                {...selectAllButtonProps}
+              >
+                {onRenderCheckbox({ checked: currentlySelected, theme }, onRenderCheckbox)}
+              </button>
+            </div>
           ) : (
             selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={indentWidth} count={1} />
           )}
 
           <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
 
-          <div className={this._classNames.dropIcon}>
+          <div className={this._classNames.dropIcon} role="presentation">
             <Icon iconName="Tag" />
           </div>
-          <button
-            data-is-focusable={false}
-            type="button"
-            className={this._classNames.expand}
-            onClick={this._onToggleClick}
-            aria-expanded={group ? !group.isCollapsed : undefined}
-            aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
-            {...expandButtonProps}
-          >
-            <Icon
-              className={this._classNames.expandIsCollapsed}
-              iconName={expandButtonIcon || (isRTL ? 'ChevronLeftMed' : 'ChevronRightMed')}
-            />
-          </button>
+          <div role="gridcell">
+            <button
+              data-is-focusable={false}
+              type="button"
+              className={this._classNames.expand}
+              onClick={this._onToggleClick}
+              aria-expanded={!this.state.isCollapsed}
+              {...expandButtonProps}
+            >
+              <Icon
+                className={this._classNames.expandIsCollapsed}
+                iconName={expandButtonIcon || (isRTL ? 'ChevronLeftMed' : 'ChevronRightMed')}
+              />
+            </button>
+          </div>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
           {isLoadingVisible && <Spinner label={loadingText} />}
@@ -221,14 +223,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
   }
 
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
-    const { group } = props;
+    const { group, ariaColSpan } = props;
 
     if (!group) {
       return null;
     }
 
     return (
-      <div className={this._classNames.title}>
+      <div className={this._classNames.title} role="gridcell" aria-colcount={ariaColSpan}>
         <span>{group.name}</span>
         {
           // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular

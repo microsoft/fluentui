@@ -95,6 +95,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       usePageCache,
       onShouldVirtualize,
       theme,
+      role = 'treegrid',
       styles,
       compact,
       listProps = {},
@@ -126,7 +127,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         ) : (
           <List
             ref={this._list}
-            role="presentation"
+            role={role}
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
