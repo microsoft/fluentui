@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { MenuContext, useMenuContext } from './useMenu';
+import { MenuContextProvider } from './menuContext';
 import { useEventListener } from '../../../../react-component-event-listener';
 
 export const Menu = props => {
-  const { children, trigger = null, open = false, index = undefined } = props;
-  const triggerRef = React.useRef();
+  const { children, trigger = null, open = false } = props;
+  const triggerRef = React.useRef<HTMLDivElement>();
   const menuRef = React.useRef<HTMLDivElement>();
-
-  const { currentIndex } = useMenuContext();
 
   useEventListener({
     type: 'keydown',
@@ -30,32 +28,40 @@ export const Menu = props => {
       }
     },
     {
-      currentIndex: -1,
+      currentIndex: 1,
     },
   );
+
+  const setIndex = React.useCallback(
+    index => {
+      dispatch({ type: 'SET_INDEX', index });
+    },
+    [dispatch],
+  );
+
   return (
-    <MenuContext.Provider
+    <MenuContextProvider
       value={{
         currentIndex: state.currentIndex,
         triggerRef: trigger?.current ? trigger : triggerRef,
-        dispatch,
-        open: index ? currentIndex === index : isOpen || open,
+        setIndex,
+        open: isOpen,
         setOpen,
         menuRef,
       }}
     >
       <div
-        role="menu"
-        tabIndex={0}
-        // onMouseEnter={() => {
-        //   // setOpen(true);
-        // }}
-        // onMouseLeave={() => {
-        //   setOpen(false);
-        // }}
+        onBlur={({ relatedTarget }) => {
+          if (
+            !menuRef.current?.contains(relatedTarget as Node) &&
+            !triggerRef.current?.contains(relatedTarget as Node)
+          ) {
+            setOpen(false);
+          }
+        }}
       >
         {children}
       </div>
-    </MenuContext.Provider>
+    </MenuContextProvider>
   );
 };

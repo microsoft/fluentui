@@ -1,18 +1,43 @@
 import * as React from 'react';
-import { useMenuContext } from './useMenu';
+
 import { useEventListener } from '../../../../react-component-event-listener';
+import { useMenuListContext } from './menuListContext';
 
 export function MenuItem({ children, index, submenu = null }) {
-  const { currentIndex, dispatch } = useMenuContext();
   const itemRef = React.useRef<HTMLDivElement>();
+  const { currentIndex, setIndex, setOpen, triggerRef } = useMenuListContext();
+
+  const listener = React.useCallback(() => {
+    itemRef.current.focus();
+    setIndex(index);
+  }, [index, setIndex]);
+
+  const listenerKeyboard = React.useCallback(
+    e => {
+      if (e.keyCode === 37) {
+        setOpen(false);
+        triggerRef.current.focus();
+      }
+    },
+    [setOpen, triggerRef],
+  );
 
   useEventListener({
     type: 'mouseenter',
     targetRef: itemRef,
-    listener: e => {
-      itemRef.current.focus();
-      dispatch({ type: 'SET_INDEX', index });
-    },
+    listener,
+  });
+
+  useEventListener({
+    type: 'focus',
+    targetRef: itemRef,
+    listener,
+  });
+
+  useEventListener({
+    type: 'keyup',
+    targetRef: itemRef,
+    listener: listenerKeyboard,
   });
 
   return (

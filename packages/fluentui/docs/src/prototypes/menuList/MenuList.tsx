@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Popup, FocusZone, FocusZoneDirection } from '../../../../react-northstar';
-import { useMenuContext } from './useMenu';
+import { useMenuContext } from './menuContext';
+import { MenuListProvider } from './menuListContext';
 
-export function MenuList({ children }) {
-  const { triggerRef, open } = useMenuContext();
+export function MenuList({ children, id }) {
+  const { triggerRef, open, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
 
   return (
     <Popup
@@ -11,13 +12,23 @@ export function MenuList({ children }) {
       target={triggerRef}
       position="below"
       trapFocus
+      inline
       content={
         <FocusZone
           direction={FocusZoneDirection.vertical}
           isCircularNavigation
           shouldFocusInnerElementWhenReceivedFocus
         >
-          <div>{children}</div>
+          <MenuListProvider
+            value={{
+              currentIndex,
+              setIndex,
+              setOpen,
+              triggerRef,
+            }}
+          >
+            <div ref={menuRef}>{children}</div>
+          </MenuListProvider>
         </FocusZone>
       }
     />
