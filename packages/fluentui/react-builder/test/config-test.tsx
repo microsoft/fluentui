@@ -200,13 +200,14 @@ describe('config', () => {
       const MOCKED_DRAGGING_PROPS = {
         /* empty */
       };
-      const resolved = resolveDraggingElement('Unknown', MOCKED_DRAGGING_PROPS);
+      const resolved = resolveDraggingElement('Unknown', 'ModuleName', MOCKED_DRAGGING_PROPS);
 
       expect(resolved).toHaveProperty('uuid');
       expect(resolved).toMatchObject({
         $$typeof: 'Symbol(react.element)',
         type: 'Unknown',
         displayName: 'Unknown',
+        moduleName: 'ModuleName',
       });
     });
 
@@ -218,13 +219,14 @@ describe('config', () => {
           },
         },
       };
-      const resolved = resolveDraggingElement('JSONTreeElement', MOCKED_DRAGGING_PROPS);
+      const resolved = resolveDraggingElement('JSONTreeElement', 'ModuleName', MOCKED_DRAGGING_PROPS);
 
       expect(resolved).toHaveProperty('uuid');
       expect(resolved).toMatchObject({
         $$typeof: 'Symbol(react.element)',
         type: 'JSONTreeElement',
         displayName: 'JSONTreeElement',
+        moduleName: 'ModuleName',
         props: {
           content: 'Hello',
         },
@@ -235,13 +237,14 @@ describe('config', () => {
       const MOCKED_DRAGGING_PROPS = {
         FunctionalComponent: <FunctionalComponent content="FunctionalComponentContent" />,
       };
-      const resolved = resolveDraggingElement('FunctionalComponent', MOCKED_DRAGGING_PROPS);
+      const resolved = resolveDraggingElement('FunctionalComponent', 'ModuleName', MOCKED_DRAGGING_PROPS);
 
       expect(resolved).toHaveProperty('uuid');
       expect(resolved).toMatchObject({
         $$typeof: 'Symbol(react.element)',
         type: 'FunctionalComponent',
         displayName: 'FunctionalComponent',
+        moduleName: 'ModuleName',
         props: {
           content: 'FunctionalComponentContent',
         },
@@ -253,13 +256,14 @@ describe('config', () => {
         ClassComponent: <ClassComponent>ClassComponentChild</ClassComponent>,
       };
 
-      const resolved = resolveDraggingElement('ClassComponent', MOCKED_DRAGGING_PROPS);
+      const resolved = resolveDraggingElement('ClassComponent', 'ModuleName', MOCKED_DRAGGING_PROPS);
 
       expect(resolved).toHaveProperty('uuid');
       expect(resolved).toMatchObject({
         $$typeof: 'Symbol(react.element)',
         type: 'ClassComponent',
         displayName: 'ClassComponent',
+        moduleName: 'ModuleName',
         props: {
           children: 'ClassComponentChild',
         },
@@ -270,13 +274,14 @@ describe('config', () => {
       const MOCKED_DRAGGING_PROPS = {
         ElementInSlot: <ClassComponent slot={<FunctionalComponent />}>ClassComponentChild</ClassComponent>,
       };
-      const resolved = resolveDraggingElement('ElementInSlot', MOCKED_DRAGGING_PROPS);
+      const resolved = resolveDraggingElement('ElementInSlot', 'ModuleName', MOCKED_DRAGGING_PROPS);
 
       expect(resolved).toHaveProperty('uuid');
       expect(resolved).toMatchObject({
         $$typeof: 'Symbol(react.element)',
         type: 'ClassComponent',
         displayName: 'ElementInSlot',
+        moduleName: 'ModuleName',
         props: {
           slot: {
             $$typeof: 'Symbol(react.element)',

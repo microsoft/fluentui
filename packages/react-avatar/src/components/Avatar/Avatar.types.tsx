@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { BadgeProps } from '../Badge/index';
 import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
 

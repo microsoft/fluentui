@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
 
-// tslint:disable-next-line:no-any
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Renders the badge using a custom color to be inlined using  `style`.

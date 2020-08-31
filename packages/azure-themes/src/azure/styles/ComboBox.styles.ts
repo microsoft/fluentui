@@ -1,7 +1,6 @@
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Depths } from '../AzureDepths';
 import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -12,7 +11,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
   return {
     root: {
       height: StyleConstants.inputControlHeight,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       lineHeight: StyleConstants.inputControlHeight,
       selectors: {
         '.ms-Button': {
@@ -21,8 +20,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
           paddingTop: '5px',
         },
         '.ms-Button:hover': {
-          backgroundColor: semanticColors.bodyBackground,
-          color: extendedSemanticColors.primaryButtonTextHovered,
+          backgroundColor: semanticColors.buttonBackgroundHovered,
         },
         '&.is-open': {
           borderColor: semanticColors.focusBorder,
@@ -44,14 +42,19 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       },
     },
     rootDisabled: {
+      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       selectors: {
         '.ms-Button': {
-          backgroundColor: semanticColors.disabledBackground,
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
           color: semanticColors.inputText,
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.disabledBackground,
           color: semanticColors.inputText,
+        },
+        '.ms-ComboBox-Input': {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+          color: semanticColors.primaryButtonTextDisabled,
         },
       },
     },
@@ -84,18 +87,18 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     optionsContainer: {
       verticalAlign: 'middle',
       selectors: {
         '.ms-ComboBox-header': {
           color: semanticColors.inputText,
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
         },
         '.ms-ComboBox-option': {
           color: semanticColors.bodyText,
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.menuItemBackgroundHovered,
