@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Status } from '../Status/Status';
 import { StoryExample } from '../utils/StoryExample';
 
-// tslint:disable:no-any
-
 export const StatusCss = () => (
   <StoryExample title="Status (css)">
     <Status size="smallest" state="error" />

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-button_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ghost prop for stealth styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d9de3d77bb24ac881fa63b8cf72e6d56d53d97ad",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@fluentui/react-button_v0.10.3",
       "version": "0.10.3",

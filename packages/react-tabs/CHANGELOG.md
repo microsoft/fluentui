@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.4.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v0.2.14..@fluentui/react-tabs_v0.4.0)
+
+### Minor changes
+
+- Update to use merge-styles instead of scss; move scss code to next folder. ([PR #14725](https://github.com/microsoft/fluentui/pull/14725) by xgao@microsoft.com)
 
 ## [0.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.2.14)
 
