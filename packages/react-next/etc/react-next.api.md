@@ -1086,24 +1086,6 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
-export interface IMaskedTextFieldState {
-    // (undocumented)
-    changeSelectionData: {
-        changeType: 'default' | 'backspace' | 'delete' | 'textPasted';
-        selectionStart: number;
-        selectionEnd: number;
-    } | null;
-    // (undocumented)
-    isFocused: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IMaskValue" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    maskCharData: IMaskValue[];
-    // (undocumented)
-    moveCursorOnMouseUp: boolean;
-}
-
-// @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
     checkmarkIcon: IStyle;

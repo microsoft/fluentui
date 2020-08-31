@@ -16,7 +16,7 @@ import {
 } from './inputMask';
 import { useConst } from '@uifabric/react-hooks';
 
-export interface IMaskedTextFieldState {
+interface IMaskedTextFieldState {
   maskCharData: IMaskValue[];
   isFocused: boolean;
   moveCursorOnMouseUp: boolean;
