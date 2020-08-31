@@ -110,6 +110,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-posinset={ariaPosInSet}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}
+        aria-label={group.ariaLabel || group.name}
         aria-expanded={!this.state.isCollapsed}
         aria-level={groupLevel + 1}
       >

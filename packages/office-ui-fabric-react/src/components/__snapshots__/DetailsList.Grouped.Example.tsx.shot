@@ -1240,6 +1240,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
+                          aria-label="Color: \\"red\\""
                           aria-level={1}
                           aria-posinset={1}
                           aria-setsize={3}
@@ -2629,6 +2630,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
+                          aria-label="Color: \\"green\\""
                           aria-level={1}
                           aria-posinset={2}
                           aria-setsize={3}
@@ -3048,6 +3050,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
+                          aria-label="Color: \\"blue\\""
                           aria-level={1}
                           aria-posinset={3}
                           aria-setsize={3}
