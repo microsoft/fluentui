@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ResponsiveMode: remove findDomNode",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-26T14:46:04.834Z"
+}
