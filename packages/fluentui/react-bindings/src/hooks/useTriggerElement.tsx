@@ -48,6 +48,7 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
     React.useEffect(() => {
       if (ref.current) {
         if (isDisabledInteractive(ref.current)) {
+          // eslint-disable-next-line no-console
           console.warn(
             [
               'useTriggerElement(): Disabled elements should used as a "trigger" accurately as it may lead to ',

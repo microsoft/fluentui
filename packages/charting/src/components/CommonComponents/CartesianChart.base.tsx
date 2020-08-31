@@ -2,46 +2,46 @@ import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps, IYValueHover } from './ChartHelper.types';
-
+import {
+  ICartesianChartStyles,
+  ICartesianChartStyleProps,
+  IModifiedCartesianChartProps,
+  IYValueHover,
+} from './CartesianChart.types';
 import {
   createNumericXAxis,
+  getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
-  fitContainer,
-  IMargins,
-  IXAxisParams,
-  IYAxisParams,
   additionalMarginRight,
+  IMargins,
+  getMinMaxOfYAxis,
 } from '../../utilities/index';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
-const getClassNames = classNamesFunction<IChartHelperStyleProps, IChartHelperStyles>();
-export interface IContainerValues {
-  width: number;
-  height: number;
-  shouldResize: boolean;
-  reqID: number;
-}
-export interface IWrapperState {
+const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
+
+export interface ICartesianChartState {
   containerWidth: number;
   containerHeight: number;
   _width: number;
   _height: number;
 }
 
-export class ChartHelperBaseComponent extends React.Component<IChartHelperProps, IWrapperState> {
-  private _classNames: IProcessedStyleSet<IChartHelperStyles>;
+export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
+  private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
-  private containerParams: IContainerValues;
+  private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
+  private _reqID: number;
   private _isRtl: boolean = getRTL();
 
-  constructor(props: IChartHelperProps) {
+  constructor(props: IModifiedCartesianChartProps) {
     super(props);
     this.state = {
       containerHeight: 0,
@@ -63,26 +63,34 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
   }
 
   public componentWillUnmount(): void {
-    cancelAnimationFrame(this.containerParams.reqID);
+    cancelAnimationFrame(this._reqID);
   }
 
-  public componentDidUpdate(prevProps: IChartHelperProps): void {
+  public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, points, maxOfYVal, calloutProps, yAxisTickFormat } = this.props;
+    const { calloutProps, isXAxisDateType, points, chartType } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
+    // Callback for margins to the chart
+    this.props.getmargins(this.margins);
+
     const XAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
+      domainNRangeValues: getDomainNRangeValues(
+        points,
+        this.margins,
+        this.state.containerWidth,
+        chartType,
+        isXAxisDateType,
+        this._isRtl,
+      ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
-      points: points,
     };
 
     const YAxisParams = {
@@ -90,24 +98,28 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
       containerWidth: this.state.containerWidth,
       containerHeight: this.state.containerHeight,
       yAxisElement: this.yAxisElement,
-      yAxisTickFormat: yAxisTickFormat!,
+      yAxisTickFormat: this.props.yAxisTickFormat!,
       yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: this.props.yMinValue!,
-      yMaxValue: this.props.yMaxValue!,
-      finalYMaxVal: maxOfYVal,
-      finalYMinVal: 0,
+      yMinValue: this.props.yMinValue || 0,
+      yMaxValue: this.props.yMaxValue || 0,
       tickPadding: 10,
-      showYAxisGridLines: true,
-      points,
+      maxOfYVal: this.props.maxOfYVal,
+      yMinMaxValues: getMinMaxOfYAxis(points, chartType),
     };
 
-    this._getData(XAxisParams, YAxisParams);
+    const xScale = this.props.isXAxisDateType
+      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
+      : createNumericXAxis(XAxisParams, this._isRtl);
+    const yScale = createYAxis(YAxisParams, this._isRtl);
 
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
+    // Callback function for chart, returns axis
+    this._getData(xScale, yScale);
+
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
       width: this.state._width,
       height: this.state._height,
-      className,
+      className: this.props.className,
       isRtl: this._isRtl,
     });
     const svgDimensions = {
@@ -116,10 +128,8 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
     };
     const children = this.props.children({
       ...this.state,
-      xScale: this.props.isXAxisDateType
-        ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
-        : createNumericXAxis(XAxisParams, this._isRtl),
-      yScale: createYAxis(YAxisParams, this._isRtl),
+      xScale,
+      yScale,
     });
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
@@ -135,7 +145,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
-              id="xAxisGElement"
+              id={`xAxisGElement${this.idForGraph}`}
               transform={`translate(0, ${svgDimensions.height - 35})`}
               className={this._classNames.xAxis}
             />
@@ -143,7 +153,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
-              id="yAxisGElement"
+              id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
                 this._isRtl ? svgDimensions.width - this.margins.right! - additionalMarginRight : 40
               }, 0)`}
@@ -156,32 +166,42 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
+          // need to handle for single callout (Future purpose)
           <Callout {...calloutProps}>
-            <div className={this._classNames.calloutContentRoot}>
-              <div
-                className={this._classNames.calloutDateTimeContainer}
-                style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-              >
-                <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+            {this.props.isMultiStackCallout ? (
+              <div className={this._classNames.calloutContentRoot}>
+                <div
+                  className={this._classNames.calloutDateTimeContainer}
+                  style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+                >
+                  <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+                </div>
+                <div
+                  className={this._classNames.calloutInfoContainer}
+                  style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+                >
+                  {calloutProps!.YValueHover &&
+                    calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+                      const isLast: boolean = index + 1 === yValues.length;
+                      return (
+                        <div
+                          key={`callout-content-${index}`}
+                          style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                        >
+                          {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-              <div
-                className={this._classNames.calloutInfoContainer}
-                style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-              >
-                {calloutProps!.YValueHover &&
-                  calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-                    const isLast: boolean = index + 1 === yValues.length;
-                    return (
-                      <div
-                        key={`callout-content-${index}`}
-                        style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
-                      >
-                        {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+            ) : (
+              <ChartHoverCard
+                XValue={calloutProps.XValue}
+                Legend={calloutProps.legend!}
+                YValue={calloutProps.YValue!}
+                color={calloutProps.color!}
+              />
+            )}
           </Callout>
         )}
       </div>
@@ -262,32 +282,35 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
   }
 
   private _fitParentContainer(): void {
-    const reqParams = {
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
-      hideLegend: this.props.hideLegend!,
-      legendContainer: this.legendContainer,
-      container: this.props.parentRef ? this.props.parentRef : this.chartContainer,
-    };
-    this.containerParams = fitContainer(reqParams);
-    if (this.containerParams.shouldResize) {
-      this.setState({
-        containerWidth: this.containerParams.width,
-        containerHeight: this.containerParams.height,
-      });
-    }
+    const { containerWidth, containerHeight } = this.state;
+
+    this._reqID = requestAnimationFrame(() => {
+      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+      const legendContainerHeight =
+        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+        parseFloat(legendContainerComputedStyles.marginTop || '0') +
+        parseFloat(legendContainerComputedStyles.marginBottom || '0');
+
+      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+      const currentContainerWidth = container.getBoundingClientRect().width;
+      const currentContainerHeight =
+        container.getBoundingClientRect().height > legendContainerHeight
+          ? container.getBoundingClientRect().height
+          : 350;
+      const shouldResize =
+        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
+      if (shouldResize) {
+        this.setState({
+          containerWidth: currentContainerWidth,
+          containerHeight: currentContainerHeight - legendContainerHeight,
+        });
+      }
+    });
   }
 
-  private _getData = (XAxisParams: IXAxisParams, YAxisParams: IYAxisParams) => {
-    const axis = this.props.isXAxisDateType
-      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
-      : createNumericXAxis(XAxisParams, this._isRtl);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getData = (xScale: any, yScale: any) => {
     this.props.getGraphData &&
-      this.props.getGraphData(
-        axis,
-        createYAxis(YAxisParams, this._isRtl),
-        this.state.containerHeight,
-        this.state.containerWidth,
-      );
+      this.props.getGraphData(xScale, yScale, this.state.containerHeight, this.state.containerWidth);
   };
 }

@@ -163,7 +163,6 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     return (
       <div className={rootStyle}>
         <AreaChart
-          showYAxisGridLines={true}
           height={400}
           width={650}
           data={chartData}

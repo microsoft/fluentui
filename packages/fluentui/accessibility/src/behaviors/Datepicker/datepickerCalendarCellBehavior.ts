@@ -10,6 +10,7 @@ export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCel
   attributes: {
     root: {
       'aria-selected': props.selected || false,
+      ...(props.disabled && { 'aria-disabled': true }),
     },
   },
 });
@@ -17,4 +18,7 @@ export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCel
 export type DatepickerCalendarCellBehaviorProps = {
   /** Cell can be selected. */
   selected: boolean;
+
+  /** Cell is disabled. */
+  disabled: boolean;
 };

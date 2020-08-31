@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, ILinkStyleProps } from '@fluentui/react-link';
+import { Link, ILinkStyleProps } from '@fluentui/react-link/lib/next';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Customizer } from '@uifabric/utilities';
 

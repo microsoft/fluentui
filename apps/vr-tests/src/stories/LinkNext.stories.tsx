@@ -3,41 +3,31 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Customizer, Link, ILinkStyleProps, ThemeProvider } from '@fluentui/react-next';
-
-const customStyles = { root: { background: 'lightblue' } };
-const themedStyles = (props: ILinkStyleProps) => ({
-  root: {
-    background: props.theme.palette.greenLight,
-  },
-});
-const scopedSettings = { Link: { styles: customStyles } };
+import { Link } from '@fluentui/react-next';
 
 storiesOf('Link Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener
-        steps={new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .executeScript(
-            "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-          )
-          .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
-          .snapshot('focus', { cropTo: '.testWrapper' })
-          .executeScript(
-            "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-          )
-          .hover('.ms-Link')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('.ms-Link')
-          .hover('.ms-Link')
-          .snapshot('click', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('.ms-Link')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Link')
+        .hover('.ms-Link')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory(
     'Root',
@@ -62,19 +52,4 @@ storiesOf('Link Next', module)
     <Link disabled styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href and am disabled
     </Link>
-  ))
-  .addStory('Link styled via styles prop', () => (
-    <Link href="#" styles={customStyles}>
-      Link styled via styles prop
-    </Link>
-  ))
-  .addStory('Link styled via styles prop with theme value', () => (
-    <Link href="#" styles={themedStyles}>
-      Link styled via styles prop with theme value
-    </Link>
-  ))
-  .addStory("Link styled via Customizer's scoped settings", () => (
-    <Customizer scopedSettings={scopedSettings}>
-      <Link href="#">Link styled via Customizer's scoped settings</Link>
-    </Customizer>
   ));

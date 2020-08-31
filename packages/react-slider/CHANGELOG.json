@@ -2,6 +2,21 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-slider_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update from scss to merge-styles",
+            "author": "xgao@microsoft.com",
+            "commit": "bedcaa5ffaf4e537ca9cb546ffe25bf3da8f6ca5",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@fluentui/react-slider_v0.1.1",
       "version": "0.1.1",

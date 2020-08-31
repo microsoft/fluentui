@@ -51,10 +51,10 @@ export interface DatepickerCalendarHeaderProps
   /** Shorthand for the button that navigates to the next calendar screen. */
   nextButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
 
-  /** Decides whether next button is actionable._align_baseline */
+  /** Decides whether next button is actionable._align_baseline. */
   disabledNextButton?: boolean;
 
-  /** Decides whether previous button is actionable._align_baseline */
+  /** Decides whether previous button is actionable._align_baseline. */
   disabledPreviousButton?: boolean;
 }
 
@@ -119,7 +119,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
-            icon: {},
             title: props.prevMonthAriaLabel,
             direction: 'previous',
             disabled: props.disabledPreviousButton,
@@ -134,7 +133,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
-            icon: {},
             title: props.nextMonthAriaLabel,
             direction: 'next',
             disabled: props.disabledNextButton,
