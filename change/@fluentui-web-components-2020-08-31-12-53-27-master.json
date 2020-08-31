@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update fast packages and add font-family inherit to controls of button and accordion-item",
+  "packageName": "@fluentui/web-components",
+  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-31T19:53:27.723Z"
+}
