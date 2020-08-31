@@ -5618,8 +5618,6 @@ export interface IMessageBarState {
     expandSingleLine?: boolean;
     // (undocumented)
     labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)
