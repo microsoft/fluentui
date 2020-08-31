@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "minor",
   "comment": "Removing unused state from messageBar component.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
