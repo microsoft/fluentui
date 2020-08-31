@@ -261,10 +261,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       yAxisElement: node,
       yAxisTickFormat: this.props.yAxisTickFormat,
       yAxisTickCount: this._yAxisTickCount,
-      finalYMaxVal: yMax,
-      finalYMinVal: 0,
+      maxOfYVal: yMax,
       tickPadding: 10,
-      showYAxisGridLines: true,
     }, this._isRtl)
   }
 
