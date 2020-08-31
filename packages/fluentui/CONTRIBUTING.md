@@ -142,7 +142,7 @@ lerna add @fluentui/react-proptypes packages/fluentui/react-northstar
 
 ## Development Notes
 
-I have been part of the FluentUI framework team for the past two months. During these months, I have tried to collect ideas, rules, guidelines and best practices that are not otherwise captured. Generally, the recommendation is that code and conformant test is the best way to learn up-to-date FluentUI idioms.
+I (@rymeskar) have been part of the FluentUI framework team for the past two months. During these months, I have tried to collect ideas, rules, guidelines and best practices that are not otherwise captured. Generally, the recommendation is that code and conformant test is the best way to learn up-to-date FluentUI idioms.
 
 ### Collection of Little Ideas
 
