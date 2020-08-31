@@ -60,6 +60,8 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
+  const ref = React.useRef<any>();
+
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     item: IFloatingSuggestionItemProps<IPersonaProps>,
@@ -159,6 +161,15 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
+    // Clear the input if the user types a semicolon or comma
+    // This is meant to be an example of using the forward ref,
+    // feel free to comment out if it impacts your testing
+    const lastCharIndex = filterText.length - 1;
+    const lastChar = filterText[lastCharIndex];
+    if (lastChar === ';' || lastChar === ',') {
+      ref.current?.clearInput();
+    }
+
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
@@ -200,6 +211,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   return (
     <>
       <UnifiedPeoplePicker
+        componentRef={ref}
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         inputProps={inputProps}

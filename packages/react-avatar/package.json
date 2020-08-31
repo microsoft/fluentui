@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@fluentui/react-conformance": "^0.1.0",
     "@fluentui/storybook": "^0.4.0",
     "@types/enzyme": "3.10.3",

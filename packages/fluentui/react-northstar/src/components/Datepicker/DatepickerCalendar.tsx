@@ -252,7 +252,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const changeMonth = (nextMonth: boolean) => {
     const newNavigatedDate = navigateToNewDate(normalizedGridDate, 'Month', nextMonth ? 1 : -1, restrictedDatesOptions);
-
     if (!!newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);
       setShouldFocusInDayGrid(false);
@@ -262,7 +261,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(normalizedGridDate)) >= 0 : false;
   const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(normalizedGridDate), maxDate) >= 0 : false;
-
   React.useEffect(() => {
     if (shouldFocusInDayGrid) {
       focusDateRef.current?.focus();
