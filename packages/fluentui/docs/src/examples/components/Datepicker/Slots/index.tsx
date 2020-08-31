@@ -25,6 +25,11 @@ const Usage = () => (
       examplePath="components/Datepicker/Slots/DatepickerHeaderCellExample"
     />
     <ComponentExample
+      title="Clearable Input"
+      description="The user can clear selected date by clicking on the cancel button."
+      examplePath="components/Datepicker/Slots/DatepickerExampleClearable"
+    />
+    <ComponentExample
       title="Custom header slot"
       description={
         <>

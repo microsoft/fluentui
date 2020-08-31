@@ -9,17 +9,17 @@ const DatepickerHeaderExample = () => {
         header: {
           children: (ComponentType, props) => {
             return (
-              <Flex space='between' hAlign='center'>
+              <Flex space="between" hAlign="center">
                 <Datepicker.CalendarHeaderAction
                   onClick={props.onPreviousClick}
-                  direction='previous'
+                  direction="previous"
                   title={props.prevMonthAriaLabel}
                   disabled={props.disabledPreviousButton}
                 />
                 <Text content={props.label} styles={{ paddingTop: pxToRem(5) }} />
                 <Datepicker.CalendarHeaderAction
                   onClick={props.onNextClick}
-                  direction='next'
+                  direction="next"
                   title={props.nextMonthAriaLabel}
                   disabled={props.disabledNextButton}
                 />
