@@ -7,6 +7,7 @@ export const Menu = props => {
   const triggerRef = React.useRef<HTMLDivElement>();
   const menuRef = React.useRef<HTMLDivElement>();
 
+  // Close on ESC
   useEventListener({
     type: 'keydown',
     target: document,
@@ -17,32 +18,29 @@ export const Menu = props => {
     },
   });
 
-  const [isOpen, setOpen] = React.useState(open);
-  const [state, dispatch] = React.useReducer(
-    (prevState, action) => {
-      switch (action.type) {
-        case 'SET_INDEX':
-          return { ...prevState, currentIndex: action.index };
-        default:
-          return prevState;
-      }
+  // Close on scroll
+  useEventListener({
+    type: 'wheel',
+    target: document,
+    listener: e => {
+      setOpen(false);
     },
-    {
-      currentIndex: 1,
+  });
+  useEventListener({
+    type: 'touchmove',
+    target: document,
+    listener: e => {
+      setOpen(false);
     },
-  );
+  });
 
-  const setIndex = React.useCallback(
-    index => {
-      dispatch({ type: 'SET_INDEX', index });
-    },
-    [dispatch],
-  );
+  const [isOpen, setOpen] = React.useState(open);
+  const [currentIndex, setIndex] = React.useState(1);
 
   return (
     <MenuContextProvider
       value={{
-        currentIndex: state.currentIndex,
+        currentIndex,
         triggerRef: trigger?.current ? trigger : triggerRef,
         setIndex,
         open: isOpen,
