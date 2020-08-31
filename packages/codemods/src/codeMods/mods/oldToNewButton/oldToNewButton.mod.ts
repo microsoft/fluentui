@@ -7,11 +7,15 @@ const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
       const tags = findJsxTag(file, 'DefaultButton');
-      renameProp(tags, 'toggled', 'checked');
+      const res = renameProp(tags, 'toggled', 'checked');
+      if (res.ok) {
+        return Ok({ logs: ['Renaming completed.'] });
+      } else {
+        return Err({ reason: `Unable to complete renaming: ${res.value}` });
+      }
     } catch (e) {
-      return Err({ reason: 'Error' });
+      return Err({ reason: e });
     }
-    return Ok({ logs: ['Upgrade completed'] });
   },
   version: '100000',
   name: 'oldToNewButton',

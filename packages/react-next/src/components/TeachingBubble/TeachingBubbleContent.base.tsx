@@ -1,62 +1,47 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Utilities';
-import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
-import { ITeachingBubbleState } from './TeachingBubble.base';
+import { classNamesFunction, KeyCodes } from '../../Utilities';
+import {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubble,
+} from './TeachingBubble.types';
 import { PrimaryButton, DefaultButton, IconButton } from '../../compat/Button';
-import { Image, ImageFit } from '../../Image';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
+import { Image } from '../../Image';
+import { useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
+import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
-export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-  // Specify default props values
-  public static defaultProps = {
-    hasCondensedHeadline: false,
-    imageProps: {
-      imageFit: ImageFit.cover,
-      width: 364,
-      height: 130,
-    },
-  };
+const useComponentRef = (
+  componentRef: React.Ref<ITeachingBubble> | undefined,
+  rootElementRef: React.RefObject<HTMLDivElement>,
+) => {
+  React.useImperativeHandle(
+    componentRef,
+    () => ({
+      focus: () => rootElementRef.current?.focus(),
+    }),
+    [rootElementRef],
+  );
+};
 
-  public rootElement = React.createRef<HTMLDivElement>();
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef(
+  (props, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const rootElementRef = React.useRef<HTMLDivElement>(null);
+    const documentRef = useDocument();
+    const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
-  constructor(props: ITeachingBubbleProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this.state = {};
-  }
-
-  public componentDidMount(): void {
-    if (this.props.onDismiss) {
-      document.addEventListener('keydown', this._onKeyDown, false);
-    }
-  }
-
-  public componentWillUnmount(): void {
-    if (this.props.onDismiss) {
-      document.removeEventListener('keydown', this._onKeyDown);
-    }
-  }
-
-  public focus(): void {
-    if (this.rootElement.current) {
-      this.rootElement.current.focus();
-    }
-  }
-
-  public render(): JSX.Element {
     const {
-      children,
       illustrationImage,
       primaryButtonProps,
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
       // eslint-disable-next-line deprecation/deprecation
-      hasCloseButton = this.props.hasCloseIcon,
+      hasCloseButton = props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
       hasSmallHeadline,
@@ -67,13 +52,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       ariaLabelledBy,
       footerContent: customFooterContent,
       focusTrapZoneProps,
-    } = this.props;
-
-    let imageContent;
-    let headerContent;
-    let bodyContent;
-    let footerContent;
-    let closeButton;
+    } = props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -85,6 +64,26 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
       secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
     });
+
+    const onKeyDown = React.useCallback(
+      (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
+        if (onDismiss) {
+          // eslint-disable-next-line deprecation/deprecation
+          if (ev.which === KeyCodes.escape) {
+            onDismiss(ev);
+          }
+        }
+      },
+      [onDismiss],
+    );
+
+    useOnEvent(documentRef, 'keydown', onKeyDown as (ev: Event) => void);
+
+    let imageContent: JSX.Element | undefined;
+    let headerContent: JSX.Element | undefined;
+    let bodyContent: JSX.Element | undefined;
+    let footerContent: JSX.Element | undefined;
+    let closeButton: JSX.Element | undefined;
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
@@ -111,13 +110,13 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       );
     }
 
-    if (children) {
-      const BodyContentWrapperAs = typeof children === 'string' ? 'p' : 'div';
+    if (props.children) {
+      const BodyContentWrapperAs = typeof props.children === 'string' ? 'p' : 'div';
 
       bodyContent = (
         <div className={classNames.body}>
           <BodyContentWrapperAs className={classNames.subText} id={ariaDescribedBy}>
-            {children}
+            {props.children}
           </BodyContentWrapperAs>
         </div>
       );
@@ -147,18 +146,20 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       );
     }
 
+    useComponentRef(props.componentRef, rootElementRef);
+
     return (
       <div
         className={classNames.content}
-        ref={this.rootElement}
+        ref={mergedRootRef}
         role={'dialog'}
         tabIndex={-1}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
-        data-is-focusable={true}
+        data-is-focusable
       >
         {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
+        <FocusTrapZone isClickableOutsideFocusTrap {...focusTrapZoneProps}>
           <div className={classNames.bodyContent}>
             {headerContent}
             {bodyContent}
@@ -168,14 +169,5 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
         </FocusTrapZone>
       </div>
     );
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onKeyDown = (e: any): void => {
-    if (this.props.onDismiss) {
-      if (e.which === KeyCodes.escape) {
-        this.props.onDismiss();
-      }
-    }
-  };
-}
+  },
+);

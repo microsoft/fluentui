@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update stated webpack version to match actual version used",
-  "packageName": "@uifabric/webpack-utils",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-08-19T23:32:04.451Z"
-}

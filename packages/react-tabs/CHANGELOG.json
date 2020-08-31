@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-tabs_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to use merge-styles instead of scss; move scss code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "84fb66faa186229dfbf011555eb1447c2401fe24",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/react-tabs_v0.2.14",
       "version": "0.2.14",

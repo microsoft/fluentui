@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.6.1)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.6.0..@fluentui/date-time-utilities_v7.6.1)
+
+### Patches
+
+- fixing negative date navigation by changing the date clone method from using strings to using the date object itself ([PR #14647](https://github.com/microsoft/fluentui/pull/14647) by lorejoh12@gmail.com)
 
 ## [7.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.6.0)
 

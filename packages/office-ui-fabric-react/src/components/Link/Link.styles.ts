@@ -1,10 +1,4 @@
-import {
-  getEdgeChromiumNoHighContrastAdjustSelector,
-  getGlobalClassNames,
-  HighContrastSelectorWhite,
-  HighContrastSelectorBlack,
-  HighContrastSelector,
-} from '../../Styling';
+import { getEdgeChromiumNoHighContrastAdjustSelector, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -68,11 +62,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         userSelect: 'text',
         borderBottom: '1px solid transparent', // For Firefox high contrast mode
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: '#FFFF00',
-          },
-          [HighContrastSelectorWhite]: {
-            color: '#00009F',
+          [HighContrastSelector]: {
+            color: 'LinkText',
           },
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
@@ -107,16 +98,19 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             textDecoration: 'underline',
 
             selectors: {
-              [HighContrastSelectorBlack]: {
-                color: '#FFFF00',
-              },
-              [HighContrastSelectorWhite]: {
-                color: '#00009F',
+              [HighContrastSelector]: {
+                color: 'LinkText',
               },
             },
           },
           '&:focus': {
             color: linkColor,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
           },
         },
       },
