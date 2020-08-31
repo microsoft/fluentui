@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Export ThemeContext.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-28T18:34:30.015Z"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Aug 2020 18:11:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.0)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.10.0..@fluentui/react-theme-provider_v0.11.0)
+
+### Minor changes
+
+- Export ThemeContext. ([PR #14803](https://github.com/microsoft/fluentui/pull/14803) by xgao@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.10.0)
 
