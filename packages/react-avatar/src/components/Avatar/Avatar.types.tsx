@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { StatusProps } from '../Status/index';
 import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
 

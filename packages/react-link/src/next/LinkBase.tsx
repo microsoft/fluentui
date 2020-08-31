@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { ILinkProps } from './Link.types';
-import { useLink } from './useLink';
+import { ILinkProps } from '../components/Link/Link.types';
+import { useLink } from '../components/Link/useLink';
 
 export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
   (props, ref, options) => {

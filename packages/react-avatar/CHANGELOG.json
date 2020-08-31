@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-avatar_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing explicit references to React",
+            "author": "elcraig@microsoft.com",
+            "commit": "2f79f1d332b447d38c382f67fd14af4b7d67bd29",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/react-avatar_v0.1.1",
       "version": "0.1.1",
