@@ -100,13 +100,19 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
   if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
     return format(
       localizationStrings.inputBoundedFormatString,
-      formatMonthDayYear(restrictedOptions.minDate),
-      formatMonthDayYear(restrictedOptions.maxDate),
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
     );
   } else if (!!restrictedOptions.minDate) {
-    return format(localizationStrings.inputMinBoundedFormatString, formatMonthDayYear(restrictedOptions.minDate));
+    return format(
+      localizationStrings.inputMinBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+    );
   } else if (!!restrictedOptions.maxDate) {
-    return format(localizationStrings.inputMaxBoundedFormatString, formatMonthDayYear(restrictedOptions.maxDate));
+    return format(
+      localizationStrings.inputMaxBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
+    );
   } else {
     return localizationStrings.inputAriaLabel;
   }
@@ -213,10 +219,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     debugName: Datepicker.displayName,
     actionHandlers: {
       open: e => {
-        if (!allowManualInput) {
-          e.preventDefault();
+        if (allowManualInput) {
+          setOpenState(!openState);
+        } else {
+          // Keep popup open in case we can only enter the date through calendar.
           setOpenState(true);
         }
+
+        e.preventDefault();
       },
     },
     rtl: context.rtl,

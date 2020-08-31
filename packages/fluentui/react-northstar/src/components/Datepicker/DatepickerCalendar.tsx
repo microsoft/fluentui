@@ -166,12 +166,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   };
 
   const getRidOfSecondsMinutesHours = (date: Date): Date => {
-    const result = new Date(date.getTime());
-    result.setSeconds(0, 0);
-    result.setMinutes(0);
-    result.setHours(0);
-    return result;
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   };
+
   const [normalizedGridDate, setNormalizedGridDate] = React.useState<Date>(() =>
     normalizeDateInGrid(gridNavigatedDate),
   );

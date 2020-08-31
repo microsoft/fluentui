@@ -71,7 +71,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
     isAllDaysOfWeekOutOfMonth = true;
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-      const originalDate = new Date(date.toString());
+      const originalDate = new Date(date.getTime());
       const dayInfo: IDay = {
         key: date.toString(),
         date: date.getDate().toString(),
