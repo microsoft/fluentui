@@ -19,6 +19,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
+- Add `Popper` modifiers to fix initial positioning @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
+- Add `Popper` warning when children with `autoFocus` prop are present @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
