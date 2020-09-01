@@ -502,6 +502,21 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const hotkeys = {
+    'Ctrl+c': () => {
+      if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
+        dragAndDropData.current.position = { x: -300, y: -300 };
+        dispatch({ type: 'DRAG_CLONE' });
+      }
+    },
+    'Ctrl+v': () => {
+      if (state.draggingElement) {
+        dispatch({
+          type: 'DRAG_DROP',
+          dropParent: dragAndDropData.current.dropParent,
+          dropIndex: dragAndDropData.current.dropIndex,
+        });
+      }
+    },
     'Ctrl+z': handleUndo,
     'Shift+P': handleGoToParentComponent,
     'Ctrl+Shift+Z': handleRedo,
@@ -524,10 +539,10 @@ export const Designer: React.FunctionComponent = () => {
   };
 
   const handleKeyDown = React.useCallback(
-    e => {
+    (e: KeyboardEvent) => {
       let command = '';
       command += e.altKey ? 'Alt+' : '';
-      command += e.ctrlKey | e.metaKey ? 'Ctrl+' : '';
+      command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
       command += e.shiftKey ? 'Shift+' : '';
       command += e.key;
       hotkeys.hasOwnProperty(command) && hotkeys[command]();

@@ -164,14 +164,14 @@ export const defaultTests: TestObject = {
         const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
         try {
-          expect(component.type()).toEqual(MyComponent);
+          expect(component.type()).toBe(MyComponent);
         } catch (err) {
-          expect(component.type()).not.toEqual(Component);
+          expect(component.type()).not.toBe(Component);
           const comp = component
             .find('[as]')
             .last()
             .prop('as');
-          expect(comp).toEqual(MyComponent);
+          expect(comp).toBe(MyComponent);
         }
       });
     }
@@ -194,10 +194,10 @@ export const defaultTests: TestObject = {
         const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
         try {
-          expect(component.type()).toEqual(MyComponent);
+          expect(component.type()).toBe(MyComponent);
         } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(component.prop('as')).toEqual(MyComponent);
+          expect(component.type()).not.toBe(Component);
+          expect(component.prop('as')).toBe(MyComponent);
         }
       });
     }
@@ -241,10 +241,10 @@ export const defaultTests: TestObject = {
           const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
           try {
-            expect(component.is(tag)).toEqual(true);
+            expect(component.is(tag)).toBe(true);
           } catch (err) {
-            expect(component.type()).not.toEqual(Component);
-            expect(component.prop('as')).toEqual(tag);
+            expect(component.type()).not.toBe(Component);
+            expect(component.prop('as')).toBe(tag);
           }
         });
       });

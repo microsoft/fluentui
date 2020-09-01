@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.133.0",
+  "version": "7.134.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -51,7 +51,7 @@
     "@uifabric/jest-serializer-merge-styles": "^7.2.0",
     "@uifabric/test-utilities": "^7.2.0",
     "@uifabric/webpack-utils": "^7.0.24",
-    "@fluentui/react-conformance": "^0.1.0",
+    "@fluentui/react-conformance": "^0.1.1",
     "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -77,6 +77,7 @@
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/styling": "^7.16.0",
     "@uifabric/utilities": "^7.31.0",
+    "@fluentui/react-window-provider": "^0.3.0",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },

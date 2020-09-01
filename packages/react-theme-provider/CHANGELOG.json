@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 18:11:10 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export ThemeContext.",
+            "author": "xgao@microsoft.com",
+            "commit": "6d5b28c97bcbef0d79fccfa98f903e5c3ed42460",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@fluentui/react-theme-provider_v0.10.0",
       "version": "0.10.0",

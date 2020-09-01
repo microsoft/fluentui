@@ -64,7 +64,7 @@ describe('Menu', () => {
       menu
         .find('MenuItem')
         .at(1)
-        .simulate('mouseenter');
+        .simulate('click');
 
       expect(menu.find('MenuItem').length).toBe(4);
 
