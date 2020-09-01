@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, IMaskTextFieldProps } from '../TextField.types';
+import { ITextField, IMaskedTextFieldProps } from '../TextField.types';
 import { KeyCodes, IRefObject } from '../../../Utilities';
 import {
   clearNext,
@@ -27,73 +27,77 @@ interface IMaskedTextFieldState {
   } | null;
 }
 
+interface IMaskedTextField extends ITextField {
+  /**
+   * The value of all filled format characters, or undefined if not all format characters are filled.
+   */
+  value: string | undefined;
+  setValue: (newValue: string) => void;
+}
 const COMPONENT_NAME = 'MaskedTextField';
 
 const useComponentRef = (
   componentRef: IRefObject<ITextField> | undefined,
-  maskCharData: IMaskValue[],
-  textField: ITextField | null,
+  internalState: IMaskedTextFieldState,
+  textField: React.RefObject<ITextField>,
   setValue: (newValue: string) => void,
 ) => {
   React.useImperativeHandle(
     componentRef,
-    () => ({
-      /**
-       * @returns The value of all filled format characters or undefined if not all format characters are filled
-       */
-      get value(): string | undefined {
+    (): IMaskedTextField => ({
+      get value() {
         let value = '';
 
-        for (let i = 0; i < maskCharData.length; i++) {
-          if (!maskCharData[i].value) {
+        for (let i = 0; i < internalState.maskCharData.length; i++) {
+          if (!internalState.maskCharData[i].value) {
             return undefined;
           }
-          value += maskCharData[i].value;
+          value += internalState.maskCharData[i].value;
         }
         return value;
       },
 
       get selectionStart(): number | null {
-        return textField && textField.selectionStart !== null ? textField.selectionStart : -1;
+        return textField.current && textField.current.selectionStart !== null ? textField.current.selectionStart : -1;
       },
 
       get selectionEnd(): number | null {
-        return textField && textField.selectionEnd ? textField.selectionEnd : -1;
+        return textField.current && textField.current.selectionEnd ? textField.current.selectionEnd : -1;
       },
 
       setValue,
 
       focus(): void {
-        textField && textField.focus();
+        textField.current && textField.current.focus();
       },
 
       blur(): void {
-        textField && textField.blur();
+        textField.current && textField.current.blur();
       },
 
       select(): void {
-        textField && textField.select();
+        textField.current && textField.current.select();
       },
 
       setSelectionStart(value: number): void {
-        textField && textField.setSelectionStart(value);
+        textField.current && textField.current.setSelectionStart(value);
       },
 
       setSelectionEnd(value: number): void {
-        textField && textField.setSelectionEnd(value);
+        textField.current && textField.current.setSelectionEnd(value);
       },
 
       setSelectionRange(start: number, end: number): void {
-        textField && textField.setSelectionRange(start, end);
+        textField.current && textField.current.setSelectionRange(start, end);
       },
     }),
-    [maskCharData, setValue, textField],
+    [internalState, setValue, textField],
   );
 };
 
 export const DEFAULT_MASK_CHAR = '_';
 
-export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskTextFieldProps>((props, ref) => {
+export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskedTextFieldProps>((props, ref) => {
   const textField = React.useRef<ITextField>(null);
 
   const {
@@ -127,24 +131,27 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskTextFieldPr
    * @example
    *  `Phone Number: 12_ - 4___`
    */
-  const [displayValue, setDisplayValue] = React.useState<string>(
+  const [displayValue, setDisplayValue] = React.useState<string>(() =>
     getMaskDisplay(mask, internalState.maskCharData, maskChar),
   );
 
-  const setValue = (newValue: string): void => {
-    let valueIndex = 0;
-    let charDataIndex = 0;
+  const setValue = React.useCallback(
+    (newValue: string): void => {
+      let valueIndex = 0;
+      let charDataIndex = 0;
 
-    while (valueIndex < newValue.length && charDataIndex < internalState.maskCharData.length) {
-      // Test if the next character in the new value fits the next format character
-      const testVal = newValue[valueIndex];
-      if (internalState.maskCharData[charDataIndex].format.test(testVal)) {
-        internalState.maskCharData[charDataIndex].value = testVal;
-        charDataIndex++;
+      while (valueIndex < newValue.length && charDataIndex < internalState.maskCharData.length) {
+        // Test if the next character in the new value fits the next format character
+        const testVal = newValue[valueIndex];
+        if (internalState.maskCharData[charDataIndex].format.test(testVal)) {
+          internalState.maskCharData[charDataIndex].value = testVal;
+          charDataIndex++;
+        }
+        valueIndex++;
       }
-      valueIndex++;
-    }
-  };
+    },
+    [internalState],
+  );
 
   const handleFocus = React.useCallback(
     (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -357,9 +364,9 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskTextFieldPr
     if (internalState.isFocused && maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);
     }
-  }, [internalState.isFocused, maskCursorPosition]);
+  });
 
-  useComponentRef(componentRef, internalState.maskCharData, textField.current, setValue);
+  useComponentRef(componentRef, internalState, textField, setValue);
 
   return (
     <TextField

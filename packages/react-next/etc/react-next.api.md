@@ -1081,7 +1081,7 @@ export enum ImageLoadState {
 }
 
 // @public
-export interface IMaskTextFieldProps extends ITextFieldProps {
+export interface IMaskedTextFieldProps extends ITextFieldProps {
     mask?: string;
     maskChar?: string;
     maskFormat?: {
@@ -2047,7 +2047,7 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const MaskedTextField: React.ForwardRefExoticComponent<IMaskTextFieldProps & React.RefAttributes<HTMLDivElement>>;
+export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{
