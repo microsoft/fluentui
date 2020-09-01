@@ -25,10 +25,12 @@ export const TabsStyles = css`
 
   .start {
     padding: 2px;
+    align-self: center;
   }
 
   .end {
     padding: 2px;
+    align-self: center;
   }
 
   .activeIndicator {
