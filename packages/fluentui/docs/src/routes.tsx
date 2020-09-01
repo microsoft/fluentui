@@ -2,7 +2,6 @@ import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
 import DocsBehaviorRoot from './components/DocsBehaviorRoot';
@@ -37,6 +36,10 @@ import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 
+const ExternalExampleLayout = React.lazy(() =>
+  import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
+);
+
 const _Builder = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
 }));
@@ -46,7 +49,6 @@ const Builder: React.FunctionComponent = () => (
     <_Builder />
   </LazyWithBabel>
 );
-
 const FullScreenPreview = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).FullScreenPreview,
 }));
