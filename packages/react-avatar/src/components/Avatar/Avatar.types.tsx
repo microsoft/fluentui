@@ -35,7 +35,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   classes?: { [key: string]: string };
 
   /** Style tokens */
-  tokens?: AvatarTokens;
+  tokens?: AvatarTokenSet;
 }
 
 /**
@@ -52,7 +52,7 @@ export type NumericSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 |
 /**
  * Style tokens for the Avatar
  */
-export type AvatarTokens = {
+export type AvatarTokenSet = {
   /** Size of the avatar.
    * @defaultvalue - The Avatar's `size` prop */
   size?: string;

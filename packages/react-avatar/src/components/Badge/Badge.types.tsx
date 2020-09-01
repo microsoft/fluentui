@@ -23,13 +23,13 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
 
   /** Style tokens */
-  tokens?: BadgeTokens;
+  tokens?: BadgeTokenSet;
 }
 
 /**
  * Style tokens for Badge
  */
-export type BadgeTokens = {
+export type BadgeTokenSet = {
   size?: string;
   borderColor?: string;
   borderWidth?: string;
