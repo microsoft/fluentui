@@ -1,8 +1,11 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { isIE11 } from 'office-ui-fabric-react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { className, theme, shouldHighlight, href } = props;
+  const { className, theme, shouldHighlight, href, isRtl } = props;
 
   return {
     root: [
@@ -72,6 +75,12 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
           path: {
             display: 'none',
           },
+          g: [
+            isRtl &&
+              !isIE11Var && {
+                textAnchor: 'end',
+              },
+          ],
         },
       },
     ],

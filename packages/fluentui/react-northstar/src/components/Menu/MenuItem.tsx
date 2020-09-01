@@ -1,4 +1,5 @@
 import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import { EventListener } from '@fluentui/react-component-event-listener';
 import {
   compose,
   focusAsync,
@@ -13,7 +14,7 @@ import {
   ComponentWithAs,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
-import { EventListener } from '@fluentui/react-component-event-listener';
+
 import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -303,6 +304,11 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
     };
 
+    const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
+      if (!isSubmenuOpen()) return;
+      trySetMenuOpen(false, e);
+    };
+
     const outsideClickHandler = (e: MouseEvent) => {
       if (!isSubmenuOpen()) return;
       if (
@@ -320,7 +326,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
         } else {
           // the menuItem element was clicked => toggle the open/close and stop propagation
-          trySetMenuOpen(active ? !menuOpen : true, e);
+          trySetMenuOpen(active && on !== 'hover' ? !menuOpen : true, e);
           e.stopPropagation();
           e.preventDefault();
         }
@@ -416,7 +422,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const trySetMenuOpen = (
       newValue: boolean,
-      e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
+      e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent | TouchEvent | WheelEvent,
       onStateChanged?: any,
     ) => {
       setMenuOpen(newValue);
@@ -510,6 +516,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             </Popper>
           </Ref>
           <EventListener listener={outsideClickHandler} target={context.target} type="click" />
+          <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+          <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
         </>
       ) : null;
 
@@ -575,6 +583,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         underlined: props.underlined,
         vertical: props.vertical,
         primary: props.primary,
+        on: props.on,
       },
       menu: {
         accessibility: submenuBehavior,
