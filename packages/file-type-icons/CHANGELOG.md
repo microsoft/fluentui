@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.1)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.15..@uifabric/file-type-icons_v7.6.1)
+
+### Patches
+
+- Adding .tsv as supported extension for spreadsheet filetype icon. ([PR #14742](https://github.com/microsoft/fluentui/pull/14742) by caperez@microsoft.com)
 
 ## [7.4.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.15)
 

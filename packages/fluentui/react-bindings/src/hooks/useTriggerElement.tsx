@@ -60,11 +60,10 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
           );
         }
 
-        const treeWalker = document.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
+        const treeWalker = ref.current.ownerDocument?.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
           acceptNode: isInteractiveFilter,
         });
-
-        while (treeWalker.nextNode()) {
+        while (treeWalker?.nextNode()) {
           const node = treeWalker.currentNode;
           const nodeStyles = node.ownerDocument?.defaultView?.getComputedStyle(node as Element);
 
