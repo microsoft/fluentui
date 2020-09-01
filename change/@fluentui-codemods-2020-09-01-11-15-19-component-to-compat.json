@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Codemods: Remove unneeded compat mods and refactor",
+  "packageName": "@fluentui/codemods",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-01T18:15:19.667Z"
+}
