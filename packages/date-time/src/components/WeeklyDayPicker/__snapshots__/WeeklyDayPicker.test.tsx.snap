@@ -1964,6 +1964,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseUp={[Function]}
           >
             <button
+              aria-current="date"
               aria-disabled={false}
               aria-label="January 1, 2019"
               aria-readonly={true}
@@ -4843,6 +4844,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseUp={[Function]}
           >
             <button
+              aria-current="date"
               aria-disabled={false}
               aria-label="January 1, 2019"
               aria-readonly={true}
