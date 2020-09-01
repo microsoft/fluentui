@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, ITextFieldProps } from '../TextField.types';
+import { ITextField, IMaskTextFieldProps } from '../TextField.types';
 import { KeyCodes, IRefObject } from '../../../Utilities';
 import {
   clearNext,
@@ -93,7 +93,7 @@ const useComponentRef = (
 
 export const DEFAULT_MASK_CHAR = '_';
 
-export const MaskedTextField = React.forwardRef<HTMLDivElement, ITextFieldProps>((props, ref) => {
+export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskTextFieldProps>((props, ref) => {
   const textField = React.useRef<ITextField>(null);
 
   const {

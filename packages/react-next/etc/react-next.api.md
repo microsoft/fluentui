@@ -1085,6 +1085,15 @@ export enum ImageLoadState {
     notLoaded = 0
 }
 
+// @public
+export interface IMaskTextFieldProps extends ITextFieldProps {
+    mask?: string;
+    maskChar?: string;
+    maskFormat?: {
+        [key: string]: RegExp;
+    };
+}
+
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
@@ -1974,11 +1983,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
-    mask?: string;
-    maskChar?: string;
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
@@ -2054,7 +2058,7 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const MaskedTextField: React.ForwardRefExoticComponent<ITextFieldProps & React.RefAttributes<HTMLDivElement>>;
+export const MaskedTextField: React.ForwardRefExoticComponent<IMaskTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{

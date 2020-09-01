@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, ITextFieldProps } from '../TextField.types';
+import { ITextField, IMaskTextFieldProps } from '../TextField.types';
 import { initializeComponentRef, KeyCodes } from '../../../Utilities';
 
 import {
@@ -35,8 +35,8 @@ export const DEFAULT_MASK_CHAR = '_';
 
 type InputChangeType = 'default' | 'backspace' | 'delete' | 'textPasted';
 
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-  public static defaultProps: ITextFieldProps = {
+export class MaskedTextField extends React.Component<IMaskTextFieldProps, IMaskedTextFieldState> implements ITextField {
+  public static defaultProps: IMaskTextFieldProps = {
     maskChar: DEFAULT_MASK_CHAR,
     maskFormat: DEFAULT_MASK_FORMAT_CHARS,
   };
@@ -70,7 +70,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     selectionEnd: number;
   } | null;
 
-  constructor(props: ITextFieldProps) {
+  constructor(props: IMaskTextFieldProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -88,7 +88,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     };
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps) {
+  public UNSAFE_componentWillReceiveProps(newProps: IMaskTextFieldProps) {
     if (newProps.mask !== this.props.mask || newProps.value !== this.props.value) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
       newProps.value !== undefined && this.setValue(newProps.value);
