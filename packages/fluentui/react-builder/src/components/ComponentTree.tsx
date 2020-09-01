@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { TreeItemProps, Tree, MenuButton, treeBehavior, treeAsListBehavior } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
-import { TreeItemProps, Tree, treeBehavior } from '@fluentui/react-northstar';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
 
@@ -10,8 +10,33 @@ export type ComponentTreeProps = {
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
-  onDeleteComponent?: () => void;
+  onDeleteSelectedComponent?: () => void;
+  onAddComponent?: (uuid: string, where: string) => void;
 };
+
+const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
+const behavior = isMac ? treeAsListBehavior : treeBehavior;
+
+const macKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  const keyCode = e.keyCode || e.which;
+  const F10 = 121;
+  if (e.shiftKey && keyCode === F10) {
+    const activeElement = document.activeElement;
+    if (activeElement) {
+      const event = new MouseEvent('contextmenu', { bubbles: true });
+      activeElement.dispatchEvent(event);
+    }
+  }
+};
+
+const treeKeyDown = isMac ? macKeyDown : undefined;
+
+const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
+  { content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
+  { content: 'Add before', onClick: () => handleAddComponent(uuid, 'before') },
+  { content: 'Add child', onClick: () => handleAddComponent(uuid, 'child') },
+  { content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
+];
 
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
@@ -19,7 +44,9 @@ const jsonTreeToTreeItems: (
   handleSelectedComponent: TreeItemProps['onTitleClick'],
   handleClone: React.MouseEventHandler<HTMLButtonElement>,
   handleMove: React.MouseEventHandler<HTMLButtonElement>,
-  handleDelete: React.MouseEventHandler<HTMLButtonElement>,
+  handleDeleteSelected: React.MouseEventHandler<HTMLButtonElement>,
+  handleAddComponent: (uuid, where) => void,
+  handleDeleteComponent: (uuid) => void,
   titleRenderer: (Component, { content, expanded, hasSubtree, ...rest }) => React.ReactFragment,
 ) => TreeItemProps = (
   tree,
@@ -27,7 +54,9 @@ const jsonTreeToTreeItems: (
   handleSelectedComponent,
   handleClone,
   handleMove,
-  handleDelete,
+  handleDeleteSelected,
+  handleAddComponent,
+  handleDeleteComponent,
   titleRenderer,
 ) => {
   if (typeof tree === 'string') {
@@ -39,6 +68,13 @@ const jsonTreeToTreeItems: (
     };
   }
   return {
+    children: (C, p) => (
+      <MenuButton
+        contextMenu
+        trigger={<C {...p} />}
+        menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
+      />
+    ),
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
@@ -69,7 +105,7 @@ const jsonTreeToTreeItems: (
               <>
                 <MoveDebugButton onClick={handleMove} />
                 <CloneDebugButton onClick={handleClone} />
-                <TrashDebugButton onClick={handleDelete} />
+                <TrashDebugButton onClick={handleDeleteSelected} />
               </>
             </>
           </C>
@@ -83,7 +119,9 @@ const jsonTreeToTreeItems: (
         handleSelectedComponent,
         handleClone,
         handleMove,
-        handleDelete,
+        handleDeleteSelected,
+        handleAddComponent,
+        handleDeleteComponent,
         titleRenderer,
       ),
     ),
@@ -96,7 +134,8 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   onSelectComponent,
   onCloneComponent,
   onMoveComponent,
-  onDeleteComponent,
+  onDeleteSelectedComponent,
+  onAddComponent,
 }) => {
   const handleSelectComponent = React.useCallback(
     (e, props: TreeItemProps) => {
@@ -123,13 +162,13 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     [onMoveComponent],
   );
 
-  const handleDelete = React.useCallback(
+  const handleDeleteSelected = React.useCallback(
     e => {
-      onDeleteComponent?.();
+      onDeleteSelectedComponent?.();
       e.stopPropagation();
       e.preventDefault();
     },
-    [onDeleteComponent],
+    [onDeleteSelectedComponent],
   );
 
   const activeItems = [];
@@ -160,6 +199,23 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     );
   };
 
+  const handleAddComponent = React.useCallback(
+    (uuid, where) => {
+      onAddComponent?.(uuid, where);
+    },
+    [onAddComponent],
+  );
+
+  const handleDeleteComponent = React.useCallback(
+    uuid => {
+      onSelectComponent(jsonTreeFindElement(tree, uuid));
+      setTimeout(() => {
+        onDeleteSelectedComponent();
+      }, 0);
+    },
+    [onSelectComponent, onDeleteSelectedComponent, tree],
+  );
+
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
     tree.props?.children?.map(item =>
@@ -169,7 +225,9 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleSelectComponent,
         handleClone,
         handleMove,
-        handleDelete,
+        handleDeleteSelected,
+        handleAddComponent,
+        handleDeleteComponent,
         titleRenderer,
       ),
     ) ?? [];
@@ -177,7 +235,8 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
 
   return (
     <Tree
-      accessibility={treeBehavior}
+      accessibility={behavior}
+      onKeyDown={treeKeyDown}
       items={items}
       activeItemIds={activeItems}
       styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}

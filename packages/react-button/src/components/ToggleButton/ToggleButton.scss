@@ -34,5 +34,13 @@
       --button-hovered-background: var(--accent-checkedHovered-background);
       --button-hovered-contentColor: var(--accent-checkedHovered-contentColor);
     }
+
+    &._ghost {
+      --button-background: var(--ghost-checked-background);
+      --button-contentColor: var(--ghost-checked-contentColor);
+
+      --button-hovered-background: var(--ghost-checkedHovered-background);
+      --button-hovered-contentColor: var(--ghost-checkedHovered-contentColor);
+    }
   }
 }

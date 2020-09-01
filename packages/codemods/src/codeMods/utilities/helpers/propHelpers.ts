@@ -12,7 +12,7 @@ import {
 } from 'ts-morph';
 import { ValueMap, SpreadPropInStatement, NoOp } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
-import { Result, Err, Ok } from '../../../../src/helpers/result';
+import { Result, Err, Ok } from '../../../helpers/result';
 
 /* Helper function to rename a prop if in a spread operator.
 
