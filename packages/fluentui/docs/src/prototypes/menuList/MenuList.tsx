@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popup, FocusZone, FocusZoneDirection } from '../../../../react-northstar';
+import { Popup, FocusZone, FocusZoneDirection } from '@fluentui/react-northstar';
 import { useMenuContext } from './menuContext';
 import { MenuListProvider } from './menuListContext';
 

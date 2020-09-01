@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuContextProvider } from './menuContext';
-import { useEventListener } from '../../../../react-component-event-listener';
+import { useEventListener } from '@fluentui/react-component-event-listener';
 
 export const Menu = props => {
   const { children, trigger = null, open = false } = props;

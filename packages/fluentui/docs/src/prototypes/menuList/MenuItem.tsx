@@ -1,7 +1,6 @@
 import * as React from 'react';
-
-import { useEventListener } from '../../../../react-component-event-listener';
 import { useMenuListContext } from './menuListContext';
+import { useEventListener } from '@fluentui/react-component-event-listener';
 
 export function MenuItem({ children, index, submenu = null }) {
   const itemRef = React.useRef<HTMLDivElement>();
