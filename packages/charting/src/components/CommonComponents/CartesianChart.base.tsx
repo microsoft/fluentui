@@ -16,6 +16,7 @@ import {
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
+  ChartTypes,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -307,7 +308,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           },
           () => {
             if (fromDidUpdate) {
-              this.props.getRerenderProp && this.props.getRerenderProp(true);
+              this.props.chartType === ChartTypes.AreaChart &&
+                this.props.getRerenderProp &&
+                this.props.getRerenderProp(true);
             }
           },
         );
