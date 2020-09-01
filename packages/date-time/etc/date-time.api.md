@@ -306,6 +306,8 @@ export interface IDatePickerStyles {
     root: IStyle;
     // (undocumented)
     textField: IStyle;
+    // (undocumented)
+    wrapper?: IStyle;
 }
 
 // @public (undocumented)

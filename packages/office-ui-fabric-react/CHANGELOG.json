@@ -2,6 +2,41 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "office-ui-fabric-react_v7.134.0",
+      "version": "7.134.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add wrapper styling to datepicker",
+            "author": "kevin@infinite.red",
+            "commit": "0edae7de07888f5d4f7373264c8c19e676447baa",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ResponsiveMode: remove findDomNode",
+            "author": "joschect@microsoft.com",
+            "commit": "1a56eb716abcdd098f873b9399020abe9aebb646",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Deprecating Shimmer's componentRef as it doesn't use any public methods.",
+            "author": "czearing@outlook.com",
+            "commit": "983c807d13baf2cee31d91a9a9d746b0dc0d7b41",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fabric component: styles prop respected.",
+            "author": "dzearing@hotmail.com",
+            "commit": "3f948ab0e851b17f156af306070e3c498f00d93c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "office-ui-fabric-react_v7.133.0",
       "version": "7.133.0",
