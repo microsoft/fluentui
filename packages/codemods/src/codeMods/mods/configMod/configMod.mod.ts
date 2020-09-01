@@ -1,8 +1,6 @@
 import { SourceFile } from 'ts-morph';
 import {
   CodeMod,
-  UpgradeJSONType,
-  ModTypes,
   RenamePropModType,
   RepathImportModType,
   CodeModMapType,
@@ -14,7 +12,7 @@ import {
 import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
 import { Ok, Err, Result } from '../../../helpers/result';
 
-const jsonObj: UpgradeJSONType = require('../upgrades.json');
+import jsonObj from '../upgrades.json';
 
 /* Creates and returns an array of CodeMod objects from a JSON file. Optionally takes in
    an array of functions from user to turn into codemods as well. */
@@ -33,7 +31,7 @@ export function createCodeModsFromJson(userMods?: CodeMod[]): CodeMod[] | undefi
    an array that is returned to the user. */
 export function getCodeModsFromJson(): CodeMod[] {
   const mods = [];
-  const modDetails: ModTypes[] = jsonObj.upgrades;
+  const modDetails = jsonObj.upgrades;
   for (let i = 0; i < modDetails.length; i++) {
     /* Try and get the codemod function associated with the mod type. */
     const func = codeModMap[modDetails[i].type](modDetails[i]);
