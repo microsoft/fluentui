@@ -49,6 +49,8 @@ export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export * from './components/Chat/ChatMessageDetails';
+export * from './components/Chat/ChatMessageHeader';
+export * from './components/Chat/ChatMessageReadStatus';
 
 export * from './components/Checkbox/Checkbox';
 
@@ -86,6 +88,7 @@ export * from './components/Form/FormLabel';
 export * from './components/Form/FormMessage';
 export * from './components/Form/FormButton';
 export * from './components/Form/FormDropdown';
+export * from './components/Form/FormDatepicker';
 export * from './components/Form/FormRadioGroup';
 export * from './components/Form/FormSlider';
 export * from './components/Form/FormCheckbox';

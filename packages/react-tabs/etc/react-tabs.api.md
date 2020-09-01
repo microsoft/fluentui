@@ -53,8 +53,9 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & Pick<IPivotProps, 'linkSize'> & Pick<IPivotProps, 'linkFormat'> & {
-    linkIsSelected?: boolean;
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    linkSize?: PivotLinkSizeType;
+    linkFormat?: PivotLinkFormatType;
 };
 
 // @public (undocumented)

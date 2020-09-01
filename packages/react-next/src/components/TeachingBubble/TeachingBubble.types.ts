@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { TeachingBubbleBase } from './TeachingBubble.base';
-import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../compat/Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
@@ -22,9 +20,7 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  * {@docCategory TeachingBubble}
  */
-export interface ITeachingBubbleProps
-  extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>,
-    IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
   /**
    * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

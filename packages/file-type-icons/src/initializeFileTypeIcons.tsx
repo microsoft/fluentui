@@ -5,7 +5,7 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200817.003/assets/item-types/';
+const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200821.001/assets/item-types/';
 const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
@@ -30,10 +30,10 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     // 1.5x is a special case where both SVGs and PNGs need a different image.
 
     fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = (
-        <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" />
     );
     fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = (
-        <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" />
     );
 
     fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = (

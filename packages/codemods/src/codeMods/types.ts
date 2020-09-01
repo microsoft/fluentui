@@ -4,10 +4,14 @@ import { Result } from '../helpers/result';
 export interface ModResult {
   logs: string[];
 }
+
 export type NoOp = {
   reason: string;
   log?: string;
 };
+
+export type ModFunctionResult<T> = Result<T, NoOp>;
+
 export type CodeModResult = Result<ModResult, NoOp>;
 export interface CodeMod<T = SourceFile> {
   /**
@@ -52,7 +56,7 @@ export type PropTransform = (
   node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
   replacementName: string,
-) => void;
+) => Result<string, NoOp>;
 
 /**
  * Enum that defines the cases by which this codemod can
@@ -75,18 +79,18 @@ export enum SpreadPropInStatement {
    in configMod.ts. */
 export type CodeModMapType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (file: SourceFile, mod: any) => () => void;
+  [key: string]: (mod: any) => (file: SourceFile) => Result<ModResult, NoOp>;
 };
 
 /* Type definition for a CodeMod object representing a renameProp mod. */
 export type RenamePropModType = {
   name: string;
   type: 'renameProp';
+  version?: string;
   options: {
     from: {
       importName: string;
       toRename: string;
-      paths?: string[];
     };
     to: {
       replacementName: string;
@@ -99,6 +103,7 @@ export type RenamePropModType = {
 export type RepathImportModType = {
   name: string;
   type: 'repathImport';
+  version?: string;
   options: {
     from: {
       searchString: string | RegExp;
@@ -110,11 +115,42 @@ export type RepathImportModType = {
   };
 };
 
+/* Type definition for a CodeMod object representing a renameImport mod. */
+export type RenameImportType = {
+  name: string;
+  type: 'renameImport';
+  version?: string;
+  options: {
+    from: {
+      originalImport: string;
+    };
+    to: {
+      renamedImport: string;
+    };
+  };
+};
+
 /* upgrades.json internal mods are of this type: a union of supported types. */
-export type ModTypes = RenamePropModType | RepathImportModType;
+export type ModTypes = RenamePropModType | RepathImportModType | RenameImportType;
 
 /* Type of the upgrades.json object */
 export type UpgradeJSONType = {
   name: string;
   upgrades: ModTypes[];
+};
+
+/* Type storing codemod metadata. */
+export type ModOptions = {
+  name: string;
+  version: string;
+};
+
+/* A configuration type for running codemods, stored in modConfig.json.
+   Users can specify either string or regex filters to specify which mods
+   they want to run. They can also specify whether they want their selected
+   mods to be included OR excluded when running mods. */
+export type ModRunnerConfigType = {
+  stringFilters: string[];
+  regexFilters: string[];
+  includeMods: boolean;
 };

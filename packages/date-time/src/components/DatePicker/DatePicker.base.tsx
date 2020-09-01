@@ -132,9 +132,7 @@ function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) 
 
   React.useEffect(() => {
     setFormattedDate(value && formatDate ? formatDate(value) : '');
-    // setSelectedDate already updates the formatetd date if value changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formatDate]);
+  }, [formatDate, value]);
 
   return [selectedDate, formattedDate, setSelectedDate, setFormattedDate] as const;
 }
@@ -418,6 +416,10 @@ export const DatePickerBase = React.forwardRef(
       // don't need to focus the text box, if necessary the focusTrapZone will do it
     };
 
+    const calloutDismissed = (ev: React.MouseEvent<HTMLElement>): void => {
+      calendarDismissed();
+    };
+
     const handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
       ev.stopPropagation();
       calendarDismissed();
@@ -436,7 +438,12 @@ export const DatePickerBase = React.forwardRef(
 
     return (
       <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-        <div ref={datePickerDiv} aria-haspopup="true" aria-owns={isCalendarShown ? calloutId : undefined}>
+        <div
+          ref={datePickerDiv}
+          aria-haspopup="true"
+          aria-owns={isCalendarShown ? calloutId : undefined}
+          className={classNames.wrapper}
+        >
           <TextField
             role="combobox"
             label={label}
@@ -487,7 +494,7 @@ export const DatePickerBase = React.forwardRef(
             {...calloutProps}
             className={css(classNames.callout, calloutProps && calloutProps.className)}
             // eslint-disable-next-line react/jsx-no-bind
-            onDismiss={calendarDismissed}
+            onDismiss={calloutDismissed}
             // eslint-disable-next-line react/jsx-no-bind
             onPositioned={onCalloutPositioned}
           >

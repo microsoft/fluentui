@@ -1,4 +1,4 @@
-import { Theme, Tokens } from './types';
+import { Theme, Tokens } from '@fluentui/theme';
 import { createTheme } from '@uifabric/styling';
 import { getTokens } from './getTokens';
 
@@ -19,11 +19,13 @@ export const defaultTokens: Tokens = {
     contentColor: '#ffffff',
     borderColor: 'transparent',
     iconColor: '#ffffff',
+    dividerColor: '#ffffff',
     disabled: {
       background: '#f3f2f1',
       contentColor: '#c8c6c4',
       borderColor: 'var(--accent-disabled-background)',
       iconColor: 'var(--accent-disabled-contentColor)',
+      dividerColor: '#c8c6c4',
     },
     hovered: {
       background: '#106ebe',
@@ -50,6 +52,53 @@ export const defaultTokens: Tokens = {
     checkedHovered: {
       background: 'var(--acent-pressed-background)',
       contentColor: 'var(--acent-pressed-contentColor)',
+    },
+  },
+  ghost: {
+    background: 'var(--body-background)',
+    borderColor: 'transparent',
+    contentColor: '#323130',
+    iconColor: '#106ebe',
+    menuIconColor: '#605e5c',
+
+    checked: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#000000',
+      iconColor: '#004578',
+    },
+    checkedHovered: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: 'var(--ghost-hovered-contentColor)',
+      iconColor: 'var(--ghost-hovered-iconColor)',
+    },
+    disabled: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#a19f9d',
+      iconColor: 'inherit',
+    },
+    expanded: {
+      contentColor: '#0078d4',
+    },
+    focused: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: 'var(--ghost-contentColor)',
+      iconColor: 'var(--ghost-iconColor)',
+    },
+    hovered: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#0078d4',
+      iconColor: '#0078d4',
+    },
+    pressed: {
+      background: 'var(--ghost-background)',
+      borderColor: 'var(--ghost-borderColor)',
+      contentColor: '#000000',
+      iconColor: '#004578',
     },
   },
   button: {
@@ -79,6 +128,7 @@ export const defaultTokens: Tokens = {
     borderColor: '#8a8886',
     contentColor: '#323130',
     iconColor: 'inherit',
+    menuIconColor: 'inherit',
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
@@ -87,24 +137,28 @@ export const defaultTokens: Tokens = {
       borderColor: '#f3f2f1',
       contentColor: '#a19f9d',
       iconColor: 'var(--button-disabled-contentColor)',
+      dividerColor: '#c8c6c4',
     },
     hovered: {
       background: '#f3f2f1',
       borderColor: '#8a8886',
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
     pressed: {
       background: '#edebe9',
       borderColor: '#8a8886',
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
     focused: {
       background: 'var(--button-background)',
       borderColor: 'var(--button-borderColor)',
       contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
+      menuIconColor: 'var(--button-menuIconColor)',
     },
     checked: {
       background: 'var(--button-pressed-background)',

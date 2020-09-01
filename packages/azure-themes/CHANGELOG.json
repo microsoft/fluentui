@@ -2,6 +2,36 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Body text font size clean up, <Text>",
+            "author": "jagaheri@microsoft.com",
+            "commit": "b18df8a0cb88d05759e65508a40043ab5323a43f",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/azure-themes_v7.3.6",
       "version": "7.3.6",

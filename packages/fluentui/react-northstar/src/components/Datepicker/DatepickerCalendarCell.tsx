@@ -39,7 +39,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   selected?: boolean;
 
   /** Denotes that the cell marks today's date. */
-  isToday?: boolean;
+  today?: boolean;
 
   /** A cell can show that it currently has dimmed styles. */
   quiet?: boolean;
@@ -55,7 +55,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
 
 export type DatepickerCalendarCellStylesProps = Pick<
   DatepickerCalendarCellProps,
-  'disabled' | 'selected' | 'quiet' | 'isToday'
+  'disabled' | 'selected' | 'quiet' | 'today'
 >;
 
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
@@ -75,7 +75,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { className, design, styles, variables, disabled, selected, quiet, isToday, content } = props;
+    const { className, design, styles, variables, disabled, selected, quiet, today, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -91,7 +91,7 @@ export const DatepickerCalendarCell = compose<
         selected,
         disabled,
         quiet,
-        isToday,
+        today,
       }),
       rtl: context.rtl,
     });
@@ -102,7 +102,7 @@ export const DatepickerCalendarCell = compose<
         disabled,
         selected,
         quiet,
-        isToday,
+        today,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -129,6 +129,7 @@ export const DatepickerCalendarCell = compose<
           className: classes.root,
           onClick: handleClick,
           ref,
+          disabled,
           ...unhandledProps,
         })}
       >
@@ -154,7 +155,7 @@ export const DatepickerCalendarCell = compose<
       'styles',
       'variables',
       'quiet',
-      'isToday',
+      'today',
     ],
   },
 );
@@ -165,7 +166,7 @@ DatepickerCalendarCell.propTypes = {
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   quiet: PropTypes.bool,
-  isToday: PropTypes.bool,
+  today: PropTypes.bool,
 };
 
 DatepickerCalendarCell.defaultProps = {

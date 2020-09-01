@@ -38,8 +38,8 @@ export interface ITodoFormState {
  * The form component used for adding new item to the list. It uses fabric-react components
  * TextField and PrimaryButton.
  *
- * TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
- * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
+ * Link of <TextField>: https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield
+ * Link of <Button>: https://developer.microsoft.com/en-us/fluentui#/controls/web/button
  */
 export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
   private _textField = React.createRef<ITextField>();

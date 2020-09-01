@@ -8,7 +8,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'fluentbuild'
+pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
@@ -100,6 +100,8 @@ jobs:
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
   - job: ScreenerFluent
+    workspace:
+      clean: all
     steps:
       - template: azure-pipelines.tools.yml
 
@@ -110,16 +112,10 @@ jobs:
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
+          NODE_ENV=production yarn test:fluentui:visual
         displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
 
   - job: Screener
     workspace:
