@@ -1,5 +1,5 @@
 export * from './Button.types';
-export * from './Button.styles';
+export * from './useButtonClasses';
 export * from './useButton';
 export * from './useButtonState';
 export * from './Button';

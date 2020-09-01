@@ -1,8 +1,13 @@
 import { makeClasses } from '@fluentui/react-theme-provider';
 
+const GlobalClassNames = {
+  root: 'ms-Button',
+  icon: 'ms-Button-icon',
+};
+
 export const useButtonClasses = makeClasses({
   root: [
-    'ms-Button',
+    GlobalClassNames.root,
     {
       cursor: 'pointer',
       alignItems: 'center',
@@ -17,7 +22,6 @@ export const useButtonClasses = makeClasses({
 
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
-
       borderColor: 'var(--button-borderColor)',
       borderRadius: 'var(--button-borderRadius)',
       borderWidth: 'var(--button-borderWidth)',
@@ -101,7 +105,7 @@ export const useButtonClasses = makeClasses({
   ],
 
   icon: [
-    'ms-Button-icon',
+    GlobalClassNames.icon,
     {
       color: 'var(--button-iconColor)',
       display: 'flex',
@@ -139,6 +143,33 @@ export const useButtonClasses = makeClasses({
     '--button-disabled-borderColor': 'var(--accent-disabled-borderColor)',
     '--button-disabled-contentColor': 'var(--accent-disabled-contentColor)',
     '--button-disabled-iconColor': 'var(--accent-disabled-iconColor)',
+  },
+
+  _ghost: {
+    '--button-background': 'var(--ghost-background)',
+    '--button-borderColor': 'var(--ghost-borderColor)',
+    '--button-contentColor': 'var(--ghost-contentColor)',
+    '--button-iconColor': 'var(--ghost-iconColor)',
+
+    '--button-disabled-background': 'var(--ghost-disabled-background)',
+    '--button-disabled-borderColor': 'var(--ghost-disabled-borderColor)',
+    '--button-disabled-contentColor': 'var(--ghost-disabled-contentColor)',
+    '--button-disabled-iconColor': 'var(--ghost-disabled-iconColor)',
+
+    '--button-focused-background': 'var(--ghost-focused-background)',
+    '--button-focused-borderColor': 'var(--ghost-focused-borderColor)',
+    '--button-focused-contentColor': 'var(--ghost-focused-contentColor)',
+    '--button-focused-iconColor': 'var(--ghost-focused-iconColor)',
+
+    '--button-hovered-background': 'var(--ghost-hovered-background)',
+    '--button-hovered-borderColor': 'var(--ghost-hovered-borderColor)',
+    '--button-hovered-contentColor': 'var(--ghost-hovered-contentColor)',
+    '--button-hovered-iconColor': 'var(--ghost-hovered-iconColor)',
+
+    '--button-pressed-background': 'var(--ghost-pressed-background)',
+    '--button-pressed-borderColor': 'var(--ghost-pressed-borderColor)',
+    '--button-pressed-contentColor': 'var(--ghost-pressed-contentColor)',
+    '--button-pressed-iconColor': 'var(--ghost-pressed-iconColor',
   },
 
   _iconOnly: {
