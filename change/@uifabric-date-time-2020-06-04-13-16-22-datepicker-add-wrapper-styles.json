@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add wrapper styling to datepicker",
+  "packageName": "@uifabric/date-time",
+  "email": "kevin@infinite.red",
+  "dependentChangeType": "patch",
+  "date": "2020-06-04T20:16:22.959Z"
+}
