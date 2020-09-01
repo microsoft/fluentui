@@ -117,6 +117,9 @@ export const people: (IExampleExtendedPersonaProps & {
     key: string | number;
 })[];
 
+// @internal
+export const range: (start: number, end: number) => number[];
+
 // @internal (undocumented)
 export const TestImages: {
     choiceGroupBarUnselected: string;

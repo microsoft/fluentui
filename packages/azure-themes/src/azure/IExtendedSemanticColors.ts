@@ -26,6 +26,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxCheck: string;
   checkBoxCheckedFocus: string;
   checkBoxCheckHover: string;
+  checkBoxCheckedDisabledBackground: string;
   checkBoxDisabled: string;
   checkBoxIndeterminateBackground: string;
   checkBoxIndeterminateDefaultChecked: string;
@@ -91,20 +92,30 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   radioButtonThumbUncheckedDisabled: string;
   radioButtonThumbCheckedDisabled: string;
   rowBorder: string;
+  statusDefaultBackground: string;
+  statusDefaultBorder: string;
   statusErrorBackground: string;
+  statusErrorBorder: string;
   statusErrorIcon: string;
   statusErrorText: string;
   statusInformationBackground: string;
   statusInformationIcon: string;
   statusInformationText: string;
+  statusLink: string;
   statusSuccessBackground: string;
+  statusSuccessBorder: string;
   statusSuccessIcon: string;
   statusSuccessText: string;
   statusWarningBackground: string;
+  statusWarningBorder: string;
   statusWarningIcon: string;
   statusWarningText: string;
   textFieldBackgroundDisabled: string;
   textFieldBorderDisabled: string;
   tabHover: string;
+  teachingBubbleBackground: string;
+  teachingBubblePrimaryButtonHover: string;
+  teachingBubbleSecondaryBackground: string;
+  teachingBubbleText: string;
   variantBorder: string;
 }

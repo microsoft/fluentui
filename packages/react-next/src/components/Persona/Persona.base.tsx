@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import {
+  classNamesFunction,
+  divProperties,
+  getNativeProps,
+  IRenderFunction,
+  getPropsWithDefaults,
+} from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -10,7 +16,7 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { getPropsWithDefaults } from '../../Utilities';
+import { useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -20,12 +26,15 @@ const DEFAULT_PROPS = {
   imageAlt: '',
 };
 
-function useWarnDeprecations(props: IPersonaProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Persona', props, { primaryText: 'text' });
-    }
-  }, []);
+function useDebugWarnings(props: IPersonaProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Persona',
+      props,
+      deprecations: { primaryText: 'text' },
+    });
+  }
 }
 
 /**
@@ -36,7 +45,7 @@ export const PersonaBase = React.forwardRef(
   (propsWithoutDefaults: IPersonaProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    useWarnDeprecations(props);
+    useDebugWarnings(props);
 
     /**
      * Deprecation helper for getting text.

@@ -68,6 +68,10 @@ const ToolbarExampleVariables = () => {
           key: 'item-menu',
           menu: {
             accessibility: notAutoFocusToolbarMenuBehavior,
+            popper: {
+              align: 'start',
+              position: 'below',
+            },
             items: [
               // ToolbarMenuDivider
               { kind: 'divider', key: 'divider' },
@@ -119,6 +123,10 @@ const ToolbarExampleVariables = () => {
           key: 'item-menu-variables',
           menu: {
             accessibility: notAutoFocusToolbarMenuBehavior,
+            popper: {
+              align: 'start',
+              position: 'below',
+            },
             items: [
               { kind: 'divider', key: 'divider' },
               { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },

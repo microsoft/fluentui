@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Async, divProperties, getNativeProps, warnDeprecations } from '../../Utilities';
+import { Async, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
-import { useConst, useMergedRefs, useAsync, useOnEvent } from '@uifabric/react-hooks';
+import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@uifabric/react-hooks';
 
 const RESIZE_DELAY = 16;
 
@@ -453,12 +453,15 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   ] as const;
 }
 
-function useDeprecationWarning(props: IResizeGroupProps) {
-  React.useEffect(() => {
-    warnDeprecations(COMPONENT_NAME, props, {
-      styles: 'className',
+function useDebugWarnings(props: IResizeGroupProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: { styles: 'className' },
     });
-  }, []);
+  }
 }
 
 export const ResizeGroupBase = React.forwardRef((props: IResizeGroupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -478,7 +481,7 @@ export const ResizeGroupBase = React.forwardRef((props: IResizeGroupProps, forwa
 
   React.useImperativeHandle(props.componentRef, () => ({ remeasure }), [remeasure]);
 
-  useDeprecationWarning(props);
+  useDebugWarnings(props);
 
   const { className, onRenderData } = props;
   const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['data']);

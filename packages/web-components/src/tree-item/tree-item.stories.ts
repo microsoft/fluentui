@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import TreeItemTemplate from './fixtures/tree-item.html';
-import { FASTTreeItem } from './';
+import { FluentTreeItem } from './';
 
 // Prevent tree-shaking
-FASTTreeItem;
-FASTDesignSystemProvider;
+FluentTreeItem;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Tree item',

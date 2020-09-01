@@ -3,17 +3,23 @@ import { Dialog, DialogTemplate as template } from '@microsoft/fast-foundation';
 import { DialogStyles as styles } from './dialog.styles';
 
 /**
- * The FAST Dialog Element. Implements {@link @microsoft/fast-foundation#Dialog},
+ * The Fluent Dialog Element. Implements {@link @microsoft/fast-foundation#Dialog},
  * {@link @microsoft/fast-foundation#DialogTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-dialog\>
+ * HTML Element: \<fluent-dialog\>
  */
 @customElement({
-  name: 'fast-dialog',
+  name: 'fluent-dialog',
   template,
   styles,
 })
-export class FASTDialog extends Dialog {}
+export class FluentDialog extends Dialog {}
+
+/**
+ * Styles for Dialog
+ * @public
+ */
+export const DialogStyles = styles;

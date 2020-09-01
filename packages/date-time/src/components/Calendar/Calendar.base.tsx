@@ -345,7 +345,6 @@ export const CalendarBase = React.forwardRef(
         ref={forwardedRef}
         aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
-        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">

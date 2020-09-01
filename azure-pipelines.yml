@@ -11,157 +11,84 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: Build
+  - job: BuildTestLint
+    workspace:
+      clean: all
     steps:
       - template: azure-pipelines.tools.yml
-
-      # - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
         displayName: yarn
 
+      - template: .devops/templates/pr-target-branch.yml
+
       - script: |
           yarn checkchange
         displayName: check change
 
+      ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
-          yarn build
-        displayName: build
+          yarn prelint
+        displayName: do syncpack and no-tslint checks
 
-      - task: ArchiveFiles@2
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
-
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
-
+      ## only do scoped builds with PRs
       - script: |
-          az --version
-          az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
-          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
+          yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
+        displayName: build, test, lint (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Set up Azure CLI with DevOps
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
+      ## duplicated build step, but without --since flag for master CI builds
       - script: |
-          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
+          yarn lage build test lint --verbose --no-cache --grouped
+        displayName: build, test, lint (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Trigger Perf-Test and Screener jobs
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
-  - job: Validate
-    dependsOn: Build
-    pool: 'Self Host Ubuntu'
-    steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn test
-        displayName: test
-
-      - script: |
-          yarn lint
-        displayName: lint
-
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
-  - job: ValidateFluent
-    dependsOn: Build
-    steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
-        displayName: danger
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
-
-      - script: |
-          yarn test:fluentui:e2e
-        displayName: E2E Tests
-
-      - script: |
-          yarn test:fluentui:projects
-        displayName: Project Tests
-
-      - script: |
-          yarn test:fluentui:circulars
-        displayName: Circular Dependencies Tests
-
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
   - job: Deploy
-    dependsOn: Build
+    workspace:
+      clean: all
     variables:
       PR_DEPLOY: 1
     steps:
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
       - template: azure-pipelines.tools.yml
 
       - script: |
-          NODE_ENV=production yarn build:fluentui:docs
-          yarn bundle
-        displayName: bundle
+          yarn
+        displayName: yarn
+
+      - template: .devops/templates/pr-target-branch.yml
+
+      ## only do scoped bundle with PRs
+      - script: |
+          yarn lage bundle --verbose --no-cache --grouped --since $(target_branch)
+        displayName: bundle (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## duplicated for  master CI builds
+      - script: |
+          yarn lage bundle --verbose --no-cache --grouped
+        displayName: bundle (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## This runs regardless of scope, the app will adapt to the scope as well
+      - script: |
+          yarn workspace @uifabric/pr-deploy-site generate:site
+        displayName: generate PR Deploy Site
+
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: Build-PR-$(Build.BuildNumber)
 
       - task: AzureUpload@1
         displayName: Upload PR deploy site
@@ -172,21 +99,15 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: ScreenerFluent
+    workspace:
+      clean: all
     steps:
+      - template: azure-pipelines.tools.yml
+
       - script: |
           yarn
         displayName: yarn
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.tools.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
@@ -196,40 +117,27 @@ jobs:
         env:
           SCREENER_API_KEY: $(screener.key)
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: Screener
-    dependsOn: Build
-    # keeping this at microsoft hosted because this doesn't require builds
-    pool:
-      vmImage: 'Ubuntu 18.04'
+    workspace:
+      clean: all
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
       - template: azure-pipelines.tools.yml
+
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
-          yarn vrtest -- --debug
+        displayName: config git user and email
+
+      - script: |
+          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'

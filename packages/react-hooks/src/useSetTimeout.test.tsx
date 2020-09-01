@@ -1,12 +1,24 @@
 import * as React from 'react';
-import { useSetTimeout, UseSetTimeoutReturnType } from './useSetTimeout';
+import { useSetTimeout } from './useSetTimeout';
 import { safeMount } from '@uifabric/test-utilities';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useSetTimeout', () => {
   // Initialization
   let timesCalled = 0;
 
-  jest.useFakeTimers();
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
+  afterEach(() => {
+    timesCalled = 0;
+  });
+
   const TestComponent = React.forwardRef((props: unknown, ref: React.Ref<{ clearTimeout: () => void }>) => {
     const { setTimeout, clearTimeout } = useSetTimeout();
     const { current: state } = React.useRef<{ id: number }>({ id: 0 });
@@ -26,11 +38,6 @@ describe('useSetTimeout', () => {
     return <div />;
   });
 
-  // Cleanup
-  afterEach(() => {
-    timesCalled = 0;
-  });
-
   it('updates value when mounted', () => {
     safeMount(<TestComponent />, () => {
       expect(timesCalled).toEqual(0);
@@ -45,28 +52,9 @@ describe('useSetTimeout', () => {
     });
   });
 
-  it('does not regenerate methods on multiple calls', () => {
-    let lastResult: UseSetTimeoutReturnType | undefined;
-
-    const Test = () => {
-      lastResult = useSetTimeout();
-      return null;
-    };
-
-    safeMount(<Test />, wrapper => {
-      const result1 = lastResult!;
-      lastResult = undefined;
-
-      // Cause a re-render.
-      wrapper.setProps({});
-
-      const result2 = lastResult!;
-
-      expect(result1.setTimeout).toBeTruthy();
-      expect(result1.clearTimeout).toBeTruthy();
-      expect(result1.setTimeout).toBe(result2.setTimeout);
-      expect(result1.clearTimeout).toBe(result2.clearTimeout);
-    });
+  validateHookValueNotChanged('returns the same callbacks each time', () => {
+    const { setTimeout, clearTimeout } = useSetTimeout();
+    return [setTimeout, clearTimeout];
   });
 
   it('does not execute the timeout when unmounted', () => {

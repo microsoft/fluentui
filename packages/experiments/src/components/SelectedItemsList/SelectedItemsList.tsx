@@ -1,16 +1,26 @@
 import * as React from 'react';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, setItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
+  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems } = props;
+  const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
+
   const renderedItems = React.useMemo(() => items, [items]);
+  const didMountRef = React.useRef(false);
 
   React.useEffect(() => {
-    setItems(props.selectedItems || []);
-  }, [props.selectedItems]);
+    // block first call of the hook and forward each consecutive one
+    // We do this so that if defaultSelectedItems are set, they don't get overwritten
+    if (didMountRef.current) {
+      setItems(selectedItems || []);
+    } else {
+      didMountRef.current = true;
+    }
+  }, [selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
@@ -65,6 +75,8 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
                 removeButtonAriaLabel={props.removeButtonAriaLabel}
                 onRemoveItem={onRemoveItemCallbacks[index]}
                 onItemChange={replaceItem}
+                dragDropEvents={dragDropEvents}
+                dragDropHelper={dragDropHelper}
               />
             ))}
         </div>

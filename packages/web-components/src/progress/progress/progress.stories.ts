@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../../design-system-provider';
+import { FluentDesignSystemProvider } from '../../design-system-provider';
 import Examples from './fixtures/linear.html';
-import { FASTProgress } from './';
+import { FluentProgress } from './';
 
 // Prevent tree-shaking
-FASTProgress;
-FASTDesignSystemProvider;
+FluentProgress;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Progress',

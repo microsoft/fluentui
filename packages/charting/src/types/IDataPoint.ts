@@ -1,9 +1,3 @@
-import * as d3Sankey from 'd3-sankey';
-
-export interface IRefArrayData {
-  index?: string;
-  refElement?: SVGGElement;
-}
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -26,14 +20,31 @@ export interface IBasestate {
   containerWidth?: number;
   containerHeight?: number;
 }
-export interface IChildProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  xScale?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
-  containerHeight?: number;
-  containerWidth?: number;
+
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
 }
+
+export interface IMargins {
+  /**
+   * left margin for the chart.
+   */
+  left?: number;
+  /**
+   * Right margin for the chart.
+   */
+  right?: number;
+  /**
+   * Top margin for the chart.
+   */
+  top?: number;
+  /**
+   * Bottom margin for the chart.
+   */
+  bottom?: number;
+}
+
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -190,7 +201,7 @@ export interface ILineChartPoints {
   /**
    * Defines the function that is executed on clicking this legend
    */
-  onLegendClick?: (selectedLegend: string | null) => void;
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
 
   /**
    * Defines the function that is executed on clicking  line
@@ -213,32 +224,7 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
-
-  /**
-   * data for the points in the line chart
-   */
-  SankeyChartData?: ISankeyChartData;
 }
-
-export interface ISankeyChartData {
-  nodes: SNode[];
-  links: SLink[];
-}
-
-interface ISNodeExtra {
-  nodeId: number | string;
-  name: string;
-  color: string;
-}
-
-interface ISLinkExtra {
-  source: number;
-  target: number;
-  value: number;
-}
-
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 export interface IVSChartDataPoint {
   /**

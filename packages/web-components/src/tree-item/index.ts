@@ -3,17 +3,23 @@ import { TreeItemTemplate as template, TreeItem } from '@microsoft/fast-foundati
 import { TreeItemStyles as styles } from './tree-item.styles';
 
 /**
- * The FAST Tree Item Custom Element. Implements {@link @microsoft/fast-foundation#TreeItem},
+ * The Fluent Tree Item Custom Element. Implements {@link @microsoft/fast-foundation#TreeItem},
  * {@link @microsoft/fast-foundation#TreeItem}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tree-item\>
+ * HTML Element: \<fluent-tree-item\>
  */
 @customElement({
-  name: 'fast-tree-item',
+  name: 'fluent-tree-item',
   template,
   styles,
 })
-export class FASTTreeItem extends TreeItem {}
+export class FluentTreeItem extends TreeItem {}
+
+/**
+ * Styles for TreeItem
+ * @public
+ */
+export const TreeItemStyles = styles;

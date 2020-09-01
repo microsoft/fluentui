@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/radio-group.html';
-import { FASTRadioGroup } from './';
+import { FluentRadioGroup } from './';
 
 // Prevent tree-shaking
-FASTRadioGroup;
-FASTDesignSystemProvider;
+FluentRadioGroup;
+FluentDesignSystemProvider;
 
 export default {
   title: 'RadioGroup',

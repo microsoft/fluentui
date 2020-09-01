@@ -5,6 +5,7 @@ import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -109,7 +110,7 @@ export const pointingBeak = ({
 };
 
 export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
 
     const colors = getColorScheme(v.colorScheme, null, primary);
@@ -178,13 +179,18 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(iconOnly && {
                 borderColor: v.borderColorActive || colors.borderActive,
               }),
-
-              ...(underlined && active && underlinedItem(colors.foregroundActive)),
             }
           : {
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
+        ...(underlined && {
+          ...getBorderFocusStyles({ variables: siteVariables }),
+          ':focus-visible': {
+            ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
+            borderColor: v.borderColorActive,
+          },
+        }),
       }),
 
       ':focus': {

@@ -30,7 +30,7 @@ export { toolbarMenuItemSubmenuIndicatorVariables as ToolbarMenuItemSubmenuIndic
 export { toolbarMenuItemActiveIndicatorVariables as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorVariables';
 export { toolbarMenuRadioGroupVariables as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupVariables';
 export { toolbarMenuRadioGroupWrapperVariables as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
+
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
 export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
@@ -40,3 +40,4 @@ export { dropdownItemVariables as DropdownItem } from './components/Dropdown/dro
 export { dropdownSelectedItemVariables as DropdownSelectedItem } from './components/Dropdown/dropdownSelectedItemVariables';
 export { labelVariables as Label } from './components/Label/labelVariables';
 export { tooltipContentVariables as TooltipContent } from './components/Tooltip/tooltipContentVariables';
+export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';

@@ -1,8 +1,54 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.1](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.14.0..@uifabric/fabric-website_v7.14.1)
+
+### Patches
+
+- Fix styles implementation instructions ([PR #14545](https://github.com/microsoft/fluentui/pull/14545) by elcraig@microsoft.com)
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.25..@uifabric/fabric-website_v7.14.0)
+
+### Patches
+
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.13.25](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.25)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.18..@uifabric/fabric-website_v7.13.25)
+
+### Patches
+
+- Update web components to use latest version of fast-element (#14573) ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.13.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.16)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.15..@uifabric/fabric-website_v7.13.16)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
+
+## [7.13.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.15)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.6..@uifabric/fabric-website_v7.13.15)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
 
 ## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.6)
 

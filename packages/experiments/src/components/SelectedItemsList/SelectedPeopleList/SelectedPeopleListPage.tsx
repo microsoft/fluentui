@@ -4,6 +4,12 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { SelectedPeopleListBasicExample } from './examples/SelectedPeopleList.Basic.Example';
 const SelectedPeopleListBasicExampleCode = require('!raw-loader!./examples/SelectedPeopleList.Basic.Example') as string;
 
+import { SelectedPeopleListBasicDragDropExample } from './examples/SelectedPeopleList.Basic.DragDrop.Example';
+const SelectedPeopleListBasicDragDropExampleCode = require('!raw-loader!./examples/SelectedPeopleList.Basic.DragDrop.Example') as string;
+
+import { SelectedPeopleListDragDropBetweenWellsExample } from './examples/SelectedPeopleList.DragDropBetweenWells.Example';
+const SelectedPeopleListDragDropBetweenWellsExampleCode = require('!raw-loader!./examples/SelectedPeopleList.DragDropBetweenWells.Example') as string;
+
 import { SelectedPeopleListWithEditInContextMenuExample } from './examples/SelectedPeopleList.WithEditInContextMenu.Example';
 const SelectedPeopleListWithEditInContextMenuExampleCode = require('!raw-loader!./examples/SelectedPeopleList.WithEditInContextMenu.Example') as string;
 
@@ -26,6 +32,16 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
           <div>
             <ExampleCard title="Basic" isOptIn={true} code={SelectedPeopleListBasicExampleCode}>
               <SelectedPeopleListBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Drag Drop" isOptIn={true} code={SelectedPeopleListBasicDragDropExampleCode}>
+              <SelectedPeopleListBasicDragDropExample />
+            </ExampleCard>
+            <ExampleCard
+              title="Drag Drop between wells"
+              isOptIn={true}
+              code={SelectedPeopleListDragDropBetweenWellsExampleCode}
+            >
+              <SelectedPeopleListDragDropBetweenWellsExample />
             </ExampleCard>
             <ExampleCard
               title="With Copying, Editing, and Expansion"

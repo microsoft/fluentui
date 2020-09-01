@@ -1,8 +1,75 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.17.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.16.0..@fluentui/react-compose_v0.17.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.16.0)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.3..@fluentui/react-compose_v0.16.0)
+
+### Minor changes
+
+- Updating readme. ([PR #14518](https://github.com/microsoft/fluentui/pull/14518) by dzearing@hotmail.com)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.3)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.2..@fluentui/react-compose_v0.14.3)
+
+### Patches
+
+- Adding null check in mergeProps. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.2)
+
+Mon, 10 Aug 2020 18:27:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.1..@fluentui/react-compose_v0.14.2)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.1)
+
+Mon, 10 Aug 2020 15:56:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.0..@fluentui/react-compose_v0.14.1)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.13.0..@fluentui/react-compose_v0.14.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.13.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.12.1..@fluentui/react-compose_v0.13.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.12.0)
 

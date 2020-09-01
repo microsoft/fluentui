@@ -88,7 +88,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           width: 100%;
         }
         @media screen and (-ms-high-contrast: active){&:focus:after {
-          border-color: Highlight;
           color: Highlight;
         }
         &:active .ms-Dropdown-title {

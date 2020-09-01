@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/slider-label.html';
-import { FASTSliderLabel } from './';
+import { FluentSliderLabel } from './';
 
 // Prevent tree-shaking
-FASTSliderLabel;
-FASTDesignSystemProvider;
+FluentSliderLabel;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Slider label',

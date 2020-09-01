@@ -1,85 +1,81 @@
-# Change Log
+# Change Log - @fluentui/web-components
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
-# [1.6.0](https://github.com/Microsoft/fast/compare/@microsoft/fast-components-msft@1.5.0...@microsoft/fast-components-msft@1.6.0) (2020-07-23)
+<!-- Start content -->
 
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.8)
 
-### Bug Fixes
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.7..@fluentui/web-components_v0.1.8)
 
-* address nested styling issues and provide a more intuitive API for nesting ([#3528](https://github.com/Microsoft/fast/issues/3528)) ([4fe0dd3](https://github.com/Microsoft/fast/commit/4fe0dd38ce8f2b43be0f13c7efac2f12ada6cd78))
-* ensure setAttribute is not called during construction ([#3523](https://github.com/Microsoft/fast/issues/3523)) ([a0b8658](https://github.com/Microsoft/fast/commit/a0b86589317127d1b541cd10e087f9aaf93a0c5f))
-* move text field and text area appearances from foundation to components ([#3540](https://github.com/Microsoft/fast/issues/3540)) ([ca8ac76](https://github.com/Microsoft/fast/commit/ca8ac760cdf666fc79a47ba9a21c5f964556dbab))
-* rollup minify selectors should retain spaces ([#3524](https://github.com/Microsoft/fast/issues/3524)) ([cbdfc45](https://github.com/Microsoft/fast/commit/cbdfc45c2543fe9f94e0edc7687cc9f04a38e118))
-* update nested to be observable and set isNestedItem method to readonly ([#3539](https://github.com/Microsoft/fast/issues/3539)) ([9e67f52](https://github.com/Microsoft/fast/commit/9e67f52a8fd3e1736e3882ef7e2fa3f25e63a396))
+### Patches
 
+- update fast packages and add font-family inherit to controls of button and accordion-item ([PR #14828](https://github.com/microsoft/fluentui/pull/14828) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
-### Features
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
 
-* adds direction property to design system ([#3535](https://github.com/Microsoft/fast/issues/3535)) ([492f5e7](https://github.com/Microsoft/fast/commit/492f5e766610a6cae51c9c90a18b83252a67f9d3))
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.5..@fluentui/web-components_v0.1.7)
 
+### Patches
 
+- fix: apply badge appearance styling to control not host element ([PR #14539](https://github.com/microsoft/fluentui/pull/14539) by chhol@microsoft.com)
+- update fast element version to leverage latest changes ([PR #14573](https://github.com/microsoft/fluentui/pull/14573) by chhol@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
 
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.4..@fluentui/web-components_v0.1.5)
 
-# [1.5.0](https://github.com/Microsoft/fast/compare/@microsoft/fast-components-msft@1.4.0...@microsoft/fast-components-msft@1.5.0) (2020-07-14)
+### Patches
 
+- fix: add full width to text-area and text-field controls to expand properly with component ([PR #14492](https://github.com/microsoft/fluentui/pull/14492) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
-### Bug Fixes
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.4)
 
-* move setAttribute calls for proxy elements to connectedCallback ([#3494](https://github.com/Microsoft/fast/issues/3494)) ([cdaf0ba](https://github.com/Microsoft/fast/commit/cdaf0bae4de3c995611e2e02313cc19e8e259b27))
-* removed extra padding around fast card component ([#3441](https://github.com/Microsoft/fast/issues/3441)) ([f3f06ed](https://github.com/Microsoft/fast/commit/f3f06ed25f288b884f6e6c31af2b8489ef8886c1))
-* removing un-needed nbsp; in slider-label and radio-group templates ([#3506](https://github.com/Microsoft/fast/issues/3506)) ([7cd003e](https://github.com/Microsoft/fast/commit/7cd003e5877d34ad926ee8268852176158cafc4b))
-* tree view and tree view item not exported ([#3487](https://github.com/Microsoft/fast/issues/3487)) ([2b9c9ec](https://github.com/Microsoft/fast/commit/2b9c9ec093cff99ea6486dc64aa2359d53bd8d2b))
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.3..@fluentui/web-components_v0.1.4)
 
+### Patches
 
-### Features
+- fix: ensure radio control does not shrink ([PR #14473](https://github.com/microsoft/fluentui/pull/14473) by chhol@microsoft.com)
 
-* adds menu and menu item styling to MSFT web component package ([#3484](https://github.com/Microsoft/fast/issues/3484)) ([13b883d](https://github.com/Microsoft/fast/commit/13b883d91b28acdd9fe397d4751a6d6133152303))
-* adds mixin to support global aria-* attributes for components delegating focus ([#3470](https://github.com/Microsoft/fast/issues/3470)) ([054c890](https://github.com/Microsoft/fast/commit/054c89000d8931d9e203cb7f831c1e7f11c9038a))
-* move appearance attributes of anchor and button out of fast-foundation ([#3420](https://github.com/Microsoft/fast/issues/3420)) ([069e1ee](https://github.com/Microsoft/fast/commit/069e1ee000fc2f8e184919b16df0cb84bc610838))
-* simplify rollup configs and compress tagged template literals ([#3452](https://github.com/Microsoft/fast/issues/3452)) ([7533e92](https://github.com/Microsoft/fast/commit/7533e927f2467dd6f8dd46c1d3cef6c0df773fc4))
-* update typescript version and remove utility types dependencies for react packages ([#3422](https://github.com/Microsoft/fast/issues/3422)) ([09d07b5](https://github.com/Microsoft/fast/commit/09d07b580cda3bcc5d28f83d3568521f710c9576))
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.3)
 
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.2..@fluentui/web-components_v0.1.3)
 
+### Patches
 
+- fix: tab should have pointer as cursor ([PR #14421](https://github.com/microsoft/fluentui/pull/14421) by chhol@microsoft.com)
 
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.2)
 
-# [1.4.0](https://github.com/Microsoft/fast/compare/@microsoft/fast-components-msft@1.3.0...@microsoft/fast-components-msft@1.4.0) (2020-07-02)
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.1..@fluentui/web-components_v0.1.2)
 
+### Patches
 
-### Bug Fixes
+- Fix min-width to be equals to thumb size ([PR #14400](https://github.com/microsoft/fluentui/pull/14400) by barahonajm@outlook.com)
 
-* add createColorPalette to rollup exports ([#3417](https://github.com/Microsoft/fast/issues/3417)) ([95c5d61](https://github.com/Microsoft/fast/commit/95c5d6123a674c55991aadca61956f08770ff407))
-* slider thumb does not respond to touch events, vertical sliders track parameters incorrect after scrolling page ([#3414](https://github.com/Microsoft/fast/issues/3414)) ([02f9ac4](https://github.com/Microsoft/fast/commit/02f9ac4306031aab1702e98083effc0ce858dec5))
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.1)
 
+Thu, 06 Aug 2020 22:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.0..@fluentui/web-components_v0.1.1)
 
-### Features
+### Patches
 
-* add tree-vew and tree-item components ([#3240](https://github.com/Microsoft/fast/issues/3240)) ([57eaa83](https://github.com/Microsoft/fast/commit/57eaa83293358383d03cbd3c5b6a9e6ffa797254))
+- fix: update rollup config and incorrect readme import ([PR #14392](https://github.com/microsoft/fluentui/pull/14392) by chhol@microsoft.com)
 
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.0)
 
+Thu, 06 Aug 2020 00:30:40 GMT
 
+### Minor changes
 
-
-# [1.3.0](https://github.com/Microsoft/fast/compare/@microsoft/fast-components-msft@1.2.1...@microsoft/fast-components-msft@1.3.0) (2020-06-26)
-
-
-### Bug Fixes
-
-* correct css selector for dialog control ([#3398](https://github.com/Microsoft/fast/issues/3398)) ([f9aff7c](https://github.com/Microsoft/fast/commit/f9aff7cf2c455fb132b6dbcc02e451edb628c1aa))
-* ensure button control height matches wc root height ([#3340](https://github.com/Microsoft/fast/issues/3340)) ([3c9429e](https://github.com/Microsoft/fast/commit/3c9429e28b8c1008f1971a12d36646e57b85a576))
-* selected tab becoming undefined when tab slot pass anything except icon or text node ([#3350](https://github.com/Microsoft/fast/issues/3350)) ([eda1aef](https://github.com/Microsoft/fast/commit/eda1aef79aeb612b05ea73b3861a93f5241c382f))
-
-
-### Features
-
-* export parseColorString from components and components-msft ([#3356](https://github.com/Microsoft/fast/issues/3356)) ([c4db7b8](https://github.com/Microsoft/fast/commit/c4db7b832c3787be1ec6181e39b79f1304c5cae9))
-
-
-
-
+- feat: update package namespace and update control names to prefix with fluent ([PR #14345](https://github.com/microsoft/fluentui/pull/14345) by chhol@microsoft.com)
 
 ## [1.2.1](https://github.com/Microsoft/fast/compare/@microsoft/fast-components-msft@1.2.0...@microsoft/fast-components-msft@1.2.1) (2020-06-17)
 

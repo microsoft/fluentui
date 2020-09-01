@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
-import { PartialTheme } from './types';
+import { PartialTheme, Theme } from './types';
+import { useTheme } from './useTheme';
+import { ThemeContext } from './ThemeContext';
+
+export default {
+  title: 'ThemeProvider',
+};
 
 const lightTheme: PartialTheme = {
   tokens: {
@@ -50,6 +56,30 @@ export const TestStylesheets = () => (
   </ThemeProvider>
 );
 
-export default {
-  title: 'ThemeProvider',
+const ThemedContentFC = () => {
+  const theme = useTheme();
+  console.log('theme from useTheme', theme);
+
+  return null;
 };
+
+class ThemedContent extends React.Component<{}> {
+  public render() {
+    return (
+      <ThemeContext.Consumer>
+        {(theme: Theme | undefined) => {
+          console.log('theme from context consumer', theme);
+          return null;
+        }}
+      </ThemeContext.Consumer>
+    );
+  }
+}
+
+export const AccessTheme = () => (
+  <ThemeProvider className="foo" theme={themeWithStylesheets}>
+    <ThemedContent />
+    <ThemedContentFC />
+    <div>See console log</div>
+  </ThemeProvider>
+);

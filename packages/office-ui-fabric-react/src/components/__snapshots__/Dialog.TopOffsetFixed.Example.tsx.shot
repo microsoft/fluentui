@@ -45,7 +45,6 @@ exports[`Component Examples renders Dialog.TopOffsetFixed.Example.tsx correctly 
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;

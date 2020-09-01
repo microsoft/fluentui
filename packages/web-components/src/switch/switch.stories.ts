@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/switch.html';
-import { FASTSwitch } from './';
+import { FluentSwitch } from './';
 
 // Prevent tree-shaking
-FASTSwitch;
-FASTDesignSystemProvider;
+FluentSwitch;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Switch',

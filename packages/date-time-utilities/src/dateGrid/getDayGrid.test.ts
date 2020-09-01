@@ -5,7 +5,7 @@ import * as DateGrid from './getDayGrid';
 import { IDay } from './dateGrid.types';
 
 describe('getDayGrid', () => {
-  const defaultDate = new Date('2016-04-01T00:00:00.000Z');
+  const defaultDate = new Date('Apr 1 2016');
   const defaultOptions: IDayGridOptions = {
     selectedDate: defaultDate,
     navigatedDate: defaultDate,

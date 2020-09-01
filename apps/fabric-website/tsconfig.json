@@ -12,6 +12,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "noImplicitThis": true,
+    "noUnusedLocals": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],

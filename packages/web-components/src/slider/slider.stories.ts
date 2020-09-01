@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/slider.html';
-import { FASTSlider } from './';
+import { FluentSlider } from './';
 
 // Prevent tree-shaking
-FASTSlider;
-FASTDesignSystemProvider;
+FluentSlider;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Slider',

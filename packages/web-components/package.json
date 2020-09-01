@@ -1,8 +1,8 @@
 {
-  "name": "@microsoft/fast-components-msft",
+  "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "1.6.0",
+  "version": "0.1.8",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -16,8 +16,8 @@
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
   "main": "dist/esm/index.js",
-  "types": "dist/fast-components-msft.d.ts",
-  "unpkg": "dist/fast-components-msft.min.js",
+  "types": "dist/web-components.d.ts",
+  "unpkg": "dist/web-components.min.js",
   "scripts": {
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
@@ -94,8 +94,8 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-components-styles-msft": "^4.29.0",
-    "@microsoft/fast-element": "^0.15.1",
-    "@microsoft/fast-foundation": "^1.5.0",
+    "@microsoft/fast-element": "^0.17.0",
+    "@microsoft/fast-foundation": "^1.7.0",
     "tslib": "^1.13.0"
   }
 }

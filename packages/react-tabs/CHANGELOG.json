@@ -2,6 +2,111 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-tabs_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to use merge-styles instead of scss; move scss code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "84fb66faa186229dfbf011555eb1447c2401fe24",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.14",
+      "version": "0.2.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix publishing by syncing packages (#12715)",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.11",
+      "version": "0.2.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update ThemeProvider to support v7 theme",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
+            "author": "xgao@microsoft.com",
+            "commit": "eaada6f8e6499585952528ac8ebead0a8e7da906",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@fluentui/react-tabs_v0.2.0",
       "version": "0.2.0",

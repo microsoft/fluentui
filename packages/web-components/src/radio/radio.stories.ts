@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/radio.html';
-import { FASTRadio } from './';
+import { FluentRadio } from './';
 
 // Prevent tree-shaking
-FASTRadio;
-FASTDesignSystemProvider;
+FluentRadio;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Radio',

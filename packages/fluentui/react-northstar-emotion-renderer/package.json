@@ -15,11 +15,12 @@
     "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
-    "react": "16.8.6"
+    "react": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

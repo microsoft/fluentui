@@ -163,12 +163,19 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     return (
       <div className={rootStyle}>
         <AreaChart
-          showYAxisGridLines={true}
           height={400}
           width={650}
           data={chartData}
           legendsOverflowText={'Overflow Items'}
           yAxisTickFormat={d3.format('$,')}
+          legendProps={{
+            overflowProps: {
+              focusZoneProps: {
+                'aria-label': 'Legends container',
+              },
+            },
+            allowFocusOnLegends: true,
+          }}
         />
       </div>
     );

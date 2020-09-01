@@ -397,6 +397,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 margin-top: 0;
                 text-align: center;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: GrayText;
+              }
           data-icon-name="ChevronDown"
           role="presentation"
           style={
@@ -909,6 +912,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: GrayText;
               }
           data-icon-name="More"
           role="presentation"

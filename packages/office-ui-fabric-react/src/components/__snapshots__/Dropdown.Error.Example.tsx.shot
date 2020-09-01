@@ -140,7 +140,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -284,7 +284,6 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {

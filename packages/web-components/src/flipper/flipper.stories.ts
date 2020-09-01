@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import FlipperTemplate from './fixtures/flipper.html';
-import { FASTFlipper } from './';
+import { FluentFlipper } from './';
 
 // Prevent tree-shaking
-FASTFlipper;
-FASTDesignSystemProvider;
+FluentFlipper;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Flipper',
