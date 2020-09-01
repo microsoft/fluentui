@@ -68,7 +68,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
-      this._fitParentContainer();
+      this._fitParentContainer(true);
     }
   }
 
@@ -281,7 +281,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
-  private _fitParentContainer(): void {
+  private _fitParentContainer(fromDidUpdate?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
 
     this._reqID = requestAnimationFrame(() => {
@@ -300,10 +300,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+        this.setState(
+          {
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          },
+          () => {
+            if (fromDidUpdate) {
+              this.props.getRerenderProp && this.props.getRerenderProp(true);
+            }
+          },
+        );
       }
     });
   }

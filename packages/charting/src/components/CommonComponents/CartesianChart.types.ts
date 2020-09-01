@@ -297,6 +297,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getGraphData?: any;
   legendBars: JSX.Element;
+  /**
+   * Only using in area chart, as it won't re render after every change
+   * Used for to check re render of the graph or not.
+   * @memberof IModifiedCartesianChartProps
+   */
+  getRerenderProp?: (isReRender: boolean) => void;
   barwidth?: number;
   isXAxisDateType: boolean;
   tickParams?: {
@@ -304,7 +310,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     tickFormat?: string;
   };
   children(props: IChildProps): React.ReactNode;
+  /**
+   * To enable multi callout or single callout
+   *
+   * @type {boolean}
+   */
   isMultiStackCallout: boolean;
+  /**
+   * Callout props
+   */
   calloutProps: Partial<ICalloutProps> & {
     isCalloutVisible: boolean;
     id: string;
