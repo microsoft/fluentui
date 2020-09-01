@@ -9,8 +9,8 @@ const config: ScreenerTestsConfig = {
   steps: [
     (builder, keys) =>
       builder
-        .hover(selectors.item(1))
-        .snapshot('Hovers 1st item, open menu')
+        .click(selectors.item(1))
+        .snapshot('Click 1st item, open menu')
         .hover(selectors.item(3))
         .snapshot('Hovers 2nd item, open submenu'),
   ],

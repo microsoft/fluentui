@@ -361,6 +361,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-readonly={true}
+                          aria-current={day.isToday ? 'date' : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}

@@ -64,21 +64,9 @@ module.exports = {
   // screenshot every example in maximized mode
   states: require('./screener.states').default,
 
-  // CircleCI config
-  // ...(process.env.CI && {
-  //   baseBranch: 'master',
-  //   // Disable exit code to fail in Github Actions
-  //   // failureExitCode: 0,
-  //   // GITHUB_REF can be:
-  //   // - refs/heads/feature-branch-1 for "push"
-  //   // - refs/pull/2040/merge for "pull_request"
-  //   branch: process.env.GITHUB_REF.split('/')[2],
-  //   commit: process.env.GITHUB_SHA
-  // })
-
   alwaysAcceptBaseBranch: true,
-
   baseBranch,
+  failureExitCode: 0,
 
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
     ? {
