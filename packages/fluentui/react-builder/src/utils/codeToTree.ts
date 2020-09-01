@@ -29,8 +29,8 @@ const prefixElementNamesPlugin = ({ types }) => {
 };
 
 const prefix = {
-  '@fluentui/react-northstar': 'Fluent.',
-  '@fluentui/react/lib/Button': 'Fabric.',
+  Fluent: '@fluentui/react-northstar',
+  Fabric: '@fluentui/react/lib/Button',
 };
 
 export const codeToTree: (code: string) => JSONTreeElement = code => {
@@ -41,7 +41,6 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
 
   (window as any).convert = (name, props, ...children) => {
     // console.log('CONVERT', { name, props, children });
-    let display = name;
     const objectName = name.match(/^hack_(.*)_dot_(.*)$/);
     if (objectName) {
       name = `${objectName[1]}.${objectName[2]}`;
@@ -55,17 +54,10 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
     const uuid = props?.['data-builder-id'] ?? getUUID();
     delete props?.['data-builder-id'];
 
-    if (props?.['module-name']) {
-      if (prefix[props?.['module-name']] === 'Fabric.') {
-        display = `${prefix[props?.['module-name']]}${name.replace('Customized', '')}`;
-      } else {
-        display = `${prefix[props?.['module-name']]}${name}`;
-      }
-    }
     return {
       type: name,
-      displayName: display,
-      moduleName: props?.['module-name'],
+      displayName: name,
+      ...(objectName && objectName[1] && prefix[objectName[1]] && { moduleName: prefix[objectName[1]] }),
       uuid,
       ...(name.match(/^[A-Za-z]/) && { $$typeof: 'Symbol(react.element)' }),
       props: { ...props, ...(children.length > 0 && { children }) },

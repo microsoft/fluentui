@@ -451,10 +451,7 @@ const resolveImport = {
 
 export const resolveComponent = (displayName, moduleName): React.ElementType => {
   if (moduleName) {
-    return (
-      resolveImport[moduleName][displayName.split('.')[1]?.replace('Customized', '')] ||
-      resolveImport[moduleName][displayName.replace('Customized', '')]
-    );
+    return resolveImport[moduleName][displayName.split('.')[1]] || resolveImport[moduleName][displayName] || 'div';
   }
   return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
@@ -467,7 +464,7 @@ const toJSONTreeElement = input => {
       type:
         typeof (input as React.ReactElement).type === 'string'
           ? (input as React.ReactElement).type
-          : ((input as React.ReactElement).type as any).displayName,
+          : ((input as React.ReactElement).type as any).displayName.replace('Customized', 'Fabric.'),
       props: toJSONTreeElement(input.props),
     };
   }
@@ -496,7 +493,6 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
     displayName,
     props: { children: [] },
     ...jsonTreeElement,
-    type: displayName,
   };
 };
 
@@ -580,7 +576,6 @@ export const renderJSONTreeToJSXElement = (
     ...modifiedTree.props,
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
-    'module-name': modifiedTree.moduleName,
   });
 };
 
@@ -675,11 +670,14 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
-  ${code
-    .replace(new RegExp('<Customized', 'g'), '<Fabric.')
-    .replace(new RegExp('</Customized', 'g'), '</Fabric.')} \n);}`; // TODO: what if there is '<Customized' somewhere as a  text
+  ${parseToCodeWithFabric(code)} \n);}`;
 
   return { code: codeSandboxExport, imports: packageImports };
+};
+
+export const parseToCodeWithFabric = code => {
+  // TODO: what if there is '<Customized' somewhere as a text
+  return code.replace(new RegExp('<Customized', 'g'), '<Fabric.').replace(new RegExp('</Customized', 'g'), '</Fabric.');
 };
 
 /**

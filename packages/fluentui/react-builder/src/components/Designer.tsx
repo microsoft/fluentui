@@ -25,6 +25,7 @@ import {
   getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
+  parseToCodeWithFabric,
 } from '../config';
 import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 
@@ -212,7 +213,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
     case 'SHOW_CODE':
       try {
         draftState.showCode = action.show;
-        draftState.code = action.show ? renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree)) : null;
+        draftState.code = action.show
+          ? parseToCodeWithFabric(renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree)))
+          : null;
       } catch (e) {
         console.error('Failed to convert tree to code.', e.toString());
       }
@@ -293,7 +296,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
   }
 
   if (treeChanged && draftState.showCode) {
-    draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
+    draftState.code = parseToCodeWithFabric(renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree)));
     draftState.codeError = null;
   }
 };
