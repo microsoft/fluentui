@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 31 Aug 2020 12:25:46 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Aug 2020 18:11:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.1)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.0..@uifabric/charting_v3.3.1)
+
+### Patches
+
+- Redesign of Chart helper and updated associate files ([PR #14781](https://github.com/microsoft/fluentui/pull/14781) by v-jasha@microsoft.com)
 
 ## [3.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.0)
 

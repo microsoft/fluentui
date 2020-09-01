@@ -3,18 +3,14 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps } from './LineChart.types';
+import { ILineChartProps, IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, IMargins } from '../../utilities/index';
-import { ChartHelper } from '../CommonComponents/ChartHelper';
+import { calloutData, ChartTypes, getXAxisType } from '../../utilities/index';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
-export interface IRefArrayData {
-  index?: string;
-  refElement?: SVGGElement;
-}
 export interface IContainerValues {
   width: number;
   height: number;
@@ -64,12 +60,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
-    this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 35,
-    };
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -92,20 +82,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps } = this.props;
     this._points = this.props.data.lineChartData || [];
+
+    const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = this.state.selectedLegendPoints.length >= 1 ? this.state.selectedLegendPoints : this._points;
       this._calloutPoints = calloutData(points);
     }
-    let dataType = false;
-    if (this._points && this._points.length > 0) {
-      this._points.forEach((chartData: ILineChartPoints) => {
-        if (chartData.data.length > 0) {
-          dataType = chartData.data[0].x instanceof Date;
-          return;
-        }
-      });
-    }
+
     const legendBars = this._createLegends(this._points!);
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
@@ -121,15 +105,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickValues: tickValues,
       tickFormat: tickFormat,
     };
+
     return (
-      <ChartHelper
+      <CartesianChart
         {...this.props}
-        points={points}
-        getGraphData={this._getLinesData}
+        points={this._points}
+        chartType={ChartTypes.LineChart}
+        isXAxisDateType={isXAxisDateType}
+        isMultiStackCallout
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isXAxisDateType={dataType}
+        getmargins={this._getMargins}
+        getGraphData={this._getLinesData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -164,6 +152,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getLinesData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
