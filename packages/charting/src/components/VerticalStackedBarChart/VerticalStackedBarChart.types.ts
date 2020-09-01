@@ -129,6 +129,11 @@ export interface IVerticalStackedBarChartStyleProps {
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyles {

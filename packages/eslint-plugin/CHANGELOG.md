@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.0)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.4..@fluentui/eslint-plugin_v0.54.0)
+
+### Minor changes
+
+- Add no-global-react rule ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [0.53.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.4)
 

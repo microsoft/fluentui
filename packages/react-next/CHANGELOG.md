@@ -1,8 +1,70 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.97)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.94..@fluentui/react-next_v8.0.0-alpha.97)
+
+### Changes
+
+- Updating Shimmer to a function component. ([PR #14763](https://github.com/microsoft/fluentui/pull/14763) by czearing@outlook.com)
+- Fabric component: styles prop respected. ([PR #14827](https://github.com/microsoft/fluentui/pull/14827) by dzearing@hotmail.com)
+
+## [8.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.94)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.93..@fluentui/react-next_v8.0.0-alpha.94)
+
+### Changes
+
+- Move Link from react-next to react-link. ([PR #14782](https://github.com/microsoft/fluentui/pull/14782) by xgao@microsoft.com)
+- Move Toggle from react-next to react-toggle ([PR #14784](https://github.com/microsoft/fluentui/pull/14784) by xgao@microsoft.com)
+
+## [8.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.93)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.92..@fluentui/react-next_v8.0.0-alpha.93)
+
+### Changes
+
+- Move Slider from react-next to react-slider ([PR #14750](https://github.com/microsoft/fluentui/pull/14750) by xgao@microsoft.com)
+- Update release notes for Pivot ([PR #14725](https://github.com/microsoft/fluentui/pull/14725) by xgao@microsoft.com)
+- Moving messageBar into react-next for future function component conversion. ([PR #14747](https://github.com/microsoft/fluentui/pull/14747) by czearing@outlook.com)
+- Moving Shimmer to react-next for future function component conversion. ([PR #14748](https://github.com/microsoft/fluentui/pull/14748) by czearing@outlook.com)
+- Move Checkbox from react-next to react-checkbox. ([PR #14751](https://github.com/microsoft/fluentui/pull/14751) by xgao@microsoft.com)
+
+## [8.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.92)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.91..@fluentui/react-next_v8.0.0-alpha.92)
+
+### Changes
+
+- Link: Making High Contrast styling adhere to system settings. ([PR #14709](https://github.com/microsoft/fluentui/pull/14709) by humbertomakotomorimoto@gmail.com)
+- TextField: Removing recursive reference in ITextFieldStyles. ([PR #14739](https://github.com/microsoft/fluentui/pull/14739) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.91)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.89..@fluentui/react-next_v8.0.0-alpha.91)
+
+### Changes
+
+- Copying teachingBubble to react-next, in preparation for converting to a function component. ([PR #14220](https://github.com/microsoft/fluentui/pull/14220) by czearing@outlook.com)
+- Moving Rating to react-next, in preparation for converting to a function component. ([PR #14700](https://github.com/microsoft/fluentui/pull/14700) by czearing@outlook.com)
+
+## [8.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.89)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.88..@fluentui/react-next_v8.0.0-alpha.89)
+
+### Changes
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.88)
 

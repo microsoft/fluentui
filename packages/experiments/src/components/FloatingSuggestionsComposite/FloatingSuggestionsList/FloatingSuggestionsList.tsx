@@ -50,6 +50,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
       onSuggestionRemove,
       onItemClick,
       selectedSuggestionIndex,
+      pickerWidth,
     } = props;
 
     return (
@@ -60,6 +61,9 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
             id={`FloatingSuggestionsItemId-${index}`}
             role="listitem"
             aria-label={suggestionItem.ariaLabel}
+            style={{
+              width: pickerWidth ? pickerWidth : 'auto',
+            }}
           >
             <FloatingSuggestionsItemMemo
               item={suggestionItem.item}

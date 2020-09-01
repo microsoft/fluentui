@@ -87,4 +87,12 @@ export interface IUnifiedPickerProps<T> {
    * Drag drop events callback interface
    */
   dragDropEvents?: IDragDropEvents;
+
+  /**
+   * String used in drag drop to identify information for this specific control
+   * Is only used when dragDropEvents is not specified (default)
+   * getSerializedItems and getDeserializedItems on the selectedItemsListProps should be specified as well
+   * if this is used
+   */
+  customClipboardType?: string;
 }

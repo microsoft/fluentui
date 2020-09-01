@@ -1,4 +1,4 @@
-import { Tokens, Theme } from './types';
+import { Tokens, Theme } from '@fluentui/theme';
 import { defaultTokens } from './createDefaultTheme';
 import { merge } from '@uifabric/utilities';
 
@@ -13,7 +13,6 @@ export function getTokens(theme: Theme): Tokens {
     rtl,
     isInverted,
     disableGlobalClassNames,
-    defaultFontStyle,
     tokens,
     stylesheets,
     ...passThroughTokens
@@ -56,6 +55,61 @@ export function getTokens(theme: Theme): Tokens {
         checkedHovered: {
           background: semanticColors?.primaryButtonBackgroundPressed,
           contentColor: semanticColors?.primaryButtonTextPressed,
+        },
+      },
+
+      // ghost is currently only mapped for ghost button to use.
+      ghost: {
+        background: semanticColors?.bodyBackground,
+        borderColor: 'transparent',
+        contentColor: palette?.neutralPrimary,
+        iconColor: palette?.themeDarkAlt,
+        menuIconColor: palette?.neutralSecondary,
+
+        checked: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        disabled: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralTertiary,
+          iconColor: 'inherit',
+        },
+
+        expanded: {
+          contentColor: palette?.themePrimary,
+        },
+
+        focused: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralPrimary,
+          iconColor: palette?.themeDarkAlt,
+        },
+
+        hovered: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        pressed: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
         },
       },
 
@@ -109,5 +163,5 @@ export function getTokens(theme: Theme): Tokens {
     tokens,
   );
 
-  return { ...(passThroughTokens as Tokens), ...preparedTokens };
+  return { ...((passThroughTokens as unknown) as Tokens), ...preparedTokens };
 }

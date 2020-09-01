@@ -7,9 +7,12 @@ import {
   RepathImportModType,
   CodeModMapType,
   ModOptions,
+  RenameImportType,
+  NoOp,
+  ModResult,
 } from '../../types';
-import { findJsxTag, renameProp, getImportsByPath, repathImport } from '../../utilities/index';
-import { Ok, Err } from '../../../helpers/result';
+import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
+import { Ok, Err, Result } from '../../../helpers/result';
 
 const jsonObj: UpgradeJSONType = require('../upgrades.json');
 
@@ -49,16 +52,15 @@ export function getCodeModsFromJson(): CodeMod[] {
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
-export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => void): CodeMod {
+export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>): CodeMod {
   return {
     run: (file: SourceFile) => {
       try {
         /* Codemod body. */
-        mod(file);
+        return mod(file);
       } catch (e) {
-        return Err({ reason: `Mod failed: ${e}` });
+        return Err({ reason: `Catching unhandled error: ${e}` });
       }
-      return Ok({ logs: ['Upgrade completed'] });
     },
     version: options.version,
     name: options.name,
@@ -73,7 +75,14 @@ const codeModMap: CodeModMapType = {
   renameProp: function(mod: RenamePropModType) {
     return function(file: SourceFile) {
       const tags = findJsxTag(file, mod.options.from.importName);
-      renameProp(tags, mod.options.from.toRename, mod.options.to.replacementName);
+      const res = renameProp(tags, mod.options.from.toRename, mod.options.to.replacementName);
+      if (res.ok) {
+        return Ok({ logs: [res.value] });
+      } else {
+        return Err({
+          reason: `unable to rename the prop ${mod.options.from.toRename} in all files.`,
+        });
+      }
     };
   },
   repathImport: function(mod: RepathImportModType) {
@@ -86,10 +95,19 @@ const codeModMap: CodeModMapType = {
               .substring(0, (mod.options.from.searchString as string).length - 2),
           )
         : mod.options.from.searchString;
-      const imports = getImportsByPath(file, searchString);
-      imports.forEach(val => {
-        repathImport(val, mod.options.to.replacementValue);
-      });
+      const res = getImportsByPath(file, searchString).then(v =>
+        v.map(imp => repathImport(imp, mod.options.to.replacementValue)),
+      );
+      if (res.ok) {
+        return Ok({ logs: ['Successfully repathed imports'] });
+      } else {
+        return Err({ reason: `Unable to repath imports to ${mod.options.to.replacementValue} in all files.` });
+      }
+    };
+  },
+  renameImport: function(mod: RenameImportType) {
+    return function(file: SourceFile) {
+      return renameImport(file, mod.options.from.originalImport, mod.options.to.renamedImport);
     };
   },
 };

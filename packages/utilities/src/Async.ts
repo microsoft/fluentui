@@ -237,16 +237,17 @@ export class Async {
    * @param options - The options object.
    * @returns The new throttled function.
    */
-  public throttle<T extends Function>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public throttle<T extends (...args: any[]) => any>(
     func: T,
     wait?: number,
     options?: {
       leading?: boolean;
       trailing?: boolean;
     },
-  ): T | (() => void) {
+  ): T {
     if (this._isDisposed) {
-      return this._noop;
+      return this._noop as T;
     }
 
     let waitMS = wait || 0;
@@ -267,7 +268,7 @@ export class Async {
     }
 
     let callback = (userCall?: boolean) => {
-      let now = new Date().getTime();
+      let now = Date.now();
       let delta = now - lastExecuteTime;
       let waitLength = leading ? waitMS - delta : waitMS;
       if (delta >= waitMS && (!userCall || leading)) {
@@ -285,10 +286,10 @@ export class Async {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let resultFunction: () => T = (...args: any[]) => {
+    let resultFunction = ((...args: any[]): any => {
       lastArgs = args;
       return callback(true);
-    };
+    }) as T;
 
     return resultFunction;
   }
@@ -308,7 +309,8 @@ export class Async {
    * @param options - The options object.
    * @returns The new debounced function.
    */
-  public debounce<T extends Function>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public debounce<T extends (...args: any[]) => any>(
     func: T,
     wait?: number,
     options?: {
@@ -316,18 +318,16 @@ export class Async {
       maxWait?: number;
       trailing?: boolean;
     },
-  ): ICancelable<T> & (() => void) {
+  ): ICancelable<T> & T {
     if (this._isDisposed) {
-      let noOpFunction: ICancelable<T> & (() => T) = (() => {
+      let noOpFunction = (() => {
         /** Do nothing */
-      }) as ICancelable<T> & (() => T);
+      }) as ICancelable<T> & T;
 
       noOpFunction.cancel = () => {
         return;
       };
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      noOpFunction.flush = (() => null) as any;
-      /* eslint-enable @typescript-eslint/no-explicit-any */
+      noOpFunction.flush = ((() => null) as unknown) as () => ReturnType<T>;
       noOpFunction.pending = () => false;
 
       return noOpFunction;
@@ -338,8 +338,8 @@ export class Async {
     let trailing = true;
     let maxWait: number | null = null;
     let lastCallTime = 0;
-    let lastExecuteTime = new Date().getTime();
-    let lastResult: T;
+    let lastExecuteTime = Date.now();
+    let lastResult: ReturnType<T>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let lastArgs: any[];
     let timeoutId: number | null = null;
@@ -370,7 +370,7 @@ export class Async {
     };
 
     let callback = (userCall?: boolean) => {
-      let now = new Date().getTime();
+      let now = Date.now();
       let executeImmediately = false;
       if (userCall) {
         if (leading && now - lastCallTime >= waitMS) {
@@ -408,23 +408,23 @@ export class Async {
     let cancel = (): void => {
       if (pending()) {
         // Mark the debounced function as having executed
-        markExecuted(new Date().getTime());
+        markExecuted(Date.now());
       }
     };
 
-    let flush = (): T => {
+    let flush = () => {
       if (pending()) {
-        invokeFunction(new Date().getTime());
+        invokeFunction(Date.now());
       }
 
       return lastResult;
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let resultFunction: ICancelable<T> & (() => T) = ((...args: any[]) => {
+    let resultFunction = ((...args: any[]) => {
       lastArgs = args;
       return callback(true);
-    }) as ICancelable<T> & (() => T);
+    }) as ICancelable<T> & T;
 
     resultFunction.cancel = cancel;
     resultFunction.flush = flush;
@@ -482,8 +482,9 @@ export class Async {
   }
 }
 
-export type ICancelable<T> = {
-  flush: () => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ICancelable<T extends (...args: any[]) => any> = {
+  flush: () => ReturnType<T>;
   cancel: () => void;
   pending: () => boolean;
 };

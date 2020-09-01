@@ -30,6 +30,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   checkBoxCheck: HighContrastLightSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: HighContrastLightSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: HighContrastLightSemanticColors.checkBox.rest.hover,
+  checkBoxCheckedDisabledBackground: HighContrastLightSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: HighContrastLightSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: HighContrastLightSemanticColors.checkBox.rest.check,
   checkBoxIndeterminateDefaultChecked: HighContrastLightSemanticColors.checkBox.checked.default,
