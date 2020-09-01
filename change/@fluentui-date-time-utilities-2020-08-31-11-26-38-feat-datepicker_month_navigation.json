@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adding more localization strings to date-time-utilities package.",
+  "comment": "Adding more localization strings to fluentui/date-time-utilities package.",
   "packageName": "@fluentui/date-time-utilities",
   "email": "karymes@microsoft.com",
   "dependentChangeType": "patch",
