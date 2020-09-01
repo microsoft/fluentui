@@ -23,13 +23,8 @@ export const TabsStyles = css`
     align-self: end;
   }
 
-  .start {
-    padding: 2px;
-    align-self: center;
-  }
-
+  .start,
   .end {
-    padding: 2px;
     align-self: center;
   }
 
