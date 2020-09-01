@@ -136,7 +136,7 @@ export interface ICartesianChartProps {
   height?: number;
 
   /**
-   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   * this prop takes its parent as a HTML element to define the width and height of the chart
    */
   parentRef?: HTMLElement | null;
 
@@ -167,7 +167,7 @@ export interface ICartesianChartProps {
   hideTooltip?: boolean;
 
   /**
-   * this prop takes values that you want the line chart to render on x-axis
+   * this prop takes values that you want the chart to render on x-axis
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
