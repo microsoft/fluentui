@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Implementing createMergedRef inside FocusZone.",
+  "comment": "Add temporary elementRef prop to FocusZone.",
   "packageName": "@fluentui/react-focus",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",

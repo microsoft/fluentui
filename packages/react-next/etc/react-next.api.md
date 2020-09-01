@@ -1915,7 +1915,7 @@ export interface ISwatchColorPickerProps {
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
-    onChange?: (event: React.FormEvent<HTMLElement>, color?: string, id?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
     selectedId?: string;

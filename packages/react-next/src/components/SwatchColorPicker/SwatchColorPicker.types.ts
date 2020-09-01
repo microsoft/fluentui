@@ -49,7 +49,7 @@ export interface ISwatchColorPickerProps {
   colorCells: IColorCellProps[];
 
   /**
-   * @deprecated Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled
+   * @deprecated No longer used. Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled.
    */
   isControlled?: boolean;
 
@@ -69,7 +69,8 @@ export interface ISwatchColorPickerProps {
    * If `id` and `color` are unspecified, there is no selected cell.
    * (e.g. the user executed the currently selected cell to unselect it)
    */
-  onChange?: (event: React.FormEvent<HTMLElement>, color?: string, id?: string) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
+
   /**
    * Callback for when the user hovers over a color cell.
    * If `id` and `color` are unspecified, cells are no longer being hovered.
@@ -184,7 +185,7 @@ export interface ISwatchColorPickerStyleProps {
 }
 
 /**
- * Styles for the Color Picker Component.
+ * Styles for the SwatchColorPicker.
  * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyles {

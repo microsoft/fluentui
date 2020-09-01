@@ -29,7 +29,7 @@ function useDebugWarnings(props: ISwatchColorPickerProps) {
       name: COMPONENT_NAME,
       props,
       mutuallyExclusive: { focusOnHover: 'onHover', selectedId: 'defaultSelectedId' },
-      deprecations: { isControlled: "selectedId' or 'defaultSelectedId" },
+      deprecations: { isControlled: "selectedId' or 'defaultSelectedId", onColorChanged: 'onChange' },
     });
   }
 }
@@ -63,6 +63,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     focusOnHover,
     mouseLeaveParentSelector,
     onChange,
+    // eslint-disable-next-line deprecation/deprecation
+    onColorChanged,
     onCellHovered,
     onCellFocused,
     getColorGridCellStyles,
@@ -80,7 +82,17 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     });
   }, [colorCells]);
 
-  const [selectedId, setSelectedId] = useControllableValue(props.selectedId, defaultSelectedId, onChange);
+  const mergedOnChange = React.useCallback(
+    (ev: React.FormEvent<HTMLElement>, newSelectedId: string | undefined) => {
+      // Call both new and old change handlers, and add the extra `color` parameter
+      const newColor = colorCells.filter(c => c.id === newSelectedId)[0]?.color;
+      onChange?.(ev, newSelectedId, newColor);
+      onColorChanged?.(newSelectedId, newColor);
+    },
+    [onChange, onColorChanged, colorCells],
+  );
+
+  const [selectedId, setSelectedId] = useControllableValue(props.selectedId, defaultSelectedId, mergedOnChange);
 
   const classNames = getClassNames(styles!, {
     theme: props.theme!,
