@@ -12,7 +12,7 @@ import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
-import { isExportedAtTopLevel } from './isExportedAtTopLevel';
+import { isExportedAtTopLevel } from '../specs/commonTests/isExportedAtTopLevel';
 import {
   assertBodyContains,
   consoleUtil,
@@ -21,10 +21,10 @@ import {
   syntheticEvent,
   mountWithProvider,
 } from 'test/utils';
-import { commonHelpers } from './commonHelpers';
+import { commonHelpers } from '../specs/commonTests/commonHelpers';
 
 import * as FluentUI from 'src/index';
-import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
+import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from '../specs/commonTests/eventTarget';
 
 export interface Conformant {
   constructorName?: string;

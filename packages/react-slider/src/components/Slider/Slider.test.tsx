@@ -7,7 +7,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { sharedIsConformant } from '../../common/sharedIsConformant';
+import { isConformant } from '../../common/sharedIsConformant';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 describe('Slider', () => {
@@ -24,7 +24,7 @@ describe('Slider', () => {
     }
   });
 
-  sharedIsConformant({
+  isConformant({
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
