@@ -179,9 +179,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _initializeLineChartData = (
-    xScale: any,
+    xScale: NumericAxis,
     yScale: NumericAxis,
     containerHeight: number,
     containerWidth: number,
