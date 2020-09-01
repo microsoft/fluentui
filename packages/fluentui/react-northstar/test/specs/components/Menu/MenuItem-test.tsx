@@ -21,6 +21,12 @@ describe('MenuItem', () => {
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
+const noop = () => {};noop();
+
+
+
+
+
 
   sharedIsConformant(
     {
