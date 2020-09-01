@@ -228,7 +228,7 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/component-architecture',
         },
       },
-      ...(process.env.NODE_ENV === 'production'
+      ...(process.env.NODE_ENV !== 'production'
         ? [
             {
               id: 'theming-specification',
