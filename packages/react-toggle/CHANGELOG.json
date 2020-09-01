@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-toggle",
+  "entries": [
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-toggle_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove usage of compose and scss from Toggle; Move latest code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "c38170ee4c3a18fc290112ed6c5cffb22e8b03e5",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-toggle_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Toggle from react-next to react-toggle",
+            "author": "xgao@microsoft.com",
+            "commit": "0fed0283189ace758b92a0fa404d6d67343f4cfa",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    }
+  ]
+}

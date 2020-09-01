@@ -39,6 +39,12 @@ const siteInfo = [
     title: 'Image',
   },
   {
+    package: '@fluentui/react-toggle',
+    link: './react-toggle/dist-storybook/index.html',
+    icon: 'ToggleLeft',
+    title: 'Toggle',
+  },
+  {
     package: '@fluentui/react-tabs',
     link: './react-tabs/dist-storybook/index.html',
     icon: 'BrowserTab',
@@ -49,6 +55,12 @@ const siteInfo = [
     link: './react-slider/dist-storybook/index.html',
     icon: 'Slider',
     title: 'Slider',
+  },
+  {
+    package: '@fluentui/react-link',
+    link: './react-link/dist-storybook/index.html',
+    icon: 'Link',
+    title: 'Link',
   },
   {
     package: '@fluentui/react-next',

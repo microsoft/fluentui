@@ -465,6 +465,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
     type: displayName,
     moduleName: module,
     displayName,
+    props: { children: [] },
     ...jsonTreeElement,
   };
 };
@@ -627,7 +628,13 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   };
   for (const [module, components] of Object.entries(imports)) {
     codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    packageImports[module] = packageImportList[module];
+    if (packageImportList[module]) {
+      packageImports[module] = packageImportList[module];
+    } else {
+      console.error(
+        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
+      );
+    }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
   ${code} \n);}`;
@@ -784,10 +791,12 @@ export const MultiTypeKnob: React.FunctionComponent<{
 
   // console.log('MultiTypeKnob', { label, value, type, types });
 
+  const propId = `prop-${label}`;
+
   return (
     <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
       <div>
-        {type !== 'boolean' && <label>{label} </label>}
+        {type !== 'boolean' && <label htmlFor={propId}>{label} </label>}
         {types.length === 1 ? (
           <code style={{ float: 'right' }}>{type}</code>
         ) : (
@@ -798,19 +807,20 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options: literalOptions, value, onChange })}
-      {type === 'boolean' && <label> {label}</label>}
+      {knob && knob({ options: literalOptions, value, onChange, id: propId })}
+      {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
     </div>
   );
 };
 
 export const knobs = {
-  boolean: ({ value, onChange }) => (
-    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
+  boolean: ({ value, onChange, id }) => (
+    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
   ),
 
-  number: ({ value, onChange }) => (
+  number: ({ value, onChange, id }) => (
     <input
+      id={id}
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
@@ -818,12 +828,12 @@ export const knobs = {
     />
   ),
 
-  string: ({ value, onChange }) => (
-    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
+  string: ({ value, onChange, id }) => (
+    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
   ),
 
-  literal: ({ options, value, onChange }) => (
-    <select onChange={e => onChange(e.target.value)} value={value}>
+  literal: ({ options, value, onChange, id }) => (
+    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
       {options?.map((
         opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
       ) => (
@@ -834,6 +844,6 @@ export const knobs = {
     </select>
   ),
 
-  ReactText: (value, onChange) => knobs.string({ value, onChange }),
-  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
+  ReactText: (value, onChange, id) => knobs.string({ value, onChange, id }),
+  'React.ElementType': (value, onChange, id) => knobs.string({ value, onChange, id }),
 };
