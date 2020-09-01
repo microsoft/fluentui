@@ -2,10 +2,11 @@ import * as React from 'react';
 import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { Accordion } from 'src/components/Accordion/Accordion';
-import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
+import { handlesAccessibility } from 'test/specs/commonTests';
+import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement, isConformant } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
+import * as path from 'path';
 
 const panels = [
   {
@@ -53,7 +54,11 @@ const getAccordionTitleAtIndex = (accordion, index) =>
     .getDOMNode();
 
 describe('Accordion', () => {
-  isConformant(Accordion, { constructorName: 'Accordion', autoControlledProps: ['activeIndex'] });
+  isConformant(Accordion, {
+    testPath: __filename,
+    constructorName: 'Accordion',
+    autoControlledProps: ['activeIndex'],
+  });
 
   describe('activeIndex', () => {
     it('has no active item by default when exclusive', () => {
