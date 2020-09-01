@@ -6,16 +6,17 @@ import Rtl from './Rtl';
 import Variations from './Variations';
 import States from './States';
 import Usage from './Usage';
+import NonPublicSection from '../../../components/ComponentDoc/NonPublicSection';
 
 const IconExamples = () => (
-  <div>
+  <NonPublicSection title="Visual tests">
     <Types />
     <States />
     <Variations />
     <Rtl />
     <Performance />
     <Usage />
-  </div>
+  </NonPublicSection>
 );
 
 export default IconExamples;
