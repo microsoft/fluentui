@@ -31,7 +31,9 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const PROD = process.env.NODE_ENV === 'production';
+
+const componentsBlackList = ['Debug', 'Design', 'Datepicker', PROD && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -228,7 +230,7 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/component-architecture',
         },
       },
-      ...(process.env.NODE_ENV !== 'production'
+      ...(PROD
         ? [
             {
               id: 'theming-specification',
@@ -340,7 +342,7 @@ const removePublicTags = prototyptesTreeItems => {
 };
 
 const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototypes) => {
-  let prototypes = process.env.NODE_ENV === 'production' ? _.filter(allPrototypes, { public: true }) : allPrototypes;
+  let prototypes = PROD ? _.filter(allPrototypes, { public: true }) : allPrototypes;
 
   if (prototypes.length === 0) {
     return currentSections;
