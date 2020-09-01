@@ -583,6 +583,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         underlined: props.underlined,
         vertical: props.vertical,
         primary: props.primary,
+        on: props.on,
       },
       menu: {
         accessibility: submenuBehavior,
