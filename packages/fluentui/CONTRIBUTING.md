@@ -16,9 +16,6 @@
   - [Add a new package](#add-a-new-package)
     - [Run `syncpack format`](#run-syncpack-format)
   - [Add a new dependency](#add-a-new-dependency)
-- [Development Notes](#development-notes)
-  - [Collection of Little Ideas](#collection-of-little-ideas)
-  - [Collection of Concrete Topics](#collection-of-concrete-topics)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
