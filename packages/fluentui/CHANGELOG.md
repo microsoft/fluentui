@@ -45,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added icons `FilterIcon`, `MicrophoneDisabledIcon`, `OptionsIcon`, `ReactionsIcon` @TanelVari ([#14745](https://github.com/microsoft/fluentui/pull/14745))
 - Add `foreground5` and `foreground6` in the colorScheme's default definition @assuncaocharles ([#14818](https://github.com/microsoft/fluentui/pull/14818))
 - Add `Form.Datepicker` component @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
+- Add default position for `Datepicker` popup @pompomon ([#14847](https://github.com/microsoft/fluentui/pull/14847))
 
 ### Documentation
 - Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
