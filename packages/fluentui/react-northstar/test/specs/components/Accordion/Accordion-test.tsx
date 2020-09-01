@@ -2,11 +2,10 @@ import * as React from 'react';
 import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { Accordion } from 'src/components/Accordion/Accordion';
-import { handlesAccessibility } from 'test/specs/commonTests';
-import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement, isConformant } from 'test/utils';
+import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
+import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
-import * as path from 'path';
 
 const panels = [
   {

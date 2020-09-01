@@ -6,6 +6,7 @@ import { mountWithProvider } from 'test/utils';
 
 describe('Animation', () => {
   isConformant(Animation, {
+    testPath: __filename,
     constructorName: 'Animation',
     hasAccessibilityProp: false,
     requiredProps: { children: <div /> },

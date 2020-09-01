@@ -1,11 +1,9 @@
-import { isConformant as isConformantBase, handlesAccessibility } from 'test/specs/commonTests';
-import { isConformant } from 'test/utils';
+import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
-  isConformant({ Component: Slider, displayName: 'Slider' }, __filename);
-
-  isConformantBase(Slider, {
+  isConformant(Slider, {
+    testPath: __filename,
     constructorName: 'Slider',
     eventTargets: {
       onChange: 'input',

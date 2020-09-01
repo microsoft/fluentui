@@ -1,21 +1,14 @@
 import * as React from 'react';
 
 import { AccordionContent } from 'src/components/Accordion/AccordionContent';
-import { isConformant as isConformantBase, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, isConformant } from 'test/utils';
+import { handlesAccessibility, getRenderedAttribute, isConformant } from 'test/specs/commonTests';
+import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('AccordionContent', () => {
-  // isConformantBase(AccordionContent, { constructorName: 'AccordionContent' });
-
-  isConformant(
-    {
-      Component: AccordionContent,
-      displayName: 'AccordionContent',
-    },
-    __filename,
-    AccordionContent,
-    { constructorName: 'AccordionContent' },
-  );
+  isConformant(AccordionContent, {
+    testPath: __filename,
+    constructorName: 'AccordionContent',
+  });
 
   describe('accessiblity', () => {
     handlesAccessibility(AccordionContent);

@@ -2,18 +2,19 @@ import * as React from 'react';
 
 import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
 import {
-  isConformant as isConformantBase,
+  isConformant,
   handlesAccessibility,
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, isConformant } from 'test/utils';
+import { mountWithProviderAndGetComponent } from 'test/utils';
 import { MenuItem } from 'src/components/Menu/MenuItem';
 import { Menu } from 'src/components/Menu/Menu';
 import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
-  isConformantBase(MenuItem, {
+  isConformant(MenuItem, {
+    testPath: __filename,
     constructorName: 'MenuItem',
     eventTargets: {
       onClick: `.${menuItemWrapperClassName}`,
@@ -21,15 +22,6 @@ describe('MenuItem', () => {
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
-
-  isConformant(
-    {
-      Component: MenuItem,
-      displayName: 'MenuItem',
-      wrapperComponent: MenuItemWrapper,
-    },
-    __filename,
-  );
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
     implementsPopper: true,
