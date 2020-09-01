@@ -3,7 +3,7 @@ import { Popup, FocusZone, FocusZoneDirection } from '../../../../react-northsta
 import { useMenuContext } from './menuContext';
 import { MenuListProvider } from './menuListContext';
 
-export function MenuList({ children, id }) {
+export function MenuList({ children }) {
   const { triggerRef, open, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
 
   return (
