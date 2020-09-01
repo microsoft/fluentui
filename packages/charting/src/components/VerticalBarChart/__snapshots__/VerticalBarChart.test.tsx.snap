@@ -24,7 +24,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -93,7 +93,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         id="barGElement"
       >
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="callout1"
           className=
 
               {
@@ -111,7 +111,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           y={-35}
         />
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="callout1"
           className=
 
               {
@@ -178,7 +178,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -245,6 +245,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     className=
 
                         {
+                          background-image: ;
                           border-color: #8a8886;
                           border: 1px solid;
                           height: 12px;
@@ -335,6 +336,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     className=
 
                         {
+                          background-image: ;
                           border-color: #8a8886;
                           border: 1px solid;
                           height: 12px;
