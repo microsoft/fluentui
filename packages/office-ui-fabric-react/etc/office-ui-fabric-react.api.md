@@ -4704,7 +4704,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
     doNotContainWithinFocusZone?: boolean;
     items: any[];
     onBlur?: () => void;
-    onRenderItem: (item: any, index: number) => JSX.Element;
+    onRenderItem: (item: any, index: number) => JSX.Element | null;
     // @deprecated (undocumented)
     positionInSet?: number;
     // @deprecated (undocumented)
@@ -7529,6 +7529,7 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
