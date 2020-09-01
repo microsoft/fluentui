@@ -2143,8 +2143,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
         containsFocus: boolean;
     }) => void;
     onScroll?: () => void;
+    preventDismissOnEvent?: (ev: any) => boolean;
+    // @deprecated
     preventDismissOnLostFocus?: boolean;
+    // @deprecated
     preventDismissOnResize?: boolean;
+    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;

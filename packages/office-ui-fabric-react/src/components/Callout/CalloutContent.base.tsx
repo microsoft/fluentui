@@ -277,22 +277,28 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnScroll = (ev: Event) => {
-    const { preventDismissOnScroll } = this.props;
-    if (this.state.positions && !preventDismissOnScroll) {
+    const { preventDismissOnEvent, preventDismissOnScroll } = this.props;
+    if (
+      this.state.positions &&
+      ((preventDismissOnEvent && !preventDismissOnEvent(ev)) || (!preventDismissOnEvent && !preventDismissOnScroll))
+    ) {
       this._dismissOnClickOrScroll(ev);
     }
   };
 
   protected _dismissOnResize = (ev: Event) => {
-    const { preventDismissOnResize } = this.props;
-    if (!preventDismissOnResize) {
+    const { preventDismissOnEvent, preventDismissOnResize } = this.props;
+    if ((preventDismissOnEvent && !preventDismissOnEvent(ev)) || (!preventDismissOnEvent && !preventDismissOnResize)) {
       this.dismiss(ev);
     }
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
-    const { preventDismissOnLostFocus } = this.props;
-    if (!preventDismissOnLostFocus) {
+    const { preventDismissOnEvent, preventDismissOnLostFocus } = this.props;
+    if (
+      (preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+      (!preventDismissOnEvent && !preventDismissOnLostFocus)
+    ) {
       this._dismissOnClickOrScroll(ev);
     }
   };
