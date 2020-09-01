@@ -91,4 +91,13 @@ describe('SwatchColorPicker', () => {
       .simulate('focus');
     expect(onFocus).toHaveBeenCalledTimes(1);
   });
+
+  it('Can render the color picker when onRenderCell props is passed to swatch color picker ', () => {
+    const onRenderColorCell = jest.fn();
+    mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onRenderColorCell={onRenderColorCell} columnCount={4} />,
+    );
+
+    expect(onRenderColorCell).toHaveBeenCalledTimes(14);
+  });
 });
