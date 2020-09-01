@@ -9,7 +9,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`. */
   label?: ShorthandValue<{}>;
 
-  /** Icon displayed when there's no image or intials available, or if showIcon is true. */
+  /** Icon displayed when there's no image or intials available, or if `display="icon"`. */
   icon?: ShorthandValue<{}>;
 
   /** What the avatar displays. This can be used to override the default behavior, for example to show the icon even
@@ -54,25 +54,19 @@ export type NumericSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 |
  */
 export type AvatarTokens = {
   /** Size of the avatar.
-   * @defaultvalue The Avatar's `size` prop */
+   * @defaultvalue - The Avatar's `size` prop */
   size?: string;
 
   /** Background fill when there is no image */
   background?: string;
 
-  /** Border color */
-  borderColor?: string;
-
-  /** Border width */
-  borderWidth?: string;
-
   /** Border radius */
   borderRadius?: string;
 
-  /** Font size used by the initials */
+  /** Font size used by the initials or icon */
   fontSize?: string;
 
-  /** Custom clip path for the avatar's image or label */
+  /** Custom clip path for the image or background fill */
   clipPath?: string;
 };
 
