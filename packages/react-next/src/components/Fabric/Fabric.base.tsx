@@ -9,7 +9,6 @@ import {
   Customizer,
   useFocusRects,
 } from '../../Utilities';
-import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
@@ -34,9 +33,9 @@ const getDir = ({ theme, dir }: IFabricProps) => {
 };
 
 export const FabricBase = React.forwardRef((props: IFabricProps, ref: React.Ref<HTMLDivElement>) => {
-  const { className, theme, applyTheme, applyThemeToBody } = props;
+  const { className, theme, applyTheme, applyThemeToBody, styles } = props;
 
-  const classNames = getClassNames(getStyles, {
+  const classNames = getClassNames(styles, {
     theme: theme!,
     applyTheme: applyTheme,
     className,

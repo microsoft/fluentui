@@ -2,6 +2,78 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 18:11:10 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export ThemeContext.",
+            "author": "xgao@microsoft.com",
+            "commit": "6d5b28c97bcbef0d79fccfa98f903e5c3ed42460",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding ghost defaults to Fluent theme.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d9de3d77bb24ac881fa63b8cf72e6d56d53d97ad",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Theme and PartialTheme typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "e5f362d4c0dca7d9a7648d76b121d1d39331c59c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move mergeThemes and Theme related typings to new theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Adding `makeStyles` helper to register styles as a function of the theme.",
+            "author": "dzearing@hotmail.com",
+            "commit": "46f1add2165e357c71291281a65ebc0fcb095994",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updated typings for makeStyles so that it can more correctly resolve style inputs.",
+            "author": "dzearing@hotmail.com",
+            "commit": "af039939f1de57e9db36cee2a4943f583956301f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@fluentui/react-theme-provider_v0.8.1",
       "version": "0.8.1",

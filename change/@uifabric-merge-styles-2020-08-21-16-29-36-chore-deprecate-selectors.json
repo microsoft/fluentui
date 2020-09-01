@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles.",
-  "packageName": "@uifabric/merge-styles",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-21T23:29:18.822Z"
-}

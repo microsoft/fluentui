@@ -15,9 +15,7 @@ import {
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
 
-const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>({
-  useStaticStyles: true,
-});
+const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
 const COMPONENT_NAME = 'Pivot';
 

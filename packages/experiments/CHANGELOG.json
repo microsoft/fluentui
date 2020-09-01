@@ -2,6 +2,88 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@uifabric/experiments_v7.32.1",
+      "version": "7.32.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forwardRef to UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1aa0b9d49c7572e476c8148ea0aacae8fca0ad91",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "cf72dc9b1b66b9c5f383d4607cb4adfb80c03895",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/experiments_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make the floating sugggestions picker have an optional fixed width",
+            "author": "sadelson@microsoft.com",
+            "commit": "b283a05ad788a990243ba3eef4525fda0b1d3420",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/experiments_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Drag drop between SelectedItemLists",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ffec1c2a0f98cadfc5d07e625eee644b2a31f1dc",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/experiments_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating ButtionGrid ID snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixing drag drop infinite loop",
+            "author": "nebhatna@microsoft.com",
+            "commit": "44850ca3834a8441475679787e58f112f413a11f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update SelectedItemsList and UnifiedPicker to use Clipboard API for copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2c399e0135ba08a7baac75303b405d57b6102a07",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/experiments_v7.29.1",
       "version": "7.29.1",
