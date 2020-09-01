@@ -14,7 +14,7 @@ import { ComponentInfo } from '../../types';
 import * as _ from 'lodash';
 
 const ComponentExamples = React.lazy(async () => ({
-  default: (await import(/* webpackChunkName: "examples" */ './ComponentExamples')).ComponentExamples,
+  default: (await import(/* webpackChunkName: "examples-with-source" */ './ComponentExamples')).ComponentExamples,
 }));
 const ComponentPlayground = React.lazy(() =>
   import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
