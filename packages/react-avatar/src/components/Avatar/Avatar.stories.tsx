@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from './Avatar';
-import { AvatarProps } from './Avatar.types';
+import { AvatarProps, CustomAvatarSize } from './Avatar.types';
 import { StoryExample } from '../utils/StoryExample';
 import {
   GroupIcon,
@@ -84,11 +84,11 @@ export const AvatarExamples = () => (
       <Avatar square size={128} name="Lorem Ipsum" image={imageUrl} />
     </StoryExample>
     <StoryExample title="Custom Size">
-      <Avatar name="Custom Size" badge="success" tokens={{ size: '17px' }} />
-      <Avatar name="Custom Size" badge="warning" tokens={{ size: '42px' }} />
-      <Avatar name="Custom Size" badge="error" tokens={{ size: '55px' }} />
-      <Avatar name="Custom Size" badge="success" tokens={{ size: '100px' }} />
-      <Avatar name="Custom Size" badge="success" tokens={{ size: '150px' }} />
+      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(17)} />
+      <Avatar name="Custom Size" badge="warning" size={CustomAvatarSize(42)} />
+      <Avatar name="Custom Size" badge="error" size={CustomAvatarSize(55)} />
+      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(100)} />
+      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(150)} />
     </StoryExample>
     <StoryExample title="Custom Shape">
       <RobotAvatar size={20} name="Mr. Robot" />

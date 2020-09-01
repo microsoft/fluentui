@@ -26,7 +26,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   square?: boolean;
 
   /** Size of the avatar */
-  size?: NumericSizeValue;
+  size?: AvatarSizeValue;
 
   /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
   getInitials?: (name: string, isRtl: boolean) => string;
@@ -42,12 +42,16 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
  * Sizes for the Avatar
  *
  * This is a restricted list based on design guidelines for the Avatar control.
- *
  * It's recommended to use one of these sizes to conform to the design guidelines;
- * however, it is possible to specify a different value using the `size` token. E.g.:
- * `tokens={{ size: '52px' }}`
+ * however, it is possible to specify a different value using CustomAvatarSize.
  */
-export type NumericSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 128;
+export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 128;
+
+/**
+ * Convert any number to an AvatarSizeValue. Use when a nonstandard avatar size is required. E.g.:
+ * `size={CustomAvatarSize(42)}`
+ */
+export const CustomAvatarSize = (size: number) => size as AvatarSizeValue;
 
 /**
  * Style tokens for the Avatar
