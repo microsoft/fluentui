@@ -11,7 +11,7 @@ import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 import { IGridProps } from '../../utilities/grid/Grid.types';
 
-interface ISwatchColorPickerState {
+interface ISwatchColorPickerInternalState {
   isNavigationIdle: boolean;
   cellFocused: boolean;
   navigationIdleTimeoutId: number | undefined;
@@ -38,7 +38,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
   const defaultId = useId('swatchColorPicker');
   const id = props.id || defaultId;
 
-  const internalState = useConst<ISwatchColorPickerState>({
+  const internalState = useConst<ISwatchColorPickerInternalState>({
     isNavigationIdle: true,
     cellFocused: false,
     navigationIdleTimeoutId: undefined,
@@ -118,7 +118,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       }
       return true;
     },
-    [focusOnHover, internalState.isNavigationIdle, disabled],
+    [focusOnHover, internalState, disabled],
   );
 
   /**
@@ -139,7 +139,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
 
       return true;
     },
-    [focusOnHover, internalState.isNavigationIdle, disabled],
+    [focusOnHover, internalState, disabled],
   );
 
   /**
@@ -180,7 +180,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         }
       }
     },
-    [disabled, focusOnHover, internalState.isNavigationIdle, mouseLeaveParentSelector],
+    [disabled, focusOnHover, internalState, mouseLeaveParentSelector],
   );
 
   /**

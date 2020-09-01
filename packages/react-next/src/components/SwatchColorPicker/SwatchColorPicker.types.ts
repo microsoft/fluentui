@@ -33,7 +33,9 @@ export interface ISwatchColorPickerProps {
   cellShape?: 'circle' | 'square';
 
   /**
-   * The ID of color cell that is currently selected
+   * ID of the current selected color swatch. Only provide this if the SwatchColorPicker is a
+   * controlled component where you are maintaining its current state; otherwise, use the
+   * `defaultSelectedId` property.
    */
   selectedId?: string;
 
@@ -52,10 +54,8 @@ export interface ISwatchColorPickerProps {
   isControlled?: boolean;
 
   /**
-   * Indicates whether the SwatchColorPicker is fully controlled.
-   * When true, the component will not set its internal state to track the selected color.
-   * Instead, the parent component will be responsible for handling state in the callbacks like
-   * `onColorChanged`.
+   * ID of the default selected color swatch. Only provide this if the SwatchColorPicker is an
+   * uncontrolled component; otherwise, use the `selectedId` property.
    */
   defaultSelectedId?: string | undefined;
 
