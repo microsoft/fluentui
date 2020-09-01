@@ -9,6 +9,7 @@ import {
   DEFAULT_CALENDAR_STRINGS,
   ICalendarStrings,
   IDayGridOptions,
+  IDateGridStrings,
   IRestrictedDatesOptions,
   compareDates,
   compareDatePart,
@@ -219,33 +220,11 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     }
   }, [gridNavigatedDate, visibleGrid, normalizedGridDate]);
 
-  const dateFormatting = {
-    formatDay: props.formatDay,
-    formatYear: props.formatYear,
-    formatMonthDayYear: props.formatMonthDayYear,
-    formatMonthYear: props.formatMonthYear,
-    parseDate: props.parseDate,
+  const dateFormatting: IDateGridStrings = {
     months: props.months,
     shortMonths: props.shortMonths,
     days: props.days,
     shortDays: props.shortDays,
-    isRequiredErrorMessage: props.isRequiredErrorMessage,
-    invalidInputErrorMessage: props.invalidInputErrorMessage,
-    isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
-    goToToday: props.goToToday,
-    openCalendarTitle: props.openCalendarTitle,
-    prevMonthAriaLabel: props.prevMonthAriaLabel,
-    nextMonthAriaLabel: props.nextMonthAriaLabel,
-    prevYearAriaLabel: props.prevYearAriaLabel,
-    nextYearAriaLabel: props.nextYearAriaLabel,
-    prevYearRangeAriaLabel: props.prevYearRangeAriaLabel,
-    nextYearRangeAriaLabel: props.nextYearRangeAriaLabel,
-    monthPickerHeaderAriaLabel: props.monthPickerHeaderAriaLabel,
-    yearPickerHeaderAriaLabel: props.yearPickerHeaderAriaLabel,
-    closeButtonAriaLabel: props.closeButtonAriaLabel,
-    weekNumberFormatString: props.weekNumberFormatString,
-    selectedDateFormatString: props.selectedDateFormatString,
-    todayDateFormatString: props.todayDateFormatString,
   };
 
   const focusDateRef = React.useRef(null);
@@ -309,7 +288,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             'aria-label': formatMonthYear(normalizedGridDate, dateFormatting),
             disabledNextButton: nextMonthOutOfBounds,
             disabledPreviousButton: prevMonthOutOfBounds,
-            ...dateFormatting,
+            prevMonthAriaLabel: props.prevMonthAriaLabel,
+            nextMonthAriaLabel: props.nextMonthAriaLabel,
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
