@@ -10,7 +10,7 @@ import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
-import { IconButton } from '../../Button';
+import { MenuButton } from '../../../../react-button/src/components/MenuButton';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -198,21 +198,22 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     ));
 
     if (hasOverflowItems) {
-      const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
       const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
 
       itemElements.splice(
         overflowIndex!,
         0,
         <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
-          <IconButton
+          <MenuButton
+            iconOnly
+            ghost
             className={this._classNames.overflowButton}
-            iconProps={iconProps}
+            icon={<Icon iconName={!onRenderOverflowIcon ? 'More' : ''} />}
             role="button"
             aria-haspopup="true"
             ariaLabel={overflowAriaLabel}
-            onRenderMenuIcon={onRenderMenuIcon}
-            menuProps={{
+            menuIcon={onRenderMenuIcon}
+            menu={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge,
             }}
