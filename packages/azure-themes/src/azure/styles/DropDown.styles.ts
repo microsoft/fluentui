@@ -9,6 +9,23 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
   }
   const { semanticColors } = theme;
   return {
+    // need to apply border .ms-Callout .ms-Dropdown-callout
+    // tried commenting out all styles and still getting border.
+    root: {
+      selectors: {
+        // attempting to remove border
+        '.ms-Callout': {
+          border: '0px',
+        },
+        '.ms-Dropdown-callout': {
+          border: '0px',
+        },
+        '.ms-Dropdown-callout .ms-Callout': {
+          border: '0px',
+          outline: '0px',
+        },
+      },
+    },
     callout: {
       border: 'none',
       boxShadow: Depths.depth8,
@@ -18,6 +35,16 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: '0',
+        },
+        '.ms-Callout': {
+          border: '0px',
+        },
+        '.ms-Dropdown-callout': {
+          border: '0px',
+        },
+        '.ms-Dropdown-callout .ms-Callout': {
+          border: '0px',
+          outline: '0px',
         },
       },
     },
@@ -39,7 +66,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         fontSize: theme.fonts.medium.fontSize,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
-
+        border: 0,
         selectors: {
           ':focus::after, :focus': {
             //borderColor: semanticColors.inputBorderHovered,
@@ -50,6 +77,17 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
             borderColor: semanticColors.inputBorderHovered,
+          },
+          // attempting to remove border
+          '.ms-Callout': {
+            border: '0px',
+          },
+          '.ms-Dropdown-callout': {
+            border: '0px',
+          },
+          '.ms-Dropdown-callout .ms-Callout': {
+            border: '0px',
+            outline: '0px',
           },
         },
       },
@@ -107,6 +145,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdownItemsWrapper: {
       backgroundColor: semanticColors.bodyBackground,
       borderColor: semanticColors.inputBorder,
+      border: 0,
     },
     dropdownItem: {
       color: semanticColors.bodyText,

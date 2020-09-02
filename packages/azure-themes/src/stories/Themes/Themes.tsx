@@ -45,6 +45,9 @@ import { MessageBarBasicExample } from '../components/messageBar';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <Text>This branch is looking into drop down outlines</Text>
+      <ComboBoxBasicExample />
+      <DropdownBasicExample />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />

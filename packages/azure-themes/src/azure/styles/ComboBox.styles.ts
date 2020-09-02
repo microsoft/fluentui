@@ -14,6 +14,9 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       fontSize: theme.fonts.medium.fontSize,
       lineHeight: StyleConstants.inputControlHeight,
       selectors: {
+        // '.ms-Callout': {
+        //   border: 0,
+        // },
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,
           color: semanticColors.inputText,
@@ -69,14 +72,19 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       borderColor: semanticColors.focusBorder,
     },
     callout: {
-      border: 'none',
       boxShadow: Depths.depth8,
+      border: 0,
       selectors: {
+        // '.ms-ComboBox-callout': {
+        //   outline: 0,
+        //   border: 0,
+        // },
+        // '.ms-Callout': {
+        //   border: 0,
+        //   backgroundColor: 'red'
+        // },
         '.ms-Callout-main': {
           backgroundColor: semanticColors.inputBackground,
-          borderColor: semanticColors.inputBorder,
-          borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
         },
       },
     },
@@ -91,7 +99,11 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     optionsContainer: {
       verticalAlign: 'middle',
+      border: 'none',
       selectors: {
+        '.ms-ComboBox-divider': {
+          backgroundColor: '#f3f2f1', // WIP: need other theme values
+        },
         '.ms-ComboBox-header': {
           color: semanticColors.inputText,
           fontSize: theme.fonts.medium.fontSize,
