@@ -694,7 +694,7 @@ export const Designer: React.FunctionComponent = () => {
           >
             <BrowserWindow
               showNavBar={false}
-              headerItems={[
+              headerItems={
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
@@ -732,8 +732,8 @@ export const Designer: React.FunctionComponent = () => {
                       );
                     }}
                   </CodeSandboxExporter>
-                </div>,
-              ]}
+                </div>
+              }
               style={{
                 flex: 1,
                 margin: '1rem',
