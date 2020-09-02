@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as path from 'path';
 import { createApp, Markdown, examplesOf } from '@uifabric/example-app-base';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
-import '@fluentui/ie11-custom-properties';
+import '@fluentui/ie11-polyfills';
 
 const req = require.context('../components', true, /\.stories\.tsx$/, 'sync');
 
