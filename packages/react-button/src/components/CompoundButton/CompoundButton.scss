@@ -11,34 +11,34 @@
   }
 
   &._ghost {
-    --button-secondaryTextColor: var(--ghost-secondaryTextColor);
-    --button-focused-secondaryTextColor: var(--ghost-focused-secondaryTextColor);
-    --button-hovered-secondaryTextColor: var(--ghost-hovered-secondaryTextColor);
-    --button-pressed-secondaryTextColor: var(--ghost-pressed-secondaryTextColor);
+    --button-secondaryContentColor: var(--ghost-secondaryContentColor);
+    --button-focused-secondaryContentColor: var(--ghost-focused-secondaryContentColor);
+    --button-hovered-secondaryContentColor: var(--ghost-hovered-secondaryContentColor);
+    --button-pressed-secondaryContentColor: var(--ghost-pressed-secondaryContentColor);
   }
 
   &._primary {
-    --button-secondaryTextColor: var(--accent-secondaryTextColor);
-    --button-focused-secondaryTextColor: var(--accent-focused-secondaryTextColor);
-    --button-hovered-secondaryTextColor: var(--accent-hovered-secondaryTextColor);
-    --button-pressed-secondaryTextColor: var(--accent-pressed-secondaryTextColor);
+    --button-secondaryContentColor: var(--accent-secondaryContentColor);
+    --button-focused-secondaryContentColor: var(--accent-focused-secondaryContentColor);
+    --button-hovered-secondaryContentColor: var(--accent-hovered-secondaryContentColor);
+    --button-pressed-secondaryContentColor: var(--accent-pressed-secondaryContentColor);
   }
 
   &._disabled {
-    .secondaryText {
-      color: var(--button-disabled-secondaryTextColor, var(--button-secondaryTextColor));
+    .secondaryContent {
+      color: var(--button-disabled-secondaryContentColor, var(--button-secondaryContentColor));
     }
   }
 
   &:hover {
-    .secondaryText {
-      color: var(--button-hovered-secondaryTextColor, var(--button-secondaryTextColor));
+    .secondaryContent {
+      color: var(--button-hovered-secondaryContentColor, var(--button-secondaryContentColor));
     }
   }
 
   &:active {
-    .secondaryText {
-      color: var(--button-pressed-secondaryTextColor, var(--button-secondaryTextColor));
+    .secondaryContent {
+      color: var(--button-pressed-secondaryContentColor, var(--button-secondaryContentColor));
     }
   }
 }
@@ -49,8 +49,8 @@
   text-align: left;
 }
 
-.secondaryText {
-  color: var(--button-secondaryTextColor);
-  font-size: var(--button-secondaryTextFontSize);
+.secondaryContent {
+  color: var(--button-secondaryContentColor);
+  font-size: var(--button-secondaryContentFontSize);
   line-height: 100%;
 }

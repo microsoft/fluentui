@@ -7,7 +7,7 @@ import { renderCompoundButton } from './renderCompoundButton';
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['icon', 'loader', 'contentWrapper', 'children', 'secondaryText'];
+export const compoundButtonShorthandProps = ['icon', 'loader', 'contentWrapper', 'children', 'secondaryContent'];
 
 /**
  * Given user props, returns state and render function for a Button.
@@ -28,7 +28,7 @@ export const useCompoundButton = (
       icon: { as: 'span' },
       contentWrapper: { as: 'span', children: null },
       children: { as: 'span' },
-      secondaryText: { as: 'span' },
+      secondaryContent: { as: 'span' },
       loader: { as: 'span' },
     },
     defaultProps,

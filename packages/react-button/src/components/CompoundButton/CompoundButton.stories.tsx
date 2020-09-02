@@ -20,22 +20,22 @@ const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={c
 
 const CompoundButtonVariants = (props: CompoundButtonProps) => (
   <Stack horizontal>
-    <CompoundButton {...props} icon="O" secondaryText="This is some secondary text">
+    <CompoundButton {...props} icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary icon="X" secondaryText="This is some secondary text">
+    <CompoundButton {...props} primary icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} disabled icon="X" secondaryText="This is some secondary text">
+    <CompoundButton {...props} disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary disabled icon="X" secondaryText="This is some secondary text">
+    <CompoundButton {...props} primary disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost icon="X" secondaryText="This is some secondary text">
+    <CompoundButton {...props} ghost icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost disabled icon="X" secondaryText="This is some secondary text">
+    <CompoundButton {...props} ghost disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   </Stack>
@@ -51,22 +51,22 @@ export const CompoundButtonCss = () => (
 
     <Text>A CompoundButton can fill the width of its container using the `fluid` prop.</Text>
     <Stack horizontal>
-      <CompoundButton fluid icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
-      <CompoundButton fluid primary icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid primary icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
-      <CompoundButton fluid disabled icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid disabled icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
-      <CompoundButton fluid primary disabled icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid primary disabled icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
-      <CompoundButton fluid ghost icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid ghost icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
-      <CompoundButton fluid ghost disabled icon="X" secondaryText="This is some secondary text">
+      <CompoundButton fluid ghost disabled icon="X" secondaryContent="This is some secondary text">
         Hello, world
       </CompoundButton>
     </Stack>

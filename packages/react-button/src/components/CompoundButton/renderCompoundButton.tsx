@@ -17,7 +17,7 @@ export const renderCompoundButton = (state: CompoundButtonState) => {
       {!iconOnly && (
         <slots.contentWrapper {...slotProps.contentWrapper}>
           <slots.children {...slotProps.children} />
-          <slots.secondaryText {...slotProps.secondaryText} />
+          <slots.secondaryContent {...slotProps.secondaryContent} />
         </slots.contentWrapper>
       )}
       {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}

@@ -7,10 +7,10 @@ export interface CompoundButtonProps extends ButtonProps {
   /**
    * Second line of text that describes the action this button takes.
    */
-  secondaryText?: ShorthandProps;
+  secondaryContent?: ShorthandProps;
 
   /**
-   * Container that wraps the children and secondaryText slots.
+   * Container that wraps the children and secondaryContent slots.
    */
   contentWrapper?: ShorthandProps;
 }
@@ -18,7 +18,7 @@ export interface CompoundButtonProps extends ButtonProps {
 export interface CompoundButtonState extends CompoundButtonProps {}
 
 export interface CompoundButtonSlots extends ButtonSlots {
-  secondaryText?: React.ElementType;
+  secondaryContent?: React.ElementType;
   contentWrapper?: React.ElementType;
 }
 

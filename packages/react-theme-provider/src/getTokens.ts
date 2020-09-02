@@ -30,25 +30,25 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: semanticColors?.primaryButtonText,
         iconColor: palette?.white,
         dividerColor: palette?.white,
-        secondaryTextColor: palette?.white,
+        secondaryContentColor: palette?.white,
 
         hovered: {
           background: semanticColors?.primaryButtonBackgroundHovered,
           contentColor: semanticColors?.primaryButtonTextHovered,
-          secondaryTextColor: palette?.white,
+          secondaryContentColor: palette?.white,
         },
 
         pressed: {
           background: semanticColors?.primaryButtonBackgroundPressed,
           contentColor: semanticColors?.primaryButtonTextPressed,
-          secondaryTextColor: semanticColors?.primaryButtonTextPressed,
+          secondaryContentColor: semanticColors?.primaryButtonTextPressed,
         },
 
         disabled: {
           background: semanticColors?.primaryButtonBackgroundDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
           dividerColor: palette?.neutralTertiaryAlt,
-          secondaryTextColor: semanticColors?.buttonTextDisabled,
+          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
 
         checked: {
@@ -69,7 +69,7 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: palette?.neutralPrimary,
         iconColor: palette?.themeDarkAlt,
         menuIconColor: palette?.neutralSecondary,
-        secondaryTextColor: palette?.neutralPrimary,
+        secondaryContentColor: palette?.neutralPrimary,
 
         checked: {
           background: semanticColors?.bodyBackground,
@@ -90,7 +90,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
-          secondaryTextColor: palette?.neutralTertiary,
+          secondaryContentColor: palette?.neutralTertiary,
         },
 
         expanded: {
@@ -102,7 +102,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
-          secondaryTextColor: palette?.neutralPrimary,
+          secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
@@ -110,7 +110,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
-          secondaryTextColor: palette?.themePrimary,
+          secondaryContentColor: palette?.themePrimary,
         },
 
         pressed: {
@@ -118,7 +118,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
-          secondaryTextColor: palette?.black,
+          secondaryContentColor: palette?.black,
         },
       },
 
@@ -140,28 +140,28 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: semanticColors?.buttonText,
         dividerColor: palette?.neutralTertiaryAlt,
 
-        secondaryTextColor: palette?.neutralSecondary,
-        secondaryTextFontSize: fonts?.small.fontSize,
+        secondaryContentColor: palette?.neutralSecondary,
+        secondaryContentFontSize: fonts?.small.fontSize,
 
         hovered: {
           background: semanticColors?.buttonBackgroundHovered,
           borderColor: semanticColors?.buttonBorder,
           contentColor: semanticColors?.buttonTextHovered,
-          secondaryTextColor: palette?.neutralDark,
+          secondaryContentColor: palette?.neutralDark,
         },
 
         pressed: {
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextPressed,
           borderColor: semanticColors?.buttonBorder,
-          secondaryTextColor: semanticColors?.buttonTextPressed,
+          secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
         disabled: {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
-          secondaryTextColor: semanticColors?.buttonTextDisabled,
+          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
 
         checked: {
