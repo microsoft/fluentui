@@ -130,8 +130,13 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
     const newValue = _.get(e, 'target.value');
 
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
-    setValue(newValue);
     setAutoHeight(inputRef.current?.scrollHeight);
+    setValue(newValue);
+  };
+
+  const handleCut = e => {
+    setAutoHeight(0);
+    _.invoke(props, 'onCut', e, props);
   };
 
   const element = (
@@ -142,6 +147,7 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
         value,
         disabled,
         onChange: handleChange,
+        onCut: handleCut,
         ...unhandledProps,
       })}
     />
