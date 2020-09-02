@@ -24,7 +24,7 @@ describe('mergeProps', () => {
         {
           a: {
             b: {
-              c: 2,
+              c: 0,
               f: 'f',
             },
             f: {
@@ -36,7 +36,7 @@ describe('mergeProps', () => {
     ).toEqual({
       a: {
         b: {
-          c: 2,
+          c: 0,
           d: 'test',
           e: true,
           f: 'f',
@@ -48,8 +48,12 @@ describe('mergeProps', () => {
     });
   });
 
-  it('can ignore undefined props', () => {
+  it('can ignore undefined values', () => {
     expect(mergeProps({}, { foo: {} }, { foo: undefined })).toEqual({ foo: {} });
+  });
+
+  it('does not ignore null values', () => {
+    expect(mergeProps({ foo: {} }, { foo: null })).toEqual({ foo: null });
   });
 
   it('can merge classnames', () => {

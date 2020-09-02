@@ -54,6 +54,9 @@ export const TeamsTheme: PartialTheme;
 
 export { Theme }
 
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
+
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 

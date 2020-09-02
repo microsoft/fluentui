@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.97)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.94..@fluentui/react-next_v8.0.0-alpha.97)
+
+### Changes
+
+- Updating Shimmer to a function component. ([PR #14763](https://github.com/microsoft/fluentui/pull/14763) by czearing@outlook.com)
+- Fabric component: styles prop respected. ([PR #14827](https://github.com/microsoft/fluentui/pull/14827) by dzearing@hotmail.com)
+
+## [8.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.94)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.93..@fluentui/react-next_v8.0.0-alpha.94)
+
+### Changes
+
+- Move Link from react-next to react-link. ([PR #14782](https://github.com/microsoft/fluentui/pull/14782) by xgao@microsoft.com)
+- Move Toggle from react-next to react-toggle ([PR #14784](https://github.com/microsoft/fluentui/pull/14784) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.93)
 

@@ -16,8 +16,8 @@ export const mergeProps = (target: GenericDictionary, ...propSets: (GenericDicti
         const propValue = props[propName];
         const propValueType = typeof propValue;
 
-        if (propValue) {
-          if (propValueType === 'object') {
+        if (propValue !== undefined) {
+          if (propValue && propValueType === 'object') {
             if (Array.isArray(propValue)) {
               // for arrays, replace.
               target[propName] = propValue;

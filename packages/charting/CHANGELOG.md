@@ -1,8 +1,35 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Aug 2020 18:11:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.1)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.0..@uifabric/charting_v3.3.1)
+
+### Patches
+
+- Redesign of Chart helper and updated associate files ([PR #14781](https://github.com/microsoft/fluentui/pull/14781) by v-jasha@microsoft.com)
+
+## [3.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.0)
+
+Mon, 31 Aug 2020 12:25:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.2.0..@uifabric/charting_v3.3.0)
+
+### Minor changes
+
+- added multiselection of legends for the line chart. ([PR #14758](https://github.com/microsoft/fluentui/pull/14758) by v-gorraj@microsoft.com)
+
+## [3.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.2.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.5..@uifabric/charting_v3.2.0)
+
+### Minor changes
+
+- added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles ([PR #14584](https://github.com/microsoft/fluentui/pull/14584) by v-sivsar@microsoft.com)
 
 ## [3.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.5)
 

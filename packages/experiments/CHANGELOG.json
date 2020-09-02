@@ -2,6 +2,42 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@uifabric/experiments_v7.32.1",
+      "version": "7.32.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forwardRef to UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1aa0b9d49c7572e476c8148ea0aacae8fca0ad91",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "cf72dc9b1b66b9c5f383d4607cb4adfb80c03895",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/experiments_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make the floating sugggestions picker have an optional fixed width",
+            "author": "sadelson@microsoft.com",
+            "commit": "b283a05ad788a990243ba3eef4525fda0b1d3420",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@uifabric/experiments_v7.31.0",
       "version": "7.31.0",
