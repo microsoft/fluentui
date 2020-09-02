@@ -20,30 +20,35 @@ export const defaultTokens: Tokens = {
     borderColor: 'transparent',
     iconColor: '#ffffff',
     dividerColor: '#ffffff',
+    secondaryTextColor: '#ffffff',
     disabled: {
       background: '#f3f2f1',
       contentColor: '#c8c6c4',
       borderColor: 'var(--accent-disabled-background)',
       iconColor: 'var(--accent-disabled-contentColor)',
       dividerColor: '#c8c6c4',
+      secondaryTextColor: 'var(--accent-disabled-contentColor)',
     },
     hovered: {
       background: '#106ebe',
       contentColor: '#ffffff',
       borderColor: 'var(--accent-borderColor)',
       iconColor: '#ffffff',
+      secondaryTextColor: 'var(--accent-hovered-contentColor)',
     },
     pressed: {
       background: '#005a9e',
       contentColor: 'var(--accent-contentColor)',
       borderColor: 'var(--accent-borderColor)',
       iconColor: 'var(--accent-iconColor)',
+      secondaryTextColor: 'var(--accent-pressed-contentColor)',
     },
     focused: {
       background: 'var(--accent-background)',
       borderColor: 'var(--accent-borderColor)',
       contentColor: 'var(--accent-contentColor)',
       iconColor: 'var(--accent-iconColor)',
+      secondaryTextColor: 'var(--accent-focused-contentColor)',
     },
     checked: {
       background: 'var(--acent-pressed-background)',
@@ -60,6 +65,7 @@ export const defaultTokens: Tokens = {
     contentColor: '#323130',
     iconColor: '#106ebe',
     menuIconColor: '#605e5c',
+    secondaryTextColor: 'var(--ghost-contentColor)',
 
     checked: {
       background: 'var(--ghost-background)',
@@ -78,6 +84,7 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#a19f9d',
       iconColor: 'inherit',
+      secondaryTextColor: 'var(--ghost-disabled-contentColor)',
     },
     expanded: {
       contentColor: '#0078d4',
@@ -87,18 +94,21 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--ghost-borderColor)',
       contentColor: 'var(--ghost-contentColor)',
       iconColor: 'var(--ghost-iconColor)',
+      secondaryTextColor: 'var(--ghost-focused-contentColor)',
     },
     hovered: {
       background: 'var(--ghost-background)',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#0078d4',
       iconColor: '#0078d4',
+      secondaryTextColor: 'var(--ghost-hovered-contentColor)',
     },
     pressed: {
       background: 'var(--ghost-background)',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#000000',
       iconColor: '#004578',
+      secondaryTextColor: 'var(--ghost-pressed-contentColor)',
     },
   },
   button: {
@@ -132,12 +142,15 @@ export const defaultTokens: Tokens = {
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
+    secondaryTextColor: '#605e5c',
+    secondaryTextFontSize: '12px',
     disabled: {
       background: '#f3f2f1',
       borderColor: '#f3f2f1',
       contentColor: '#a19f9d',
       iconColor: 'var(--button-disabled-contentColor)',
       dividerColor: '#c8c6c4',
+      secondaryTextColor: 'var(--button-disabled-contentColor)',
     },
     hovered: {
       background: '#f3f2f1',
@@ -145,6 +158,7 @@ export const defaultTokens: Tokens = {
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
+      secondaryTextColor: 'var(--button-hovered-contentColor)',
     },
     pressed: {
       background: '#edebe9',
@@ -152,6 +166,7 @@ export const defaultTokens: Tokens = {
       contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
+      secondaryTextColor: 'var(--button-pressed-contentColor)',
     },
     focused: {
       background: 'var(--button-background)',
@@ -159,6 +174,7 @@ export const defaultTokens: Tokens = {
       contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
+      secondaryTextColor: 'var(--button-focused-contentColor)',
     },
     checked: {
       background: 'var(--button-pressed-background)',

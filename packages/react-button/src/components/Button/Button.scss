@@ -34,6 +34,7 @@
   box-shadow: var(--button-boxShadow);
 
   width: var(--button-width);
+  max-width: var(--button-maxWidth);
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
@@ -128,7 +129,7 @@
 
   &._fluid {
     width: 100%;
-    max-width: 100%;
+    --button-maxWidth: 100%;
   }
 
   // TODO: confirm if we should support size prop.
