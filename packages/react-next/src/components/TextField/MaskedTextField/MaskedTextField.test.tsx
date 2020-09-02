@@ -3,7 +3,8 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
-
+import * as path from 'path';
+import { isConformant } from '../../../common/isConformant';
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
@@ -11,6 +12,12 @@ describe('MaskedTextField', () => {
     const component = create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'MaskedTextField.tsx'),
+    Component: MaskedTextField,
+    displayName: 'MaskedTextField',
   });
 
   it('Moves caret on focus', () => {

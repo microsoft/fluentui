@@ -5,6 +5,8 @@ import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';
 import { act } from 'react-dom/test-utils';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -21,6 +23,13 @@ describe('Image', () => {
     const component = create(<Image src={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Image.tsx'),
+    Component: Image,
+    displayName: 'Image',
+    disabledTests: ['component-has-displayname'],
   });
 
   it('renders an image', done => {

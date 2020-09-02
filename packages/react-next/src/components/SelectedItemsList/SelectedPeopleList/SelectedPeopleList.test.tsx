@@ -1,11 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import * as path from 'path';
+import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList';
 
 describe('SelectedPeopleList', () => {
   describe('Element keying behavior', () => {
+    isConformant({
+      componentPath: path.join(__dirname, 'SelectedPeopleList.tsx'),
+      Component: SelectedPeopleList,
+      displayName: 'SelectedPeopleList',
+    });
+
     it('renders keyed personas when there is no context menu', () => {
       const r = renderer.create(<SelectedPeopleList />);
       expect(r.root.instance).toBeInstanceOf(SelectedPeopleList);

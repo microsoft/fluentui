@@ -3,6 +3,9 @@ import { create } from '@uifabric/utilities/lib/test';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 import { wrapPersona } from '../Persona.test';
+import * as path from 'path';
+import { isConformant } from '../../../common/isConformant';
+import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -66,5 +69,11 @@ describe('PersonaCoin', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'PersonaPresence.tsx'),
+    Component: PersonaPresence,
+    displayName: 'PersonaPresence',
   });
 });

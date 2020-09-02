@@ -3,6 +3,8 @@ import * as renderer from 'react-test-renderer';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 const ReactDOM = require('react-dom');
 
@@ -29,6 +31,12 @@ describe('Layer', () => {
     expect(tree).toMatchSnapshot();
 
     ReactDOM.createPortal = createPortal;
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Layer.tsx'),
+    Component: Layer,
+    displayName: 'Layer',
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {

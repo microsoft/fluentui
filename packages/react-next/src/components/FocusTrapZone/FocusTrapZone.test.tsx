@@ -4,6 +4,8 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 import { IFocusTrapZoneProps } from './FocusTrapZone.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
@@ -70,6 +72,12 @@ describe('FocusTrapZone', () => {
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }
+
+  isConformant({
+    componentPath: path.join(__dirname, 'FocusTrapZone.tsx'),
+    Component: FocusTrapZone,
+    displayName: 'FocusTrapZone',
+  });
 
   function setupElement(
     element: HTMLElement,

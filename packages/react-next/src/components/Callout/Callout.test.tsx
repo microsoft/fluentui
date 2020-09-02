@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';

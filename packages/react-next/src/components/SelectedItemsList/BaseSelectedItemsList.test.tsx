@@ -4,6 +4,8 @@ import * as renderer from 'react-test-renderer';
 
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 export interface ISimple {
   key: string;
@@ -26,6 +28,12 @@ describe('SelectedItemsList', () => {
       const component = renderer.create(<BaseSelectedItemsListWithType />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      componentPath: path.join(__dirname, 'BaseSelectedItemsList.tsx'),
+      Component: BaseSelectedItemsList,
+      displayName: 'BaseSelectedItemsList',
     });
 
     it('can remove items', () => {

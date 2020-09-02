@@ -7,6 +7,8 @@ import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
@@ -26,6 +28,12 @@ describe('SpinButton', () => {
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'SpinButton.tsx'),
+    Component: SpinButton,
+    displayName: 'SpinButton',
   });
 
   it('renders correctly', () => {

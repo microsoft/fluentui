@@ -4,12 +4,20 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('Rating', () => {
   it('renders correctly.', () => {
     const component = renderer.create(<Rating />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Rating.tsx'),
+    Component: Rating,
+    displayName: 'Rating',
   });
 
   it('can change rating.', () => {

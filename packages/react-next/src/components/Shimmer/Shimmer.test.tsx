@@ -6,6 +6,8 @@ import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 import { safeMount } from '@uifabric/test-utilities';
 import { resetIds } from '@uifabric/utilities';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('Shimmer', () => {
   beforeEach(() => {
@@ -56,6 +58,12 @@ describe('Shimmer', () => {
     const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Shimmer.tsx'),
+    Component: Shimmer,
+    displayName: 'Shimmer',
   });
 
   it('removes Shimmer animation div when data is loaded', () => {

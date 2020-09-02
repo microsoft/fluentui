@@ -3,6 +3,8 @@ import { create } from '@uifabric/utilities/lib/test';
 import { setRTL } from '../../../Utilities';
 import * as PersonaTypes from '../Persona.types';
 import { PersonaPresence } from './PersonaPresence';
+import * as path from 'path';
+import { isConformant } from '../../../common/isConformant';
 
 describe('PersonaPresence', () => {
   beforeEach(() => {
@@ -92,5 +94,11 @@ describe('PersonaPresence', () => {
     const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.none} isOutOfOffice />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'PersonaPresence.tsx'),
+    Component: PersonaPresence,
+    displayName: 'PersonaPresence',
   });
 });

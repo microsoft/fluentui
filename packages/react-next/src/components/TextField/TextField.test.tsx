@@ -10,6 +10,8 @@ import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilit
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 /**
  * The currently rendered ITextField.
@@ -128,6 +130,12 @@ describe('TextField snapshots', () => {
 describe('TextField rendering values from props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  isConformant({
+    componentPath: path.join(__dirname, 'TextField.ts'),
+    Component: TextField,
+    displayName: 'TextField',
+  });
 
   it('can render a value', () => {
     const testText = 'initial value';

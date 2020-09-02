@@ -3,6 +3,8 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('MessageBar', () => {
   const noop = () => {
@@ -13,6 +15,12 @@ describe('MessageBar', () => {
     const component = renderer.create(<MessageBar>Message</MessageBar>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'MessageBar.tsx'),
+    Component: MessageBar,
+    displayName: 'MessageBar',
   });
 
   it('renders custom message bar icon correctly', () => {

@@ -7,6 +7,8 @@ import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -115,6 +117,12 @@ describe('Persona', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Persona.tsx'),
+    Component: Persona,
+    displayName: 'Persona',
   });
 
   describe('initials and colors', () => {
