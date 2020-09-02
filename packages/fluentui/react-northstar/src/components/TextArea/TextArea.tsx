@@ -46,6 +46,7 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
 
+  /** A textarea can be set to automatically adjust the height */
   autoAdjustHeight?: boolean;
 }
 
