@@ -98,6 +98,6 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onRenderColorCell={onRenderColorCell} columnCount={4} />,
     );
 
-    expect(onRenderColorCell).toHaveBeenCalledTimes(14);
+    expect(onRenderColorCell).toHaveBeenCalledTimes(1);
   });
 });
