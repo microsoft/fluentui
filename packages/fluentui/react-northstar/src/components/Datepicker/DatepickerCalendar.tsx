@@ -15,6 +15,8 @@ import {
   compareDatePart,
   getMonthStart,
   getMonthEnd,
+  getStartDateOfWeek,
+  getEndDateOfWeek,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -36,7 +38,7 @@ import { Grid } from '../Grid/Grid';
 import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
 import { DatepickerCalendarCellProps, DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
-import { navigateToNewDate } from './navigateToNewDate';
+import { navigateToNewDate, contstraintNavigatedDate } from './navigateToNewDate';
 import { format } from '@uifabric/utilities';
 
 export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDayGridOptions> {
@@ -146,6 +148,53 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       subtractDay: e => {
         e.preventDefault();
         const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions);
+
+        if (!!newNavigatedDate) {
+          setShouldFocusInDayGrid(true);
+          setGridNavigatedDate(newNavigatedDate);
+        }
+      },
+      moveToStartOfWeek: e => {
+        e.preventDefault();
+        const targetDate = getStartDateOfWeek(gridNavigatedDate, firstDayOfWeek);
+        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+
+        if (!!newNavigatedDate) {
+          setShouldFocusInDayGrid(true);
+          setGridNavigatedDate(newNavigatedDate);
+        }
+      },
+      moveToEndOfWeek: e => {
+        e.preventDefault();
+        const targetDate = getEndDateOfWeek(gridNavigatedDate, firstDayOfWeek);
+        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+
+        if (!!newNavigatedDate) {
+          setShouldFocusInDayGrid(true);
+          setGridNavigatedDate(newNavigatedDate);
+        }
+      },
+      moveToStartOfColumn: e => {
+        e.preventDefault();
+        const targetDayOfWeek = gridNavigatedDate.getDay();
+        const targetDate = _.find(visibleGrid[0], day => day.originalDate.getDay() === targetDayOfWeek)?.originalDate;
+
+        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+
+        if (!!newNavigatedDate) {
+          setShouldFocusInDayGrid(true);
+          setGridNavigatedDate(newNavigatedDate);
+        }
+      },
+      moveToEndOfColumn: e => {
+        e.preventDefault();
+        const targetDayOfWeek = gridNavigatedDate.getDay();
+        const targetDate = _.find(
+          visibleGrid[visibleGrid.length - 1],
+          day => day.originalDate.getDay() === targetDayOfWeek,
+        )?.originalDate;
+
+        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
 
         if (!!newNavigatedDate) {
           setShouldFocusInDayGrid(true);

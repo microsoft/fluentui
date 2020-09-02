@@ -1,6 +1,6 @@
-import { Datepicker } from '@fluentui/react-northstar';
+import { Datepicker, DayOfWeek } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DatepickerExample = () => <Datepicker />;
+const DatepickerExample = () => <Datepicker firstDayOfWeek={DayOfWeek.Tuesday} />;
 
 export default DatepickerExample;
