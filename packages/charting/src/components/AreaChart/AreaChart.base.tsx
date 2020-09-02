@@ -58,6 +58,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _circleId: string;
   private _uniqueCallOutID: string;
   private containerHeight: number;
+  private _chart: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any;
   private margins: IMargins;
@@ -122,6 +123,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isBeakVisible: false,
       setInitialFocus: true,
     };
+
     return (
       <CartesianChart
         {...this.props}
@@ -139,7 +141,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this.containerHeight = props.containerHeight!;
-          return <g id={`graphGElement_${this._uniqueIdForGraph}`} />;
+          // return <g id={`graphGElement_${this._uniqueIdForGraph}`} />;
+          return <g>{this._chart}</g>;
         }}
       />
     );
@@ -197,6 +200,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
     this._xAxisScale = xAxis;
+    this._chart = this._newDrawGraph(containerHeight, yAxis, xAxis);
     containerHeight && this._drawGraph(containerHeight);
   };
 
@@ -403,6 +407,57 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return shouldHighlight ? 'visibility' : 'hidden';
   };
 
+  private _createArea = (singleStackedData: any, yScale: any, xScale: any) => {
+    const area = d3Area()
+      .x(xScale(singleStackedData.map((single: any) => single.xVal)))
+      .y0(yScale(singleStackedData.map((single: any) => single.values[0])))
+      .y1(yScale(singleStackedData.map((single: any) => single.values[1])))
+      .curve(d3CurveBasis);
+    console.log(area, 'areaaaaaaaaaaaaaaaaaaa');
+    return area;
+  };
+
+  private _newDrawGraph = (containerHeight: number, yScale: any, xScale: any): any => {
+    const margins = { top: 20, right: 20, bottom: 35, left: 40 };
+    this._colors = this._getColors();
+    const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const stackedData: any[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    stackedValues.forEach((layer: any) => {
+      const currentStack: IAreaChartDataSetPoint[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      layer.forEach((d: any) => {
+        currentStack.push({
+          values: d,
+          xVal: d.data.xVal,
+        });
+      });
+      stackedData.push(currentStack);
+    });
+
+    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
+    // this.setState({ _maxOfYVal: maxOfYVal });
+
+    const chartPaths: any[] = [];
+    stackedData.forEach((singleStackedData: any, index: number) => {
+      const singleChartPath = (
+        <path
+          key={index} // change later
+          d={this._createArea(singleStackedData, yScale, xScale)!}
+          fill={this._colors[index]}
+          fillOpacity={this._getOpacity(singleStackedData[index].legend)}
+          strokeWidth={3}
+        />
+      );
+      chartPaths.push(singleChartPath);
+      // return chartPaths;
+    });
+    console.log(chartPaths, 'chartPath');
+    return chartPaths;
+  };
+
   private _drawGraph = (containerHeight: number): void => {
     d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
     const that = this;
@@ -450,10 +505,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .selectAll('.series')
       .data(stackedData)
       .enter();
-
     series
       .append('path')
-      .style('fill', (d: string, i: number) => this._colors[i])
+      .style('fill', (d: string, i: number) => {
+        return this._colors[i];
+      })
       .attr('stroke-width', 3)
       .attr('d', area)
       .attr('fill-opacity', (d: IDPointType, index: number) => {
@@ -484,7 +540,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .attr('cx', (d: IDPointType) => xScale(d.point.xVal))
       .attr('cy', (d: IDPointType) => yScale(d.point.values[1]))
       .attr('r', 0.01)
-      .attr('stroke', (d: IDPointType, index: number) => this._points[d.index].color)
+      .attr('stroke', (d: IDPointType, index: number) => {
+        return this._points[d.index].color;
+      })
       .attr('stroke-width', 3)
       .attr('visibility', (d: IDPointType, index: number) => {
         return that._getOpacityOfCircle(this._points[d.index].legend);
@@ -540,5 +598,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .attr('stroke-width', 1)
       .attr('visibility', 'hidden')
       .attr('stroke-dasharray', '5,5');
+
+    const a = this._newDrawGraph(containerHeight, yScale, xScale);
+    console.log(a, 'aaaaaaaaaaaaaaaaaaa');
   };
 }
