@@ -3,8 +3,6 @@ import * as renderer from 'react-test-renderer';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
-import * as path from 'path';
-import { isConformant } from '../../common/isConformant';
 
 const ReactDOM = require('react-dom');
 
@@ -18,13 +16,6 @@ describe('Layer', () => {
     foo?: string;
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
-
-  isConformant({
-    componentPath: path.join(__dirname, 'Layer.tsx'),
-    Component: Layer,
-    displayName: 'Layer',
-    disabledTests: ['component-has-displayname'],
-  });
 
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
