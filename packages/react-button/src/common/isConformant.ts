@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies -- this file is for testing
 import { isConformant as baseIsConformant, IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant(testInfo: IsConformantOptions) {
