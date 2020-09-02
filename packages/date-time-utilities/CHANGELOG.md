@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.7.0)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.6.1..@fluentui/date-time-utilities_v7.7.0)
+
+### Minor changes
+
+- Adding more localization strings to fluentui/date-time-utilities package. ([PR #14816](https://github.com/microsoft/fluentui/pull/14816) by karymes@microsoft.com)
 
 ## [7.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.6.1)
 
