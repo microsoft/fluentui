@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Fix typo in docs  ",
+  "comment": "Fix typo in docs",
   "packageName": "@fluentui/react-focus",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
