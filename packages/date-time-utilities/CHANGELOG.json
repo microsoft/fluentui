@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding more localization strings to fluentui/date-time-utilities package.",
+            "author": "karymes@microsoft.com",
+            "commit": "9cf5b1889882a2883b2909afa59b1b25fc1d037a",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@fluentui/date-time-utilities_v7.6.1",
       "version": "7.6.1",

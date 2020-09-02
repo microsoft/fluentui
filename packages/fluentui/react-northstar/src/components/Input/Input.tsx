@@ -189,7 +189,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       ? ((required && hasValue) || showSuccessIndicator) && !error
       : showSuccessIndicator;
 
-    const hasIcon = !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !!error;
+    const hasIcon = !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !_.isNil(error);
 
     const { classes, styles: resolvedStyles } = useStyles<InputStylesProps>(composeOptions.displayName, {
       className: inputClassName,
