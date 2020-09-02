@@ -1,6 +1,7 @@
 import { TextAreaVariables } from './textAreaVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { TextAreaStylesProps } from '../../../../components/TextArea/TextArea';
+import { pxToRem } from 'src/utils';
 
 export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, TextAreaVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -32,6 +33,13 @@ export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, Te
       pointerEvents: 'none',
       backgroundColor: v.disabledBackgroundColor,
       color: v.disabledColor,
+    }),
+
+    ...(p.autoAdjustHeight && {
+      minHeight: v.minHeightAutoAdjust,
+      height: pxToRem(p.autoHeight),
+      overflow: 'hidden',
+      resize: 'vertical',
     }),
 
     '::placeholder': {

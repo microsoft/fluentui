@@ -44,9 +44,15 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
+
+  autoAdjustHeight?: boolean;
 }
 
-export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
+export type TextAreaStylesProps = Required<
+  Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'autoAdjustHeight'>
+> & {
+  autoHeight: number;
+};
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -67,13 +73,27 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
   setStart();
 
-  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
+  const {
+    disabled,
+    accessibility,
+    inverted,
+    resize,
+    fluid,
+    className,
+    design,
+    styles,
+    variables,
+    autoAdjustHeight,
+  } = props;
 
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,
     initialValue: '',
   });
+
+  const inputRef = React.useRef<HTMLTextAreaElement>();
+  const [autoHeight, setAutoHeight] = React.useState();
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
 
@@ -92,6 +112,8 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
       resize,
       fluid,
       disabled,
+      autoAdjustHeight,
+      autoHeight,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -109,10 +131,12 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
     setValue(newValue);
+    setAutoHeight(inputRef.current?.scrollHeight);
   };
 
   const element = (
     <ElementType
+      ref={inputRef}
       {...getA11yProps('root', {
         className: classes.root,
         value,
@@ -137,6 +161,7 @@ TextArea.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
+  autoAdjustHeight: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
