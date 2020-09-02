@@ -101,17 +101,20 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
-    // We need to use native on this to prevent MarqueeSelection from handling the event before us.
-    this._events.on(this._rootElement.current!, 'mousedown', this._onRootMouseDown);
+    // this._rootElement.current will be null in tests using react-test-renderer
+    if (this._rootElement.current) {
+      // We need to use native on this to prevent MarqueeSelection from handling the event before us.
+      this._events.on(this._rootElement.current!, 'mousedown', this._onRootMouseDown);
 
-    this._events.on(this._rootElement.current!, 'keydown', this._onRootKeyDown);
+      this._events.on(this._rootElement.current!, 'keydown', this._onRootKeyDown);
 
-    if (this._getColumnReorderProps()) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(
-        this._rootElement.current!,
-        this._events,
-        this._getHeaderDragDropOptions(),
-      );
+      if (this._getColumnReorderProps()) {
+        this._subscriptionObject = this._dragDropHelper.subscribe(
+          this._rootElement.current!,
+          this._events,
+          this._getHeaderDragDropOptions(),
+        );
+      }
     }
   }
 
