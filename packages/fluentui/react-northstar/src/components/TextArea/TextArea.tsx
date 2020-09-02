@@ -14,6 +14,7 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -128,29 +129,28 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
-
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
-    setAutoHeight(inputRef.current?.scrollHeight);
+    // We need to reset the height to 0 otherwise the scrollHeight will not decrease
+    setAutoHeight(0);
     setValue(newValue);
   };
 
-  const handleCut = e => {
-    setAutoHeight(0);
-    _.invoke(props, 'onCut', e, props);
-  };
+  React.useLayoutEffect(() => {
+    setAutoHeight(inputRef.current?.scrollHeight);
+  }, [inputRef.current?.scrollHeight]);
 
   const element = (
-    <ElementType
-      ref={inputRef}
-      {...getA11yProps('root', {
-        className: classes.root,
-        value,
-        disabled,
-        onChange: handleChange,
-        onCut: handleCut,
-        ...unhandledProps,
-      })}
-    />
+    <Ref innerRef={inputRef}>
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          value,
+          disabled,
+          onChange: handleChange,
+          ...unhandledProps,
+        })}
+      />
+    </Ref>
   );
   setEnd();
   return element;
