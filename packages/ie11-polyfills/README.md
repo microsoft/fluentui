@@ -2,7 +2,7 @@
 
 **IE11 CSS variables polyfill**
 
-Package to hold ie11 polyfill
+Package to hold ie11 polyfill that allows webpages that use css variables for styling to render correctly in ie11. It will also hold any future ie11 polyfills
 
 To import ie11-polyfill
 
