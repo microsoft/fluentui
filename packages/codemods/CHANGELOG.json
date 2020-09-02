@@ -2,6 +2,72 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/codemods_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Support for configmod",
+            "author": "t-dama@microsoft.com",
+            "commit": "5fbd5de0cee7f48732206f4cd2289c69bfee181b",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "Codemods: Remove unneeded compat mods and refactor",
+            "author": "joschect@microsoft.com",
+            "commit": "0bda08660988eda0352603541dbe9c048c93dc70",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/codemods_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add list feature to codemods modruner",
+            "author": "t-dama@microsoft.com",
+            "commit": "ff8ef5b7d6b01e793c9fa99e20004330e5eb3f0a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/codemods_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add support for a config-based codemod execution",
+            "author": "t-dama@microsoft.com",
+            "commit": "45f173b8e21f7af712d6bcec1001b67e6abb78c3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/codemods_v0.9.4",
+      "version": "0.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add docs for codemod writing",
+            "author": "t-dama@microsoft.com",
+            "commit": "6d5f745892797a758f367efc63c51f6adc6ef340",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2020 12:34:55 GMT",
       "tag": "@fluentui/codemods_v0.9.2",
       "version": "0.9.2",
