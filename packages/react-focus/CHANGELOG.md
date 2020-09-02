@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.0)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.22..@fluentui/react-focus_v7.15.0)
+
+### Minor changes
+
+- Add temporary elementRef prop to FocusZone. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
 
 ## [7.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.22)
 
