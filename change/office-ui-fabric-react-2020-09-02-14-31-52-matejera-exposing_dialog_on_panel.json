@@ -3,6 +3,6 @@
   "comment": "Expose popupProps on Panel",
   "packageName": "office-ui-fabric-react",
   "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "minor",
   "date": "2020-09-02T21:31:52.808Z"
 }
