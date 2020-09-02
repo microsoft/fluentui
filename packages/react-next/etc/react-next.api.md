@@ -11,7 +11,6 @@ import { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-
 import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
 import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
@@ -300,12 +299,6 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
-// @public (undocumented)
-export const Grid: import("react").ForwardRefExoticComponent<IGridProps & import("react").RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export const GridCell: <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
 export interface IAccessiblePopupProps {
@@ -1246,67 +1239,6 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IGap extends IShimmerElement {
     height?: number;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IGrid {
-}
-
-// @public (undocumented)
-export interface IGridCellProps<T> {
-    cellDisabledStyle?: string[];
-    cellIsSelectedStyle?: string[];
-    className?: string;
-    disabled?: boolean;
-    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
-    id: string;
-    index?: number;
-    item: T;
-    label?: string;
-    onClick?: (item: T) => void;
-    onFocus?: (item: T) => void;
-    onHover?: (item?: T) => void;
-    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
-    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    onRenderItem: (item: T) => JSX.Element;
-    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    role?: string;
-    selected?: boolean;
-}
-
-// @public (undocumented)
-export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
-    columnCount: number;
-    componentRef?: IRefObject<IGrid>;
-    // @deprecated
-    containerClassName?: string;
-    doNotContainWithinFocusZone?: boolean;
-    items: any[];
-    onBlur?: () => void;
-    onRenderItem: (item: any, index: number) => JSX.Element;
-    // @deprecated (undocumented)
-    positionInSet?: number;
-    // @deprecated (undocumented)
-    setSize?: number;
-    shouldFocusCircularNavigate?: boolean;
-    styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export interface IGridStyleProps {
-    theme: ITheme;
-}
-
-// @public
-export interface IGridStyles {
-    focusedContainer?: IStyle;
-    root: IStyle;
-    tableCell: IStyle;
 }
 
 // @public (undocumented)
@@ -2936,6 +2868,7 @@ export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusZone";
+export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";
 export * from "office-ui-fabric-react/lib/HoverCard";
 export * from "office-ui-fabric-react/lib/Icon";
