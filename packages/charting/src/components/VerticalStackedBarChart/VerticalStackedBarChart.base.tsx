@@ -45,8 +45,8 @@ export interface IVerticalStackedBarChartState {
 
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
-  IVerticalStackedBarChartState
-> {
+  IVerticalStackedBarChartState>
+{
   private _points: IVerticalStackedChartProps[];
   private _barWidth: number;
   private _yAxisTickCount: number;
