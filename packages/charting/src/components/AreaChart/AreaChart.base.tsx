@@ -134,6 +134,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         isXAxisDateType={isXAxisDateType}
         tickParams={tickParams}
         maxOfYVal={this.state._maxOfYVal}
+        getRerenderProp={this._getRerenderProp}
         getGraphData={this.state.isGraphDraw && this._getGraphData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -144,6 +145,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _getRerenderProp = (isReRender: boolean) => {
+    this.setState({ isGraphDraw: isReRender });
+  };
 
   private _createDataSet = () => {
     const allChartPoints: ILineChartDataPoint[] = [];

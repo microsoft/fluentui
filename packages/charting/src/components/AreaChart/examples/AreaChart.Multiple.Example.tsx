@@ -1,11 +1,35 @@
 import * as React from 'react';
 import { AreaChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as d3 from 'd3-format';
+import { ILineChartProps } from '@uifabric/charting';
 
-export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> {
-  public render(): React.ReactNode {
+interface IAreaChartBasicState {
+  width: number;
+  height: number;
+}
+
+export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasicState> {
+  constructor(props: ILineChartProps) {
+    super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
+  }
+
+  public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const chart1Points = [
       {
         x: 20,
@@ -157,27 +181,32 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
       chartTtitle: 'Area chart multiple example',
       lineChartData: chartPoints,
     };
-
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <div className={rootStyle}>
-        <AreaChart
-          height={400}
-          width={650}
-          data={chartData}
-          legendsOverflowText={'Overflow Items'}
-          yAxisTickFormat={d3.format('$,')}
-          legendProps={{
-            overflowProps: {
-              focusZoneProps: {
-                'aria-label': 'Legends container',
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <AreaChart
+            height={this.state.height}
+            width={this.state.width}
+            data={chartData}
+            legendsOverflowText={'Overflow Items'}
+            yAxisTickFormat={d3.format('$,')}
+            legendProps={{
+              overflowProps: {
+                focusZoneProps: {
+                  'aria-label': 'Legends container',
+                },
               },
-            },
-            allowFocusOnLegends: true,
-          }}
-        />
-      </div>
+              allowFocusOnLegends: true,
+            }}
+          />
+        </div>
+      </>
     );
   }
 }
