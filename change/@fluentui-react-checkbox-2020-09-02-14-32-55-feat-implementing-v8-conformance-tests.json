@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adding conformant tests to v8 component test files.",
+  "comment": "Adding isConformant file.",
   "packageName": "@fluentui/react-checkbox",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
