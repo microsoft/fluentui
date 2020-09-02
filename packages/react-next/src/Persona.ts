@@ -1,1 +1,1 @@
-export * from './components/Persona';
+export * from './components/Persona/index';

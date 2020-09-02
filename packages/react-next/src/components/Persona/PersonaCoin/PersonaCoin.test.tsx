@@ -72,8 +72,8 @@ describe('PersonaCoin', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'PersonaPresence.tsx'),
-    Component: PersonaPresence,
-    displayName: 'PersonaPresence',
+    componentPath: path.join(__dirname, 'PersonaCoin.tsx'),
+    Component: PersonaCoin,
+    displayName: 'PersonaCoin',
   });
 });

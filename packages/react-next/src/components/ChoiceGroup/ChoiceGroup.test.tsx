@@ -50,6 +50,7 @@ describe('ChoiceGroup', () => {
     componentPath: path.join(__dirname, 'ChoiceGroup.tsx'),
     Component: ChoiceGroup,
     displayName: 'ChoiceGroup',
+    disabledTests: ['component-has-displayname'],
   });
 
   it('does not use className prop from parent on label', () => {

@@ -12,6 +12,7 @@ describe('SelectedPeopleList', () => {
       componentPath: path.join(__dirname, 'SelectedPeopleList.tsx'),
       Component: SelectedPeopleList,
       displayName: 'SelectedPeopleList',
+      disabledTests: [`exported-top-level`, `has-top-level-file`],
     });
 
     it('renders keyed personas when there is no context menu', () => {

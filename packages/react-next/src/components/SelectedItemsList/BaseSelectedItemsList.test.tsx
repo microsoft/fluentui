@@ -34,6 +34,7 @@ describe('SelectedItemsList', () => {
       componentPath: path.join(__dirname, 'BaseSelectedItemsList.tsx'),
       Component: BaseSelectedItemsList,
       displayName: 'BaseSelectedItemsList',
+      disabledTests: [`exported-top-level`, `has-top-level-file`],
     });
 
     it('can remove items', () => {

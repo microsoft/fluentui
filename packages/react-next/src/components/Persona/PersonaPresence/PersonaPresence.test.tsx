@@ -100,5 +100,6 @@ describe('PersonaPresence', () => {
     componentPath: path.join(__dirname, 'PersonaPresence.tsx'),
     Component: PersonaPresence,
     displayName: 'PersonaPresence',
+    disabledTests: ['exported-top-level', 'has-top-level-file'],
   });
 });
