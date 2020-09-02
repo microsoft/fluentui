@@ -1,26 +1,23 @@
 import * as React from 'react';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { ContextualMenu, useFocusRects } from 'office-ui-fabric-react';
-import { useButtonClasses } from '../Button/index';
-import { useMenuButtonClasses } from '../MenuButton/MenuButton';
+import { useFocusRects } from 'office-ui-fabric-react';
 import { SplitButtonProps } from './SplitButton.types';
-import * as classes from './SplitButton.scss';
 import { useSplitButton } from './useSplitButton';
-
-export const useSplitButtonClasses = makeClasses(classes);
+import { Button } from '../Button/index';
+import { MenuButton } from '../MenuButton/index';
 
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const { state, render } = useSplitButton(props, ref, {
-    menuIcon: { as: ChevronDownIcon },
-    menu: { as: ContextualMenu },
+    button: { as: Button },
+    menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
   });
 
   // Styling hooks.
-  useButtonClasses(state);
-  useMenuButtonClasses(state);
-  useSplitButtonClasses(state);
+  // useButtonClasses(state);
+  // useMenuButtonClasses(state);
+  // useSplitButtonClasses(state);
+
   useFocusRects(state.ref);
 
   // TODO remove any

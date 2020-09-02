@@ -10,20 +10,13 @@ import { splitButtonShorthandProps } from './useSplitButton';
  */
 export const renderSplitButton = (state: SplitButtonState) => {
   const { slots, slotProps } = getSlots(state, splitButtonShorthandProps);
-  const { expanded, iconOnly, menuButtonRef } = state;
+  const { menuButtonRef, children } = state;
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.button {...slotProps.button}>
-        {<slots.loader {...slotProps.loader} />}
-        {<slots.icon {...slotProps.icon} />}
-        {!iconOnly && <slots.children {...slotProps.children} />}
-      </slots.button>
+      <slots.button {...slotProps.button}>{children}</slots.button>
       <slots.divider {...slotProps.divider} />
-      <slots.menuButton ref={menuButtonRef} {...slotProps.menuButton}>
-        <slots.menuIcon {...slotProps.menuIcon} />
-        {expanded && <slots.menu {...slotProps.menu} />}
-      </slots.menuButton>
+      <slots.menuButton ref={menuButtonRef} {...slotProps.menuButton} />
     </slots.root>
   );
 };
