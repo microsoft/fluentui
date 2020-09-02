@@ -23,7 +23,7 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
   /**
    * Custom renderer for the individual items.
    */
-  onRenderItem: (item: any, index: number) => JSX.Element | null;
+  onRenderItem: (item: any, index: number) => JSX.Element;
 
   /**
    * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).
