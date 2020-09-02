@@ -2,81 +2,80 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
+import { IRatingProps, IRating } from './Rating.types';
 
 describe('Rating', () => {
-  it('renders correctly.', () => {
+  const ref = React.createRef<IRating>();
+
+  it('renders correctly', () => {
     const component = renderer.create(<Rating />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('can change rating.', () => {
-    const rating = mount(<Rating />);
+  it('renders correctly with half star', () => {
+    const component = renderer.create(<Rating defaultRating={2.5} componentRef={ref} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-    _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '0%');
-    _checkState(rating, 3, '0%');
-    _checkState(rating, 4, '0%');
-    _checkState(rating, 5, '0%');
+  it('can change rating', () => {
+    const onChange = jest.fn();
+    const rating = mount(<Rating onChange={onChange} componentRef={ref} />);
+
+    expect(ref.current?.rating).toBeUndefined();
+    _checkState(rating, [100, 0, 0, 0, 0]);
 
     rating
       .find('.ms-Rating-button')
       .at(1)
       .simulate('focus');
 
-    _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '100%');
-    _checkState(rating, 3, '0%');
-    _checkState(rating, 4, '0%');
-    _checkState(rating, 5, '0%');
+    expect(ref.current?.rating).toBe(2);
+    _checkState(rating, [100, 100, 0, 0, 0]);
   });
 
-  it('clamps input rating to allowed range.', () => {
-    const rating = mount(<Rating rating={10} />);
+  it('clamps input rating to allowed range', () => {
+    const rating = mount(<Rating defaultRating={10} componentRef={ref} />);
 
     expect(rating.find('.ms-Rating-button').length).toEqual(5);
 
-    _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '100%');
-    _checkState(rating, 3, '100%');
-    _checkState(rating, 4, '100%');
-    _checkState(rating, 5, '100%');
+    expect(ref.current?.rating).toBe(5);
+    _checkState(rating, [100, 100, 100, 100, 100]);
   });
 
-  it('displays half star when 2.5 value is passed.', () => {
-    const rating = mount(<Rating rating={2.5} />);
+  it('displays half star when 2.5 value is passed', () => {
+    const rating = mount(<Rating defaultRating={2.5} componentRef={ref} />);
 
-    _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '100%');
-    _checkState(rating, 3, '50%');
-    _checkState(rating, 4, '0%');
-    _checkState(rating, 5, '0%');
+    expect(ref.current?.rating).toBe(2.5);
+    _checkState(rating, [100, 100, 50, 0, 0]);
   });
 
-  it('can not change when disabled.', () => {
-    const rating = mount(<Rating disabled={true} />);
+  it('cannot change when disabled', () => {
+    const rating = mount(<Rating disabled />);
     const ratingButtons = rating.find('.ms-Rating-button');
 
     for (let i = 0; i < 5; i++) {
       expect(ratingButtons.at(i).prop('disabled')).toEqual(true);
     }
   });
+
+  it('behaves correctly when controlled with allowZeroStars enabled', () => {
+    const rating = mount(<Rating rating={3} allowZeroStars componentRef={ref} />);
+    expect(ref.current?.rating).toBe(3);
+
+    rating.setProps({ rating: 0 });
+
+    expect(ref.current?.rating).toBe(0);
+    _checkState(rating, [0, 0, 0, 0, 0]);
+  });
 });
 
-it('behaves correctly when controlled with allowZeroStars enabled', () => {
-  const rating = mount(<Rating rating={3} allowZeroStars />);
-  rating.setProps({ rating: 0 });
+function _checkState(rating: ReactWrapper<IRatingProps>, states: number[]) {
+  for (let i = 0; i < states.length; i++) {
+    const ratingFrontStars = rating.find('.ms-RatingStar-front').hostNodes();
+    const width = ratingFrontStars.at(i).props().style!.width;
 
-  _checkState(rating, 1, '0%');
-  _checkState(rating, 2, '0%');
-  _checkState(rating, 3, '0%');
-  _checkState(rating, 4, '0%');
-  _checkState(rating, 5, '0%');
-});
-
-function _checkState(rating: ReactWrapper, ratingToCheck: number, state: string) {
-  const ratingFrontStars = rating.find('.ms-RatingStar-front').hostNodes();
-  const width = ratingFrontStars.at(ratingToCheck - 1).props().style!.width;
-
-  expect(width).toEqual(state);
+    expect(width).toEqual(`${states[i]}%`);
+  }
 }
