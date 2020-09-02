@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@uifabric/date-time_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add wrapper styling to datepicker",
+            "author": "kevin@infinite.red",
+            "commit": "0edae7de07888f5d4f7373264c8c19e676447baa",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@uifabric/date-time_v7.16.0",
       "version": "7.16.0",

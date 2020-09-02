@@ -112,7 +112,7 @@ jobs:
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
+          NODE_ENV=production yarn test:fluentui:visual
         displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

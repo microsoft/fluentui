@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Updating Shimmer to a function component.",
+  "comment": "Updating SwatchColorPicker to a function component.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
-  "date": "2020-08-26T17:34:35.074Z"
+  "date": "2020-08-13T01:54:44.265Z"
 }

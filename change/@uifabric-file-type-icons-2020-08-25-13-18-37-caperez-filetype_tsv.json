@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding .tsv as supported extension for spreadsheet filetype icon.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-25T20:18:37.805Z"
-}
