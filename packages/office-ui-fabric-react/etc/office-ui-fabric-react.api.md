@@ -1868,7 +1868,7 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
     doNotContainWithinFocusZone?: boolean;
     items: any[];
     onBlur?: () => void;
-    onRenderItem: (item: any, index: number) => JSX.Element | null;
+    onRenderItem: (item: any, index: number) => JSX.Element;
     // @deprecated (undocumented)
     positionInSet?: number;
     // @deprecated (undocumented)
