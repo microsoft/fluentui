@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Replace IconButton from oufr with MenuButton from react-button",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-02T23:47:42.895Z"
+}
