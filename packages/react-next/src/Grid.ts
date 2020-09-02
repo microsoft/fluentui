@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Grid';
+export * from './utilities/grid/index';

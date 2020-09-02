@@ -4,6 +4,8 @@ import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
 import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('Toggle', () => {
   beforeEach(() => {
@@ -18,6 +20,12 @@ describe('Toggle', () => {
         .first()
         .text(),
     ).toEqual('Label');
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Toggle.tsx'),
+    Component: Toggle,
+    displayName: 'Toggle',
   });
 
   it('renders toggle correctly', () => {

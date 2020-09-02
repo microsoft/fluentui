@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as path from 'path';
-import { isConformant } from '@fluentui/react-conformance';
 import { Button } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
