@@ -11,11 +11,11 @@ type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type StringAxis = D3Axis<string>;
 
 export enum ChartTypes {
-  AreaChart = 1,
-  LineChart = 2,
-  VerticalBarChart = 3,
-  VerticalStackedBarChart = 4,
-  GroupedVerticalBarChart = 5,
+  AreaChart,
+  LineChart,
+  VerticalBarChart,
+  VerticalStackedBarChart,
+  GroupedVerticalBarChart,
 }
 
 export interface IWrapLabelProps {
