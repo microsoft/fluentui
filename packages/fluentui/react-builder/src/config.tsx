@@ -424,6 +424,13 @@ export const resolveComponent = (displayName): React.ElementType => {
 
 // FIXME: breaks for <button>btn</button>
 const toJSONTreeElement = input => {
+  if (input?.as && _.isPlainObject(input.as)) {
+    return {
+      type: input.as.displayName,
+      props: { ...input, as: undefined },
+      $$typeof: 'Symbol(react.element)',
+    };
+  }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
