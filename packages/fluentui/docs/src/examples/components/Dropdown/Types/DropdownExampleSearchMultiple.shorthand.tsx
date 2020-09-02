@@ -21,6 +21,7 @@ const DropdownExampleSearchMultiple = () => (
     placeholder="Start typing a name"
     getA11ySelectionMessage={getA11ySelectionMessage}
     noResultsMessage="We couldn't find any matches."
+    a11ySelectedItemsListboxMessage="delete user by press Delete key or Backspace"
   />
 );
 
