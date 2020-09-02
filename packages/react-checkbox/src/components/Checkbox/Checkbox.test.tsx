@@ -2,6 +2,8 @@ import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 import { Checkbox } from './Checkbox';
 import { IRefObject, resetIds } from '@uifabric/utilities';
@@ -60,6 +62,12 @@ describe('Checkbox', () => {
     renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Checkbox.tsx'),
+    Component: Checkbox,
+    displayName: 'Checkbox',
   });
 
   it('respects id prop', () => {

@@ -19,6 +19,13 @@ describe('Layer', () => {
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
 
+  isConformant({
+    componentPath: path.join(__dirname, 'Layer.tsx'),
+    Component: Layer,
+    displayName: 'Layer',
+    disabledTests: ['component-has-displayname'],
+  });
+
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
@@ -31,12 +38,6 @@ describe('Layer', () => {
     expect(tree).toMatchSnapshot();
 
     ReactDOM.createPortal = createPortal;
-  });
-
-  isConformant({
-    componentPath: path.join(__dirname, 'Layer.tsx'),
-    Component: Layer,
-    displayName: 'Layer',
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {

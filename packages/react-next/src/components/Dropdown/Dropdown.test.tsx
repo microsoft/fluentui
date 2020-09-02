@@ -8,6 +8,8 @@ import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownBase } from './Dropdown.base';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -40,6 +42,13 @@ describe('Dropdown', () => {
     }
 
     document.body.innerHTML = '';
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Dropdown.tsx'),
+    Component: Dropdown,
+    displayName: 'Dropdown',
+    disabledTests: ['component-has-displayname'],
   });
 
   describe('single-select', () => {

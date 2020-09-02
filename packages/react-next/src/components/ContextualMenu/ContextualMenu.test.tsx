@@ -11,6 +11,8 @@ import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps }
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DefaultButton, IButton } from '../../compat/Button';
 import { IRenderFunction, resetIds } from '@uifabric/utilities';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -23,6 +25,13 @@ describe('ContextualMenu', () => {
     jest.useRealTimers();
     jest.restoreAllMocks();
     resetIds();
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'ContextualMenu.tsx'),
+    Component: ContextualMenu,
+    displayName: 'ContextualMenu',
+    disabledTests: ['component-has-displayname'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {
