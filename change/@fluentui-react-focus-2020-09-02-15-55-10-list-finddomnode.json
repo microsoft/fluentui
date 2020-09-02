@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Fix typo in docs",
   "packageName": "@fluentui/react-focus",
   "email": "elcraig@microsoft.com",
