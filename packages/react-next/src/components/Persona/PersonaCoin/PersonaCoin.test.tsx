@@ -5,7 +5,6 @@ import { PersonaCoin } from './PersonaCoin';
 import { wrapPersona } from '../Persona.test';
 import * as path from 'path';
 import { isConformant } from '../../../common/isConformant';
-import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
