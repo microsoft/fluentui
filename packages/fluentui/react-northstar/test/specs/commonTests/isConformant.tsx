@@ -40,7 +40,6 @@ export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps
   rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
   wrapperComponent?: React.ElementType;
-  handlesAsProp?: boolean;
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
@@ -76,6 +75,20 @@ export function isConformant(
   } = options;
 
   const { throwError } = commonHelpers('isConformant', Component);
+
+  const defaultConfig: Partial<IsConformantOptions> = {
+    customMount: mountWithProvider,
+    componentPath: testPath
+      .replace(/test[/\\]specs/, 'src')
+      .replace('-test.', '.')
+      .replace(/.ts$/, '.tsx'),
+    Component,
+    displayName: constructorName,
+    disabledTests: ['has-top-level-file'],
+    helperComponents: [Ref, RefFindNode, FocusZone],
+  };
+
+  isConformantBase(defaultConfig, options);
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config
@@ -611,18 +624,4 @@ export function isConformant(
       }
     });
   }
-
-  const defaultConfig: Partial<IsConformantOptions> = {
-    customMount: mountWithProvider,
-    componentPath: testPath
-      .replace(/test[/\\]specs/, 'src')
-      .replace('-test.', '.')
-      .replace(/.ts$/, '.tsx'),
-    Component,
-    displayName: constructorName,
-    disabledTests: ['has-top-level-file'],
-    helperComponents: [Ref, RefFindNode, FocusZone],
-  };
-
-  isConformantBase(defaultConfig, options);
 }
