@@ -5,7 +5,7 @@ export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',
   itemButton: 'ms-Suggestions-itemButton',
   closeButton: 'ms-Suggestions-closeButton',
-  isSuggested: 'is-suggested'
+  isSuggested: 'is-suggested',
 };
 
 export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles {
@@ -26,15 +26,15 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         position: 'relative',
         selectors: {
           '&:hover': {
-            background: palette.neutralLighter
+            background: palette.neutralLighter,
           },
           '&:hover .ms-Suggestions-closeButton': {
-            display: 'block'
-          }
-        }
+            display: 'block',
+          },
+        },
       },
 
-      className
+      className,
     ],
     itemButton: [
       classNames.itemButton,
@@ -53,14 +53,14 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
               ':hover': {
                 background: 'Highlight',
                 color: 'HighlightText',
-                MsHighContrastAdjust: 'none'
-              }
-            }
+                MsHighContrastAdjust: 'none',
+              },
+            },
           },
           ':hover': {
-            color: palette.neutralDark
-          }
-        }
+            color: palette.neutralDark,
+          },
+        },
       },
       suggested && [
         classNames.isSuggested,
@@ -68,16 +68,16 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           background: palette.neutralLight,
           selectors: {
             ':hover': {
-              background: palette.neutralTertiaryAlt
+              background: palette.neutralTertiaryAlt,
             },
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none'
-            }
-          }
-        }
-      ]
+              MsHighContrastAdjust: 'none',
+            },
+          },
+        },
+      ],
     ],
     closeButton: [
       classNames.closeButton,
@@ -90,21 +90,21 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         selectors: {
           ':hover, :active': {
             background: palette.neutralTertiaryAlt,
-            color: palette.neutralDark
+            color: palette.neutralDark,
           },
           [HighContrastSelector]: {
-            color: 'WindowText'
-          }
-        }
+            color: 'WindowText',
+          },
+        },
       },
       suggested && {
         selectors: {
           ':hover, :active': {
             background: palette.neutralTertiary,
-            color: palette.neutralPrimary
-          }
-        }
-      }
-    ]
+            color: palette.neutralPrimary,
+          },
+        },
+      },
+    ],
   };
 }

@@ -19,7 +19,9 @@ const newVersion = process.argv[2];
 const newDep = process.argv[3] || newVersion;
 
 function help() {
-  console.error('update-package-versions.js - usage:\n  node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"');
+  console.error(
+    'update-package-versions.js - usage:\n  node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"',
+  );
 }
 
 if (!allPackages) {

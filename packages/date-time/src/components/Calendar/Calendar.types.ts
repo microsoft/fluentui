@@ -1,8 +1,8 @@
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
+import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
 
@@ -46,7 +46,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
@@ -151,7 +152,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showSixWeeksByDefault?: boolean;
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
+   * The days that are selectable when dateRangeType is WorkWeek.
+   * If dateRangeType is not WorkWeek this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
@@ -181,31 +183,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarStrings {
-  /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-
+export interface ICalendarStrings extends IDateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
    */
@@ -242,13 +220,15 @@ export interface ICalendarStrings {
   nextYearRangeAriaLabel?: string;
 
   /**
-   * Aria-label format string for the header button in the month picker. Should have 1 string param e.g. "`{0}`, select to change the year".
-   * This aria-label will only be applied if the year picker is enabled, otherwise the label will default to the header string e.g. "2019"
+   * Aria-label format string for the header button in the month picker. Should have 1 string param, e.g. "`{0}`,
+   * select to change the year". This aria-label will only be applied if the year picker is enabled; otherwise
+   * the label will default to the header string, e.g. "2019".
    */
   monthPickerHeaderAriaLabel?: string;
 
   /**
-   * Aria-label format string for the header button in the year picker. Should have 1 string param e.g. "`{0}`, select to change the month"
+   * Aria-label format string for the header button in the year picker.
+   * Should have 1 string param, e.g. "`{0}`, select to change the month"
    */
   yearPickerHeaderAriaLabel?: string;
 
@@ -258,19 +238,24 @@ export interface ICalendarStrings {
   closeButtonAriaLabel?: string;
 
   /**
-   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number `{0}`"
+   * Aria-label format string for the week number header. Should have 1 string param, e.g. "week number `{0}`"
    */
   weekNumberFormatString?: string;
 
   /**
-   * Aria-label format string for the currently selected date. Should have 1 string param e.g. "Selected date `{0}`"
+   * Aria-label format string for the currently selected date. Should have 1 string param, e.g. "Selected date `{0}`"
    */
   selectedDateFormatString?: string;
 
   /**
-   * Aria-label format string for today's date. Should have 1 string param e.g. "Today's date `{0}`"
+   * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
+
+  /**
+   * Aria-label for when a date is marked
+   */
+  dayMarkedAriaLabel?: string;
 }
 
 export interface ICalendarIconStrings {
@@ -297,12 +282,12 @@ export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates
    */
-  formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+  formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the month and year in the Day Picker header
    */
-  formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+  formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the days in the Day Picker calendar
@@ -387,5 +372,5 @@ export enum AnimationDirection {
   /**
    * Grid will transition out and in vertically
    */
-  Vertical
+  Vertical,
 }

@@ -15,19 +15,19 @@ const DefaultModalProps: IModalProps = {
   isBlocking: false,
   className: '',
   containerClassName: '',
-  topOffsetFixed: false
+  topOffsetFixed: false,
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {
   type: DialogType.normal,
   className: '',
-  topButtonsProps: []
+  topButtonsProps: [],
 };
 
 @withResponsiveMode
 export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
-    hidden: true
+    hidden: true,
   };
 
   private _id: string;
@@ -55,14 +55,14 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         onDismissed: 'modalProps.onDismissed',
         onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
         ariaDescribedById: 'modalProps.subtitleAriaId',
-        ariaLabelledById: 'modalProps.titleAriaId'
+        ariaLabelledById: 'modalProps.titleAriaId',
       });
     }
   }
 
   public render(): JSX.Element {
     const {
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       className,
       containerClassName,
       contentClassName,
@@ -85,14 +85,14 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       title,
       topButtonsProps,
       type,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       minWidth,
       maxWidth,
-      modalProps
+      modalProps,
     } = this.props;
 
     const mergedLayerProps: ILayerProps = {
-      ...(modalProps ? modalProps.layerProps : { onLayerDidMount })
+      ...(modalProps ? modalProps.layerProps : { onLayerDidMount }),
     };
     if (onLayerDidMount && !mergedLayerProps.onLayerDidMount) {
       mergedLayerProps.onLayerDidMount = onLayerDidMount;
@@ -107,22 +107,22 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       dialogDraggableClassName = 'ms-Dialog-draggable-header';
       dragOptions = {
         ...modalProps.dragOptions,
-        dragHandleSelector: `.${dialogDraggableClassName}`
+        dragHandleSelector: `.${dialogDraggableClassName}`,
       };
     } else {
       dragOptions = modalProps && modalProps.dragOptions;
     }
 
     const mergedModalProps = {
+      ...DefaultModalProps,
       className,
       containerClassName,
       isBlocking,
       isDarkOverlay,
       onDismissed,
-      ...DefaultModalProps,
       ...modalProps,
       layerProps: mergedLayerProps,
-      dragOptions
+      dragOptions,
     };
 
     const dialogContentProps: IDialogContentProps = {
@@ -135,10 +135,10 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       ...this.props.dialogContentProps,
       draggableHeaderClassName: dialogDraggableClassName,
       titleProps: {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
-        ...this.props.dialogContentProps?.titleProps
-      }
+        ...this.props.dialogContentProps?.titleProps,
+      },
     };
 
     const classNames = getClassNames(styles!, {
@@ -147,7 +147,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       containerClassName: mergedModalProps.containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
-      dialogDefaultMaxWidth: maxWidth
+      dialogDefaultMaxWidth: maxWidth,
     });
 
     return (
@@ -187,7 +187,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
   }
 
   private _getSubTextId = (): string | undefined => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { ariaDescribedById, modalProps, dialogContentProps, subText } = this.props;
     let id = (modalProps && modalProps.subtitleAriaId) || ariaDescribedById;
 
@@ -199,7 +199,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
   };
 
   private _getTitleTextId = (): string | undefined => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { ariaLabelledById, modalProps, dialogContentProps, title } = this.props;
     let id = (modalProps && modalProps.titleAriaId) || ariaLabelledById;
 

@@ -9,7 +9,7 @@ const testVerticalPersonaStyles: IVerticalPersonaComponent['styles'] = {
   root: 'test-cn-root',
   primaryText: 'test-cn-text',
   secondaryText: 'test-cn-secondaryText',
-  coin: 'test-cn-coin'
+  coin: 'test-cn-coin',
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
@@ -27,13 +27,22 @@ describe('VerticalPersona', () => {
   });
 
   it('renders correctly with only a text', () => {
-    const tree = renderer.create(<VerticalPersona vertical text="James Bond" styles={testVerticalPersonaStyles} />).toJSON();
+    const tree = renderer
+      .create(<VerticalPersona vertical text="James Bond" styles={testVerticalPersonaStyles} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with a text and secondary text', () => {
     const tree = renderer
-      .create(<VerticalPersona vertical text="James Bond" secondaryText="Super secret agent" styles={testVerticalPersonaStyles} />)
+      .create(
+        <VerticalPersona
+          vertical
+          text="James Bond"
+          secondaryText="Super secret agent"
+          styles={testVerticalPersonaStyles}
+        />,
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -47,7 +56,7 @@ describe('VerticalPersona', () => {
           secondaryText="Super secret agent"
           styles={testVerticalPersonaStyles}
           coin={{ initials: 'MI6', coinColor: 'red' }}
-        />
+        />,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

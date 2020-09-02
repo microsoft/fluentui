@@ -11,12 +11,12 @@ module.exports = resources.createConfig(
   IS_PRODUCTION,
   addMonacoWebpackConfig({
     entry: {
-      [BUNDLE_NAME]: './lib/index.js'
+      [BUNDLE_NAME]: './lib/index.js',
     },
 
     output: {
       libraryTarget: 'var',
-      library: 'FabricTsxEditor'
+      library: 'FabricTsxEditor',
     },
 
     externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
@@ -26,8 +26,8 @@ module.exports = resources.createConfig(
         '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
         '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
         '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
-        '@uifabric/tsx-editor': path.join(__dirname, 'lib')
-      }
-    }
-  })
+        '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
+      },
+    },
+  }),
 );

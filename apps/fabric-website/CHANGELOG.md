@@ -1,7 +1,255 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 27 Feb 2020 12:23:46 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.14.1](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.14.0..@uifabric/fabric-website_v7.14.1)
+
+### Patches
+
+- Fix styles implementation instructions ([PR #14545](https://github.com/microsoft/fluentui/pull/14545) by elcraig@microsoft.com)
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.25..@uifabric/fabric-website_v7.14.0)
+
+### Patches
+
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.13.25](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.25)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.18..@uifabric/fabric-website_v7.13.25)
+
+### Patches
+
+- Update web components to use latest version of fast-element (#14573) ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.13.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.16)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.15..@uifabric/fabric-website_v7.13.16)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
+
+## [7.13.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.15)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.6..@uifabric/fabric-website_v7.13.15)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.4..@uifabric/fabric-website_v7.13.6)
+
+### Patches
+
+- add aria label to searchbox ([PR #14118](https://github.com/microsoft/fluentui/pull/14118) by mgodbolt@microsoft.com)
+
+## [7.13.4](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.2..@uifabric/fabric-website_v7.13.4)
+
+### Patches
+
+- Hiding an unexpected link shown in the footer of the website. ([PR #14092](https://github.com/microsoft/fluentui/pull/14092) by dzearing@hotmail.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.12.0..@uifabric/fabric-website_v7.13.0)
+
+### Minor changes
+
+- Remove tslint references and fix violations; add react peerDependencies ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+### Patches
+
+- revert to getId as svg is not a react component ([PR #13989](https://github.com/microsoft/fluentui/pull/13989) by mgodbolt@microsoft.com)
+- docs: fix spelling mistake ([PR #13996](https://github.com/microsoft/fluentui/pull/13996) by tyx1703@gmail.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.12.0)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.11.0..@uifabric/fabric-website_v7.12.0)
+
+### Minor changes
+
+- new macOS Button and Separator control ([PR #13910](https://github.com/microsoft/fluentui/pull/13910) by saadnajmi2@gmail.com)
+
+### Patches
+
+- give icons unique ids ([PR #13967](https://github.com/microsoft/fluentui/pull/13967) by mgodbolt@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.11.0)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.76..@uifabric/fabric-website_v7.11.0)
+
+### Minor changes
+
+- New macos link control documentation ([PR #13892](https://github.com/microsoft/fluentui/pull/13892) by saadnajmi2@gmail.com)
+
+## [7.10.71](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.71)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.58..@uifabric/fabric-website_v7.10.71)
+
+### Patches
+
+- Clean up dependencies and clarify version file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.10.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.58)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.57..@uifabric/fabric-website_v7.10.58)
+
+### Patches
+
+- Update documentation for fontSize prop ([PR #13276](https://github.com/microsoft/fluentui/pull/13276) by krsiler@microsoft.com)
+
+## [7.10.55](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.55)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.53..@uifabric/fabric-website_v7.10.55)
+
+### Patches
+
+- grammer fix on iOS get started change ([PR #13211](https://github.com/microsoft/fluentui/pull/13211) by hyshin@microsoft.com)
+- added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm ([PR #13215](https://github.com/microsoft/fluentui/pull/13215) by ejlayne@microsoft.com)
+
+## [7.10.53](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.53)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.50..@uifabric/fabric-website_v7.10.53)
+
+### Patches
+
+- Fixed broken URLs ([PR #13187](https://github.com/microsoft/fluentui/pull/13187) by mgodbolt@microsoft.com)
+
+## [7.10.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.50)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.49..@uifabric/fabric-website_v7.10.50)
+
+### Patches
+
+- fixed visited styles in website ([PR #13172](https://github.com/microsoft/fluentui/pull/13172) by mgodbolt@microsoft.com)
+
+## [7.10.49](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.49)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.39..@uifabric/fabric-website_v7.10.49)
+
+### Patches
+
+- Adding new website content ([PR #12482](https://github.com/microsoft/fluentui/pull/12482) by mgodbolt@microsoft.com)
+
+## [7.10.39](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.39)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.35..@uifabric/fabric-website_v7.10.39)
+
+### Patches
+
+- Updated office brand icons ([PR #12958](https://github.com/microsoft/fluentui/pull/12958) by mgodbolt@microsoft.com)
+- Website: Updated Forms icon text ([PR #12962](https://github.com/microsoft/fluentui/pull/12962) by micahgodbolt@gmail.com)
+
+## [7.10.35](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.35)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.29..@uifabric/fabric-website_v7.10.35)
+
+### Patches
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+## [7.10.29](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.29)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.28..@uifabric/fabric-website_v7.10.29)
+
+### Patches
+
+- Always build dev bundle of website even in production mode ([PR #12786](https://github.com/microsoft/fluentui/pull/12786) by elcraig@microsoft.com)
+
+## [7.10.28](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.28)
+
+Mon, 20 Apr 2020 15:55:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.23..@uifabric/fabric-website_v7.10.28)
+
+### Patches
+
+- guard against window and location not being available ([PR #12769](https://github.com/microsoft/fluentui/pull/12769) by mgodbolt@microsoft.com)
+
+## [7.10.23](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.23)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.21..@uifabric/fabric-website_v7.10.23)
+
+### Patches
+
+- removing old and wrong filetype icon paths ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+- explicitly set RTL false on website ([PR #12647](https://github.com/microsoft/fluentui/pull/12647) by mgodbolt@microsoft.com)
+- Update package description ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- check for window before testing locadtion ([PR #12690](https://github.com/microsoft/fluentui/pull/12690) by micahgodbolt@gmail.com)
+
+## 7.10.15
+Tue, 31 Mar 2020 12:27:26 GMT
+
+### Patches
+
+- update website banner and remove reference to fabric in context menu docs (mgodbolt@microsoft.com)
+## 7.10.14
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- More Fabric=>Fluent fixes (elcraig@microsoft.com)
+## 7.10.12
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Updating docs for fluent transition (mgodbolt@microsoft.com)
+## 7.10.11
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.10.5
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Patches
+
+- new blog announcement, support jsx in message bar, move hig link (mgodbolt@microsoft.com)
+## 7.10.4
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- use ms-Fabric--isFocusVisible instead of .is-focusVisible (xgao@microsoft.com)
+## 7.10.0
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Minor changes
+
+- Added ApplicationInsights to public site to enable usage tracking (joschemd@microsoft.com)
 ## 7.9.9
 Thu, 27 Feb 2020 12:23:46 GMT
 
@@ -1444,4 +1692,3 @@ Tue, 16 May 2017 21:47:38 GMT
 ### Patches
 
 - Adding comment
-

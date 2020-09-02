@@ -1,9 +1,7 @@
-import { ProviderContextPrepared, ColorVariants } from '@fluentui/react';
+import { useFluentContext, ColorVariants } from '@fluentui/react-northstar';
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 type ComponentExampleColorPickerProps = {
   onChange: (colorValue: string) => void;
@@ -12,7 +10,7 @@ type ComponentExampleColorPickerProps = {
 
 const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColorPickerProps> = props => {
   const { onChange, variableValue } = props;
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
+  const { theme } = useFluentContext();
 
   const handleClick = (colorValue: string) => () => {
     onChange(colorValue);
@@ -30,7 +28,7 @@ const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColor
         fontFamily: 'monospace',
         backgroundImage:
           'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-        backgroundRepeat: 'repeat'
+        backgroundRepeat: 'repeat',
       }}
     >
       {_.map(filteredColors, (colorShades: ColorVariants, colorName: string) => (
@@ -53,7 +51,7 @@ const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColor
                   background: shadeValue,
                   boxShadow: isActive ? `inset 0 0 0 1px ${contrastColor}` : '',
                   outline: 'none',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
                 onClick={handleClick(shadeValue)}
                 title={shadeValue}

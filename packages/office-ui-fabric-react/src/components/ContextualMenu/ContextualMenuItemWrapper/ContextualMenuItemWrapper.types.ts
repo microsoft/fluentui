@@ -19,7 +19,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   /**
    * CSS class to apply to the context menu.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   classNames: IMenuItemClassNames;
 
   /**
@@ -51,12 +51,18 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
    * Method to override the render of the individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?:
+    | React.ComponentClass<IContextualMenuItemProps>
+    | React.FunctionComponent<IContextualMenuItemProps>;
 
   /**
    * Callback for when the user's mouse enters the wrapper.
    */
-  onItemMouseEnter?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) => boolean | void;
+  onItemMouseEnter?: (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement>,
+    target: HTMLElement,
+  ) => boolean | void;
 
   /**
    * Callback for when the user's mouse leaves the wrapper.
@@ -76,20 +82,27 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   /**
    * Callback for when the click event on the primary button.
    */
-  executeItemClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+  executeItemClick?: (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => void;
 
   /**
    * Callback for when the click event on the icon button from the wrapper.
    */
-  onItemClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+  onItemClick?: (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => void;
 
   /**
-   * Callback for when the click event on the icon button which also takes in a specific HTMLElement that will be focused.
+   * Callback for when the click event on the icon button which also takes in a specific HTMLElement
+   * that will be focused.
    */
   onItemClickBase?: (
     item: IContextualMenuItem,
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    target: HTMLElement
+    target: HTMLElement,
   ) => void;
 
   /**

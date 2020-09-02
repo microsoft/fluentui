@@ -35,7 +35,7 @@ app.use(express.static('./dist'));
 app.get('/', (req, res) => {
   res.send(
     //     renderClientOnly()
-    renderIsomorphic()
+    renderIsomorphic(),
   );
 });
 

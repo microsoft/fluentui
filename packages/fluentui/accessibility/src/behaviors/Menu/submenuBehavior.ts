@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import menuItemBehavior from './menuItemBehavior';
+import { menuItemBehavior } from './menuItemBehavior';
 
 /**
  * @description
@@ -12,20 +12,18 @@ import menuItemBehavior from './menuItemBehavior';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const submenuBehavior: Accessibility = () => ({
+export const submenuBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'menu'
-    }
+      role: 'menu',
+    },
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusOnMount: true,
-      direction: FocusZoneDirection.vertical
-    }
+      direction: FocusZoneDirection.vertical,
+    },
   },
-  childBehaviors: { item: menuItemBehavior }
+  childBehaviors: { item: menuItemBehavior },
 });
-
-export default submenuBehavior;

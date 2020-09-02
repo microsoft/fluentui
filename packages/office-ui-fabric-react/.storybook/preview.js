@@ -1,15 +1,18 @@
 import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
+import { withPerformance } from 'storybook-addon-performance';
+import { withKeytipLayer } from './decorators';
 
-addDecorator(withInfo());
 addDecorator(withA11y());
+addDecorator(withPerformance);
+addDecorator(withKeytipLayer);
+
 addParameters({
   a11y: {
-    manual: true
-  }
+    manual: true,
+  },
 });
 
 initializeIcons();

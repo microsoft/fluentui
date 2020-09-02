@@ -12,22 +12,20 @@ import { ListBehaviorProps } from './listBehavior';
  * Adds attribute 'aria-orientation=horizontal' to 'root' slot if 'horizontal' property is true. Does not set the attribute otherwise.
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
+export const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'listbox',
       tabIndex: -1,
       ...(props.horizontal && {
-        'aria-orientation': 'horizontal'
-      })
-    }
+        'aria-orientation': 'horizontal',
+      }),
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
-  }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
+  },
 });
-
-export default selectableListBehavior;

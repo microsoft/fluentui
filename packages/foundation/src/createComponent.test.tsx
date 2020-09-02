@@ -11,7 +11,7 @@ describe('createComponent', () => {
   interface ITestProps extends IStyleableComponentProps<ITestProps, ITestTokens, {}> {}
 
   const TestComponent: React.FunctionComponent<ITestProps> = createComponent(() => null, {
-    tokens: [{ testComponentToken: 1 }, { testComponentToken: 21 }]
+    tokens: [{ testComponentToken: 1 }, { testComponentToken: 21 }],
   });
 
   it(`resolves tokens without a runtime error`, () => {

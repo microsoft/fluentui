@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import callable from './callable';
+import { callable } from './callable';
 import {
   ComponentSlotStyle,
   ComponentSlotStylesInput,
@@ -16,27 +16,25 @@ import {
   ThemeComponentStylesPrepared,
   ThemeComponentVariablesInput,
   ThemeComponentVariablesPrepared,
-  ThemeIcons,
   ThemeInput,
-  ThemePrepared
+  ThemePrepared,
 } from './types';
 
 import { isEnabled as isDebugEnabled } from './debugEnabled';
-import deepmerge from './deepmerge';
-import objectKeyToValues from './objectKeysToValues';
-import toCompactArray from './toCompactArray';
-import withDebugId from './withDebugId';
+import { deepmerge } from './deepmerge';
+import { objectKeyToValues } from './objectKeysToValues';
+import { toCompactArray } from './toCompactArray';
+import { withDebugId } from './withDebugId';
 
 export const emptyTheme: ThemePrepared = {
   siteVariables: {
-    fontSizes: {}
+    fontSizes: {},
   },
   componentVariables: {},
   componentStyles: {},
   fontFaces: [],
   staticStyles: [],
-  icons: {},
-  animations: {}
+  animations: {},
 };
 
 // ----------------------------------------
@@ -46,7 +44,9 @@ export const emptyTheme: ThemePrepared = {
 /**
  * Merges a single component's styles (keyed by component part) with another component's styles.
  */
-export const mergeComponentStyles__PROD = (...sources: (ComponentSlotStylesInput | null | undefined)[]): ComponentSlotStylesPrepared => {
+export const mergeComponentStyles__PROD = (
+  ...sources: (ComponentSlotStylesInput | null | undefined)[]
+): ComponentSlotStylesPrepared => {
   const initial: ComponentSlotStylesPrepared = {};
 
   return sources.reduce<ComponentSlotStylesPrepared>((partStylesPrepared, stylesByPart) => {
@@ -68,7 +68,7 @@ export const mergeComponentStyles__PROD = (...sources: (ComponentSlotStylesInput
       // no target means source doesn't need to merge onto anything
       // just ensure source is callable (prepared format)
       if (typeof originalTarget === 'undefined') {
-        partStylesPrepared[partName] = callable(originalSource);
+        partStylesPrepared[partName] = typeof originalSource === 'function' ? originalSource : callable(originalSource);
         return;
       }
 
@@ -83,7 +83,9 @@ export const mergeComponentStyles__PROD = (...sources: (ComponentSlotStylesInput
   }, initial);
 };
 
-export const mergeComponentStyles__DEV = (...sources: (ComponentSlotStylesInput | null | undefined)[]): ComponentSlotStylesPrepared => {
+export const mergeComponentStyles__DEV = (
+  ...sources: (ComponentSlotStylesInput | null | undefined)[]
+): ComponentSlotStylesPrepared => {
   if (!isDebugEnabled) {
     return mergeComponentStyles__PROD(...sources);
   }
@@ -115,7 +117,7 @@ export const mergeComponentStyles__DEV = (...sources: (ComponentSlotStylesInput 
           // new object required to prevent circular JSON structure error in <Debug />
           return {
             ...styles,
-            _debug: _debug || [{ styles: { ...styles }, debugId: stylesByPart._debugId }]
+            _debug: _debug || [{ styles: { ...styles }, debugId: stylesByPart._debugId }],
           };
         };
 
@@ -138,7 +140,9 @@ export const mergeComponentStyles__DEV = (...sources: (ComponentSlotStylesInput 
   }, initial);
 };
 
-export const mergeComponentStyles: (...sources: (ComponentSlotStylesInput | null | undefined)[]) => ComponentSlotStylesPrepared =
+export const mergeComponentStyles: (
+  ...sources: (ComponentSlotStylesInput | null | undefined)[]
+) => ComponentSlotStylesPrepared =
   process.env.NODE_ENV === 'production' ? mergeComponentStyles__PROD : mergeComponentStyles__DEV;
 
 /**
@@ -147,10 +151,19 @@ export const mergeComponentStyles: (...sources: (ComponentSlotStylesInput | null
 export const mergeComponentVariables__PROD = (...sources: ComponentVariablesInput[]): ComponentVariablesPrepared => {
   const initial = () => ({});
 
-  return sources.reduce<ComponentVariablesPrepared>((acc, next) => {
-    return (...args) => {
+  // filtering is required as some arguments can be undefined
+  const filteredSources = sources.filter(Boolean);
+
+  // a short circle to avoid calls of deepmerge()
+  if (filteredSources.length === 1) {
+    return typeof filteredSources[0] === 'function' ? filteredSources[0] : callable(filteredSources[0]);
+  }
+
+  return filteredSources.reduce<ComponentVariablesPrepared>((acc, next) => {
+    return function mergeComponentVariables(...args) {
       const accumulatedVariables = acc(...args);
-      const computedComponentVariables = callable(next)(...args);
+      const fn = typeof next === 'function' ? next : callable(next);
+      const computedComponentVariables = fn(...args);
 
       return deepmerge(accumulatedVariables, computedComponentVariables);
     };
@@ -175,15 +188,18 @@ export const mergeComponentVariables__DEV = (...sources: ComponentVariablesInput
         computedDebug || {
           resolved: computedComponentVariables,
           debugId: _debugId,
-          input: siteVariables ? siteVariables._invertedKeys && callable(next)(siteVariables._invertedKeys) : callable(next)()
-        }
+          input: siteVariables
+            ? siteVariables._invertedKeys && callable(next)(siteVariables._invertedKeys)
+            : callable(next)(),
+        },
       );
       return merged;
     };
   }, initial);
 };
 
-export const mergeComponentVariables = process.env.NODE_ENV === 'production' ? mergeComponentVariables__PROD : mergeComponentVariables__DEV;
+export const mergeComponentVariables =
+  process.env.NODE_ENV === 'production' ? mergeComponentVariables__PROD : mergeComponentVariables__DEV;
 
 // ----------------------------------------
 // Theme level merge functions
@@ -193,25 +209,30 @@ export const mergeComponentVariables = process.env.NODE_ENV === 'production' ? m
  * Site variables can safely be merged at each Provider in the tree.
  * They are flat objects and do not depend on render-time values, such as props.
  */
-export const mergeSiteVariables__PROD = (...sources: (SiteVariablesInput | null | undefined)[]): SiteVariablesPrepared => {
+export const mergeSiteVariables__PROD = (
+  ...sources: (SiteVariablesInput | null | undefined)[]
+): SiteVariablesPrepared => {
   const initial: SiteVariablesPrepared = {
-    fontSizes: {}
+    fontSizes: {},
   };
   return deepmerge(initial, ...sources);
 };
 
-export const mergeSiteVariables__DEV = (...sources: (SiteVariablesInput | null | undefined)[]): SiteVariablesPrepared => {
+export const mergeSiteVariables__DEV = (
+  ...sources: (SiteVariablesInput | null | undefined)[]
+): SiteVariablesPrepared => {
   if (!isDebugEnabled) {
     return mergeSiteVariables__PROD(...sources);
   }
 
   const initial: SiteVariablesPrepared = {
-    fontSizes: {}
+    fontSizes: {},
   };
 
   return sources.reduce<SiteVariablesPrepared>((acc, next) => {
     const { _debug = [], ...accumulatedSiteVariables } = acc;
-    const { _debug: computedDebug = undefined, _invertedKeys = undefined, _debugId = undefined, ...nextSiteVariables } = next || {};
+    const { _debug: computedDebug = undefined, _invertedKeys = undefined, _debugId = undefined, ...nextSiteVariables } =
+      next || {};
 
     const merged = deepmerge({ ...accumulatedSiteVariables, _invertedKeys: undefined }, nextSiteVariables);
     merged._debug = _debug.concat(computedDebug || { resolved: nextSiteVariables, debugId: _debugId });
@@ -220,7 +241,8 @@ export const mergeSiteVariables__DEV = (...sources: (SiteVariablesInput | null |
   }, initial);
 };
 
-export const mergeSiteVariables = process.env.NODE_ENV === 'production' ? mergeSiteVariables__PROD : mergeSiteVariables__DEV;
+export const mergeSiteVariables =
+  process.env.NODE_ENV === 'production' ? mergeSiteVariables__PROD : mergeSiteVariables__DEV;
 
 /**
  * Component variables can be objects, functions, or an array of these.
@@ -250,27 +272,30 @@ export const mergeThemeVariables__DEV = (
   const displayNames = _.union(..._.map(sources, _.keys));
   return displayNames.reduce((componentVariables, displayName) => {
     componentVariables[displayName] = mergeComponentVariables(
-      ..._.map(sources, source => source && withDebugId(source[displayName], source._debugId))
+      ..._.map(sources, source => source && withDebugId(source[displayName], source._debugId)),
     );
     return componentVariables;
   }, {});
 };
 
-export const mergeThemeVariables = process.env.NODE_ENV === 'production' ? mergeThemeVariables__PROD : mergeThemeVariables__DEV;
+export const mergeThemeVariables =
+  process.env.NODE_ENV === 'production' ? mergeThemeVariables__PROD : mergeThemeVariables__DEV;
 
 /**
  * See mergeThemeVariables() description.
  * Component styles adhere to the same pattern as component variables, except
  *   that they return style objects.
  */
-export const mergeThemeStyles = (...sources: (ThemeComponentStylesInput | null | undefined)[]): ThemeComponentStylesPrepared => {
+export const mergeThemeStyles = (
+  ...sources: (ThemeComponentStylesInput | null | undefined)[]
+): ThemeComponentStylesPrepared => {
   const initial: ThemeComponentStylesPrepared = {};
 
   return sources.reduce<ThemeComponentStylesPrepared>((themeComponentStyles, next) => {
     _.forEach(next, (stylesByPart, displayName) => {
       themeComponentStyles[displayName] = mergeComponentStyles(
         themeComponentStyles[displayName],
-        withDebugId(stylesByPart, (next as ThemeComponentStylesPrepared & { _debugId: string })._debugId)
+        withDebugId(stylesByPart, (next as ThemeComponentStylesPrepared & { _debugId: string })._debugId),
       );
     });
 
@@ -286,10 +311,6 @@ export const mergeStaticStyles = (...sources: StaticStyle[]) => {
   return toCompactArray<StaticStyle>(...sources);
 };
 
-export const mergeIcons = (...sources: ThemeIcons[]): ThemeIcons => {
-  return Object.assign({}, ...sources);
-};
-
 export const mergeAnimations = (...sources: { [key: string]: ThemeAnimation }[]): { [key: string]: ThemeAnimation } => {
   return Object.assign({}, ...sources);
 };
@@ -302,7 +323,7 @@ export const mergeStyles = (...sources: ComponentSlotStyle[]) => {
   };
 };
 
-const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
+export const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
   return themes.reduce<ThemePrepared>(
     (acc: ThemePrepared, next: ThemeInput) => {
       if (!next) return acc;
@@ -310,12 +331,12 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
 
       acc.siteVariables = mergeSiteVariables(acc.siteVariables, withDebugId(next.siteVariables, nextDebugId));
 
-      acc.componentVariables = mergeThemeVariables(acc.componentVariables, withDebugId(next.componentVariables, nextDebugId));
+      acc.componentVariables = mergeThemeVariables(
+        acc.componentVariables,
+        withDebugId(next.componentVariables, nextDebugId),
+      );
 
       acc.componentStyles = mergeThemeStyles(acc.componentStyles, withDebugId(next.componentStyles, nextDebugId));
-
-      // Merge icons set, last one wins in case of collisions
-      acc.icons = mergeIcons(acc.icons, next.icons);
 
       acc.fontFaces = mergeFontFaces(...acc.fontFaces, ...(next.fontFaces || []));
 
@@ -326,8 +347,6 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
       return acc;
     },
     // .reduce() will modify "emptyTheme" object, so we should clone it before actual usage
-    { ...emptyTheme }
+    { ...emptyTheme },
   );
 };
-
-export default mergeThemes;

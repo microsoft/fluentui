@@ -6,19 +6,21 @@ import { Persona } from '@uifabric/experiments';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
   },
   personaCoinStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const verticalPersonaStackClassName = mergeStyles({ display: 'flex', flexDirection: 'row' });
 
-const VerticalPersonaStack = (props: { children: JSX.Element[] }) => <div className={verticalPersonaStackClassName}>{props.children}</div>;
+const VerticalPersonaStack = (props: { children: JSX.Element[] }) => (
+  <div className={verticalPersonaStackClassName}>{props.children}</div>
+);
 
 export class VerticalPersonaExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -67,10 +69,15 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
                   primaryTextFontSize: '22px',
                   primaryTextFontWeight: 800,
                   secondaryTextFontSize: '18px',
-                  secondaryTextPaddingTop: '12px'
+                  secondaryTextPaddingTop: '12px',
                 }}
               />
-              <Persona vertical text="Kevin Jameson" secondaryText="Professional traveller" tokens={{ fontFamily: 'monospace' }} />
+              <Persona
+                vertical
+                text="Kevin Jameson"
+                secondaryText="Professional traveller"
+                tokens={{ fontFamily: 'monospace' }}
+              />
               <Persona
                 vertical
                 text="王力"

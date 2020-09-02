@@ -7,7 +7,7 @@ import {
   getSiteArea,
   Page,
   IPageProps,
-  IPageSectionProps
+  IPageSectionProps,
 } from '@uifabric/example-app-base/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight, mediaQuery } from '../../styles/constants';
@@ -15,7 +15,7 @@ import { topNavHeight, mediaQuery } from '../../styles/constants';
 const illustrations = [
   'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error1.svg',
   'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error2.svg',
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error3.svg'
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error3.svg',
 ];
 
 const rootClass = mergeStyles({
@@ -27,9 +27,9 @@ const rootClass = mergeStyles({
 
   selectors: {
     [mediaQuery.maxMobile]: {
-      backgroundSize: '80%'
-    }
-  }
+      backgroundSize: '80%',
+    },
+  },
 });
 
 export interface INotFoundPageProps extends IPageProps {}
@@ -38,12 +38,14 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   public componentDidMount(): void {
     trackEvent(EventNames.PageNotFound, {
       currentArea: getSiteArea(),
-      currentPage: window.location.hash
+      currentPage: window.location.hash,
     });
   }
 
   public render() {
-    return <Page title="Page not found" className={rootClass} otherSections={this._otherSections()} showSideRail={false} />;
+    return (
+      <Page title="Page not found" className={rootClass} otherSections={this._otherSections()} showSideRail={false} />
+    );
   }
 
   private _otherSections = (): IPageSectionProps[] => [
@@ -54,22 +56,16 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
           <p>The URL may be misspelled or the page you are looking for is no longer available.</p>
           <ul>
             <li>
-              <Link
-                href="#/"
-                onClick={
-                  // tslint:disable-next-line jsx-no-lambda
-                  ev => this._onInternalLinkClick(ev, '#/')
-                }
-              >
-                UI Fabric Home
+              <Link href="#/" onClick={ev => this._onInternalLinkClick(ev, '#/')}>
+                Fluent UI Home
               </Link>
             </li>
             {this._getAreaLink()}
           </ul>
           {this._renderBackButton()}
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   /** Gets the top level page from the current URL and returns a link to it. */
@@ -81,13 +77,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
       return (
         <li>
-          <Link
-            href={url}
-            onClick={
-              // tslint:disable-next-line jsx-no-lambda
-              ev => this._onInternalLinkClick(ev, url)
-            }
-          >
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)}>
             {title}
           </Link>
         </li>
@@ -111,7 +101,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
       currentArea: getSiteArea(SiteDefinition.pages),
       currentPage: window.location.hash,
       context: 'NotFoundPage',
-      referrer: document.referrer || undefined
+      referrer: document.referrer || undefined,
     });
     window.history.back();
   };
@@ -123,7 +113,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
       currentPage: window.location.hash,
       nextPage: url,
       context: 'NotFoundPage',
-      referrer: document.referrer.length ? document.referrer : undefined
+      referrer: document.referrer.length ? document.referrer : undefined,
     });
   };
 }

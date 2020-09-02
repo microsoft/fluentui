@@ -6,35 +6,39 @@ import {
   IContextualMenuItemProps,
   ContextualMenuItem,
   IContextualMenuItemStyles,
-  IContextualMenuStyles
+  IContextualMenuStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, concatStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const theme = getTheme();
 // Styles for both command bar and overflow/menu items
 const itemStyles: Partial<IContextualMenuItemStyles> = {
   label: { fontSize: 18 },
   icon: { color: theme.palette.red },
-  iconHovered: { color: theme.palette.redDark }
+  iconHovered: { color: theme.palette.redDark },
 };
 // For passing the styles through to the context menus
 const menuStyles: Partial<IContextualMenuStyles> = {
-  subComponentStyles: { menuItem: itemStyles, callout: {} }
+  subComponentStyles: { menuItem: itemStyles, callout: {} },
 };
+
+const getCommandBarButtonStyles = memoizeFunction(
+  (originalStyles: IButtonStyles | undefined): Partial<IContextualMenuItemStyles> => {
+    if (!originalStyles) {
+      return itemStyles;
+    }
+
+    return concatStyleSets(originalStyles, itemStyles);
+  },
+);
 
 // Custom renderer for main command bar items
 const CustomButton: React.FunctionComponent<IButtonProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.text} clicked`);
-  return (
-    <CommandBarButton
-      {...props}
-      onClick={buttonOnMouseClick}
-      styles={{
-        ...props.styles,
-        ...itemStyles
-      }}
-    />
-  );
+  // eslint-disable-next-line react/jsx-no-bind
+  return <CommandBarButton {...props} onClick={buttonOnMouseClick} styles={getCommandBarButtonStyles(props.styles)} />;
 };
 
 // Custom renderer for menu items (these must have a separate custom renderer because it's unlikely
@@ -43,6 +47,7 @@ const CustomButton: React.FunctionComponent<IButtonProps> = props => {
 const CustomMenuItem: React.FunctionComponent<IContextualMenuItemProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.item.text} clicked`);
   // Due to ContextualMenu implementation quirks, passing styles here doesn't work
+  // eslint-disable-next-line react/jsx-no-bind
   return <ContextualMenuItem {...props} onClick={buttonOnMouseClick} />;
 };
 
@@ -56,8 +61,8 @@ const overflowProps: IButtonProps = {
     isBeakVisible: true,
     beakWidth: 20,
     gapSpace: 10,
-    directionalHint: DirectionalHint.topCenter
-  }
+    directionalHint: DirectionalHint.topCenter,
+  },
 };
 
 export const CommandBarButtonAsExample: React.FunctionComponent = () => {
@@ -86,19 +91,24 @@ const _items: ICommandBarItemProps[] = [
       styles: menuStyles,
       items: [
         { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
-        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } }
-      ]
-    }
+        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
   },
-  { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric' },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+  },
   { key: 'share', text: 'Share', iconProps: { iconName: 'Share' }, onClick: () => console.log('Share') },
-  { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') }
+  { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') },
 ];
 
 const _overflowItems: ICommandBarItemProps[] = [
   { key: 'move', text: 'Move to...', onClick: () => console.log('Move to'), iconProps: { iconName: 'MoveToFolder' } },
   { key: 'copy', text: 'Copy to...', onClick: () => console.log('Copy to'), iconProps: { iconName: 'Copy' } },
-  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } }
+  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } },
 ];
 
 const _farItems: ICommandBarItemProps[] = [
@@ -109,7 +119,14 @@ const _farItems: ICommandBarItemProps[] = [
     ariaLabel: 'Grid view',
     iconOnly: true,
     iconProps: { iconName: 'Tiles' },
-    onClick: () => console.log('Tiles')
+    onClick: () => console.log('Tiles'),
   },
-  { key: 'info', text: 'Info', ariaLabel: 'Info', iconOnly: true, iconProps: { iconName: 'Info' }, onClick: () => console.log('Info') }
+  {
+    key: 'info',
+    text: 'Info',
+    ariaLabel: 'Info',
+    iconOnly: true,
+    iconProps: { iconName: 'Info' },
+    onClick: () => console.log('Info'),
+  },
 ];

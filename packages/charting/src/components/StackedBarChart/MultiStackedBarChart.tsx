@@ -1,5 +1,10 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
-import { IMultiStackedBarChartProps, IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
+import {
+  IMultiStackedBarChartProps,
+  IMultiStackedBarChartStyleProps,
+  IMultiStackedBarChartStyles,
+} from './MultiStackedBarChart.types';
 import { MultiStackedBarChartBase } from './MultiStackedBarChart.base';
 import { getMultiStackedBarChartStyles } from './MultiStackedBarChart.styles';
 

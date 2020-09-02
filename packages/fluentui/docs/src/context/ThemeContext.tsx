@@ -1,20 +1,7 @@
 import * as React from 'react';
-import * as _ from 'lodash';
-import { themes } from '@fluentui/react';
 
-type ThemeName = keyof typeof themes;
+export type ThemeName = 'teamsTheme' | 'teamsDarkTheme' | 'teamsHighContrastTheme';
 type ThemeOption = { text: string; value: ThemeName };
-
-const getThemeOptions = (): ThemeOption[] => {
-  const themesKeys = Object.keys(themes);
-
-  if (process.env.NODE_ENV === 'production') {
-    // we don't show 'base' and 'fontAwesome' themes in production
-    _.pull(themesKeys, 'base', 'fontAwesome');
-  }
-
-  return themesKeys.map(key => ({ text: _.startCase(key), value: key as ThemeName }));
-};
 
 export type ThemeContextData = {
   themeName: ThemeName;
@@ -23,9 +10,13 @@ export type ThemeContextData = {
 };
 
 export const themeContextDefaults: ThemeContextData = {
-  themeName: 'teams',
-  themeOptions: getThemeOptions(),
-  changeTheme: () => {}
+  themeName: 'teamsTheme',
+  themeOptions: [
+    { text: 'Teams', value: 'teamsTheme' },
+    { text: 'Teams Dark', value: 'teamsDarkTheme' },
+    { text: 'Teams High Contrast', value: 'teamsHighContrastTheme' },
+  ],
+  changeTheme: () => {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeContextDefaults);

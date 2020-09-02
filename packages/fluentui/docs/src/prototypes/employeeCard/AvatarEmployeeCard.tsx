@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Extendable, Popup } from '@fluentui/react';
+import { Avatar, Extendable, Popup } from '@fluentui/react-northstar';
 import EmployeeCard, { EmployeeCardProps } from './EmployeeCard';
 
 export interface AvatarEmployeeCardState {
@@ -48,8 +48,8 @@ class AvatarEmployeeCard extends React.Component<Extendable<EmployeeCardProps>, 
             },
             onMouseLeave: () => {
               this.setPopupOpen(false);
-            }
-          })
+            },
+          }),
         })}
         content={{
           styles: { marginLeft: '10px' },
@@ -71,7 +71,7 @@ class AvatarEmployeeCard extends React.Component<Extendable<EmployeeCardProps>, 
                 this.setPopupOpen(false);
               }}
             />
-          )
+          ),
         }}
       />
     );

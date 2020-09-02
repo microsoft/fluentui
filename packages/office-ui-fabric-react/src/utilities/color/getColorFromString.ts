@@ -19,6 +19,6 @@ export function getColorFromString(inputColor: string): IColor | undefined {
 
   return {
     ...getColorFromRGBA(color!),
-    str: inputColor
+    str: inputColor,
   };
 }

@@ -1,4 +1,5 @@
 import { Accessibility } from '../../types';
+import { TableCellBehaviorProps } from './tableCellBehavior';
 /**
  * @description
  * Behavior for a table header cell - a cell containing header information for a column.
@@ -6,12 +7,10 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='columnheader'.
  */
-const tableHeaderCellBehavior: Accessibility = props => ({
+export const tableHeaderCellBehavior: Accessibility<TableCellBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'columnheader'
-    }
-  }
+      role: 'columnheader',
+    },
+  },
 });
-
-export default tableHeaderCellBehavior;

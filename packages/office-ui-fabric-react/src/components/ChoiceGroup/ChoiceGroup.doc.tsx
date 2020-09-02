@@ -19,45 +19,47 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',
   componentName: 'ChoiceGroup',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup',
   examples: [
     {
       title: 'Basic ChoiceGroup',
       code: ChoiceGroupBasicExampleCode,
-      view: <ChoiceGroupBasicExample />
+      view: <ChoiceGroupBasicExample />,
     },
     {
       title: 'Controlled ChoiceGroup',
       code: ChoiceGroupControlledExampleCode,
-      view: <ChoiceGroupControlledExample />
+      view: <ChoiceGroupControlledExample />,
     },
     {
       title: 'ChoiceGroup with images',
       code: ChoiceGroupImageExampleCode,
-      view: <ChoiceGroupImageExample />
+      view: <ChoiceGroupImageExample />,
     },
     {
       title: 'ChoiceGroup with icons',
       code: ChoiceGroupIconExampleCode,
-      view: <ChoiceGroupIconExample />
+      view: <ChoiceGroupIconExample />,
     },
     {
       title: 'ChoiceGroup with a custom label',
       code: ChoiceGroupLabelExampleCode,
-      view: <ChoiceGroupLabelExample />
+      view: <ChoiceGroupLabelExample />,
     },
     {
       title: 'ChoiceGroup with custom option rendering',
       code: ChoiceGroupCustomExampleCode,
-      view: <ChoiceGroupCustomExample />
-    }
+      view: <ChoiceGroupCustomExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: 'input'
+  nativePropsElement: 'input',
 };

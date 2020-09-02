@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Divider, Button, Avatar, Text } from '@fluentui/react';
+import { Divider, Button, Avatar, Text } from '@fluentui/react-northstar';
+import { ChevronDownIcon, CircleIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 const DividerVerticalExampleShorthand = () => (
   <div style={{ display: 'flex', justifyContent: 'center', height: '32px', alignItems: 'center' }}>
@@ -10,14 +11,13 @@ const DividerVerticalExampleShorthand = () => (
       image="public/images/avatar/large/jerry.png"
       status={{
         color: 'green',
-        icon: 'stardust-checkmark',
-        title: 'Available'
+        title: 'Available',
       }}
     />
     <Divider vertical />
-    <Button icon="chevron-down" text iconOnly title="Close" />
-    <Button icon="icon-circle" text iconOnly title="Full Screen" />
-    <Button icon="icon-close" text iconOnly title="Minimize" />
+    <Button icon={<ChevronDownIcon />} text iconOnly title="Close" />
+    <Button icon={<CircleIcon />} text iconOnly title="Full Screen" />
+    <Button icon={<CloseIcon />} text iconOnly title="Minimize" />
     <Divider vertical />
   </div>
 );

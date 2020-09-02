@@ -2,13 +2,13 @@ export type Vector2D<T> = [T, T];
 
 export enum Axis {
   X = 0,
-  Y = 1
+  Y = 1,
 }
 
 export enum ScrollDirection {
   none,
   backward,
-  forward
+  forward,
 }
 
 export interface IViewportState {
@@ -42,7 +42,8 @@ export interface IViewportProps {
   width: number;
 
   /**
-   * The child component is a function component which receives the scroll container's current scroll state as its only argument.
+   * The child component is a function component which receives the scroll container's current scroll state
+   * as its only argument.
    */
   children: (viewportState: IViewportState) => JSX.Element[] | JSX.Element;
 }

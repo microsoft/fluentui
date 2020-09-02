@@ -354,6 +354,86 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
 </div>
 `;
 
+exports[`Stack renders horizontal Stack with a gap in rtl context correctly 1`] = `
+<div
+  className=
+      ms-Fabric
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      & button {
+        font-family: inherit;
+      }
+      & input {
+        font-family: inherit;
+      }
+      & textarea {
+        font-family: inherit;
+      }
+  dir="rtl"
+>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-right: 10px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            width: auto;
+          }
+    >
+      Item 1
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            width: auto;
+          }
+    >
+      Item 2
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Stack renders horizontal Stack with grow correctly 1`] = `
 <div
   className=

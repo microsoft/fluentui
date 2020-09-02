@@ -12,16 +12,16 @@ export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       borderRadius: effects.roundedCorner2,
       border: 'none',
       backgroundColor: palette.themePrimary,
-      color: palette.white
+      color: palette.white,
     },
     rootHovered: {
-      backgroundColor: palette.themeDarkAlt
+      backgroundColor: palette.themeDarkAlt,
     },
     rootPressed: {
-      backgroundColor: palette.themeDark
+      backgroundColor: palette.themeDark,
     },
     rootChecked: {
-      backgroundColor: palette.themeDark
-    }
+      backgroundColor: palette.themeDark,
+    },
   };
 };

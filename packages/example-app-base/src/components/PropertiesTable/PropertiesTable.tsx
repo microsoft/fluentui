@@ -29,7 +29,7 @@ const renderCell = (text: string) => {
   while ((regexResult = regex.exec(text))) {
     codeBlocks.push({
       index: regexResult.index,
-      text: regexResult[0]
+      text: regexResult[0],
     });
   }
 
@@ -63,7 +63,7 @@ const renderCell = (text: string) => {
 type PropertyName = keyof IInterfaceProperty | keyof IEnumProperty;
 
 const createRenderCell = (propertyName: PropertyName) => {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (item: IInterfaceProperty | IEnumProperty) => renderCell((item as any)[propertyName]);
 };
 
@@ -76,7 +76,7 @@ const getColumns = (columns: Array<Partial<IColumn> & { key: PropertyName; name:
     isResizable: true,
     isMultiline: !column.isRowHeader,
     onRender: createRenderCell(column.key),
-    ...column
+    ...column,
   }));
 };
 
@@ -84,17 +84,17 @@ const DEFAULT_COLUMNS: IColumn[] = getColumns([
   { key: 'name', name: 'Name', minWidth: 150, maxWidth: 250, isRowHeader: true },
   { key: 'type', name: 'Type' },
   { key: 'defaultValue', name: 'Default value' },
-  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 }
+  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 },
 ]);
 
 const ENUM_COLUMNS: IColumn[] = getColumns([
   { key: 'name', name: 'Name', minWidth: 150, maxWidth: 250, isRowHeader: true },
-  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 }
+  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 },
 ]);
 
 class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
   public static defaultProps: Partial<IPropertiesTableProps> = {
-    title: 'Properties'
+    title: 'Properties',
   };
 
   private _properties: IInterfaceProperty[] | IEnumProperty[];
@@ -113,7 +113,7 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
           ? -1
           : a.name > b.name
           ? 1
-          : 0
+          : 0,
       )
       .map((prop: IInterfaceProperty | IEnumProperty, index: number) => ({ ...prop, key: index }));
 
@@ -176,7 +176,7 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
           key: name,
           name,
           startIndex: index,
-          count: 0
+          count: 0,
         };
         allGroups.push(group);
       }
@@ -193,5 +193,5 @@ export const PropertiesTable: React.FunctionComponent<IPropertiesTableProps> = s
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles
 >(PropertiesTableBase, getStyles, undefined, {
-  scope: 'PropertiesTable'
+  scope: 'PropertiesTable',
 });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 import { atMentionItems, AtMentionItem } from './dataMocks';
 import { insertTextAtCursorPosition } from './utils';
@@ -34,7 +34,7 @@ const editorStyle: React.CSSProperties = {
   border: '1px dashed grey',
   padding: '5px',
   minHeight: '100px',
-  outline: 0
+  outline: 0,
 };
 
 const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) => {
@@ -49,7 +49,7 @@ const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) 
         shouldUpdate: true,
         open: false,
         searchQuery: '',
-        selectedItem: action.args
+        selectedItem: action.args,
       };
     case 'SET_SEARCH_QUERY':
       return { ...state, searchQuery: action.args };
@@ -67,7 +67,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
     shouldUpdate: false,
     open: false,
     searchQuery: '',
-    selectedItem: ''
+    selectedItem: '',
   });
 
   React.useEffect(() => {
@@ -80,7 +80,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
     // after the wrapped component is closed the value of the search query is inserted in the editor at cursor position
     insertTextAtCursorPosition(state.selectedItem);
     dispatch({ type: 'RESET_UPDATE_FLAG' });
-  }, [state.shouldUpdate]);
+  }, [state.selectedItem, state.shouldUpdate]);
 
   const handleEditorKeyChange = () => {
     const { anchorNode, focusOffset } = window.getSelection();
@@ -106,7 +106,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
-    const keyCode = keyboardKey.getCode(e);
+    const keyCode = getCode(e);
     switch (keyCode) {
       case keyboardKey.Backspace: // 8
         if (state.searchQuery === '') {
@@ -137,7 +137,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
           onSearchQueryChange: handleSearchQueryChange,
           onInputKeyDown: handleInputKeyDown,
           onSelectedChange: handleSelectedChange,
-          ...rest
+          ...rest,
         })}
       </PortalAtCursorPosition>
     </>

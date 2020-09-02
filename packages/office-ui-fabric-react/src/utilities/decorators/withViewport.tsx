@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent, getRect, getWindow } from '../../Utilities';
+import { findScrollableParent, getRect, getWindow, Async, EventGroup } from '../../Utilities';
 
 /**
  * Viewport rectangle dimensions.
@@ -48,22 +48,27 @@ const MAX_RESIZE_ATTEMPTS = 3;
  * @param ComposedComponent decorated React component reference.
  */
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(
-  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     private _root = React.createRef<HTMLDivElement>();
     private _resizeAttempts: number;
     private _viewportResizeObserver: any;
+    private _async: Async;
+    private _events: EventGroup;
 
     constructor(props: TProps) {
       super(props);
+
+      this._async = new Async(this);
+      this._events = new EventGroup(this);
       this._resizeAttempts = 0;
 
       this.state = {
         viewport: {
           width: 0,
-          height: 0
-        }
+          height: 0,
+        },
       };
     }
 
@@ -72,7 +77,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
-        leading: false
+        leading: false,
       });
 
       // ResizeObserver seems always fire even window is not resized. This is
@@ -105,17 +110,15 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       }
 
-      if (!!newSkipViewportMeasures) {
+      if (newSkipViewportMeasures) {
         this._updateViewport();
       }
     }
 
     public componentWillUnmount(): void {
       this._events.dispose();
-
-      if (this._viewportResizeObserver) {
-        this._viewportResizeObserver.disconnect();
-      }
+      this._async.dispose();
+      this._unregisterResizeObserver();
     }
 
     public render(): JSX.Element {
@@ -153,7 +156,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _unregisterResizeObserver = () => {
       if (this._viewportResizeObserver) {
         this._viewportResizeObserver.disconnect();
-        this._viewportResizeObserver = null;
+        delete this._viewportResizeObserver;
       }
     };
 
@@ -161,7 +164,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
       const viewportElement = this._root.current;
-      const scrollElement = findScrollableParent(viewportElement);
+      const scrollElement = findScrollableParent(viewportElement) as HTMLElement;
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);
       const updateComponent = () => {
@@ -170,7 +173,8 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       };
 
-      const isSizeChanged = (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
+      const isSizeChanged =
+        (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
@@ -178,12 +182,12 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           {
             viewport: {
               width: clientRect.width,
-              height: scrollRect.height
-            }
+              height: scrollRect.height,
+            },
           },
           () => {
             this._updateViewport(withForceUpdate);
-          }
+          },
         );
       } else {
         this._resizeAttempts = 0;

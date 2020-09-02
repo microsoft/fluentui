@@ -11,7 +11,7 @@ export const getStyles = memoizeFunction(
 
     return {
       ...customButtonStyles,
-      root: [baseButtonStyles.root, className, theme.fonts.medium, customStyles && customStyles.root]
+      root: [baseButtonStyles.root, className, theme.fonts.medium, customStyles && customStyles.root],
     } as IButtonStyles;
-  }
+  },
 );

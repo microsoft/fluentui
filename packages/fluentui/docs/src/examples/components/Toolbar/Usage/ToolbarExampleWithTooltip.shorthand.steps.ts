@@ -1,7 +1,7 @@
-import { Toolbar } from '@fluentui/react';
+import { toolbarClassName, toolbarItemClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  item: (itemIndex: number) => `.${Toolbar.className} .${Toolbar.Item.className}:nth-child(${itemIndex})`
+  item: (itemIndex: number) => `.${toolbarClassName} .${toolbarItemClassName}:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -13,8 +13,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Hovers 1st item (show tooltip)')
         .click(selectors.item(1))
         .keys(selectors.item(1), keys.rightArrow)
-        .snapshot('Navigates to next item (shows tooltip)')
-  ]
+        .snapshot('Navigates to next item (shows tooltip)'),
+  ],
 };
 
 export default config;

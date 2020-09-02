@@ -7,8 +7,6 @@ exports[`Panel renders Panel correctly 1`] = `
   <div
     className=
         ms-Fabric
-        is-focusHidden
-        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -28,7 +26,6 @@ exports[`Panel renders Panel correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -63,9 +60,7 @@ exports[`Panel renders Panel correctly 1`] = `
     <div
       aria-labelledby="Panel0-headerText"
       aria-modal="true"
-      className=
-
-
+      className=""
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -158,6 +153,7 @@ exports[`Panel renders Panel correctly 1`] = `
           style={Object {}}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -181,14 +177,15 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-end;
                   }
             >
               <div
                 className=
                     ms-Panel-header
                     {
-                      flex-shrink: 1;
+                      align-self: flex-start;
+                      flex-grow: 1;
                       padding-left: 24px;
                       padding-right: 24px;
                     }
@@ -220,9 +217,9 @@ exports[`Panel renders Panel correctly 1`] = `
               <button
                 className=
                     ms-Button
-                    ms-Button--icon
                     ms-Panel-closeButton
                     ms-PanelAction-close
+                    ms-Button--icon
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -247,7 +244,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 32px;
                     }
                     &::-moz-focus-inner {
@@ -265,7 +261,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -337,7 +332,6 @@ exports[`Panel renders Panel correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                     role="presentation"
@@ -387,6 +381,7 @@ exports[`Panel renders Panel correctly 1`] = `
             </div>
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={

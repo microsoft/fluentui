@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, Divider, Flex } from '@fluentui/react';
+import { Checkbox, Divider, Flex } from '@fluentui/react-northstar';
 
 const CheckboxExampleRtl = () => (
   <Flex column hAlign="start">

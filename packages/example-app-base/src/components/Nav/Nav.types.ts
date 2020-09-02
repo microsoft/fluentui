@@ -100,5 +100,5 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
 
 export enum NavSortType {
   alphabetized = 'alphabetized',
-  categories = 'categories'
+  categories = 'categories',
 }

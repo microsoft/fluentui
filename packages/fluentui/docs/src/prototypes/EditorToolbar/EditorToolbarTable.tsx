@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Grid } from '@fluentui/react';
+import { Grid } from '@fluentui/react-northstar';
 
 type EditorToolbarTableProps = {
   onClick: () => void;
@@ -20,7 +20,7 @@ const EditorToolbarTable: React.FC<EditorToolbarTableProps> = props => (
           display: 'block',
           height: '20px',
           width: '20px',
-          margin: '3px'
+          margin: '3px',
         }}
       />
     ))}

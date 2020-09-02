@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dialog: fix isOpen deprecated prop no longer being honored",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "5c496fd32a93cceed4b5e0fe4fbc3bc88a48cefd",
-  "dependentChangeType": "patch",
-  "date": "2020-02-27T19:49:35.063Z"
-}

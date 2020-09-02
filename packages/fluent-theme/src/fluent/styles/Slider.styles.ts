@@ -7,8 +7,8 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
   return {
     activeSection: [
       disabled && {
-        background: palette.neutralTertiary
-      }
-    ]
+        background: palette.neutralTertiary,
+      },
+    ],
   };
 };

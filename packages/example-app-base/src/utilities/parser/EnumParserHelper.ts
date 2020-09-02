@@ -1,4 +1,3 @@
-/* tslint:disable:no-switch-case-fall-through */
 import { BaseParser } from './BaseParser';
 import { IEnumProperty } from './interfaces';
 
@@ -8,7 +7,7 @@ import { IEnumProperty } from './interfaces';
 enum ParseState {
   default,
   comment,
-  declaration
+  declaration,
 }
 
 /**
@@ -101,7 +100,7 @@ export class EnumParserHelper extends BaseParser {
           this._state = ParseState.default;
           returnResult.push(<IEnumProperty>{
             description: comment,
-            name: identifierName
+            name: identifierName,
           });
 
           comment = identifierName = '';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IChicletCardProps, IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 import { getStyles } from './ChicletCard.styles';
@@ -8,5 +9,5 @@ export const ChicletCard: React.FunctionComponent<IChicletCardProps> = styled<
   IChicletCardStyleProps,
   IChicletCardStyles
 >(ChicletCardBase, getStyles, undefined, {
-  scope: 'ChicletCard'
+  scope: 'ChicletCard',
 });

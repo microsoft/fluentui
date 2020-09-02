@@ -1,5 +1,5 @@
-import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles, ThemeInput, ThemePrepared } from '@fluentui/styles';
-import { IRenderer as FelaRenderer } from 'fela';
+import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles } from '@fluentui/styles';
+import { ProviderContextPrepared } from '../context';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
@@ -50,49 +50,14 @@ export type ComponentDesignProp = {
   maxHeight?: ICSSInJSStyle['maxHeight'];
 };
 
-export type RendererParam = {
-  theme: { direction: 'ltr' | 'rtl' };
-  disableAnimations: boolean;
-  displayName: string;
-  sanitizeCss: boolean;
-};
-
-export type RendererRenderRule = (rule: () => ICSSInJSStyle, param: RendererParam) => string;
-export type Renderer = Omit<FelaRenderer, 'renderRule'> & {
-  renderRule: RendererRenderRule;
-};
-
-export interface StylesContextPerformance {
-  enableSanitizeCssPlugin: boolean;
-  enableStylesCaching: boolean;
-  enableVariablesCaching: boolean;
-  enableBooleanVariablesCaching: boolean;
-}
-
-export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
-
-export type StylesContextInputValue<R = Renderer> = {
-  disableAnimations?: boolean;
-  performance?: StylesContextPerformanceInput;
-  renderer?: R;
-  theme?: ThemeInput;
-};
-
-export type StylesContextValue<R = Renderer> = {
-  disableAnimations: boolean;
-  performance: StylesContextPerformance;
-  renderer: R;
-  theme: ThemePrepared;
-};
-
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
 
-export type ResolveStylesOptions = StylesContextValue<{
-  renderRule: RendererRenderRule;
-}> & {
+export type ResolveStylesOptions = Omit<ProviderContextPrepared, 'target'> & {
   className?: string;
-  displayName: string;
-  props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
+  allDisplayNames: string[];
+  primaryDisplayName: string;
+  componentProps: Record<string, any>;
+  inlineStylesProps: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   saveDebug: (debug: DebugData | null) => void;
 };

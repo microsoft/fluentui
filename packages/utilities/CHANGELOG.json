@@ -2,6 +2,801 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/utilities_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function",
+            "author": "sllynn8907@gmail.com",
+            "commit": "a021da77bff91b5df0f3b3ea97ecf7e7b6f6267c",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added document type to element parameter within on.ts utility.",
+            "author": "czearing@outlook.com",
+            "commit": "89eca359d7534b9bb6d7476cdf92781ea82c3dea",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/utilities_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `createMergedRef` utility for merging refs in a class component.",
+            "author": "dzearing@hotmail.com",
+            "commit": "79d99c0b79518ff201cd070e7aa597d5ba8d1864",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/utilities_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating getNativeProps default attribute set to include \"ref\" as a safe prop.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Aug 2020 12:40:14 GMT",
+      "tag": "@uifabric/utilities_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled",
+            "author": "xgao@microsoft.com",
+            "commit": "cbb81ccb1b78a8801abc8c272af331adb73edad0",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "@uifabric/utilities_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/utilities_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix warnControlledUsage doc comment",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bc90b07e1da53cd189082f7b7bbf4d1118967c95",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/utilities_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: get settings from CustomizerContext if exists.",
+            "author": "xgao@microsoft.com",
+            "commit": "f1047c3cd6fb28b558d2b40a005dc87a2f4ec714",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/utilities_v7.24.5",
+      "version": "7.24.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "7bea3a43f5f01a3aef8a36813b8d88484aa021bc",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/utilities_v7.24.4",
+      "version": "7.24.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@uifabric/utilities_v7.24.3",
+      "version": "7.24.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: useFocusRects should resolve window inside useEffect",
+            "author": "olfedias@microsoft.com",
+            "commit": "346cd61df2ce2268f4126eab1b31a173904ff4c2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/utilities_v7.24.2",
+      "version": "7.24.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/utilities_v7.24.1",
+      "version": "7.24.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/utilities_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "findScrollableParent: Adding missing `Window` and `undefined` return types.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/utilities_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor styled to return a functional component (with optional ref attribute)",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/utilities_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getNativeProps: changed to object lookups rather than array searching to determine native props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7932ae5eef247af9b914e8f05efdaac0b64914f8",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/utilities_v7.21.4",
+      "version": "7.21.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix scroll position math for overscrolling (#13555)",
+            "author": "kai@substantial.com",
+            "commit": "3b18ead88c11bfaba0b0cfbe8a31360234dbece6",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/utilities_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/utilities_v7.21.1",
+      "version": "7.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add test util for react-test-renderer create with act wrapped",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add new Modalization utility",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/utilities_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing side effect code that was breaking webpack treeshaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Removing side-effect code which was causing webpack to bail out of optimizations.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8ea7b001f627900e4f85afc2bcbfad9e326d1f9a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fixed prototype pollution vulnerability.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8961cec412264cd6d30edc46df383c617adf83c4",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/utilities_v7.20.2",
+      "version": "7.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add autoCapitalize property",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "13bd77d6062dfbf0209043275a581536aa5cad56",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@uifabric/utilities_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection: respect 0 as selected key",
+            "author": "elcraig@microsoft.com",
+            "commit": "08fa1c9b45c9c9938241740e71b9091a97067d0f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/utilities_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "findIndex: add fromIndex parameter",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/utilities_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bb3a1059eabff7a81c6666ec7319e66af5d74351",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/utilities_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix customizer doc comment formatting",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add useCustomizationSettings hook",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@uifabric/utilities_v7.17.2",
+      "version": "7.17.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection added `items` to prop constructor options",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/utilities_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utility to apply default props for function components",
+            "author": "miclo@microsoft.com",
+            "commit": "5a7901923692d45d70d9cb54fb127c108a5cd8e2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/utilities_v7.16.4",
+      "version": "7.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update styled and classNamesFunction to support scss base styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/utilities_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/utilities_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@uifabric/utilities_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Point: Renaming IPoint to point, x to left and y to top and deprecating old names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/utilities_v7.15.11",
+      "version": "7.15.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "classNamesFunction: fix not traversing the changed styles function",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Revert changes to 'on': it should not use React events",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fix lint rule violation",
+            "author": "elcraig@microsoft.com",
+            "commit": "03aa5f753a01c7a4fe0fb6ba8591027e9d3c9db3",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "@uifabric/utilities_v7.15.10",
+      "version": "7.15.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "classNamesFunction: add warning on cache full",
+            "author": "xgao@microsoft.com",
+            "commit": "890f38c5ebe341a34bdc59417a6b777a3c646047",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@uifabric/utilities_v7.15.8",
+      "version": "7.15.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update 'on' function to accept React events",
+            "author": "behowell@microsoft.com",
+            "commit": "971317f1d7dadb1f212b0bbd17e8e54e12e888f5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/utilities_v7.15.7",
+      "version": "7.15.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove irrelevant details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "merge: null values are now preserved.",
+            "author": "dzearing@microsoft.com",
+            "commit": "12d36c3b78e090b1d3c24555fc9de63903a7ccae",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/utilities_v7.15.6",
+      "version": "7.15.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Apr 2020 12:28:27 GMT",
+      "tag": "@uifabric/utilities_v7.15.5",
+      "version": "7.15.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Customizable: improve perf by avoid mutating styles when concatination is enabled",
+            "author": "xgao@microsoft.com",
+            "commit": "7236969c06c5d5e732da1087e229de9db9881309"
+          },
+          {
+            "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
+            "author": "olfedias@microsoft.com",
+            "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/utilities_v7.15.4",
+      "version": "7.15.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "524cd85eadff8b8a370811031f7ad4c22f151cfd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/utilities_v7.15.3",
+      "version": "7.15.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/utilities_v7.15.2",
+      "version": "7.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/utilities_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/utilities_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "deprecate BaseComonent, remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "@uifabric/utilities_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BaseComponent: remove initializeDir",
+            "author": "xgao@microsoft.com",
+            "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/utilities_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Mar 2020 12:25:14 GMT",
+      "tag": "@uifabric/utilities_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Skips unnecessary equality check in shallowCompare to increase performance",
+            "author": "chce@netcompany.com",
+            "commit": "e590df08d02260882e225af34674b61285d66261"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/utilities_v7.13.1",
+      "version": "7.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/utilities_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:20:14 GMT",
       "tag": "@uifabric/utilities_v7.12.4",
       "version": "7.12.4",

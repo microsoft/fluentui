@@ -4,6 +4,7 @@ import through2 from 'through2';
 import Vinyl from 'vinyl';
 import _ from 'lodash';
 import fs from 'fs';
+import { Transform } from 'stream';
 
 const pluginName = 'gulp-component-menu-behaviors';
 const extract = require('extract-comments');
@@ -26,7 +27,7 @@ const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
 
 export default () => {
   const result: BehaviorMenuItem[] = [];
-  function bufferContents(file, enc, cb) {
+  function bufferContents(this: Transform, file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -48,7 +49,7 @@ export default () => {
       const variation = {
         name: behaviorVariantName,
         description: '',
-        specification: ''
+        specification: '',
       };
 
       // getting description and specification of the comment's text
@@ -61,7 +62,7 @@ export default () => {
       result.push({
         displayName: behaviorName,
         type: componentType,
-        variations: variation
+        variations: variation,
       });
       cb();
     } catch (err) {
@@ -70,7 +71,7 @@ export default () => {
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack)
+        gutil.colors.gray(err.stack),
       ].join('\n\n');
       this.emit('error', pluginError);
     }
@@ -82,15 +83,15 @@ export default () => {
       .map((behaviors, displayName) => ({
         displayName,
         type: behaviors[0].type,
-        variations: _.map(behaviors, 'variations')
+        variations: _.map(behaviors, 'variations'),
       }))
       .value();
   }
 
-  function endStream(cb) {
+  function endStream(this: Transform, cb) {
     const file = new Vinyl({
       path: './behaviorMenu.json',
-      contents: Buffer.from(JSON.stringify(getParsedResults(), null, 2))
+      contents: Buffer.from(JSON.stringify(getParsedResults(), null, 2)),
     });
 
     this.push(file);

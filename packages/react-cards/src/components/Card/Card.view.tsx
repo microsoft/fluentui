@@ -1,8 +1,8 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
-import { Stack, IStackComponent } from 'office-ui-fabric-react';
+import { Stack, IStackComponent } from 'office-ui-fabric-react/lib/Stack';
+import { getNativeProps, htmlElementProperties, warn, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';
@@ -12,7 +12,7 @@ import { ICardSectionProps } from './CardSection/CardSection.types';
 
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
-    root: Stack
+    root: Stack,
   });
 
   const { children, styles, tokens, horizontal, onClick, onKeyDown, ...rest } = props;
@@ -24,9 +24,9 @@ export const CardView: ICardComponent['view'] = props => {
   const childrenMargin = tokens && (tokens as ICardTokens).childrenMargin;
   const childrenCount = React.Children.count(children);
 
-  /* The map function below takes the Card children and applies the correct margin and gap tokens to them, ensuring at the same time that
-   * they are of type CardItem or CardSection. */
-  const cardChildren: (React.ReactChild | null)[] = React.Children.map(
+  // The map function below takes the Card children and applies the correct margin and gap tokens to them,
+  // ensuring at the same time that they are of type CardItem or CardSection.
+  const cardChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
     children,
     (child: React.ReactElement<ICardItemProps | ICardSectionProps>, index: number) => {
       if (!child) {
@@ -46,9 +46,9 @@ export const CardView: ICardComponent['view'] = props => {
 
         let margin: number | string = 0;
 
-        /* If childrenMargin has been specified and the fill property is not present, make the appropriate calculations to get the resolved
-         * margin for this specific child depending on the type of Card (vertical vs horizontal) and the child position in the card (first
-         * child, in-between child or last child). */
+        // If childrenMargin has been specified and the fill property is not present, make the appropriate calculations
+        // to get the resolved margin for this specific child depending on the type of Card (vertical vs horizontal)
+        // and the child position in the card (first child, in-between child or last child).
         if (childrenMargin && !fill) {
           const firstMargin: number = index === 0 ? childrenMargin : 0;
           const lastMargin: number = index === childrenCount - 1 ? childrenMargin : 0;
@@ -59,34 +59,34 @@ export const CardView: ICardComponent['view'] = props => {
           margin = horizontal ? horizontalMargin : verticalMargin;
         }
 
-        /* Resolve tokens, sending childrenGap only if the child type is CardSection as CardItem doesn't have a childrenGap token in its
-         * type specification. We're sending childrenGap to CardSection so that elements inside a CardSection maintain the overall gap
-         * provided to the Card. */
+        // Resolve tokens, sending childrenGap only if the child type is CardSection as CardItem doesn't have a
+        // childrenGap token in its type specification. We're sending childrenGap to CardSection so that elements
+        // inside a CardSection maintain the overall gap provided to the Card.
         const resolvedTokens = {
           margin,
           childrenGap: isSection ? childrenGap : undefined,
-          ...childTokens
+          ...childTokens,
         };
 
         // Clone the child with the correct tokens.
         return React.cloneElement(child, {
           tokens: resolvedTokens,
-          ...childRest
+          ...childRest,
         });
       }
 
       warn('The children of a Card component should be of type CardItem or CardSection.');
 
       return child;
-    }
+    },
   );
 
   const _onKeyDown = (ev?: React.KeyboardEvent<HTMLElement>): void => {
     if (onKeyDown) {
       onKeyDown(ev);
     } else if (onClick && ev && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      // If onKeyDown is undefined and onClick has been passed, then replicate a Button's behavior by triggering the onClick function on
-      // pressing down the 'Enter' and 'Space' keys.
+      // If onKeyDown is undefined and onClick has been passed, then replicate a Button's behavior by triggering the
+      // onClick function on pressing down the 'Enter' and 'Space' keys.
       onClick();
       ev.preventDefault();
     }
@@ -95,6 +95,7 @@ export const CardView: ICardComponent['view'] = props => {
   return (
     <Slots.root
       onClick={onClick}
+      // eslint-disable-next-line react/jsx-no-bind
       onKeyDown={_onKeyDown}
       role={onClick ? 'button' : 'presentation'}
       tabIndex={onClick ? 0 : -1}
@@ -116,7 +117,7 @@ function _isReactElement(item: React.ReactNode): item is React.ReactElement {
 
 function _isCardItem(item: React.ReactNode): item is typeof CardItem {
   // In theory, we should be able to just check item.type === CardItem.
-  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
   // CardItem is generated by createComponent, so we need to check its displayName instead of name
   return _isReactElement(item) && (item.type as React.ComponentType).displayName === CardItem.displayName;

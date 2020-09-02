@@ -1,5 +1,10 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks, AnimationDirection } from '../Calendar.types';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import {
+  ICalendarStrings,
+  ICalendarIconStrings,
+  ICalendarFormatDateCallbacks,
+  AnimationDirection,
+} from '../Calendar.types';
 import { ITheme } from '@uifabric/styling';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -42,7 +47,8 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   /**
    * Callback issued when a month is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 

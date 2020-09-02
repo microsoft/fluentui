@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { CollapsibleSection, ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStylesReturnType } from '@uifabric/experiments';
+import {
+  CollapsibleSection,
+  ICollapsibleSectionTitleProps,
+  ICollapsibleSectionTitleStylesReturnType,
+} from '@uifabric/experiments';
 import { ITextProps, Label, Spinner } from 'office-ui-fabric-react';
 import { ISlotRender, IHTMLSlot } from '@uifabric/foundation';
 
@@ -27,28 +31,33 @@ class AsyncData extends React.Component<IAsyncDataProps, { loading: boolean }> {
   }
 }
 
-const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
+const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (
+  props,
+  theme,
+): ICollapsibleSectionTitleStylesReturnType => ({
   text: [
     theme.fonts.large,
     {
-      fontWeight: 800
-    }
-  ]
+      fontWeight: 800,
+    },
+  ],
 });
 
 // TODO: use extendsComponent to create variants and clean up these examples
 const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
-    // tslint:disable-next-line:jsx-no-lambda
-    render={data => (data ? <DefaultComponent {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />)}
+    // eslint-disable-next-line react/jsx-no-bind
+    render={data =>
+      data ? <DefaultComponent {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />
+    }
   />
 );
 
 const bodyRender: ISlotRender<IHTMLSlot> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
-    // tslint:disable-next-line:jsx-no-lambda
+    // eslint-disable-next-line react/jsx-no-bind
     render={data => (
       <div style={{ border: '1px solid black' }}>
         <DefaultComponent {...props}>
@@ -71,14 +80,14 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
             text: { children: 'Title Text' },
             slots: {
               text: {
-                render: titleTextRender
-              }
-            }
+                render: titleTextRender,
+              },
+            },
           }}
           slots={{
             body: {
-              render: bodyRender
-            }
+              render: bodyRender,
+            },
           }}
         >
           Data loaded

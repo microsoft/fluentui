@@ -6,7 +6,7 @@ import json from 'rollup-plugin-json';
 const warningWhitelist = [
   'THIS_IS_UNDEFINED', // comes from TS transforms
   'CIRCULAR_DEPENDENCY', // we should fix all other circular imports
-  'UNUSED_EXTERNAL_IMPORT' // to avoid throw on unused externals
+  'UNUSED_EXTERNAL_IMPORT', // to avoid throw on unused externals
 ];
 
 export default {
@@ -29,13 +29,13 @@ export default {
       'prop-types': 'PropTypes',
       react: 'React',
       'react-dom': 'ReactDOM',
-      'react-is': 'ReactIs'
+      'react-is': 'ReactIs',
     },
-    sourcemap: true
+    sourcemap: true,
   },
   plugins: [
     replace({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     resolve(),
     commonjs({
@@ -56,14 +56,14 @@ export default {
           'Home',
           'getCode',
           'Spacebar',
-          'Tab'
-        ]
-      }
+          'Tab',
+        ],
+      },
     }),
     json({
       include: 'node_modules/**',
       preferConst: true,
-      compact: true
-    })
-  ]
+      compact: true,
+    }),
+  ],
 };

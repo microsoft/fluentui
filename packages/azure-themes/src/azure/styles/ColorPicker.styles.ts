@@ -4,7 +4,7 @@ import {
   IColorRectangleStyleProps,
   IColorRectangleStyles,
   IColorSliderStyleProps,
-  IColorSliderStyles
+  IColorSliderStyles,
 } from 'office-ui-fabric-react/lib/ColorPicker';
 import { Depths } from '../AzureDepths';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
@@ -14,29 +14,29 @@ export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColor
     input: {
       selectors: {
         '&.ms-TextField': {
-          paddingRight: 4
+          paddingRight: 4,
         },
         '.ms-TextField-field': {
           minWidth: 'auto',
           padding: 5,
-          textOverflow: 'clip'
-        }
-      }
+          textOverflow: 'clip',
+        },
+      },
     },
     table: {
       selectors: {
         'tbody td:last-of-type .ms-ColorPicker-input': {
-          paddingRight: 0
-        }
-      }
+          paddingRight: 0,
+        },
+      },
     },
     tableHeader: {
       selectors: {
         td: {
-          paddingBottom: 4
-        }
-      }
-    }
+          paddingBottom: 4,
+        },
+      },
+    },
   };
 };
 
@@ -46,12 +46,12 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<
 
   return {
     root: {
-      border: `1px solid ${semanticColors.controlOutline}`
+      border: `1px solid ${semanticColors.controlOutline}`,
     },
     thumb: {
       borderColor: semanticColors.controlOutline,
-      boxShadow: Depths.depth8
-    }
+      boxShadow: Depths.depth8,
+    },
   };
 };
 
@@ -62,7 +62,7 @@ export const ColorSliderStyles = (props: IColorSliderStyleProps): Partial<IColor
   return {
     sliderThumb: {
       borderColor: semanticColors.controlOutline,
-      boxShadow: Depths.depth8
-    }
+      boxShadow: Depths.depth8,
+    },
   };
 };

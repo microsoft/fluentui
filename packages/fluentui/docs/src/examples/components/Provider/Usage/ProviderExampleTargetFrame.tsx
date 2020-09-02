@@ -1,4 +1,4 @@
-import { Attachment, Button, Provider, themes } from '@fluentui/react';
+import { Attachment, Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -16,8 +16,13 @@ const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) =>
 
   return (
     <>
-      <iframe ref={frameRef} style={{ height: 300, width: 600, border: 0, padding: 20 }} title="An example of nested Provider in iframe" />
-      {mounted && ReactDOM.createPortal(children(frameRef.current.contentDocument), frameRef.current.contentDocument.body)}
+      <iframe
+        ref={frameRef}
+        style={{ height: 300, width: 600, border: 0, padding: 20 }}
+        title="An example of nested Provider in iframe"
+      />
+      {mounted &&
+        ReactDOM.createPortal(children(frameRef.current.contentDocument), frameRef.current.contentDocument.body)}
     </>
   );
 };
@@ -25,7 +30,7 @@ const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) =>
 const ProviderExampleTargetFrame = () => (
   <PortalFrame>
     {externalDocument => (
-      <Provider theme={themes.teams} target={externalDocument}>
+      <Provider theme={teamsTheme} target={externalDocument}>
         <Attachment actionable header="Document.docx" />
         <Button content="Hello world!" />
       </Provider>

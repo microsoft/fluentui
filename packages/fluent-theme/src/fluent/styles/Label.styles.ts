@@ -8,11 +8,11 @@ export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   return {
     root: [
       {
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.semibold,
       },
       disabled && {
-        color: palette.neutralTertiary
-      }
-    ]
+        color: palette.neutralTertiary,
+      },
+    ],
   };
 };

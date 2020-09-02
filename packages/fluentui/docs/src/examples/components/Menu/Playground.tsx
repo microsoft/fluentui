@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { Menu } from '@fluentui/react';
+import { Menu } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import useAccessibilityKnob from '../../../components/ComponentDoc/useAccessibilityKnob';
@@ -19,9 +19,9 @@ const MenuPlayground: React.FunctionComponent = () => {
         {
           key: 'messages',
           content: 'Messages',
-          menu: ['Drafts', 'Archive']
+          menu: ['Drafts', 'Archive'],
         },
-        'Logout'
+        'Logout',
       ]}
       pointing={pointing}
       primary={primary}

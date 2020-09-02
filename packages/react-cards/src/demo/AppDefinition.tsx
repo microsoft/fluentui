@@ -1,9 +1,8 @@
-// tslint:disable:no-any
 import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Cards',
+  appTitle: 'Fluent UI React - Cards',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [
@@ -13,23 +12,23 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/Card/CardPage').CardPage,
           key: 'Card',
           name: 'Card',
-          url: '#/examples/card'
-        }
-      ]
-    }
+          url: '#/examples/card',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric'
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-    }
-  ]
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

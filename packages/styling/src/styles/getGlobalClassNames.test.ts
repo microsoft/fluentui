@@ -1,6 +1,7 @@
 import { getGlobalClassNames } from './getGlobalClassNames';
 import { createTheme } from './theme';
 import { Stylesheet } from '@uifabric/merge-styles';
+import { ITheme } from '../interfaces/index';
 
 const styleSheet = Stylesheet.getInstance();
 
@@ -14,12 +15,14 @@ describe('getGlobalClassNames', () => {
 
     expect(getGlobalClassNames({ root: 'ms-Link', label: 'ms-Label' }, theme)).toEqual({
       root: 'ms-Link-0',
-      label: 'ms-Label-1'
+      label: 'ms-Label-1',
     });
   });
 
   describe('calls are memoized', () => {
-    let theme, globalClassnames;
+    let theme: ITheme;
+    let globalClassnames: { [key: string]: string };
+
     beforeAll(() => {
       theme = createTheme({ disableGlobalClassNames: true });
       globalClassnames = { root: 'ms-Memoized' };
@@ -27,11 +30,13 @@ describe('getGlobalClassNames', () => {
 
     it('multiple calls with the same instance of classnames return the same set of global classnames', () => {
       expect(getGlobalClassNames(globalClassnames, createTheme({ disableGlobalClassNames: true }), true)).toEqual({
-        root: 'ms-Memoized-0'
+        root: 'ms-Memoized-0',
       });
-      expect(getGlobalClassNames(globalClassnames, createTheme({ disableGlobalClassNames: true }))).toEqual({ root: 'ms-Memoized-0' });
+      expect(getGlobalClassNames(globalClassnames, createTheme({ disableGlobalClassNames: true }))).toEqual({
+        root: 'ms-Memoized-0',
+      });
       expect(getGlobalClassNames(globalClassnames, createTheme({ disableGlobalClassNames: false }), true)).toEqual({
-        root: 'ms-Memoized-0'
+        root: 'ms-Memoized-0',
       });
     });
 
@@ -43,7 +48,7 @@ describe('getGlobalClassNames', () => {
     });
   });
 
-  it('returns the correct classNames when global classes are enabled; also disableGlobalClassNames argument has priority', () => {
+  it('returns correct classNames when global classes are enabled; disableGlobalClassNames has priority', () => {
     const theme = createTheme({ disableGlobalClassNames: true });
 
     expect(getGlobalClassNames({ root: 'ms-Link' }, theme, false)).toEqual({ root: 'ms-Link' });

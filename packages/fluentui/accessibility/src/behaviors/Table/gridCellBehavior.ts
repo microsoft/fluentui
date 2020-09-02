@@ -7,14 +7,11 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds role='gridcell'.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
-
-const gridCellBehavior: Accessibility = props => ({
+export const gridCellBehavior: Accessibility = props => ({
   attributes: {
     root: {
       role: 'gridcell',
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
-  }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
+  },
 });
-
-export default gridCellBehavior;

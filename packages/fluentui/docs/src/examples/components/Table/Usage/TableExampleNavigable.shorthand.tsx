@@ -1,6 +1,11 @@
-import { Table, Button, Flex } from '@fluentui/react';
-import { gridNestedBehavior, gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
+import { Table, Button, Flex, MenuButton } from '@fluentui/react-northstar';
+import {
+  gridNestedBehavior,
+  gridCellWithFocusableElementBehavior,
+  gridCellMultipleFocusableBehavior,
+} from '@fluentui/accessibility';
 import * as React from 'react';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -14,19 +19,18 @@ const header = {
     { content: 'Picture', key: 'pic' },
     { content: 'Age', key: 'action' },
     { content: 'Tags', key: 'tags' },
-    { key: 'more options', 'aria-label': 'options' }
-  ]
+    { key: 'more options', 'aria-label': 'options' },
+  ],
 };
 
 const moreOptionCell = {
-  content: <Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />,
+  content: <Button tabIndex={-1} icon={<MoreIcon />} circular text iconOnly title="More options" />,
   truncateContent: true,
-  key: '1-6',
   accessibility: gridCellWithFocusableElementBehavior,
   onClick: e => {
     alert('more option button clicked');
     e.stopPropagation();
-  }
+  },
 };
 
 const moreActionCell = {
@@ -38,9 +42,10 @@ const moreActionCell = {
       {/* <Button tabIndex={-1} icon="edit" circular text iconOnly title="edit tags" /> */}
     </Flex>
   ),
-  key: '1-5',
-  accessibility: gridCellMultipleFocusableBehavior
+  accessibility: gridCellMultipleFocusableBehavior,
 };
+
+const contextMenuItems = ['Add to selection', 'Remove', 'Download'];
 
 const rowsPlain = [
   {
@@ -50,11 +55,14 @@ const rowsPlain = [
       { content: 'Roman van von der Longername', key: '1-2', id: 'name-1' },
       { content: 'None', key: '1-3' },
       { content: '30 years', key: '1-4', id: 'age-1' },
-      moreActionCell,
-      moreOptionCell
+      { key: '1-5', ...moreActionCell },
+      { key: '1-6', ...moreOptionCell },
     ],
     onClick: () => handleRowClick(1),
-    'aria-labelledby': 'name-1 age-1'
+    'aria-labelledby': 'name-1 age-1',
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    ),
   },
   {
     key: 2,
@@ -63,10 +71,13 @@ const rowsPlain = [
       { content: 'Alex', key: '2-2' },
       { content: 'None', key: '2-3' },
       { content: '1 year', key: '2-4' },
-      moreActionCell,
-      moreOptionCell
+      { key: '2-5', ...moreActionCell },
+      { key: '2-6', ...moreOptionCell },
     ],
-    onClick: () => handleRowClick(2)
+    onClick: () => handleRowClick(2),
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    ),
   },
   {
     key: 3,
@@ -75,11 +86,14 @@ const rowsPlain = [
       { content: 'Ali', key: '3-2' },
       { content: 'None', key: '3-3' },
       { content: '30000000000000 years', truncateContent: true, key: '3-4' },
-      {},
-      moreOptionCell
+      { key: '3-5' },
+      { key: '3-6', ...moreOptionCell },
     ],
-    onClick: () => handleRowClick(3)
-  }
+    onClick: () => handleRowClick(3),
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    ),
+  },
 ];
 
 const StaticTable = () => (

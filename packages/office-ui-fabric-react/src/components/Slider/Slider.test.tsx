@@ -2,21 +2,34 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as path from 'path';
 
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { sharedIsConformant } from '../../common/sharedIsConformant';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
     }
+  });
+
+  sharedIsConformant({
+    componentPath: path.join(__dirname, 'Slider.tsx'),
+    Component: Slider,
+    displayName: 'Slider',
+    disabledTests: ['kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {
@@ -44,13 +57,13 @@ describe('Slider', () => {
         right: 100,
         bottom: 40,
         width: 100,
-        height: 40
+        height: 40,
       } as DOMRect);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 100,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default max is 10.
@@ -59,7 +72,7 @@ describe('Slider', () => {
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default min is 0.

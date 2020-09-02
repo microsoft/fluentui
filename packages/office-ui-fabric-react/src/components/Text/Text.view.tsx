@@ -12,7 +12,7 @@ export const TextView: ITextComponent['view'] = props => {
   const { block, className, as: RootType = 'span', variant, nowrap, ...rest } = props;
 
   const Slots = getSlots<ITextProps, ITextSlots>(props, {
-    root: RootType
+    root: RootType,
   });
 
   return <Slots.root {...getNativeProps(rest, htmlElementProperties)} />;

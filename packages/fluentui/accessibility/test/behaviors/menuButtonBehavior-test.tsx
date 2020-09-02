@@ -6,7 +6,7 @@ describe('MenuButtonBehavior.ts', () => {
   test('aria-controls are NOT defined, when menu is NOT open', () => {
     const property = {
       open: false,
-      menuId: mockedMenuId
+      menuId: mockedMenuId,
     };
     const expectedResult = menuButtonBehavior(property);
     expect(expectedResult.attributes.trigger['aria-controls']).toBe(undefined);
@@ -14,7 +14,7 @@ describe('MenuButtonBehavior.ts', () => {
   test('aria-controls are defined, when menu is open', () => {
     const property = {
       open: true,
-      menuId: mockedMenuId
+      menuId: mockedMenuId,
     };
     const expectedResult = menuButtonBehavior(property);
     expect(expectedResult.attributes.trigger['aria-controls']).toBe(mockedMenuId);

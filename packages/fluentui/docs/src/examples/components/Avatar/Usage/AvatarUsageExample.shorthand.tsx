@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const status = { color: 'green', icon: 'icon-checkmark', title: 'Available' };
+const status = { color: 'green', icon: <AcceptIcon />, title: 'Available' };
 
 const AvatarUsageExampleShorthand = () => (
   <div>
@@ -17,7 +18,11 @@ const AvatarUsageExampleShorthand = () => (
         <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'orangered' }} />
       </div>
       <div style={{ backgroundColor: 'cornflowerblue', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'cornflowerblue' }} />
+        <Avatar
+          name="John Doe (Software Developer)"
+          status={status}
+          variables={{ statusBorderColor: 'cornflowerblue' }}
+        />
       </div>
     </div>
     Incorrect (Border should not be visible, unless in Contrast theme):

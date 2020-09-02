@@ -1,0 +1,14 @@
+@import '~@fluentui/common-styles/dist/sass/common';
+@import '~@fluentui/common-styles/dist/sass/semanticSlots';
+
+:global {
+  .textField-cssStyled {
+    .ms-TextField-fieldGroup {
+      width: 300px;
+      border-top-color: $errorTextColor;
+    }
+    .ms-Label {
+      color: $ms-color-themePrimary;
+    }
+  }
+}

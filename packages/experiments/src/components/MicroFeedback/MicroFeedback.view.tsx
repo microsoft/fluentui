@@ -4,7 +4,12 @@ import { Button } from '../Button/Button';
 import { IButtonTokens } from '../Button/Button.types';
 import { withSlots, getSlots } from '../../Foundation';
 
-import { IMicroFeedbackComponent, IMicroFeedbackProps, IMicroFeedbackSlots, IMicroFeedbackQuestion } from './MicroFeedback.types';
+import {
+  IMicroFeedbackComponent,
+  IMicroFeedbackProps,
+  IMicroFeedbackSlots,
+  IMicroFeedbackQuestion,
+} from './MicroFeedback.types';
 
 export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
@@ -27,7 +32,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     onLikeVote,
     onDislikeVote,
     thanksText,
-    inline
+    inline,
   } = props;
 
   const likeIcon = vote === 'like' ? 'LikeSolid' : 'Like';
@@ -43,7 +48,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     followUpOptionList: List,
     followUpOption: Button,
     followUpOptionText: Text,
-    thanksContainer: Callout
+    thanksContainer: Callout,
   });
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
@@ -59,19 +64,34 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       };
 
       return (
-        <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
+        <Slots.followUpOption
+          data-is-focusable={true}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={listOption}
+          tokens={followUpOptionTokens}
+        >
           <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
         </Slots.followUpOption>
       );
     };
 
     return (
-      <Slots.followUpContainer gapSpace={0} onDismiss={onCalloutDismiss} role="alertdialog" setInitialFocus={true} target={targetRef}>
+      <Slots.followUpContainer
+        gapSpace={0}
+        onDismiss={onCalloutDismiss}
+        role="alertdialog"
+        setInitialFocus={true}
+        target={targetRef}
+      >
         <FocusZone direction={FocusZoneDirection.vertical}>
           <Slots.followUpQuestion block variant="small">
             {followUp.question}
           </Slots.followUpQuestion>
-          <Slots.followUpOptionList items={followUp.options} onRenderCell={onRenderCalloutItem} />
+          <Slots.followUpOptionList
+            items={followUp.options}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCell={onRenderCalloutItem}
+          />
         </FocusZone>
       </Slots.followUpContainer>
     );
@@ -104,13 +124,20 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       <Slots.iconContainer horizontal>
         {children}
         <div ref={likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={likeIconTitle} ariaLabel={likeIconAriaLabel} onClick={likeVoteClick} />
+          <IconButton
+            menuIconProps={{ iconName: likeIcon }}
+            title={likeIconTitle}
+            ariaLabel={likeIconAriaLabel}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={likeVoteClick}
+          />
         </div>
         <div ref={dislikeRef}>
           <IconButton
             menuIconProps={{ iconName: dislikeIcon }}
             title={dislikeIconTitle}
             ariaLabel={dislikeIconAriaLabel}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={dislikeVoteClick}
           />
         </div>

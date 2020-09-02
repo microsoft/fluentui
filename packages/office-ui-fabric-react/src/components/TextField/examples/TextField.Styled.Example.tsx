@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { ITextFieldStyleProps, ITextFieldStyles, TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ILabelStyles, ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import './TextField.Styled.Example.scss';
+
+const textStyles: Partial<ITextStyles> = { root: { maxWidth: 600 } };
 
 export const TextFieldStyledExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={{ childrenGap: 15 }}>
-      <Text styles={{ root: { maxWidth: 600 } }}>
-        These examples show how components that used to be styled using CSS can be styled using JS styling. The preferred method is JS
-        styling for several reasons: type safety for styling, more predictable behavior, and clear feedback via typing when component
-        changes affect existing styling code.
+      <Text styles={textStyles}>
+        These examples show how components that used to be styled using CSS can be styled using JS styling. The
+        preferred method is JS styling for several reasons: type safety for styling, more predictable behavior, and
+        clear feedback via typing when component changes affect existing styling code.
       </Text>
       <TextField label="Theme Primary Label, Red Top Border (JS):" required styles={getStyles} />
       <TextField label="Theme Primary Label, Red Top Border (CSS):" required className="textField-cssStyled" />
@@ -25,12 +27,12 @@ function getStyles(props: ITextFieldStyleProps): Partial<ITextFieldStyles> {
     fieldGroup: [
       { width: 300 },
       required && {
-        borderTopColor: props.theme.semanticColors.errorText
-      }
+        borderTopColor: props.theme.semanticColors.errorText,
+      },
     ],
     subComponentStyles: {
-      label: getLabelStyles
-    }
+      label: getLabelStyles,
+    },
   };
 }
 
@@ -39,9 +41,9 @@ function getLabelStyles(props: ILabelStyleProps): ILabelStyles {
   return {
     root: [
       required && {
-        color: props.theme.palette.themePrimary
-      }
-    ]
+        color: props.theme.palette.themePrimary,
+      },
+    ],
   };
 }
 

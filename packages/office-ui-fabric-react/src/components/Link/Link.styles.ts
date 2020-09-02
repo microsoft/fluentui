@@ -1,8 +1,8 @@
-import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBlack, HighContrastSelector } from '../../Styling';
+import { getEdgeChromiumNoHighContrastAdjustSelector, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
-  root: 'ms-Link'
+  root: 'ms-Link',
 };
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
@@ -31,21 +31,22 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
             // Can't use getFocusStyle because it doesn't support wrapping links
-            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
-            // A box-shadow allows the focus rect to wrap links that span multiple lines
+            // https://github.com/microsoft/fluentui/issues/4883#issuecomment-406743543
+            // Using box-shadow and outline allows the focus rect to wrap links that span multiple lines
             // and helps the focus rect avoid getting clipped.
             boxShadow: `0 0 0 1px ${focusBorderColor} inset`,
+            outline: `1px auto ${focusBorderColor}`,
             selectors: {
               [HighContrastSelector]: {
-                outline: '1px solid WindowText'
-              }
-            }
+                outline: '1px solid WindowText',
+              },
+            },
           },
           [HighContrastSelector]: {
             // For IE high contrast mode
-            borderBottom: 'none'
-          }
-        }
+            borderBottom: 'none',
+          },
+        },
       },
       isButton && {
         background: 'none',
@@ -61,42 +62,60 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         userSelect: 'text',
         borderBottom: '1px solid transparent', // For Firefox high contrast mode
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: '#FFFF00'
+          [HighContrastSelector]: {
+            color: 'LinkText',
           },
-          [HighContrastSelectorWhite]: {
-            color: '#00009F'
-          }
-        }
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
+      },
+      !isButton && {
+        selectors: {
+          [HighContrastSelector]: {
+            // This is mainly for MessageBar, which sets MsHighContrastAdjust: none by default
+            MsHighContrastAdjust: 'auto',
+          },
+        },
       },
 
       isDisabled && [
         'is-disabled',
         {
           color: linkDisabledColor,
-          cursor: 'default'
+          cursor: 'default',
         },
         {
           selectors: {
             '&:link, &:visited': {
-              pointerEvents: 'none'
-            }
-          }
-        }
+              pointerEvents: 'none',
+            },
+          },
+        },
       ],
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
             color: linkInteractedColor,
-            textDecoration: 'underline'
+            textDecoration: 'underline',
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
           },
           '&:focus': {
-            color: linkColor
-          }
-        }
+            color: linkColor,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
+          },
+        },
       },
       classNames.root,
-      className
-    ]
+      className,
+    ],
   };
 };

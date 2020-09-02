@@ -14,9 +14,9 @@ describe('Shimmer', () => {
         shimmerElements={[
           { type: ElemType.circle, height: 30 },
           { type: ElemType.gap, width: '2%' },
-          { type: ElemType.line, height: 20 }
+          { type: ElemType.line, height: 20 },
         ]}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -24,14 +24,11 @@ describe('Shimmer', () => {
 
   it('renders Shimmer with custom elements correctly', () => {
     const customElements: JSX.Element = (
-      <div
-        // tslint:disable-next-line:jsx-ban-props
-        style={{ display: 'flex' }}
-      >
+      <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
           shimmerElements={[
             { type: ElemType.line, width: 40, height: 40 },
-            { type: ElemType.gap, width: 10, height: 40 }
+            { type: ElemType.gap, width: 10, height: 40 },
           ]}
         />
         <ShimmerElementsGroup
@@ -39,7 +36,7 @@ describe('Shimmer', () => {
           shimmerElements={[
             { type: ElemType.line, width: 300, height: 10 },
             { type: ElemType.line, width: 200, height: 10 },
-            { type: ElemType.gap, width: 100, height: 20 }
+            { type: ElemType.gap, width: 100, height: 20 },
           ]}
         />
       </div>
@@ -53,14 +50,9 @@ describe('Shimmer', () => {
   it('removes Shimmer animation div when data is loaded', () => {
     let component: any;
     const shimmer = mount(
-      <Shimmer
-        isDataLoaded={false}
-        ariaLabel={'Shimmer component'}
-        // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
-      >
+      <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'} componentRef={ref => (component = ref)}>
         <div>TEST DATA</div>
-      </Shimmer>
+      </Shimmer>,
     );
 
     expect(component).toBeDefined();

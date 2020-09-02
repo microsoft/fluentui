@@ -1,9 +1,9 @@
-import { Dropdown } from '@fluentui/react';
+import { dropdownSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  clearIndicator: `.${Dropdown.slotClassNames.clearIndicator}`,
-  triggerButton: `.${Dropdown.slotClassNames.triggerButton}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`
+  clearIndicator: `.${dropdownSlotClassNames.clearIndicator}`,
+  triggerButton: `.${dropdownSlotClassNames.triggerButton}`,
+  item: (itemIndex: number) => `.${dropdownSlotClassNames.itemsList} li:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -14,8 +14,8 @@ const config: ScreenerTestsConfig = {
         .click(selectors.item(3))
         .snapshot('Selects an item')
         .click(selectors.clearIndicator)
-        .snapshot('Clears the value')
-  ]
+        .snapshot('Clears the value'),
+  ],
 };
 
 export default config;

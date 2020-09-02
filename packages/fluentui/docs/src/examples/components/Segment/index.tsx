@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-northstar';
 import { Link } from 'react-router-dom';
 
 import Rtl from './Rtl';
@@ -11,9 +11,9 @@ const SegmentExamples = () => (
   <>
     <Alert styles={{ display: 'block' }} warning>
       <p>
-        <code>Segment</code> component shouldn't be used to handle layout aspects. To address layouts and positioning aspects refer to{' '}
-        <Link to="/components/flex">Flex</Link> and <Link to="/components/grid">Grid</Link> components (and general{' '}
-        <Link to="/layout">Layout guide</Link>).
+        <code>Segment</code> component shouldn't be used to handle layout aspects. To address layouts and positioning
+        aspects refer to <Link to="/components/flex">Flex</Link> and <Link to="/components/grid">Grid</Link> components
+        (and general <Link to="/layout">Layout guide</Link>).
       </p>
     </Alert>
 

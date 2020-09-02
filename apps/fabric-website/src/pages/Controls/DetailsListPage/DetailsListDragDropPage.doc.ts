@@ -7,6 +7,6 @@ export const DetailsListDragDropPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Drag & Drop',
-    related
-  }
+    related,
+  },
 };

@@ -13,7 +13,20 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('DatePicker', () => {
   const DayPickerStrings: IDatePickerStrings = {
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
 
     shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -30,7 +43,7 @@ describe('DatePicker', () => {
 
     isRequiredErrorMessage: 'Field is required.',
 
-    invalidInputErrorMessage: 'Invalid date format.'
+    invalidInputErrorMessage: 'Invalid date format.',
   };
 
   beforeEach(() => {
@@ -76,7 +89,7 @@ describe('DatePicker', () => {
       datePicker
         .find('[aria-owns]')
         .getDOMNode()
-        .getAttribute('aria-owns')
+        .getAttribute('aria-owns'),
     ).toBeDefined();
 
     datePicker.setState({ isDatePickerShown: false });
@@ -119,7 +132,7 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should clear error message when required input has date text and allowTextInput is true', () => {
+  it('clears error message when required input has date text and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
     expect(textField).toBeDefined();
@@ -133,7 +146,7 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should clear error message when required input has date selected from calendar and allowTextInput is true', () => {
+  it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
     expect(textField).toBeDefined();
@@ -148,6 +161,32 @@ describe('DatePicker', () => {
     selectableDateInCalender.simulate('click');
 
     expect(datePicker.state('errorMessage')).toBe('');
+
+    datePicker.unmount();
+  });
+
+  it('should not clear initial error when datepicker is opened', () => {
+    const datePicker = mount(
+      <DatePickerBase
+        isRequired={true}
+        allowTextInput={true}
+        maxDate={new Date('2020-04-01')}
+        value={new Date('2020-04-02')}
+      />,
+    );
+
+    // assert initial error exists
+    expect(datePicker.state('errorMessage')).not.toBe('');
+
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+
+    // open the datepicker
+    textField.simulate('click').simulate('click');
+
+    // assert initial error remains
+    expect(datePicker.state('errorMessage')).not.toBe('');
 
     datePicker.unmount();
   });
@@ -204,9 +243,9 @@ describe('DatePicker', () => {
       <PrimaryButton
         menuAs={menu}
         menuProps={{
-          items: []
+          items: [],
         }}
-      />
+      />,
     );
     wrapper.simulate('click');
     let callout = wrapper.find(Callout);
@@ -224,7 +263,9 @@ describe('DatePicker', () => {
     const initiallySelectedDate = new Date('January 10, 2020');
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
-    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />);
+    const datePicker = mount(
+      <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
+    );
 
     datePicker.setState({ isDatePickerShown: true });
     const todayButton = document.querySelector('.ms-DatePicker-day--today') as HTMLButtonElement;
@@ -243,7 +284,7 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should reflect the correct date in the input field when selecting a value and a different format is given', () => {
+  it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
     const today = new Date('January 15, 2020');
     const initiallySelectedDate = new Date('January 10, 2020');
     const onFormatDate = (date: Date): string => {
@@ -252,7 +293,12 @@ describe('DatePicker', () => {
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
     const datePicker = mount(
-      <DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} initialPickerDate={initiallySelectedDate} />
+      <DatePickerBase
+        allowTextInput={true}
+        today={today}
+        formatDate={onFormatDate}
+        initialPickerDate={initiallySelectedDate}
+      />,
     );
 
     datePicker.setState({ isDatePickerShown: true });
@@ -311,7 +357,7 @@ describe('DatePicker', () => {
       formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => 'm/d/y',
       formatMonthYear: (date: Date, strings?: ICalendarStrings) => 'm/y',
       formatDay: (date: Date) => 'd',
-      formatYear: (date: Date) => 'y'
+      formatYear: (date: Date) => 'y',
     };
 
     const datePicker = shallow(
@@ -326,7 +372,7 @@ describe('DatePicker', () => {
         firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
         showGoToToday={false}
         dateTimeFormatter={dateTimeFormatter}
-      />
+      />,
     );
     datePicker.setState({ isDatePickerShown: true });
 
@@ -380,18 +426,37 @@ describe('DatePicker', () => {
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
     const strings: IDatePickerStrings = {
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
       shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       goToToday: 'Go to today',
-      isOutOfBoundsErrorMessage: 'out of bounds'
+      isOutOfBoundsErrorMessage: 'out of bounds',
     };
     let datePicker: ReactWrapper<any, any>;
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+        <DatePickerBase
+          allowTextInput={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          value={defaultDate}
+          strings={strings}
+        />,
       );
     });
 

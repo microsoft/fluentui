@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,7 +10,7 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle'
+  'Selina Kyle',
 ];
 
 const DropdownExampleSearchMultipleFluid = () => (
@@ -27,7 +27,7 @@ const DropdownExampleSearchMultipleFluid = () => (
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
-  onRemove: item => `${item} has been removed.`
+  onRemove: item => `${item} has been removed.`,
 };
 
 export default DropdownExampleSearchMultipleFluid;

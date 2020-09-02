@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
-import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
+import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
 
 /**
  * @description
@@ -17,8 +17,9 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
  * Adds attribute 'id=menu-id' based on the property 'menuId' to 'menu' slot.
  * Adds attribute 'aria-labelledby=trigger-id' based on the property 'triggerId' to 'menu' slot.
  */
-const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
+export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
   const behavior = popupBehavior(props);
+
   return _.merge(behavior, {
     attributes: {
       trigger: {
@@ -26,13 +27,13 @@ const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
         'aria-expanded': props.open || undefined,
         'aria-haspopup': props.contextMenu ? undefined : 'true',
         id: props.triggerId,
-        ...(!props.contextMenu && props.open && { tabIndex: -1 })
+        ...(!props.contextMenu && props.open && { tabIndex: -1 }),
       },
 
       menu: {
         'aria-labelledby': props.triggerId,
-        id: props.menuId
-      }
+        id: props.menuId,
+      },
     },
     keyActions: {
       root: {
@@ -41,20 +42,20 @@ const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
               closeMenu: {
                 keyCombinations: [
                   { keyCode: keyboardKey.Tab, shiftKey: false },
-                  { keyCode: keyboardKey.Tab, shiftKey: true }
-                ]
-              }
+                  { keyCode: keyboardKey.Tab, shiftKey: true },
+                ],
+              },
             }
           : _.includes(props.on, 'click') && {
               openAndFocusFirst: {
-                keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+                keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
               },
               openAndFocusLast: {
-                keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
-              }
-            })
-      }
-    }
+                keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
+              },
+            }),
+      },
+    },
   });
 };
 
@@ -68,5 +69,3 @@ export interface MenuButtonBehaviorProps extends PopupBehaviorProps {
   /** Determines if the MenuButton behaves as context menu */
   contextMenu?: boolean;
 }
-
-export default menuButtonBehavior;

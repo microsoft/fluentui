@@ -11,9 +11,7 @@ Array [
         }
   >
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=
@@ -98,7 +96,6 @@ Array [
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
@@ -265,7 +262,6 @@ Array [
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -282,7 +278,6 @@ Array [
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

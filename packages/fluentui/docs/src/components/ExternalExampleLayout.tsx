@@ -1,13 +1,13 @@
-import { Provider, themes } from '@fluentui/react';
+import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
-import SourceRender from 'react-source-render';
 import { KnobProvider } from '@fluentui/docs-components';
 
 import { ExampleSource } from '../types';
 import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
 import PageNotFound from '../views/PageNotFound';
+import { SourceRender } from './ComponentDoc/SourceRender';
 import { babelConfig, importResolver } from './Playground/renderConfig';
 
 const examplePaths = exampleSourcesContext.keys();
@@ -17,6 +17,12 @@ type ExternalExampleLayoutProps = {
     exampleName: string;
     rtl: string;
   }>;
+};
+
+const themes = {
+  teams: teamsTheme,
+  teamsHighContrast: teamsHighContrastTheme,
+  teamsDark: teamsDarkTheme,
 };
 
 const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
@@ -42,7 +48,13 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
       <KnobProvider>
-        <SourceRender babelConfig={babelConfig} onRender={setError} source={exampleSource.js} resolver={importResolver} hot />
+        <SourceRender
+          babelConfig={babelConfig}
+          onRender={setError}
+          source={exampleSource.js}
+          resolver={importResolver}
+          hot
+        />
         {/* This block allows to see issues with examples as visual regressions. */}
         {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
       </KnobProvider>

@@ -7,7 +7,7 @@ const GlobalClassNames = {
   innerIcon: 'ms-ChicletXsmall-innerIcon',
   preview: 'ms-ChicletXsmall-preview',
   info: 'ms-ChicletXsmall-info',
-  title: 'ms-ChicletXsmall-title'
+  title: 'ms-ChicletXsmall-title',
 };
 
 export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyles => {
@@ -34,11 +34,11 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         position: 'relative',
         selectors: {
           ':hover': {
-            cursor: 'pointer'
-          }
-        }
+            cursor: 'pointer',
+          },
+        },
       },
-      className
+      className,
     ],
     icon: [
       classNames.icon,
@@ -47,8 +47,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         height: 29,
         width: 29,
         padding: '17.44px',
-        backgroundColor: theme.palette.neutralLight
-      }
+        backgroundColor: theme.palette.neutralLight,
+      },
     ],
     preview: [
       classNames.preview,
@@ -58,11 +58,11 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         justifyContent: 'center',
         alignItems: 'center',
         height: 64,
-        width: 59
+        width: 59,
       },
       !footerProvided && {
-        marginBottom: 4
-      }
+        marginBottom: 4,
+      },
     ],
     info: [
       classNames.info,
@@ -72,11 +72,11 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         flexWrap: 'wrap',
         marginLeft: 10,
         width: 170,
-        height: 63
+        height: 63,
       },
       footerProvided && {
-        borderBottom: '1px solid gray'
-      }
+        borderBottom: '1px solid gray',
+      },
     ],
     url: [
       {
@@ -89,8 +89,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         paddingBottom: 1,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
-      }
+        textOverflow: 'ellipsis',
+      },
     ],
     title: [
       classNames.title,
@@ -104,8 +104,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         height: 35, // Two lines of text, making sure the third line is hidden
         lineHeight: '1.25',
         overflow: 'hidden',
-        wordWrap: 'break-word'
-      }
-    ]
+        wordWrap: 'break-word',
+      },
+    ],
   };
 };

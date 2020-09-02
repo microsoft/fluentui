@@ -3,7 +3,7 @@ import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 import _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from './docs-types';
 import { PropItem } from './docgen';
 import parseTypeAnnotation from './parseTypeAnnotation';
 
@@ -25,23 +25,23 @@ const normalizeType = (propType: string): string => {
     (propType, normalizer): string => {
       return normalizer(propType);
     },
-    propType
+    propType,
   );
 
   return normalizeShorthandCollection(propType);
 };
 
 const getTypeFromBabelTree = (componentFile: t.File, componentName: string, propName: string) => {
-  let typeAnnotation: t.TSType;
+  let typeAnnotation: t.TSType | undefined;
 
   const propertyVisitor: Babel.Visitor = {
     TSPropertySignature: path => {
       if (path.get('key').isIdentifier({ name: propName })) {
-        const annotationPath: NodePath<t.TSTypeAnnotation> = path.get('typeAnnotation');
+        const annotationPath = path.get('typeAnnotation') as NodePath<t.TSTypeAnnotation>;
 
         typeAnnotation = annotationPath.get('typeAnnotation').node;
       }
-    }
+    },
   };
 
   Babel.traverse(componentFile, {
@@ -49,21 +49,26 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
       if (path.get('id').isIdentifier({ name: `${componentName}Props` })) {
         path.traverse(propertyVisitor);
       }
-    }
+    },
   });
 
   return typeAnnotation;
 };
 
-const parseType = (componentFile: t.File, componentName: string, propName: string, propInfo: PropItem): ComponentPropType[] => {
+const parseType = (
+  componentFile: t.File,
+  componentName: string,
+  propName: string,
+  propInfo: PropItem,
+): ComponentPropType[] => {
   const propType = normalizeType(propInfo.type.name);
 
-  let typeAnnotation: t.TSType;
+  let typeAnnotation: t.TSType | undefined;
 
   try {
     const result = Babel.parse(`type __ = ${propType}`, {
       configFile: false,
-      presets: [['@babel/preset-typescript', { allExtensions: true }]]
+      presets: [['@babel/preset-typescript', { allExtensions: true }]],
     }) as t.File;
 
     const body = result.program.body;
@@ -78,7 +83,7 @@ const parseType = (componentFile: t.File, componentName: string, propName: strin
     typeAnnotation = getTypeFromBabelTree(componentFile, componentName, propName);
   }
 
-  return parseTypeAnnotation(propName, propType, typeAnnotation);
+  return typeAnnotation ? parseTypeAnnotation(propName, propType, typeAnnotation) : [];
 };
 
 export default parseType;

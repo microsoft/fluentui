@@ -12,9 +12,11 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "noImplicitThis": true,
+    "noUnusedLocals": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": ["node", "webpack-env"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

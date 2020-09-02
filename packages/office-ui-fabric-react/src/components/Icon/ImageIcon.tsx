@@ -19,7 +19,7 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
     ? {}
     : {
         role: 'presentation',
-        'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true
+        'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true,
       };
 
   return (

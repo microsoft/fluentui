@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Legends } from '@uifabric/charting/lib/Legends';
+import { Legends } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LegendWrapLinesExample extends React.Component<{}, {}> {
@@ -13,7 +13,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend1');
-        }
+        },
       },
       {
         title: 'Legend 2',
@@ -23,7 +23,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend2');
-        }
+        },
       },
       {
         title: 'Legend 3',
@@ -33,7 +33,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend3');
-        }
+        },
       },
       {
         title: 'Legend 4',
@@ -43,7 +43,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend4');
-        }
+        },
       },
       {
         title: 'Legend 5',
@@ -53,7 +53,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend5');
-        }
+        },
       },
       {
         title: 'Legend 6',
@@ -63,7 +63,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend6');
-        }
+        },
       },
       {
         title: 'Legend 7',
@@ -73,7 +73,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend7');
-        }
+        },
       },
       {
         title: 'Legend 8',
@@ -83,7 +83,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend8');
-        }
+        },
       },
       {
         title: 'Legend 9',
@@ -93,7 +93,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend9');
-        }
+        },
       },
       {
         title: 'Legend 10',
@@ -103,7 +103,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend10');
-        }
+        },
       },
       {
         title: 'Legend 11',
@@ -113,7 +113,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend11');
-        }
+        },
       },
       {
         title: 'Legend 12',
@@ -123,7 +123,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend12');
-        }
+        },
       },
       {
         title: 'Legend 13',
@@ -133,7 +133,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend13');
-        }
+        },
       },
       {
         title: 'Legend 14',
@@ -143,7 +143,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend14');
-        }
+        },
       },
       {
         title: 'Legend 15',
@@ -153,7 +153,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend15');
-        }
+        },
       },
       {
         title: 'Legend 16',
@@ -163,7 +163,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend16');
-        }
+        },
       },
       {
         title: 'Legend 17',
@@ -173,10 +173,16 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('Hover action for legend17');
-        }
-      }
+        },
+      },
     ];
 
-    return <Legends legends={legends} enabledWrapLines={true} />;
+    return (
+      <Legends
+        legends={legends}
+        enabledWrapLines={true}
+        overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }}
+      />
+    );
   }
 }

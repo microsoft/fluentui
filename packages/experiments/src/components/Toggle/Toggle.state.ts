@@ -1,21 +1,24 @@
-import { useCallback, useImperativeHandle, useRef } from 'react';
+import * as React from 'react';
 import { getControlledDerivedProps, useControlledState } from '../../Foundation';
 import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
 export const useToggleState: IToggleComponent['state'] = props => {
-  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+  const toggleButtonRef = React.useRef<HTMLButtonElement | null>(null);
 
-  const [checked, setChecked] = useControlledState(props, 'checked', { defaultPropName: 'defaultChecked', defaultPropValue: false });
+  const [checked, setChecked] = useControlledState(props, 'checked', {
+    defaultPropName: 'defaultChecked',
+    defaultPropValue: false,
+  });
 
-  useImperativeHandle(props.componentRef, () => ({
+  React.useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       toggleButtonRef.current && toggleButtonRef.current.focus();
-    }
+    },
   }));
 
   const { disabled, onChange } = props;
 
-  const _onClick = useCallback(
+  const _onClick = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>) => {
       if (!disabled) {
         // Only update the state if the user hasn't provided it.
@@ -26,7 +29,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
         }
       }
     },
-    [checked, disabled, onChange]
+    [checked, disabled, onChange, setChecked],
   );
 
   // TODO: can this be structured with helpers to reduce changes for bugs? (overriding controlled props in output, etc.)
@@ -35,7 +38,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
     ...props,
     checked,
     toggleButtonRef,
-    onClick: _onClick
+    onClick: _onClick,
   };
 
   // Derived state should be performed on otherwise finalized viewProps.
@@ -45,7 +48,11 @@ export const useToggleState: IToggleComponent['state'] = props => {
   //         Return array from here including list of controlled props?
   //         List of controlled props as createComponent option?
   //         updateViewProps functional arg that takes in partial view props and optional controlled prop list?
-  viewProps.text = getControlledDerivedProps(viewProps, 'text', viewProps.checked ? viewProps.onText : viewProps.offText);
+  viewProps.text = getControlledDerivedProps(
+    viewProps,
+    'text',
+    viewProps.checked ? viewProps.onText : viewProps.offText,
+  );
 
   return viewProps;
 };

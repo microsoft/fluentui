@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
-
 import { generateUrl } from '@fluentui/digest';
 
 type ExtendedCookResult = CookResult & {
@@ -28,6 +26,7 @@ type ExtendedCookResults = Record<string, ExtendedCookResult>;
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 //   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
 //   : `file://${path.resolve(__dirname, '../dist/')}`;
@@ -45,22 +44,13 @@ const tempDir = path.join(__dirname, '../logfiles');
 
 console.log(`__dirname: ${__dirname}`);
 
-const GITHUB_REPO_ID = '141743704';
-async function getMasterBuild(): Promise<number> {
-  const url = 'https://fluent-ui-react-stats.azurewebsites.net/api/GetLatestBuild';
-
-  const response = await fetch(url);
-  const data = await response.json();
-  return data[0].build;
-}
-
 export default async function getPerfRegressions(baselineOnly: boolean = false) {
   let urlForMaster;
 
   if (!baselineOnly) {
-    const masterBuild = await getMasterBuild();
-    urlForMaster = `https://${masterBuild}-${GITHUB_REPO_ID}-gh.circle-artifacts.com/0/artifacts/perf/index.html`;
-    console.log('Master URL', urlForMaster);
+    urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
@@ -87,8 +77,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
           ...(!baselineOnly &&
             storyKey !== 'Fabric' && {
               // Optimization: skip baseline comparision for Fabric
-              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey))
-            })
+              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
+            }),
         };
       });
   });
@@ -111,7 +101,17 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     });
   }
 
-  const scenarioConfig: ScenarioConfig = { outDir, tempDir };
+  const scenarioConfig: ScenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      // Occasionally during our CI, page takes unexpected amount of time to navigate (unsure about the root cause).
+      // Removing the timeout to avoid perf-test failures but be cautious about long test runs.
+      page.setDefaultTimeout(0);
+
+      await page.goto(options.url);
+    },
+  };
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
   const extendedCookResults = extendCookResults(stories, scenarioResults);
@@ -147,8 +147,8 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         iterations,
         tpi,
         fabricTpi,
-        filename: stories[kind][story].filename
-      }
+        filename: stories[kind][story].filename,
+      },
     };
   });
 }
@@ -163,6 +163,7 @@ function createReport(stories, testResults: ExtendedCookResults): string {
   const report = ''
 
     // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+    // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
     // // Show only significant changes by default.
     // .concat(createScenarioTable(testResults, false))
 
@@ -187,7 +188,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   const resultsToDisplay = Object.keys(testResults)
     .filter(
       key =>
-        showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+        showAll ||
+        (testResults[key].analysis &&
+          testResults[key].analysis.regression &&
+          testResults[key].analysis.regression.isRegression),
     )
     .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
     .sort();
@@ -197,15 +201,16 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   }
 
   // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+  // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
   // const result = `
   // <table>
   // <tr>
   //   <th>Scenario</th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
   //   </th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
   //   </th>
   //   <th>Status</th>
   // </tr>`.concat(
@@ -234,17 +239,25 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
     <th>TPI</th>
     <th>Iterations</th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
   </tr>`.concat(
     resultsToDisplay
       .map(resultKey => {
         const testResult = testResults[resultKey];
         const tpi = testResult.extended.tpi
-          ? linkifyResult(testResult, testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : 'n/a';
         const fabricTpi = testResult.extended.fabricTpi
-          ? linkifyResult(testResult, testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : '';
 
         return `<tr>
@@ -257,7 +270,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
            </tr>`;
       })
       .join('\n')
-      .concat(`</table>`)
+      .concat(`</table>`),
   );
 
   return result;
@@ -287,7 +300,9 @@ function getTpiResult(testResults, stories, kind, story): number | undefined {
 
 function getIterations(stories, kind, story): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
-  return stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations;
+  return (
+    stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
+  );
 }
 
 function getTicks(testResult: CookResult): number | undefined {
@@ -337,6 +352,7 @@ function getTicksResult(testResult: CookResult, getBaseline: boolean): string {
  * @returns {string}
  */
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // function getRegression(testResult: CookResult): string {
 //   const cell = testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
 //     ? testResult.analysis.regression.regressionFile

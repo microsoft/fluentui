@@ -9,7 +9,7 @@ const testInnerRef = (Component: React.ElementType) => {
   const node = mount(
     <RefFindNode innerRef={innerRef}>
       <Component />
-    </RefFindNode>
+    </RefFindNode>,
   ).getDOMNode();
 
   expect(innerRef).toHaveBeenCalledTimes(1);
@@ -39,7 +39,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <CompositeClass />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       innerRef.mockClear();
@@ -54,7 +54,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
@@ -69,7 +69,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
@@ -85,7 +85,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={initialRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(initialRef).toHaveBeenCalled();

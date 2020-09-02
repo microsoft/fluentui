@@ -10,7 +10,7 @@ describe('Card Section', () => {
         <Card.Section>
           <div />
         </Card.Section>
-      </Card>
+      </Card>,
     );
 
     expect(wrapper.find('.test').length).toBe(0);
@@ -23,7 +23,7 @@ describe('Card Section', () => {
           <Card.Section>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -37,7 +37,7 @@ describe('Card Section', () => {
           <Card.Section tokens={{ margin: '12px 8px' }}>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -51,7 +51,7 @@ describe('Card Section', () => {
           <Card.Section fill>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -68,7 +68,7 @@ describe('Card Section', () => {
           <Card.Section>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -88,7 +88,7 @@ describe('Card Section', () => {
           <Card.Section>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -105,7 +105,7 @@ describe('Card Section', () => {
           <Card.Section fill>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -119,7 +119,7 @@ describe('Card Section', () => {
           <Card.Section fill>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -136,7 +136,7 @@ describe('Card Section', () => {
           <Card.Section>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -156,7 +156,7 @@ describe('Card Section', () => {
           <Card.Section>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 
@@ -173,7 +173,7 @@ describe('Card Section', () => {
           <Card.Section fill>
             <div />
           </Card.Section>
-        </Card>
+        </Card>,
       )
       .toJSON();
 

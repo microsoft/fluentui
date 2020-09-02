@@ -17,18 +17,22 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
  * there is a circular reference, the value will not be deep cloned and will persist
  * the reference.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _merge<T extends Object>(target: T, source: T, circularReferences: any[] = []): T {
   circularReferences.push(source);
 
   for (let name in source) {
     if (source.hasOwnProperty(name)) {
-      const value: T[Extract<keyof T, string>] = source[name];
-      if (typeof value === 'object') {
-        const isCircularReference = circularReferences.indexOf(value) > -1;
-        target[name] = (isCircularReference ? value : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
-      } else {
-        target[name] = value;
+      if (name !== '__proto__' && name !== 'constructor' && name !== 'prototype') {
+        const value: T[Extract<keyof T, string>] = source[name];
+        if (typeof value === 'object' && value !== null) {
+          const isCircularReference = circularReferences.indexOf(value) > -1;
+          target[name] = (isCircularReference
+            ? value
+            : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
+        } else {
+          target[name] = value;
+        }
       }
     }
   }

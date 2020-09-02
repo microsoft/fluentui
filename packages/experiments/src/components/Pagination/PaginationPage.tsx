@@ -24,34 +24,43 @@ export class PaginationPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="Pagination with buttons" code={PaginationButtonsBasicExampleCode}>
               <PaginationButtonsBasicExample />
             </ExampleCard>
-            <ExampleCard title="Pagination with buttons without the visible item label" code={PaginationButtonsCustomizationExampleCode}>
+            <ExampleCard
+              title="Pagination with buttons without the visible item label"
+              code={PaginationButtonsCustomizationExampleCode}
+            >
               <PaginationButtonsCustomizationExample />
             </ExampleCard>
-            <ExampleCard title="Pagination with buttons and round background" code={PaginationButtonsCustomizationRoundExampleCode}>
+            <ExampleCard
+              title="Pagination with buttons and round background"
+              code={PaginationButtonsCustomizationRoundExampleCode}
+            >
               <PaginationButtonsCustomizationRoundExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Pagination/Pagination.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Pagination/Pagination.types.ts'),
+            ]}
           />
         }
         overview={
           <div>
             <p>Pagination control</p>
             <p>
-              This control provides a customizable pagination component that can be used to achieve specific design requirement.There are
-              two design options: with a list of buttons, with combobox
+              This control provides a customizable pagination component that can be used to achieve specific design
+              requirement.There are two design options: with a list of buttons, with combobox
             </p>
             <p>
-              For cases when your application supports theming, Pagination component is equipped with everything you need to just load the
-              custom theme to the application, and as long as the color palette you provide has an override for the{' '}
-              <Link href="https://developer.microsoft.com/en-us/fabric#/styles/colors">
+              For cases when your application supports theming, Pagination component is equipped with everything you
+              need to just load the custom theme to the application, and as long as the color palette you provide has an
+              override for the{' '}
+              <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/colors">
                 <code>Fabric colors</code>
               </Link>{' '}
-              used in Pagination, everything should be ok. If no theming is supported, then follow the example showing the use of the{' '}
-              <code>styles</code> prop.
+              used in Pagination, everything should be ok. If no theming is supported, then follow the example showing
+              the use of the <code>styles</code> prop.
             </p>
           </div>
         }

@@ -10,23 +10,26 @@ const SpinnerLabeledExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
   componentName: 'Spinner',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
   examples: [
     {
       title: 'Spinner sizes',
       code: SpinnerBasicExampleCode,
-      view: <SpinnerBasicExample />
+      view: <SpinnerBasicExample />,
     },
     {
       title: 'Spinner label positioning',
       code: SpinnerLabeledExampleCode,
-      view: <SpinnerLabeledExample />
-    }
+      view: <SpinnerLabeledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

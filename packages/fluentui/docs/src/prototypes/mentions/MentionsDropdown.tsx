@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FontWeightProperty } from 'csstype';
-import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react';
+import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react-northstar';
 
 import { MentionsContainerProps } from './MentionsEditor';
 
@@ -19,16 +19,19 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
     <Provider.Consumer
       render={({ siteVariables: siteVars }) => (
         <Dropdown
+          highlightFirstItemOnOpen
           open
           inline
           search
           position="above"
           items={items}
-          renderItem={searchQuery ? (Item, props) => renderItem({ Item, props, fontWeight: siteVars.fontWeightBold }) : undefined}
+          renderItem={
+            searchQuery ? (Item, props) => renderItem({ Item, props, fontWeight: siteVars.fontWeightBold }) : undefined
+          }
           toggleIndicator={null}
           searchInput={{
             input: { autoFocus: true, size: searchQuery.length + 1 },
-            onInputKeyDown
+            onInputKeyDown,
           }}
           onOpenChange={onOpenChange}
           onSearchQueryChange={onSearchQueryChange}
@@ -39,7 +42,12 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
   );
 };
 
-const getCustomItem = (args: { Item: React.ReactType; props: DropdownItemProps; searchQuery: string; fontWeight: FontWeightProperty }) => {
+const getCustomItem = (args: {
+  Item: React.ReactType;
+  props: DropdownItemProps;
+  searchQuery: string;
+  fontWeight: FontWeightProperty;
+}) => {
   const { Item, props, searchQuery, fontWeight } = args;
   const { header, ...rest } = props;
 

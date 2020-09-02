@@ -5,9 +5,9 @@ import { addVariants } from '@uifabric/variants';
 
 export const MDL2Customizations: ICustomizations = {
   settings: {
-    theme: { ...MDL2Theme }
+    theme: { ...MDL2Theme },
   },
-  scopedSettings: { ...MDL2Styles }
+  scopedSettings: { ...MDL2Styles },
 };
 
 addVariants(MDL2Customizations.settings.theme);

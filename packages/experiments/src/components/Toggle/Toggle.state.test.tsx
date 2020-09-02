@@ -19,7 +19,7 @@ describe('ToggleState', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
 
     component
@@ -34,7 +34,7 @@ describe('ToggleState', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('true');
   });
 
@@ -46,7 +46,7 @@ describe('ToggleState', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
 
     component
@@ -60,7 +60,7 @@ describe('ToggleState', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
   });
 
@@ -80,14 +80,13 @@ describe('ToggleState', () => {
     const wrapper = mount(
       <form
         action="#"
-        // tslint:disable-next-line:jsx-no-lambda
         onSubmit={e => {
           onSubmit();
           e.preventDefault();
         }}
       >
         <Toggle label="Label" onChange={onChange} />
-      </form>
+      </form>,
     );
     const button: any = wrapper.find('button');
     // simulate to change toggle state

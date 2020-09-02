@@ -7,10 +7,10 @@ import {
   menuAsToolbarBehavior,
   MenuItemProps,
   ShorthandCollection,
-  IconXSpacing,
   ICSSInJSStyle,
-  Props
-} from '@fluentui/react';
+  Props,
+} from '@fluentui/react-northstar';
+import { EditIcon, EmojiIcon, FilesImageIcon, MoreIcon, SendIcon, CalendarIcon } from '@fluentui/react-icons-northstar';
 
 import chatProtoStyle from './chatProtoStyle';
 
@@ -24,7 +24,12 @@ const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = props => (
     render={({ siteVariables: siteVars }) => (
       <Flex column role="region" aria-labelledby="chat-compose-reader-text" style={props.style}>
         <div>
-          <div role="heading" aria-level={2} id="chat-compose-reader-text" style={chatProtoStyle.screenReaderContainerStyles}>
+          <div
+            role="heading"
+            aria-level={2}
+            id="chat-compose-reader-text"
+            style={chatProtoStyle.screenReaderContainerStyles}
+          >
             Compose
           </div>
           <Input
@@ -60,34 +65,29 @@ const getInputWrapperStyles = ({ attached }: ComposeMessageProps): ICSSInJSStyle
 
     ...((attached === 'top' || attached === true) && {
       borderRadius: `0 0 ${borderBottomRadius} ${borderBottomRadius}`,
-      marginTop: `-${borderWidth}`
+      marginTop: `-${borderWidth}`,
     }),
 
     ...(attached === 'bottom' && {
       borderRadius: `${borderTopRadius} ${borderTopRadius} 0 0`,
-      marginBottom: `-${borderWidth}`
-    })
+      marginBottom: `-${borderWidth}`,
+    }),
   };
 };
 
 const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
   const items: ShorthandCollection<MenuItemProps> = [
-    'compose',
-    'attach',
-    'smile',
-    'picture',
-    'smile outline',
-    'calendar alternate',
-    'ellipsis horizontal',
-    'send'
-  ].map((name, index) => ({
-    key: `${index}-${name}`,
-    icon: {
-      name,
-      xSpacing: 'both' as IconXSpacing,
-      variables: siteVars => ({ color: siteVars.colors.grey[500] })
-    },
-    'aria-label': `${name} tool`
+    EditIcon,
+    EmojiIcon,
+    FilesImageIcon,
+    EmojiIcon,
+    CalendarIcon,
+    MoreIcon,
+    SendIcon,
+  ].map((Icon, index) => ({
+    key: index,
+    icon: <Icon xSpacing="both" variables={siteVars => ({ color: siteVars.colors.grey[500] })} />,
+    'aria-label': `${name} tool`,
   }));
 
   items.splice(-1, 0, { key: 'separator', styles: { flex: 1 } } as any);

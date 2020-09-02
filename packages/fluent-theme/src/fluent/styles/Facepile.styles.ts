@@ -6,10 +6,10 @@ export const FacepileStyles = (props: IFacepileStyleProps): Partial<IFacepileSty
 
   return {
     overflowButton: {
-      backgroundColor: palette.neutralLighter
+      backgroundColor: palette.neutralLighter,
     },
     descriptiveOverflowButton: {
-      backgroundColor: palette.neutralLighter
-    }
+      backgroundColor: palette.neutralLighter,
+    },
   };
 };

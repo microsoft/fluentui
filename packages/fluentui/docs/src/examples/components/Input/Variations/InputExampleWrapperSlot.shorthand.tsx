@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { Grid, Input, Text } from '@fluentui/react';
+import { Grid, Input, Text } from '@fluentui/react-northstar';
 
 const InputExampleWrapperSlot = () => (
-  <Grid columns="1fr 2fr" styles={{ justifyItems: 'start', alignItems: 'center', gap: '10px' }}>
+  <Grid
+    styles={{
+      gridTemplateColumns: '1fr 2fr',
+      msGridColumns: '1fr 2fr',
+      justifyItems: 'start',
+      alignItems: 'center',
+      gap: '10px',
+    }}
+  >
     <Text content="Input default:" />
     <Input placeholder="Search..." tabIndex={-1} styles={{ color: 'blue', backgroundColor: 'yellow' }} />
 
@@ -16,7 +24,7 @@ const InputExampleWrapperSlot = () => (
         tabIndex: 0,
 
         // will set custom styles for wrapper element
-        styles: { padding: '5px', backgroundColor: 'red' }
+        styles: { padding: '5px', backgroundColor: 'red' },
       }}
     />
   </Grid>

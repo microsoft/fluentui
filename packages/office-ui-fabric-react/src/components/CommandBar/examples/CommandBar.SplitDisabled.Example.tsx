@@ -26,9 +26,9 @@ const _items: ICommandBarItemProps[] = [
     subMenuProps: {
       items: [
         { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
-        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } }
-      ]
-    }
+        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
   },
   {
     key: 'upload',
@@ -36,19 +36,19 @@ const _items: ICommandBarItemProps[] = [
     iconProps: { iconName: 'Upload' },
     split: true,
     disabled: true,
-    href: 'https://dev.office.com/fabric',
+    href: 'https://developer.microsoft.com/en-us/fluentui',
     subMenuProps: {
       items: [
         { key: 'item1', text: 'Item One' },
-        { key: 'item2', text: 'Item Two' }
-      ]
-    }
+        { key: 'item2', text: 'Item Two' },
+      ],
+    },
   },
   {
     key: 'share',
     text: 'Share',
     iconProps: { iconName: 'Share' },
-    disabled: true
+    disabled: true,
   },
   {
     key: 'download',
@@ -56,6 +56,6 @@ const _items: ICommandBarItemProps[] = [
     ariaLabel: 'Download',
     iconProps: { iconName: 'Download' },
     iconOnly: true,
-    disabled: true
-  }
+    disabled: true,
+  },
 ];

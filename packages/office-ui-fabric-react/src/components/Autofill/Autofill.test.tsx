@@ -26,7 +26,9 @@ describe('Autofill', () => {
       updatedText = text;
     };
 
-    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />);
+    component = mount(
+      <Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
+    );
 
     ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
     expect(updatedText).toBe('hel');
@@ -40,7 +42,13 @@ describe('Autofill', () => {
       updatedText = text;
     };
 
-    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="こんにちは" />);
+    component = mount(
+      <Autofill
+        componentRef={autofillRef}
+        onInputValueChange={onInputValueChange}
+        suggestedDisplayValue="こんにちは"
+      />,
+    );
 
     ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('こん'));
     expect(updatedText).toBe('こん');
@@ -54,7 +62,9 @@ describe('Autofill', () => {
       updatedText = text;
     };
 
-    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />);
+    component = mount(
+      <Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
+    );
     ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hep'));
 
     expect(updatedText).toBe('hep');
@@ -107,7 +117,13 @@ describe('Autofill', () => {
     const receivePropsUpdater = () => {
       return propsString;
     };
-    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="" updateValueInWillReceiveProps={receivePropsUpdater} />);
+    component = mount(
+      <Autofill
+        componentRef={autofillRef}
+        suggestedDisplayValue=""
+        updateValueInWillReceiveProps={receivePropsUpdater}
+      />,
+    );
 
     ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
     component.setProps({ suggestedDisplayValue: 'hello' });
@@ -116,7 +132,7 @@ describe('Autofill', () => {
     expect(autofill.inputElement!.value).toBe('Updated');
   });
 
-  it('will handle composition events', () => {
+  it('handles composition events', () => {
     component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="he" />);
 
     autofill.inputElement!.value = 'he';
@@ -139,7 +155,7 @@ describe('Autofill', () => {
     expect(autofill.value).toBe('🆘');
   });
 
-  it('will handle composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
+  it('handles composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
     const onInputChange = jest.fn((a: string, b: boolean) => a);
     component = mount(<Autofill componentRef={autofillRef} onInputChange={onInputChange} suggestedDisplayValue="he" />);
 
@@ -151,14 +167,14 @@ describe('Autofill', () => {
 
     ReactTestUtils.Simulate.keyDown(autofill.inputElement!, {
       keyCode: KeyCodes.p,
-      which: KeyCodes.p
+      which: KeyCodes.p,
     });
     autofill.inputElement!.value = 'help';
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
 
     ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
@@ -166,8 +182,8 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
     jest.runOnlyPendingTimers();
 
@@ -175,15 +191,15 @@ describe('Autofill', () => {
       keyCode: KeyCodes.m,
       which: KeyCodes.m,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
     autofill.inputElement!.value = '🆘m';
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
 
     ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
@@ -191,8 +207,8 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: false
-      } as any
+        isComposing: false,
+      } as any,
     });
     jest.runOnlyPendingTimers();
 
@@ -203,7 +219,7 @@ describe('Autofill', () => {
       ['🆘', false], // from timeout on compositionEnd event
       ['🆘m', true],
       ['🆘Ⓜ', false], // from input event
-      ['🆘Ⓜ', false] // from  timeout on compositionEnd event
+      ['🆘Ⓜ', false], // from  timeout on compositionEnd event
     ]);
     expect(autofill.value).toBe('🆘Ⓜ');
   });
@@ -236,16 +252,18 @@ describe('Autofill', () => {
       ['he', false],
       ['hel', true],
       ['help', true],
-      ['🆘', false]
+      ['🆘', false],
     ]);
   });
 
   it('will call onInputValueChanged w/ composition events', () => {
     const onInputValueChange = jest.fn((a: string, b: boolean) => {
-      return void 0;
+      return undefined;
     });
 
-    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="he" />);
+    component = mount(
+      <Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="he" />,
+    );
 
     autofill.inputElement!.value = 'he';
     ReactTestUtils.Simulate.input(autofill.inputElement!);
@@ -270,7 +288,7 @@ describe('Autofill', () => {
       ['he', false],
       ['hel', true],
       ['help', true],
-      ['🆘', false]
+      ['🆘', false],
     ]);
   });
 });

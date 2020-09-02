@@ -23,9 +23,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       }
 >
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <label
       className=
@@ -111,7 +109,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
@@ -234,9 +231,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <label
       className=
@@ -265,6 +260,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       id="Dropdown1-label"
     >
@@ -323,7 +321,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
@@ -389,8 +386,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
             @media screen and (-ms-high-contrast: active){& {
+              background-color: Window;
               border: 1px solid GrayText;
               color: GrayText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         id="Dropdown1-option"
         role="option"
@@ -427,6 +428,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           data-icon-name="ChevronDown"
         >
           
@@ -435,9 +439,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <label
       className=
@@ -523,7 +525,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {

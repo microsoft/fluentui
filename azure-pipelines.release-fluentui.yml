@@ -17,9 +17,9 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      git config user.name "UI Fabric Build"
-      git config user.email "fabrictactical@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
   - script: |
@@ -38,19 +38,19 @@ steps:
     displayName: Upload docs site
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: 'UI Fabric (private)'
       storage: fluentsite
       ContainerName: '$web'
       BlobPrefix: ''
-
-  - script: |
-      yarn test
-    displayName: yarn test
-
-  - script: |
-      yarn lint
-    displayName: yarn lint
-
-  - script: |
-      yarn release:fluentui:$(bumpType)
-    displayName: yarn release:fluentui:$(bumpType)
+# No NPM release in CI for now
+#  - script: |
+#      yarn test
+#    displayName: yarn test
+#
+#  - script: |
+#      yarn lint
+#    displayName: yarn lint
+#
+#  - script: |
+#      yarn release:fluentui:$(bumpType)
+#    displayName: yarn release:fluentui:$(bumpType)

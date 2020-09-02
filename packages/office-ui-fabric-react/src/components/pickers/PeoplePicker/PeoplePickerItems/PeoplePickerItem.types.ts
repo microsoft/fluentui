@@ -6,7 +6,8 @@ import { IContextualMenuItem } from '../../../../ContextualMenu';
 import { ValidationState, IBasePickerSuggestionsProps } from '../../BasePicker.types';
 
 /**
- * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and IPeoplePickerItemSuggestionProps.
+ * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and
+ * IPeoplePickerItemSuggestionProps.
  * {@docCategory PeoplePicker}
  */
 export interface IPeoplePickerItemSharedProps {
@@ -83,7 +84,8 @@ export interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemShare
   suggestionsProps?: IBasePickerSuggestionsProps;
 
   /**
-   * Flag that controls whether each suggested PeoplePicker item (Persona) is rendered with or without secondary text for compact look.
+   * Flag that controls whether each suggested PeoplePicker item (Persona) is rendered with or without secondary text
+   * for compact look.
    * @defaultvalue false
    */
   compact?: boolean;
@@ -115,7 +117,7 @@ export interface IPeoplePickerItemSuggestionStyles {
  * PeoplePickerItemWithMenu props interface.
  * @deprecated Do not use. Will be removed in Fabric 7.0
  */
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 export interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {}
 
 /**

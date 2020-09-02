@@ -5,7 +5,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const ITEMS = createArray(5, index => ({
   key: index.toString(),
-  name: 'Item-' + index
+  name: 'Item-' + index,
 }));
 
 export const FocusZoneHorizontalMenuExample: React.FunctionComponent = () => {

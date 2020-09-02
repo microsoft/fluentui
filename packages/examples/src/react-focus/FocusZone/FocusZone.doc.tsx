@@ -17,33 +17,33 @@ const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!@fluentui/exampl
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
   componentName: 'FocusZone',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/examples/src/react-focus/FocusZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/examples/src/react-focus/FocusZone',
   examples: [
     {
       title: 'Non-uniform photos within bidirectional FocusZone',
       code: FocusZonePhotosExampleCode,
-      view: <FocusZonePhotosExample />
+      view: <FocusZonePhotosExample />,
     },
     {
       title: 'Nesting FocusZones in list rows',
       code: FocusZoneListExampleCode,
-      view: <FocusZoneListExample />
+      view: <FocusZoneListExample />,
     },
     {
       title: 'Disabled FocusZone',
       code: FocusZoneDisabledExampleCode,
-      view: <FocusZoneDisabledExample />
+      view: <FocusZoneDisabledExample />,
     },
     {
       title: 'Tabbable FocusZone',
       code: FocusZoneTabbableCode,
-      view: <FocusZoneTabbableExample />
+      view: <FocusZoneTabbableExample />,
     },
     {
       title: 'Horizontal menu in FocusZone with all arrows key navigation',
       code: FocusZoneHorizontalMenuExampleCode,
-      view: <FocusZoneHorizontalMenuExample />
-    }
+      view: <FocusZoneHorizontalMenuExample />,
+    },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
@@ -51,5 +51,5 @@ export const FocusZonePageProps: IDocPageProps = {
   donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

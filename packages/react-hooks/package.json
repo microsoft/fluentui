@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/react-hooks",
-  "version": "7.0.15",
-  "description": "UI Fabric React hooks.",
+  "version": "7.11.0",
+  "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -25,22 +25,23 @@
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/test-utilities": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.5",
-    "@uifabric/utilities": "^7.12.5",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/utilities": "^7.31.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,12 +1,13 @@
 export const meta = {
   title: 'Shorthand Props',
-  next: { url: '/quick-start', name: 'Quick Start' },
+  previous: { name: 'Introduction', url: '/' },
+  next: { url: '/composition', name: 'Composition' },
 }
 
-Fluent UI components can have "slots" which accept shothand props. For example, `Button` component has an `icon` slot which value defines the icon that will be rendered.
+Fluent UI components can have "slots" which accept shothand props. For example, `Loader` component has an `label` slot which value defines the message that will appear together with the loading indicator.
 
 ```jsx
-<Button icon="camera" />
+<Loader label="Fetching data..." />
 ```
 
 There are several forms of shorthand values that can be provided, but all of them share one common thing - each is eventually evaluated to React Element. Thus, you can think of shorthand values as a recipe to customize rendered React Element.
@@ -14,30 +15,30 @@ There are several forms of shorthand values that can be provided, but all of the
 ## Object as value
 
 Each component's slot has associated default element type. For example, by default there is
-`<Icon />` element rendered for `Button`'s `icon` slot. It is possible to customize props of this default element by providing props object as shorthand value:
+`<Text />` element rendered for `Loader`'s `label` slot. It is possible to customize props of this default element by providing props object as shorthand value:
 
 ```jsx
-// 💡 'name' and 'size' will be used as <Icon /> element's props
-<Button icon={{ name: 'call-video', size: 'small' }} />
+// 💡 'content' and 'size' will be used as <Text /> element's props
+<Loader label={{ content: 'Fetching data...', size: 'small' }} />
 ```
 
 ## Primitive as value
 
 There is even shorter way to define default element's props - by using a primitive value. In that case provided shorthand value will be taken as a value for "default prop" of this element.
 
-This could be much easier seen with an example. Here, again, we have a `Button`
-element with its icon being defined with shorthand - where provided `string` value
-will be used as icon's `name`:
+This could be much easier seen with an example. Here, again, we have a `Loader`
+element with its label being defined with shorthand - where provided `string` value
+will be used as label's `content`:
 
 ```jsx
 <>
-  <Button icon="camera" />
+  <Loader label="Fetching data..." />
   {/* 💡 has identical effect to the previous one */}
-  <Button icon={{ name: 'call-video' }} />
+  <Loader label={{ content: 'Fetching data...' }} />
 </>
 ```
 
-This works because `name` is the default prop of shorthand's `<Icon />` element. You can also pass React Elements to slots:
+This works because `content` is the default prop of shorthand's `<Text />` element. You can also pass React Elements to slots:
 
 ```jsx
 <>
@@ -76,11 +77,10 @@ Our components implement [`render props`](https://reactjs.org/docs/render-props.
 You can also use this technique to completely replace slot contents:
 
 ```jsx
-<Button
-  content="Click me"
-  icon={{
+<Loader
+  label={{
     /* ⚠️ Replacement without applying props can break accessibility and styling concerns */
-    children: () => <FaBeer />,
+    children: () => <span>Loading data...</span>,
   }}
 />
 ```

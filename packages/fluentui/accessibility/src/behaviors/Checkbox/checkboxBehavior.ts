@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
@@ -10,26 +10,24 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
-const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
+export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-checked': !!props.checked,
       'aria-disabled': props.disabled,
       role: 'checkbox',
       tabIndex: 0,
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: SpacebarKey }],
+      },
+    },
+  },
 });
-
-export default checkboxBehavior;
 
 export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */

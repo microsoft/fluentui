@@ -1,28 +1,36 @@
-import { Chat, Provider, Avatar, ChatMessageProps, ShorthandCollection, ReactionProps } from '@fluentui/react';
+import {
+  Chat,
+  Provider,
+  Avatar,
+  ChatMessageProps,
+  ShorthandCollection,
+  ReactionProps,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';
 import { Ref } from '@fluentui/react-component-ref';
+import { AcceptIcon, EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {
-    icon: 'thumbs up',
+    icon: <LikeIcon />,
     content: '1K',
     key: 'likes',
     variables: { meReacting: true },
-    children: (Component, props) => <ReactionPopup {...props} />
+    children: (Component, props) => <ReactionPopup {...props} />,
   },
   {
-    icon: 'emoji',
+    icon: <EmojiIcon />,
     content: 2,
     key: 'smiles',
-    children: (Component, props) => <ReactionPopup {...props} />
-  }
+    children: (Component, props) => <ReactionPopup {...props} />,
+  },
 ];
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'check' }
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const ChatWithPopover = () => {
@@ -33,9 +41,9 @@ const ChatWithPopover = () => {
           ChatMessage: {
             root: ({ props: p, theme: { siteVariables } }) => ({
               '& a': {
-                color: siteVariables.colors.brand[600]
-              }
-            })
+                color: siteVariables.colors.brand[600],
+              },
+            }),
           },
           Menu: {
             root: {
@@ -45,32 +53,32 @@ const ChatWithPopover = () => {
 
               '& a:focus': {
                 textDecoration: 'none',
-                color: 'inherit'
+                color: 'inherit',
               },
               '& a': {
-                color: 'inherit'
+                color: 'inherit',
               },
 
               '& .smile-emoji': {
                 position: 'absolute',
                 opacity: 0,
-                zIndex: -1
+                zIndex: -1,
               },
 
               '&.focused .smile-emoji': {
                 position: 'initial',
                 zIndex: 'initial',
-                opacity: 1
+                opacity: 1,
               },
 
               '&:hover .smile-emoji': {
                 position: 'initial',
                 zIndex: 'initial',
-                opacity: 1
-              }
-            }
-          }
-        }
+                opacity: 1,
+              },
+            },
+          },
+        },
       }}
     >
       <Chat
@@ -86,12 +94,12 @@ const ChatWithPopover = () => {
                   </div>
                 }
                 reactionGroup={{
-                  items: reactions
+                  items: reactions,
                 }}
                 timestamp="Yesterday, 10:15 PM"
               />
             ),
-            gutter: <Avatar {...janeAvatar} />
+            gutter: <Avatar {...janeAvatar} />,
           },
           {
             key: 'b',
@@ -104,13 +112,13 @@ const ChatWithPopover = () => {
                   </div>
                 }
                 reactionGroup={{
-                  items: reactions
+                  items: reactions,
                 }}
                 timestamp="Yesterday, 10:15 PM"
               />
             ),
-            gutter: <Avatar {...janeAvatar} />
-          }
+            gutter: <Avatar {...janeAvatar} />,
+          },
         ]}
       />
     </Provider>
@@ -136,7 +144,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) =
               onShowActionMenuChange={setShowActionMenu}
               {...props}
             />
-          )
+          ),
         }}
         onMouseEnter={() => setShowActionMenu(true)}
         onMouseLeave={() => !forceShowActionMenu && setShowActionMenu(false)}

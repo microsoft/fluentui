@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fluent-theme",
-  "version": "7.1.28",
+  "version": "7.3.3",
   "description": "Fluent theming for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -22,15 +22,16 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.0.6"
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.6",
-    "@uifabric/set-version": "^7.0.5",
-    "@uifabric/styling": "^7.10.14",
-    "@uifabric/variants": "^7.1.19",
-    "office-ui-fabric-react": "^7.98.0",
+    "@fluentui/theme": "^0.2.0",
+    "@uifabric/merge-styles": "^7.18.0",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/styling": "^7.16.0",
+    "@uifabric/variants": "^7.2.8",
+    "office-ui-fabric-react": "^7.134.1",
     "tslib": "^1.10.0"
   }
 }

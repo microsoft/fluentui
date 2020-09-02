@@ -3,7 +3,7 @@ import * as React from 'react';
 import { KnobsSnippet } from '@fluentui/code-sandbox';
 import { Telemetry } from '@fluentui/react-bindings';
 import { KnobProvider, useBooleanKnob, useSelectKnob, KnobInspector } from '@fluentui/docs-components';
-import { Provider, Flex, themes, mergeThemes } from '@fluentui/react';
+import { Provider, Flex, mergeThemes, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-northstar';
 
 import { darkThemeOverrides } from './darkThemeOverrides';
 import { highContrastThemeOverrides } from './highContrastThemeOverrides';
@@ -13,38 +13,38 @@ import CustomToolbar, { CustomToolbarProps } from './CustomToolbar';
 const CustomToolbarPrototype: React.FunctionComponent = () => {
   const [rtl] = useBooleanKnob({
     name: 'RTL',
-    initialValue: false
+    initialValue: false,
   });
   const [themeName] = useSelectKnob({
     name: 'themeName',
     values: ['teamsDark', 'teamsHighContrast'],
-    initialValue: 'teamsDark'
+    initialValue: 'teamsDark',
   });
 
   const availableLayouts: CustomToolbarProps['layout'][] = ['standard', 'desktop-share', 'powerpoint-presenter'];
   const [layout] = useSelectKnob({
     name: 'layout',
     values: availableLayouts,
-    initialValue: undefined
+    initialValue: undefined,
   });
 
   const [isRecording] = useBooleanKnob({
     name: 'isRecording',
-    initialValue: false
+    initialValue: false,
   });
   const [cameraActive, onCameraChange] = useBooleanKnob({
     name: 'cameraActive',
-    initialValue: true
+    initialValue: true,
   });
   const [micActive, onMicChange] = useBooleanKnob({ name: 'micActive', initialValue: true });
   const [screenShareActive, onScreenShareChange] = useBooleanKnob({
     name: 'screenShareActive',
-    initialValue: false
+    initialValue: false,
   });
   const [sidebarSelected, onSidebarChange] = useSelectKnob<'false' | 'chat' | 'participant-add'>({
     name: 'sidebarSelected',
     values: ['false', 'chat', 'participant-add'],
-    initialValue: 'false'
+    initialValue: 'false',
   });
   const [chatHasNotification] = useBooleanKnob({ name: 'chatHasNotification', initialValue: false });
   const [currentSlide, setCurrentSlide] = React.useState(23);
@@ -55,9 +55,9 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
 
   let theme = {};
   if (themeName === 'teamsDark') {
-    theme = mergeThemes(themes.teamsDark, darkThemeOverrides);
+    theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
   } else if (themeName === 'teamsHighContrast') {
-    theme = mergeThemes(themes.teamsHighContrast, darkThemeOverrides, highContrastThemeOverrides);
+    theme = mergeThemes(teamsHighContrastTheme, darkThemeOverrides, highContrastThemeOverrides);
   }
 
   React.useEffect(() => {
@@ -72,15 +72,17 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
     const totals = _.reduce(
       telemetry.performance,
       (acc, next) => {
-        acc.count += next.count;
+        acc.instances += next.instances;
         acc.msTotal += next.msTotal;
         return acc;
       },
-      { count: 0, msTotal: 0 }
+      { instances: 0, msTotal: 0 },
     );
 
-    console.log(`Rendered ${totals.count} Fluent UI components in ${totals.msTotal} ms`);
-    console.table(telemetry.performance);
+    /* eslint-disable no-console */
+    console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
+    console.log(telemetry.performance);
+    /* eslint-enable no-console */
   });
 
   if (telemetryRef.current) {
@@ -102,7 +104,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
             styles={{
               padding: '200px 0 50px 0',
               backgroundColor: '#8EC5FC',
-              backgroundImage: 'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'
+              backgroundImage: 'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)',
             }}
           >
             <CustomToolbar

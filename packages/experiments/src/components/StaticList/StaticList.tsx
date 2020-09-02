@@ -12,7 +12,7 @@ export class StaticList<TItem extends IObjectWithKey> extends React.Component<IS
     return React.createElement(
       ListTag,
       { className: css(stylesImport.root, className) },
-      items.map((item: TItem, index: number) => onRenderItem(item, index))
+      items.map((item: TItem, index: number) => onRenderItem(item, index)),
     );
   }
 }

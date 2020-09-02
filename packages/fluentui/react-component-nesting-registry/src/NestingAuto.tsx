@@ -1,12 +1,12 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import NestingChild from './NestingChild';
-import NestingContext from './NestingContext';
-import NestingRoot from './NestingRoot';
+import { NestingChild } from './NestingChild';
+import { NestingContext } from './NestingContext';
+import { NestingRoot } from './NestingRoot';
 import { NestingProps } from './types';
 
-const NestingAuto: React.FC<NestingProps> = props => (
+export const NestingAuto: React.FC<NestingProps> = props => (
   <NestingContext.Consumer>
     {contextValue => {
       const hasContext = !!contextValue;
@@ -19,7 +19,5 @@ const NestingAuto: React.FC<NestingProps> = props => (
 
 NestingAuto.displayName = 'NestingAuto';
 NestingAuto.propTypes = {
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
-
-export default NestingAuto;

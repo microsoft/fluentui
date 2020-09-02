@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IFacepilePersona } from 'office-ui-fabric-react/lib/Facepile';
-import { PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
+import { IFacepilePersona } from '../Facepile.types';
+import { PersonaInitialsColor } from '../../../Persona';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TestImages } from '@uifabric/example-data';
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
@@ -8,28 +9,29 @@ export const facepilePersonas: IFacepilePersona[] = [
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Annie Lindqvist',
-    data: '50%'
+    data: '50%',
   },
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Aaron Reid',
-    data: '$1,000'
+    data: '$1,000',
   },
   {
     personaName: 'Alex Lundberg',
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
+      // eslint-disable-next-line no-alert
+      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
     personaName: 'Roko Kolar',
-    data: '4 hrs'
+    data: '4 hrs',
   },
   {
     imageInitials: 'CB',
     personaName: 'Christian Bergqvist',
     initialsColor: PersonaInitialsColor.green,
-    data: '25%'
+    data: '25%',
   },
   {
     imageUrl: TestImages.personaFemale,
@@ -38,19 +40,20 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
+      // eslint-disable-next-line no-alert
+      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Maor Sharett',
-    initialsColor: PersonaInitialsColor.lightGreen
+    initialsColor: PersonaInitialsColor.lightGreen,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
     personaName: 'Annie Lindqvist2',
-    initialsColor: PersonaInitialsColor.lightPink
+    initialsColor: PersonaInitialsColor.lightPink,
   },
   {
     imageUrl: TestImages.personaMale,
@@ -59,97 +62,98 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
+      // eslint-disable-next-line no-alert
+      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
     personaName: 'Alex Lundberg2',
-    initialsColor: PersonaInitialsColor.orange
+    initialsColor: PersonaInitialsColor.orange,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
     personaName: 'Roko Kolar2',
-    initialsColor: PersonaInitialsColor.pink
+    initialsColor: PersonaInitialsColor.pink,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'CB',
     personaName: 'Christian Bergqvist2',
-    initialsColor: PersonaInitialsColor.purple
+    initialsColor: PersonaInitialsColor.purple,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric2',
-    // tslint:disable-next-line:deprecation
-    initialsColor: PersonaInitialsColor.red
+    // eslint-disable-next-line deprecation/deprecation
+    initialsColor: PersonaInitialsColor.red,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Maor Sharett2',
-    initialsColor: PersonaInitialsColor.teal
+    initialsColor: PersonaInitialsColor.teal,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Another A Name',
-    initialsColor: PersonaInitialsColor.blue
+    initialsColor: PersonaInitialsColor.blue,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Another A Name (So Many A names!)',
-    initialsColor: PersonaInitialsColor.darkBlue
+    initialsColor: PersonaInitialsColor.darkBlue,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Another Anecdotal A Name',
-    initialsColor: PersonaInitialsColor.darkGreen
+    initialsColor: PersonaInitialsColor.darkGreen,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Anerobic A Name',
-    initialsColor: PersonaInitialsColor.darkRed
+    initialsColor: PersonaInitialsColor.darkRed,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Aerobic A Name',
-    initialsColor: PersonaInitialsColor.green
+    initialsColor: PersonaInitialsColor.green,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Maor Sharett2',
-    initialsColor: PersonaInitialsColor.lightBlue
+    initialsColor: PersonaInitialsColor.lightBlue,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric2',
-    initialsColor: PersonaInitialsColor.lightGreen
+    initialsColor: PersonaInitialsColor.lightGreen,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Maor Sharett2',
-    initialsColor: PersonaInitialsColor.lightPink
+    initialsColor: PersonaInitialsColor.lightPink,
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric2',
-    initialsColor: PersonaInitialsColor.magenta
+    initialsColor: PersonaInitialsColor.magenta,
   },
   {
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     personaName: 'Maor Sharett2',
-    initialsColor: PersonaInitialsColor.orange
-  }
+    initialsColor: PersonaInitialsColor.orange,
+  },
 ];

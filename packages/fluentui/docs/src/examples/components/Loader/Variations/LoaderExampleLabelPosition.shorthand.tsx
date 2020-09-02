@@ -1,4 +1,4 @@
-import { Grid, Loader } from '@fluentui/react';
+import { Grid, Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const LoaderExampleLabel: React.FC = () => (

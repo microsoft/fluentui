@@ -5,7 +5,12 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
-import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
+import {
+  IComponentPageProps,
+  IComponentPageStyleProps,
+  IComponentPageStyles,
+  IComponentPageSection,
+} from './ComponentPage.types';
 import { getStyles } from './ComponentPage.styles';
 import { showOnlyExamples } from '../../utilities/showOnlyExamples';
 import { getCurrentUrl } from '../../utilities/getCurrentUrl';
@@ -29,13 +34,13 @@ interface IExtendedComponentPageSection extends IComponentPageSection {
 const headingWithEditStackProps: IStackProps = {
   horizontal: true,
   verticalAlign: 'center',
-  horizontalAlign: 'space-between'
+  horizontalAlign: 'space-between',
 };
 
 export class ComponentPageBase extends React.PureComponent<IComponentPageProps> {
   public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true,
-    areBadgesVisible: false
+    areBadgesVisible: false,
   };
 
   private _baseUrl: string;
@@ -94,17 +99,21 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
 
     const sections = [
       { title: 'Overview' },
-      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best Practices' },
+      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best practices' },
       props.exampleCards && { title: 'Variants' },
       props.propertiesTables && { title: 'Implementation' },
       props.isFeedbackVisible && { title: 'Feedback' },
-      ...(props.otherSections || [])
+      ...(props.otherSections || []),
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
       <Stack horizontal wrap tokens={{ childrenGap: '5px 40px', maxWidth: '100%' }} className={classNames.navigation}>
         {sections.map(section => (
-          <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
+          <Link
+            key={section.title}
+            href={this._baseUrl + '#' + _idFromSectionTitle(section.title)}
+            className={classNames.headerLink}
+          >
             {section.title}
           </Link>
         ))}
@@ -130,13 +139,15 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
 
+      /* eslint-disable @fluentui/max-len */
       return (
         <MessageBar>
-          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
-          {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
+          native to the {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
           {componentNameJsx || 'this component'}.
         </MessageBar>
       );
+      /* eslint-enable @fluentui/max-len */
     }
   }
 
@@ -151,7 +162,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           </>
         ),
         wrapperClass: this._styles.implementationSection,
-        titleClass: null
+        titleClass: null,
       });
     }
   }
@@ -172,12 +183,12 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       <div id="BestPractices" className={classNames.bestPracticesSection}>
         {bestPractices &&
           this._getSection({
-            title: 'Best Practices',
+            title: 'Best practices',
             section: bestPractices,
             editUrl: practicesUrl,
             wrapperClass: classNames.usageSection,
             titleClass: classNames.usageHeading,
-            id: null
+            id: null,
           })}
         {!!(dos && donts) && (
           <div className={css(classNames.section, classNames.doSections)}>
@@ -219,7 +230,11 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
 
   private _getFeedback(): JSX.Element | undefined {
     if (this.props.isFeedbackVisible && this.props.feedback) {
-      return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._styles.feedbackSection });
+      return this._getSection({
+        title: 'Feedback',
+        section: this.props.feedback,
+        wrapperClass: this._styles.feedbackSection,
+      });
     }
   }
 
@@ -231,7 +246,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         section: overview,
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
-        titleClass: this._styles.overviewHeading
+        titleClass: this._styles.overviewHeading,
       });
     }
 
@@ -244,7 +259,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       return this._getSection({
         title: 'Accessibility',
         section: accessibility,
-        editUrl: this._getURL('Accessibility', editOverviewUrl)
+        editUrl: this._getURL('Accessibility', editOverviewUrl),
       });
     }
 
@@ -258,13 +273,13 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       wrapperClass = this._styles.variantsSection,
       titleClass = this._styles.variantsTitle,
       id = _idFromSectionTitle(section.title),
-      editUrl
+      editUrl,
     } = section;
     const classNames = this._styles;
     return (
       <div key={id || title} className={css(classNames.section, wrapperClass)}>
         <Stack className={classNames.subHeading} {...headingWithEditStackProps}>
-          <h2 className={css(titleClass)} id={!!id ? id : undefined}>
+          <h2 className={css(titleClass)} id={id || undefined}>
             {title}
           </h2>
           {editUrl && <EditSection title={this.props.title} section={title} url={editUrl} />}
@@ -303,5 +318,5 @@ export const ComponentPage: React.FunctionComponent<IComponentPageProps> = style
   IComponentPageStyleProps,
   IComponentPageStyles
 >(ComponentPageBase, getStyles, undefined, {
-  scope: 'ComponentPage'
+  scope: 'ComponentPage',
 });

@@ -15,7 +15,7 @@ export const OtherPageSection: React.FunctionComponent<IPageSectionProps> = prop
     readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
 
   const editSection = editUrl && (

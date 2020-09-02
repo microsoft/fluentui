@@ -11,13 +11,21 @@ const webpackConfigFilePath = options.webpackConfig || 'webpack.codepen.config.j
 const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
 
 if (fs.existsSync(configPath)) {
-  const ngrok = require('ngrok');
+  let ngrok;
+  try {
+    ngrok = require('ngrok');
+  } catch (err) {
+    // ngrok has a postbuild step which was slowing down yarn install, so it's been removed
+    // from the repo dependency list (since this script is the only place it's used)
+    console.error('This script requires a global install of ngrok: "npm i -g ngrok@3"');
+    process.exit(1);
+  }
   const webpackConfig = require(configPath);
   const compiler = webpack(webpackConfig);
   const devServerOptions = Object.assign({}, webpackConfig.devServer, {
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
   });
   const server = new WebpackDevServer(compiler, devServerOptions);
 
@@ -29,7 +37,7 @@ if (fs.existsSync(configPath)) {
   <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script type="text/javascript" src="${url}/office-ui-fabric-react.js"></script>
-`
+`,
     );
   });
 }

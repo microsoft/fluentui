@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { DrawerPageProps } from './DrawerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/DrawerPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/DrawerPage/';
 
 export const DrawerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -25,16 +25,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/DrawerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/ios/DrawerImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/ios/DrawerImplementation.md') as string,
+        },
       ];
     case 'android':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/DrawerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/android/DrawerImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/android/DrawerImplementation.md') as string,
+        },
       ];
   }
 }

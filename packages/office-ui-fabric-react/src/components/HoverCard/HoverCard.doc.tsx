@@ -16,39 +16,42 @@ const HoverCardEventListenerTargetExampleCode = require('!raw-loader!office-ui-f
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
   componentName: 'HoverCard',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/HoverCard',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/HoverCard',
   examples: [
     {
-      title: 'Example 1: Expanding HoverCard wrapping an element',
+      title: 'Expanding HoverCard wrapping an element',
       code: HoverCardBasicExampleCode,
-      view: <HoverCardBasicExample />
+      view: <HoverCardBasicExample />,
     },
     {
-      title: 'Example 2: Expanding HoverCard using Target, DirectionalHint and custom HotKey',
+      title: 'Expanding HoverCard using target, DirectionalHint and custom hotkey',
       code: HoverCardTargetExampleCode,
-      view: <HoverCardTargetExample />
+      view: <HoverCardTargetExample />,
     },
     {
-      title: 'Example 3: Plain HoverCard wrapping an element',
+      title: 'Plain HoverCard wrapping an element',
       code: HoverCardPlainCardExampleCode,
-      view: <HoverCardPlainCardExample />
+      view: <HoverCardPlainCardExample />,
     },
     {
-      title: 'Example 4: Plain HoverCard with instant dismiss from within the card button click',
+      title: 'Plain HoverCard with instant dismiss from within the card button click',
       code: HoverCardInstantDismissExampleCode,
-      view: <HoverCardInstantDismissExample />
+      view: <HoverCardInstantDismissExample />,
     },
     {
-      title: 'Example 5: HoverCard using eventListenerTarget to trigger card open',
+      title: 'HoverCard using eventListenerTarget to trigger card open',
       code: HoverCardEventListenerTargetExampleCode,
-      view: <HoverCardEventListenerTargetExample />
-    }
+      view: <HoverCardEventListenerTargetExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

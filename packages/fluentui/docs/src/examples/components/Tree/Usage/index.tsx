@@ -20,6 +20,11 @@ const Usage = () => (
       description="A Tree with list accessibility roles."
       examplePath="components/Tree/Usage/TreeAsListExample"
     />
+    <ComponentExample
+      title="Multi select"
+      description="A multiselect Tree."
+      examplePath="components/Tree/Usage/TreeMultiselectExample"
+    />
   </ExampleSection>
 );
 

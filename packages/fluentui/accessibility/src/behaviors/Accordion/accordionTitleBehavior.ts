@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -14,36 +14,34 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-controls=content-id' based on the property 'accordionContentId' to 'content' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'content'.
  */
-const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props => {
+export const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props => {
   const isHeading = /(h\d{1})$/.test(props.as);
   const forcedOpen = props.active && !props.canBeCollapsed;
   return {
     attributes: {
       root: {
         role: isHeading ? undefined : 'heading',
-        'aria-level': isHeading ? undefined : 3
+        'aria-level': isHeading ? undefined : 3,
       },
       content: {
         'aria-expanded': !!props.active,
         'aria-disabled': !!(forcedOpen || props.disabled),
         'aria-controls': props.accordionContentId,
         role: 'button',
-        tabIndex: 0
-      }
+        tabIndex: 0,
+      },
     },
     keyActions: {
       content: {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-        }
-      }
-    }
+          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+        },
+      },
+    },
   };
 };
 
-export default accordionTitleBehavior;
-
-type AccordionTitleBehaviorProps = {
+export type AccordionTitleBehaviorProps = {
   /** Element type. */
   as?: string;
   /** Whether or not the title is in the open state. */

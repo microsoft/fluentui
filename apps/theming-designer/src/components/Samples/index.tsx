@@ -16,6 +16,8 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
+/* eslint-disable no-console */
+
 export interface ISamplesProps {
   backgroundColor: string;
   textColor: string;
@@ -40,10 +42,10 @@ export interface ISamplesState {
 const columnSpace = 48;
 const columns = 3;
 const sampleColumn = mergeStyles({
-  width: (MainPanelNumericalWidth - columnSpace * (columns - 1)) / columns
+  width: (MainPanelNumericalWidth - columnSpace * (columns - 1)) / columns,
 });
 const iconButtonStyles = mergeStyles({
-  color: '#0078D4'
+  color: '#0078D4',
 });
 
 const commandBarItems = [
@@ -52,7 +54,7 @@ const commandBarItems = [
     name: 'New',
     cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
     iconProps: {
-      iconName: 'Add'
+      iconName: 'Add',
     },
     ariaLabel: 'New',
     subMenuProps: {
@@ -61,53 +63,53 @@ const commandBarItems = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'Mail'
+            iconName: 'Mail',
           },
-          ['data-automation-id']: 'newEmailButton'
+          ['data-automation-id']: 'newEmailButton',
         },
         {
           key: 'calendarEvent',
           name: 'Calendar event',
           iconProps: {
-            iconName: 'Calendar'
-          }
-        }
-      ]
-    }
+            iconName: 'Calendar',
+          },
+        },
+      ],
+    },
   },
   {
     key: 'upload',
     name: 'Upload',
     iconProps: {
-      iconName: 'Upload'
+      iconName: 'Upload',
     },
-    href: 'https://dev.office.com/fabric',
-    ['data-automation-id']: 'uploadButton'
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+    ['data-automation-id']: 'uploadButton',
   },
   {
     key: 'share',
     name: 'Share',
     iconProps: {
-      iconName: 'Share'
+      iconName: 'Share',
     },
-    onClick: () => console.log('Share')
+    onClick: () => console.log('Share'),
   },
   {
     key: 'download',
     name: 'Download',
     iconProps: {
-      iconName: 'Download'
+      iconName: 'Download',
     },
-    onClick: () => console.log('Download')
+    onClick: () => console.log('Download'),
   },
   {
     key: 'more',
     name: 'More',
     iconProps: {
-      iconName: 'More'
+      iconName: 'More',
     },
-    onClick: () => console.log('More')
-  }
+    onClick: () => console.log('More'),
+  },
 ];
 
 const commandBarFarItems = [
@@ -115,34 +117,34 @@ const commandBarFarItems = [
     key: 'search',
     ariaLabel: 'Search',
     iconProps: {
-      iconName: 'Search'
+      iconName: 'Search',
     },
-    onClick: () => console.log('Search')
+    onClick: () => console.log('Search'),
   },
   {
     key: 'filter',
     name: 'Filter',
     ariaLabel: 'Filter',
     iconProps: {
-      iconName: 'Filter'
+      iconName: 'Filter',
     },
     iconOnly: true,
-    onClick: () => console.log('Filter')
+    onClick: () => console.log('Filter'),
   },
   {
     key: 'list',
     name: 'List',
     ariaLabel: 'List',
     iconProps: {
-      iconName: 'List'
+      iconName: 'List',
     },
     iconOnly: true,
-    onClick: () => console.log('List')
-  }
+    onClick: () => console.log('List'),
+  },
 ];
 
 export class Samples extends React.Component<ISamplesProps, ISamplesState> {
-  constructor(props: any) {
+  constructor(props: ISamplesProps) {
     super(props);
     this.state = {
       learnMoreLinkDisabled: false,
@@ -157,7 +159,7 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
       bookmarkIconButtonDisabled: false,
       sunnyIconButtonDisabled: false,
       primaryButtonDisabled: false,
-      defaultButtonDisabled: false
+      defaultButtonDisabled: false,
     };
     this._onToggleChange = this._onToggleChange.bind(this);
   }
@@ -178,14 +180,19 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                       Make an impression
                     </Text>
                     <Text variant="medium" styles={{ root: { color: this.props.textColor } }}>
-                      Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to people
-                      inside or outisde your team. Share your ideas, results, and more in this visually compelling format.
+                      Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate
+                      information to people inside or outisde your team. Share your ideas, results, and more in this
+                      visually compelling format.
                     </Text>
                     <Link disabled={this.state.learnMoreLinkDisabled}>
                       Learn more <Icon iconName="ChevronRight" />
                     </Link>
                   </Stack>
-                  <Persona text="Cameron Evans" secondaryText="Senior Researcher at Contoso" presence={PersonaPresence.online} />
+                  <Persona
+                    text="Cameron Evans"
+                    secondaryText="Senior Researcher at Contoso"
+                    presence={PersonaPresence.online}
+                  />
                 </Stack>
               </Stack.Item>
               <Stack.Item className={sampleColumn} grow={1}>
@@ -195,11 +202,15 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                     label="Select one"
                     options={[
                       { key: 'content', text: 'Content' },
-                      { key: 'morecontent', text: 'More content' }
+                      { key: 'morecontent', text: 'More content' },
                     ]}
                     disabled={this.state.selectOneDropdownDisabled}
                   />
-                  <TextField disabled={this.state.textFieldDisabled} label="Enter text here" placeholder="Placeholder" />
+                  <TextField
+                    disabled={this.state.textFieldDisabled}
+                    label="Enter text here"
+                    placeholder="Placeholder"
+                  />
                   <Stack horizontal gap={20}>
                     <Stack gap={13} grow={1}>
                       <div />
@@ -213,16 +224,16 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                         options={[
                           {
                             key: 'A',
-                            text: 'Option 1'
+                            text: 'Option 1',
                           } as IChoiceGroupOption,
                           {
                             key: 'B',
-                            text: 'Option 2'
+                            text: 'Option 2',
                           },
                           {
                             key: 'C',
-                            text: 'Option 3'
-                          }
+                            text: 'Option 3',
+                          },
                         ]}
                         disabled={this.state.choicegroupDisabled}
                       />
@@ -233,7 +244,13 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
               <Stack.Item className={sampleColumn} grow={1}>
                 <Stack gap={32}>
                   <Slider disabled={this.state.sliderDisabled} max={11} />
-                  <Toggle onText="On" offText="Off" inlineLabel label="Toggle for disabled states" onChange={this._onToggleChange} />
+                  <Toggle
+                    onText="On"
+                    offText="Off"
+                    inlineLabel
+                    label="Toggle for disabled states"
+                    onChange={this._onToggleChange}
+                  />
                   <Pivot>
                     <PivotItem headerText="Home" />
                     <PivotItem headerText="Pages" />
@@ -283,7 +300,7 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
       bookmarkIconButtonDisabled: !this.state.bookmarkIconButtonDisabled,
       sunnyIconButtonDisabled: !this.state.sunnyIconButtonDisabled,
       primaryButtonDisabled: !this.state.primaryButtonDisabled,
-      defaultButtonDisabled: !this.state.defaultButtonDisabled
+      defaultButtonDisabled: !this.state.defaultButtonDisabled,
     });
   }
 }

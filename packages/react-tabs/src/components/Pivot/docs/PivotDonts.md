@@ -1,0 +1,4 @@
+- Don’t use on pages which don’t scroll.
+- Don’t use the Pivot to link to a new page.
+- Don’t use the Pivot to link to hidden content.
+- Don’t pass any children of type other than PivotItem to the Pivot component.

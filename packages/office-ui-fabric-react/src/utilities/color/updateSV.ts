@@ -14,14 +14,13 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
   const hex = rgb2hex(r, g, b);
 
   return {
-    a: color.a,
-    b: b,
-    g: g,
-    h: color.h,
-    hex: hex,
-    r: r,
-    s: s,
+    ...color,
+    s,
+    v,
+    r,
+    g,
+    b,
+    hex,
     str: _rgbaOrHexString(r, g, b, color.a, hex),
-    v: v
   };
 }

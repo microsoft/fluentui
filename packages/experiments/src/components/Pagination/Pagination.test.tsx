@@ -22,7 +22,7 @@ describe('Pagination', () => {
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -39,7 +39,7 @@ describe('Pagination', () => {
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

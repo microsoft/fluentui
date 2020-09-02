@@ -33,6 +33,10 @@
   visibility: hidden;
 }
 
+.header {
+  display: block;
+}
+
 .grid {
   display: flex;
   flex-direction: row;
@@ -40,6 +44,15 @@
   align-items: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+
+  &.headerRow {
+    display: block;
+  }
 }
 
 .shimmeredList {
@@ -50,7 +63,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, transparent 30%, $ms-color-whiteTranslucent40 65%, $ms-color-white 100%);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 30%,
+      $ms-color-whiteTranslucent40 65%,
+      $ms-color-white 100%
+    );
   }
 }
 

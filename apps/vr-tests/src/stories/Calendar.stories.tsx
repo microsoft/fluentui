@@ -21,7 +21,7 @@ storiesOf('Calendar', module)
         <Calendar value={date} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 storiesOf('Calendar - No Month Option', module)

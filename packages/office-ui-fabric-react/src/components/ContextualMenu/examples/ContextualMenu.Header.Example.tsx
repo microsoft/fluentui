@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export const ContextualMenuHeaderExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
@@ -12,28 +16,28 @@ const menuItems: IContextualMenuItem[] = [
     itemType: ContextualMenuItemType.Header,
     text: 'Actions',
     itemProps: {
-      lang: 'en-us'
-    }
+      lang: 'en-us',
+    },
   },
   {
     key: 'upload',
     iconProps: {
       iconName: 'Upload',
       style: {
-        color: 'salmon'
-      }
+        color: 'salmon',
+      },
     },
     text: 'Upload',
-    title: 'Upload a file'
+    title: 'Upload a file',
   },
   {
     key: 'rename',
-    text: 'Rename'
+    text: 'Rename',
   },
   {
     key: 'share',
     iconProps: {
-      iconName: 'Share'
+      iconName: 'Share',
     },
     subMenuProps: {
       items: [
@@ -41,50 +45,51 @@ const menuItems: IContextualMenuItem[] = [
           key: 'sharetoemail',
           text: 'Share to Email',
           iconProps: {
-            iconName: 'Mail'
-          }
+            iconName: 'Mail',
+          },
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetotwitter',
           text: 'Share to Twitter',
           iconProps: {
-            iconName: 'Share'
-          }
-        }
-      ]
+            iconName: 'Share',
+          },
+        },
+      ],
     },
-    text: 'Sharing'
+    text: 'Sharing',
+    ariaLabel: 'Sharing. Press enter, space or right arrow keys to open submenu.',
   },
   {
     key: 'navigation',
     itemType: ContextualMenuItemType.Header,
-    text: 'Navigation'
+    text: 'Navigation',
   },
   {
     key: 'properties',
-    text: 'Properties'
+    text: 'Properties',
   },
   {
     key: 'print',
     iconProps: {
-      iconName: 'Print'
+      iconName: 'Print',
     },
-    text: 'Print'
+    text: 'Print',
   },
 
   {
     key: 'Bing',
     text: 'Go to Bing',
     href: 'http://www.bing.com',
-    target: '_blank'
-  }
+    target: '_blank',
+  },
 ];
 
 const menuProps: IContextualMenuProps = {
   shouldFocusOnMount: true,
-  items: menuItems
+  items: menuItems,
 };

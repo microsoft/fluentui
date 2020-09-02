@@ -23,7 +23,7 @@ function execSync(cmd, displayName, cwd = process.cwd()) {
   child_process.execSync(cmd, {
     cwd,
     env,
-    stdio: 'inherit'
+    stdio: 'inherit',
   });
 }
 

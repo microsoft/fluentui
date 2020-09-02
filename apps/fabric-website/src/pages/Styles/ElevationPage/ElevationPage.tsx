@@ -1,16 +1,23 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-import { Markdown, Table, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, Table, IPageSectionProps, MarkdownCode } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ElevationPageProps, depthUsage } from './ElevationPage.doc';
 import * as styles from './ElevationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
 
 export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...ElevationPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <StylesAreaPage
+      {...props}
+      {...ElevationPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -23,29 +30,27 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string}
+                {
+                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string
+                }
               </Markdown>
               <div style={{ marginTop: 12 }}>{_renderDepthsTable()}</div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string}
-            </Markdown>
-          )
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
+          content: 'Coming Soon',
+        },
       ];
   }
 }
@@ -57,47 +62,51 @@ function _renderDepthsTable() {
         {
           title: 'Level',
           rowProperty: 'level',
-          percentWidth: 8
+          percentWidth: 8,
         },
         {
           title: 'Example',
-          overflow: 'visible'
+          overflow: 'visible',
         },
         {
           title: 'Usage',
           rowProperty: 'usage',
-          percentWidth: 25
+          percentWidth: 25,
         },
         {
-          title: 'Core class'
+          title: 'Core class',
         },
         {
           title: 'React variable',
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={[
         {
-          level: '4'
+          level: '4',
         },
         {
-          level: '8'
+          level: '8',
         },
         {
-          level: '16'
+          level: '16',
         },
         {
-          level: '64'
-        }
+          level: '64',
+        },
       ]}
-      /* tslint:disable-next-line jsx-no-lambda */
       formatter={(column, row) => {
         const depth = depthUsage.filter(x => x.level === row.level)[0];
         switch (column.title) {
           case 'Core class':
-            return `ms-depth-${row.level}`;
+            return <MarkdownCode>ms-depth-{row.level}</MarkdownCode>;
           case 'React variable':
-            return `Depths.depth${row.level}`;
+            return (
+              <>
+                <MarkdownCode>DefaultEffects.elevation{row.level}</MarkdownCode> or{' '}
+                <MarkdownCode>Depths.depth{row.level}</MarkdownCode>
+              </>
+            );
           case 'Usage':
             return (
               <ul className={styles.usageList}>

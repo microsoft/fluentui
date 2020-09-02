@@ -10,7 +10,7 @@ const componentPageStyles: IStyleSet<Partial<IComponentPageStyles>> = {
   root: [
     fullWidth(), // Component page has its own padding
     fullHeight(), // Remove padding at bottom of App-content
-    { paddingBottom: 100 } // Pad the content instead
+    { paddingBottom: 100 }, // Pad the content instead
   ],
   body: [
     // Override padding to match this website
@@ -19,20 +19,20 @@ const componentPageStyles: IStyleSet<Partial<IComponentPageStyles>> = {
       selectors: {
         // Specific selectors to override excessive heading padding
         '.ms-Stack.ComponentPage-subHeading h2': { margin: 0 },
-        '.ms-Stack.ComponentPage-doSectionHeader h3': { margin: 0 }
-      }
-    }
+        '.ms-Stack.ComponentPage-doSectionHeader h3': { margin: 0 },
+      },
+    },
   ],
   overviewSection: {
-    paddingTop: 0
-  }
+    paddingTop: 0,
+  },
 };
 
 export const ComponentPage: React.FunctionComponent = props => {
   return (
     <Customizer
       scopedSettings={{
-        ComponentPage: { styles: componentPageStyles }
+        ComponentPage: { styles: componentPageStyles },
       }}
     >
       {props.children}

@@ -5,14 +5,14 @@ export enum RectangleEdge {
   top = 1,
   bottom = -1,
   left = 2,
-  right = -2
+  right = -2,
 }
 
 export enum Position {
   top = 0,
   bottom = 1,
   start = 2,
-  end = 3
+  end = 3,
 }
 export interface IPositionProps {
   target?: Element | MouseEvent | IPoint;
@@ -100,10 +100,17 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
-export interface IPoint {
-  x: number;
-  y: number;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export interface Point {
+  left?: number;
+  top?: number;
+  /** @deprecated Use `left` instead */
+  x?: number;
+  /** @deprecated Use `top` instead */
+  y?: number;
 }
+
+export interface IPoint extends Point {}
 
 export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;

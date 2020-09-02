@@ -11,8 +11,8 @@ const Variations = () => (
     />
     <ComponentExample
       title="Image customizations"
-      description="The image slot inside the Avatar can be customized."
-      examplePath="components/Avatar/Variations/AvatarExampleImageCustomization"
+      description="An Avatar can contain icon."
+      examplePath="components/Avatar/Variations/AvatarExampleIcon"
     />
     <ComponentExample
       title="Label"
@@ -48,6 +48,11 @@ const Variations = () => (
       title="Size"
       description="An Avatar can have different sizes."
       examplePath="components/Avatar/Variations/AvatarExampleSize"
+    />
+    <ComponentExample
+      title="Square"
+      description="An Avatar can have a square shape."
+      examplePath="components/Avatar/Variations/AvatarExampleSquare"
     />
   </ExampleSection>
 );

@@ -18,6 +18,7 @@ exports[`Card Item renders correctly 1`] = `
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -83,6 +84,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -173,6 +175,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -263,6 +266,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -353,6 +357,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -443,6 +448,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -558,6 +564,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -673,6 +680,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -738,6 +746,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -803,6 +812,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }

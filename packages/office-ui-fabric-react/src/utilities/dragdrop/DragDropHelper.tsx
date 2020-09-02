@@ -1,5 +1,3 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { EventGroup, getDocument } from '../../Utilities';
 import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
@@ -53,7 +51,7 @@ export class DragDropHelper implements IDragDropHelper {
   public subscribe(
     root: HTMLElement,
     events: EventGroup,
-    dragDropOptions: IDragDropOptions
+    dragDropOptions: IDragDropOptions,
   ): {
     key: string;
     dispose(): void;
@@ -101,7 +99,7 @@ export class DragDropHelper implements IDragDropHelper {
       const dragDropTarget: IDragDropTarget = {
         root: root,
         options: dragDropOptions,
-        key: key
+        key: key,
       };
 
       isDraggable = this._isDraggable(dragDropTarget);
@@ -112,7 +110,7 @@ export class DragDropHelper implements IDragDropHelper {
           for (const event of eventMap) {
             const handler = {
               callback: event.callback.bind(null, context),
-              eventName: event.eventName
+              eventName: event.eventName,
             };
 
             handlers.push(handler);
@@ -226,7 +224,7 @@ export class DragDropHelper implements IDragDropHelper {
               events.off(root, 'dragend', onDragEnd);
             }
           }
-        }
+        },
       };
 
       this._activeTargets[key] = activeTarget;
@@ -238,7 +236,7 @@ export class DragDropHelper implements IDragDropHelper {
         if (activeTarget) {
           activeTarget.dispose();
         }
-      }
+      },
     };
   }
 
@@ -301,7 +299,7 @@ export class DragDropHelper implements IDragDropHelper {
     const {
       // use buttons property here since ev.button in some edge case is not updating well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons = MOUSEMOVE_PRIMARY_BUTTON
+      buttons = MOUSEMOVE_PRIMARY_BUTTON,
     } = event;
 
     if (this._dragData && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
@@ -319,7 +317,11 @@ export class DragDropHelper implements IDragDropHelper {
         // So, check if the last dropTarget is not a child of the current.
 
         if (this._dragData) {
-          if (this._dragData.dropTarget && this._dragData.dropTarget.key !== key && !this._isChild(root, this._dragData.dropTarget.root)) {
+          if (
+            this._dragData.dropTarget &&
+            this._dragData.dropTarget.key !== key &&
+            !this._isChild(root, this._dragData.dropTarget.root)
+          ) {
             if (this._dragEnterCounts[this._dragData.dropTarget.key] > 0) {
               EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
               EventGroup.raise(root, 'dragenter');
@@ -357,7 +359,7 @@ export class DragDropHelper implements IDragDropHelper {
         clientX: event.clientX,
         clientY: event.clientY,
         eventTarget: event.target,
-        dragTarget: target
+        dragTarget: target,
       };
 
       for (const key of Object.keys(this._activeTargets)) {
@@ -375,9 +377,7 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * determine whether the child target is a descendant of the parent
    */
-  private _isChild(parent: React.ReactInstance, child: React.ReactInstance): boolean {
-    const parentElement = ReactDOM.findDOMNode(parent);
-    let childElement = ReactDOM.findDOMNode(child);
+  private _isChild(parentElement: HTMLElement, childElement: HTMLElement): boolean {
     while (childElement && childElement.parentElement) {
       if (childElement.parentElement === parentElement) {
         return true;
@@ -395,7 +395,8 @@ export class DragDropHelper implements IDragDropHelper {
   private _isDroppable(target: IDragDropTarget): boolean {
     // TODO: take the drag item into consideration to prevent dragging an item into the same group
     const { options } = target;
-    const dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
+    const dragContext =
+      this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
     return !!(options.canDrop && options.canDrop(options.context, dragContext));
   }
 }

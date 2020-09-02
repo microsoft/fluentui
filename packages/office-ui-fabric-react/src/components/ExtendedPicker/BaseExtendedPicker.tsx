@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css } from '../../Utilities';
+import { KeyCodes, css, initializeComponentRef } from '../../Utilities';
 import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -8,7 +8,6 @@ import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPick
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -17,7 +16,8 @@ export interface IBaseExtendedPickerState<T> {
   suggestionItems: T[] | null;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+  extends React.Component<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = React.createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -31,36 +31,33 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
+    initializeComponentRef(this);
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
 
     this.state = {
       queryString: '',
+      // TODO: determine whether this can be removed
+      // eslint-disable-next-line react/no-unused-state
       suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
-        : null
+        : null,
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
     this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
-  // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.state.selectedItems
-      ? this.state.selectedItems
-      : this.selectedItemsList.current
-      ? this.selectedItemsList.current.items
-      : null;
+    return this.state.selectedItems ?? this.selectedItemsList.current?.items ?? null;
   }
 
   public componentDidMount(): void {
     this.forceUpdate();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     if (newProps.floatingPickerProps) {
       this.floatingPickerProps = newProps.floatingPickerProps;
@@ -204,8 +201,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     if (this.floatingPicker.current && this.inputElement) {
-      // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
-      const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
+      // Update the value if the input value is empty or is different than the current inputText from the floatingPicker
+      const shoudUpdateValue =
+        this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
   };
@@ -260,7 +258,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     const currentRenderedQueryString = this.props.currentRenderedQueryString;
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
-      const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+      const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
+        ? (this.props.onItemSelected as any)(item)
+        : item;
 
       if (processedItem === null) {
         return;

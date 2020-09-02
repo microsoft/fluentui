@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItemProps } from '@fluentui/react';
+import { Tree, TreeItemProps } from '@fluentui/react-northstar';
 import { CellMeasurer, CellMeasurerCache, List as ReactVirtualizedList } from 'react-virtualized';
 import getItems from './itemsGenerator';
 
@@ -10,7 +10,7 @@ interface TreeVirtualizerProps {
 function TreeVirtualizer(props: TreeVirtualizerProps) {
   const cache = new CellMeasurerCache({
     defaultHeight: 20,
-    fixedWidth: true
+    fixedWidth: true,
   });
   const [scrollToIndex, setScrollToIndex] = React.useState();
 
@@ -18,13 +18,13 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
     const { renderedItems } = props;
     const { parent } = treeItemProps;
 
-    renderedItems[index].props.onFocusParent(e, treeItemProps);
-
     if (!parent) {
       return;
     }
 
-    const indexOfParent = renderedItems.findIndex((renderedItem: React.ReactElement) => renderedItem.props['id'] === parent['id']);
+    const indexOfParent = renderedItems.findIndex(
+      (renderedItem: React.ReactElement) => renderedItem.props['id'] === parent,
+    );
 
     // If parent already visible, then it should be focused by Tree.
     if (renderedItems[indexOfParent].props['contentRef'].current) {
@@ -43,7 +43,7 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
           style,
           onFocusParent: (e, treeItemProps: TreeItemProps) => {
             handleFocusParent(e, treeItemProps, index);
-          }
+          },
         })}
       </CellMeasurer>
     );

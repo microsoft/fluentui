@@ -4,7 +4,7 @@ import {
   IFolderCoverProps,
   getFolderCoverLayout,
   renderFolderCoverWithLayout,
-  SharedSignal
+  SharedSignal,
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -16,7 +16,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 }
 
 const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> = (
-  props: IFolderCoverWithImageProps
+  props: IFolderCoverWithImageProps,
 ): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
@@ -27,13 +27,13 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
   const imageSize = fitContentToBounds({
     contentSize: originalImageSize,
     boundsSize: contentSize,
-    mode: 'cover'
+    mode: 'cover',
   });
 
   return renderFolderCoverWithLayout(folderCover, {
     children: (
       <img src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />
-    )
+    ),
   });
 };
 
@@ -48,13 +48,13 @@ storiesOf('FolderCover', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Large Default Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
       folderCoverSize="large"
       metadata={20}
@@ -65,7 +65,7 @@ storiesOf('FolderCover', module)
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
       folderCoverSize="small"
       metadata={15}
@@ -75,7 +75,7 @@ storiesOf('FolderCover', module)
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
       folderCoverSize="large"
       folderCoverType="media"
@@ -87,7 +87,7 @@ storiesOf('FolderCover', module)
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
       folderCoverSize="small"
       folderCoverType="media"
@@ -98,7 +98,7 @@ storiesOf('FolderCover', module)
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
       folderCoverSize="small"
       folderCoverType="media"

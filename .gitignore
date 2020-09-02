@@ -2,6 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
+packages/fluentui/*/componentInfo
 packages/fluentui/docs/src/componentInfo
 packages/fluentui/docs/src/componentMenu.json
 packages/fluentui/docs/src/behaviorMenu.json
@@ -11,6 +12,7 @@ packages/fluentui/docs/src/exampleMenus
 packages/fluentui/docs/src/exampleSources
 packages/fluentui/docs/dist/
 packages/fluentui/ability-attributes/src/schema.ts
+stats/
 
 # Windows image file caches
 Thumbs.db
@@ -146,3 +148,11 @@ rush.json
 
 # Copied monaco-editor files
 /packages/monaco-editor/esm
+
+.eslintcache
+
+# Rollup cache
+.rollupcache
+
+# tsdoc
+tsdoc-metadata.json

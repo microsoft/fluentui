@@ -2,63 +2,52 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface IDialogLargeHeaderExampleState {
-  hideDialog: boolean;
-}
+const options = [
+  {
+    key: 'A',
+    text: 'Option A',
+  },
+  {
+    key: 'B',
+    text: 'Option B',
+    checked: true,
+  },
+  {
+    key: 'C',
+    text: 'Option C',
+    disabled: true,
+  },
+];
+const modelProps = {
+  isBlocking: false,
+  styles: { main: { maxWidth: 450 } },
+};
+const dialogContentProps = {
+  type: DialogType.largeHeader,
+  title: 'All emails together',
+  subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.',
+};
 
-export class DialogLargeHeaderExample extends React.Component<{}, IDialogLargeHeaderExampleState> {
-  public state: IDialogLargeHeaderExampleState = { hideDialog: true };
+export const DialogLargeHeaderExample: React.FunctionComponent = () => {
+  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
 
-  public render() {
-    return (
-      <div>
-        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <Dialog
-          hidden={this.state.hideDialog}
-          onDismiss={this._closeDialog}
-          dialogContentProps={{
-            type: DialogType.largeHeader,
-            title: 'All emails together',
-            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          }}
-          modalProps={{
-            isBlocking: false,
-            styles: { main: { maxWidth: 450 } }
-          }}
-        >
-          <ChoiceGroup
-            options={[
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ]}
-          />
-          <DialogFooter>
-            <PrimaryButton onClick={this._closeDialog} text="Save" />
-            <DefaultButton onClick={this._closeDialog} text="Cancel" />
-          </DialogFooter>
-        </Dialog>
-      </div>
-    );
-  }
-
-  private _showDialog = (): void => {
-    this.setState({ hideDialog: false });
-  };
-
-  private _closeDialog = (): void => {
-    this.setState({ hideDialog: true });
-  };
-}
+  return (
+    <>
+      <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
+      <Dialog
+        hidden={hideDialog}
+        onDismiss={toggleHideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={modelProps}
+      >
+        <ChoiceGroup options={options} />
+        <DialogFooter>
+          <PrimaryButton onClick={toggleHideDialog} text="Save" />
+          <DefaultButton onClick={toggleHideDialog} text="Cancel" />
+        </DialogFooter>
+      </Dialog>
+    </>
+  );
+};

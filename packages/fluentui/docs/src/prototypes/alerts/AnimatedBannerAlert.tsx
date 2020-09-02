@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Animation, AlertProps } from '@fluentui/react';
+import { Alert, Animation, AlertProps } from '@fluentui/react-northstar';
 
 interface AnimatedBannerAlertProps extends AlertProps {
   open?: boolean;

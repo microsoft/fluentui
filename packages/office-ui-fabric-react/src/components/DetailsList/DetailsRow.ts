@@ -11,5 +11,5 @@ export const DetailsRow: React.FunctionComponent<IDetailsRowBaseProps> = styled<
   IDetailsRowStyleProps,
   IDetailsRowStyles
 >(DetailsRowBase, getStyles, undefined, {
-  scope: 'DetailsRow'
+  scope: 'DetailsRow',
 });

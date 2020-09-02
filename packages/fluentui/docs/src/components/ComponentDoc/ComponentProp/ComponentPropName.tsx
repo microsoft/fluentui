@@ -1,19 +1,19 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Icon, Popup } from '@fluentui/react';
+import { Popup } from '@fluentui/react-northstar';
 
 export default class ComponentPropName extends React.PureComponent<any, any> {
   static propTypes = {
     name: PropTypes.string,
     required: PropTypes.bool,
-    slot: PropTypes.bool
+    slot: PropTypes.bool,
   };
 
   render() {
     const { name, required, slot } = this.props;
     const slotStyle: React.CSSProperties = {
       color: 'blue',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     };
 
     return (
@@ -24,7 +24,7 @@ export default class ComponentPropName extends React.PureComponent<any, any> {
             content="Required"
             align="center"
             styles={{ fontSize: 'x-small' }}
-            trigger={<Icon styles={{ color: 'red' }} name="asterisk" size="small" />}
+            trigger={<span style={{ color: 'red' }}>*</span>}
           />
         )}
         {slot && (

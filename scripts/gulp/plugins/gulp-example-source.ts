@@ -5,15 +5,14 @@ import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
 
-// TODO (fui repo merge): this script package should not take a dependency through relative paths ideally; this should be inside docs
-import { ExampleSource } from '../../../packages/fluentui/docs/src/types';
+import { ExampleSource } from './util/docs-types';
 import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
 import { getRelativePathToSourceFile } from './util';
 
 const prettierConfig = require('../../../prettier.config');
 
 const ESLint = new CLIEngine({
-  fix: true
+  fix: true,
 });
 const pluginName = 'gulp-example-source';
 
@@ -25,14 +24,14 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     configFile: false,
     plugins: [transformStarImportPlugin],
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
-    sourceType: 'module'
+    sourceType: 'module',
   });
   const prettierResult = prettier.format(babelResult.code, {
     ...prettierConfig,
     trailingComma: 'all',
     printWidth: 100,
     semi: false,
-    parser: 'babel'
+    parser: 'babel',
   });
   // https://eslint.org/docs/developer-guide/nodejs-api#cliengineexecuteontext
   // Results will contain single entry
@@ -41,7 +40,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
   return {
     // result.output is omitted if no fix is available
     js: eslintResult.output || prettierResult,
-    ts: tsSource
+    ts: tsSource,
   };
 };
 
@@ -63,7 +62,7 @@ export default () =>
 
       const sourceFile = new Vinyl({
         path: sourcePath,
-        contents: Buffer.from(JSON.stringify(source, null, 2))
+        contents: Buffer.from(JSON.stringify(source, null, 2)),
       });
       // `gulp-cache` relies on this private entry
       sourceFile._cachedKey = file._cachedKey;

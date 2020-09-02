@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, inputProperties, getNativeProps } from '../../Utilities';
+import {
+  initializeComponentRef,
+  classNamesFunction,
+  getId,
+  inputProperties,
+  getNativeProps,
+  warnDeprecations,
+  warnMutuallyExclusive,
+  FocusRects,
+} from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -9,39 +18,41 @@ export interface IToggleState {
 }
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
+const COMPONENT_NAME = 'Toggle';
 
-export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
+export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IToggleProps>,
-    prevState: Readonly<IToggleState>
+    prevState: Readonly<IToggleState>,
   ): Partial<IToggleState> | null {
     if (nextProps.checked === undefined) {
       return null;
     }
 
     return {
-      checked: !!nextProps.checked
+      checked: !!nextProps.checked,
     };
   }
 
   constructor(props: IToggleProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
-      checked: 'defaultChecked'
+    initializeComponentRef(this);
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      checked: 'defaultChecked',
     });
 
-    this._warnDeprecations({
+    warnDeprecations(COMPONENT_NAME, props, {
       onAriaLabel: 'ariaLabel',
       offAriaLabel: undefined,
-      onChanged: 'onChange'
+      onChanged: 'onChange',
     });
 
     this.state = {
-      checked: !!(props.checked || props.defaultChecked)
+      checked: !!(props.checked || props.defaultChecked),
     };
     this._id = props.id || getId('Toggle');
   }
@@ -62,14 +73,14 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       keytipProps,
       label,
       ariaLabel,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       onAriaLabel,
       offAriaLabel,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       offText,
       onText,
       styles,
-      inlineLabel
+      inlineLabel,
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
@@ -81,7 +92,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       disabled,
       checked,
       inlineLabel,
-      onOffMissing: !onText && !offText
+      onOffMissing: !onText && !offText,
     });
 
     const labelId = `${this._id}-label`;
@@ -90,18 +101,53 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
     // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-    // 3. label
-    // 4. onText (if checked) or offText (if not checked)
+    // 3. label AND stateText, if existent
+
     let labelledById: string | undefined = undefined;
     if (!ariaLabel && !badAriaLabel) {
       if (label) {
         labelledById = labelId;
-      } else if (stateText) {
-        labelledById = stateTextId;
+      }
+      if (stateText) {
+        labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
       }
     }
 
     const ariaRole = this.props.role ? this.props.role : 'switch';
+
+    const renderPill = (keytipAttributes: any = {}) => (
+      <button
+        {...toggleNativeProps}
+        {...keytipAttributes}
+        className={classNames.pill}
+        disabled={disabled}
+        id={this._id}
+        type="button"
+        role={ariaRole}
+        ref={this._toggleButton}
+        aria-disabled={disabled}
+        aria-checked={checked}
+        aria-label={ariaLabel ? ariaLabel : badAriaLabel}
+        data-is-focusable={true}
+        onChange={this._noop}
+        onClick={this._onClick}
+        aria-labelledby={labelledById}
+      >
+        <span className={classNames.thumb} />
+      </button>
+    );
+
+    const pillContent = keytipProps ? (
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+        disabled={disabled}
+      >
+        {(keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
+      </KeytipData>
+    ) : (
+      renderPill()
+    );
 
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
@@ -112,35 +158,16 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         )}
 
         <div className={classNames.container}>
-          <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
-            {(keytipAttributes: any): JSX.Element => (
-              <button
-                {...toggleNativeProps}
-                {...keytipAttributes}
-                className={classNames.pill}
-                disabled={disabled}
-                id={this._id}
-                type="button"
-                role={ariaRole}
-                ref={this._toggleButton}
-                aria-disabled={disabled}
-                aria-checked={checked}
-                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
-                data-is-focusable={true}
-                onChange={this._noop}
-                onClick={this._onClick}
-                aria-labelledby={labelledById}
-              >
-                <span className={classNames.thumb} />
-              </button>
-            )}
-          </KeytipData>
+          {pillContent}
           {stateText && (
+            // This second "htmlFor" property is needed to allow the
+            // toggle's stateText to also trigger a state change when clicked.
             <Label htmlFor={this._id} className={classNames.text} id={stateTextId}>
               {stateText}
             </Label>
           )}
         </div>
+        <FocusRects />
       </RootType>
     );
   }
@@ -152,7 +179,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 
@@ -160,7 +187,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       // Only update the state if the user hasn't provided it.
       if (checkedProp === undefined) {
         this.setState({
-          checked: !checked
+          checked: !checked,
         });
       }
 

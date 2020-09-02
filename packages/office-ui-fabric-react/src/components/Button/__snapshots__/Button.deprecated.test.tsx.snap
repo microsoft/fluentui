@@ -32,7 +32,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -49,7 +48,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;

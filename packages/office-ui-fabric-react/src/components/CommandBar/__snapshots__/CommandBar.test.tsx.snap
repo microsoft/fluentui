@@ -97,7 +97,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -240,7 +239,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -448,7 +446,6 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -591,7 +588,6 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;

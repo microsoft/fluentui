@@ -62,33 +62,44 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"
@@ -138,33 +149,44 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"
@@ -214,33 +236,44 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       role="menuitem"
@@ -290,7 +323,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: auto;
           }
           &::-moz-focus-inner {
@@ -308,7 +340,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -381,7 +412,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="More"
           role="presentation"

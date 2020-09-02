@@ -1,4 +1,4 @@
-import createManager from '../createManager';
+import { createManager } from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type SliderActions = {
@@ -16,10 +16,10 @@ export const createSliderManager = (config: Partial<ManagerConfig<SliderState, S
     ...config,
     state: {
       value: '50',
-      ...config.state
+      ...config.state,
     },
     actions: {
       change: value => () => ({ value }),
-      ...config.actions
-    }
+      ...config.actions,
+    },
   });

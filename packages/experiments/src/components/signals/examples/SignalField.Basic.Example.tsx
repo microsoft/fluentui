@@ -14,7 +14,7 @@ export class SignalFieldBasicExample extends React.Component<{}, ISignalFieldBas
     super(props);
 
     this.state = {
-      mode: 'compact'
+      mode: 'compact',
     };
   }
 
@@ -35,7 +35,7 @@ export class SignalFieldBasicExample extends React.Component<{}, ISignalFieldBas
 
   private _onModeChange = (event: React.MouseEvent<HTMLElement>, checked?: boolean | undefined): void => {
     this.setState({
-      mode: checked ? 'wide' : 'compact'
+      mode: checked ? 'wide' : 'compact',
     });
   };
 }

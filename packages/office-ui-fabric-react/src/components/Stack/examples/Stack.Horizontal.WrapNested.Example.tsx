@@ -10,32 +10,32 @@ const textStyles: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: DefaultPalette.white
+  color: DefaultPalette.white,
 };
 const firstStackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.neutralTertiary
-  }
+    background: DefaultPalette.neutralTertiary,
+  },
 };
 const firstStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themePrimary
+  background: DefaultPalette.themePrimary,
 };
 const secondStackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.neutralSecondary
-  }
+    background: DefaultPalette.neutralSecondary,
+  },
 };
 const secondStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themeDark
+  background: DefaultPalette.themeDark,
 };
 const thirdStackStyles: IStackStyles = {
-  root: {}
+  root: {},
 };
 const thirdStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themeDarker
+  background: DefaultPalette.themeDarker,
 };
 
 // Tokens definition
@@ -51,8 +51,8 @@ export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
   const containerStackStyles: IStackStyles = {
     root: {
       background: DefaultPalette.themeTertiary,
-      width: `${stackWidth}%`
-    }
+      width: `${stackWidth}%`,
+    },
   };
 
   return (

@@ -1,8 +1,8 @@
-import { Dropdown } from '@fluentui/react';
+import { dropdownSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  triggerButton: `.${Dropdown.slotClassNames.triggerButton}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`
+  triggerButton: `.${dropdownSlotClassNames.triggerButton}`,
+  item: (itemIndex: number) => `.${dropdownSlotClassNames.itemsList} li:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -27,8 +27,8 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.triggerButton, keys.downArrow)
         .snapshot('Focuses first item')
         .keys(selectors.triggerButton, keys.downArrow)
-        .snapshot('Focuses second item')
-  ]
+        .snapshot('Focuses second item'),
+  ],
 };
 
 export default config;

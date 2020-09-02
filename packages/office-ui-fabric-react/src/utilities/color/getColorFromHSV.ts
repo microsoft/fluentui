@@ -18,6 +18,7 @@ export function getColorFromHSV(hsv: IHSV, a?: number): IColor {
   const { r, g, b } = hsv2rgb(h, s, v);
   const hex = hsv2hex(h, s, v);
   const str = _rgbaOrHexString(r, g, b, a, hex);
+  const t = MAX_COLOR_ALPHA - a;
 
-  return { a, b, g, h, hex, r, s, str, v };
+  return { a, b, g, h, hex, r, s, str, v, t };
 }

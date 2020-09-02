@@ -1,0 +1,211 @@
+{
+  "name": "@fluentui/react",
+  "entries": [
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react_v7.128.2",
+      "version": "7.128.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react_v7.123.9",
+      "version": "7.123.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dist/sass and dist/css content.",
+            "author": "xgao@microsoft.com",
+            "commit": "d0b7aa6cf848b2abbe9fdb54fd7972bd69bcffff",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react_v7.122.0",
+      "version": "7.122.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react_v7.121.4",
+      "version": "7.121.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react_v7.120.2",
+      "version": "7.120.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 May 2020 23:23:51 GMT",
+      "tag": "@fluentui/react_v7.113.0",
+      "version": "7.113.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Resolving tsconfig paths which were not correctly configured, causing re-exports to fail.",
+            "author": "dzearing@microsoft.com",
+            "commit": "34ad6f157872f1cb89dfd68aa276e09680bb6dbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react_v7.111.1",
+      "version": "7.111.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating tsconfig with added paths.",
+            "author": "dzearing@microsoft.com",
+            "commit": "156c760b3320f32bae20f4955f97269536d10372",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/react_v7.110.5",
+      "version": "7.110.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommonJS paths were pointing to esm paths, now should correctly point to the rigth path.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4c9cac6b9eedd1b5a76c4f95f9a109fde1dc3aba",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/react_v7.106.2",
+      "version": "7.106.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/react_v7.106.0",
+      "version": "7.106.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react_v7.105.4",
+      "version": "7.105.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update docs: Fabric to Fluent",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "44ae97a55b2d7bfdab1044f3f5e5b579fc42cac0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@fluentui/react_v7.105.3",
+      "version": "7.105.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Minor script changes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b00a4fb9a29289adea7cb85463d5fd0b7923c226"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Mar 2020 12:25:01 GMT",
+      "tag": "@fluentui/react_v7.105.2",
+      "version": "7.105.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @fluentui/react major release build which aliases office-ui-fabric-react.",
+            "author": "dzearing@microsoft.com",
+            "commit": "71eab3818cc325cb1058aae90af2977a4ca5559b"
+          }
+        ]
+      }
+    }
+  ]
+}

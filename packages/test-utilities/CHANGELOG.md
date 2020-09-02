@@ -1,7 +1,75 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.1.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.37..@uifabric/test-utilities_v7.1.0)
+
+### Minor changes
+
+- Making safeMount take the callback as optional. ([PR #14599](https://github.com/microsoft/fluentui/pull/14599) by dzearing@hotmail.com)
+
+## [7.0.32](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.32)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.31..@uifabric/test-utilities_v7.0.32)
+
+### Patches
+
+- Fix for the test-utility safeMount to check if wrapper should unmount. ([PR #13973](https://github.com/microsoft/fluentui/pull/13973) by czearing@outlook.com)
+
+## [7.0.31](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.31)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.29..@uifabric/test-utilities_v7.0.31)
+
+### Patches
+
+- Wrap renderer.create() in renderer.act() to trigger React hooks ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
+
+## [7.0.27](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.27)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.21..@uifabric/test-utilities_v7.0.27)
+
+### Patches
+
+- Adding missing peerDependencies ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.0.21](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.17..@uifabric/test-utilities_v7.0.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.0.17](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.17)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.16..@uifabric/test-utilities_v7.0.17)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.0.15
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.0.14
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.6
 Wed, 04 Sep 2019 04:09:58 GMT
 
@@ -78,4 +146,3 @@ Fri, 09 Nov 2018 13:32:57 GMT
 ### Patches
 
 - Publishing bits.
-

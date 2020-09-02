@@ -22,54 +22,55 @@ const PersonaPresenceExampleCode = require('!raw-loader!office-ui-fabric-react/s
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Persona',
   examples: [
     {
       title: 'Persona in various sizes',
       code: PersonaBasicExampleCode,
-      view: <PersonaBasicExample />
+      view: <PersonaBasicExample />,
     },
     {
       title: 'Alternative small personas',
       code: PersonaAlternateExampleCode,
-      view: <PersonaAlternateExample />
+      view: <PersonaAlternateExample />,
     },
     {
       title: 'Persona with initials',
       code: PersonaInitialsExampleCode,
-      view: <PersonaInitialsExample />
+      view: <PersonaInitialsExample />,
     },
     {
       title: 'PersonaCoin colors',
       code: PersonaColorsExampleCode,
-      view: <PersonaColorsExample />
+      view: <PersonaColorsExample />,
     },
     {
       title: 'Rendering custom persona text',
       code: PersonaCustomRenderExampleCode,
-      view: <PersonaCustomRenderExample />
+      view: <PersonaCustomRenderExample />,
     },
     {
       title: 'Rendering custom coin',
       code: PersonaCustomCoinRenderExampleCode,
-      view: <PersonaCustomCoinRenderExample />
+      view: <PersonaCustomCoinRenderExample />,
     },
     {
       title: 'Rendering unknown persona coin',
       code: UnknownPersonaExampleCode,
-      view: <UnknownPersonaExample />
+      view: <UnknownPersonaExample />,
     },
     {
       title: 'Persona Presence',
       code: PersonaPresenceExampleCode,
-      view: <PersonaPresenceExample />
-    }
+      view: <PersonaPresenceExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

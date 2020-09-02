@@ -1,8 +1,8 @@
-import { Button } from '@fluentui/react';
+import { buttonClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  triggerButton: `.${Button.className}[title*="Open popup"]`,
-  closeButton: `.${Button.className}[title*="Close"]`
+  triggerButton: `.${buttonClassName}[title*="Open popup"]`,
+  closeButton: `.${buttonClassName}[title*="Close"]`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -12,8 +12,8 @@ const config: ScreenerTestsConfig = {
         .click(selectors.triggerButton)
         .snapshot('Click on the trigger (opens popup)')
         .click(selectors.closeButton)
-        .snapshot('Click on close button (closes popup)')
-  ]
+        .snapshot('Click on close button (closes popup)'),
+  ],
 };
 
 export default config;

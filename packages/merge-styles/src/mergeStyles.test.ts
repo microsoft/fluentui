@@ -30,6 +30,11 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{right:10px;}');
   });
 
+  it('can register a css variable', () => {
+    mergeStyles({ '--fooBar': 'baz' });
+    expect(_stylesheet.getRules()).toEqual('.css-0{--fooBar:baz;}');
+  });
+
   it('can re-register rules when rtl is flipped', () => {
     const result1 = mergeStyles({ left: 10 });
     expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');
@@ -63,16 +68,23 @@ describe('mergeStyles', () => {
 
     expect(className).toEqual('css-0');
     expect(newClassName).toEqual('css-1');
-    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;color:black;}' + '.css-1{background:red;color:white;}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;color:black;}' + '.css-1{background:red;color:white;}',
+    );
   });
 
   it('can normalize margins', () => {
     mergeStyles({ margin: '4px' }, { marginRight: '8px' });
-    expect(_stylesheet.getRules()).toEqual('.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}',
+    );
   });
 
   it('can merge comma delimitted selectors correctly', () => {
-    mergeStyles({ selectors: { ':hover': { background: 'red' } } }, { selectors: { ':hover, :active': { background: 'blue' } } });
+    mergeStyles(
+      { selectors: { ':hover': { background: 'red' } } },
+      { selectors: { ':hover, :active': { background: 'blue' } } },
+    );
     expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:blue;}.css-0:active{background:blue;}');
   });
 
@@ -89,11 +101,13 @@ describe('mergeStyles', () => {
       background: 'red',
       selectors: {
         '@media screen and (max-width: 100px)': {
-          background: 'green'
-        }
-      }
+          background: 'green',
+        },
+      },
     });
 
-    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}',
+    );
   });
 });

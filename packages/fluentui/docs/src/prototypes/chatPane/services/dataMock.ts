@@ -22,8 +22,8 @@ class ChatMock {
   constructor(
     private options: ChatOptions = {
       userCount: ChatMock.defaultCount,
-      msgCount: ChatMock.defaultCount
-    }
+      msgCount: ChatMock.defaultCount,
+    },
   ) {
     if (this.options.userCount < ChatMock.minUserCount) {
       throw `[ChatMock]: A chat has a minimum of ${ChatMock.minUserCount} users`;
@@ -41,7 +41,7 @@ class ChatMock {
         avatar: internet.avatar(),
         displayName: internet.userName(firstName, lastName),
         email: internet.email(firstName, lastName),
-        status: userStatuses[_.random(userStatuses.length - 1)]
+        status: userStatuses[_.random(userStatuses.length - 1)],
       };
 
       this.usersMap.set(id, user);
@@ -65,7 +65,7 @@ class ChatMock {
         timestamp: timestamp.short,
         timestampLong: timestamp.long,
         isImportant: random.boolean(),
-        withAttachment: random.boolean()
+        withAttachment: random.boolean(),
       };
 
       return message;
@@ -77,7 +77,7 @@ class ChatMock {
       isOneOnOne: this.usersMap.size === ChatMock.minUserCount,
       messages: this.chatMessages,
       members: this.usersMap,
-      title: `${currentUser.firstName} ${currentUser.lastName}`
+      title: `${currentUser.firstName} ${currentUser.lastName}`,
     };
   }
 

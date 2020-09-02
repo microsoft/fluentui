@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import {
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  warnMutuallyExclusive,
+  initializeComponentRef,
+  Async,
+  on,
+  FocusRects,
+} from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
@@ -10,9 +21,10 @@ export interface ISliderState {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
@@ -21,9 +33,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
+  private _async: Async;
+  private _disposables: (() => void)[] = [];
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
@@ -32,18 +46,27 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   constructor(props: ISliderProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
+    warnMutuallyExclusive(COMPONENT_NAME, this.props, {
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
 
-    const value = props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const value =
+      props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
       value: value,
-      renderedValue: undefined
+      renderedValue: undefined,
     };
+  }
+
+  public componentWillUnmount() {
+    this._async.dispose();
+    this._disposeListeners();
   }
 
   public render(): React.ReactElement<{}> {
@@ -60,7 +83,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -76,9 +99,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
-    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps
+      ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
 
     return (
       <div className={classNames.root}>
@@ -107,9 +132,16 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span
+                  className={css(classNames.zeroTick)}
+                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              <span
+                ref={this._thumb}
+                className={classNames.thumb}
+                style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+              />
               {originFromZero ? (
                 <>
                   <span
@@ -145,6 +177,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             </Label>
           )}
         </div>
+        <FocusRects />
       </div>
     ) as React.ReactElement<{}>;
   }
@@ -165,7 +198,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private get renderedValue(): number | undefined {
-    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `value`.
     const { renderedValue = this.value } = this.state;
     return renderedValue;
   }
@@ -181,17 +215,21 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL(this.props.theme) ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
-      this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
+      );
     } else if (event.type === 'touchstart') {
-      this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
+      );
     }
     this._onMouseMoveOrTouchMove(event, true);
   };
@@ -249,7 +287,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
@@ -274,27 +314,32 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValue: undefined
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {
       this.props.onChanged(event, this.state.value as number);
     }
 
-    this._events.off();
+    this._disposeListeners();
+  };
+
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
@@ -303,7 +348,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     let diff: number | undefined = 0;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:

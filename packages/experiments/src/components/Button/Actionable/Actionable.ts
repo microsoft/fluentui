@@ -1,3 +1,4 @@
+import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { composed } from '@uifabric/foundation/lib/next/composed';
 import { ActionableStyles as styles, ActionableTokens as tokens } from './Actionable.styles';
@@ -11,7 +12,7 @@ export const Actionable: React.FunctionComponent<IActionableProps> = composed({
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default Actionable;

@@ -3,7 +3,7 @@
  */
 
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { BaseComponent, css, composeRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { initializeComponentRef, css, composeRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
 import './Accordion.scss';
 import { IAccordion, IAccordionProps } from './Accordion.types';
@@ -13,12 +13,14 @@ export interface IAccordionState {
   isContentVisible?: boolean | undefined;
 }
 
-export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> implements IAccordion {
+export class Accordion extends React.Component<IAccordionProps, IAccordionState> implements IAccordion {
   constructor(props: IAccordionProps) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
-      isContentVisible: false
+      isContentVisible: false,
     };
   }
 
@@ -31,6 +33,7 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
   }
 
   public render(): JSX.Element {
+    // eslint-disable-next-line deprecation/deprecation
     const { onRenderMenu, className, buttonAs, onClick, ...other } = this.props;
     let { menuIconProps } = this.props;
 
@@ -40,7 +43,9 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
       menuIconProps = this.state.isContentVisible ? { iconName: 'ChevronUp' } : { iconName: 'ChevronDown' };
     }
 
-    const onRenderContent = onRenderMenu ? composeRenderFunction(this.props.onRenderContent, onRenderMenu) : this.props.onRenderContent;
+    const onRenderContent = onRenderMenu
+      ? composeRenderFunction(this.props.onRenderContent, onRenderMenu)
+      : this.props.onRenderContent;
 
     return (
       <div className={css('ba-Accordion', this.state.isContentVisible && 'ba-Accordion--contentVisible', className)}>
@@ -52,7 +57,9 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
           aria-expanded={this.state.isContentVisible}
           {...other}
         />
-        {this.state.isContentVisible && <div className={'ba-Accordion-content'}>{onRenderContent(this.props.menuProps)}</div>}
+        {this.state.isContentVisible && (
+          <div className={'ba-Accordion-content'}>{onRenderContent(this.props.menuProps)}</div>
+        )}
       </div>
     );
   }

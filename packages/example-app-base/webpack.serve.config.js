@@ -6,11 +6,11 @@ module.exports = resources.createServeConfig({
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'demo.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
-  }
+    'react-dom': 'ReactDOM',
+  },
 });

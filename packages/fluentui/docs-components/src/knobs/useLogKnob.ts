@@ -5,7 +5,11 @@ import { LogFormatter } from './types';
 
 const defaultFormatter: LogFormatter = (name: string) => `${new Date().toLocaleTimeString()}: ${name}`;
 
-const useLogKnob = <T = (...args: any[]) => any>(name: string, callback?: T, formatter: LogFormatter = defaultFormatter): T => {
+export const useLogKnob = <T = (...args: any[]) => any>(
+  name: string,
+  callback?: T,
+  formatter: LogFormatter = defaultFormatter,
+): T => {
   const { appendLog } = React.useContext(LogContextFunctions);
 
   const proxy = React.useCallback<any>(
@@ -18,10 +22,8 @@ const useLogKnob = <T = (...args: any[]) => any>(name: string, callback?: T, for
 
       return null;
     },
-    [appendLog, callback, name, formatter]
+    [appendLog, callback, name, formatter],
   );
 
   return proxy as T;
 };
-
-export default useLogKnob;

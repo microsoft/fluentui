@@ -8,6 +8,6 @@ export const AnnouncedLazyLoadingPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'Announced - Lazy Loading',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

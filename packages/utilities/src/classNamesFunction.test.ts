@@ -8,39 +8,53 @@ describe('classNamesFunction', () => {
     Stylesheet.getInstance().setConfig({
       onInsertRule: () => {
         /*no-op*/
-      }
+      },
     });
   });
 
   afterEach(() => {
     Stylesheet.getInstance().setConfig({
-      onInsertRule: undefined
+      onInsertRule: undefined,
     });
   });
 
   it('can cache rules', () => {
-    let styleFunctionCalled = false;
+    let styleFunction1Called = false;
+    let styleFunction2Called = false;
     const getClassNames = classNamesFunction<{ a: number; b: string }, { root: IStyle }>();
-    const getStyles = (props: { a: number; b: string }) => {
-      styleFunctionCalled = true;
+    const getStyles1 = (props: { a: number; b: string }) => {
+      styleFunction1Called = true;
       return {
-        root: { width: props.a }
+        root: { width: props.a },
       };
     };
 
-    const classNames = getClassNames(getStyles, { a: 1, b: 'test' });
-    expect(styleFunctionCalled).toEqual(true);
-    styleFunctionCalled = false;
+    const getStyles2 = (props: { a: number; b: string }) => {
+      styleFunction2Called = true;
+      return {
+        root: { height: props.a },
+      };
+    };
 
-    expect(getClassNames(getStyles, { a: 1, b: 'test' })).toEqual(classNames);
-    expect(styleFunctionCalled).toEqual(false);
+    const classNames1 = getClassNames(getStyles1, { a: 1, b: 'test' });
+    const classNames2 = getClassNames(getStyles2, { a: 1, b: 'test' });
+    expect(styleFunction1Called).toEqual(true);
+    expect(styleFunction2Called).toEqual(true);
+    styleFunction1Called = false;
+    styleFunction2Called = false;
 
-    expect(getClassNames(getStyles, { a: 2, b: 'test' })).not.toEqual(classNames);
-    expect(styleFunctionCalled).toEqual(true);
+    expect(getClassNames(getStyles1, { a: 1, b: 'test' })).toEqual(classNames1);
+    expect(styleFunction1Called).toEqual(false);
 
-    styleFunctionCalled = false;
-    getClassNames(getStyles, { a: 2, b: 'test' });
-    expect(styleFunctionCalled).toEqual(false);
+    expect(getClassNames(getStyles2, { a: 1, b: 'test' })).toEqual(classNames2);
+    expect(styleFunction2Called).toEqual(false);
+
+    expect(getClassNames(getStyles1, { a: 2, b: 'test' })).not.toEqual(classNames1);
+    expect(styleFunction1Called).toEqual(true);
+    styleFunction1Called = false;
+
+    getClassNames(getStyles1, { a: 2, b: 'test' });
+    expect(styleFunction1Called).toEqual(false);
   });
 
   describe('ltr/rtl from theme', () => {
@@ -51,7 +65,7 @@ describe('classNamesFunction', () => {
       Stylesheet.getInstance().setConfig({
         onInsertRule: (rule: string) => {
           setRule = rule;
-        }
+        },
       });
     });
 
@@ -61,7 +75,7 @@ describe('classNamesFunction', () => {
     const getClassNames = classNamesFunction<{ theme: {} }, { root: IStyle }>();
     const getStyles = () => {
       return {
-        root: { left: 1 }
+        root: { left: 1 },
       };
     };
 

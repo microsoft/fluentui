@@ -5,8 +5,12 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Types = () => (
   <ExampleSection title="Types">
     <ComponentExample
+      title="Default"
+      description="A default Toolbar."
+      examplePath="components/Toolbar/Types/ToolbarExample"
+    />
+    <ComponentExample
       title="Text editor toolbar"
-      toolbarAriaLabel="Example Text editor"
       description="A Toolbar use case for a text editor."
       examplePath="components/Toolbar/Types/ToolbarExampleEditor"
     />

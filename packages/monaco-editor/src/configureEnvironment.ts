@@ -10,7 +10,9 @@ export interface IMonacoConfig {
   crossDomain?: boolean;
 }
 
+// eslint-disable-next-line no-restricted-globals
 const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {}) as Window & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MonacoEnvironment?: any;
   MonacoConfig?: IMonacoConfig;
   // TODO: remove once fabric-website homepage.htm is updated
@@ -25,7 +27,7 @@ const labelMap: { [key: string]: string } = {
   scss: 'css',
   less: 'css',
   html: 'html',
-  json: 'json'
+  json: 'json',
 };
 
 function getMonacoConfig(): IMonacoConfig | undefined {
@@ -37,7 +39,7 @@ function getMonacoConfig(): IMonacoConfig | undefined {
       ? {
           baseUrl: globalObj.appPath,
           useMinified: globalObj.jsSuffix === '.min.js',
-          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1
+          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1,
         }
       : undefined)
   );
@@ -85,7 +87,7 @@ export function configureEnvironment(config?: IMonacoConfig): void {
         }
       }
       return path;
-    }
+    },
   };
 }
 

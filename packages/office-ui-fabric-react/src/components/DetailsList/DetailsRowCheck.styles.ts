@@ -7,7 +7,7 @@ import { CheckGlobalClassNames } from '../Check/Check.styles';
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
   isDisabled: 'ms-DetailsRow-check--isDisabled',
-  isHeader: 'ms-DetailsRow-check--isHeader'
+  isHeader: 'ms-DetailsRow-check--isHeader',
 };
 
 export const CHECK_CELL_WIDTH = 48;
@@ -44,10 +44,10 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         height: height,
         width: CHECK_CELL_WIDTH,
         padding: 0,
-        margin: 0
-      }
+        margin: 0,
+      },
     ],
 
-    isDisabled: []
+    isDisabled: [],
   };
 };

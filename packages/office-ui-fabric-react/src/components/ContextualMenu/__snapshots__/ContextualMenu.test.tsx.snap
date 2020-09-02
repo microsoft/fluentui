@@ -33,7 +33,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -50,7 +49,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -121,7 +119,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
@@ -139,8 +136,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
       <div
         className=
             ms-Fabric
-            is-focusHidden
-            ms-Fabric--isFocusHidden
             ms-Layer-content
             {
               -moz-osx-font-smoothing: grayscale;
@@ -160,7 +155,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             & textarea {
               font-family: inherit;
             }
-        dir="ltr"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -478,6 +472,9 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                 }
                                 @media only screen and (min-width: 0px) and (max-width: 639px){& {
                                   font-size: 16px;
+                                }
+                                @media screen and (-ms-high-contrast: active){& {
+                                  color: HighlightText;
                                 }
                             data-icon-name="ChevronRight"
                           >

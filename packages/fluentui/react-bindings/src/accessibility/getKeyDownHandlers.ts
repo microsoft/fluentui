@@ -1,14 +1,13 @@
 import { KeyActions } from '@fluentui/accessibility';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
-import shouldHandleOnKeys from './shouldHandleOnKeys';
+import { shouldHandleOnKeys } from './shouldHandleOnKeys';
 import { AccessibilityActionHandlers, AccessibilityKeyHandlers } from './types';
 
-const rtlKeyMap = {
+const rtlKeyMap: Record<number, number> = {
   [keyboardKey.ArrowRight]: keyboardKey.ArrowLeft,
-  [keyboardKey.ArrowLeft]: keyboardKey.ArrowRight
+  [keyboardKey.ArrowLeft]: keyboardKey.ArrowRight,
 };
 
 /**
@@ -18,10 +17,10 @@ const rtlKeyMap = {
  * @param {KeyActions} behaviorActions Mappings of actions and keys defined in Accessibility behavior.
  * @param {boolean} isRtlEnabled Indicates if Left and Right arrow keys should be swapped in RTL mode.
  */
-const getKeyDownHandlers = (
+export const getKeyDownHandlers = (
   componentActionHandlers: AccessibilityActionHandlers,
   behaviorActions: KeyActions,
-  isRtlEnabled?: boolean
+  isRtlEnabled?: boolean,
 ): AccessibilityKeyHandlers => {
   const slotKeyHandlers: AccessibilityKeyHandlers = {};
 
@@ -36,7 +35,8 @@ const getKeyDownHandlers = (
     const handledActions = Object.keys(behaviorSlotActions).filter(actionName => {
       const slotAction = behaviorSlotActions[actionName];
 
-      const actionHasKeyCombinations = Array.isArray(slotAction.keyCombinations) && slotAction.keyCombinations.length > 0;
+      const actionHasKeyCombinations =
+        Array.isArray(slotAction.keyCombinations) && slotAction.keyCombinations.length > 0;
       const actionHandledByComponent = componentHandlerNames.indexOf(actionName) !== -1;
 
       return actionHasKeyCombinations && actionHandledByComponent;
@@ -64,12 +64,10 @@ const getKeyDownHandlers = (
               }
             }
           });
-        }
+        },
       };
     }
   });
 
   return slotKeyHandlers;
 };
-
-export default getKeyDownHandlers;

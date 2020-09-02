@@ -14,9 +14,9 @@ export const Badge = (props: IBadgeProps) => {
       borderRadius: 20,
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
-    className
+    className,
   );
 
   return <RootType className={rootClass}>{children}</RootType>;

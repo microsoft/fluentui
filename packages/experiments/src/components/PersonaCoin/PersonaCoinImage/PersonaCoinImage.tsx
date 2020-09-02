@@ -8,8 +8,8 @@ import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';
 const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
   root: {
     overflow: 'hidden',
-    borderRadius: '50%'
-  }
+    borderRadius: '50%',
+  },
 };
 
 const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null => {
@@ -23,7 +23,7 @@ const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null
     imageAlt = '',
     onPhotoLoadingStateChange,
     imageShouldFadeIn,
-    imageShouldStartVisible
+    imageShouldStartVisible,
   } = props;
 
   return (
@@ -43,5 +43,5 @@ const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null
 
 export const PersonaCoinImage: React.FunctionComponent<IPersonaCoinImageProps> = createComponent(PersonaCoinImageView, {
   displayName: 'PersonaCoinImage',
-  styles: personaCoinImageStyles
+  styles: personaCoinImageStyles,
 });

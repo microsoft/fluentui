@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Popup, Button } from '@fluentui/react';
+import { Popup, Button, buttonClassName, popupContentClassName } from '@fluentui/react-northstar';
 
 export const selectors = {
-  popupContent: Popup.slotClassNames.content,
-  button: Button.className
+  popupContent: popupContentClassName,
+  button: buttonClassName,
 };
 
 const PopupWithoutTriggerExample = () => {
@@ -15,7 +15,7 @@ const PopupWithoutTriggerExample = () => {
         open={open}
         content={{
           content: 'Test Content',
-          styles: { margin: '20px' } // puppeteer performs a click on 0x0 in boxes, so button and popup content should not collide
+          styles: { margin: '20px' }, // puppeteer performs a click on 0x0 in boxes, so button and popup content should not collide
         }}
         onOpenChange={(e, data) => {
           e.stopPropagation();

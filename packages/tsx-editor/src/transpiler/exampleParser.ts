@@ -142,7 +142,7 @@ export function _tryParseExample(example: string, supportedPackages: string[]): 
   return {
     tsCode: example,
     component: example.match(COMPONENT_NAME_REGEX)![1],
-    imports
+    imports,
   };
 }
 
@@ -161,7 +161,7 @@ export function _getImports(example: string): IImport[] {
       text: importMatch[0],
       packageName: _getPackageName(importPath),
       path: importPath,
-      identifiers: _getImportIdentifiers(importMatch[1])
+      identifiers: _getImportIdentifiers(importMatch[1]),
     };
   });
 }

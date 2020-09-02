@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
+import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -12,21 +12,26 @@ const SELECTION_BACKWARD = 'backward';
 /**
  * {@docCategory Autofill}
  */
-export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
   private _isComposing: boolean = false;
+  private _async: Async;
 
   constructor(props: IAutofillProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+
     this._value = props.defaultVisibleValue || '';
     this.state = {
-      displayValue: props.defaultVisibleValue || ''
+      displayValue: props.defaultVisibleValue || '',
     };
   }
 
@@ -63,7 +68,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._inputElement.current;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void {
     if (this.props.updateValueInWillReceiveProps) {
       const updatedInputValue = this.props.updateValueInWillReceiveProps();
@@ -90,7 +94,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
       return;
     }
 
-    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
+    if (
+      this._autoFillEnabled &&
+      value &&
+      suggestedDisplayValue &&
+      this._doesTextStartWith(suggestedDisplayValue, value)
+    ) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -107,10 +116,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+          this._inputElement.current.setSelectionRange(
+            differenceIndex,
+            suggestedDisplayValue.length,
+            SELECTION_BACKWARD,
+          );
         }
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -291,9 +308,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
-        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
+        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue),
       },
-      () => this._notifyInputChange(this._value, composing)
+      () => this._notifyInputChange(this._value, composing),
     );
   };
 
@@ -306,7 +323,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
+    if (
+      suggestedDisplayValue &&
+      inputValue &&
+      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
+      this._autoFillEnabled
+    ) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;

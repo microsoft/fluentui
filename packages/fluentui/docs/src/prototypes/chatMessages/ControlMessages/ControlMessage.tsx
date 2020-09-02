@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Ref, ChatMessageProps, Chat, Icon } from '@fluentui/react';
+import { Ref, ChatMessageProps, Chat } from '@fluentui/react-northstar';
+import { ParticipantAddIcon } from '@fluentui/react-icons-northstar';
 
 interface ControlMessageProps {
   focused?: boolean;
@@ -18,7 +19,7 @@ class ControlMessage extends React.Component<ControlMessageProps> {
   render() {
     return (
       <>
-        {this.props.icon ? <Icon name="participant-add" /> : null}
+        {this.props.icon ? <ParticipantAddIcon /> : null}
         <Ref innerRef={this.messageRef}>
           <Chat.Message {...this.props.message} className="ui-chat__message_control" />
         </Ref>

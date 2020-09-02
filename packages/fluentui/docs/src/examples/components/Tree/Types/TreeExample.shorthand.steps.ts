@@ -1,8 +1,8 @@
-import { TreeItem, TreeTitle } from '@fluentui/react';
+import { treeTitleClassName, treeItemClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeItem: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex})`,
-  treeTitle: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex}) .${TreeTitle.className}`
+  treeItem: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,
+  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -18,8 +18,8 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.treeItem(2), keys.downArrow)
         .snapshot('Focus on keyboard leaf')
         .click(selectors.treeTitle(4))
-        .snapshot('Focus on click leaf')
-  ]
+        .snapshot('Focus on click leaf'),
+  ],
 };
 
 export default config;

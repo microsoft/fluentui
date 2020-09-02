@@ -159,13 +159,23 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * @defaultvalue false
    */
   allowTouchBodyScroll?: boolean;
+
+  /**
+   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
+   * This is an experimental feature that will be graduated to default behavior after testing.
+   * This flag will be removed with the next major release.
+   */
+  enableAriaHiddenSiblings?: boolean;
 }
 
 /**
  * {@docCategory Modal}
  */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
+  Pick<
+    IModalProps,
+    'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'
+  > & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */

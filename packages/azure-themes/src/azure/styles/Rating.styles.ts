@@ -13,22 +13,22 @@ export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> =
           selectors: {
             '&:hover': {
               selectors: {
-                '.ms-RatingStar-back': { color: palette.themePrimary }
-              }
-            }
-          }
-        }
+                '.ms-RatingStar-back': { color: palette.themePrimary },
+              },
+            },
+          },
+        },
     ],
     ratingStarBack: [
       {
-        color: semanticColors.controlOutline
+        color: semanticColors.controlOutline,
       },
       (disabled || readOnly) && {
-        color: semanticColors.controlOutlineDisabled
-      }
+        color: semanticColors.controlOutlineDisabled,
+      },
     ],
     ratingStarFront: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     ratingButton: [
       !disabled &&
@@ -37,11 +37,11 @@ export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> =
             '&:hover ~ .ms-Rating-button': {
               selectors: {
                 '.ms-RatingStar-back': { color: semanticColors.controlOutline },
-                '.ms-RatingStar-front': { color: semanticColors.controlOutline }
-              }
-            }
-          }
-        }
-    ]
+                '.ms-RatingStar-front': { color: semanticColors.controlOutline },
+              },
+            },
+          },
+        },
+    ],
   };
 };

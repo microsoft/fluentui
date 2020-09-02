@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FloatingSuggestions renders FloatingSuggestions correctly 1`] = `
+<div
+  className=
+      ms-BasePicker
+      ms-BaseFloatingPicker
+      ms-FloatingSuggestions
+
+/>
+`;
+
+exports[`FloatingSuggestions renders FloatingSuggestions with suggestions visible false 1`] = `
+<div
+  className=
+      ms-BasePicker
+      ms-BaseFloatingPicker
+      ms-FloatingSuggestions
+
+/>
+`;

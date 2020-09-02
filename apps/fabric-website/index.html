@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-us">
+<html lang="en-us">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no" />
-    <title>Office UI Fabric</title>
-    <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>Fluent UI</title>
+    <link
+      href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
     <style type="text/css">
       body,
       html {
@@ -53,6 +57,85 @@
         outline: none;
       }
     </style>
+    <script type="text/javascript">
+      var appInsights =
+        window.appInsights ||
+        (function(e) {
+          function n(e) {
+            t[e] = function() {
+              var n = arguments;
+              t.queue.push(function() {
+                t[e].apply(t, n);
+              });
+            };
+          }
+          var t = { config: e };
+          t.initialize = !0;
+          var i = document,
+            a = window;
+          setTimeout(function() {
+            var n = i.createElement('script');
+            (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
+              i.getElementsByTagName('script')[0].parentNode.appendChild(n);
+          });
+          try {
+            t.cookie = i.cookie;
+          } catch (e) {}
+          (t.queue = []), (t.version = 2);
+          for (
+            var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
+            r.length;
+
+          )
+            n('track' + r.pop());
+          n('startTrackPage'), n('stopTrackPage');
+          var s = 'Track' + r[0];
+          if (
+            (n('start' + s),
+            n('stop' + s),
+            n('addTelemetryInitializer'),
+            n('setAuthenticatedUserContext'),
+            n('clearAuthenticatedUserContext'),
+            n('flush'),
+            (t.SeverityLevel = {
+              Verbose: 0,
+              Information: 1,
+              Warning: 2,
+              Error: 3,
+              Critical: 4,
+            }),
+            !(
+              !0 === e.disableExceptionTracking ||
+              (e.extensionConfig &&
+                e.extensionConfig.ApplicationInsightsAnalytics &&
+                !0 === e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)
+            ))
+          ) {
+            n('_' + (r = 'onerror'));
+            var o = a[r];
+            (a[r] = function(e, n, i, a, s) {
+              var c = o && o(e, n, i, a, s);
+              return (
+                !0 !== c &&
+                  t['_' + r]({
+                    message: e,
+                    url: n,
+                    lineNumber: i,
+                    columnNumber: a,
+                    error: s,
+                  }),
+                c
+              );
+            }),
+              (e.autoExceptionInstrumented = !0);
+          }
+          return t;
+        })({
+          instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
+        });
+      (window.appInsights = appInsights),
+        appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
+    </script>
   </head>
 
   <body>
@@ -73,7 +156,7 @@
     <script type="text/javascript">
       // @ts-check
       var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
-      var isDev = isLocal || getParameterByName('isDev') === '1';
+      var isDev = isLocal || getParameterByName('dev') === '1' || !!getParameterByName('strict');
       var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
       var devhost = getParameterByName('devhost');
       var entryPointFilename = 'fabric-sitev5';
@@ -89,14 +172,15 @@
         Flight.baseCDNUrl = devhost;
         loadAppScripts();
       } else if (!isLocal) {
-        // Update as new fabric versions and its documentation are supported
+        // Update as new Fluent UI versions and its documentation are supported
         var fabricVersions = [5, 6, 7];
 
         // Get fabricVer from URL param, session value, or latest version in array
-        var fabricVersion =
-          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1];
-        // Put this on a separate line so prettier won't add a trailing comma to the argument (would break IE 11)
-        fabricVersion = Number(fabricVersion);
+        var fabricVersion = Number(
+          getParameterByName('fabricVer') ||
+            window.sessionStorage.getItem('fabricVer') ||
+            fabricVersions[fabricVersions.length - 1]
+        );
 
         // Set session value if it's in array
         if (fabricVersions.indexOf(fabricVersion) > -1) {
@@ -104,7 +188,9 @@
         }
 
         var prefixVer =
-          fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
+          fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
+            ? 'v' + fabricVersion + '-'
+            : '';
         // If a devhost is provided, override the config app path
 
         var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
@@ -159,12 +245,12 @@
 
       function loadAppScripts() {
         // Load app scripts (we don't need to load React because it's bundled)
-        loadScripts([appPath + entryPointFilename + '.js']);
+        loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: isProduction
+          useMinified: !isDev,
         };
       }
 

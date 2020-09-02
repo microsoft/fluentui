@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -11,21 +11,19 @@ import { ListItemBehaviorProps } from './listItemBehavior';
  * Adds attribute 'aria-selected=true' based on the property 'selected'. Based on this screen readers will recognize the selected state of the item.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const selectableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
+export const selectableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'option',
       'aria-selected': !!props.selected,
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
+    },
+  },
 });
-
-export default selectableListItemBehavior;

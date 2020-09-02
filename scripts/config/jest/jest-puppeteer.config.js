@@ -3,8 +3,8 @@ const server = {
   launchTimeout: 10000,
   port: 3456,
   waitOnScheme: {
-    delay: 1000
-  }
+    delay: 1000,
+  },
 };
 
 const e2eServer = process.env.JEST_E2E_SERVER;
@@ -19,10 +19,15 @@ module.exports = {
   ...(e2eServer && { server }),
   launch: {
     ...(profile && {
-      args: ['--flag-switches-begin', '--no-sandbox', `--js-flags=--logfile=${profile} --prof --jitless --no-opt `, '--flag-switches-end']
+      args: [
+        '--flag-switches-begin',
+        '--no-sandbox',
+        `--js-flags=--logfile=${profile} --prof --jitless --no-opt `,
+        '--flag-switches-end',
+      ],
     }),
     dumpio: true,
-    headless
+    headless,
   },
-  browserContext: 'default'
+  browserContext: 'default',
 };

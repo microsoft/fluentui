@@ -3,12 +3,31 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../Utilities';
+import {
+  classNamesFunction,
+  getDocument,
+  arraysEqual,
+  warn,
+  isMac,
+  EventGroup,
+  Async,
+  initializeComponentRef,
+  KeyCodes,
+} from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { ktpTargetFromId, ktpTargetFromSequences, sequencesToID, mergeOverflows } from '../../utilities/keytips/KeytipUtils';
-import { transitionKeysContain, KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import {
+  ktpTargetFromId,
+  ktpTargetFromSequences,
+  sequencesToID,
+  mergeOverflows,
+} from '../../utilities/keytips/KeytipUtils';
+import {
+  transitionKeysContain,
+  KeytipTransitionModifier,
+  IKeytipTransitionKey,
+} from '../../utilities/keytips/IKeytipTransitionKey';
 import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
 
 export interface IKeytipLayerState {
@@ -20,7 +39,7 @@ export interface IKeytipLayerState {
 // Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
   key: isMac() ? 'Control' : 'Meta',
-  modifierKeys: [KeytipTransitionModifier.alt]
+  modifierKeys: [KeyCodes.alt],
 };
 
 // Default exit sequence is the same as the start sequence
@@ -28,7 +47,7 @@ const defaultExitSequence: IKeytipTransitionKey = defaultStartSequence;
 
 // Default return sequence is Escape
 const defaultReturnSequence: IKeytipTransitionKey = {
-  key: 'Escape'
+  key: 'Escape',
 };
 
 const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>();
@@ -37,13 +56,16 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
  * A layer that holds all keytip items
  * {@docCategory Keytips}
  */
-export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
+export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    content: ''
+    content: '',
   };
+
+  private _events: EventGroup;
+  private _async: Async;
 
   private _keytipTree: KeytipTree;
 
@@ -57,23 +79,22 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   private _keyHandled = false;
 
-  // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
+
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
 
     const managerKeytips = [...this._keytipManager.getKeytips()];
     this.state = {
       inKeytipMode: false,
       // Get the initial set of keytips
       keytips: managerKeytips,
-      visibleKeytips: this._getVisibleKeytips(managerKeytips)
+      visibleKeytips: this._getVisibleKeytips(managerKeytips),
     };
 
-    this._keytipTree = new KeytipTree();
-    // Add regular and persisted keytips to the tree
-    for (const uniqueKeytip of this._keytipManager.keytips.concat(this._keytipManager.persistedKeytips)) {
-      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
-    }
+    this._buildTree();
 
     this._currentSequence = '';
 
@@ -127,23 +148,8 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   }
 
   public componentWillUnmount(): void {
-    // Remove window listeners
-    this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'resize', this._onDismiss);
-    this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
-    this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
-    this._events.off(window, 'scroll', this._onDismiss, true /* useCapture */);
-
-    // Remove keytip listeners
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_ADDED, this._onKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_UPDATED, this._onKeytipUpdated);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_REMOVED, this._onKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_ADDED, this._onPersistedKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_REMOVED, this._onPersistedKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
-    this._events.off(this._keytipManager, KeytipEvents.ENTER_KEYTIP_MODE, this._enterKeytipMode);
-    this._events.off(this._keytipManager, KeytipEvents.EXIT_KEYTIP_MODE, this._exitKeytipMode);
+    this._async.dispose();
+    this._events.dispose();
   }
 
   // The below public functions are only public for testing purposes
@@ -285,6 +291,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _enterKeytipMode(): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
+      if (this._keytipManager.delayUpdatingKeytipChange) {
+        this._buildTree();
+        this._setKeytips();
+      }
       this._keytipTree.currentKeytip = this._keytipTree.root;
       // Show children of root
       this.showKeytips(this._keytipTree.getChildren());
@@ -294,6 +304,20 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       if (this.props.onEnterKeytipMode) {
         this.props.onEnterKeytipMode();
       }
+    }
+  }
+
+  private _buildTree(): void {
+    this._keytipTree = new KeytipTree();
+    // Add regular and persisted keytips to the tree
+    for (const id of Object.keys(this._keytipManager.keytips)) {
+      const uniqueKeytip = this._keytipManager.keytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
+    }
+
+    for (const id of Object.keys(this._keytipManager.persistedKeytips)) {
+      const uniqueKeytip = this._keytipManager.persistedKeytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
     }
   }
 
@@ -339,7 +363,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Execute the overflow button's onExecute
     const overflowKeytipNode = this._keytipTree.getNode(sequencesToID(overflowButtonSequences));
     if (overflowKeytipNode && overflowKeytipNode.onExecute) {
-      overflowKeytipNode.onExecute(this._getKtpExecuteTarget(overflowKeytipNode), this._getKtpTarget(overflowKeytipNode));
+      overflowKeytipNode.onExecute(
+        this._getKtpExecuteTarget(overflowKeytipNode),
+        this._getKtpTarget(overflowKeytipNode),
+      );
     }
   }
 
@@ -366,10 +393,6 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which
     let key = ev.key;
     switch (key) {
-      case 'Alt':
-        // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
-        // It can be used as a modifier
-        break;
       case 'Tab':
       case 'Enter':
       case 'Spacebar':
@@ -413,18 +436,18 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @returns List of ModifierKeyCodes that were pressed
    */
   private _getModifierKey(key: string, ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
-    const modifierKeys = [];
+    const modifierKeys: KeytipTransitionModifier[] = [];
     if (ev.altKey && key !== 'Alt') {
-      modifierKeys.push(KeytipTransitionModifier.alt);
+      modifierKeys.push(KeyCodes.alt);
     }
     if (ev.ctrlKey && key !== 'Control') {
-      modifierKeys.push(KeytipTransitionModifier.ctrl);
+      modifierKeys.push(KeyCodes.ctrl);
     }
     if (ev.shiftKey && key !== 'Shift') {
-      modifierKeys.push(KeytipTransitionModifier.shift);
+      modifierKeys.push(KeyCodes.shift);
     }
     if (ev.metaKey && key !== 'Meta') {
-      modifierKeys.push(KeytipTransitionModifier.meta);
+      modifierKeys.push(KeyCodes.leftWindow);
     }
     return modifierKeys.length ? modifierKeys : undefined;
   }
@@ -447,10 +470,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      // Ensure existing children are still shown.
+      this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
+
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
-      // Check to make sure that child of currentKeytip is successfully added to currentKeytip's children and update it if not
-      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node in currentKeytip
-      // when that parent is the currentKeytip
+
+      // Ensure the child of currentKeytip is successfully added to currentKeytip's children and update it if not.
+      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node
+      // in currentKeytip when that parent is the currentKeytip.
       if (
         this._keytipTree.currentKeytip &&
         this._keytipTree.currentKeytip.hasDynamicChildren &&
@@ -538,7 +565,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       if (this._keytipTree.currentKeytip.onExecute) {
         this._keytipTree.currentKeytip.onExecute(
           this._getKtpExecuteTarget(this._keytipTree.currentKeytip),
-          this._getKtpTarget(this._keytipTree.currentKeytip)
+          this._getKtpTarget(this._keytipTree.currentKeytip),
         );
       }
     }
@@ -595,7 +622,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
     const currKtp = this._keytipTree.currentKeytip;
-    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && arraysEqual(keytipProps.keySequences, currKtp.keySequences)) {
+    if (
+      currKtp &&
+      (currKtp.overflowSetSequence || currKtp.persisted) &&
+      arraysEqual(keytipProps.keySequences, currKtp.keySequences)
+    ) {
       return true;
     }
     return false;
@@ -623,11 +654,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   };
 
   /**
-   * Returns duplicates among keytip IDs
-   * If the returned array is empty, no duplicates were found
+   * Returns duplicates among keytip IDs.
+   * If the returned array is empty, no duplicates were found.
    *
    * @param keytipIds - Array of keytip IDs to find duplicates for
-   * @returns - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
+   * @returns - Array of duplicates that were found. Each duplicate will only be added once to this array.
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};

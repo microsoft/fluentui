@@ -1,15 +1,15 @@
 ### Control names
 
-`MSPersonaListView`
+`PersonaListView` in Swift, `MSFPersonaListView` in Objective-C
 
-`MSPersonaCell`
+`PersonaCell` in Swift, `MSFPersonaCell` in Objective-C
 
 ### Source code
 
-[MSPersonaListView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaListView.swift)
+[PersonaListView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/People%20Picker/PersonaListView.swift)
 
-[MSPersonaCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaCell.swift)
+[PersonaCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/People%20Picker/PersonaCell.swift)
 
 ### Sample code
 
-[MSPersonaListView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPersonaListViewDemoController.swift)
+[PersonaListView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/PersonaListViewDemoController.swift)

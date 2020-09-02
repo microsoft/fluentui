@@ -1,13 +1,13 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.12.9",
-  "description": "UI Fabric components for building documentation sites.",
+  "version": "7.15.3",
+  "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -21,19 +21,15 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/color-check": "0.0.0",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
-    "@types/markdown-to-jsx": "6.9.0",
-    "@types/react": "16.8.11",
+    "@types/markdown-to-jsx": "6.11.0",
+    "@types/react": "16.8.25",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.0.6",
-    "es6-map": "^0.1.5",
-    "es6-promise": "^4.1.0",
-    "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
@@ -46,15 +42,15 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/example-data": "^7.0.5",
-    "@uifabric/fluent-theme": "^7.1.28",
-    "@uifabric/react-hooks": "^7.0.15",
-    "@uifabric/set-version": "^7.0.5",
-    "@uifabric/tsx-editor": "^0.11.26",
+    "@uifabric/example-data": "^7.1.3",
+    "@uifabric/fluent-theme": "^7.3.3",
+    "@uifabric/react-hooks": "^7.11.0",
+    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/tsx-editor": "^0.13.3",
     "color-check": "0.0.2",
-    "markdown-to-jsx": "6.6.1",
+    "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.98.0",
+    "office-ui-fabric-react": "^7.134.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0"

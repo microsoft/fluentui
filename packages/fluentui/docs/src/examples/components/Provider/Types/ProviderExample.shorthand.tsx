@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider } from '@fluentui/react';
+import { Provider } from '@fluentui/react-northstar';
 
 const customTheme = { siteVariables: { brand: 'cornflowerblue' } };
 

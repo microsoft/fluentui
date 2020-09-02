@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react';
+import { menuClassName } from '@fluentui/react-northstar';
 
 interface StepsOptions {
   vertical?: boolean;
@@ -6,9 +6,9 @@ interface StepsOptions {
   endItem?: number;
 }
 
-const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`
+export const selectors = {
+  menu: `.${menuClassName}`,
+  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const getScreenerSteps = ({ vertical, startItem = 2, endItem = 3 }: StepsOptions = {}): ScreenerSteps => [
@@ -21,7 +21,7 @@ const getScreenerSteps = ({ vertical, startItem = 2, endItem = 3 }: StepsOptions
       .keys(selectors.item(startItem), vertical ? keys.downArrow : keys.rightArrow)
       .snapshot('Navigates to next item (focus state styles)')
       .keys(selectors.item(endItem), vertical ? keys.upArrow : keys.leftArrow)
-      .snapshot('Navigates to previous item (active and focus state styles)')
+      .snapshot('Navigates to previous item (active and focus state styles)'),
 ];
 
 export default getScreenerSteps;

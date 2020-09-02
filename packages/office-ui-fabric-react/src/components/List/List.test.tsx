@@ -15,7 +15,7 @@ function mockData(count: number = 0): IMockItem[] {
     item = {
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     };
 
     data.push(item);
@@ -101,6 +101,7 @@ describe('List', () => {
         </div>
       );
 
+      // eslint-disable-next-line no-sparse-arrays
       wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
 
       const rows = wrapper.find('.cell');
@@ -117,6 +118,7 @@ describe('List', () => {
         </div>
       );
 
+      // eslint-disable-next-line no-sparse-arrays
       wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
 
       const rows = wrapper.find('.cell');
@@ -131,7 +133,11 @@ describe('List', () => {
       const onRenderCellMock = jest.fn();
       const wrapper = mount(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onRenderCell: onRenderCellMock, onPagesUpdated: (pages: IPage[]) => done() });
+      wrapper.setProps({
+        items: mockData(100),
+        onRenderCell: onRenderCellMock,
+        onPagesUpdated: (pages: IPage[]) => done(),
+      });
 
       expect(onRenderCellMock).toHaveBeenCalledTimes(10);
     });

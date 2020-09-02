@@ -1,4 +1,11 @@
-import { concatStyleSets, ITheme, getTheme, HighContrastSelector, keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import {
+  concatStyleSets,
+  ITheme,
+  getTheme,
+  HighContrastSelector,
+  keyframes,
+  PulsingBeaconAnimationStyles,
+} from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 import { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
 
@@ -10,6 +17,20 @@ const ANIMATION_INNER_DIMENSION = '4px';
 const ANIMATION_OUTER_DIMENSION = '28px';
 const ANIMATION_BORDER_WIDTH = '4px';
 
+const fadeIn = memoizeFunction(() =>
+  keyframes({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  }),
+);
+
+const slideIn = memoizeFunction(() =>
+  keyframes({
+    from: { transform: 'translateX(-10px)' },
+    to: { transform: 'translateX(0)' },
+  }),
+);
+
 export const getStyles = memoizeFunction(
   (
     theme: ITheme = getTheme(),
@@ -17,43 +38,33 @@ export const getStyles = memoizeFunction(
     animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
     beaconColorOne?: IActivityItemProps['beaconColorOne'],
     beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
-    isCompact?: IActivityItemProps['isCompact']
+    isCompact?: IActivityItemProps['isCompact'],
   ): IActivityItemStyles => {
     const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
       beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
       beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
       ANIMATION_INNER_DIMENSION,
       ANIMATION_OUTER_DIMENSION,
-      ANIMATION_BORDER_WIDTH
+      ANIMATION_BORDER_WIDTH,
     );
-
-    const fadeIn: string = keyframes({
-      from: { opacity: 0 },
-      to: { opacity: 1 }
-    });
-
-    const slideIn: string = keyframes({
-      from: { transform: 'translateX(-10px)' },
-      to: { transform: 'translateX(0)' }
-    });
 
     const continuousPulseAnimation = {
       animationName: continuousPulse,
       animationIterationCount: '1',
       animationDuration: '.8s',
-      zIndex: 1
+      zIndex: 1,
     };
 
     const slideInAnimation = {
-      animationName: slideIn,
+      animationName: slideIn(),
       animationIterationCount: '1',
-      animationDuration: '.5s'
+      animationDuration: '.5s',
     };
 
     const fadeInAnimation = {
-      animationName: fadeIn,
+      animationName: fadeIn(),
       animationIterationCount: '1',
-      animationDuration: '.5s'
+      animationDuration: '.5s',
     };
 
     const ActivityItemStyles: IActivityItemStyles = {
@@ -64,9 +75,9 @@ export const getStyles = memoizeFunction(
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
           boxSizing: 'border-box',
-          color: theme.palette.neutralSecondary
+          color: theme.palette.neutralSecondary,
         },
-        isCompact && animateBeaconSignal && fadeInAnimation
+        isCompact && animateBeaconSignal && fadeInAnimation,
       ],
 
       pulsingBeacon: [
@@ -79,13 +90,13 @@ export const getStyles = memoizeFunction(
           height: '0px',
           borderRadius: '225px',
           borderStyle: 'solid',
-          opacity: 0
+          opacity: 0,
         },
-        isCompact && animateBeaconSignal && continuousPulseAnimation
+        isCompact && animateBeaconSignal && continuousPulseAnimation,
       ],
 
       isCompactRoot: {
-        alignItems: 'center'
+        alignItems: 'center',
       },
 
       personaContainer: {
@@ -93,7 +104,7 @@ export const getStyles = memoizeFunction(
         flexWrap: 'wrap',
         minWidth: DEFAULT_PERSONA_SIZE,
         width: DEFAULT_PERSONA_SIZE,
-        height: DEFAULT_PERSONA_SIZE
+        height: DEFAULT_PERSONA_SIZE,
       },
 
       isCompactPersonaContainer: {
@@ -103,14 +114,14 @@ export const getStyles = memoizeFunction(
         height: COMPACT_PERSONA_SIZE,
         width: 'auto',
         minWidth: '0',
-        paddingRight: '6px'
+        paddingRight: '6px',
       },
 
       activityTypeIcon: {
         height: DEFAULT_PERSONA_SIZE,
         fontSize: DEFAULT_ICON_SIZE,
         lineHeight: DEFAULT_ICON_SIZE,
-        marginTop: '3px'
+        marginTop: '3px',
       },
 
       isCompactIcon: {
@@ -132,41 +143,41 @@ export const getStyles = memoizeFunction(
             selectors: {
               [HighContrastSelector]: {
                 border: 'none',
-                margin: '0'
-              }
-            }
-          }
-        }
+                margin: '0',
+              },
+            },
+          },
+        },
       },
 
       activityPersona: {
-        display: 'block'
+        display: 'block',
       },
 
       doublePersona: {
         selectors: {
           ':first-child': {
-            alignSelf: 'flex-end'
-          }
-        }
+            alignSelf: 'flex-end',
+          },
+        },
       },
 
       isCompactPersona: {
         display: 'inline-block',
         width: '8px',
         minWidth: '8px',
-        overflow: 'visible'
+        overflow: 'visible',
       },
 
       activityContent: [
         {
-          padding: '0 8px'
+          padding: '0 8px',
         },
-        isCompact && animateBeaconSignal && slideInAnimation
+        isCompact && animateBeaconSignal && slideInAnimation,
       ],
 
       activityText: {
-        display: 'inline'
+        display: 'inline',
       },
 
       isCompactContent: {
@@ -174,28 +185,28 @@ export const getStyles = memoizeFunction(
         padding: '0 4px',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
-        overflowX: 'hidden'
+        overflowX: 'hidden',
       },
 
       commentText: {
-        color: theme.palette.neutralPrimary
+        color: theme.palette.neutralPrimary,
       },
 
       timeStamp: [
         theme.fonts.tiny,
         {
           fontWeight: 400,
-          color: theme.palette.neutralSecondary
-        }
+          color: theme.palette.neutralSecondary,
+        },
       ],
 
       isCompactTimeStamp: {
         display: 'inline-block',
         paddingLeft: '0.3em', // One space character
-        fontSize: '1em'
-      }
+        fontSize: '1em',
+      },
     };
 
     return concatStyleSets(ActivityItemStyles, customStyles);
-  }
+  },
 );

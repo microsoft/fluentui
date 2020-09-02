@@ -9,12 +9,9 @@ import {
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile,
-  IStyle
+  IStyle,
+  IconFontSizes,
 } from '../../Styling';
-
-// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// import { IStyleFunctionOrObject } from '../../Utilities';
-// import { IButtonStyles, IButtonStyleProps } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -39,7 +36,7 @@ const GlobalClassNames = {
   largeFixed: 'ms-Panel--fixed',
   extraLarge: 'ms-Panel--xl',
   custom: 'ms-Panel--custom',
-  customNear: 'ms-Panel--customLeft'
+  customNear: 'ms-Panel--customLeft',
 };
 
 const panelWidth = {
@@ -49,7 +46,7 @@ const panelWidth = {
   sm: 340,
   md1: 592,
   md2: 644,
-  lg: 940
+  lg: 940,
 };
 
 const panelMargin = {
@@ -57,47 +54,47 @@ const panelMargin = {
   none: 0,
   md: 48,
   lg: 428,
-  xl: 176
+  xl: 176,
 };
 
 // Following consts are used below in `getPanelBreakpoints()` function to provide
 // necessary fallbacks for different types of Panel in different breakpoints.
 const smallPanelSelectors = {
   [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
-    width: panelWidth.sm
-  }
+    width: panelWidth.sm,
+  },
 };
 
 const mediumPanelSelectors = {
   [`@media (min-width: ${ScreenWidthMinLarge}px)`]: {
-    width: panelWidth.md1
+    width: panelWidth.md1,
   },
   [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
-    width: panelWidth.md2
-  }
+    width: panelWidth.md2,
+  },
 };
 
 const largePanelSelectors = {
   [`@media (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
     left: panelMargin.md,
-    width: panelWidth.auto
+    width: panelWidth.auto,
   },
   [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-    left: panelMargin.lg
-  }
+    left: panelMargin.lg,
+  },
 };
 
 const largeFixedPanelSelectors = {
   [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
     left: panelMargin.auto,
-    width: panelWidth.lg
-  }
+    width: panelWidth.lg,
+  },
 };
 
 const extraLargePanelSelectors = {
   [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-    left: panelMargin.xl
-  }
+    left: panelMargin.xl,
+  },
 };
 
 // Make sure Panels have fallbacks to different breakpoints by reusing same selectors.
@@ -111,20 +108,20 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
   switch (type) {
     case PanelType.smallFixedFar:
       selectors = {
-        ...smallPanelSelectors
+        ...smallPanelSelectors,
       };
       break;
     case PanelType.medium:
       selectors = {
         ...smallPanelSelectors,
-        ...mediumPanelSelectors
+        ...mediumPanelSelectors,
       };
       break;
     case PanelType.large:
       selectors = {
         ...smallPanelSelectors,
         ...mediumPanelSelectors,
-        ...largePanelSelectors
+        ...largePanelSelectors,
       };
       break;
     case PanelType.largeFixed:
@@ -132,7 +129,7 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
         ...smallPanelSelectors,
         ...mediumPanelSelectors,
         ...largePanelSelectors,
-        ...largeFixedPanelSelectors
+        ...largeFixedPanelSelectors,
       };
       break;
     case PanelType.extraLarge:
@@ -140,7 +137,7 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
         ...smallPanelSelectors,
         ...mediumPanelSelectors,
         ...largePanelSelectors,
-        ...extraLargePanelSelectors
+        ...extraLargePanelSelectors,
       };
       break;
     default:
@@ -154,24 +151,8 @@ const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
   paddingLeft: '24px',
-  paddingRight: '24px'
+  paddingRight: '24px',
 };
-
-// // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
-//   const { theme } = props;
-//   return () => ({
-//     root: {
-//       height: 'auto',
-//       width: '44px',
-//       color: theme.palette.neutralSecondary,
-//       fontSize: IconFontSizes.large
-//     },
-//     rootHovered: {
-//       color: theme.palette.neutralPrimary
-//     }
-//   });
-// }
 
 export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const {
@@ -187,7 +168,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isHiddenOnDismiss,
     hasCustomNavigation,
     theme,
-    type = PanelType.smallFixedFar
+    type = PanelType.smallFixedFar,
   } = props;
   const { effects, fonts, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -205,26 +186,26 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
+        bottom: 0,
       },
       isCustomPanel && isOnRightSide && classNames.custom,
       isCustomPanel && !isOnRightSide && classNames.customNear,
-      className
+      className,
     ],
     overlay: [
       {
         pointerEvents: 'auto',
-        cursor: 'pointer'
+        cursor: 'pointer',
       },
       isOpen && isAnimating && AnimationClassNames.fadeIn100,
-      !isOpen && isAnimating && AnimationClassNames.fadeOut100
+      !isOpen && isAnimating && AnimationClassNames.fadeOut100,
     ],
     hiddenPanel: [
       !isOpen &&
         !isAnimating &&
         isHiddenOnDismiss && {
-          visibility: 'hidden'
-        }
+          visibility: 'hidden',
+        },
     ],
     main: [
       classNames.main,
@@ -240,66 +221,57 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         WebkitOverflowScrolling: 'touch',
         bottom: 0,
         top: 0,
-        // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
+        // left, right, width are overridden depending on the type of the Panel and the screen breakpoint.
         left: panelMargin.auto,
         right: panelMargin.none,
         width: panelWidth.full,
         selectors: {
           [HighContrastSelector]: {
             borderLeft: `3px solid ${semanticColors.variantBorder}`,
-            borderRight: `3px solid ${semanticColors.variantBorder}`
+            borderRight: `3px solid ${semanticColors.variantBorder}`,
           },
-          ...getPanelBreakpoints(type)
-        }
+          ...getPanelBreakpoints(type),
+        },
       },
       type === PanelType.smallFluid && {
-        left: panelMargin.none
+        left: panelMargin.none,
       },
       type === PanelType.smallFixedNear && {
         left: panelMargin.none,
         right: panelMargin.auto,
-        width: panelWidth.xs
+        width: panelWidth.xs,
       },
       type === PanelType.customNear && {
         right: 'auto',
-        left: 0
+        left: 0,
       },
       isCustomPanel && {
-        maxWidth: '100vw'
+        maxWidth: '100vw',
       },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
-      focusTrapZoneClassName
+      focusTrapZoneClassName,
     ],
     commands: [
       classNames.commands,
       {
-        marginTop: 18
+        marginTop: 18,
       },
       hasCustomNavigation && {
-        marginTop: 'inherit'
-      }
+        marginTop: 'inherit',
+      },
     ],
     navigation: [
       classNames.navigation,
       {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end',
       },
       hasCustomNavigation && {
-        height: commandBarHeight
-      }
-    ],
-    closeButton: [
-      classNames.closeButton,
-      {
-        marginRight: 14
+        height: commandBarHeight,
       },
-      hasCustomNavigation && {
-        marginRight: 0
-      }
     ],
     contentInner: [
       classNames.contentInner,
@@ -307,19 +279,23 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
-        overflowY: 'hidden'
-      }
+        overflowY: 'hidden',
+      },
     ],
     header: [
       classNames.header,
       sharedPaddingStyles,
       {
-        flexShrink: 1
+        alignSelf: 'flex-start',
       },
+      hasCloseButton &&
+        !hasCustomNavigation && {
+          flexGrow: 1,
+        },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
-        flexShrink: 0
-      }
+        flexShrink: 0,
+      },
     ],
     headerText: [
       classNames.headerText,
@@ -330,25 +306,25 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         overflowWrap: 'break-word',
         wordWrap: 'break-word',
         wordBreak: 'break-word',
-        hyphens: 'auto'
+        hyphens: 'auto',
       },
-      headerClassName
+      headerClassName,
     ],
     scrollableContent: [
       classNames.scrollableContent,
       {
-        overflowY: 'auto'
+        overflowY: 'auto',
       },
       isFooterAtBottom && {
-        flexGrow: 1
-      }
+        flexGrow: 1,
+      },
     ],
     content: [
       classNames.content,
       sharedPaddingStyles,
       {
-        paddingBottom: 20
-      }
+        paddingBottom: 20,
+      },
     ],
     footer: [
       classNames.footer,
@@ -356,23 +332,40 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         // Ensure that footer doesn't shrink if screen is too small
         flexShrink: 0,
         borderTop: '1px solid transparent',
-        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
+        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
       },
       isFooterSticky && {
         background: semanticColors.bodyBackground,
-        borderTopColor: semanticColors.variantBorder
-      }
+        borderTopColor: semanticColors.variantBorder,
+      },
     ],
     footerInner: [
       classNames.footerInner,
       sharedPaddingStyles,
       {
         paddingBottom: 16,
-        paddingTop: 16
-      }
-    ]
-    // subComponentStyles: {
-    //   iconButton: getIconButtonStyles(props)
-    // }
+        paddingTop: 16,
+      },
+    ],
+    subComponentStyles: {
+      closeButton: {
+        root: [
+          classNames.closeButton,
+          {
+            marginRight: 14,
+            color: theme.palette.neutralSecondary,
+            fontSize: IconFontSizes.large,
+          },
+          hasCustomNavigation && {
+            marginRight: 0,
+            height: 'auto',
+            width: '44px',
+          },
+        ],
+        rootHovered: {
+          color: theme.palette.neutralPrimary,
+        },
+      },
+    },
   };
 };

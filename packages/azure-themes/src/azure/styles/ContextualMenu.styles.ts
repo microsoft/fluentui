@@ -2,15 +2,16 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
-  IContextualMenuItemStyles
+  IContextualMenuItemStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Depths } from '../AzureDepths';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     subComponentStyles: {
@@ -23,37 +24,51 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           boxShadow: Depths.depth8,
           selectors: {
             '.ms-Callout-beak': {
-              backgroundColor: semanticColors.inputBackground
-            }
-          }
-        }
+              backgroundColor: semanticColors.inputBackground,
+            },
+          },
+        },
       },
       menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
         return {
           root: [
             {
-              fontSize: FontSizes.size12
-            }
+              fontSize: theme.fonts.medium.fontSize,
+              selectors: {
+                '&:hover': {
+                  backgroundColor: semanticColors.buttonBackgroundHovered,
+                  color: semanticColors.buttonTextHovered,
+                  selectors: {
+                    '.ms-ContextualMenu-icon': {
+                      color: extendedSemanticColors.iconButtonFillHovered,
+                    },
+                  },
+                },
+                '.ms-ContextualMenu-icon': {
+                  color: extendedSemanticColors.iconButtonFill,
+                },
+              },
+            },
           ],
           splitPrimary: {
-            fontSize: FontSizes.size12
+            fontSize: theme.fonts.medium.fontSize,
           },
           divider: {
-            backgroundColor: semanticColors.inputBorder
+            backgroundColor: semanticColors.inputBorder,
           },
           iconColor: {
-            color: semanticColors.focusBorder
+            color: semanticColors.focusBorder,
           },
           item: {
             selectors: {
               '.is-expanded': {
                 backgroundColor: semanticColors.menuItemBackgroundHovered,
-                color: semanticColors.inputText
-              }
-            }
-          }
+                color: semanticColors.inputText,
+              },
+            },
+          },
         };
-      }
-    }
+      },
+    },
   };
 };

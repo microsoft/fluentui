@@ -6,7 +6,6 @@ import { FabricDecoratorTall } from '../utilities';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
-// tslint:disable:max-line-length
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
@@ -34,7 +33,7 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (
@@ -42,7 +41,7 @@ storiesOf('TeachingBubble', module)
         hasSmallHeadline={true}
         hasCloseButton={true}
         primaryButtonProps={{
-          children: 'Got it'
+          children: 'Got it',
         }}
         headline="Discover what’s trending around you"
       >

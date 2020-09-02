@@ -1,0 +1,213 @@
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
+
+/**
+  * Slot definitions
+  *
+  * Slot definitions must align to the names of the slots themselves. They should:
+  *
+  * 1. Contain the actual css property definitions (E.g. background-color: {value})
+  * 2. Property definitions should map to tokens using the format: {component}-{property}
+  * 3. Avoid hard coding values unless there are absolutely no use cases to change
+  *    the property value.
+  * 4. Order hardcoded css values first, tokens based second. This way we can identify
+  *    what is hardcoded easily.
+ **/
+
+.root {
+  cursor: pointer;
+  align-items: center;
+  border-style: solid;
+  display: inline-flex;
+  justify-content: center;
+  outline: none;
+  position: relative;
+  user-select: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+
+  background: var(--button-background, white);
+  color: var(--button-contentColor, #2c2621);
+
+  border-color: var(--button-borderColor);
+  border-radius: var(--button-borderRadius);
+  border-width: var(--button-borderWidth);
+  box-shadow: var(--button-boxShadow);
+
+  width: var(--button-width);
+  height: var(--button-height);
+  min-height: var(--button-minHeight);
+
+  cursor: pointer;
+  padding: var(--button-padding);
+  transition: var(--button-transition);
+  white-space: var(--button-whiteSpace, nowrap);
+
+  font-family: var(--button-fontFamily);
+  font-size: var(--button-fontSize);
+  font-weight: var(--button-fontWeight);
+
+  @include focus-border(
+    $padding: -1px,
+    $color: var(--button-focusColor),
+    $thickness: var(--button-focusWidth, 2px),
+    $radius: var(--button-borderRadius)
+  );
+  @include focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: var(--button-focusInnerColor));
+
+  /**
+  * Modifiers
+  *
+  * Modifiers must align to the props on the component. They should:
+  *
+  * 1. Redefine the values for {component}-{property} tokens.
+  * 2. Map property definitions to variables using the format: {component}-{property}
+  * 3. Avoid defining styles directly.
+ **/
+  &._primary {
+    --button-background: var(--accent-background);
+    --button-borderColor: var(--accent-borderColor);
+    --button-contentColor: var(--accent-contentColor);
+    --button-iconColor: var(--accent-iconColor);
+
+    --button-hovered-background: var(--accent-hovered-background);
+    --button-hovered-borderColor: var(--accent-hovered-borderColor);
+    --button-hovered-contentColor: var(--accent-hovered-contentColor);
+    --button-hovered-iconColor: var(--accent-hovered-iconColor);
+
+    --button-focused-background: var(--accent-focused-background);
+    --button-focused-borderColor: var(--accent-focused-borderColor);
+    --button-focused-contentColor: var(--accent-focused-contentColor);
+    --button-focused-iconColor: var(--accent-focused-iconColor);
+
+    --button-pressed-background: var(--accent-pressed-background);
+    --button-pressed-borderColor: var(--accent-pressed-borderColor);
+    --button-pressed-contentColor: var(--accent-pressed-contentColor);
+    --button-pressed-iconColor: var(--accent-pressed-iconColor);
+
+    --button-disabled-background: var(--accent-disabled-background);
+    --button-disabled-borderColor: var(--accent-disabled-borderColor);
+    --button-disabled-contentColor: var(--accent-disabled-contentColor);
+    --button-disabled-iconColor: var(--accent-disabled-iconColor);
+  }
+
+  &._ghost {
+    --button-background: var(--ghost-background);
+    --button-borderColor: var(--ghost-borderColor);
+    --button-contentColor: var(--ghost-contentColor);
+    --button-iconColor: var(--ghost-iconColor);
+
+    --button-disabled-background: var(--ghost-disabled-background);
+    --button-disabled-borderColor: var(--ghost-disabled-borderColor);
+    --button-disabled-contentColor: var(--ghost-disabled-contentColor);
+    --button-disabled-iconColor: var(--ghost-disabled-iconColor);
+
+    --button-focused-background: var(--ghost-focused-background);
+    --button-focused-borderColor: var(--ghost-focused-borderColor);
+    --button-focused-contentColor: var(--ghost-focused-contentColor);
+    --button-focused-iconColor: var(--ghost-focused-iconColor);
+
+    --button-hovered-background: var(--ghost-hovered-background);
+    --button-hovered-borderColor: var(--ghost-hovered-borderColor);
+    --button-hovered-contentColor: var(--ghost-hovered-contentColor);
+    --button-hovered-iconColor: var(--ghost-hovered-iconColor);
+
+    --button-pressed-background: var(--ghost-pressed-background);
+    --button-pressed-borderColor: var(--ghost-pressed-borderColor);
+    --button-pressed-contentColor: var(--ghost-pressed-contentColor);
+    --button-pressed-iconColor: var(--ghost-pressed-iconColor);
+  }
+
+  &._iconOnly {
+    --button-width: var(--button-height, var(--button-minHeight));
+    --button-padding: 0;
+  }
+
+  &._circular {
+    --button-borderRadius: 50000px;
+  }
+
+  &._fluid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // TODO: confirm if we should support size prop.
+  &._size_smallest {
+    --button-minHeight: var(--button-size-smallest);
+  }
+
+  &._size_smaller {
+    --button-minHeight: var(--button-size-smaller);
+  }
+
+  &._size_small {
+    --button-minHeight: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-minHeight: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-minHeight: var(--button-size-larger);
+  }
+
+  &._size_largest {
+    --button-minHeight: var(--button-size-largest);
+  }
+
+  &._disabled {
+    pointer-events: none;
+    opacity: var(--button-disabled-opacity);
+    background-color: var(--button-disabled-background);
+    color: var(--button-disabled-contentColor);
+    border-color: var(--button-disabled-borderColor);
+    box-shadow: var(--button-disabled-boxShadow);
+  }
+}
+
+.icon {
+  color: var(--button-iconColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-iconSize);
+  height: var(--button-iconSize);
+  font-size: var(--button-iconSize, inherit);
+  font-weight: normal;
+
+  ._disabled & {
+    color: var(--button-disabled-iconColor);
+  }
+}
+
+/* selectors */
+
+.root > *:not(:first-child) {
+  margin-left: var(--button-contentGap);
+}
+
+.root:hover {
+  background: var(--button-hovered-background, var(--button-background));
+  color: var(--button-hovered-contentColor, var(--button-contentColor));
+  border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+  box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+
+  .icon {
+    color: var(--button-hovered-iconColor, var(--button-iconColor));
+  }
+}
+
+.root:active {
+  background: var(--button-pressed-background, var(--button-hovered-background));
+  color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+  border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+  box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+
+  transform: var(--button-pressed-transform);
+  transition: var(--button-pressed-transition);
+
+  .icon {
+    color: var(--button-pressed-iconColor, var(--button-iconColor));
+  }
+}

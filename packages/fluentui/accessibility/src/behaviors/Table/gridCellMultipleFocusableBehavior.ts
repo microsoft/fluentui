@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneDirection } from '../../focusZone/types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @specification
@@ -10,25 +10,23 @@ import * as keyboardKey from 'keyboard-key';
  * Provides arrow key navigation in bidirectional direction.
  * Triggers 'focusCell' action with 'Escape' on 'root'.
  */
-const gridCellMultipleFocusableBehavior: Accessibility = props => ({
+export const gridCellMultipleFocusableBehavior: Accessibility = props => ({
   attributes: {
     root: {
       role: 'gridcell',
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
   },
   focusZone: {
     props: {
-      direction: FocusZoneDirection.bidirectional
-    }
+      direction: FocusZoneDirection.bidirectional,
+    },
   },
   keyActions: {
     root: {
       focusCell: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Escape }],
+      },
+    },
+  },
 });
-
-export default gridCellMultipleFocusableBehavior;

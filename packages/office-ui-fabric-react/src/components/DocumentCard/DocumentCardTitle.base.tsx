@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IDocumentCardTitleProps, IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
+import { Async, EventGroup, classNamesFunction } from '../../Utilities';
+import {
+  IDocumentCardTitleProps,
+  IDocumentCardTitleStyleProps,
+  IDocumentCardTitleStyles,
+} from './DocumentCardTitle.types';
 import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
@@ -24,21 +29,28 @@ const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
+export class DocumentCardTitleBase extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
   private _measureTitleElement = React.createRef<HTMLDivElement>();
 
   private _titleTruncationTimer: number;
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
 
+  private _async: Async;
+  private _events: EventGroup;
+
   constructor(props: IDocumentCardTitleProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
     this.state = {
       truncatedTitleFirstPiece: '',
       truncatedTitleSecondPiece: '',
       previousTitle: props.title,
-      needMeasurement: !!props.shouldTruncate
+      needMeasurement: !!props.shouldTruncate,
     };
   }
 
@@ -49,7 +61,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
         truncatedTitleSecondPiece: undefined,
         clientWidth: undefined,
         previousTitle: this.props.title,
-        needMeasurement: !!this.props.shouldTruncate
+        needMeasurement: !!this.props.shouldTruncate,
       });
     }
 
@@ -70,7 +82,8 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
   }
 
   public componentWillUnmount(): void {
-    this._events.off(window, 'resize', this._updateTruncation);
+    this._events.dispose();
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -80,13 +93,18 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      showAsSecondaryTitle
+      showAsSecondaryTitle,
     });
 
     let documentCardTitle;
     if (needMeasurement) {
       documentCardTitle = (
-        <div className={this._classNames.root} ref={this._measureTitleElement} title={title} style={{ whiteSpace: 'nowrap' }}>
+        <div
+          className={this._classNames.root}
+          ref={this._measureTitleElement}
+          title={title}
+          style={{ whiteSpace: 'nowrap' }}
+        >
           {title}
         </div>
       );
@@ -108,7 +126,8 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
     return documentCardTitle;
   }
 
-  // Truncate logic here way can't handle the case that chars with different widths are mixed very well, let _shrinkTitle take care of that.
+  // Truncate logic here way can't handle the case that chars with different widths are mixed very well.
+  // Let _shrinkTitle take care of that.
   private _truncateTitle = (): void => {
     if (!this.state.needMeasurement) {
       return;
@@ -126,7 +145,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       if (style.width && style.lineHeight && style.height) {
         const { clientWidth, scrollWidth } = element;
         const lines: number = Math.floor(
-          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10)
+          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10),
         );
 
         // Use overflow to predict truncated length.
@@ -148,7 +167,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
             truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
             clientWidth,
-            needMeasurement: false
+            needMeasurement: false,
           });
         }
       }
@@ -172,7 +191,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       ) {
         this.setState({
           truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1),
         });
       }
     }
@@ -191,9 +210,9 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
               this.setState({
                 truncatedTitleFirstPiece: undefined,
                 truncatedTitleSecondPiece: undefined,
-                needMeasurement: true
+                needMeasurement: true,
               }),
-            250
+            250,
           );
         }
       }

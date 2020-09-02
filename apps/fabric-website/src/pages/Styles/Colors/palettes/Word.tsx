@@ -11,36 +11,36 @@ export const Word = () => {
         colors={[
           {
             name: 'Word Shade 20',
-            hex: '#002050'
+            hex: '#002050',
           },
           {
             name: 'Word Shade 10',
-            hex: '#124078'
+            hex: '#124078',
           },
           {
             name: 'Word Primary',
-            hex: '#2b579a'
+            hex: '#2b579a',
           },
           {
             name: 'Word Tint 10',
-            hex: '#3c65a4'
+            hex: '#3c65a4',
           },
           {
             name: 'Word Tint 20',
-            hex: '#4a78b0'
+            hex: '#4a78b0',
           },
           {
             name: 'Word Tint 30',
-            hex: '#7da3c6'
+            hex: '#7da3c6',
           },
           {
             name: 'Word Tint 40',
-            hex: '#a5b9d1'
+            hex: '#a5b9d1',
           },
           {
             name: 'Word Tint 50',
-            hex: '#e3ecfa'
-          }
+            hex: '#e3ecfa',
+          },
         ]}
       />
 

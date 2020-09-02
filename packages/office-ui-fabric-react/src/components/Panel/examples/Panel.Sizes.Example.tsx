@@ -27,7 +27,8 @@ const PanelExample: React.FunctionComponent<{ panelType: PanelType; description:
         headerText="Sample panel"
       >
         <p>
-          This is {a} <strong>{description}</strong> panel{panelType === PanelType.smallFixedFar ? ' (the default size)' : ''}.
+          This is {a} <strong>{description}</strong> panel
+          {panelType === PanelType.smallFixedFar ? ' (the default size)' : ''}.
         </p>
         <p>
           Select this size using <code>{`type={PanelType.${PanelType[panelType]}}`}</code>.
@@ -46,7 +47,7 @@ const options: IDropdownOption[] = [
   { text: 'Extra large', key: String(PanelType.extraLarge) },
   { text: 'Full-width (fluid)', key: String(PanelType.smallFluid) },
   { text: 'Custom (example: 888px)', key: String(PanelType.custom) },
-  { text: 'Custom (example: 888px), near side', key: String(PanelType.customNear) }
+  { text: 'Custom (example: 888px), near side', key: String(PanelType.customNear) },
 ];
 const dropdownStyles = { root: { maxWidth: 250, marginBottom: 16 } };
 const firstPStyle = { marginTop: 0 };
@@ -59,11 +60,22 @@ export const PanelSizesExample: React.FunctionComponent = () => {
   return (
     <div>
       <p style={firstPStyle}>
-        See the <Link href="https://developer.microsoft.com/en-us/fabric#/controls/web/panel#PanelType">PanelType documentation</Link> for
-        details on how each option affects panel sizing at different screen widths.
+        See the{' '}
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/controls/web/panel#PanelType">
+          PanelType documentation
+        </Link>{' '}
+        for details on how each option affects panel sizing at different screen widths.
       </p>
-      <p>All panels are anchored to the far side of the screen (right in LTR, left in RTL) unless otherwise specified.</p>
-      <Dropdown label="Choose a panel size:" options={options} selectedKey={option.key} onChange={updateOption} styles={dropdownStyles} />
+      <p>
+        All panels are anchored to the far side of the screen (right in LTR, left in RTL) unless otherwise specified.
+      </p>
+      <Dropdown
+        label="Choose a panel size:"
+        options={options}
+        selectedKey={option.key}
+        onChange={updateOption}
+        styles={dropdownStyles}
+      />
       <PanelExample panelType={Number(option.key)} description={description} />
     </div>
   );

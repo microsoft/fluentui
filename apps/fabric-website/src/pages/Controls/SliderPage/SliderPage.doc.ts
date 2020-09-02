@@ -7,6 +7,6 @@ export const SliderPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'Slider',
-    related
-  }
+    related,
+  },
 };

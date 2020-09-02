@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.0.34",
-  "description": "Azure themes for Office UI Components",
+  "version": "7.5.3",
+  "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -19,16 +19,20 @@
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
-    "clean": "just-scripts clean"
+    "clean": "just-scripts clean",
+    "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.0.6"
+    "@uifabric/example-data": "^7.1.3",
+    "@uifabric/react-hooks": "^7.11.0",
+    "react": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.6",
-    "@uifabric/set-version": "^7.0.5",
-    "office-ui-fabric-react": "^7.98.0",
+    "@uifabric/merge-styles": "^7.18.0",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.134.1",
     "tslib": "^1.10.0"
   }
 }

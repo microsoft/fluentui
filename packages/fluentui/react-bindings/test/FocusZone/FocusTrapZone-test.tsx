@@ -2,8 +2,7 @@ import { FocusZoneDirection } from '@fluentui/accessibility';
 import { FocusTrapZone, FocusZone, FocusTrapZoneProps } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
@@ -63,7 +62,7 @@ describe('FocusTrapZone', () => {
     element: HTMLElement,
     {
       clientRect,
-      isVisible = true
+      isVisible = true,
     }: {
       clientRect: {
         top: number;
@@ -72,7 +71,7 @@ describe('FocusTrapZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }
+    },
   ): void => {
     // @ts-ignore
     element.getBoundingClientRect = () => ({
@@ -81,7 +80,7 @@ describe('FocusTrapZone', () => {
       bottom: clientRect.bottom,
       right: clientRect.right,
       width: clientRect.right - clientRect.left,
-      height: clientRect.bottom - clientRect.top
+      height: clientRect.bottom - clientRect.top,
     });
 
     element.setAttribute('data-is-visible', String(isVisible));
@@ -93,7 +92,7 @@ describe('FocusTrapZone', () => {
    * 'ftzClassname' on FTZ.
    */
   function getFtzBumpers(
-    element: HTMLElement
+    element: HTMLElement,
   ): {
     firstBumper: Element;
     lastBumper: Element;
@@ -138,7 +137,7 @@ describe('FocusTrapZone', () => {
               </div>
             </FocusZone>
           </FocusTrapZone>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
@@ -192,7 +191,7 @@ describe('FocusTrapZone', () => {
               </div>
             </FocusZone>
           </FocusTrapZone>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonX = topLevelDiv.querySelector('.x') as HTMLElement;
@@ -242,7 +241,7 @@ describe('FocusTrapZone', () => {
             </FocusZone>
           </FocusTrapZone>
           <button className={'z2'}>z2</button>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -305,7 +304,7 @@ describe('FocusTrapZone', () => {
             </button>
           </FocusTrapZone>
           <button className={'z2'}>z2</button>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -379,7 +378,7 @@ describe('FocusTrapZone', () => {
             </FocusTrapZone>
             <button className={'z2'}>z2</button>
           </div>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -503,7 +502,7 @@ describe('FocusTrapZone', () => {
             </FocusZone>
           </FocusTrapZone>
           <button className={'z'}>z</button>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
@@ -581,7 +580,7 @@ describe('FocusTrapZone', () => {
       const topLevelDiv = ReactTestUtils.renderIntoDocument<{}>(
         <div>
           <FocusTrapZoneTestComponent />
-        </div>
+        </div>,
       ) as HTMLElement;
       const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
 

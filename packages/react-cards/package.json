@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.109.29",
-  "description": "Card container components to help build experiences with the use of Fabric.",
+  "version": "0.112.3",
+  "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -27,22 +27,21 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/resemblejs": "~1.3.28",
     "@types/webpack-env": "1.15.1",
+    "@uifabric/azure-themes": "^7.5.3",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.9",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.11",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/example-app-base": "^7.15.3",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/theme-samples": "^7.1.8",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -50,14 +49,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/azure-themes": "^7.0.34",
-    "@uifabric/file-type-icons": "^7.2.17",
-    "@uifabric/foundation": "^7.5.14",
-    "@uifabric/set-version": "^7.0.5",
-    "@uifabric/styling": "^7.10.14",
-    "@uifabric/theme-samples": "^7.0.29",
-    "@uifabric/utilities": "^7.12.5",
-    "office-ui-fabric-react": "^7.98.0",
+    "@uifabric/file-type-icons": "^7.6.1",
+    "@uifabric/foundation": "^7.9.0",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.134.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

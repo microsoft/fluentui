@@ -6,7 +6,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 export const SpinnerLabeledExample: React.FunctionComponent = () => {
   const stackTokens: IStackTokens = {
     childrenGap: 20,
-    maxWidth: 250
+    maxWidth: 250,
   };
 
   return (

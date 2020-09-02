@@ -9,20 +9,20 @@ function _continuousPulseStepOne(beaconColorOne: string, innerDimension: string)
     borderColor: beaconColorOne,
     borderWidth: '0px',
     width: innerDimension,
-    height: innerDimension
+    height: innerDimension,
   };
 }
 
 function _continuousPulseStepTwo(borderWidth: string): IRawStyle {
   return {
     opacity: 1,
-    borderWidth: borderWidth
+    borderWidth: borderWidth,
   };
 }
 
 function _continuousPulseStepThree(): IRawStyle {
   return {
-    opacity: 1
+    opacity: 1,
   };
 }
 
@@ -32,7 +32,7 @@ function _continuousPulseStepFour(beaconColorTwo: string, outerDimension: string
     width: outerDimension,
     height: outerDimension,
     opacity: 0,
-    borderColor: beaconColorTwo
+    borderColor: beaconColorTwo,
   };
 }
 
@@ -40,8 +40,8 @@ function _continuousPulseStepFive(beaconColorOne: string, innerDimension: string
   return {
     ..._continuousPulseStepOne(beaconColorOne, innerDimension),
     ...{
-      opacity: 0
-    }
+      opacity: 0,
+    },
   };
 }
 
@@ -50,7 +50,7 @@ function _continuousPulseAnimationDouble(
   beaconColorTwo: string,
   innerDimension: string,
   outerDimension: string,
-  borderWidth: string
+  borderWidth: string,
 ): string {
   return keyframes({
     '0%': _continuousPulseStepOne(beaconColorOne, innerDimension),
@@ -69,7 +69,7 @@ function _continuousPulseAnimationDouble(
     '81.85': _continuousPulseStepTwo(borderWidth),
     '83.42': _continuousPulseStepThree(),
     '87%': _continuousPulseStepFour(beaconColorTwo, outerDimension),
-    '100%': {}
+    '100%': {},
   });
 }
 
@@ -78,14 +78,14 @@ function _continuousPulseAnimationSingle(
   beaconColorTwo: string,
   innerDimension: string,
   outerDimension: string,
-  borderWidth: string
+  borderWidth: string,
 ): string {
   return keyframes({
     '0%': _continuousPulseStepOne(beaconColorOne, innerDimension),
     '14.2%': _continuousPulseStepTwo(borderWidth),
     '35.7%': _continuousPulseStepThree(),
     '71.4%': _continuousPulseStepFour(beaconColorTwo, outerDimension),
-    '100%': {}
+    '100%': {},
   });
 }
 
@@ -94,12 +94,12 @@ function _createDefaultAnimation(animationName: string, delayLength?: string): I
     animationName,
     animationIterationCount: DEFAULT_ITERATION_COUNT,
     animationDuration: DEFAULT_DURATION,
-    animationDelay: delayLength || DEFAULT_DELAY
+    animationDelay: delayLength || DEFAULT_DELAY,
   };
 }
 
 export const PulsingBeaconAnimationStyles = {
   continuousPulseAnimationDouble: _continuousPulseAnimationDouble,
   continuousPulseAnimationSingle: _continuousPulseAnimationSingle,
-  createDefaultAnimation: _createDefaultAnimation
+  createDefaultAnimation: _createDefaultAnimation,
 };

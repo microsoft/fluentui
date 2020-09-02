@@ -6,24 +6,24 @@ import {
   Button,
   Divider,
   Header,
-  Icon,
+  CalendarIcon,
   Image,
   imageBehavior,
   Input,
   Popup,
   Provider,
-  themes
-} from '@fluentui/react';
+  teamsTheme,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 
 class App extends React.Component {
   render() {
     return (
-      <Provider theme={themes.teams}>
+      <Provider theme={teamsTheme}>
         <div>
           <Accordion panels={[{ title: 'Title', content: 'Content' }]} />
           <Animation name="spinner">
-            <Icon name="umbrella" circular bordered />
+            <CalendarIcon circular bordered />
           </Animation>
           <Attachment header="Document.docx" />
           <Avatar image="//placehold.it" />

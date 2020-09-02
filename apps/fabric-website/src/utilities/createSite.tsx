@@ -2,10 +2,14 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as es6Promise from 'es6-promise';
 import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
 import { initializeIcons } from '@uifabric/icons/lib/index';
-import { INavPage, ISiteDefinition, currentFabricBreakpoint, jumpToAnchor, handleRedirects } from '@uifabric/example-app-base/lib/index2';
+import {
+  INavPage,
+  ISiteDefinition,
+  currentFabricBreakpoint,
+  handleRedirects,
+} from '@uifabric/example-app-base/lib/index2';
 import { Route, Router } from '@uifabric/example-app-base';
 import { Site } from '../components/Site/index';
 import { hasUHF, isLocal } from './location';
@@ -15,21 +19,17 @@ import 'whatwg-fetch';
 
 import '../styles/styles.scss';
 
-// tslint:disable-next-line:no-any
 const corePackageData = require<any>('office-ui-fabric-core/package.json');
 const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
 // Initialize
-es6Promise.polyfill();
 initializeIcons();
 
 // @TODO: This doesn't appear to do anything right now. Investigate removing.
-// @ts-ignore
-const isProduction = process.argv.indexOf('--production') > -1;
+const isProduction = (process as any).argv.indexOf('--production') > -1;
 
-// tslint:disable-next-line no-any
 declare let Flight: any; // Flight & CDN configuration
-declare let __webpack_public_path__: string;
+declare let __webpack_public_path__: string; // eslint-disable-line @typescript-eslint/naming-convention
 
 if (!isLocal && Flight.baseCDNUrl) {
   __webpack_public_path__ = Flight.baseCDNUrl;
@@ -45,7 +45,7 @@ let rootElement: HTMLElement;
 
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
-  defaultRouteComponent?: React.ComponentType | React.ComponentType[]
+  defaultRouteComponent?: React.ComponentType | React.ComponentType[],
 ) {
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     _onLoad();
@@ -55,7 +55,7 @@ export function createSite<TPlatforms extends string>(
   window.onunload = _onUnload;
 
   function _getBreakpoint(): void {
-    const currentBreakpoint = currentFabricBreakpoint();
+    currentFabricBreakpoint();
   }
 
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
@@ -64,7 +64,9 @@ export function createSite<TPlatforms extends string>(
       // Create a route for each page and its children.
       // Categories don't have an actual corresponding URL but may have children.
       if (page.url && (page.component || page.getComponent)) {
-        routes.push(<Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
+        routes.push(
+          <Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />,
+        );
       }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
@@ -115,7 +117,7 @@ export function createSite<TPlatforms extends string>(
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
@@ -136,4 +138,8 @@ function addCSSToHeader(fileName: string): void {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css',
+);

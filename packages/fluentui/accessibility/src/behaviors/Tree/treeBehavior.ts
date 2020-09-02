@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { Accessibility, AccessibilityAttributes } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import treeItemBehavior from './treeItemBehavior';
+import { treeItemBehavior } from './treeItemBehavior';
 
 /**
  * @specification
@@ -12,33 +12,31 @@ import treeItemBehavior from './treeItemBehavior';
  * Provides arrow key navigation in vertical direction.
  * Triggers 'expandSiblings' action with '*' on 'root'.
  */
-const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
+export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   return {
     attributes: {
       root: {
         role: 'tree',
         'aria-labelledby': props['aria-labelledby'],
-        tabIndex: -1
-      }
+        tabIndex: -1,
+      },
     },
     keyActions: {
       root: {
         expandSiblings: {
-          keyCombinations: [{ keyCode: keyboardKey['*'] }]
-        }
-      }
+          keyCombinations: [{ keyCode: keyboardKey['*'] }],
+        },
+      },
     },
     focusZone: {
       props: {
-        direction: FocusZoneDirection.vertical
-      }
+        direction: FocusZoneDirection.vertical,
+      },
     },
     childBehaviors: {
-      item: treeItemBehavior
-    }
+      item: treeItemBehavior,
+    },
   };
 };
 
-type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
-
-export default treeBehavior;
+export type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;

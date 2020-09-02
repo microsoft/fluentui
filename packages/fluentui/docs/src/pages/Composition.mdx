@@ -1,10 +1,10 @@
-import { Alert } from '@fluentui/react'
+import { Alert } from '@fluentui/react-northstar';
 
 export const meta = {
   title: 'Composition',
-  previous: { name: 'Introduction', url: '/' },
-  next: { name: 'Shorthand Props', url: '/shorthand-props' },
-}
+  previous: { name: 'Shorthand Props', url: '/shorthand-props' },
+  next: { name: 'Icons', url: '/icon-viewer' }
+};
 
 ## `as` prop
 
@@ -22,9 +22,8 @@ Fluent UI provides a way to compose React components through the `as` prop. It a
 
 <Alert warning>
   <p>
-    Using <code>as</code> prop can change the behavior of the component. If this prop is used it is
-    the responsibility of the consumer to verify accessibility and styling aspects of the component
-    and handle them correctly.
+    Using <code>as</code> prop can change the behavior of the component. If this prop is used it is the responsibility of the consumer to
+    verify accessibility and styling aspects of the component and handle them correctly.
   </p>
 </Alert>
 
@@ -46,10 +45,10 @@ Our components handle only props that are defined in their interfaces, all unhan
 This is also essential for working with third party libraries like `react-router`.
 
 ```jsx
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // 💡 `to` prop is not handled in `Button` and will be passed to `Link` component
-;<Button as={Link} to="/home">
+<Button as={Link} to="/home">
   To homepage
 </Button>
 ```

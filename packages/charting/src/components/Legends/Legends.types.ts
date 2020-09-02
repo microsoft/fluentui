@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -56,7 +57,7 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
-export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ILegend {
   /**
    * Defines the title of the legend
    */
@@ -86,6 +87,11 @@ export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    * The shape for the legend
    */
   shape?: LegendShape;
+
+  /**
+   *  native button props for the legend button
+   */
+  nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 export interface ILegendStyleProps {
@@ -136,6 +142,35 @@ export interface ILegendsProps {
    * focus zone props in hover card
    */
   focusZonePropsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * text for overflow legends string
+   */
+  overflowText?: string;
+
+  /**
+   * Prop that takes the active legend
+   */
+  selectedLegend?: string;
+
+  /**
+   * prop that decides if legends are focusable
+   * @default true
+   */
+  allowFocusOnLegends?: boolean;
+
+  /**
+   * prop that decide if we can select multiple legends or single legend at a time
+   * @default false
+   */
+  canSelectMultipleLegends?: boolean;
+
+  /**
+   * Defines the function that is executed upon hiding of hover card
+   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to ture
+   * and empty the selecetd state legends
+   */
+  onLegendHoverCardLeave?: VoidFunction;
 }
 
 /**

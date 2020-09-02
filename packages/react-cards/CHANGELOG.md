@@ -1,7 +1,82 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [0.111.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.111.2)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.110.24..@uifabric/react-cards_v0.111.2)
+
+### Patches
+
+- react-cards: Updating imports to remove duplicated dependencies. ([PR #14639](https://github.com/microsoft/fluentui/pull/14639) by humbertomakotomorimoto@gmail.com)
+
+## [0.110.24](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.110.24)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.110.17..@uifabric/react-cards_v0.110.24)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.110.17](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.110.17)
+
+Thu, 06 Aug 2020 22:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.110.0..@uifabric/react-cards_v0.110.17)
+
+### Patches
+
+- react-cards: Importing Stack from lib specific path. ([PR #14378](https://github.com/microsoft/fluentui/pull/14378) by humbertomakotomorimoto@gmail.com)
+
+## [0.110.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.110.0)
+
+Tue, 14 Jul 2020 12:41:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.109.114..@uifabric/react-cards_v0.110.0)
+
+### Minor changes
+
+- Card: Fixing focus styling. ([PR #13975](https://github.com/microsoft/fluentui/pull/13975) by humbertomakotomorimoto@gmail.com)
+
+## [0.109.72](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.109.72)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.109.54..@uifabric/react-cards_v0.109.72)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [0.109.54](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.109.54)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.109.53..@uifabric/react-cards_v0.109.54)
+
+### Patches
+
+- Readme: Remove graduation details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Card: Removing unwanted outline when Cards are clicked. ([PR #12667](https://github.com/microsoft/fluentui/pull/12667) by humbertomakotomorimoto@gmail.com)
+
+## 0.109.53
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 0.109.45
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.109.44
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.109.4
 Fri, 17 Jan 2020 02:32:17 GMT
 
@@ -245,4 +320,3 @@ Tue, 26 Mar 2019 12:32:51 GMT
 Fri, 08 Mar 2019 13:32:10 GMT
 
 *Initial release*
-

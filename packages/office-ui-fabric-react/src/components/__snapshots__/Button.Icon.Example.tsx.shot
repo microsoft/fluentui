@@ -51,7 +51,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 32px;
           }
           &::-moz-focus-inner {
@@ -69,7 +68,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -141,7 +139,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Emoji2"
           role="presentation"
@@ -187,7 +184,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: auto;
           }
           &::-moz-focus-inner {
@@ -205,7 +201,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -277,7 +272,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Emoji2"
           role="presentation"
@@ -315,7 +309,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
@@ -331,7 +324,8 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
     </button>
   </div>
   <p>
-    For a list of Icons, visit our 
+    For a list of Icons, visit our
+     
     <a
       className=
           ms-Link
@@ -347,29 +341,43 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
           }
-      href="https://developer.microsoft.com/en-us/fabric#/styles/icons"
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
+          }
+      href="https://developer.microsoft.com/en-us/fluentui#/styles/icons"
       onClick={[Function]}
     >
       Icon documentation

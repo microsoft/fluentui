@@ -3,10 +3,10 @@ import { IAppCustomizations, IExampleCardCustomizations } from '@uifabric/exampl
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },
-  { title: 'Dark', customizations: DarkCustomizations }
+  { title: 'Dark', customizations: DarkCustomizations },
 ];
 
 export const AppCustomizations: IAppCustomizations = {
   exampleCardCustomizations,
-  hideSchemes: true
+  hideSchemes: true,
 };

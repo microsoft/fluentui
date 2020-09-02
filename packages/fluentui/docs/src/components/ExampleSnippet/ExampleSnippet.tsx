@@ -1,7 +1,5 @@
-import { CodeSnippet } from '@fluentui/docs-components';
+import { CodeSnippet, renderElementToJSX } from '@fluentui/docs-components';
 import * as React from 'react';
-
-import renderElementToJSX from './renderElementToJSX';
 
 export type ExampleSnippetProps = {
   children?: React.ReactElement;
@@ -12,11 +10,11 @@ export type ExampleSnippetProps = {
 const rootStyle = {
   background: 'white',
   marginBottom: '2rem',
-  boxShadow: '0 0 2px rgba(0, 0, 0, 0.2)'
+  boxShadow: '0 0 2px rgba(0, 0, 0, 0.2)',
 };
 
 const renderedStyle = {
-  padding: '1rem'
+  padding: '1rem',
 };
 
 const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = props => {

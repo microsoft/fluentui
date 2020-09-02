@@ -31,7 +31,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -49,7 +48,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -220,7 +218,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 32px;
                   }
                   &::-moz-focus-inner {
@@ -238,7 +235,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -309,7 +305,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Add"
                   role="presentation"
@@ -539,7 +534,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 32px;
                   }
                   &::-moz-focus-inner {
@@ -557,7 +551,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -628,7 +621,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Cancel"
                   role="presentation"

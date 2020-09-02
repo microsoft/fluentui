@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL } from '../../Utilities';
+import { KeyCodes, css, getRTL, format } from '../../Utilities';
 import { ICalendarIconStrings } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
@@ -22,6 +22,7 @@ export interface ICalendarYearStrings {
   rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
+  headerAriaLabelFormatString?: string;
 }
 
 export interface ICalendarYear {
@@ -44,13 +45,13 @@ export interface ICalendarYearProps {
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
-  nextRangeAriaLabel: undefined
+  nextRangeAriaLabel: undefined,
 };
 
 const DefaultNavigationIcons: ICalendarIconStrings = {
   leftNavigation: 'Up',
   rightNavigation: 'Down',
-  closeIcon: 'CalculatorMultiply'
+  closeIcon: 'CalculatorMultiply',
 };
 
 interface ICalendarYearGridCell {
@@ -81,7 +82,7 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
       <button
         className={css('ms-DatePicker-yearOption', styles.yearOption, {
           ['ms-DatePicker-day--highlighted ' + styles.yearIsHighlighted]: selected,
-          ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled
+          ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled,
         })}
         type="button"
         role="gridcell"
@@ -195,7 +196,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
     return (
       <button
         className={css('ms-DatePicker-prevDecade', styles.prevDecade, {
-          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled
+          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled,
         })}
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
@@ -209,7 +210,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
     );
   }
 
-  get isDisabled() {
+  public get isDisabled() {
     const { minYear } = this.props;
     return minYear !== undefined && this.props.fromYear < minYear;
   }
@@ -243,7 +244,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
     return (
       <button
         className={css('ms-DatePicker-nextDecade', styles.nextDecade, {
-          ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled
+          ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled,
         })}
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
@@ -257,7 +258,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
     );
   }
 
-  get isDisabled() {
+  public get isDisabled() {
     const { maxYear } = this.props;
     return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
   }
@@ -294,14 +295,23 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, any> {
     if (onHeaderSelect) {
       const strings = this.props.strings || DefaultCalendarYearStrings;
       const rangeAriaLabel = strings.rangeAriaLabel;
-      const ariaLabel = rangeAriaLabel
+      const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? (rangeAriaLabel as string)
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
+
+      const ariaLabel = strings.headerAriaLabelFormatString
+        ? format(strings.headerAriaLabelFormatString, currentDateRange)
+        : currentDateRange;
+
       return (
         <div
-          className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade, styles.headerToggleView)}
+          className={css(
+            'ms-DatePicker-currentDecade js-showYearPicker',
+            styles.currentDecade,
+            styles.headerToggleView,
+          )}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
           aria-label={ariaLabel}
@@ -414,7 +424,12 @@ export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarY
 
   private _renderGrid = (): React.ReactNode => {
     return (
-      <CalendarYearGrid {...this.props} fromYear={this.state.fromYear} toYear={this.state.fromYear + CELL_COUNT - 1} ref={this._gridRef} />
+      <CalendarYearGrid
+        {...this.props}
+        fromYear={this.state.fromYear}
+        toYear={this.state.fromYear + CELL_COUNT - 1}
+        ref={this._gridRef}
+      />
     );
   };
 
@@ -425,7 +440,7 @@ export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarY
     return {
       fromYear: fromYear,
       navigatedYear: navigatedYear,
-      selectedYear: selectedYear
+      selectedYear: selectedYear,
     };
   }
 }

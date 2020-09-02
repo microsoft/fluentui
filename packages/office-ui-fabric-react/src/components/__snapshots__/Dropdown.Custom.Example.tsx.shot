@@ -23,9 +23,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       }
 >
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <label
       className=
@@ -111,7 +109,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
@@ -259,9 +256,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <div
       className=
@@ -285,15 +280,33 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             flex-shrink: 1;
           }
     >
-      <span
-        style={
-          Object {
-            "fontWeight": 600,
-          }
-        }
+      <label
+        className=
+            ms-Label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
       >
         Custom label
-      </span>
+      </label>
       <button
         aria-label="Info"
         className=
@@ -323,7 +336,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -341,7 +353,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -413,7 +424,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Info"
             role="presentation"
@@ -483,7 +493,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {

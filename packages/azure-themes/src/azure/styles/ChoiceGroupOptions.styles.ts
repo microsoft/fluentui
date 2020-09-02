@@ -1,6 +1,5 @@
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
@@ -9,16 +8,20 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: theme.fonts.medium.fontSize,
       color: extendedSemanticColors.labelText,
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '.ms-ChoiceFieldLabel': {
-          color: semanticColors.bodyText,
-          fontSize: FontSizes.size12,
-          verticalAlign: 'middle'
-        }
-      }
+          fontSize: theme.fonts.medium.fontSize,
+          verticalAlign: 'middle',
+        },
+        '.is-inFocus': {
+          border: `${extendedSemanticColors.choiceGroupContainerBorder}
+          ${extendedSemanticColors.choiceGroupContainerBorderStyle}
+          ${extendedSemanticColors.checkboxBorderChecked}`,
+        },
+      },
     },
     field: [
       {
@@ -26,69 +29,81 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
-              borderColor: extendedSemanticColors.controlOutline
+              borderColor: extendedSemanticColors.controlOutline,
+            },
+            checked && {
+              backgroundColor: 'transparent',
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
-              borderColor: extendedSemanticColors.controlOutlineDisabled
+              borderColor: extendedSemanticColors.controlOutlineDisabled,
             },
             (hasIcon || hasImage) &&
               disabled &&
               checked && {
-                opacity: 1
-              }
+                opacity: 1,
+              },
           ],
           // The dot
           ':after': [
             {
-              borderColor: extendedSemanticColors.controlAccent
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             checked &&
               disabled && {
-                borderColor: extendedSemanticColors.controlOutlineDisabled
-              }
+                borderColor: extendedSemanticColors.controlOutlineDisabled,
+              },
           ],
           ':hover': [
             (hasIcon || hasImage) && {
-              borderColor: extendedSemanticColors.controlOutlineHovered
+              borderColor: extendedSemanticColors.controlOutlineHovered,
             },
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: extendedSemanticColors.controlOutlineHovered
+                  color: extendedSemanticColors.bodyTextHovered,
                 },
                 ':before': {
-                  borderColor: extendedSemanticColors.controlOutlineHovered
-                }
-              }
-            }
-          ]
-        }
+                  borderColor: extendedSemanticColors.controlOutlineHovered,
+                },
+                ':after': {
+                  borderColor: extendedSemanticColors.checkboxBorderChecked,
+                  backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
+                },
+              },
+            },
+            !disabled &&
+              checked && {
+                selectors: {
+                  ':before': {
+                    borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+                  },
+                },
+              },
+          ],
+          '.ms-ChoiceFieldLabel': {
+            color: disabled ? semanticColors.disabledBodyText : semanticColors.bodyText,
+          },
+        },
       },
       (hasIcon || hasImage) &&
         !disabled && {
           selectors: {
             i: {
               // discrepency: does icon highlight change color when selected?
-              color: checked ? extendedSemanticColors.controlAccent : semanticColors.bodyText
-            }
-          }
+              color: checked ? extendedSemanticColors.controlAccent : semanticColors.bodyText,
+            },
+          },
         },
       (hasIcon || hasImage) && {
         borderWidth: StyleConstants.borderWidth,
-        borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground
-      },
-      disabled && {
-        selectors: {
-          '.ms-ChoiceFieldLabel': {
-            color: semanticColors.disabledBodyText
-          }
-        }
+        borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground,
       },
       checked &&
         disabled && {
-          borderColor: semanticColors.disabledBodyText
-        }
-    ]
+          borderColor: semanticColors.disabledBodyText,
+        },
+    ],
   };
 };

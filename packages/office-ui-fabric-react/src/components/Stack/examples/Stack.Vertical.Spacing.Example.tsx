@@ -5,8 +5,8 @@ import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling'
 // Styles definition
 const stackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.themeTertiary
-  }
+    background: DefaultPalette.themeTertiary,
+  },
 };
 const stackItemStyles = mergeStyles({
   alignItems: 'center',
@@ -15,7 +15,7 @@ const stackItemStyles = mergeStyles({
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 });
 
 // Tokens definition
@@ -23,31 +23,31 @@ const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const headingStackTokens: IStackTokens = { childrenGap: 50 };
 const numericalSpacingStackTokens: IStackTokens = {
   childrenGap: 10,
-  padding: 10
+  padding: 10,
 };
 const customSpacingStackTokens: IStackTokens = {
   childrenGap: '20%',
-  padding: 'm 40px'
+  padding: 'm 40px',
 };
 const themedExtraSmallStackTokens: IStackTokens = {
   childrenGap: 's2',
-  padding: 's2'
+  padding: 's2',
 };
 const themedSmallStackTokens: IStackTokens = {
   childrenGap: 's1',
-  padding: 's1'
+  padding: 's1',
 };
 const themedMediumStackTokens: IStackTokens = {
   childrenGap: 'm',
-  padding: 'm'
+  padding: 'm',
 };
 const themedLargeStackTokens: IStackTokens = {
   childrenGap: 'l1',
-  padding: 'l1'
+  padding: 'l1',
 };
 const themedExtraLargeStackTokens: IStackTokens = {
   childrenGap: 'l2',
-  padding: 'l2'
+  padding: 'l2',
 };
 
 export const VerticalStackSpacingExample: React.FunctionComponent = () => {

@@ -1,7 +1,4 @@
-/*!
- * Copyright (C) Microsoft Corporation. All rights reserved.
- */
-
+import * as React from 'react';
 import { IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -167,5 +164,5 @@ export const SidebarStylingConstants = {
   /**
    * The width of the sidebar when it is in the collapsed state
    */
-  sidebarIconSize: '16px'
+  sidebarIconSize: '16px',
 };

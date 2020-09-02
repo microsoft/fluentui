@@ -17,15 +17,15 @@ module.exports = resources.createServeConfig({
   entry: demoAppPath,
 
   output: {
-    filename: 'demo-app.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 
   resolve: {
-    alias: getResolveAlias()
-  }
+    alias: getResolveAlias(),
+  },
 });

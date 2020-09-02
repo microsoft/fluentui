@@ -1,4 +1,4 @@
-import { Animation } from '@fluentui/react';
+import { Animation } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const AnimationMinimalPerf = () => (

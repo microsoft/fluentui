@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createComponent } from '../../Foundation';
 import { CollapsibleSectionTitleView } from './CollapsibleSectionTitle.view';
 import { getStyles as styles } from './CollapsibleSectionTitle.styles';
@@ -9,7 +10,7 @@ export const CollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectio
     displayName: 'CollapsibleSectionTitle',
     styles,
     factoryOptions: {
-      defaultProp: 'text'
-    }
-  }
+      defaultProp: 'text',
+    },
+  },
 );

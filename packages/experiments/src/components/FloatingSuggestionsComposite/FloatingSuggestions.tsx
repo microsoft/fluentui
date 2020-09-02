@@ -28,7 +28,9 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     suggestionsHeaderText,
     onFloatingSuggestionsDismiss,
     targetElement,
-    calloutProps
+    calloutProps,
+    pickerWidth,
+    onKeyDown,
   } = props;
 
   const hidePicker = (ev: React.MouseEvent): void => {
@@ -36,14 +38,19 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
   };
 
   return (
-    <div ref={componentRef} className={css('ms-BasePicker ms-BaseFloatingPicker', classNames.root, props.className ? props.className : '')}>
+    <div
+      ref={componentRef}
+      className={css('ms-BasePicker ms-BaseFloatingPicker', classNames.root, props.className ? props.className : '')}
+    >
       {isSuggestionsVisible ? (
         <Callout
           className={classNames.callout}
           isBeakVisible={false}
           gapSpace={5}
           target={targetElement}
+          // eslint-disable-next-line react/jsx-no-bind
           onDismiss={hidePicker}
+          onKeyDown={onKeyDown}
           directionalHint={DirectionalHint.bottomLeftEdge}
           directionalHintForRTL={DirectionalHint.bottomRightEdge}
           {...calloutProps}
@@ -61,8 +68,9 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             noResultsFoundText={noResultsFoundText}
             maximumSuggestionsToShow={maximumSuggestionsToShow}
             suggestionsContainerAriaLabel={suggestionsContainerAriaLabel}
-            selectedSuggestionIndex={selectedSuggestionIndex ? selectedSuggestionIndex : 0}
+            selectedSuggestionIndex={selectedSuggestionIndex}
             suggestionsHeaderText={suggestionsHeaderText}
+            pickerWidth={pickerWidth}
           />
         </Callout>
       ) : null}

@@ -1,3 +1,4 @@
+// @ts-check
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
@@ -6,13 +7,14 @@ const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
+// @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
 
 const cssRule = {
   test: /\.css$/,
   include: /node_modules/,
-  use: ['style-loader', 'css-loader']
+  use: ['style-loader', 'css-loader'],
 };
 
 let isValidEnv = false;
@@ -32,7 +34,8 @@ function validateEnv() {
 function shouldPrepend(config) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
   const excludedProjects = ['perf-test', 'test-bundles'];
-  const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
+  const exportedAsBundle =
+    config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
   const hasReactAsDependency =
     (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
     (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
@@ -69,14 +72,15 @@ module.exports = {
   webpack,
 
   /**
-   * @param packageName {string} - name of the package
-   * @param isProduction {boolean} - whether it's a production build
-   * @param customConfig {Partial<webpack.Configuration>} - partial custom webpack config, merged into each full config object
-   * @param [onlyProduction] {boolean} - whether to only generate the production config
-   * @param [excludeSourceMaps] {boolean} - whether to skip generating source maps
-   * @returns {webpack.Configuration[]} array of configs
+   * @param {string} packageName - name of the package.
+   * @param {boolean} isProduction - whether it's a production build.
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {boolean} [onlyProduction] - whether to only generate the production config.
+   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
+   * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
+   * @returns {webpack.Configuration[]} array of configs.
    */
-  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
+  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -85,10 +89,10 @@ module.exports = {
             {
               test: /\.js$/,
               use: 'source-map-loader',
-              enforce: 'pre'
+              enforce: 'pre',
             },
-            cssRule
-          ]
+            cssRule,
+          ],
     };
 
     const devtool = 'cheap-module-source-map';
@@ -102,14 +106,14 @@ module.exports = {
             output: {
               filename: `[name].js`,
               path: path.resolve(process.cwd(), 'dist'),
-              pathinfo: false
+              pathinfo: false,
             },
             module,
             devtool,
-            plugins: getPlugins(packageName, false)
+            plugins: getPlugins(packageName, false),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
@@ -120,45 +124,53 @@ module.exports = {
             mode: 'production',
             output: {
               filename: `[name].min.js`,
-              path: path.resolve(process.cwd(), 'dist')
+              path: path.resolve(process.cwd(), 'dist'),
             },
 
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
-            plugins: getPlugins(packageName, true)
+            plugins: getPlugins(packageName, true, profile),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
     for (let config of configs) {
       config.entry = createEntryWithPolyfill(config.entry, config);
       config.resolveLoader = {
-        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
+        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')],
       };
     }
 
     return configs;
   },
 
+  /**
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
+   * @returns {webpack.Configuration}
+   */
   createServeConfig(customConfig) {
     const config = merge(
       {
         devServer: {
           inline: true,
           port: 4322,
-          contentBase: path.resolve(process.cwd(), 'dist')
+          contentBase: path.resolve(process.cwd(), 'dist'),
         },
 
         mode: 'development',
 
         resolve: {
-          extensions: ['.ts', '.tsx', '.js']
+          extensions: ['.ts', '.tsx', '.js'],
         },
 
         resolveLoader: {
-          modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
+          modules: [
+            'node_modules',
+            path.join(__dirname, '../node_modules'),
+            path.join(__dirname, '../../node_modules'),
+          ],
         },
 
         devtool: 'eval',
@@ -172,10 +184,10 @@ module.exports = {
                 loader: 'ts-loader',
                 options: {
                   experimentalWatchApi: true,
-                  transpileOnly: true
-                }
+                  transpileOnly: true,
+                },
               },
-              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
             },
             {
               test: /\.scss$/,
@@ -183,31 +195,29 @@ module.exports = {
               exclude: [/node_modules/],
               use: [
                 {
-                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
                 },
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
                     modules: true,
                     importLoaders: 2,
-                    localIdentName: '[name]_[local]_[hash:base64:5]',
-                    minimize: false
-                  }
+                  },
                 },
                 {
                   loader: 'postcss-loader',
                   options: {
                     plugins: function() {
                       return [require('autoprefixer')];
-                    }
-                  }
+                    },
+                  },
                 },
                 {
-                  loader: 'sass-loader'
-                }
-              ]
-            }
-          ]
+                  loader: 'sass-loader',
+                },
+              ],
+            },
+          ],
         },
 
         plugins: [
@@ -215,37 +225,31 @@ module.exports = {
           // new WebpackNotifierPlugin(),
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
           ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : [])
-        ]
+          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
+        ],
       },
-      customConfig
+      customConfig,
     );
 
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
-  }
+  },
 };
 
-function getPlugins(bundleName, isProduction) {
+function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
   const plugins = [];
 
-  if (isProduction) {
+  if (isProduction && profile) {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
-        generateStatsFile: true,
-        statsOptions: {
-          source: false,
-          reasons: false,
-          chunks: false
-        },
-        statsFilename: bundleName + '.stats.json',
-        logLevel: 'warn'
-      })
+        generateStatsFile: false,
+        logLevel: 'warn',
+      }),
     );
   }
 

@@ -1,7 +1,231 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.0..@uifabric/date-time_v7.17.1)
+
+### Patches
+
+- Calendar: Adding aria-current=date to present day. ([PR #14806](https://github.com/microsoft/fluentui/pull/14806) by humbertomakotomorimoto@gmail.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.0)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.16.0..@uifabric/date-time_v7.17.0)
+
+### Minor changes
+
+- add wrapper styling to datepicker ([PR #13477](https://github.com/microsoft/fluentui/pull/13477) by kevin@infinite.red)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.16.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.4..@uifabric/date-time_v7.16.0)
+
+### Patches
+
+- adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future ([PR #14764](https://github.com/microsoft/fluentui/pull/14764) by lorejoh12@gmail.com)
+
+## [7.14.4](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.4)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.2..@uifabric/date-time_v7.14.4)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.2)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.0..@uifabric/date-time_v7.14.2)
+
+### Patches
+
+- adding fix for first day of week changing away from Sunday that I broke with previous PR ([PR #14475](https://github.com/microsoft/fluentui/pull/14475) by lorejoh12@gmail.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.0)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.10..@uifabric/date-time_v7.14.0)
+
+### Minor changes
+
+- adding dayGridProps to weeklyDayPicker so it can pass them through to the underlying day grid. Adding example of marking days to show usage ([PR #14390](https://github.com/microsoft/fluentui/pull/14390) by lorejoh12@gmail.com)
+
+## [7.13.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.7)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.6..@uifabric/date-time_v7.13.7)
+
+### Patches
+
+- Refactor DatePicker as a function component ([PR #14030](https://github.com/microsoft/fluentui/pull/14030) by miclo@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.6)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.0..@uifabric/date-time_v7.13.6)
+
+### Patches
+
+-   ([PR #14312](https://github.com/microsoft/fluentui/pull/14312) by lorejoh12@gmail.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.0)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.12.0..@uifabric/date-time_v7.13.0)
+
+### Minor changes
+
+- adding ability to mark calendar days with a callback function ([PR #14074](https://github.com/microsoft/fluentui/pull/14074) by lorejoh12@gmail.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.12.0)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.5..@uifabric/date-time_v7.12.0)
+
+### Minor changes
+
+- fix next and previous month/week aria labels in weekly day picker, export new default strings ([PR #14073](https://github.com/microsoft/fluentui/pull/14073) by lorejoh12@gmail.com)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14098](https://github.com/microsoft/fluentui/pull/14098) by elcraig@microsoft.com)
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.2)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.0..@uifabric/date-time_v7.11.2)
+
+### Patches
+
+- adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors ([PR #14032](https://github.com/microsoft/fluentui/pull/14032) by lorejoh12@gmail.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.8..@uifabric/date-time_v7.11.0)
+
+### Minor changes
+
+- enable datepicker callout open  ([PR #13981](https://github.com/microsoft/fluentui/pull/13981) by shrallap@microsoft.com)
+
+### Patches
+
+- Replace tslint with eslint; add missing explicit react-hooks dependency ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.8)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.7..@uifabric/date-time_v7.10.8)
+
+### Patches
+
+- refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes ([PR #13956](https://github.com/microsoft/fluentui/pull/13956) by lorejoh12@gmail.com)
+
+## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.7)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.2..@uifabric/date-time_v7.10.7)
+
+### Patches
+
+- Migrate Calendar components to function components ([PR #13904](https://github.com/microsoft/fluentui/pull/13904) by miclo@microsoft.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.2)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.0..@uifabric/date-time_v7.10.2)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.0)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.9.3..@uifabric/date-time_v7.10.0)
+
+### Minor changes
+
+- CalendarDayGrid: migrate component to function component ([PR #13803](https://github.com/microsoft/fluentui/pull/13803) by miclo@microsoft.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.101..@uifabric/date-time_v7.9.0)
+
+### Minor changes
+
+- Extract helper functions from date-time/Calendar ([PR #13640](https://github.com/microsoft/fluentui/pull/13640) by pompomon@gmail.com)
+
+## [7.8.101](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.101)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.100..@uifabric/date-time_v7.8.101)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.8.74](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.74)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.73..@uifabric/date-time_v7.8.74)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.8.73](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.73)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.55..@uifabric/date-time_v7.8.73)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.8.55](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.55)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.53..@uifabric/date-time_v7.8.55)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component. ([PR #12602](https://github.com/microsoft/fluentui/pull/12602) by michaelmajgaard@outlook.com)
+
+## 7.8.45
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.8.44
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.8.41
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.8.40
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Patches
+
+- CalendarDayGrid: navigatedDate should have defaultValue of today (aneeshak@microsoft.com)
 ## 7.8.28
 Tue, 25 Feb 2020 12:25:39 GMT
 
@@ -416,4 +640,3 @@ Thu, 29 Nov 2018 19:34:12 GMT
 ### Minor changes
 
 - Creating the initial date-time package, including the first stage of the Calendar component css-in-js refactor, and creating the example page.
-

@@ -2,22 +2,22 @@
 
 const path = require('path');
 const { sassTask } = require('just-scripts');
-const postcssModules = require('postcss-modules');
-
-const modules = postcssModules({
+const modules = require('postcss-modules')({
   getJSON,
-  generateScopedName
+  generateScopedName,
 });
+const CleanCSS = require('clean-css');
+
 const _fileNameToClassMap = {};
 
 function createTypeScriptModule(fileName, css) {
   const { splitStyles } = require('@microsoft/load-themed-styles');
-
   // Create a source file.
+  const minifiedCSS = new CleanCSS().minify(css).styles;
   const source = [
-    `/* tslint:disable */`,
+    `/* eslint-disable */`,
     `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-    `loadStyles(${JSON.stringify(splitStyles(css))});`
+    `loadStyles(${JSON.stringify(splitStyles(minifiedCSS))});`,
   ];
 
   const map = _fileNameToClassMap[fileName];

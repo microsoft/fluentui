@@ -1,27 +1,37 @@
 import * as React from 'react';
-import { Avatar, Grid, Text } from '@fluentui/react';
+import { Avatar, Grid, Text } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const defaultAvatar = (
   <Avatar
     image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
     status={{
       color: 'green',
-      icon: 'icon-checkmark',
-      title: 'Available'
+      icon: <AcceptIcon />,
+      title: 'Available',
     }}
   />
 );
 
 const AvatarExampleStatusCustomizationShorthand = () => (
-  <Grid columns="50% 50px 50px" styles={{ justifyContent: 'start', justifyItems: 'start', gap: '10px', alignItems: 'center' }}>
+  <Grid
+    styles={{
+      gridTemplateColumns: '50% 50px 50px',
+      msGridColumns: '50% 50px 50px',
+      justifyContent: 'start',
+      justifyItems: 'start',
+      gap: '10px',
+      alignItems: 'center',
+    }}
+  >
     <Text content="Status can receive variables." />
     {defaultAvatar}
     <Avatar
       image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
-        title: 'Available'
+        icon: <AcceptIcon />,
+        title: 'Available',
       }}
       variables={{ statusBorderColor: 'orange' }}
     />
@@ -32,8 +42,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       size="larger"
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
-        title: 'Available'
+        icon: <AcceptIcon />,
+        title: 'Available',
       }}
     />
     <Text content="Status can have different size for the same avatar size." />
@@ -42,9 +52,9 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
-        size: 'larger'
+        size: 'larger',
       }}
     />
     <Text content="Status can have same size for different avatar sizes." />
@@ -54,9 +64,9 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       size="larger"
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
-        size: 'medium'
+        size: 'medium',
       }}
     />
   </Grid>

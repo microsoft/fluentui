@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { IDocumentCardLogoProps, IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
 
 const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>();
@@ -9,15 +9,21 @@ const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentC
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardLogoBase extends BaseComponent<IDocumentCardLogoProps, any> {
+export class DocumentCardLogoBase extends React.Component<IDocumentCardLogoProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardLogoStyles>;
+
+  constructor(props: IDocumentCardLogoProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render() {
     const { logoIcon, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

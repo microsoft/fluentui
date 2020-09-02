@@ -33,7 +33,7 @@ storiesOf('SearchBox', module)
         </div>
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Full',
@@ -42,5 +42,5 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

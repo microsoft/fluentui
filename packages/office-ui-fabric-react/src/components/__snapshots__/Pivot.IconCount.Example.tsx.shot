@@ -9,555 +9,909 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
     <div
       className=
           ms-FocusZone
+          ms-Pivot
           &:focus {
             outline: none;
+          }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            white-space: nowrap;
           }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
+      role="tablist"
     >
-      <div
+      <button
+        aria-selected={true}
         className=
-            ms-Pivot
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            is-selected
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              box-shadow: none;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
               box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
               color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: #0078d4;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              background-color: Highlight;
+            }
+            &:hover::before {
+              left: 0px;
+              right: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: Highlight;
+            }
+        data-content="My Files (42) xx"
+        data-is-focusable={true}
+        id="Pivot0-Tab0"
+        name="My Files"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+                {
+                  flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
+          >
+            <span
+              className="ms-Pivot-icon"
+            >
+              <i
+                aria-hidden={true}
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-0";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                data-icon-name="Emoji2"
+              >
+                
+              </i>
+            </span>
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              My Files
+            </span>
+            <span
+              className=
+                  ms-Pivot-count
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               (
+              42
+              )
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
               position: relative;
-              white-space: nowrap;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
             }
-        role="tablist"
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+        data-content=" (23) xx"
+        data-is-focusable={true}
+        id="Pivot0-Tab1"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
       >
-        <button
-          aria-selected={true}
+        <span
           className=
-              ms-Button
-              ms-Button--action
-              ms-Button--command
-              ms-Pivot-link
-              is-selected
+              ms-Button-flexContainer
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 0px;
-                box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 600;
-                height: 44px;
-                line-height: 44px;
-                margin-right: 8px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 0px;
-                bottom: 2px;
-                content: attr(data-content);
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: relative;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-                cursor: pointer;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:hover .ms-Button-icon {
-                color: #0078d4;
-              }
-              &:focus {
-                outline: none;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-              &:before {
-                background-color: #0078d4;
-                bottom: 0px;
-                content: "";
-                height: 2px;
-                left: 8px;
-                position: absolute;
-                right: 8px;
-                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
-              }
-              &:after {
-                color: transparent;
-                content: attr(data-content);
-                display: block;
-                font-weight: 700;
-                height: 1px;
-                overflow: hidden;
-                visibility: hidden;
-              }
-              .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){&:before {
-                background-color: Highlight;
-              }
-              &:hover::before {
-                left: 0px;
-                right: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: Highlight;
-              }
-          data-content="My Files (42) xx"
-          data-is-focusable={true}
-          id="Pivot0-Tab0"
-          name="My Files"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          role="tab"
-          type="button"
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
-                ms-Button-flexContainer
+                ms-Pivot-linkContent
                 {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: flex-start;
+                  flex: 0 1 100%;
                 }
-            data-automationid="splitbuttonprimary"
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
+              className="ms-Pivot-icon"
+            >
+              <i
+                aria-hidden={true}
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-1";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                data-icon-name="Recent"
+              >
+                
+              </i>
+            </span>
+            <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Pivot-count
                   {
-                    flex: 0 1 100%;
-                  }
-                  & > *  {
-                    margin-left: 4px;
-                  }
-                  & > *:first-child {
-                    margin-left: 0px;
+                    display: inline-block;
+                    vertical-align: top;
                   }
             >
-              <span
-                className=
-                    ms-Pivot-icon
-
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        display: inline-block;
-                        font-family: "FabricMDL2Icons-0";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                  data-icon-name="Emoji2"
-                >
-                  
-                </i>
-              </span>
-              <span
-                className=
-                    ms-Pivot-text
-                    {
-                      display: inline-block;
-                      vertical-align: top;
-                    }
-              >
-                 
-                My Files
-              </span>
-              <span
-                className=
-                    ms-Pivot-count
-                    {
-                      display: inline-block;
-                      vertical-align: top;
-                    }
-              >
-                 (
-                42
-                )
-              </span>
+               (
+              23
+              )
             </span>
           </span>
-        </button>
-        <button
-          aria-selected={false}
+        </span>
+      </button>
+      <button
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+        data-content="Placeholder xx"
+        data-is-focusable={true}
+        id="Pivot0-Tab2"
+        name="Placeholder"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
           className=
-              ms-Button
-              ms-Button--action
-              ms-Button--command
-              ms-Pivot-link
+              ms-Button-flexContainer
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 0px;
-                box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 44px;
-                line-height: 44px;
-                margin-right: 8px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 0px;
-                bottom: 2px;
-                content: attr(data-content);
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: relative;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-                cursor: pointer;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:hover .ms-Button-icon {
-                color: #0078d4;
-              }
-              &:focus {
-                outline: none;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-              &:before {
-                background-color: transparent;
-                bottom: 0px;
-                content: "";
-                height: 2px;
-                left: 8px;
-                position: absolute;
-                right: 8px;
-                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
-              }
-              &:after {
-                color: transparent;
-                content: attr(data-content);
-                display: block;
-                font-weight: 700;
-                height: 1px;
-                overflow: hidden;
-                visibility: hidden;
-              }
-              .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #605e5c;
-              }
-          data-content=" (23) xx"
-          data-is-focusable={true}
-          id="Pivot0-Tab1"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          role="tab"
-          type="button"
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
-                ms-Button-flexContainer
+                ms-Pivot-linkContent
                 {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: flex-start;
+                  flex: 0 1 100%;
                 }
-            data-automationid="splitbuttonprimary"
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
+              className="ms-Pivot-icon"
+            >
+              <i
+                aria-hidden={true}
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-0";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                data-icon-name="Globe"
+              >
+                
+              </i>
+            </span>
+            <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Pivot-text
                   {
-                    flex: 0 1 100%;
-                  }
-                  & > *  {
-                    margin-left: 4px;
-                  }
-                  & > *:first-child {
-                    margin-left: 0px;
+                    display: inline-block;
+                    vertical-align: top;
                   }
             >
-              <span
-                className=
-                    ms-Pivot-icon
-
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        display: inline-block;
-                        font-family: "FabricMDL2Icons-1";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                  data-icon-name="Recent"
-                >
-                  
-                </i>
-              </span>
-              <span
-                className=
-                    ms-Pivot-count
-                    {
-                      display: inline-block;
-                      vertical-align: top;
-                    }
-              >
-                 (
-                23
-                )
-              </span>
+               
+              Placeholder
             </span>
           </span>
-        </button>
-        <button
-          aria-selected={false}
+        </span>
+      </button>
+      <button
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+        data-content="Shared with me (1) xx"
+        data-is-focusable={true}
+        id="Pivot0-Tab3"
+        name="Shared with me"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
           className=
-              ms-Button
-              ms-Button--action
-              ms-Button--command
-              ms-Pivot-link
+              ms-Button-flexContainer
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 0px;
-                box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 44px;
-                line-height: 44px;
-                margin-right: 8px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 0px;
-                bottom: 2px;
-                content: attr(data-content);
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: relative;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-                cursor: pointer;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:hover .ms-Button-icon {
-                color: #0078d4;
-              }
-              &:focus {
-                outline: none;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-              &:before {
-                background-color: transparent;
-                bottom: 0px;
-                content: "";
-                height: 2px;
-                left: 8px;
-                position: absolute;
-                right: 8px;
-                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
-              }
-              &:after {
-                color: transparent;
-                content: attr(data-content);
-                display: block;
-                font-weight: 700;
-                height: 1px;
-                overflow: hidden;
-                visibility: hidden;
-              }
-              .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #605e5c;
-              }
-          data-content="Placeholder xx"
-          data-is-focusable={true}
-          id="Pivot0-Tab2"
-          name="Placeholder"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          role="tab"
-          type="button"
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
-                ms-Button-flexContainer
+                ms-Pivot-linkContent
                 {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: flex-start;
+                  flex: 0 1 100%;
                 }
-            data-automationid="splitbuttonprimary"
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
+            <span
+              className="ms-Pivot-icon"
+            >
+              <i
+                aria-hidden={true}
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-4";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                data-icon-name="Ringer"
+              >
+                
+              </i>
+            </span>
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Shared with me
+            </span>
+            <span
+              className=
+                  ms-Pivot-count
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               (
+              1
+              )
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+        data-content="Customized Rendering (10) xx"
+        data-is-focusable={true}
+        id="Pivot0-Tab4"
+        name="Customized Rendering"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span>
             <span
               className=
                   ms-Pivot-linkContent
@@ -572,9 +926,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   }
             >
               <span
-                className=
-                    ms-Pivot-icon
-
+                className="ms-Pivot-icon"
               >
                 <i
                   aria-hidden={true}
@@ -603,188 +955,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                  
-                Placeholder
-              </span>
-            </span>
-          </span>
-        </button>
-        <button
-          aria-selected={false}
-          className=
-              ms-Button
-              ms-Button--action
-              ms-Button--command
-              ms-Pivot-link
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 0px;
-                box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 44px;
-                line-height: 44px;
-                margin-right: 8px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 0px;
-                bottom: 2px;
-                content: attr(data-content);
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: relative;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-                cursor: pointer;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:hover .ms-Button-icon {
-                color: #0078d4;
-              }
-              &:focus {
-                outline: none;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-              &:before {
-                background-color: transparent;
-                bottom: 0px;
-                content: "";
-                height: 2px;
-                left: 8px;
-                position: absolute;
-                right: 8px;
-                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
-              }
-              &:after {
-                color: transparent;
-                content: attr(data-content);
-                display: block;
-                font-weight: 700;
-                height: 1px;
-                overflow: hidden;
-                visibility: hidden;
-              }
-              .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #605e5c;
-              }
-          data-content="Shared with me (1) xx"
-          data-is-focusable={true}
-          id="Pivot0-Tab3"
-          name="Shared with me"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          role="tab"
-          type="button"
-        >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: flex-start;
-                }
-            data-automationid="splitbuttonprimary"
-          >
-            <span
-              className=
-                  ms-Pivot-linkContent
-                  {
-                    flex: 0 1 100%;
-                  }
-                  & > *  {
-                    margin-left: 4px;
-                  }
-                  & > *:first-child {
-                    margin-left: 0px;
-                  }
-            >
-              <span
-                className=
-                    ms-Pivot-icon
-
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        display: inline-block;
-                        font-family: "FabricMDL2Icons-4";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                  data-icon-name="Ringer"
-                >
-                  
-                </i>
-              </span>
-              <span
-                className=
-                    ms-Pivot-text
-                    {
-                      display: inline-block;
-                      vertical-align: top;
-                    }
-              >
-                 
-                Shared with me
+                Customized Rendering
               </span>
               <span
                 className=
@@ -795,233 +966,45 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                  (
-                1
+                10
                 )
               </span>
             </span>
-          </span>
-        </button>
-        <button
-          aria-selected={false}
-          className=
-              ms-Button
-              ms-Button--action
-              ms-Button--command
-              ms-Pivot-link
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 0px;
-                box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 44px;
-                line-height: 44px;
-                margin-right: 8px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 0px;
-                bottom: 2px;
-                content: attr(data-content);
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: relative;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-                cursor: pointer;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:hover .ms-Button-icon {
-                color: #0078d4;
-              }
-              &:focus {
-                outline: none;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-              &:before {
-                background-color: transparent;
-                bottom: 0px;
-                content: "";
-                height: 2px;
-                left: 8px;
-                position: absolute;
-                right: 8px;
-                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
-              }
-              &:after {
-                color: transparent;
-                content: attr(data-content);
-                display: block;
-                font-weight: 700;
-                height: 1px;
-                overflow: hidden;
-                visibility: hidden;
-              }
-              .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #605e5c;
-              }
-          data-content="Customized Rendering (10) xx"
-          data-is-focusable={true}
-          id="Pivot0-Tab4"
-          name="Customized Rendering"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          role="tab"
-          type="button"
-        >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: flex-start;
-                }
-            data-automationid="splitbuttonprimary"
-          >
-            <span>
-              <span
-                className=
-                    ms-Pivot-linkContent
-                    {
-                      flex: 0 1 100%;
-                    }
-                    & > *  {
-                      margin-left: 4px;
-                    }
-                    & > *:first-child {
-                      margin-left: 0px;
-                    }
-              >
-                <span
-                  className=
-                      ms-Pivot-icon
+            <i
+              aria-hidden={true}
+              className=
 
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          font-family: "FabricMDL2Icons-0";
-                          font-style: normal;
-                          font-weight: normal;
-                          speak: none;
-                        }
-                    data-icon-name="Globe"
-                  >
-                    
-                  </i>
-                </span>
-                <span
-                  className=
-                      ms-Pivot-text
-                      {
-                        display: inline-block;
-                        vertical-align: top;
-                      }
-                >
-                   
-                  Customized Rendering
-                </span>
-                <span
-                  className=
-                      ms-Pivot-count
-                      {
-                        display: inline-block;
-                        vertical-align: top;
-                      }
-                >
-                   (
-                  10
-                  )
-                </span>
-              </span>
-              <i
-                aria-hidden={true}
-                className=
-
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons-0";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="Airplane"
-                style={
-                  Object {
-                    "color": "red",
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons-0";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
+              data-icon-name="Airplane"
+              style={
+                Object {
+                  "color": "red",
                 }
-              >
-                
-              </i>
-            </span>
+              }
+            >
+              
+            </i>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
+      aria-hidden={false}
       aria-labelledby="Pivot0-Tab0"
+      className=
+
+          &[hidden] {
+            display: none;
+          }
+      hidden={false}
       role="tabpanel"
     >
       <div>

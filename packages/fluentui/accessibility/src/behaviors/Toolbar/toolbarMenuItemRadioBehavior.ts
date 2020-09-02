@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -9,25 +9,23 @@ import { Accessibility } from '../../types';
  *  Adds attribute 'aria-disabled=true' based on the property 'disabled'.
  *  Adds role='menuitemradio'.
  */
-const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorProps> = props => ({
+export const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorProps> = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-checked': props.active,
       'aria-disabled': props.disabled,
-      role: 'menuitemradio'
-    }
+      role: 'menuitemradio',
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
+    },
+  },
 });
-
-export default toolbarMenuItemRadioBehavior;
 
 type ToolbarMenuItemRadioBehaviorProps = {
   active?: boolean;

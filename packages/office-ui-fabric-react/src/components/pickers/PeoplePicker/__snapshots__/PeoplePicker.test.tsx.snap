@@ -2,9 +2,7 @@
 
 exports[`PeoplePicker renders correctly 1`] = `
 <div
-  className=
-      ms-BasePicker
-
+  className="ms-BasePicker"
   onBlur={[Function]}
   onKeyDown={[Function]}
 >
@@ -103,9 +101,7 @@ exports[`PeoplePicker renders correctly 1`] = `
 
 exports[`PeoplePicker renders correctly with preselected items 1`] = `
 <div
-  className=
-      ms-BasePicker
-
+  className="ms-BasePicker"
   onBlur={[Function]}
   onKeyDown={[Function]}
 >
@@ -522,7 +518,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 24px;
                   }
                   &::-moz-focus-inner {
@@ -540,7 +535,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -607,7 +601,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         margin-top: 0;
                         speak: none;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Cancel"
                 >

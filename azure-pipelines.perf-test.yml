@@ -1,38 +1,45 @@
-pr: none
+pr:
+  - master
+  - website-content
 
 trigger: none
 
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 18.04'
+pool: 'Self Host Ubuntu'
 
 steps:
-  # No need for checkout since we're using build artifacts.
-  - checkout: none
-
-  # TODO: why is this different from main pipeline? is this really getting the correct artifacts?
-  # I think this could be grabbing the wrong (most recent PR) artifacts rather than the one it's associated with
-  # This run is for PR 20200219.5 build #53232 but is grabbing artifacts from 2020219.6 build #53235
-  # https://uifabric.visualstudio.com/fabricpublic/_build/results?buildId=53238&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=559759ef-66f4-5335-a959-132505aae30a
-  # Last PR Build: https://uifabric.visualstudio.com/fabricpublic/_build/results?buildId=53232&view=logs&jobId=92058b04-f16a-5035-546c-cae3ad5e2f5f&j=ca395085-040a-526b-2ce8-bdc85f692774&t=25a453a0-e716-5e6e-0bee-a24e8e541880
-  - template: azure-pipelines.artifacts.yml
-    parameters:
-      artifact: $(artifact)
-      buildId: $(buildId)
-
   - template: azure-pipelines.tools.yml
 
-  # TODO: include perf:test:base (if here make sure this pipeline triggers on master builds)
+  - script: |
+      yarn
+    displayName: yarn
+
+  # @fluentui/perf-test needs build and bundle steps
+  - script: |
+      yarn lage build --scope @fluentui/perf-test --scope perf-test --no-deps --verbose --no-cache --grouped
+    displayName: build  @fluentui v0
+    env:
+      BACKFILL_CACHE_PROVIDER: 'azure-blob'
+      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
+  # @fluentui/perf-test Baseline
+  - script: |
+      yarn perf:test:base
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    workingDirectory: packages/fluentui/perf-test
+    displayName: Perf Test Base (Fluent)
+
+  # @fluentui/perf-test PR
   - script: |
       yarn perf:test
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
-    env:
-      STATS_URI: $(STATS_URI)
 
+  # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
@@ -59,8 +66,8 @@ steps:
   - task: GithubPRComment@0
     displayName: 'Post Perf Results to Github Pull Request'
     inputs:
-      githubOwner: OfficeDev
-      githubRepo: 'office-ui-fabric-react'
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
@@ -68,11 +75,29 @@ steps:
   - task: GithubPRStatus@0
     displayName: 'Update Github Pull Request Status'
     inputs:
-      githubOwner: OfficeDev
-      githubRepo: 'office-ui-fabric-react'
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
       githubContext: 'Pull Request Deployed Site'
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
+  - script: |
+      yarn stats:build
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    displayName: Bundle Statistics (master only)
+
+  - script: |
+      yarn perf
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    displayName: Performance Tests (master only)
+
+  # HEADS UP: also see tag-version-prefix in fluentui-publish.js
+  - script: |
+      yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    displayName: Save Statistics to DB (master only)
+    env:
+      STATS_URI: $(STATS_URI)
 
   - task: DeleteFiles@1
     inputs:

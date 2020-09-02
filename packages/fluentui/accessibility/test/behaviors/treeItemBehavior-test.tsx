@@ -1,4 +1,5 @@
 import { treeItemBehavior } from '@fluentui/accessibility';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 describe('TreeItemBehavior', () => {
   describe('tabIndex', () => {
@@ -39,6 +40,26 @@ describe('TreeItemBehavior', () => {
     test(`is 'none' if a leaf`, () => {
       const expectedResult = treeItemBehavior({});
       expect(expectedResult.attributes.root.role).toEqual('none');
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    test(`click is executed only with 'spacebar', when tree item is 'selectable' and tree item has no subtree`, () => {
+      const expectedResult = treeItemBehavior({ selectable: true, hasSubtree: false });
+      expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(SpacebarKey);
+    });
+
+    test(`selection is executed only with 'spacebar', when tree item is 'selectable'`, () => {
+      const expectedResult = treeItemBehavior({ selectable: true });
+      expect(expectedResult.keyActions.root.performSelection.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.performSelection.keyCombinations[0].keyCode).toEqual(SpacebarKey);
+    });
+
+    test(`click is executed with 'enter' key, when tree item is 'selectable' and tree item has subtree`, () => {
+      const expectedResult = treeItemBehavior({ selectable: true, hasSubtree: true });
+      expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(keyboardKey.Enter);
     });
   });
 });

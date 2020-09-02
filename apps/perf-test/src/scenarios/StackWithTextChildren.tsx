@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Stack, Text } from 'office-ui-fabric-react';
 
-const scenario = (
+const Scenario = () => (
   <Stack>
     <Text>I am a stack child</Text>
     <Text>I am a stack child</Text>
@@ -16,4 +16,4 @@ const scenario = (
   </Stack>
 );
 
-export default scenario;
+export default Scenario;

@@ -10,7 +10,7 @@ import { ICardSectionProps } from './CardSection/CardSection.types';
 
 const CardStatics = {
   Item: CardItem,
-  Section: CardSection
+  Section: CardSection,
 };
 
 export const Card: React.FunctionComponent<ICardProps> & {
@@ -20,7 +20,7 @@ export const Card: React.FunctionComponent<ICardProps> & {
   displayName: 'Card',
   styles,
   tokens,
-  statics: CardStatics
+  statics: CardStatics,
 });
 
 export default Card;

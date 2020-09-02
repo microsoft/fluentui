@@ -19,14 +19,14 @@ type UseSelectorsRef<
  * It will only accept context created by `createContext`.
  * It will trigger re-render if only the selected value is referencially changed.
  */
-const useContextSelectors = <
+export const useContextSelectors = <
   Value,
   Properties extends string,
   Selectors extends Record<Properties, ContextSelector<Value, SelectedValue>>,
   SelectedValue extends any
 >(
   context: Context<Value>,
-  selectors: Selectors
+  selectors: Selectors,
 ): Record<Properties, SelectedValue> => {
   const { subscribe, value } = React.useContext((context as unknown) as Context<ContextValue<Value>>);
   const [, forceUpdate] = React.useReducer((c: number) => c + 1, 0) as [never, () => void];
@@ -42,7 +42,7 @@ const useContextSelectors = <
     ref.current = {
       selectors,
       value,
-      selected
+      selected,
     };
   });
   useIsomorphicLayoutEffect(() => {
@@ -55,7 +55,7 @@ const useContextSelectors = <
         if (
           reference.value === nextState ||
           Object.keys(reference.selected).every((key: Properties) =>
-            Object.is(reference.selected[key], reference.selectors[key](nextState))
+            Object.is(reference.selected[key], reference.selectors[key](nextState)),
           )
         ) {
           // not changed
@@ -73,5 +73,3 @@ const useContextSelectors = <
 
   return selected;
 };
-
-export default useContextSelectors;

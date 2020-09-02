@@ -2,6 +2,7 @@
 
 const child_process = require('child_process');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 // This script MUST NOT have any deps aside from Node built-ins, because it deletes all node_modules!
 
@@ -53,8 +54,11 @@ function deleteNodeModulesSymlinks(packagePath, failedPaths) {
     return;
   }
   // Check node_modules for symlinks and manually remove those
+  // (using this odd way of iterating since we're adding more modules to the list as we go)
   const modules = fs.readdirSync(nodeModulesPath);
-  for (const mod of modules) {
+  /** @type {string} */
+  let mod;
+  while ((mod = modules.pop())) {
     const modulePath = path.join(nodeModulesPath, mod);
     if (mod[0] === '@' && !/[/\\]/.test(mod)) {
       // Add any scoped modules to the list of things to check
@@ -77,10 +81,13 @@ function getChildren(parentFolder) {
  * @param {string[]} args
  */
 function spawn(cmd, args) {
-  return new Promise((resolve, reject) => {
-    const child = child_process.spawn(cmd, args, { stdio: 'inherit' });
-    child.on('exit', code => (code ? reject(new Error('Command failed')) : resolve()));
-  });
+  const maxBuffer = 1024 * 1024 * 10; // default is 1024 * 1024
+  const result = child_process.spawnSync(cmd, args, { stdio: 'inherit', maxBuffer });
+  if (result.error) {
+    throw result.error;
+  } else if (result.status) {
+    throw new Error('Command failed');
+  }
 }
 
 async function run() {
@@ -95,7 +102,9 @@ async function run() {
     .trim();
 
   if (!process.argv.includes('-y')) {
-    console.log('WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).');
+    console.log(
+      'WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).',
+    );
     if (gitStatus) {
       console.log('It will also revert uncommitted changes to the following files:');
       const lines = gitStatus.split(/\r?\n/g).map(line => '  ' + line);
@@ -111,10 +120,29 @@ async function run() {
     }
   }
 
+  // do these before deleting node_nodules
+  console.log('\nClearing Jest cache...');
+  spawn(os.platform() === 'win32' ? 'npx.cmd' : 'npx', ['jest', '--clearCache']);
+  try {
+    console.log('\nAttempting to clear gulp-cache...');
+    const cache = require('gulp-cache');
+    cache.clearAll();
+    console.log('...success!');
+  } catch (err) {
+    console.log('Clearing gulp-cache failed, likely due it not being installed.');
+  }
+
   const failedPaths = [];
 
   console.log("\nDeleting symlinks from packages' node_modules and rush temp files...");
-  const folders = [...getChildren('apps'), ...getChildren('packages'), 'scripts', 'common/temp'];
+  const folders = [
+    '.',
+    ...getChildren('apps'),
+    ...getChildren('packages'),
+    ...getChildren('packages/fluentui'),
+    'scripts',
+    'common/temp',
+  ];
   for (const folder of folders) {
     deleteNodeModulesSymlinks(folder, failedPaths);
   }
@@ -127,10 +155,10 @@ async function run() {
   }
 
   console.log('\nRunning "git clean -fdx" to remove all untracked files/folders (this may take awhile)...');
-  await spawn('git', ['clean', '-fdx']);
+  spawn('git', ['clean', '-fdx']);
 
   console.log('\nRunning "git reset --hard"...');
-  await spawn('git', ['reset', '--hard']);
+  spawn('git', ['reset', '--hard']);
 
   console.log('\nDone!');
 }

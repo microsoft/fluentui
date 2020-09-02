@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
-import { List, ChatMessageProps, Flex, Icon } from '@fluentui/react';
+import { List, ChatMessageProps, Flex } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';
 import controlMessagesGroupBehavior from './controlMessagesGroupBehavior';
+import { TriangleDownIcon, ParticipantAddIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
 type GroupControlMessagesProps = {
   items: ChatMessageProps[];
@@ -20,7 +21,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
     return _.map(items, (item, index) => {
       return {
         content: <ControlMessage message={item} />,
-        key: `control-message-${index}`
+        key: `control-message-${index}`,
       };
     });
   };
@@ -28,7 +29,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
   return (
     <Flex
       onKeyDown={e => {
-        const eventCode = keyboardKey.getCode(e);
+        const eventCode = getCode(e);
         if (eventCode === keyboardKey.Enter) {
           setExpanded(true);
         }
@@ -38,8 +39,12 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
         }
       }}
     >
-      <Icon name={expanded ? 'icon-arrow-down' : 'icon-arrow-end'} onClick={() => setExpanded(!expanded)} />
-      <Icon name="participant-add" />
+      {expanded ? (
+        <TriangleDownIcon onClick={() => setExpanded(!expanded)} />
+      ) : (
+        <TriangleEndIcon onClick={() => setExpanded(!expanded)} />
+      )}
+      <ParticipantAddIcon />
       {expanded ? (
         <List accessibility={controlMessagesGroupBehavior} items={renderItems()} aria-label={'control messages'} />
       ) : (

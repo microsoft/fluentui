@@ -12,13 +12,13 @@ const createTestManager: ManagerFactory<TestState, TestActions> = config =>
     ...config,
     actions: {
       change: (value: string) => () => ({ value }),
-      toggle: () => state => ({ open: !state.open })
+      toggle: () => state => ({ open: !state.open }),
     },
     state: {
       open: false,
       value: '',
-      ...config.state
-    }
+      ...config.state,
+    },
   });
 
 type TestComponentProps = Partial<TestState> & {
@@ -36,12 +36,12 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { state, actions } = useStateManager(createTestManager, {
     mapPropsToInitialState: () => ({
       open: props.defaultOpen,
-      value: props.defaultValue
+      value: props.defaultValue,
     }),
     mapPropsToState: () => ({
       open: props.open,
-      value: props.value
-    })
+      value: props.value,
+    }),
   });
 
   return (
@@ -69,13 +69,15 @@ type ActionsComponentProps = {
 };
 
 const ActionsComponent: React.FunctionComponent<ActionsComponentProps> = props => {
+  const { onRender, onUpdate } = props;
+
   const { actions, state } = useStateManager(createTestManager);
   const handleClick = React.useCallback(() => actions.toggle(), [actions]);
 
-  props.onRender();
+  onRender();
   React.useEffect(() => {
-    props.onUpdate();
-  }, [actions]);
+    onUpdate();
+  }, [actions, onUpdate]);
 
   return <div data-open={state.open} onClick={handleClick} />;
 };

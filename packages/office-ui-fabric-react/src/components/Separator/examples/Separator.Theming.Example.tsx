@@ -8,22 +8,16 @@ const theme: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: 'Monaco, Menlo, Consolas',
-      fontSize: '30px'
-    }
-  }
+      fontSize: '30px',
+    },
+  },
 });
 
 const stackTokens: IStackTokens = { childrenGap: 12 };
 
-export class SeparatorThemingExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    const content = 'Today';
-
-    return (
-      <Stack tokens={stackTokens}>
-        <Text>Horizontal center aligned with custom theme</Text>
-        <Separator theme={theme}>{content}</Separator>
-      </Stack>
-    );
-  }
-}
+export const SeparatorThemingExample: React.FC = () => (
+  <Stack tokens={stackTokens}>
+    <Text>Horizontal center aligned with custom theme</Text>
+    <Separator theme={theme}>Today</Separator>
+  </Stack>
+);

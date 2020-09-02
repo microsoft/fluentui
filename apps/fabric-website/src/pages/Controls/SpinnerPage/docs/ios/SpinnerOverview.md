@@ -4,10 +4,18 @@ For pauses between 2 seconds and 400 milliseconds, adding animations may actuall
 
 Use a standalone spinner when you need a progress indicator on an existing surface (such as a view that's already displayed but no content is shown yet, or when the user pulls-to-refresh, revealing the empty space above the scrolling list).
 
-For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `MSHUD`:
+For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `HUD`.
 
-<!-- prettier-ignore-start -->
-| Activity Indicator | HUD |
-| --- | --- |
-| <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/progressindicator/activity-indicator.png" alt="Activity indicator control in varying sizes on iOS." style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/progressindicator/progressindicator.png" alt="Progress indicator control in a floating overlay on iOS." style="width: 75%;" /> |
-<!-- prettier-ignore-end -->
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+
+### Activity Indicator
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_spinner_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_spinner_01_dark.png?text=DarkMode" />
+
+### HUD
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_hud_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_hud_01_dark.png?text=DarkMode" />
+
+</DisplayToggle>

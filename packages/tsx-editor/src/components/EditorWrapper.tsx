@@ -15,7 +15,7 @@ const TsxEditorLazy = React.lazy(
     // Theoretically we could use import() here, but that pulls things into bundles when using
     // commonjs modules due to the way import is transpiled for commonjs
     // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
-    new Promise<typeof TsxEditorModule>(resolve => require.ensure([], require => resolve(require('./TsxEditor'))))
+    new Promise<typeof TsxEditorModule>(resolve => require.ensure([], require => resolve(require('./TsxEditor')))),
 );
 
 export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
@@ -31,28 +31,27 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     useEditor,
     supportedPackages,
     onTransformFinished: onTransformFinishedFromProps,
-    children
+    children,
   } = props;
 
   const [transformResult, setTransformResult] = React.useState<ITransformedExample>({});
   const { component: ExampleComponent } = transformResult;
 
   // Check if editing should be enabled
-  const canEdit = React.useMemo(() => {
-    if (typeof useEditor === 'boolean') {
-      return useEditor;
-    }
-    return isEditorSupported(code, supportedPackages);
-  }, [useEditor, code, supportedPackages]);
+  const canEdit = React.useMemo(() => isEditorSupported(code, supportedPackages, useEditor), [
+    useEditor,
+    code,
+    supportedPackages,
+  ]);
 
   const onTransformFinished = React.useCallback(
     (result: ITransformedExample) => {
       setTransformResult(result);
-      if (props.onTransformFinished) {
-        props.onTransformFinished(result);
+      if (onTransformFinishedFromProps) {
+        onTransformFinishedFromProps(result);
       }
     },
-    [onTransformFinishedFromProps]
+    [onTransformFinishedFromProps],
   );
 
   return (

@@ -1,20 +1,35 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  ISlotProp,
+  IComponent,
+  IStyleableComponentProps,
+  ISlottableProps,
+} from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
  * properties can take.
  * {@docCategory Stack}
  */
-export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
+export type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
 
 /**
  * {@docCategory Stack}
  */
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
-// The following two types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// The following two types are redundant with IStackComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
@@ -106,25 +121,25 @@ export interface IStackProps
    * Defines the spacing between Stack children.
    * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
    * If 'column gap' is omitted, it's set to the same value as 'row gap'.
-   * @deprecated Use 'childrenGap' token instead.
+   * @deprecated Use `childrenGap` token in `IStackTokens` instead.
    */
   gap?: number | string;
 
   /**
    * Defines the maximum width that the Stack can take.
-   * @deprecated Use 'maxWidth' token instead.
+   * @deprecated Use `maxWidth` token in `IStackTokens` instead.
    */
   maxWidth?: number | string;
 
   /**
    * Defines the maximum height that the Stack can take.
-   * @deprecated Use 'maxHeight' token instead.
+   * @deprecated Use `maxHeight` token in `IStackTokens` instead.
    */
   maxHeight?: number | string;
 
   /**
    * Defines the inner padding of the Stack.
-   * @deprecated Use 'padding' token instead.
+   * @deprecated Use `padding` token in `IStackTokens` instead.
    */
   padding?: number | string;
 

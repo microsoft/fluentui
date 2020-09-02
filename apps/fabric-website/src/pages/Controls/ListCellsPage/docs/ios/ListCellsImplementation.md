@@ -1,29 +1,35 @@
 ### Control name
 
-`MSTableViewCell`
+`TableViewCell` in Swift, `MSFTableViewCell` in Objective-C
 
-`MSActionsCell`
+`ActionsCell` in Swift, `MSFActionsCell` in Objective-C
 
-`MSActivityIndicatorCell`
+`ActivityIndicatorCell` in Swift, `MSFActivityIndicatorCell` in Objective-C
 
-`MSCenteredLabelCell`
+`CenteredLabelCell` in Swift, `MSFCenteredLabelCell` in Objective-C
 
-`MSBooleanCell`
+`BooleanCell` in Swift, `MSFBooleanCell` in Objective-C
+
+`TableViewHeaderFooterView` in Swift, `MSFTableViewHeaderFooterView` in Objective-C
 
 ### Source code
 
-[MSTableViewCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
+[TableViewCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewCell.swift)
 
-[MSActionsCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSActionsCell.swift)
+[ActionsCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/ActionsCell.swift)
 
-[MSActivityIndicatorCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSActivityIndicatorCell.swift)
+[ActivityIndicatorCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/ActivityIndicatorCell.swift)
 
-[MSCenteredLabelCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSCenteredLabelCell.swift)
+[CenteredLabelCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/CenteredLabelCell.swift)
 
-[MSBooleanCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSBooleanCell.swift)
+[BooleanCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/BooleanCell.swift)
+
+[TableViewHeaderFooterView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewHeaderFooterView.swift)
 
 ### Sample code
 
-[MSTableViewCell demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSTableViewCellDemoController.swift)
+[TableViewCell demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellDemoController.swift)
 
-[Other cells demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/OtherCellsDemoController.swift)
+[Other cells demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/OtherCellsDemoController.swift)
+
+[TableViewHeaderFooterView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewHeaderFooterViewDemoController.swift)

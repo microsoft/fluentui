@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Flex, Provider, Text, Button, Menu, Ref } from '@fluentui/react';
+import { Flex, Provider, Text, Button, Menu, Ref } from '@fluentui/react-northstar';
 import CopyToClipboard from './CopyToClipboard';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import themeOverrides from './themeOverrides';
 import { NotificationProvider } from './NotificationProvider';
+import { ClipboardCopiedToIcon } from '@fluentui/react-icons-northstar';
 
 type CopyToClipboardPrototypeProps = {
   value: string;
@@ -21,7 +22,7 @@ const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = props 
         attached={props.attached}
         target={props.target}
         value={props.value}
-        trigger={<Button iconOnly icon="clipboard-copied-to" />}
+        trigger={<Button iconOnly icon={<ClipboardCopiedToIcon />} />}
       />
     </Flex>
   );
@@ -38,9 +39,9 @@ const CopyToClipboardInMenu: React.FC = props => {
         content: 'Copy text',
         children: (Component, props) => {
           return <CopyToClipboard value="Julius Caesar" trigger={<Component {...props} />} />;
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return <Menu items={[item]} />;
@@ -63,10 +64,12 @@ const CopyToClipboardAttached: React.FC = props => {
         'Save File...',
         {
           content: 'Copy text',
-          children: (Component, props) => <CopyToClipboard target={target} value="Julius Caesar" trigger={<Component {...props} />} />
-        }
-      ]
-    }
+          children: (Component, props) => (
+            <CopyToClipboard target={target} value="Julius Caesar" trigger={<Component {...props} />} />
+          ),
+        },
+      ],
+    },
   ];
 
   return <Menu items={items} />;
@@ -77,7 +80,8 @@ const CopyToClipboardPrototypes: React.FC = () => {
   return (
     <PrototypeSection title="Copy to Clipboard">
       <Text>
-        Note: For screen reader users, make sure to use <code>react-aria-live</code> or similar library to announce the notification.
+        Note: For screen reader users, make sure to use <code>react-aria-live</code> or similar library to announce the
+        notification.
       </Text>
       <Provider theme={themeOverrides}>
         <NotificationProvider>
@@ -90,7 +94,10 @@ const CopyToClipboardPrototypes: React.FC = () => {
           <ComponentPrototype title="In menu" description="Copy to Clipboard can reside within a menu">
             <CopyToClipboardInMenu />
           </ComponentPrototype>
-          <ComponentPrototype title="In Menu Attached" description="Copy to Clipboard can be attached to a different element">
+          <ComponentPrototype
+            title="In Menu Attached"
+            description="Copy to Clipboard can be attached to a different element"
+          >
             <CopyToClipboardAttached />
           </ComponentPrototype>
         </NotificationProvider>

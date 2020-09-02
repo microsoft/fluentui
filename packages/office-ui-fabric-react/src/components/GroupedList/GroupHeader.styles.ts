@@ -1,6 +1,13 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import {
+  getGlobalClassNames,
+  getFocusStyle,
+  IStyle,
+  AnimationVariables,
+  FontWeights,
+  IconFontSizes,
+} from '../../Styling';
+import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
@@ -17,13 +24,13 @@ const GlobalClassNames = {
   isSelected: 'is-selected',
   iconTag: 'ms-Icon--Tag',
   group: 'ms-GroupedList-group',
-  isDropping: 'is-dropping'
+  isDropping: 'is-dropping',
 };
 
 const beziers = {
   easeOutCirc: 'cubic-bezier(0.075, 0.820, 0.165, 1.000)',
   easeOutSine: 'cubic-bezier(0.390, 0.575, 0.565, 1.000)',
-  easeInBack: 'cubic-bezier(0.600, -0.280, 0.735, 0.045)'
+  easeInBack: 'cubic-bezier(0.600, -0.280, 0.735, 0.045)',
 };
 
 const DEFAULT_GROUP_HEADER_HEIGHT = 48;
@@ -31,7 +38,8 @@ const COMPACT_GROUP_HEADER_HEIGHT = 40;
 
 export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => {
   const { theme, className, selected, isCollapsed, compact } = props;
-  const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS; // padding from the source to align GroupHeader title with DetailsRow's first cell.
+  // padding from the source to align GroupHeader title with DetailsRow's first cell.
+  const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS;
   const finalRowHeight = compact ? COMPACT_GROUP_HEADER_HEIGHT : DEFAULT_GROUP_HEADER_HEIGHT;
 
   const { semanticColors, palette, fonts } = theme;
@@ -45,8 +53,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       background: 'none',
       backgroundColor: 'transparent',
       border: 'none',
-      padding: 0 // cancel default <button> padding
-    }
+      padding: 0, // cancel default <button> padding
+    },
   ];
 
   return {
@@ -55,19 +63,20 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       getFocusStyle(theme),
       theme.fonts.medium,
       {
-        borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
+        // keep the border for height but color it so it's invisible.
+        borderBottom: `1px solid ${semanticColors.listBackground}`,
         cursor: 'default',
         userSelect: 'none',
         selectors: {
           ':hover': {
             background: semanticColors.listItemBackgroundHovered,
-            color: semanticColors.actionLinkHovered
+            color: semanticColors.actionLinkHovered,
           },
           [`&:hover .${classNames.check}`]: {
-            opacity: 1
+            opacity: 1,
           },
           [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
-            opacity: 1
+            opacity: 1,
           },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
@@ -77,15 +86,15 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
                   `opacity ${AnimationVariables.durationValue1} ${beziers.easeOutSine}`,
                 transitionDelay: AnimationVariables.durationValue3,
                 opacity: 1,
-                transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
+                transform: `rotate(0.2deg) scale(1);`, // rotation prevents jittery motion in IE
               },
 
               [`.${classNames.check}`]: {
-                opacity: 0
-              }
-            }
-          }
-        }
+                opacity: 0,
+              },
+            },
+          },
+        },
       },
       selected && [
         classNames.isSelected,
@@ -93,28 +102,28 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
           background: semanticColors.listItemBackgroundChecked,
           selectors: {
             ':hover': {
-              background: semanticColors.listItemBackgroundCheckedHovered
+              background: semanticColors.listItemBackgroundCheckedHovered,
             },
             [`${classNames.check}`]: {
-              opacity: 1
-            }
-          }
-        }
+              opacity: 1,
+            },
+          },
+        },
       ],
       compact && [classNames.compact, { border: 'none' }],
-      className
+      className,
     ],
     groupHeaderContainer: [
       {
         display: 'flex',
         alignItems: 'center',
-        height: finalRowHeight
-      }
+        height: finalRowHeight,
+      },
     ],
     headerCount: [
       {
-        padding: '0px 4px'
-      }
+        padding: '0px 4px',
+      },
     ],
     check: [
       classNames.check,
@@ -134,10 +143,10 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         height: finalRowHeight,
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus`]: {
-            opacity: 1
-          }
-        }
-      }
+            opacity: 1,
+          },
+        },
+      },
     ],
     expand: [
       classNames.expand,
@@ -152,13 +161,13 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         color: selected ? palette.neutralPrimary : palette.neutralSecondary,
         selectors: {
           ':hover': {
-            backgroundColor: selected ? palette.neutralQuaternary : palette.neutralLight
+            backgroundColor: selected ? palette.neutralQuaternary : palette.neutralLight,
           },
           ':active': {
-            backgroundColor: selected ? palette.neutralTertiaryAlt : palette.neutralQuaternaryAlt
-          }
-        }
-      }
+            backgroundColor: selected ? palette.neutralTertiaryAlt : palette.neutralQuaternaryAlt,
+          },
+        },
+      },
     ],
     expandIsCollapsed: [
       isCollapsed
@@ -167,14 +176,14 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             {
               transform: 'rotate(0deg)',
               transformOrigin: '50% 50%',
-              transition: 'transform .1s linear'
-            }
+              transition: 'transform .1s linear',
+            },
           ]
         : {
-            transform: 'rotate(90deg)',
+            transform: getRTL(theme) ? 'rotate(-90deg)' : 'rotate(90deg)',
             transformOrigin: '50% 50%',
-            transition: 'transform .1s linear'
-          }
+            transition: 'transform .1s linear',
+          },
     ],
     title: [
       classNames.title,
@@ -185,8 +194,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         cursor: 'pointer',
         outline: 0,
         whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
-      }
+        textOverflow: 'ellipsis',
+      },
     ],
     dropIcon: [
       classNames.dropIcon,
@@ -203,10 +212,10 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         transformOrigin: '10px 10px',
         selectors: {
           [`:global(.${classNames.iconTag})`]: {
-            position: 'absolute'
-          }
-        }
-      }
-    ]
+            position: 'absolute',
+          },
+        },
+      },
+    ],
   };
 };

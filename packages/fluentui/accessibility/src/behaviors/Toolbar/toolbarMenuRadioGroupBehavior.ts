@@ -6,12 +6,12 @@ import { Accessibility } from '../../types';
  * @specification
  *  Adds role='group'.
  */
-const toolbarRadioGroupBehavior: Accessibility = () => ({
+export const toolbarMenuRadioGroupBehavior: Accessibility<ToolbarMenuRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'group'
-    }
-  }
+      role: 'group',
+    },
+  },
 });
 
-export default toolbarRadioGroupBehavior;
+export type ToolbarMenuRadioGroupBehaviorProps = never;

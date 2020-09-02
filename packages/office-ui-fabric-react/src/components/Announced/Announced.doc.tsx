@@ -16,75 +16,87 @@ const AnnouncedQuickActionsExampleCode = require('!raw-loader!office-ui-fabric-r
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
   componentName: 'Announced',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/experiments/src/components/Announced',
   overview: require('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/AnnouncedOverview.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedQuickActionsPageProps: IDocPageProps = {
   title: 'Quick Actions',
   componentName: 'Quick Actions',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Quick actions',
       code: AnnouncedQuickActionsExampleCode,
-      view: <AnnouncedQuickActionsExample />
-    }
+      view: <AnnouncedQuickActionsExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Overview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedSearchResultsPageProps: IDocPageProps = {
   title: 'Search Results',
   componentName: 'Search Results',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Search results',
       code: AnnouncedSearchResultsExampleCode,
-      view: <AnnouncedSearchResultsExample />
-    }
+      view: <AnnouncedSearchResultsExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Overview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
   title: 'Asynchronous',
   componentName: 'Asynchronous',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Asynchronous',
       code: AnnouncedLazyLoadingExampleCode,
-      view: <AnnouncedLazyLoadingExample />
-    }
+      view: <AnnouncedLazyLoadingExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Overview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
   title: 'Bulk Long Running',
   componentName: 'Bulk Long Running',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Bulk long running',
       code: AnnouncedBulkOperationsExampleCode,
-      view: <AnnouncedBulkOperationsExample />
-    }
+      view: <AnnouncedBulkOperationsExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Overview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };

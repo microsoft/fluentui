@@ -6,7 +6,7 @@ import {
   IDetailsRowProps,
   IColumn,
   IGroup,
-  SelectionMode
+  SelectionMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -26,7 +26,7 @@ interface IAccessibilityDetailsList {
 }
 
 export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDetailsListProps> = (
-  props: IAccessibilityDetailsListProps
+  props: IAccessibilityDetailsListProps,
 ) => {
   let allContrastRatioPairs = props.nonAccessiblePairs.concat(props.accessiblePairs);
   let nonAccessibleStartIndex = props.nonAccessiblePairs.length;
@@ -43,10 +43,10 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
         root: {
           selectors: {
             ':hover': {
-              background: 'transparent'
-            }
-          }
-        }
+              background: 'transparent',
+            },
+          },
+        },
       };
       return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
     } else {
@@ -79,7 +79,7 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
       key: i.toString(),
       contrastRatio: allContrastRatioPairs[i].contrastRatioValue,
       slotPair: allContrastRatioPairs[i].contrastRatioPair,
-      colorPair: allContrastRatioPairs[i].colorPair
+      colorPair: allContrastRatioPairs[i].colorPair,
     });
   }
 
@@ -89,14 +89,21 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
       key: 'accessiblepairs',
       name: 'Accessible pairs',
       startIndex: nonAccessibleStartIndex,
-      count: accessiblePairsListCount
-    }
+      count: accessiblePairsListCount,
+    },
   ];
 
   columns = [
-    { key: 'contrastRatio', name: 'Contrast ratio: AA', fieldName: 'contrastRatio', minWidth: 100, maxWidth: 200, isResizable: true },
+    {
+      key: 'contrastRatio',
+      name: 'Contrast ratio: AA',
+      fieldName: 'contrastRatio',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: true,
+    },
     { key: 'colorPair', name: 'Color pair', fieldName: 'colorPair', minWidth: 100, maxWidth: 300 },
-    { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 }
+    { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 },
   ];
 
   return (
@@ -110,9 +117,10 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
         disableSelectionZone={true}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderRow={onRenderRow}
         groupProps={{
-          showEmptyGroups: true
+          showEmptyGroups: true,
         }}
       />
     </div>

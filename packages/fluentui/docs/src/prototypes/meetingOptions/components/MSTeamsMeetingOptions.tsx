@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Layout, Grid, Button, Text, Icon, Input, Header } from '@fluentui/react';
+import { Layout, Grid, Button, Text, Input, Header } from '@fluentui/react-northstar';
+import { CalendarIcon, UserFriendsIcon } from '@fluentui/react-icons-northstar';
 import { middleColumnStyles } from '../styles';
 import TransparentDivider from './TransparentDivider';
 
@@ -9,12 +10,15 @@ export default () => {
       <TransparentDivider size={40} />
       <div style={middleColumnStyles}>
         <Header as="h3" content="Fluent Design - Introduction" />
-        <Layout start={<Icon name="calendar" xSpacing="after" />} main={<Text content="10 January 2018, 12:00 PM - 1:00 PM" />} />
-        <Layout start={<Icon name="user" xSpacing="after" />} main={<Text content="John Doe" />} />
+        <Layout
+          start={<CalendarIcon xSpacing="after" />}
+          main={<Text content="10 January 2018, 12:00 PM - 1:00 PM" />}
+        />
+        <Layout start={<UserFriendsIcon xSpacing="after" />} main={<Text content="John Doe" />} />
         <TransparentDivider size={40} />
         <Header as="h3" content="Meeting Options" />
         <TransparentDivider />
-        <Grid columns="1fr 1fr">
+        <Grid columns={2}>
           <Text content="Who can byppass the lobby?" weight="semibold" style={{ lineHeight: '40px' }} />
           <Input placeholder="People in my organization" fluid />
         </Grid>

@@ -1,18 +1,18 @@
-import { useCallback, useState } from 'react';
+import * as React from 'react';
 import { ISplitButtonComponent, ISplitButtonViewProps } from './SplitButton.types';
 import { KeyCodes } from '../../../Utilities';
 
 export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = React.useState<boolean>(false);
 
   const { disabled, onMenuDismiss, onSecondaryActionClick } = props;
 
-  const _onMenuDismiss = useCallback(() => {
+  const _onMenuDismiss = React.useCallback(() => {
     onMenuDismiss && onMenuDismiss();
     setExpanded(false);
   }, [onMenuDismiss]);
 
-  const _onSecondaryActionClick = useCallback(
+  const _onSecondaryActionClick = React.useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
       if (!disabled) {
         if (onSecondaryActionClick) {
@@ -25,16 +25,16 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded, onSecondaryActionClick]
+    [disabled, expanded, onSecondaryActionClick],
   );
 
-  const _onKeyDown = useCallback(
+  const _onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
       if (!disabled && (ev.altKey || ev.metaKey) && ev.keyCode === KeyCodes.down) {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded]
+    [disabled, expanded],
   );
 
   const viewProps: ISplitButtonViewProps = {
@@ -42,7 +42,7 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
     expanded,
     onKeyDown: _onKeyDown,
     onMenuDismiss: _onMenuDismiss,
-    onSecondaryActionClick: _onSecondaryActionClick
+    onSecondaryActionClick: _onSecondaryActionClick,
   };
 
   return viewProps;

@@ -8,7 +8,7 @@ const NON_PIXEL_NUMBER_PROPS = [
   'opacity',
   'order',
   'z-index',
-  'zoom'
+  'zoom',
 ];
 
 export function provideUnits(rulePairs: (string | number)[], index: number): void {

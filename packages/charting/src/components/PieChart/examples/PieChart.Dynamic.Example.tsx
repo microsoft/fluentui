@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { PieChart, IPieChartProps } from '@uifabric/charting/lib/PieChart';
+import { IDataPoint, PieChart, IPieChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {
@@ -11,10 +10,16 @@ export interface IExampleState {
 
 export class PieChartDynamicExample extends React.Component<IPieChartProps, IExampleState> {
   private _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.tealLight, DefaultPalette.teal, DefaultPalette.greenLight],
+    [
+      DefaultPalette.blueLight,
+      DefaultPalette.blue,
+      DefaultPalette.tealLight,
+      DefaultPalette.teal,
+      DefaultPalette.greenLight,
+    ],
     [DefaultPalette.purpleLight, DefaultPalette.purple, DefaultPalette.magentaLight, DefaultPalette.magenta],
     [DefaultPalette.yellowLight, DefaultPalette.yellow, DefaultPalette.orangeLighter, DefaultPalette.orangeLight],
-    [DefaultPalette.neutralLight, DefaultPalette.neutralQuaternary, DefaultPalette.neutralTertiary]
+    [DefaultPalette.neutralLight, DefaultPalette.neutralQuaternary, DefaultPalette.neutralTertiary],
   ];
 
   constructor(props: IPieChartProps) {
@@ -24,9 +29,14 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
         { x: 'A', y: 25 },
         { x: 'B', y: 10 },
         { x: 'C', y: 60 },
-        { x: 'D', y: 5 }
+        { x: 'D', y: 5 },
       ],
-      colors: [DefaultPalette.blueLight, DefaultPalette.purpleLight, DefaultPalette.yellowLight, DefaultPalette.neutralLight]
+      colors: [
+        DefaultPalette.blueLight,
+        DefaultPalette.purpleLight,
+        DefaultPalette.yellowLight,
+        DefaultPalette.neutralLight,
+      ],
     };
 
     this._changeData = this._changeData.bind(this);
@@ -54,14 +64,14 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
         { x: 'A', y: a },
         { x: 'B', y: b },
         { x: 'C', y: c },
-        { x: 'D', y: d }
-      ]
+        { x: 'D', y: d },
+      ],
     });
   }
 
   private _changeColors(): void {
     this.setState({
-      colors: [this._randomColor(0), this._randomColor(1), this._randomColor(2), this._randomColor(3)]
+      colors: [this._randomColor(0), this._randomColor(1), this._randomColor(2), this._randomColor(3)],
     });
   }
 

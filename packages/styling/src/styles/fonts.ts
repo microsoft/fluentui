@@ -70,7 +70,7 @@ const LanguageToFontMap = {
   'zh-hans': LocalizedFontFamilies.ChineseSimplified,
   'zh-hant': LocalizedFontFamilies.ChineseTraditional,
   hy: LocalizedFontFamilies.Armenian,
-  ka: LocalizedFontFamilies.Georgian
+  ka: LocalizedFontFamilies.Georgian,
 };
 
 // Standard font sizes.
@@ -129,19 +129,20 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.semibold, fontFamilyWithFallback),
     xxLargePlus: _createFont(FontSizes.xxLargePlus, FontWeights.semibold, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.semibold, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback)
+    mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback),
   };
 
   return fontStyles;
 }
 
 /**
- * If there is a localized font for this language, return that. Returns undefined if there is no localized font for that language.
+ * If there is a localized font for this language, return that.
+ * Returns undefined if there is no localized font for that language.
  */
 function _getLocalizedFontFamily(language: string | null): string {
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (LanguageToFontMap as any)[lang];
     }
   }
@@ -155,6 +156,6 @@ function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRa
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
-    fontWeight: weight
+    fontWeight: weight,
   };
 }

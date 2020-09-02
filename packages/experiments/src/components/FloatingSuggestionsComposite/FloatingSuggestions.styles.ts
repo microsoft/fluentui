@@ -3,7 +3,7 @@ import { IBaseFloatingSuggestionsStyles, IBaseFloatingSuggestionsStylesProps } f
 
 const GlobalClassNames = {
   root: 'ms-FloatingSuggestions',
-  callout: 'ms-FloatingSuggestions-callout'
+  callout: 'ms-FloatingSuggestions-callout',
 };
 
 export const getStyles = (props: IBaseFloatingSuggestionsStylesProps): IBaseFloatingSuggestionsStyles => {
@@ -24,13 +24,13 @@ export const getStyles = (props: IBaseFloatingSuggestionsStylesProps): IBaseFloa
         selectors: {
           ['.ms-FloatingSuggestionsItem-itemButton']: {
             padding: '0px',
-            border: 'none'
+            border: 'none',
           },
           ['.ms-FloatingSuggestionsList']: {
-            minWidth: '260px'
-          }
-        }
-      }
-    ]
+            minWidth: '260px',
+          },
+        },
+      },
+    ],
   };
 };

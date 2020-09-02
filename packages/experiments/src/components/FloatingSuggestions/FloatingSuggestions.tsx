@@ -1,8 +1,12 @@
 import * as React from 'react';
 import * as styles from './FloatingSuggestions.scss';
-import { BaseComponent, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { Async, initializeComponentRef, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IFloatingSuggestions, IFloatingSuggestionsProps, IFloatingSuggestionsInnerSuggestionProps } from './FloatingSuggestions.types';
+import {
+  IFloatingSuggestions,
+  IFloatingSuggestionsProps,
+  IFloatingSuggestionsInnerSuggestionProps,
+} from './FloatingSuggestions.types';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
@@ -13,21 +17,26 @@ export interface IFloatingSuggestionsState {
   didBind: boolean;
 }
 
-export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
+export class FloatingSuggestions<TItem>
+  extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
   implements IFloatingSuggestions<TItem> {
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
   private suggestionsControl: React.RefObject<SuggestionsControl<TItem>> = React.createRef();
   private currentPromise: PromiseLike<TItem[]>;
   private isComponentMounted: boolean = false;
+  private _async: Async;
 
   constructor(basePickerProps: IFloatingSuggestionsProps<TItem>) {
     super(basePickerProps);
 
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
-      didBind: false
+      didBind: false,
     };
   }
 
@@ -60,7 +69,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString
+        queryString: queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -77,7 +86,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
 
     this.setState({
-      suggestionsVisible: false
+      suggestionsVisible: false,
     });
   };
 
@@ -87,7 +96,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
 
     this.setState({
-      suggestionsVisible: true
+      suggestionsVisible: true,
     });
 
     // Update the suggestions if updateValue == true
@@ -111,9 +120,9 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
     this.isComponentMounted = false;
+    this._async.dispose();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
@@ -162,7 +171,8 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   public updateSuggestionsList(suggestions: TItem[] | PromiseLike<TItem[]>): void {
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
-    // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+    // If the returned value is not an array then check to see if it's a promise or PromiseLike.
+    // If it is then resolve it asynchronously.
     if (Array.isArray(suggestions)) {
       this.updateSuggestions(suggestions, true /*forceUpdate*/);
     } else if (suggestions && suggestions.then) {
@@ -181,8 +191,8 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
   private _renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
-    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this.props
-      .onRenderSuggestionControl;
+    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this
+      .props.onRenderSuggestionControl;
     if (TypedSuggestionsControl === undefined) {
       TypedSuggestionsControl = SuggestionsControl;
     }
@@ -239,6 +249,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     ) {
       return;
     }
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
@@ -249,7 +260,12 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && !ev.ctrlKey && this.suggestionsControl.current && this.suggestionsControl.current.handleKeyDown(keyCode)) {
+        if (
+          !ev.shiftKey &&
+          !ev.ctrlKey &&
+          this.suggestionsControl.current &&
+          this.suggestionsControl.current.handleKeyDown(keyCode)
+        ) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {

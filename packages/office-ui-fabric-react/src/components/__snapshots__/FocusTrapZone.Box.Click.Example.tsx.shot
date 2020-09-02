@@ -7,6 +7,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={
@@ -97,7 +98,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle0-label"
+          aria-labelledby="Toggle0-label Toggle0-stateText"
           checked={false}
           className=
               ms-Toggle-background
@@ -161,7 +162,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   border-color: transparent;
                   border-radius: 50%;
                   border-style: solid;
-                  border-width: .28em;
+                  border-width: 6px;
                   box-sizing: border-box;
                   display: block;
                   height: 12px;
@@ -238,9 +239,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -301,6 +300,9 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
+              @media screen and (forced-colors: active){&:hover {
+                forced-color-adjust: none;
+              }
         >
           <input
             aria-invalid={false}
@@ -345,6 +347,10 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -353,6 +359,9 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -363,6 +372,9 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -371,6 +383,9 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             id="TextField1"
             onBlur={[Function]}
@@ -398,27 +413,41 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       href="https://bing.com"
       onClick={[Function]}
@@ -428,6 +457,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
     </a>
   </div>
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={

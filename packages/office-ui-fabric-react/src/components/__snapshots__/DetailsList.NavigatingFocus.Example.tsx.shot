@@ -18,7 +18,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -41,9 +40,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -88,11 +85,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 200,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -141,9 +133,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -631,40 +621,38 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone2"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone2"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -759,6 +747,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -824,7 +813,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1097,33 +1085,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -1286,6 +1285,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1351,7 +1351,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1624,33 +1623,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -1813,6 +1823,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1878,7 +1889,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2151,33 +2161,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -2340,6 +2361,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2405,7 +2427,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2678,33 +2699,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -2867,6 +2899,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2932,7 +2965,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3205,33 +3237,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -3394,6 +3437,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3459,7 +3503,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3732,33 +3775,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -3921,6 +3975,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3986,7 +4041,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -4259,33 +4313,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -4448,6 +4513,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -4513,7 +4579,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -4786,33 +4851,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -4975,6 +5051,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -5040,7 +5117,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -5313,33 +5389,44 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 }
                                 .ms-Fabric--isFocusVisible &:focus {
                                   box-shadow: 0 0 0 1px #605e5c inset;
+                                  outline: 1px auto #605e5c;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active){& {
                                   border-bottom: none;
+                                  color: LinkText;
                                 }
-                                @media screen and (-ms-high-contrast: white-on-black){& {
-                                  color: #FFFF00;
-                                }
-                                @media screen and (-ms-high-contrast: black-on-white){& {
-                                  color: #00009F;
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                                 &:active {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  color: LinkText;
+                                }
                                 &:hover {
                                   color: #004578;
                                   text-decoration: underline;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  color: LinkText;
                                 }
                                 &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
+                                @media screen and (-ms-high-contrast: active){&:active:hover {
+                                  color: LinkText;
+                                }
                                 &:focus {
                                   color: #0078d4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:focus {
+                                  color: LinkText;
                                 }
                             onClick={[Function]}
                             type="button"

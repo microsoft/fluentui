@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
-import * as keyboardKey from 'keyboard-key';
+import { toolbarMenuItemBehavior } from './toolbarMenuItemBehavior';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -13,28 +13,28 @@ import * as keyboardKey from 'keyboard-key';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const toolbarMenuBehavior: Accessibility = () => ({
+export const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'menu'
-    }
+      role: 'menu',
+    },
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
+    },
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusOnMount: true,
-      direction: FocusZoneDirection.vertical
-    }
+      direction: FocusZoneDirection.vertical,
+    },
   },
-  childBehaviors: { item: toolbarMenuItemBehavior }
+  childBehaviors: { item: toolbarMenuItemBehavior },
 });
 
-export default toolbarMenuBehavior;
+export type ToolbarMenuBehaviorProps = never;

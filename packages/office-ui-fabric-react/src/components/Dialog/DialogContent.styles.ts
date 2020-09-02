@@ -1,5 +1,11 @@
 import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { FontWeights, getGlobalClassNames, IconFontSizes, ScreenWidthMinSmall, ScreenWidthMaxSmall } from '../../Styling';
+import {
+  FontWeights,
+  getGlobalClassNames,
+  IconFontSizes,
+  ScreenWidthMinSmall,
+  ScreenWidthMaxSmall,
+} from '../../Styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',
@@ -10,7 +16,7 @@ const GlobalClassNames = {
   button: 'ms-Dialog-button ms-Dialog-button--close',
   inner: 'ms-Dialog-inner',
   content: 'ms-Dialog-content',
-  title: 'ms-Dialog-title'
+  title: 'ms-Dialog-title',
 };
 
 export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
@@ -25,15 +31,15 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       isLargeHeader && [
         classNames.contentLgHeader,
         {
-          borderTop: `4px solid ${palette.themePrimary}`
-        }
+          borderTop: `4px solid ${palette.themePrimary}`,
+        },
       ],
       isClose && classNames.close,
       {
         flexGrow: 1,
-        overflowY: 'hidden' // required for allowScrollOnElement
+        overflowY: 'hidden', // required for allowScrollOnElement
       },
-      className
+      className,
     ],
 
     subText: [
@@ -44,8 +50,8 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: semanticColors.bodySubtext,
         lineHeight: '1.5',
         wordWrap: 'break-word',
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     ],
 
     header: [
@@ -53,15 +59,15 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       {
         position: 'relative',
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       },
       isClose && classNames.close,
       draggableHeaderClassName && [
         draggableHeaderClassName,
         {
-          cursor: 'move'
-        }
-      ]
+          cursor: 'move',
+        },
+      ],
     ],
 
     button: [
@@ -70,10 +76,10 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
             color: semanticColors.buttonText,
-            fontSize: IconFontSizes.medium
-          }
-        }
-      }
+            fontSize: IconFontSizes.medium,
+          },
+        },
+      },
     ],
 
     inner: [
@@ -82,18 +88,18 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         padding: '0 24px 24px',
         selectors: {
           [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
-            padding: '0 16px 16px'
-          }
-        }
-      }
+            padding: '0 16px 16px',
+          },
+        },
+      },
     ],
 
     innerContent: [
       classNames.content,
       {
         position: 'relative',
-        width: '100%'
-      }
+        width: '100%',
+      },
     ],
 
     title: [
@@ -102,18 +108,19 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       {
         color: semanticColors.bodyText,
         margin: '0',
+        minHeight: fonts.xLarge.fontSize,
         padding: '16px 46px 20px 24px',
         lineHeight: 'normal',
         selectors: {
           [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
-            padding: '16px 46px 16px 16px'
-          }
-        }
+            padding: '16px 46px 16px 16px',
+          },
+        },
       },
       isLargeHeader && {
-        color: semanticColors.menuHeader
+        color: semanticColors.menuHeader,
       },
-      isMultiline && { fontSize: fonts.xxLarge.fontSize }
+      isMultiline && { fontSize: fonts.xxLarge.fontSize },
     ],
 
     topButton: [
@@ -127,20 +134,20 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         padding: '15px 15px 0 0',
         selectors: {
           '> *': {
-            flex: '0 0 auto'
+            flex: '0 0 auto',
           },
           '.ms-Dialog-button': {
-            color: semanticColors.buttonText
+            color: semanticColors.buttonText,
           },
           '.ms-Dialog-button:hover': {
             color: semanticColors.buttonTextHovered,
-            borderRadius: effects.roundedCorner2
+            borderRadius: effects.roundedCorner2,
           },
           [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
-            padding: '15px 8px 0 0'
-          }
-        }
-      }
-    ]
+            padding: '15px 8px 0 0',
+          },
+        },
+      },
+    ],
   };
 };

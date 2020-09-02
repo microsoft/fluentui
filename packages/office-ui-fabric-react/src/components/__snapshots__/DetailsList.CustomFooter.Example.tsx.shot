@@ -18,7 +18,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -41,9 +40,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -88,11 +85,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 200,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -141,9 +133,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -743,40 +733,38 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone2"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone2"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -871,6 +859,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -936,7 +925,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1333,6 +1321,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1398,7 +1387,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1795,6 +1783,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1860,7 +1849,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2257,6 +2245,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2322,7 +2311,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2719,6 +2707,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2784,7 +2773,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3178,6 +3166,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         data-is-focusable={true}
         data-item-index={-1}
         data-selection-index={-1}
+        data-selection-touch-invoke={true}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

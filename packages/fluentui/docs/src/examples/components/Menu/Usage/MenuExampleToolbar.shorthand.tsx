@@ -1,70 +1,108 @@
 import * as React from 'react';
-import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react';
+import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import {
+  FormatIcon,
+  PaperclipIcon,
+  EmojiIcon,
+  GiphyIcon,
+  StickerIcon,
+  VideoCameraEmphasisIcon,
+  SettingsIcon,
+  MoreIcon,
+  BookmarkIcon,
+  TranslationIcon,
+  TrashCanIcon,
+  MarkAsUnreadIcon,
+} from '@fluentui/react-icons-northstar';
 
 const items: ShorthandCollection<MenuItemProps> = [
   {
+    icon: (
+      <FormatIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'format',
-    icon: {
-      name: 'format',
-      outline: true
-    },
-    'aria-label': 'Format Tool'
+    'aria-label': 'Format Tool',
   },
   {
+    icon: (
+      <PaperclipIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'paperclip',
-    icon: {
-      name: 'paperclip',
-      outline: true
-    },
-    'aria-label': 'Paperclip Tool'
+    'aria-label': 'Paperclip Tool',
   },
   {
+    icon: (
+      <EmojiIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'emoji',
-    icon: {
-      name: 'emoji',
-      outline: true
-    },
     disabled: true,
-    'aria-label': 'Emoji Tool'
+    'aria-label': 'Emoji Tool',
   },
   {
+    icon: (
+      <GiphyIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'giphy',
-    icon: {
-      name: 'giphy',
-      outline: true
-    },
-    'aria-label': 'Giphy tool'
+    'aria-label': 'Giphy tool',
   },
   {
+    icon: (
+      <StickerIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'sticker',
-    icon: {
-      name: 'sticker',
-      outline: true
-    },
-    'aria-label': 'Sticker Tool'
+    'aria-label': 'Sticker Tool',
   },
   {
+    icon: (
+      <VideoCameraEmphasisIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'meetup',
-    icon: {
-      name: 'video-camera-emphasis',
-      outline: true
-    },
-    'aria-label': 'Meetup Tool'
+    'aria-label': 'Meetup Tool',
   },
   {
+    icon: (
+      <SettingsIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'settings',
-    icon: {
-      name: 'settings',
-      outline: true
-    },
-    'aria-label': 'Settings'
+    'aria-label': 'Settings',
   },
   {
+    icon: (
+      <MoreIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'menuButton2',
-    icon: {
-      name: 'more',
-      outline: true
-    },
     'aria-label': 'More options',
     indicator: false,
     menu: {
@@ -72,51 +110,45 @@ const items: ShorthandCollection<MenuItemProps> = [
         {
           key: '5',
           content: 'item1',
-          icon: {
-            name: 'bookmark',
-            outline: true
-          }
+          icon: <BookmarkIcon outline />,
         },
         {
           key: 'divider',
-          kind: 'divider'
+          kind: 'divider',
         },
         {
           key: '6',
           content: 'item2',
-          icon: {
-            name: 'mark-as-unread',
-            outline: true
-          }
+          icon: <MarkAsUnreadIcon outline />,
         },
         {
           key: '7',
           content: 'item3',
           disabled: true,
-          icon: {
-            name: 'translation',
-            outline: true
-          }
+          icon: <TranslationIcon outline />,
         },
         {
           key: 'divider2',
-          kind: 'divider'
+          kind: 'divider',
         },
         {
           key: '8',
           content: 'item3',
-          icon: {
-            name: 'trash-can',
-            outline: true
-          }
-        }
-      ]
-    }
-  }
+          icon: <TrashCanIcon outline />,
+        },
+      ],
+    },
+  },
 ];
 
 const MenuExampleToolbarShorthand = () => (
-  <Menu defaultActiveIndex={0} items={items} iconOnly accessibility={menuAsToolbarBehavior} aria-label="Compose Editor" />
+  <Menu
+    defaultActiveIndex={0}
+    items={items}
+    iconOnly
+    accessibility={menuAsToolbarBehavior}
+    aria-label="Compose Editor"
+  />
 );
 
 export default MenuExampleToolbarShorthand;

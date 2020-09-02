@@ -178,7 +178,8 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   preventDismissOnLostFocus?: boolean;
 
   /**
-   * If true then the Coachmark beak (arrow pointing towards target) will always be visible as long as Coachmark is visible
+   * If true then the Coachmark beak (arrow pointing towards target) will always be visible as long as
+   * Coachmark is visible
    * @defaultvalue false
    */
   persistentBeak?: boolean;
@@ -230,6 +231,7 @@ export interface ICoachmarkStyleProps {
 
   /**
    * Is the beacon currently animating.
+   * @deprecated Property is never used
    */
   isBeaconAnimating: boolean;
 
@@ -240,6 +242,7 @@ export interface ICoachmarkStyleProps {
 
   /**
    * Is the Coachmark finished measuring the dimensions of innerHostElement
+   * @deprecated Value is always the inverse of `isMeasuring`
    */
   isMeasured: boolean;
 

@@ -2,7 +2,7 @@
 
 exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1`] = `
 <div>
-  This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fabric Button components.
+  This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fluent UI Button components.
   <p>
     <b>
       <a
@@ -18,8 +18,6 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
     <div
       className=
           ms-Fabric
-          is-focusHidden
-          ms-Fabric--isFocusHidden
           ms-Layer-content
           {
             -moz-osx-font-smoothing: grayscale;
@@ -39,7 +37,6 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
           & textarea {
             font-family: inherit;
           }
-      dir="ltr"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -1252,6 +1249,9 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
                           @media screen and (-ms-high-contrast: active){& {
                             color: GrayText;
                             opacity: 1;
+                          }
+                          @media screen and (forced-colors: active){& {
+                            forced-color-adjust: none;
                           }
                       onClick={[Function]}
                       onMouseDown={[Function]}

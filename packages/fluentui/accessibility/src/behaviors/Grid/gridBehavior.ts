@@ -8,13 +8,13 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * @specification
  * Provides arrow key navigation in bidirectional direction.
  */
-const gridBehavior: Accessibility = () => ({
+export const gridBehavior: Accessibility = () => ({
   attributes: {},
   focusZone: {
     props: {
-      direction: FocusZoneDirection.bidirectional
-    }
-  }
+      direction: FocusZoneDirection.bidirectional,
+    },
+  },
 });
 
-export default gridBehavior;
+export type GridBehaviorProps = never;

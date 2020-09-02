@@ -2,17 +2,6 @@
 
 The `Slider` component allows a user to slide a single thumb along a horizontal or vertical axis, representing a min/max range.
 
-## TODO List
-
-- For each TODO:
-  1. Read it
-  2. Do research
-  3. Answer questions
-  4. Remove TODO
-- Search for TODO, there should be none! Delete this section even.
-- Review with design crew
-- Check into repo where code will live
-
 ## Related variant considerations
 
 `2DSlider` - allows 2-dimensional sliding, used for color picking or 2d panning.
@@ -23,7 +12,7 @@ https://codesandbox.io/s/sliders-xi0zw
 
 Fabric Slider [docs](https://developer.microsoft.com/en-us/fabric#/controls/web/slider)
 
-Stardust Slider [docs](http://localhost:8080/components/slider/definition)
+Stardust Slider [docs](https://fluentsite.z22.web.core.windows.net/components/slider/definition)
 
 Material UI Slider [docs](https://material-ui.com/components/slider/)
 
@@ -100,26 +89,26 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/slider
 
 ### Stardust Slider props
 
-| Name                        | Type                                   | Notes                                                  |
-| --------------------------- | -------------------------------------- | ------------------------------------------------------ |
-| accessibility               | "sliderBehavior" any                   | Why would a user need this as a prop?                  |
-| animation                   | AnimationProp                          | Why would a user need this as a prop on slider?        |
-| as                          | React.ElementType                      |                                                        |
-| className                   | string                                 |                                                        |
-| defaultValue                | string \| number                       |                                                        |
-| design                      | ComponentDesign                        | What is the use case for this?                         |
-| fluid                       | boolean                                | Stretching should be the default, this is unneeded.    |
-| getA11yValueMessageOnChange | "getA11yValueMessageOnChange" function | Unclear what this specifically does; aria-live polite? |
-| input                       | ShorthandValue<BoxProps>               | Prop polution.                                         |
-| inputRef                    | Ref                                    | When you can't use an input what then?                 |
-| max                         | string \| number                       |                                                        |
-| min                         | string \| number                       |                                                        |
-| onChange                    | ComponentEventHandler                  | Great, this is what we want :)                         |
-| step                        | string \| number                       |                                                        |
-| styles                      | ComponentSlotStyle                     | Consider only recomposition                            |
-| value                       | string \| number                       |                                                        |
-| variables                   | any                                    | Consider only recomposition                            |
-| vertical                    | boolean                                |                                                        |
+| Name                        | Type                                   | Notes                                                                                                                                                         |
+| --------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| accessibility               | "sliderBehavior" any                   | Why would a user need this as a prop?                                                                                                                         |
+| animation                   | AnimationProp                          | Why would a user need this as a prop on slider?                                                                                                               |
+| as                          | React.ElementType                      |                                                                                                                                                               |
+| className                   | string                                 |                                                                                                                                                               |
+| defaultValue                | string \| number                       |                                                                                                                                                               |
+| design                      | ComponentDesign                        | What is the use case for this?                                                                                                                                |
+| fluid                       | boolean                                | Stretching should be the default, this is unneeded.                                                                                                           |
+| getA11yValueMessageOnChange | "getA11yValueMessageOnChange" function | This is for specify "aria-valuetext", <br> when value cannot be meaningfully represented by a number. <br> https://www.w3.org/TR/wai-aria-1.1/#aria-valuetext |
+| input                       | ShorthandValue<BoxProps>               | Prop polution.                                                                                                                                                |
+| inputRef                    | Ref                                    | When you can't use an input what then?                                                                                                                        |
+| max                         | string \| number                       |                                                                                                                                                               |
+| min                         | string \| number                       |                                                                                                                                                               |
+| onChange                    | ComponentEventHandler                  | Great, this is what we want :)                                                                                                                                |
+| step                        | string \| number                       |                                                                                                                                                               |
+| styles                      | ComponentSlotStyle                     | Consider only recomposition                                                                                                                                   |
+| value                       | string \| number                       |                                                                                                                                                               |
+| variables                   | any                                    | Consider only recomposition                                                                                                                                   |
+| vertical                    | boolean                                |                                                                                                                                                               |
 
 ### Differences of Fabric/Stardust to resolve
 
@@ -128,7 +117,7 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/slider
 | accessibility               | S   | Discuss: In its current state it's unclear why a user would ever pass an accessibility behavior in. This is different from every framework. How does this help developers?                  |
 | animation                   | S   | Remove: Why would a user need this as a prop on Slider? Also ambiguous; animation for slider movement or just css on the root?                                                              |
 | ariaLabel                   | F   | Discuss: Without having the user read aria specs, can we abstract this into `screenReaderDescription` or `accessibility.description`? At minimum we need an example of what should go here. |
-| ariaValueText               | F   | When would a user want to use this? How is it different from `ariaLabel`?                                                                                                                   |
+| ariaValueText               | F   | `ariaLabel` set label for the slider, the ariaValueText set string instead of slider number value                                                                                           |
 | buttonProps                 | F   | Replace: Use slotProps/slots.                                                                                                                                                               |
 | componentRef                | F   | Discuss: Slider imperative API to set focus and read value. Do we need these?                                                                                                               |  |
 | design                      | S   | Remove: What is the use case for this?                                                                                                                                                      |
@@ -321,6 +310,26 @@ The same behavior as above, except that the events should concern
 
 ### Screen reader accessibility
 
+#### `Fluent UI & Fluent UI Northstar comparison`:
+
+From accessibility point of view the main difference is in type of element used for Slider itself:
+
+- Fluent UI has `<div>` element with role="slider"
+- Fluent UI Northstar has `<input>` element
+
+The difference above high probably causing different results during [screen reader verification](https://jurokapsiar.github.io/open-a11y/components/slider.research#test-runs):
+
+- Fluent UI slider behaves sometimes not predictable with JAWS in virtual cursor mode
+- Fluent UI slider doesn't interact with VoiceOver and Safari browser. Neither common keyboard keys, nor VoiceOver keys.
+- Fluent UI slider doesn't interact with VoiceOver and Chrome while using VoiceOver keys, but this difference is not huge with comparing Fluent UI Northstar
+
+#### `Accessibility variants`:
+
+- horizontal
+- vertical
+- no numeric slider
+- disabled
+
 #### `root`:
 
 - should render the native element using the `as` prop, defaulting to `div`
@@ -332,10 +341,13 @@ The `thumb` slot:
 - role set to `slider`
 - receives `aria-valuemin` and `aria-valuemax` representing min/max
 - receives `aria-valuenow` representing the current value
+- receives `aria-orientation="vertical"` representing vertical slider
+- receives `aria-disabled="true"` representing disabled slider
+- receives callback function which sets `aria-valuetext=STRING`
 
 ### Accessibility concerns for the user
 
-`aria-label` or `aria-labeledby`: Describe when and why.
+[Follow generic hints.](https://hackmd.io/k2eJKI_JRs2Gew9dbrz00A?view#Component-labeling)
 
 ## Themability and customization
 
@@ -420,13 +432,3 @@ thumbHeight: string
 thumbWidth: string
 trackColor: string
 ```
-
-## Use cases
-
-> TODO: Example use cases
-
-## Compatibility with other libraries
-
-> TODO: If this component represents a selected value, how will that be used in an HTML form? Is there a code example to illustrate?
-
-> TODO: Is it possible this component could be rendered in a focus zone? If so, should the focus model change in that case?

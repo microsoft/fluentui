@@ -7,6 +7,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={
@@ -97,7 +98,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle0-label"
+          aria-labelledby="Toggle0-label Toggle0-stateText"
           checked={false}
           className=
               ms-Toggle-background
@@ -161,7 +162,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   border-color: transparent;
                   border-radius: 50%;
                   border-style: solid;
-                  border-width: .28em;
+                  border-width: 6px;
                   box-sizing: border-box;
                   display: block;
                   height: 12px;
@@ -280,7 +281,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -297,7 +297,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -397,7 +396,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -414,7 +412,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -514,7 +511,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -531,7 +527,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -633,7 +628,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -650,7 +644,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -788,7 +781,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -805,7 +797,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -905,7 +896,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -922,7 +912,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1022,7 +1011,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1039,7 +1027,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1115,6 +1102,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
     </div>
   </div>
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={

@@ -24,9 +24,9 @@ export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: I
         SignalFieldStyles.signalField,
         {
           [SignalFieldStyles.wide]: signalsFieldMode === 'wide',
-          [SignalFieldStyles.compact]: signalsFieldMode === 'compact'
+          [SignalFieldStyles.compact]: signalsFieldMode === 'compact',
         },
-        className
+        className,
       )}
     >
       {props.before}

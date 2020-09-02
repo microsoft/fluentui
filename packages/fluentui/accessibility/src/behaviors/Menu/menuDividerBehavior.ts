@@ -7,13 +7,12 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role 'presentation' to 'root' slot.
  */
-
-const menuDividerBehavior: Accessibility = () => ({
+export const menuDividerBehavior: Accessibility<MenuDividerBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'presentation'
-    }
-  }
+      role: 'presentation',
+    },
+  },
 });
 
-export default menuDividerBehavior;
+export type MenuDividerBehaviorProps = never;

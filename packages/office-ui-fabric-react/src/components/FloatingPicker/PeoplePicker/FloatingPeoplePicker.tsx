@@ -17,21 +17,19 @@ export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPe
 export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {}
 
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
-  // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
-    createGenericItem: createItem
+    createGenericItem: createItem,
   };
 }
 
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
-  // tslint:disable-next-line:no-any
   const personaToConvert: any = {
     key: name,
     primaryText: name,
     imageInitials: '!',
-    isValid: isValid
+    isValid: isValid,
   };
 
   if (!isValid) {

@@ -61,7 +61,7 @@ const postFields = {
   sourceRefName: baseBranchPath + srcRefName,
   targetRefName: baseBranchPath + targetRefName,
   title: { title },
-  description: { prDescription }
+  description: { prDescription },
 };
 
 /**

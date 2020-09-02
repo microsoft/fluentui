@@ -7,6 +7,6 @@ export function correctHSV(color: IHSV): IHSV {
   return {
     h: clamp(color.h, MAX_COLOR_HUE),
     s: clamp(color.s, MAX_COLOR_SATURATION),
-    v: clamp(color.v, MAX_COLOR_VALUE)
+    v: clamp(color.v, MAX_COLOR_VALUE),
   };
 }

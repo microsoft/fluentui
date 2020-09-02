@@ -2,9 +2,7 @@
 
 exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`] = `
 <div
-  className=
-
-
+  className=""
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -49,9 +47,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
       Pick one
     </label>
     <div
-      className=
-          ms-ChoiceFieldGroup-flexContainer
-
+      className="ms-ChoiceFieldGroup-flexContainer"
     >
       <div
         className=
@@ -77,9 +73,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             aria-label="Mark displayed items as read after - Press tab for further action"
@@ -256,7 +250,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus:after {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:active .ms-Dropdown-title {
@@ -322,8 +315,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         white-space: nowrap;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        background-color: Window;
                         border: 1px solid GrayText;
                         color: GrayText;
+                      }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
                       }
                   id="Dropdown2-option"
                   role="option"
@@ -360,6 +357,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         @media screen and (-ms-high-contrast: active){& {
                           color: GrayText;
                         }
+                        @media screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
+                        }
                     data-icon-name="ChevronDown"
                   >
                     
@@ -394,9 +394,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={true}
@@ -473,7 +471,11 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){&:before {
+                  background: Window;
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:before {
+                  forced-color-adjust: none;
                 }
                 &:after {
                   border-color: #0078d4;
@@ -494,6 +496,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 }
                 @media screen and (-ms-high-contrast: active){&:after {
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:after {
+                  forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-B"
           >
@@ -530,9 +535,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
@@ -591,7 +594,11 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){&:before {
-                  color: GrayText;
+                  background: Window;
+                  border-color: GrayText;
+                }
+                @media screen and (forced-colors: active){&:before {
+                  forced-color-adjust: none;
                 }
                 &:after {
                   border-radius: 50%;
@@ -609,8 +616,11 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 & .ms-ChoiceFieldLabel {
                   color: #a19f9d;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
                   color: GrayText;
+                }
+                @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
+                  forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-C"
           >
@@ -647,9 +657,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}

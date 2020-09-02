@@ -15,30 +15,34 @@ export const ResizeGroupPageProps: IDocPageProps = {
   title: 'ResizeGroup',
   componentName: 'ResizeGroup',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup',
   examples: [
     {
       title: 'Use ResizeGroup to move commands into an overflow menu',
       code: ResizeGroupBasicExampleCode,
-      view: <ResizeGroupOverflowSetExample />
+      view: <ResizeGroupOverflowSetExample />,
     },
     {
       title: 'Use a vertical ResizeGroup to move commands into an overflow menu',
       code: ResizeGroupVerticalExampleCode,
       view: <ResizeGroupVerticalOverflowSetExample />,
-      isScrollable: false
+      isScrollable: false,
     },
     {
       title: 'Use ResizeGroup to prevent two groups of items from overlapping',
       code: ResizeGroupFlexBoxExampleCode,
-      view: <FlexBoxResizeGroupExample />
-    }
+      view: <FlexBoxResizeGroupExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
-  bestPractices: '',
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

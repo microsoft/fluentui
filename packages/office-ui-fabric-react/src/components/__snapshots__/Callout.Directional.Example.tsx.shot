@@ -31,12 +31,8 @@ Array [
             background: #005a9e;
             border-color: #005a9e;
           }
-          & .ms-Checkbox-checkbox {
-            background: #0078d4;
-            border-color: #0078d4;
-          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
+            background: Highlight;
             border-color: Highlight;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -49,13 +45,19 @@ Array [
             color: Window;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
+            color: Window;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -95,7 +97,6 @@ Array [
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -135,6 +136,9 @@ Array [
                 background: Highlight;
                 border-color: Highlight;
               }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -169,6 +173,12 @@ Array [
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           Show beak
@@ -314,6 +324,9 @@ Array [
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="Slider3"
@@ -576,6 +589,9 @@ Array [
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           data-is-focusable={true}
           id="Slider4"
           onKeyDown={[Function]}
@@ -698,9 +714,7 @@ Array [
       </div>
     </div>
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=
@@ -785,7 +799,6 @@ Array [
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
@@ -952,7 +965,6 @@ Array [
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 100%;
           }
           &::-moz-focus-inner {
@@ -970,7 +982,6 @@ Array [
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

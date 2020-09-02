@@ -1,28 +1,39 @@
 import * as React from 'react';
 import { ThreadReplyProps } from './ThreadReplies';
+import {
+  AcceptIcon,
+  BoldIcon,
+  CalendarIcon,
+  ItalicIcon,
+  LikeIcon,
+  MoreIcon,
+  UnderlineIcon,
+  EmojiIcon,
+  FilesImageIcon,
+} from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
   items: [
     {
       key: 'like',
-      icon: 'like',
-      title: 'Like'
+      icon: <LikeIcon />,
+      title: 'Like',
     },
     {
       key: 'more',
-      icon: 'more',
-      title: 'More actions'
-    }
-  ]
+      icon: <MoreIcon />,
+      title: 'More actions',
+    },
+  ],
 };
 
 export const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check'
-  }
+    icon: <AcceptIcon />,
+  },
 };
 
 export const replies: ThreadReplyProps[] = [
@@ -31,7 +42,7 @@ export const replies: ThreadReplyProps[] = [
     content: "Sure! Let's do it",
     author: 'Joe Doe',
     timestamp: 'Yesterday, 10:15 PM',
-    actionMenu
+    actionMenu,
   },
   {
     avatar: janeAvatar,
@@ -42,65 +53,47 @@ export const replies: ThreadReplyProps[] = [
     ),
     author: 'Jane Doe',
     timestamp: 'Yesterday, 10:15 PM',
-    actionMenu
+    actionMenu,
   },
   {
     avatar: janeAvatar,
     content: 'I am for any place!',
     author: 'Harry Potter',
     timestamp: 'Yesterday, 10:15 PM',
-    actionMenu
+    actionMenu,
   },
   {
     avatar: janeAvatar,
     content: 'Yay! Finally party!',
     author: 'Bob Doe',
     timestamp: 'Yesterday, 10:15 PM',
-    actionMenu
-  }
+    actionMenu,
+  },
 ];
 
 export const toolbarItems = [
   {
     key: 'bold',
-    icon: {
-      name: 'bold',
-      outline: true
-    }
+    icon: <BoldIcon outline />,
   },
   {
     key: 'italic',
-    icon: {
-      name: 'italic',
-      outline: true
-    }
+    icon: <ItalicIcon outline />,
   },
   {
     key: 'underline',
-    icon: {
-      name: 'underline',
-      outline: true
-    }
+    icon: <UnderlineIcon outline />,
   },
   {
     key: 'smile',
-    icon: {
-      name: 'smile',
-      outline: true
-    }
+    icon: <EmojiIcon outline />,
   },
   {
     key: 'picture',
-    icon: {
-      name: 'picture',
-      outline: true
-    }
+    icon: <FilesImageIcon outline />,
   },
   {
     key: 'calendar',
-    icon: {
-      name: 'calendar',
-      outline: true
-    }
-  }
+    icon: <CalendarIcon outline />,
+  },
 ];

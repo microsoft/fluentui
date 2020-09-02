@@ -18,7 +18,7 @@ describe('example transform', () => {
       tsCode,
       jsCode,
       supportedPackages: SUPPORTED_PACKAGES,
-      ...transformOptions
+      ...transformOptions,
     });
   }
 
@@ -92,7 +92,10 @@ describe('example transform', () => {
   });
 
   const fooGroup: IBasicPackageGroup = { globalName: 'Foo', packages: [{ packageName: 'foo' }] };
-  const fabricGroup: IBasicPackageGroup = { globalName: 'Fabric', packages: [{ packageName: 'office-ui-fabric-react' }] };
+  const fabricGroup: IBasicPackageGroup = {
+    globalName: 'Fabric',
+    packages: [{ packageName: 'office-ui-fabric-react' }],
+  };
 
   it('handles examples with custom supportedPackages', () => {
     const result = transformFile('customPackages.txt', { supportedPackages: [fooGroup] });

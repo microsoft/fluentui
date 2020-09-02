@@ -1,12 +1,26 @@
 import * as React from 'react';
-import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
-import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
+import {
+  ITilesListProps,
+  ITilesGridItem,
+  ITilesGridSegment,
+  TilesGridMode,
+  ITileSize,
+  ITilesGridItemCellProps,
+  ITilesListRowProps,
+  ITilesListRootProps,
+} from './TilesList.types';
+import { List, IPageProps, ScrollToMode, IListOnRenderRootProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle, initializeFocusRects } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  css,
+  IRenderFunction,
+  IRectangle,
+  FocusRects,
+  composeRenderFunction,
+} from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
-// tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
@@ -20,6 +34,9 @@ export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
 }
 
+/**
+ * @internal
+ */
 export interface ITileGrid {
   minRowHeight: number;
   mode: TilesGridMode;
@@ -32,6 +49,9 @@ export interface ITileGrid {
   maxRowCount?: number;
 }
 
+/**
+ * @internal
+ */
 export interface ITileCell<TItem> {
   key: string;
   content: TItem;
@@ -39,11 +59,21 @@ export interface ITileCell<TItem> {
   grid: ITileGrid;
   isPlaceholder?: boolean;
   desiredHeight?: number;
-  onRender(content: TItem, finalSize: { width: number; height: number }): React.ReactNode;
+  onRender(props: {
+    item: TItem;
+    finalSize: {
+      width: number;
+      height: number;
+    };
+    position: {
+      column: number;
+    };
+  }): React.ReactNode;
 }
 
 interface IRowData {
   scaleFactor: number;
+  cellCount: number;
   isLastRow?: boolean;
   maxScaleFactor?: number;
 }
@@ -81,29 +111,24 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
   private listRef: React.RefObject<List>;
 
-  // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
     this.listRef = React.createRef();
 
     this.state = {
-      cells: this._getCells(props.items)
+      cells: this._getCells(props.items),
     };
-
-    initializeFocusRects();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
-        cells: this._getCells(nextProps.items)
+        cells: this._getCells(nextProps.items),
       });
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
@@ -113,11 +138,29 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   public render(): JSX.Element {
     const { cells } = this.state;
 
-    const { className, onActiveElementChanged, items, cellsPerPage, ref, role, focusZoneComponentRef, ...divProps } = this.props;
+    const {
+      className,
+      onActiveElementChanged,
+      items,
+      cellsPerPage,
+      ref,
+      role,
+      focusZoneComponentRef,
+      listProps = {},
+      ...divProps
+    } = this.props;
+
+    const { onRenderRoot, onRenderPage, ...otherListProps } = listProps;
+
+    const finalOnRenderRoot = onRenderRoot
+      ? composeRenderFunction(onRenderRoot, this._onRenderListRoot)
+      : this._onRenderListRoot;
+    const finalOnRenderPage = onRenderPage
+      ? composeRenderFunction(onRenderPage, this._onRenderPage)
+      : this._onRenderPage;
 
     return (
       <FocusZone
-        role={role}
         {...divProps}
         ref={ref as (element: FocusZone | null) => void}
         componentRef={focusZoneComponentRef}
@@ -125,14 +168,16 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         direction={FocusZoneDirection.bidirectional}
         onActiveElementChanged={this.props.onActiveElementChanged}
       >
+        <FocusRects />
         <List
           items={cells}
-          role={role ? 'presentation' : undefined}
+          role={role}
+          onRenderRoot={finalOnRenderRoot}
           getPageSpecification={this._getPageSpecification}
-          onRenderPage={this._onRenderPage}
+          onRenderPage={finalOnRenderPage}
           ref={this.listRef}
           usePageCache={true}
-          {...this.props.listProps}
+          {...otherListProps}
         />
       </FocusZone>
     );
@@ -152,7 +197,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             }
             return 0;
           },
-          mode
+          mode,
         );
       } else {
         // otherwise, we do not implement the measure item callback,
@@ -169,9 +214,19 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return 0; // Stub
   }
 
-  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize): JSX.Element {
+  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize, column: number): JSX.Element {
     if (item.grid.mode === TilesGridMode.none) {
-      return <div className={css(TilesListStyles.header)}>{item.onRender(item.content, { width: 0, height: 0 })}</div>;
+      return (
+        <div className={css(TilesListStyles.header)}>
+          {item.onRender({
+            item: item.content,
+            finalSize: { width: 0, height: 0 },
+            position: {
+              column,
+            },
+          })}
+        </div>
+      );
     }
 
     const itemWidthOverHeight = item.aspectRatio;
@@ -181,30 +236,92 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role="presentation"
         className={css(TilesListStyles.cell)}
-        // tslint:disable-next-line:jsx-ban-props
         style={
           item.grid.mode === TilesGridMode.fillHorizontal
             ? {
-                height: `${item.grid.minRowHeight}px`
+                height: `${item.grid.minRowHeight}px`,
               }
             : {
-                paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
+                paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`,
               }
         }
       >
         <div role="presentation" className={css(TilesListStyles.cellContent)}>
-          {item.onRender(item.content, finalSize)}
+          {item.onRender({
+            item: item.content,
+            finalSize,
+            position: {
+              column,
+            },
+          })}
         </div>
       </div>
     );
   }
 
+  private _onRenderListRoot = (
+    props: IListOnRenderRootProps<TItem>,
+    defaultRender?: IRenderFunction<IListOnRenderRootProps<TItem>>,
+  ): JSX.Element | null => {
+    const { onRenderRoot } = this.props;
+
+    if (!defaultRender) {
+      return null;
+    }
+
+    const { pages } = props;
+
+    let rowCount = 0;
+    let maxColCount = 0;
+
+    for (const page of pages) {
+      const data = page.data as IPageData<TItem> | undefined;
+
+      if (data) {
+        for (const key of Object.keys(data.rows)) {
+          const rowData = data.rows[Number(key)];
+
+          rowCount++;
+          maxColCount = Math.max(maxColCount, rowData.cellCount);
+        }
+      }
+    }
+
+    const baseOnRenderRoot = (baseProps: ITilesListRootProps<TItem>): JSX.Element | null => {
+      return defaultRender({
+        ...props,
+        divProps: {
+          ...props.divProps,
+          ...baseProps.divProps,
+        },
+        surfaceElement: baseProps.surfaceElement,
+      });
+    };
+
+    const finalOnRenderRoot = onRenderRoot ? composeRenderFunction(onRenderRoot, baseOnRenderRoot) : baseOnRenderRoot;
+
+    return finalOnRenderRoot({
+      surfaceElement: props.surfaceElement,
+      divProps: props.divProps,
+      rowCount: rowCount,
+      columnCount: maxColCount,
+    });
+  };
+
   /**
    * Renders a single list page using a flexbox layout.
-   * By defualt, List provides no special formatting for a list page. For Tiles, the parent element
+   * By default, List provides no special formatting for a list page. For Tiles, the parent element
    * needs flexbox metadata and padding to support the alignment rules.
    */
-  private _onRenderPage = (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element => {
+  private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element | null => {
+    if (!pageProps) {
+      return null;
+    }
+
+    const { role, onRenderRow } = this.props;
+
+    const finalOnRenderRow = onRenderRow ? composeRenderFunction(onRenderRow, this._renderRow) : this._renderRow;
+
     const { page, className: pageClassName, ...divProps } = pageProps;
 
     const { items } = page;
@@ -221,6 +338,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const endIndex = cells.length;
 
     let currentRow: IRowData | undefined;
+    let currentRowCells = [];
 
     let shimmerWrapperWidth = 0;
 
@@ -236,6 +354,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       let rowCount = 0;
       let isAtMaxRowCount = false;
+      let columnIndex = 0;
 
       for (; i < endIndex && cells[i].grid === grid; i++) {
         // For each cell in the current grid.
@@ -245,6 +364,19 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         const cellAsFirstRow = data.rows[index];
 
         if (cellAsFirstRow) {
+          if (currentRowCells.length > 0) {
+            renderedCells.push(
+              finalOnRenderRow({
+                cellElements: currentRowCells,
+                divProps: {
+                  className: TilesListStyles.row,
+                  role: 'presentation',
+                },
+              }),
+            );
+            currentRowCells = [];
+          }
+
           if (cellAsFirstRow !== currentRow) {
             rowCount++;
           }
@@ -255,6 +387,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
 
           currentRow = cellAsFirstRow;
+          columnIndex = 0;
         }
 
         let finalSize = data.cellSizes[index];
@@ -269,7 +402,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
-              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
+              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight,
             };
           } else if (
             (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal) &&
@@ -280,25 +413,26 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
-              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
+              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight,
             };
           }
         }
 
-        const renderedCell = (keyOffset?: number): JSX.Element => {
+        const renderedCell = (keyOffset: number = 0): JSX.Element => {
           return (
             <div
               key={`${grid.key}-item-${cell.key}${keyOffset ? '-' + keyOffset : ''}`}
-              data-item-index={index}
+              data-list-index={index}
+              role={role ? 'presentation' : 'listitem'}
               className={css('ms-List-cell', this._onGetCellClassName(), {
-                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
+                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow,
               })}
-              // tslint:disable-next-line:jsx-ban-props
+              data-automationid="ListCell"
               style={{
-                ...this._onGetCellStyle(cell, currentRow)
+                ...this._onGetCellStyle(cell, currentRow),
               }}
             >
-              {this._onRenderCell(cell, finalSize)}
+              {this._onRenderCell(cell, finalSize, columnIndex + keyOffset)}
             </div>
           );
         };
@@ -308,12 +442,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           const totalPlaceholderItems = cellsPerRow * ROWS_OF_PLACEHOLDER_CELLS;
           shimmerWrapperWidth = cellsPerRow * finalSize.width + grid.spacing * (cellsPerRow - 1);
           for (let j = 0; j < totalPlaceholderItems; j++) {
-            renderedCells.push(renderedCell(j));
+            currentRowCells.push(renderedCell(j));
           }
         } else {
           shimmerWrapperWidth = finalSize.width / 3;
-          renderedCells.push(renderedCell());
+          currentRowCells.push(renderedCell());
         }
+
+        columnIndex++;
       }
 
       if (isAtMaxRowCount) {
@@ -327,26 +463,42 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       const margin = grid.spacing / 2;
 
+      if (currentRowCells.length > 0) {
+        renderedCells.push(
+          finalOnRenderRow({
+            cellElements: currentRowCells,
+            divProps: {
+              className: css(TilesListStyles.row, {
+                [TilesListStyles.headerRow]: grid.mode === TilesGridMode.none,
+              }),
+              role: 'presentation',
+            },
+          }),
+        );
+        currentRowCells = [];
+      }
+
       const finalGrid: JSX.Element = (
         <div
           key={grid.key}
           className={css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none,
-            [`${TilesListStyles.shimmeredList}`]: isPlaceholder
+            [`${TilesListStyles.shimmeredList}`]: isPlaceholder,
           })}
-          // tslint:disable-next-line:jsx-ban-props
           style={{
             width: `${width}px`,
             margin: `${-margin}px`,
             marginTop: isOpenStart ? '0' : `${grid.marginTop - margin}px`,
-            marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`
+            marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`,
           }}
         >
           {renderedCells}
         </div>
       );
 
-      grids.push(isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} width={shimmerWrapperWidth} /> : finalGrid);
+      grids.push(
+        isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} width={shimmerWrapperWidth} /> : finalGrid,
+      );
     }
 
     return (
@@ -364,7 +516,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
    */
   private _getPageSpecification = (
     startIndex: number,
-    bounds: IRectangle
+    bounds: IRectangle,
   ): {
     itemCount: number;
     data: IPageData<TItem>;
@@ -378,7 +530,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     if (!this._pageSpecificationCache) {
       this._pageSpecificationCache = {
         width: bounds.width,
-        byIndex: {}
+        byIndex: {},
       };
     }
 
@@ -421,7 +573,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       widths[i] = boundsWidth;
 
       let currentRow: IRowData = (startCells[i] = {
-        scaleFactor: 1
+        scaleFactor: 1,
+        cellCount: 0,
       });
 
       if (grid.mode === TilesGridMode.none) {
@@ -430,8 +583,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         isAtGridEnd = true;
         cellSizes[i] = {
           width: bounds.width,
-          height: 0
+          height: 0,
         };
+        currentRow.cellCount++;
         i++;
         continue;
       }
@@ -461,7 +615,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           // Assign the expected base size of the cell.
           // Scaling will be handled at render time.
           width: aspectRatio * grid.minRowHeight,
-          height: grid.minRowHeight
+          height: grid.minRowHeight,
         };
 
         if (rowWidth > boundsWidth) {
@@ -469,11 +623,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           rowStart = i;
           // Add a marker for a new row, with the default scale factor.
           currentRow = startCells[i] = {
-            scaleFactor: 1
+            scaleFactor: 1,
+            cellCount: 0,
           };
 
           rowCount++;
         }
+
+        currentRow.cellCount++;
       }
 
       if (!cells[i] || cells[i].grid !== grid || isAtMaxRowCount) {
@@ -519,7 +676,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       if (
         !isAtGridEnd &&
-        currentRow.scaleFactor > (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
+        currentRow.scaleFactor >
+          (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
       ) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
@@ -544,13 +702,19 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         pageWidths: widths,
         rows: startCells,
         extraCells: extraCells,
-        cellSizes: cellSizes
-      }
+        cellSizes: cellSizes,
+      },
     };
 
     pageSpecificationCache.byIndex[startIndex] = pageSpecification;
 
     return pageSpecification;
+  };
+
+  private _renderRow: IRenderFunction<ITilesListRowProps<TItem>> = (props: ITilesListRowProps<TItem>): JSX.Element => {
+    const { cellElements, divProps } = props;
+
+    return <div {...divProps}>{cellElements}</div>;
   };
 
   private _onGetCellClassName = (): string => {
@@ -568,7 +732,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData): React.CSSProperties => {
     const {
       grid: { mode: gridMode, maxScaleFactor },
-      grid
+      grid,
     } = item;
 
     if (gridMode === TilesGridMode.none) {
@@ -598,7 +762,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       maxWidth: `${maxWidth}px`,
       margin: !item.isPlaceholder ? `${margin}px` : 0,
       borderStyle: item.isPlaceholder ? 'solid' : 'none',
-      borderWidth: item.isPlaceholder ? `${margin}px` : 0
+      borderWidth: item.isPlaceholder ? `${margin}px` : 0,
     };
   };
 
@@ -619,7 +783,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           marginBottom = 0,
           marginTop = 0,
           minAspectRatio = MIN_ASPECT_RATIO,
-          maxAspectRatio = MAX_ASPECT_RATIO
+          maxAspectRatio = MAX_ASPECT_RATIO,
         } = item;
 
         const grid: ITileGrid = {
@@ -631,33 +795,55 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           marginTop: item.isPlaceholder ? 0 : marginTop,
           marginBottom: item.isPlaceholder ? 0 : marginBottom,
           isPlaceholder: item.isPlaceholder,
-          maxRowCount: item.maxRowCount
+          maxRowCount: item.maxRowCount,
         };
 
         for (const gridItem of item.items) {
-          const { desiredSize } = gridItem;
+          const { desiredSize, onRender: itemOnRender, onRenderCell } = gridItem;
 
           const aspectRatio = Math.min(
             maxAspectRatio,
-            Math.max(minAspectRatio, (desiredSize && desiredSize.width / desiredSize.height) || 1)
+            Math.max(minAspectRatio, (desiredSize && desiredSize.width / desiredSize.height) || 1),
           );
+
+          const onRender =
+            onRenderCell ||
+            ((props: ITilesGridItemCellProps<TItem>) => {
+              if (!itemOnRender) {
+                return null;
+              }
+
+              return itemOnRender(props.item, props.finalSize);
+            });
 
           cells.push({
             aspectRatio: aspectRatio,
             content: gridItem.content,
-            onRender: gridItem.onRender,
+            onRender,
             grid: grid,
             key: gridItem.key,
             isPlaceholder: gridItem.isPlaceholder,
-            desiredHeight: desiredSize ? desiredSize.height : undefined
+            desiredHeight: desiredSize ? desiredSize.height : undefined,
           });
         }
       } else {
+        const { onRenderCell, onRender: itemOnRender } = item;
+
+        const onRender =
+          onRenderCell ||
+          ((props: ITilesGridItemCellProps<TItem>) => {
+            if (!itemOnRender) {
+              return null;
+            }
+
+            return itemOnRender(props.item, props.finalSize);
+          });
+
         // The item is not part of the grid, and should take up a whole row.
         cells.push({
           aspectRatio: 1,
           content: item.content,
-          onRender: item.onRender,
+          onRender,
           grid: {
             minRowHeight: 0,
             spacing: 0,
@@ -666,10 +852,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             maxScaleFactor: 1,
             marginBottom: 0,
             marginTop: 0,
-            isPlaceholder: item.isPlaceholder
+            isPlaceholder: item.isPlaceholder,
           },
           key: `header-${item.key}`,
-          isPlaceholder: item.isPlaceholder
+          isPlaceholder: item.isPlaceholder,
         });
       }
     }
@@ -678,6 +864,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 }
 
-function isGridSegment<TItem>(item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>): item is ITilesGridSegment<TItem> {
+function isGridSegment<TItem>(
+  item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>,
+): item is ITilesGridSegment<TItem> {
   return !!(item as ITilesGridSegment<TItem>).items;
 }

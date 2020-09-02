@@ -1,41 +1,43 @@
 {
   "name": "@fluentui/code-sandbox",
   "description": "Fluent UI tools for CodeSandbox.",
-  "version": "0.44.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
-  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.44.0"
+    "@fluentui/docs-components": "^0.51.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/react": "^0.44.0"
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/react-northstar": "^0.51.0",
+    "@uifabric/build": "^7.0.0",
+    "react": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/code-sandbox",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/code-sandbox",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react": "0.44.0",
+    "@fluentui/react-northstar": "0.51.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   },
   "sideEffects": false,
-  "types": "dist/es/index.d.ts",
-  "private": true
+  "types": "dist/es/index.d.ts"
 }

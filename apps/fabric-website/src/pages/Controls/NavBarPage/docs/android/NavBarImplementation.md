@@ -8,12 +8,12 @@
 
 ### Source code
 
-[AppBarLayout](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/appbarlayout/AppBarLayout.kt)
+[AppBarLayout](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/appbarlayout/AppBarLayout.kt)
 
-[Toolbar](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/toolbar/Toolbar.kt)
+[Toolbar](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/toolbar/Toolbar.kt)
 
-[Searchbar](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/search/Searchbar.kt)
+[Searchbar](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/search/Searchbar.kt)
 
 ### Sample code
 
-[AppBarLayout demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/AppBarLayoutActivity.kt)
+[AppBarLayout demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/AppBarLayoutActivity.kt)

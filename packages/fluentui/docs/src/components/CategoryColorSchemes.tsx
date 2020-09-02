@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { createComponent, ComponentSlotStylesInput, ThemePrepared, Grid, Header, HeaderProps, ShorthandCollection } from '@fluentui/react';
+import {
+  createComponent,
+  ComponentSlotStylesInput,
+  ThemePrepared,
+  Grid,
+  Header,
+  HeaderProps,
+  ShorthandCollection,
+} from '@fluentui/react-northstar';
 
 import ColorBox from './ColorBox';
 
@@ -14,8 +22,8 @@ export const colorVariantsStyles: ComponentSlotStylesInput<ColorVariantsProps> =
   root: {
     border: '1px solid transparent',
     borderRadius: '.25rem',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 };
 
 const CategoryColorSchemes = createComponent<ColorVariantsProps>({
@@ -37,19 +45,24 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
       />,
       ..._.map(colorSchemes, (colorScheme, i) => (
         <ColorBox key={`${token}${i}`} size="small" value={colorScheme[token]} copyToClipboardIcon={false} />
-      ))
+      )),
     ]);
 
-    const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`;
+    const columns = _.times(themes.length, () => '180px').join(' ');
     return (
       <div className={classes.root}>
-        <Grid columns={columns}>
+        <Grid
+          styles={{
+            gridTemplateColumns: `auto ${columns}`,
+            msGridColumns: `minmax(min-content, 1fr) ${columns}`,
+          }}
+        >
           {headers && headers.map(header => Header.create(header))}
           {elements}
         </Grid>
       </div>
     );
-  }
+  },
 });
 
 export default CategoryColorSchemes;

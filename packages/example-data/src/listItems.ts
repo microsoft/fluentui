@@ -3,7 +3,7 @@ import { lorem } from './lorem';
 const DATA = {
   color: ['red', 'blue', 'green', 'yellow'],
   shape: ['circle', 'square', 'triangle'],
-  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
+  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland'],
 };
 
 /** @internal */
@@ -21,7 +21,7 @@ export interface IExampleItem {
 
 /** @internal */
 export function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
-  return Array.apply(null, Array(count)).map((item: number, index: number) => {
+  return [...Array(count)].map((item: number, index: number) => {
     const size = 150 + Math.round(Math.random() * 100);
 
     return {
@@ -33,7 +33,7 @@ export function createListItems(count: number, startIndex: number = 0): IExample
       shape: _randWord(DATA.shape),
       location: _randWord(DATA.location),
       width: size,
-      height: size
+      height: size,
     };
   });
 }
@@ -62,13 +62,13 @@ export function createGroups(
   itemsPerGroup: number,
   level: number = 0,
   key: string = '',
-  isCollapsed?: boolean
+  isCollapsed?: boolean,
 ): IExampleGroup[] {
   if (key !== '') {
     key = key + '-';
   }
   const count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
+  return [...Array(groupCount)].map((value: number, index: number) => {
     return {
       count: count,
       key: 'group' + key + index,
@@ -77,7 +77,9 @@ export function createGroups(
       level: level,
       isCollapsed: isCollapsed,
       children:
-        groupDepth > 1 ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) : []
+        groupDepth > 1
+          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
+          : [],
     };
   });
 }

@@ -92,6 +92,9 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+            @media screen and (forced-colors: active){&:hover {
+              forced-color-adjust: none;
+            }
       >
         <input
           aria-invalid={false}
@@ -136,6 +139,10 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               &::-ms-clear {
                 display: none;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -144,6 +151,9 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
               }
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
@@ -154,6 +164,9 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -162,6 +175,9 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
               }
           id="TextField0"
           onBlur={[Function]}
@@ -206,7 +222,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -223,7 +238,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -319,7 +333,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="ChevronDown"
         role="presentation"

@@ -10,7 +10,7 @@ const StaticListExampleCode = require('!raw-loader!@uifabric/lists/src/component
 const StaticOrderedListExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticOrderedList.Example.tsx') as string;
 const StaticListTableExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticTable.Example.tsx') as string;
 
-/* tslint:disable-next-line:no-any */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const Profiler = (React as any).unstable_Profiler;
 
 export class StaticListPage extends React.PureComponent<{}, { enableProfiler: boolean }> {
@@ -18,7 +18,7 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
     super(props);
 
     this.state = {
-      enableProfiler: false
+      enableProfiler: false,
     };
   }
 
@@ -74,7 +74,9 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
         donts={
           <div>
             <ul>
-              <li>Render large data sets with complex row DOM as it will likely result in a degraded user-experience.</li>
+              <li>
+                Render large data sets with complex row DOM as it will likely result in a degraded user-experience.
+              </li>
               <li>Rely on default index as key behavior if sorting or filtering row content.</li>
             </ul>
           </div>
@@ -87,7 +89,15 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
     this.setState({ enableProfiler: !!value });
   };
 
-  private _onRender(id: string, phase: string, actualTime: number, baseTime: number, startTime: number, commitTime: number): void {
+  private _onRender(
+    id: string,
+    phase: string,
+    actualTime: number,
+    baseTime: number,
+    startTime: number,
+    commitTime: number,
+  ): void {
+    // eslint-disable-next-line no-console
     console.table({ id, phase, actualTime, baseTime, startTime, commitTime });
   }
 }

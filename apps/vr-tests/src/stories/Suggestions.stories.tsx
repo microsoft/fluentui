@@ -15,7 +15,7 @@ type Province = {
 const provinceData: Province[] = [
   {
     name: 'Imaginary Province With An Incredibly Long Name That Will Overflow The View',
-    id: 'fake-long-province'
+    id: 'fake-long-province',
   },
   { name: 'Ontario', id: 'ON' },
   { name: 'Quebec', id: 'QC' },
@@ -26,7 +26,7 @@ const provinceData: Province[] = [
   { name: 'Prince Edward Island', id: 'PE' },
   { name: 'Saskatchewan', id: 'SK' },
   { name: 'Alberta', id: 'AB' },
-  { name: 'Newfoundland and Labrador', id: 'NL' }
+  { name: 'Newfoundland and Labrador', id: 'NL' },
 ];
 
 type ProvincesMap = { [key: string]: Province };
@@ -42,7 +42,7 @@ const getProvincesMap = () => {
 const makeProvinceIntoSuggestion = (province: Province) => ({
   item: province,
   selected: false,
-  ariaLabel: province.name
+  ariaLabel: province.name,
 });
 
 const ProvinceSuggestionItem = ({ name, id }: Province) => (
@@ -52,7 +52,7 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
       // Required for text truncation in IE11
       overflow: 'hidden',
       minWidth: 0,
-      flexShrink: 1
+      flexShrink: 1,
     }}
     data-is-focusable={true}
   >
@@ -62,7 +62,7 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // Fix for text alignment in one line overflow contexts in webkit
-        textAlign: 'justify'
+        textAlign: 'justify',
       }}
     >
       {name}
@@ -78,7 +78,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
   constructor(props: {}) {
     super(props);
     this.state = {
-      Provinces: getProvincesMap()
+      Provinces: getProvincesMap(),
     };
   }
 
@@ -90,7 +90,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
           height: '80vh',
           position: 'relative',
           maxHeight: 'inherit',
-          width: '400px'
+          width: '400px',
         }}
       >
         <Fabric>
@@ -102,7 +102,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
           <ProvinceSuggestions
             showRemoveButtons={true}
             suggestions={Object.keys(this.state.Provinces).map(key =>
-              makeProvinceIntoSuggestion(this.state.Provinces[key])
+              makeProvinceIntoSuggestion(this.state.Provinces[key]),
             )}
             onSuggestionClick={(_: any, province: Province) => {
               alert(`clicked ${province.name} `);
@@ -138,7 +138,7 @@ storiesOf('(Dev-Only) Suggestions', module)
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
         .hover('#sug-0 .ms-Suggestions-closeButton')
         .snapshot('Hovering over the X button on a wide suggestion element', {
-          cropTo: '.testRoot'
+          cropTo: '.testRoot',
         })
         .end()}
     >

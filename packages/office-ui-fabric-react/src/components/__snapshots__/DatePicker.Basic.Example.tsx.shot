@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] = `
-<div
-  className="docs-DatePickerExample"
->
+<div>
   <div
     className=
         ms-DatePicker
@@ -58,9 +56,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
@@ -91,6 +87,9 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
                 }
           >
             <input
@@ -137,6 +136,10 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -145,6 +148,9 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -155,6 +161,9 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -163,6 +172,9 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="DatePicker0-label"
               onBlur={[Function]}
@@ -307,7 +319,6 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {

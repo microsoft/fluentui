@@ -6,10 +6,10 @@ import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextFiel
 
 const textFieldStyles: Partial<ITextFieldStyles> = {
   subComponentStyles: {
-    label: { root: { display: 'inline-block', marginRight: '10px' } }
+    label: { root: { display: 'inline-block', marginRight: '10px' } },
   },
   fieldGroup: { display: 'inline-flex', maxWidth: '100px' },
-  wrapper: { display: 'block', marginBottom: '10px' }
+  wrapper: { display: 'block', marginBottom: '10px' },
 };
 
 export interface IContextualMenuSubmenuExampleState {
@@ -19,17 +19,19 @@ export interface IContextualMenuSubmenuExampleState {
 export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
   const [hoverDelay, setHoverDelay] = React.useState(250);
 
-  const onHoverDelayChanged = useConstCallback((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
-    setHoverDelay(Number(newValue) || 0);
-  });
+  const onHoverDelayChanged = useConstCallback(
+    (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
+      setHoverDelay(Number(newValue) || 0);
+    },
+  );
 
   const menuProps: IContextualMenuProps = React.useMemo(
     () => ({
       shouldFocusOnMount: true,
       subMenuHoverDelay: hoverDelay,
-      items: menuItems
+      items: menuItems,
     }),
-    [hoverDelay]
+    [hoverDelay],
   );
 
   return (
@@ -54,18 +56,19 @@ const menuItems: IContextualMenuItem[] = [
         {
           key: 'emailMessage',
           text: 'Email message',
-          title: 'Create an email'
+          title: 'Create an email',
         },
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          title: 'Create a calendar event'
-        }
-      ]
+          title: 'Create a calendar event',
+        },
+      ],
     },
     href: 'https://bing.com',
     text: 'New',
-    target: '_blank'
+    target: '_blank',
+    ariaLabel: 'New. Press enter or right arrow keys to open submenu.',
   },
   {
     key: 'share',
@@ -73,11 +76,11 @@ const menuItems: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
@@ -87,19 +90,20 @@ const menuItems: IContextualMenuItem[] = [
               {
                 key: 'sharetooutlook_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
-              }
-            ]
-          }
-        }
-      ]
+                title: 'Share to Gmail',
+              },
+            ],
+          },
+        },
+      ],
     },
-    text: 'Share'
+    text: 'Share',
+    ariaLabel: 'Share. Press enter, space or right arrow keys to open submenu.',
   },
   {
     key: 'shareSplit',
@@ -109,11 +113,11 @@ const menuItems: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwittersplit',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebooksplit',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemailsplit',
@@ -123,18 +127,19 @@ const menuItems: IContextualMenuItem[] = [
               {
                 key: 'sharetooutlooksplit_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmailsplit_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
-              }
-            ]
-          }
-        }
-      ]
+                title: 'Share to Gmail',
+              },
+            ],
+          },
+        },
+      ],
     },
-    text: 'Share w/ Split'
-  }
+    text: 'Share w/ Split',
+    ariaLabel: 'Share w/ Split. Press enter or space keys to trigger action. Press right arrow key to open submenu.',
+  },
 ];

@@ -22,5 +22,5 @@ export default migration(
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       return renameJsxProp('DetailsRowCheck', 'isSelected', 'selected')(node, modder);
     }).files;
-  }
+  },
 );

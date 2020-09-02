@@ -1,7 +1,8 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { MoreIcon, PauseIcon, PlayIcon, BoldIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuShorthand = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -10,7 +11,7 @@ const ToolbarExampleMenuShorthand = () => {
   const onMenuOpenChange = useLogKnob(
     'onMenuOpenChange',
     (e, { menuOpen }) => setMenuOpen(menuOpen),
-    createCallbackLogFormatter(['menuOpen'])
+    createCallbackLogFormatter(['menuOpen']),
   );
 
   return (
@@ -18,22 +19,34 @@ const ToolbarExampleMenuShorthand = () => {
       aria-label="Toolbar can contain a menu"
       items={[
         {
+          key: 'bold',
+          content: 'bold',
+          icon: <BoldIcon />,
+          title: 'Bold',
+        },
+        {
+          key: 'underline',
+          content: 'underline',
+          icon: <UnderlineIcon />,
+          title: 'Underline',
+        },
+        {
+          icon: <MoreIcon />,
           key: 'more',
-          icon: 'more',
           active: menuOpen,
           title: 'More',
           menu: {
             items: [
-              { key: 'play', content: 'Play', icon: 'play' },
-              { key: 'pause', content: 'Pause', icon: 'pause' },
+              { key: 'play', content: 'Play', icon: <PlayIcon /> },
+              { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
               { key: 'divider', kind: 'divider' },
-              'Without icon'
+              'Without icon',
             ],
-            onItemClick
+            onItemClick,
           },
           menuOpen,
-          onMenuOpenChange
-        }
+          onMenuOpenChange,
+        },
       ]}
     />
   );

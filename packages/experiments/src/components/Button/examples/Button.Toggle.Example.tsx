@@ -9,7 +9,6 @@ export interface IButtonToggleExampleState {
   primaryCircularButtonToggled?: boolean;
 }
 
-// tslint:disable:jsx-no-lambda
 export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampleState> {
   constructor(props: {}) {
     super(props);
@@ -18,12 +17,17 @@ export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampl
       defaultButtonToggled: false,
       primaryButtonToggled: false,
       defaultCircularButtonToggled: false,
-      primaryCircularButtonToggled: false
+      primaryCircularButtonToggled: false,
     };
   }
 
   public render(): JSX.Element {
-    const { defaultButtonToggled, primaryButtonToggled, defaultCircularButtonToggled, primaryCircularButtonToggled } = this.state;
+    const {
+      defaultButtonToggled,
+      primaryButtonToggled,
+      defaultCircularButtonToggled,
+      primaryCircularButtonToggled,
+    } = this.state;
 
     const buttonStackTokens: IStackTokens = { childrenGap: 12 };
 

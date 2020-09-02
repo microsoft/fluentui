@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import tabBehavior from './tabBehavior';
+import { tabBehavior } from './tabBehavior';
 
 /**
  * @description
@@ -11,21 +11,19 @@ import tabBehavior from './tabBehavior';
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  * When component's container element receives focus, focus will be set to the default focusable child element of the component.
  */
-const tabListBehavior: Accessibility = () => ({
+export const tabListBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'tablist'
-    }
+      role: 'tablist',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
   },
   childBehaviors: {
-    item: tabBehavior
-  }
+    item: tabBehavior,
+  },
 });
-
-export default tabListBehavior;

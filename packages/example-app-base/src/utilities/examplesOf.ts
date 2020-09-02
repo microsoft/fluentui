@@ -27,7 +27,7 @@ export class ExampleGroup {
     this._examples.push({
       key: getId(),
       title,
-      onRender
+      onRender,
     });
 
     return this;

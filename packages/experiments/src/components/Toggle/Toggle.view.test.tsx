@@ -11,7 +11,7 @@ describe('ToggleView', () => {
       component
         .find('.ms-Toggle-label')
         .first()
-        .text()
+        .text(),
     ).toEqual('Label');
   });
 
@@ -29,7 +29,7 @@ describe('ToggleView', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-label')
+        .getAttribute('aria-label'),
     ).toEqual('AriaLabel');
   });
 

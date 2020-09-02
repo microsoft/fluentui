@@ -1,10 +1,19 @@
 import * as React from 'react';
-import { css, DefaultButton, IButtonStyles, FocusZone, FontWeights, HighContrastSelector } from 'office-ui-fabric-react';
+import {
+  css,
+  DefaultButton,
+  IButtonStyles,
+  FocusZone,
+  FontWeights,
+  HighContrastSelector,
+} from 'office-ui-fabric-react';
 import { INavPage } from '../Nav/index';
 import { IPlatformPickerProps, IPlatform } from './PlatformPicker.types';
 import * as styles from './PlatformPicker.module.scss';
 
-export class PlatformPicker<TPlatforms extends string = string> extends React.PureComponent<IPlatformPickerProps<TPlatforms>> {
+export class PlatformPicker<TPlatforms extends string = string> extends React.PureComponent<
+  IPlatformPickerProps<TPlatforms>
+> {
   public render(): JSX.Element {
     const { activePlatform, platforms, pagePlatforms } = this.props;
 
@@ -31,13 +40,13 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
                     className={css(styles.button, platformKey === activePlatform && styles.activePlatform)}
                     iconProps={{
                       iconName: icon,
-                      className: iconClassName
+                      className: iconClassName,
                     }}
-                    /* tslint:disable-next-line jsx-no-lambda */
+                    /* eslint-disable-next-line react/jsx-no-bind */
                     onClick={() => this._handlePlatformClick(platformKey)}
                     styles={{
                       ...this._platformButtonStyles(color),
-                      ...(platformKey === activePlatform && this._activePlatformButtonStyles(color))
+                      ...(platformKey === activePlatform && this._activePlatformButtonStyles(color)),
                     }}
                     disabled={disabled}
                   >
@@ -57,23 +66,24 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
       height: '30px',
       selectors: {
         '&:not([disabled])': {
-          background: 'transparent'
+          background: 'transparent',
         },
         '&:hover:not([disabled])': {
           background: 'transparent',
           borderColor: color,
-          color: 'black'
-        }
-      }
+          color: 'black',
+        },
+      },
     },
     flexContainer: {
-      flexDirection: 'row-reverse'
+      flexDirection: 'row-reverse',
     },
     label: {
       textAlign: 'left',
       fontWeight: FontWeights.semibold,
-      margin: 0
-    }
+      // fontSize: 10,
+      margin: 0,
+    },
   });
 
   private _activePlatformButtonStyles = (color?: string): IButtonStyles => ({
@@ -86,12 +96,12 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'Highlight',
-              background: 'Window'
-            }
-          }
-        }
-      }
-    }
+              background: 'Window',
+            },
+          },
+        },
+      },
+    },
   });
 
   private _handlePlatformClick = (platformKey: TPlatforms): void => {

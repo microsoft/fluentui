@@ -9,5 +9,5 @@ export const PlatformBar: React.FunctionComponent<IPlatformBarProps> = styled<
   IPlatformBarStyleProps,
   IPlatformBarStyles
 >(PlatformBarBase, getStyles, undefined, {
-  scope: 'PlatformBar'
+  scope: 'PlatformBar',
 });

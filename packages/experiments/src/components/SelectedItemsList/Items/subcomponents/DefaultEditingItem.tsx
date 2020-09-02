@@ -122,7 +122,10 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
-      if (target.className.indexOf('ms-Suggestions-itemButton') === -1 && target.className.indexOf('ms-Suggestions-sectionButton') === -1) {
+      if (
+        target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
+        target.className.indexOf('ms-Suggestions-sectionButton') === -1
+      ) {
         this._editingFloatingPicker.current.forceResolveSuggestion();
       }
     }
@@ -156,6 +159,6 @@ type EditingItemProps<T> = Pick<
   Exclude<keyof IDefaultEditingItemInnerProps<T>, keyof EditingItemComponentProps<T>>
 >;
 
-export const DefaultEditingItem = <T extends any>(outerProps: EditingItemProps<T>) => (innerProps: EditingItemComponentProps<T>) => (
-  <DefaultEditingItemInner {...outerProps} {...innerProps} />
-);
+export const DefaultEditingItem = <T extends any>(outerProps: EditingItemProps<T>) => (
+  innerProps: EditingItemComponentProps<T>,
+) => <DefaultEditingItemInner {...outerProps} {...innerProps} />;

@@ -8,7 +8,9 @@ export const GetStartedPages: INavPage = {
   hasPlatformPicker: true,
   component: () => <LoadingComponent title="Get started" />,
   getComponent: cb =>
-    require.ensure([], require => cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage)),
+    require.ensure([], require =>
+      cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+    ),
   platforms: {
     web: [
       {
@@ -17,8 +19,10 @@ export const GetStartedPages: INavPage = {
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage))
-      }
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
     ],
     ios: [
       {
@@ -27,8 +31,10 @@ export const GetStartedPages: INavPage = {
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage))
-      }
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
     ],
     android: [
       {
@@ -37,8 +43,46 @@ export const GetStartedPages: INavPage = {
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage))
-      }
-    ]
-  }
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
+    mac: [
+      {
+        title: 'Get started',
+        url: '#/get-started/mac',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Get started" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
+    windows: [
+      {
+        title: 'Get started',
+        url: '#/get-started/windows',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Get started" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
+    cross: [
+      {
+        title: 'Get started',
+        url: '#/get-started/crossplatform',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Get started" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
+  },
 };

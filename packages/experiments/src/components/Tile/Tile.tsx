@@ -7,11 +7,9 @@ import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
-// tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
-// tslint:enable:no-any
 
 export const TileLayoutValues = {
   nameplatePadding: 12 as 12,
@@ -20,7 +18,7 @@ export const TileLayoutValues = {
   nameplateMargin: 0 as 0,
   largeNameplateActivityHeight: 20 as 20,
   smallNameplateActivityHeight: 20 as 20,
-  foregroundMargin: 16 as 16
+  foregroundMargin: 16 as 16,
 };
 
 export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
@@ -44,23 +42,19 @@ export const TileLayoutSizes: {
     nameplateNameHeight: TileLayoutValues.smallNameplateNameHeight,
     nameplateMargin: TileLayoutValues.nameplateMargin,
     nameplateActivityHeight: TileLayoutValues.smallNameplateActivityHeight,
-    foregroundMargin: TileLayoutValues.foregroundMargin
+    foregroundMargin: TileLayoutValues.foregroundMargin,
   },
   large: {
     nameplatePadding: TileLayoutValues.nameplatePadding,
     nameplateNameHeight: TileLayoutValues.largeNameplateNameHeight,
     nameplateMargin: TileLayoutValues.nameplateMargin,
     nameplateActivityHeight: TileLayoutValues.largeNameplateActivityHeight,
-    foregroundMargin: TileLayoutValues.foregroundMargin
-  }
+    foregroundMargin: TileLayoutValues.foregroundMargin,
+  },
 };
 
 /**
  * A tile provides a frame for a potentially-selectable item which displays its contents prominently.
- *
- * @export
- * @class Tile
- * @extends {React.Component<ITileProps, ITileState>}
  */
 export class Tile extends React.Component<ITileProps, ITileState> {
   private _nameId: string;
@@ -69,7 +63,6 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _descriptionId: string;
   private _events: EventGroup;
 
-  // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
 
@@ -87,25 +80,25 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     this.state = {
       isSelected: isSelected,
-      isModal: isModal
+      isModal: isModal,
     };
 
     this._events = new EventGroup(this);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ITileProps): void {
     const { selection, selectionIndex } = this.props;
 
     const { selection: nextSelection, selectionIndex: nextSelectionIndex = -1 } = nextProps;
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
-      const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
+      const isSelected =
+        !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
         isSelected: isSelected,
-        isModal: isModal
+        isModal: isModal,
       });
     }
   }
@@ -186,20 +179,20 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         {background
           ? this._onRenderBackground({
               background: background,
-              hideBackground
+              hideBackground,
             })
           : null}
         {foreground
           ? this._onRenderForeground({
               foreground: foreground,
-              hideForeground
+              hideForeground,
             })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
               name: itemName,
               activity: itemActivity,
-              onlyOnHover: !!nameplateOnlyOnHover
+              onlyOnHover: !!nameplateOnlyOnHover,
             })
           : null}
       </>
@@ -244,22 +237,27 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
           [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
-          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling
+          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
         data-selection-index={selectionIndex > -1 ? selectionIndex : undefined}
+        data-selection-touch-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
       >
         {link}
         {descriptionAriaLabel ? (
-          <span key="description" id={this._descriptionId} className={css('ms-Tile-description', TileStylesModule.description)}>
+          <span
+            key="description"
+            id={this._descriptionId}
+            className={css('ms-Tile-description', TileStylesModule.description)}
+          >
             {descriptionAriaLabel}
           </span>
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
+              isSelected: isSelected,
             })
           : null}
       </div>
@@ -268,18 +266,19 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
   private _onRenderBackground({
     background,
-    hideBackground
+    hideBackground,
   }: {
     background: ITileProps['background'];
     hideBackground: boolean;
   }): JSX.Element | null {
-    const finalBackground = typeof background === 'function' ? background(getTileLayoutFromProps(this.props)) : background;
+    const finalBackground =
+      typeof background === 'function' ? background(getTileLayoutFromProps(this.props)) : background;
 
     return finalBackground ? (
       <span
         key="background"
         className={css('ms-Tile-background', TileStyles.background, {
-          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
+          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground,
         })}
       >
         {finalBackground}
@@ -289,12 +288,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
   private _onRenderForeground({
     foreground,
-    hideForeground
+    hideForeground,
   }: {
     foreground: ITileProps['foreground'];
     hideForeground: boolean;
   }): JSX.Element | null {
-    const finalForeground = typeof foreground === 'function' ? foreground(getTileLayoutFromProps(this.props)) : foreground;
+    const finalForeground =
+      typeof foreground === 'function' ? foreground(getTileLayoutFromProps(this.props)) : foreground;
 
     return finalForeground ? (
       <span key="foreground" role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
@@ -302,7 +302,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           <span
             role="presentation"
             className={css('ms-Tile-foreground', TileStyles.foreground, {
-              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
+              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground,
             })}
           >
             {finalForeground}
@@ -315,21 +315,30 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _onRenderNameplate({
     name,
     activity,
-    onlyOnHover
+    onlyOnHover,
   }: {
     name: React.ReactNode;
     activity: React.ReactNode;
     onlyOnHover: boolean;
   }): JSX.Element {
     return (
-      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}>
+      <span
+        key="nameplate"
+        className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}
+      >
         {name ? (
-          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}>
+          <span
+            id={this._nameId}
+            className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}
+          >
             {name}
           </span>
         ) : null}
         {activity ? (
-          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}>
+          <span
+            id={this._activityId}
+            className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}
+          >
             {activity}
           </span>
         ) : null}
@@ -346,7 +355,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         role="checkbox"
         aria-label={toggleSelectionAriaLabel}
         className={css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
-          [CheckStyles.hostShowCheck]: this.state.isModal
+          [CheckStyles.hostShowCheck]: this.state.isModal,
         })}
         data-selection-toggle={true}
         aria-checked={isSelected}
@@ -364,7 +373,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     this.setState({
       isSelected: isSelected,
-      isModal: isModal
+      isModal: isModal,
     });
   };
 }
@@ -389,7 +398,13 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
 
   const width = contentSize.width;
 
-  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } = TileLayoutSizes[tileSize];
+  const {
+    nameplatePadding,
+    nameplateMargin,
+    nameplateActivityHeight,
+    nameplateNameHeight,
+    foregroundMargin,
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 
@@ -406,9 +421,9 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   return {
     foregroundSize: {
       width: width - foregroundMargin * 2,
-      height: contentSize.height - foregroundMargin - nameplateHeight
+      height: contentSize.height - foregroundMargin - nameplateHeight,
     },
-    backgroundSize: contentSize
+    backgroundSize: contentSize,
   };
 }
 

@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Button, Popup, Menu, dialogBehavior, tabBehavior, tabListBehavior, MenuItemProps } from '@fluentui/react';
+import {
+  Button,
+  Popup,
+  Menu,
+  dialogBehavior,
+  tabBehavior,
+  tabListBehavior,
+  MenuItemProps,
+} from '@fluentui/react-northstar';
+import { StickerIcon } from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
 import { arrayOfStickerImagesNames, getItemsData } from './dataMocks';
 import GridImagePicker from './GridImagePicker/GridImagePicker';
@@ -25,7 +34,7 @@ class StickerPicker extends React.Component {
       key: item,
       content: item,
       onClick: this.onMenuItemClick,
-      accessibility: tabBehavior
+      accessibility: tabBehavior,
     }));
   };
 
@@ -34,7 +43,7 @@ class StickerPicker extends React.Component {
       <Popup
         accessibility={dialogBehavior}
         position="below"
-        trigger={<Button icon="sticky note" aria-label="Choose a sticker." />}
+        trigger={<Button icon={<StickerIcon />} aria-label="Choose a sticker." />}
         content={{
           'aria-label': 'Choose a sticker. Press Enter key to insert sticker.',
           content: (
@@ -52,7 +61,7 @@ class StickerPicker extends React.Component {
                 <GridImagePicker ref={this.gridPickerRef} items={this.getStickersData()} />
               </div>
             </div>
-          )
+          ),
         }}
       />
     );

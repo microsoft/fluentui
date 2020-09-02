@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
@@ -12,14 +12,16 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const checkboxStyles = {
   root: {
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 };
+
+const defaultButtonStyles: Partial<IButtonStyles> = { root: { height: 'auto' } };
 
 export const PeoplePickerControlledExample: React.FunctionComponent = () => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([]);
@@ -32,7 +34,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
   const onFilterChanged = (
     filterText: string,
     currentPersonas: IPersonaProps[],
-    limitResults?: number
+    limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
@@ -81,16 +83,18 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
     <div>
       <div>
         <NormalPeoplePicker
+          // eslint-disable-next-line react/jsx-no-bind
           onResolveSuggestions={onFilterChanged}
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={suggestionProps}
           className={'ms-PeoplePicker'}
           key={'controlled'}
           selectedItems={currentSelectedItems}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onItemsChange}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           }}
           componentRef={picker}
           resolveDelay={300}
@@ -100,8 +104,8 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
         {controlledItems.map((item, index) => (
           <div key={index}>
             <DefaultButton
-              styles={{ root: { height: 'auto' } }}
-              // tslint:disable-next-line:jsx-no-lambda
+              styles={defaultButtonStyles}
+              // eslint-disable-next-line react/jsx-no-bind
               onClick={() => setCurrentSelectedItems(currentSelectedItems.concat([item]))}
             >
               <Persona {...item} />
@@ -109,10 +113,17 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           </div>
         ))}
       </div>
-      <Checkbox label="Disable People Picker" checked={isPickerDisabled} onChange={onDisabledButtonClick} styles={checkboxStyles} />
+      <Checkbox
+        label="Disable People Picker"
+        checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onDisabledButtonClick}
+        styles={checkboxStyles}
+      />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />

@@ -22,7 +22,7 @@ export const CardCallout = (props: ICardCalloutProps) => {
     className,
     finalHeight,
     content,
-    calloutProps
+    calloutProps,
   } = props;
 
   const mergedCalloutProps: ICalloutProps = {
@@ -36,18 +36,18 @@ export const CardCallout = (props: ICardCalloutProps) => {
     minPagePadding: 24,
     onDismiss: onLeave,
     gapSpace: gapSpace,
-    ...calloutProps
+    ...calloutProps,
   };
 
   return (
-    <React.Fragment>
+    <>
       {trapFocus ? (
         <FocusTrapCallout
           {...mergedCalloutProps}
           focusTrapProps={{
             forceFocusInsideTrap: false,
             isClickableOutsideFocusTrap: true,
-            disableFirstFocus: !firstFocus
+            disableFirstFocus: !firstFocus,
           }}
         >
           {content}
@@ -55,6 +55,6 @@ export const CardCallout = (props: ICardCalloutProps) => {
       ) : (
         <Callout {...mergedCalloutProps}>{content}</Callout>
       )}
-    </React.Fragment>
+    </>
   );
 };

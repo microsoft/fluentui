@@ -14,28 +14,31 @@ const SeparatorIconExampleCode = require('!raw-loader!office-ui-fabric-react/src
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
   componentName: 'Separator',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Separator',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Separator',
   examples: [
     {
       title: 'Basic Separator with Text',
       code: SeparatorBasicExampleCode,
-      view: <SeparatorBasicExample />
+      view: <SeparatorBasicExample />,
     },
     {
       title: 'Basic Themed Separator with Text',
       code: SeparatorThemingExampleCode,
-      view: <SeparatorThemingExample />
+      view: <SeparatorThemingExample />,
     },
     {
       title: 'Separator With Icon',
       code: SeparatorIconExampleCode,
-      view: <SeparatorIconExample />
-    }
+      view: <SeparatorIconExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

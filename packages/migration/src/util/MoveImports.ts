@@ -9,7 +9,13 @@ export function generateImport(packageName: string, namedImports: string[]): str
   return `import { ${namedImports.join(', ')} } from '${packageName}';`;
 }
 
-export function moveImports(node: ts.Node, modder: Modder, fromPackage: string, toPackage: string, constantNames: string[]): TypescriptMod {
+export function moveImports(
+  node: ts.Node,
+  modder: Modder,
+  fromPackage: string,
+  toPackage: string,
+  constantNames: string[],
+): TypescriptMod {
   if (
     ts.isImportDeclaration(node) &&
     (node.moduleSpecifier.getText() === `'${fromPackage}'` || node.moduleSpecifier.getText() === `"${fromPackage}"`) &&
@@ -29,13 +35,16 @@ export function moveImports(node: ts.Node, modder: Modder, fromPackage: string, 
       }
     });
     if (migratedImports.length > 0) {
-      const importStatements = [generateImport(fromPackage, untouchedImports), generateImport(toPackage, migratedImports)]
+      const importStatements = [
+        generateImport(fromPackage, untouchedImports),
+        generateImport(toPackage, migratedImports),
+      ]
         .filter(s => s !== undefined)
         .join(os.EOL);
       return modder.replace(node, importStatements);
     }
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return undefined as any;
 }

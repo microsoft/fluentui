@@ -1,3 +1,4 @@
+import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
 import { IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
@@ -9,7 +10,7 @@ import {
   IMenuButtonSlot,
   IMenuButtonSlots,
   IMenuButtonTokens,
-  IMenuButtonViewProps
+  IMenuButtonViewProps,
 } from '../MenuButton/MenuButton.types';
 
 /**
@@ -115,7 +116,9 @@ export interface ISplitButtonProps
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>, ISplitButtonProps {}
+export interface ISplitButtonViewProps
+  extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>,
+    ISplitButtonProps {}
 
 /**
  * {@docCategory Button}

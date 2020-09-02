@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IViewportState } from '../Viewport/Viewport.types';
 
 /**
@@ -7,7 +8,7 @@ import { IViewportState } from '../Viewport/Viewport.types';
 export type ItemRange = [number, number];
 export enum ItemRangeIndex {
   startIndex = 0,
-  endIndex = 1
+  endIndex = 1,
 }
 
 export type ModifyMaterializedRangesCallback = (materializedRanges: ItemRange[]) => void;

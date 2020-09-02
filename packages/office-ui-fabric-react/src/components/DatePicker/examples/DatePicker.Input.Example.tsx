@@ -4,7 +4,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -18,64 +31,58 @@ const DayPickerStrings: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 
   isRequiredErrorMessage: 'Start date is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
 };
-
-export interface IDatePickerInputExampleState {
-  firstDayOfWeek?: DayOfWeek;
-  value?: Date | null;
-}
 
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
-export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
-  constructor(props: {}) {
-    super(props);
+const firstDayOfWeek = DayOfWeek.Sunday;
+const desc = 'This field is required. One of the support input formats is year dash month dash day.';
 
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-      value: null
-    };
-  }
+export const DatePickerInputExample: React.FC = () => {
+  const [value, setValue] = React.useState<Date | null | undefined>(null);
 
-  public render(): JSX.Element {
-    const { firstDayOfWeek, value } = this.state;
-    const desc = 'This field is required. One of the support input formats is year dash month dash day.';
-    return (
-      <div className="docs-DatePickerExample">
-        <p>
-          Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField
-          again will dismiss the DatePicker and allow text input.
-        </p>
-        <DatePicker
-          className={controlClass.control}
-          label="Start date"
-          isRequired={false}
-          allowTextInput={true}
-          ariaLabel={desc}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          value={value!}
-          onSelectDate={this._onSelectDate}
-        />
-        <DefaultButton onClick={this._onClick} text="Clear" />
-      </div>
-    );
-  }
-
-  private _onSelectDate = (date: Date | null | undefined): void => {
-    this.setState({ value: date });
+  const onSelectDate = (date: Date | null | undefined): void => {
+    setValue(date);
   };
 
-  private _onClick = (): void => {
-    this.setState({ value: null });
+  const onClick = (): void => {
+    setValue(null);
   };
-}
+
+  return (
+    <div>
+      <p>
+        Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker,
+        click the TextField again will dismiss the DatePicker and allow text input.
+      </p>
+      <DatePicker
+        className={controlClass.control}
+        label="Start date"
+        isRequired={false}
+        allowTextInput={true}
+        ariaLabel={desc}
+        firstDayOfWeek={firstDayOfWeek}
+        strings={DayPickerStrings}
+        value={value!}
+        // eslint-disable-next-line react/jsx-no-bind
+        onSelectDate={onSelectDate}
+      />
+      <DefaultButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        text="Clear"
+      />
+    </div>
+  );
+};

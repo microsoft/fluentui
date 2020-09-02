@@ -4,7 +4,13 @@ import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
-import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
+import {
+  ICustomizationProps,
+  IStyleableComponentProps,
+  IStylesFunctionOrObject,
+  IToken,
+  ITokenFunction,
+} from '../IComponent';
 import { IComponentOptions, IPartialSlotComponent, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
 import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
 import { IFoundationComponent } from './ISlots';
@@ -29,9 +35,13 @@ const memoizedClassNamesMap: IClassNamesMap = {};
  * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
  * and styled before finally being passed to view.
  *
- * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call
+ * the view prop.
+ *
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * State component is optional. If state is not provided, created component is essentially a functional
+ * stateless component.
  *
  * @param options - component Component options. See IComponentOptions for more detail.
  */
@@ -43,21 +53,25 @@ export function composed<
   TComponentSlots = {},
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 /**
- * Recomposes a functional component based on a base component and the following set of options: styles, theme, view, and state.
- * Imposes a separation of concern and centralizes styling processing to increase ease of use and robustness
+ * Recomposes a functional component based on a base component and the following set of options: styles, theme, view,
+ * and state. Imposes a separation of concern and centralizes styling processing to increase ease of use and robustness
  * in how components use and apply styling and theming.
  *
  * Automatically merges and applies themes and styles with theme / styleprops having the highest priority.
  * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
  * and styled before finally being passed to view.
  *
- * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call
+ * the view prop.
+ *
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * State component is optional. If state is not provided, created component is essentially a functional
+ * stateless component.
  *
  * @param baseComponent - base component to recompose
  * @param options - component Component recomposition options. See IComponentOptions for more detail.
@@ -71,12 +85,12 @@ export function composed<
   TStatics = {}
 >(
   baseComponent: React.FunctionComponent,
-  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 /**
- * Assembles a higher order component based on a set of options or recomposes a functional component based on a base component
- * and the a set of options. This set of options is comprised by: styles, theme, view, and state.
+ * Assembles a higher order component based on a set of options or recomposes a functional component based on a
+ * base component and the a set of options. This set of options is comprised by: styles, theme, view, and state.
  *
  * Imposes a separation of concern and centralizes styling processing to increase ease of use and robustness
  * in how components use and apply styling and theming.
@@ -85,9 +99,13 @@ export function composed<
  * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
  * and styled before finally being passed to view.
  *
- * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call
+ * the view prop.
+ *
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * State component is optional. If state is not provided, created component is essentially a functional
+ * stateless component.
  *
  * @param baseComponentOrOptions - base component to recompose or component Component options to compose an HOC.
  * See IComponentOptions for more detail.
@@ -104,7 +122,14 @@ export function composed<
   baseComponentOrOptions:
     | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
     | IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {},
-  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  recompositionOptions?: IRecompositionComponentOptions<
+    TComponentProps,
+    TTokens,
+    TStyleSet,
+    TViewProps,
+    TComponentSlots,
+    TStatics
+  >,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics {
   // Check if we are composing or recomposing.
   let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
@@ -117,8 +142,8 @@ export function composed<
       ...recompositionOptions,
       slots: props => ({
         ...resolveSlots(baseComponentOptions.slots, props),
-        ...resolveSlots(recompositionSlots, props)
-      })
+        ...resolveSlots(recompositionSlots, props),
+      }),
     };
   } else {
     options = baseComponentOrOptions;
@@ -127,22 +152,30 @@ export function composed<
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
-    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
+  const ResultComponent: IFoundationComponent<
+    TComponentProps,
+    TTokens,
+    TStyleSet,
+    TViewProps,
+    TComponentSlots,
+    TStatics
+  > = (
+    componentProps: TViewProps &
+      IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode },
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
       React.useContext(CustomizerContext),
-      options.fields
+      options.fields,
     );
 
-    const useState = options.state;
+    const stateReducer = options.state;
 
-    if (useState) {
+    if (stateReducer) {
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        ...useState(componentProps)
+        ...stateReducer(componentProps),
       };
     }
 
@@ -222,33 +255,44 @@ export function composed<
       ...componentProps,
       styles,
       tokens,
-      _defaultStyles: displayName ? finalStyles : styles
+      _defaultStyles: displayName ? finalStyles : styles,
     } as TViewProps & IDefaultSlotProps<any>;
 
     if (!options.slots) {
       throw new Error(`Component ${options.displayName || (view && view.name) || ''} is missing slot definitions.`);
     }
 
-    const Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
+    const Slots =
+      typeof options.slots === 'function'
+        ? getSlots(viewProps, options.slots(viewProps))
+        : getSlots(viewProps, options.slots);
 
     return view ? view(viewProps, Slots) : null;
   };
 
-  result.displayName = options.displayName || (view && view.name);
+  ResultComponent.displayName = options.displayName || (view && view.name);
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
   //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
+    (ResultComponent as ISlotCreator<TComponentProps, any>).create = createFactory(ResultComponent, { defaultProp });
   }
 
-  result.__options = options;
+  ResultComponent.__options = options;
 
-  assign(result, options.statics);
+  assign(ResultComponent, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+  return ResultComponent as IFoundationComponent<
+    TComponentProps,
+    TTokens,
+    TStyleSet,
+    TViewProps,
+    TComponentSlots,
+    TStatics
+  > &
+    TStatics;
 }
 
 /**
@@ -258,8 +302,11 @@ export function composed<
  * @param data - Data to pass to resolve if the first argument was a function.
  */
 export function resolveSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
-  slots: IPartialSlotComponent<TComponentProps, TComponentSlots> | ISlotComponent<TComponentProps, TComponentSlots> | undefined,
-  data: TComponentProps
+  slots:
+    | IPartialSlotComponent<TComponentProps, TComponentSlots>
+    | ISlotComponent<TComponentProps, TComponentSlots>
+    | undefined,
+  data: TComponentProps,
 ): ISlotDefinition<Required<TComponentSlots>> {
   const resolvedSlots = slots ? (typeof slots === 'function' ? slots(data) : slots) : {};
   return resolvedSlots as ISlotDefinition<Required<TComponentSlots>>;
@@ -276,8 +323,8 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 ): ReturnType<typeof concatStyleSets> {
   return concatStyleSets(
     ...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
-      typeof styles === 'function' ? styles(props, theme, tokens) : styles
-    )
+      typeof styles === 'function' ? styles(props, theme, tokens) : styles,
+    ),
   );
 }
 
@@ -295,7 +342,9 @@ function _resolveTokens<TViewProps, TTokens>(
     if (currentTokens) {
       // TODO: why is this cast needed? TS seems to think there is a (TToken | Function) union from somewhere.
       currentTokens =
-        typeof currentTokens === 'function' ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme) : currentTokens;
+        typeof currentTokens === 'function'
+          ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme)
+          : currentTokens;
 
       if (Array.isArray(currentTokens)) {
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
@@ -318,7 +367,7 @@ function _resolveTokens<TViewProps, TTokens>(
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   displayName: string | undefined,
   context: ICustomizerContext,
-  fields?: string[]
+  fields?: string[],
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)

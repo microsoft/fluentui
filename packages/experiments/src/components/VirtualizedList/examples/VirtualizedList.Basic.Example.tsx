@@ -11,7 +11,6 @@ interface IItem {
 const items: IItem[] = [];
 
 type ExampleList = new () => VirtualizedList<IItem>;
-// tslint:disable-next-line:no-any
 const ExampleList: ExampleList = VirtualizedList as any;
 
 export class VirtualizedListBasicExample extends React.Component {
@@ -22,7 +21,7 @@ export class VirtualizedListBasicExample extends React.Component {
     if (items.length === 0) {
       for (let i = 0; i < 2000; i++) {
         items.push({
-          key: `Item ${i}`
+          key: `Item ${i}`,
         });
       }
     }
@@ -40,7 +39,6 @@ export class VirtualizedListBasicExample extends React.Component {
 
   private _renderItem = (item: IItem, itemIndex: number): JSX.Element => {
     return (
-      // tslint:disable-next-line:jsx-ban-props
       <div key={item.key} style={{ height: 30 }}>
         {item.key}
       </div>

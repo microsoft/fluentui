@@ -4,7 +4,7 @@ import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenRetu
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
     menuIconSize: 12,
-    minWidth: 0
+    minWidth: 0,
   };
 };
 
@@ -29,7 +29,7 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
 
     highContrastBorderColor: 'Highlight',
     highContrastBorderColorHovered: 'Highlight',
-    highContrastBorderColorPressed: 'Highlight'
+    highContrastBorderColorPressed: 'Highlight',
   };
 };
 
@@ -50,18 +50,18 @@ const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IM
 
     highContrastColor: 'Window',
     highContrastColorHovered: 'Window',
-    highContrastColorPressed: 'Window'
+    highContrastColorPressed: 'Window',
   };
 };
 
 export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => [
   baseTokens,
   props.expanded && expandedTokens,
-  props.primary && props.expanded && primaryExpandedTokens
+  props.primary && props.expanded && primaryExpandedTokens,
 ];
 
 const GlobalClassNames = {
-  msMenuButton: 'ms-MenuButton'
+  msMenuButton: 'ms-MenuButton',
 };
 
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
@@ -71,7 +71,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
 
   return {
     root: {
-      display: 'inline-flex'
+      display: 'inline-flex',
     },
     button: [
       globalClassNames.msMenuButton,
@@ -85,7 +85,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
             color: tokens.highContrastColor,
-            borderColor: tokens.highContrastBorderColor
+            borderColor: tokens.highContrastBorderColor,
           },
           ':hover': {
             backgroundColor: props.expanded ? tokens.backgroundColorExpandedHovered : tokens.backgroundColorHovered,
@@ -95,9 +95,9 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorHovered,
                 color: tokens.highContrastColorHovered,
-                borderColor: tokens.highContrastBorderColorHovered
-              }
-            }
+                borderColor: tokens.highContrastBorderColorHovered,
+              },
+            },
           },
           ':hover:active': {
             backgroundColor: props.expanded ? tokens.backgroundColorExpandedPressed : tokens.backgroundColorPressed,
@@ -107,21 +107,21 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorPressed,
                 color: tokens.highContrastColorPressed,
-                borderColor: tokens.highContrastBorderColorPressed
-              }
-            }
-          }
-        }
+                borderColor: tokens.highContrastBorderColorPressed,
+              },
+            },
+          },
+        },
       },
-      className
+      className,
     ],
     menuArea: {
       height: 'auto',
-      width: 'auto'
+      width: 'auto',
     },
     menuIcon: {
       fontSize: tokens.menuIconSize,
-      paddingTop: '5px'
-    }
+      paddingTop: '5px',
+    },
   };
 };

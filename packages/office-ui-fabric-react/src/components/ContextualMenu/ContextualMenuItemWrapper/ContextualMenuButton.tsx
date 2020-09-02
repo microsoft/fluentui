@@ -13,7 +13,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   });
 
@@ -32,7 +32,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       onItemClick,
       openSubMenu,
       dismissSubMenu,
-      dismissMenu
+      dismissMenu,
     } = this.props;
 
     const subMenuId = this._getSubMenuId(item);
@@ -43,9 +43,14 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     const itemHasSubmenu = hasSubmenu(item);
     const { itemProps, ariaLabel } = item;
 
-    const buttonNativeProperties = getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(item, buttonProperties);
+    const buttonNativeProperties = getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(
+      item,
+      buttonProperties,
+    );
     // Do not add the disabled attribute to the button so that it is focusable
     delete buttonNativeProperties.disabled;
+
+    const itemRole = item.role || defaultRole;
 
     const itemButtonProperties = {
       className: classNames.root,
@@ -53,7 +58,8 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       onKeyDown: itemHasSubmenu ? this._onItemKeyDown : undefined,
       onMouseEnter: this._onItemMouseEnter,
       onMouseLeave: this._onItemMouseLeave,
-      onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
+      onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) =>
+        onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
       onMouseMove: this._onItemMouseMove,
       href: item.href,
       title: item.title,
@@ -61,13 +67,15 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-haspopup': itemHasSubmenu || undefined,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
-      'aria-checked': canCheck ? !!isChecked : undefined,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
-      role: item.role || defaultRole,
-      // tslint:disable-next-line:deprecation
-      style: item.style
+      'aria-checked':
+        (itemRole === 'menuitemcheckbox' || itemRole === 'menuitemradio') && canCheck ? !!isChecked : undefined,
+      'aria-selected': itemRole === 'menuitem' && canCheck ? !!isChecked : undefined,
+      role: itemRole,
+      // eslint-disable-next-line deprecation/deprecation
+      style: item.style,
     };
 
     let { keytipProps } = item;
@@ -76,7 +84,11 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     }
 
     return (
-      <KeytipData keytipProps={keytipProps} ariaDescribedBy={buttonNativeProperties['aria-describedby']} disabled={isItemDisabled(item)}>
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={buttonNativeProperties['aria-describedby']}
+        disabled={isItemDisabled(item)}
+      >
         {(keytipAttributes: IKeytipDataProps): JSX.Element => (
           <button ref={this._btn} {...buttonNativeProperties} {...itemButtonProperties} {...keytipAttributes}>
             <ChildrenRenderer

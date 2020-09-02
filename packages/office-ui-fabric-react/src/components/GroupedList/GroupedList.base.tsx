@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, classNamesFunction, initializeFocusRects } from '../../Utilities';
-import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
+import {
+  IGroupedList,
+  IGroupedListProps,
+  IGroup,
+  IGroupedListStyleProps,
+  IGroupedListStyles,
+} from './GroupedList.types';
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -9,12 +15,12 @@ import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 import { IGroupHeaderProps } from './GroupHeader';
 import { IGroupShowAllProps } from './GroupShowAll.styles';
 import { IGroupFooterProps } from './GroupFooter.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   groups?: IGroup[];
 }
@@ -24,11 +30,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
     groupProps: {},
-    compact: false
-  };
-
-  public refs: {
-    [key: string]: React.ReactInstance;
+    compact: false,
   };
 
   private _classNames: IProcessedStyleSet<IGroupedListStyles>;
@@ -37,17 +39,17 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _isSomeGroupExpanded: boolean;
 
+  private _groupRefs: Record<string, GroupedListSection | null> = {};
+
   constructor(props: IGroupedListProps) {
     super(props);
 
     initializeComponentRef(this);
-    initializeFocusRects();
 
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
-      lastWidth: 0,
-      groups: props.groups
+      groups: props.groups,
     };
   }
 
@@ -61,7 +63,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
@@ -89,18 +90,37 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, theme, styles, compact, listProps = {} } = this.props;
+    const {
+      className,
+      usePageCache,
+      onShouldVirtualize,
+      theme,
+      styles,
+      compact,
+      listProps = {},
+      focusZoneProps = {},
+    } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact
+      compact: compact,
     });
 
     const { version } = listProps;
 
+    const { shouldEnterInnerZone = this._isInnerZoneKeystroke } = focusZoneProps;
+
     return (
-      <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
+      <FocusZone
+        direction={FocusZoneDirection.vertical}
+        data-automationid="GroupedList"
+        data-is-scrollable="false"
+        role="presentation"
+        {...focusZoneProps}
+        shouldEnterInnerZone={shouldEnterInnerZone}
+        className={css(this._classNames.root, focusZoneProps.className)}
+      >
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (
@@ -117,7 +137,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             version={version}
           />
         )}
-      </div>
+      </FocusZone>
     );
   }
 
@@ -164,14 +184,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       viewport,
       onShouldVirtualize,
       groups,
-      compact
+      compact,
     } = this.props;
 
     // override group header/footer props as needed
     const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
-      onToggleSummarize: this._onToggleSummarize
+      onToggleSummarize: this._onToggleSummarize,
     };
 
     const headerProps: IGroupHeaderProps = { ...groupProps!.headerProps, ...dividerProps };
@@ -185,7 +205,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     return (
       <GroupedListSection
-        ref={'group_' + groupIndex}
+        ref={ref => (this._groupRefs['group_' + groupIndex] = ref)}
         key={this._getGroupKey(group, groupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}
@@ -225,7 +245,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _getGroupItemLimit = (group: IGroup): number => {
     const { groupProps } = this.props;
-    const getGroupItemLimit = groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
+    const getGroupItemLimit =
+      groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
 
     return getGroupItemLimit(group);
   };
@@ -281,9 +302,15 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _onToggleSelectGroup = (group: IGroup): void => {
-    if (group) {
-      this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
+    const { selection, selectionMode } = this.props;
+
+    if (group && selection && selectionMode === SelectionMode.multiple) {
+      selection.toggleRangeSelected(group.startIndex, group.count);
     }
+  };
+
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   };
 
   private _forceListUpdates(groups?: IGroup[]): void {
@@ -295,13 +322,13 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       this._list.current.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.current.pageRefs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
       }
     } else {
-      const group = this.refs['group_' + String(0)] as GroupedListSection;
+      const group = this._groupRefs['group_' + String(0)];
       if (group) {
         group.forceListUpdate();
       }
@@ -324,19 +351,22 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _getPageSpecification = (
-    itemIndex: number
+    itemIndex: number,
   ): {
     key?: string;
   } => {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-      key: pageGroup && pageGroup.key
+      key: pageGroup && pageGroup.key,
     };
   };
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
-    return !!(groups && groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed)));
+    return !!(
+      groups &&
+      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+    );
   }
 
   private _updateIsSomeGroupExpanded(): void {

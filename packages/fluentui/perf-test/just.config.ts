@@ -13,7 +13,7 @@ function bundleStories() {
     const { digestStories } = require('@fluentui/digest');
     await digestStories({
       configDir: path.join(__dirname, '.digest'),
-      outputDir: path.join(__dirname, 'dist')
+      outputDir: path.join(__dirname, 'dist'),
     });
   };
 }

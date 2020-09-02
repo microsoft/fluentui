@@ -2,9 +2,16 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Segment } from '@fluentui/react';
+import { Accordion, Flex, Segment, Menu, Loader } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
-import { ComponentPerfChart } from './ComponentPerfChart';
+
+const ComponentPerfChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentPerfChart')).ComponentPerfChart,
+}));
+const ComponentResourcesChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentResourcesChart'))
+    .ComponentResourcesChart,
+}));
 
 export interface ComponentPerfExampleProps {
   title: React.ReactNode;
@@ -14,7 +21,9 @@ export interface ComponentPerfExampleProps {
 
 const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
   const { title, description, examplePath } = props;
-  // FIXME: find a better way
+
+  const [currentChart, setCurrentChart] = React.useState<'perf' | 'resources'>('perf');
+
   // "components/Divider/Performance/Divider.perf" -> dividerPerfTsx
   const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}Tsx`;
 
@@ -22,8 +31,33 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
     <>
       <Segment variables={{ padding: 0 }}>
         <Segment variables={{ boxShadowColor: undefined }}>
-          <ComponentExampleTitle title={title} description={description} />
-          <ComponentPerfChart perfTestName={perfTestName} />
+          <Flex space="between" style={{ padding: '10px 20px' }}>
+            <ComponentExampleTitle title={title} description={description} />
+            <Menu
+              primary
+              items={[
+                {
+                  content: 'Performance',
+                  key: 'performance',
+                  active: currentChart === 'perf',
+                  onClick: () => setCurrentChart('perf'),
+                },
+                {
+                  content: 'Resources',
+                  key: 'resources',
+                  active: currentChart === 'resources',
+                  onClick: () => setCurrentChart('resources'),
+                },
+              ]}
+            />
+          </Flex>
+          <React.Suspense fallback={<Loader />}>
+            {currentChart === 'perf' ? (
+              <ComponentPerfChart perfTestName={perfTestName} />
+            ) : (
+              <ComponentResourcesChart perfTestName={perfTestName} />
+            )}
+          </React.Suspense>
         </Segment>
         <Accordion
           panels={
@@ -34,15 +68,15 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                   content: 'Show example',
                   styles: ({ theme }) => {
                     return {
-                      fontSize: theme.siteVariables.fontSizes.smaller
+                      fontSize: theme.siteVariables.fontSizes.smaller,
                     };
-                  }
+                  },
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample {..._.omit(props, 'title', 'description')} /> // FIXME: defer rendering until opened
-                }
-              }
+                  content: <ComponentExample titleForAriaLabel={title} {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                },
+              },
             ] as any[]
           }
         />

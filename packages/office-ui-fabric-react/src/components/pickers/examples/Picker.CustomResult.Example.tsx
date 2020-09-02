@@ -10,20 +10,22 @@ import {
   DocumentCardActivity,
   DocumentCardLocation,
   DocumentCardPreview,
-  DocumentCardTitle
+  DocumentCardTitle,
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import {
+  IBasePickerProps,
+  BasePickerListBelow,
+  IPickerItemProps,
+  ISuggestionItemProps,
+  IInputProps,
+  IBasePickerSuggestionsProps,
+} from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-export interface IPeoplePickerExampleState {
-  contextualMenuVisible?: boolean;
-  contextualMenuTarget?: HTMLElement;
-  isPickerDisabled?: boolean;
-}
+import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;
@@ -35,17 +37,33 @@ export interface IFullDocumentCardProps {
 
 export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
 
+class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+
+const toggleStyles: Partial<IToggleStyles> = { root: { margin: '10px 0' } };
+
+const inputProps: IInputProps = {
+  onFocus: () => console.log('onFocus called'),
+  onBlur: () => console.log('onBlur called'),
+  'aria-label': 'Document picker',
+};
+
+const pickerSuggestionsProps: IBasePickerSuggestionsProps = {
+  suggestionsHeaderText: 'Suggested documents',
+  noResultsFoundText: 'No documents found',
+};
+
 const rootClass = mergeStyles({
-  maxWidth: 500
+  maxWidth: 500,
 });
 
 const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+
 const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
-  personaFemale: baseProductionCdnUrl + 'persona-female.png'
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
+  personaFemale: baseProductionCdnUrl + 'persona-female.png',
 };
 
 const data: IFullDocumentCardProps[] = [
@@ -58,9 +76,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -71,7 +89,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -79,7 +97,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -87,22 +105,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ] as IButtonProps[]
+          },
+        },
+      ] as IButtonProps[],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document1',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -113,9 +131,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -126,7 +144,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -134,7 +152,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -142,22 +160,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document2',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -168,9 +186,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -181,7 +199,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -189,7 +207,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -197,22 +215,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document3',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -223,9 +241,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -236,7 +254,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -244,7 +262,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -252,133 +270,123 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document4',
-      shouldTruncate: true
-    }
-  }
+      shouldTruncate: true,
+    },
+  },
 ];
 
 const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,
-  itemProps: ISuggestionItemProps<any>
+  itemProps: ISuggestionItemProps<any>,
 ) => {
   const { documentPreviewProps, documentTitleProps } = documentProps;
 
   return (
     <Persona
-      imageUrl={documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc}
+      imageUrl={documentPreviewProps?.previewImages[0].previewImageSrc}
       text={documentTitleProps && documentTitleProps.title}
       size={PersonaSize.size40}
     />
   );
 };
 
+const log = (text: string): (() => void) => (): void => console.log(text);
+
 const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
-  documentProps: IPickerItemProps<IFullDocumentCardProps>
+  documentProps: IPickerItemProps<IFullDocumentCardProps>,
 ) => {
   const { documentActionsProps, documentPreviewProps, documentActivityProps, documentTitleProps } = documentProps.item;
-  const actions: IButtonProps[] = [];
-  if (documentActionsProps) {
-    documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
-    actions.push({
-      iconProps: { iconName: 'Cancel' },
-      onClick: (ev: any) => {
-        if (documentProps.onRemoveItem) {
-          documentProps.onRemoveItem();
-        }
-      }
-    });
-  }
-  const log = (text: string): (() => void) => (): void => console.log(text);
+  const actions: IButtonProps[] = documentActionsProps
+    ? [
+        ...documentActionsProps.actions,
+        {
+          iconProps: { iconName: 'Cancel' },
+          onClick: (ev: any) => {
+            if (documentProps.onRemoveItem) {
+              documentProps.onRemoveItem();
+            }
+          },
+        },
+      ]
+    : [];
 
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
-      <DocumentCardPreview {...(documentPreviewProps as IDocumentCardPreviewProps)} />
-      <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
-      <DocumentCardTitle {...(documentTitleProps as IDocumentCardTitleProps)} />
-      <DocumentCardActivity {...(documentActivityProps as IDocumentCardActivityProps)} />
+      <DocumentCardPreview {...documentPreviewProps!} />
+      <DocumentCardLocation
+        location="Marketing Documents"
+        locationHref="http://microsoft.com"
+        ariaLabel="Location, Marketing Documents"
+      />
+      <DocumentCardTitle {...documentTitleProps!} />
+      <DocumentCardActivity {...documentActivityProps!} />
       <DocumentCardActions actions={actions} />
     </DocumentCard>
   );
 };
 
-class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+const getTextFromItem = (props: IFullDocumentCardProps): string => {
+  return props.documentTitleProps!.title;
+};
 
-export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this._onFilterChanged = this._onFilterChanged.bind(this);
-    this.state = {
-      isPickerDisabled: false
-    };
+const listContainsDocument = (document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean => {
+  if (!items || !items.length || items.length === 0) {
+    return false;
   }
+  const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
+  return items.some(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle);
+};
 
-  public render(): JSX.Element {
-    return (
-      <div className={rootClass}>
-        <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
-          label="Disable Document Picker"
-          checked={this.state.isPickerDisabled}
-          onChange={this._onDisabledButtonClick}
-        />
-        <DocumentPicker
-          removeButtonAriaLabel="Remove"
-          onRenderSuggestionsItem={SuggestedBigItem as any}
-          onResolveSuggestions={this._onFilterChanged}
-          onRenderItem={SelectedDocumentItem}
-          getTextFromItem={this._getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found'
-          }}
-          disabled={this.state.isPickerDisabled}
-          inputProps={{
-            onFocus: () => console.log('onFocus called'),
-            onBlur: () => console.log('onBlur called'),
-            'aria-label': 'Document Picker'
-          }}
-        />
-      </div>
-    );
+const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] => {
+  if (!items) {
+    return [];
   }
+  return filterText
+    ? data
+        .filter(
+          item =>
+            item.documentTitleProps &&
+            item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
+        )
+        .filter(item => !listContainsDocument(item, items))
+    : [];
+};
 
-  private _getTextFromItem(props: any): any {
-    return props.documentTitleProps.title;
-  }
+export const PickerCustomResultExample: React.FunctionComponent = () => {
+  const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
-  private _onDisabledButtonClick = (): void => {
-    this.setState({
-      isPickerDisabled: !this.state.isPickerDisabled
-    });
-  };
-
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
-    return filterText
-      ? data
-          .filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter(item => !this._listContainsDocument(item, items))
-      : [];
-  }
-
-  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
-    if (!items || !items.length || items.length === 0) {
-      return false;
-    }
-    const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-    return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
-  }
-}
+  return (
+    <div className={rootClass}>
+      <Toggle
+        styles={toggleStyles}
+        label="Disable document picker"
+        checked={isPickerDisabled}
+        onChange={toggleIsPickerDisabled}
+      />
+      <DocumentPicker
+        removeButtonAriaLabel="Remove"
+        onRenderSuggestionsItem={SuggestedBigItem as any}
+        onResolveSuggestions={onFilterChanged}
+        onRenderItem={SelectedDocumentItem}
+        getTextFromItem={getTextFromItem}
+        pickerSuggestionsProps={pickerSuggestionsProps}
+        disabled={isPickerDisabled}
+        inputProps={inputProps}
+      />
+    </div>
+  );
+};

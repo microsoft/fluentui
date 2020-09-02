@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
-import { Button, Flex, Input, Toolbar, Ref, Chat } from '@fluentui/react';
+import { Button, Flex, Input, Toolbar, Ref, Chat } from '@fluentui/react-northstar';
 import { toolbarItems } from './mockData';
 import classNames from './classNames';
+import { SendIcon } from '@fluentui/react-icons-northstar';
 
 const ThreadReplyEditor: React.FC = () => {
   const buttonRef = React.useRef(null);
@@ -28,7 +29,7 @@ const ThreadReplyEditor: React.FC = () => {
   };
 
   const handleOnEditorKeydown = (e: React.KeyboardEvent) => {
-    const eventCode = keyboardKey.getCode(e);
+    const eventCode = getCode(e);
     if (eventCode === keyboardKey.Escape) {
       setEditMode(false);
       e.stopPropagation();
@@ -44,7 +45,7 @@ const ThreadReplyEditor: React.FC = () => {
           <Flex space="between">
             <Toolbar items={toolbarItems} aria-label="Editor tools" data-is-focusable={true} />
             <Flex gap="gap.small">
-              <Button circular icon="send" iconOnly title="Send reply" text />
+              <Button circular icon={<SendIcon />} iconOnly title="Send reply" text />
             </Flex>
           </Flex>
         </Flex>

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react';
+import { Label } from '@fluentui/react-northstar';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 class LabelExampleContentCustomizationShorthand extends React.Component {
   state = { hidden: false };
@@ -19,7 +20,7 @@ class LabelExampleContentCustomizationShorthand extends React.Component {
         content="You can remove me!"
         circular
         image={{ src: 'public/images/avatar/small/matt.jpg', avatar: true }}
-        icon={{ name: 'close', onClick: this.hide }}
+        icon={<CloseIcon {...{ onClick: this.hide }} />}
       />
     );
   }

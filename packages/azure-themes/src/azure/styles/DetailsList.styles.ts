@@ -3,7 +3,7 @@ import {
   IDetailsRowStyleProps,
   IDetailsRowStyles,
   IDetailsListStyleProps,
-  IDetailsListStyles
+  IDetailsListStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
@@ -23,37 +23,37 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.controlOutline,
         borderWidth: StyleConstants.borderWidth,
-        borderStyle: StyleConstants.borderSolid
-      }
+        borderStyle: StyleConstants.borderSolid,
+      },
     ],
     check: [
       {
         left: 2.5,
-        top: 1.5
+        top: 1.5,
       },
       checked && {
-        color: semanticColors.inputText
+        color: semanticColors.inputText,
       },
       !checked && {
-        color: semanticColors.listBackground
-      }
-    ]
+        color: semanticColors.listBackground,
+      },
+    ],
   };
 };
 
 export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetailsListStyles> => {
   const { theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
-      borderTop: StyleConstants.borderNone
+      borderTop: StyleConstants.borderNone,
     },
     headerWrapper: {
       selectors: {
         '.ms-DetailsHeader': {
-          borderColor: semanticColors.variantBorder,
-          textTransform: 'uppercase',
+          borderColor: extendedSemanticColors.rowBorder,
           borderTop: StyleConstants.borderNone,
           selectors: {
             '.ms-DetailsHeader-cellTitle': {
@@ -62,69 +62,83 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
               borderRightStyle: StyleConstants.borderSolid,
               borderRightColor: semanticColors.listBackground,
               fontSize: FontSizes.size10,
-              fontWeight: 700
+              fontWeight: 700,
             },
             ':hover .ms-DetailsHeader-cellTitle': {
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
-              borderRightColor: semanticColors.variantBorder
-            }
-          }
-        }
-      }
-    }
+              borderRightColor: semanticColors.variantBorder,
+            },
+          },
+        },
+      },
+    },
   };
 };
 
 export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
   const { theme, isSelected } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: [
       {
-        borderColor: semanticColors.variantBorder,
+        borderColor: extendedSemanticColors.rowBorder,
         color: semanticColors.listText,
-        fontSize: FontSizes.size12
+        fontSize: theme.fonts.medium.fontSize,
       },
       !isSelected && [
         {
           background: semanticColors.listBackground,
           color: semanticColors.listText,
+          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
+              backgroundColor: semanticColors.listItemBackgroundHovered,
+              textDecorationColor: semanticColors.buttonTextHovered,
+              selectors: {
+                '.ms-DetailsRow-cell': {
+                  color: semanticColors.buttonTextHovered,
+                },
+              },
             },
             ':focus': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
+              backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus:hover': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
-            }
-          }
-        }
+              backgroundColor: semanticColors.listItemBackgroundHovered,
+            },
+          },
+        },
       ],
       isSelected && [
         {
-          background: semanticColors.listItemBackgroundChecked,
+          backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
+          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
-              background: semanticColors.listItemBackgroundHovered
+              background: semanticColors.listItemBackgroundHovered,
+              selectors: {
+                '.ms-DetailsRow-cell': {
+                  color: semanticColors.buttonTextHovered,
+                },
+              },
             },
             ':focus': {
-              background: semanticColors.listItemBackgroundChecked
+              backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
             },
             ':focus:hover': {
-              background: semanticColors.listItemBackgroundHovered
-            }
-          }
-        }
-      ]
+              background: semanticColors.listItemBackgroundHovered,
+            },
+          },
+        },
+      ],
     ],
     cell: [
       {
-        color: semanticColors.listText
-      }
-    ]
+        color: semanticColors.listText,
+      },
+    ],
   };
 };

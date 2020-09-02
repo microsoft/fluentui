@@ -1,11 +1,11 @@
-import { Flex, Grid, Segment } from '@fluentui/react'
-import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet'
+import { Flex, Grid, Segment } from '@fluentui/react-northstar';
+import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
 
 export const meta = {
   title: 'Layout',
   previous: { name: 'Colors', url: 'colors' },
-  next: { name: 'Integrate Custom Components', url: 'integrate-custom-components' },
-}
+  next: { name: 'Integrate Custom Components', url: 'integrate-custom-components' }
+};
 
 ## Overview
 
@@ -47,7 +47,12 @@ You can learn more in [Flex component docs](/components/flex).
 ![Grid layout](public/images/grid.svg)
 
 <ExampleSnippet>
-  <Grid columns="repeat(4, 1fr)" rows="50px 150px 50px">
+  <Grid styles={{
+    gridTemplateColumns: "repeat(4, 1fr)",
+    msGridColumns: "(1fr)[4]",
+    gridTemplateRows: "50px 150px 50px",
+    msGridRows: "50px 150px 50px",
+  }} >
     <Segment color="brand" content="Header" inverted styles={{ gridColumn: 'span 4' }} />
     <Segment color="green" content="Menu" inverted styles={{ gridColumn: 'span 1' }} />
     <Segment content="Content" styles={{ gridColumn: 'span 3' }} />
@@ -55,7 +60,10 @@ You can learn more in [Flex component docs](/components/flex).
   </Grid>
 </ExampleSnippet>
 <ExampleSnippet>
-  <Grid columns="repeat(2, 1fr)">
+  <Grid styles={{
+    gridTemplateColumns: "repeat(2, 1fr)",
+    msGridColumns: "(1fr)[2]",
+  }} >
     <Segment color="brand" content="Header" inverted styles={{ gridColumn: '1/3', gridRow: 1 }} />
     <Segment color="red" content="Menu" inverted styles={{ gridColumn: '3', gridRow: '1/3' }} />
     <Segment color="green" content="Notes" inverted styles={{ gridColumn: '1', gridRow: '2' }} />

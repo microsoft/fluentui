@@ -1,11 +1,16 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem } from '@fluentui/react';
+import {
+  Toolbar,
+  toolbarItemWrapperClassName,
+  toolbarClassName,
+  toolbarItemClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.className,
-  toolbar: Toolbar.className,
-  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper
+  toolbarItem: toolbarItemClassName,
+  toolbar: toolbarClassName,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
 };
 
 export const itemsCount = 20;
@@ -19,7 +24,7 @@ const ToolbarExampleOverflowWrapped = () => {
     icon: icons[i % icons.length],
     title: `${icons[i % icons.length]} #${i}`,
     // first item and second half of items are wrapped, rest un-wrapped.
-    ...((i >= itemsCount / 2 || i === 0) && { menu: [] })
+    ...((i >= itemsCount / 2 || i === 0) && { menu: [] }),
   }));
 
   const toolbarItems = itemData.map(item => {
@@ -33,7 +38,7 @@ const ToolbarExampleOverflowWrapped = () => {
       overflow
       overflowOpen={overflowOpen}
       overflowItem={{
-        title: 'More'
+        title: 'More',
       }}
       onOverflowOpenChange={(e, { overflowOpen }) => {
         setOverflowOpen(overflowOpen);

@@ -2,12 +2,21 @@ import * as React from 'react';
 
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { HoverCard, HoverCardType, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, find, getNativeProps, buttonProperties } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { ILegend, ILegendsProps, LegendShape, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import {
+  ILegend,
+  ILegendsProps,
+  LegendShape,
+  ILegendsStyles,
+  ILegendStyleProps,
+  ILegendOverflowData,
+} from './Legends.types';
+
+import { silceOrAppendToArray } from '../../utilities/utilities';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -29,8 +38,10 @@ export interface ILegendState {
   selectedState: boolean;
   hoverState: boolean;
   isHoverCardVisible: boolean;
+  selectedLegends: string[];
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+  private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
 
   public constructor(props: ILegendsProps) {
@@ -40,15 +51,22 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       selectedState: false,
       hoverState: false,
       isHoverCardVisible: false,
-      selecetedLegendInHoverCard: 'none'
+      selecetedLegendInHoverCard: 'none',
+      selectedLegends: [],
     };
+  }
+
+  public componentDidUpdate(prevProps: ILegendsProps) {
+    if (prevProps.selectedLegend !== this.props.selectedLegend) {
+      this.setState({ selectedLegend: this.props.selectedLegend! });
+    }
   }
 
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const dataToRender = this._generateData();
     return (
@@ -68,33 +86,37 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
-    const dataItems: ILegend[] = [];
-    this.props.legends.map((legend: ILegend, index: number) => {
-      const legendItem: ILegendItem = {
-        'aria-setsize': this.props.legends.length,
-        'aria-posinset': index + 1,
+    const { allowFocusOnLegends = true } = this.props;
+    const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
+      return {
+        ...(allowFocusOnLegends && {
+          nativeButtonProps: getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(legend, buttonProperties, [
+            'title',
+          ]),
+          'aria-setsize': this.props.legends.length,
+          'aria-posinset': index + 1,
+        }),
         title: legend.title,
         action: legend.action!,
         hoverAction: legend.hoverAction!,
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
-        key: index
+        key: index,
       };
-      dataItems.push(legendItem);
     });
     const result: ILegendOverflowData = {
       primary: dataItems,
-      overflow: []
+      overflow: [],
     };
     return result;
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
-    const { overflowProps } = this.props;
+    const { overflowProps, allowFocusOnLegends = true } = this.props;
     return (
       <OverflowSet
-        role={'listbox'}
+        {...(allowFocusOnLegends && { role: 'listbox' })}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
@@ -103,14 +125,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         styles={{
           root: {
             justifyContent: this.props.centerLegends ? 'center' : 'unset',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           },
           item: {
-            marginBottom: '16px'
+            marginBottom: '16px',
           },
           overflowButton: {
-            marginBottom: '16px'
-          }
+            marginBottom: '16px',
+          },
         }}
       />
     );
@@ -134,29 +156,61 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     return { primary, overflow };
   };
 
-  private _onClick = (legend: ILegend): void => {
+  /**
+   * This function will get called when there is an ability to
+   * select  multiple legends
+   * @param legend ILegend
+   */
+  private _canSelectMultipleLegends = (legend: ILegend): void => {
+    const selectedLegends = silceOrAppendToArray(this.state.selectedLegends, legend.title);
+    this.setState({
+      //check if user selected all legends then empty it get the default behaviour
+      selectedLegends: selectedLegends.length === this.props.legends.length ? [] : selectedLegends,
+      // make selectedState to false if none or all the legends selected
+      selectedState:
+        selectedLegends.length === 0 || selectedLegends.length === this.props.legends.length ? false : true,
+      selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
+      selectedLegend: 'none',
+      hoverState: false,
+    });
+  };
+
+  /**
+   * This function will get called when there is
+   * ability to select only single legend
+   * @param legend ILegend
+   */
+
+  private _canSelectOnlySingleLegend = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
       this.setState({
         selectedLegend: 'none',
         selectedState: false,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
-      if (legend.action) {
-        legend.action();
-      }
     } else {
       this.setState({
         selectedState: true,
         selectedLegend: legend.title,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
-      if (legend.action) {
-        legend.action();
-      }
+    }
+  };
+
+  private _onClick = (legend: ILegend): void => {
+    const { canSelectMultipleLegends = false } = this.props;
+    if (canSelectMultipleLegends) {
+      this._canSelectMultipleLegends(legend);
+    } else {
+      this._canSelectOnlySingleLegend(legend);
+    }
+    if (legend.action) {
+      legend.action();
     }
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
+    const { allowFocusOnLegends = true } = this.props;
     const overflowHoverCardLegends: JSX.Element[] = [];
     expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
       const hoverCardElement = this._renderButton(legend, index, true);
@@ -164,8 +218,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const hoverCardData = (
       <FocusZone
+        {...(allowFocusOnLegends && { role: 'listbox' })}
         direction={FocusZoneDirection.vertical}
-        role={'listbox'}
         {...this.props.focusZonePropsInHoverCard}
         className="hoverCardRoot"
       >
@@ -176,38 +230,46 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderOverflowItems = (legends: ILegend[]) => {
+    const { allowFocusOnLegends = true } = this.props;
     const items: IContextualMenuItem[] = [];
     legends.forEach((legend: ILegend, i: number) => {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
     });
     const renderOverflowData: IExpandingCardProps = { renderData: legends };
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, overflowText } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      gapSpace: 8
+      gapSpace: 8,
     };
 
+    const overflowString = overflowText ? overflowText : 'more';
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
+      const { canSelectMultipleLegends = false } = this.props;
       const selectedOverflowItem = find(
         legends,
-        (legend: ILegend) => legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend
+        (legend: ILegend) =>
+          legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend,
       );
       this.setState(
         {
           isHoverCardVisible: false,
-          selecetedLegendInHoverCard: 'none'
+          selecetedLegendInHoverCard: 'none',
+          selectedLegends: [],
         },
         () => {
           if (selectedOverflowItem) {
             this.setState({ selectedLegend: 'none', selectedState: false }, () => {
-              if (selectedOverflowItem.action) {
+              if (selectedOverflowItem.action && !canSelectMultipleLegends) {
                 selectedOverflowItem.action();
+              }
+              if (this.props.onLegendHoverCardLeave && canSelectMultipleLegends) {
+                this.props.onLegendHoverCardLeave();
               }
               this.setState({ hoverState: false }, () => {
                 if (selectedOverflowItem.onMouseOutAction) {
@@ -216,7 +278,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
               });
             });
           }
-        }
+        },
       );
     };
     return (
@@ -224,13 +286,26 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         type={HoverCardType.plain}
         plainCardProps={plainCardProps}
         instantOpenOnClick={true}
+        // eslint-disable-next-line react/jsx-no-bind
         onCardHide={onHoverCardHideHandler}
         setInitialFocus={true}
         trapFocus={true}
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
+        cardDismissDelay={300}
+        target={this._hoverCardRef}
       >
-        <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
+        <div
+          className={classNames.overflowIndicationTextStyle}
+          ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+          {...(allowFocusOnLegends && {
+            'aria-expanded': this.state.isHoverCardVisible,
+            'aria-label': `${items.length} ${overflowString}`,
+          })}
+          data-is-focusable={allowFocusOnLegends}
+        >
+          {items.length} {overflowString}
+        </div>
       </HoverCard>
     );
   };
@@ -258,13 +333,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _renderButton = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
+    const { allowFocusOnLegends = true } = this.props;
     const legend: ILegend = {
       title: data.title,
       color: data.color,
       shape: data.shape,
       action: data.action,
       hoverAction: data.hoverAction,
-      onMouseOutAction: data.onMouseOutAction
+      onMouseOutAction: data.onMouseOutAction,
     };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
@@ -273,7 +349,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
       colorOnSelectedState: color,
       borderColor: legend.color,
-      overflow: overflow
+      overflow: overflow,
     });
 
     const onClickHandler = () => {
@@ -287,11 +363,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
     return (
       <button
-        aria-selected={this.state.selectedLegend === legend.title}
-        role={'option'}
-        aria-label={legend.title}
-        aria-setsize={data['aria-setsize']}
-        aria-posinset={data['aria-posinset']}
+        {...(allowFocusOnLegends && {
+          'aria-selected': this.state.selectedLegend === legend.title,
+          role: 'option',
+          'aria-label': legend.title,
+          'aria-setsize': data['aria-setsize'],
+          'aria-posinset': data['aria-posinset'],
+        })}
+        {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
         key={index}
         className={classNames.legend}
         onClick={onClickHandler}
@@ -299,6 +378,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
+        data-is-focusable={allowFocusOnLegends}
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>
@@ -315,12 +395,27 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _getColor(title: string, color: string): string {
-    const { theme } = this.props;
+    const { theme, canSelectMultipleLegends = false } = this.props;
     const { palette } = theme!;
     let legendColor = color;
+    // below if statement  will get executed for the hovered legend.
+    // (which is also the slected legend see fucntion:-_onHoverOverLegend)
     if (this.state.hoverState && this.state.selectedLegend === title) {
       legendColor = color;
-    } else if (this.state.selectedLegend === 'none' || this.state.selectedLegend === title) {
+    } // below esle if statement will get executed for  the  unselected-legend which is  hovered
+    else if (this.state.hoverState && this.state.selectedLegend !== 'none' && this.state.selectedLegend !== title) {
+      legendColor = palette.white;
+    } // below else if statement will get executed if the legends are in the selected state
+    // this is will only get executed  when we have ability to select multiple legends
+    else if (!!canSelectMultipleLegends && this.state.selectedState && this.state.selectedLegends.indexOf(title) > -1) {
+      legendColor = color;
+    } // below else if statement will get executed when no legend is selected and hovered
+    //(for example:- initial render of legends)
+    else if (
+      (!this.state.selectedState && this.state.selectedLegend === 'none') ||
+      this.state.selectedLegend === title ||
+      this.state.selectedLegends.length <= 0
+    ) {
       legendColor = color;
     } else {
       legendColor = palette.white;

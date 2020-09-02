@@ -16,7 +16,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
     this.videoRef = React.createRef();
 
     this.state = {
-      isReadyToPlay: true
+      isReadyToPlay: true,
     };
   }
 
@@ -25,7 +25,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
       this.videoRef.current.play();
 
       this.setState({
-        isReadyToPlay: false
+        isReadyToPlay: false,
       });
     }
   };
@@ -36,7 +36,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
       this.videoRef.current.currentTime = 0;
 
       this.setState({
-        isReadyToPlay: true
+        isReadyToPlay: true,
       });
     }
   };
@@ -51,7 +51,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
         </video>
         <button
           className={css(styles.playButton, {
-            [styles.isHidden]: !this.state.isReadyToPlay
+            [styles.isHidden]: !this.state.isReadyToPlay,
           })}
         >
           <Icon className={styles.icon} iconName="Play" />

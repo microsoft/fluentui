@@ -10,13 +10,13 @@ const menuProps: IMenuButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 describe('MenuButton', () => {
@@ -45,7 +45,7 @@ describe('MenuButton', () => {
           <Text>I am a compound multiline button.</Text>
           <Text variant="small">I can have a caption.</Text>
         </Stack>
-      </MenuButton>
+      </MenuButton>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
@@ -61,7 +61,7 @@ describe('MenuButton', () => {
         <MenuButton content="Button 1" componentRef={button1} />
         <MenuButton content="Button 2" componentRef={button2} />
         <MenuButton content="Button 3" componentRef={button3} />
-      </div>
+      </div>,
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-MenuButton') as NodeListOf<HTMLButtonElement>;

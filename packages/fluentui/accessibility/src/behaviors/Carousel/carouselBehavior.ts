@@ -1,7 +1,15 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 /**
+ * @description
+ * Adds attribute 'role=region' to 'root' slot if 'navigation' property is false. Does not set the attribute otherwise.
+ * Adds attribute 'aria-roledescription' to 'root' slot if 'navigation' property is false. Does not set the attribute otherwise.
+ * Adds attribute 'aria-label' to 'root' slot if 'navigation' property is false. Does not set the attribute otherwise.
+ * Adds attribute 'aria-roledescription' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
+ * Adds attribute 'aria-label' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
+ * Adds attribute 'role=region' to 'itemsContainer' slot if 'navigation' property is true.  Set 'role=none' otherwise.
+ * Adds attribute 'tabIndex=-1' to 'itemsContainer' slot if 'navigation' property is false. Does not set the attribute otherwise.
  * @specification
  * Adds attribute 'role=region' to 'root' slot.
  * Adds attribute 'aria-live=polite' to 'itemsContainerWrapper' slot if 'ariaLiveOn' property is true. Sets the attribute to 'off' otherwise.
@@ -14,55 +22,64 @@ import * as keyboardKey from 'keyboard-key';
  * Triggers 'showNextSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddleNext'.
  * Triggers 'showPreviousSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddlePrevious'.
  */
-const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
+export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'region'
+      ...(!props.navigation && {
+        role: 'region',
+        'aria-roledescription': props.ariaRoleDescription,
+        'aria-label': props.ariaLabel,
+      }),
     },
     itemsContainerWrapper: {
-      'aria-live': props.ariaLiveOn ? 'polite' : 'off'
+      'aria-live': props.ariaLiveOn ? 'polite' : 'off',
+    },
+    itemsContainer: {
+      ...(props.navigation
+        ? { role: 'region', 'aria-roledescription': props.ariaRoleDescription, 'aria-label': props.ariaLabel }
+        : { tabIndex: -1, role: 'none' }),
     },
 
     paddleNext: {
       ...(props.navigation && {
         tabIndex: -1,
-        'aria-hidden': 'true'
-      })
+        'aria-hidden': 'true',
+      }),
     },
     paddlePrevious: {
       ...(props.navigation && {
         tabIndex: -1,
-        'aria-hidden': 'true'
-      })
-    }
+        'aria-hidden': 'true',
+      }),
+    },
   },
 
   keyActions: {
     itemsContainer: {
       showNextSlideByKeyboardNavigation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
       },
       showPreviousSlideByKeyboardNavigation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
-      }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+      },
     },
     paddleNext: {
       showNextSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
     },
     paddlePrevious: {
       showPreviousSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
+    },
+  },
 });
 
 export type CarouselBehaviorProps = {
   /** Element type. */
   navigation: Object | Object[];
   ariaLiveOn: boolean;
+  ariaRoleDescription?: string;
+  ariaLabel?: string;
 };
-
-export default carouselBehavior;

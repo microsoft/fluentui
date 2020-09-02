@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps } from '@uifabric/utilities';
-import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
+import { IStackSlot, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
 
 /**
@@ -67,9 +67,19 @@ export interface ICardProps
  */
 export interface ICardTokens extends IStackTokens {
   /**
+   * Defines the border of the Card when it is in a focused state.
+   */
+  borderFocused?: string;
+
+  /**
    * Defines the box shadow of the Card.
    */
   boxShadow?: string;
+
+  /**
+   * Defines the box shadow of the Card when it is in a focused state.
+   */
+  boxShadowFocused?: string;
 
   /**
    * Defines the box shadow of the Card when it is in a hovered state.
@@ -95,6 +105,11 @@ export interface ICardTokens extends IStackTokens {
    * Defines the box shadow of the Card when in high contrast mode.
    */
   highContrastBoxShadow?: string;
+
+  /**
+   * Defines the box shadow of the Card when it is in a focused state and in high contrast mode.
+   */
+  highContrastBoxShadowFocused?: string;
 
   /**
    * Defines the box shadow of the Card when it is in a hovered state and in high contrast mode.

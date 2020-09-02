@@ -1,12 +1,20 @@
+import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';
 import { convertAxeToSarif, SarifLog } from 'axe-sarif-converter';
 import { Stylesheet, InjectionMode, resetIds } from 'office-ui-fabric-react';
 
-const disabledAxeRules = ['document-title', 'html-has-lang', 'landmark-one-main', 'page-has-heading-one', 'region', 'bypass'];
+const disabledAxeRules = [
+  'document-title',
+  'html-has-lang',
+  'landmark-one-main',
+  'page-has-heading-one',
+  'region',
+  'bypass',
+];
 
-/* tslint:disable-next-line:no-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderTestHtml(element: React.ReactElement<any>): string {
   resetIds();
   const stylesheet = Stylesheet.getInstance();
@@ -23,7 +31,7 @@ function renderTestHtml(element: React.ReactElement<any>): string {
   `;
 }
 
-/* tslint:disable-next-line:no-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getSarifReport(browser: puppeteer.Browser, element: React.ReactElement<any>): Promise<SarifLog> {
   const page = await browser.newPage();
   const testHtml = renderTestHtml(element);

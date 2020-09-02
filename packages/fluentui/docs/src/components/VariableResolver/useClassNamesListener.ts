@@ -9,7 +9,7 @@ const useClassNamesListener = (targetRef: React.RefObject<HTMLElement>, onChange
       new MutationObserver(() => {
         latestCallback.current();
       }),
-    []
+    [],
   );
 
   React.useEffect(() => {
@@ -19,11 +19,11 @@ const useClassNamesListener = (targetRef: React.RefObject<HTMLElement>, onChange
       attributes: true,
       attributeFilter: ['class'],
       childList: true,
-      subtree: true
+      subtree: true,
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [observer, targetRef]);
 };
 
 export default useClassNamesListener;

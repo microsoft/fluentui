@@ -1,7 +1,7 @@
 <div
   id="metadata"
-  title="Home - Office UI Fabric"
-  description="The official front-end framework for building experiences that fit seamlessly into Office and Office 365."
+  title="Home - Fluent UI"
+  description="The official front-end framework for building experiences that fit seamlessly into Microsoft 365."
   style="visibility:hidden"
 ></div>
 <style>
@@ -20,6 +20,86 @@
   }
 </style>
 
+<script type="text/javascript">
+  var appInsights =
+    window.appInsights ||
+    (function(e) {
+      function n(e) {
+        t[e] = function() {
+          var n = arguments;
+          t.queue.push(function() {
+            t[e].apply(t, n);
+          });
+        };
+      }
+      var t = { config: e };
+      t.initialize = !0;
+      var i = document,
+        a = window;
+      setTimeout(function() {
+        var n = i.createElement('script');
+        (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
+          i.getElementsByTagName('script')[0].parentNode.appendChild(n);
+      });
+      try {
+        t.cookie = i.cookie;
+      } catch (e) {}
+      (t.queue = []), (t.version = 2);
+      for (
+        var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
+        r.length;
+
+      )
+        n('track' + r.pop());
+      n('startTrackPage'), n('stopTrackPage');
+      var s = 'Track' + r[0];
+      if (
+        (n('start' + s),
+        n('stop' + s),
+        n('addTelemetryInitializer'),
+        n('setAuthenticatedUserContext'),
+        n('clearAuthenticatedUserContext'),
+        n('flush'),
+        (t.SeverityLevel = {
+          Verbose: 0,
+          Information: 1,
+          Warning: 2,
+          Error: 3,
+          Critical: 4,
+        }),
+        !(
+          !0 === e.disableExceptionTracking ||
+          (e.extensionConfig &&
+            e.extensionConfig.ApplicationInsightsAnalytics &&
+            !0 === e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)
+        ))
+      ) {
+        n('_' + (r = 'onerror'));
+        var o = a[r];
+        (a[r] = function(e, n, i, a, s) {
+          var c = o && o(e, n, i, a, s);
+          return (
+            !0 !== c &&
+              t['_' + r]({
+                message: e,
+                url: n,
+                lineNumber: i,
+                columnNumber: a,
+                error: s,
+              }),
+            c
+          );
+        }),
+          (e.autoExceptionInstrumented = !0);
+      }
+      return t;
+    })({
+      instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
+    });
+  (window.appInsights = appInsights),
+    appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
+</script>
+
 <div id="main">
   <div class="loading">
     <img
@@ -35,7 +115,7 @@
 <script type="text/javascript">
   // @ts-check
   var isProduction = location.hostname === 'developer.microsoft.com';
-  var isDev = getParameterByName('isDev') === '1';
+  var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';
@@ -51,16 +131,20 @@
   } else {
     var fabricVersions = [5, 6, 7];
 
-    var fabricVersion =
-      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1];
-    fabricVersion = Number(fabricVersion);
+    var fabricVersion = Number(
+      getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
+    );
 
     if (fabricVersions.indexOf(fabricVersion) > -1) {
       window.sessionStorage.setItem('fabricVer', fabricVersion);
     }
 
     var prefixVer =
-      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
+      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
+        ? 'v' + fabricVersion + '-'
+        : '';
 
     var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
 
@@ -106,25 +190,13 @@
     })();
   }
 
-  function loadAppScripts(appPath) {
-    var scripts = [appPath + entryPointFilename + (isDev ? '.js' : '.min.js')];
-
-    if (!window.React) {
-      // Only needed for Fabric 5 and 6 (7 bundles React)
-      // DO NOT replace 16.3.2 with a newer version!
-      var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js';
-      var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js';
-
-      scripts.unshift(reactDomPath);
-      scripts.unshift(reactPath);
-    }
-
-    loadScripts(scripts);
+  function loadAppScripts() {
+    loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
     window.MonacoConfig = {
       baseUrl: appPath,
       useMinified: !isDev,
-      crossDomain: true
+      crossDomain: true,
     };
   }
 

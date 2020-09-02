@@ -27,13 +27,13 @@ describe('getSchemedCustomizations', () => {
     emptyContext = {
       customizations: {
         settings: {},
-        scopedSettings: {}
-      }
+        scopedSettings: {},
+      },
     };
 
     testArgScheme = createTheme({ semanticColors: { bodyBackground: 'testArgSchemeValue' } });
     testArgSchemes = {
-      [testSchemeName]: testArgScheme
+      [testSchemeName]: testArgScheme,
     };
 
     testArgTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
@@ -41,7 +41,7 @@ describe('getSchemedCustomizations', () => {
 
     testContextScheme = createTheme({ semanticColors: { bodyBackground: 'testContextSchemeValue' } });
     testContextSchemes = {
-      [testSchemeName]: testContextScheme
+      [testSchemeName]: testContextScheme,
     };
 
     testContextTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
@@ -50,15 +50,15 @@ describe('getSchemedCustomizations', () => {
     testContext = {
       customizations: {
         settings: {
-          theme: testContextTheme
+          theme: testContextTheme,
         },
-        scopedSettings: {}
-      }
+        scopedSettings: {},
+      },
     };
 
     testSettingsScheme = createTheme({ semanticColors: { bodyBackground: 'testSettingsSchemeValue' } });
     testSettingsSchemes = {
-      [testSchemeName]: testSettingsScheme
+      [testSchemeName]: testSettingsScheme,
     };
     testSettingsTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
 
@@ -85,7 +85,7 @@ describe('getSchemedCustomizations', () => {
     const newContext = getThemedContext(testContext, testSchemeName, testArgTheme);
     const expectedTheme = {
       ...testArgScheme,
-      schemes: testArgSchemes
+      schemes: testArgSchemes,
     };
 
     expect(newContext).toBeDefined();
@@ -105,7 +105,7 @@ describe('getSchemedCustomizations', () => {
     const newContext = getThemedContext(testContext, testSchemeName);
     const expectedTheme = {
       ...testContextScheme,
-      schemes: testContextSchemes
+      schemes: testContextSchemes,
     };
 
     expect(newContext).toBeDefined();
@@ -115,7 +115,7 @@ describe('getSchemedCustomizations', () => {
   it('merges scheme from context over settings', () => {
     const expectedTheme = {
       ...testContextScheme,
-      schemes: testContextSchemes
+      schemes: testContextSchemes,
     };
 
     const newContext = getThemedContext(testContext, testSchemeName);
@@ -127,7 +127,7 @@ describe('getSchemedCustomizations', () => {
   it('falls back to Customizations when scheme is not in context', () => {
     const expectedTheme = {
       ...testSettingsScheme,
-      schemes: testSettingsSchemes
+      schemes: testSettingsSchemes,
     };
 
     const newContext = getThemedContext(emptyContext, testSchemeName);

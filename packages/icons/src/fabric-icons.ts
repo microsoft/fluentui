@@ -1,6 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
-
-// tslint:disable:max-line-length
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fluentui-assets-license
 
 import { IIconOptions, IIconSubset, registerIcons } from '@uifabric/styling';
 
@@ -11,11 +9,11 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       WebkitFontSmoothing: 'antialiased',
       fontStyle: 'normal',
       fontWeight: 'normal',
-      speak: 'none'
+      speak: 'none',
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`,
     },
     icons: {
       GlobalNavButton: '\uE700',
@@ -74,8 +72,8 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ClearFilter: '\uEF8F',
       Flow: '\uEF90',
       StatusCircleCheckmark: '\uF13E',
-      MoreVertical: '\uF2BC'
-    }
+      MoreVertical: '\uF2BC',
+    },
   };
 
   registerIcons(subset, options);

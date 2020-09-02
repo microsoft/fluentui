@@ -1,28 +1,45 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.44.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
-  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.44.0",
-    "@fluentui/state": "^0.44.0",
-    "@fluentui/styles": "^0.44.0",
+    "@babel/runtime": "^7.10.4",
+    "@emotion/serialize": "^0.11.16",
+    "@fluentui/accessibility": "^0.51.0",
+    "@fluentui/keyboard-key": "^0.2.11",
+    "@fluentui/react-component-event-listener": "^0.51.0",
+    "@fluentui/react-component-ref": "^0.51.0",
+    "@fluentui/react-compose": "^0.18.1",
+    "@fluentui/react-northstar-fela-renderer": "^0.51.0",
+    "@fluentui/react-northstar-styles-renderer": "^0.51.0",
+    "@fluentui/state": "^0.51.0",
+    "@fluentui/styles": "^0.51.0",
+    "@quid/stylis-plugin-focus-visible": "^4.0.0",
+    "@uifabric/utilities": "^7.31.0",
     "classnames": "^2.2.6",
-    "fela": "^10.6.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
+    "react-is": "^16.6.3",
+    "stylis": "^3.5.4",
+    "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/classnames": "^2.2.9",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
-    "@types/react": "16.8.11"
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-bindings",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -34,18 +51,19 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "gulp": {
+    "componentInfo": "./src/FocusZone/[A-Z]!(*.types).tsx"
+  },
+  "repository": "microsoft/fluentui.git",
   "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },
   "sideEffects": false,
-  "types": "dist/es/index.d.ts",
-  "private": true
+  "types": "dist/es/index.d.ts"
 }

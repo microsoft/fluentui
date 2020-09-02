@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyle, mergeStyles } from '@uifabric/styling';
-import { memoizeFunction } from '@uifabric/utilities';
+import { mergeCss } from '@uifabric/merge-styles';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { getRTL, memoizeFunction } from '@uifabric/utilities';
 import { assign } from './utilities';
 import { IFactoryOptions } from './IComponent';
 import {
@@ -15,7 +16,7 @@ import {
   IDefaultSlotProps,
   IProcessedSlotProps,
   ValidProps,
-  ValidShorthand
+  ValidShorthand,
 } from './ISlots';
 
 /**
@@ -30,11 +31,11 @@ import {
  *
  * See React.createElement
  */
-// Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
+// Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now
+// and widen as needed.
 export function withSlots<P>(
   type: ISlot<P> | React.FunctionComponent<P> | string,
   props?: (React.Attributes & P) | null,
-  // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
 ): ReturnType<React.FunctionComponent<P>> {
   const slotType = type as ISlot<P>;
@@ -46,7 +47,8 @@ export function withSlots<P>(
       return slotType(props);
     }
 
-    // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+    // Since we are bypassing createElement, use React.Children.toArray to make sure children are
+    // properly assigned keys.
     // TODO: should this be mutating? does React mutate children subprop with createElement?
     // TODO: will toArray clobber existing keys?
     // TODO: React generates warnings because it doesn't detect hidden member _store that is set in createElement.
@@ -74,18 +76,24 @@ export function withSlots<P>(
  */
 export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(
   DefaultComponent: React.ComponentType<TProps>,
-  options: IFactoryOptions<TProps> = {}
+  options: IFactoryOptions<TProps> = {},
 ): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
-  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, userSlotOptions, defaultStyles) => {
+  const result: ISlotFactory<TProps, TShorthandProp> = (
+    componentProps,
+    userProps,
+    userSlotOptions,
+    defaultStyles,
+    theme,
+  ) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
     const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
-    const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
+    const finalProps = _constructFinalProps(defaultStyles, theme, componentProps, flattenedUserProps);
 
     if (userSlotOptions) {
       if (userSlotOptions.component) {
@@ -119,7 +127,7 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
  */
 export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
   userProps: TComponentProps,
-  slots: ISlotDefinition<Required<TComponentSlots>>
+  slots: ISlotDefinition<Required<TComponentSlots>>,
 ): ISlots<Required<TComponentSlots>> {
   const result: ISlots<Required<TComponentSlots>> = {} as ISlots<Required<TComponentSlots>>;
 
@@ -128,25 +136,30 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
-      //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
-      //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
+      // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React
+      // detects each closure as a different component (since it is a new instance) from the previous one and then
+      // forces a rerender of the entire slot subtree. For now, the only way to avoid this is to use withSlots, which
+      // bypasses the call to React.createElement.
       const slot: ISlots<Required<TComponentSlots>>[keyof TComponentSlots] = (componentProps, ...args: any[]) => {
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
           // We can detect these additional arguments and error on their presence.
           throw new Error('Any module using getSlots must use withSlots. Please see withSlots javadoc for more info.');
         }
-        // TODO: having TS infer types here seems to cause infinite loop. use explicit types or casting to preserve typing if possible.
-        // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably causing the infinite loop
+        // TODO: having TS infer types here seems to cause infinite loop.
+        //   use explicit types or casting to preserve typing if possible.
+        // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably
+        //   causing the infinite loop
         return _renderSlot<any, any, any>(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           mixedProps[name],
           mixedProps.slots && mixedProps.slots[name],
-          // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
-          mixedProps._defaultStyles && mixedProps._defaultStyles[name]
+          // _defaultStyles should always be present, but a check for existence is added to make view tests
+          // easier to use.
+          mixedProps._defaultStyles && mixedProps._defaultStyles[name],
+          (mixedProps as any).theme,
         );
       };
       slot.isSlot = true;
@@ -164,13 +177,13 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
  */
 function _translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
   defaultProp: string,
-  slotProps: ISlotProp<TProps, TShorthandProp>
+  slotProps: ISlotProp<TProps, TShorthandProp>,
 ): TProps | undefined {
   let transformedProps: TProps | undefined;
 
   if (typeof slotProps === 'string' || typeof slotProps === 'number' || typeof slotProps === 'boolean') {
     transformedProps = {
-      [defaultProp]: slotProps as any
+      [defaultProp]: slotProps as any,
     } as TProps;
   } else {
     transformedProps = slotProps as TProps;
@@ -182,7 +195,11 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
 /**
  * Helper function that constructs final styles and props given a series of props ordered by increasing priority.
  */
-function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles: IStyle, ...allProps: (TProps | undefined)[]): TProps {
+function _constructFinalProps<TProps extends IProcessedSlotProps>(
+  defaultStyles: IStyle,
+  theme?: ITheme,
+  ...allProps: (TProps | undefined)[]
+): TProps {
   const finalProps: TProps = {} as any;
   const classNames: (string | undefined)[] = [];
 
@@ -191,7 +208,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
     assign(finalProps, props);
   }
 
-  finalProps.className = mergeStyles(defaultStyles, classNames);
+  finalProps.className = mergeCss([defaultStyles, classNames], { rtl: getRTL(theme) });
 
   return finalProps;
 }
@@ -212,7 +229,8 @@ function _renderSlot<
   componentProps: TSlotProps,
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
   slotOptions: ISlotOptions<TSlotProps> | undefined,
-  defaultStyles: IStyle
+  defaultStyles: IStyle,
+  theme?: ITheme,
 ): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
@@ -222,7 +240,8 @@ function _renderSlot<
       componentProps,
       userProps,
       slotOptions,
-      defaultStyles
+      defaultStyles,
+      theme,
     );
   }
 }

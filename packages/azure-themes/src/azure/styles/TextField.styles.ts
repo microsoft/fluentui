@@ -1,72 +1,80 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     fieldGroup: [
       !multiline && {
-        height: StyleConstants.inputControlHeight
+        height: StyleConstants.inputControlHeight,
+
+        selectors: {
+          '::after': {
+            borderColor: semanticColors.primaryButtonBackgroundHovered,
+          },
+        },
       },
       focused && {
-        borderColor: semanticColors.focusBorder
+        borderColor: semanticColors.focusBorder,
       },
       disabled && {
-        borderColor: semanticColors.disabledBodyText
+        borderColor: extendedSemanticColors.textFieldBorderDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       },
       hasErrorMessage && [
         {
-          borderWidth: StyleConstants.borderWidthError
+          borderWidth: StyleConstants.borderWidthError,
         },
         focused && {
           borderColor: semanticColors.focusBorder,
           selectors: {
             '&:focus, &:hover': {
-              borderColor: semanticColors.focusBorder
-            }
-          }
-        }
-      ]
+              borderColor: semanticColors.focusBorder,
+            },
+          },
+        },
+      ],
     ],
     icon: {
-      bottom: 2
+      bottom: 2,
     },
     prefix: {
-      fontSize: FontSizes.size12
+      fontSize: theme.fonts.medium.fontSize,
     },
     suffix: {
-      fontSize: FontSizes.size12
+      fontSize: theme.fonts.medium.fontSize,
     },
     field: [
       {
         color: semanticColors.inputText,
         backgroundColor: semanticColors.inputBackground,
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           ':-ms-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           '::-webkit-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
-          }
-        }
+            fontStyle: 'italic',
+          },
+        },
       },
       disabled && {
-        color: semanticColors.disabledBodyText,
-        backgroundColor: semanticColors.disabledBackground
-      }
+        color: semanticColors.primaryButtonTextDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+      },
     ],
     errorMessage: {
-      color: semanticColors.errorText
-    }
+      color: semanticColors.errorText,
+    },
   };
 };

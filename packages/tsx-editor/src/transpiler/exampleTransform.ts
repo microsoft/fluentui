@@ -79,7 +79,9 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     }
     const globalName = supportedPackagesToGlobals[imprt.packageName];
     identifiersByGlobal[globalName] = identifiersByGlobal[globalName] || [];
-    identifiersByGlobal[globalName].push(...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)));
+    identifiersByGlobal[globalName].push(
+      ...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)),
+    );
   }
 
   let lines = [code];
@@ -127,8 +129,10 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
   output.output = lines.join('\n');
 
   if (win && win.transformLogging) {
+    /* eslint-disable no-console */
     console.log('TRANSFORMED:');
     console.log(output.output);
+    /* eslint-enable no-console */
   }
   return output;
 }

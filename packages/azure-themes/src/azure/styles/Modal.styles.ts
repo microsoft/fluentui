@@ -1,6 +1,5 @@
 import { IModalStyles, IModalStyleProps } from 'office-ui-fabric-react';
 import { Depths } from '../AzureDepths';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
 export const ModalStyles = (props: IModalStyleProps): Partial<IModalStyles> => {
@@ -10,13 +9,13 @@ export const ModalStyles = (props: IModalStyleProps): Partial<IModalStyles> => {
   return {
     root: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12
+      fontSize: theme.fonts.medium.fontSize,
     },
     main: {
       borderColor: semanticColors.inputBorder,
       borderStyle: StyleConstants.borderSolid,
       borderWidth: StyleConstants.borderWidth,
-      boxShadow: Depths.depth8
-    }
+      boxShadow: Depths.depth8,
+    },
   };
 };

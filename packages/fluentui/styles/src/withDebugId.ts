@@ -1,6 +1,6 @@
 import { isEnabled as isDebugEnabled } from './debugEnabled';
 
-const withDebugId =
+export const withDebugId =
   process.env.NODE_ENV === 'production'
     ? <T>(data: T, debugId: string): T => data
     : <T>(data: T, debugId: string): T => {
@@ -14,7 +14,7 @@ const withDebugId =
             Object.defineProperty(copy, '_debugId', {
               value: debugId,
               writable: false,
-              enumerable: false
+              enumerable: false,
             });
             return copy;
           }
@@ -29,5 +29,3 @@ const withDebugId =
 
         return data;
       };
-
-export default withDebugId;

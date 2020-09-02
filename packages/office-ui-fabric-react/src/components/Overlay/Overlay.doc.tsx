@@ -10,24 +10,27 @@ const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 export const OverlayPageProps: IDocPageProps = {
   title: 'Overlay',
   componentName: 'Overlay',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Overlay',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Overlay',
   examples: [
     {
       title: 'Light',
       code: OverlayLightExampleCode,
-      view: <OverlayLightExample />
+      view: <OverlayLightExample />,
     },
     {
       title: 'Dark',
       code: OverlayDarkExampleCode,
-      view: <OverlayDarkExample />
-    }
+      view: <OverlayDarkExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

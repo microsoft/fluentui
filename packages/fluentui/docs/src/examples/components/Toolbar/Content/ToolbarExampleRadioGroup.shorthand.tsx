@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
+import { BulletsIcon, NumberListIcon, ToDoListIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleRadioGroupShorthand = () => {
   const [bulletListActive, setBulletListActive] = React.useState(false);
@@ -15,7 +16,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
           items: [
             {
               key: 'bullets',
-              icon: { name: 'bullets', outline: true },
+              icon: <BulletsIcon {...{ outline: true }} />,
               active: bulletListActive,
               onClick: () => {
                 setBulletListActive(!bulletListActive);
@@ -24,11 +25,11 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setNumberListActive(false);
                 setToDoListActive(false);
               },
-              'aria-label': 'bullet list'
+              'aria-label': 'bullet list',
             },
             {
               key: 'number-list',
-              icon: { name: 'number-list', outline: true },
+              icon: <NumberListIcon {...{ outline: true }} />,
               active: numberListActive,
               onClick: () => {
                 setNumberListActive(!numberListActive);
@@ -37,11 +38,11 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setBulletListActive(false);
                 setToDoListActive(false);
               },
-              'aria-label': 'number list'
+              'aria-label': 'number list',
             },
             {
               key: 'to-do-list',
-              icon: { name: 'to-do-list', outline: true },
+              icon: <ToDoListIcon {...{ outline: true }} />,
               active: toDoListActive,
               onClick: () => {
                 setToDoListActive(!toDoListActive);
@@ -50,10 +51,10 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setBulletListActive(false);
                 setNumberListActive(false);
               },
-              'aria-label': 'to do list'
-            }
-          ]
-        }
+              'aria-label': 'to do list',
+            },
+          ],
+        },
       ]}
     />
   );

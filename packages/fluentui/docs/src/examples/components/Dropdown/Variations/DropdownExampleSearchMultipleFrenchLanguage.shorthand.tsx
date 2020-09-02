@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   { header: 'Louis Vuitton' },
@@ -10,13 +11,10 @@ const inputItems = [
   { header: 'Honoré de Balzac' },
   { header: 'Louis XIV' },
   { header: 'Brigitte Bardot' },
-  { header: 'Marion Cotillard' }
+  { header: 'Marion Cotillard' },
 ].map(item => ({
   ...item,
-  icon: {
-    name: 'close',
-    'aria-label': `Éliminer ${item.header} de la sélection.`
-  }
+  icon: <CloseIcon aria-label={`Éliminer ${item.header} de la sélection.`} />,
 }));
 
 const DropdownExampleSearchMultipleFrenchLanguage = () => (
@@ -48,7 +46,7 @@ const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resul
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item.header} a été choisi.`,
-  onRemove: item => `${item.header} a été éliminé.`
+  onRemove: item => `${item.header} a été éliminé.`,
 };
 
 export default DropdownExampleSearchMultipleFrenchLanguage;

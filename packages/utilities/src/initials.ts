@@ -19,11 +19,11 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
  * Arabic:   Arabic, Arabic Supplement, Arabic Extended-A.
  * Korean:   Hangul Jamo, Hangul Compatibility Jamo, Hangul Jamo Extended-A, Hangul Syllables, Hangul Jamo Extended-B.
  * Japanese: Hiragana, Katakana.
- * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs, CJK Unified Ideographs Extension B
+ * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs,
+ *             CJK Unified Ideographs Extension B
  */
-/* tslint:disable:max-line-length */
+// eslint-disable-next-line @fluentui/max-len
 const UNSUPPORTED_TEXT_REGEX: RegExp = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
-/* tslint:enable:max-line-length */
 
 function getInitialsLatin(displayName: string, isRtl: boolean): string {
   let initials = '';
@@ -60,7 +60,11 @@ function cleanupDisplayName(displayName: string): string {
  *
  * @public
  */
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string {
+export function getInitials(
+  displayName: string | undefined | null,
+  isRtl: boolean,
+  allowPhoneInitials?: boolean,
+): string {
   if (!displayName) {
     return '';
   }

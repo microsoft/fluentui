@@ -1,5 +1,10 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { HighContrastSelector, getGlobalClassNames, IStyle } from '../../Styling';
+import {
+  HighContrastSelector,
+  getGlobalClassNames,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+  IStyle,
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -7,7 +12,7 @@ const GlobalClassNames = {
   label: 'ms-Checkbox-label',
   checkbox: 'ms-Checkbox-checkbox',
   checkmark: 'ms-Checkbox-checkmark',
-  text: 'ms-Checkbox-text'
+  text: 'ms-Checkbox-text',
 };
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
@@ -31,7 +36,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBorderIndeterminateHoveredColor = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
-  // TODO: after updating the semanticColors slots mapping following 2 tokens need to be semanticColors.inputBackgroundCheckedHovered
+  // TODO: after updating the semanticColors slots mapping the following 2 tokens need to be
+  // semanticColors.inputBackgroundCheckedHovered
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxHoveredTextColor = semanticColors.inputTextHovered;
@@ -54,8 +60,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       borderColor: disabled ? checkboxBorderColorDisabled : checkboxBorderIndeterminateColor,
       transitionProperty: 'border-width, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
-      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING
-    }
+      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+      [HighContrastSelector]: {
+        borderColor: 'WindowText',
+      },
+    },
   ];
 
   return {
@@ -63,7 +72,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       classNames.root,
       {
         position: 'relative',
-        display: 'flex'
+        display: 'flex',
       },
       reversed && 'reversed',
       checked && 'is-checked',
@@ -71,102 +80,87 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       disabled && 'is-disabled',
       !disabled && [
         !checked && {
-          selectors: {
-            [`:hover .${classNames.checkbox}`]: {
-              borderColor: checkboxBorderHoveredColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  borderColor: 'Highlight'
-                }
-              }
+          [`:hover .${classNames.checkbox}`]: {
+            borderColor: checkboxBorderHoveredColor,
+            [HighContrastSelector]: {
+              borderColor: 'Highlight',
             },
-            [`:focus .${classNames.checkbox}`]: { borderColor: checkboxBorderHoveredColor },
-            [`:hover .${classNames.checkmark}`]: {
-              color: checkmarkFontColorHovered,
-              opacity: '1',
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'Highlight'
-                }
-              }
-            }
-          }
+          },
+          [`:focus .${classNames.checkbox}`]: { borderColor: checkboxBorderHoveredColor },
+          [`:hover .${classNames.checkmark}`]: {
+            color: checkmarkFontColorHovered,
+            opacity: '1',
+            [HighContrastSelector]: {
+              color: 'Highlight',
+            },
+          },
         },
         checked &&
           !indeterminate && {
-            selectors: {
-              [`:hover .${classNames.checkbox}`]: {
-                background: checkboxBackgroundCheckedHovered,
-                borderColor: checkboxBorderColorCheckedHovered
-              },
-              [`:focus .${classNames.checkbox}`]: {
-                background: checkboxBackgroundCheckedHovered,
-                borderColor: checkboxBorderColorCheckedHovered
-              },
-              [`.${classNames.checkbox}`]: {
-                background: checkboxBorderColorChecked,
-                borderColor: checkboxBorderColorChecked
-              },
-              [HighContrastSelector]: {
-                selectors: {
-                  [`:hover .${classNames.checkbox}`]: {
-                    background: 'Window',
-                    borderColor: 'Highlight'
-                  },
-                  [`:focus .${classNames.checkbox}`]: {
-                    background: 'Highlight'
-                  },
-                  [`:focus:hover .${classNames.checkbox}`]: {
-                    background: 'Highlight'
-                  },
-                  [`:focus:hover .${classNames.checkmark}`]: {
-                    color: 'Window'
-                  },
-                  [`:hover .${classNames.checkmark}`]: {
-                    color: 'Highlight'
-                  }
-                }
-              }
-            }
-          },
-        indeterminate && {
-          selectors: {
-            [`:hover .${classNames.checkbox}, :hover .${classNames.checkbox}:after`]: {
-              borderColor: checkboxBorderIndeterminateHoveredColor
+            [`:hover .${classNames.checkbox}`]: {
+              background: checkboxBackgroundCheckedHovered,
+              borderColor: checkboxBorderColorCheckedHovered,
             },
             [`:focus .${classNames.checkbox}`]: {
-              borderColor: checkboxBorderIndeterminateHoveredColor
+              background: checkboxBackgroundCheckedHovered,
+              borderColor: checkboxBorderColorCheckedHovered,
             },
-            [`:hover .${classNames.checkmark}`]: {
-              opacity: '0'
-            }
-          }
+            [HighContrastSelector]: {
+              [`:hover .${classNames.checkbox}`]: {
+                background: 'Highlight',
+                borderColor: 'Highlight',
+              },
+              [`:focus .${classNames.checkbox}`]: {
+                background: 'Highlight',
+              },
+              [`:focus:hover .${classNames.checkbox}`]: {
+                background: 'Highlight',
+              },
+              [`:focus:hover .${classNames.checkmark}`]: {
+                color: 'Window',
+              },
+              [`:hover .${classNames.checkmark}`]: {
+                color: 'Window',
+              },
+            },
+          },
+        indeterminate && {
+          [`:hover .${classNames.checkbox}, :hover .${classNames.checkbox}:after`]: {
+            borderColor: checkboxBorderIndeterminateHoveredColor,
+            [HighContrastSelector]: {
+              borderColor: 'WindowText',
+            },
+          },
+          [`:focus .${classNames.checkbox}`]: {
+            borderColor: checkboxBorderIndeterminateHoveredColor,
+          },
+          [`:hover .${classNames.checkmark}`]: {
+            opacity: '0',
+          },
         },
         {
-          selectors: {
-            [`:hover .${classNames.text}`]: { color: checkboxHoveredTextColor },
-            [`:focus .${classNames.text}`]: { color: checkboxHoveredTextColor }
-          }
-        }
+          [`:hover .${classNames.text}, :focus .${classNames.text}`]: {
+            color: checkboxHoveredTextColor,
+            [HighContrastSelector]: {
+              color: disabled ? 'GrayText' : 'WindowText',
+            },
+          },
+        },
       ],
-      className
+      className,
     ],
     input: {
       position: 'absolute',
       background: 'none',
 
       opacity: 0,
-      selectors: {
-        [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-          outline: '1px solid ' + theme.palette.neutralSecondary,
-          outlineOffset: '2px',
-          selectors: {
-            [HighContrastSelector]: {
-              outline: '1px solid ActiveBorder'
-            }
-          }
-        }
-      }
+      [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+        outline: '1px solid ' + theme.palette.neutralSecondary,
+        outlineOffset: '2px',
+        [HighContrastSelector]: {
+          outline: '1px solid ActiveBorder',
+        },
+      },
     },
     label: [
       classNames.label,
@@ -177,25 +171,22 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         cursor: disabled ? 'default' : 'pointer',
         position: 'relative',
         userSelect: 'none',
-        textAlign: 'left'
       },
       reversed && {
         flexDirection: 'row-reverse',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
       },
       {
-        selectors: {
-          '&::before': {
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            content: '""',
-            pointerEvents: 'none'
-          }
-        }
-      }
+        '&::before': {
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          content: '""',
+          pointerEvents: 'none',
+        },
+      },
     ],
     checkbox: [
       classNames.checkbox,
@@ -216,86 +207,80 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
 
         /* in case the icon is bigger than the box */
         overflow: 'hidden',
-        selectors: {
-          ':after': indeterminate ? indeterminateDotStyles : null
-        }
+        ':after': indeterminate ? indeterminateDotStyles : null,
+        [HighContrastSelector]: {
+          borderColor: 'WindowText',
+        },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       indeterminate && {
-        borderColor: checkboxBorderIndeterminateColor
+        borderColor: checkboxBorderIndeterminateColor,
       },
       !reversed
-        ? // this margin on the checkbox is for backwards compat.
-          // notably it has the effect where a customRender is used, there will be only a 4px margin from checkbox to label.
-          // the label by default would have another 4px margin for a total of 8px margin between checkbox and label.
-          // we don't combine the two (and move it into the text) to not incur a breaking change for everyone using custom render atm.
+        ? // This margin on the checkbox is for backwards compat. Notably it has the effect where a customRender
+          // is used, there will be only a 4px margin from checkbox to label. The label by default would have
+          // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
+          // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
           {
-            marginRight: 4
+            marginRight: 4,
           }
         : {
-            marginLeft: 4
+            marginLeft: 4,
           },
       !disabled &&
         !indeterminate &&
         checked && {
           background: checkboxBackgroundChecked,
           borderColor: checkboxBorderColorChecked,
-          selectors: {
-            [HighContrastSelector]: {
-              background: 'Highlight',
-              borderColor: 'Highlight'
-            }
-          }
+          [HighContrastSelector]: {
+            background: 'Highlight',
+            borderColor: 'Highlight',
+          },
         },
       disabled && {
         borderColor: checkboxBorderColorDisabled,
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'InactiveBorder'
-          }
-        }
+        [HighContrastSelector]: {
+          borderColor: 'GrayText',
+        },
       },
       checked &&
         disabled && {
           background: checkboxBackgroundDisabledChecked,
-          borderColor: checkboxBorderColorDisabled
-        }
+          borderColor: checkboxBorderColorDisabled,
+          [HighContrastSelector]: {
+            background: 'Window',
+          },
+        },
     ],
     checkmark: [
       classNames.checkmark,
       {
         opacity: checked ? '1' : '0',
         color: checkmarkFontColor,
-        selectors: {
-          [HighContrastSelector]: {
-            color: disabled ? 'InactiveBorder' : 'Window',
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      }
+        [HighContrastSelector]: {
+          color: disabled ? 'GrayText' : 'Window',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     ],
     text: [
       classNames.text,
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
         fontSize: fonts.medium.fontSize,
-        lineHeight: '20px'
+        lineHeight: '20px',
+        [HighContrastSelector]: {
+          color: disabled ? 'GrayText' : 'WindowText',
+        },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       !reversed
         ? {
-            marginLeft: 4
+            marginLeft: 4,
           }
         : {
-            marginRight: 4
+            marginRight: 4,
           },
-      disabled && {
-        selectors: {
-          [HighContrastSelector]: {
-            // backwards compat for the color of the text when the checkbox was rendered
-            // using a Button.
-            color: 'InactiveBorder'
-          }
-        }
-      }
-    ]
+    ],
   };
 };

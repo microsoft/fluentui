@@ -9,13 +9,17 @@ const extraArgs = process.argv.slice(2);
 const defaults = ['office-ui-fabric-react', '@fluentui/docs'];
 
 const projectsWithStartCommand = Object.entries(allPackages)
-  .map(([pkg, info]) => {
+  .reduce((acc, [pkg, info]) => {
     if (info.packageJson.scripts && info.packageJson.scripts.start) {
-      return { title: pkg, value: pkg };
+      acc.push({ title: pkg, value: { pkg, command: 'start' } });
     }
 
-    return null;
-  })
+    if (info.packageJson.scripts && info.packageJson.scripts['start:profile']) {
+      acc.push({ title: `${pkg} (profile)`, value: { pkg, command: 'start:profile' } });
+    }
+
+    return acc;
+  }, [])
   .filter(n => n && !defaults.includes(n.title))
   .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 
@@ -28,11 +32,15 @@ const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.
 
     message: 'Which project to start (select or type partial name)?',
     suggest,
-    choices: [...defaults.map(p => ({ title: p, value: p })), ...projectsWithStartCommand]
+    choices: [...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
   });
 
-  spawnSync('yarn', ['workspace', response.project, 'start', ...(extraArgs.length > 0 ? [extraArgs] : [])], {
-    shell: true,
-    stdio: 'inherit'
-  });
+  spawnSync(
+    'yarn',
+    ['workspace', response.project.pkg, response.project.command, ...(extraArgs.length > 0 ? [extraArgs] : [])],
+    {
+      shell: true,
+      stdio: 'inherit',
+    },
+  );
 })();

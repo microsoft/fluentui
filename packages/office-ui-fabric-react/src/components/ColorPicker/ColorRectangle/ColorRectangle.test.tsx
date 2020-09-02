@@ -22,7 +22,7 @@ describe('ColorRectangle', () => {
       right: size + offset,
       bottom: size + offset,
       width: size,
-      height: size
+      height: size,
     } as DOMRect);
 
   afterEach(() => {
@@ -50,7 +50,9 @@ describe('ColorRectangle', () => {
 
   it('respects color prop change', () => {
     const onChange = jest.fn();
-    wrapper = mount(<ColorRectangle color={getColorFromString('#abcdef')!} onChange={onChange} componentRef={colorRectRef} />);
+    wrapper = mount(
+      <ColorRectangle color={getColorFromString('#abcdef')!} onChange={onChange} componentRef={colorRectRef} />,
+    );
 
     wrapper.setProps({ color: getColorFromString('#AEAEAE')! });
     expect(colorRectangle!.color.hex).toEqual('aeaeae');
@@ -71,14 +73,19 @@ describe('ColorRectangle', () => {
     const descriptionEl = element.querySelectorAll('#' + descriptionId)[0];
     expect(descriptionEl).toBeDefined();
     expect(descriptionEl.textContent).toBe(
-      'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
+      'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
     );
   });
 
   it('uses custom aria values', () => {
     const color = getColorFromString('#abcdef')!;
     wrapper = mount(
-      <ColorRectangle color={color} ariaLabel="custom label" ariaValueFormat="v {1} s {0}" ariaDescription="custom description" />
+      <ColorRectangle
+        color={color}
+        ariaLabel="custom label"
+        ariaValueFormat="v {1} s {0}"
+        ariaDescription="custom description"
+      />,
     );
 
     const element = wrapper.getDOMNode();
@@ -107,7 +114,7 @@ describe('ColorRectangle', () => {
     // by default, black has s=0, but in this case it will be s=100
     const newColor = {
       ...getColorFromString('#000000'),
-      s: 100
+      s: 100,
     };
 
     expect(_getNewColor(fakeEvent, prevColor, fakeRoot)).toEqual(newColor);
@@ -128,7 +135,7 @@ describe('ColorRectangle', () => {
     const fakeEvent = { clientX: 0, clientY: 0 } as React.MouseEvent<HTMLElement>;
     const newColor = {
       ...getColorFromString('#ffffff'),
-      h: prevColor.h
+      h: prevColor.h,
     };
 
     expect(_getNewColor(fakeEvent, prevColor, fakeRoot)).toEqual(newColor);
@@ -169,7 +176,9 @@ describe('ColorRectangle', () => {
 
   it('ignores key events that put value out of range', () => {
     const onChange = jest.fn();
-    wrapper = mount(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    wrapper = mount(
+      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
+    );
     const initialColor = colorRectangle!.color;
 
     // white is at top left corner, so going up isn't valid
@@ -184,7 +193,9 @@ describe('ColorRectangle', () => {
       updatedColor = newColor;
       ev.preventDefault();
     });
-    wrapper = mount(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    wrapper = mount(
+      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
+    );
     const initialColor = colorRectangle!.color;
 
     wrapper.simulate('keydown', { which: KeyCodes.down });
@@ -195,7 +206,9 @@ describe('ColorRectangle', () => {
 
   it('handles mouse events', () => {
     const onChange = jest.fn();
-    wrapper = mount(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    wrapper = mount(
+      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
+    );
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRect(100);
 
     // click in top right => red

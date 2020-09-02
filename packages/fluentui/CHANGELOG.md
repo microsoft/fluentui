@@ -17,8 +17,416 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## BREAKING CHANGES
+- Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
+- Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
+- Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
+
+### Fixes
+- Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
+- Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
+- Fix `Menu` underlined focus style @assuncaocharles ([#14525](https://github.com/microsoft/fluentui/pull/14525))
+- Do not always `preventDefault()` in `RadioGroupItem` @layershifter ([#14717](https://github.com/microsoft/fluentui/pull/14717))
+- Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
+- Add `Popper` modifiers to fix initial positioning @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
+- Add `Popper` warning when children with `autoFocus` prop are present @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
+- Keep the width of the `Input` component fixed when the `error` prop is defined @rymeskar ([#14821](https://github.com/microsoft/fluentui/pull/14821))
+
+### Features
+- Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
+- Add `onDateChange` handler to `Datepicker.Input` field @karymes ([#14167](https://github.com/microsoft/fluentui/pull/14167))
+- Add base `Skeleton` component @assuncaocharles ([#14354](https://github.com/microsoft/fluentui/pull/14354))
+- Add base `SkeletonButton` component @assuncaocharles ([#14405](https://github.com/microsoft/fluentui/pull/14405))
+- Add base `SkeletonAvatar` component @assuncaocharles ([#14471](https://github.com/microsoft/fluentui/pull/14471))
+- Add base `SkeletonInput` component @assuncaocharles ([#14439](https://github.com/microsoft/fluentui/pull/14439))
+- Add base `SkeletonText` component @assuncaocharles ([#14460](https://github.com/microsoft/fluentui/pull/14460))
+- Add styling for `Datepicker` component @karymes ([#14469](https://github.com/microsoft/fluentui/pull/14469))
+- Add `readStatus` slot to `ChatMessage` @assuncaocharles ([#14585](https://github.com/microsoft/fluentui/pull/14585))
+- Add `on` property to `MenuItem` to open in on hover @assuncaocharles ([#14714](https://github.com/microsoft/fluentui/pull/14714))
+- Added icons `FilterIcon`, `MicrophoneDisabledIcon`, `OptionsIcon`, `ReactionsIcon` @TanelVari ([#14745](https://github.com/microsoft/fluentui/pull/14745))
+- Add `foreground5` and `foreground6` in the colorScheme's default definition @assuncaocharles ([#14818](https://github.com/microsoft/fluentui/pull/14818))
+- Add `Form.Datepicker` component @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
+
+### Documentation
+- Added copy paste keyboard shortcuts to UI builder @vyhnalekl ([#14631](https://github.com/microsoft/fluentui/pull/14631))
+- Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
+- Edited left side menu in UI builder @vyhnalekl ([#14436](https://github.com/microsoft/fluentui/pull/14436))
+- Fixed issue with a drop near the edge of iframe in UI builder @vyhnalekl ([#14440](https://github.com/microsoft/fluentui/pull/14440))
+- Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
+- Added keyboard shortcuts to UI builder @vyhnalekl ([#14483](https://github.com/microsoft/fluentui/pull/14483))
+- Add `formatDayMonthYear` and `parseDate` examples for `Datepicker` @pompomon ([#14484](https://github.com/microsoft/fluentui/pull/14484))
+- Move component in iframe by drag and drop @vyhnalekl ([#14432](https://github.com/microsoft/fluentui/pull/14432))
+- Removed props JSON from right side menu @vyhnalekl ([#14503](https://github.com/microsoft/fluentui/pull/14503))
+- Fixed top's component debug frame above iframe @vyhnalekl ([#14329](https://github.com/microsoft/fluentui/pull/14329))
+- Hide drop selector on scroll in iframe (UI builder) @vyhnalekl ([#14443](https://github.com/microsoft/fluentui/pull/14443))
+- Add export to CodeSandbox feature (UI builder) @vyhnalekl ([#14558](https://github.com/microsoft/fluentui/pull/14558))
+- Fix unresolved imports error when `moduleName` is missing (UI builder) @vyhnalekl ([#14796](https://github.com/microsoft/fluentui/pull/14796))
+- Fixed incorrect margin and padding after drag&drop (UI builder) @vyhnalekl ([#14384](https://github.com/microsoft/fluentui/pull/14384))
+- Add `Form.Datepicker` example with error message handler @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
+- Fixed as prop in UI builder @vyhnalekl ([#14815](https://github.com/microsoft/fluentui/pull/14815))
+
+<!--------------------------------[ v0.51.0 ]------------------------------- -->
+## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.50.0..@fluentui/react-northstar_v0.51.0)
+
+## BREAKING CHANGES
+- Restricted prop sets in the `Grid` component which are passed to styles functions @layershifter ([#13863](https://github.com/microsoft/fluentui/pull/13863))
+- Restricted prop sets in the `Dropdown` component which are passed to styles functions @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
+- `UIComponent` and `AutoControlledComponent` are removed @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
+- Set `Dropdown` to only stop `ESC` keydown propagation if `Dropdown` is open @assuncaocharles ([#14184](https://github.com/microsoft/fluentui/pull/14184))
+
+### Fixes
+- Fix `Tooltip` layouting when it is closed @fealkhou ([#13237](https://github.com/microsoft/fluentui/pull/13237))
+- Updating list item to use the Teams redlines @notandrew ([#13233](https://github.com/microsoft/fluentui/pull/13233))
+- Fix `Avatar` initials when the input only contains whitespace @rymeskar ([#13682](https://github.com/microsoft/fluentui/pull/13682))
+- Fix the order of callbacks in `Dropdown` @layershifter ([#13707](https://github.com/microsoft/fluentui/pull/13707))
+- Fix merging of `inputRef` on `searchInput` shorthand in `Dropdown` @layershifter ([#13711](https://github.com/microsoft/fluentui/pull/13711))
+- Fix RTL styles for `Divider` in RTL context @assuncaocharles ([#13741](https://github.com/microsoft/fluentui/pull/13741))
+- fix for `Attachment`, updating colors to match Teams redlines @notandrew ([#13168](https://github.com/microsoft/fluentui/pull/13168))
+- Fix `onClick` call from `Popup` trigger when `on` includes `hover` @assuncaocharles ([#13727](https://github.com/microsoft/fluentui/pull/13727))
+- Fix primary styles for `SplitButton` hover @assuncaocharles ([#13726](https://github.com/microsoft/fluentui/pull/13726))
+- Allow debugging composed components @miroslavstastny ([#13736](https://github.com/microsoft/fluentui/pull/13736))
+- Fix `teamsTheme` import in the QuickStart guide @mikesol314 ([#13789](https://github.com/microsoft/fluentui/pull/13789))
+- Fix `SplitButton` displayed on two lines for small widths @assuncaocharles ([#13773](https://github.com/microsoft/fluentui/pull/13773))
+- Fix(form): fix narration of the label for other elements than input @kolaps33 ([#13765](https://github.com/microsoft/fluentui/pull/13765))
+- Fix cursor's behavior inside `DropdownSearchInput` @layershifter ([#13800](https://github.com/microsoft/fluentui/pull/13800))
+- Fix global styles to respect `hidden` HTML attribute @pompomon ([#13964](https://github.com/microsoft/fluentui/pull/13964))
+- Fix an issue with throwing errors when a component is rendered outside of `Provider` @layershifter ([#14010](https://github.com/microsoft/fluentui/pull/14010))
+- Fix for `TeamsIcon`. Renamed current `TeamsIcon` to `ContactGroupIcon`. `TeamsIcon` is now the colored app icon as per current naming standards for other icons in project. @TanelVari ([#13966](https://github.com/microsoft/fluentui/pull/13966))
+- Fix memory leak in `FocusZone` @miroslavstastny ([#14031](https://github.com/microsoft/fluentui/pull/14031))
+- Fix `Popup` with `on="hover"` and controled close inside the content @assuncaocharles ([#14179](https://github.com/microsoft/fluentui/pull/14179))
+- Fix Timestamp in `Text` to match Teams redlines @notandrew ([#14153](https://github.com/microsoft/fluentui/pull/14153))
+
+### Features
+- Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
+- Add `details` slot for ChatMessage header @assuncaocharles ([#13776](https://github.com/microsoft/fluentui/pull/13776))
+- Add `AppsIcon`, `GeofenceArrivesIcon`, `GeofenceLeavesIcon`, `GeofenceArrivesOrLeavesIcon` @TanelVari ([#13888](https://github.com/microsoft/fluentui/pull/13888))
+- Add `Datepicker` and `DatepickerCalendar` @rymeskar ([#13855](https://github.com/microsoft/fluentui/pull/13855))
+- Add `label` and `labelPosition` to `Input` to allow `inside` label variation @assuncaocharles ([#13949](https://github.com/microsoft/fluentui/pull/13949))
+- Add `HeadsetIcon` @PressX2Jason ([#12956](https://github.com/microsoft/fluentui/pull/12956))
+- Add navigation and shorthands for `Datepicker` @pompompon ([#14061](https://github.com/microsoft/fluentui/pull/14061))
+
+### Documentation
+- Fix required version of CSB package, improve dependency generation for exported CodeSandboxes @layershifter ([#13637](https://github.com/microsoft/fluentui/pull/13637))
+- Fix docsite not loading in IE 11 @miroslavstastny ([#13766](https://github.com/microsoft/fluentui/pull/13766))
+- Fix `SplitButton` example for controlled menu open @pompomon ([#14023](https://github.com/microsoft/fluentui/pull/14023))
+- Add *Debugging* page @miroslavstastny ([#13818](https://github.com/microsoft/fluentui/pull/13818))
+
+<!--------------------------------[ v0.50.0 ]------------------------------- -->
+## [v0.50.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.50.0) (2020-06-16)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.49.0..@fluentui/react-northstar_v0.50.0)
+
+## BREAKING CHANGES
+- Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
+- Restricted prop sets in the `Segment` component which are passed to styles functions @assuncaocharles ([#13079](https://github.com/microsoft/fluentui/pull/13079))
+- Restricted prop sets in the `Reaction` component which are passed to styles functions @assuncaocharles ([#13081](https://github.com/microsoft/fluentui/pull/13081))
+- Restricted prop sets in the `ReactionGroup` component which are passed to styles functions, @assuncaocharles ([#13080](https://github.com/microsoft/fluentui/pull/13080))
+- Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
+- Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
+- Renamed `Survey20pxIcon` to `ApprovalsAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Restricted prop sets in the `Form` component which are passed to styles functions, @assuncaocharles ([#13180](https://github.com/microsoft/fluentui/pull/13180))
+- Restricted prop sets in the `FormField` component which are passed to styles functions, @assuncaocharles ([#13181](https://github.com/microsoft/fluentui/pull/13181))
+- Restricted prop sets in the `DropdownSelectedItem` component which are passed to styles functions, @assuncaocharles ([#13179](https://github.com/microsoft/fluentui/pull/13179))
+- Restricted prop sets in the `Input` component which are passed to styles functions, @assuncaocharles ([#13189](https://github.com/microsoft/fluentui/pull/13189))
+- Restricted prop sets in the `HierarchicalTree` component which are passed to styles functions, @assuncaocharles ([#13182](https://github.com/microsoft/fluentui/pull/13182))
+- Restricted prop sets in the `Portal` component which are passed to styles functions, @assuncaocharles ([#13186](https://github.com/microsoft/fluentui/pull/13186))
+- Restricted prop sets in the `HierarchicalTreeItem` component which are passed to styles functions, @assuncaocharles ([#13184](https://github.com/microsoft/fluentui/pull/13184))
+- Restricted set in `MenuItem` component which are passed to styles functions @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- `menuItemSlotClassNames.indicator` and `menuItemSlotClassNames.wrapper` were removed, `menuItemIndicatorClassName` and `menuItemWrapperClassName` should be used instead @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Move `MenuItem`'s slots styles to dedicated components @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Move `divider`'s slots styles to `MenuDivider` component @mnajdova @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
+- Move `shorthandConfig` to `compose`'s options @mnajdova ([#13240](https://github.com/microsoft/fluentui/pull/13240))
+- Restricted prop sets in the `Header` component which are passed to styles functions and remove the usage of `descriptionColor` as a resolved variable, @assuncaocharles ([#13253](https://github.com/microsoft/fluentui/pull/13253))
+- Updated durations and timing functions, removed `bounce` animations and added new animations in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
+- Removed `dismissActionColorActive`, `dismissActionBackgroundColorActive`, `dismissActionBorderColorActive` from `Alert`'s variables in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
+- Removed `themes` export, each theme is exported separately @layershifter ([#13268](https://github.com/microsoft/fluentui/pull/13268))
+- Restricted prop sets in the `HeaderDescription` component which are passed to styles functions, @assuncaocharles ([#13296](https://github.com/microsoft/fluentui/pull/13296))
+- Restricted prop sets in the `Loader` component which are passed to styles functions, @assuncaocharles ([#13297](https://github.com/microsoft/fluentui/pull/13297))
+- Restricted prop sets in the `RadioGroupItem` component which are passed to styles functions, @assuncaocharles ([#13301](https://github.com/microsoft/fluentui/pull/13301))
+- Restricted prop sets in the `MenuButton` component which are passed to styles functions, @assuncaocharles ([#13342](https://github.com/microsoft/fluentui/pull/13342))
+- Restricted prop sets in the `Dialog` component which are passed to styles functions, @assuncaocharles ([#13359](https://github.com/microsoft/fluentui/pull/13359))
+- Restricted prop sets in the `HierarchicalTreeTitle` component which are passed to styles functions, @assuncaocharles ([#13371](https://github.com/microsoft/fluentui/pull/13371))
+- Restricted prop sets in the `ItemLayout` component which are passed to styles functions and change `renderContentArea`, `renderHeaderArea` and `renderMainArea` definition, @assuncaocharles ([#13327](https://github.com/microsoft/fluentui/pull/13327))
+- Restricted prop sets in the `Layout` component which are passed to styles functions, @assuncaocharles ([#13324](https://github.com/microsoft/fluentui/pull/13324))
+- Restricted prop sets in the `RadioGroup` component which are passed to styles functions, @assuncaocharles ([#13338](https://github.com/microsoft/fluentui/pull/13338))
+- `toolbarMenuRadioGroupSlotClassNames` were removed, `toolbarMenuRadioGroupWrapperClassName` should be used instead @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- `toolbarItemSlotClassNames.wrapper` was removed, `toolbarItemWrapperClassName` should be used instead @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- `toolbarMenuItemSlotClassNames`'s `activeIndicator` and `submenuIndicator` were removed, `toolbarMenuItemActiveIndicatorClassName` and `toolbarMenuItemSubmenuIndicatorClassName` should be used instead @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
+- Removed `variables` and `styles` props in `Animation` @mnajdova ([#13509](https://github.com/microsoft/fluentui/pull/13509))
+- Set `FormField` to show `successIndicator` by default when field is required and has value fulfilled or when `showSuccessIndicator` is set to true and add `showSuccessIndicator || required` to define if it `hasIcon`on styles @assuncaocharles ([#13568](https://github.com/microsoft/fluentui/pull/13568))
+- `renderer` prop on `Provider` was replaced with a custom React context @layershifter ([#13602](https://github.com/microsoft/fluentui/pull/13602))
+
+### Fixes
+- Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
+- Fix offset computations in `Popup` to properly position pointer @layershifter ([#13002](https://github.com/microsoft/fluentui/pull/13002))
+- Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
+- Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
+- Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
+- Update to Teams theme font stack @notandrew ([#13273](https://github.com/microsoft/fluentui/pull/13273))
+- Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
+- Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
+- Fix showing loading message in `Dropdown` when list of items has scroll @assuncaocharles ([#13175](https://github.com/microsoft/fluentui/pull/13175))
+- Stop propagation of left and right arrow key in `SplitButton` for the integration with toolbar @jurokapsiar ([#13311](https://github.com/microsoft/fluentui/pull/13311))
+- Fix broken caching when `enableBooleanVariablesCaching:true` and there is no variables @layershifter ([#13345](https://github.com/microsoft/fluentui/pull/13345))
+- Fix displaying custom `clearIndicator` prop for `Dropdown` @kolaps33 ([#13486](https://github.com/microsoft/fluentui/pull/13486))
+
+### Features
+- Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Update `padding` and `margin` styles for `Card` @pompomon ([#13158](https://github.com/microsoft/fluentui/pull/13158))
+- Add `expandabble` prop and styles for `Card` @pompomon ([#13092](https://github.com/microsoft/fluentui/pull/13092))
+- Use `compose()` in `MenuItem` and added dedicated slot's components `MenuItemIcon`, `MenuItemContent`, `MenuItemIndicator` and `MenuItemWrapper` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Add `elevated`, `inverted` and `quiet` props and styles for the `Card` @pompomon ([#13163](https://github.com/microsoft/fluentui/pull/13163))
+- Use `compose()` in `MenuDivider` @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
+- Add `selected` prop and styles for `Card` @pompomon ([#12921](https://github.com/microsoft/fluentui/pull/12921))
+- Update styles for `selected` `Card` @pompomon ([#13230](https://github.com/microsoft/fluentui/pull/13230))
+- Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon`  @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
+- Add children api support for `Menu` component @assuncaocharles ([#13227](https://github.com/microsoft/fluentui/pull/13227))
+- Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
+- Use `compose()` in `ToolbarMenuDivider` @mnajdova ([#13318](https://github.com/microsoft/fluentui/pull/13318))
+- Use `compose()` in `ToolbarMenuRadioGroup` and added dedicated slot's component `ToolbarMenuRadioGroupWrapper` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- Use `compose()` in `ToolbarRadioGroup` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- Use `compose()` in `Toolbar` @mnajdova ([#13341](https://github.com/microsoft/fluentui/pull/13341))
+- Use `compose()` in `ToolbarItem` @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- Add cache hits to telemetry data & differentiate initial render @layershifter ([#13346](https://github.com/microsoft/fluentui/pull/13346))
+- Use `compose()` in `ToolbarMenuItem` @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
+- Use `compose()` in `ToolbarCustomItem` @mnajdova ([#13319](https://github.com/microsoft/fluentui/pull/13319))
+- Use `compose()` in `ToolbarMenu` @layershifter, @mnajdova ([#13320](https://github.com/microsoft/fluentui/pull/13320))
+- Add `compose()` support for submenus in `Toolbar` @mnajdova ([#13377](https://github.com/microsoft/fluentui/pull/13377))
+- Add `show` and `hide` animations in the `Popup` component @mnajdova ([#13439](https://github.com/microsoft/fluentui/pull/13439))
+- Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity`  @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
+- Extract `Renderer` related types to a separate package @layershifter ([#13616](https://github.com/microsoft/fluentui/pull/13616))
+
+### Performance
+- Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
+- Use `mergeVariablesOverrides()` to avoid cache breaks when variables are not passed in `Toolbar`, `Menu` & `Table` components @layershifter ([#13374](https://github.com/microsoft/fluentui/pull/13374))
+- Remove `camelCaseProperty` call inside Fela renderer @layershifter ([#13308](https://github.com/microsoft/fluentui/pull/13308))
+- Improved `Animation` perf by adding a cache that works across multiple instances @mnajdova ([#13509](https://github.com/microsoft/fluentui/pull/13509))
+- Improved the perf of the `convertCssTimeToNumber` utility used in `Animation` @layershifter, @mnajdova ([#13604](https://github.com/microsoft/fluentui/pull/13604))
+
+### Documentation
+- `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
+- Fix knobs labels on docsite  @pompomon ([#13248](https://github.com/microsoft/fluentui/pull/13248))
+- Add `Card` best practices  @pompomon ([#13315](https://github.com/microsoft/fluentui/pull/13315))
+- `Dropdown` update best practice if `loadingMessage` prop is used @kolaps33 ([#13558](https://github.com/microsoft/fluentui/pull/13558))
+- Add UI Builder Alpha @levithomason @miroslavstastny ([12234](https://github.com/microsoft/fluentui/pull/12234))
+
+<!--------------------------------[ v0.49.0 ]------------------------------- -->
+## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.48.0..@fluentui/react-northstar_v0.49.0)
+
+### BREAKING CHANGES
+- `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- Styles from `Attachment` slots were moved to exact components (`AttachmentAction`, `AttachmentHeader`, etc.) @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- CSS Grid, `linear-gradient()`, `background-clip`, `cross-fade()` are not prefixed @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
+- `offset` for components that use `Popper` (`Popup`, `Tooltip`, `MenuButton`, etc.) can be specified only as a tuple or function @layershifter ([#12530](https://github.com/microsoft/fluentui/pull/12530))
+- Support for deprecated `render` callback was removed @layershifter ([#12454](https://github.com/microsoft/fluentui/pull/12454))
+- renamed `ComponentName.className` to `ComponentName.deprecated_className` for all fluent components @mnajdova ([#12702](https://github.com/microsoft/fluentui/pull/12702))
+- removed `Card.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
+- removed `Header.slotClassNames`, `Form.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- removed `HierarchicalTreeItemSlotClassNames`'s `title` slot, `HierarchicalTreeTitle`'s className should be used @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- removed `Menu.slotClassNames`, dedicated component's classNames should be used @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- removed `RadioGroup.slotClassNames` and `Popup.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
+- removed `Tooltip.slotClassNames` and `TreeItem.slotClassNames` dedicated component's classnames should be used @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
+- Restricted prop sets in the `Alert` component which are passed to styles functions @assuncaocharles ([#12777](https://github.com/microsoft/fluentui/pull/12777))
+- removed `className` (`deprecated_className`) and `slotClassNames` static props from the fluent components, constants for className and slotClassNames should be used instead @mnajdova ([#12765](https://github.com/microsoft/fluentui/pull/12765))
+- changed `createShorthand` signature, to use the optional `shorthandConfig` static on the component @mnajdova ([#12783](https://github.com/microsoft/fluentui/pull/12783))
+- Restricted prop sets in the `Video` component which are passed to styles functions @assuncaocharles ([#12799](https://github.com/microsoft/fluentui/pull/12799))
+- Restricted prop sets in the `SplitButton` component which are passed to styles functions @assuncaocharles ([#12809](https://github.com/microsoft/fluentui/pull/12809))
+- Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
+- Restricted prop sets in the `Table` component which are passed to styles functions @assuncaocharles ([#12860](https://github.com/microsoft/fluentui/pull/12860))
+- Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
+- Restricted prop sets in the `Accordion` component which are passed to styles functions, @assuncaocharles ([#12876](https://github.com/microsoft/fluentui/pull/12876))
+- Restricted prop sets in the `AccordionTitle` component which are passed to styles functions, @assuncaocharles ([#12874](https://github.com/microsoft/fluentui/pull/12874))
+- Restricted prop sets in the `ButtonGroup` component which are passed to styles functions, @assuncaocharles ([#12866](https://github.com/microsoft/fluentui/pull/12866))
+- Restricted prop sets in the `AccordionContent` component which are passed to styles functions, @assuncaocharles ([#12875](https://github.com/microsoft/fluentui/pull/12875))
+- Restricted prop sets in the `CarouselNavigation` component which are passed to styles functions, @assuncaocharles ([#12937](https://github.com/microsoft/fluentui/pull/12937))
+- Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
+- Restricted prop sets in the `CarouselNavigationItem` component which are passed to styles functions, @assuncaocharles ([#12920](https://github.com/microsoft/fluentui/pull/12920))
+- Restricted prop sets in the `DropdownSearchInput` component which are passed to styles functions, @assuncaocharles ([#12978](https://github.com/microsoft/fluentui/pull/12978))
+- Restricted prop sets in the `DialogFooter` component which are passed to styles functions, @assuncaocharles ([#12979](https://github.com/microsoft/fluentui/pull/12979))
+- Restricted prop sets in the `CarouselItem` component which are passed to styles functions, @assuncaocharles ([#12938](https://github.com/microsoft/fluentui/pull/12938))
+- Restricted prop sets in the `Carousel` component which are passed to styles functions, @assuncaocharles ([#12966](https://github.com/microsoft/fluentui/pull/12966))
+- Restricted prop sets in the `Divider` component which are passed to styles functions, @assuncaocharles ([#12977](https://github.com/microsoft/fluentui/pull/12977))
+- Restricted prop sets in the `Toolbar` component which are passed to styles functions @layershifter ([#13024](https://github.com/microsoft/fluentui/pull/13024))
+- Change `AttachmentAction` to override `Button` styles and restricted props set @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
+- Limit props `activeIndex` and `defaultActiveIndex` in `Carousel` to be only numbers @assuncaocharles ([#13048](https://github.com/microsoft/fluentui/pull/13048))
+
+### Fixes
+- Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
+- Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
+- Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
+- Fix `Accordion` to avoid recreating refs every render @assuncaocharles ([#12944](https://github.com/microsoft/fluentui/pull/12944))
+- Fix `ButtonGroup` accessibility adding `aria-role="group"` @assuncaocharles ([#12916](https://github.com/microsoft/fluentui/pull/12916))
+- Converge FocusZone functionality, maintain existing behavior @jurokapsiar ([#12997](https://github.com/microsoft/fluentui/pull/12997))
+- Limit `Tree` items to not accept string and create `ObjectShorthandValue` @assuncaocharles ([#13016](https://github.com/microsoft/fluentui/pull/13016))
+- Attach an element to `document.body` in `Provider` during render @layershifter ([#13001](https://github.com/microsoft/fluentui/pull/13001))
+
+### Features
+- Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Accordion`*, `Alert`*, `Animation`, `Attachment`*, `Avatar` @mnajdova ([#12706](https://github.com/microsoft/fluentui/pull/12706))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Box`, `Button`*, `Card`* @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Carousel`*, `Chat`*, `Checkbox` @mnajdova ([#12733](https://github.com/microsoft/fluentui/pull/12733))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Dialog`*, `Divider`, `Dropdown`*, `Embed` @mnajdova ([#12734](https://github.com/microsoft/fluentui/pull/12734))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Flex`*, `Form`*, `Grid`, `Header`*, `HierarchicalTree`*, `Image`, `Input` @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `ItemLayout`, `Label`*, `Layout`, `List`*, `Loader`, `Menu`* @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `MenuButton`, `Popup`*, `Provider`, `RadioGroup`*, `Reaction`*, `Segment`, `Slider`*, `SplitButton`*, `Status`, `Slider`, `Table`* @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Text`, `TextArea`, `Toolbar`*, `Tooltip`*, `Tree`*, `Video` @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
+- Add `onClick` prop and focusable behaviors to `Card` component @pompomon ([#12688](https://github.com/microsoft/fluentui/pull/12688))
+- Add `disabled` prop and styles to `Card` component @pompomon ([#12743](https://github.com/microsoft/fluentui/pull/12743))
+- Adding multiselection for the `Tree` @kolaps33, @assuncaocharles ([#12362](https://github.com/microsoft/fluentui/pull/12362))
+- Add `background` and `border` colors to `Card` in Teams theme @pompomon ([#12790](https://github.com/microsoft/fluentui/pull/12790))
+- Added `FluidIcon` @TanelVari ([#12803](https://github.com/microsoft/fluentui/pull/12803))
+- Add compose options to `useStyles` @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
+- Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
+- Add `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
+- Add slots support in `Attachment` @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
+- Use `compose()` in `ToolbarDivider` @mnajdova ([#13045](https://github.com/microsoft/fluentui/pull/13045))
+
+### Performance
+- Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
+
+### Fixes
+- Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
+- Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
+- Make the `clearIndicator` tabbable in a non-search `Dropdown` @silviuavram ([#12684](https://github.com/microsoft/fluentui/pull/12684))
+- Check for `getItemPositionText` in `Carousel` before rendering the pagination text @silviuavram ([#12791](https://github.com/microsoft/fluentui/pull/12791))
+
+### Documentation
+- `Toolbar` accessibility polish, labelling toolbars @kolaps33 ([#12884](https://github.com/microsoft/fluentui/pull/12884))
+- `Carousel` accessibility polish, labelling items in example @kolaps33 ([#12903](https://github.com/microsoft/fluentui/pull/12903))
+- `Dropdown` - prototype - improvement to highlight first item when open @kolaps33 ([#12856](https://github.com/microsoft/fluentui/pull/12856))
+- Add contextMenu example for `Card` component @pompomon ([#12879](https://github.com/microsoft/fluentui/pull/12879))
+- Add expandable example for `Card` component @pompomon ([#13000](https://github.com/microsoft/fluentui/pull/13000))
+
+<!--------------------------------[ v0.48.0 ]------------------------------- -->
+## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.47.1..@fluentui/react-northstar_v0.48.0)
+
+### BREAKING CHANGES
+- Removed `SplitButton.slotClassNames` and introduced new `SplitButtonToggle` component @mnajdova ([#12432](https://github.com/microsoft/fluentui/pull/12432))
+- Replaced `paddleNext` and `paddlePrevious` to be `ShorthandValue<CarouselPaddleProps>` instead of `ShorthandValue<ButtonProps>` @mnajdova ([#12434](https://github.com/microsoft/fluentui/pull/12434))
+- Restricted prop set in the `PopupContent` component which is passed to styles functions @layershifter ([#12513](https://github.com/microsoft/fluentui/pull/12513))
+- `pointerSize` was replaced with `pointerHeight` & `pointerWidth` in `PopupContentVariables` @layershifter ([#12514](https://github.com/microsoft/fluentui/pull/12514))
+- Values of `pointerWidth` & `pointerHeight` were inverted in `TooltipContentVariables` @layershifter ([#12514](https://github.com/microsoft/fluentui/pull/12514))
+- `pointerHorizontalOffset` & `pointerVerticalOffset` are removed `TooltipContentVariables` @layershifter ([#12514](https://github.com/microsoft/fluentui/pull/12514))
+- Replaced `Alert.slotClassNames.dismissAction` with `AlertDismissAction.className` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
+- Changed `icon` prop to be `ShorthandValue<BoxProps>` in all Fluent components (Alert, Attachment, Button, DropdownSelectedItem, Input, Label, MenuItem, Reaction, Status, ToolbarItem, ToolbarMenuitem) @mnajdova ([#12489](https://github.com/microsoft/fluentui/pull/12489))
+- Removed `Icon` component (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+- Removed `icons` from `theme` object (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+- Restricted prop sets in the `Attachment` component which are passed to styles functions @layershifter ([#12576](https://github.com/microsoft/fluentui/pull/12576))
+
+### Fixes
+- Fix default focused input outline in Safari @sheff146 ([#12279](https://github.com/microsoft/fluentui/pull/12279))
+- Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
+- Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
+- Updating `Dropdown` styles to match redlines for Teams theme @notandrew ([#12397](https://github.com/microsoft/fluentui/pull/12397))
+- Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
+- Fix `Status` to use the colorScheme in Teams theme @notandrew ([#12481](https://github.com/microsoft/fluentui/pull/12481))
+- Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
+- Fix size of `Status` and `Avatar` sizes for Teams theme @notandrew ([#12502](https://github.com/microsoft/fluentui/pull/12502))
+- Fix navigation into cell which has multiple actionable elements @kolaps33 ([#12533](https://github.com/microsoft/fluentui/pull/12533))
+- In `Tooltip` don't add `aria-labelledby` to `trigger` if it has `aria-label` @silviuavram ([#12555](https://github.com/microsoft/fluentui/pull/12555))
+- Fix classes cache miss on empty string result @mnajdova ([#12584](https://github.com/microsoft/fluentui/pull/12584))
+- An update to the `RaiseHandColoredIcon` @TanelVari ([#12618](https://github.com/microsoft/fluentui/pull/12618))
+- Fix body scroll when open `Dialog` @assuncaocharles ([#12574](https://github.com/microsoft/fluentui/pull/12574))
+- fix for `Toolbar` button, change 'aria-pressed' state based on active prop @kolaps33 ([#12587](https://github.com/microsoft/fluentui/pull/12587))
+
+### Features
+- Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
+- Add `useUnhandledProps()` hook @layershifter ([#12371](https://github.com/OfficeDev/office-ui-fabric-react/pull/12371))
+- Adding base layout and API for `Card` component @pompomon ([#12349](https://github.com/OfficeDev/office-ui-fabric-react/pull/12349))
+- Add `disabled` support form `DropdownItem` @silviuavram ([#12407](https://github.com/microsoft/fluentui/pull/12407))
+- Add `@fluentui/react-icons-northstar` package that contains all Teams theme icons and moved `createSvgIcon` to this package @mnajdova ([#12453](https://github.com/microsoft/fluentui/pull/12453))
+- Add `selected` property to TableRow component and selectable table prototype @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
+- Add `AlertDismissAction` component for the dismissAction slot in the `Alert` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
+- Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
+- Add `CustomerHubIcon`, `OcrOffIcon`, `OcrOnIcon` and `ContactGroupCallIcon` icons @mnajdova ([#12571](https://github.com/microsoft/fluentui/pull/12571))
+- Add `SwitchCameraIcon`, `PanoramaOffIcon`, `AttendeeIcon` and `GroupVideoCallGridIcon`. Updated `PanoramaIcon`. @TanelVari ([#12566](https://github.com/microsoft/fluentui/pull/12566))
+- Add `size` and `fluid` props to `Card` component @pompomon ([#12589](https://github.com/microsoft/fluentui/pull/12589))
+- Add shadow styles to `Card` component @pompomon ([#12624](https://github.com/microsoft/fluentui/pull/12624))
+- Add `icon` prop to `Avatar` component @mnajdova ([#12660](https://github.com/microsoft/fluentui/pull/12660))
+
+### Documentation
+- Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
+- Fix crash on `Loader` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
+- Improve playground on `Card` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
+- Add an example for Children API for `Toolbar` @layershifter ([#12473](https://github.com/microsoft/fluentui/pull/12473))
+- Removed Icon Viewer prototype and processed icons @mnajdova ([#12553](https://github.com/microsoft/fluentui/pull/12553))
+- Add resource (memory) usage charts @miroslavstastny ([#12557](https://github.com/microsoft/fluentui/pull/12557))
+- Improved Sidebar search query regexp to include matching anywhere in the word @mnajdova ([#12642](https://github.com/microsoft/fluentui/pull/12642))
+- Add Icons page in the Concepts section @mnajdova ([#12645](https://github.com/microsoft/fluentui/pull/12645))
+
+<!--------------------------------[ v0.47.1 ]------------------------------- -->
+## [v0.47.1](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.1) (2020-04-15)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.47.0..fluentuizero_v0.47.1)
+
+### BREAKING CHANGES
+- Replace `ListItemProps` with `DropdownItemProps` for `Dropdown` slots `noResultsMessage` and `loadingMessage` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+
+### Fixes
+- Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
+- Give higher `zIndex` to `Tooltip` to make it appear on top of `Dialog` @silviuavram ([#12572](https://github.com/microsoft/fluentui/pull/12572))
+- Fix `Dropdown` close on outside click and its double rendering on open @silviuavram ([#12625](https://github.com/microsoft/fluentui/pull/12625))
+- Fix `Downshift` changes handler in `Dropdown` @silviuavram ([#12361](https://github.com/OfficeDev/office-ui-fabric-react/pull/12361))
+
+### Features
+- Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
+- Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12439](https://github.com/microsoft/fluentui/pull/12439))
+- Add `headerMessage` slot for `Dropdown` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+
+
+<!--------------------------------[ v0.47.0 ]------------------------------- -->
+## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.46.0..fluentuizero_v0.47.0)
+
+### BREAKING CHANGES
+- Replaced `icon` with `indicator` in the `Checkbox` component and change it's type to `ShorthandValue<BoxProps>` @mnajdova ([#12183](https://github.com/OfficeDev/office-ui-fabric-react/pull/12183))
+- Changed type of `control` in `Embed` from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
+- Renamed `icon` on `indicator` and change the type from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` in `RadioGroupItem` and `CarouselNavigationItem` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
+- Variables for `Toolbar` siblings should be defined in theme @layershifter ([#12203](https://github.com/OfficeDev/office-ui-fabric-react/pull/12203))
+- Rename `@fluentui/react` package to `@fluentui/react-northstar` @dzearing ([#12302](https://github.com/OfficeDev/office-ui-fabric-react/pull/12302))
+
+### Fixes
+- Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12171](https://github.com/OfficeDev/office-ui-fabric-react/pull/12171))
+- Fix exports for themes to make them treeshakable @layershifter ([#12224](https://github.com/OfficeDev/office-ui-fabric-react/pull/12224))
+- Fix referentially unstable props in `TreeItem` @silviuavram ([#12182](https://github.com/OfficeDev/office-ui-fabric-react/pull/12182))
+- Make `onKeyDown` returned by `useAccessibility()` hook referentially stable between component's rerenders @layershifter ([#12185](https://github.com/OfficeDev/office-ui-fabric-react/pull/12185))
+- Fix passing down `variables` in `ToolbarMenuItem` @layershifter ([#12204](https://github.com/OfficeDev/office-ui-fabric-react/pull/12204))
+- Fix `ToolbarMenuItem` shouldn't focus menu trigger element after 'onClick' was executed on menu item @kolaps33 ([#12266](https://github.com/OfficeDev/office-ui-fabric-react/pull/12266))
+- `Carousel` accessibility fixes @kolaps33 ([#12050](https://github.com/OfficeDev/office-ui-fabric-react/pull/12050))
+- Fix different styles between children and shorthand API in `Button` component @mnajdova ([#12292](https://github.com/OfficeDev/office-ui-fabric-react/pull/12292))
+- Fix change handler typings of `Dropdown` to relect that we are passing `null` for event @silviuavram ([#12280](https://github.com/OfficeDev/office-ui-fabric-react/pull/12280))
+- Fix nested `<li>` elements in no results and loading messages for `Dropdown` @silviuavram ([#12330](https://github.com/OfficeDev/office-ui-fabric-react/pull/12330))
+
+### Features
+- Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
+- Add `square` prop on the `Avatar` component @mnajdova ([#12277](https://github.com/OfficeDev/office-ui-fabric-react/pull/12277))
+- Adding `raise hand`, `raise hand colored`, `raise hand disabled`, `merge calls`, `share location`, `panorama` and `spotlight` icons @TanelVari ([#12212](https://github.com/OfficeDev/office-ui-fabric-react/pull/12212))
+- Expose `contentWrapper` shorthand from `AccordionTitle` @silviuavram ([#12265](https://github.com/OfficeDev/office-ui-fabric-react/pull/12265))
+- Add `disabled` versions for `Dropdown` and `Input` @silviuavram ([#12250](https://github.com/OfficeDev/office-ui-fabric-react/pull/12250))
+
+### Documentation
+- Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))
+
+<!--------------------------------[ v0.46.0 ]------------------------------- -->
+## [v0.46.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.46.0) (2020-03-05)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.45.0..fluentuizero_v0.46.0)
+
+### BREAKING CHANGES
+- Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
+- Changed `indicator` prop in `MenuItem` and `Menu` to be `Box` shorthand instead of `Icon` @mnajdova ([#12145](https://github.com/OfficeDev/office-ui-fabric-react/pull/12145))
+- Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
+- Changed `indicator` prop in `AccordionTitle` to be `Box` shorthand instead of `Icon` @mnajdova ([#12160](https://github.com/OfficeDev/office-ui-fabric-react/pull/12160))
+- Restricted prop sets in the `ToolbarDivider`, `ToolbarItem` & `ToolbarCustomItem` components which are passed to styles functions @layershifter ([#12161](https://github.com/OfficeDev/office-ui-fabric-react/pull/12161))
+- Changed `submenuIndicator` and `activeIndicator` props in `ToolbarMenu` and `ToolbarMenuItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
+- Changed `clearIndicator`, `toggleIndicator` and `checkableIndicator` props in `Dropdown` and `DropdownItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
+- Restricted prop sets in the `ToolbarMenu`, `ToolbarMenuDivider`, `ToolbarRadioGroup` & `ToolbarMenuRadioGroup` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
+
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
-## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
+## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-03-02)
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
 
 ### BREAKING CHANGES
@@ -38,6 +446,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `font` CSS property will be no longer expanded to longhands @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
 - Renamed `content` classname to `contentWrapper` and changed `content` prop to be `Box` shorthand in `AccordionTitle` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
 - Changed `content` prop to be `Box` shorthand in `Label` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
+- Restricted prop sets in the `Flex` & `FlexItem` components which are passed to styles functions @layershifter ([#12078](https://github.com/OfficeDev/office-ui-fabric-react/pull/12078))
+- Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
@@ -102,7 +512,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `target` prop to `EventListener` component and `useEventListener()` hook @layershifter ([#2287](https://github.com/microsoft/fluent-ui-react/pull/2287))
 - Add `disabled` prop accordion title @jurokapsiar ([#2290](https://github.com/microsoft/fluent-ui-react/pull/2290))
 - Allow custom values for `size` in `FlexItem` @silviuavram ([#2313](https://github.com/microsoft/fluent-ui-react/pull/2313))
-- Move `zIndex` values from default variable values and styles to siteVariables object in Teams theme @pompomon ([#2311](https://github.com/microsoft/fluent-ui-react/pull/2311)) 
+- Move `zIndex` values from default variable values and styles to siteVariables object in Teams theme @pompomon ([#2311](https://github.com/microsoft/fluent-ui-react/pull/2311))
 
 ### Documentation
 - Add per-component performance charts @miroslavstastny ([#2240](https://github.com/microsoft/fluent-ui-react/pull/2240))

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
@@ -289,7 +289,15 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
-    'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'
+    | 'className'
+    | 'disabled'
+    | 'inputClassName'
+    | 'required'
+    | 'multiline'
+    | 'borderless'
+    | 'resizable'
+    | 'underlined'
+    | 'autoAdjustHeight'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
@@ -316,7 +324,7 @@ export interface ITextFieldSubComponentStyles {
 /**
  * {@docCategory TextField}
  */
-export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+export interface ITextFieldStyles {
   /**
    * Style for root element.
    */

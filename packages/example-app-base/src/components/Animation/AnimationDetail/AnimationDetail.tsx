@@ -3,25 +3,26 @@ import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react';
 import { IAnimationDetailProps } from './AnimationDetail.types';
 
 import { AnimationExample } from '../index';
+import { MarkdownCode } from '../../Markdown/index';
 
 const styles = mergeStyleSets({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   exampleWrapper: {
-    marginRight: 12
+    marginRight: 12,
   },
   detailsWrapper: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: 4
+    padding: 4,
   },
   detailTitle: {
     fontSize: '14px',
     fontWeight: FontWeights.semibold,
-    marginBottom: 4
-  }
+    marginBottom: 4,
+  },
 });
 
 export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = props => {
@@ -39,11 +40,15 @@ export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = p
         </div>
         <div>
           <div className={styles.detailTitle}>Core variable/mixin/class</div>
-          <span>{coreClass}</span>
+          <span>
+            <MarkdownCode>{coreClass}</MarkdownCode>
+          </span>
         </div>
         <div>
           <div className={styles.detailTitle}>React variable</div>
-          <span>{reactVariable}</span>
+          <span>
+            <MarkdownCode>{reactVariable}</MarkdownCode>
+          </span>
         </div>
       </div>
     </div>

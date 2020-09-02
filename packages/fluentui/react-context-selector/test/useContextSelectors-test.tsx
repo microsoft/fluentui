@@ -4,13 +4,13 @@ import * as React from 'react';
 
 const TestContext = createContext<{ index: number; value: string }>({
   index: -1,
-  value: ''
+  value: '',
 });
 
 const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props => {
   const context = useContextSelectors(TestContext, {
     active: v => v.index === props.index,
-    value: v => v.value
+    value: v => v.value,
   });
 
   React.useEffect(() => {
@@ -25,7 +25,7 @@ describe('useContextSelectors', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 1, value: 'foo' }}>
         <TestComponent index={1} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     expect(wrapper.find('div').prop('data-active')).toBe(true);
@@ -37,7 +37,7 @@ describe('useContextSelectors', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: -1, value: 'foo' }}>
         <TestComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     expect(wrapper.find('div').prop('data-active')).toBe(false);
@@ -77,7 +77,7 @@ describe('useContextSelectors', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 0, value: 'foo' }}>
         <MemoComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     wrapper.setProps({ value: { index: 1, value: 'foo' } });

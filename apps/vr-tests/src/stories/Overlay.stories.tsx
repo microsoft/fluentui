@@ -15,16 +15,16 @@ storiesOf('Overlay', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
     // prettier-ignore
     () => <Overlay>Overlay content</Overlay>,
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Dark',
     // prettier-ignore
-    () => <Overlay isDarkThemed>Overlay content</Overlay>
+    () => <Overlay isDarkThemed>Overlay content</Overlay>,
   );

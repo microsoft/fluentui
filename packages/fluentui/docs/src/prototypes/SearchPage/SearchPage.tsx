@@ -1,7 +1,8 @@
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Avatar, Header, Input, List, Segment } from '@fluentui/react';
+import { Avatar, Header, Input, List, Segment, Loader } from '@fluentui/react-northstar';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 // ----------------------------------------
 // Types
@@ -30,7 +31,7 @@ const DATA_RECORDS = _.times(100, () => ({
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
   quote: faker.hacker.phrase(),
-  timestamp: faker.date.recent().toLocaleString()
+  timestamp: faker.date.recent().toLocaleString(),
 }));
 
 // Converts a data record to a <ListItem />'s props object
@@ -39,13 +40,13 @@ const dataRecordToListItem = record => ({
   media: <Avatar name={`${record.firstName} ${record.lastName}`} image={record.avatar} />,
   header: `${record.firstName} ${record.lastName}`,
   content: record.quote,
-  endMedia: record.timestamp
+  endMedia: record.timestamp,
 });
 
 // ----------------------------------------
 // Prototype Search Page View
 // ----------------------------------------
-class SearchPage extends React.Component<SearchPageState, any> {
+class SearchPage extends React.Component<any, SearchPageState> {
   state = { loading: false, query: '', results: [] };
   searchTimer: any;
 
@@ -80,10 +81,9 @@ class SearchPage extends React.Component<SearchPageState, any> {
 
         <p>
           <Input
-            ref="input"
             value={query}
             placeholder={`Try "${_.sample(DATA_RECORDS).firstName}"`}
-            icon={loading ? 'spinner' : 'search'}
+            icon={loading ? <Loader size="small" /> : <SearchIcon />}
             onChange={this.handleSearchChange}
           />
         </p>

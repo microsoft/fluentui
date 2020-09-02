@@ -21,51 +21,53 @@ export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
   componentName: 'PeoplePicker',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/PeoplePicker',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/PeoplePicker',
   examples: [
     {
       title: 'Normal People Picker',
       code: PeoplePickerNormalExampleCode,
-      view: <PeoplePickerNormalExample />
+      view: <PeoplePickerNormalExample />,
     },
     {
       title: 'Compact People Picker',
       code: PeoplePickerCompactExampleCode,
-      view: <PeoplePickerCompactExample />
+      view: <PeoplePickerCompactExample />,
     },
     {
       title: 'List People Picker',
       code: PeoplePickerListExampleCode,
-      view: <PeoplePickerListExample />
+      view: <PeoplePickerListExample />,
     },
     {
       title: 'People Picker with Preselected Items',
       code: PeoplePickerPreselectedItemsExampleCode,
-      view: <PeoplePickerPreselectedItemsExample />
+      view: <PeoplePickerPreselectedItemsExample />,
     },
     {
       title: 'People Picker with Limited Search',
       code: PeoplePickerLimitedSearchExampleCode,
-      view: <PeoplePickerLimitedSearchExample />
+      view: <PeoplePickerLimitedSearchExample />,
     },
     {
       title: 'People Picker with Processed Selection',
       code: PeoplePickerProcessSelectionExampleCode,
-      view: <PeoplePickerProcessSelectionExample />
+      view: <PeoplePickerProcessSelectionExample />,
     },
     {
       title: 'Controlled People Picker',
       code: PeoplePickerControlledExampleCode,
-      view: <PeoplePickerControlledExample />
-    }
+      view: <PeoplePickerControlledExample />,
+    },
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts'),
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

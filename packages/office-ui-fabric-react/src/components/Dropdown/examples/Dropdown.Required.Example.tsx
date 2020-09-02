@@ -3,6 +3,8 @@ import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
+const dropdownStyles = { dropdown: { width: 300 } };
+
 export const DropdownRequiredExample: React.FunctionComponent = () => {
   const dropdownRef = React.createRef<IDropdown>();
   const onSetFocus = () => dropdownRef.current!.focus(true);
@@ -21,12 +23,16 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
             { key: 'B', text: 'Option b' },
             { key: 'C', text: 'Option c', disabled: true },
             { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' }
+            { key: 'E', text: 'Option e' },
           ]}
-          required={true}
-          styles={{ dropdown: { width: 300 } }}
+          required
+          styles={dropdownStyles}
         />
-        <PrimaryButton text="Set focus" onClick={onSetFocus} />
+        <PrimaryButton
+          text="Set focus"
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onSetFocus}
+        />
       </Stack>
       <Dropdown
         placeholder="Required with no label"
@@ -36,10 +42,10 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
           { key: 'B', text: 'Option b' },
           { key: 'C', text: 'Option c', disabled: true },
           { key: 'D', text: 'Option d' },
-          { key: 'E', text: 'Option e' }
+          { key: 'E', text: 'Option e' },
         ]}
         required={true}
-        styles={{ dropdown: { width: 300 } }}
+        styles={dropdownStyles}
       />
     </Stack>
   );

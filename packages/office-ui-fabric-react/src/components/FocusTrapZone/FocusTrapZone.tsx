@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { modalize } from '@uifabric/utilities';
 import {
   elementContains,
   getNativeProps,
@@ -9,7 +10,7 @@ import {
   getDocument,
   focusAsync,
   initializeComponentRef,
-  on
+  on,
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
@@ -20,6 +21,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   private _firstBumper = React.createRef<HTMLDivElement>();
   private _lastBumper = React.createRef<HTMLDivElement>();
   private _hasFocus: boolean = false;
+  private _unmodalize?: () => void;
 
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
@@ -34,9 +36,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   public componentDidMount(): void {
     this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
+
+    if (!this.props.disabled && this._root.current && this.props.enableAriaHiddenSiblings) {
+      this._unmodalize = modalize(this._root.current);
+    }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
@@ -47,8 +52,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public componentDidUpdate(prevProps: IFocusTrapZoneProps) {
-    const prevForceFocusInsideTrap = prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
-    const newForceFocusInsideTrap = this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
+    const prevForceFocusInsideTrap =
+      prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
+    const newForceFocusInsideTrap =
+      this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
     const prevDisabled = prevProps.disabled !== undefined ? prevProps.disabled : false;
     const newDisabled = this.props.disabled !== undefined ? this.props.disabled : false;
 
@@ -56,10 +63,16 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
       // Emulate what happens when a FocusTrapZone gets mounted.
       this._bringFocusIntoZone();
+      if (!this._unmodalize && this._root.current && this.props.enableAriaHiddenSiblings) {
+        this._unmodalize = modalize(this._root.current);
+      }
     } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       // Emulate what happens when a FocusTrapZone gets unmounted.
       this._returnFocusToInitiator();
+      if (this._unmodalize) {
+        this._unmodalize();
+      }
     }
   }
 
@@ -84,6 +97,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       this._disposeFocusHandler = undefined;
     }
 
+    if (this._unmodalize) {
+      this._unmodalize();
+    }
+
     // Dispose of element references so the DOM Nodes can be garbage-collected
     delete this._previouslyFocusedElementInTrapZone;
     delete this._previouslyFocusedElementOutsideTrapZone;
@@ -94,12 +111,13 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
-        position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
+        position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'data-is-visible': true
+      'data-is-visible': true,
     } as React.HTMLAttributes<HTMLDivElement>;
 
     return (
@@ -133,7 +151,9 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string'
+        ? firstFocusableSelector
+        : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild: HTMLElement | null = null;
 
@@ -144,7 +164,14 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
       // Fall back to first element if query selector did not match any elements.
       if (!_firstFocusableChild) {
-        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, false, false, false, true);
+        _firstFocusableChild = getNextElement(
+          this._root.current,
+          this._root.current.firstChild as HTMLElement,
+          false,
+          false,
+          false,
+          true,
+        );
       }
     }
     if (_firstFocusableChild) {
@@ -199,7 +226,9 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       return;
     }
 
-    const currentBumper = (isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current) as HTMLElement;
+    const currentBumper = (isFirstBumper === this._hasFocus
+      ? this._lastBumper.current
+      : this._firstBumper.current) as HTMLElement;
 
     if (this._root.current) {
       const nextFocusable =
@@ -209,7 +238,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
       if (nextFocusable) {
         if (this._isBumper(nextFocusable)) {
-          // This can happen when FTZ contains no tabbable elements. focus will take care of finding a focusable element in FTZ.
+          // This can happen when FTZ contains no tabbable elements.
+          // focus will take care of finding a focusable element in FTZ.
           this.focus();
         } else {
           nextFocusable.focus();

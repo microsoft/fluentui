@@ -5,13 +5,13 @@ import * as React from 'react';
 export type CopyToClipboardProps = {
   children: (active: boolean, onClick: () => void) => React.ReactElement;
   timeout?: number;
-  value: string;
+  value: string | (() => string);
 };
 
-export const useCopyToClipboard = (value: string, timeout: number = 3000): [boolean, () => void] => {
+export const useCopyToClipboard = (value: string | (() => string), timeout: number = 3000): [boolean, () => void] => {
   const [active, setActive] = React.useState(false);
   const onCopy = React.useCallback(() => {
-    copyToClipboard(value);
+    copyToClipboard(typeof value === 'function' ? value() : value);
     setActive(true);
 
     const timeoutId = setTimeout(() => setActive(false), timeout);
@@ -22,7 +22,7 @@ export const useCopyToClipboard = (value: string, timeout: number = 3000): [bool
   return [active, onCopy];
 };
 
-const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => {
+export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => {
   const { children, timeout, value } = props;
   const [active, onCopy] = useCopyToClipboard(value, timeout);
 
@@ -32,7 +32,5 @@ const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => 
 CopyToClipboard.propTypes = {
   children: PropTypes.func.isRequired,
   timeout: PropTypes.number,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
-
-export default CopyToClipboard;

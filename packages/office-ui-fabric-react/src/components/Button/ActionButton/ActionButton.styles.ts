@@ -15,7 +15,7 @@ export const getStyles = memoizeFunction(
         height: DEFAULT_BUTTON_HEIGHT,
         color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
-        border: '1px solid transparent'
+        border: '1px solid transparent',
       },
 
       rootHovered: {
@@ -23,62 +23,62 @@ export const getStyles = memoizeFunction(
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight',
-            color: 'Highlight'
-          }
-        }
+            color: 'Highlight',
+          },
+        },
       },
 
       iconHovered: {
-        color: theme.palette.themePrimary
+        color: theme.palette.themePrimary,
       },
 
       rootPressed: {
-        color: theme.palette.black
+        color: theme.palette.black,
       },
 
       rootExpanded: {
-        color: theme.palette.themePrimary
+        color: theme.palette.themePrimary,
       },
 
       iconPressed: {
-        color: theme.palette.themeDarker
+        color: theme.palette.themeDarker,
       },
 
       rootDisabled: {
         color: theme.palette.neutralTertiary,
         backgroundColor: 'transparent',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
       },
 
       rootChecked: {
-        color: theme.palette.black
+        color: theme.palette.black,
       },
 
       iconChecked: {
-        color: theme.palette.themeDarker
+        color: theme.palette.themeDarker,
       },
 
       flexContainer: {
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
       },
 
       icon: {
-        color: theme.palette.themeDarkAlt
+        color: theme.palette.themeDarkAlt,
       },
 
       iconDisabled: {
-        color: 'inherit'
+        color: 'inherit',
       },
 
       menuIcon: {
-        color: theme.palette.neutralSecondary
+        color: theme.palette.neutralSecondary,
       },
 
       textContainer: {
-        flexGrow: 0
-      }
+        flexGrow: 0,
+      },
     };
 
     return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
-  }
+  },
 );

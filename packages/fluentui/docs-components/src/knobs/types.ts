@@ -40,6 +40,12 @@ export type KnobRangeKnobComponentProps = KnobComponentProps & {
   unit: string;
 };
 
+export type KnobNumberKnobComponentProps = KnobComponentProps & {
+  min: string;
+  max: string;
+  step: string;
+};
+
 export type LogInspectorProps = Pick<LogContextFunctionsValue, 'clearLog'> & {
   items: LogContextItemsValue;
 };

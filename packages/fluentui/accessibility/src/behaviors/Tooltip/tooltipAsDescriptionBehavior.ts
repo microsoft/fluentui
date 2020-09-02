@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
@@ -11,31 +11,29 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-describedby' based on the property 'contentId' to 'trigger' slot. This can be overriden by providing 'aria-describedby' property directly to the component.
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
-const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
+export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
 
   return {
     attributes: {
       trigger: {
-        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby']
+        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby'],
       },
       tooltip: {
         role: 'tooltip',
         id: defaultAriaDescribedBy,
-        'aria-hidden': !props.open
-      }
+        'aria-hidden': !props.open,
+      },
     },
     keyActions: {
       trigger: {
         close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }]
-        }
-      }
-    }
+          keyCombinations: [{ keyCode: keyboardKey.Escape }],
+        },
+      },
+    },
   };
 };
-
-export default tooltipAsDescriptionBehavior;
 
 /**
  * Returns the element id of the tooltip, it is used when user does not provide aria-describedby as props.
@@ -52,4 +50,6 @@ export type TooltipBehaviorProps = {
   open: boolean;
   /** Tooltip's container id. */
   contentId: string;
+  /** aria-label from trigger shorthand. */
+  triggerAriaLabel: string;
 } & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;

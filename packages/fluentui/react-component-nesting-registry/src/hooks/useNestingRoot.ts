@@ -1,13 +1,16 @@
 import * as React from 'react';
 
-import NestingContext from '../NestingContext';
+import { NestingContext } from '../NestingContext';
 import { NestedContextProps } from '../types';
-import RefStack from '../utils/RefStack';
+import { RefStack } from '../utils/RefStack';
 import { UseNestingHookResult } from './types';
 
 const registrySet = new RefStack();
 
-const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
+// These hooks are not used currently
+/* eslint-disable */
+
+export const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
   const [registry] = React.useState(registrySet);
   const parentRef = React.useRef<T>(null);
 
@@ -16,10 +19,10 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
       value: {
         getContextRefs: registry.getContextRefs,
         register: registry.register,
-        unregister: registry.unregister
-      }
+        unregister: registry.unregister,
+      },
     }),
-    []
+    [],
   );
   const getRefs = React.useCallback(() => {
     return registry.getContextRefs(parentRef as any);
@@ -37,8 +40,6 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
 
     getRefs,
     isRoot: true,
-    ref: parentRef
+    ref: parentRef,
   };
 };
-
-export default useNestingRoot;

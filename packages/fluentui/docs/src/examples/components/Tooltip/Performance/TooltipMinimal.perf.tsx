@@ -1,4 +1,4 @@
-import { Tooltip } from '@fluentui/react';
+import { Tooltip } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const TooltipMinimalPerf = () => (

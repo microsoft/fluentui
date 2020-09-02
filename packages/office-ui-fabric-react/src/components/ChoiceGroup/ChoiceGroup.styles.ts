@@ -3,7 +3,7 @@ import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ChoiceFieldGroup',
-  flexContainer: 'ms-ChoiceFieldGroup-flexContainer'
+  flexContainer: 'ms-ChoiceFieldGroup-flexContainer',
 };
 
 export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => {
@@ -19,16 +19,16 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
       classNames.root,
       theme.fonts.medium,
       {
-        display: 'block'
-      }
+        display: 'block',
+      },
     ],
     flexContainer: [
       classNames.flexContainer,
       optionsContainIconOrImage && {
         display: 'flex',
         flexDirection: 'row',
-        flexWrap: 'wrap'
-      }
-    ]
+        flexWrap: 'wrap',
+      },
+    ],
   };
 };

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { act, create } from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
-import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
 import { SelectedItemsList } from './SelectedItemsList';
+import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
+import { mount } from 'enzyme';
 
 export interface ISimple {
   key: string;
@@ -10,65 +11,111 @@ export interface ISimple {
 }
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div key={props.name}> {props.name} </div>;
+  return <div id={props.item.name}>{props.item.name}</div>;
 };
 
+// See SelectedPeopleList.test for more tests on items manipulation.
 describe('SelectedItemsList', () => {
   describe('SelectedItemsList', () => {
     const renderNothing = () => <></>;
 
-    it('renders SelectedItemsList correctly', () => {
+    it('renders SelectedItemsList correctly when no specific render component is provided', () => {
       const component = create(<SelectedItemsList onRenderItem={renderNothing} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
-    it('can remove items', () => {
-      const onChange = (items: ISimple[] | undefined): void => {
-        expect(items!.length).toBe(1);
-        expect(items![0].name).toBe('b');
-      };
+    it('renders SelectedItemsList correctly', () => {
+      const component = create(<SelectedItemsList onRenderItem={basicItemRenderer} />);
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
-      const listRef = React.createRef<ISelectedItemsList<ISimple>>();
-      create(
-        <SelectedItemsList<ISimple>
-          ref={listRef}
+    it('render all items in selectedItemsList', () => {
+      const wrapper = mount<ISelectedItemsList<ISimple>>(
+        <SelectedItemsList
           onRenderItem={basicItemRenderer}
           selectedItems={[
             { key: '1', name: 'a' },
-            { key: '2', name: 'b' }
+            { key: '2', name: 'b' },
           ]}
-          onChange={onChange}
-        />
+        />,
       );
-
-      if (!listRef.current) {
-        throw new Error('listRef was not initialized');
-      }
-
-      expect(listRef.current.items.length).toEqual(2);
-      act(() => {
-        listRef.current && listRef.current.removeItems([listRef.current.items[1]]);
-      });
-      expect(listRef.current.items.length).toEqual(1);
+      expect(wrapper).toBeDefined();
+      expect(wrapper.find('div').length).toEqual(3);
+      expect(
+        wrapper
+          .find('div')
+          .first()
+          .childAt(0)
+          .text(),
+      ).toEqual('a');
+      expect(
+        wrapper
+          .find('div')
+          .last()
+          .text(),
+      ).toEqual('b');
     });
+  });
 
-    it('can add items', () => {
-      const listRef = React.createRef<ISelectedItemsList<ISimple>>();
-      create(<SelectedItemsList<ISimple> ref={listRef} onRenderItem={basicItemRenderer} />);
+  it('render between selected and default selected items in selectedItemsList', () => {
+    const removeItems = jest.fn();
+    const wrapper = mount<ISelectedItemsList<ISimple>>(
+      <SelectedItemsList
+        onRenderItem={basicItemRenderer}
+        selectedItems={[
+          { key: 'd1', name: 'da' },
+          { key: 'd2', name: 'db' },
+        ]}
+        defaultSelectedItems={[
+          { key: 'd1', name: 'da' },
+          { key: 'd2', name: 'db' },
+        ]}
+        onItemsRemoved={removeItems}
+      />,
+    );
+    expect(wrapper).toBeDefined();
+    expect(wrapper.find('div').length).toEqual(3);
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .childAt(0)
+        .text(),
+    ).toEqual('da');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('db');
+  });
 
-      const items: ISimple[] = [
-        { key: '1', name: 'a' },
-        { key: '2', name: 'b' }
-      ];
-      if (!listRef.current) {
-        throw new Error('listRef was not initialized');
-      }
-
-      act(() => {
-        listRef.current && listRef.current.addItems(items);
-      });
-      expect(listRef.current.items.length).toEqual(2);
-    });
+  it('renders items that are passed in as default', () => {
+    const wrapper = mount<ISelectedItemsList<ISimple>>(
+      <SelectedItemsList
+        onRenderItem={basicItemRenderer}
+        defaultSelectedItems={[
+          { key: 'd1', name: 'Person A' },
+          { key: 'd2', name: 'Person B' },
+        ]}
+      />,
+    );
+    expect(wrapper).toBeDefined();
+    expect(wrapper.find('div').length).toEqual(3);
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .childAt(0)
+        .text(),
+    ).toEqual('Person A');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('Person B');
   });
 });

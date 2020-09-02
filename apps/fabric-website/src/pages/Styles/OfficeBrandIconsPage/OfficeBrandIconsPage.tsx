@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { IconGrid } from '../../../components/IconGrid/IconGrid';
-import { Image, Icon, Link } from 'office-ui-fabric-react';
-import { getFileTypeIconProps } from '@uifabric/file-type-icons';
+import { Image, Link } from 'office-ui-fabric-react';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
@@ -9,17 +7,22 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './OfficeBrandIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
-const fabricCDN = 'https://static2.sharepointonline.com/files/fabric/assets';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
+const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
 
-const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
-const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
-const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
+const productIcons = require<
+  { icon: string; name: string }[]
+  // eslint-disable-next-line import/no-extraneous-dependencies
+>('@uifabric/fabric-website/lib/data/brand-icons-products.json');
 
 export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
-    <StylesAreaPage {...props} {...OfficeBrandIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+    <StylesAreaPage
+      {...props}
+      {...OfficeBrandIconsPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
   );
 };
 
@@ -42,22 +45,27 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use Office brand icons to help your users transition between Microsoft products. Product icons should only be used
-                      when the behavior of the command (app icon) is to launch the application. Do not use a product icon to create a new
-                      file of that type. For example, do not use the Word app icon for the menu option that allows users create a new Word
-                      document.
+                      Use Office brand icons to help your users transition between Microsoft products. Product icons
+                      should only be used when the behavior of the command (app icon) is to launch the application. Do
+                      not use a product icon to create a new file of that type. For example, do not use the Word app
+                      icon for the menu option that allows users create a new Word document.
                     </p>
                     <p>
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
-                      <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for file type icons to
-                      represent digital content or to indicate to users that they are creating a new file of that type, check out the{' '}
-                      <Link href="#/styles/web/file-type-icons">Fabric file type icons page</Link>.
+                      If you are looking for icons for command bars, navigation, status indicators, or similar, check
+                      out the <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're
+                      looking for file type icons to represent digital content or to indicate to users that they are
+                      creating a new file of that type, check out the{' '}
+                      <Link href="#/styles/web/file-type-icons">Fluent UI file type icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <ul className={styles.exampleIcons}>
                       <li>
-                        <Image src={`${fabricCDN}/brand-icons/product/svg/word_48x1.svg`} className={styles.productIcon} alt="Word logo" />
+                        <Image
+                          src={`${fabricCDN}/brand-icons/product/svg/word_48x1.svg`}
+                          className={styles.productIcon}
+                          alt="Word logo"
+                        />
                       </li>
                       <li>
                         <Image
@@ -78,7 +86,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Format and sizes',
@@ -97,7 +105,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   <ul className={styles.exampleIcons}>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_16x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_16x1.png`}
                         width="16"
                         height="16"
                         alt="Outlook 16x1 PNG product icon"
@@ -106,7 +114,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_32x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_32x1.png`}
                         width="32"
                         height="32"
                         alt="Outlook 32x1 PNG product icon"
@@ -115,7 +123,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_48x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_48x1.png`}
                         width="48"
                         height="48"
                         alt="Outlook 48x1 PNG product icon"
@@ -124,7 +132,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_96x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_96x1.png`}
                         width="96"
                         height="96"
                         alt="Outlook 96x1 PNG product icon"
@@ -135,7 +143,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </div>
-          )
+          ),
         },
         {
           sectionName: 'Resolutions',
@@ -146,7 +154,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
               }
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -157,7 +165,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         {
@@ -179,8 +187,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:

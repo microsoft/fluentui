@@ -17,14 +17,22 @@ import {
   isMac,
   mergeAriaAttributeValues,
   safeRequestAnimationFrame,
+  warn,
   warnDeprecations,
-  warnMutuallyExclusive
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
+import {
+  DropdownMenuItemType,
+  IDropdownOption,
+  IDropdownProps,
+  IDropdownStyleProps,
+  IDropdownStyles,
+  IDropdown,
+} from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
@@ -35,7 +43,11 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType, getAllSelectedOptions, ISelectableDroppableTextProps } from '../../utilities/selectableOption/index';
+import {
+  SelectableOptionMenuItemType,
+  getAllSelectedOptions,
+  ISelectableDroppableTextProps,
+} from '../../utilities/selectableOption/index';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -53,7 +65,7 @@ export interface IDropdownState {
 @withResponsiveMode
 export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
-    options: [] as any[]
+    options: [] as any[],
   };
 
   private _host = React.createRef<HTMLDivElement>();
@@ -81,21 +93,41 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     initializeComponentRef(this);
 
+    const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
+
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dropdown', props, {
         isDisabled: 'disabled',
         onChanged: 'onChange',
         placeHolder: 'placeholder',
-        onRenderPlaceHolder: 'onRenderPlaceholder'
+        onRenderPlaceHolder: 'onRenderPlaceholder',
       });
 
       warnMutuallyExclusive('Dropdown', props, {
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
-        multiSelect: 'defaultSelectedKey',
-        selectedKey: 'multiSelect'
       });
+
+      if (multiSelect) {
+        const warnMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}' cannot be used when 'multiSelect' is true. Use '${prop}s' instead.`);
+        if (selectedKey !== undefined) {
+          warnMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKey !== undefined) {
+          warnMultiSelect('defaultSelectedKey');
+        }
+      } else {
+        const warnNotMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}s' cannot be used when 'multiSelect' is false/unset. Use '${prop}' instead.`);
+        if (selectedKeys !== undefined) {
+          warnNotMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKeys !== undefined) {
+          warnNotMultiSelect('defaultSelectedKey');
+        }
+      }
     }
 
     this._id = props.id || getId('Dropdown');
@@ -106,21 +138,25 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     let selectedIndices: number[];
 
-    if (this.props.multiSelect) {
-      const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+    if (multiSelect) {
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        defaultSelectedKeys !== undefined ? defaultSelectedKeys : selectedKeys,
+      );
     } else {
-      const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        (defaultSelectedKey !== undefined ? defaultSelectedKey : selectedKey)!,
+      );
     }
 
-    this._sizePosCache.updateOptions(props.options);
+    this._sizePosCache.updateOptions(options);
 
     this.state = {
       isOpen: false,
       selectedIndices,
       hasFocus: false,
-      calloutRenderEdge: undefined
+      calloutRenderEdge: undefined,
     };
   }
 
@@ -138,7 +174,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     clearTimeout(this._scrollIdleTimeoutId);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
@@ -162,16 +197,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       }
     }
 
-    if (newProps[selectedKeyProp] !== undefined && (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || didOptionsChange)) {
-      this.setState({
-        selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp])
-      });
-    }
-
     if (
-      newProps.options !== this.props.options // preexisting code assumes purity of the options...
+      newProps[selectedKeyProp] !== undefined &&
+      (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || didOptionsChange)
     ) {
-      this._sizePosCache.updateOptions(newProps.options);
+      this.setState({
+        selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp]),
+      });
     }
   }
 
@@ -205,11 +237,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
     } = props;
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
+
+    // If our cached options are out of date update our cache
+    if (options !== this._sizePosCache.cachedOptions) {
+      this._sizePosCache.updateOptions(options);
+    }
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(props, divProperties);
@@ -225,15 +262,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const ariaAttrs = multiSelect
       ? {
-          role: 'button'
+          role: 'button',
         }
       : // single select
         {
           role: 'listbox',
           childRole: 'option',
+          ariaRequired: required,
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true,
         };
 
     this._classNames = getClassNames(propStyles, {
@@ -245,9 +283,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       required,
       disabled,
       isRenderingPlaceholder: !selectedOptions.length,
-      panelClassName: !!panelProps ? panelProps.className : undefined,
-      calloutClassName: !!calloutProps ? calloutProps.className : undefined,
-      calloutRenderEdge: calloutRenderEdge
+      panelClassName: panelProps?.className,
+      calloutClassName: calloutProps?.className,
+      calloutRenderEdge: calloutRenderEdge,
     });
 
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
@@ -267,13 +305,15 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
-              aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
+              aria-labelledby={
+                label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined
+              }
               aria-describedby={mergeAriaAttributeValues(
                 keytipAttributes['aria-describedby'],
-                hasErrorMessage ? this._id + '-errorMessage' : undefined
+                hasErrorMessage ? this._id + '-errorMessage' : undefined,
               )}
               aria-activedescendant={ariaActiveDescendant}
-              aria-required={required}
+              aria-required={ariaAttrs.ariaRequired}
               aria-disabled={disabled}
               aria-owns={isOpen ? this._listId : undefined}
               {...divProps}
@@ -301,7 +341,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
                   : onRenderPlaceholder(props, this._onRenderPlaceholder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
+              <span className={this._classNames.caretDownWrapper}>
+                {onRenderCaretDown(props, this._onRenderCaretDown)}
+              </span>
             </div>
           )}
         </KeytipData>
@@ -321,7 +363,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
       if (shouldOpenOnFocus) {
         this.setState({
-          isOpen: true
+          isOpen: true,
         });
       }
     }
@@ -364,11 +406,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     // Call onChange after state is updated
     this.setState(
       {
-        selectedIndices: newIndexes
+        selectedIndices: newIndexes,
       },
       () => {
         this._onChange(event, options, index, checked, multiSelect);
-      }
+      },
     );
   }
 
@@ -377,9 +419,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     options: IDropdownOption[],
     index: number,
     checked?: boolean,
-    multiSelect?: boolean
+    multiSelect?: boolean,
   ) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -393,7 +435,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     return this.props.placeholder || this.props.placeHolder;
   }
 
@@ -412,7 +454,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
    * @param selectedIndex - The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
-  private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
+  private _moveIndex(
+    event: React.FormEvent<HTMLDivElement>,
+    stepValue: number,
+    index: number,
+    selectedIndex: number,
+  ): number {
     const { options } = this.props;
     // Return selectedIndex if nothing has changed or options is empty
     if (selectedIndex === index || options.length === 0) {
@@ -487,7 +534,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : undefined;
 
     return isSmall ? (
-      <Panel isOpen={true} isLightDismiss={true} onDismiss={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
+      <Panel
+        isOpen={true}
+        isLightDismiss={true}
+        onDismiss={this._onDismiss}
+        hasCloseButton={false}
+        styles={panelStyles}
+        {...panelProps}
+      >
         {this._renderFocusableList(props)}
       </Panel>
     ) : (
@@ -555,7 +609,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         ? [
             <div role="group" key={queue.id} aria-labelledby={queue.id}>
               {queue.items}
-            </div>
+            </div>,
           ]
         : queue.items;
 
@@ -637,7 +691,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _renderOption = (item: IDropdownOption): JSX.Element => {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
-    const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    const isItemSelected =
+      item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right className based on the combination of selected/disabled
     const itemClassName = item.hidden // predicate: item hidden
@@ -653,7 +708,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { title = item.text } = item;
 
     const multiSelectItemStyles = this._classNames.subComponentStyles
-      ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
+      ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
+          ICheckboxStyleProps,
+          ICheckboxStyles
+        >)
       : undefined;
 
     return !this.props.multiSelect ? (
@@ -665,8 +723,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         className={itemClassName}
         onClick={this._onItemClick(item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseLeave={this._onMouseItemLeave.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
@@ -686,16 +747,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
+          'aria-selected': isItemSelected,
           onMouseEnter: this._onItemMouseEnter.bind(this, item),
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
-          onMouseMove: this._onItemMouseMove.bind(this, item)
+          onMouseMove: this._onItemMouseMove.bind(this, item),
+          role: 'option',
         }}
         label={item.text}
         title={title}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
-        role="option"
-        aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
@@ -736,7 +798,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (!this.state.calloutRenderEdge || this.state.calloutRenderEdge !== positions!.targetEdge) {
       this.setState({
-        calloutRenderEdge: positions!.targetEdge
+        calloutRenderEdge: positions!.targetEdge,
       });
     }
   };
@@ -748,7 +810,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         if (!this.props.multiSelect) {
           // only close the callout when it's in single-select mode
           this.setState({
-            isOpen: false
+            isOpen: false,
           });
         }
       }
@@ -824,7 +886,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Get all selected indexes for multi-select mode */
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | null | undefined): number[] {
+  private _getSelectedIndexes(
+    options: IDropdownOption[],
+    selectedKey: string | number | string[] | number[] | null | undefined,
+  ): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
@@ -845,16 +910,18 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
-    return options.map((option: IDropdownOption, index: number) => (option.selected ? index : -1)).filter(index => index !== -1);
+    return options
+      .map((option: IDropdownOption, index: number) => (option.selected ? index : -1))
+      .filter(index => index !== -1);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
     return findIndex(options, option => {
-      // tslint:disable-next-line:triple-equals
+      // eslint-disable-next-line eqeqeq
       if (selectedKey != null) {
         return option.key === selectedKey;
       } else {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         return !!option.selected || !!option.isSelected;
       }
     });
@@ -905,7 +972,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
-          isOpen: !isOpen
+          isOpen: !isOpen,
         });
         break;
 
@@ -915,7 +982,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         }
 
         this.setState({
-          isOpen: false
+          isOpen: false,
         });
         break;
 
@@ -992,7 +1059,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
-          isOpen: !isOpen
+          isOpen: !isOpen,
         });
         break;
 
@@ -1105,7 +1172,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (!disabled && !this._shouldOpenOnFocus()) {
       this.setState({
-        isOpen: !isOpen
+        isOpen: !isOpen,
       });
     }
 
@@ -1145,7 +1212,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0
@@ -1164,7 +1231,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : undefined;
 
     return label ? (
-      <Label className={this._classNames.label} id={this._labelId} required={required} styles={labelStyles} disabled={disabled}>
+      <Label
+        className={this._classNames.label}
+        id={this._labelId}
+        required={required}
+        styles={labelStyles}
+        disabled={disabled}
+      >
         {label}
       </Label>
     ) : null;

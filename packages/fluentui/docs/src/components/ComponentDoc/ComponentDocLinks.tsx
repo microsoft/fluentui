@@ -1,11 +1,13 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, Icon, constants } from '@fluentui/react';
+import { Flex, Image } from '@fluentui/react-northstar';
+
+import config from '../../config';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {
     repoPath: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
+    type: PropTypes.string.isRequired,
   };
 
   render() {
@@ -21,15 +23,15 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
           display: 'flex',
           flexDirection: 'row',
           height: '0%',
-          verticalAlign: 'middle'
+          verticalAlign: 'middle',
         }}
       >
         <>
-          <Icon name="github" />
+          <Image src="public/images/github.png" width="16px" height="16px" />
           <code>
             <a
               style={{ color: 'rgba(0,0,0,.4)' }}
-              href={`${constants.repoURL}/blob/master/${repoPath}`}
+              href={`${config.repoURL}/blob/master/${repoPath}`}
               target="_blank"
               rel="noopener noreferrer"
             >

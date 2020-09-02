@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react';
+import { Flex, StatusProps, Extendable, Text } from '@fluentui/react-northstar';
 import CustomAvatar from './CustomAvatar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const statusProps: Extendable<WithAsProp<StatusProps>> = {
-  icon: 'icon-checkmark',
+const statusProps: Extendable<StatusProps> = {
+  icon: <AcceptIcon />,
   state: 'success',
-  title: 'Available'
+  title: 'Available',
 };
 
 const HexagonalAvatarPrototype = () => {
@@ -22,7 +23,7 @@ const HexagonalAvatarPrototype = () => {
           </defs>
         </svg>,
         document.body,
-        'bot-hexagon-clip-path'
+        'bot-hexagon-clip-path',
       )}
       <Flex column padding="padding.medium" gap="gap.medium">
         <div>

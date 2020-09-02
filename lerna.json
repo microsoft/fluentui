@@ -2,5 +2,5 @@
   "packages": ["apps/*", "packages/*", "scripts", "packages/fluentui/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.44.0"
+  "version": "0.0.0"
 }

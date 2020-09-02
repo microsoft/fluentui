@@ -5,31 +5,33 @@
 ```ts
 
 // @public
-export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<TStyleSet>;
+export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
+export function concatStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5> & ObjectOnly<TStyleSet6>>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>, TStyleSet6 extends IStyleSet<TStyleSet6>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 // @public
-export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): DeepPartial<TStyleSet>;
 
 // @public
-export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): Partial<TStyleSet>;
+export type DeepPartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
 
 // @public
 export function fontFace(font: IFontFace): void;
@@ -39,7 +41,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
-        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, IStyleSet<any>>;
+        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
 };
 
@@ -89,18 +91,20 @@ export interface IRawFontStyle {
     // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
-    fontSizeAdjust?: ICSSRule | 'none' | number;
-    fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded';
-    fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique';
+    fontSizeAdjust?: ICSSRule | 'none' | number | string;
+    fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded' | string;
+    fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique' | string;
     fontSynthesis?: ICSSRule | string;
     fontVariant?: ICSSRule | string;
     fontVariantAlternates?: ICSSRule | string;
-    fontWeight?: IFontWeight;
+    fontWeight?: IFontWeight | string;
 }
 
 // @public
 export interface IRawStyle extends IRawStyleBase {
+    [key: string]: any;
     displayName?: string;
+    // @deprecated (undocumented)
     selectors?: {
         [key: string]: IStyle;
     };
@@ -108,18 +112,18 @@ export interface IRawStyle extends IRawStyleBase {
 
 // @public
 export interface IRawStyleBase extends IRawFontStyle {
-    alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
-    alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+    alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch' | string;
+    alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | string;
     alignmentAdjust?: ICSSRule | string;
     alignmentBaseline?: ICSSRule | string;
     // Warning: (ae-forgotten-export) The symbol "ICSSBaselinePositionRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSOverflowAndSelfPositionRule" needs to be exported by the entry point index.d.ts
-    alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
+    alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     animation?: ICSSRule | string;
     animationDelay?: ICSSRule | string;
     animationDirection?: ICSSRule | string;
     animationDuration?: ICSSRule | string;
-    animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
+    animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both' | string;
     animationIterationCount?: ICSSRule | string;
     animationName?: ICSSRule | string;
     animationPlayState?: ICSSRule | string;
@@ -128,9 +132,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     backdropFilter?: ICSSRule | string;
     backfaceVisibility?: ICSSRule | string;
     background?: ICSSRule | string;
-    backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local';
+    backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local' | string;
     backgroundBlendMode?: ICSSRule | string;
-    backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+    backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text' | string;
     backgroundColor?: ICSSRule | string;
     backgroundComposite?: ICSSRule | string;
     backgroundImage?: ICSSRule | string;
@@ -171,14 +175,14 @@ export interface IRawStyleBase extends IRawFontStyle {
     bottom?: ICSSRule | ICSSPixelUnitRule;
     boxDecorationBreak?: ICSSRule | string;
     boxShadow?: ICSSRule | string;
-    boxSizing?: ICSSRule | 'border-box' | 'content-box';
+    boxSizing?: ICSSRule | 'border-box' | 'content-box' | string;
     breakAfter?: ICSSRule | string;
     breakBefore?: ICSSRule | string;
     breakInside?: ICSSRule | string;
     clear?: ICSSRule | string;
     clipRule?: ICSSRule | string;
     color?: ICSSRule | string;
-    columnCount?: ICSSRule | number | 'auto';
+    columnCount?: ICSSRule | number | 'auto' | string;
     columnFill?: ICSSRule | string;
     columnGap?: ICSSRule | string;
     columnRule?: ICSSRule | string;
@@ -195,20 +199,21 @@ export interface IRawStyleBase extends IRawFontStyle {
     cursor?: ICSSRule | string;
     direction?: ICSSRule | string;
     // Warning: (ae-forgotten-export) The symbol "ICSSDisplayRule" needs to be exported by the entry point index.d.ts
-    display?: ICSSRule | ICSSDisplayRule;
+    display?: ICSSRule | ICSSDisplayRule | string;
     fill?: ICSSRule | string;
     fillOpacity?: ICSSRule | number;
     fillRule?: ICSSRule | string;
     filter?: ICSSRule | string;
     flex?: ICSSRule | string | number;
     flexBasis?: ICSSRule | string | number;
-    flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse' | string;
     flexFlow?: ICSSRule | string;
     flexGrow?: ICSSRule | number | string;
     flexShrink?: ICSSRule | number | string;
-    flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
+    flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse' | string;
     float?: ICSSRule | string;
     flowFrom?: ICSSRule | string;
+    forcedColorAdjust?: 'auto' | 'none' | string;
     gridArea?: ICSSRule | string;
     gridAutoColumns?: ICSSRule | string;
     gridAutoFlow?: ICSSRule | string;
@@ -232,8 +237,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitLines?: ICSSRule | string;
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
-    justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-    justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right';
+    justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
     lineHeight?: ICSSRule | 'normal' | ICSSPixelUnitRule | ICSSPercentageRule;
@@ -262,22 +267,22 @@ export interface IRawStyleBase extends IRawFontStyle {
     minHeight?: ICSSRule | ICSSPixelUnitRule;
     minWidth?: ICSSRule | ICSSPixelUnitRule;
     // Warning: (ae-forgotten-export) The symbol "IMixBlendModes" needs to be exported by the entry point index.d.ts
-    mixBlendMode?: ICSSRule | IMixBlendModes;
-    MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    mixBlendMode?: ICSSRule | IMixBlendModes | string;
+    MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
     MsHighContrastAdjust?: ICSSRule | string;
-    MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
-    objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+    MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar' | string;
+    objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none' | string;
     opacity?: ICSSRule | number | string;
-    order?: ICSSRule | number;
-    orphans?: ICSSRule | number;
+    order?: ICSSRule | number | string;
+    orphans?: ICSSRule | number | string;
     outline?: ICSSRule | 0 | string;
     outlineColor?: ICSSRule | string;
     outlineOffset?: ICSSRule | string;
     overflow?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
     overflowStyle?: ICSSRule | string;
-    overflowWrap?: ICSSRule | 'normal' | 'break-word';
-    overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
-    overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+    overflowWrap?: ICSSRule | 'normal' | 'break-word' | string;
+    overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
+    overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
     padding?: ICSSRule | ICSSPixelUnitRule;
     paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
     paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
@@ -299,7 +304,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;
     regionFragment?: ICSSRule | string;
-    resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+    resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline' | string;
     restAfter?: ICSSRule | string;
     restBefore?: ICSSRule | string;
     right?: ICSSRule | ICSSPixelUnitRule;
@@ -310,8 +315,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     speak?: ICSSRule | string;
     speakAs?: ICSSRule | string;
     stroke?: ICSSRule | string;
-    strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
-    strokeOpacity?: ICSSRule | number;
+    strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square' | string;
+    strokeOpacity?: ICSSRule | number | string;
     strokeWidth?: ICSSRule | ICSSPixelUnitRule;
     tableLayout?: ICSSRule | string;
     tabSize?: ICSSRule | string;
@@ -335,6 +340,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     textOverlineWidth?: ICSSRule | ICSSPixelUnitRule;
     textRendering?: ICSSRule | string;
     textShadow?: ICSSRule | string;
+    textSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
     textTransform?: ICSSRule | string;
     textUnderlinePosition?: ICSSRule | string;
     textUnderlineStyle?: ICSSRule | string;
@@ -352,7 +358,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     unicodeBidi?: ICSSRule | string;
     userFocus?: ICSSRule | string;
     userInput?: ICSSRule | string;
-    userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain';
+    userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain' | string;
     verticalAlign?: ICSSRule | string;
     visibility?: ICSSRule | string;
     voiceBalance?: ICSSRule | string;
@@ -364,11 +370,12 @@ export interface IRawStyleBase extends IRawFontStyle {
     voiceStress?: ICSSRule | string;
     voiceVolume?: ICSSRule | string;
     WebkitBackdropFilter?: ICSSRule | string;
-    WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
-    WebkitOverflowScrolling?: 'auto' | 'touch';
+    WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
+    WebkitOverflowScrolling?: 'auto' | 'touch' | string;
     WebkitTapHighlightColor?: string;
+    WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule | string;
     whiteSpace?: ICSSRule | string;
-    widows?: ICSSRule | number;
+    widows?: ICSSRule | number | string;
     width?: ICSSRule | ICSSPixelUnitRule;
     wordBreak?: ICSSRule | string;
     wordSpacing?: ICSSRule | string;
@@ -376,7 +383,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     wrapFlow?: ICSSRule | string;
     wrapMargin?: ICSSRule | string;
     writingMode?: ICSSRule | string;
-    zIndex?: ICSSRule | 'auto' | number;
+    zIndex?: ICSSRule | 'auto' | number | string;
     zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;
 }
 
@@ -391,22 +398,27 @@ export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
-export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => Partial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => DeepPartial<TStyleSet>;
 
 // @public
-export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | Partial<TStyleSet>;
+export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;
 
 // @public
-export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
+    [key: string]: any;
+}> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
-        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, IStyleSet<any>>;
+        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
 };
 
 // @public
 export interface IStyleSheetConfig {
+    classNameCache?: {
+        [key: string]: string;
+    };
     cspSettings?: ICSPSettings;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
@@ -421,45 +433,48 @@ export function keyframes(timeline: {
 }): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
 export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
 
 // @public
-export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
 // @public
-export function mergeCssSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
-export function mergeCssSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
-export function mergeCssSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined, TStyleSet4 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined, TStyleSet4 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
 
 // @public
-export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<TStyleSet>;
+export function mergeStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+
+// @public (undocumented)
+export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
@@ -473,6 +488,9 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     getClassName(displayName?: string): string;
+    getClassNameCache(): {
+        [key: string]: string;
+    };
     static getInstance(): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
@@ -486,8 +504,8 @@ export class Stylesheet {
 
 
 // Warnings were encountered during analysis:
-// 
-// lib/IStyleSet.d.ts:48:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+//
+// lib/IStyleSet.d.ts:50:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -2,6 +2,247 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.131",
+      "version": "0.11.131",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.112",
+      "version": "0.11.112",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.111",
+      "version": "0.11.111",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prevent infinite render loops on error",
+            "author": "elcraig@microsoft.com",
+            "commit": "1752574599d581730c50ada120cf054952493afa",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.109",
+      "version": "0.11.109",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.108",
+      "version": "0.11.108",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.99",
+      "version": "0.11.99",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/tsx-editor"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.95",
+      "version": "0.11.95",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.94",
+      "version": "0.11.94",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dep on example-data",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.67",
+      "version": "0.11.67",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.55",
+      "version": "0.11.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add useEditor=1 support to force editor on",
+            "author": "elcraig@microsoft.com",
+            "commit": "89b53e7f43d70ffac4e9d308428356c90b8ac06b",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.50",
+      "version": "0.11.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.49",
+      "version": "0.11.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.41",
+      "version": "0.11.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.40",
+      "version": "0.11.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.39",
+      "version": "0.11.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.32",
+      "version": "0.11.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.24",
       "version": "0.11.24",

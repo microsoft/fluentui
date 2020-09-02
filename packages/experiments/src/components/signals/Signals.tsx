@@ -18,7 +18,13 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName={getRTL() ? 'TagUnknown12Mirror' : 'TagUnknown12'} />;
+  return (
+    <IconSignal
+      {...props}
+      signalClass={SignalsStyles.missingMetadata}
+      iconName={getRTL() ? 'TagUnknown12Mirror' : 'TagUnknown12'}
+    />
+  );
 };
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
@@ -112,6 +118,18 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.shared} iconName="people" />;
 };
 
+export const DesktopSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="TVMonitor" />;
+};
+
+export const DocumentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Page" />;
+};
+
+export const PicturesSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Photo2" />;
+};
+
 export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.malwareDetected} iconName="BlockedSiteSolid12" />;
 };
@@ -144,9 +162,10 @@ type IIconSignalProps = ISignalProps &
 /**
  * Renders a signal as just an Icon. This is the simplest Signal case.
  */
-// tslint:disable-next-line:function-name
-function IconSignal(props: IIconSignalProps): JSX.Element {
+const IconSignal: React.FunctionComponent<IIconSignalProps> = props => {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
-  return <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />;
-}
+  return (
+    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
+  );
+};

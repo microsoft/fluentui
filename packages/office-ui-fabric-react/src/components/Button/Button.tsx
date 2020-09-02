@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, warn } from '../../Utilities';
+import { warn } from '../../Utilities';
 import { ButtonType, IButtonProps } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { ActionButton } from './ActionButton/ActionButton';
@@ -8,31 +8,25 @@ import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 
-// tslint:disable:deprecation
-
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.
  * {@docCategory Button}
  */
-export class Button extends BaseComponent<IButtonProps, {}> {
-  /**
-   * Set this BaseComponent._skipComponentRefResolution to true, bypassing resolution of componentRef.
-   */
-  protected _skipComponentRefResolution = true;
-
+export class Button extends React.Component<IButtonProps, {}> {
   constructor(props: IButtonProps) {
     super(props);
 
     warn(
       `The Button component has been deprecated. Use specific variants instead. ` +
-        `(PrimaryButton, DefaultButton, IconButton, ActionButton, etc.)`
+        `(PrimaryButton, DefaultButton, IconButton, ActionButton, etc.)`,
     );
   }
 
   public render(): JSX.Element {
     const props = this.props;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (props.buttonType) {
       case ButtonType.command:
         return <ActionButton {...props} />;

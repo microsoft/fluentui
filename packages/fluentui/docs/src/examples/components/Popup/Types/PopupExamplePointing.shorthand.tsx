@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Grid, Popup } from '@fluentui/react';
+import { Button, Grid, Popup } from '@fluentui/react-northstar';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const PopupWithButton = props => (
   <Popup
@@ -14,7 +15,13 @@ const PopupWithButton = props => (
     }
     pointing
     position={props.position}
-    trigger={<Button icon={props.icon} styles={{ padding: props.padding, height: '64px', minWidth: '64px' }} title="Show popup" />}
+    trigger={
+      <Button
+        icon={props.icon}
+        styles={{ padding: props.padding, height: '64px', minWidth: '64px', ...props.styles }}
+        title="Show popup"
+      />
+    }
   />
 );
 
@@ -22,81 +29,95 @@ const triggers = [
   {
     position: 'above',
     align: 'start',
-    icon: { name: 'arrow-up', circular: true, bordered: true },
-    padding: '5px 42px 18px 5px'
+    icon: <ArrowUpIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 42px 18px 5px',
   },
   {
     position: 'above',
     align: 'center',
-    icon: { name: 'arrow-up', circular: true, bordered: true },
-    padding: '5px 5px 18px 5px'
+    icon: <ArrowUpIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 5px 18px 5px',
   },
   {
     position: 'above',
     align: 'end',
-    icon: { name: 'arrow-up', circular: true, bordered: true },
-    padding: '5px 5px 18px 42px'
+    icon: <ArrowUpIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 5px 18px 42px',
   },
   {
     position: 'below',
     align: 'start',
-    icon: { name: 'arrow-down', circular: true, bordered: true },
-    padding: '18px 42px 5px 5px'
+    icon: <ArrowDownIcon {...{ circular: true, bordered: true }} />,
+    padding: '18px 42px 5px 5px',
   },
   {
     position: 'below',
     align: 'center',
-    icon: { name: 'arrow-down', circular: true, bordered: true },
-    padding: '18px 5px 5px 5px'
+    icon: <ArrowDownIcon {...{ circular: true, bordered: true }} />,
+    padding: '18px 5px 5px 5px',
   },
   {
     position: 'below',
     align: 'end',
-    icon: { name: 'arrow-down', circular: true, bordered: true },
-    padding: '18px 5px 5px 42px'
+    icon: <ArrowDownIcon {...{ circular: true, bordered: true }} />,
+    padding: '18px 5px 5px 42px',
   },
   {
     position: 'before',
     align: 'top',
-    icon: { name: 'arrow-left', circular: true, bordered: true },
-    padding: '5px 42px 18px 5px'
+    icon: <ArrowLeftIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 42px 18px 5px',
   },
   {
     position: 'before',
     align: 'center',
-    icon: { name: 'arrow-left', circular: true, bordered: true },
-    padding: '5px 42px 5px 5px'
+    icon: <ArrowLeftIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 42px 5px 5px',
   },
   {
     position: 'before',
     align: 'bottom',
-    icon: { name: 'arrow-left', circular: true, bordered: true },
-    padding: '18px 42px 5px 5px'
+    icon: <ArrowLeftIcon {...{ circular: true, bordered: true }} />,
+    padding: '18px 42px 5px 5px',
   },
   {
     position: 'after',
     align: 'top',
-    icon: { name: 'arrow-right', circular: true, bordered: true },
-    padding: '5px 5px 18px 42px'
+    icon: <ArrowRightIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 5px 18px 42px',
   },
   {
     position: 'after',
     align: 'center',
-    icon: { name: 'arrow-right', circular: true, bordered: true },
-    padding: '5px 5px 5px 42px'
+    icon: <ArrowRightIcon {...{ circular: true, bordered: true }} />,
+    padding: '5px 5px 5px 42px',
   },
   {
     position: 'after',
     align: 'bottom',
-    icon: { name: 'arrow-right', circular: true, bordered: true },
-    padding: '18px 5px 5px 42px'
-  }
+    icon: <ArrowRightIcon {...{ circular: true, bordered: true }} />,
+    padding: '18px 5px 5px 42px',
+  },
 ];
 
 const PopupExamplePointing = () => (
-  <Grid columns="repeat(3, 30px)" variables={{ padding: '30px', gridGap: '80px' }}>
-    {triggers.map(({ position, align, icon, padding }) => (
-      <PopupWithButton align={align} icon={icon} key={`${position}-${align}`} padding={padding} position={position} />
+  <Grid
+    styles={{
+      gridTemplateColumns: 'repeat(3, 30px)',
+      msGridColumns: '100px 100px 100px',
+      msGridRows: '80px 80px 80px',
+    }}
+    variables={{ padding: '30px', gridGap: '80px' }}
+  >
+    {triggers.map(({ position, align, icon, padding }, index) => (
+      <PopupWithButton
+        styles={{ msGridColumn: (index % 3) + 1, msGridRow: ((index / 3) | 0) + 1 }}
+        align={align}
+        icon={icon}
+        key={`${position}-${align}`}
+        padding={padding}
+        position={position}
+      />
     ))}
   </Grid>
 );

@@ -1,6 +1,6 @@
 const isObject = o => o !== null && typeof o === 'object' && !Array.isArray(o);
 
-const objectKeyToValues = (input: Object, formatter: (string) => string = input => input) => {
+export const objectKeyToValues = (input: Object, formatter: (string) => string = input => input) => {
   if (!isObject(input)) {
     return input;
   }
@@ -19,5 +19,3 @@ const objectKeyToValues = (input: Object, formatter: (string) => string = input 
 
   return inner({}, input, '');
 };
-
-export default objectKeyToValues;

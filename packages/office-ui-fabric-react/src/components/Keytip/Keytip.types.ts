@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
+import { IStyleFunctionOrObject, Point } from '../../Utilities';
 
 /**
  * {@docCategory Keytips}
@@ -65,11 +65,11 @@ export interface IKeytipProps {
    * Offset x and y for the keytip, added from the top-left corner
    * By default the keytip will be anchored to the bottom-center of the element
    */
-  offset?: IPoint;
+  offset?: Point;
 
   /**
-   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on keytip activation)
-   * Common cases are a Pivot or Modal
+   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on
+   * keytip activation). Common cases are a Pivot or Modal.
    */
   hasDynamicChildren?: boolean;
 

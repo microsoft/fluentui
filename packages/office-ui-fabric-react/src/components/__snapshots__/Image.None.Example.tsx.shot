@@ -51,7 +51,7 @@ exports[`Component Examples renders Image.None.Example.tsx correctly 1`] = `
     }
   >
     <img
-      alt="Example implementation of the property image fit using the none value on an image larger than the frame."
+      alt="Example of the image fit value \\"none\\" on an image larger than the frame."
       className=
           ms-Image-image
           ms-Image-image--none
@@ -116,7 +116,7 @@ exports[`Component Examples renders Image.None.Example.tsx correctly 1`] = `
     }
   >
     <img
-      alt="Example implementation of the property image fit using the none value on an image smaller than the frame."
+      alt="Example of the image fit value \\"none\\" on an image smaller than the frame."
       className=
           ms-Image-image
           ms-Image-image--none

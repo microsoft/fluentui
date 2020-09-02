@@ -8,6 +8,6 @@ export const AnnouncedSearchResultsPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'Announced - Search Results',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

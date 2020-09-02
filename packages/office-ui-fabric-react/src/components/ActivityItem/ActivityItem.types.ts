@@ -26,7 +26,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   activityIcon?: React.ReactNode;
 
   /**
-   * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
+   * If activityIcon is not set, then the persona props in this array will be used as the icon for this activity item.
    */
   activityPersonas?: Array<IPersonaSharedProps>;
 

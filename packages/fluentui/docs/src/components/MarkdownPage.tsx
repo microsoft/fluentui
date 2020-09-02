@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { RouteProps } from 'react-router-dom';
 
@@ -29,7 +29,8 @@ const components = {
     ),
   h1: ({ children }) => <Header as="h1" content={children} />,
   h2: ({ children }) => <Header as="h2" content={children} />,
-  h3: ({ children }) => <Header as="h3" content={children} />
+  h3: ({ children }) => <Header as="h3" content={children} />,
+  img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 };
 
 const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = props => {

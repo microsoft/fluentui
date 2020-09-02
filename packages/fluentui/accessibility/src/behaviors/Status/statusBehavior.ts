@@ -7,12 +7,12 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='img'.
  */
-const statusBehavior: Accessibility = () => ({
+export const statusBehavior: Accessibility<StatusBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'img'
-    }
-  }
+      role: 'img',
+    },
+  },
 });
 
-export default statusBehavior;
+export type StatusBehaviorProps = never;

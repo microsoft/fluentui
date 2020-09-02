@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
-    <title>UI Fabric React Examples</title>
+    <title>Fluent UI React Examples</title>
   </head>
 
   <body>
@@ -22,9 +22,10 @@
       var url = document.location.href;
       var isLocalHost = url.indexOf('localhost') !== -1 || url.indexOf('127.0.0.1') !== -1;
 
-      var minMatch = url.match(/\bmin=([01])\b/);
-      var minParam = minMatch && minMatch[1];
-      var useMinified = minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
+      var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
+      var minParam = getParameterByName('min');
+      var useMinified =
+        !isDev && minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
 
       function loadScript(n) {
         for (var i = 0; i < n.length; i++) {
@@ -41,8 +42,9 @@
         scripts.push('./react.development.js');
         scripts.push('./react-dom.development.js');
       } else {
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js');
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js');
+        const reactVersion = isDev ? 'development.js' : 'production.min.js';
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.' + reactVersion);
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.' + reactVersion);
       }
 
       if (useMinified) {
@@ -52,6 +54,18 @@
       }
 
       loadScript(scripts);
+
+      function getParameterByName(name, url) {
+        if (!url) {
+          url = location.href;
+        }
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
     </script>
   </body>
 </html>

@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
+import {
+  IColumn,
+  ColumnActionsMode,
+  IDetailsHeaderProps,
+} from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
 import { IRenderFunction } from '@uifabric/utilities';
@@ -16,7 +20,7 @@ describe('DetailsColumn', () => {
       key: '1',
       name: 'Foo',
       minWidth: 20,
-      onColumnClick: mockOnColumnClick
+      onColumnClick: mockOnColumnClick,
     };
   });
 
@@ -31,11 +35,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -58,11 +60,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -85,11 +85,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -112,11 +110,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -139,11 +135,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component.find('[aria-describedby]')).toHaveLength(1);
@@ -161,11 +155,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const ariaDescribedByEl = component
@@ -177,7 +169,7 @@ describe('DetailsColumn', () => {
     expect(component.exists(`#${referenceId}`)).toBe(true);
   });
 
-  it('if custom DetailsHeader has optional onRenderColumnHeaderTooltip, do not render invalid aria-describedby attribute', () => {
+  it('does not render invalid aria-describedby if custom DetailsHeader has onRenderColumnHeaderTooltip', () => {
     const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];
@@ -189,20 +181,20 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderDetailsHeader={(props: IDetailsHeaderProps, defaultRenderer?: IRenderFunction<IDetailsHeaderProps>) => {
           return defaultRenderer!({
             ...props,
-            onRenderColumnHeaderTooltip: (tooltipProps: ITooltipHostProps, tooltipRenderer?: IRenderFunction<ITooltipHostProps>) => {
+            onRenderColumnHeaderTooltip: (
+              tooltipProps: ITooltipHostProps,
+              tooltipRenderer?: IRenderFunction<ITooltipHostProps>,
+            ) => {
               return <TooltipHost {...tooltipProps} />;
-            }
+            },
           });
         }}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component.exists('[aria-describedby]')).toBe(false);
@@ -220,11 +212,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -245,11 +235,9 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);

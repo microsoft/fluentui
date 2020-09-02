@@ -3,7 +3,7 @@ import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps
 
 const GlobalClassNames = {
   root: 'ms-EditingItem',
-  input: 'ms-EditingItem-input'
+  input: 'ms-EditingItem-input',
 };
 
 export const getStyles = (prop: IEditingSelectedPeopleItemStylesProps): IEditingSelectedPeopleItemStyles => {
@@ -20,8 +20,8 @@ export const getStyles = (prop: IEditingSelectedPeopleItemStylesProps): IEditing
     root: [
       classNames.root,
       {
-        margin: '4px'
-      }
+        margin: '4px',
+      },
     ],
     input: [
       classNames.input,
@@ -33,10 +33,10 @@ export const getStyles = (prop: IEditingSelectedPeopleItemStylesProps): IEditing
         color: semanticColors.inputText,
         selectors: {
           '::-ms-clear': {
-            display: 'none'
-          }
-        }
-      }
-    ]
+            display: 'none',
+          },
+        },
+      },
+    ],
   };
 };

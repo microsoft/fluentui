@@ -124,7 +124,7 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 export enum SelectAllVisibility {
   none = 0,
   hidden = 1,
-  visible = 2
+  visible = 2,
 }
 
 /**

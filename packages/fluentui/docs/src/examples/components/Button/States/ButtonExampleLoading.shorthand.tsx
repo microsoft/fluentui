@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
 const ButtonExampleLoading = () => {

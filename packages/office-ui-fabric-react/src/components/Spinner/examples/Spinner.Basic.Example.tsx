@@ -9,11 +9,11 @@ export const SpinnerBasicExample: React.FunctionComponent = () => {
 
   const tokens = {
     sectionStack: {
-      childrenGap: 10
+      childrenGap: 10,
     },
     spinnerStack: {
-      childrenGap: 20
-    }
+      childrenGap: 20,
+    },
   };
 
   return (

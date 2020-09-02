@@ -1,0 +1,42 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist/dts",
+    "paths": {
+      "docs/*": ["packages/fluentui/docs/*"],
+      "src/*": ["packages/fluentui/react-northstar/src/*"],
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
+    }
+  },
+  "include": ["src", "test"],
+  "references": [
+    {
+      "path": "../accessibility"
+    },
+    {
+      "path": "../styles"
+    },
+    {
+      "path": "../react-bindings"
+    },
+    {
+      "path": "../react-component-event-listener"
+    },
+    {
+      "path": "../react-component-nesting-registry"
+    },
+    {
+      "path": "../react-component-ref"
+    },
+    {
+      "path": "../react-context-selector"
+    },
+    {
+      "path": "../react-northstar-styles-renderer"
+    },
+    {
+      "path": "../react-proptypes"
+    }
+  ]
+}

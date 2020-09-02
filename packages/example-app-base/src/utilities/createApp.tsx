@@ -18,7 +18,7 @@ export function createApp(
   examples: ExampleGroup | ExampleGroup[],
   defaultRouteComponent: () => JSX.Element | null = () => null,
   appTitle?: string,
-  headerLinks?: IAppLink[]
+  headerLinks?: IAppLink[],
 ): void {
   let rootElement: HTMLElement | null;
   const groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
@@ -32,7 +32,7 @@ export function createApp(
     const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
       group.examples.map(example => {
         return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
-      })
+      }),
     );
 
     // Add the default route
@@ -56,12 +56,13 @@ export function createApp(
           <Route key="minimal" path="?minimal" component={_getComponent}>
             {routes}
           </Route>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
           <Route key="app" component={renderApp}>
             {routes}
           </Route>
         </Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
@@ -97,22 +98,22 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
         component: example.onRender,
         key: example.key,
         name: example.title,
-        url: '#component=' + example.key
-      }))
+        url: '#component=' + example.key,
+      })),
     })),
     headerLinks: [
       {
         name: 'Getting started',
-        url: '#/'
+        url: '#/',
       },
       {
         name: 'Fabric',
-        url: 'https://dev.microsoft.com/fabric'
+        url: 'https://developer.microsoft.com/en-us/fluentui',
       },
       {
         name: 'GitHub',
-        url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-      }
-    ]
+        url: 'https://github.com/microsoft/fluentui',
+      },
+    ],
   };
 }

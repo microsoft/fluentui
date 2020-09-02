@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import {
+  IDetailsRowCheckProps,
+  IDetailsCheckboxProps,
+  IDetailsRowCheckStyleProps,
+  IDetailsRowCheckStyles,
+} from './DetailsRowCheck.types';
 import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
@@ -38,19 +43,19 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     className,
     isHeader,
     isVisible,
-    compact
+    compact,
   });
 
   const detailsCheckboxProps: IDetailsCheckboxProps = {
     checked: selected,
-    theme
+    theme,
   };
 
   return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       className={css(classNames.root, classNames.check)}
       aria-checked={selected}
       data-selection-toggle={true}
@@ -59,7 +64,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
       {onRenderCheckbox(detailsCheckboxProps)}
     </div>
   ) : (
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
@@ -81,5 +86,5 @@ export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckSty
   getStyles,
   undefined,
   { scope: 'DetailsRowCheck' },
-  true
+  true,
 );

@@ -20,7 +20,7 @@ const globalClassNames = {
   isActive: 'is-active',
   isCodeVisible: 'is-codeVisible',
   isRightAligned: 'is-right-aligned',
-  isScrollable: 'is-scrollable'
+  isScrollable: 'is-scrollable',
 };
 
 export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyles> = props => {
@@ -36,7 +36,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     borderTopRightRadius: '4px',
     padding: '4px 12px',
     minWidth: 100,
-    transition: `border ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+    transition: `border ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
   };
 
   const codeButtonActiveStyles: IRawStyle = {
@@ -44,17 +44,17 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     borderColor: NeutralColors.gray90,
     selectors: {
       '.ms-Button-icon': {
-        color: theme.palette.themePrimary
+        color: theme.palette.themePrimary,
       },
       '.ms-Button-label': {
-        color: NeutralColors.gray160
-      }
-    }
+        color: NeutralColors.gray160,
+      },
+    },
   };
 
   const dropdownStyles: Partial<IDropdownStyles> = {
     caretDownWrapper: {
-      top: '6px'
+      top: '6px',
     },
     title: [
       sharedToggleButtonStyles,
@@ -66,47 +66,47 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         selectors: {
           [`&.${globalClassNames.themeDropdown}:focus`]: {
             borderColor: theme.palette.neutralDark,
-            outlineColor: theme.palette.neutralDark
-          }
-        }
+            outlineColor: theme.palette.neutralDark,
+          },
+        },
       },
-      globalClassNames.themeDropdown
-    ]
+      globalClassNames.themeDropdown,
+    ],
   };
 
   const buttonStyles: Partial<IButtonStyles> = {
     root: [
       sharedToggleButtonStyles,
       { lineHeight: '1' }, // quotes prevent interpretation as px
-      globalClassNames.codeButton
+      globalClassNames.codeButton,
     ],
     label: {
       color: theme.palette.neutralDark,
-      borderColor: theme.palette.neutralDark
+      borderColor: theme.palette.neutralDark,
     },
     rootHovered: codeButtonActiveStyles,
-    rootChecked: [codeButtonActiveStyles, globalClassNames.isActive]
+    rootChecked: [codeButtonActiveStyles, globalClassNames.isActive],
   };
 
   return {
     root: [
       {
-        margin: '20px 0'
+        margin: '20px 0',
       },
       globalClassNames.root,
-      isCodeVisible && globalClassNames.isCodeVisible
+      isCodeVisible && globalClassNames.isCodeVisible,
     ],
     header: [
       {
         borderBottom: `1px solid ${theme.palette.neutralTertiary}`,
         display: 'flex',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
       },
       isCodeVisible && {
-        borderColor: NeutralColors.gray90
+        borderColor: NeutralColors.gray90,
       },
-      globalClassNames.header
+      globalClassNames.header,
     ],
     title: [
       theme.fonts.medium,
@@ -114,9 +114,9 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-flex',
         flexGrow: 1,
         flexShrink: 1,
-        marginBottom: 10
+        marginBottom: 10,
       },
-      globalClassNames.title
+      globalClassNames.title,
     ],
     toggleButtons: [
       theme.fonts.medium,
@@ -124,9 +124,9 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         alignSelf: 'flex-end',
         display: 'flex',
         flexShrink: 0,
-        float: 'right'
+        float: 'right',
       },
-      globalClassNames.toggleButtons
+      globalClassNames.toggleButtons,
     ],
     example: [
       globalClassNames.example,
@@ -137,11 +137,11 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
           overflowX: 'hidden',
           overflowY: 'auto',
           padding: '20px 4px',
-          position: 'relative'
+          position: 'relative',
         },
-        globalClassNames.isScrollable
+        globalClassNames.isScrollable,
       ],
-      isRightAligned && [{ textAlign: 'right' }, globalClassNames.isRightAligned]
+      isRightAligned && [{ textAlign: 'right' }, globalClassNames.isRightAligned],
     ],
     code: [
       {
@@ -153,29 +153,29 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
             {
               margin: 0,
               overflow: 'auto',
-              transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+              transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
             },
             // Collapse code blocks by default
-            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 }
+            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 },
           ],
           code: {
             display: 'block',
             margin: 12,
-            fontSize: '14px'
-          }
-        }
+            fontSize: '14px',
+          },
+        },
       },
       isCodeVisible && {
         display: 'block',
-        marginBottom: 20
+        marginBottom: 20,
       },
-      globalClassNames.code
+      globalClassNames.code,
     ],
     dosAndDonts: [
       {
-        width: '100%'
+        width: '100%',
       },
-      globalClassNames.dosAndDonts
+      globalClassNames.dosAndDonts,
     ],
     dos: [
       {
@@ -183,24 +183,24 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [theme.fonts.medium, { color: '#177d3e' }]
-        }
+          h4: [theme.fonts.medium, { color: '#177d3e' }],
+        },
       },
-      globalClassNames.dos
+      globalClassNames.dos,
     ],
     donts: [
       {
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [theme.fonts.medium, { color: '#a61e22' }]
-        }
+          h4: [theme.fonts.medium, { color: '#a61e22' }],
+        },
       },
-      globalClassNames.donts
+      globalClassNames.donts,
     ],
     subComponentStyles: {
       dropdowns: dropdownStyles,
-      codeButtons: buttonStyles
-    }
+      codeButtons: buttonStyles,
+    },
   };
 };

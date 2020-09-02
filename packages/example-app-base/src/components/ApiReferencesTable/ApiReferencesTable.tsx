@@ -7,7 +7,7 @@ import {
   IDetailsRowStyles,
   DetailsListLayoutMode,
   IColumn,
-  ColumnActionsMode
+  ColumnActionsMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
@@ -15,7 +15,12 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { useConst } from '@uifabric/react-hooks';
-import { IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableProps } from './ApiReferencesTableSet.types';
+import {
+  IApiInterfaceProperty,
+  IApiEnumProperty,
+  IMethod,
+  IApiReferencesTableProps,
+} from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
 import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
 import { titleCase } from '../../utilities/string';
@@ -49,7 +54,7 @@ export const gapTokens = {
   xsmall: { childrenGap: 2.5 },
   small: { childrenGap: 8 },
   medium: { childrenGap: 16 },
-  large: { childrenGap: 48 }
+  large: { childrenGap: 48 },
 };
 
 const DEPRECATED_COLOR = '#FFF1CC';
@@ -57,8 +62,8 @@ const deprecatedTextStyles: Partial<ITextStyles> = {
   root: {
     backgroundColor: DEPRECATED_COLOR,
     padding: 10,
-    borderRadius: 2
-  }
+    borderRadius: 2,
+  },
 };
 
 const theme = getTheme();
@@ -67,13 +72,13 @@ const rootClass = mergeStyles({
     // Switch code blocks to a nicer font family and smaller size (monospace fonts tend to be large)
     code: { fontFamily: codeFontFamily, fontSize: '11px' },
     // Fix margins around Members/Methods h4 and control font size
-    h4: { margin: '16px 0 -8px 0', fontSize: '16px' }
-  }
+    h4: { margin: '16px 0 -8px 0', fontSize: '16px' },
+  },
 });
 
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
-    title: 'Properties'
+    title: 'Properties',
   };
 
   private _isEnum: boolean;
@@ -110,7 +115,9 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           {(description || hasExtendsTokens) && (
             <Stack tokens={gapTokens.xsmall}>
               {description && <Markdown>{description}</Markdown>}
-              {hasExtendsTokens && <Text variant="small">Extends &nbsp;{_renderLinkTokens(tokenResolver, extendsTokens!)}</Text>}
+              {hasExtendsTokens && (
+                <Text variant="small">Extends &nbsp;{_renderLinkTokens(tokenResolver, extendsTokens!)}</Text>
+              )}
             </Stack>
           )}
         </Stack>
@@ -129,7 +136,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           {properties.length > 0 && (
             <Stack tokens={gapTokens.small}>
               <h4>Members</h4>
-              <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
+              <ApiDetailsList
+                itemKind="property"
+                items={properties as IApiInterfaceProperty[]}
+                tokenResolver={tokenResolver}
+              />
             </Stack>
           )}
           {methods && methods.length > 0 && (
@@ -214,11 +225,11 @@ const rowStyles: Partial<IDetailsRowStyles> = {
     selectors: {
       ':hover': {
         background: 'none',
-        color: theme.semanticColors.bodyText
-      }
-    }
+        color: theme.semanticColors.bodyText,
+      },
+    },
   },
-  isMultiline: { wordBreak: 'break-word' }
+  isMultiline: { wordBreak: 'break-word' },
 };
 function _onRenderRow(props: IDetailsRowProps) {
   return <DetailsRow {...props} styles={rowStyles} />;
@@ -234,14 +245,14 @@ const columnWidths: { [K in ApiListFieldName]: [number, number] } = {
   type: [130, 150],
   defaultValue: [130, 150],
   description: [300, 400],
-  signature: [200, 300]
+  signature: [200, 300],
 };
 
 /** Map from item kind to list of column names (used in generating columns) */
 const columnNames: { [K in IApiDetailsListProps['itemKind']]: ApiListFieldName[] } = {
   enum: ['name', 'value', 'description'],
   method: ['name', 'signature', 'description'],
-  property: ['name', 'type', 'defaultValue', 'description']
+  property: ['name', 'type', 'defaultValue', 'description'],
 };
 
 function _getColumns(props: IApiDetailsListProps): IColumn[] {
@@ -270,17 +281,17 @@ function _getColumns(props: IApiDetailsListProps): IColumn[] {
             return undefined;
           }
           return _renderCell(item, fieldName);
-        }
+        },
       };
-    }
+    },
   );
 }
 
 function _renderCell(
   item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
-  property: 'name' | 'description' | 'defaultValue' | 'value'
+  property: 'name' | 'description' | 'defaultValue' | 'value',
 ) {
-  let text = (item as any)[property] || ''; // tslint:disable-line:no-any
+  let text = (item as any)[property] || ''; // eslint-disable-line @typescript-eslint/no-explicit-any
   // Format property names and defaults as code for easier reading
   if (property !== 'description' && text.indexOf('`') === -1) {
     text = '`' + text + '`';
@@ -296,7 +307,10 @@ function _renderCell(
   return _referencesTableCell(text);
 }
 
-function _referencesTableCell(text: string, options: Pick<IApiInterfaceProperty, 'deprecated' | 'deprecatedMessage' | 'required'> = {}) {
+function _referencesTableCell(
+  text: string,
+  options: Pick<IApiInterfaceProperty, 'deprecated' | 'deprecatedMessage' | 'required'> = {},
+) {
   const { deprecated, deprecatedMessage, required } = options;
   return (
     <>
@@ -312,7 +326,7 @@ function _referencesTableCell(text: string, options: Pick<IApiInterfaceProperty,
 function _renderDeprecatedMessage(deprecatedMessage?: string) {
   deprecatedMessage = (deprecatedMessage || '').trim();
   if (deprecatedMessage) {
-    // Ensure the messsage is formatted as a sentence
+    // Ensure the message is formatted as a sentence
     deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
     if (deprecatedMessage.slice(-1)[0] !== '.') {
       deprecatedMessage += '.';
@@ -328,7 +342,10 @@ function _renderDeprecatedMessage(deprecatedMessage?: string) {
 /**
  * Convert from a list of tokens to a list of actual links and code segments.
  */
-function _renderLinkTokens(tokenResolver: IApiReferencesTableProps['tokenResolver'], linkTokens: ILinkToken[]): React.ReactNode[] {
+function _renderLinkTokens(
+  tokenResolver: IApiReferencesTableProps['tokenResolver'],
+  linkTokens: ILinkToken[],
+): React.ReactNode[] {
   return linkTokens.map((token: ILinkToken, index: number) => {
     if (token.text) {
       const key = token.text + index;

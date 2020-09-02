@@ -19,8 +19,8 @@ const Usage = () => (
               a <code>Slider</code> that allows the user to choose a value from within a specific range of values.
             </li>
             <li>
-              a <code>Button</code> that changes its icon and toggles the <code>Slider</code> value when clicked (between current value and
-              minimum value).
+              a <code>Button</code> that changes its icon and toggles the <code>Slider</code> value when clicked
+              (between current value and minimum value).
             </li>
             <li>
               an <code>Input</code> that changes and displays the current <code>Slider</code> value.

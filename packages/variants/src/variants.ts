@@ -4,7 +4,7 @@ import { VariantThemeType } from './variantThemeType';
 function makeThemeFromPartials(
   originalTheme: ITheme,
   partialPalette: Partial<IPalette>,
-  partialSemantic: Partial<ISemanticColors>
+  partialSemantic: Partial<ISemanticColors>,
 ): ITheme {
   // Create variant palette
   let variantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
@@ -77,7 +77,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     neutralLight: p.neutralQuaternaryAlt,
     neutralLighter: p.neutralLight,
     neutralLighterAlt: p.neutralLight,
-    white: p.neutralLighter
+    white: p.neutralLighter,
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
@@ -135,7 +135,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     menuItemBackgroundHovered: p.neutralLighter,
     menuItemBackgroundPressed: p.neutralLight,
     menuItemText: p.neutralPrimary,
-    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -182,7 +182,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     neutralLight: !fullTheme.isInverted ? p.themeTertiary : p.themePrimary,
     neutralLighter: !fullTheme.isInverted ? p.themeLight : p.themeSecondary,
     neutralLighterAlt: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
-    white: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight
+    white: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
@@ -242,7 +242,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     menuItemBackgroundHovered: p.neutralLighter,
     menuItemBackgroundPressed: p.neutralLight,
     menuItemText: p.neutralPrimary,
-    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -294,7 +294,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     neutralLight: p.themeLight,
     neutralLighter: p.themeTertiary,
     neutralLighterAlt: p.themeSecondary,
-    white: p.themePrimary
+    white: p.themePrimary,
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
@@ -354,7 +354,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     menuItemBackgroundHovered: p.themeTertiary,
     menuItemBackgroundPressed: p.themeLight,
     menuItemText: p.neutralPrimary,
-    menuItemTextHovered: !fullTheme.isInverted ? p.neutralLighter : p.white
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralLighter : p.white,
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are
@@ -371,7 +371,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     ...fullTheme,
     palette: variantTheme.palette,
     semanticColors: variantTheme.semanticColors,
-    isInverted: !fullTheme.isInverted
+    isInverted: !fullTheme.isInverted,
   };
   return variantTheme;
 }

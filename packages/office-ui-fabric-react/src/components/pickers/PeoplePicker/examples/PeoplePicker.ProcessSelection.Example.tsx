@@ -11,13 +11,13 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const checkboxStyles = {
   root: {
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 };
 
 export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () => {
@@ -31,7 +31,7 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
   const onFilterChanged = (
     filterText: string,
     currentPersonas: IPersonaProps[],
-    limitResults?: number
+    limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
@@ -57,8 +57,7 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
   };
 
   const returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    return filterPromise(mostRecentlyUsed);
+    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas));
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {
@@ -66,7 +65,9 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
     const indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList
+        .slice(0, indexPeopleList)
+        .concat(peopleList.slice(indexPeopleList + 1));
       setPeopleList(newPeople);
     }
 
@@ -89,11 +90,14 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
   return (
     <div>
       <NormalPeoplePicker
+        // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
+        // eslint-disable-next-line react/jsx-no-bind
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}
         className={'ms-PeoplePicker'}
+        // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
         removeButtonAriaLabel={'Remove'}
@@ -101,16 +105,23 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
         }}
         componentRef={picker}
         resolveDelay={300}
         disabled={isPickerDisabled}
       />
-      <Checkbox label="Disable People Picker" checked={isPickerDisabled} onChange={onDisabledButtonClick} styles={checkboxStyles} />
+      <Checkbox
+        label="Disable People Picker"
+        checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onDisabledButtonClick}
+        styles={checkboxStyles}
+      />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />
@@ -130,7 +141,10 @@ function listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) 
   if (!personas || !personas.length || personas.length === 0) {
     return false;
   }
-  return personas.filter(item => item.text === persona.text).length > 0;
+  return (
+    personas.filter(item => item.text !== undefined && persona.text !== undefined && item.text.startsWith(persona.text))
+      .length > 0
+  );
 }
 
 function convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {

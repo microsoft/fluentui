@@ -5,7 +5,12 @@ import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types
 import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
 import { IPersonaCoinInitialsSlot } from './PersonaCoinInitials/PersonaCoinInitials';
 
-export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
+export type IPersonaCoinComponent = IComponent<
+  IPersonaCoinProps,
+  IPersonaCoinTokens,
+  IPersonaCoinStyles,
+  IPersonaCoinViewProps
+>;
 
 // These types are redundant with IPersonaCoinComponent but are needed until TS function
 // return widening issue is resolved:

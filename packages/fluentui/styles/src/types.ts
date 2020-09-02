@@ -40,9 +40,11 @@ export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
   content?: string;
 }
 
-export interface ICSSInJSStyle extends CSSProperties {
+export type ICSSInJSStyle = Omit<CSSProperties, 'display'> & {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any;
+
+  display?: CSSProperties['display'] | CSSProperties['display'][];
 
   // missing React.CSSProperties
   speak?: CSS.Globals | 'none' | 'normal' | 'spell-out';
@@ -65,7 +67,7 @@ export interface ICSSInJSStyle extends CSSProperties {
   // we could expand these ourselves so that "font-smoothing" works, but which values?
   '-webkit-font-smoothing'?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased';
   '-moz-osx-font-smoothing'?: CSS.Globals | 'auto' | 'grayscale';
-}
+};
 
 export interface ThemeAnimation<KP = {}> {
   keyframe: ((kp: KP) => object) | object | string;
@@ -99,48 +101,6 @@ export interface FontFace {
 }
 
 export type FontFaces = FontFace[];
-
-// ========================================================
-// Icons
-// ========================================================
-
-type SvgIconFuncArg = {
-  classes: { [iconSlot: string]: string };
-  rtl: boolean;
-  props: any; // TODO IconProps
-};
-
-export type SvgIconSpec = ObjectOrFunc<any /* TODO React.ReactNode */, SvgIconFuncArg>;
-export type FontIconSpec = {
-  content: string;
-  fontFamily: string;
-};
-
-export type ThemeIconSpec = {
-  isSvg?: boolean;
-  icon: FontIconSpec | SvgIconSpec;
-};
-
-// Some components have hard coded icon names, such as the arrow icons for a submenu or dropdown chevron.
-// Different themes use different icon names.
-// Components which have hard dependencies on icon names use these `icon-*`.
-// A theme can map its icon names to these `icon-*` name in order to teach components to use their icons.
-// This allow theme switching to work with different icons.
-export type RequiredIconNames =
-  | 'icon-checkmark'
-  | 'icon-circle'
-  | 'icon-close'
-  | 'icon-arrow-end'
-  | 'icon-arrow-up'
-  | 'icon-arrow-down'
-  | 'icon-pause'
-  | 'icon-play'
-  | 'icon-chevron-start'
-  | 'icon-chevron-end';
-
-export type ThemeIcons = Partial<Record<RequiredIconNames, ThemeIconSpec>> & {
-  [iconName: string]: ThemeIconSpec;
-};
 
 // ========================================================
 // Site Variables
@@ -178,9 +138,11 @@ export type PropsWithVarsAndStyles = Extendable<{
 // Component Styles
 // ========================================================
 
-export interface ComponentSlotStylesInput<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyle<TProps, TVars>> {}
+export interface ComponentSlotStylesInput<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyle<TProps, TVars>> {}
 
-export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
+export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
 
 export interface ComponentSlotStylesResolved extends Record<string, ICSSInJSStyle> {}
 
@@ -188,7 +150,6 @@ export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
   TVars extends ComponentVariablesObject = ComponentVariablesObject
 > {
-  displayName: string;
   props: TProps;
   variables: TVars;
   theme: ThemePrepared;
@@ -196,9 +157,12 @@ export interface ComponentStyleFunctionParam<
   disableAnimations: boolean;
 }
 
-export type ComponentSlotStyleFunction<TProps = {}, TVars = {}> = (styleParam: ComponentStyleFunctionParam<TProps, TVars>) => ICSSInJSStyle;
+export type ComponentSlotStyleFunction<TProps = {}, TVars = {}> = (
+  styleParam: ComponentStyleFunctionParam<TProps, TVars>,
+) => ICSSInJSStyle;
 
-export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
+export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
 
 // ========================================================
 // Static Styles
@@ -248,7 +212,6 @@ export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> 
   componentStyles?: ThemeComponentStylesInput<ThemeStylesProps>;
   fontFaces?: FontFaces;
   staticStyles?: StaticStyles;
-  icons?: ThemeIcons;
   animations?: { [key: string]: ThemeAnimation };
 }
 
@@ -268,7 +231,6 @@ export interface ThemePrepared<ThemeStylesProps extends Record<string, any> = an
   componentStyles: {
     [key in keyof ThemeComponentStylesPrepared<ThemeStylesProps>]: ComponentSlotStylesPrepared;
   };
-  icons: ThemeIcons;
   fontFaces: FontFaces;
   staticStyles: StaticStyles;
   animations: Record<string, ThemeAnimation>;

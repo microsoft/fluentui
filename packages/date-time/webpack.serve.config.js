@@ -5,12 +5,12 @@ module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
   output: {
-    filename: 'demo-app.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 
   resolve: {
@@ -19,7 +19,7 @@ module.exports = resources.createServeConfig({
       '@uifabric/date-time/lib': path.join(__dirname, 'lib'),
       '@uifabric/date-time': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
-    }
-  }
+      'Example.tsx.js': 'Example',
+    },
+  },
 });

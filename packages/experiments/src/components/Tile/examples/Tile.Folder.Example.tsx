@@ -1,40 +1,44 @@
 import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { SignalField, NewSignal, CommentsSignal, SharedSignal, Tile } from '@uifabric/experiments';
-import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout, FolderCoverType } from '@uifabric/experiments/lib/FolderCover';
+import {
+  FolderCover,
+  getFolderCoverLayout,
+  renderFolderCoverWithLayout,
+  FolderCoverType,
+} from '@uifabric/experiments/lib/FolderCover';
 import { lorem } from '@uifabric/example-data';
 import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
-// tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
 const ITEMS: { name: string; activity: string; isShared?: boolean; childCount?: number }[] = [
   {
     name: lorem(2),
     activity: lorem(6),
-    childCount: 4
+    childCount: 4,
   },
   {
     name: lorem(2),
-    activity: lorem(6)
+    activity: lorem(6),
   },
   {
     name: lorem(2),
     activity: lorem(6),
     isShared: true,
-    childCount: 4
+    childCount: 4,
   },
   {
     name: lorem(2),
     activity: lorem(6),
-    childCount: 4
+    childCount: 4,
   },
   {
     name: lorem(2),
     activity: lorem(6),
-    childCount: 4
-  }
+    childCount: 4,
+  },
 ];
 
 interface IFolderTileWithThumbnailProps {
@@ -45,7 +49,7 @@ interface IFolderTileWithThumbnailProps {
 }
 
 const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailProps> = (
-  props: IFolderTileWithThumbnailProps
+  props: IFolderTileWithThumbnailProps,
 ): JSX.Element => {
   const folderCover = (
     <FolderCover
@@ -62,7 +66,7 @@ const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailP
     ? fitContentToBounds({
         contentSize: props.originalImageSize,
         boundsSize: contentSize,
-        mode: 'contain'
+        mode: 'contain',
       })
     : undefined;
 
@@ -70,7 +74,7 @@ const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailP
     <div
       className={css(TileExampleStyles.tile, {
         [TileExampleStyles.largeTile]: props.size === 'large',
-        [TileExampleStyles.smallTile]: props.size === 'small'
+        [TileExampleStyles.smallTile]: props.size === 'small',
       })}
     >
       <Tile
@@ -85,7 +89,7 @@ const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailP
                   src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
                   className={css(TileExampleStyles.tileImage)}
                 />
-              ) : null
+              ) : null,
             })}
           </span>
         }
@@ -103,7 +107,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
     super(props);
 
     this.state = {
-      size: 'large'
+      size: 'large',
     };
   }
 
@@ -117,7 +121,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
         <FolderTileWithThumbnail
           originalImageSize={{
             width: 400,
-            height: 300
+            height: 300,
           }}
           item={ITEMS[0]}
           size={size}
@@ -126,7 +130,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
         <FolderTileWithThumbnail
           originalImageSize={{
             width: 300,
-            height: 400
+            height: 400,
           }}
           item={ITEMS[2]}
           folderCoverType="media"
@@ -135,7 +139,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
         <FolderTileWithThumbnail
           originalImageSize={{
             width: 40,
-            height: 40
+            height: 40,
           }}
           item={ITEMS[3]}
           folderCoverType="media"
@@ -144,7 +148,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
         <FolderTileWithThumbnail
           originalImageSize={{
             width: 16,
-            height: 16
+            height: 16,
           }}
           item={ITEMS[4]}
           folderCoverType="media"
@@ -156,7 +160,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
 
   private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      size: checked ? 'large' : 'small'
+      size: checked ? 'large' : 'small',
     });
   };
 }

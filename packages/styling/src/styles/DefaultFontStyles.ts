@@ -20,7 +20,7 @@ function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWe
     src: localFontSrc + `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
     fontWeight,
     fontStyle: 'normal',
-    fontDisplay: 'swap'
+    fontDisplay: 'swap',
   });
 }
 
@@ -29,14 +29,25 @@ function _registerFontFaceSet(
   fontFamily: string,
   cdnFolder: string,
   cdnFontName: string = 'segoeui',
-  localFontName?: string
+  localFontName?: string,
 ): void {
   const urlBase = `${baseUrl}/${cdnFolder}/${cdnFontName}`;
 
   _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light, localFontName && localFontName + ' Light');
-  _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight, localFontName && localFontName + ' SemiLight');
+  _registerFontFace(
+    fontFamily,
+    urlBase + '-semilight',
+    FontWeights.semilight,
+    localFontName && localFontName + ' SemiLight',
+  );
   _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName);
-  _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold, localFontName && localFontName + ' SemiBold');
+  _registerFontFace(
+    fontFamily,
+    urlBase + '-semibold',
+    FontWeights.semibold,
+    localFontName && localFontName + ' SemiBold',
+  );
+  _registerFontFace(fontFamily, urlBase + '-bold', FontWeights.bold, localFontName && localFontName + ' Bold');
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {
@@ -70,12 +81,10 @@ export function registerDefaultFontFaces(baseUrl: string): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = getWindow();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const fabricConfig: IFabricConfig | undefined = (getWindow() as any)?.FabricConfig;
 
-  // tslint:disable-next-line:no-string-literal no-any
-  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
-
-  return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+  return fabricConfig?.fontBaseUrl ?? DefaultBaseUrl;
 }
 
 /**

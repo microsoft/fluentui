@@ -12,9 +12,9 @@ describe('DocumentCard', () => {
         height={150}
         iconProps={{
           iconName: 'OneNoteLogo',
-          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -27,9 +27,9 @@ describe('DocumentCard', () => {
         imageSrc={'someinvalidurl'}
         iconProps={{
           iconName: 'OneNoteLogo',
-          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('DocumentCard', () => {
         imageFit={ImageFit.cover}
         iconProps={{ iconName: 'OneNoteLogo', styles: { root: { color: '#813a7c' } } }}
         imageSrc={TestImages.documentPreviewTwo}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

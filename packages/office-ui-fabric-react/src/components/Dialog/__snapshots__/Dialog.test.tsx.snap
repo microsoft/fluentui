@@ -19,7 +19,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
         }
   >
     <div
-      aria-level={2}
+      aria-level={1}
       className=
           ms-Dialog-title
           {
@@ -34,6 +34,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
+            min-height: 20px;
             padding-bottom: 20px;
             padding-left: 24px;
             padding-right: 46px;
@@ -127,7 +128,7 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
         }
   >
     <div
-      aria-level={2}
+      aria-level={1}
       className=
           ms-Dialog-title
           {
@@ -142,6 +143,7 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
+            min-height: 20px;
             padding-bottom: 20px;
             padding-left: 24px;
             padding-right: 46px;
@@ -260,6 +262,7 @@ exports[`Dialog renders DialogContent with titleProps 1`] = `
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
+            min-height: 20px;
             padding-bottom: 20px;
             padding-left: 24px;
             padding-right: 46px;

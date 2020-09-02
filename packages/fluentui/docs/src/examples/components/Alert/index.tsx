@@ -6,6 +6,7 @@ import Slots from './Slots';
 import State from './State';
 import Variations from './Variations';
 import Usage from './Usage';
+import Performance from './Performance';
 
 const AlertExamples = () => (
   <>
@@ -15,6 +16,7 @@ const AlertExamples = () => (
     <Slots />
     <Rtl />
     <Usage />
+    <Performance />
   </>
 );
 

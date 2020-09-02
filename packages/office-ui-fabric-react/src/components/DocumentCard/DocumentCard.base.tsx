@@ -1,16 +1,31 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
-import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
+import {
+  classNamesFunction,
+  KeyCodes,
+  getNativeProps,
+  divProperties,
+  warnDeprecations,
+  initializeComponentRef,
+} from '../../Utilities';
+import {
+  DocumentCardType,
+  IDocumentCard,
+  IDocumentCardProps,
+  IDocumentCardStyleProps,
+  IDocumentCardStyles,
+} from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
+
+const COMPONENT_NAME = 'DocumentCard';
 
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
+export class DocumentCardBase extends React.Component<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
-    type: DocumentCardType.normal
+    type: DocumentCardType.normal,
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -19,19 +34,20 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   constructor(props: IDocumentCardProps) {
     super(props);
 
-    this._warnDeprecations({
-      accentColor: undefined
+    initializeComponentRef(this);
+    warnDeprecations(COMPONENT_NAME, props, {
+      accentColor: undefined,
     });
   }
 
   public render(): JSX.Element {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'className',
       'onClick',
       'type',
-      'role'
+      'role',
     ]);
     const actionable = onClick || onClickHref ? true : false;
 
@@ -39,14 +55,14 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
       theme: theme!,
       className,
       actionable,
-      compact: type === DocumentCardType.compact ? true : false
+      compact: type === DocumentCardType.compact ? true : false,
     });
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
     if (type === DocumentCardType.compact && accentColor) {
       style = {
-        borderBottomColor: accentColor
+        borderBottomColor: accentColor,
       };
     }
 
@@ -88,13 +104,18 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   };
 
   private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
-    const { onClick, onClickHref } = this.props;
+    const { onClick, onClickHref, onClickTarget } = this.props;
 
     if (onClick) {
       onClick(ev);
     } else if (!onClick && onClickHref) {
       // If no onClick Function was provided and we do have an onClickHref, redirect to the onClickHref
-      window.location.href = onClickHref;
+      if (onClickTarget) {
+        window.open(onClickHref, onClickTarget, 'noreferrer noopener nofollow');
+      } else {
+        window.location.href = onClickHref;
+      }
+
       ev.preventDefault();
       ev.stopPropagation();
     }

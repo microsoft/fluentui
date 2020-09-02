@@ -13,9 +13,9 @@ import strings from './../strings';
 /**
  * The TodoTabs component using fabric-react component <Pivot> <List> <FocusZone>.
  *
- * Link of <Pivot>: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/pivot
- * Link of <List>: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/list
- * Link of <FocusZone>: https://fabricreact.azurewebsites.net/fabric-react/master/#examples/focuszone
+ * Link of <Pivot>: https://developer.microsoft.com/en-us/fluentui#/controls/web/pivot
+ * Link of <List>: https://developer.microsoft.com/en-us/fluentui#/controls/web/list
+ * Link of <FocusZone>: https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone
  */
 export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
   public render(): React.ReactElement<IPivotProps> | null {
@@ -43,27 +43,34 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
       <div className={styles.todoPivot}>
         <Pivot linkSize={PivotLinkSize.large}>{pivotArray}</Pivot>
       </div>
-    ) : null; // tslint:disable-line:no-null-keyword
+    ) : null;
   }
 
   private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {
-    // @todo #219004 make isInnerZoneKeystroke be rtl safe.
+    // @todo #219004 make shouldEnterInnerZone be rtl safe.
     return (
       <PivotItem headerText={`${tabName} (${tasks.length})`}>
-        <FocusZone direction={FocusZoneDirection.vertical} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.vertical} shouldEnterInnerZone={this._shouldEnterInnerZone}>
           <List className={styles.todoList} items={tasks} onRenderCell={this._onRenderTodoItem} />
         </FocusZone>
       </PivotItem>
     );
   }
 
-  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+  private _shouldEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return ev.which === KeyCodes.right;
   };
 
   private _onRenderTodoItem(item?: ITodoItem): React.ReactElement<ITodoItemProps> | null {
     if (item) {
-      return <TodoItem key={item.id} item={item} onToggleComplete={this.props.onToggleComplete} onDeleteItem={this.props.onDeleteItem} />;
+      return (
+        <TodoItem
+          key={item.id}
+          item={item}
+          onToggleComplete={this.props.onToggleComplete}
+          onDeleteItem={this.props.onDeleteItem}
+        />
+      );
     }
     return null;
   }

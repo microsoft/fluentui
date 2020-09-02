@@ -4,8 +4,6 @@ import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
 import { safeMount } from '@uifabric/test-utilities';
 
-// tslint:disable:typedef
-
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
   public render(): JSX.Element {
@@ -38,7 +36,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
-      }
+      },
     );
   });
 
@@ -51,7 +49,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>globalName</div>');
-      }
+      },
     );
   });
 
@@ -64,14 +62,14 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
-      }
+      },
     );
   });
 
   it('can scope settings to specific components', () => {
     const scopedSettings = {
       Foo: { field: 'scopedToFoo' },
-      Bar: { field: 'scopedToBar' }
+      Bar: { field: 'scopedToBar' },
     };
 
     safeMount(
@@ -83,7 +81,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      }
+      },
     );
   });
 
@@ -96,7 +94,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2</div>');
-      }
+      },
     );
   });
 
@@ -111,7 +109,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      }
+      },
     );
   });
 
@@ -121,17 +119,16 @@ describe('Customizer', () => {
     safeMount(
       <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
         <Customizer
-          scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (scopedSettings: { Bar: { field2: string } }) => ({ Bar: { ...scopedSettings.Bar, field2: 'field2' } })
-          }
+          scopedSettings={(scopedSettings: { Bar: { field2: string } }) => ({
+            Bar: { ...scopedSettings.Bar, field2: 'field2' },
+          })}
         >
           <Bar />
         </Customizer>
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      }
+      },
     );
   });
 
@@ -139,10 +136,7 @@ describe('Customizer', () => {
     safeMount(
       <Customizer scopedSettings={{ Foo: { field: 'scopedToFoo' } }}>
         <Customizer
-          scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })
-          }
+          scopedSettings={(settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })}
         >
           <div>
             <Foo />
@@ -152,7 +146,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      }
+      },
     );
   });
 
@@ -165,43 +159,33 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
-      }
+      },
     );
   });
 
   it('overrides the old settings when the parameter is ignored', () => {
     safeMount(
       <Customizer settings={{ field: 'field1' }}>
-        <Customizer
-          settings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { field: string }) => ({ field: 'field2' })
-          }
-        >
+        <Customizer settings={(settings: { field: string }) => ({ field: 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
-      }
+      },
     );
   });
 
   it('can use a function to merge settings', () => {
     safeMount(
       <Customizer settings={{ field: 'field1' }}>
-        <Customizer
-          settings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { field: string }) => ({ field: settings.field + 'field2' })
-          }
-        >
+        <Customizer settings={(settings: { field: string }) => ({ field: settings.field + 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field1field2</div>');
-      }
+      },
     );
   });
 
@@ -226,7 +210,7 @@ describe('Customizer', () => {
         // afterwards it should have updated
         expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
 
-        // verify it doesn't update during suppressUpdates(), and it works through errors, and it can suppress final update
+        // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
         Customizations.applyBatchedUpdates(() => {
           Customizations.applySettings({ field: 'notUpdated' });
           // it should not update inside
@@ -239,7 +223,7 @@ describe('Customizer', () => {
         // verify it updates after suppressUpdates()
         Customizations.applySettings({ field2: 'lastGlobalName' });
         expect(wrapper.html()).toEqual('<div>notUpdatedlastGlobalName</div>');
-      }
+      },
     );
   });
 });

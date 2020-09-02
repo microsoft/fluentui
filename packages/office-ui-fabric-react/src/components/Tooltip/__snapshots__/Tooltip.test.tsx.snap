@@ -7,8 +7,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
   <div
     className=
         ms-Fabric
-        is-focusHidden
-        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -28,7 +26,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}

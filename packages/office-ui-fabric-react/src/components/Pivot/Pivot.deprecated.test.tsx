@@ -26,7 +26,7 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem linkText="Test Link 1" />
         <PivotItem linkText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

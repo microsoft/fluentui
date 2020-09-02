@@ -5,7 +5,7 @@ import {
   tryParseExample,
   IMPORT_REGEX,
   _tryParseExample,
-  IImport
+  IImport,
 } from './exampleParser';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
 
@@ -20,7 +20,7 @@ const reactImport: IImport = {
   text: "import * as React from 'react';",
   path: 'react',
   packageName: 'react',
-  identifiers: [{ name: '*', as: 'React' }]
+  identifiers: [{ name: '*', as: 'React' }],
 };
 
 describe('_getPackageName', () => {
@@ -61,7 +61,11 @@ describe('_getImportIdentifiers', () => {
     expect(_getImportIdentifiers('{ Foo, Bar }')).toEqual([{ name: 'Foo' }, { name: 'Bar' }]);
     expect(_getImportIdentifiers('{ Foo, Bar, Baz }')).toEqual([{ name: 'Foo' }, { name: 'Bar' }, { name: 'Baz' }]);
     expect(_getImportIdentifiers('{  Foo , Bar , Baz}')).toEqual([{ name: 'Foo' }, { name: 'Bar' }, { name: 'Baz' }]);
-    expect(_getImportIdentifiers('{\n  Foo,\n  Bar,\n  Baz\n}')).toEqual([{ name: 'Foo' }, { name: 'Bar' }, { name: 'Baz' }]);
+    expect(_getImportIdentifiers('{\n  Foo,\n  Bar,\n  Baz\n}')).toEqual([
+      { name: 'Foo' },
+      { name: 'Bar' },
+      { name: 'Baz' },
+    ]);
   });
 
   it('works with import star', () => {
@@ -77,7 +81,7 @@ describe('_getImportIdentifiers', () => {
     expect(_getImportIdentifiers('{\nFoo as Bar,\nBaz, Bar as Foo }')).toEqual([
       { name: 'Foo', as: 'Bar' },
       { name: 'Baz' },
-      { name: 'Bar', as: 'Foo' }
+      { name: 'Bar', as: 'Foo' },
     ]);
   });
 });
@@ -188,7 +192,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: 'default', as: 'Foo' }]
+      identifiers: [{ name: 'default', as: 'Foo' }],
     });
 
     // import at end (weird but should be handled)
@@ -196,7 +200,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: 'default', as: 'Foo' }]
+      identifiers: [{ name: 'default', as: 'Foo' }],
     });
   });
 
@@ -206,7 +210,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: '*', as: 'Foo' }]
+      identifiers: [{ name: '*', as: 'Foo' }],
     });
   });
 
@@ -216,7 +220,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: 'Foo' }]
+      identifiers: [{ name: 'Foo' }],
     });
 
     text = "import { Foo, Bar as Baz } from 'foo';";
@@ -224,7 +228,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: 'Foo' }, { name: 'Bar', as: 'Baz' }]
+      identifiers: [{ name: 'Foo' }, { name: 'Bar', as: 'Baz' }],
     });
 
     text = "import {\n  Foo,\n  Bar as Baz\n} from 'foo';";
@@ -232,7 +236,7 @@ describe('_getImports', () => {
       text,
       packageName: 'foo',
       path: 'foo',
-      identifiers: [{ name: 'Foo' }, { name: 'Bar', as: 'Baz' }]
+      identifiers: [{ name: 'Foo' }, { name: 'Bar', as: 'Baz' }],
     });
   });
 
@@ -253,26 +257,26 @@ import {
         text: "import { Foo } from 'foo';",
         packageName: 'foo',
         path: 'foo',
-        identifiers: [{ name: 'Foo' }]
+        identifiers: [{ name: 'Foo' }],
       },
       {
         text: "import * as Bar from 'foo/bar';",
         packageName: 'foo',
         path: 'foo/bar',
-        identifiers: [{ name: '*', as: 'Bar' }]
+        identifiers: [{ name: '*', as: 'Bar' }],
       },
       {
         text: 'import "./foo";',
         packageName: '',
         path: './foo',
-        identifiers: []
+        identifiers: [],
       },
       {
         text: "import {\n  a,\n  B as C,\n  D\n} from 'baz';",
         packageName: 'baz',
         path: 'baz',
-        identifiers: [{ name: 'a' }, { name: 'B', as: 'C' }, { name: 'D' }]
-      }
+        identifiers: [{ name: 'a' }, { name: 'B', as: 'C' }, { name: 'D' }],
+      },
     ]);
   });
 });
@@ -283,7 +287,9 @@ describe('tryParseExample', () => {
 import { Component } from 'react';
 exort class Foo extends Component {};
 `;
-    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(`The example must include "import * as React from 'react';"`);
+    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
+      `The example must include "import * as React from 'react';"`,
+    );
   });
 
   it('detects incorrectly formatted React import', () => {
@@ -292,7 +298,9 @@ exort class Foo extends Component {};
 import React from 'react';
 exort class Foo extends React.Component {};
 `;
-    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(`The example must include "import * as React from 'react';"`);
+    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
+      `The example must include "import * as React from 'react';"`,
+    );
   });
 
   it('detects default export usage', () => {
@@ -310,7 +318,7 @@ import * as React from 'react';
 class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      'The example must export a single class or const for the component to render (found: none).'
+      'The example must export a single class or const for the component to render (found: none).',
     );
   });
 
@@ -324,7 +332,7 @@ export const Bar = 3;
 class Baz extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      'The example must export a single class or const for the component to render (found: 2).'
+      'The example must export a single class or const for the component to render (found: 2).',
     );
   });
 
@@ -347,7 +355,7 @@ import { useState } from 'react';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      `Invalid React import format for the editor. Please only use "import * as React from 'react'".`
+      `Invalid React import format for the editor. Please only use "import * as React from 'react'".`,
     );
   });
 
@@ -379,7 +387,7 @@ import '@uifabric/utilities';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      'Importing a file for its side effects ("import \'path\'") is not supported by the editor.'
+      'Importing a file for its side effects ("import \'path\'") is not supported by the editor.',
     );
   });
 
@@ -389,7 +397,9 @@ import * as React from 'react';
 import * as Utilities from '@uifabric/utilities';
 export class Foo extends React.Component {}
 `;
-    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe('"import *" is not supported by the editor (except from react).');
+    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
+      '"import *" is not supported by the editor (except from react).',
+    );
   });
 
   it('detects unsupported package imports', () => {
@@ -398,7 +408,9 @@ import * as React from 'react';
 import { Promise } from 'es6-promise';
 export class Foo extends React.Component {}
 `;
-    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(`Importing from package "es6-promise" is not supported by the editor.`);
+    expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
+      `Importing from package "es6-promise" is not supported by the editor.`,
+    );
   });
 
   it('detects default imports', () => {
@@ -421,12 +433,12 @@ import { baz } from 'office-ui-fabric-react/lib/utilities/baz';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      'Importing from more than two levels below the package root is not supported by the editor.'
+      'Importing from more than two levels below the package root is not supported by the editor.',
     );
 
     example = example.replace('office-ui-fabric-react/lib/utilities/baz', '@uifabric/utilities/lib/bar/baz');
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
-      'Importing from more than two levels below the package root is not supported by the editor.'
+      'Importing from more than two levels below the package root is not supported by the editor.',
     );
   });
 
@@ -445,9 +457,9 @@ export class Foo extends React.Component {}
           text: "import { Bar } from 'office-ui-fabric-react/lib/Bar';",
           path: 'office-ui-fabric-react/lib/Bar',
           packageName: 'office-ui-fabric-react',
-          identifiers: [{ name: 'Bar' }]
-        }
-      ]
+          identifiers: [{ name: 'Bar' }],
+        },
+      ],
     });
   });
 
@@ -467,15 +479,15 @@ export class Foo extends React.Component {}
           text: "import { Bar } from 'office-ui-fabric-react/lib/Bar';",
           path: 'office-ui-fabric-react/lib/Bar',
           packageName: 'office-ui-fabric-react',
-          identifiers: [{ name: 'Bar' }]
+          identifiers: [{ name: 'Bar' }],
         },
         {
           text: "import { createListItems } from '@uifabric/example-data';",
           path: '@uifabric/example-data',
           packageName: '@uifabric/example-data',
-          identifiers: [{ name: 'createListItems' }]
-        }
-      ]
+          identifiers: [{ name: 'createListItems' }],
+        },
+      ],
     });
   });
 
@@ -499,21 +511,21 @@ export class Foo extends React.Component {}
           text: "import { Bar } from 'bar';",
           path: 'bar',
           packageName: 'bar',
-          identifiers: [{ name: 'Bar' }]
+          identifiers: [{ name: 'Bar' }],
         },
         {
           text: "import { Baz } from 'foo';",
           path: 'foo',
           packageName: 'foo',
-          identifiers: [{ name: 'Baz' }]
+          identifiers: [{ name: 'Baz' }],
         },
         {
           text: "import { createListItems } from 'example-data';",
           path: 'example-data',
           packageName: 'example-data',
-          identifiers: [{ name: 'createListItems' }]
-        }
-      ]
+          identifiers: [{ name: 'createListItems' }],
+        },
+      ],
     });
   });
 });

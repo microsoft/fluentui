@@ -33,7 +33,6 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -50,7 +49,6 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -146,7 +144,6 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"

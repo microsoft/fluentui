@@ -1,22 +1,25 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { List, Image, ButtonGroup } from '@fluentui/react';
+import { List, Image, ButtonGroup } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 const actions = (
   <ButtonGroup
     buttons={[
       {
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         iconOnly: true,
         text: true,
-        title: 'Check'
+        title: 'Check',
+        key: 'check',
       },
       {
-        icon: 'icon-close',
+        icon: <CloseIcon />,
         iconOnly: true,
         text: true,
-        title: 'Close'
-      }
+        title: 'Close',
+        key: 'close',
+      },
     ]}
   />
 );
@@ -29,7 +32,7 @@ const items = [
     headerMedia: '7:26:56 AM',
     content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
     contentMedia: '!!',
-    endMedia: actions
+    endMedia: actions,
   },
   {
     key: 'skyler',
@@ -38,7 +41,7 @@ const items = [
     headerMedia: '11:30:17 PM',
     content: 'Use the online FTP application to input the multi-byte application!',
     contentMedia: '!!',
-    endMedia: actions
+    endMedia: actions,
   },
   {
     key: 'dante',
@@ -47,8 +50,8 @@ const items = [
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
     contentMedia: '!!',
-    endMedia: actions
-  }
+    endMedia: actions,
+  },
 ];
 
 const ListExample = () => {

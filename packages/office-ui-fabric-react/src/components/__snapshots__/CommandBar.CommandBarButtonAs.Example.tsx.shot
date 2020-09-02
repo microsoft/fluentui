@@ -96,7 +96,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -200,7 +199,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Add"
                   role="presentation"
@@ -278,7 +276,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -382,7 +379,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Upload"
                   role="presentation"
@@ -461,7 +457,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -565,7 +560,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Share"
                     role="presentation"
@@ -612,8 +606,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               <div
                 className=
                     ms-Fabric
-                    is-focusHidden
-                    ms-Fabric--isFocusHidden
                     ms-Layer-content
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -633,7 +625,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     & textarea {
                       font-family: inherit;
                     }
-                dir="ltr"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onClick={[Function]}
@@ -841,6 +832,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 onFocusCapture={[Function]}
                               >
                                 <div
+                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -893,6 +885,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         onFocusCapture={[Function]}
                                       >
                                         <div
+                                          aria-hidden={true}
                                           data-is-visible={true}
                                           onFocus={[Function]}
                                           style={
@@ -1001,7 +994,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   text-decoration: none;
                                                   top: 0px;
                                                   user-select: none;
-                                                  vertical-align: top;
                                                   width: 32px;
                                                 }
                                                 &::-moz-focus-inner {
@@ -1019,7 +1011,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   z-index: 1;
                                                 }
                                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                                  border: none;
                                                   bottom: -2px;
                                                   left: -2px;
                                                   outline-color: ButtonText;
@@ -1096,7 +1087,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                       margin-right: 4px;
                                                       margin-top: 0;
                                                       text-align: center;
-                                                      vertical-align: middle;
                                                     }
                                                 data-icon-name="Cancel"
                                                 role="presentation"
@@ -1112,6 +1102,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           </button>
                                         </div>
                                         <div
+                                          aria-hidden={true}
                                           data-is-visible={true}
                                           onFocus={[Function]}
                                           style={
@@ -1127,6 +1118,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   </div>
                                 </div>
                                 <div
+                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -1185,7 +1177,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1289,7 +1280,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Download"
                   role="presentation"

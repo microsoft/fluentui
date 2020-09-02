@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Dialog } from '@fluentui/react';
+import { Button, Dialog } from '@fluentui/react-northstar';
 
 export const selectors = {
   outerClose: 'outer-close',
@@ -10,7 +10,7 @@ export const selectors = {
   innerClose: 'inner-close',
   innerHeader: 'inner-header',
   innerTrigger: 'inner-trigger',
-  innerOverlay: 'inner-overlay'
+  innerOverlay: 'inner-overlay',
 };
 
 const DialogInPopupExample = () => (

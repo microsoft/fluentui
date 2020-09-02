@@ -11,26 +11,26 @@ const AccordionItemType = ((<CollapsibleSection />) as React.ReactElement<IColla
 const AccordionView: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;
 
-  const children: React.ReactChild[] = React.Children.map(
+  const children: React.ReactChild[] | undefined | null = React.Children.map(
     props.children,
     (child: React.ReactElement<ICollapsibleSectionProps>, index: number) => {
       const defaultItemProps: ICollapsibleSectionProps = {
-        defaultCollapsed: collapseItems
+        defaultCollapsed: collapseItems,
       };
 
       if (child.type === AccordionItemType) {
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props
+          ...child.props,
         });
       }
 
       return <CollapsibleSection {...defaultItemProps}> {child} </CollapsibleSection>;
-    }
+    },
   );
 
   const Slots = getSlots<ICollapsibleSectionProps, IAccordionSlots>(props, {
-    root: 'div'
+    root: 'div',
   });
 
   return <Slots.root>{children}</Slots.root>;
@@ -38,7 +38,7 @@ const AccordionView: IAccordionComponent['view'] = props => {
 
 const AccordionStatics = {
   Item: CollapsibleSection,
-  defaultProps: {}
+  defaultProps: {},
 };
 
 export const Accordion: React.FunctionComponent<IAccordionProps> & {
@@ -46,7 +46,7 @@ export const Accordion: React.FunctionComponent<IAccordionProps> & {
 } = createComponent(AccordionView, {
   displayName: 'Accordion',
   styles,
-  statics: AccordionStatics
+  statics: AccordionStatics,
 });
 
 export default Accordion;

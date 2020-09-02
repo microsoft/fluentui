@@ -4,8 +4,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
 <div
   className=
       ms-Fabric
-      is-focusHidden
-      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -29,7 +27,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       & .ms-ComboBox {
         max-width: 300px;
       }
-  dir="ltr"
 >
   <div
     className=
@@ -296,7 +293,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -314,7 +310,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -333,8 +328,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: ButtonText;
             }
             &:hover {
-              background-color: #5c2d91;
-              color: white;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -403,7 +398,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"
@@ -689,7 +683,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -707,7 +700,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -796,7 +788,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"

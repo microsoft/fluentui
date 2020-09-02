@@ -8,5 +8,5 @@ export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps
   ToggleBase,
   getStyles,
   undefined,
-  { scope: 'Toggle' }
+  { scope: 'Toggle' },
 );

@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { KnobContext, KnobContextValue } from './KnobContexts';
 import { KnobComponent, KnobComponentProps, KnobDefinition } from './types';
-import useKnobValues from './useKnobValues';
+import { useKnobValues } from './useKnobValues';
 
 const getKnobControls = (knobsContext: KnobContextValue): Record<'Control' | 'Field' | 'Label', KnobComponent> => {
   const { KnobControl, KnobField, KnobLabel } = knobsContext.components;
   const controls = {
     Control: KnobControl,
     Field: KnobField,
-    Label: KnobLabel
+    Label: KnobLabel,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -30,7 +30,7 @@ const getKnobComponents = (knobsContext: KnobContextValue): Record<KnobDefinitio
     number: KnobNumber,
     range: KnobRange,
     select: KnobSelect,
-    string: KnobString
+    string: KnobString,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -48,7 +48,7 @@ type KnobInspectorProps = {
   children?: (children: React.ReactElement) => React.ReactElement;
 };
 
-const KnobInspector: React.FunctionComponent<KnobInspectorProps> = props => {
+export const KnobInspector: React.FunctionComponent<KnobInspectorProps> = props => {
   const knobContext = React.useContext(KnobContext);
 
   const { Control, Field, Label } = getKnobControls(knobContext);
@@ -74,5 +74,3 @@ const KnobInspector: React.FunctionComponent<KnobInspectorProps> = props => {
 
   return props.children ? props.children(children) : children;
 };
-
-export default KnobInspector;

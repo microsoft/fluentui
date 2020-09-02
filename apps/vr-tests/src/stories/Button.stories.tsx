@@ -9,15 +9,15 @@ import {
   CompoundButton,
   IconButton,
   IButtonProps,
-  CommandBarButton
+  CommandBarButton,
 } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
   iconProps: {
-    iconName: 'AddFriend'
+    iconName: 'AddFriend',
   },
   children: 'Button',
-  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
+  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
 };
 
 const commandProps: IButtonProps = {
@@ -30,18 +30,18 @@ const commandProps: IButtonProps = {
         key: 'emailMessage',
         text: 'Email message',
         iconProps: {
-          iconName: 'Mail'
-        }
+          iconName: 'Mail',
+        },
       },
       {
         key: 'calendarEvent',
         text: 'Calendar event',
         iconProps: {
-          iconName: 'Calendar'
-        }
-      }
-    ]
-  }
+          iconName: 'Calendar',
+        },
+      },
+    ],
+  },
 };
 
 storiesOf('Button Default', module)
@@ -242,8 +242,8 @@ storiesOf('IconButton Scenarios', module)
         menuProps={{
           items: [
             { key: 'a', text: 'Item 1' },
-            { key: 'b', text: 'Item 2' }
-          ]
+            { key: 'b', text: 'Item 2' },
+          ],
         }}
       />
     </div>

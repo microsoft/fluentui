@@ -1,6 +1,16 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Extendable, Box, Flex, Header, Icon, List, ListItemProps, Segment, ShorthandCollection } from '@fluentui/react';
+import {
+  Extendable,
+  Box,
+  Flex,
+  Header,
+  List,
+  ListItemProps,
+  Segment,
+  ShorthandCollection,
+} from '@fluentui/react-northstar';
+import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 export type ComponentBestPracticesProps = Extendable<{
   doList?: ShorthandCollection<ListItemProps>;
@@ -16,7 +26,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
       updatedDoList.push({
         key: doList.indexOf(element),
         content: element,
-        media: <Icon name="checkmark" styles={{ color: 'green' }} />
+        media: <AcceptIcon styles={{ color: 'green' }} />,
       });
     });
   }
@@ -26,7 +36,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
       updatedDontList.push({
         key: dontList.indexOf(element),
         content: element,
-        media: <Icon name="close" styles={{ color: 'red' }} />
+        media: <CloseIcon styles={{ color: 'red' }} />,
       });
     });
   }

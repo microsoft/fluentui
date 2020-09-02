@@ -1,84 +1,129 @@
-import resolveVariables from '../../src/styles/resolveVariables';
-import { ComponentVariablesPrepared, emptyTheme, ThemePrepared } from '@fluentui/styles';
+import {
+  ComponentVariablesPrepared,
+  emptyTheme,
+  ThemeComponentVariablesPrepared,
+  ThemePrepared,
+} from '@fluentui/styles';
+import * as _ from 'lodash';
+
+import { resolveVariables } from '../../src/styles/resolveVariables';
 
 const siteVariables = {
   ...emptyTheme.siteVariables,
-  brand: 'blue'
+  brand: 'blue',
 };
-const componentVariables: ComponentVariablesPrepared = (siteVariables = emptyTheme.siteVariables) => ({
-  backgroundColor: siteVariables.brand
+const testVariables: ComponentVariablesPrepared = (siteVariables = emptyTheme.siteVariables) => ({
+  backgroundColor: siteVariables.brand,
 });
 
-const createTheme: (displayName?: string) => ThemePrepared = displayName => ({
+const createTheme: (componentVariables?: ThemeComponentVariablesPrepared) => ThemePrepared = componentVariables => ({
   ...emptyTheme,
   siteVariables,
   componentVariables: {
-    [displayName || 'Test']: componentVariables
-  }
+    Test: testVariables,
+    ...componentVariables,
+  },
 });
 
 describe('resolveVariables', () => {
   test('resolved variables', () => {
-    const variables = resolveVariables('Test', createTheme('Test'), {}, false);
+    const variables = resolveVariables(['Test'], createTheme(), {}, false);
     expect(variables).toMatchObject({ backgroundColor: 'blue' });
   });
 
   test('merges theme with input variables', () => {
     const propsVariables = () => ({
-      color: 'red'
+      color: 'red',
     });
-    const variables = resolveVariables('Test', createTheme('Test'), propsVariables, false);
+    const variables = resolveVariables(['Test'], createTheme(), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'blue', color: 'red' });
   });
 
-  test("allows input variabes to override theme's", () => {
+  test("allows input variables to override theme's", () => {
     const propsVariables = {
-      backgroundColor: 'green'
+      backgroundColor: 'green',
     };
-    const variables = resolveVariables('Test', createTheme('Test'), propsVariables, false);
+    const variables = resolveVariables(['Test'], createTheme(), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'green' });
   });
 
-  test('caches resolved variables', () => {
-    const componentVariablesMock = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
+  test('avoids merging if variables are undefined', () => {
     const theme = createTheme();
-    theme.componentVariables['Test'] = componentVariablesMock;
-
-    const variables = resolveVariables('Test', theme, {}, true);
-    const secondVariables = resolveVariables('Test', theme, {}, true);
-
-    expect(variables).toMatchObject(secondVariables);
-    expect(componentVariablesMock).toHaveBeenCalledTimes(1);
-  });
-
-  test('considers displayName while caching resolved variables', () => {
-    const componentVariablesMock1 = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
-    const componentVariablesMock2 = jest.fn().mockReturnValue({ color: 'red' });
-    const theme = createTheme();
-    theme.componentVariables['Test1'] = componentVariablesMock1;
-    theme.componentVariables['Test2'] = componentVariablesMock2;
-
-    const variables = resolveVariables('Test1', theme, {}, true);
-    const secondVariables = resolveVariables('Test2', theme, {}, true);
+    const variables = resolveVariables(['Test'], theme, undefined, false);
 
     expect(variables).toMatchObject({ backgroundColor: 'blue' });
-    expect(secondVariables).toMatchObject({ color: 'red' });
-    expect(componentVariablesMock1).toHaveBeenCalledTimes(1);
-    expect(componentVariablesMock2).toHaveBeenCalledTimes(1);
   });
 
-  test('considers theme while caching resolved variables', () => {
-    const componentVariablesMock = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
-    const theme = createTheme('Test');
-    const secondTheme = createTheme('Test');
-    theme.componentVariables['Test'] = componentVariablesMock;
-    secondTheme.componentVariables['Test'] = componentVariablesMock;
-
-    const variables = resolveVariables('Test', theme, {}, true);
-    const secondVariables = resolveVariables('Test', secondTheme, {}, true);
+  test('avoids merging for multiple display names if variables are undefined', () => {
+    const theme = createTheme({ Foo: testVariables, Bar: testVariables });
+    const variables = resolveVariables(['Foo', 'Bar'], theme, undefined, false);
 
     expect(variables).toMatchObject({ backgroundColor: 'blue' });
-    expect(secondVariables).toMatchObject({ backgroundColor: 'blue' });
-    expect(componentVariablesMock).toHaveBeenCalledTimes(2);
+  });
+
+  describe('enabledVariablesCaching', () => {
+    test('caches resolved variables', () => {
+      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
+      const theme = createTheme({ Foo: fooVariables });
+
+      const variables = resolveVariables(['Foo'], theme, {}, true);
+      const secondVariables = resolveVariables(['Foo'], theme, {}, true);
+
+      expect(variables).toMatchObject(secondVariables);
+      expect(fooVariables).toHaveBeenCalledTimes(1);
+    });
+
+    test('omits usage of undefined variables', () => {
+      const fooVariables = jest.fn().mockReturnValue({ content: 'foo' });
+      const theme = createTheme({ Foo: fooVariables, Bar: undefined });
+
+      expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({ content: 'foo' });
+      expect(fooVariables).toHaveBeenCalledTimes(1);
+    });
+
+    test('handles multiple displayNames', () => {
+      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue', borderColor: 'black' });
+      const barVariables = jest.fn().mockReturnValue({ backgroundColor: 'green', color: 'red' });
+      const theme = createTheme({ Foo: fooVariables, Bar: barVariables });
+
+      expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({
+        backgroundColor: 'green',
+        borderColor: 'black',
+        color: 'red',
+      });
+
+      // Runs to check cache
+      _.times(3, () => resolveVariables(['Foo', 'Bar'], theme, {}, true));
+
+      expect(fooVariables).toHaveBeenCalledTimes(1);
+      expect(barVariables).toHaveBeenCalledTimes(1);
+    });
+
+    test('considers displayName while caching resolved variables', () => {
+      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
+      const barVariables = jest.fn().mockReturnValue({ color: 'red' });
+      const theme = createTheme({ Foo: fooVariables, Bar: barVariables });
+
+      const variables = resolveVariables(['Foo'], theme, {}, true);
+      const secondVariables = resolveVariables(['Bar'], theme, {}, true);
+
+      expect(variables).toMatchObject({ backgroundColor: 'blue' });
+      expect(secondVariables).toMatchObject({ color: 'red' });
+      expect(fooVariables).toHaveBeenCalledTimes(1);
+      expect(barVariables).toHaveBeenCalledTimes(1);
+    });
+
+    test('considers theme while caching resolved variables', () => {
+      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
+      const theme = createTheme({ Foo: fooVariables });
+      const secondTheme = createTheme({ Foo: fooVariables });
+
+      const variables = resolveVariables(['Foo'], theme, {}, true);
+      const secondVariables = resolveVariables(['Foo'], secondTheme, {}, true);
+
+      expect(variables).toMatchObject({ backgroundColor: 'blue' });
+      expect(secondVariables).toMatchObject({ backgroundColor: 'blue' });
+      expect(fooVariables).toHaveBeenCalledTimes(2);
+    });
   });
 });

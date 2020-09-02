@@ -1,7 +1,22 @@
 import * as React from 'react';
-import { css, Icon, TooltipHost, TooltipDelay, FocusZone, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
+import {
+  css,
+  Icon,
+  TooltipHost,
+  TooltipDelay,
+  FocusZone,
+  IProcessedStyleSet,
+  classNamesFunction,
+  styled,
+} from 'office-ui-fabric-react';
 import * as colorCheck from 'color-check';
-import { IColorPaletteProps, IColorSwatch, IColorPaletteStyleProps, IColorPaletteStyles, IColorSwatchCode } from './ColorPalette.types';
+import {
+  IColorPaletteProps,
+  IColorSwatch,
+  IColorPaletteStyleProps,
+  IColorPaletteStyles,
+  IColorSwatchCode,
+} from './ColorPalette.types';
 import { getStyles } from './ColorPalette.styles';
 
 const getClassNames = classNamesFunction<IColorPaletteStyleProps, IColorPaletteStyles>();
@@ -17,7 +32,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     super(props);
 
     this.state = {
-      selectedColor: props.colors[0]
+      selectedColor: props.colors[0],
     };
   }
 
@@ -79,15 +94,17 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
       <li
         key={name}
         className={css(classNames.swatch, isSelected && classNames.swatchSelected)}
-        // tslint:disable-next-line jsx-no-lambda
         onClick={() => this._selectColor(color)}
-        // tslint:disable-next-line jsx-no-lambda
         onFocusCapture={() => this._selectColor(color)}
         style={{ backgroundColor: color.hex }}
         data-is-focusable={true}
       >
         {themeSlot ? (
-          <TooltipHost hostClassName={classNames.swatchTooltip} delay={TooltipDelay.long} content={`Theme slot: ${themeSlot}.`}>
+          <TooltipHost
+            hostClassName={classNames.swatchTooltip}
+            delay={TooltipDelay.long}
+            content={`Theme slot: ${themeSlot}.`}
+          >
             {swatchContent}
           </TooltipHost>
         ) : (
@@ -116,7 +133,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
                 {code.react && code.react.indexOf('.') > -1 ? code.react.split('.')[1] : code.react}{' '}
                 <TooltipHost
                   tooltipProps={{
-                    onRenderContent: () => this._renderCodeDetails(code)
+                    onRenderContent: () => this._renderCodeDetails(code),
                   }}
                   closeDelay={500}
                   id="code"
@@ -135,7 +152,9 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     const { core, react, themeSlot } = code;
     if (core || react || themeSlot) {
       return (
-        (core ? `Fabric Core: ${core}. ` : '') + (react ? `Fabric React: ${react}. ` : '') + (themeSlot ? `Theme slot: ${themeSlot}.` : '')
+        (core ? `Fabric Core: ${core}. ` : '') +
+        (react ? `Fabric React: ${react}. ` : '') +
+        (themeSlot ? `Theme slot: ${themeSlot}.` : '')
       );
     }
   }
@@ -168,7 +187,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
 
   private _selectColor = (color: IColorSwatch): void => {
     this.setState({
-      selectedColor: color
+      selectedColor: color,
     });
 
     // Optional callback to notify parent that a color has been selected.

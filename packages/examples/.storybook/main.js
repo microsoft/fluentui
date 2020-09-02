@@ -10,7 +10,11 @@ export default {
   webpackFinal: (/** @type {webpack.Configuration} */ config) => {
     config.resolveLoader = {
       ...config.resolveLoader,
-      modules: ['node_modules', path.resolve(__dirname, '../../../scripts/node_modules'), path.resolve(__dirname, '../../../node_modules')]
+      modules: [
+        'node_modules',
+        path.resolve(__dirname, '../../../scripts/node_modules'),
+        path.resolve(__dirname, '../../../node_modules'),
+      ],
     };
 
     config.module.rules.push(
@@ -22,10 +26,10 @@ export default {
             options: {
               transpileOnly: true,
               experimentalWatchApi: true,
-              configFile: 'tsconfig.json'
-            }
-          }
-        ]
+              configFile: 'tsconfig.json',
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -33,47 +37,45 @@ export default {
         exclude: [/node_modules/],
         use: [
           {
-            loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+            loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
           },
           {
             loader: 'css-loader', // translates CSS into CommonJS
             options: {
               modules: true,
               importLoaders: 2,
-              localIdentName: '[name]_[local]_[hash:base64:5]',
-              minimize: false
-            }
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins: function() {
                 return [require('autoprefixer')];
-              }
-            }
+              },
+            },
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[ext]',
       },
       {
         test: /\.(woff|woff2|ttf)$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[ext]',
       },
       {
         test: /\.md$/,
-        loader: 'raw-loader'
+        loader: 'raw-loader',
       },
       {
         // Special loader that only includes stories from the current package
         test: /\.storybook[/\\]preview.js/,
-        loader: path.resolve(__dirname, 'preview-loader.js')
-      }
+        loader: path.resolve(__dirname, 'preview-loader.js'),
+      },
     );
 
     config.resolve.extensions.push('.ts', '.tsx');
@@ -85,5 +87,5 @@ export default {
     config.optimization.minimize = false;
 
     return config;
-  }
+  },
 };

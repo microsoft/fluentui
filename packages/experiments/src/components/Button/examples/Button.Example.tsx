@@ -4,15 +4,15 @@ import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
     childrenGap: 16,
-    padding: 8
+    padding: 8,
   },
   buttonStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const alertClicked = (): void => {
@@ -25,7 +25,6 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
@@ -45,13 +44,27 @@ export class ButtonExample extends React.Component<{}, {}> {
               <Button icon="Attach" circular primary disabled />
             </ButtonStack>
             <ButtonStack>
-              <Button content="Button as an anchor: Go to Bing" href="http://bing.com" target="_blank" title="Let us bing!" />
-              <Button primary content="Button as an anchor: Go to Bing" href="http://bing.com" target="_blank" title="Let us bing!" />
+              <Button
+                content="Button as an anchor: Go to Bing"
+                href="http://bing.com"
+                target="_blank"
+                title="Let us bing!"
+              />
+              <Button
+                primary
+                content="Button as an anchor: Go to Bing"
+                href="http://bing.com"
+                target="_blank"
+                title="Let us bing!"
+              />
             </ButtonStack>
             <ButtonStack>
               <Button icon="Upload" content="Button with string icon" />
               <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
-              <Button content="Button with icon render function" slots={{ icon: { render: () => <Icon iconName="Download" /> } }} />
+              <Button
+                content="Button with icon render function"
+                slots={{ icon: { render: () => <Icon iconName="Download" /> } }}
+              />
             </ButtonStack>
             <ButtonStack>
               <Button>

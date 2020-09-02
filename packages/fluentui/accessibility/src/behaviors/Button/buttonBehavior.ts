@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
 /**
@@ -9,15 +9,15 @@ import { Accessibility, AccessibilityDefinition } from '../../types';
  * Adds attribute 'aria-disabled=true' based on the property 'loading'.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
+export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
         role: props.as === 'button' ? undefined : 'button',
         tabIndex: props.as === 'button' ? undefined : 0,
         disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
-        'aria-disabled': props.disabled || props.loading
-      }
+        'aria-disabled': props.disabled || props.loading,
+      },
     },
 
     keyActions: {
@@ -25,11 +25,11 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
         ...(props.as !== 'button' &&
           props.as !== 'a' && {
             performClick: {
-              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-            }
-          })
-      }
-    }
+              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+            },
+          }),
+      },
+    },
   };
 
   if (process.env.NODE_ENV !== 'production' && props.loading) {
@@ -39,8 +39,6 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
 
   return definition;
 };
-
-export default buttonBehavior;
 
 export type ButtonBehaviorProps = {
   /** Element type. */

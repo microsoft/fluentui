@@ -1,18 +1,18 @@
-import { Image, Button } from '@fluentui/react';
+import { Image, Button, ButtonProps } from '@fluentui/react-northstar';
 
 import * as React from 'react';
 
 export interface GridPickerItemProps {
   title?: string;
   imageSrc: string;
-  onClick?: (e: React.SyntheticEvent, props: GridPickerItemProps) => void;
+  onClick?: (e: React.SyntheticEvent, props: ButtonProps) => void;
 }
 
 const imageButtonStyles = {
   minWidth: '56px',
   height: '56px',
   padding: '0',
-  background: '#fff'
+  background: '#fff',
 };
 
 class GridImagePickerItem extends React.Component<GridPickerItemProps> {

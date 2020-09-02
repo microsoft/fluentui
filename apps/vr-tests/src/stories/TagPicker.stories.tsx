@@ -20,7 +20,7 @@ const testTags: ITag[] = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ].map(item => ({ key: item, name: item }));
 
 const getTextFromItem = (item: ITag) => item.name;
@@ -57,7 +57,7 @@ storiesOf('TagPicker', module)
       pickerSuggestionsProps={{
         suggestionsHeaderText: 'Suggested Tags',
         noResultsFoundText: 'No Color Tags Found',
-        searchForMoreText: 'Get more Results'
+        searchForMoreText: 'Get more Results',
       }}
       itemLimit={2}
     />
@@ -73,13 +73,13 @@ storiesOf('TagPicker', module)
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 storiesOf('TagPicker', module)
@@ -97,8 +97,8 @@ storiesOf('TagPicker', module)
         defaultSelectedItems={[
           {
             key: 'test',
-            name: 'Very very long tag (this part should be truncated)'
-          }
+            name: 'Very very long tag (this part should be truncated)',
+          },
         ]}
       />
     </Fabric>
@@ -134,11 +134,11 @@ storiesOf('TagItem', module)
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

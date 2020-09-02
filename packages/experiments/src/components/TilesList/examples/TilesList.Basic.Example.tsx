@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { TilesList, ITilesGridSegment, ITilesGridItem, TilesGridMode, ITileSize } from '@uifabric/experiments/lib/TilesList';
+import {
+  TilesList,
+  ITilesGridSegment,
+  ITilesGridItem,
+  TilesGridMode,
+  ITileSize,
+} from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;
@@ -11,7 +17,7 @@ const ITEMS: IBasicItem[] = [];
 for (let i = 0; i < 27; i++) {
   ITEMS.push({
     color: ['red', 'blue', 'green', 'yellow', 'orange', 'brown', 'purple', 'gray'][Math.floor(Math.random() * 8)],
-    key: `item-${i}`
+    key: `item-${i}`,
   });
 }
 
@@ -30,10 +36,10 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
             content: item,
             desiredSize: { width: 100, height: 100 },
             key: item.key,
-            onRender: renderItem
+            onRender: renderItem,
           };
-        }
-      )
+        },
+      ),
     };
   }
 
@@ -43,7 +49,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
       key: 'grid',
       mode: TilesGridMode.fill,
       minRowHeight: 100,
-      spacing: 10
+      spacing: 10,
     };
 
     return <TilesList items={[gridSegment]} />;
@@ -53,7 +59,6 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
 function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
   return (
     <div
-      // tslint:disable-next-line:jsx-ban-props
       style={{
         position: 'absolute',
         display: 'flex',
@@ -63,7 +68,7 @@ function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
         left: '0',
         bottom: '0',
         right: '0',
-        backgroundColor: item.color
+        backgroundColor: item.color,
       }}
     >
       <span>{finalSize ? `${finalSize.width.toFixed(1)}x${finalSize.height.toFixed(1)}` : ''}</span>

@@ -7,7 +7,7 @@ export const getItemsData = (images: string[], ariaLabelPart: string) => {
     onClick: (e: any, props: any) => {
       const { title } = props;
       alert(`Selected item is ${title}`);
-    }
+    },
   }));
 };
 
@@ -28,7 +28,7 @@ export const imageNames = [
   'stevie',
   'steve',
   'tom',
-  'veronika'
+  'veronika',
 ];
 
 export const arrayOfStickerImagesNames = [
@@ -49,7 +49,7 @@ export const arrayOfStickerImagesNames = [
     'stevie',
     'steve',
     'tom',
-    'veronika'
+    'veronika',
   ],
   ['joe', 'justen', 'laura', 'matt', 'nan', 'nom', 'stevie', 'steve', 'tom', 'veronika'],
   ['chris', 'christian', 'elliot', 'joe', 'justen', 'laura', 'matt', 'stevie', 'steve', 'tom'],
@@ -70,9 +70,9 @@ export const arrayOfStickerImagesNames = [
     'stevie',
     'steve',
     'tom',
-    'veronika'
+    'veronika',
   ],
   ['chris', 'elliot', 'helen', 'jenny', 'stevie', 'steve', 'tom'],
   ['jenny', 'joe', 'justen', 'nan', 'nom', 'stevie'],
-  ['chris', 'christian', 'elliot', 'joe', 'justen', 'laura', 'matt', 'stevie', 'steve', 'tom']
+  ['chris', 'christian', 'elliot', 'joe', 'justen', 'laura', 'matt', 'stevie', 'steve', 'tom'],
 ];

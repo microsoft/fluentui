@@ -43,6 +43,6 @@ export function extractStyleParts(
 
   return {
     classes,
-    objects
+    objects,
   };
 }

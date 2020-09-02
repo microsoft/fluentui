@@ -1,7 +1,10 @@
 import * as React from 'react';
-
-import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IDocumentCardDetailsProps, IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles } from './DocumentCardDetails.types';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
+import {
+  IDocumentCardDetailsProps,
+  IDocumentCardDetailsStyleProps,
+  IDocumentCardDetailsStyles,
+} from './DocumentCardDetails.types';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
@@ -9,15 +12,21 @@ const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocume
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardDetailsBase extends BaseComponent<IDocumentCardDetailsProps, any> {
+export class DocumentCardDetailsBase extends React.Component<IDocumentCardDetailsProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardDetailsStyles>;
+
+  constructor(props: IDocumentCardDetailsProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { children, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return <div className={this._classNames.root}>{children}</div>;

@@ -11,7 +11,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 

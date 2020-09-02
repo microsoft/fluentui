@@ -1,9 +1,10 @@
 import { Accessibility, AccessibilityAttributesBySlot } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import getAccessibility from '../accessibility/getAccessibility';
-import { ReactAccessibilityBehavior, AccessibilityActionHandlers } from '../accessibility/types';
-import FocusZone from '../FocusZone/FocusZone';
+import { getAccessibility } from '../accessibility/getAccessibility';
+import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
+import { FocusZone } from '../FocusZone/FocusZone';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 type UseAccessibilityOptions<Props> = {
   actionHandlers?: AccessibilityActionHandlers;
@@ -12,54 +13,70 @@ type UseAccessibilityOptions<Props> = {
   rtl?: boolean;
 };
 
-type UseAccessibilityResult = (<SlotProps extends Record<string, any>>(
-  slotName: string,
-  slotProps: SlotProps
-) => MergedProps<SlotProps>) & {
-  unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
-};
-
-type MergedProps<SlotProps extends Record<string, any>> = SlotProps &
-  Partial<AccessibilityAttributesBySlot> & {
-    onKeyDown?: (e: React.KeyboardEvent, ...args: any[]) => void;
-  };
-
-const mergeProps = <SlotProps extends Record<string, any>>(
+type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProps>(
   slotName: string,
   slotProps: SlotProps,
-  definition: ReactAccessibilityBehavior
-): MergedProps<SlotProps> => {
-  const finalProps: MergedProps<SlotProps> = {
-    ...definition.attributes[slotName],
-    ...slotProps
-  };
-  const slotHandlers = definition.keyHandlers[slotName];
-
-  if (slotHandlers) {
-    const onKeyDown = (e: React.KeyboardEvent, ...args: any[]) => {
-      if (slotHandlers && slotHandlers.onKeyDown) {
-        slotHandlers.onKeyDown(e);
-      }
-
-      if (slotProps.onKeyDown) {
-        slotProps.onKeyDown(e, ...args);
-      }
-    };
-
-    finalProps.onKeyDown = onKeyDown;
-  }
-
-  return finalProps;
+) => MergedProps<SlotProps>) & {
+  unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
+  unstable_behaviorDefinition: () => ReactAccessibilityBehavior;
 };
 
-const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAccessibilityOptions<Props> = {}) => {
+type UserProps = {
+  onKeyDown?: KeyboardEventHandler;
+};
+
+type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps &
+  Partial<AccessibilityAttributesBySlot> &
+  UserProps;
+
+export const useAccessibility = <Props>(
+  behavior: Accessibility<Props>,
+  options: UseAccessibilityOptions<Props> = {},
+) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
+
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
-  const getA11Props: UseAccessibilityResult = (slotName, slotProps) => mergeProps(slotName, slotProps, definition);
+  const latestDefinition = React.useRef<ReactAccessibilityBehavior>();
+  const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});
+  const slotProps = React.useRef<Record<string, UserProps>>({});
+
+  useIsomorphicLayoutEffect(() => {
+    latestDefinition.current = definition;
+  });
+
+  const getA11yProps: UseAccessibilityResult = (slotName, userProps) => {
+    const hasKeyDownHandlers = Boolean(definition.keyHandlers[slotName] || userProps.onKeyDown);
+    const childBehavior = definition.childBehaviors ? definition.childBehaviors[slotName] : undefined;
+    slotProps.current[slotName] = userProps;
+
+    // We want to avoid adding event handlers until it's really needed
+    if (hasKeyDownHandlers) {
+      if (!slotHandlers.current[slotName]) {
+        slotHandlers.current[slotName] = (e, ...args) => {
+          const accessibilityHandler = latestDefinition.current?.keyHandlers[slotName]?.onKeyDown;
+          const userHandler = slotProps.current[slotName].onKeyDown;
+
+          if (accessibilityHandler) accessibilityHandler(e);
+          if (userHandler) userHandler(e, ...args);
+        };
+      }
+    } else {
+      delete slotHandlers.current[slotName];
+    }
+
+    const finalProps: MergedProps = {
+      ...(childBehavior && { accessibility: childBehavior }),
+      ...definition.attributes[slotName],
+      ...userProps,
+      onKeyDown: slotHandlers.current[slotName],
+    };
+
+    return finalProps;
+  };
 
   // Provides an experimental handling for FocusZone definition in behaviors
-  getA11Props.unstable_wrapWithFocusZone = (element: React.ReactElement) => {
+  getA11yProps.unstable_wrapWithFocusZone = (element: React.ReactElement) => {
     if (definition.focusZone) {
       let child: React.ReactElement = element;
 
@@ -71,14 +88,14 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
         ...definition.focusZone.props,
         ...child.props,
         as: child.type,
-        isRtl: rtl
+        isRtl: rtl,
       });
     }
 
     return element;
   };
 
-  return getA11Props;
-};
+  getA11yProps.unstable_behaviorDefinition = () => definition;
 
-export default useAccessibility;
+  return getA11yProps;
+};

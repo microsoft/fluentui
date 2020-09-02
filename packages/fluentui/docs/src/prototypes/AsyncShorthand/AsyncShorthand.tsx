@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Chat, Menu, Popup, Avatar } from '@fluentui/react';
+import { Chat, Menu, Popup, Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 /**
  * This example shows how to create custom Chat Messages.
@@ -47,7 +48,12 @@ class CustomChatMessage extends React.Component {
             }}
           />
         }
-        trigger={<AsyncData data={3} render={data => <MenuItem {...props} icon="thumbs up" content={data} onClick={this.togglePopup} />} />}
+        trigger={
+          <AsyncData
+            data={3}
+            render={data => <MenuItem {...props} icon={<LikeIcon />} content={data} onClick={this.togglePopup} />}
+          />
+        }
       />
     );
   };
@@ -65,12 +71,12 @@ class CustomChatMessage extends React.Component {
             right: '10px',
             background: '#fff',
             boxShadow: '0px 2px 4px #ddd',
-            opacity: 0
+            opacity: 0,
           },
 
           ':hover': {
-            '& .actions': { opacity: 1 }
-          }
+            '& .actions': { opacity: 1 },
+          },
         }}
         author="Jane Doe"
         timestamp="Yesterday, 10:15 PM"
@@ -83,9 +89,21 @@ class CustomChatMessage extends React.Component {
               iconOnly
               className="actions"
               items={[
-                { key: 'a', icon: 'thumbs up', children: this.renderMenuItem },
-                { key: 'b', icon: 'user', children: this.renderMenuItem },
-                { key: 'c', icon: 'ellipsis horizontal', children: this.renderMenuItem }
+                {
+                  icon: <LikeIcon />,
+                  key: 'a',
+                  children: this.renderMenuItem,
+                },
+                {
+                  icon: <AcceptIcon />,
+                  key: 'b',
+                  children: this.renderMenuItem,
+                },
+                {
+                  icon: <MoreIcon />,
+                  key: 'c',
+                  children: this.renderMenuItem,
+                },
               ]}
             />
           </div>
@@ -107,7 +125,7 @@ const gutterContent = (
             render={statusData =>
               renderStatus({
                 color: statusData === 'available' ? 'green' : undefined,
-                icon: statusData === 'available' ? 'check' : undefined
+                icon: statusData === 'available' ? <AcceptIcon /> : undefined,
               })
             }
           />
@@ -122,7 +140,7 @@ const AsyncShorthand = () => (
     items={[
       { key: 'a', gutter: gutterContent, message: <CustomChatMessage /> },
       { key: 'b', gutter: gutterContent, message: <CustomChatMessage /> },
-      { key: 'c', gutter: gutterContent, message: <CustomChatMessage /> }
+      { key: 'c', gutter: gutterContent, message: <CustomChatMessage /> },
     ]}
   />
 );

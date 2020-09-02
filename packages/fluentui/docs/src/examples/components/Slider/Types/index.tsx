@@ -5,7 +5,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default slider." examplePath="components/Slider/Types/SliderExample" />
+    <ComponentExample
+      title="Default"
+      description="A default slider."
+      examplePath="components/Slider/Types/SliderExample"
+    />
   </ExampleSection>
 );
 

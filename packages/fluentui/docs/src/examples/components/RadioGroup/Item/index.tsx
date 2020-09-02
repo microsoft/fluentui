@@ -1,4 +1,4 @@
-import { Segment } from '@fluentui/react';
+import { Segment } from '@fluentui/react-northstar';
 import * as React from 'react';
 import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
 import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';

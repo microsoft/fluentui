@@ -9,5 +9,5 @@ export const ExpandingCard: React.FunctionComponent<IExpandingCardProps> = style
   IExpandingCardStyleProps,
   IExpandingCardStyles
 >(ExpandingCardBase, getStyles, undefined, {
-  scope: 'ExpandingCard'
+  scope: 'ExpandingCard',
 });

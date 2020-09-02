@@ -38,7 +38,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
   return Provider;
 };
 
-const createContext = <Value>(defaultValue: Value, options: CreateContextOptions = {}): Context<Value> => {
+export const createContext = <Value>(defaultValue: Value, options: CreateContextOptions = {}): Context<Value> => {
   const { strict = true } = options;
 
   const context = React.createContext<ContextValue<Value>>(
@@ -47,16 +47,18 @@ const createContext = <Value>(defaultValue: Value, options: CreateContextOptions
         if (strict) {
           /* istanbul ignore next */
           throw new Error(
-            process.env.NODE_ENV === 'production' ? '' : `Please use <Provider /> component from "@fluentui/react-context-selector"`
+            process.env.NODE_ENV === 'production'
+              ? ''
+              : `Please use <Provider /> component from "@fluentui/react-context-selector"`,
           );
         }
 
         /* istanbul ignore next */
         return () => () => {};
       },
-      value: defaultValue
+      value: defaultValue,
     },
-    calculateChangedBits
+    calculateChangedBits,
   );
   context.Provider = createProvider<Value>(context.Provider) as any;
 
@@ -65,5 +67,3 @@ const createContext = <Value>(defaultValue: Value, options: CreateContextOptions
 
   return (context as unknown) as Context<Value>;
 };
-
-export default createContext;

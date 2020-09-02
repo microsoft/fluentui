@@ -1,84 +1,66 @@
-import { Customizer, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { LayerHost, ILayerProps } from 'office-ui-fabric-react/lib/Layer';
+import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { IFocusTrapZoneProps } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { useId, useBoolean } from '@uifabric/react-hooks';
 
-export interface ILayerCustomizedExampleState {
-  showPanel: boolean;
-  trapPanel: boolean;
-}
+export const LayerCustomizedExample: React.FunctionComponent = () => {
+  const [isPanelOpen, { setTrue: showPanel, setFalse: dismissPanel }] = useBoolean(false);
+  const [trapPanel, { toggle: toggleTrapPanel }] = useBoolean(false);
 
-export class LayerCustomizedExample extends React.Component<{}, ILayerCustomizedExampleState> {
-  public state: ILayerCustomizedExampleState = {
-    showPanel: false,
-    trapPanel: false
-  };
-  // Use getId() to ensure that the ID is unique on the page.
-  // (It's also okay to use a plain string without getId() and manually ensure uniqueness.)
-  private _layerHostId: string = getId('layerHost');
+  // Use useId() to ensure that the ID is unique on the page.
+  // (It's also okay to use a plain string and manually ensure uniqueness.)
+  const layerHostId = useId('layerHost');
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <p>
-          A <code>Panel</code> is rendered, trapped in a specified container. Use <b>Show panel</b> to show/hide the panel (or click the X
-          to dismiss it). Use <b>Trap panel</b> to release the panel from its bounds.
-        </p>
-        <Toggle label="Show panel" inlineLabel checked={this.state.showPanel} onChange={this._onShowPanelChange} />
-        <Toggle label="Trap panel" inlineLabel checked={this.state.trapPanel} onChange={this._onTrapPanelChange} />
-        <Customizer
-          scopedSettings={
-            this.state.trapPanel
-              ? {
-                  Layer: {
-                    hostId: this._layerHostId
-                  }
-                }
-              : {}
-          }
-        >
-          {this.state.showPanel && (
-            <Panel
-              isOpen={true}
-              hasCloseButton={true}
-              headerText="Test"
-              focusTrapZoneProps={{
-                isClickableOutsideFocusTrap: true,
-                forceFocusInsideTrap: false
-              }}
-              onDismiss={this._onDismissPanel}
-            />
-          )}
-        </Customizer>
-        <LayerHost
-          id={this._layerHostId}
-          style={{
-            position: 'relative',
-            height: '400px',
-            overflow: 'hidden',
-            border: '1px solid #ccc'
-          }}
-        />
-      </div>
-    );
-  }
+  const scopedSettings = useLayerSettings(trapPanel, layerHostId);
 
-  private _onDismissPanel = (): void => {
-    this.setState({
-      showPanel: false
-    });
-  };
+  return (
+    <div>
+      <p>
+        A <code>Panel</code> is rendered, trapped in a specified container. Use <b>Show panel</b> to show/hide the panel
+        (or select the X to dismiss it). Use <b>Trap panel</b> to release the panel from its bounds.
+      </p>
+      <Toggle label="Show panel" inlineLabel checked={isPanelOpen} onChange={isPanelOpen ? dismissPanel : showPanel} />
+      <Toggle label="Trap panel" inlineLabel checked={trapPanel} onChange={toggleTrapPanel} />
+      <Customizer scopedSettings={scopedSettings}>
+        {isPanelOpen && (
+          <Panel
+            isOpen
+            hasCloseButton
+            headerText="Sample panel"
+            focusTrapZoneProps={focusTrapZoneProps}
+            onDismiss={dismissPanel}
+          >
+            This panel {trapPanel ? 'is' : 'is not'} trapped.
+          </Panel>
+        )}
+      </Customizer>
+      <LayerHost id={layerHostId} className={layerHostClass} />
+    </div>
+  );
+};
 
-  private _onShowPanelChange = (event: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean): void => {
-    this.setState({
-      showPanel: !!checked
-    });
-  };
+const layerHostClass = mergeStyles({
+  position: 'relative',
+  height: 400,
+  overflow: 'hidden',
+  border: '1px solid #ccc',
+});
 
-  private _onTrapPanelChange = (event: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean): void => {
-    this.setState({
-      trapPanel: !!checked
-    });
-  };
+const focusTrapZoneProps: IFocusTrapZoneProps = {
+  isClickableOutsideFocusTrap: true,
+  forceFocusInsideTrap: false,
+};
+
+function useLayerSettings(trapPanel: boolean, layerHostId: string): { Layer?: ILayerProps } {
+  return React.useMemo(() => {
+    if (trapPanel) {
+      const layerProps: ILayerProps = { hostId: layerHostId };
+      return { Layer: layerProps };
+    }
+    return {};
+  }, [trapPanel, layerHostId]);
 }

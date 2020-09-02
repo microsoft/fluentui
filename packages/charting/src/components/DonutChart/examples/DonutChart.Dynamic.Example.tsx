@@ -9,10 +9,16 @@ export interface IExampleState {
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
   private _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.tealLight, DefaultPalette.teal, DefaultPalette.greenLight],
+    [
+      DefaultPalette.blueLight,
+      DefaultPalette.blue,
+      DefaultPalette.tealLight,
+      DefaultPalette.teal,
+      DefaultPalette.greenLight,
+    ],
     [DefaultPalette.purpleLight, DefaultPalette.purple, DefaultPalette.magentaLight, DefaultPalette.magenta],
     [DefaultPalette.yellowLight, DefaultPalette.yellow, DefaultPalette.orangeLighter, DefaultPalette.orangeLight],
-    [DefaultPalette.neutralTertiary, DefaultPalette.neutralSecondary, DefaultPalette.neutralPrimary]
+    [DefaultPalette.neutralTertiary, DefaultPalette.neutralSecondary, DefaultPalette.neutralPrimary],
   ];
 
   constructor(props: IDonutChartProps) {
@@ -22,8 +28,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         { legend: 'first', data: 40, color: DefaultPalette.blueLight },
         { legend: 'second', data: 20, color: DefaultPalette.purpleLight },
         { legend: 'third', data: 30, color: DefaultPalette.yellowLight },
-        { legend: 'fourth', data: 10, color: DefaultPalette.neutralSecondary }
-      ]
+        { legend: 'fourth', data: 10, color: DefaultPalette.neutralSecondary },
+      ],
     };
 
     this._changeData = this._changeData.bind(this);
@@ -35,11 +41,22 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
 
     const data: IChartProps = {
       chartTitle: chartTitle,
-      chartData: this.state.dynamicData
+      chartData: this.state.dynamicData,
     };
     return (
       <div>
-        <DonutChart data={data} innerRadius={40} />
+        <DonutChart
+          data={data}
+          innerRadius={55}
+          legendProps={{
+            overflowProps: {
+              focusZoneProps: {
+                'aria-label': 'Legends container',
+              },
+            },
+            allowFocusOnLegends: true,
+          }}
+        />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
@@ -57,8 +74,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         { legend: 'first', data: a, color: DefaultPalette.blueLight },
         { legend: 'second', data: b, color: DefaultPalette.purpleLight },
         { legend: 'third', data: c, color: DefaultPalette.yellowLight },
-        { legend: 'fourth', data: d, color: DefaultPalette.neutralSecondary }
-      ]
+        { legend: 'fourth', data: d, color: DefaultPalette.neutralSecondary },
+      ],
     });
   }
 
@@ -68,8 +85,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         { legend: 'first', data: 40, color: this._randomColor(0) },
         { legend: 'second', data: 20, color: this._randomColor(1) },
         { legend: 'third', data: 30, color: this._randomColor(2) },
-        { legend: 'fourth', data: 10, color: this._randomColor(3) }
-      ]
+        { legend: 'fourth', data: 10, color: this._randomColor(3) },
+      ],
     });
   }
 

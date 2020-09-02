@@ -14,6 +14,6 @@ export const Pivot: React.FunctionComponent<IPivotProps> = styled<IPivotProps, I
   getStyles,
   undefined,
   {
-    scope: 'Pivot'
-  }
+    scope: 'Pivot',
+  },
 );

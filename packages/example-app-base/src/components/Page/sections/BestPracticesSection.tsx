@@ -25,12 +25,14 @@ export const BestPracticesSection: React.FunctionComponent<IBestPracticesSection
     donts,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const bestPracticesUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName!), baseUrl: componentUrl, platform })
     : undefined;
-  const dosUrl = componentUrl ? getEditUrl({ name: fileNamePrefix || title, section: 'Dos', baseUrl: componentUrl, platform }) : undefined;
+  const dosUrl = componentUrl
+    ? getEditUrl({ name: fileNamePrefix || title, section: 'Dos', baseUrl: componentUrl, platform })
+    : undefined;
   const dontsUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: 'Donts', baseUrl: componentUrl, platform })
     : undefined;
@@ -44,7 +46,7 @@ export const BestPracticesSection: React.FunctionComponent<IBestPracticesSection
             {readableSectionName}
           </h2>
           {!!(bestPractices && bestPracticesUrl) && (
-            <EditSection className={styles.edit} title={title} section="Best Practices" url={bestPracticesUrl} />
+            <EditSection className={styles.edit} title={title} section="Best practices" url={bestPracticesUrl} />
           )}
         </div>
         {bestPractices && (
@@ -73,7 +75,9 @@ export const BestPracticesSection: React.FunctionComponent<IBestPracticesSection
               <MarkdownHeader as="h3" className={css(styles.smallSubHeading)}>
                 Don&rsquo;t
               </MarkdownHeader>
-              {donts && dontsUrl && <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />}
+              {donts && dontsUrl && (
+                <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />
+              )}
             </div>
             {donts && (
               <div className={css(styles.content, styles.dontList)}>

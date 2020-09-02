@@ -7,7 +7,7 @@ import {
   IDetailsRowProps,
   IColumn,
   IGroup,
-  SelectionMode
+  SelectionMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface ISemanticSlotsDetailsListProps {
@@ -28,7 +28,7 @@ interface ISemanticSlotsDetailsList {
 }
 
 export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDetailsListProps> = (
-  props: ISemanticSlotsDetailsListProps
+  props: ISemanticSlotsDetailsListProps,
 ) => {
   let countDefaults = 17;
   let countLinks = 4;
@@ -47,10 +47,10 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
         root: {
           selectors: {
             ':hover': {
-              background: 'transparent'
-            }
-          }
-        }
+              background: 'transparent',
+            },
+          },
+        },
       };
       return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
     } else {
@@ -65,7 +65,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       noneSlot: props.noneSlots[i],
       neutralSlot: props.neutralSlots[i],
       softSlot: props.softSlots[i],
-      strongSlot: props.strongSlots[i]
+      strongSlot: props.strongSlots[i],
     });
   }
 
@@ -77,7 +77,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       name: 'Links',
       startIndex: countDefaults,
       count: countLinks,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
@@ -85,7 +85,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       name: 'Buttons',
       startIndex: countDefaults + countLinks,
       count: countButtons,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
@@ -93,7 +93,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       name: 'Inputs',
       startIndex: countDefaults + countLinks + countButtons,
       count: countInputs,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
@@ -101,7 +101,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       name: 'Lists',
       startIndex: countDefaults + countLinks + countButtons + countInputs,
       count: countLists,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
@@ -109,8 +109,8 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
       name: 'Menus',
       startIndex: countDefaults + countLinks + countButtons + countInputs + countLists,
       count: countMenus,
-      isCollapsed: true
-    }
+      isCollapsed: true,
+    },
   ];
 
   columns = [
@@ -118,7 +118,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
     { key: 'noneSlot', name: 'None', fieldName: 'noneSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'neutralSlot', name: 'Netural', fieldName: 'neutralSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'softSlot', name: 'Soft', fieldName: 'softSlot', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true }
+    { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true },
   ];
 
   return (
@@ -130,9 +130,10 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderRow={onRenderRow}
         groupProps={{
-          showEmptyGroups: true
+          showEmptyGroups: true,
         }}
       />
     </div>

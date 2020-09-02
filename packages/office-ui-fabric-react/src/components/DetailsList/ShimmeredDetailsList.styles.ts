@@ -15,9 +15,10 @@ export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDet
           right: 0,
           bottom: 0,
           left: 0,
-          backgroundImage: `linear-gradient(to bottom, transparent 30%, ${palette.whiteTranslucent40} 65%,${palette.white} 100%)`
-        }
-      }
-    }
+          // eslint-disable-next-line @fluentui/max-len
+          backgroundImage: `linear-gradient(to bottom, transparent 30%, ${palette.whiteTranslucent40} 65%,${palette.white} 100%)`,
+        },
+      },
+    },
   };
 };

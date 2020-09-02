@@ -87,7 +87,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -104,7 +103,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -204,7 +202,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -221,7 +218,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -317,9 +313,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
@@ -350,6 +344,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
                 }
           >
             <input
@@ -395,6 +392,10 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -403,6 +404,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -413,6 +417,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -421,6 +428,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="TextField7"
               onBlur={[Function]}
@@ -462,7 +472,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -479,7 +488,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -597,11 +605,17 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
             @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
               -ms-high-contrast-adjust: none;
-              background-color: WindowText;
-              color: Window;
+              background-color: Window;
+              border-right-width: 0;
+              border: 1px solid WindowText;
+              color: WindowText;
             }
             & .ms-Button--primary + .ms-Button {
               border: none;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+              border-left-width: 0;
+              border: 1px solid WindowText;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
               background-color: Highlight;
@@ -662,7 +676,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -679,7 +692,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -841,7 +853,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                     {
                       flex-shrink: 0;
@@ -853,7 +864,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="ChevronDown"
                 role="presentation"
@@ -882,6 +892,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 @media screen and (-ms-high-contrast: active){& {
                   background-color: WindowText;
                 }
+            onClick={[Function]}
           />
         </span>
       </div>
@@ -951,7 +962,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -968,7 +978,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1068,7 +1077,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1085,7 +1093,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1181,9 +1188,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
@@ -1214,6 +1219,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
                 }
           >
             <input
@@ -1259,6 +1267,10 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -1267,6 +1279,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -1277,6 +1292,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -1285,6 +1303,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="TextField26"
               onBlur={[Function]}
@@ -1326,7 +1347,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1343,7 +1363,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

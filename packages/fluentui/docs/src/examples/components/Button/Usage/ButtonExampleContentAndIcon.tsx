@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Button, Icon, Text, Flex } from '@fluentui/react';
+import { Button, Flex } from '@fluentui/react-northstar';
+import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleContentAndIcon = () => (
   <Flex gap="gap.large">
     <Button icon primary>
-      <Icon name="call-video" xSpacing="after" />
-      <Text content="Join call" />
+      <CallVideoIcon xSpacing="after" />
+      <Button.Content content="Join call" />
     </Button>
     <Button icon>
-      <Text content="Join call" />
-      <Icon name="call-video" xSpacing="before" />
+      <Button.Content content="Join call" />
+      <CallVideoIcon xSpacing="before" />
     </Button>
     <Button icon text>
-      <Icon name="call-video" xSpacing="after" />
-      <Text content="Join call" />
+      <CallVideoIcon xSpacing="after" />
+      <Button.Content content="Join call" />
     </Button>
   </Flex>
 );

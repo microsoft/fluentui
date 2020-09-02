@@ -1,5 +1,10 @@
+import * as React from 'react';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
-import { IHorizontalBarChartProps, IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
+import {
+  IHorizontalBarChartProps,
+  IHorizontalBarChartStyleProps,
+  IHorizontalBarChartStyles,
+} from './HorizontalBarChart.types';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
 import { getHorizontalBarChartStyles } from './HorizontalBarChart.styles';
 

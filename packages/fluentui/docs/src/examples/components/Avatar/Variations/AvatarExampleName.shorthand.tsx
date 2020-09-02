@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const AvatarExampleNameShorthand = () => (
   <Avatar
     name="John Doe"
     status={{
       color: 'green',
-      icon: 'icon-checkmark',
-      title: 'Available'
+      icon: <AcceptIcon />,
+      title: 'Available',
     }}
   />
 );

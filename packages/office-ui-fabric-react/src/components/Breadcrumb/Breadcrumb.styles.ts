@@ -7,7 +7,7 @@ import {
   getFocusStyle,
   getScreenSelector,
   getGlobalClassNames,
-  FontWeights
+  FontWeights,
 } from '../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 import { IsFocusVisibleClassName } from '../../Utilities';
@@ -20,13 +20,13 @@ const GlobalClassNames = {
   overflow: 'ms-Breadcrumb-overflow',
   overflowButton: 'ms-Breadcrumb-overflowButton',
   itemLink: 'ms-Breadcrumb-itemLink',
-  item: 'ms-Breadcrumb-item'
+  item: 'ms-Breadcrumb-item',
 };
 
 const SingleLineTextStyle: IRawStyle = {
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-  overflow: 'hidden'
+  overflow: 'hidden',
 };
 
 const overflowButtonFontSize = 16;
@@ -56,7 +56,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
   const lastChildItemStyles: IRawStyle = {
     fontWeight: itemLastChildTextFontWeight,
-    color: itemLastChildTextColor
+    color: itemLastChildTextColor,
   };
 
   const itemStateSelectors = {
@@ -66,21 +66,21 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       cursor: 'pointer',
       selectors: {
         [HighContrastSelector]: {
-          color: 'Highlight'
-        }
-      }
+          color: 'Highlight',
+        },
+      },
     },
     ':active': {
       backgroundColor: itemBackgroundPressedColor,
-      color: itemTextHoveredOrPressedColor
+      color: itemTextHoveredOrPressedColor,
     },
     '&:active:hover': {
       color: itemTextHoveredOrPressedColor,
-      backgroundColor: itemBackgroundPressedColor
+      backgroundColor: itemBackgroundPressedColor,
     },
     '&:active, &:hover, &:active:hover': {
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   };
 
   const commonItemStyles: IRawStyle = {
@@ -88,7 +88,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     padding: '0 8px',
     lineHeight: itemLineHeight,
     fontSize: itemFontSize,
-    fontWeight: itemTextFontWeight
+    fontWeight: itemTextFontWeight,
   };
 
   return {
@@ -96,9 +96,9 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       classNames.root,
       fonts.medium,
       {
-        margin: '11px 0 1px'
+        margin: '11px 0 1px',
       },
-      className
+      className,
     ],
 
     list: [
@@ -108,8 +108,8 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         padding: 0,
         margin: 0,
         display: 'flex',
-        alignItems: 'stretch'
-      }
+        alignItems: 'stretch',
+      },
     ],
 
     listItem: [
@@ -123,9 +123,9 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         alignItems: 'center',
         selectors: {
           '&:last-child .ms-Breadcrumb-itemLink': lastChildItemStyles,
-          '&:last-child .ms-Breadcrumb-item': lastChildItemStyles
-        }
-      }
+          '&:last-child .ms-Breadcrumb-item': lastChildItemStyles,
+        },
+      },
     ],
 
     chevron: [
@@ -136,16 +136,16 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
-            MsHighContrastAdjust: 'none'
+            MsHighContrastAdjust: 'none',
           },
           [MediumScreenSelector]: {
-            fontSize: chevronSmallFontSize
+            fontSize: chevronSmallFontSize,
           },
           [MinimumScreenSelector]: {
-            fontSize: chevronSmallFontSize
-          }
-        }
-      }
+            fontSize: chevronSmallFontSize,
+          },
+        },
+      },
     ],
 
     overflow: [
@@ -153,8 +153,8 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       {
         position: 'relative',
         display: 'flex',
-        alignItems: 'center'
-      }
+        alignItems: 'center',
+      },
     ],
 
     overflowButton: [
@@ -169,13 +169,13 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         selectors: {
           ...itemStateSelectors,
           [MinimumScreenSelector]: {
-            padding: '4px 6px'
+            padding: '4px 6px',
           },
           [MediumScreenSelector]: {
-            fontSize: fonts.mediumPlus.fontSize
-          }
-        }
-      }
+            fontSize: fonts.mediumPlus.fontSize,
+          },
+        },
+      },
     ],
 
     itemLink: [
@@ -186,14 +186,14 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         ...commonItemStyles,
         selectors: {
           ':focus': {
-            color: palette.neutralDark
+            color: palette.neutralDark,
           },
           [`.${IsFocusVisibleClassName} &:focus`]: {
-            outline: `none`
+            outline: `none`,
           },
-          ...itemStateSelectors
-        }
-      }
+          ...itemStateSelectors,
+        },
+      },
     ],
 
     item: [
@@ -202,10 +202,10 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         ...commonItemStyles,
         selectors: {
           ':hover': {
-            cursor: 'default'
-          }
-        }
-      }
-    ]
+            cursor: 'default',
+          },
+        },
+      },
+    ],
   };
 };

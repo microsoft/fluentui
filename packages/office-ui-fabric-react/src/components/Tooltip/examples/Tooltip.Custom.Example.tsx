@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost, TooltipDelay, DirectionalHint, ITooltipProps, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
+import {
+  TooltipHost,
+  TooltipDelay,
+  DirectionalHint,
+  ITooltipProps,
+  ITooltipHostStyles,
+} from 'office-ui-fabric-react/lib/Tooltip';
 import { useId } from '@uifabric/react-hooks';
 
 const tooltipProps: ITooltipProps = {
@@ -9,7 +15,7 @@ const tooltipProps: ITooltipProps = {
       <li>1. One</li>
       <li>2. Two</li>
     </ul>
-  )
+  ),
 };
 const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 

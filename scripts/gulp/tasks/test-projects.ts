@@ -54,7 +54,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
 
   packedPackages = {};
 
-  // packages/fluentui/react/src -> packages/fluentui/react,
+  // packages/fluentui/react-northstar/src -> packages/fluentui/react-northstar,
   // as lernaAliases append 'src' by default
   const projectPackages = lernaAliases({ sourceDirectory: false });
 
@@ -67,12 +67,18 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
     '@fluentui/e2e',
     '@fluentui/eslint-plugin',
     '@fluentui/perf',
-    '@fluentui/perf-test'
+    '@fluentui/perf-test',
   ];
+
+  // other local packages that we depend on, but are not inside packages/fluentui
+  const whitelistedPkgs = ['@fluentui/react-compose'];
+
   for (const [pkg, pkgPath] of Object.entries(projectPackages)) {
     // Don't pack fabric packages or dev tools
     if (path.basename(path.dirname(pkgPath)) !== 'fluentui' || excludedPkgs.includes(pkg)) {
-      delete projectPackages[pkg];
+      if (!whitelistedPkgs.includes(pkg)) {
+        delete projectPackages[pkg];
+      }
     }
   }
 
@@ -84,7 +90,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
       logger(`✔️ Package "${packageName}" was packed to ${filename}`);
 
       packedPackages[packageName] = filename;
-    })
+    }),
   );
 };
 
@@ -172,7 +178,7 @@ task('test:projects:cra-ts', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(testAppPath());
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, testAppPath());
+  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPath());
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger("STEP 3. Reference Fluent UI components in test project's App.tsx");
@@ -194,20 +200,20 @@ task('test:projects:rollup', async () => {
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
   const dependencies = [
-    'rollup',
+    'rollup@2.7.3',
     'rollup-plugin-replace',
     'rollup-plugin-commonjs',
     'rollup-plugin-node-resolve',
     'rollup-plugin-json',
     'react',
-    'react-dom'
+    'react-dom',
   ].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.copyFileSync(scaffoldPath('app.js'), path.resolve(tmpDirectory, 'app.js'));
@@ -236,7 +242,7 @@ task('test:projects:nextjs', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.mkdirSync(path.resolve(tmpDirectory, 'pages'));
@@ -259,13 +265,15 @@ task('test:projects:typings', async () => {
 
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
-  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', 'typescript'].join(' ');
+  // Install dependencies, ensuring we specify the same TS version as our projects use
+  const tsVersion = fs.readJSONSync(paths.base('scripts', 'package.json')).dependencies.typescript;
+  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.mkdirSync(path.resolve(tmpDirectory, 'src'));
@@ -277,4 +285,7 @@ task('test:projects:typings', async () => {
   logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
 });
 
-task('test:projects', series('test:projects:cra-ts', 'test:projects:nextjs', 'test:projects:rollup', 'test:projects:typings'));
+task(
+  'test:projects',
+  series('test:projects:cra-ts', 'test:projects:nextjs', 'test:projects:rollup', 'test:projects:typings'),
+);

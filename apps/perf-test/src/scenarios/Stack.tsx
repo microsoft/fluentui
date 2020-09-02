@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack } from 'office-ui-fabric-react';
 
-const scenario = <Stack />;
+const Scenario = () => <Stack />;
 
-export default scenario;
+export default Scenario;

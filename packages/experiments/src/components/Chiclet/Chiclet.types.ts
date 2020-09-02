@@ -110,5 +110,5 @@ export enum ChicletSize {
   /**
    * Large Chiclet
    */
-  large = 3
+  large = 3,
 }

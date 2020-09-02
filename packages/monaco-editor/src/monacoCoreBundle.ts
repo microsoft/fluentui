@@ -3,6 +3,7 @@
 // @uifabric/monaco-editor root imports here.
 
 // Main editor features
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore because monaco doesn't provide typings for this file
 export * from '../esm/vs/editor/edcore.main.js';
 

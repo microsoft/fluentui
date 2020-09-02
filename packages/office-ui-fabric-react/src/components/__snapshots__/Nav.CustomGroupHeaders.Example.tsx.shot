@@ -29,10 +29,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         Pages
@@ -118,7 +115,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -137,7 +133,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -166,10 +161,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -271,7 +266,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -290,7 +284,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -319,10 +312,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -375,10 +368,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
       </div>
     </div>
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         More pages
@@ -464,7 +454,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -483,7 +472,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -512,10 +500,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -617,7 +605,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -636,7 +623,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -665,10 +651,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;

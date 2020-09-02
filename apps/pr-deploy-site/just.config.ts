@@ -1,14 +1,44 @@
-const fs = require('fs');
-const path = require('path');
-const { preset, just } = require('@uifabric/build');
-const { task, copyInstructionsTask, copyInstructions } = just;
-const findRepoDeps = require('@uifabric/build/monorepo/findRepoDeps');
-const findGitRoot = require('@uifabric/build/monorepo/findGitRoot');
+import fs from 'fs';
+import path from 'path';
+import { preset, just } from '@uifabric/build';
+import { findGitRoot, getAllPackageInfo } from '@uifabric/build/monorepo/index';
+
+const { series, task, copyInstructionsTask, copyInstructions } = just;
 
 const gitRoot = findGitRoot();
-let instructions = [];
+let instructions = copyInstructions.copyFilesToDestinationDirectory(
+  ['pr-deploy-site.js', 'pr-deploy-site.css', 'chiclet-test.html'],
+  'dist',
+);
 
-const repoDeps = findRepoDeps();
+// If you are adding a new tile into this site, please make sure it is also listed in the siteInfo of
+// `pr-deploy-site.js`
+//
+// Dependencies are listed here and NOT in package.json because we do not want to allow for partial builds for scoping
+const dependencies = [
+  '@fluentui/docs',
+  '@fluentui/react-button',
+  '@fluentui/react-checkbox',
+  '@fluentui/react-image',
+  '@fluentui/react-link',
+  '@fluentui/react-next',
+  '@fluentui/react-slider',
+  '@fluentui/react-tabs',
+  '@fluentui/react-toggle',
+  '@uifabric/charting',
+  '@uifabric/date-time',
+  '@uifabric/experiments',
+  '@uifabric/fabric-website',
+  '@uifabric/fabric-website-resources',
+  'office-ui-fabric-react',
+  'perf-test',
+  'theming-designer',
+  'todo-app',
+];
+
+const allPackages = getAllPackageInfo();
+const repoDeps = dependencies.map(dep => allPackages[dep]);
+const deployedPackages = new Set<string>();
 repoDeps.forEach(dep => {
   const distPath = path.join(gitRoot, dep.packagePath, 'dist');
 
@@ -18,13 +48,21 @@ repoDeps.forEach(dep => {
     // NOTE for backwards compatibility: @uifabric/* projects gets the dist folders themselves copied
     // otherwise copy the contents not the dist directory itself
     if (dep.packageJson.name.includes('@uifabric')) {
-      instructions = instructions.concat(
-        copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+      instructions.push(
+        ...copyInstructions.copyFilesToDestinationDirectory(
+          sourcePath,
+          path.join('dist', path.basename(dep.packagePath)),
+        ),
       );
+      deployedPackages.add(dep.packageJson.name);
+    } else if (dep.packageJson.name === '@fluentui/docs') {
+      instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'react-northstar')));
+      deployedPackages.add(dep.packageJson.name);
     } else {
-      instructions = instructions.concat(
-        copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+      instructions.push(
+        ...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath))),
       );
+      deployedPackages.add(dep.packageJson.name);
     }
   }
 
@@ -32,17 +70,30 @@ repoDeps.forEach(dep => {
 
   if (fs.existsSync(distStorybookPath)) {
     let sourcePath = distStorybookPath;
-    instructions = instructions.concat(
-      copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+    instructions.push(
+      ...copyInstructions.copyFilesToDestinationDirectory(
+        sourcePath,
+        path.join('dist', path.basename(dep.packagePath)),
+      ),
     );
+    deployedPackages.add(dep.packageJson.name);
   }
 });
 
 preset();
 
-task(
-  'bundle',
-  copyInstructionsTask({
-    copyInstructions: [...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'), ...instructions]
-  })
-);
+/**
+ * Renders a site with tiles that are potentially from a partial set of deployed packages
+ */
+task('generate:index', () => {
+  const indexContent = fs.readFileSync(path.join(__dirname, './index.html'), 'utf-8');
+  fs.writeFileSync(
+    path.join('dist', 'index.html'),
+    indexContent.replace('/* insert packages here */', JSON.stringify([...deployedPackages])),
+  );
+});
+
+/**
+ * Copies all the built (potentially partially) dist files and then generates a index HTML for it
+ */
+task('generate:site', series(copyInstructionsTask({ copyInstructions: instructions }), 'generate:index'));

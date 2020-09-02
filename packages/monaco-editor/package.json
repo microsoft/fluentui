@@ -1,23 +1,25 @@
 {
   "name": "@uifabric/monaco-editor",
-  "version": "0.5.3",
+  "version": "0.5.17",
   "description": "Version of monaco-editor with configuration helpers and transformed CSS files",
   "module": "./lib/monacoBundle.js",
   "typings": "./esm/vs/editor/editor.api.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
+    "lint": "just-scripts lint",
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@uifabric/build": "^7.0.0",
     "monaco-editor": "0.19.0",
-    "monaco-typescript": "3.6.1",
-    "@uifabric/build": "^7.0.0"
+    "monaco-typescript": "3.6.1"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

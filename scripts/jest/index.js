@@ -5,7 +5,8 @@ module.exports = {
   setupFilesAfterEnv: [`${__dirname}/setupTests.js`],
   testRegex: '/test/.*-test\\.tsx?$',
   transform: {
-    '^.+\\.tsx?$': 'babel-jest'
+    '^.+\\.tsx?$': 'babel-jest',
   },
-  verbose: false
+  verbose: false,
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };

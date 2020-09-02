@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
-
+import { IDragDropEvents, IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -31,11 +30,26 @@ export interface ISelectedItemsList<T> {
 }
 
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
-  onCopyItem: () => void;
+  onCopyItem?: () => void;
   /**
    * Override onItemChange to support replacing an item with multiple items.
    */
   onItemChange: (newItem: T | T[], index: number) => void;
+
+  /**
+   * Handling drag and drop events
+   */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /**
+   * A list of events to register
+   */
+  eventsToRegister?: { eventName: string; callback: (item?: any, index?: number, event?: any) => void }[];
 }
 
 export type BaseSelectedItem = {
@@ -44,14 +58,13 @@ export type BaseSelectedItem = {
 
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
 export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<ISelectedItemsList<T>>;
 
   /**
    * The selection
    */
-  selection?: Selection;
+  focusedItemIndices?: number[];
   /**
    * Gets the copy text that will be set in the item.
    */
@@ -59,7 +72,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem: React.ComponentType<ISelectedItemProps<T>>;
+  onRenderItem?: React.ComponentType<ISelectedItemProps<T>>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -73,8 +86,8 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a
-   * controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will
+   * act as a controlled component.
    */
   selectedItems?: T[];
 
@@ -85,7 +98,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   removeButtonAriaLabel?: string;
 
   /**
-   * A callback when and item or items are removed
+   * A callback when an item or items are removed
    */
   onItemsRemoved?: (removedItems: T[]) => void;
 
@@ -93,4 +106,27 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * A callback on whether this item can be removed
    */
   canRemoveItem?: (item: T) => boolean;
+
+  /** Drag & drop event callback interface. */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /**
+   * Callback for when items need to be converted to a string for a drag action
+   */
+  serializeItemsForDrag?: (items: T[]) => string;
+
+  /**
+   * Callback for when a data transfer item (drag drop action) needs to be converted to an item or items
+   */
+  deserializeItemsFromDrop?: (input: string) => T[];
+
+  /**
+   * Callback for when an item or items needs to be inserted into the list
+   */
+  dropItemsAt?: (insertIndex: number, itemsToInsert: T[], indicesToRemove: number[]) => void;
 }

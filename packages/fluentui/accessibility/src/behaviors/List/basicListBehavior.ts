@@ -8,13 +8,10 @@ import { ListBehaviorProps } from './listBehavior';
  * @specification
  * Adds role='list'.
  */
-
-const basicListBehavior: Accessibility<ListBehaviorProps> = props => ({
+export const basicListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'list'
-    }
-  }
+      role: 'list',
+    },
+  },
 });
-
-export default basicListBehavior;

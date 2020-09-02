@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react';
+import { Slider } from '@fluentui/react-northstar';
 
 const SliderExampleShorthand = () => <Slider />;
 

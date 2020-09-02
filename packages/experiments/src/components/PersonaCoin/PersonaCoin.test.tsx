@@ -4,15 +4,15 @@ import { mount } from 'enzyme';
 
 import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoin } from './index';
-import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { Icon, Image, Text } from 'office-ui-fabric-react';
 import { setRTL } from '../../Utilities';
+import { PersonaTestImages } from '../../common/TestImages';
 
 const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',
   image: 'test-cn-image',
   initials: 'test-cn-initials',
-  presence: 'test-cn-presence'
+  presence: 'test-cn-presence',
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
@@ -49,7 +49,9 @@ describe('PersonaCoin', () => {
   });
 
   it('renders presence correctly when a very large coin is rendered', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />).toJSON();
+    const tree = renderer
+      .create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -136,7 +138,9 @@ describe('PersonaCoin', () => {
     });
 
     it('renders its given alt text', () => {
-      const wrapper = mount(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" styles={testPersonaCoinStyles} />);
+      const wrapper = mount(
+        <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" styles={testPersonaCoinStyles} />,
+      );
       const image = wrapper.find(Image);
 
       expect(image.props().alt).toEqual('ALT TEXT');

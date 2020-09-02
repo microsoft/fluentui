@@ -1,18 +1,20 @@
+import * as React from 'react';
 import {
   IFloatingSuggestionOnRenderItemProps,
-  IFloatingSuggestionItemProps
+  IFloatingSuggestionItemProps,
+  IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
 
 export interface IFloatingSuggestionsListProps<T> {
-  suggestionItems: IFloatingSuggestionItemProps<T>[];
+  suggestionItems: IFloatingSuggestionItem<T>[];
   className?: string;
   suggestionsItemClassName?: string;
   suggestionsHeaderText?: string;
   onRenderItem?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
-  onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
-  onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
+  onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
+  onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   onRenderNoResultFound?: IRenderFunction<void>;
   noResultsFoundText?: string;
   maximumSuggestionsToShow?: number;
@@ -24,6 +26,7 @@ export interface IFloatingSuggestionsListProps<T> {
   onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;
+  pickerWidth?: string;
 }
 
 export interface IFloatingSuggestionsListStyleProps {}

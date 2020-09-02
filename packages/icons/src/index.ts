@@ -42,12 +42,13 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: II
     i14,
     i15,
     i16,
-    i17
+    i17,
   ].forEach((initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options));
 
   registerIconAliases();
 }
 
+// eslint-disable-next-line deprecation/deprecation
 export { IconNames } from './IconNames';
 
 import './version';

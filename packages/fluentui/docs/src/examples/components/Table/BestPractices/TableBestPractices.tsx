@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 import { link } from '../../../../utils/helpers';
 
@@ -14,7 +14,7 @@ const doList = [
   'Provide label to the table header column, if cell has no content.',
   'If you use actionable element or component in the cell, stop propagation of the click event in order to avoid performing row click action.',
   'If you use `onClick` on the row, make also one (preferably the first) cell actionable and add `onClick` handler with the same action to it. Screen readers with virtual cursor do not navigate to rows, so actions need to be available on cells as well.',
-  'Use `aria-sort` on the header cell to indicate sort order, if the table is sorted by that particular column.'
+  'Use `aria-sort` on the header cell to indicate sort order, if the table is sorted by that particular column.',
 ];
 
 const TableBestPractices = () => {

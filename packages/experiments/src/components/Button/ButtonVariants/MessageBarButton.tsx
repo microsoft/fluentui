@@ -4,7 +4,13 @@ import { composed } from '@uifabric/foundation/lib/next/composed';
 import { ITokenFunction } from '@uifabric/foundation';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles, ButtonTokens } from '../Button.styles';
-import { IButtonComponent, IButtonProps, IButtonTokenReturnType, IButtonTokens, IButtonViewProps } from '../Button.types';
+import {
+  IButtonComponent,
+  IButtonProps,
+  IButtonTokenReturnType,
+  IButtonTokens,
+  IButtonViewProps,
+} from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
@@ -19,7 +25,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     height: 24,
     minHeight: 24,
     minWidth: 84,
-    width: 84
+    width: 84,
   };
 };
 
@@ -30,7 +36,7 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     borderColor: semanticColors.buttonBorderDisabled,
     borderColorHovered: semanticColors.buttonBorderDisabled,
     borderColorPressed: semanticColors.buttonBorderDisabled,
-    cursor: 'default'
+    cursor: 'default',
   };
 };
 
@@ -46,5 +52,5 @@ export const MessageBarButton: React.FunctionComponent<IButtonProps> = composed(
   state,
   styles,
   tokens: MessageBarButtonTokens,
-  view
+  view,
 });

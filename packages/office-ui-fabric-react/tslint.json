@@ -1,9 +1,0 @@
-{
-  "extends": ["@uifabric/tslint-rules"],
-  "rules": {
-    "jsx-ban-props": false,
-    "no-any": false,
-    "typedef": [false],
-    "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
-  }
-}

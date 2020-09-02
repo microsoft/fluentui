@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -15,30 +15,32 @@ const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
  * Focus is set initially on the specified default tabbable element.
  * Focused active element of the component is reset when TAB from the component.
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
+ * Does not handle PageDown and PageUp.
  */
-const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
+export const chatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   attributes: {
-    root: {}
+    root: {},
   },
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.Enter,
       direction: FocusZoneDirection.vertical,
       shouldResetActiveElementWhenTabFromZone: true,
       defaultTabbableElement: getLastTabbableElement, // select last chat message by default
-      [CHAT_FOCUSZONE_ATTRIBUTE]: '' // allows querying the default active element
-    }
-  }
+      [CHAT_FOCUSZONE_ATTRIBUTE]: '', // allows querying the default active element
+      pagingSupportDisabled: true,
+    },
+  },
 });
 
 const getLastTabbableElement = (root: HTMLElement): HTMLElement => {
   const lastVisibleMessage = root.querySelector('[data-last-visible="true"]') as HTMLElement;
   if (lastVisibleMessage) return lastVisibleMessage;
 
-  const chatItemsElements = root.querySelectorAll(`[${CHAT_FOCUSZONE_ATTRIBUTE}] .ui-chat__message[${IS_FOCUSABLE_ATTRIBUTE}="true"]`);
+  const chatItemsElements = root.querySelectorAll(
+    `[${CHAT_FOCUSZONE_ATTRIBUTE}] .ui-chat__message[${IS_FOCUSABLE_ATTRIBUTE}="true"]`,
+  );
   return chatItemsElements.length > 0 ? (chatItemsElements[chatItemsElements.length - 1] as HTMLElement) : null;
 };
 
 export type ChatBehaviorProps = never;
-
-export default ChatBehavior;

@@ -18,41 +18,45 @@ const TooltipAbsolutePositionExampleCode = require('!raw-loader!office-ui-fabric
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
   componentName: 'Tooltip',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Tooltip',
   examples: [
     {
       title: 'Default Tooltip',
       code: TooltipBasicExampleCode,
-      view: <TooltipBasicExample />
+      view: <TooltipBasicExample />,
     },
     {
       title: 'Tooltip wrapping inline or inline-block elements',
       code: TooltipDisplayExampleCode,
-      view: <TooltipDisplayExample />
+      view: <TooltipDisplayExample />,
     },
     {
       title: 'Tooltip with custom content',
       code: TooltipCustomExampleCode,
-      view: <TooltipCustomExample />
+      view: <TooltipCustomExample />,
     },
     {
       title: 'Tooltip with a closing delay',
       code: TooltipInteractiveExampleCode,
-      view: <TooltipInteractiveExample />
+      view: <TooltipInteractiveExample />,
     },
     {
       title: 'Tooltip only on overflow',
       code: TooltipOverflowExampleCode,
-      view: <TooltipOverflowExample />
+      view: <TooltipOverflowExample />,
     },
     {
       title: 'Tooltip on absolutely-positioned element',
       code: TooltipAbsolutePositionExampleCode,
-      view: <TooltipAbsolutePositionExample />
-    }
+      view: <TooltipAbsolutePositionExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

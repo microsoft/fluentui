@@ -17,7 +17,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 4px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -46,9 +46,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=
@@ -60,20 +58,21 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 0px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
             }
       >
         <span
-          id="label2"
+          id="label0"
         >
           Custom label rendering
         </span>
@@ -106,7 +105,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 32px;
               }
               &::-moz-focus-inner {
@@ -124,7 +122,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -149,7 +146,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 color: #005a9e;
               }
           data-is-focusable={true}
-          id="iconButton1"
+          id="iconButton5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -197,7 +194,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                     margin-right: 4px;
                     margin-top: 0;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="Info"
               role="presentation"
@@ -242,11 +238,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+            @media screen and (forced-colors: active){&:hover {
+              forced-color-adjust: none;
+            }
       >
         <input
-          aria-describedby="TextFieldDescription4"
+          aria-describedby="TextFieldDescription2"
           aria-invalid={false}
-          aria-labelledby="label2"
+          aria-labelledby="label0"
           className=
               ms-TextField-field
               {
@@ -287,6 +286,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               &::-ms-clear {
                 display: none;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -295,6 +298,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
               }
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
@@ -305,6 +311,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -314,7 +323,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
-          id="TextField3"
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField1"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -325,7 +337,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription4"
+      id="TextFieldDescription2"
     >
       <span
         className=
@@ -363,9 +375,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=
@@ -377,13 +387,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 6px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
@@ -470,6 +481,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+            @media screen and (forced-colors: active){&:hover {
+              forced-color-adjust: none;
+            }
       >
         <input
           aria-invalid={false}
@@ -514,6 +528,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               &::-ms-clear {
                 display: none;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -522,6 +540,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
               }
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
@@ -532,6 +553,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -540,6 +564,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
               }
           id="TextField9"
           onBlur={[Function]}
@@ -575,9 +602,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <label
         className=
@@ -638,6 +663,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+            @media screen and (forced-colors: active){&:hover {
+              forced-color-adjust: none;
+            }
       >
         <input
           aria-describedby="TextFieldDescription13"
@@ -683,6 +711,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               &::-ms-clear {
                 display: none;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -691,6 +723,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
               }
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
@@ -701,6 +736,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -709,6 +747,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
               }
           id="TextField12"
           onBlur={[Function]}

@@ -114,7 +114,10 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={true}
         id="Toggle1"
@@ -131,7 +134,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -147,8 +150,26 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-LayerHost"
-    id="layerhost0"
+    className=
+        ms-LayerHost
+        {
+          background: rgba(255, 0, 0, 0.2);
+          border: 1px dashed #000000;
+          height: 100px;
+          padding-bottom: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 20px;
+          position: relative;
+        }
+        &:before {
+          content: "I am a LayerHost with id=layerhost1";
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+    id="layerHost0"
   />
   <p>
     In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
@@ -201,7 +222,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
       htmlFor="Toggle2"
       id="Toggle2-label"
     >
-      Render the box below in a Layer and target it at hostId=layerhost0
+      Render the box below in a Layer and target it at hostId=layerHost0
     </label>
     <div
       className=
@@ -277,7 +298,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -296,11 +317,33 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
           animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          background-color: #0078d4;
+          color: #ffffff;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
         }
   >
     This is example layer content.
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          background-color: #c8c6c4;
+          line-height: 50px;
+          margin-bottom: 8px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 8px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+  >
     I am normally below the content.
   </div>
   <p>
@@ -430,7 +473,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -449,6 +492,13 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
           animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          background-color: #0078d4;
+          color: #ffffff;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
         }
   >
     This is example layer content.

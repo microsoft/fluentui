@@ -25,15 +25,15 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]}
+          />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>DonutChart description</p>
           </div>
         }
-        /* tslint:enable:max-line-length */
         bestPractices={<div />}
         dos={
           <div>

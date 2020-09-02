@@ -4,11 +4,10 @@ import { ISeparatorProps, ISeparatorStyleProps, ISeparatorStyles } from './Separ
 import { getStyles } from './Separator.styles';
 import { SeparatorBase } from './Separator.base';
 
-export const Separator: React.FunctionComponent<ISeparatorProps> = styled<ISeparatorProps, ISeparatorStyleProps, ISeparatorStyles>(
-  SeparatorBase,
-  getStyles,
-  undefined,
-  {
-    scope: 'Separator'
-  }
-);
+export const Separator: React.FunctionComponent<ISeparatorProps> = styled<
+  ISeparatorProps,
+  ISeparatorStyleProps,
+  ISeparatorStyles
+>(SeparatorBase, getStyles, undefined, {
+  scope: 'Separator',
+});

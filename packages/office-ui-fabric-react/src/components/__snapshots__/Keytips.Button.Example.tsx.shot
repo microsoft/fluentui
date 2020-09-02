@@ -55,7 +55,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -72,7 +71,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -178,7 +176,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -195,7 +192,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -332,7 +328,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -349,7 +344,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -447,7 +441,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
@@ -509,11 +502,17 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -575,7 +574,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -592,7 +590,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -754,7 +751,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                     margin-right: 4px;
                     margin-top: 0;
                     text-align: center;
-                    vertical-align: middle;
                   }
                   {
                     flex-shrink: 0;
@@ -766,7 +762,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                     margin-right: 4px;
                     margin-top: 0;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -795,6 +790,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 background-color: WindowText;
               }
+          onClick={[Function]}
         />
       </span>
     </div>
@@ -826,7 +822,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -843,7 +838,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -949,7 +943,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -966,7 +959,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1114,7 +1106,10 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={true}
         id="Toggle21"
@@ -1131,7 +1126,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -1217,7 +1212,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1234,7 +1228,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;

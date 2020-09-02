@@ -32,14 +32,14 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     super(props);
     this.state = {
       openIssues: [],
-      closedIssues: []
+      closedIssues: [],
     };
   }
 
   public async componentDidMount(): Promise<void> {
     this._isMounted = true;
     const githubUrl =
-      'https://api.github.com/search/issues?q=type:issue%20repo:OfficeDev/office-ui-fabric-react%20label:%22Component:%20' +
+      'https://api.github.com/search/issues?q=type:issue%20repo:microsoft/fluentui%20label:%22Component:%20' +
       this.props.title;
 
     const openIssuesURL = githubUrl + '%22%20is:open';
@@ -67,7 +67,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
       <div className={classNames.root}>
         <div>
           <PrimaryButton
-            href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
+            href="https://github.com/microsoft/fluentui/issues/new/choose"
             target="_blank"
             className={classNames.button}
           >
@@ -77,10 +77,20 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
         {(openIssues.length > 0 || closedIssues.length > 0) && (
           <Pivot styles={subComponentStyles.pivot}>
             <PivotItem headerText="Open Issues">
-              <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
+              <List
+                items={openIssues}
+                onRenderCell={this._onRenderCell}
+                data-is-scrollable={true}
+                className={classNames.issueList}
+              />
             </PivotItem>
             <PivotItem headerText="Closed Issues">
-              <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
+              <List
+                items={closedIssues}
+                onRenderCell={this._onRenderCell}
+                data-is-scrollable={true}
+                className={classNames.issueList}
+              />
             </PivotItem>
           </Pivot>
         )}
@@ -95,7 +105,8 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     const { items = [] } = JSON.parse(responseText);
 
     // Intentionally render the first 30 issues until pagination support is added for
-    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
+    // https://github.com/microsoft/fluentui/issues/8284
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     return items.map((item: { created_at: string; title: string; number: number }) => {
       const dateCreated = new Date(item.created_at);
       const openedOn = relativeDates(dateCreated, new Date());
@@ -103,7 +114,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
       return {
         issueTitle: item.title,
         issueNum: item.number,
-        issueCreated: openedOn
+        issueCreated: openedOn,
       };
     });
   }
@@ -113,11 +124,11 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     return (
       <div className={classNames.itemCell} data-is-focusable={true}>
         <div className={classNames.itemName}>
-          <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
+          <Link href={'https://github.com/microsoft/fluentui/issues/' + item.issueNum} target="_blank">
             <Label className={classNames.itemLabel}>{item.issueTitle}</Label>
           </Link>
           <Label className={classNames.timeStamp}>
-            <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
+            <Link href={'https://github.com/microsoft/fluentui/issues/' + item.issueNum} target="_blank">
               {'#' + item.issueNum}
             </Link>
             {' opened ' + item.issueCreated}
@@ -133,5 +144,5 @@ export const FeedbackList: React.FunctionComponent<IFeedbackListProps> = styled<
   IFeedbackListStyleProps,
   IFeedbackListStyles
 >(FeedbackListBase, getStyles, undefined, {
-  scope: 'FeedbackList'
+  scope: 'FeedbackList',
 });

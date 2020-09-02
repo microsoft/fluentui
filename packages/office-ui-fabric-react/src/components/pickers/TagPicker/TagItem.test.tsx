@@ -14,7 +14,7 @@ describe('TagItem', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} index={0}>
         Red color
-      </TagItem>
+      </TagItem>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -24,7 +24,7 @@ describe('TagItem', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} index={0}>
         <FontIcon iconName="SquareShapeSolid" style={{ color: 'red' }} />
-      </TagItem>
+      </TagItem>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe('TagItem', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} title="Red color" index={0}>
         Red
-      </TagItem>
+      </TagItem>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

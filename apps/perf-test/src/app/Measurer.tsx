@@ -14,7 +14,7 @@ const _createTimings = (): ITimings => ({
   initialTime: 0,
   latestTime: 0,
   totalTime: 0,
-  individualTime: 0
+  individualTime: 0,
 });
 
 const _round = (num: number, decimals: number): number => Number.parseFloat(num.toFixed(decimals));

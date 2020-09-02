@@ -1,8 +1,10 @@
+import * as React from 'react';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle } from '@uifabric/styling';
 import {
   IFloatingSuggestionItemProps,
-  IFloatingSuggestionOnRenderItemProps
+  IFloatingSuggestionOnRenderItemProps,
+  IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
 
@@ -12,13 +14,13 @@ import { IRenderFunction, IRefObject } from '@uifabric/utilities';
  */
 export interface IBaseFloatingSuggestionsProps<T> {
   /**
-   * Component reference incase needed to focus FlaotingSuggestions
+   * Component reference in case needed to focus FloatingSuggestions
    */
   componentRef?: IRefObject<HTMLDivElement>;
   /**
    * List of suggestions to be displayed with Type T
    */
-  suggestions: IFloatingSuggestionItemProps<T>[];
+  suggestions: IFloatingSuggestionItem<T>[];
   /**
    * This param decides whether to display suggestions or not
    * Must be set by parent component
@@ -31,11 +33,11 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * Callback function on remove of suggestion from list
    */
-  onRemoveSuggestion?: (ev: React.MouseEvent<HTMLElement>, item: any) => void;
+  onRemoveSuggestion?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   /**
    * Callback function on selection of suggestion from list
    */
-  onSuggestionSelected?: (ev: React.MouseEvent<HTMLElement>, item: any) => void;
+  onSuggestionSelected?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   /**
    * Custom header renderer which takes suggestions and headertext if passed
    * Going forward, this should accept the user defined type as parameter
@@ -64,7 +66,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Target element here callout should be mounted
    * Pass the element current value to position the callout
    */
-  targetElement: HTMLInputElement | null;
+  targetElement: HTMLInputElement | undefined | null;
   /**
    * Callout width
    */
@@ -116,6 +118,15 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * There should be no logic to handle this in Suggestion component as the focus is never on this component
    */
   selectedSuggestionIndex?: number;
+  /**
+   * If set, the picker will be this width. If not, picker will be as wide as necessary
+   * to fully display input values.
+   */
+  pickerWidth?: string;
+  /**
+   * Arrow key callback
+   */
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**

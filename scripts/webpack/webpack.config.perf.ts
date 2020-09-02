@@ -13,13 +13,13 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   mode: 'development',
   entry: {
-    app: paths.perfSrc('index')
+    app: paths.perfSrc('index'),
   },
   output: {
     filename: `[name].js`,
     path: paths.perfDist(),
     pathinfo: true,
-    publicPath: config.compiler_public_path
+    publicPath: config.compiler_public_path,
   },
   devtool: config.compiler_devtool as webpack.Options.Devtool,
   node: {
@@ -27,7 +27,7 @@ const webpackConfig: webpack.Configuration = {
     module: 'empty',
     child_process: 'empty',
     net: 'empty',
-    readline: 'empty'
+    readline: 'empty',
   },
   module: {
     noParse: [/anchor-js/],
@@ -37,39 +37,38 @@ const webpackConfig: webpack.Configuration = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
-        }
-      }
-    ]
+          cacheDirectory: true,
+        },
+      },
+    ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
     new (CopyWebpackPlugin as any)([
       {
         from: paths.perfSrc('index.html'),
-        to: paths.perfDist()
-      }
-    ])
+        to: paths.perfDist(),
+      },
+    ]),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
-      docs: paths.docs(),
-      src: paths.packageSrc('react'),
+      src: paths.packageSrc('react-northstar'),
 
       // We are using React in production mode with tracing.
       // https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977
       'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling'
-    }
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+    },
   },
   performance: {
-    hints: false // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+    hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
   },
   optimization: {
-    nodeEnv: !!argv.debug ? 'development' : 'production'
-  }
+    nodeEnv: !!argv.debug ? 'development' : 'production',
+  },
 };
 
 export default webpackConfig;

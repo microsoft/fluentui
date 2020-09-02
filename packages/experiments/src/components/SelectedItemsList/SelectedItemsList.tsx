@@ -1,56 +1,38 @@
 import * as React from 'react';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-import { copyToClipboard } from './utils/copyToClipboard';
-
-const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, number[]] => {
-  const selection: Selection = React.useMemo(
-    () =>
-      inputSelection
-        ? inputSelection
-        : new Selection({
-            onSelectionChanged: () => {
-              // selectedIndeces depends on selection, which has to be initialized
-              // with the setSelectedIndeces callback. Capture it in a closure.
-              //
-              // tslint:disable-next-line:no-use-before-declare
-              setSelectedIndeces(selection.getSelectedIndices());
-            }
-          }),
-    [inputSelection]
-  );
-
-  const [selectedIndices, setSelectedIndeces] = React.useState(selection.getSelectedIndices());
-  return [selection, selectedIndices];
-};
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
-  ref: React.Ref<ISelectedItemsList<TItem>>
+  ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
-  const renderedItems = React.useMemo(() => props.selectedItems || items, [items, props.selectedItems]);
+  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems } = props;
+  const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 
-  // Selection which initializes at the beginning of the component and
-  // only updates if seleciton becomes set in props (e.g. compoennt transitions from
-  // being controlled to uncontrolled)
-  const [selection, selectedIndices] = useSelectedIndeces(props.selection);
-  const itemsInSelection = React.useMemo(() => selectedIndices.filter(i => i > 0 && i < items.length).map(i => items[i]), [
-    items,
-    selectedIndices
-  ]);
+  const renderedItems = React.useMemo(() => items, [items]);
+  const didMountRef = React.useRef(false);
 
   React.useEffect(() => {
-    selection.setItems(items);
-  });
+    // block first call of the hook and forward each consecutive one
+    // We do this so that if defaultSelectedItems are set, they don't get overwritten
+    if (didMountRef.current) {
+      setItems(selectedItems || []);
+    } else {
+      didMountRef.current = true;
+    }
+  }, [selectedItems]);
 
-  const removeItems = React.useCallback(
-    (itemsToRemove: TItem[]): void => {
-      updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
-    },
-    [items]
-  );
+  const removeItems = (itemsToRemove: TItem[]): void => {
+    // Intentionally not using .filter here as we want to only remove a specific
+    // item in case of duplicates of same item.
+    const updatedItems: TItem[] = [...items];
+    itemsToRemove.forEach(item => {
+      const index: number = updatedItems.indexOf(item);
+      updatedItems.splice(index, 1);
+    });
+    setItems(updatedItems);
+    props.onItemsRemoved?.(itemsToRemove);
+  };
 
   const replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
@@ -59,43 +41,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       if (index >= 0) {
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
-        updateItems(newItems);
+        setItems(newItems);
       }
     },
-    [updateItems, items]
-  );
-
-  const copyItemsInSelection = React.useCallback((): void => {
-    if (props.getItemCopyText && selectedIndices.length > 0) {
-      const copyText = props.getItemCopyText(itemsInSelection);
-      copyToClipboard(copyText);
-    }
-  }, [itemsInSelection, selectedIndices]);
-
-  // Callbacks only used in the imperitive handle
-
-  const addItems = React.useCallback(
-    (newItems: TItem[]) => {
-      updateItems(items.concat(newItems));
-    },
-    [items]
-  );
-
-  const unselectAll = React.useCallback(() => {
-    selection.setAllSelected(false);
-  }, [items]);
-
-  // For usage as a controlled component with a ref
-  React.useImperativeHandle(
-    ref,
-    (): ISelectedItemsList<TItem> => ({
-      items,
-      itemsInSelection,
-      addItems,
-      unselectAll,
-      removeItems
-    }),
-    [items, addItems]
+    [items],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -103,24 +52,35 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem) => () => removeItems([item])),
-    [items]
+    // TODO: consider whether dependency on removeItems should be added
+    // (removeItems would likely need to be wrapped in useCallback)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [items],
   );
 
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {renderedItems.map((item: TItem, index: number) => (
-        <SelectedItem
-          item={item}
-          index={index}
-          key={item.key !== undefined ? item.key : index}
-          selected={selectedIndices.indexOf(index) !== -1}
-          removeButtonAriaLabel={props.removeButtonAriaLabel}
-          onRemoveItem={onRemoveItemCallbacks[index]}
-          onItemChange={replaceItem}
-          onCopyItem={copyItemsInSelection}
-        />
-      ))}
+      {items.length > 0 && (
+        <div role={'list'}>
+          {SelectedItem &&
+            renderedItems.map((item: TItem, index: number) => (
+              <SelectedItem
+                item={item}
+                index={index}
+                // To keep react from complaining for duplicate elements with the same key
+                // we will append the index to the key so that we have unique key for each item
+                key={item.key !== undefined ? item.key + '_' + index : index}
+                selected={props.focusedItemIndices?.includes(index)}
+                removeButtonAriaLabel={props.removeButtonAriaLabel}
+                onRemoveItem={onRemoveItemCallbacks[index]}
+                onItemChange={replaceItem}
+                dragDropEvents={dragDropEvents}
+                dragDropHelper={dragDropHelper}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 };

@@ -4,20 +4,20 @@ import { mergeStyleSets } from '../../Styling';
 /** Class names used in themeable and non-themeable Icon components */
 export const classNames = mergeStyleSets({
   root: {
-    display: 'inline-block'
+    display: 'inline-block',
   },
   placeholder: [
     'ms-Icon-placeHolder',
     {
-      width: '1em'
-    }
+      width: '1em',
+    },
   ],
   image: [
     'ms-Icon-imageContainer',
     {
-      overflow: 'hidden'
-    }
-  ]
+      overflow: 'hidden',
+    },
+  ],
 });
 /** Class name used only in non-themeable Icon components */
 export const MS_ICON = 'ms-Icon';
@@ -33,8 +33,8 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       iconClassName,
       className,
       styles && styles.root,
-      // tslint:disable-next-line:deprecation
-      styles && styles.imageContainer
-    ]
+      // eslint-disable-next-line deprecation/deprecation
+      styles && styles.imageContainer,
+    ],
   };
 };

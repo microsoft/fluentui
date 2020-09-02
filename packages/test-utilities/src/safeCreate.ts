@@ -9,9 +9,15 @@ import * as renderer from 'react-test-renderer';
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
  */
-export function safeCreate<TProps>(content: React.ReactElement<TProps>, callback: (wrapper: renderer.ReactTestRenderer) => void): void {
-  const wrapper = renderer.create(content);
+export function safeCreate<TProps>(
+  content: React.ReactElement<TProps>,
+  callback: (wrapper: renderer.ReactTestRenderer) => void,
+): void {
+  let wrapper: renderer.ReactTestRenderer;
+  renderer.act(() => {
+    wrapper = renderer.create(content);
+  });
 
-  callback(wrapper);
-  wrapper.unmount();
+  callback(wrapper!);
+  wrapper!.unmount();
 }

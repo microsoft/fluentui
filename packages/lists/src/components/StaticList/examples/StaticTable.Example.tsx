@@ -16,9 +16,9 @@ const tableClassName = mergeStyles({
   borderCollapse: 'collapse',
   selectors: {
     '&, th, td': {
-      border: '1px solid black'
-    }
-  }
+      border: '1px solid black',
+    },
+  },
 });
 
 export const StaticListTableExample = () => {

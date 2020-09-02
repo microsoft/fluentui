@@ -1,8 +1,7 @@
 // @codepen
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
-import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { FontWeights, Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
 
 const alertClicked = (): void => {
   alert('Clicked');
@@ -12,33 +11,33 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     const siteTextStyles: ITextStyles = {
       root: {
         color: '#025F52',
-        fontWeight: FontWeights.semibold
-      }
+        fontWeight: FontWeights.semibold,
+      },
     };
     const descriptionTextStyles: ITextStyles = {
       root: {
         color: '#333333',
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const helpfulTextStyles: ITextStyles = {
       root: {
         color: '#333333',
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const iconStyles: IIconStyles = {
       root: {
         color: '#0078D4',
         fontSize: 16,
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const footerCardSectionStyles: ICardSectionStyles = {
       root: {
         alignSelf: 'stretch',
-        borderLeft: '1px solid #F3F2F1'
-      }
+        borderLeft: '1px solid #F3F2F1',
+      },
     };
 
     const sectionStackTokens: IStackTokens = { childrenGap: 20 };

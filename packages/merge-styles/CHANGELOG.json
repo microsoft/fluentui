@@ -2,6 +2,315 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/merge-styles_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update IRawStyleBase tying to allow css variables (string) as acceptable values.",
+            "author": "xgao@microsoft.com",
+            "commit": "787a28b8ac5f9e6f42dfe9a0630f012fea3900bf",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/merge-styles_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5b987c2dacab9ebddda7c3966e03521e974fbd63",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/merge-styles_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/merge-styles_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Loosening typings in the `IStyle` interface.",
+            "author": "dzearing@microsoft.com",
+            "commit": "0992ce1a42dcd1105ec055d655111288b54d3bcd",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/merge-styles_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@uifabric/merge-styles_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Loosening typings to allow for css variables. Removing kebab casing for css values which start with dashes.",
+            "author": "dzearing@hotmail.com",
+            "commit": "76c53de7cb3a89796d29cee85e8779729a4635d5",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/merge-styles_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 20:33:16 GMT",
+      "tag": "@uifabric/merge-styles_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addressing another typing issue found by TS 3.9.2 which is now catching scenarios which were shallow partials but should have been deep partials.",
+            "author": "dzearing@microsoft.com",
+            "commit": "3d95eeb9eeff0e8dba5e0c4dee322bbdfaac1e68",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/merge-styles_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Relaxing the input arguments in merge-styles to keep things building with typescript 3.9.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f74c4188938a23df4b6edbf60f3bc89d15885142",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/merge-styles_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable repeating selector in css rules for higher specificity",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.4",
+      "version": "7.11.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forcedColorAdjust",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@uifabric/merge-styles"
+          },
+          {
+            "comment": "Prevent classname with empty style generation",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.3",
+      "version": "7.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add WebkitTextSizeAdjust and textSizeAdjust as a valid CSS property",
+            "author": "sochhay@microsoft.com",
+            "commit": "dedb9ae121ac9fb983e35877fe4dbb6512fd8235",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/merge-styles_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/merge-styles"
+          },
+          {
+            "comment": "Fix typing for subComponentStyles in StyleSet",
+            "author": "xgao@microsoft.com",
+            "commit": "3f95bf337123ad9196a552ed12f893fa75a272fc",
+            "package": "@uifabric/merge-styles"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expose keytoclassnames to app, so it can be cached by the app in places like indexed db.",
+            "author": "pingj@microsoft.com",
+            "commit": "ece3cc7675b6bec05f3810a5f8df4928cab548c7",
+            "package": "@uifabric/merge-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.11",
+      "version": "7.8.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing '_rtl not defined' error thrown when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "31e6dc834a76c6afb4c555b155b67247e290dbcb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.10",
+      "version": "7.8.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.9",
+      "version": "7.8.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.8",
+      "version": "7.8.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/merge-styles_v7.8.6",
       "version": "7.8.6",

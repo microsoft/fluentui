@@ -1,28 +1,39 @@
-export { default as unstable_getAccessibility } from './accessibility/getAccessibility';
+export { getAccessibility as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
+export * from '@fluentui/react-compose';
+
+export { AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
-export { default as FocusTrapZone } from './FocusZone/FocusTrapZone';
+export { FocusTrapZone } from './FocusZone/FocusTrapZone';
 export * from './FocusZone/FocusTrapZone.types';
-export { default as FocusZone } from './FocusZone/FocusZone';
+export { FocusZone } from './FocusZone/FocusZone';
 export * from './FocusZone/FocusZone.types';
 export * from './FocusZone/focusUtilities';
 
-export { default as useAccessibility } from './hooks/useAccessibility';
-export { default as useAutoControlled } from './hooks/useAutoControlled';
-export { default as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
-export { default as useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
-export { default as useStateManager } from './hooks/useStateManager';
-export { default as useStyles } from './hooks/useStyles';
+export { useAccessibility } from './hooks/useAccessibility';
+export { useAutoControlled } from './hooks/useAutoControlled';
+export * from './hooks/useCSS';
+export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
+export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
+export { useStateManager } from './hooks/useStateManager';
+export * from './hooks/useStyles';
+export { useTriggerElement } from './hooks/useTriggerElement';
+export { useUnhandledProps } from './hooks/useUnhandledProps';
 
-export { default as unstable_createAnimationStyles } from './styles/createAnimationStyles';
-export { default as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
-export { default as unstable_getStyles } from './styles/getStyles';
+export { RendererContext } from './renderer/RendererContext';
+
+export { createAnimationStyles as unstable_createAnimationStyles } from './styles/createAnimationStyles';
+export { calculateAnimationTimeout as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
+export { getStyles as unstable_getStyles } from './styles/getStyles';
 export * from './styles/types';
 
-export { default as useTelemetry } from './telemetry/useTelemetry';
+export { getTelemetry as deprecated_getTelemetry, useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';
 
-export { default as getElementType } from './utils/getElementType';
-export { default as getUnhandledProps } from './utils/getUnhandledProps';
+export { childrenExist } from './utils/childrenExist';
+export { getElementType } from './utils/getElementType';
+export { getUnhandledProps } from './utils/getUnhandledProps';
+export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
+
+export * from './context';

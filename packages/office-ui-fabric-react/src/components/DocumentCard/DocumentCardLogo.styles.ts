@@ -2,7 +2,7 @@ import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
 
 const GlobalClassNames = {
-  root: 'ms-DocumentCardLogo'
+  root: 'ms-DocumentCardLogo',
 };
 
 export const getStyles = (props: IDocumentCardLogoStyleProps): IDocumentCardLogoStyles => {
@@ -15,13 +15,13 @@ export const getStyles = (props: IDocumentCardLogoStyleProps): IDocumentCardLogo
     root: [
       classNames.root,
       {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         fontSize: fonts.xxLargePlus.fontSize,
         color: palette.themePrimary,
         display: 'block',
-        padding: '16px 16px 0 16px'
+        padding: '16px 16px 0 16px',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

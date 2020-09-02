@@ -17,15 +17,13 @@ const FORMAT_REGEX = /\{\d+\}/g;
  *
  * @public
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function format(s: string, ...values: any[]): string {
-  'use strict';
-
   let args = values;
   // Callback match function
-  function replace_func(match: string): string {
+  function replaceFunc(match: string): string {
     // looks up in the args
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let replacement = args[match.replace(FORMAT_ARGS_REGEX, '') as any];
 
     // catches undefined in nondebug and null in debug and nondebug
@@ -35,5 +33,5 @@ export function format(s: string, ...values: any[]): string {
 
     return replacement;
   }
-  return s.replace(FORMAT_REGEX, replace_func);
+  return s.replace(FORMAT_REGEX, replaceFunc);
 }

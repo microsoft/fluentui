@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -17,45 +17,46 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
- * Adds attribute 'aria-haspopup=true' to 'root' slot if 'menu' property is set.
+ * Adds attribute 'aria-haspopup=true' to 'root' slot if 'hasMenu' property is set.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'wrapper'.
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'doNotNavigateNextParentItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
  */
-const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
+export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation'
+      role: 'presentation',
     },
     root: {
       role: 'button',
       tabIndex: 0,
-      'aria-haspopup': props.menu ? 'true' : undefined,
+      'aria-haspopup': props.hasMenu ? 'true' : undefined,
       'aria-disabled': props['disabled'],
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+    },
   },
 
   keyActions: {
     wrapper: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
       closeMenuAndFocusTrigger: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }]
+        keyCombinations: [{ keyCode: keyboardKey.Escape }],
       },
       openMenu: !props.vertical && {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       doNotNavigateNextParentItem: {
-        keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
-      }
-    }
-  }
+        keyCombinations:
+          props.hasMenu && props.menuOpen
+            ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
+            : null,
+      },
+    },
+  },
 });
-
-export default menuItemAsToolbarButtonBehavior;

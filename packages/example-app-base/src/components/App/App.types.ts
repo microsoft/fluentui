@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject, ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
@@ -10,11 +11,11 @@ export enum ExampleStatus {
   placeholder = 0,
   started = 1,
   beta = 2,
-  release = 3
+  release = 3,
 }
 
 export interface IAppLink extends INavLink {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getComponent?: (cb: (obj: any) => void) => any;
   component?: React.ComponentClass | (() => JSX.Element);
 }
@@ -72,7 +73,7 @@ export interface IAppStyles {
 
 export interface IAppSubComponentStyles {
   // TODO: remove anys after TS 3 upgrade
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   /** Styles for the Header itself. To style the container, use `styles.headerContainer`. */
   header: IStyleFunctionOrObject<IHeaderStyleProps, any>;
   /** Styles for the Nav itself, applied regardless of screen size */

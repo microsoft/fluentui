@@ -16,7 +16,7 @@ class FlamegrillReporter {
   onTestStart(test) {
     this._logFiles = [];
     this._watcher = chokidar.watch(path.join(os.tmpdir(), '*-puppeteer.log'), {
-      ignoreInitial: true
+      ignoreInitial: true,
     });
     this._watcher.on('add', file => {
       this._logFiles.push(file);
@@ -36,7 +36,7 @@ class FlamegrillReporter {
     testResult.testResults.forEach((result, index) => {
       profiles[result.fullName.replace(/\s/g, '-')] = {
         logFile: this._logFiles[index + delta],
-        metrics: {}
+        metrics: {},
       };
     });
     (async () => {
@@ -48,7 +48,7 @@ class FlamegrillReporter {
       await fs.mkdirp(tempDir);
       const processed = await processProfiles(profiles, {
         outDir,
-        tempDir
+        tempDir,
       });
 
       console.log('Generated flamecharts: ');

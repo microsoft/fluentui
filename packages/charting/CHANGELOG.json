@@ -2,6 +2,1121 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 31 Aug 2020 18:11:10 GMT",
+      "tag": "@uifabric/charting_v3.3.1",
+      "version": "3.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Redesign of Chart helper and updated associate files",
+            "author": "v-jasha@microsoft.com",
+            "commit": "3f092678a64df85a0c2a3e835def5a091e541406",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@uifabric/charting_v3.3.0",
+      "version": "3.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added multiselection of legends for the line chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "cf72dc9b1b66b9c5f383d4607cb4adfb80c03895",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/charting_v3.2.0",
+      "version": "3.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3f3818c11395a0c860915d941d2ad94ecb0c2077",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/charting_v3.1.5",
+      "version": "3.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IE11 support for xAxis labels and utility created for x axis labels wrapping",
+            "author": "v-jasha@microsoft.com",
+            "commit": "65fd11320497a478b818dddf012ad1be92125176",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "making legends focusable by default.",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "68185d433019f773bfb3237ae887ff5ac6c1e769",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@uifabric/charting_v3.1.4",
+      "version": "3.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Y axis ticks values duplicating issue resolved. removed ticks() and added tickFormat()",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f2d157fb9232e925e38fad5c29de7af2d28a35a9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/charting_v3.1.3",
+      "version": "3.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating ButtonGrid ID snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/charting_v3.1.1",
+      "version": "3.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/charting_v3.1.0",
+      "version": "3.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "focusing the legends based on the the prop 'allowFocusOnLegends' and exposing all the new prop 'legendProps' on all the charts which are using legends form which they can manipulate the respective lengends with this prop",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ceaea48955dae4c53a711851df5f07aa8905ba3f",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "For Stacked area chart need to calculate highest Y value based on given input data(after processing the data only). This needs to be send charthelper.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4104c1b810cb7c44bd08de9024f7fc7d947962e7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/charting_v3.0.10",
+      "version": "3.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/charting_v3.0.7",
+      "version": "3.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "530cd421124afefdbf87013a1583a4a3149681ba",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/charting_v3.0.5",
+      "version": "3.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/charting_v3.0.2",
+      "version": "3.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "yMax and yMin values added to prop types of chart helper",
+            "author": "v-jasha@microsoft.com",
+            "commit": "da829ab7a2d703e9fa792c2eebced2bc459fcf8f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped vertical bar chart refresh issue in admin controls resoled",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f8cf97b6c6ea125dfe6e98c92c716419a14db49d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/charting_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "reverted sankey chart code",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e4360d578f90e14c93c14a6b861674799b39295b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/charting_v2.8.0",
+      "version": "2.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart",
+            "author": "jijun@microsoft.com",
+            "commit": "40c70519bffb65b73f84a8e7c6332850aecd3c34",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.7.7",
+      "version": "2.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "common chartHelper added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5679d177d5febc6541806b31592d35a44fb9f139",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Add Accessibility support for Sankey chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "e0cd2a86ed6c914206bbf72766c2bba10473dc92",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/charting_v2.7.6",
+      "version": "2.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "63dfc9eb7a361002f8d7eb123272f1957e718340",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/charting_v2.7.4",
+      "version": "2.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "68f77ba470b728bc947d37c4f2d3754d82f5bb3a",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "f8def98981f2eba795fb88afd3887fedc0b56a9c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/charting_v2.7.2",
+      "version": "2.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Fix sankey chart dark mode text not visble properly",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "7485a3728d69f54dfdc2e1778811065938ddbd20",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined",
+            "author": "57419611+hki-237@users.noreply.github.com",
+            "commit": "1c3012b212603f34a8bd7b72f43c66176ab27c23",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@uifabric/charting_v2.7.0",
+      "version": "2.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "When legend is hovered, center of donut chart updates to the value cooresponding to the legend.",
+            "author": "57419611+hki-237@users.noreply.github.com",
+            "commit": "bd32dc4495932971f783b6451a723c25d4dfb2b7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/charting_v2.6.0",
+      "version": "2.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Charting:Add New Sankey chart to charting package",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "a92d7dc1636d67b1bfe4de640d7d59566d05b4b4",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "lineChart & verticalCharts - y axis lines high contrast styles updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4fc60e6201e26e6b1d318628de1559b20be8f00e",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "wrapping chartHoverCard in styled component and deleting static Theme",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "2d5932ce602ab7c38bf8a6aead53cbd42e296c55",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/charting_v2.5.2",
+      "version": "2.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Legends:Skip all legends in data viz as it is confusing to non sighted users as they have just gone through the data viz.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "a0b451a274e96ecedfb55c13276ee6e5777f75c2",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/charting_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations, including unnecessary map() usage and naming",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Donut chart: when hover/focus on arc the arc should be highlight and remaining arcs are disable",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "7f0a5206b61e4c059631010aa659e69cf99eb842",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/charting_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "cde96919b4e9233996196c48e7ad8d4ac8326221",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fitcontainer changes done in VS bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "1f2048c1503558d5648bd0e72faf3ea62b00d2a0",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "linechart-callout not visible in dense graph issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "957978aa93b4192805a87c0c81f7f380e4cca6a5",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "@uifabric/charting_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart:Expose chart  margins prop for line chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "b6bd4bf7bd32cecad30625e4a95010aea34a20dc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Jul 2020 12:32:20 GMT",
+      "tag": "@uifabric/charting_v2.3.11",
+      "version": "2.3.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line Chart-callout and circle Id's udpated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "953592c7bdc750c2f1dbd9e2ca3863774a82c516",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/charting_v2.3.10",
+      "version": "2.3.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line chart: Remove Duplicate ID's for lines and circles",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d55eecf434dfe269ecbf6f412dcde73a13dace3e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@uifabric/charting_v2.3.9",
+      "version": "2.3.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing benchmarkData and targetData props from the stackedbar chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ec20514fdd2721e62194c6f1d4c3878fa9df2e39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/charting_v2.3.8",
+      "version": "2.3.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "prop check added in Grouped vertical bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "ea1cb2f66589e09d46ad49843114fec282c1ed6c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/charting_v2.3.7",
+      "version": "2.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FIx Incorrect role is defined for lagend overflow items",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "50a3aaef8b7b967078b850656354594fee30bbbd",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/charting_v2.3.6",
+      "version": "2.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix Invalid aria-attribute value for charts",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "020bab6e761f50220d4b5827cc917a21ac930501",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3f3fc60bc4b564a7a6803400e436b4d27c50d9f9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/charting_v2.3.5",
+      "version": "2.3.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@uifabric/charting_v2.3.4",
+      "version": "2.3.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing some unneeded mergeStyles usage in examples.",
+            "author": "dzearing@hotmail.com",
+            "commit": "76c53de7cb3a89796d29cee85e8779729a4635d5",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped veritcal bar chart - second chart disappear issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "0b357d2c9c1c9d7237d23682eb43a03573db6c96",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@uifabric/charting_v2.3.3",
+      "version": "2.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3fb9b1b94b9e6704fba625f416b39722d56820c8",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "HorizontalBarChart: Add keyboard accessability",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "039cf12124d228f15af2d7a77470a843d9149478",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/charting_v2.3.2",
+      "version": "2.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical Bar chart code updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "38ecac09b70b1aa96df20c9974af4adbf95d06eb",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "doughnut chart target alignment updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4768dd6fc3c44bbb9c8bf7442a2c8b1aacad867c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.3.1",
+      "version": "2.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "doughnut chart circualr accessibility issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "58b2b5638d52a34fa16f0bd5ddf4d615a0311ad9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@uifabric/charting_v2.3.0",
+      "version": "2.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fontfamily inherited from fabric",
+            "author": "v-jasha@microsoft.com",
+            "commit": "bc06952b2cf7f449eb00c7e92159b5dec2d64449",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Y axis ticks truncate issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "234a67a0bffe1c02766ed20659349ffe4c15890c",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "adding css styles fixes, for both normal and high contrast mode",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "6b4d855e852ce145b7146b947d7a5140275c94c3",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "adding focus border functionality to donut chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "07a52661f56f5df7b4367ea8e0ade6e9a0dfaf64",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/charting_v2.2.34",
+      "version": "2.2.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/charting_v2.2.31",
+      "version": "2.2.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing resize event from chart and resizing the chart in CDU based on changes in height and width prop",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "11183e8b1e1073542d44a0a7a35dd8c3d181408e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/charting_v2.2.29",
+      "version": "2.2.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Change charts callout UI",
+            "author": "v-satgar@microsoft.com",
+            "commit": "7a6867506a889767e0fcb7ff0d4a96e2d5f94a60",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/charting_v2.2.27",
+      "version": "2.2.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LineChart: Add datapoints for each line and accessibility for it",
+            "author": "v-satgar@microsoft.com",
+            "commit": "49592828383aeb1a4c9b199c99dad89ab2fafbae",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/charting_v2.2.23",
+      "version": "2.2.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove implicit dep on lodash and fix other imports",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/charting_v2.2.21",
+      "version": "2.2.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line chart: Fix issue  If y-axis value has more digits it is getting truncated",
+            "author": "v-satgar@microsoft.com",
+            "commit": "7acb1b76ccc43fff54829a9e1c5671e344dbb9d1",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/charting_v2.2.14",
+      "version": "2.2.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MultiStackedBarChart: Fix breaking chart when focus on bars through keyboard",
+            "author": "v-satgar@microsoft.com",
+            "commit": "992643b4836517e93b01a367b945e2b9f74e09cc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/charting_v2.2.13",
+      "version": "2.2.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue in stacked bar chart for Rounded value to 1 if less than 1% to appear in the chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "ce4e45eed9061074360fa1990fe6ffe33fa4cba9",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting : Add theme support for xaxis and yaxis for line chart and change office-ui-fabric-react from dependencies to peerDependencies",
+            "author": "v-satgar@microsoft.com",
+            "commit": "a5008fb3888b73441d952b32f3cceecff8e04d8b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/charting_v2.2.7",
+      "version": "2.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting package: Expose prop for hide tooltips in charts",
+            "author": "v-satgar@microsoft.com",
+            "commit": "82b7b37422ca5b537d8f3df5a9a6e4be8d1bbd4d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/charting_v2.2.6",
+      "version": "2.2.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "callout prop added to charts",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e05367268a90387161969e76e6edfdef83a8b987",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/charting_v2.2.5",
+      "version": "2.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stacked Bar Chart: Rounded value to 1 if less than 1%  to appear in the chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "693f85b3e92f00beefb3c6568deefff04302c7d0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Apr 2020 12:31:44 GMT",
+      "tag": "@uifabric/charting_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "addding dismiss delay to overcome instant closing on blur",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "a7dc291399e573ae0c407d2dcb6b34a93d33166e",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bf19e43d9c475e09cc191eca92f9d93805af4fe7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/charting_v2.2.0",
+      "version": "2.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add EventAnnotation feature for linechart.",
+            "author": "Qian.Zheqi@microsoft.com",
+            "commit": "e430aa5e7be222d544c2d2c849455ceefbdc0500",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@uifabric/charting_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding new prop hideLegend in donut chart and line chart which decides to show or hide legends",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "55bae2f1b472a93a88975f4eed8633f790b29e29",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "adding onclick to the line in the line chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "c4d15d82cea45a5abf4906756086bdd94eef5bb9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/charting_v2.0.4",
+      "version": "2.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue line chart 'Tool tip' is displayed top of the page throgh accessibility",
+            "author": "v-satgar@microsoft.com",
+            "commit": "5d9a8736b2d49938dc1c80134d58eebb4ff3f31b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@uifabric/charting_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Grouped verical bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "7fc234896718e61af6113ddab56f3d6d7ee20154",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/charting_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Provide customization for line chart tooltip and Y Axis label",
+            "author": "v-satgar@microsoft.com",
+            "commit": "41dcfb48c91fdbb12d68d503bea0441bc6f85449",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Add Callout and Legends for vertical bar chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "17d77efd8b504dc212b5cb2ce731df3aee4e3718",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "fix out-of-sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "92cefe9175b6d67e1d7cdd84272a5933901b7e6f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/charting_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/charting_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DonutChart: Add prop to allow string inside Donut.",
+            "author": "v-satgar@microsoft.com",
+            "commit": "d33c765ff319e4aff2ffe788e618663974b92b84"
+          },
+          {
+            "comment": "providing Ymin and Ymax as props to the user",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3c6820fba99b1ec60e4de4a4465015675c91552b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/charting_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "a231cb8de5291e0e6a0ec718d89485044231e68e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Mar 2020 12:26:03 GMT",
+      "tag": "@uifabric/charting_v0.143.0",
+      "version": "0.143.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "expose prop for overflow items text in legends",
+            "author": "v-satgar@microsoft.com",
+            "commit": "f5951ed478cea07cbdd9aa14ad0c24e46eaa9db4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/charting_v0.142.0",
+      "version": "0.142.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for screen reader when hover on donnut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "0a9b9b17cf2af3bbd3af947cc1685f8edcec0afc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/charting_v0.141.6",
+      "version": "0.141.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fb72078344218bf53179de722e3c724eb65fcf3e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/charting_v0.141.1",
+      "version": "0.141.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted",
+            "author": "v-satgar@microsoft.com",
+            "commit": "988c73430e51994f3703b3953b2516f5544ec4a7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2020 12:24:03 GMT",
+      "tag": "@uifabric/charting_v0.141.0",
+      "version": "0.141.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart Accessibility with screen reader",
+            "author": "v-satgar@microsoft.com",
+            "commit": "403f5effff2c0cdf28cff73328f629208a1bb418"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/charting_v0.140.3",
       "version": "0.140.3",

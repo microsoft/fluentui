@@ -1,9 +1,9 @@
-import { Dropdown, Button } from '@fluentui/react';
+import { dropdownSlotClassNames, buttonClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
-  popupTrigger: `.${Button.className}`
+  toggleIndicator: `.${dropdownSlotClassNames.toggleIndicator}`,
+  item: (itemIndex: number) => `.${dropdownSlotClassNames.itemsList} li:nth-child(${itemIndex})`,
+  popupTrigger: `.${buttonClassName}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -16,8 +16,8 @@ const config: ScreenerTestsConfig = {
         .hover(selectors.item(2))
         .snapshot('Prepares to select item out of popup.')
         .click(selectors.item(2))
-        .snapshot('Item should be selected.')
-  ]
+        .snapshot('Item should be selected.'),
+  ],
 };
 
 export default config;

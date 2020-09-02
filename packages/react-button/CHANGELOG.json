@@ -1,0 +1,532 @@
+{
+  "name": "@fluentui/react-button",
+  "entries": [
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-button_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ghost prop for stealth styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d9de3d77bb24ac881fa63b8cf72e6d56d53d97ad",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-button_v0.10.3",
+      "version": "0.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-button_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix SplitButton styles",
+            "author": "xgao@microsoft.com",
+            "commit": "9bf73ea3bd03c9f695b899651fb327d90db3d0bc",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/react-button_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Change default theme to fluent; minor styles fixes; add Teams/Fluent themes; Convert v7 theme to tokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "1a7794c6e7933a5e1790a6a50eada3a0f9928216",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-button_v0.9.4",
+      "version": "0.9.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating some test typings.",
+            "author": "dzearing@hotmail.com",
+            "commit": "f155a92488fbe53ebeadd9b5b153d35a753e5647",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-button_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SplitButton: Initial implementation.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Adding opacity control for button tokens.",
+            "author": "dzearing@hotmail.com",
+            "commit": "59a535edb9ef5b85fada1259818a3758197ed27d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-button_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: removing compose usage in favor of hooks and factories.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-button_v0.7.14",
+      "version": "0.7.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@fluentui/react-button_v0.7.11",
+      "version": "0.7.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
+            "author": "xgao@microsoft.com",
+            "commit": "eaada6f8e6499585952528ac8ebead0a8e7da906",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-button_v0.7.9",
+      "version": "0.7.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update react-button to use common-styles",
+            "author": "behowell@microsoft.com",
+            "commit": "639c468815c9e389eb3002fa54acc159b3fae048",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@fluentui/react-button_v0.7.3",
+      "version": "0.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: use a proper ref in useButton hook",
+            "author": "olfedias@microsoft.com",
+            "commit": "346cd61df2ce2268f4126eab1b31a173904ff4c2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-button_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-button_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "MenuButton: Creating component using compose.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "209102879028aa62a445ac6c041b79b9d203c8e1",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/react-button_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disabling as test for isConformant test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding bundle task to react-button package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4d02c9112111b40532411757c37878124c581b38",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@fluentui/react-button_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding componentRef, focus method, styling, and tests.",
+            "author": "dzearing@microsoft.com",
+            "commit": "4746eb1c2dd4846510353f839bc4079511a75e22",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-button_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Adding stories of a Button themed like Fluent using tokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51b26a4f868cee2fde2bc28b6067f5503d2c3db7",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Using correct focus borders from utilities.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "900877a4c5455cc3c8df28131dfba8455302f7da",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@fluentui/react-button_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update typings related to mergeProps typing",
+            "author": "xgao@microsoft.com",
+            "commit": "457a25432c22a9d8bc18bbe8e4f40bc7f4fb4a1a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: updates to styles, adjusting width tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d14b3434cf47d8c1533472be5d0c0c6aafa3bf03",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-button_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Mixing style coming from slotProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@fluentui/react-button_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding pointer-events: none to :after focus rectangle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "35f5aa25db089b737a8612740de3c378a2ed3f8e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@fluentui/react-button_v0.3.6",
+      "version": "0.3.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding conformance test to components.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "7e490986f3c1b27a2702acbed5ee15a8531e7537",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "react-button: Adding api-extractor configuration.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8557ea009c32067945b0761030e8e1a1214d1b2d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@fluentui/react-button_v0.3.5",
+      "version": "0.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Replacing height with min-height so Button can adapt in flex scenarios.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "face9b1f9822d7e44a8efdce5bf2e65f9ad75556",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-button_v0.3.3",
+      "version": "0.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "The css output was being unintentionally botched by the postcss-clean minifier. Moving to clean-css directly without the postcss wrapping.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f42b336d92d341f39c303e1fdb61deffbe71e647",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-button_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding inline tokens support to Button, fixing focus rects.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7026390333eeeb5bb1765bca68389b3b43312a49",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ToggleButton: Updating to new css variables.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "560a9b03d5230f997a6e1801357cce10b3a0008d",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Updating typings to conform with react-compose changes.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8b0ffa8c39c7fe298596253b205134f9c9f8c3b5",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-button_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleaning up typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c5f82f6bb84f97a0b8c0d2bb884885cf906b906c",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@fluentui/react-button_v0.1.13",
+      "version": "0.1.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating createClassResolver usage.",
+            "author": "dzearing@microsoft.com",
+            "commit": "fb6496e5deebdebd955fccf500f2e3f923b0a160",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Adjusting styling to adhere to conventions.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8f0c78a3979e601a3bf3833e5cd04256d2906a82",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/react-button_v0.1.12",
+      "version": "0.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using new react-compose mergeProps.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Jun 2020 12:32:45 GMT",
+      "tag": "@fluentui/react-button_v0.1.11",
+      "version": "0.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Explicitly importing react in tempTypes and fixing bug in mergeProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f45840b653f743b1d9e6c7969d60265ced676212",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-button_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-button_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial package scaffold.",
+            "author": "dzearing@microsoft.com",
+            "commit": "342ef515550dc4067c2b451dd4ae8f2a7bb9d608",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -88,7 +88,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
               border-color: transparent;
               border-radius: 50%;
               border-style: solid;
-              border-width: .28em;
+              border-width: 6px;
               box-sizing: border-box;
               display: block;
               height: 12px;
@@ -218,7 +218,7 @@ exports[`Toggle renders toggle correctly 1`] = `
               border-color: transparent;
               border-radius: 50%;
               border-style: solid;
-              border-width: .28em;
+              border-width: 6px;
               box-sizing: border-box;
               display: block;
               height: 12px;
@@ -354,7 +354,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
               border-color: transparent;
               border-radius: 50%;
               border-style: solid;
-              border-width: .28em;
+              border-width: 6px;
               box-sizing: border-box;
               display: block;
               height: 12px;
@@ -488,7 +488,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
               border-color: transparent;
               border-radius: 50%;
               border-style: solid;
-              border-width: .28em;
+              border-width: 6px;
               box-sizing: border-box;
               display: block;
               height: 12px;
@@ -558,7 +558,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="Toggle4-label"
+      aria-labelledby="Toggle4-label Toggle4-stateText"
       className=
           ms-Toggle-background
           {
@@ -621,7 +621,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
               border-color: transparent;
               border-radius: 50%;
               border-style: solid;
-              border-width: .28em;
+              border-width: 6px;
               box-sizing: border-box;
               display: block;
               height: 12px;

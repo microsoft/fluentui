@@ -49,8 +49,8 @@ function copy() {
       tasks.push(
         copyTask(
           sources.map(src => expandSourcePath(src)),
-          destination
-        )
+          destination,
+        ),
       );
     }
   }

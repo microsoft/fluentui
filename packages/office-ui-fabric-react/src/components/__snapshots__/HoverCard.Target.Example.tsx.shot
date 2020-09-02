@@ -4,8 +4,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
 <div
   className=
       ms-Fabric
-      is-focusHidden
-      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -23,17 +21,21 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   <p>
     Hover over the 
-    <i>
+    <strong>
       key
-    </i>
+    </strong>
      cell of a row item to see the card or use the keyboard to navigate to it by tabbing to a row and hitting the right arrow key.
   </p>
   <p>
-    When using the keyboard to navigate, open the card with the hotKey and it will automatically focus the first focusable element in the card allowing further navigation inside the card. The hotKey is defined by the hotKey prop and is defined as 'enter' in the following example.
+    When using the keyboard to navigate, open the card with the hotkey and it will automatically focus the first focusable element in the card allowing further navigation inside the card. The hotkey is defined by the
+     
+    <code>
+      openHotKey
+    </code>
+     prop and is defined as 'enter' in the following example.
   </p>
   <div
     className="ms-Viewport"
@@ -53,7 +55,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             -webkit-overflow-scrolling: touch;
-            background: #ffffff;
             color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
@@ -76,9 +77,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
         role="grid"
       >
         <div
-          className=
-              ms-DetailsList-headerWrapper
-
+          className="ms-DetailsList-headerWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -123,11 +122,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
             onMouseDownCapture={[Function]}
             onMouseMove={[Function]}
             role="row"
-            style={
-              Object {
-                "minWidth": 100,
-              }
-            }
           >
             <div
               aria-colindex={1}
@@ -176,9 +170,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
               role="columnheader"
             >
               <span
-                className=
-                    ms-DetailsHeader-checkTooltip
-
+                className="ms-DetailsHeader-checkTooltip"
               >
                 <div
                   aria-checked={false}
@@ -507,40 +499,38 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
           </div>
         </div>
         <div
-          className=
-              ms-DetailsList-contentWrapper
-
+          className="ms-DetailsList-contentWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
           <div
-            className=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  display: inline-block;
-                  min-height: 1px;
-                  min-width: 100%;
-                }
-            data-focuszone-id="FocusZone2"
-            onBlur={[Function]}
-            onFocus={[Function]}
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
             onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
+            role="presentation"
           >
             <div
-              className="ms-SelectionZone"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onDoubleClick={[Function]}
-              onFocusCapture={[Function]}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+                  {
+                    display: inline-block;
+                    min-height: 1px;
+                    min-width: 100%;
+                  }
+              data-focuszone-id="FocusZone2"
+              onBlur={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
-              onKeyDownCapture={[Function]}
-              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-List"
@@ -635,6 +625,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={0}
                         data-selection-index={0}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -699,7 +690,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -952,9 +942,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-0 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -1058,6 +1046,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={1}
                         data-selection-index={1}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1122,7 +1111,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -1375,9 +1363,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-1 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -1481,6 +1467,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={2}
                         data-selection-index={2}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1545,7 +1532,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -1798,9 +1784,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-2 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -1904,6 +1888,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={3}
                         data-selection-index={3}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1968,7 +1953,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -2221,9 +2205,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-3 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -2327,6 +2309,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={4}
                         data-selection-index={4}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2391,7 +2374,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -2644,9 +2626,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-4 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -2750,6 +2730,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={5}
                         data-selection-index={5}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2814,7 +2795,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -3067,9 +3047,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-5 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -3173,6 +3151,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={6}
                         data-selection-index={6}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3237,7 +3216,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -3490,9 +3468,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-6 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -3596,6 +3572,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={7}
                         data-selection-index={7}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3660,7 +3637,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -3913,9 +3889,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-7 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -4019,6 +3993,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={8}
                         data-selection-index={8}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4083,7 +4058,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -4336,9 +4310,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-8 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>
@@ -4442,6 +4414,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                         data-is-focusable={true}
                         data-item-index={9}
                         data-selection-index={9}
+                        data-selection-touch-invoke={true}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4506,7 +4479,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -4759,9 +4731,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               >
                                 item-9 Lorem ipsum dolor sit
                                 <div
-                                  className=
-                                      ms-HoverCard-host
-
+                                  className="ms-HoverCard-host"
                                   data-is-focusable={true}
                                 />
                               </div>

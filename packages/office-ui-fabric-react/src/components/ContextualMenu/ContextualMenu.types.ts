@@ -10,7 +10,12 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
+import {
+  IContextualMenuItemProps,
+  IContextualMenuRenderItem,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemRenderFunctions,
+} from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 /**
@@ -20,7 +25,7 @@ export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
   Header = 2,
-  Section = 3
+  Section = 3,
 }
 
 /**
@@ -121,7 +126,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * Menu items to display.
-   * @defaultvalue []
    */
   items: IContextualMenuItem[];
 
@@ -152,7 +156,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * menu item.
    * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onItemClick?: (
+    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    item?: IContextualMenuItem,
+  ) => boolean | void;
 
   /**
    * Whether this menu is a submenu of another menu.
@@ -199,7 +206,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   calloutProps?: ICalloutProps;
 
   /**
-   * Optional title to be displayed on top of the menu.
+   * Title to be displayed at the top of the menu, above the items.
    */
   title?: string;
 
@@ -207,7 +214,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to provide the classnames to style the contextual menu.
    * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Custom render function for a submenu. */
@@ -224,10 +231,12 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   subMenuHoverDelay?: number;
 
   /**
-   * Method to override the render of the individual menu items
+   * Custom component to use for rendering individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?:
+    | React.ComponentClass<IContextualMenuItemProps>
+    | React.FunctionComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -243,25 +252,41 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * to improve rendering performance when it becomes visible.
    * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
    * once the ContextualMenu is visible.
-   * @defaultValue undefined
    */
   hidden?: boolean;
 
   /**
-   * If true, the component will be updated even when `hidden=true`.
-   * Note that this would consume resources to update even though
-   * nothing is being shown to the user.
-   * This might be helpful though if your updates are small and you want the
-   * contextual menu to be revealed fast to the user when `hidden` is set to false.
+   * If true, the menu will be updated even when `hidden=true`. Note that this will consume
+   * resources to update even when nothing is being shown to the user. This might be helpful if
+   * your updates are small and you want the menu to display quickly when `hidden` is set to false.
    */
   shouldUpdateWhenHidden?: boolean;
 
   /**
    * If true, the contextual menu will not be updated until focus enters the menu via other means.
    * This will only result in different behavior when `shouldFocusOnMount = false`.
-   * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to and whether or not the popup currently
+   * contains focus. If this prop is provided, focus will not be restored automatically,
+   * you'll need to call originalElement.focus()
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+}
+
+/**
+ * {@docCategory ContextualMenu}
+ */
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
+  index: number;
+  focusableElementIndex: number;
+  totalItemCount: number;
+  hasCheckmarks: boolean;
+  hasIcons: boolean;
 }
 
 /**
@@ -272,6 +297,8 @@ export interface IContextualMenuListProps {
   totalItemCount: number;
   hasCheckmarks: boolean;
   hasIcons: boolean;
+  defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
+  role?: string;
 }
 
 /**
@@ -279,7 +306,8 @@ export interface IContextualMenuListProps {
  */
 export interface IContextualMenuItem {
   /**
-   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
+   * Optional callback to access the IContextualMenuRenderItem interface.
+   * This will get passed down to ContextualMenuItem.
    */
   componentRef?: IRefObject<IContextualMenuRenderItem>;
 
@@ -289,7 +317,9 @@ export interface IContextualMenuItem {
   key: string;
 
   /**
-   * Text description for the menu item to display
+   * Text of the menu item.
+   * If a standard hyphen (-) is passed in, then the item will be rendered as a divider.
+   * If a dash must appear as text, use an emdash (—), figuredash (‒), or minus symbol (−) instead.
    */
   text?: string;
 
@@ -301,7 +331,7 @@ export interface IContextualMenuItem {
   itemType?: ContextualMenuItemType;
 
   /**
-   * Props for the Icon.
+   * Props for an icon to display next to the item.
    */
   iconProps?: IIconProps;
 
@@ -358,9 +388,14 @@ export interface IContextualMenuItem {
   /**
    * Callback for when the menu item is invoked. If `ev.preventDefault()` is called in `onClick`,
    * the click will not close the menu.
-   * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
+   *
+   * Only for ContextualMenu items, returning true will dismiss the menu even if `ev.preventDefault()`
+   * was called (does not apply for button or CommandBar sub-menu items).
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onClick?: (
+    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    item?: IContextualMenuItem,
+  ) => boolean | void;
 
   /**
    * Navigate to this URL when the menu item is clicked.
@@ -373,7 +408,8 @@ export interface IContextualMenuItem {
   target?: string;
 
   /**
-   * Link relation setting when using `href`. If `target` is `_blank`, `rel` is defaulted to a value to prevent clickjacking.
+   * Link relation setting when using `href`.
+   * If `target` is `_blank`, `rel` is defaulted to a value to prevent clickjacking.
    */
   rel?: string;
 
@@ -401,8 +437,8 @@ export interface IContextualMenuItem {
     dividerClassName?: string,
     iconClassName?: string,
     subMenuClassName?: string,
-    primaryDisabled?: boolean
-  ) => // tslint:disable-next-line:deprecation
+    primaryDisabled?: boolean,
+  ) => // eslint-disable-next-line deprecation/deprecation
   IMenuItemClassNames;
 
   /**
@@ -415,7 +451,7 @@ export interface IContextualMenuItem {
    * Default value is the `getSplitButtonVerticalDividerClassNames` func defined in `ContextualMenu.classnames.ts`.
    * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
@@ -436,13 +472,13 @@ export interface IContextualMenuItem {
   style?: React.CSSProperties;
 
   /**
-   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the aria-label attribute will contain the item name
+   * Custom accessible label for the element.
+   * If no override is specified, the `aria-label` attribute will contain the item name.
    */
   ariaLabel?: string;
 
   /**
-   * Optional title for displaying text when hovering over an item.
+   * Title (tooltip) text displayed when hovering over an item.
    */
   title?: string;
 
@@ -457,6 +493,17 @@ export interface IContextualMenuItem {
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+
+  /**
+   * Method to customize sub-components rendering of this menu item.
+   *
+   * @param props - Props used to pass into render functions
+   * @param defaultRenders - Default render functions that renders default sub-components
+   */
+  onRenderContent?: (
+    props: IContextualMenuItemProps,
+    defaultRenders: IContextualMenuItemRenderFunctions,
+  ) => React.ReactNode;
 
   /**
    * A function to be executed on mouse down. This is executed before an `onClick` event and can
@@ -494,7 +541,7 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 
   /**
-   * Text description for the menu item to display
+   * Text of the menu item.
    * @deprecated Use `text` instead.
    */
   name?: string;

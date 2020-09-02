@@ -1,23 +1,23 @@
-import { useCallback, useRef } from 'react';
+import * as React from 'react';
 import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 
 export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
-  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const menuButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const [expanded, setExpanded] = useControlledState(props, 'expanded', {
     defaultPropName: 'defaultExpanded',
-    defaultPropValue: false
+    defaultPropValue: false,
   });
 
   const { disabled, onClick, onKeyDown, onMenuDismiss } = props;
 
-  const _onMenuDismiss = useCallback(() => {
+  const _onMenuDismiss = React.useCallback(() => {
     onMenuDismiss && onMenuDismiss();
     setExpanded(false);
-  }, [onMenuDismiss]);
+  }, [onMenuDismiss, setExpanded]);
 
-  const _onClick = useCallback(
+  const _onClick = React.useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
       if (!disabled) {
         if (onClick) {
@@ -30,10 +30,10 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded, onClick]
+    [disabled, expanded, onClick, setExpanded],
   );
 
-  const _onKeyDown = useCallback(
+  const _onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
       if (!disabled) {
         if (onKeyDown) {
@@ -49,7 +49,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
         }
       }
     },
-    [disabled, expanded, onKeyDown]
+    [disabled, onKeyDown, setExpanded],
   );
 
   const viewProps: IMenuButtonViewProps = {
@@ -58,7 +58,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
     onClick: _onClick,
     onKeyDown: _onKeyDown,
     onMenuDismiss: _onMenuDismiss,
-    menuButtonRef
+    menuButtonRef,
   };
 
   return viewProps;

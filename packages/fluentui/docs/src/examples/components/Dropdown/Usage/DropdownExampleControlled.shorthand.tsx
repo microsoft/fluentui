@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, Flex, Text } from '@fluentui/react';
+import { Dropdown, Flex, Text } from '@fluentui/react-northstar';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
 

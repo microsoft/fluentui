@@ -6,7 +6,7 @@ import {
   CommentsSignal,
   NewSignal,
   SharedSignal,
-  ITileBackgroundProps
+  ITileBackgroundProps,
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -35,7 +35,7 @@ const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
       style={{
         position: 'relative',
         width: '176px',
-        height: '171px'
+        height: '171px',
       }}
     >
       {props.children}
@@ -52,7 +52,7 @@ const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
       style={{
         position: 'relative',
         width: `${MEDIA_TILE_WIDTH}px`,
-        height: `${MEDIA_TILE_HEIGHT}px`
+        height: `${MEDIA_TILE_HEIGHT}px`,
       }}
     >
       {props.children}
@@ -61,7 +61,7 @@ const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
 };
 
 const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
-  props: IDocumentTileWithThumbnailProps
+  props: IDocumentTileWithThumbnailProps,
 ): JSX.Element => {
   function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
     const { foregroundSize = { width: 0, height: 0 } } = foregroundProps;
@@ -69,7 +69,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
     const imageSize = fitContentToBounds({
       contentSize: props.originalImageSize,
       boundsSize: foregroundSize,
-      mode: 'contain'
+      mode: 'contain',
     });
 
     return (
@@ -85,7 +85,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
       <Tile
         contentSize={{
           width: 176,
-          height: 171
+          height: 171,
         }}
         itemName={<SignalField before={<TrendingSignal />}>{props.item.name}</SignalField>}
         itemActivity={
@@ -101,7 +101,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 };
 
 const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailProps> = (
-  props: IMediaTileWithThumbnailProps
+  props: IMediaTileWithThumbnailProps,
 ): JSX.Element => {
   const { imageSize, item, nameplateOnlyOnHover } = props;
 
@@ -138,17 +138,17 @@ storiesOf('Tile', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Document tile with fit landscape image', () => (
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
-        activity: <>Test Activity</>
+        activity: <>Test Activity</>,
       }}
       originalImageSize={{
         width: 200,
-        height: 150
+        height: 150,
       }}
     />
   ))
@@ -156,11 +156,11 @@ storiesOf('Tile', module)
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
-        activity: <>Test Activity</>
+        activity: <>Test Activity</>,
       }}
       originalImageSize={{
         width: 150,
-        height: 200
+        height: 200,
       }}
     />
   ))
@@ -168,11 +168,11 @@ storiesOf('Tile', module)
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
-        activity: <>Test Activity</>
+        activity: <>Test Activity</>,
       }}
       originalImageSize={{
         width: 16,
-        height: 16
+        height: 16,
       }}
     />
   ))
@@ -183,12 +183,12 @@ storiesOf('Tile', module)
         itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
         foreground={
           <img
-            src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`}
+            src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg`}
             style={{
               display: 'block',
               width: '64px',
               height: '64px',
-              margin: '16px'
+              margin: '16px',
             }}
           />
         }
@@ -225,18 +225,18 @@ storiesOf('MediaTile', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Media tile with single activity line', () => (
     <MediaTileBox>
       <MediaTileWithThumbnail
         item={{
           name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
+          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
         }}
         imageSize={{
           width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT
+          height: MEDIA_TILE_HEIGHT,
         }}
         nameplateOnlyOnHover={false}
       />
@@ -252,11 +252,11 @@ storiesOf('MediaTile', module)
               <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
               <span style={{ display: 'block' }}>{'Test Activity Second Line'}</span>
             </>
-          )
+          ),
         }}
         imageSize={{
           width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT
+          height: MEDIA_TILE_HEIGHT,
         }}
         nameplateOnlyOnHover={false}
       />
@@ -275,11 +275,11 @@ storiesOf('MediaTile', module)
             <SignalField before={<SharedSignal />}>
               {'Proin elementum erat gravida libero luctus, id consequat risus aliquam'}
             </SignalField>
-          )
+          ),
         }}
         imageSize={{
           width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT
+          height: MEDIA_TILE_HEIGHT,
         }}
         nameplateOnlyOnHover={false}
       />
@@ -290,11 +290,11 @@ storiesOf('MediaTile', module)
       <MediaTileWithThumbnail
         item={{
           name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
+          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
         }}
         imageSize={{
           width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT
+          height: MEDIA_TILE_HEIGHT,
         }}
         nameplateOnlyOnHover={true}
       />

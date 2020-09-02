@@ -7,11 +7,11 @@ export const CheckGlobalClassNames = {
   circle: 'ms-Check-circle',
   check: 'ms-Check-check',
   /** Must be manually applied to the parent element of the check. */
-  checkHost: 'ms-Check-checkHost'
+  checkHost: 'ms-Check-checkHost',
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const { height = props.checkBoxHeight || '18px', checked, className, theme } = props;
 
   const { palette, semanticColors, fonts } = theme;
@@ -27,7 +27,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     width: height,
     height: height,
     textAlign: 'center',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
   };
 
   return {
@@ -53,13 +53,13 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             left: '1px',
             borderRadius: '50%',
             opacity: 1,
-            background: semanticColors.bodyBackground
+            background: semanticColors.bodyBackground,
           },
 
           [`.${classNames.checkHost}:hover &, .${classNames.checkHost}:focus &, &:hover, &:focus`]: {
-            opacity: 1
-          }
-        }
+            opacity: 1,
+          },
+        },
       },
 
       checked && [
@@ -71,14 +71,14 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
               opacity: 1,
               selectors: {
                 [HighContrastSelector]: {
-                  background: 'Window'
-                }
-              }
-            }
-          }
-        }
+                  background: 'Window',
+                },
+              },
+            },
+          },
+        },
       ],
-      className
+      className,
     ],
 
     circle: [
@@ -90,14 +90,14 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
 
         selectors: {
           [HighContrastSelector]: {
-            color: 'WindowText'
-          }
-        }
+            color: 'WindowText',
+          },
+        },
       },
 
       checked && {
-        color: palette.white
-      }
+        color: palette.white,
+      },
     ],
 
     check: [
@@ -112,13 +112,13 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
 
         selectors: {
           ':hover': {
-            opacity: 1
+            opacity: 1,
           },
 
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       checked && {
@@ -129,12 +129,12 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
         selectors: {
           [HighContrastSelector]: {
             border: 'none',
-            color: 'WindowText'
-          }
-        }
-      }
+            color: 'WindowText',
+          },
+        },
+      },
     ],
 
-    checkHost: classNames.checkHost
+    checkHost: classNames.checkHost,
   };
 };

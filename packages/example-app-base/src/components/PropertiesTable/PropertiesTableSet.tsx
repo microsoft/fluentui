@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { IProperty, PropertyType, parse } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
-import { IPropertiesTableSetProps, IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
+import {
+  IPropertiesTableSetProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles,
+} from './PropertiesTableSet.types';
 import { getStyles } from './PropertiesTableSet.styles';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -45,5 +49,5 @@ export const PropertiesTableSet: React.FunctionComponent<IPropertiesTableSetProp
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles
 >(PropertiesTableSetBase, getStyles, undefined, {
-  scope: 'PropertiesTableSet'
+  scope: 'PropertiesTableSet',
 });

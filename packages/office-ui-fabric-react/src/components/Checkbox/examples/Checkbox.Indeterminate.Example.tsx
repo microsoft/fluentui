@@ -19,7 +19,7 @@ export const CheckboxIndeterminateExample: React.FunctionComponent = () => {
         setIsChecked(newChecked);
       }
     },
-    [isIndeterminate]
+    [isIndeterminate],
   );
 
   return (
@@ -34,7 +34,12 @@ export const CheckboxIndeterminateExample: React.FunctionComponent = () => {
 
       <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
 
-      <Checkbox label="Indeterminate checkbox (controlled)" indeterminate={isIndeterminate} checked={isChecked} onChange={onChange} />
+      <Checkbox
+        label="Indeterminate checkbox (controlled)"
+        indeterminate={isIndeterminate}
+        checked={isChecked}
+        onChange={onChange}
+      />
     </Stack>
   );
 };

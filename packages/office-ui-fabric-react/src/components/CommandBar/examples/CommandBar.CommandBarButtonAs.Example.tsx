@@ -31,7 +31,7 @@ const CoachmarkCommandBarButton: React.FunctionComponent<ICoachmarkCommandBarBut
         <Coachmark
           target={targetButton.current}
           positioningContainerProps={{
-            directionalHint: DirectionalHint.bottomCenter
+            directionalHint: DirectionalHint.bottomCenter,
           }}
           ariaAlertText="A Coachmark has appeared"
           ariaDescribedBy="coachmark-desc1"
@@ -55,15 +55,18 @@ const CoachmarkCommandBarButton: React.FunctionComponent<ICoachmarkCommandBarBut
 };
 
 const overflowButtonProps: IButtonProps = {
-  ariaLabel: 'More commands'
+  ariaLabel: 'More commands',
 };
 
 /** Command bar which renders the Share button with a coachmark */
+// eslint-disable-next-line @fluentui/max-len
 const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCommandBarButtonAsExampleProps> = props => {
   const { onDismissCoachmark, isCoachmarkVisible } = props;
   const items: ICommandBarItemProps[] = React.useMemo(() => {
     const CoachmarkButtonWrapper: IComponentAs<ICommandBarItemProps> = (p: IComponentAsProps<ICommandBarItemProps>) => {
-      return <CoachmarkCommandBarButton {...p} isCoachmarkVisible={isCoachmarkVisible} onDismiss={onDismissCoachmark} />;
+      return (
+        <CoachmarkCommandBarButton {...p} isCoachmarkVisible={isCoachmarkVisible} onDismiss={onDismissCoachmark} />
+      );
     };
 
     return [
@@ -75,11 +78,16 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCo
         iconProps: { iconName: 'Share' },
         // The Share button will have a coachmark
         commandBarButtonAs: CoachmarkButtonWrapper,
-        onClick: () => console.log('Share')
+        onClick: () => console.log('Share'),
       },
-      { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') }
+      {
+        key: 'download',
+        text: 'Download',
+        iconProps: { iconName: 'Download' },
+        onClick: () => console.log('Download'),
+      },
     ];
-  }, [props.onDismissCoachmark, props.isCoachmarkVisible]);
+  }, [onDismissCoachmark, isCoachmarkVisible]);
 
   return (
     <CommandBar
@@ -95,5 +103,10 @@ export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent
 
   const onDismissCoachmark = React.useCallback(() => setIsCoachmarkVisible(false), []);
 
-  return <IndividualCommandBarButtonAsExample onDismissCoachmark={onDismissCoachmark} isCoachmarkVisible={isCoachmarkVisible} />;
+  return (
+    <IndividualCommandBarButtonAsExample
+      onDismissCoachmark={onDismissCoachmark}
+      isCoachmarkVisible={isCoachmarkVisible}
+    />
+  );
 };

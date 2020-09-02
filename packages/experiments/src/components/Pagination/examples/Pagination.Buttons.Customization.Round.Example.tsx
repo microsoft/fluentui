@@ -25,10 +25,10 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-        onPageChange={this.onPageChange}
+        onPageChange={this._onPageChange}
         styles={{
           previousNextPage: {
-            color: '#0078d4'
+            color: '#0078d4',
           },
           pageNumber: {
             width: '32px',
@@ -36,28 +36,28 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
             textAlign: 'center',
             selectors: {
               ':hover': {
-                borderRadius: '16px'
+                borderRadius: '16px',
               },
               '&[aria-selected=true]': {
                 backgroundColor: '#0078d4',
                 fontWeight: 'bold',
                 borderRadius: '16px',
-                color: 'white'
+                color: 'white',
               },
               '&:hover[aria-selected=true]': {
                 backgroundColor: '#0078d4',
-                color: 'white'
-              }
-            }
-          }
+                color: 'white',
+              },
+            },
+          },
         }}
       />
     );
   }
 
-  private onPageChange = (index: number): void => {
+  private _onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

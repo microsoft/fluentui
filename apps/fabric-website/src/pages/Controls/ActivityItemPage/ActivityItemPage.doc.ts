@@ -6,6 +6,6 @@ const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls
 export const ActivityItemPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
-  }
+    related,
+  },
 };

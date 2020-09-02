@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] = `
-<div
-  className="docs-DatePickerExample"
->
+<div>
   <p>
     Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In this example, we are formatting and parsing dates as dd/MM/yy.
   </p>
@@ -61,9 +59,7 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=
@@ -124,6 +120,9 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
+                }
           >
             <input
               aria-expanded={false}
@@ -170,6 +169,10 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -178,6 +181,9 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -188,6 +194,9 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -196,6 +205,9 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="DatePicker0-label"
               onBlur={[Function]}
@@ -273,7 +285,6 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -290,7 +301,6 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;

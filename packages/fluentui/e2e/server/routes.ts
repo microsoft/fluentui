@@ -7,6 +7,6 @@ export default e2eExampleContext.keys().reduce((acc, key) => {
 
   return {
     ...acc,
-    ...{ [exampleNameUrlToken]: e2eExampleContext(key).default }
+    ...{ [exampleNameUrlToken]: e2eExampleContext(key).default },
   };
 }, {});

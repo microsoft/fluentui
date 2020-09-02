@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.12.5",
-  "description": "Office UI Fabric utilities for building React components.",
+  "version": "7.31.0",
+  "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -26,19 +26,19 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/prop-types": "15.7.1",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.11",
-    "@uifabric/test-utilities": "^7.0.11",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/test-utilities": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -48,8 +48,8 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.6",
-    "@uifabric/set-version": "^7.0.5",
+    "@uifabric/merge-styles": "^7.18.0",
+    "@uifabric/set-version": "^7.0.22",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },

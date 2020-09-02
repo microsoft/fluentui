@@ -5,7 +5,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
 
   return {
     field: {
-      padding: !multiline ? '0 12px' : '6px 8px'
-    }
+      padding: !multiline ? '0 12px' : '6px 8px',
+    },
   };
 };

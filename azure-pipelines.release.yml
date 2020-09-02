@@ -19,16 +19,16 @@ schedules:
       include:
         - master
 
+workspace:
+  clean: all
+
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+  - template: azure-pipelines.tools.yml
 
   - script: |
-      git config user.name "UI Fabric Build"
-      git config user.email "fabrictactical@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
   - script: |
@@ -40,8 +40,20 @@ steps:
     displayName: yarn generate-version-files
 
   - script: |
-      yarn buildci:prod
-    displayName: yarn buildci:prod (Create production build)
+      yarn run:published build --production
+    displayName: yarn build (Create production build)
+
+  - script: |
+      yarn run:published test --production
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn run:published bundle --production
+    displayName: yarn bundle
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
@@ -79,10 +91,12 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+    env:
+      GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |
@@ -126,7 +140,7 @@ steps:
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: 'UI Fabric (private)'
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'

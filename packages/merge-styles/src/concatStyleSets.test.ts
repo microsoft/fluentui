@@ -5,19 +5,19 @@ describe('concatStyleSets', () => {
     const result = concatStyleSets(
       {
         root: { background: 'red' },
-        a: { background: 'green' }
+        a: { background: 'green' },
       },
       {
         a: { background: 'white' },
-        b: { background: 'blue' }
+        b: { background: 'blue' },
       },
       {
         root: {
           selectors: {
-            ':hover': { background: 'yellow' }
-          }
-        }
-      }
+            ':hover': { background: 'yellow' },
+          },
+        },
+      },
     );
 
     expect(result).toEqual({
@@ -25,25 +25,31 @@ describe('concatStyleSets', () => {
         { background: 'red' },
         {
           selectors: {
-            ':hover': { background: 'yellow' }
-          }
-        }
+            ':hover': { background: 'yellow' },
+          },
+        },
       ],
       a: [{ background: 'green' }, { background: 'white' }],
-      b: { background: 'blue' }
+      b: { background: 'blue' },
     });
+  });
+
+  it('can ignore falsey values in typings', () => {
+    const result = concatStyleSets({ a: { background: 'red' } }, null);
+
+    expect(result).toEqual({ a: { background: 'red' } });
   });
 
   it('can concat mixed style sets with style functions on both ends', () => {
     const fn1 = jest.fn().mockReturnValue({
-      root: { background: 'green', fontSize: 12 }
+      root: { background: 'green', fontSize: 12 },
     });
 
     const fn2 = jest.fn().mockReturnValue({
       root: {
         background: 'yellow',
-        color: 'pink'
-      }
+        color: 'pink',
+      },
     });
 
     const result = concatStyleSets(
@@ -51,32 +57,32 @@ describe('concatStyleSets', () => {
         root: { background: 'red' },
         a: { background: 'green' },
         subComponentStyles: {
-          a: fn1
-        }
+          a: fn1,
+        },
       },
       {
         a: { background: 'white' },
         b: { background: 'blue' },
         subComponentStyles: {
-          a: fn2
-        }
+          a: fn2,
+        },
       },
       {
         root: {
           selectors: {
-            ':hover': { background: 'yellow' }
-          }
-        }
-      }
+            ':hover': { background: 'yellow' },
+          },
+        },
+      },
     );
 
     expect(result.root).toEqual([
       { background: 'red' },
       {
         selectors: {
-          ':hover': { background: 'yellow' }
-        }
-      }
+          ':hover': { background: 'yellow' },
+        },
+      },
     ]);
 
     expect(result.b).toEqual({ background: 'blue' });
@@ -87,8 +93,8 @@ describe('concatStyleSets', () => {
     expect(aExpanded).toEqual({
       root: [
         { background: 'green', fontSize: 12 },
-        { background: 'yellow', color: 'pink' }
-      ]
+        { background: 'yellow', color: 'pink' },
+      ],
     });
   });
 
@@ -96,15 +102,15 @@ describe('concatStyleSets', () => {
     const fn1 = jest.fn().mockReturnValue({
       root: {
         background: 'green',
-        fontSize: 12
-      }
+        fontSize: 12,
+      },
     });
 
     const fn2 = jest.fn().mockReturnValue({
       root: {
         background: 'yellow',
-        color: 'pink'
-      }
+        color: 'pink',
+      },
     });
 
     // this cast to any is unnecessary with TS 2.9+.
@@ -113,13 +119,13 @@ describe('concatStyleSets', () => {
       false,
       {
         subComponentStyles: {
-          a: fn1
-        }
+          a: fn1,
+        },
       },
       {
         subComponentStyles: {
-          a: fn2
-        }
+          a: fn2,
+        },
       },
       undefined,
       undefined,
@@ -128,18 +134,18 @@ describe('concatStyleSets', () => {
         subComponentStyles: {
           a: {
             root: {
-              fontSize: 14
-            }
-          }
-        }
-      }
+              fontSize: 14,
+            },
+          },
+        },
+      },
     );
 
     expect(result.subComponentStyles).toBeDefined();
     expect(typeof result.subComponentStyles!.a === 'function').toBe(true);
     const aExpanded = result.subComponentStyles!.a({});
     expect(aExpanded).toEqual({
-      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }, { fontSize: 14 }]
+      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }, { fontSize: 14 }],
     });
   });
 });

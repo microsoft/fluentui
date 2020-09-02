@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -9,17 +8,27 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20, color: DefaultPalette.blue },
-      { legend: 'second', data: 39, color: DefaultPalette.red },
-      { legend: 'third', data: 25, color: DefaultPalette.yellow }
+      { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
+      { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
     ];
 
     const chartTitle = 'Stacked Bar chart example';
 
     const data: IChartProps = {
       chartTitle: chartTitle,
-      chartData: points
+      chartData: points,
     };
-    return <DonutChart data={data} innerRadius={30} href={'https://developer.microsoft.com/en-us/'} />;
+    return (
+      <DonutChart
+        data={data}
+        innerRadius={55}
+        href={'https://developer.microsoft.com/en-us/'}
+        legendsOverflowText={'overflow Items'}
+        hideLegend={true}
+        height={220}
+        width={176}
+        valueInsideDonut={39000}
+      />
+    );
   }
 }

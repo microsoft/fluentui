@@ -14,15 +14,15 @@ const menuProps: IContextualMenuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
+      iconProps: { iconName: 'Calendar' },
+    },
   ],
-  directionalHintFixed: true
+  directionalHintFixed: true,
 };
 
 export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = props => {
@@ -32,10 +32,18 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
     <div>
       <Stack tokens={{ childrenGap: 8 }} horizontal>
         <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
-        <IconButton menuProps={menuProps} iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
+        <IconButton
+          menuProps={menuProps}
+          iconProps={emojiIcon}
+          title="Emoji"
+          ariaLabel="Emoji"
+          disabled={disabled}
+          checked={checked}
+        />
       </Stack>
       <p>
-        For a list of Icons, visit our <Link href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</Link>.
+        For a list of Icons, visit our{' '}
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons">Icon documentation</Link>.
       </p>
     </div>
   );

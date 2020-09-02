@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react';
+import { Input } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const InputMinimalPerf = () => <Input />;

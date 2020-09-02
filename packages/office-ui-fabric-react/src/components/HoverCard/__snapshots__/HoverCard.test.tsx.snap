@@ -7,8 +7,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
   <div
     className=
         ms-Fabric
-        is-focusHidden
-        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -28,7 +26,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -125,6 +122,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -152,6 +150,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               </div>
             </div>
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -177,8 +176,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
   <div
     className=
         ms-Fabric
-        is-focusHidden
-        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -198,7 +195,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -295,6 +291,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -320,6 +317,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               </div>
             </div>
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={

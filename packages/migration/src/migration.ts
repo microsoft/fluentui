@@ -15,7 +15,7 @@ const allMigrations: IMigration[] = [];
 export function migration(note: string, step: (opts: IMigrationOptions) => ModResult[]): IMigration {
   return {
     note,
-    step
+    step,
   };
 }
 
@@ -35,7 +35,7 @@ export function applyRegisteredMigrations(options: IMigrationOptions) {
         results
           .filter(r => r.state === 'modified')
           .map(r => `  ${!options.dryRun ? '[Modified]: ' : ''}${r.fileName}`)
-          .join('\n')
+          .join('\n'),
       );
     }
   });

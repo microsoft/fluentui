@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
 import { Selection } from '../../Selection';
 
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
+import { initializeComponentRef } from '../../Utilities';
 
 export interface IBaseSelectedItemsListState<T = any> {
-  // tslint:disable-next-line:no-any
   items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
+  extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
   protected selection: Selection;
@@ -17,9 +17,10 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
+    initializeComponentRef(this);
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
     this.state = {
-      items: items
+      items: items,
     };
 
     // Create a new selection if one is not specified
@@ -33,8 +34,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
   }
 
   public addItems = (items: T[]): void => {
-    // tslint:disable-next-line:no-any
-    const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected ? (this.props.onItemSelected as any)(items) : items;
+    const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected
+      ? (this.props.onItemSelected as any)(items)
+      : items;
 
     const processedItemObjects: T[] = processedItems as T[];
     const processedItemPromiseLikes: PromiseLike<T[]> = processedItems as PromiseLike<T[]>;
@@ -84,11 +86,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     }
   };
 
-  // tslint:disable-next-line:no-any
   public removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
     const itemsCanRemove = itemsToRemove.filter((item: any) => this._canRemoveItem(item));
-    // tslint:disable-next-line:no-any
     const newItems: T[] = items.filter((item: any) => itemsCanRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsCanRemove[0];
     const index: number = items.indexOf(firstItemToRemove);
@@ -108,7 +108,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   * If selectedItems is provided, this will act as a controlled component and will not update its own state.
    */
   public updateItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
@@ -140,7 +140,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     return this.selection.getSelection() as T[];
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
@@ -151,7 +150,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     this.selection.setItems(this.state.items);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
@@ -164,7 +162,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     }
   }
 
-  // tslint:disable-next-line:no-any
   public render(): any {
     return this.renderItems();
   }
@@ -174,7 +171,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
     return items.map((item: any, index: number) =>
       onRenderItem({
         item,
@@ -184,8 +180,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
         onRemoveItem: () => this.removeItem(item),
         onItemChange: this.onItemChange,
         removeButtonAriaLabel: removeButtonAriaLabel,
-        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy])
-      })
+        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
+      }),
     );
   };
 
@@ -212,7 +208,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 
   protected copyItems(items: T[]): void {
     if (this.props.onCopyItems) {
-      // tslint:disable-next-line:no-any
       const copyText = (this.props.onCopyItems as any)(items);
 
       const copyInput = document.createElement('input') as HTMLInputElement;

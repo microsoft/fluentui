@@ -1,5 +1,13 @@
+import * as React from 'react';
 import { IRefObject } from '../../Utilities';
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
+import {
+  IComponent,
+  IComponentStyles,
+  IHTMLElementSlot,
+  ISlotProp,
+  ISlottableProps,
+  IStyleableComponentProps,
+} from '../../Foundation';
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
@@ -13,8 +21,12 @@ export type ICollapsibleSectionTitleComponent = IComponent<
 // return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
-export type ICollapsibleSectionTitleTokenReturnType = ReturnType<Extract<ICollapsibleSectionTitleComponent['tokens'], Function>>;
-export type ICollapsibleSectionTitleStylesReturnType = ReturnType<Extract<ICollapsibleSectionTitleComponent['styles'], Function>>;
+export type ICollapsibleSectionTitleTokenReturnType = ReturnType<
+  Extract<ICollapsibleSectionTitleComponent['tokens'], Function>
+>;
+export type ICollapsibleSectionTitleStylesReturnType = ReturnType<
+  Extract<ICollapsibleSectionTitleComponent['styles'], Function>
+>;
 
 export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, string>;
 
@@ -26,7 +38,11 @@ export interface ICollapsibleSectionTitleSlots {
 
 export interface ICollapsibleSectionTitleProps
   extends ISlottableProps<ICollapsibleSectionTitleSlots>,
-    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleTokens, ICollapsibleSectionTitleStyles>,
+    IStyleableComponentProps<
+      ICollapsibleSectionTitleProps,
+      ICollapsibleSectionTitleTokens,
+      ICollapsibleSectionTitleStyles
+    >,
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   focusElementRef?: IRefObject<HTMLButtonElement>;
   /**

@@ -1,0 +1,9 @@
+export const accelerateMax = 'cubic-bezier(1,0,1,1)';
+export const accelerateMid = 'cubic-bezier(0.7,0,1,0.5)';
+export const accelerateMin = 'cubic-bezier(0.8,0,1,1)';
+export const decelerateMax = 'cubic-bezier(0,0,0,1)';
+export const decelerateMid = 'cubic-bezier(0.1,0.9,0.2,1)';
+export const decelerateMin = 'cubic-bezier(0.33,0,0.1,1)';
+export const maxEasyEase = 'cubic-bezier(0.8,0,0.1,1)';
+export const easyEase = 'cubic-bezier(0.33,0,0.67,1)';
+export const linear = 'cubic-bezier(0,0,1,1)';

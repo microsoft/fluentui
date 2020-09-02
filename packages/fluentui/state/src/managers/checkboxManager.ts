@@ -1,4 +1,4 @@
-import createManager from '../createManager';
+import { createManager } from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type CheckboxActions = {
@@ -11,15 +11,17 @@ export type CheckboxState = {
 
 export type CheckboxManager = Manager<CheckboxState, CheckboxActions>;
 
-export const createCheckboxManager = (config: Partial<ManagerConfig<CheckboxState, CheckboxActions>> = {}): CheckboxManager =>
+export const createCheckboxManager = (
+  config: Partial<ManagerConfig<CheckboxState, CheckboxActions>> = {},
+): CheckboxManager =>
   createManager<CheckboxState, CheckboxActions>({
     ...config,
     state: {
       checked: false,
-      ...config.state
+      ...config.state,
     },
     actions: {
       toggle: checked => () => ({ checked }),
-      ...config.actions
-    }
+      ...config.actions,
+    },
   });

@@ -7,7 +7,7 @@ const path = require('path');
 const { argv, logger } = require('@uifabric/build').just;
 
 /**
- * A Task Function for Fabric Website that Generates a Manifest for Non-UHF "Internal" Site
+ * Task function for the Fluent UI website that generates a manifest for the non-UHF "internal" site
  */
 module.exports.createInternalFlightConfigTask = function() {
   return function() {
@@ -22,7 +22,7 @@ module.exports.createInternalFlightConfigTask = function() {
       version: process.env.BUILD_BUILDNUMBER || '0',
       baseCDNUrl: argv().baseCDNUrl,
       buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
-      createdDate: today
+      createdDate: today,
     };
 
     logger.info('config data:');
@@ -35,7 +35,7 @@ module.exports.createInternalFlightConfigTask = function() {
 };
 
 /**
- * A Task Function for Fabric Website that Generates a Manifest for UHF Public Site
+ * Task function for the Fluent UI website that generates a manifest for the UHF public site
  */
 module.exports.createPublicFlightConfigTask = function() {
   return function() {
@@ -50,7 +50,7 @@ module.exports.createPublicFlightConfigTask = function() {
       version: process.env.BUILD_BUILDNUMBER || '0',
       baseCDNUrl: argv().baseCDNUrl,
       buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
-      createdDate: today
+      createdDate: today,
     };
 
     logger.info('config data:');

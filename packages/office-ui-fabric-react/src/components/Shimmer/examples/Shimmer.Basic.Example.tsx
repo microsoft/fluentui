@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Shimmer, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementType, IShimmerElement } from 'office-ui-fabric-react/lib/Shimmer';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -7,10 +7,50 @@ const wrapperClass = mergeStyles({
   padding: 2,
   selectors: {
     '& > .ms-Shimmer-container': {
-      margin: '10px 0'
-    }
-  }
+      margin: '10px 0',
+    },
+  },
 });
+const shimmerWithElementFirstRow = [
+  { type: ShimmerElementType.circle },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line },
+];
+const shimmerWithElementSecondRow = [
+  { type: ShimmerElementType.circle, height: 24 },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '5%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16, width: '15%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16 },
+];
+const shimmerWithElementThirdRow = [
+  { type: ShimmerElementType.circle, height: 24 },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '5%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16, width: '15%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16 },
+];
+const shimmerVerticalElement: IShimmerElement[] = [
+  { type: ShimmerElementType.circle },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.circle, height: 15, verticalAlign: 'top' },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, verticalAlign: 'bottom', width: '20%' },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 5, verticalAlign: 'top', width: '20%' },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 16, width: '15%' },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 10, verticalAlign: 'bottom' },
+];
 
 export const ShimmerBasicExample: React.FunctionComponent = () => {
   return (
@@ -20,56 +60,11 @@ export const ShimmerBasicExample: React.FunctionComponent = () => {
       <Shimmer width="75%" />
       <Shimmer width="50%" />
       Basic Shimmer with elements provided.
-      <Shimmer
-        shimmerElements={[
-          { type: ShimmerElementType.circle },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line }
-        ]}
-      />
-      <Shimmer
-        shimmerElements={[
-          { type: ShimmerElementType.circle, height: 24 },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, height: 16, width: '20%' },
-          { type: ShimmerElementType.gap, width: '5%' },
-          { type: ShimmerElementType.line, height: 16, width: '20%' },
-          { type: ShimmerElementType.gap, width: '10%' },
-          { type: ShimmerElementType.line, height: 16, width: '15%' },
-          { type: ShimmerElementType.gap, width: '10%' },
-          { type: ShimmerElementType.line, height: 16 }
-        ]}
-      />
-      <Shimmer
-        width={'70%'}
-        shimmerElements={[
-          { type: ShimmerElementType.circle, height: 24 },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, height: 16, width: '20%' },
-          { type: ShimmerElementType.gap, width: '5%' },
-          { type: ShimmerElementType.line, height: 16, width: '20%' },
-          { type: ShimmerElementType.gap, width: '10%' },
-          { type: ShimmerElementType.line, height: 16, width: '15%' },
-          { type: ShimmerElementType.gap, width: '10%' },
-          { type: ShimmerElementType.line, height: 16 }
-        ]}
-      />
+      <Shimmer shimmerElements={shimmerWithElementFirstRow} />
+      <Shimmer shimmerElements={shimmerWithElementSecondRow} />
+      <Shimmer width="70%" shimmerElements={shimmerWithElementThirdRow} />
       Variations of vertical alignment for Circles and Lines.
-      <Shimmer
-        shimmerElements={[
-          { type: ShimmerElementType.circle },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.circle, height: 15, verticalAlign: 'top' },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, verticalAlign: 'bottom', width: '20%' },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, height: 5, verticalAlign: 'top', width: '20%' },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, height: 16, width: '15%' },
-          { type: ShimmerElementType.gap, width: '2%' },
-          { type: ShimmerElementType.line, height: 10, verticalAlign: 'bottom' }
-        ]}
-      />
+      <Shimmer shimmerElements={shimmerVerticalElement} />
     </Fabric>
   );
 };

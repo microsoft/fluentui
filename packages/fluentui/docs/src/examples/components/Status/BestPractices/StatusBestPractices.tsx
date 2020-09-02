@@ -4,7 +4,7 @@ import ComponentBestPractices from '../../../../components/ComponentBestPractice
 
 const doList = [
   'The `img` role is used to identify an element as image.',
-  'The `title` attribute has to be provided on status component. Then reader narrate content of `title` attribute.'
+  'The `title` attribute has to be provided on status component. Then reader narrate content of `title` attribute.',
 ];
 
 const StatusBestPractices: React.FunctionComponent<{}> = () => {

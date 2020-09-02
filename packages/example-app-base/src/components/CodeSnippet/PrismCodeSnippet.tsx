@@ -7,7 +7,7 @@ import { styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles, ICodeSnippetProps } from './CodeSnippet';
 import { getStyles, baseCodeStyle } from './CodeSnippet.styles';
 
-// tslint:disable no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/prism-light').default;
 
 // Import languages from SyntaxHighlighter
@@ -16,7 +16,7 @@ const scss = require<any>('react-syntax-highlighter/dist/esm/languages/prism/scs
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/prism/bash').default;
 const markup = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markup').default;
-// tslint:enable no-any
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
 const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/prism').default;
@@ -33,7 +33,7 @@ const codeStyle: IRawStyle = {
   lineHeight: '1.6',
   border: 'none',
   overflow: undefined,
-  margin: 0
+  margin: 0,
 };
 
 // Customize imported styles based on
@@ -50,14 +50,14 @@ for (const key of Object.keys(style)) {
     style[key] = {
       ...style[key],
       ...codeStyle,
-      padding: '4px 0'
+      padding: '4px 0',
     };
   } else if (key.indexOf('pre[') === 0) {
     style[key] = {
       ...style[key],
       ...codeStyle,
       padding: 8,
-      overflowX: 'auto'
+      overflowX: 'auto',
     };
   } else if (key.indexOf(':not(pre) > code') === 0) {
     // inline code styles
@@ -123,7 +123,7 @@ const languageMapping: { [key: string]: string } = {
   jsx: 'tsx',
   shell: 'bash',
   md: 'markdown',
-  css: 'scss'
+  css: 'scss',
 };
 
 const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
@@ -145,5 +145,5 @@ export const PrismCodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styl
   ICodeSnippetStyleProps,
   ICodeSnippetStyles
 >(PrismCodeSnippetBase, getStyles, undefined, {
-  scope: 'CodeSnippet'
+  scope: 'CodeSnippet',
 });

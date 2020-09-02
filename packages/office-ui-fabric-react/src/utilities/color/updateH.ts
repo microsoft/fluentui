@@ -14,14 +14,12 @@ export function updateH(color: IColor, h: number): IColor {
   const hex = rgb2hex(r, g, b);
 
   return {
-    a: color.a,
-    b: b,
-    g: g,
-    h: h,
-    hex: hex,
-    r: r,
-    s: color.s,
+    ...color,
+    h,
+    r,
+    g,
+    b,
+    hex,
     str: _rgbaOrHexString(r, g, b, color.a, hex),
-    v: color.v
   };
 }

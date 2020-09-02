@@ -1,8 +1,9 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
-import menuButtonBehavior from '../MenuButton/menuButtonBehavior';
+import { menuButtonBehavior, MenuButtonBehaviorProps } from '../MenuButton/menuButtonBehavior';
 
 /**
  * @description
@@ -14,12 +15,14 @@ import menuButtonBehavior from '../MenuButton/menuButtonBehavior';
  * Adds attribute 'aria-labelledby=trigger-id' based on the property 'triggerId' to 'menu' slot.
  * Triggers 'closeAndFocusTrigger' action with 'Escape' or 'altKey'+'ArrowUp'.
  * Triggers 'openAndFocusFirst' action with 'altKey'+'ArrowDown' on 'root' slot.
+ * Triggers 'stopPropagation' action with 'ArrowLeft' or 'ArrowRight' on 'root' slot.
  *
  * @specification
  * Adds attribute 'tabIndex=-1' to 'toggleButton' slot.
  * Adds attribute 'aria-haspopup=true' to 'toggleButton' slot.
+ * Adds attribute 'data-is-focusable=false' to 'toggleButton' slot.
  */
-const splitButtonBehavior: Accessibility = props => {
+export const splitButtonBehavior: Accessibility = props => {
   const splitButtonMenuButtonBehavior = () => {
     const menuButtonBehaviorData = menuButtonBehavior(props);
     menuButtonBehaviorData.attributes.trigger['aria-haspopup'] = undefined;
@@ -28,17 +31,20 @@ const splitButtonBehavior: Accessibility = props => {
       keyActions: {
         popup: {
           closeAndFocusTrigger: {
-            keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }]
-          }
+            keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }],
+          },
+          stopPropagation: {
+            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }],
+          },
         },
         root: {
           ...(!props.open && {
             openAndFocusFirst: {
-              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }]
-            }
-          })
-        }
-      }
+              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }],
+            },
+          }),
+        },
+      },
     });
   };
 
@@ -47,13 +53,14 @@ const splitButtonBehavior: Accessibility = props => {
       root: {},
       toggleButton: {
         tabIndex: -1,
-        'aria-haspopup': true
-      }
+        'aria-haspopup': true,
+        [IS_FOCUSABLE_ATTRIBUTE]: false,
+      },
     },
     childBehaviors: {
-      menuButton: splitButtonMenuButtonBehavior
-    }
+      menuButton: splitButtonMenuButtonBehavior,
+    },
   };
 };
 
-export default splitButtonBehavior;
+export type SplitButtonBehaviorProps = Pick<MenuButtonBehaviorProps, 'open'>;

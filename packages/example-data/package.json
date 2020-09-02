@@ -1,13 +1,13 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.5",
-  "description": "Data generators for Office UI Fabric React examples.",
+  "version": "7.1.3",
+  "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -21,9 +21,8 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.0.6"
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"

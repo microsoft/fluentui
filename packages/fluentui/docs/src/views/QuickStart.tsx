@@ -1,9 +1,10 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header, Icon } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import DocPage from '../components/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
 
 export default () => (
   <DocPage title="Quick Start">
@@ -11,12 +12,13 @@ export default () => (
     <p>
       Fluent UI should be installed as a <code>dependency</code> of your app.
     </p>
-    <CodeSnippet mode="bash" value="yarn add @fluentui/react" />
+    <CodeSnippet mode="bash" value="yarn add @fluentui/react-northstar" />
     <Header as="h2">Setup</Header>
     <p>
-      Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript objects to CSS.{' '}
+      Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript
+      objects to CSS.{' '}
       <a href="https://reactjs.org/docs/context.html" target="_blank" rel="noopener nofollow">
-        React Context <Icon name="open-outside" size="small" />
+        React Context <OpenOutsideIcon size="small" />
       </a>{' '}
       is used to provide the style renderer and theme to components.
     </p>
@@ -28,12 +30,12 @@ export default () => (
       value={`
         import React from 'react'
         import ReactDOM from 'react-dom'
-        import { Provider, themes } from '@fluentui/react'
+        import { Provider, teamsTheme } from '@fluentui/react-northstar'
 
         import App from './App'
 
         ReactDOM.render(
-          <Provider theme={themes.teams}>
+          <Provider theme={teamsTheme}>
             <App />
           </Provider>,
           document.getElementById('root'),
@@ -46,7 +48,7 @@ export default () => (
       label="App.jsx"
       value={`
         import React from 'react'
-        import { Button } from '@fluentui/react'
+        import { Button } from '@fluentui/react-northstar'
 
         export default () => <Button content="Get started" icon="play" iconPosition="after" primary />
       `}

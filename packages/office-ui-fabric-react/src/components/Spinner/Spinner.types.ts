@@ -22,7 +22,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
    * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize` instead.
    * @deprecated Use `SpinnerSize` instead.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   type?: SpinnerType;
 
   /**
@@ -93,7 +93,7 @@ export enum SpinnerSize {
   /**
    * 28px Spinner diameter
    */
-  large = 3
+  large = 3,
 }
 
 /**
@@ -119,11 +119,12 @@ export enum SpinnerType {
    * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.large` instead.
    * @deprecated Use `SpinnerSize.large` instead.
    */
-  large = 1
+  large = 1,
 }
 
 /**
- * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * The props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory Spinner}
  */
 export interface ISpinnerStyleProps {

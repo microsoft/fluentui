@@ -9,8 +9,8 @@ const RefTypesExamples = () => (
       title="Ref"
       description={
         <span>
-          A component exposes the <code>innerRef</code> prop that always returns the DOM node of both functional and class component
-          children.
+          A component exposes the <code>innerRef</code> prop that always returns the DOM node of both functional and
+          class component children.
         </span>
       }
       examplePath="components/Ref/Types/RefExample"

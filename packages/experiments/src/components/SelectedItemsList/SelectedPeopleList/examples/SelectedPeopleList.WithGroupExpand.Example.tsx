@@ -1,19 +1,25 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
-import { SelectedPeopleList, ISelectedPeopleList, SelectedPersona, ISelectedItemProps } from '@uifabric/experiments/lib/SelectedItemsList';
+import { SelectedPeopleList, SelectedPersona, ISelectedItemProps } from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
-  controlledComponent: boolean;
 }
 
-export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: ISelectedPeopleList;
-  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
+export class SelectedPeopleListWithGroupExpandExample extends React.Component<
+  {},
+  IPeopleSelectedItemsListExampleState
+> {
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      currentSelectedItems: [people[40]],
+    };
+  }
 
   public render(): JSX.Element {
     return (
@@ -30,6 +36,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of eidting
    */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   private SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
     <SelectedPersona canExpand={this._canExpandItem} getExpandedItems={this._getExpandedGroupItems} {...props} />
   );
@@ -40,27 +47,27 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
         <SelectedPeopleList
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
-          defaultSelectedItems={[people[40]]}
-          ref={this._setComponentRef}
-          selection={this.selection}
+          selectedItems={[...this.state.currentSelectedItems]}
           onRenderItem={this.SelectedItem}
+          onItemsRemoved={this._onItemsRemoved}
         />
       </div>
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
-    this._selectionList = component;
-  };
-
   private _onAddItemButtonClicked = (): void => {
     const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
-    this._selectionList.addItems([randomPerson]);
+    this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, randomPerson] });
   };
 
-  private _onSelectionChange(): void {
-    this.forceUpdate();
-  }
+  private _onItemsRemoved = (items: IPersona[]): void => {
+    const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
+    items.forEach(item => {
+      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+      currentSelectedItemsCopy.splice(indexToRemove, 1);
+      this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
+    });
+  };
 
   private _getExpandedGroupItems(item: IPersonaProps): IPersonaProps[] {
     switch (item.text) {

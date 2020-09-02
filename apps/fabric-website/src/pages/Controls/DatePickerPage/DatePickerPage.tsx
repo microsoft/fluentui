@@ -4,11 +4,18 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { DatePickerPageProps } from './DatePickerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage/';
 
 export const DatePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} {...DatePickerPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <ControlsAreaPage
+      {...props}
+      {...DatePickerPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -24,8 +31,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     case 'android':
@@ -39,8 +46,23 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
+      ];
+
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/DatePickerImplementation.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
+              }
+            </Markdown>
+          ),
+        },
       ];
   }
 }

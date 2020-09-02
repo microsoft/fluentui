@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Dropdown, PrimaryButton, Stack, TextField, Text } from 'office-ui-fabric-react';
+import { Dropdown, PrimaryButton, Stack, TextField } from 'office-ui-fabric-react';
 import { Measurer, MeasurerTimings } from './Measurer';
-import { useTimer } from './useTimer';
 import { Scenarios } from './Scenarios';
 
-// tslint:disable
+/* eslint-disable react/jsx-no-bind */
 
 export const App = () => {
   const [itemsVisible, setItemsVisible] = React.useState(false);
@@ -54,7 +53,11 @@ export const App = () => {
               setIterations(Number(value));
             }}
           />
-          <PrimaryButton text={itemsVisible ? 'Reset' : 'Run test'} onClick={() => setItemsVisible(!itemsVisible)} className="runTest" />
+          <PrimaryButton
+            text={itemsVisible ? 'Reset' : 'Run test'}
+            onClick={() => setItemsVisible(!itemsVisible)}
+            className="runTest"
+          />
         </Stack>
         {timingsVisible && <MeasurerTimings />}
       </Stack>

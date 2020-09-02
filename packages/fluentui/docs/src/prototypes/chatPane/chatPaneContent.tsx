@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Scrollbars from 'react-custom-scrollbars';
-import { Chat, Divider, Avatar, Props } from '@fluentui/react';
+import { Chat, Divider, Avatar, Props } from '@fluentui/react-northstar';
 
 import { ChatData, ChatItemTypes, generateChatProps } from './services';
 import chatProtoStyle from './chatProtoStyle';
@@ -19,7 +19,12 @@ class ChatPaneContainer extends React.PureComponent<ChatPaneContainerProps> {
             role="main"
             aria-label="Message list. In forms mode: press Enter to explore message content, then use Escape to shift focus back to the message"
           >
-            <div id="chat-pane-reader-text" style={chatProtoStyle.screenReaderContainerStyles} role="heading" aria-level={2}>
+            <div
+              id="chat-pane-reader-text"
+              style={chatProtoStyle.screenReaderContainerStyles}
+              role="heading"
+              aria-level={2}
+            >
               Message list.
             </div>
             <Chat items={items} styles={{ padding: '0 32px' }} />
@@ -36,7 +41,7 @@ class ChatPaneContainer extends React.PureComponent<ChatPaneContainerProps> {
         itemType === ChatItemTypes.divider
           ? {
               role: 'heading',
-              'aria-level': 3
+              'aria-level': 3,
             }
           : {};
       return (
@@ -79,7 +84,9 @@ class ChatPaneContainer extends React.PureComponent<ChatPaneContainerProps> {
           - as NVDA splits it into 2 lines if more is shown
           - for announcements feature, messaging team went with 44 characters but that was not based on loc issues but some UI real estate issue.  */
     const messageText = props.text || '';
-    return `${messageText.slice(0, 44)} ..., by ${typeof props.author === 'object' ? props.author.content : props.author}`;
+    return `${messageText.slice(0, 44)} ..., by ${
+      typeof props.author === 'object' ? props.author.content : props.author
+    }`;
   }
 }
 

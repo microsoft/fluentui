@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Table, Flex, Text, Icon } from '@fluentui/react';
+import { Table, Flex, Text } from '@fluentui/react-northstar';
 import { gridNestedBehavior } from '@fluentui/accessibility';
+import { ArrowUpIcon, ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 type TableCellComparator<T> = (cell1: T, cell2: T) => number;
 
@@ -48,12 +49,12 @@ const AdvancedTable = (props: AdvancedTableProps) => {
     content: (
       <Flex gap="gap.small">
         <Text content={title} />
-        {order !== 0 ? <Icon name={order === 1 ? 'arrow-up' : 'arrow-down'} /> : ''}
+        {order !== 0 ? order === 1 ? <ArrowUpIcon /> : <ArrowDownIcon /> : ''}
       </Flex>
     ),
     key: title,
     onClick: () => onOrderChange(order === 0 ? 1 : -order),
-    'aria-sort': order !== 0 ? (order > 0 ? 'ascending' : 'descending') : undefined
+    'aria-sort': order !== 0 ? (order > 0 ? 'ascending' : 'descending') : undefined,
   });
 
   const header = {
@@ -64,8 +65,8 @@ const AdvancedTable = (props: AdvancedTableProps) => {
         setSortDirection(newSortDirection);
         // Use react-aria-live or similar component to announce change the order
         document.getElementById('ariaLive').innerText = newSortDirection > 0 ? 'sorted ascending' : 'sorted descending';
-      })
-    )
+      }),
+    ),
   };
 
   return (

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { EventGroup } from '../../Utilities';
 
 /**
@@ -14,7 +13,7 @@ export interface IDragDropHelper {
   subscribe: (
     root: HTMLElement,
     events: EventGroup,
-    options: IDragDropOptions
+    options: IDragDropOptions,
   ) => {
     key: string;
     dispose: () => void;
@@ -45,8 +44,9 @@ export interface IDragDropEvents {
   canDrag?: (item?: any) => boolean;
   /**
    * On drag enter region event callback.
+   * Returned string is the css classes that will be added to the entering element.
    */
-  onDragEnter?: (item?: any, event?: DragEvent) => string; // return string is the css classes that will be added to the entering element.
+  onDragEnter?: (item?: any, event?: DragEvent) => string;
   /**
    * On drag leave region event callback.
    */
@@ -64,7 +64,11 @@ export interface IDragDropEvents {
    */
   onDragEnd?: (item?: any, event?: DragEvent) => void;
   /**
-   * Whether drag operation is allowed on groups
+   * On drag over event callback.
+   */
+  onDragOver?: (item?: any, event?: DragEvent) => void;
+  /**
+   * Whether the whole group is draggable. This applies after canDrag returns true for the group.
    */
   canDragGroups?: boolean;
 }
@@ -90,7 +94,7 @@ export interface IDragDropContext {
 }
 
 export interface IDragDropTarget {
-  root: React.ReactInstance;
+  root: HTMLElement;
   options: IDragDropOptions;
   key: string;
 }

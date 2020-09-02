@@ -6,7 +6,7 @@ import {
   IGroup,
   IGroupDividerProps,
   IDetailsListProps,
-  IDetailsGroupRenderProps
+  IDetailsGroupRenderProps,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
@@ -27,20 +27,20 @@ const classNames = mergeStyleSets({
     background: theme.palette.neutralLighterAlt,
     // Overlay the sizer bars
     position: 'relative',
-    zIndex: 100
+    zIndex: 100,
   },
   headerTitle: [
     theme.fonts.xLarge,
     {
-      padding: '4px 0'
-    }
+      padding: '4px 0',
+    },
   ],
   headerLinkSet: {
-    margin: '4px -8px'
+    margin: '4px -8px',
   },
   headerLink: {
-    margin: '0 8px'
-  }
+    margin: '0 8px',
+  },
 });
 
 const ITEMS_PER_GROUP = 20;
@@ -64,7 +64,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         groups={this._groups}
         groupProps={{
           onRenderHeader: this._onRenderGroupHeader,
-          onRenderFooter: this._onRenderGroupFooter
+          onRenderFooter: this._onRenderGroupFooter,
         }}
         getGroupHeight={this._getGroupHeight}
         ariaLabelForSelectionColumn="Toggle selection"

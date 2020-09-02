@@ -13,11 +13,25 @@ $folder-accent: #bf5712;
   &.isSmall {
     width: 72px;
     height: 52px;
+
+    &.isLinked {
+      .front {
+        top: 6px;
+        left: -5px;
+      }
+    }
   }
 
   &.isLarge {
     width: 112px;
     height: 80px;
+
+    &.isLinked {
+      .front {
+        top: 10px;
+        left: -4px;
+      }
+    }
   }
 }
 

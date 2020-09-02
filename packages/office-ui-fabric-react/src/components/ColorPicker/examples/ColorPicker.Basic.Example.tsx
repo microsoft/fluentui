@@ -1,75 +1,87 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from 'office-ui-fabric-react/lib/index';
+import {
+  ColorPicker,
+  ChoiceGroup,
+  IChoiceGroupOption,
+  Toggle,
+  getColorFromString,
+  IColor,
+  IColorPickerStyles,
+  IColorPickerProps,
+  updateA,
+} from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { useConstCallback } from '@uifabric/react-hooks';
+
+const white = getColorFromString('#ffffff')!;
+
+export const ColorPickerBasicExample: React.FunctionComponent = () => {
+  const [color, setColor] = React.useState(white);
+  const [showPreview, setShowPreview] = React.useState(true);
+  const [alphaType, setAlphaType] = React.useState<IColorPickerProps['alphaType']>('alpha');
+
+  const updateColor = useConstCallback((ev: any, colorObj: IColor) => setColor(colorObj));
+  const onShowPreviewClick = useConstCallback((ev: any, checked?: boolean) => setShowPreview(!!checked));
+  const onAlphaTypeChange = React.useCallback(
+    (ev: any, option: IChoiceGroupOption = alphaOptions[0]) => {
+      if (option.key === 'none') {
+        // If hiding the alpha slider, remove transparency from the color
+        setColor(updateA(color, 100));
+      }
+      setAlphaType(option.key as IColorPickerProps['alphaType']);
+    },
+    [color],
+  );
+
+  return (
+    <div className={classNames.wrapper}>
+      <ColorPicker
+        color={color}
+        onChange={updateColor}
+        alphaType={alphaType}
+        showPreview={showPreview}
+        styles={colorPickerStyles}
+        // The ColorPicker provides default English strings for visible text.
+        // If your app is localized, you MUST provide the `strings` prop with localized strings.
+        strings={{
+          // By default, the sliders will use the text field labels as their aria labels.
+          // If you'd like to provide more detailed instructions, you can use these props.
+          alphaAriaLabel: 'Alpha slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+          transparencyAriaLabel:
+            'Transparency slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+          hueAriaLabel: 'Hue slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+        }}
+      />
+
+      <div className={classNames.column2}>
+        <Toggle label="Show preview box" onChange={onShowPreviewClick} checked={showPreview} />
+        <ChoiceGroup
+          label="Alpha slider type"
+          options={alphaOptions}
+          defaultSelectedKey={alphaOptions[0].key}
+          onChange={onAlphaTypeChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+const alphaOptions: IChoiceGroupOption[] = [
+  { key: 'alpha', text: 'Alpha' },
+  { key: 'transparency', text: 'Transparency' },
+  { key: 'none', text: 'None' },
+];
 
 const classNames = mergeStyleSets({
   wrapper: { display: 'flex' },
-  column2: { marginLeft: 10 }
+  column2: { marginLeft: 10 },
 });
 
 const colorPickerStyles: Partial<IColorPickerStyles> = {
   panel: { padding: 12 },
   root: {
     maxWidth: 352,
-    minWidth: 352
+    minWidth: 352,
   },
-  colorRectangle: { height: 268 }
+  colorRectangle: { height: 268 },
 };
-
-export interface IBasicColorPickerExampleState {
-  color: IColor;
-  alphaSliderHidden: boolean;
-  showPreview: boolean;
-}
-
-export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
-  public state: IBasicColorPickerExampleState = {
-    color: getColorFromString('#ffffff')!,
-    alphaSliderHidden: false,
-    showPreview: true
-  };
-
-  public render(): JSX.Element {
-    const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
-    return (
-      <div className={classNames.wrapper}>
-        <ColorPicker
-          color={color}
-          onChange={this._updateColor}
-          alphaSliderHidden={alphaSliderHidden}
-          showPreview={showPreview}
-          styles={colorPickerStyles}
-          // The ColorPicker provides default English strings for visible text.
-          // If your app is localized, you MUST provide the `strings` prop with localized strings.
-          // Below are the recommended aria labels for the hue and alpha slider
-          strings={{
-            alphaAriaLabel: 'Alpha Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-            hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump'
-          }}
-        />
-
-        <div className={classNames.column2}>
-          <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
-          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
-        </div>
-      </div>
-    );
-  }
-
-  private _updateColor = (ev: React.SyntheticEvent<HTMLElement>, colorObj: IColor) => {
-    this.setState({ color: colorObj });
-  };
-
-  private _onHideAlphaClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-    let color = this.state.color;
-    if (checked) {
-      // If hiding the alpha slider, remove transparency from the color
-      color = updateA(this.state.color, 100);
-    }
-    this.setState({ alphaSliderHidden: !!checked, color });
-  };
-
-  private _onShowPreviewBoxClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-    this.setState({ showPreview: !!checked });
-  };
-}

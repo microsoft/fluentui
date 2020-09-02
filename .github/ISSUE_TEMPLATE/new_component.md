@@ -1,6 +1,6 @@
 ---
 name: New Component
-about: Interested in contributing a new component to Fabric? This template includes necessary information to get started, and steps to completion
+about: Interested in contributing a new component to Fluent UI React? This template includes necessary information to get started, and steps to completion
 ---
 
 <!-- Use this template for new components or new component variants -->
@@ -32,7 +32,7 @@ about: Interested in contributing a new component to Fabric? This template inclu
 ### Exports/Component breakdown
 
 <!-- Consider creating smaller composable components vs a single larger one
-See https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#build-many-smaller-components-and-compose-them-together -->
+See https://github.com/microsoft/fluentui/wiki/Component-Design#build-many-smaller-components-and-compose-them-together -->
 
 ### Intended package/s
 
@@ -46,7 +46,7 @@ See https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#bu
 
 ```
 
-<!-- View naming guidelines here https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#naming-guidance -->
+<!-- View naming guidelines here https://github.com/microsoft/fluentui/wiki/Component-Design#naming-guidance -->
 
 ### Public methods
 

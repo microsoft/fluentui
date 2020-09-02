@@ -10,15 +10,20 @@ import {
   CustomizerContext,
   warn,
   ICustomizations,
-  memoizeFunction
+  memoizeFunction,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
+import {
+  AppCustomizationsContext,
+  IAppCustomizations,
+  IExampleCardCustomizations,
+} from '../../utilities/customizations';
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
+import { getQueryParam } from '../../utilities/index2';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
@@ -33,13 +38,13 @@ const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardSty
 const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
 const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: number) => ({
   key: index,
-  text: 'Scheme: ' + item
+  text: 'Scheme: ' + item,
 }));
 const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   root: {
     backgroundColor: theme.semanticColors.bodyBackground,
-    color: theme.semanticColors.bodyText
-  }
+    color: theme.semanticColors.bodyText,
+  },
 });
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
@@ -54,6 +59,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private _activeCustomizations: ICustomizations | undefined;
+  private _isStrict: boolean;
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -62,13 +68,23 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0,
-      latestCode: code
+      latestCode: code,
     };
+
+    const strict = getQueryParam('strict');
+    this._isStrict = strict === 'ex' || strict === 'examples';
 
     this._transformedInitialCode = this._transformCode(code);
 
-    if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
-      warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
+    if (
+      props.isCodeVisible !== undefined &&
+      props.onToggleEditor === undefined &&
+      process.env.NODE_ENV !== 'production'
+    ) {
+      warn(
+        'ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. ' +
+          'Otherwise the show/hide code button will not work.',
+      );
     }
   }
 
@@ -82,7 +98,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       codepenJS,
       theme,
       isCodeVisible = this.state.isCodeVisible,
-      editorSupportedPackages = SUPPORTED_PACKAGES
+      editorSupportedPackages = SUPPORTED_PACKAGES,
     } = this.props;
     const { themeIndex, schemeIndex, latestCode } = this.state;
 
@@ -91,13 +107,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         {(context: IAppCustomizations) => {
           const { exampleCardCustomizations, hideSchemes } = context;
           this._activeCustomizations =
-            exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
+            exampleCardCustomizations &&
+            exampleCardCustomizations[themeIndex] &&
+            exampleCardCustomizations[themeIndex].customizations;
           if (exampleCardCustomizations !== this._themeCustomizations) {
             this._themeCustomizations = exampleCardCustomizations;
             this._themeOptions = exampleCardCustomizations
               ? exampleCardCustomizations.map((item: IExampleCardCustomizations, index: number) => ({
                   key: index,
-                  text: 'Theme: ' + item.title
+                  text: 'Theme: ' + item.title,
                 }))
               : [];
           }
@@ -160,12 +178,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   editorClassName={classNames.code}
                   editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
                   modelRef={this._monacoModelRef}
-                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>} // tslint:disable-line:no-any
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>}
                 >
                   {children}
                 </EditorWrapper>
               ) : (
-                <ExamplePreview>{children}</ExamplePreview>
+                <ExamplePreview>
+                  {// Only use strict mode when not editing. Might have unpredictable results otherwise.
+                  this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children}
+                </ExamplePreview>
               )}
 
               {this._getDosAndDonts()}
@@ -194,7 +216,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  // tslint:disable-next-line:member-ordering
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
     (activeCustomizations: ICustomizations | undefined, schemeIndex: number): React.FunctionComponent => {
       // Generate a component which renders the children with the current
@@ -219,7 +241,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         }
         return content;
       };
-    }
+    },
   );
 
   private _onSchemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
@@ -234,7 +256,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     return transformExample({
       tsCode: code,
       id: CONTENT_ID,
-      supportedPackages: SUPPORTED_PACKAGES
+      supportedPackages: SUPPORTED_PACKAGES,
     }).output;
   }
 
@@ -261,7 +283,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       // Editor visibility is uncontrolled
       wasCodeVisible = !!this.state.isCodeVisible;
       this.setState({
-        isCodeVisible: !wasCodeVisible
+        isCodeVisible: !wasCodeVisible,
       });
     }
 
@@ -269,7 +291,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     // before closing so we can restore it when the editor is re-opened.
     if (wasCodeVisible && this._monacoModelRef.current) {
       this.setState({
-        latestCode: this._monacoModelRef.current.getValue()
+        latestCode: this._monacoModelRef.current.getValue(),
       });
     }
   };
@@ -280,5 +302,5 @@ export const ExampleCard: React.FunctionComponent<IExampleCardProps> = styled<
   IExampleCardStyleProps,
   IExampleCardStyles
 >(ExampleCardBase, getStyles, undefined, {
-  scope: 'ExampleCard'
+  scope: 'ExampleCard',
 });

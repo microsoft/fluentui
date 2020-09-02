@@ -73,9 +73,9 @@ describe('Announced', () => {
         className="rootclass1"
         styles={{
           root: 'rootclass2',
-          screenReaderText: 'textclass'
+          screenReaderText: 'textclass',
         }}
-      />
+      />,
     );
     jest.runAllTimers();
 

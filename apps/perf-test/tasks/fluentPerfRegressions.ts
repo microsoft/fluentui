@@ -3,9 +3,7 @@ import * as path from 'path';
 
 import config from '@uifabric/build/config';
 
-// TODO: add regression analysis output to Fluent report
 // TODO: check false positive potential regression reports in fluent ui repo and fix
-// TODO: alphabetize scenarios
 
 type Reporter = {
   markdown: (markdown: string) => void;
@@ -48,12 +46,13 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
         fluentTpi,
         fabricTpi,
         fluentToFabric: Math.round((fluentTpi / fabricTpi) * 100) / 100,
-        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile')
+        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
       };
-    }
+    },
   );
 
-  const getStatus: (arg: number) => string = fluentToFabric => (fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄');
+  const getStatus: (arg: number) => string = fluentToFabric =>
+    fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄';
 
   reporter.markdown(
     [
@@ -69,15 +68,16 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
           value.fabricTpi,
           `${value.fluentToFabric}:1`,
           value.iterations,
-          value.numTicks
-        ].join(' | ')
+          value.numTicks,
+        ].join(' | '),
       ),
       '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing',
       '',
-      '</details>'
-    ].join('\n')
+      '</details>',
+    ].join('\n'),
   );
 }
+
 function reportResults(perfCounts: any, reporter: Reporter) {
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
@@ -91,52 +91,47 @@ function reportResults(perfCounts: any, reporter: Reporter) {
         flamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
         baseline: {
           numTicks: baselineTicks,
-          flamegraphFile: _.get(stats, 'processed.baseline.output.flamegraphFile')
+          flamegraphFile: _.get(stats, 'processed.baseline.output.flamegraphFile'),
         },
         isRegression: _.get(stats, 'analysis.regression.isRegression'),
         regressionFile: _.get(stats, 'analysis.regression.regressionFile'),
-        currentToBaseline: Math.round((currentTicks / baselineTicks) * 100) / 100
+        currentToBaseline: Math.round((currentTicks / baselineTicks) * 100) / 100,
       };
-    }
+    },
   );
 
-  // TODO: enable when repos are converged.
-  // const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
+  const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
 
-  // if (regressions.length > 0) {
-  //   reporter.warn(`${regressions.length} potential perf regressions detected`);
-  //   reporter.markdown(
-  //     [
-  //       '### Potential regressions comparing to master',
-  //       '',
-  //       'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
-  //       ':--- | ---:| ---:| ---: | ---: ',
-  //       ..._.map(regressions, (value, key) =>
-  //         [
-  //           value.name,
-  //           linkToFlamegraph(value.numTicks, value.flamegraphFile),
-  //           linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-  //           `${value.currentToBaseline}:1`,
-  //           linkToFlamegraph('analysis', value.regressionFile)
-  //         ].join(' | ')
-  //       )
-  //     ].join('\n')
-  //   );
-  // }
+  if (regressions.length > 0) {
+    reporter.warn(`${regressions.length} potential perf regressions detected`);
+    reporter.markdown(
+      [
+        '### Potential regressions comparing to master',
+        '',
+        'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
+        ':--- | ---:| ---:| ---: | ---: ',
+        ..._.map(regressions, (value, key) =>
+          [
+            value.name,
+            linkToFlamegraph(value.numTicks, value.flamegraphFile),
+            linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
+            `${value.currentToBaseline}:1`,
+            linkToFlamegraph('analysis', value.regressionFile),
+          ].join(' | '),
+        ),
+      ].join('\n'),
+    );
+  }
 
   fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
-    // TODO: enable filter when repos are converged.
-    // _.filter(results, stats => !stats.isRegression),
-    results,
-    stats => stats.currentToBaseline * -1
+    _.filter(results, stats => !stats.isRegression),
+    stats => stats.currentToBaseline * -1,
   );
   reporter.markdown(
     [
-      // TODO: re-enable comment when repos are converged.
-      // '<details><summary>Perf tests with no regressions</summary>',
-      '<details><summary>All perf tests</summary>',
+      '<details><summary>Perf tests with no regressions</summary>',
       '',
       'Scenario | Current PR Ticks | Baseline Ticks | Ratio',
       ':--- | ---:| ---:| ---:',
@@ -145,12 +140,12 @@ function reportResults(perfCounts: any, reporter: Reporter) {
           value.name,
           linkToFlamegraph(value.numTicks, value.flamegraphFile),
           linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-          `${value.currentToBaseline}:1`
-        ].join(' | ')
+          `${value.currentToBaseline}:1`,
+        ].join(' | '),
       ),
       '',
-      '</details>'
-    ].join('\n')
+      '</details>',
+    ].join('\n'),
   );
 }
 

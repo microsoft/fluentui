@@ -113,11 +113,17 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                     @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                       -ms-high-contrast-adjust: none;
-                      background-color: WindowText;
-                      color: Window;
+                      background-color: Window;
+                      border-right-width: 0;
+                      border: 1px solid WindowText;
+                      color: WindowText;
                     }
                     & .ms-Button--primary + .ms-Button {
                       border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+                      border-left-width: 0;
+                      border: 1px solid WindowText;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -183,7 +189,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           text-align: center;
                           text-decoration: none;
                           user-select: none;
-                          vertical-align: top;
                         }
                         &::-moz-focus-inner {
                           border: 0;
@@ -287,7 +292,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
                             }
                         data-icon-name="Add"
                         role="presentation"
@@ -426,7 +430,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                             {
                               color: #605e5c;
@@ -439,7 +445,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
@@ -468,6 +476,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
                         }
+                    onClick={[Function]}
                   />
                 </span>
               </div>
@@ -526,17 +535,26 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                     @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                       -ms-high-contrast-adjust: none;
-                      background-color: WindowText;
-                      color: Window;
+                      background-color: Window;
+                      border-right-width: 0;
+                      border: 1px solid WindowText;
+                      color: WindowText;
                     }
                     & .ms-Button--primary + .ms-Button {
                       border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+                      border-left-width: 0;
+                      border: 1px solid WindowText;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       background-color: Window;
                       border-color: GrayText;
                       border: none;
                       color: GrayText;
+                    }
+                    @media screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
                 data-is-focusable={true}
                 onFocusCapture={[Function]}
@@ -586,7 +604,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           text-align: center;
                           text-decoration: none;
                           user-select: none;
-                          vertical-align: top;
                         }
                         &::-moz-focus-inner {
                           border: 0;
@@ -616,9 +633,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: grayText;
+                          background-color: Window;
                           border: none;
-                          color: grayText;
+                          color: GrayText;
                         }
                         &:hover {
                           outline: 0px;
@@ -628,6 +645,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                         & .ms-Button-icon {
                           color: #c8c6c4;
+                        }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                          color: GrayText;
+                        }
+                        @media screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
                         }
                     data-is-focusable={false}
                     disabled={false}
@@ -679,7 +702,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                         data-icon-name="Upload"
                         role="presentation"
@@ -776,10 +801,16 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           border-color: GrayText;
                           color: GrayText;
                         }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
+                          color: GrayText;
+                        }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: Window;
-                          border: 1px solid GrayText;
+                          border: none;
                           color: GrayText;
+                        }
+                        @media screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
                         }
                     data-is-focusable={false}
                     disabled={false}
@@ -833,7 +864,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                             {
                               color: #605e5c;
@@ -846,7 +879,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               margin-right: 4px;
                               margin-top: 0;
                               text-align: center;
-                              vertical-align: middle;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              color: GrayText;
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
@@ -873,8 +908,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           width: 1px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-color: GrayText;
+                          background-color: Window;
                         }
+                    onClick={[Function]}
                   />
                 </span>
               </div>
@@ -920,7 +956,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -950,9 +985,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: grayText;
+                      background-color: Window;
                       border: none;
-                      color: grayText;
+                      color: GrayText;
                     }
                     &:hover {
                       outline: 0px;
@@ -962,6 +997,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                     & .ms-Button-icon {
                       color: #c8c6c4;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                      color: GrayText;
+                    }
+                    @media screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
                 data-is-focusable={true}
                 disabled={false}
@@ -1013,7 +1054,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          color: GrayText;
                         }
                     data-icon-name="Share"
                     role="presentation"
@@ -1108,7 +1151,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         text-align: center;
                         text-decoration: none;
                         user-select: none;
-                        vertical-align: top;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1138,9 +1180,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         top: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){& {
-                        border-color: grayText;
+                        background-color: Window;
                         border: none;
-                        color: grayText;
+                        color: GrayText;
                       }
                       &:hover {
                         outline: 0px;
@@ -1150,6 +1192,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                       & .ms-Button-icon {
                         color: #c8c6c4;
+                      }
+                      @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                        color: GrayText;
+                      }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
                       }
                   data-is-focusable={true}
                   disabled={false}
@@ -1201,7 +1249,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             margin-right: 4px;
                             margin-top: 0;
                             text-align: center;
-                            vertical-align: middle;
+                          }
+                          @media screen and (-ms-high-contrast: active){& {
+                            color: GrayText;
                           }
                       data-icon-name="Download"
                       role="presentation"

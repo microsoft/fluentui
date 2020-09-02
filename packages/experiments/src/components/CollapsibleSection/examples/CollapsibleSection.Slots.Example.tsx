@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Icon, Stack, TooltipHost } from 'office-ui-fabric-react';
-import { CollapsibleSection, CollapsibleSectionTitle, ICollapsibleSectionTitleProps } from '@uifabric/experiments/lib/CollapsibleSection';
+import {
+  CollapsibleSection,
+  CollapsibleSectionTitle,
+  ICollapsibleSectionTitleProps,
+} from '@uifabric/experiments/lib/CollapsibleSection';
 
 // TODO: convert this example to use extendComponent
 
@@ -15,8 +19,8 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
           <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
           <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
         </Stack>
-      )
-    }
+      ),
+    },
   };
 
   // Wrap the entire title in a Tooltip
@@ -31,7 +35,10 @@ export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <p>This CollapsibleSection has been customized with a TooltipHost around its entire title and an icon in its title.</p>
+        <p>
+          This CollapsibleSection has been customized with a TooltipHost around its entire title and an icon in its
+          title.
+        </p>
         <Stack maxWidth={200} styles={{ root: { border: '1px solid black' } }}>
           <CollapsibleSection
             key={1}
@@ -39,8 +46,8 @@ export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
             title="Shorthand Title Text"
             slots={{
               title: {
-                component: CustomizedCollapsibleSectionTitle
-              }
+                component: CustomizedCollapsibleSectionTitle,
+              },
             }}
           >
             Content 1

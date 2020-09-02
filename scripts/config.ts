@@ -9,7 +9,10 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const __BASENAME__ = '/';
+let __BASENAME__ = process.env.PR_DEPLOY
+  ? // This needs a trailing slash or images won't work
+    `/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/react-northstar/`
+  : '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
@@ -32,7 +35,7 @@ const envConfig = {
   dir_perf_dist: 'packages/fluentui/perf/dist',
   dir_perf_src: 'packages/fluentui/perf/src',
   dir_umd_dist: 'dist/umd',
-  dir_ci_artifacts: 'dist/artifacts'
+  dir_ci_artifacts: 'dist/artifacts',
 };
 
 // ------------------------------------
@@ -57,7 +60,7 @@ const tempPaths = {
   perfSrc: fromBase(envConfig.dir_perf_src),
   umdDist: fromBase(envConfig.dir_umd_dist),
   ciArtifacts: fromBase(envConfig.dir_ci_artifacts),
-  withRootAt: (root: string, ...subpaths: string[]) => (...args: string[]) => path.resolve(root, ...subpaths, ...args)
+  withRootAt: (root: string, ...subpaths: string[]) => (...args: string[]) => path.resolve(root, ...subpaths, ...args),
 };
 
 const paths: typeof tempPaths & {
@@ -67,11 +70,13 @@ const paths: typeof tempPaths & {
   base,
   ...tempPaths,
   // all the sibling values, but with forward slashes regardless the OS
-  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) => func(...args).replace(/\\/g, '/')) as any
+  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) =>
+    func(...args).replace(/\\/g, '/'),
+  ) as any,
 };
 
 const isRoot = process.cwd() === envConfig.path_base;
-let packageName = isRoot ? 'react' : path.basename(process.cwd());
+let packageName = isRoot ? 'react-northstar' : path.basename(process.cwd());
 // don't use yargs here because it causes build errors in certain circumstances
 const packageArgIndex = process.argv.indexOf('--package');
 if (packageArgIndex > -1 && process.argv[packageArgIndex + 1]) {
@@ -103,9 +108,9 @@ const config = {
     __SKIP_ERRORS__,
     'process.env': {
       NODE_ENV: JSON.stringify(env),
-      SCREENER: !!process.env.SCREENER_API_KEY
+      SCREENER: !!process.env.SCREENER_API_KEY,
     },
-    __PATH_SEP__: JSON.stringify(path.sep)
+    __PATH_SEP__: JSON.stringify(path.sep),
   },
   compiler_hash_type: __PROD__ ? 'chunkhash' : 'hash',
   compiler_output_path: paths.base(envConfig.dir_docs_dist),
@@ -142,13 +147,13 @@ const config = {
     /** sort the chunks by that field */
     chunksSort: '',
     /** sort the assets by that field */
-    assetsSort: ''
+    assetsSort: '',
   },
 
   /** True if command is running from repo root */
   isRoot,
   /** Package name the task is running against: default to react if running at root, or cwd otherwise */
-  package: packageName
+  package: packageName,
 };
 
 export default config;

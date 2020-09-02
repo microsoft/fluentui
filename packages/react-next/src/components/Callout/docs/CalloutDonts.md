@@ -1,0 +1,8 @@
+- Don’t overuse Callout without putting the user in control. Too many Callouts which open automatically can be perceived as interrupting workflow and are a bad user experience.
+- Don't use large, unformatted blocks of text in your Callout, they are difficult to read and overwhelming.
+- Don't put obvious tip text, or text that simply repeats what is already on the screen in your Callout.
+- Because the content inside of a Callout isn't always visible, don't put important or required information in a Callout.
+- Don’t block important UI with the placement of your Callout, it is a poor user experience that will lead to frustration.
+- Don’t open Callout from within another Callout.
+- Don’t use Callout to ask the user to confirm an action, use a Dialog instead.
+- Don’t show Callouts on hidden elements.

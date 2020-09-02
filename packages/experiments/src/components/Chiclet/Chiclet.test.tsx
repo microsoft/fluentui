@@ -11,7 +11,7 @@ describe('Chiclet', () => {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
-      onClick: () => alert('test')
+      onClick: () => console.log('test'),
     };
     const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
 
@@ -26,7 +26,7 @@ describe('Chiclet', () => {
       title: 'My Daily Notes',
       itemType: 'docx',
       image: 'https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg',
-      onClick: () => alert('test')
+      onClick: () => console.log('test'),
     };
     const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
 
@@ -39,7 +39,7 @@ describe('Chiclet', () => {
     const chicletCardProps: IChicletCardProps = {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes.xlsx',
-      onClick: () => alert('test')
+      onClick: () => console.log('test'),
     };
     const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
 
@@ -53,7 +53,7 @@ describe('Chiclet', () => {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
-      onClick: () => alert('test')
+      onClick: () => console.log('test'),
     };
     const component = renderer.create(<ChicletCard {...chicletCardProps} />);
 
@@ -67,7 +67,7 @@ describe('Chiclet', () => {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
-      onClick: () => alert('test')
+      onClick: () => console.log('test'),
     };
 
     const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = props => {

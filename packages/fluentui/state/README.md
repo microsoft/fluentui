@@ -37,13 +37,13 @@ const createInputManager: ManagerFactory<InputState, InputActions> = config =>
   createManager<InputState, InputActions>({
     ...config,
     actions: {
-      change: (value: string) => () => ({ value })
+      change: (value: string) => () => ({ value }),
     },
-    state: { value: '', ...config.state }
+    state: { value: '', ...config.state },
   });
 const manager = createInputManager({ state: { value: 'Hello world!' } });
 ```
 
 # Usage with React
 
-We provide React bindings under [`@fluentui/react-bindings`](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-bindings).
+We provide React bindings under [`@fluentui/react-bindings`](https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings).

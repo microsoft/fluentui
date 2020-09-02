@@ -5,18 +5,19 @@ import * as renderer from 'react-test-renderer';
 
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
-import { INavLink } from './Nav.types';
+import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
+import { IRenderFunction, IComponentAsProps } from '@uifabric/utilities';
 
 const linkOne: INavLink = {
   key: 'Bing',
   name: 'Bing',
-  url: 'http://localhost/#/testing1'
+  url: 'http://localhost/#/testing1',
 };
 
 const linkTwo: INavLink = {
   key: 'OneDrive',
   name: 'OneDrive',
-  url: 'http://localhost/#/testing2'
+  url: 'http://localhost/#/testing2',
 };
 
 describe('Nav', () => {
@@ -28,15 +29,62 @@ describe('Nav', () => {
             links: [
               {
                 name: '',
-                url: ''
-              }
-            ]
-          }
+                url: '',
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('render Nav with overrides correctly', () => {
+    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
+      const { defaultRender: DefaultRender, ...buttonProps } = props;
+
+      if (!DefaultRender) {
+        return null;
+      }
+
+      return (
+        <div data-test="button-override">
+          <DefaultRender {...buttonProps} />
+        </div>
+      );
+    };
+
+    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
+      if (!props || !defaultRender) {
+        return null;
+      }
+
+      return <div data-test="link-override">{defaultRender(props)}</div>;
+    }
+
+    function onRenderGroupHeader(
+      props?: IRenderGroupHeaderProps,
+      defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
+    ): JSX.Element | null {
+      if (!props || !defaultRender) {
+        return null;
+      }
+
+      return <div data-test="header-override">{defaultRender(props)}</div>;
+    }
+    const groups: INavLinkGroup[] = [
+      {
+        name: 'Group',
+        links: [linkOne, linkTwo],
+      },
+    ];
+
+    const component = renderer.create(
+      <Nav groups={groups} onRenderGroupHeader={onRenderGroupHeader} onRenderLink={onRenderNavLink} linkAs={LinkAs} />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('calls onClick() correctly', () => {
@@ -49,12 +97,12 @@ describe('Nav', () => {
               {
                 name: 'foo',
                 url: 'http://example.com',
-                onClick: handler
-              }
-            ]
-          }
+                onClick: handler,
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
 
     const link = nav.find('a.ms-Button');
@@ -73,12 +121,12 @@ describe('Nav', () => {
                 name: 'foo',
                 url: 'http://example.com',
                 onClick: handler,
-                disabled: true
-              }
-            ]
-          }
+                disabled: true,
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
 
     const link = nav.find('button.ms-Button');
@@ -93,34 +141,20 @@ describe('Nav', () => {
   });
 
   it('uses location.href to determine link selected status if state/props is not set', () => {
-    const nav = mount<NavBase>(
-      <Nav
-        groups={[
-          {
-            links: [linkOne, linkTwo]
-          }
-        ]}
-      />
-    );
+    const props = { groups: [{ links: [linkOne, linkTwo] }] };
+    const nav = mount<NavBase>(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing1');
-    nav.instance().forceUpdate();
+    nav.setProps(props);
 
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });
 
   it('prioritizes state over location.href to determine link selected status', () => {
-    const nav = mount<NavBase>(
-      <Nav
-        groups={[
-          {
-            links: [linkOne, linkTwo]
-          }
-        ]}
-      />
-    );
+    const props = { groups: [{ links: [linkOne, linkTwo] }] };
+    const nav = mount<NavBase>(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing2');
-    nav.instance().forceUpdate();
+    nav.setProps(props);
 
     nav
       .find('.ms-Button')
@@ -134,28 +168,32 @@ describe('Nav', () => {
     const linkWithNoTargetSpecified: INavLink = {
       key: 'Link1',
       name: 'Link1',
-      url: 'https://cdpn.io/bar'
+      url: 'https://cdpn.io/bar',
     };
     const linkWithRelativeURL: INavLink = {
       key: 'Link2',
       name: 'Link2',
       target: '_blank',
-      url: '/foo'
+      url: '/foo',
     };
     const linkWithNonRelativeURL: INavLink = {
       key: 'Link3',
       name: 'Link3',
       target: '_blank',
-      url: 'https://cdpn.io/bar'
+      url: 'https://cdpn.io/bar',
     };
     const linkWithNonRelativeURL2: INavLink = {
       key: 'Link4',
       name: 'Link4',
       target: '_blank',
-      url: 'http://cdpn.io/bar'
+      url: 'http://cdpn.io/bar',
     };
     const nav = mount<NavBase>(
-      <Nav groups={[{ links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] }]} />
+      <Nav
+        groups={[
+          { links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] },
+        ]}
+      />,
     );
 
     const links = nav.getDOMNode().querySelectorAll('.ms-Nav-link');

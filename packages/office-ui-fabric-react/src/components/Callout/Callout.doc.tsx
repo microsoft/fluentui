@@ -17,39 +17,40 @@ const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Callout',
   examples: [
     {
       title: 'Default Callout',
       code: CalloutBasicExampleCode,
-      view: <CalloutBasicExample />
+      view: <CalloutBasicExample />,
     },
 
     {
       title: 'FocusTrapCallout Variant',
       code: CalloutFocusTrapExampleCode,
-      view: <CalloutFocusTrapExample />
+      view: <CalloutFocusTrapExample />,
     },
     {
       title: 'Non-focusable Callout with accessible text',
       code: StatusCalloutExampleCode,
-      view: <StatusCalloutExample />
+      view: <StatusCalloutExample />,
     },
     {
       title: 'Callout with directional hint',
       code: CalloutDirectionalExampleCode,
-      view: <CalloutDirectionalExample />
+      view: <CalloutDirectionalExample />,
     },
     {
       title: 'Callout that covers the target element',
       code: CalloutCoverExampleCode,
-      view: <CalloutCoverExample />
-    }
+      view: <CalloutCoverExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

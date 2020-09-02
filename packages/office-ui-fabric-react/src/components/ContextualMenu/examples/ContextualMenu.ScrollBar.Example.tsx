@@ -9,25 +9,25 @@ export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () =>
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'item 2',
-    text: 'Item with a very long label text'
+    text: 'Item with a very long label text',
   },
   {
     key: 'edit',
-    text: 'Edit'
+    text: 'Edit',
   },
   {
     key: 'properties',
-    text: 'Properties'
+    text: 'Properties',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
-    disabled: true
-  }
+    disabled: true,
+  },
 ];
 
 const menuProps: IContextualMenuProps = {
@@ -36,6 +36,6 @@ const menuProps: IContextualMenuProps = {
   directionalHintFixed: true,
   items: menuItems,
   calloutProps: {
-    calloutMaxHeight: 65
-  }
+    calloutMaxHeight: 65,
+  },
 };

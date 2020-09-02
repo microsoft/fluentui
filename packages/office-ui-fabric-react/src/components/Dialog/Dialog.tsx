@@ -8,5 +8,5 @@ export const Dialog: React.FunctionComponent<IDialogProps> = styled<IDialogProps
   DialogBase,
   getStyles,
   undefined,
-  { scope: 'Dialog' }
+  { scope: 'Dialog' },
 );

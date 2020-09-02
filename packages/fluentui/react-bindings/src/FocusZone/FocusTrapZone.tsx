@@ -4,8 +4,8 @@ import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import {
   getNextElement,
   getFirstTabbable,
@@ -13,14 +13,14 @@ import {
   getWindow,
   getDocument,
   focusAsync,
-  HIDDEN_FROM_ACC_TREE
+  HIDDEN_FROM_ACC_TREE,
 } from './focusUtilities';
 import { FocusTrapZoneProps } from './FocusTrapZone.types';
 
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
  *  Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone. */
-export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
+export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
   static _focusStack: FocusTrapZone[] = [];
 
   _root: { current: HTMLElement | null } = { current: null };
@@ -55,13 +55,13 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     firstFocusableSelector: PropTypes.string,
     disableFirstFocus: PropTypes.bool,
     focusPreviouslyFocusedInnerElement: PropTypes.bool,
-    focusTriggerOnOutsideClick: PropTypes.bool
+    focusTriggerOnOutsideClick: PropTypes.bool,
   };
 
   static defaultProps: FocusTrapZoneProps = {
     as: 'div',
     isClickableOutsideFocusTrap: true,
-    forceFocusInsideTrapOnOutsideFocus: false
+    forceFocusInsideTrapOnOutsideFocus: false,
   };
 
   componentDidMount(): void {
@@ -87,7 +87,8 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
 
     const prevForceFocusInsideTrap =
       prevProps.forceFocusInsideTrapOnOutsideFocus !== undefined ? prevProps.forceFocusInsideTrapOnOutsideFocus : true;
-    const newForceFocusInsideTrap = forceFocusInsideTrapOnOutsideFocus !== undefined ? forceFocusInsideTrapOnOutsideFocus : true;
+    const newForceFocusInsideTrap =
+      forceFocusInsideTrapOnOutsideFocus !== undefined ? forceFocusInsideTrapOnOutsideFocus : true;
     const prevDisabled = prevProps.disabled !== undefined ? prevProps.disabled : false;
     const newDisabled = disabled !== undefined ? disabled : false;
 
@@ -125,12 +126,13 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     const ElementType = getElementType(this.props);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
-        position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
+        position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'data-is-visible': true
+      'data-is-visible': true,
     } as React.HTMLAttributes<HTMLDivElement>;
 
     return (
@@ -208,7 +210,9 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
       return;
     }
 
-    const currentBumper = (isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current) as HTMLElement;
+    const currentBumper = (isFirstBumper === this._hasFocus
+      ? this._lastBumper.current
+      : this._firstBumper.current) as HTMLElement;
 
     const nextFocusable =
       isFirstBumper === this._hasFocus
@@ -278,11 +282,15 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     }
 
     // if last active focus trap zone is going to be released - show previously hidden content in accessibility tree
-    const lastActiveFocusTrap = FocusTrapZone._focusStack.length && FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1];
+    const lastActiveFocusTrap =
+      FocusTrapZone._focusStack.length && FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1];
 
     if (!lastActiveFocusTrap) {
       this._showContentInAccessibilityTree();
-    } else if (lastActiveFocusTrap._root.current && lastActiveFocusTrap._root.current.hasAttribute(HIDDEN_FROM_ACC_TREE)) {
+    } else if (
+      lastActiveFocusTrap._root.current &&
+      lastActiveFocusTrap._root.current.hasAttribute(HIDDEN_FROM_ACC_TREE)
+    ) {
       lastActiveFocusTrap._root.current.removeAttribute(HIDDEN_FROM_ACC_TREE);
       lastActiveFocusTrap._root.current.removeAttribute('aria-hidden');
     }
@@ -306,7 +314,8 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     }
 
     const focusSelector =
-      firstFocusableSelector && (typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector());
+      firstFocusableSelector &&
+      (typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector());
 
     let firstFocusableChild: HTMLElement | null = null;
 
@@ -316,7 +325,14 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
 
     // Fall back to first element if query selector did not match any elements.
     if (!firstFocusableChild) {
-      firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, false, false, false, true);
+      firstFocusableChild = getNextElement(
+        this._root.current,
+        this._root.current.firstChild as HTMLElement,
+        false,
+        false,
+        false,
+        true,
+      );
     }
 
     firstFocusableChild && this._focusAsync(firstFocusableChild);
@@ -358,7 +374,8 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     } else if (!focusTriggerOnOutsideClick) {
       const isOutsideFocusTrapZone = this._root.current && !this._root.current.contains(clickedElement);
       const isOutsideTriggerElement =
-        this._previouslyFocusedElementOutsideTrapZone && !this._previouslyFocusedElementOutsideTrapZone.contains(clickedElement);
+        this._previouslyFocusedElementOutsideTrapZone &&
+        !this._previouslyFocusedElementOutsideTrapZone.contains(clickedElement);
       if (isOutsideFocusTrapZone && isOutsideTriggerElement) {
         // set it to NULL, so the trigger will not be focused on componentWillUnmount
         // @ts-ignore
@@ -402,7 +419,7 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
       // In case popup render options will change
       /* eslint-disable-next-line no-console */
       console.warn(
-        'Body element does not contain trap zone element. Please, ensure the trap zone element is placed inside body, so it will work properly.'
+        'Body element does not contain trap zone element. Please, ensure the trap zone element is placed inside body, so it will work properly.',
       );
     }
 

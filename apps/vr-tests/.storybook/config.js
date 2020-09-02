@@ -4,7 +4,7 @@ import { setOptions } from '@storybook/addon-options';
 import { setRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 setOptions({
-  name: 'Fabric'
+  name: 'Fabric',
 });
 
 const req = require.context('../src/stories', true, /\.stories\.tsx$/);
@@ -14,7 +14,7 @@ function loadStories() {
 }
 
 const defaultConfig = {
-  rtl: false
+  rtl: false,
 };
 
 /**
@@ -45,7 +45,7 @@ storybook.setAddon({
     }
 
     return this;
-  }
+  },
 });
 
 storybook.configure(loadStories, module);

@@ -11,7 +11,9 @@ const CHANGELOG_FILE = 'packages/fluentui/CHANGELOG.md';
  */
 const hasAddedLinesAfterVersionInChangelog = async (danger: DangerDSLType): Promise<boolean> => {
   const changelogContent = fs.readFileSync(config.paths.base(CHANGELOG_FILE)).toString();
-  const versionLineNumber = changelogContent.split('\n').findIndex(line => line.startsWith('<!--') && line.endsWith('-->'));
+  const versionLineNumber = changelogContent
+    .split('\n')
+    .findIndex(line => line.startsWith('<!--') && line.endsWith('-->'));
 
   const addedLines = await getAddedLinesFromChangelog(danger);
 
@@ -19,8 +21,8 @@ const hasAddedLinesAfterVersionInChangelog = async (danger: DangerDSLType): Prom
 };
 
 const getMalformedChangelogEntries = async (danger: DangerDSLType): Promise<string[]> => {
-  // +- description @githubname ([#DDDD](https://github.com/OfficeDev/office-ui-fabric-react/pull/DDDD))
-  const validEntry = /^\+- .*@\S+ \(\[#(\d+)]\(https:\/\/github\.com\/OfficeDev\/office-ui-fabric-react\/pull\/\1\)\)$/;
+  // +- description @githubname ([#DDDD](https://github.com/microsoft/fluentui/pull/DDDD))
+  const validEntry = /^\+- .*@\S+ \(\[#(\d+)]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/\1\)\)$/;
 
   const addedLines = await getAddedLinesFromChangelog(danger);
 
@@ -31,7 +33,7 @@ const getAddedLinesFromChangelog = async (danger: DangerDSLType): Promise<{ cont
   return danger.git.structuredDiffForFile(CHANGELOG_FILE).then(changelogDiff => {
     if (changelogDiff) {
       return changelogDiff.chunks.reduce((acc, chunk) => {
-        const filteredLines = chunk.changes.filter(change => change.type === 'add');
+        const filteredLines = chunk.changes.filter((change: any) => change.type === 'add');
         return acc.concat(filteredLines);
       }, []);
     }
@@ -43,20 +45,22 @@ const getAddedLinesFromChangelog = async (danger: DangerDSLType): Promise<{ cont
 export default async ({ danger, fail, warn }: DangerJS) => {
   // Check for a CHANGELOG entry for changes inside /packages/fluentui
   const changes = [...danger.git.created_files, ...danger.git.deleted_files, ...danger.git.modified_files].filter(
-    f => f !== CHANGELOG_FILE
+    f => f !== CHANGELOG_FILE,
   );
 
   if (changes.some(f => f.startsWith('packages/fluentui'))) {
     const hasChangelog = danger.git.modified_files.some(f => f === CHANGELOG_FILE);
 
     if (!hasChangelog) {
-      warn('There are no updates provided to CHANGELOG. Ensure there are no publicly visible changes introduced by this PR.');
+      warn(
+        'There are no updates provided to CHANGELOG. Ensure there are no publicly visible changes introduced by this PR.',
+      );
     } else {
       const malformedChangelogEntries = await getMalformedChangelogEntries(danger);
       malformedChangelogEntries.forEach(entry => {
         fail(`Invalid entry format in ${CHANGELOG_FILE}: >${entry}<
 
-The correct format is: \`- description @githubname ([#DDDD](https://github.com/OfficeDev/office-ui-fabric-react/pull/DDDD)\``);
+The correct format is: \`- description @githubname ([#DDDD](https://github.com/microsoft/fluentui/pull/DDDD)\``);
       });
 
       const hasLine = await hasAddedLinesAfterVersionInChangelog(danger);

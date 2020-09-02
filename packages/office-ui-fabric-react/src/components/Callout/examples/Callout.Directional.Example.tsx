@@ -11,16 +11,9 @@ import {
   mergeStyleSets,
   FontWeights,
   Link,
-  getId
+  Text,
 } from 'office-ui-fabric-react';
-
-export interface ICalloutDirectionalExampleState {
-  isCalloutVisible?: boolean;
-  directionalHint?: DirectionalHint;
-  isBeakVisible?: boolean;
-  gapSpace?: number;
-  beakWidth?: number;
-}
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
@@ -36,10 +29,11 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
   { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
   { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 const theme = getTheme();
+const checkBoxStyles = { root: { margin: '10px 0' } };
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -47,163 +41,131 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   configArea: {
     minWidth: '300px',
-    display: 'inline-block'
+    display: 'inline-block',
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   calloutExampleButton: {
-    width: '100%'
+    width: '100%',
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
+    padding: '0 24px 20px',
   },
   subtext: [
-    theme.fonts.small,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   link: [
     theme.fonts.medium,
     {
-      color: theme.palette.neutralPrimary
-    }
+      color: theme.palette.neutralPrimary,
+    },
   ],
   actions: {
     position: 'relative',
     marginTop: 20,
     width: '100%',
-    whiteSpace: 'nowrap'
-  }
+    whiteSpace: 'nowrap',
+  },
 });
 
-export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
-  private _menuButtonElement: HTMLElement | null;
+export const CalloutDirectionalExample: React.FunctionComponent = () => {
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(true);
+  const [gapSpace, setGapSpace] = React.useState<number>();
+  const [beakWidth, setBeakWidth] = React.useState<number>();
+  const labelId: string = useId('callout-label');
+  const descriptionId: string = useId('callout-description');
+  const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
+  const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setDirectionalHint(option.key as DirectionalHint);
+  };
 
-  // Use getId() to ensure that the callout label and description IDs are unique on the page.
-  // It's also okay, though not recommended, to use plain strings without getId() and manually ensure their uniqueness.
-  private _labelId: string = getId('callout-label');
-  private _descriptionId: string = getId('callout-description');
+  const onGapSliderChange = (value: number): void => {
+    setGapSpace(value);
+  };
+  const onBeakWidthSliderChange = (value: number): void => {
+    setBeakWidth(value);
+  };
 
-  public constructor(props: {}) {
-    super(props);
+  const onShowBeakChange = () => {
+    toggleIsBeakVisible();
+    setBeakWidth(10);
+  };
 
-    this.state = {
-      isCalloutVisible: false,
-      isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge
-    };
-  }
+  return (
+    <>
+      <div className={styles.configArea}>
+        {/* eslint-disable react/jsx-no-bind */}
+        <Checkbox styles={checkBoxStyles} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
 
-  public render(): JSX.Element {
-    const { isCalloutVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
-    //  ms-Callout-smallbeak is used in this directional example to reflect all the positions.
-    //  Large beak will disable some position to avoid beak over the callout edge.
-    return (
-      <>
-        <div className={styles.configArea}>
-          <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
-          <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
-          {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
-          <Dropdown
-            label="Directional hint"
-            selectedKey={directionalHint!}
-            options={DIRECTION_OPTIONS}
-            onChange={this._onDirectionalChanged}
-          />
-        </div>
-        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
-          <DefaultButton
-            className={styles.calloutExampleButton}
-            onClick={this._onShowMenuClicked}
-            text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
-          />
-        </div>
-        {isCalloutVisible ? (
-          <Callout
-            ariaLabelledBy={this._labelId}
-            ariaDescribedBy={this._descriptionId}
-            className={styles.callout}
-            gapSpace={gapSpace}
-            target={this._menuButtonElement}
-            isBeakVisible={isBeakVisible}
-            beakWidth={beakWidth}
-            onDismiss={this._onCalloutDismiss}
-            directionalHint={directionalHint}
-            setInitialFocus={true}
-          >
-            <div className={styles.header}>
-              <p className={styles.title} id={this._labelId}>
-                All of your favorite people
-              </p>
+        <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={onGapSliderChange} />
+        {isBeakVisible && (
+          <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={onBeakWidthSliderChange} />
+        )}
+        <Dropdown
+          label="Directional hint"
+          selectedKey={directionalHint!}
+          options={DIRECTION_OPTIONS}
+          onChange={onDirectionalChanged}
+        />
+        {/* eslint-enable react/jsx-no-bind */}
+      </div>
+      <div className={styles.buttonArea}>
+        <DefaultButton
+          className={styles.calloutExampleButton}
+          onClick={toggleIsCalloutVisible}
+          text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
+        />
+      </div>
+      {isCalloutVisible ? (
+        <Callout
+          ariaLabelledBy={labelId}
+          ariaDescribedBy={descriptionId}
+          className={styles.callout}
+          gapSpace={gapSpace}
+          target={`.${styles.buttonArea}`}
+          isBeakVisible={isBeakVisible}
+          beakWidth={beakWidth}
+          onDismiss={toggleIsCalloutVisible}
+          directionalHint={directionalHint}
+          setInitialFocus
+        >
+          <div className={styles.header}>
+            <Text className={styles.title} id={labelId}>
+              All of your favorite people
+            </Text>
+          </div>
+          <div className={styles.inner}>
+            <Text className={styles.subtext} id={descriptionId}>
+              Message body is optional. If help documentation is available, consider adding a link to learn more at the
+              bottom.
+            </Text>
+            <div className={styles.actions}>
+              <Link className={styles.link} href="http://microsoft.com" target="_blank">
+                Go to Microsoft
+              </Link>
             </div>
-            <div className={styles.inner}>
-              <p className={styles.subtext} id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-              </p>
-              <div className={styles.actions}>
-                <Link className={styles.link} href="http://microsoft.com" target="_blank">
-                  Go to Microsoft
-                </Link>
-              </div>
-            </div>
-          </Callout>
-        ) : null}
-      </>
-    );
-  }
-
-  private _onCalloutDismiss = (): void => {
-    this.setState({
-      isCalloutVisible: false
-    });
-  };
-
-  private _onShowMenuClicked = (): void => {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
-    });
-  };
-
-  private _onShowBeakChange = (ev: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-    this.setState({
-      isBeakVisible: isVisible,
-      beakWidth: 10
-    });
-  };
-
-  private _onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({
-      directionalHint: option.key as DirectionalHint
-    });
-  };
-
-  private _onGapSlider = (value: number): void => {
-    this.setState({
-      gapSpace: value
-    });
-  };
-
-  private _onBeakWidthSlider = (value: number): void => {
-    this.setState({
-      beakWidth: value
-    });
-  };
-}
+          </div>
+        </Callout>
+      ) : null}
+    </>
+  );
+};

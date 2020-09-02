@@ -4,8 +4,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
 <div
   className=
       ms-Fabric
-      is-focusHidden
-      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -33,7 +31,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
         margin-right: 0;
         margin-top: 10px;
       }
-  dir="ltr"
 >
   Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
   <div
@@ -72,9 +69,12 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 350,
+          "width": "350",
         }
       }
     >
@@ -540,9 +540,12 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 550,
+          "width": "550",
         }
       }
     >
@@ -952,6 +955,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {

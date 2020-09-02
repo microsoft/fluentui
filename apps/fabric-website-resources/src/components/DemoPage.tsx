@@ -6,7 +6,7 @@ import {
   PropertiesTableSet,
   Markdown,
   FeedbackList,
-  IExampleCardProps
+  IExampleCardProps,
 } from '@uifabric/example-app-base';
 import * as React from 'react';
 
@@ -44,7 +44,10 @@ export const DemoPage: React.FunctionComponent<IDemoPageProps> = demoPageProps =
       }
       propertiesTables={
         (componentPageProps.jsonDocs && (
-          <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} showAll={componentPageProps.jsonDocs.group === 'References'} />
+          <ApiReferencesTableSet
+            jsonDocs={componentPageProps.jsonDocs}
+            showAll={componentPageProps.jsonDocs.group === 'References'}
+          />
         )) ||
         (propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />)
       }

@@ -1,7 +1,75 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.5)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.2.3..@uifabric/fluent-theme_v7.2.5)
+
+### Patches
+
+- Fix undefined FluentTheme due to circular dep ([PR #14768](https://github.com/microsoft/fluentui/pull/14768) by xgao@microsoft.com)
+
+## [7.2.3](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.132..@uifabric/fluent-theme_v7.2.3)
+
+### Patches
+
+- Move Fluent theme constants to @fluentui/theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
+
+## [7.1.132](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.132)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.109..@uifabric/fluent-theme_v7.1.132)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.1.109](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.109)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.100..@uifabric/fluent-theme_v7.1.109)
+
+### Patches
+
+- Replace tslint with eslint ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.1.70](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.70)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.53..@uifabric/fluent-theme_v7.1.70)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.53](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.53)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.43..@uifabric/fluent-theme_v7.1.53)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.1.43
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.1.42
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.1.5
 Fri, 17 Jan 2020 02:32:17 GMT
 
@@ -401,4 +469,3 @@ Fri, 19 Oct 2018 12:29:20 GMT
 ### Patches
 
 - Create new package for housing Fluent customizations.
-

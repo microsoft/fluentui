@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { Link, Icon } from 'office-ui-fabric-react';
-import { PlatformContext, Page, IPageProps, IPageSectionProps, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import {
+  PlatformContext,
+  Page,
+  IPageProps,
+  IPageSectionProps,
+  MarkdownHeader,
+} from '@uifabric/example-app-base/lib/index2';
 import { getSubTitle } from '../../../utilities/index';
 import * as styles from './StylesPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
@@ -34,7 +40,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="Color" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -47,7 +53,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="ArrangeSendBackward" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -60,7 +66,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="EmojiTabSymbols" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -73,7 +79,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="Tiles" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -86,7 +92,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="MiniExpand" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -99,7 +105,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="FontSize" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -112,20 +118,22 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="World" className={styles.cardIcon} />
               </div>
             </Link>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }
 
 export const StylesPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <StylesPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <StylesPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

@@ -12,12 +12,12 @@ const createTestManager: ManagerFactory<TestState, TestActions> = config =>
     ...config,
     actions: {
       change: (value: string) => () => ({ value }),
-      clear: () => () => ({ value: '' })
+      clear: () => () => ({ value: '' }),
     },
     state: {
       value: '',
-      ...config.state
-    }
+      ...config.state,
+    },
   });
 
 type TestComponentProps = Partial<TestState> & {
@@ -31,14 +31,14 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
     if (prevState.value !== nextState.value) {
       props.onChange(e as React.ChangeEvent | React.MouseEvent, {
         ...props,
-        value: nextState.value
+        value: nextState.value,
       });
     }
   });
   const { state, actions } = useStateManager(createTestManager, {
     mapPropsToInitialState: () => ({ value: props.defaultValue }),
     mapPropsToState: () => ({ value: props.value }),
-    sideEffects: [dispatchEffect]
+    sideEffects: [dispatchEffect],
   });
 
   return (

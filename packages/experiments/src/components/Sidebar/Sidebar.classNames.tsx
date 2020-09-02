@@ -19,7 +19,7 @@ export const getSidebarClassNames = memoizeFunction(
     return mergeStyleSets({
       root: [`ba-Sidebar`, styles.root, className, collapsed && ['collapsed', styles.rootCollapsed]],
       content: [`ba-SidebarContent`, styles.content, collapsed && ['collapsed', styles.contentCollapsed]],
-      footer: [`ba-SidebarFooter`, styles.footer]
+      footer: [`ba-SidebarFooter`, styles.footer],
     });
-  }
+  },
 );

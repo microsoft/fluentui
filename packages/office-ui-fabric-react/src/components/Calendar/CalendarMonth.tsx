@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
+import { KeyCodes, css, getRTL, IRefObject, initializeComponentRef, format } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -9,7 +9,7 @@ import {
   getYearEnd,
   getMonthStart,
   getMonthEnd,
-  compareDatePart
+  compareDatePart,
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
@@ -43,7 +43,7 @@ export interface ICalendarMonthState {
   isYearPickerVisible?: boolean;
 }
 
-export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
+export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
   /**
    * @deprecated unused, prefer 'ref' and 'componentRef' of ICalendarMonthProps.
    */
@@ -60,8 +60,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   public constructor(props: ICalendarMonthProps) {
     super(props);
 
+    initializeComponentRef(this);
+
     this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
+    props.strings.shortMonths.forEach((month, index) => {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
@@ -92,7 +94,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       dateTimeFormatter,
       minDate,
       maxDate,
-      yearPickerHidden
+      yearPickerHidden,
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
@@ -111,7 +113,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
           strings={{
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
+            headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
           }}
           ref={this._onCalendarYearRef}
         />
@@ -130,15 +133,24 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
     const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
 
+    const yearString = dateTimeFormatter.formatYear(navigatedDate);
+    const headerAriaLabel = strings.monthPickerHeaderAriaLabel
+      ? format(strings.monthPickerHeaderAriaLabel, yearString)
+      : yearString;
+
     return (
       <div className={css('ms-DatePicker-monthPicker', styles.monthPicker)}>
         <div className={css('ms-DatePicker-header', styles.header)}>
           {this.props.onHeaderSelect || !yearPickerHidden ? (
             <div
-              className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView)}
+              className={css(
+                'ms-DatePicker-currentYear js-showYearPicker',
+                styles.currentYear,
+                styles.headerToggleView,
+              )}
               onClick={this._onHeaderSelect}
               onKeyDown={this._onHeaderKeyDown}
-              aria-label={dateTimeFormatter.formatYear(navigatedDate)}
+              aria-label={headerAriaLabel}
               role="button"
               aria-atomic={true}
               aria-live="polite"
@@ -155,7 +167,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
                 className={css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
-                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
+                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds,
                 })}
                 disabled={!isPrevYearInBounds}
                 onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
@@ -172,7 +184,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               </button>
               <button
                 className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
-                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
+                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds,
                 })}
                 disabled={!isNextYearInBounds}
                 onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
@@ -211,10 +223,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                       <button
                         role={'gridcell'}
                         className={css('ms-DatePicker-monthOption', styles.monthOption, {
-                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]:
+                            highlightCurrentMonth && isCurrentMonth!,
                           ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
                             (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
+                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds,
                         })}
                         disabled={!isInBounds}
                         key={monthIndex}
@@ -298,12 +311,16 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
     const { strings } = this.props;
-    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+    return strings.nextYearRangeAriaLabel
+      ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
+      : '';
   };
 
   private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
     const { strings } = this.props;
-    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+    return strings.prevYearRangeAriaLabel
+      ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
+      : '';
   };
 
   private _onRenderYear = (year: number) => {

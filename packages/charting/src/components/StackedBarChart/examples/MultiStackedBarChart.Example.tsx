@@ -4,23 +4,95 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
-    { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
-    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
-    { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
-    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+    {
+      legend: 'Debit card numbers (EU and USA)',
+      data: 40,
+      color: DefaultPalette.red,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '40%',
+    },
+    {
+      legend: 'Passport numbers (USA)',
+      data: 23,
+      color: DefaultPalette.green,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '23%',
+    },
+    {
+      legend: 'Social security numbers',
+      data: 35,
+      color: DefaultPalette.yellow,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '35%',
+    },
+    {
+      legend: 'Credit card numbers',
+      data: 87,
+      color: DefaultPalette.blueLight,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+    },
+    {
+      legend: 'Tax identification numbers (USA)',
+      data: 87,
+      color: DefaultPalette.black,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+    },
   ];
   const firstChartPoints1: IChartDataPoint[] = [
-    { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
-    { legend: 'Passport numbers (USA)', data: 56, color: DefaultPalette.green },
-    { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
-    { legend: 'Credit card numbers', data: 92, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+    {
+      legend: 'Debit card numbers (EU and USA)',
+      data: 40,
+      color: DefaultPalette.red,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '40%',
+    },
+    {
+      legend: 'Passport numbers (USA)',
+      data: 56,
+      color: DefaultPalette.green,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '56%',
+    },
+    {
+      legend: 'Social security numbers',
+      data: 35,
+      color: DefaultPalette.yellow,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '35%',
+    },
+    {
+      legend: 'Credit card numbers',
+      data: 92,
+      color: DefaultPalette.blueLight,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '92%',
+    },
+    {
+      legend: 'Tax identification numbers (USA)',
+      data: 87,
+      color: DefaultPalette.black,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+    },
   ];
 
   const secondChartPoints: IChartDataPoint[] = [
-    { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
-    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green }
+    {
+      legend: 'Phone Numbers',
+      data: 40,
+      color: DefaultPalette.blue,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+    },
+    {
+      legend: 'Credit card Numbers',
+      data: 23,
+      color: DefaultPalette.green,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+    },
   ];
 
   const hideRatio: boolean[] = [true, false];
@@ -30,16 +102,16 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const data: IChartProps[] = [
     {
       chartTitle: 'Monitored',
-      chartData: firstChartPoints
+      chartData: firstChartPoints,
     },
     {
       chartTitle: 'Monitored Second Chart',
-      chartData: firstChartPoints1
+      chartData: firstChartPoints1,
     },
     {
       chartTitle: 'Unmonitored',
-      chartData: secondChartPoints
-    }
+      chartData: secondChartPoints,
+    },
   ];
 
   return (
@@ -51,6 +123,7 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       href={'https://developer.microsoft.com/en-us/'}
       focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
       legendsOverflowProps={{ focusZoneProps: { 'aria-label': 'legends Container' } }}
+      legendsOverflowText={'OverFlow Items'}
     />
   );
 };

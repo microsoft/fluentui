@@ -9,7 +9,7 @@ import { DocumentCardLocationGlobalClassNames as locationClassNames } from './Do
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
   rootActionable: 'ms-DocumentCard--actionable',
-  rootCompact: 'ms-DocumentCard--compact'
+  rootCompact: 'ms-DocumentCard--compact',
 };
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
@@ -31,13 +31,13 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         position: 'relative',
         selectors: {
           ':focus': {
-            outline: '0px solid'
+            outline: '0px solid',
           },
           [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
-            paddingTop: '4px'
-          }
-        }
+            paddingTop: '4px',
+          },
+        },
       },
       actionable && [
         classNames.rootActionable,
@@ -45,7 +45,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           selectors: {
             ':hover': {
               cursor: 'pointer',
-              borderColor: palette.neutralTertiaryAlt
+              borderColor: palette.neutralTertiaryAlt,
             },
             ':hover:after': {
               content: '" "',
@@ -55,10 +55,10 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
               bottom: 0,
               left: 0,
               border: `1px solid ${palette.neutralTertiaryAlt}`,
-              pointerEvents: 'none'
-            }
-          }
-        }
+              pointerEvents: 'none',
+            },
+          },
+        },
       ],
       compact && [
         classNames.rootCompact,
@@ -71,24 +71,24 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
               borderRight: `1px solid ${palette.neutralLight}`,
               borderBottom: 0, // Remove the usual border from the preview
               maxHeight: '106px',
-              maxWidth: '144px'
+              maxWidth: '144px',
             },
             [`.${previewClassNames.icon}`]: {
               maxHeight: '32px',
-              maxWidth: '32px'
+              maxWidth: '32px',
             },
             [`.${activityClassNames.root}`]: {
-              paddingBottom: '12px'
+              paddingBottom: '12px',
             },
             [`.${titleClassNames.root}`]: {
               paddingBottom: '12px 16px 8px 16px',
               fontSize: fonts.mediumPlus.fontSize,
-              lineHeight: '16px'
-            }
-          }
-        }
+              lineHeight: '16px',
+            },
+          },
+        },
       ],
-      className
-    ]
+      className,
+    ],
   };
 };

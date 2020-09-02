@@ -37,7 +37,20 @@ export interface IColorPickerProps {
   onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
 
   /**
-   * Whether to hide the alpha control slider.
+   * `alpha` (the default) means display a slider and text field for editing alpha values.
+   * `transparency` also displays a slider and text field but for editing transparency values.
+   * `none` hides these controls.
+   *
+   * Alpha represents the opacity of the color, whereas transparency represents the transparentness
+   * of the color: i.e. a 30% transparent color has 70% opaqueness.
+   *
+   * @defaultvalue 'alpha'
+   */
+  alphaType?: 'alpha' | 'transparency' | 'none';
+
+  /**
+   * Whether to hide the alpha (or transparency) slider and text field.
+   * @deprecated Use `alphaType: 'none'`
    */
   alphaSliderHidden?: boolean;
 
@@ -138,9 +151,20 @@ export interface IColorPickerStrings {
   alpha?: string;
 
   /**
+   * Label for the transparency text field.
+   * @defaultvalue Transparency
+   */
+  transparency?: string;
+
+  /**
    * Customized aria-label for the alpha slider.
    */
   alphaAriaLabel?: string;
+
+  /**
+   * Customized aria-label for the transparency slider.
+   */
+  transparencyAriaLabel?: string;
 
   /**
    * Aria label for the hue slider.
@@ -179,17 +203,8 @@ export interface IColorPickerStrings {
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorPickerStyleProps {
-  /**
-   * Theme (provided through customization).
-   */
-  theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the ColorPicker.
-   */
-  className?: string;
-}
+export type IColorPickerStyleProps = Required<Pick<IColorPickerProps, 'theme'>> &
+  Pick<IColorPickerProps, 'className' | 'alphaType'>;
 
 /**
  * {@docCategory ColorPicker}
@@ -224,6 +239,11 @@ export interface IColorPickerStyles {
    * Style set for the table cell that contains the hex label.
    */
   tableHexCell?: IStyle;
+
+  /**
+   * Style set for the table cell that contains the alpha or transparency label.
+   */
+  tableAlphaCell?: IStyle;
 
   /**
    * Style set for each text field input.

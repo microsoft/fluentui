@@ -1,8 +1,9 @@
-import { selectors } from './dropdownMoveFocusOnTab-example';
+import { selectors, inputItems } from './dropdownMoveFocusOnTab-example';
 
 const triggerButton = `.${selectors.triggerButtonClass}`;
 const nextFocusableSibling = `#${selectors.nextFocusableSibling}`;
 const previousFocusableSibling = `#${selectors.previousFocusableSibling}`;
+const listItem = `.${selectors.listItem}`;
 
 describe('Dropdown', () => {
   describe('Focus behavior', () => {
@@ -28,6 +29,16 @@ describe('Dropdown', () => {
 
       expect(await e2e.isFocused(triggerButton)).toBe(false);
       expect(await e2e.isFocused(previousFocusableSibling)).toBe(true);
+    });
+
+    it('closes dropdown on outside click', async () => {
+      await e2e.clickOn(triggerButton);
+
+      expect(await e2e.count(listItem)).toBe(inputItems.length);
+
+      await e2e.clickOn(previousFocusableSibling);
+
+      expect(await e2e.count(listItem)).toBe(0);
     });
   });
 });

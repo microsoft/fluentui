@@ -7,4 +7,7 @@ preset();
 
 task('jest-dom', jestDom);
 
-task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom', webpackDevServerWithCompileResolution.done));
+task(
+  'jest-dom-with-webpack',
+  series(webpackDevServerWithCompileResolution, 'jest-dom', webpackDevServerWithCompileResolution.done),
+);

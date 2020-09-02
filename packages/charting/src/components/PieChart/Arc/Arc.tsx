@@ -6,7 +6,7 @@ import { getStyles } from './Arc.styles';
 
 export class Arc extends React.Component<IArcProps, {}> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc()
+    arc: shape.arc(),
   };
 
   public state: {} = {};
@@ -31,8 +31,8 @@ export class Arc extends React.Component<IArcProps, {}> {
 export class LabeledArc extends Arc {
   public render(): JSX.Element {
     const { data, arc } = this.props;
-    const [labelX, labelY] = arc.centroid(data),
-      labelTranslate = `translate(${labelX}, ${labelY})`;
+    const [labelX, labelY] = arc.centroid(data);
+    const labelTranslate = `translate(${labelX}, ${labelY})`;
 
     return (
       <g className="arc">

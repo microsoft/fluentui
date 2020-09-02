@@ -1,5 +1,6 @@
 import { IColor } from './interfaces';
 import { _rgbaOrHexString } from './_rgbaOrHexString';
+import { MAX_COLOR_ALPHA } from './consts';
 
 /**
  * Gets a color with the given alpha value and the same other components as `color`.
@@ -8,7 +9,8 @@ import { _rgbaOrHexString } from './_rgbaOrHexString';
 export function updateA(color: IColor, a: number): IColor {
   return {
     ...color,
-    a: a,
-    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex)
+    a,
+    t: MAX_COLOR_ALPHA - a,
+    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex),
   };
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IFocusZoneProps } from '../../FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -20,7 +20,7 @@ export interface IOverflowSet {
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
@@ -53,6 +53,13 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * @defaultvalue false
    */
   vertical?: boolean;
+
+  /**
+   * Controls wether or not the overflow button is placed at the start or end of the items.
+   * This gives a reveresed visual behavior but maintains correct keyboard navigation.
+   * @defaultValue 'end'
+   */
+  overflowSide?: 'start' | 'end';
 
   /**
    * An array of items to be passed to overflow contextual menu
@@ -124,7 +131,8 @@ export interface IOverflowSetStyles {
 }
 
 /**
- * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * The props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory OverflowSet}
  */
 export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;

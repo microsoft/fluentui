@@ -6,13 +6,13 @@ export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent
     { legend: 'Malware', data: 40, color: '#00AE56' },
     { legend: 'Phishing', data: 23, color: '#662D91' },
     { legend: 'Spam and bulk', data: 35, color: '#0078D4' },
-    { data: 87, placeHolder: true }
+    { data: 87, placeHolder: true },
   ];
 
   const secondChartPoints: IChartDataPoint[] = [
     { legend: 'Malicious links', data: 40, color: '#FFAA44' },
     { legend: 'Malicious attachments', data: 23, color: '#038387' },
-    { data: 106, placeHolder: true }
+    { data: 106, placeHolder: true },
   ];
 
   const hideRatio: boolean[] = [true, true];
@@ -20,13 +20,20 @@ export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent
   const data: IChartProps[] = [
     {
       chartTitle: 'Currently blocked',
-      chartData: firstChartPoints
+      chartData: firstChartPoints,
     },
     {
       chartTitle: 'Increased protection needed against detected threats',
-      chartData: secondChartPoints
-    }
+      chartData: secondChartPoints,
+    },
   ];
 
-  return <MultiStackedBarChart data={data} hideRatio={hideRatio} width={600} href={'https://developer.microsoft.com/en-us/'} />;
+  return (
+    <MultiStackedBarChart
+      data={data}
+      hideRatio={hideRatio}
+      width={600}
+      href={'https://developer.microsoft.com/en-us/'}
+    />
+  );
 };

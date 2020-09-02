@@ -6,7 +6,7 @@ import {
   IPageSectionProps,
   MarkdownHeader,
   ColorPalette,
-  IColorSwatch
+  IColorSwatch,
 } from '@uifabric/example-app-base/lib/index2';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
@@ -14,12 +14,15 @@ import { IThemeSlotsPageProps, IThemeSlotsPageStyles, IThemeSlotsPageStyleProps 
 import { ThemeSlotsPageProps } from './ThemeSlotsPage.doc';
 
 const getClassNames = classNamesFunction<IThemeSlotsPageStyleProps, IThemeSlotsPageStyles>();
-const baseUrl = 'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
+const baseUrl =
+  'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
 
 // Color palettes
+/* eslint-disable import/no-extraneous-dependencies */
 const themeColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-slots.json');
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-neutrals.json');
 const accentColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-accents.json');
+/* eslint-enable import/no-extraneous-dependencies */
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;
@@ -61,13 +64,13 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
               <MarkdownHeader as="h3">Accent colors</MarkdownHeader>
               <ColorPalette colors={accentColors} />
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/web/ThemeSlotsImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
+        },
       ];
 
     default:

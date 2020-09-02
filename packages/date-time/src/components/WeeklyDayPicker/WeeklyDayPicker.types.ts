@@ -1,19 +1,23 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
 import {
   ICalendarStrings,
   DayOfWeek,
   ICalendarFormatDateCallbacks,
   ICalendarIconStrings,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';
+import {
+  ICalendarDayGridProps,
+  ICalendarDayGridStyleProps,
+  ICalendarDayGridStyles,
+} from '../CalendarDayGrid/CalendarDayGrid.types';
 
 export interface IWeeklyDayPicker {
   focus(): void;
 }
 
-export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
+export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
   /**
    * Optional callback to access the IWeeklyDayPicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -53,7 +57,8 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date) => void;
 

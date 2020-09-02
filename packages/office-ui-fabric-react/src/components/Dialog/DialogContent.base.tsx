@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { classNamesFunction, css, warnDeprecations, initializeComponentRef } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -10,23 +10,24 @@ const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogConten
 
 const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooterProps>).type;
 
+const COMPONENT_NAME = 'DialogContent';
+
 @withResponsiveMode
-export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
+export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {
     showCloseButton: false,
     className: '',
     topButtonsProps: [],
-    closeButtonAriaLabel: 'Close'
+    closeButtonAriaLabel: 'Close',
   };
 
   constructor(props: IDialogContentProps) {
     super(props);
 
-    if (process.env.NODE_ENV !== 'production') {
-      this._warnDeprecations({
-        titleId: 'titleProps.id'
-      });
-    }
+    initializeComponentRef(this);
+    warnDeprecations(COMPONENT_NAME, props, {
+      titleId: 'titleProps.id',
+    });
   }
 
   public render(): JSX.Element {
@@ -38,13 +39,13 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       subTextId,
       subText,
       titleProps = {},
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       titleId,
       title,
       type,
       styles,
       theme,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -52,7 +53,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       className,
       isLargeHeader: type === DialogType.largeHeader,
       isClose: type === DialogType.close,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     });
 
     const groupings = this._groupChildren();
@@ -68,7 +69,13 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <div id={titleId} role="heading" aria-level={2} {...titleProps} className={css(classNames.title, titleProps.className)}>
+          <div
+            id={titleId}
+            role="heading"
+            aria-level={1}
+            {...titleProps}
+            className={css(classNames.title, titleProps.className)}
+          >
             {title}
           </div>
           <div className={classNames.topButton}>
@@ -103,7 +110,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   private _groupChildren(): { footers: any[]; contents: any[] } {
     const groupings: { footers: any[]; contents: any[] } = {
       footers: [],
-      contents: []
+      contents: [],
     };
 
     React.Children.map(this.props.children, child => {

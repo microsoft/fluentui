@@ -30,7 +30,11 @@ const Usage = () => (
       description="Context poup can be applied on a non-focusable element if the element contains focusable children."
       examplePath="components/Popup/Usage/PopupExampleContextOnElement"
     />
-    <ComponentExample title="Nested" description="Popups can be nested." examplePath="components/Popup/Usage/PopupExampleNested" />
+    <ComponentExample
+      title="Nested"
+      description="Popups can be nested."
+      examplePath="components/Popup/Usage/PopupExampleNested"
+    />
     <ComponentExample
       title="With close button"
       description="Popups can have close button."

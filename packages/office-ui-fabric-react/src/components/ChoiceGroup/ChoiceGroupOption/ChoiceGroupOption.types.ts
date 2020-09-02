@@ -62,7 +62,8 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
 }
 
 /**
- * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * Defines props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyleProps {

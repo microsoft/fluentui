@@ -3,7 +3,7 @@ import {
   ContextualMenuItemType,
   DirectionalHint,
   IContextualMenuItem,
-  IContextualMenuProps
+  IContextualMenuProps,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -22,7 +22,7 @@ const keys: string[] = [
   'splitButtonSubMenuLeftDirection',
   'emailMessageLeft',
   'calendarEventLeft',
-  'disabledPrimarySplit'
+  'disabledPrimarySplit',
 ];
 
 export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
@@ -36,7 +36,7 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
         setSelection({ ...selection, [item.key]: selection[item.key] === undefined ? true : !selection[item.key] });
       }
     },
-    [selection]
+    [selection],
   );
 
   const menuItems: IContextualMenuItem[] = React.useMemo(
@@ -46,25 +46,25 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
         text: 'New',
         canCheck: true,
         isChecked: selection[keys[0]],
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
       },
       {
         key: keys[1],
         text: 'Share',
         canCheck: true,
         isChecked: selection[keys[1]],
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
       },
       {
         key: keys[2],
         text: 'Mobile',
         canCheck: true,
         isChecked: selection[keys[2]],
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
       },
       {
         key: 'divider_1',
-        itemType: ContextualMenuItemType.Divider
+        itemType: ContextualMenuItemType.Divider,
       },
 
       {
@@ -72,19 +72,19 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
         text: 'Print',
         canCheck: true,
         isChecked: selection[keys[3]],
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
       },
       {
         key: keys[4],
         text: 'Music',
         canCheck: true,
         isChecked: selection[keys[4]],
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
       },
       {
         key: keys[5],
         iconProps: {
-          iconName: 'MusicInCollectionFill'
+          iconName: 'MusicInCollectionFill',
         },
         subMenuProps: {
           items: [
@@ -93,27 +93,28 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
               text: 'Email message',
               canCheck: true,
               isChecked: selection[keys[6]],
-              onClick: onToggleSelect
+              onClick: onToggleSelect,
             },
             {
               key: keys[7],
               text: 'Calendar event',
               canCheck: true,
               isChecked: selection[keys[7]],
-              onClick: onToggleSelect
-            }
-          ]
+              onClick: onToggleSelect,
+            },
+          ],
         },
         text: 'Split Button',
         canCheck: true,
         isChecked: selection[keys[5]],
         split: true,
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
+        ariaLabel: 'Split Button. Click to check/uncheck. Press right arrow key to open submenu.',
       },
       {
         key: keys[8],
         iconProps: {
-          iconName: 'MusicInCollectionFill'
+          iconName: 'MusicInCollectionFill',
         },
         subMenuProps: {
           items: [
@@ -122,28 +123,29 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
               text: 'Email message',
               canCheck: true,
               isChecked: selection[keys[9]],
-              onClick: onToggleSelect
+              onClick: onToggleSelect,
             },
             {
               key: keys[10],
               text: 'Calendar event',
               canCheck: true,
               isChecked: selection[keys[10]],
-              onClick: onToggleSelect
-            }
-          ]
+              onClick: onToggleSelect,
+            },
+          ],
         },
         text: 'Split Button',
         canCheck: true,
         isChecked: selection[keys[8]],
         split: true,
         onClick: onToggleSelect,
-        disabled: true
+        disabled: true,
+        ariaLabel: 'Split Button. Click to check/uncheck. Press right arrow key to open submenu.',
       },
       {
         key: keys[11],
         iconProps: {
-          iconName: 'MusicInCollectionFill'
+          iconName: 'MusicInCollectionFill',
         },
         subMenuProps: {
           directionalHint: DirectionalHint.leftCenter,
@@ -153,27 +155,28 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
               text: 'Email message',
               canCheck: true,
               isChecked: selection[keys[12]],
-              onClick: onToggleSelect
+              onClick: onToggleSelect,
             },
             {
               key: keys[13],
               text: 'Calendar event',
               canCheck: true,
               isChecked: selection[keys[13]],
-              onClick: onToggleSelect
-            }
-          ]
+              onClick: onToggleSelect,
+            },
+          ],
         },
         text: 'Split Button Left Menu',
         canCheck: true,
         isChecked: selection[keys[11]],
         split: true,
-        onClick: onToggleSelect
+        onClick: onToggleSelect,
+        ariaLabel: 'Split Button Left Menu. Click to check/uncheck. Press right arrow key to open submenu.',
       },
       {
         key: keys[12],
         iconProps: {
-          iconName: 'MusicInCollectionFill'
+          iconName: 'MusicInCollectionFill',
         },
         subMenuProps: {
           items: [
@@ -182,34 +185,35 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
               name: 'Email message',
               canCheck: true,
               isChecked: selection[keys[12]],
-              onClick: onToggleSelect
-            }
-          ]
+              onClick: onToggleSelect,
+            },
+          ],
         },
         name: 'Split Button Disabled Primary',
         split: true,
-        primaryDisabled: true
+        primaryDisabled: true,
+        ariaLabel: 'Split Button Disabled Primary. Click to check/uncheck. Press right arrow key to open submenu.',
       },
       {
         key: keys[13],
         iconProps: {
-          iconName: selection![keys[13]] ? 'SingleBookmarkSolid' : 'SingleBookmark'
+          iconName: selection![keys[13]] ? 'SingleBookmarkSolid' : 'SingleBookmark',
         },
         name: selection![keys[13]] ? 'Toogled command no checkmark' : 'Toogle command no checkmark',
         canCheck: false,
         isChecked: selection![keys[13]],
-        onClick: onToggleSelect
-      }
+        onClick: onToggleSelect,
+      },
     ],
-    [selection, onToggleSelect]
+    [selection, onToggleSelect],
   );
 
   const menuProps: IContextualMenuProps = React.useMemo(
     () => ({
       shouldFocusOnMount: true,
-      items: menuItems
+      items: menuItems,
     }),
-    [menuItems]
+    [menuItems],
   );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;

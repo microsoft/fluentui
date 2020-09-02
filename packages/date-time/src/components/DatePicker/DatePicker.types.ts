@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
@@ -16,6 +16,9 @@ export interface IDatePicker {
 
   /** Reset the state of the picker to the default */
   reset(): void;
+
+  /** Open the datepicker callout */
+  showDatePickerPopup(): void;
 }
 
 /**
@@ -294,4 +297,5 @@ export interface IDatePickerStyles {
   textField: IStyle;
   callout: IStyle;
   icon: IStyle;
+  wrapper?: IStyle;
 }

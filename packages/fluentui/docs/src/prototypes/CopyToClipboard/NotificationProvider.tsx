@@ -1,4 +1,4 @@
-import { Portal, Tooltip, createComponent, TooltipProps } from '@fluentui/react';
+import { Portal, Tooltip, createComponent, TooltipProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type NotificationProps = {
@@ -48,11 +48,11 @@ export const Notification = createComponent<NotificationProps>({
       open: true,
       pointing: false,
       target,
-      trigger
+      trigger,
     };
 
     if (target || trigger) {
-      return Tooltip.create({ ...tooltipProps, offset: '0 10' });
+      return Tooltip.create({ ...tooltipProps, offset: [0, 10] });
     }
 
     return (
@@ -61,11 +61,11 @@ export const Notification = createComponent<NotificationProps>({
           <div className={classes.overlay}>
             {Tooltip.create({
               ...tooltipProps,
-              trigger: <div className={classes.content} />
+              trigger: <div className={classes.content} />,
             })}
           </div>
         </div>
       </Portal>
     );
-  }
+  },
 });

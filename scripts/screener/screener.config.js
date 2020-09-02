@@ -7,7 +7,7 @@ const cp = require('child_process');
 function getCurrentHash() {
   try {
     const buffer = cp.execSync('git rev-list --parents -n 1 HEAD', {
-      stdio: ['pipe', 'pipe', process.stderr]
+      stdio: ['pipe', 'pipe', process.stderr],
     });
 
     if (buffer) {
@@ -32,7 +32,7 @@ const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
 
 require('tsconfig-paths').register({
   baseUrl: config.path_base,
-  paths: compilerOptions.paths
+  paths: compilerOptions.paths,
 });
 
 const baseBranch = 'master';
@@ -40,14 +40,14 @@ const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
-  projectRepo: 'OfficeDev/office-ui-fabric-react/fluentui',
+  projectRepo: 'microsoft/fluentui/fluentui',
 
   apiKey: process.env.SCREENER_API_KEY,
 
   tunnel: {
     host: `${config.server_host}:${config.server_port}`,
     gzip: true, // gzip compress all content being served from tunnel host
-    cache: true // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
+    cache: true, // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
   },
 
   diffOptions: {
@@ -58,31 +58,19 @@ module.exports = {
     minLayoutPosition: 1, // Optional threshold for Layout changes. Defaults to 4 pixels.
     minLayoutDimension: 1, // Optional threshold for Layout changes. Defaults to 10 pixels.
     minShiftGraphic: 1, // Optional threshold for pixel shifts in graphics.
-    compareSVGDOM: false // Pass if SVG DOM is the same. Defaults to false.
+    compareSVGDOM: false, // Pass if SVG DOM is the same. Defaults to false.
   },
 
   // screenshot every example in maximized mode
   states: require('./screener.states').default,
 
-  // CircleCI config
-  // ...(process.env.CI && {
-  //   baseBranch: 'master',
-  //   // Disable exit code to fail in Github Actions
-  //   // failureExitCode: 0,
-  //   // GITHUB_REF can be:
-  //   // - refs/heads/feature-branch-1 for "push"
-  //   // - refs/pull/2040/merge for "pull_request"
-  //   branch: process.env.GITHUB_REF.split('/')[2],
-  //   commit: process.env.GITHUB_SHA
-  // })
-
   alwaysAcceptBaseBranch: true,
-
   baseBranch,
+  failureExitCode: 0,
 
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
     ? {
-        commit: getCurrentHash()
+        commit: getCurrentHash(),
       }
-    : null)
+    : null),
 };

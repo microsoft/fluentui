@@ -1,11 +1,9 @@
 import { UseKnobOptions } from './types';
-import useKnob from './useKnob';
+import { useKnob } from './useKnob';
 
-const useStringKnob = (options: UseKnobOptions<string>) =>
+export const useStringKnob = (options: UseKnobOptions<string>) =>
   useKnob<string>({
     initialValue: '',
     type: 'string',
-    ...options
+    ...options,
   });
-
-export default useStringKnob;

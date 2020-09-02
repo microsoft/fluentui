@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Button, Dropdown, Popup } from '@fluentui/react';
+import { Button, Dropdown, Popup, dropdownSlotClassNames, popupContentClassName } from '@fluentui/react-northstar';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
 
 export const selectors = {
   popupTriggerId: 'trigger',
-  popupContentClass: Popup.slotClassNames.content,
-  dropdownTriggerClass: Dropdown.slotClassNames.triggerButton
+  popupContentClass: popupContentClassName,
+  dropdownTriggerClass: dropdownSlotClassNames.triggerButton,
 };
 
 const PopupEscHandlingExample = () => (
@@ -20,7 +20,7 @@ const PopupEscHandlingExample = () => (
           items={inputItems}
           placeholder="Select your hero"
           getA11ySelectionMessage={{
-            onAdd: item => `${item} has been selected.`
+            onAdd: item => `${item} has been selected.`,
           }}
         />
       </>

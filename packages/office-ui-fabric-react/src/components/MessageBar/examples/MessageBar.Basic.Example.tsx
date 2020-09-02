@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { MessageBarButton, Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from 'office-ui-fabric-react';
+import {
+  MessageBarButton,
+  Link,
+  Stack,
+  StackItem,
+  MessageBar,
+  MessageBarType,
+  ChoiceGroup,
+  IStackProps,
+} from 'office-ui-fabric-react';
 
 interface IExampleProps {
   resetChoice?: () => void;
@@ -7,17 +16,17 @@ interface IExampleProps {
 
 const horizontalStackProps: IStackProps = {
   horizontal: true,
-  tokens: { childrenGap: 16 }
+  tokens: { childrenGap: 16 },
 };
 const verticalStackProps: IStackProps = {
   styles: { root: { overflow: 'hidden', width: '100%' } },
-  tokens: { childrenGap: 20 }
+  tokens: { childrenGap: 20 },
 };
 
 const choiceGroupStyles = {
   label: {
-    maxWidth: 250
-  }
+    maxWidth: 250,
+  },
 };
 
 const DefaultExample = () => (
@@ -30,7 +39,12 @@ const DefaultExample = () => (
 );
 
 const ErrorExample = (p: IExampleProps) => (
-  <MessageBar messageBarType={MessageBarType.error} isMultiline={false} onDismiss={p.resetChoice} dismissButtonAriaLabel="Close">
+  <MessageBar
+    messageBarType={MessageBarType.error}
+    isMultiline={false}
+    onDismiss={p.resetChoice}
+    dismissButtonAriaLabel="Close"
+  >
     Error MessageBar with single line, with dismiss button.
     <Link href="www.bing.com" target="_blank">
       Visit our website.
@@ -47,13 +61,14 @@ const BlockedExample = (p: IExampleProps) => (
     truncated={true}
     overflowButtonAriaLabel="See more"
   >
-    <b>Blocked MessageBar - single line, with dismiss button and truncated text.</b> Truncation is not available if you use action buttons
-    or multiline and should be used sparingly. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis
-    tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci
-    nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec
-    pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet
-    enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum
-    mauris.
+    <b>Blocked MessageBar - single line, with dismiss button and truncated text.</b> Truncation is not available if you
+    use action buttons or multiline and should be used sparingly. Lorem ipsum dolor sit amet, consectetur adipiscing
+    elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum
+    aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac
+    efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
+    faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce
+    massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget,
+    condimentum mauris.
   </MessageBar>
 );
 
@@ -123,11 +138,12 @@ const WarningExample2 = (p: IExampleProps) => (
       </div>
     }
   >
-    <b>Warning defaults to multiline</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique,
-    odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam
-    condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar
-    commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim.
-    Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+    <b>Warning defaults to multiline</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a
+    lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper
+    scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras
+    faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse
+    platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu
+    mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -137,43 +153,43 @@ const WarningExample2 = (p: IExampleProps) => (
 const choiceOptions = [
   {
     key: 'default',
-    text: 'Default'
+    text: 'Default',
   },
   {
     key: 'error',
-    text: 'Error MessageBar'
+    text: 'Error MessageBar',
   },
   {
     key: 'blocked',
-    text: 'Blocked MessageBar'
+    text: 'Blocked MessageBar',
   },
   {
     key: 'severe',
-    text: 'SevereWarning MessageBar'
+    text: 'SevereWarning MessageBar',
   },
   {
     key: 'success',
-    text: 'Success MessageBar'
+    text: 'Success MessageBar',
   },
   {
     key: 'warning',
-    text: 'Warning MessageBar - single line'
+    text: 'Warning MessageBar - single line',
   },
   {
     key: 'warning2',
-    text: 'Warning MessageBar - multiline'
+    text: 'Warning MessageBar - multiline',
   },
   {
     key: 'all',
-    text: 'Show All'
-  }
+    text: 'Show All',
+  },
 ];
 
 export const MessageBarBasicExample: React.FunctionComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
 
-  const resetChoice = () => setChoice(undefined);
+  const resetChoice = React.useCallback(() => setChoice(undefined), []);
 
   return (
     <Stack {...horizontalStackProps}>
@@ -182,7 +198,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
           styles={choiceGroupStyles}
           label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
           selectedKey={choice}
-          // tslint:disable-next-line: jsx-no-lambda
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={(e, v) => setChoice(v!.key)}
           options={choiceOptions}
         />

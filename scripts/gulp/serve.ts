@@ -10,15 +10,15 @@ const serve = (
   directoryPath: string,
   host: string,
   port: number,
-  configureMiddleware: (express: Express) => Express = app => app
+  configureMiddleware: (express: Express) => Express = app => app,
 ): Promise<Server> => {
   return new Promise((resolve, reject) => {
     const server = configureMiddleware(
       express().use(
         historyApiFallback({
-          verbose: false
-        })
-      )
+          verbose: false,
+        }),
+      ),
     )
       .use(express.static(directoryPath))
       .listen(port, host, err => {

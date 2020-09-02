@@ -2,6 +2,337 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/styling_v7.15.2",
+      "version": "7.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Fluent theme constants to @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/styling_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/styling_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new card semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "0bae11fc8b91cdbf1cf9d0d78dfe5c0e77766367",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/styling_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high contrast Edge Chormium selector to remove unneeded condition.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/styling_v7.13.3",
+      "version": "7.13.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/styling_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new rounded corners to theme",
+            "author": "phkuo@microsoft.com",
+            "commit": "38f0dbf9228795618bc9c483f37527ae0b7e05d6",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/styling_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "@uifabric/styling_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure theme.ts is already included when importing from styling package",
+            "author": "xgao@microsoft.com",
+            "commit": "8e8238585646a6e308916ded83f539022d0a66fe",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/styling_v7.12.16",
+      "version": "7.12.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getGlobalClassNames: correct return type",
+            "author": "xgao@microsoft.com",
+            "commit": "fdb7c21dc40542421b1f165323753326f8cf8807",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/styling_v7.12.15",
+      "version": "7.12.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update styling package sideEffects to only the ones needed",
+            "author": "xgao@microsoft.com",
+            "commit": "e7aad10a8619f34d3911e13b26d0e41d21675641",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/styling_v7.12.10",
+      "version": "7.12.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update semantic colors doc comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/styling_v7.12.4",
+      "version": "7.12.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add selector to turn off high contrast adjustment in (only) Edge Chromium browser",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/styling_v7.12.3",
+      "version": "7.12.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/styling_v7.12.2",
+      "version": "7.12.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Styling tsconfig: adding noImplicitAny and noUnusedLocals.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ca1c8da58be3b2a3dd4443d2c5cfc32b044c5015",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/styling_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/styling_v7.11.8",
+      "version": "7.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove outdated comment",
+            "author": "phkuo@microsoft.com",
+            "commit": "ae4e2db15a4cf25dc4abc4aef8f304f29002374a",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/styling_v7.11.3",
+      "version": "7.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/styling_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Reference custom-global everywhere for partial Set types",
+            "author": "elcraig@microsoft.com"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/styling_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding bold font weight definition",
+            "author": "dzearing@microsoft.com",
+            "commit": "0f70497d902084c12ba135c9ee1d2751267f7a4e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/styling_v7.10.22",
+      "version": "7.10.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/styling_v7.10.21",
+      "version": "7.10.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/styling_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/styling_v7.10.10",
       "version": "7.10.10",

@@ -16,27 +16,41 @@ exports[`Link renders Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:active {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active {
+        color: LinkText;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: LinkText;
       }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   href="#"
   onClick={[Function]}
@@ -80,33 +94,44 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+        color: LinkText;
       }
-      @media screen and (-ms-high-contrast: white-on-black){& {
-        color: #FFFF00;
-      }
-      @media screen and (-ms-high-contrast: black-on-white){& {
-        color: #00009F;
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
       }
       &:active {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active {
+        color: LinkText;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: LinkText;
       }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
 >
@@ -131,27 +156,41 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:active {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active {
+        color: LinkText;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: LinkText;
       }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   href="#"
   onClick={[Function]}
@@ -194,33 +233,44 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+        color: LinkText;
       }
-      @media screen and (-ms-high-contrast: white-on-black){& {
-        color: #FFFF00;
-      }
-      @media screen and (-ms-high-contrast: black-on-white){& {
-        color: #00009F;
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
       }
       &:active {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active {
+        color: LinkText;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: LinkText;
       }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
   type="button"
@@ -248,11 +298,13 @@ exports[`Link renders disabled Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:link {
@@ -303,18 +355,17 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+        color: LinkText;
       }
-      @media screen and (-ms-high-contrast: white-on-black){& {
-        color: #FFFF00;
-      }
-      @media screen and (-ms-high-contrast: black-on-white){& {
-        color: #00009F;
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
       }
       &:link {
         pointer-events: none;
@@ -366,33 +417,44 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+        color: LinkText;
       }
-      @media screen and (-ms-high-contrast: white-on-black){& {
-        color: #FFFF00;
-      }
-      @media screen and (-ms-high-contrast: black-on-white){& {
-        color: #00009F;
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
       }
       &:active {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active {
+        color: LinkText;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: LinkText;
       }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: active){&:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
 >

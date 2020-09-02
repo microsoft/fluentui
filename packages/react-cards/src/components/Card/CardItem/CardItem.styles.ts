@@ -1,21 +1,21 @@
-import { getGlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { ICardItemComponent, ICardItemStylesReturnType, ICardItemTokenReturnType } from './CardItem.types';
 
 const GlobalClassNames = {
-  root: 'ms-CardItem'
+  root: 'ms-CardItem',
 };
 
 const baseTokens: ICardItemComponent['tokens'] = {
-  padding: 0
+  padding: 0,
 };
 
 const filledTokens: ICardItemComponent['tokens'] = {
-  margin: 0
+  margin: 0,
 };
 
 export const CardItemTokens: ICardItemComponent['tokens'] = (props, theme): ICardItemTokenReturnType => [
   baseTokens,
-  props.fill && filledTokens
+  props.fill && filledTokens,
 ];
 
 export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, tokens): ICardItemStylesReturnType => {
@@ -27,8 +27,8 @@ export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, token
       classNames.root,
       {
         margin: tokens.margin,
-        padding: tokens.padding
-      }
-    ]
+        padding: tokens.padding,
+      },
+    ],
   };
 };

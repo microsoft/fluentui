@@ -13,8 +13,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": false,
     "lib": ["es5", "dom"],
-    "types": ["webpack-env"],
-    "paths": {}
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

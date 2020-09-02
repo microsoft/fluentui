@@ -1,5 +1,5 @@
 /**
- * @deprecated Const enum use is deprecated. See GitHub issue #7110: https://github.com/OfficeDev/office-ui-fabric-react/issues/7110
+ * @deprecated Const enum use is deprecated. See GitHub issue #7110: https://github.com/microsoft/fluentui/issues/7110
  */
 export const enum IconNames {
   PageLink = 'PageLink',
@@ -1802,8 +1802,8 @@ export const enum IconNames {
   TableComputed = 'TableComputed',
   DecreaseIndentLegacy = 'DecreaseIndentLegacy',
   IncreaseIndentLegacy = 'IncreaseIndentLegacy',
-  SizeLegacy = 'SizeLegacy'
+  SizeLegacy = 'SizeLegacy',
 }
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 export type IconNamesInput = keyof typeof IconNames;

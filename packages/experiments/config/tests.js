@@ -9,7 +9,7 @@ initializeIcons('');
 
 // Suppress icon warnings.
 setIconOptions({
-  disableWarnings: true
+  disableWarnings: true,
 });
 
 // Mock requestAnimationFrame for React 16+.

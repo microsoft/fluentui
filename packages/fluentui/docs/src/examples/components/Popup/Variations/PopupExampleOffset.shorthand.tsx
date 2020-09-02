@@ -1,26 +1,34 @@
 import * as React from 'react';
-import { Button, Grid, Popup } from '@fluentui/react';
+import { Button, Grid, Popup } from '@fluentui/react-northstar';
+import { ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
-const renderButton = () => (
-  <Button
-    icon={{
-      name: 'arrow-up',
-      circular: true,
-      bordered: true,
-      rotate: -45
+const PopupExampleOffset = () => (
+  <Grid
+    styles={{
+      gridTemplateColumns: '80px',
+      msGridColumns: '80px',
     }}
-    styles={{ height: '80px', minWidth: '80px', padding: 0 }}
-    title="Show popup"
-  />
-);
-
-const PopupExamplePosition = () => (
-  <Grid columns="1, 80px" variables={{ padding: '30px' }}>
+    variables={{ padding: '30px' }}
+  >
     <Popup
       align="start"
       position="above"
-      offset="-100%p"
-      trigger={renderButton()}
+      offset={({ popper }) => [-popper.width, 0]}
+      trigger={
+        <Button
+          icon={
+            <ArrowUpIcon
+              {...{
+                circular: true,
+                bordered: true,
+                rotate: -45,
+              }}
+            />
+          }
+          styles={{ height: '80px', minWidth: '80px', padding: 0 }}
+          title="Show popup"
+        />
+      }
       content={
         <p>
           The popup is rendered at above-start
@@ -28,9 +36,8 @@ const PopupExamplePosition = () => (
           corner of the trigger.
         </p>
       }
-      key="above-start"
     />
   </Grid>
 );
 
-export default PopupExamplePosition;
+export default PopupExampleOffset;

@@ -19,8 +19,9 @@ import {
   correctHSV,
   correctHex,
   clamp,
-  IColor
+  IColor,
 } from './colors';
+import { updateT } from './updateT';
 
 describe('color utilities', () => {
   const testColor: IColor = {
@@ -31,11 +32,12 @@ describe('color utilities', () => {
     s: 100,
     v: 100,
     a: 100,
+    t: 0,
     hex: '0015ff',
-    str: '#0015ff'
+    str: '#0015ff',
   };
-  const testColorAlpha: IColor = { ...testColor, a: 50, str: 'rgba(0, 21, 255, 0.5)' };
-  const testColorNoAlpha: IColor = { ...testColor, a: undefined };
+  const testColorAlpha: IColor = { ...testColor, a: 30, t: 70, str: 'rgba(0, 21, 255, 0.3)' };
+  const testColorNoAlpha: IColor = { ...testColor, a: undefined, t: undefined };
 
   describe('rgb2hex', () => {
     it('works', () => {
@@ -231,7 +233,7 @@ describe('color utilities', () => {
     it('works', () => {
       // despite the name, this function returns an HTML color string based on *only* the hue
       expect(getFullColorString({ h: 0, s: 50, v: 50 } as IColor)).toEqual('#ff0000');
-      expect(getFullColorString({ h: testColor.h, s: 50, v: 50, a: 50 } as IColor)).toEqual(testColor.str);
+      expect(getFullColorString({ h: testColor.h, s: 50, v: 50, a: 30 } as IColor)).toEqual(testColor.str);
     });
   });
 
@@ -239,7 +241,7 @@ describe('color utilities', () => {
     it('works', () => {
       expect(updateSV({ h: testColor.h, s: 50, v: 50 } as IColor, 100, 100)).toEqual(testColorNoAlpha);
 
-      expect(updateSV({ h: testColor.h, s: 50, v: 50, a: 50 } as IColor, 100, 100)).toEqual(testColorAlpha);
+      expect(updateSV({ h: testColor.h, s: 50, v: 50, a: 30, t: 70 } as IColor, 100, 100)).toEqual(testColorAlpha);
     });
   });
 
@@ -247,7 +249,12 @@ describe('color utilities', () => {
     it('works', () => {
       expect(updateH({ h: 15, s: testColor.s, v: testColor.v } as IColor, testColor.h)).toEqual(testColorNoAlpha);
 
-      expect(updateH({ h: 15, s: testColor.s, v: testColor.v, a: testColorAlpha.a } as IColor, testColor.h)).toEqual(testColorAlpha);
+      expect(
+        updateH(
+          { h: 15, s: testColor.s, v: testColor.v, a: testColorAlpha.a, t: testColorAlpha.t } as IColor,
+          testColor.h,
+        ),
+      ).toEqual(testColorAlpha);
     });
   });
 
@@ -262,23 +269,31 @@ describe('color utilities', () => {
         s: 100,
         v: 100,
         a: 100,
+        t: 0,
         hex: '0015ff',
-        str: '#0015ff'
+        str: '#0015ff',
       };
       expect(updateRGB({ r: 255, g: 21, b: 255 } as IColor, 'r', 0)).toEqual(expected);
       expect(updateRGB({ r: 0, g: 255, b: 255 } as IColor, 'g', 21)).toEqual(expected);
       expect(updateRGB({ r: 0, g: 21, b: 0 } as IColor, 'b', 255)).toEqual(expected);
 
-      expected.a = 50;
-      expected.str = 'rgba(0, 21, 255, 0.5)';
-      expect(updateRGB({ r: 0, g: 21, b: 255 } as IColor, 'a', 50)).toEqual(expected);
-      expect(updateRGB({ r: 0, g: 21, b: 255, a: 25 } as IColor, 'a', 50)).toEqual(expected);
+      expected.a = 30;
+      expected.t = 70;
+      expected.str = 'rgba(0, 21, 255, 0.3)';
+      expect(updateRGB({ r: 0, g: 21, b: 255 } as IColor, 'a', 30)).toEqual(expected);
+      expect(updateRGB({ r: 0, g: 21, b: 255, a: 25 } as IColor, 'a', 30)).toEqual(expected);
     });
   });
 
   describe('updateA', () => {
     it('works', () => {
       expect(updateA(testColor, testColorAlpha.a!)).toEqual(testColorAlpha);
+    });
+  });
+
+  describe('updateT', () => {
+    it('works', () => {
+      expect(updateT(testColor, testColorAlpha.t!)).toEqual(testColorAlpha);
     });
   });
 

@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../../Utilities';
+import { initializeComponentRef, css } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 /**
  * Class when used with SuggestionsStore, renders a basic suggestions control
  */
-export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
-  protected _selectedElement: HTMLDivElement;
+  protected _selectedElement = React.createRef<HTMLDivElement>();
   private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> = SuggestionsItem;
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
+
+    initializeComponentRef(this);
     this.currentIndex = -1;
   }
 
@@ -65,7 +66,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   }
 
   public get selectedElement(): HTMLDivElement | undefined {
-    return this._selectedElement;
+    return this._selectedElement.current || undefined;
   }
 
   public getCurrentItem(): ISuggestionModel<T> {
@@ -122,7 +123,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel
+      suggestionsContainerAriaLabel,
     } = this.props;
     const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
     let { suggestions } = this.props;
@@ -140,11 +141,8 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       >
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
-            // tslint:disable-next-line:deprecation
-            ref={this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '')}
-            // tslint:disable
-            key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
-            // tslint:enable
+            ref={suggestion.selected || index === this.currentIndex ? this._selectedElement : undefined}
+            key={(suggestion.item as any).key ? (suggestion.item as any).key : index}
             id={'sug-' + index}
             role="listitem"
             aria-label={suggestion.ariaLabel}
@@ -152,7 +150,6 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
             <TypedSuggestionsItem
               id={'sug-item' + index}
               suggestionModel={suggestion}
-              // tslint:disable-next-line:no-any
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}
@@ -168,8 +165,8 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected(): void {
-    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
-      this._selectedElement.scrollIntoView(false);
+    if (this._selectedElement.current?.scrollIntoView !== undefined) {
+      this._selectedElement.current.scrollIntoView(false);
     }
   }
 

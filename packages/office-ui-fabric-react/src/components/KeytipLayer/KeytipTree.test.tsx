@@ -79,7 +79,7 @@ function createKeytipProps(keySequences: string[]): IKeytipProps {
   return {
     keySequences,
     // Just add empty content since it's required in IKeytipProps, but not needed for these tests
-    content: ''
+    content: '',
   };
 }
 
@@ -168,7 +168,7 @@ describe('KeytipTree', () => {
     it('correctly adds node when overflowSetSequence is defined', () => {
       const keytipPropsEWithOverflow = {
         ...keytipPropsE,
-        overflowSetSequence: keytipSequenceC
+        overflowSetSequence: keytipSequenceC,
       };
       keytipTree.addNode(keytipPropsC, uniqueIdC);
       keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
@@ -184,7 +184,7 @@ describe('KeytipTree', () => {
       const updatedKeytipProps = {
         ...keytipPropsB,
         disabled: true,
-        hasDynamicChildren: true
+        hasDynamicChildren: true,
       };
       keytipTree.updateNode(updatedKeytipProps, uniqueIdC);
       const nodeB = keytipTree.getNode(keytipIdB)!;
@@ -307,7 +307,7 @@ describe('KeytipTree', () => {
     it('correctly removes a node when overflowSetSequence is defined', () => {
       const keytipPropsEWithOverflow = {
         ...keytipPropsE,
-        overflowSetSequence: keytipSequenceC
+        overflowSetSequence: keytipSequenceC,
       };
       keytipTree.addNode(keytipPropsC, uniqueIdC);
       keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
@@ -388,7 +388,7 @@ describe('KeytipTree', () => {
         // Disabled node Q
         const disabledQ = {
           ...keytipPropsQ,
-          disabled: true
+          disabled: true,
         };
         keytipTree.updateNode(disabledQ, uniqueIdQ);
         expect(keytipTree.getExactMatchedNode('q', keytipTree.root)).toBeUndefined();
@@ -418,7 +418,7 @@ describe('KeytipTree', () => {
         // Disabled node E1
         const disabledE1 = {
           ...keytipPropsE1,
-          disabled: true
+          disabled: true,
         };
         keytipTree.updateNode(disabledE1, uniqueIdE1);
         const matchedNodes = keytipTree.getPartiallyMatchedNodes('e', keytipTree.root);
@@ -490,11 +490,11 @@ describe('KeytipTree', () => {
     it('matches a keytip when both it and its parent have an overflowSetSequence', () => {
       const cWithOverflow = {
         ...keytipPropsC,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       const bWithOverflow = {
         ...keytipPropsB,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       keytipTree.addNode(cWithOverflow, uniqueIdC);
       keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');
@@ -504,7 +504,7 @@ describe('KeytipTree', () => {
     it('matches a keytip when the currentKeytip has an overflowSetSequence but the passed in one doesn`t', () => {
       const cWithOverflow = {
         ...keytipPropsC,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       keytipTree.addNode(cWithOverflow, uniqueIdC);
       keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');

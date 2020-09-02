@@ -2,118 +2,676 @@
   "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
-      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.17",
-      "version": "7.0.17",
-      "comments": {
-        "none": [
-          {
-            "comment": "fixing released versions",
-            "author": "kchau@microsoft.com",
-            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.10",
-      "version": "7.0.10",
-      "comments": {
-        "none": [
-          {
-            "comment": "bumping versions to fix broken publishes",
-            "author": "kchau@microsoft.com",
-            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.7",
-      "version": "7.0.7",
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
       "comments": {
         "patch": [
           {
-            "comment": "adding pr-deploy-site for fabric storybook",
-            "author": "kchau@microsoft.com",
-            "commit": "4cb8d719a8d7e4e66c42d0dc082cbfb22d0e084f"
-          }
-        ],
-        "none": [
-          {
-            "comment": "Rename all just configs to TS.",
-            "author": "jagore@microsoft.com",
-            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.2",
-      "version": "7.0.2",
+      "date": "Mon, 01 Jun 2020 12:32:45 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
       "comments": {
         "patch": [
           {
-            "comment": "getting rid of test-bundles dep from pr-deploy-site",
-            "author": "kchau@microsoft.com",
-            "commit": "94ac80c98368f12fe5fd63cd37f0ad24e3efe8c4"
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.1",
-      "version": "7.0.1",
-      "comments": {
-        "none": [
-          {
-            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
-            "author": "jagore@microsoft.com",
-            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.1",
-      "version": "7.0.1",
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
       "comments": {
         "patch": [
           {
-            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
-            "author": "makotom@microsoft.com",
-            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
-          }
-        ],
-        "none": [
-          {
-            "comment": "get rid of npx",
-            "author": "kchau@microsoft.com",
-            "commit": "472993033369aa470e59197a534045c02c24e852"
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.0",
-      "version": "7.0.0",
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
       "comments": {
-        "none": [
+        "patch": [
           {
-            "comment": "Use resolves for all package paths",
-            "author": "kchau@microsoft.com",
-            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
-          },
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
           {
-            "comment": "adding build cache",
-            "author": "kchau@microsoft.com",
-            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 16:49:49 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 12:54:52 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 20:33:16 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 May 2020 12:33:48 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 May 2020 23:23:51 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 May 2020 12:41:21 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 12:34:38 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 12:28:41 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Apr 2020 12:31:44 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Apr 2020 12:33:11 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Apr 2020 12:35:07 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
           }
         ]
       }

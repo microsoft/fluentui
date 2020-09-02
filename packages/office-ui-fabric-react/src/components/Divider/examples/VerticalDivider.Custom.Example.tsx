@@ -17,7 +17,7 @@ const getExampleClassNames = memoizeFunction(
         height: 40,
         backgroundColor: theme.semanticColors.bodyStandoutBackground,
         color: theme.semanticColors.bodyText,
-        padding: '0'
+        padding: '0',
       },
       text: {
         display: 'inline-block',
@@ -25,33 +25,32 @@ const getExampleClassNames = memoizeFunction(
         height: exampleHeight,
         lineHeight: exampleHeight,
         verticalAlign: 'top',
-        margin: 'auto'
-      }
+        margin: 'auto',
+      },
     });
-  }
+  },
 );
 
-export class VerticalDividerCustomExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    const exampleClassNames = getExampleClassNames();
-    return (
-      <div className={exampleClassNames.wrapper}>
-        <p className={exampleClassNames.text}> Some text before the divider. </p>
-        <VerticalDivider
-          styles={{
-            wrapper: {
-              height: 40,
-              backgroundColor: '#F4F4F4',
-              padding: 0
-            },
-            divider: {
-              height: 28,
-              backgroundColor: 'pink'
-            }
-          }}
-        />
-        <p className={exampleClassNames.text}>Some text after the divider. </p>
-      </div>
-    );
-  }
-}
+const VerticalDividerStyles = {
+  wrapper: {
+    height: 40,
+    backgroundColor: '#F4F4F4',
+    padding: 0,
+  },
+  divider: {
+    height: 28,
+    backgroundColor: 'pink',
+  },
+};
+
+export const VerticalDividerCustomExample = () => {
+  const exampleClassNames = getExampleClassNames();
+
+  return (
+    <div className={exampleClassNames.wrapper}>
+      <p className={exampleClassNames.text}> Some text before the divider. </p>
+      <VerticalDivider styles={VerticalDividerStyles} />
+      <p className={exampleClassNames.text}>Some text after the divider. </p>
+    </div>
+  );
+};

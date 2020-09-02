@@ -1,6 +1,6 @@
 ### CSS-in-JS
 
-Fabric's recommended styling approach uses CSS-in-JS and revolves around the `styles` prop, which is provided by most Fabric components and allows strongly-typed customizations to individual areas of a component.
+Fluent UI's recommended styling approach uses CSS-in-JS and revolves around the `styles` prop, which is provided by most Fluent UI components and allows strongly-typed customizations to individual areas of a component.
 
 #### `styles` prop
 
@@ -31,6 +31,8 @@ return <Component styles={styles} ... />;
 ##### Example
 
 ```tsx
+import { getTheme } from '@fluentui/react';
+
 const theme = getTheme();
 const styles = {
   root: [
@@ -107,7 +109,7 @@ const styles = props => ({
 return <Component styles={styles} ... />;
 ```
 
-> For more information on styling with CSS-in-JS, visit our [Styling wiki article](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+> For more information on styling with CSS-in-JS, visit our [Styling wiki article](https://github.com/microsoft/fluentui/wiki/Component-Styling)
 
 ### Fabric Core
 

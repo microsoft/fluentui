@@ -108,7 +108,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
     >
       <button
         aria-checked={false}
-        aria-labelledby="Toggle0-label"
+        aria-labelledby="Toggle0-label Toggle0-stateText"
         className=
             ms-Toggle-background
             {
@@ -171,7 +171,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -313,7 +313,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
     >
       <button
         aria-checked={false}
-        aria-labelledby="Toggle2-label"
+        aria-labelledby="Toggle2-label Toggle2-stateText"
         className=
             ms-Toggle-background
             {
@@ -376,7 +376,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;

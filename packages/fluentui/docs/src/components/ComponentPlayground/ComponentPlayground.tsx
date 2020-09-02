@@ -20,7 +20,6 @@ const unsupportedComponents = [
   'Flex',
   'Form',
   'Grid',
-  'HierarchicalTree',
   'ItemLayout',
   'Layout',
   'List',
@@ -31,7 +30,7 @@ const unsupportedComponents = [
   'SplitButton',
   'Table',
   'Toolbar',
-  'Ref'
+  'Ref',
 ];
 
 const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = props => {
@@ -40,7 +39,9 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
   }
 
   const playgroundPaths = examplePlaygroundContext.keys();
-  const playgroundPath = _.find(playgroundPaths, playgroundPath => _.includes(playgroundPath, `/${props.componentName}/`));
+  const playgroundPath = _.find(playgroundPaths, playgroundPath =>
+    _.includes(playgroundPath, `/${props.componentName}/`),
+  );
 
   if (playgroundPath) {
     const component: React.FC = examplePlaygroundContext(playgroundPath).default;
@@ -48,6 +49,8 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
     return <ComponentPlaygroundTemplate component={component} />;
   }
 
+  // This is intentional, `playgroundPath` will not change during execution
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [element, unsupportedProps] = usePlaygroundComponent(props.componentName);
 
   return (
@@ -60,7 +63,7 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
             border: '2px dotted pink',
             margin: 5,
             padding: 5,
-            maxWidth: '200px'
+            maxWidth: '200px',
           }}
         >
           <b>Props not supported in playground</b> {unsupportedProps.join(' | ')}

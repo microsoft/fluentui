@@ -10,9 +10,15 @@ import {
   getId,
   isControlled,
   getNativeProps,
-  divProperties
+  divProperties,
 } from '../../Utilities';
-import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import {
+  IChoiceGroup,
+  IChoiceGroupOption,
+  IChoiceGroupProps,
+  IChoiceGroupStyleProps,
+  IChoiceGroupStyles,
+} from './ChoiceGroup.types';
 import { ChoiceGroupOption, IChoiceGroupOptionProps } from './ChoiceGroupOption/index';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
@@ -49,16 +55,18 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
       warnMutuallyExclusive('ChoiceGroup', props, {
-        selectedKey: 'defaultSelectedKey'
+        selectedKey: 'defaultSelectedKey',
       });
     }
 
     const { defaultSelectedKey, options = [] } = props;
     const validDefaultSelectedKey =
-      !_isControlled(props) && defaultSelectedKey !== undefined && options.some(option => option.key === defaultSelectedKey);
+      !_isControlled(props) &&
+      defaultSelectedKey !== undefined &&
+      options.some(option => option.key === defaultSelectedKey);
 
     this.state = {
-      keyChecked: validDefaultSelectedKey ? defaultSelectedKey : this._getKeyChecked(props)
+      keyChecked: validDefaultSelectedKey ? defaultSelectedKey : this._getKeyChecked(props),
     };
 
     this._id = getId('ChoiceGroup');
@@ -81,7 +89,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
 
       if (newKeyChecked !== oldKeyChecked) {
         this.setState({
-          keyChecked: newKeyChecked
+          keyChecked: newKeyChecked,
         });
       }
     }
@@ -91,12 +99,16 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     const { className, theme, styles, options = [], label, required, disabled, name } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'className', 'required']);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
+      'onChange',
+      'className',
+      'required',
+    ]);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc))
+      optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc)),
     });
 
     const labelId = this._id + '-label';
@@ -105,9 +117,13 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
     // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       <div className={classNames.applicationRole} {...divProps}>
-        <div className={classNames.root} role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
+        <div
+          className={classNames.root}
+          role="radiogroup"
+          {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}
+        >
           {label && (
             <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
               {label}
@@ -121,9 +137,9 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
                 checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: this._getOptionId(option),
-                labelId: `${this._labelId}-${option.key}`,
+                labelId: this._getOptionLabelId(option),
                 name: name || this._id,
-                required
+                required,
               };
 
               return (
@@ -154,9 +170,12 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
   private _onFocus(key: string) {
     // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
     if (!this._focusCallbacks[key]) {
-      this._focusCallbacks[key] = (ev: React.FocusEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
+      this._focusCallbacks[key] = (
+        ev: React.FocusEvent<HTMLElement | HTMLInputElement>,
+        option: IChoiceGroupOption,
+      ) => {
         this.setState({
-          keyFocused: key
+          keyFocused: key,
         });
       };
     }
@@ -165,21 +184,24 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
 
   private _onBlur = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
     this.setState({
-      keyFocused: undefined
+      keyFocused: undefined,
     });
   };
 
   private _onChange(key: string) {
     // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
     if (!this._changeCallbacks[key]) {
-      this._changeCallbacks[key] = (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
-        // tslint:disable-next-line:deprecation
+      this._changeCallbacks[key] = (
+        evt: React.FormEvent<HTMLElement | HTMLInputElement>,
+        option: IChoiceGroupOption,
+      ) => {
+        // eslint-disable-next-line deprecation/deprecation
         const { onChanged, onChange } = this.props;
 
         // Only manage state in uncontrolled scenarios.
         if (!_isControlled(this.props)) {
           this.setState({
-            keyChecked: key
+            keyChecked: key,
           });
         }
 
@@ -206,13 +228,17 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     }
 
     const { options = [] } = props;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const optionsChecked = options.filter((option: IChoiceGroupOption) => option.checked);
     return optionsChecked[0] && optionsChecked[0].key;
   }
 
   private _getOptionId(option: IChoiceGroupOption): string {
-    return `${this._id}-${option.key}`;
+    return option.id || `${this._id}-${option.key}`;
+  }
+
+  private _getOptionLabelId(option: IChoiceGroupOption): string {
+    return option.labelId || `${this._labelId}-${option.key}`;
   }
 }
 

@@ -15,16 +15,15 @@ function start(): void {
         items: [
           { key: 'a', name: 'Item a' },
           { key: 'c', name: 'Item b' },
-          { key: 'b', name: 'Item c' }
-        ]
+          { key: 'b', name: 'Item c' },
+        ],
       }}
     />,
-    div
+    div,
   );
 }
 
-// tslint:disable-next-line:no-string-literal
-if (document && document['body']) {
+if (document?.body) {
   start();
 } else {
   window.onload = start;

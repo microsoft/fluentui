@@ -11,36 +11,36 @@ export const Excel = () => {
         colors={[
           {
             name: 'Excel Shade 20',
-            hex: '#004b1c'
+            hex: '#004b1c',
           },
           {
             name: 'Excel Shade 10',
-            hex: '#0e5c2f'
+            hex: '#0e5c2f',
           },
           {
             name: 'Excel Primary',
-            hex: '#217346'
+            hex: '#217346',
           },
           {
             name: 'Excel Tint 10',
-            hex: '#3f8159'
+            hex: '#3f8159',
           },
           {
             name: 'Excel Tint 20',
-            hex: '#4e9668'
+            hex: '#4e9668',
           },
           {
             name: 'Excel Tint 30',
-            hex: '#6eb38a'
+            hex: '#6eb38a',
           },
           {
             name: 'Excel Tint 40',
-            hex: '#9fcdb3'
+            hex: '#9fcdb3',
           },
           {
             name: 'Excel Tint 50',
-            hex: '#e9f5ee'
-          }
+            hex: '#e9f5ee',
+          },
         ]}
       />
 

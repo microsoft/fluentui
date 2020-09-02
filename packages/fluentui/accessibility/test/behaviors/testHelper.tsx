@@ -25,7 +25,7 @@ const skipSpecChecksForFiles = [
   'sliderBehavior.ts', // tests are written in sliderBehavior-test.ts
   'treeItemAsListItemBehavior.ts', // tests are written in treeItemAsListItemBehavior-test.ts
   'treeTitleAsListItemTitleBehavior.ts', // tests are written in treeTitleAsListItemTitleBehavior-test.ts
-  'gridRowBehavior.ts' // tests are written in gridRowBehavior-test.ts
+  'gridRowBehavior.ts', // tests are written in gridRowBehavior-test.ts
 ];
 
 export class TestHelper {
@@ -59,7 +59,7 @@ export class TestHelper {
           test(singleTest.params[0], () => {
             singleTest.testMethod({
               behavior: this.getBehavior(singleTest.behaviorName),
-              props: singleTest.params.slice(1)
+              props: singleTest.params.slice(1),
             });
           });
         });
@@ -96,7 +96,7 @@ export class TestHelper {
         this.filteredSpecificationWithAssignedTestMethod.push({
           behaviorName,
           testMethod: testDefinition.testMethod,
-          params: result
+          params: result,
         });
       }
     });
@@ -132,7 +132,7 @@ export class TestHelper {
   failSpecificationPresenceTest(behaviorFileName: string) {
     test(`${behaviorFileName} : Accessibility behavior is missing specification tag.`, () => {
       fail(
-        `Accessibility behavior should have specification tag. If tests are written in separate file then add behavior file name into 'skipSpecChecksForFiles'.`
+        `Accessibility behavior should have specification tag. If tests are written in separate file then add behavior file name into 'skipSpecChecksForFiles'.`,
       );
     });
   }

@@ -1,12 +1,12 @@
-# [Fabric website](https://dev.microsoft.com/fabric)
+# [Fluent UI website](https://dev.microsoft.com/fabric)
 
-**The official website for the UI Fabric project.**
+**The official website for the Fluent UI project.**
 
-UI Fabric is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fabric.
+Fluent UI is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fluent UI.
 
 ## Build the website
 
-See the [readme](https://github.com/OfficeDev/office-ui-fabric-react) for instructions on getting started with Fabric development.
+See the [readme](https://github.com/microsoft/fluentui) for instructions on getting started with Fluent UI development.
 
 Once your repo is set up, run the following to start a local copy of the website. (Be sure to **start from the root of the repo**, not the `fabric-website` folder.)
 

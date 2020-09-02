@@ -7,76 +7,76 @@ import {
   ContextualMenu,
   ContextualMenuItemType,
   IContextualMenuItem,
-  DefaultButton
+  DefaultButton,
 } from 'office-ui-fabric-react';
 
 const items: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'rename',
-    text: 'Rename'
+    text: 'Rename',
   },
   {
     key: 'edit',
-    text: 'Edit'
+    text: 'Edit',
   },
   {
     key: 'properties',
-    text: 'Properties'
+    text: 'Properties',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
-    disabled: true
+    disabled: true,
   },
   {
     key: 'isDisabled',
     text: 'isDisabled item',
-    isDisabled: true
-  }
+    isDisabled: true,
+  },
 ];
 
 const itemsWithIcons: IContextualMenuItem[] = [
   {
     key: 'newItem',
     iconProps: { iconName: 'Add' },
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'upload',
     iconProps: {
       iconName: 'Upload',
-      style: { color: 'salmon' }
+      style: { color: 'salmon' },
     },
     text: 'Upload',
-    title: 'Upload a file'
+    title: 'Upload a file',
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'share',
     iconProps: { iconName: 'Share' },
-    text: 'Share'
+    text: 'Share',
   },
   {
     key: 'print',
     iconProps: { iconName: 'Print' },
-    text: 'Print'
+    text: 'Print',
   },
   {
     key: 'music',
     iconProps: { iconName: 'MusicInCollectionFill' },
-    text: 'Music'
-  }
+    text: 'Music',
+  },
 ];
 
 const itemsWithSecondaryText: IContextualMenuItem[] = [
@@ -84,26 +84,26 @@ const itemsWithSecondaryText: IContextualMenuItem[] = [
     key: 'Later Today',
     iconProps: { iconName: 'Clock' },
     text: 'Later Today',
-    secondaryText: '7:00 PM'
+    secondaryText: '7:00 PM',
   },
   {
     key: 'Tomorrow',
     iconProps: { iconName: 'Coffeescript' },
     text: 'Tomorrow',
-    secondaryText: 'Thu. 8:00 AM'
+    secondaryText: 'Thu. 8:00 AM',
   },
   {
     key: 'This Weekend',
     iconProps: { iconName: 'Vacation' },
     text: 'This Weekend',
-    secondaryText: 'Sat. 10:00 AM'
+    secondaryText: 'Sat. 10:00 AM',
   },
   {
     key: 'Next Week',
     iconProps: { iconName: 'Suitcase' },
     text: 'Next Week',
-    secondaryText: 'Mon. 8:00 AM'
-  }
+    secondaryText: 'Mon. 8:00 AM',
+  },
 ];
 
 const itemsWithSubmenu: IContextualMenuItem[] = [
@@ -114,16 +114,16 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
         {
           key: 'emailMessage',
           text: 'Email message',
-          title: 'Create an email'
+          title: 'Create an email',
         },
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          title: 'Create a calendar event'
-        }
-      ]
+          title: 'Create a calendar event',
+        },
+      ],
     },
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'share',
@@ -131,11 +131,11 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
@@ -145,20 +145,20 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
               {
                 key: 'sharetooutlook_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
-              }
-            ]
-          }
-        }
-      ]
+                title: 'Share to Gmail',
+              },
+            ],
+          },
+        },
+      ],
     },
-    text: 'Share'
-  }
+    text: 'Share',
+  },
 ];
 
 const itemsWithHeaders: IContextualMenuItem[] = [
@@ -172,14 +172,14 @@ const itemsWithHeaders: IContextualMenuItem[] = [
       items: [
         {
           key: 'newItem',
-          text: 'New'
+          text: 'New',
         },
         {
           key: 'deleteItem',
-          text: 'Delete'
-        }
-      ]
-    }
+          text: 'Delete',
+        },
+      ],
+    },
   },
   {
     key: 'section',
@@ -189,15 +189,15 @@ const itemsWithHeaders: IContextualMenuItem[] = [
       items: [
         {
           key: 'share',
-          text: 'Share'
+          text: 'Share',
         },
         {
           key: 'print',
-          text: 'Print'
-        }
-      ]
-    }
-  }
+          text: 'Print',
+        },
+      ],
+    },
+  },
 ];
 
 const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
@@ -209,11 +209,11 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
@@ -225,20 +225,20 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
               {
                 key: 'sharetooutlook_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
-              }
-            ]
-          }
-        }
-      ]
+                title: 'Share to Gmail',
+              },
+            ],
+          },
+        },
+      ],
     },
-    text: 'Share'
-  }
+    text: 'Share',
+  },
 ];
 
 const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
@@ -258,10 +258,10 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
               {
                 key: 'sub1',
                 name: 'Sub-item 1',
-                href: 'http://bing.com'
-              }
-            ]
-          }
+                href: 'http://bing.com',
+              },
+            ],
+          },
         },
         {
           key: 'item2',
@@ -273,14 +273,14 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
               {
                 key: 'sub2',
                 name: 'Sub-item 2',
-                href: 'http://bing.com'
-              }
-            ]
-          }
-        }
-      ]
-    }
-  }
+                href: 'http://bing.com',
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
 ];
 
 storiesOf('ContextualMenu', module)
@@ -302,7 +302,7 @@ storiesOf('ContextualMenu', module)
   .addStory('Root', () => <ContextualMenu items={items} />)
   .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
   .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
-    rtl: true
+    rtl: true,
   })
   .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { rtl: true })
   .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)

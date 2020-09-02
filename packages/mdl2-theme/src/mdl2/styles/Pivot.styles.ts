@@ -13,13 +13,13 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         selectors: {
           ':hover': {
             backgroundColor: 'transparent',
-            color: palette.neutralDark
+            color: palette.neutralDark,
           },
           ':active': {
-            backgroundColor: 'transparent'
-          }
-        }
-      }
+            backgroundColor: 'transparent',
+          },
+        },
+      },
     ],
     linkIsSelected: [
       !rootIsTabs && {
@@ -27,21 +27,21 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         lineHeight: 40,
         selectors: {
           ':hover': {
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
           },
           ':active': {
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
           },
           ':before': {
             transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
-                        right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
+                        right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
           },
           ':hover::before': {
             left: 8,
-            right: 8
-          }
-        }
-      }
-    ]
+            right: 8,
+          },
+        },
+      },
+    ],
   };
 };

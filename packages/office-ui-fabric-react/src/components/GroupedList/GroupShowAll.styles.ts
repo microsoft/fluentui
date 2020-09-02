@@ -5,7 +5,7 @@ export { IGroupShowAllProps };
 
 const GlobalClassNames = {
   root: 'ms-GroupShowAll',
-  link: 'ms-Link'
+  link: 'ms-Link',
 };
 
 export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles => {
@@ -23,10 +23,10 @@ export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles =
         cursor: 'pointer',
         selectors: {
           [`.${classNames.link}`]: {
-            fontSize: fonts.small.fontSize
-          }
-        }
-      }
-    ]
+            fontSize: fonts.small.fontSize,
+          },
+        },
+      },
+    ],
   };
 };

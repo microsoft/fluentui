@@ -1,14 +1,19 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@uifabric/foundation';
-import { IBaseProps } from '@uifabric/utilities';
-import { IStackProps, IStackSlots, IStackTokens } from 'office-ui-fabric-react';
+import { IStackProps, IStackSlots, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * {@docCategory Card}
  */
-export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTokens, ICardSectionStyles, ICardSectionViewProps>;
+export type ICardSectionComponent = IComponent<
+  ICardSectionProps,
+  ICardSectionTokens,
+  ICardSectionStyles,
+  ICardSectionViewProps
+>;
 
-// These types are redundant with ICardSectionComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with ICardSectionComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
@@ -43,7 +48,15 @@ export interface ICardSectionProps
   extends ICardSectionSlots,
     Pick<
       IStackProps,
-      'as' | 'horizontal' | 'reversed' | 'horizontalAlign' | 'verticalAlign' | 'verticalFill' | 'disableShrink' | 'grow' | 'wrap'
+      | 'as'
+      | 'horizontal'
+      | 'reversed'
+      | 'horizontalAlign'
+      | 'verticalAlign'
+      | 'verticalFill'
+      | 'disableShrink'
+      | 'grow'
+      | 'wrap'
     >,
     IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>,
     IBaseProps<ICardSection> {

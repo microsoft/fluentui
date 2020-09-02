@@ -4,7 +4,6 @@ import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
 import { ISuggestionItemProps } from '../../pickers/Suggestions/SuggestionsItem.types';
 
-// tslint:disable-next-line:no-any
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
@@ -18,7 +17,6 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * What should occur when a suggestion is clicked
    */
-  // tslint:disable-next-line:no-any
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
   /**
    * The list of Suggestions that will be displayed
@@ -55,7 +53,6 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   shouldLoopSelection: boolean;
 }
 
-// tslint:disable-next-line:no-any
 export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   /**
    * An ARIA label for the container that is the parent of the suggestions header items.

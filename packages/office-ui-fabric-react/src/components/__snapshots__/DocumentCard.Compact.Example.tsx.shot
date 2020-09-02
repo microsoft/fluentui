@@ -24,7 +24,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
 >
   <div
     aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
-          Created by Roko Kolar a few minutes ago"
+      Created by Roko Kolar a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -190,7 +190,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             onError={[Function]}
             onLoad={[Function]}
             role="presentation"
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+            src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
           />
         </div>
       </div>
@@ -533,7 +533,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -558,27 +558,41 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active {
+                    color: LinkText;
+                  }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                    color: LinkText;
+                  }
                   &:focus {
                     color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -641,7 +655,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -666,27 +680,41 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active {
+                    color: LinkText;
+                  }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                    color: LinkText;
+                  }
                   &:focus {
                     color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -749,7 +777,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -774,27 +802,41 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active {
+                    color: LinkText;
+                  }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
+                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                    color: LinkText;
+                  }
                   &:focus {
                     color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1388,8 +1430,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
-    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
-          Sent by Christian Bergqvist a few minutes ago"
+    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference. Sent by Christian Bergqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable

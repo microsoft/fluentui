@@ -2,7 +2,12 @@ import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
-export { IsFocusVisibleClassName } from './setFocusVisibility';
+type AppWindow =
+  | (Window & {
+      __hasInitializeFocusRects__: boolean;
+      FabricConfig?: { disableFocusRects?: boolean };
+    })
+  | undefined;
 
 /**
  * Initializes the logic which:
@@ -18,13 +23,18 @@ export { IsFocusVisibleClassName } from './setFocusVisibility';
  * the existence of global classnames, which simplifies logic overall.
  *
  * @param window - the window used to add the event listeners
+ * @deprecated Use useFocusRects hook or FocusRects component instead.
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };
+  const win = (window || getWindow()) as AppWindow;
+  if (!win || win.FabricConfig?.disableFocusRects === true) {
+    return;
+  }
 
-  if (win && !win.__hasInitializeFocusRects__) {
+  if (!win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
     win.addEventListener('mousedown', _onMouseDown, true);
+    win.addEventListener('pointerdown', _onPointerDown, true);
     win.addEventListener('keydown', _onKeyDown as () => void, true);
   }
 }
@@ -33,6 +43,13 @@ function _onMouseDown(ev: MouseEvent): void {
   setFocusVisibility(false, ev.target as Element);
 }
 
+function _onPointerDown(ev: PointerEvent): void {
+  if (ev.pointerType !== 'mouse') {
+    setFocusVisibility(false, ev.target as Element);
+  }
+}
+
 function _onKeyDown(ev: KeyboardEvent): void {
+  // eslint-disable-next-line deprecation/deprecation
   isDirectionalKeyCode(ev.which) && setFocusVisibility(true, ev.target as Element);
 }

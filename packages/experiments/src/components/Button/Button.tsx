@@ -1,3 +1,4 @@
+import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { composed } from '@uifabric/foundation/lib/next/composed';
 import { useButtonState as state } from './Button.state';
@@ -11,7 +12,7 @@ export const Button: React.FunctionComponent<IButtonProps> = composed({
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default Button;

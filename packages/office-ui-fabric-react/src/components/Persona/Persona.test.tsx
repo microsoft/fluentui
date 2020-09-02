@@ -1,4 +1,3 @@
-/* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { TestImages } from '@uifabric/example-data';
@@ -9,13 +8,14 @@ import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
 
-const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
   primaryText: '.ms-Persona-primaryText',
   black: '.ms-Persona-initials--black',
-  red: '.ms-Persona-initials--red'
+  red: '.ms-Persona-initials--red',
 };
 
 /**
@@ -23,7 +23,7 @@ const STYLES = {
  */
 export const wrapPersona = (
   example: IPersonaSharedProps,
-  shouldWrapPersonaCoin: boolean = false
+  shouldWrapPersonaCoin: boolean = false,
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
   return (coinProps, defaultCoinRenderer): JSX.Element | null => {
     return shouldWrapPersonaCoin ? (
@@ -46,7 +46,7 @@ const examplePersona: IPersonaSharedProps = {
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
   size: PersonaSize.size100,
-  presence: PersonaPresence.blocked
+  presence: PersonaPresence.blocked,
 };
 
 describe('Persona', () => {
@@ -81,13 +81,17 @@ describe('Persona', () => {
   it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
-    const component = renderer.create(<Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />);
+    const component = renderer.create(
+      <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona which calls onRenderPersonaCoin callback with custom render', () => {
-    const component = renderer.create(<Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />);
+    const component = renderer.create(
+      <Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -99,7 +103,7 @@ describe('Persona', () => {
         onRenderPrimaryText={wrapPersona(examplePersona)}
         onRenderSecondaryText={wrapPersona(examplePersona)}
         onRenderTertiaryText={wrapPersona(examplePersona)}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -109,7 +113,7 @@ describe('Persona', () => {
     const component = renderer.create(
       <Persona text="Kat Larrson">
         <span>Persona Children</span>
-      </Persona>
+      </Persona>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

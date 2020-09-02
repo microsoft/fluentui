@@ -13,7 +13,7 @@ export interface ISemanticSlotsProps {
 const slotClassName = mergeStyles({
   display: 'flex',
   alignItems: 'center',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 const semanticPaletteColorBox = mergeStyles({
@@ -23,7 +23,7 @@ const semanticPaletteColorBox = mergeStyles({
   left: 5,
   top: 5,
   border: '1px solid black',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 type IPaletteSlots = {
@@ -97,11 +97,13 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
    * Filters the list of semantic slots pulled from getVariant to only ones with strings that are appropriate.
    * The appropriate ones are in the method above 'isASemanticColor'. These are the only ones we selected to include
    * on the theme designer site. Input can be type ISemanticColors, which is a dictionary mapping each slot to
-   * its 'hex color value { string : string } or a list of strings (array). Output is similarly wither an array or a dictionary.
+   * its hex color value or an array of strings. Output is similar whether an array or a dictionary.
    */
   function trimSemanticSlotsOrNames(semanticSlots: ISemanticColors): Partial<ISemanticColors>;
   function trimSemanticSlotsOrNames(semanticSlots: Array<string>): Array<string>;
-  function trimSemanticSlotsOrNames(semanticSlots: Array<string> | ISemanticColors): Array<string> | Partial<ISemanticColors> {
+  function trimSemanticSlotsOrNames(
+    semanticSlots: Array<string> | ISemanticColors,
+  ): Array<string> | Partial<ISemanticColors> {
     if (semanticSlots instanceof Array) {
       let trimmedSemanticSlotNames = [];
       for (let i = 0; i < semanticSlots.length; i++) {
@@ -115,7 +117,8 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
       let trimmedSemanticSlots: Partial<ISemanticColors> = {};
       for (let semanticColor in semanticSlots) {
         if (isASemanticColor(semanticColor)) {
-          trimmedSemanticSlots[semanticColor as keyof ISemanticColors] = semanticSlots[semanticColor as keyof ISemanticColors];
+          trimmedSemanticSlots[semanticColor as keyof ISemanticColors] =
+            semanticSlots[semanticColor as keyof ISemanticColors];
         }
       }
       return trimmedSemanticSlots;
@@ -128,14 +131,15 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
       let noneVariant = getVariant(props.theme, VariantThemeType.None);
       currThemeVariant = getVariant(props.theme, variantType);
       const currVariantSemanticSlots = currThemeVariant.semanticColors;
-      /* "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app */
+      /* "trimming" to get rid of the semantic color slots & palette slots we don't use for theme designer app */
       const trimmedSemanticSlots = trimSemanticSlotsOrNames(currVariantSemanticSlots);
-      const currVariantPaletteSlots = noneVariant.palette; // palette slot values should be based off the default variant
+      // palette slot values should be based off the default variant
+      const currVariantPaletteSlots = noneVariant.palette;
       const trimmedPaletteSlots = trimPaletteSlots(currVariantPaletteSlots);
       const mapping: IMapping = {};
       /**
        * Iterate through the list of semantic colors.
-       * For each semantic color, check if it's hex color string is in the list of palette colors.
+       * For each semantic color, check if its hex color string is in the list of palette colors.
        * If it is, add it to the mapping.
        */
       for (let semanticColor in trimmedSemanticSlots) {

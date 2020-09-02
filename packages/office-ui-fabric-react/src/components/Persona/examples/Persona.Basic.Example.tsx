@@ -17,12 +17,17 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
     text: 'Annie Lindqvist',
     secondaryText: 'Software Engineer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
   };
 
   return (
     <Stack tokens={{ childrenGap: 10 }}>
-      <Checkbox label="Include persona details" checked={renderDetails} onChange={onChange} />
+      <Checkbox
+        label="Include persona details"
+        checked={renderDetails}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onChange}
+      />
 
       <Label>Size 8 Persona, with no presence</Label>
       <Persona

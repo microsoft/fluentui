@@ -5,6 +5,6 @@ import { IAnnouncedStyles, IAnnouncedStyleProps } from './Announced.types';
 export const getStyles: IStyleFunction<IAnnouncedStyleProps, IAnnouncedStyles> = props => {
   return {
     root: props.className,
-    screenReaderText: hiddenContentStyle
+    screenReaderText: hiddenContentStyle,
   };
 };

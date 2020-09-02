@@ -9,5 +9,5 @@ export const TooltipHost: React.FunctionComponent<ITooltipHostProps> = styled<
   ITooltipHostStyleProps,
   ITooltipHostStyles
 >(TooltipHostBase, getStyles, undefined, {
-  scope: 'TooltipHost'
+  scope: 'TooltipHost',
 });

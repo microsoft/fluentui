@@ -3,8 +3,7 @@
 exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correctly 1`] = `
 <div>
   <div
-    aria-label="Document Card with logo, text preview, and status. Conversation about annual report. Content preview. 3 attachments.
-        Sent by Annie Lindqvist and 2 others in March 13, 2018."
+    aria-label="Document Card with logo, text preview, and status. Conversation about annual report. Content preview. 3 attachments. Sent by Annie Lindqvist and 2 others in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -456,8 +455,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     </div>
   </div>
   <div
-    aria-label="Document Card with logo, text preview, and status. Further annual report conversation. Content preview. 3 attachments.
-        Sent by Christian Bergqvist and 2 others in March 13, 2018."
+    aria-label="Document Card with logo, text preview, and status. Further annual report conversation. Content preview. 3 attachments. Sent by Christian Bergqvist and 2 others in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -899,8 +897,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     </div>
   </div>
   <div
-    aria-label="Document Card with logo and text preview. Conversation about annual report. Content preview. Sent by Velatine Lourvric
-        and 1 other in March 13, 2018."
+    aria-label="Document Card with logo and text preview. Conversation about annual report. Content preview. Sent by Velatine Lourvric and 1 other in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable

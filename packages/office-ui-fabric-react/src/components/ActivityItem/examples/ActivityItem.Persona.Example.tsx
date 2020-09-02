@@ -4,15 +4,15 @@ import { TestImages } from '@uifabric/example-data';
 
 const classNames = mergeStyleSets({
   exampleRoot: {
-    marginTop: '20px'
+    marginTop: '20px',
   },
   nameText: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export const ActivityItemPersonaExample: React.FunctionComponent = () => {
-  // tslint:disable:jsx-no-lambda
+  /* eslint-disable react/jsx-no-bind */
   const activityItemExamples: (IActivityItemProps & { key: string | number })[] = [
     {
       key: 1,
@@ -29,11 +29,11 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
         <span key={2}> renamed </span>,
         <span key={3} className={classNames.nameText}>
           DocumentTitle.docx
-        </span>
+        </span>,
       ],
       activityPersonas: [{ imageUrl: TestImages.personaMale }],
       comments: 'Hello, this is the text of my basic comment!',
-      timeStamp: '23m ago'
+      timeStamp: '23m ago',
     },
     {
       key: 2,
@@ -66,10 +66,10 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           }}
         >
           SpreadsheetTitle.xlsx
-        </Link>
+        </Link>,
       ],
       activityPersonas: [{ imageInitials: 'JM', text: 'Javiera Márquez' }, { imageUrl: TestImages.personaFemale }],
-      timeStamp: '9:27 am'
+      timeStamp: '9:27 am',
     },
     {
       key: 3,
@@ -93,14 +93,14 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
         >
           2 others
         </Link>,
-        <span key={4}> commented </span>
+        <span key={4}> commented </span>,
       ],
       activityPersonas: [
         { imageInitials: 'RL', text: 'Robert Larsson' },
         { imageUrl: TestImages.personaMale },
-        { imageUrl: TestImages.personaFemale }
+        { imageUrl: TestImages.personaFemale },
       ],
-      timeStamp: '3 days ago'
+      timeStamp: '3 days ago',
     },
     {
       key: 4,
@@ -124,7 +124,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
         >
           5 others
         </Link>,
-        <span key={4}> edited this file</span>
+        <span key={4}> edited this file</span>,
       ],
       activityPersonas: [
         { imageInitials: 'JC', text: 'Jin Cheng' },
@@ -132,10 +132,10 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
         { imageInitials: 'AL', text: 'Annie Lindqvist' },
         { imageUrl: TestImages.personaFemale },
         { imageUrl: TestImages.personaMale },
-        { imageUrl: TestImages.personaMale }
+        { imageUrl: TestImages.personaMale },
       ],
-      timeStamp: 'August 3, 2017'
-    }
+      timeStamp: 'August 3, 2017',
+    },
   ];
 
   return (

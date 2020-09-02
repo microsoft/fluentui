@@ -28,7 +28,7 @@ const jest = (config: JestPluginConfig) => cb => {
     config.testNamePattern && `--testNamePattern="${config.testNamePattern}"`,
     config.rootDir && `--rootDir ${config.rootDir}`,
     config.verbose && '--verbose',
-    config.testFilePattern // !!! THIS ITEM MUST GO LAST IN THE ARRAY !!!
+    config.testFilePattern, // !!! THIS ITEM MUST GO LAST IN THE ARRAY !!!
   ]
     .filter(Boolean)
     .join(' ');

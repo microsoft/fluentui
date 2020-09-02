@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Button, Grid, Popup, Alignment, Position } from '@fluentui/react';
+import { Button, Grid, Popup, Alignment, Position } from '@fluentui/react-northstar';
 import { useBooleanKnob, useSelectKnob } from '@fluentui/docs-components';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const PopupExamplePosition = () => {
   const [open] = useBooleanKnob({ name: 'open', initialValue: true });
@@ -10,20 +11,20 @@ const PopupExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'above-start',
-    values: positionAndAlignValues
+    values: positionAndAlignValues,
   });
 
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
   const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' };
 
   return (
-    <Grid columns="1" variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
+    <Grid columns={1} variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
       <Popup
         open={open || undefined}
         align={align}
         position={position}
         unstable_pinned={unstable_pinned}
-        trigger={<Button icon={{ name: iconNames[position], circular: true, bordered: true }} styles={buttonStyles} title="Show popup" />}
+        trigger={<Button icon={icons[position]} styles={buttonStyles} title="Show popup" />}
         content={
           <p>
             The popup is rendered {position} the trigger
@@ -50,14 +51,14 @@ const positionAndAlignValues = [
   'before-bottom',
   'after-top',
   'after-center',
-  'after-bottom'
+  'after-bottom',
 ];
 
-const iconNames: Record<Position, string> = {
-  above: 'arrow-up',
-  below: 'arrow-down',
-  before: 'arrow-left',
-  after: 'arrow-right'
+const icons: Record<Position, React.ReactNode> = {
+  above: <ArrowUpIcon circular bordered />,
+  below: <ArrowDownIcon circular bordered />,
+  before: <ArrowLeftIcon circular bordered />,
+  after: <ArrowRightIcon circular bordered />,
 };
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
@@ -72,5 +73,5 @@ const paddings: Record<string, React.CSSProperties['padding']> = {
   'before-bottom': '18px 42px 5px 5px',
   'after-top': '5px 5px 18px 42px',
   'after-center': '5px 5px 5px 42px',
-  'after-bottom': '18px 5px 5px 42px'
+  'after-bottom': '18px 5px 5px 42px',
 };

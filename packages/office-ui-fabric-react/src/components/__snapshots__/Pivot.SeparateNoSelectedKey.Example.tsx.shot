@@ -9,7 +9,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   }
 >
-  Current selectedKey: 
+  Current selectedKey:
   Settings
   <div
     style={
@@ -96,7 +96,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -216,7 +215,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing1
                 </span>
               </span>
@@ -254,7 +253,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -374,7 +372,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing2
                 </span>
               </span>
@@ -412,7 +410,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -532,7 +529,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing3
                 </span>
               </span>
@@ -569,7 +566,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -657,7 +653,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Settings"
           role="presentation"

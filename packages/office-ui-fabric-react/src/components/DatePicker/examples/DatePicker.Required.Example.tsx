@@ -3,7 +3,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -17,56 +30,41 @@ const DayPickerStrings: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 
   isRequiredErrorMessage: 'Field is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
 };
-
-export interface IDatePickerRequiredExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
 
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
-export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <p>Validation will happen when Date Picker loses focus.</p>
-        <DatePicker
-          className={controlClass.control}
-          label="Date required (with label)"
-          isRequired={true}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-        />
-        <DatePicker
-          className={controlClass.control}
-          isRequired={true}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Date required with no label..."
-          ariaLabel="Select a date"
-        />
-      </div>
-    );
-  }
-}
+const firstDayOfWeek = DayOfWeek.Sunday;
+export const DatePickerRequiredExample: React.FC = () => (
+  <div className="docs-DatePickerExample">
+    <p>Validation will happen when Date Picker loses focus.</p>
+    <DatePicker
+      className={controlClass.control}
+      label="Date required (with label)"
+      isRequired={true}
+      firstDayOfWeek={firstDayOfWeek}
+      strings={DayPickerStrings}
+      placeholder="Select a date..."
+      ariaLabel="Select a date"
+    />
+    <DatePicker
+      className={controlClass.control}
+      isRequired={true}
+      firstDayOfWeek={firstDayOfWeek}
+      strings={DayPickerStrings}
+      placeholder="Date required with no label..."
+      ariaLabel="Select a date"
+    />
+  </div>
+);

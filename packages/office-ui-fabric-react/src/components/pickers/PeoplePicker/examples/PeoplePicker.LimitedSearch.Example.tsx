@@ -11,21 +11,21 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
   searchForMoreText: 'Load all Results',
   resultsMaximumNumber: 10,
-  searchingText: 'Searching...'
+  searchingText: 'Searching...',
 };
 
 const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
 
 const checkboxStyles = {
   root: {
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 };
 
 export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
@@ -36,14 +36,17 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
 
   const picker = React.useRef(null);
 
-  const onFilterChangedWithLimit = (filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
+  const onFilterChangedWithLimit = (
+    filterText: string,
+    currentPersonas: IPersonaProps[],
+  ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     return onFilterChanged(filterText, currentPersonas, 3);
   };
 
   const onFilterChanged = (
     filterText: string,
     currentPersonas: IPersonaProps[],
-    limitResults?: number
+    limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
@@ -68,10 +71,10 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
     }
   };
 
-  const returnMostRecentlyUsedWithLimit = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    setMostRecentlyUsed(mostRecentlyUsed.slice(0, 3));
-    return filterPromise(mostRecentlyUsed);
+  const returnMostRecentlyUsedWithLimit = (
+    currentPersonas: IPersonaProps[],
+  ): IPersonaProps[] | Promise<IPersonaProps[]> => {
+    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas).slice(0, 3));
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {
@@ -79,7 +82,9 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
     const indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList
+        .slice(0, indexPeopleList)
+        .concat(peopleList.slice(indexPeopleList + 1));
       setPeopleList(newPeople);
     }
 
@@ -104,6 +109,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
   return (
     <div>
       <CompactPeoplePicker
+        /* eslint-disable react/jsx-no-bind */
         onResolveSuggestions={onFilterChangedWithLimit}
         onEmptyInputFocus={returnMostRecentlyUsedWithLimit}
         getTextFromItem={getTextFromItem}
@@ -111,19 +117,27 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
         onGetMoreResults={onFilterChanged}
         pickerSuggestionsProps={limitedSearchSuggestionProps}
         onRemoveSuggestion={onRemoveSuggestion}
+        /* eslint-enable react/jsx-no-bind */
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
         }}
         componentRef={picker}
         resolveDelay={300}
         disabled={isPickerDisabled}
       />
-      <Checkbox label="Disable People Picker" checked={isPickerDisabled} onChange={onDisabledButtonClick} styles={checkboxStyles} />
+      <Checkbox
+        label="Disable People Picker"
+        checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onDisabledButtonClick}
+        styles={checkboxStyles}
+      />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />

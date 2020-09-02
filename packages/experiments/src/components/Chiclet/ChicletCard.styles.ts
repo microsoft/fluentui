@@ -27,11 +27,11 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         position: 'relative',
         selectors: {
           ':hover': {
-            cursor: 'pointer'
-          }
-        }
+            cursor: 'pointer',
+          },
+        },
       },
-      className
+      className,
     ],
     preview: [
       'ms-ChicletCard-preview',
@@ -41,8 +41,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         alignItems: 'center',
         height: 112,
         width: previewWidth,
-        backgroundColor: palette.white
-      }
+        backgroundColor: palette.white,
+      },
     ],
     info: [
       {
@@ -51,8 +51,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         height: '100%',
         overflow: 'hidden',
         wordWrap: 'break-word',
-        width: infoWidth
-      }
+        width: infoWidth,
+      },
     ],
     title: [
       {
@@ -67,8 +67,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         maxHeight: 37,
         lineHeight: '1.25',
         overflow: 'hidden',
-        wordWrap: 'break-word'
-      }
+        wordWrap: 'break-word',
+      },
     ],
     description: [
       {
@@ -82,8 +82,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         color: palette.neutralSecondary,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
-      }
-    ]
+        textOverflow: 'ellipsis',
+      },
+    ],
   };
 };

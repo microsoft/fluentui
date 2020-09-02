@@ -1,13 +1,14 @@
-import { Attachment } from '@fluentui/react';
+import { Attachment } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { MoreIcon, TableIcon } from '@fluentui/react-icons-northstar';
 
 const AttachmentSlotsPerf = () => (
   <Attachment
     actionable
-    icon="table"
+    icon={<TableIcon />}
     header="Document.docx"
     description="800 Kb"
-    action={{ icon: 'more', title: 'More Action' }}
+    action={{ icon: <MoreIcon />, title: 'More Action' }}
     progress={33}
   />
 );

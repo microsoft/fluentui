@@ -1,4 +1,4 @@
-import { Layout } from '@fluentui/react';
+import { Layout } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const LayoutMinimalPerf = () => <Layout />;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Legends, ILegend } from '@uifabric/charting/lib/Legends';
+import { Legends, ILegend } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LegendBasicExample extends React.Component<{}, {}> {
@@ -17,7 +17,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('hover action');
-        }
+        },
       },
       {
         title: 'Legend 2',
@@ -27,7 +27,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('hover action');
-        }
+        },
       },
       {
         title: 'Legend 3',
@@ -37,7 +37,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('hover action');
-        }
+        },
       },
       {
         title: 'Legend 4',
@@ -48,10 +48,10 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         },
         hoverAction: () => {
           console.log('hover action');
-        }
-      }
+        },
+      },
     ];
 
-    return <Legends legends={legends} />;
+    return <Legends legends={legends} overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }} />;
   }
 }

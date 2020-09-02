@@ -21,7 +21,7 @@ export interface IFabricSlotWidgetState {
 const slotClassName = mergeStyles({
   display: 'flex',
   alignItems: 'center',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 const fabricPaletteColorBox = mergeStyles({
@@ -31,13 +31,13 @@ const fabricPaletteColorBox = mergeStyles({
   left: 5,
   top: 5,
   border: '1px solid black',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 const colorBoxAndHexStringClassName: IStackStyles = {
   root: {
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 };
 
 export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IFabricSlotWidgetState> {
@@ -46,7 +46,7 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
 
     this.state = {
       isColorPickerVisible: false,
-      colorPickerElement: null
+      colorPickerElement: null,
     };
   }
 
@@ -56,7 +56,11 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
     return (
       <div className={slotClassName}>
         <Stack horizontal styles={colorBoxAndHexStringClassName} gap={5}>
-          <div className={fabricPaletteColorBox} style={{ backgroundColor: slotRule.color.str }} onClick={this._onColorBoxClick} />
+          <div
+            className={fabricPaletteColorBox}
+            style={{ backgroundColor: slotRule.color.str }}
+            onClick={this._onColorBoxClick}
+          />
           <div>{slotRule.name}</div>
         </Stack>
         {isColorPickerVisible && (
@@ -81,13 +85,13 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
   private _onColorBoxClick = (ev: React.MouseEvent<HTMLElement>) => {
     this.setState({
       isColorPickerVisible: true,
-      colorPickerElement: ev.target as HTMLElement
+      colorPickerElement: ev.target as HTMLElement,
     });
   };
 
   private _onCalloutDismiss = () => {
     this.setState({
-      isColorPickerVisible: false
+      isColorPickerVisible: false,
     });
   };
 }

@@ -1,7 +1,201 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.14.0)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.13.0..@uifabric/example-app-base_v7.14.0)
+
+### Minor changes
+
+- Markdown: add support for custom HTML ([PR #14545](https://github.com/microsoft/fluentui/pull/14545) by elcraig@microsoft.com)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.13.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.114..@uifabric/example-app-base_v7.13.0)
+
+### Patches
+
+- Add back UHF link style overrides via Customizer ([PR #14542](https://github.com/microsoft/fluentui/pull/14542) by elcraig@microsoft.com)
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.12.114](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.114)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.109..@uifabric/example-app-base_v7.12.114)
+
+### Patches
+
+- @uifabric/example-app-base: Updating dependencies to resolve security issues. ([PR #14543](https://github.com/microsoft/fluentui/pull/14543) by humbertomakotomorimoto@gmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.105..@uifabric/example-app-base_v7.12.106)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
+
+## [7.12.105](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.105)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.101..@uifabric/example-app-base_v7.12.105)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
+
+## [7.12.101](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.101)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.97..@uifabric/example-app-base_v7.12.101)
+
+### Patches
+
+- updated syntax highlighting to remove a11y violations ([PR #14139](https://github.com/microsoft/fluentui/pull/14139) by mgodbolt@microsoft.com)
+
+## [7.12.97](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.97)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.95..@uifabric/example-app-base_v7.12.97)
+
+### Patches
+
+- Style tweaks for new doc content ([PR #13887](https://github.com/microsoft/fluentui/pull/13887) by mgodbolt@microsoft.com)
+
+## [7.12.95](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.95)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.93..@uifabric/example-app-base_v7.12.95)
+
+### Patches
+
+- Re-enable editor with improved error handling ([PR #14078](https://github.com/microsoft/fluentui/pull/14078) by elcraig@microsoft.com)
+
+## [7.12.92](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.92)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.83..@uifabric/example-app-base_v7.12.92)
+
+### Patches
+
+- Replace tslint with eslint ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.12.74](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.74)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.68..@uifabric/example-app-base_v7.12.74)
+
+### Patches
+
+- Tweaks to css modules ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
+
+## [7.12.68](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.68)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.64..@uifabric/example-app-base_v7.12.68)
+
+### Patches
+
+- Fixed minor typos ([PR #13246](https://github.com/microsoft/fluentui/pull/13246) by xia_tony@hotmail.com)
+
+## [7.12.64](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.64)
+
+Mon, 18 May 2020 16:49:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.59..@uifabric/example-app-base_v7.12.64)
+
+### Patches
+
+- Fix demo app ([PR #13204](https://github.com/microsoft/fluentui/pull/13204) by elcraig@microsoft.com)
+
+## [7.12.59](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.59)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.52..@uifabric/example-app-base_v7.12.59)
+
+### Patches
+
+- cleaned up platform switcher, made room for windows button ([PR #12482](https://github.com/microsoft/fluentui/pull/12482) by mgodbolt@microsoft.com)
+
+## [7.12.52](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.52)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.46..@uifabric/example-app-base_v7.12.52)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.12.46](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.46)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.39..@uifabric/example-app-base_v7.12.46)
+
+### Patches
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+## [7.12.39](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.39)
+
+Mon, 20 Apr 2020 15:55:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.38..@uifabric/example-app-base_v7.12.39)
+
+### Patches
+
+- guard against window and location not being available ([PR #12769](https://github.com/microsoft/fluentui/pull/12769) by mgodbolt@microsoft.com)
+
+## [7.12.38](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.38)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.34..@uifabric/example-app-base_v7.12.38)
+
+### Patches
+
+- Doc site: disable live code editing until we have a fix for the OOM errors. ([PR #12776](https://github.com/microsoft/fluentui/pull/12776) by dzearing@microsoft.com)
+
+## [7.12.34](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.34)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.32..@uifabric/example-app-base_v7.12.34)
+
+### Patches
+
+- Readme: Recommend Storybook instead; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.12.24
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.12.23
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.12.18
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Patches
+
+- new blog announcement, support jsx in message bar, move hig link (mgodbolt@microsoft.com)
+## 7.12.17
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- use ms-Fabric--isFocusVisible instead of .is-focusVisible (xgao@microsoft.com)
 ## 7.12.0
 Wed, 12 Feb 2020 12:24:27 GMT
 
@@ -1311,4 +1505,3 @@ Wed, 08 Feb 2017 05:10:53 GMT
 ### Patches
 
 - Adding new package to host all example app base code, which allows us to share common doc website code across many projects.
-

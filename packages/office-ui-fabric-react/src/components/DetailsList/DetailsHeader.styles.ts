@@ -1,6 +1,14 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
-import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSelector, hiddenContentStyle, ITheme } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import {
+  getFocusStyle,
+  focusClear,
+  IStyle,
+  getGlobalClassNames,
+  HighContrastSelector,
+  hiddenContentStyle,
+  ITheme,
+} from '../../Styling';
+import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
@@ -26,7 +34,7 @@ const GlobalClassNames = {
   filterChevron: 'ms-DetailsHeader-filterChevron',
   gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical',
   checkTooltip: 'ms-DetailsHeader-checkTooltip',
-  check: 'ms-DetailsHeader-check'
+  check: 'ms-DetailsHeader-check',
 };
 
 export const HEADER_HEIGHT = 42;
@@ -51,13 +59,21 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   ];
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
-  const { theme, className, isAllSelected, isResizingColumn, isSizing, isAllCollapsed, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
+  const {
+    theme,
+    className,
+    isAllSelected,
+    isResizingColumn,
+    isSizing,
+    isAllCollapsed,
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+  } = props;
 
   const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -67,12 +83,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     headerForegroundColor: semanticColors.bodyText,
     headerBackgroundColor: semanticColors.bodyBackground,
     dropdownChevronForegroundColor: palette.neutralTertiary,
-    resizerColor: palette.neutralTertiaryAlt
+    resizerColor: palette.neutralTertiaryAlt,
   };
 
   const cellSizerFadeInStyles: IStyle = {
     opacity: 1,
-    transition: 'opacity 0.3s linear'
+    transition: 'opacity 0.3s linear',
   };
 
   const cellStyles = getCellStyles(props);
@@ -98,34 +114,34 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         userSelect: 'none',
         selectors: {
           [`&:hover .${classNames.check}`]: {
-            opacity: 1
+            opacity: 1,
           },
           [`& .${classNames.tooltipHost} .${classNames.checkTooltip}`]: {
-            display: 'block'
-          }
-        }
+            display: 'block',
+          },
+        },
       },
       isAllSelected && classNames.isAllSelected,
       isResizingColumn && classNames.isResizingColumn,
-      className
+      className,
     ],
 
     check: [
       classNames.check,
       {
-        height: HEADER_HEIGHT
+        height: HEADER_HEIGHT,
       },
       {
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus`]: {
-            opacity: 1
-          }
-        }
-      }
+            opacity: 1,
+          },
+        },
+      },
     ],
 
     cellWrapperPadded: {
-      paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
+      paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding,
     },
 
     cellIsCheck: [
@@ -137,11 +153,11 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         margin: 0,
         display: 'inline-flex',
         alignItems: 'center',
-        border: 'none'
+        border: 'none',
       },
       isAllSelected && {
-        opacity: 1
-      }
+        opacity: 1,
+      },
     ],
 
     cellIsGroupExpander: [
@@ -157,28 +173,28 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         color: palette.neutralSecondary,
         selectors: {
           ':hover': {
-            backgroundColor: palette.neutralLighter
+            backgroundColor: palette.neutralLighter,
           },
           ':active': {
-            backgroundColor: palette.neutralLight
-          }
-        }
-      }
+            backgroundColor: palette.neutralLight,
+          },
+        },
+      },
     ],
 
     cellIsActionable: {
       selectors: {
         ':hover': {
           color: semanticColors.bodyText,
-          background: semanticColors.listHeaderBackgroundHovered
+          background: semanticColors.listHeaderBackgroundHovered,
         },
         ':active': {
-          background: semanticColors.listHeaderBackgroundPressed
-        }
-      }
+          background: semanticColors.listHeaderBackgroundPressed,
+        },
+      },
     },
     cellIsEmpty: {
-      textOverflow: 'clip'
+      textOverflow: 'clip',
     },
 
     cellSizer: [
@@ -204,47 +220,47 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
             width: 1,
             background: colors.resizerColor,
             opacity: 0,
-            left: '50%'
+            left: '50%',
           },
           ':focus:after': cellSizerFadeInStyles,
           ':hover:after': cellSizerFadeInStyles,
           [`&.${classNames.isResizing}:after`]: [
             cellSizerFadeInStyles,
             {
-              boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)'
-            }
-          ]
-        }
-      }
+              boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+            },
+          ],
+        },
+      },
     ],
 
     cellIsResizing: classNames.isResizing,
 
     cellSizerStart: {
-      margin: '0 -8px'
+      margin: '0 -8px',
     },
 
     cellSizerEnd: {
       margin: 0,
-      marginLeft: -16
+      marginLeft: -16,
     },
 
     collapseButton: [
       classNames.collapseButton,
       {
         transformOrigin: '50% 50%',
-        transition: 'transform .1s linear'
+        transition: 'transform .1s linear',
       },
       isAllCollapsed
         ? [
             classNames.isCollapsed,
             {
-              transform: 'rotate(0deg)'
-            }
+              transform: 'rotate(0deg)',
+            },
           ]
         : {
-            transform: 'rotate(90deg)'
-          }
+            transform: getRTL(theme) ? 'rotate(-90deg)' : 'rotate(90deg)',
+          },
     ],
 
     checkTooltip: classNames.checkTooltip,
@@ -260,9 +276,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       selectors: {
         [HighContrastSelector]: {
           background: 'transparent',
-          MsHighContrastAdjust: 'none'
-        }
-      }
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
 
     accessibleLabel: hiddenContentStyle,
@@ -282,8 +298,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         overflow: 'visible',
         zIndex: 10,
         border: `1px solid ${palette.themePrimary}`,
-        background: palette.white
-      }
+        background: palette.white,
+      },
     ],
 
     dropHintCaretStyle: [
@@ -296,8 +312,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         fontSize: fonts.medium.fontSize,
         color: palette.themePrimary,
         overflow: 'visible',
-        zIndex: 10
-      }
+        zIndex: 10,
+      },
     ],
 
     dropHintLineStyle: [
@@ -311,13 +327,13 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         height: 42,
         width: 1,
         background: palette.themePrimary,
-        zIndex: 10
-      }
+        zIndex: 10,
+      },
     ],
 
     dropHintStyle: {
       display: 'inline-block',
-      position: 'absolute'
-    }
+      position: 'absolute',
+    },
   };
 };

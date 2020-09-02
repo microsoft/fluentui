@@ -6,9 +6,7 @@ exports[`Suggestions renders a list properly 1`] = `
 >
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
@@ -35,6 +33,16 @@ exports[`Suggestions renders a list properly 1`] = `
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
+            }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
       >
         <button
@@ -70,7 +78,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -88,7 +95,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -207,7 +213,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -225,7 +230,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -341,7 +345,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -359,7 +362,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -475,7 +477,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -493,7 +494,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -609,7 +609,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -627,7 +626,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -743,7 +741,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -761,7 +758,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -877,7 +873,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -895,7 +890,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1011,7 +1005,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1029,7 +1022,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1145,7 +1137,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1163,7 +1154,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1279,7 +1269,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1297,7 +1286,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1413,7 +1401,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1431,7 +1418,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1547,7 +1533,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1565,7 +1550,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1681,7 +1665,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1699,7 +1682,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1815,7 +1797,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1833,7 +1814,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1949,7 +1929,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1967,7 +1946,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2044,9 +2022,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 >
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
@@ -2056,6 +2032,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           max-height: 300px;
           overflow-x: hidden;
           overflow-y: auto;
+          transform: translate3d(0,0,0);
         }
     role="listbox"
   >
@@ -2079,6 +2056,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
+            }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
       >
         <button
@@ -2114,7 +2101,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2132,7 +2118,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2251,7 +2236,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2269,7 +2253,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2385,7 +2368,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2403,7 +2385,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2519,7 +2500,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2537,7 +2517,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2653,7 +2632,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2671,7 +2649,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2787,7 +2764,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2805,7 +2781,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2921,7 +2896,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2939,7 +2913,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3055,7 +3028,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3073,7 +3045,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3189,7 +3160,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3207,7 +3177,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3323,7 +3292,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3341,7 +3309,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3457,7 +3424,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3475,7 +3441,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3591,7 +3556,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3609,7 +3573,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3725,7 +3688,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3743,7 +3705,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3859,7 +3820,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3877,7 +3837,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3993,7 +3952,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4011,7 +3969,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4084,9 +4041,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
 >
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
@@ -4146,7 +4101,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4164,7 +4118,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4280,7 +4233,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4298,7 +4250,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4414,7 +4365,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4432,7 +4382,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4548,7 +4497,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4566,7 +4514,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4682,7 +4629,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4700,7 +4646,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4816,7 +4761,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4834,7 +4778,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4950,7 +4893,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4968,7 +4910,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5084,7 +5025,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5102,7 +5042,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5186,6 +5125,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
       >
         <button
           className=
@@ -5220,7 +5169,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5238,7 +5186,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5357,7 +5304,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5375,7 +5321,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5491,7 +5436,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5509,7 +5453,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5625,7 +5568,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5643,7 +5585,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5759,7 +5700,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5777,7 +5717,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5893,7 +5832,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5911,7 +5849,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -6027,7 +5964,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -6045,7 +5981,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;

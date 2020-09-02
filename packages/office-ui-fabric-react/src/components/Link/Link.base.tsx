@@ -1,45 +1,35 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
   private _link = React.createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
+  constructor(props: ILinkProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
+
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
+    const { disabled, keytipProps } = this.props;
 
-    const classNames = getClassNames(styles!, {
-      className,
-      isButton: !href,
-      isDisabled: disabled,
-      theme: theme!
-    });
+    if (keytipProps) {
+      return (
+        <KeytipData
+          keytipProps={keytipProps}
+          ariaDescribedBy={(this.props as { 'aria-describedby': string })['aria-describedby']}
+          disabled={disabled}
+        >
+          {(keytipAttributes: any): JSX.Element => this._renderContent(keytipAttributes)}
+        </KeytipData>
+      );
+    }
 
-    const RootType = this._getRootType(this.props);
-
-    return (
-      <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={(this.props as { 'aria-describedby': string })['aria-describedby']}
-        disabled={disabled}
-      >
-        {(keytipAttributes: any): JSX.Element => (
-          <RootType
-            {...keytipAttributes}
-            {...this._adjustPropsForRootType(RootType, this.props)}
-            className={classNames.root}
-            onClick={this._onClick}
-            ref={this._link}
-            aria-disabled={disabled}
-          >
-            {children}
-          </RootType>
-        )}
-      </KeytipData>
-    );
+    return this._renderContent();
   }
 
   public focus() {
@@ -49,6 +39,32 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       current.focus();
     }
   }
+
+  private _renderContent = (keytipAttributes: any = {}): JSX.Element => {
+    const { disabled, children, className, href, theme, styles } = this.props;
+
+    const classNames = getClassNames(styles!, {
+      className,
+      isButton: !href,
+      isDisabled: disabled,
+      theme: theme!,
+    });
+
+    const RootType = this._getRootType(this.props);
+
+    return (
+      <RootType
+        {...keytipAttributes}
+        {...this._adjustPropsForRootType(RootType, this.props)}
+        className={classNames.root}
+        onClick={this._onClick}
+        ref={this._link}
+        aria-disabled={disabled}
+      >
+        {children}
+      </RootType>
+    );
+  };
 
   private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { onClick, disabled } = this.props;
@@ -62,12 +78,24 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
   private _adjustPropsForRootType(
     RootType: string | React.ComponentClass | React.FunctionComponent,
-    props: ILinkProps & { getStyles?: any }
+    props: ILinkProps & { getStyles?: any },
   ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
-    const { children, as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
+    const {
+      children,
+      as,
+      disabled,
+      target,
+      href,
+      theme,
+      getStyles,
+      styles,
+      componentRef,
+      keytipProps,
+      ...restProps
+    } = props;
 
     // RootType will be a string if we're dealing with an html component
     if (typeof RootType === 'string') {
@@ -76,7 +104,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           target,
           href: disabled ? undefined : href,
-          ...restProps
+          ...restProps,
         };
       }
 
@@ -85,7 +113,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           type: 'button',
           disabled,
-          ...restProps
+          ...restProps,
         };
       }
 

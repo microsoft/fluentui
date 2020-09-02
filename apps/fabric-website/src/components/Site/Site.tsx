@@ -19,7 +19,8 @@ import {
   TPlatformPages,
   jumpToAnchor,
   removeAnchorLink,
-  SiteMessageBar
+  SiteMessageBar,
+  getQueryParam,
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
@@ -46,18 +47,24 @@ export interface ISiteState<TPlatforms extends string = string> {
   activePlatforms: { [topLevelPage: string]: TPlatforms };
 }
 
-export class Site<TPlatforms extends string = string> extends React.Component<ISiteProps<TPlatforms>, ISiteState<TPlatforms>> {
+export class Site<TPlatforms extends string = string> extends React.Component<
+  ISiteProps<TPlatforms>,
+  ISiteState<TPlatforms>
+> {
   public static defaultProps: ISiteProps = {
-    siteDefinition: { ...baseDefinition }
+    siteDefinition: { ...baseDefinition },
   };
 
   private _async: Async;
   private _jumpInterval: number | undefined;
+  private _isStrict: boolean;
 
   constructor(props: ISiteProps<TPlatforms>) {
     super(props);
 
     this._async = new Async();
+
+    this._isStrict = getQueryParam('strict') === 'all';
 
     let activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = {};
 
@@ -74,7 +81,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         // ignore
       }
 
-      // Set active platform for each top level page to local storage platform or the first platform defined for that page.
+      // Set active platform for each top level page to local storage platform or the first platform defined for
+      // that page.
       topLevelPages.forEach(item => {
         activePlatforms[item] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
       });
@@ -90,14 +98,14 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       platform = firstPlatform;
       activePlatforms = {
         ...activePlatforms,
-        [currentPage]: firstPlatform
+        [currentPage]: firstPlatform,
       };
     }
 
     this.state = {
       activePlatforms,
       platform,
-      ...navData
+      ...navData,
     };
   }
 
@@ -114,7 +122,6 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     window.removeEventListener('hashchange', this._handleRouteChange);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ISiteProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -143,7 +150,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const { children, siteDefinition } = this.props;
     const { customizations } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
-      React.cloneElement(child, { platform })
+      React.cloneElement(child, { platform }),
     );
 
     const SiteContent = () => (
@@ -167,7 +174,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       </div>
     );
 
-    return (
+    const app = (
       <PlatformContext.Provider value={platform}>
         <AppCustomizationsContext.Provider value={AppCustomizations}>
           {customizations ? (
@@ -180,6 +187,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         </AppCustomizationsContext.Provider>
       </PlatformContext.Provider>
     );
+
+    return this._isStrict ? <React.StrictMode>{app}</React.StrictMode> : app;
   }
 
   private _getNavData(activePlatforms?: ISiteState<TPlatforms>['activePlatforms']): Partial<ISiteState<TPlatforms>> {
@@ -228,7 +237,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       searchablePageTitle,
       isContentFullBleed,
       hasPlatformPicker,
-      pagePlatforms
+      pagePlatforms,
     };
   }
 
@@ -289,7 +298,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   /**
    * Determines the current page's platform.
    */
-  private _getPlatform = (activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = this.state.activePlatforms): TPlatforms => {
+  private _getPlatform = (
+    activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = this.state.activePlatforms,
+  ): TPlatforms => {
     const currentPage = getSiteArea(this.props.siteDefinition.pages);
 
     if (activePlatforms && activePlatforms[currentPage]) {
@@ -367,7 +378,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -386,7 +397,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -401,7 +412,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
       currentArea: getSiteArea(siteDefinition.pages),
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -411,29 +422,29 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    */
   private _onPlatformChanged = (platformKey: TPlatforms): void => {
     const { siteDefinition } = this.props;
-    if (platformKey !== this.state.platform) {
-      trackEvent(EventNames.ChangedPlatform, {
-        topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
-        currentArea: getSiteArea(siteDefinition.pages),
-        platform: platformKey, // @TODO: Remove platform when data is stale.
-        currentPlatform: this.state.platform,
-        nextPlatform: platformKey
-      });
+    // if (platformKey !== this.state.platform) {
+    trackEvent(EventNames.ChangedPlatform, {
+      topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
+      currentArea: getSiteArea(siteDefinition.pages),
+      platform: platformKey, // @TODO: Remove platform when data is stale.
+      currentPlatform: this.state.platform,
+      nextPlatform: platformKey,
+    });
 
-      const { activePlatforms } = this.state;
-      const currentPage = getSiteArea(siteDefinition.pages);
+    const { activePlatforms } = this.state;
+    const currentPage = getSiteArea(siteDefinition.pages);
 
-      this.setState(
-        {
-          platform: platformKey,
-          activePlatforms: {
-            ...activePlatforms,
-            [currentPage]: platformKey
-          }
+    this.setState(
+      {
+        platform: platformKey,
+        activePlatforms: {
+          ...activePlatforms,
+          [currentPage]: platformKey,
         },
-        this._setActivePlatforms
-      );
-    }
+      },
+      this._setActivePlatforms,
+    );
+    // }
   };
 
   private _setActivePlatforms = () => {
@@ -449,11 +460,26 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    * is detected in the window URL. Fires a pageView tracking event.
    */
   private _handleRouteChange = (): void => {
-    const { pagePath: prevPagePath, platform } = this.state;
+    const { pagePath: prevPagePath, platform, activePlatforms } = this.state;
     const { siteDefinition } = this.props;
     const { platforms } = siteDefinition;
 
     const newPagePath = removeAnchorLink(location.hash);
+    // Top level path (Controls, Get started or Styles)
+    let newPageTopLevel = '';
+
+    switch (newPagePath.split('/')[1]) {
+      case 'controls':
+        newPageTopLevel = 'Controls';
+        break;
+      case 'get-started':
+        newPageTopLevel = 'Get started';
+        break;
+      case 'styles':
+        newPageTopLevel = 'Styles';
+        break;
+    }
+
     if (prevPagePath === newPagePath) {
       // Must have been a change to the anchor only (not the route).
       // Don't do a full update, just jump to the anchor.
@@ -463,12 +489,13 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
     const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
     if (platformKeys && platformKeys.length > 0) {
-      // Test if the platform has changed on each hashchange to avoid costly forEach below.
-      const currentPlatformRegex = new RegExp(`/${platform}\\b`);
+      // Test if the target platform has changed on each hashchange to avoid costly forEach below.
+      const targetPlatform = activePlatforms[newPageTopLevel] || platform;
+      const targetPlatformRegex = new RegExp(`/${targetPlatform}\\b`);
 
-      if (!currentPlatformRegex.test(newPagePath)) {
+      if (!targetPlatformRegex.test(newPagePath)) {
         for (const key of platformKeys) {
-          // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
+          // If the user navigates directly to a platform-specific page, set the active platform to that of the new page
           const isNewPlatform = new RegExp(`/${key}`, 'gi');
           if (isNewPlatform.test(newPagePath)) {
             this._onPlatformChanged(key);
@@ -484,7 +511,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       previousPage: prevPagePath,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
-      referrer: document.referrer.length ? document.referrer : undefined
+      referrer: document.referrer.length ? document.referrer : undefined,
     });
 
     // @TODO: investigate using history to save a re-render.

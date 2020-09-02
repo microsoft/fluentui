@@ -7,9 +7,9 @@ describe('staticRender', () => {
       const classNames: { root: string } = mergeCssSets([
         {
           root: {
-            background: 'red'
-          }
-        }
+            background: 'red',
+          },
+        },
       ]);
 
       return `<div class="${classNames.root}">Hello!</div>`;
@@ -24,9 +24,9 @@ describe('staticRender', () => {
       const classNames: { root: string } = mergeCssSets([
         {
           root: {
-            background: 'red'
-          }
-        }
+            background: 'red',
+          },
+        },
       ]);
 
       return `<div class="${classNames.root}">Hello!</div>`;

@@ -1,24 +1,28 @@
-import { getGlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { ICardSectionComponent, ICardSectionStylesReturnType, ICardSectionTokenReturnType } from './CardSection.types';
 
 const GlobalClassNames = {
-  root: 'ms-CardSection'
+  root: 'ms-CardSection',
 };
 
 const baseTokens: ICardSectionComponent['tokens'] = {
-  padding: 0
+  padding: 0,
 };
 
 const filledTokens: ICardSectionComponent['tokens'] = {
-  margin: 0
+  margin: 0,
 };
 
 export const CardSectionTokens: ICardSectionComponent['tokens'] = (props, theme): ICardSectionTokenReturnType => [
   baseTokens,
-  props.fill && filledTokens
+  props.fill && filledTokens,
 ];
 
-export const CardSectionStyles: ICardSectionComponent['styles'] = (props, theme, tokens): ICardSectionStylesReturnType => {
+export const CardSectionStyles: ICardSectionComponent['styles'] = (
+  props,
+  theme,
+  tokens,
+): ICardSectionStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -27,8 +31,8 @@ export const CardSectionStyles: ICardSectionComponent['styles'] = (props, theme,
       classNames.root,
       {
         margin: tokens.margin,
-        padding: tokens.padding
-      }
-    ]
+        padding: tokens.padding,
+      },
+    ],
   };
 };

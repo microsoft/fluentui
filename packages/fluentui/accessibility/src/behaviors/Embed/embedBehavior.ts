@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -11,26 +11,24 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-hidden=true', if there is no 'alt' property provided.
  * Adds attribute 'tabIndex=0' to 'root' slot.
  */
-const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
+export const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-hidden': props.alt || props.title ? undefined : true,
       role: 'presentation',
-      tabIndex: 0
-    }
+      tabIndex: 0,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+      },
+    },
+  },
 });
 
-export default embedBehavior;
-
-type EmbedBehaviorProps = {
+export type EmbedBehaviorProps = {
   /** Corresponds to HTML title attribute. */
   title?: string;
   /** Alternative text. */

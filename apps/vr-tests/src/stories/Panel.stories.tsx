@@ -7,7 +7,7 @@ import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
 
 const defaultProps = {
   isOpen: true,
-  children: 'Content goes here'
+  children: 'Content goes here',
 };
 
 storiesOf('Panel', module)
@@ -20,14 +20,14 @@ storiesOf('Panel', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Small left w/ close button',
     () => (
       <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Small fixed right w/ close button',
@@ -39,7 +39,7 @@ storiesOf('Panel', module)
         headerText="Small fixed"
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Small fluid right', () => (
     <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
@@ -47,7 +47,7 @@ storiesOf('Panel', module)
   .addStory(
     'Medium right',
     () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />,
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Large right', () => (
     <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
@@ -76,6 +76,9 @@ storiesOf('Panel', module)
       headerText="No navigation"
       hasCloseButton={false}
     />
+  ))
+  .addStory('With no header, close button', () => (
+    <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
   ));
 
 storiesOf('Panel', module)
@@ -108,5 +111,5 @@ storiesOf('Panel', module)
         </Panel>
       </div>
     ),
-    { rtl: true }
+    { rtl: true },
   );

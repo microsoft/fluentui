@@ -4,12 +4,18 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
-      "docs/*": ["packages/fluentui/docs/*"],
-      "src/*": ["packages/fluentui/react/src/*"],
-      "test/*": ["packages/fluentui/react/test/*"]
+      "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
+      "@fluentui/react-compose": ["packages/react-compose/src/index"],
+      "@uifabric/merge-styles": ["packages/merge-styles/src"],
+      "@uifabric/set-version": ["packages/set-version/src"],
+      "@uifabric/utilities": ["packages/utilities/src"],
+      "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"],
+      "src/*": ["packages/fluentui/react-northstar/src/*"],
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
-    "types": ["node", "webpack-env", "screener-runner"]
+    "types": ["node", "webpack-env", "screener-runner"],
+    "skipLibCheck": true
   },
   "include": ["./src"]
 }

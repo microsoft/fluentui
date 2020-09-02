@@ -96,6 +96,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -141,6 +142,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
               </div>
             </div>
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -184,6 +186,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -254,6 +257,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -293,6 +297,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -455,7 +460,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   white-space: nowrap;
                 }
                 &::-moz-focus-inner {
@@ -473,7 +477,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -590,7 +593,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   white-space: nowrap;
                 }
                 &::-moz-focus-inner {
@@ -609,7 +611,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -745,7 +746,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -763,7 +763,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -839,7 +838,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Cancel"
             role="presentation"
@@ -855,6 +853,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
       </button>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -894,6 +893,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -939,6 +939,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -978,6 +979,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1052,6 +1054,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1091,6 +1094,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1199,6 +1203,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1233,10 +1238,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-header
-        ms-TeachingBubble-image
-
+    className="ms-TeachingBubble-header ms-TeachingBubble-image"
   >
     <div
       className=
@@ -1278,6 +1280,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1348,6 +1351,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1387,6 +1391,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -1463,6 +1468,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

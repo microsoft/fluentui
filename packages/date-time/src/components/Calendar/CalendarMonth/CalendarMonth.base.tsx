@@ -7,86 +7,82 @@ import {
   getYearEnd,
   getMonthStart,
   getMonthEnd,
-  compareDatePart
+  compareDatePart,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { BaseComponent, css, getRTL, classNamesFunction, KeyCodes, format } from '@uifabric/utilities';
+import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
+import { usePrevious, useConstCallback } from '@uifabric/react-hooks';
 
 const MONTHS_PER_ROW = 4;
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
-export interface ICalendarMonthState {
-  isYearPickerVisible?: boolean;
-  animateBackwards?: boolean;
-  previousNavigatedDate?: Date;
+const DEFAULT_PROPS = {
+  styles: getStyles,
+  strings: undefined,
+  navigationIcons: defaultIconStrings,
+  dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+  yearPickerHidden: false,
+} as const;
+
+function useAnimateBackwards({ navigatedDate }: ICalendarMonthProps) {
+  const currentYear = navigatedDate.getFullYear();
+  const previousYear = usePrevious(currentYear);
+
+  if (previousYear === undefined || previousYear === currentYear) {
+    return undefined;
+  } else {
+    return previousYear > currentYear;
+  }
 }
 
-export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
-  public static defaultProps: Partial<ICalendarMonthProps> = {
-    styles: getStyles,
-    strings: undefined,
-    navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    yearPickerHidden: false
+function useFocusLogic({ componentRef }: ICalendarMonthProps) {
+  const navigatedMonthRef = React.useRef<HTMLButtonElement>(null);
+  const calendarYearRef = React.useRef<ICalendarYear>(null);
+  const focusOnUpdate = React.useRef(false);
+
+  const focus = useConstCallback(() => {
+    if (calendarYearRef.current) {
+      calendarYearRef.current.focus();
+    } else if (navigatedMonthRef.current) {
+      navigatedMonthRef.current.focus();
+    }
+  });
+
+  React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
+
+  React.useEffect(() => {
+    if (focusOnUpdate.current) {
+      focus();
+      focusOnUpdate.current = false;
+    }
+  });
+
+  const focusOnNextUpdate = () => {
+    focusOnUpdate.current = true;
   };
 
-  private _navigatedMonth: HTMLButtonElement;
-  private _calendarYearRef = React.createRef<ICalendarYear>();
-  private _focusOnUpdate: boolean;
+  return [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] as const;
+}
 
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ICalendarMonthProps>,
-    prevState: Readonly<ICalendarMonthState>
-  ): Partial<ICalendarMonthState> | null {
-    const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
-    const nextYear = nextProps.navigatedDate.getFullYear();
-    if (!previousYear) {
-      return {};
-    }
+export const CalendarMonthBase = React.forwardRef(
+  (propsWithoutDefaults: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] = useFocusLogic(props);
+    const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
 
-    if (previousYear < nextYear) {
-      return {
-        animateBackwards: false,
-        previousNavigatedDate: nextProps.navigatedDate
-      };
-    } else if (previousYear > nextYear) {
-      return {
-        animateBackwards: true,
-        previousNavigatedDate: nextProps.navigatedDate
-      };
-    }
+    const animateBackwards = useAnimateBackwards(props);
 
-    return {};
-  }
-
-  constructor(props: ICalendarMonthProps) {
-    super(props);
-
-    this.state = {
-      isYearPickerVisible: false,
-      previousNavigatedDate: props.navigatedDate
-    };
-  }
-
-  public componentDidUpdate(): void {
-    if (this._focusOnUpdate) {
-      this.focus();
-      this._focusOnUpdate = false;
-    }
-  }
-
-  public render(): JSX.Element {
     const {
       navigatedDate,
       selectedDate,
       strings,
-      today,
+      today = new Date(),
       navigationIcons,
       dateTimeFormatter,
       minDate,
@@ -97,12 +93,62 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       allFocusable,
       highlightCurrentMonth,
       highlightSelectedMonth,
-      onHeaderSelect,
       animationDirection,
-      yearPickerHidden
-    } = this.props;
+      yearPickerHidden,
+      onNavigateDate,
+    } = props;
 
-    // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
+    const selectMonthCallback = (newMonth: number): (() => void) => {
+      return () => onSelectMonth(newMonth);
+    };
+
+    const onSelectNextYear = (): void => {
+      onNavigateDate(addYears(navigatedDate, 1), false);
+    };
+
+    const onSelectPrevYear = (): void => {
+      onNavigateDate(addYears(navigatedDate, -1), false);
+    };
+
+    const onSelectMonth = (newMonth: number): void => {
+      // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
+      props.onHeaderSelect?.();
+      onNavigateDate(setMonth(navigatedDate, newMonth), true);
+    };
+
+    const onHeaderSelect = (): void => {
+      if (!yearPickerHidden) {
+        focusOnNextUpdate();
+        setIsYearPickerVisible(true);
+      } else {
+        props.onHeaderSelect?.();
+      }
+    };
+
+    const onSelectYear = (selectedYear: number) => {
+      focusOnNextUpdate();
+      const navYear = navigatedDate.getFullYear();
+      if (navYear !== selectedYear) {
+        let newNavigationDate = new Date(navigatedDate.getTime());
+        newNavigationDate.setFullYear(selectedYear);
+        // for min and max dates, adjust the new navigation date - perhaps this should be
+        // checked on the master navigation date handler (i.e. in Calendar)
+        if (maxDate && newNavigationDate > maxDate) {
+          newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+        } else if (minDate && newNavigationDate < minDate) {
+          newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+        }
+        onNavigateDate(newNavigationDate, true);
+      }
+      setIsYearPickerVisible(false);
+    };
+
+    const onYearPickerHeaderSelect = (focus: boolean): void => {
+      focusOnNextUpdate();
+      setIsYearPickerVisible(false);
+    };
+
+    // navigationIcons has a default value in defaultProps, but typescript doesn't recognize this
     const leftNavigationIcon = navigationIcons!.leftNavigation;
     const rightNavigationIcon = navigationIcons!.rightNavigation;
     const dateFormatter = dateTimeFormatter!;
@@ -114,32 +160,33 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!onHeaderSelect || !yearPickerHidden,
+      hasHeaderClickCallback: !!props.onHeaderSelect || !yearPickerHidden,
       highlightCurrent: highlightCurrentMonth,
       highlightSelected: highlightSelectedMonth,
-      animateBackwards: this.state.animateBackwards,
-      animationDirection: animationDirection
+      animateBackwards: animateBackwards,
+      animationDirection: animationDirection,
     });
 
-    if (this.state.isYearPickerVisible) {
+    if (isYearPickerVisible) {
+      const [onRenderYear, yearStrings] = getYearStrings(props);
       // use navigated date for the year picker
       return (
         <CalendarYear
+          ref={forwardedRef}
           key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
-          onSelectYear={this._onSelectYear}
+          // eslint-disable-next-line react/jsx-no-bind
+          onSelectYear={onSelectYear}
           navigationIcons={navigationIcons}
-          onHeaderSelect={this._onYearPickerHeaderSelect}
-          selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
-          onRenderYear={this._onRenderYear}
-          strings={{
-            rangeAriaLabel: this._yearRangeToString,
-            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
-            headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel
-          }}
-          componentRef={this._calendarYearRef}
+          // eslint-disable-next-line react/jsx-no-bind
+          onHeaderSelect={onYearPickerHeaderSelect}
+          selectedYear={
+            selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
+          }
+          onRenderYear={onRenderYear}
+          strings={yearStrings}
+          componentRef={calendarYearRef}
           styles={styles}
           highlightCurrentYear={highlightCurrentMonth}
           highlightSelectedYear={highlightSelectedMonth}
@@ -154,32 +201,35 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     }
 
     const yearString = dateFormatter.formatYear(navigatedDate);
-    const headerAriaLabel = strings.monthPickerHeaderAriaLabel ? format(strings.monthPickerHeaderAriaLabel, yearString) : yearString;
+    const headerAriaLabel = strings.monthPickerHeaderAriaLabel
+      ? format(strings.monthPickerHeaderAriaLabel, yearString)
+      : yearString;
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={forwardedRef}>
         <div className={classNames.headerContainer}>
           <button
             className={classNames.currentItemButton}
-            onClick={this._onHeaderSelect}
-            onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
+            onClick={onHeaderSelect}
+            onKeyDown={onButtonKeyDown(onHeaderSelect)}
             aria-label={headerAriaLabel}
-            data-is-focusable={!!onHeaderSelect || !yearPickerHidden}
-            tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
+            data-is-focusable={!!props.onHeaderSelect || !yearPickerHidden}
+            tabIndex={!!props.onHeaderSelect || !yearPickerHidden ? 0 : -1}
             type="button"
             aria-atomic={true}
-            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            aria-live="polite"
           >
             {yearString}
           </button>
           <div className={classNames.navigationButtonsContainer}>
             <button
               className={css(classNames.navigationButton, {
-                [classNames.disabled]: !isPrevYearInBounds
+                [classNames.disabled]: !isPrevYearInBounds,
               })}
               disabled={!allFocusable && !isPrevYearInBounds}
-              onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
-              onKeyDown={isPrevYearInBounds ? this._onButtonKeyDown(this._onSelectPrevYear) : undefined}
+              onClick={isPrevYearInBounds ? onSelectPrevYear : undefined}
+              onKeyDown={isPrevYearInBounds ? onButtonKeyDown(onSelectPrevYear) : undefined}
               title={
                 strings.prevYearAriaLabel
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
@@ -191,11 +241,11 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             </button>
             <button
               className={css(classNames.navigationButton, {
-                [classNames.disabled]: !isNextYearInBounds
+                [classNames.disabled]: !isNextYearInBounds,
               })}
               disabled={!allFocusable && !isNextYearInBounds}
-              onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
-              onKeyDown={isNextYearInBounds ? this._onButtonKeyDown(this._onSelectNextYear) : undefined}
+              onClick={isNextYearInBounds ? onSelectNextYear : undefined}
+              onKeyDown={isNextYearInBounds ? onButtonKeyDown(onSelectNextYear) : undefined}
               title={
                 strings.nextYearAriaLabel
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
@@ -212,11 +262,14 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
-                <div key={'monthRow_' + rowNum + navigatedDate.getFullYear()} role="row" className={classNames.buttonRow}>
+                <div
+                  key={'monthRow_' + rowNum + navigatedDate.getFullYear()}
+                  role="row"
+                  className={classNames.buttonRow}
+                >
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
                     const indexedMonth = setMonth(navigatedDate, monthIndex);
-                    const isCurrentMonth = this._isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
                     const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
                     const isSelectedMonth = selectedDate.getMonth() === monthIndex;
                     const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
@@ -226,17 +279,18 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
                     return (
                       <button
-                        ref={isNavigatedMonth ? this._setNavigatedMonthRef : undefined}
+                        ref={isNavigatedMonth ? navigatedMonthRef : undefined}
                         role={'gridcell'}
                         className={css(classNames.itemButton, {
-                          [classNames.current]: highlightCurrentMonth && isCurrentMonth!,
+                          [classNames.current]:
+                            highlightCurrentMonth && isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today),
                           [classNames.selected]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
-                          [classNames.disabled]: !isInBounds
+                          [classNames.disabled]: !isInBounds,
                         })}
                         disabled={!allFocusable && !isInBounds}
                         key={monthIndex}
-                        onClick={isInBounds ? this._selectMonthCallback(monthIndex) : undefined}
-                        onKeyDown={isInBounds ? this._onButtonKeyDown(this._selectMonthCallback(monthIndex)) : undefined}
+                        onClick={isInBounds ? selectMonthCallback(monthIndex) : undefined}
+                        onKeyDown={isInBounds ? onButtonKeyDown(selectMonthCallback(monthIndex)) : undefined}
                         aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
                         aria-selected={isNavigatedMonth}
                         data-is-focusable={isInBounds ? true : undefined}
@@ -254,98 +308,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
         </FocusZone>
       </div>
     );
-  }
+  },
+);
+CalendarMonthBase.displayName = 'CalendarMonthBase';
 
-  public focus = () => {
-    if (this._calendarYearRef.current) {
-      this._calendarYearRef.current.focus();
-    } else if (this._navigatedMonth) {
-      this._navigatedMonth.focus();
-    }
-  };
-
-  private _setNavigatedMonthRef = (element: HTMLButtonElement) => {
-    this._navigatedMonth = element;
-  };
-
-  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
-    return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-      switch (ev.which) {
-        case KeyCodes.enter:
-          callback();
-          break;
-      }
-    };
-  };
-
-  private _selectMonthCallback = (newMonth: number): (() => void) => {
-    return () => this._onSelectMonth(newMonth);
-  };
-
-  private _isCurrentMonth = (month: number, year: number, today: Date): boolean => {
-    return today.getFullYear() === year && today.getMonth() === month;
-  };
-
-  private _onSelectNextYear = (): void => {
-    const { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(addYears(navigatedDate, 1), false);
-  };
-
-  private _onSelectPrevYear = (): void => {
-    const { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(addYears(navigatedDate, -1), false);
-  };
-
-  private _onSelectMonth = (newMonth: number): void => {
-    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
-
-    // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
-    if (onHeaderSelect) {
-      onHeaderSelect();
-    }
-    onNavigateDate(setMonth(navigatedDate, newMonth), true);
-  };
-
-  private _onHeaderSelect = (): void => {
-    const { onHeaderSelect, yearPickerHidden } = this.props;
-    if (!yearPickerHidden) {
-      this._focusOnUpdate = true;
-      this.setState({ isYearPickerVisible: true });
-    } else if (onHeaderSelect) {
-      onHeaderSelect();
-    }
-  };
-
-  private _onSelectYear = (selectedYear: number) => {
-    this._focusOnUpdate = true;
-    const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
-    const navYear = navigatedDate.getFullYear();
-    if (navYear !== selectedYear) {
-      let newNavigationDate = new Date(navigatedDate.getTime());
-      newNavigationDate.setFullYear(selectedYear);
-      // for min and max dates, adjust the new navigation date - perhaps this should be
-      // checked on the master navigation date handler (i.e. in Calendar)
-      if (maxDate && newNavigationDate > maxDate) {
-        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
-      } else if (minDate && newNavigationDate < minDate) {
-        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
-      }
-      onNavigateDate(newNavigationDate, true);
-    }
-    this.setState({ isYearPickerVisible: false });
-  };
-
-  private _onYearPickerHeaderSelect = (focus: boolean): void => {
-    this._focusOnUpdate = focus;
-    this.setState({ isYearPickerVisible: false });
-  };
-
-  private _onRenderYear = (year: number) => {
-    return this._yearToString(year);
-  };
-
-  private _yearToString = (year: number) => {
-    const { navigatedDate, dateTimeFormatter } = this.props;
+function getYearStrings({ strings, navigatedDate, dateTimeFormatter }: ICalendarMonthProps) {
+  const yearToString = (year: number) => {
     if (dateTimeFormatter) {
       // create a date based on the current nav date
       const yearFormattingDate = new Date(navigatedDate.getTime());
@@ -355,17 +323,39 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     return String(year);
   };
 
-  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
-    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  const yearRangeToString = (yearRange: ICalendarYearRange) => {
+    return `${yearToString(yearRange.fromYear)} - ${yearToString(yearRange.toYear)}`;
   };
 
-  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  const yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${yearRangeToString(yearRange)}` : '';
   };
 
-  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  const yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${yearRangeToString(yearRange)}` : '';
+  };
+
+  return [
+    yearToString,
+    {
+      rangeAriaLabel: yearRangeToString,
+      prevRangeAriaLabel: yearRangeToPrevDecadeLabel,
+      nextRangeAriaLabel: yearRangeToNextDecadeLabel,
+      headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
+    } as const,
+  ] as const;
+}
+
+function isCurrentMonth(month: number, year: number, today: Date): boolean {
+  return today.getFullYear() === year && today.getMonth() === month;
+}
+
+function onButtonKeyDown(callback: () => void): (ev: React.KeyboardEvent<HTMLButtonElement>) => void {
+  return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (ev.which) {
+      case KeyCodes.enter:
+        callback();
+        break;
+    }
   };
 }
