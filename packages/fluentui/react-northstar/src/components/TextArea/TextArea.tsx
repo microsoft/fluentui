@@ -131,14 +131,18 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
-    // We need to reset the height to 0 otherwise the scrollHeight will not decrease
-    setAutoHeight(0);
-    setValue(newValue);
+    setValue(prevValue => {
+      if (prevValue.length > newValue.length) {
+        // We need to reset the height to 0 otherwise the scrollHeight will not decrease
+        setAutoHeight(0);
+      }
+      return newValue;
+    });
   };
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     setAutoHeight(inputRef.current?.scrollHeight);
-  }, [inputRef.current?.scrollHeight]);
+  }, [inputRef.current?.scrollHeight, autoAdjustHeight]);
 
   const element = (
     <Ref innerRef={inputRef}>
