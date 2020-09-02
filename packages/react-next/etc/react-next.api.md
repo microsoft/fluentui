@@ -7,21 +7,29 @@
 import { BaseButton } from 'office-ui-fabric-react/lib/Button';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
 import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
+import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
+import { ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
+import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
+import { IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IRawStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -33,7 +41,6 @@ import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectab
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
@@ -41,6 +48,8 @@ import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { ReactNode } from 'react';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
@@ -103,6 +112,15 @@ export const Callout: React.ForwardRefExoticComponent<ICalloutProps & React.RefA
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+// @public (undocumented)
+export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
+
+// @public (undocumented)
+export const ChoiceGroupBase: React.FunctionComponent;
+
+// @public (undocumented)
+export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
 
 // @public (undocumented)
 export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
@@ -200,6 +218,33 @@ export const DEFAULT_MASK_CHAR = "_";
 export { DirectionalHint }
 
 // @public (undocumented)
+export const Dropdown: React.FunctionComponent<IDropdownProps>;
+
+// @public (undocumented)
+export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
+    constructor(props: IDropdownProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        options: IDropdownOption[];
+    };
+    // (undocumented)
+    focus(shouldOpenOnFocus?: boolean): void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
+    // (undocumented)
+    setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
+}
+
+export { DropdownMenuItemType }
+
+// @public (undocumented)
 export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
     constructor(props: ISelectedPeopleItemProps);
     // (undocumented)
@@ -255,6 +300,12 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
+
+// @public (undocumented)
+export const Grid: import("react").ForwardRefExoticComponent<IGridProps & import("react").RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const GridCell: <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
 export interface IAccessiblePopupProps {
@@ -365,6 +416,119 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroup {
+    checkedOption: IChoiceGroupOption | undefined;
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaLabel?: string;
+    // @deprecated
+    checked?: boolean;
+    disabled?: boolean;
+    iconProps?: IIconProps;
+    id?: string;
+    imageAlt?: string;
+    imageSize?: {
+        width: number;
+        height: number;
+    };
+    imageSrc?: string;
+    key?: string;
+    labelId?: string;
+    onRenderField?: IRenderFunction<IChoiceGroupOption>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+    selectedImageSrc?: string;
+    styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+    componentRef?: IRefObject<IChoiceGroupOption>;
+    focused?: boolean;
+    // (undocumented)
+    itemKey?: string;
+    name?: string;
+    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+    required?: boolean;
+    theme?: ITheme;
+}
+
+// @public
+export interface IChoiceGroupOptionStyleProps {
+    checked?: boolean;
+    disabled?: boolean;
+    focused?: boolean;
+    hasIcon?: boolean;
+    hasImage?: boolean;
+    imageIsLarge?: boolean;
+    imageSize?: {
+        height: number;
+        width: number;
+    };
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionStyles {
+    // (undocumented)
+    choiceFieldWrapper?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    iconWrapper?: IStyle;
+    // (undocumented)
+    imageWrapper?: IStyle;
+    // (undocumented)
+    innerField?: IStyle;
+    // (undocumented)
+    input?: IStyle;
+    // (undocumented)
+    labelWrapper?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    selectedImageWrapper?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IChoiceGroup>;
+    defaultSelectedKey?: string | number;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
+    options?: IChoiceGroupOption[];
+    selectedKey?: string | number;
+    styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    optionsContainIconOrImage?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyles {
+    // (undocumented)
+    flexContainer?: IStyle;
+    // (undocumented)
+    label?: IStyle;
+    // (undocumented)
+    root?: IStyle;
 }
 
 // @public
@@ -883,6 +1047,104 @@ export interface IDragOptions {
 }
 
 // @public (undocumented)
+export interface IDropdown {
+    // (undocumented)
+    focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
+}
+
+// @public
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+}
+
+// @public (undocumented)
+export interface IDropdownOption extends ISelectableOption {
+    // @deprecated
+    isSelected?: boolean;
+}
+
+// @public (undocumented)
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+    defaultSelectedKeys?: string[] | number[];
+    dropdownWidth?: number;
+    // @deprecated
+    isDisabled?: boolean;
+    keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
+    notifyOnReselect?: boolean;
+    onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
+    // @deprecated (undocumented)
+    onChanged?: (option: IDropdownOption, index?: number) => void;
+    onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
+    // @deprecated
+    onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+    onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
+    onRenderTitle?: IRenderFunction<IDropdownOption[]>;
+    options: IDropdownOption[];
+    // @deprecated
+    placeHolder?: string;
+    responsiveMode?: ResponsiveMode;
+    selectedKeys?: string[] | number[] | null;
+    styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDropdownState {
+    // (undocumented)
+    calloutRenderEdge?: RectangleEdge;
+    hasFocus: boolean;
+    // (undocumented)
+    isOpen: boolean;
+    // (undocumented)
+    selectedIndices: number[];
+}
+
+// @public
+export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
+    hasError: boolean;
+    hasLabel: boolean;
+    isOpen: boolean;
+    isRenderingPlaceholder: boolean;
+    panelClassName?: string;
+    calloutClassName?: string;
+    calloutRenderEdge?: RectangleEdge;
+};
+
+// @public
+export interface IDropdownStyles {
+    callout: IStyle;
+    caretDown: IStyle;
+    caretDownWrapper: IStyle;
+    dropdown: IStyle;
+    dropdownDivider: IStyle;
+    dropdownItem: IStyle;
+    dropdownItemDisabled: IStyle;
+    dropdownItemHeader: IStyle;
+    dropdownItemHidden: IStyle;
+    dropdownItems: IStyle;
+    dropdownItemSelected: IStyle;
+    dropdownItemSelectedAndDisabled: IStyle;
+    dropdownItemsWrapper: IStyle;
+    dropdownOptionText: IStyle;
+    errorMessage: IStyle;
+    label: IStyle;
+    // @deprecated
+    panel: IStyle;
+    root: IStyle;
+    subComponentStyles: IDropdownSubComponentStyles;
+    title: IStyle;
+}
+
+// @public (undocumented)
+export interface IDropdownSubComponentStyles {
+    label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+}
+
+// @public (undocumented)
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
     // (undocumented)
     floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
@@ -984,6 +1246,67 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IGap extends IShimmerElement {
     height?: number;
     width?: number | string;
+}
+
+// @public (undocumented)
+export interface IGrid {
+}
+
+// @public (undocumented)
+export interface IGridCellProps<T> {
+    cellDisabledStyle?: string[];
+    cellIsSelectedStyle?: string[];
+    className?: string;
+    disabled?: boolean;
+    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
+    id: string;
+    index?: number;
+    item: T;
+    label?: string;
+    onClick?: (item: T) => void;
+    onFocus?: (item: T) => void;
+    onHover?: (item?: T) => void;
+    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    onRenderItem: (item: T) => JSX.Element;
+    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    role?: string;
+    selected?: boolean;
+}
+
+// @public (undocumented)
+export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
+    columnCount: number;
+    componentRef?: IRefObject<IGrid>;
+    // @deprecated
+    containerClassName?: string;
+    doNotContainWithinFocusZone?: boolean;
+    items: any[];
+    onBlur?: () => void;
+    onRenderItem: (item: any, index: number) => JSX.Element;
+    // @deprecated (undocumented)
+    positionInSet?: number;
+    // @deprecated (undocumented)
+    setSize?: number;
+    shouldFocusCircularNavigate?: boolean;
+    styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export interface IGridStyleProps {
+    theme: ITheme;
+}
+
+// @public
+export interface IGridStyles {
+    focusedContainer?: IStyle;
+    root: IStyle;
+    tableCell: IStyle;
 }
 
 // @public (undocumented)
@@ -1939,6 +2262,81 @@ export interface ISwatchColorPickerStyles {
 }
 
 // @public (undocumented)
+export interface ITeachingBubble {
+    focus(): void;
+}
+
+// @public
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+    ariaDescribedBy?: string;
+    ariaLabelledBy?: string;
+    calloutProps?: ICalloutProps;
+    componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
+    footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
+    hasCloseIcon?: boolean;
+    hasCondensedHeadline?: boolean;
+    hasSmallHeadline?: boolean;
+    headline?: string;
+    illustrationImage?: IImageProps;
+    isWide?: boolean;
+    onDismiss?: (ev?: any) => void;
+    primaryButtonProps?: IButtonProps;
+    secondaryButtonProps?: IButtonProps;
+    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
+    targetElement?: HTMLElement;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
+    calloutProps?: ICalloutContentStyleProps;
+    primaryButtonClassName?: string;
+    secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
+    hasHeadline?: boolean;
+};
+
+// @public (undocumented)
+export interface ITeachingBubbleStyles {
+    // (undocumented)
+    body: IStyle;
+    // (undocumented)
+    bodyContent: IStyle;
+    // (undocumented)
+    closeButton: IStyle;
+    // (undocumented)
+    content: IStyle;
+    // (undocumented)
+    footer: IStyle;
+    // (undocumented)
+    header: IStyle;
+    // (undocumented)
+    headline: IStyle;
+    // (undocumented)
+    imageContent: IStyle;
+    // (undocumented)
+    primaryButton: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    secondaryButton: IStyle;
+    // (undocumented)
+    subComponentStyles?: ITeachingBubbleSubComponentStyles;
+    // (undocumented)
+    subText: IStyle;
+}
+
+// @public (undocumented)
+export interface ITeachingBubbleSubComponentStyles {
+    callout: IStyleFunctionOrObject<any, any>;
+}
+
+// @public (undocumented)
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -2127,6 +2525,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
+
+// @public @deprecated (undocumented)
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
+
+// @public @deprecated (undocumented)
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
@@ -2347,6 +2751,8 @@ export enum ResizeGroupDirection {
     vertical = 1
 }
 
+export { ResponsiveMode }
+
 // @public (undocumented)
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
@@ -2439,6 +2845,18 @@ export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColor
 export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
+export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleBase: React.ForwardRefExoticComponent<Pick<ITeachingBubbleProps, "key" | "theme" | "styles" | "componentRef" | "ariaLabelledBy" | "ariaDescribedBy" | "target" | "onDismiss" | "elementToFocusOnDismiss" | "isClickableOutsideFocusTrap" | "ignoreExternalFocusing" | "forceFocusInsideTrap" | "firstFocusableSelector" | "calloutProps" | "hasCondensedHeadline" | "hasSmallHeadline" | "isWide" | "headline" | "focusTrapZoneProps" | "hasCloseIcon" | "hasCloseButton" | "illustrationImage" | "primaryButtonProps" | "secondaryButtonProps" | "footerContent" | "targetElement" | "closeButtonAriaLabel"> & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
@@ -2507,7 +2925,6 @@ export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
 export * from "office-ui-fabric-react/lib/Check";
-export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/CommandBar";
@@ -2515,12 +2932,10 @@ export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
 export * from "office-ui-fabric-react/lib/DocumentCard";
-export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusZone";
-export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";
 export * from "office-ui-fabric-react/lib/HoverCard";
 export * from "office-ui-fabric-react/lib/Icon";
@@ -2546,7 +2961,6 @@ export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
 export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";

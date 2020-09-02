@@ -1,1 +1,1 @@
-export * from './components/Layer/index';
+export * from 'office-ui-fabric-react/lib/Layer';

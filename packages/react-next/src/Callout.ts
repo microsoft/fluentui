@@ -1,1 +1,1 @@
-export * from './components/Callout/index';
+export * from './components/Callout';
