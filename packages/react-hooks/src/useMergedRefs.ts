@@ -1,14 +1,11 @@
 import * as React from 'react';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface MergedRefReturnType<T> extends React.RefObject<T> {}
-
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): MergedRefReturnType<T> {
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefObject<T> {
   const mergedCallback = (React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.
@@ -25,7 +22,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): MergedR
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
     [...refs],
-  ) as unknown) as MergedRefReturnType<T>;
+  ) as unknown) as React.RefObject<T>;
 
   return mergedCallback;
 }
