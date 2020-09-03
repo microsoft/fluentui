@@ -25,18 +25,6 @@ export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehavio
       subtractDay: {
         keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
       },
-      moveToStartOfWeek: {
-        keyCombinations: [{ keyCode: keyboardKey.Home, ctrlKey: false }],
-      },
-      moveToEndOfWeek: {
-        keyCombinations: [{ keyCode: keyboardKey.End, ctrlKey: false }],
-      },
-      moveToStartOfColumn: {
-        keyCombinations: [{ keyCode: keyboardKey.PageUp }],
-      },
-      moveToEndOfColumn: {
-        keyCombinations: [{ keyCode: keyboardKey.PageDown }],
-      },
     },
   },
 });

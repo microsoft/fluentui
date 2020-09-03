@@ -10,7 +10,6 @@ export const datepickerCalendarGridBehavior: Accessibility<DatepickerCalendarGri
   focusZone: {
     props: {
       direction: FocusZoneDirection.bidirectional,
-      pagingSupportDisabled: true,
     },
   },
 });
