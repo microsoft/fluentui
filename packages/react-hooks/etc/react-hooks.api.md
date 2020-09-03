@@ -37,7 +37,7 @@ export interface IWarningOptions<P> {
 // @public
 export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
 
-// @public (undocumented)
+// @public
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
 // @public
