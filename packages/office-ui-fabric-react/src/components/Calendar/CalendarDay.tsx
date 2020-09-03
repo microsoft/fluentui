@@ -838,7 +838,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date);
+        const originalDate = new Date(date as any);
         const dayInfo: IDayInfo = {
           key: date.toString(),
           date: date.getDate().toString(),

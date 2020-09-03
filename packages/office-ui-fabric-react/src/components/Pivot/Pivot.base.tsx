@@ -353,6 +353,6 @@ function _isPivotItem(item: React.ReactNode): item is PivotItem {
     !!item &&
     typeof item === 'object' &&
     !!(item as React.ReactElement).type &&
-    ((item as React.ReactElement).type as React.ComponentType).name === PivotItem.name
+    ((item as React.ReactElement).type as any).name === (PivotItem as any).name
   );
 }
