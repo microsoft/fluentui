@@ -10,6 +10,8 @@ export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCel
   attributes: {
     root: {
       'aria-selected': props.selected || false,
+      ...(props.disabled && { 'aria-disabled': true }),
+      ...(props.today && { 'aria-current': 'date' }),
     },
   },
 });
@@ -17,4 +19,10 @@ export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCel
 export type DatepickerCalendarCellBehaviorProps = {
   /** Cell can be selected. */
   selected: boolean;
+
+  /** Cell is disabled. */
+  disabled: boolean;
+
+  /** Cell refers to today's date. */
+  today: boolean;
 };

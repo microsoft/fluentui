@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating doctrine and modifying merge function to use lodash.",
-  "packageName": "@fluentui/react-conformance",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-04T20:16:23.944Z"
-}

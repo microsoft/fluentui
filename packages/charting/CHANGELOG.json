@@ -2,6 +2,59 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 03 Sep 2020 12:22:43 GMT",
+      "tag": "@uifabric/charting_v3.4.0",
+      "version": "3.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "VerticalStackedBarChart - add yMaxValue, yAxisTickFormat, margins",
+            "author": "mibes@microsoft.com",
+            "commit": "12e72defeec4e1c2a6c7326c9cef670f6c2b2a55",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "resize of area chart issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "151e95f19924c52ab71529a3ef56c72595caaf21",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 18:11:10 GMT",
+      "tag": "@uifabric/charting_v3.3.1",
+      "version": "3.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Redesign of Chart helper and updated associate files",
+            "author": "v-jasha@microsoft.com",
+            "commit": "3f092678a64df85a0c2a3e835def5a091e541406",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@uifabric/charting_v3.3.0",
+      "version": "3.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added multiselection of legends for the line chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "cf72dc9b1b66b9c5f383d4607cb4adfb80c03895",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@uifabric/charting_v3.2.0",
       "version": "3.2.0",

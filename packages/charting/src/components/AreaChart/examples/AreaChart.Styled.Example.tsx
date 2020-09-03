@@ -1,10 +1,35 @@
 import * as React from 'react';
 import { AreaChart } from '@uifabric/charting';
+import { ILineChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
-  public render(): React.ReactNode {
+interface IAreaChartBasicState {
+  width: number;
+  height: number;
+}
+
+export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicState> {
+  constructor(props: ILineChartProps) {
+    super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
+  }
+
+  public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('height change');
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const chart1Points = [
       {
         x: new Date('2018/01/06'),
@@ -69,12 +94,18 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
       lineChartData: chartPoints,
     };
 
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <div className={rootStyle}>
-        <AreaChart height={400} width={650} showYAxisGridLines={true} data={chartData} />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <AreaChart height={this.state.height} width={this.state.width} data={chartData} />
+        </div>
+      </>
     );
   }
 }
