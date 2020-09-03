@@ -9,7 +9,8 @@ export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
- * @param refs- Refs to collectively update with one ref value.
+ * @param refs - Refs to collectively update with one ref value.
+ * @returns A function with an attached "current" prop, so that it can be treated like a RefObject.
  */
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
   const mergedCallback: RefObjectFunction<T> = (React.useCallback(
