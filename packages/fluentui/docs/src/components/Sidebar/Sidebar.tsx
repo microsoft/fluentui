@@ -172,7 +172,7 @@ const prototypesTreeItems: TreeProps['items'] = [
       as: NavLink,
       to: '/prototype-menu-list',
     },
-    public: true,
+    public: false,
   },
   {
     id: 'virtualized-table',
