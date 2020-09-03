@@ -771,7 +771,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       }),
     );
     return (
-      <div role="listbox" aria-label={a11ySelectedItemsListboxMessage && a11ySelectedItemsListboxMessage}>
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsListboxMessage}>
         {selectedItems}
       </div>
     );
