@@ -6,16 +6,20 @@ import { skeletonButtonClassName } from '../../../../../components/Skeleton/Skel
 import { skeletonInputClassName } from '../../../../../components/Skeleton/SkeletonInput';
 import { skeletonAvatarClassName } from '../../../../../components/Skeleton/SkeletonAvatar';
 
-const waveStyles = (primaryColor: string, secondoryColor: string) => ({
-  position: 'static',
-  overflow: 'hidden',
-  animationDuration: '4.8s',
+const waveStyles = (primaryColor: string) => ({
+  content: '""',
+  animationDuration: '1.6s',
   animationName: wave,
   animationIterationCount: 'infinite',
-  backgroundColor: '#FFFFFF',
+  backgroundColor: 'black',
   animationTimingFunction: 'linear',
-  backgroundImage: `linear-gradient(to right, ${secondoryColor} 0%, ${primaryColor} 20%, ${secondoryColor} 40%)`,
-  backgroundSize: '1200px 100%',
+  background: `linear-gradient(90deg,transparent, ${primaryColor},transparent)`,
+  position: 'absolute',
+  transform: 'translateX(-100%)',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  top: 0,
 });
 
 const pulseStyles = {
@@ -33,10 +37,35 @@ export const getAnimations = (primaryColor: string, secondoryColor: string): Rec
     [`& .${skeletonInputClassName}`]: pulseStyles,
   },
   wave: {
-    [`& .${skeletonLineClassName}`]: waveStyles(primaryColor, secondoryColor),
-    [`& .${skeletonShapeClassName}`]: waveStyles(primaryColor, secondoryColor),
-    [`& .${skeletonButtonClassName}`]: waveStyles(primaryColor, secondoryColor),
-    [`& .${skeletonAvatarClassName}`]: waveStyles(primaryColor, secondoryColor),
-    [`& .${skeletonInputClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonLineClassName}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: secondoryColor,
+      ':after': waveStyles(primaryColor),
+    },
+    [`& .${skeletonShapeClassName}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: secondoryColor,
+      ':after': waveStyles(primaryColor),
+    },
+    [`& .${skeletonButtonClassName}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: secondoryColor,
+      ':after': waveStyles(primaryColor),
+    },
+    [`& .${skeletonAvatarClassName}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: secondoryColor,
+      ':after': waveStyles(primaryColor),
+    },
+    [`& .${skeletonInputClassName}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: secondoryColor,
+      ':after': waveStyles(primaryColor),
+    },
   },
 });
