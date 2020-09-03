@@ -42,6 +42,7 @@
     "react-markdown": "^4.0.8",
     "react-router-dom": "^5.2.0",
     "react-source-render": "4.0.0-1",
+    "react-textarea-autosize": "^8.2.0",
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6"
   },
