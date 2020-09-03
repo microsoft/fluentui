@@ -34,7 +34,7 @@ export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, Te
       color: v.disabledColor,
     }),
 
-    ...(p.autoAdjustHeight && {
+    ...(p.autoResize && {
       minHeight: v.minHeightAutoAdjust,
       overflow: 'hidden',
     }),
