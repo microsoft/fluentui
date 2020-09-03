@@ -1,12 +1,14 @@
 import * as React from 'react';
 
+export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): ((value: T) => void) & React.RefObject<T> {
-  const mergedCallback = (React.useCallback(
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
+  const mergedCallback: RefObjectFunction<T> = (React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.
       ((mergedCallback as unknown) as React.MutableRefObject<T>).current = value;
@@ -22,7 +24,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): ((value
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
     [...refs],
-  ) as unknown) as ((value: T) => void) & React.RefObject<T>;
+  ) as unknown) as RefObjectFunction<T>;
 
   return mergedCallback;
 }
