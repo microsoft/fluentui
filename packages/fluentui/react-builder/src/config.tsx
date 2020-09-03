@@ -196,6 +196,10 @@ export const DRAGGING_ELEMENTS = {
     props: {} as FUI.FlexProps,
   },
 
+  FlexItem: {
+    props: {} as FUI.FlexItemProps,
+  },
+
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
   Form: {
@@ -459,6 +463,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
   const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
+
   return {
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
@@ -545,6 +550,10 @@ export const renderJSONTreeToJSXElement = (
 
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
+
+  if (modifiedTree.type === 'FlexItem' && modifiedTree?.props?.children) {
+    modifiedTree.props.children = modifiedTree.props.children[0];
+  }
 
   return React.createElement(resolveComponent(modifiedTree.type), {
     ...modifiedTree.props,
