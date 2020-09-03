@@ -4,8 +4,6 @@ import * as ReactDOM from 'react-dom/server';
 import { create } from '@uifabric/utilities/lib/test';
 import { Customizer } from '@uifabric/utilities';
 import { createTheme } from '@uifabric/styling';
-import * as path from 'path';
-import { isConformant } from '../../common/isConformant';
 
 import { Link } from './Link';
 
@@ -66,13 +64,6 @@ describe('Link', () => {
     const component = create(<Link as="input" type="text" value={'This is an input.'} className="customClassName" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  isConformant({
-    componentPath: path.join(__dirname, 'Link.tsx'),
-    Component: Link,
-    displayName: 'Link',
-    disabledTests: ['as-renders-fc', 'as-renders-react-class'],
   });
 
   it('renders Link with "as=Route" a Route element', () => {
