@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { isBrowser } from '@fluentui/react-northstar';
 import { FiberNavigator } from '../../../react-northstar/src/components/Debug/FiberNavigator';
@@ -122,6 +121,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       );
 
       if (inElementPosition === 'center' || jsonTreeElement.uuid === 'builder-root') {
+        selectorRef.current.style[`boxShadow`] = 'none';
         // We're inside an element so we care about where we drop among it's children here
         if (jsonTreeElement.props?.children?.length > 0) {
           // Drop inside parent WITH children
@@ -142,7 +142,23 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         // We're inside an element but at edge, we care about where we drop outside among siblings
         // jsonTreeElement - is your sibling and inElementPosition
         // parent, insertAtIndex
-        selectorRef.current.style[`border${_.startCase(inElementPosition)}`] = '4px solid red';
+        switch (inElementPosition) {
+          case 'left':
+            selectorRef.current.style[`boxShadow`] = '-4px 0px 0px 0px red';
+            break;
+
+          case 'right':
+            selectorRef.current.style[`boxShadow`] = '4px 0px 0px 0px red';
+            break;
+
+          case 'top':
+            selectorRef.current.style[`boxShadow`] = '0px -4px 0px 0px red';
+            break;
+
+          case 'bottom':
+            selectorRef.current.style[`boxShadow`] = '0px 4px 0px 0px red';
+            break;
+        }
         const dropParent = jsonTreeFindParent(jsonTree, jsonTreeElement.uuid);
         const dropIndex = dropParent?.props?.children.indexOf(jsonTreeElement);
 
