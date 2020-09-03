@@ -23,7 +23,8 @@ export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Current rating. Must be a number between `min` and `max`. Only provide this if the Rating
-   * is a controlled component where you; otherwise, use the `defaultRating` property.
+   * is a controlled component where you are maintaining its current state; otherwise, use the
+   * `defaultRating` property.
    */
   rating?: number;
 
