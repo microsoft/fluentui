@@ -438,7 +438,12 @@ export const DatePickerBase = React.forwardRef(
 
     return (
       <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-        <div ref={datePickerDiv} aria-haspopup="true" aria-owns={isCalendarShown ? calloutId : undefined}>
+        <div
+          ref={datePickerDiv}
+          aria-haspopup="true"
+          aria-owns={isCalendarShown ? calloutId : undefined}
+          className={classNames.wrapper}
+        >
           <TextField
             role="combobox"
             label={label}

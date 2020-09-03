@@ -110,7 +110,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn test:fluentui:visual
+          NODE_ENV=production yarn test:fluentui:visual
         displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

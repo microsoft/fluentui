@@ -52,6 +52,10 @@ TODO: document any API or functionality changes
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
 
+### Shimmer
+
+- Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+
 ### TeachingBubble
 
 - Removed unused defaultProps from TeachingBubbleContent.
@@ -82,6 +86,13 @@ TODO: document any API or functionality changes
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+### SwatchColorPicker
+
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ## Other notable changes
 
