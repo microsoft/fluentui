@@ -12,8 +12,5 @@
     "@uifabric/build": "^7.0.0",
     "ie11-custom-properties": "4.1.0"
   },
-  "scripts": {
-    "build": "just-scripts build"
-  },
   "license": "MIT"
 }
