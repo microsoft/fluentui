@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
-import { useSplitButtonState } from './useSplitButtonState';
 import { renderSplitButton } from './renderSplitButton';
-import { useId, useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { useExpanded } from '../MenuButton';
 
 export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
