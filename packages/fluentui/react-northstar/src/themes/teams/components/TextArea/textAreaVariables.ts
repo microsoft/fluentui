@@ -15,6 +15,7 @@ export interface TextAreaVariables {
   margin: string;
   padding: string;
   height: string;
+  minHeightAutoAdjust: string;
 }
 
 export const textAreaVariables = (siteVars): TextAreaVariables => ({
@@ -38,4 +39,5 @@ export const textAreaVariables = (siteVars): TextAreaVariables => ({
   borderColorFocus: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
 
   height: 'auto',
+  minHeightAutoAdjust: pxToRem(48),
 });

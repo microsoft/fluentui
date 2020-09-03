@@ -14,6 +14,11 @@ const Types = () => (
       description="A text area can take up the entire horizontal space of its parent container."
       examplePath="components/TextArea/Variations/TextAreaExampleFluid"
     />
+    <ComponentExample
+      title="Auto Adjust Height"
+      description="A text area be set to adjust the height automatically."
+      examplePath="components/TextArea/Variations/TextAreaExampleAutoHeight"
+    />
   </ExampleSection>
 );
 
