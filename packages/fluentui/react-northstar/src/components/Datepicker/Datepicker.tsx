@@ -38,7 +38,12 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
-export type DatepickerType = 'ButtonOnly' | 'InputOnly' | 'InputAndButton';
+export enum DatepickerType {
+  ButtonOnly = 0,
+  InputOnly = 1,
+  InputAndButton = 2,
+}
+
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
@@ -328,7 +333,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const triggerButtonElement =
-    type !== 'InputOnly' ? (
+    type !== DatepickerType.InputOnly ? (
       <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />
     ) : null;
 
@@ -341,7 +346,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          {type !== 'ButtonOnly' &&
+          {type !== DatepickerType.ButtonOnly &&
             createShorthand(Input, input, {
               defaultProps: () =>
                 getA11yProps('input', {
@@ -364,7 +369,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 disableFirstFocus: true,
               },
               trigger: triggerButtonElement,
-              target: type === 'InputOnly' ? inputRef.current : null,
+              target: type === DatepickerType.InputOnly ? inputRef.current : null,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
@@ -403,6 +408,8 @@ Datepicker.propTypes = {
 
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),
+
+  type: PropTypes.oneOf(Object.keys(DatepickerType).map(name => DatepickerType[name])),
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -457,7 +464,7 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
-  type: 'InputAndButton',
+  type: DatepickerType.InputAndButton,
   calendar: {},
   popup: {},
   input: {},

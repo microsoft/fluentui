@@ -1,4 +1,4 @@
-import { Datepicker, Button } from '@fluentui/react-northstar';
+import { Datepicker, DatepickerType, Button } from '@fluentui/react-northstar';
 import { formatMonthDayYear, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
 import * as React from 'react';
 
@@ -9,7 +9,7 @@ const DatepickerExampleStandaloneCalendarButton = () => {
         alert(`You picked '${formatMonthDayYear(v.value, DEFAULT_CALENDAR_STRINGS)}'.`);
       }}
       today={new Date(2020, 7, 30, 0, 0, 0, 0)}
-      type={'ButtonOnly'}
+      type={DatepickerType.ButtonOnly}
       popup={{
         trigger: <Button title="Open calendar" content="Click to Open " />,
       }}
