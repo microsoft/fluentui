@@ -120,9 +120,9 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
   public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     if (this._getColumnReorderProps()) {
-      if (!this._subscriptionObject) {
+      if (!this._subscriptionObject && this._rootElement.current) {
         this._subscriptionObject = this._dragDropHelper.subscribe(
-          this._rootElement.current!,
+          this._rootElement.current,
           this._events,
           this._getHeaderDragDropOptions(),
         );

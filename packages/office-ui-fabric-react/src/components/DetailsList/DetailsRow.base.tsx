@@ -75,9 +75,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   public componentDidMount(): void {
     const { dragDropHelper, selection, item, onDidMount } = this.props;
 
-    if (dragDropHelper) {
+    if (dragDropHelper && this._root.current) {
       this._dragDropSubscription = dragDropHelper.subscribe(
-        this._root.current!,
+        this._root.current,
         this._events,
         this._getRowDragDropOptions(),
       );
@@ -109,9 +109,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         delete this._dragDropSubscription;
       }
 
-      if (this.props.dragDropHelper) {
+      if (this.props.dragDropHelper && this._root.current) {
         this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-          this._root.current!,
+          this._root.current,
           this._events,
           this._getRowDragDropOptions(),
         );
