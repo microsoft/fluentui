@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding check for undefined FluentTheme in CodeSnippet.tsx.",
+  "packageName": "@uifabric/example-app-base",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-27T19:12:22.532Z"
+}

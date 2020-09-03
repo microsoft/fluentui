@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "useMergedRefs now properly returns a more usable React.RefObject type.",
+  "packageName": "@uifabric/react-hooks",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-03T21:55:01.177Z"
+}
