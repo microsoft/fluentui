@@ -290,15 +290,38 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Only used for Area chart
+   * Value used to draw y axis of that chart.
+   */
   maxOfYVal?: number;
   points: ILineChartPoints[];
+  /**
+   * Type of chart
+   */
   chartType: ChartTypes;
-  getmargins: (margins: IMargins) => void;
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  getmargins?: (margins: IMargins) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getGraphData?: any;
+  /**
+   * Legeds of the chart.
+   */
   legendBars: JSX.Element;
+  /**
+   * Used for bar chart graphs.
+   * To define width of the bar
+   */
   barwidth?: number;
+  /**
+   * Define is given X axis is date or numeric
+   */
   isXAxisDateType: boolean;
+  /**
+   * Tick styles of the chart
+   */
   tickParams?: {
     tickValues?: number[] | Date[];
     tickFormat?: string;

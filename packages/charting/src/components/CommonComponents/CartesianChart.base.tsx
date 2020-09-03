@@ -78,7 +78,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this._fitParentContainer();
     }
     // Callback for margins to the chart
-    this.props.getmargins(this.margins);
+    this.props.getmargins && this.props.getmargins(this.margins);
 
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
