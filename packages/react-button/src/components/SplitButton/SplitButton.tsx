@@ -15,9 +15,6 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   });
 
   // Styling hooks.
-  // useButtonClasses(state);
-
-  // useMenuButtonClasses(state);
   useSplitButtonClasses(state);
 
   useFocusRects(state.ref);
@@ -29,7 +26,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
    *  | undefined; }
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // useInlineTokens(state as any, '--button');
+  useInlineTokens(state as any, '--button');
 
   return render(state);
 });
