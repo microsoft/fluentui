@@ -4,6 +4,7 @@ import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useFocusRects } from 'office-ui-fabric-react';
 import { SplitButtonProps } from './SplitButton.types';
 import { useSplitButton } from './useSplitButton';
+import { useSplitButtonClasses } from './useSplitButtonClasses';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
 
@@ -15,8 +16,9 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
 
   // Styling hooks.
   // useButtonClasses(state);
+
   // useMenuButtonClasses(state);
-  // useSplitButtonClasses(state);
+  useSplitButtonClasses(state);
 
   useFocusRects(state.ref);
 
@@ -27,7 +29,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
    *  | undefined; }
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  useInlineTokens(state as any, '--button');
+  // useInlineTokens(state as any, '--button');
 
   return render(state);
 });

@@ -3,8 +3,10 @@ import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/n
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { useSplitButtonState } from './useSplitButtonState';
 import { renderSplitButton } from './renderSplitButton';
+import { useId, useMergedRefs } from '@uifabric/react-hooks';
+import { useExpanded } from '../MenuButton';
 
-export const splitButtonShorthandProps = ['button', 'divider', 'menuButton'];
+export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
 
 /**
  * Redefine the component factory, reusing button factory.
@@ -14,20 +16,56 @@ export const useSplitButton = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: SplitButtonProps,
 ) => {
+  const {
+    as = 'span',
+    className,
+    style,
+    primary,
+    ghost,
+    disabled,
+    circular,
+    fluid,
+    menu,
+    ...userProps
+  } = resolveShorthandProps(props, splitButtonShorthandProps);
+
+  ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
+
   const state = mergeProps(
     {
-      ref,
-      as: 'button',
+      as: 'span',
+      className,
+      style,
 
-      button: { as: 'span', children: null },
+      button: {
+        as: 'span',
+        ref,
+        primary,
+        ghost,
+        circular,
+        disabled,
+        ...userProps,
+      },
+
       divider: { as: 'span', children: null },
-      menuButton: { as: 'span', children: null },
+      menuButton: {
+        as: 'span',
+        primary,
+        ghost,
+        circular,
+        disabled,
+        menu: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ...(menu as any),
+          target: ref,
+        },
+        children: null,
+      },
     },
     defaultProps,
-    resolveShorthandProps(props, splitButtonShorthandProps),
   ) as SplitButtonState;
 
-  useSplitButtonState(state);
+  useExpanded(state);
 
   return {
     state,

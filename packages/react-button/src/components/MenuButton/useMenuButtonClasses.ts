@@ -17,6 +17,10 @@ export const useMenuButtonClasses = makeClasses({
         marginLeft: 0,
       },
 
+      '& .ms-layer': {
+        position: 'absolute',
+      },
+
       [`&:hover .${GlobalClassNames.menuIcon}`]: {
         color: 'var(--button-hovered-menuIconColor, var(--button-menuIconColor))',
       },

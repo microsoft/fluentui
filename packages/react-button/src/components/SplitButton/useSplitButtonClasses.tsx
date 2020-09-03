@@ -26,90 +26,26 @@ const GlobalClassNames = {
 };
 
 export const useSplitButtonClasses = makeClasses({
-  root: [
-    GlobalClassNames.root,
-    {
-      width: 'auto',
-      padding: 0,
-      overflow: 'hidden',
-      boxSizing: 'border-box',
+  root: {
+    display: 'inline-flex',
+    justifyContent: 'stretch',
+  },
 
-      '& > *:not(:first-child)': {
-        marginLeft: 0,
-      },
-    },
-  ],
+  button: {
+    '--button-borderRightWidth': 0,
+    '--button-borderTopRightRadius': 0,
+    '--button-borderBottomRightRadius': 0,
+  },
 
-  button: [
-    GlobalClassNames.button,
-    commonButtonStyles,
-    {
-      paddingLeft: 'var(--button-paddingLeft)',
-      paddingRight: 'var(--button-paddingRight)',
-      paddingTop: 'var(--button-paddingTop)',
-      paddingBottom: 'var(--button-paddingBottom)',
-
-      '& > *:not(:first-child)': {
-        marginLeft: 'var(--button-contentGap)',
-      },
-    },
-  ],
-
-  menuButton: [
-    GlobalClassNames.menuButton,
-    commonButtonStyles,
-    {
-      '--button-paddingLeft': 0,
-      '--button-paddingRight': 0,
-      '--button-width': 'var(--button-height, var(--button-minHeight))',
-      width: 'var(--button-height, var(--button-minHeight))',
-    },
-  ],
+  menuButton: {
+    '--button-borderLeftWidth': 0,
+    '--button-borderTopLeftRadius': 0,
+    '--button-borderBottomLeftRadius': 0,
+  },
 
   divider: {
+    display: 'inline-block',
     borderLeft: 'var(--button-dividerThickness) solid var(--button-dividerColor)',
-    height: 'var(--button-dividerLength)',
     width: '0px',
-
-    '._primary &': {
-      buttonDividerColor: 'var(--accent-dividerColor)',
-    },
-
-    '._disabled &': {
-      buttonDividerColor: 'var(--accent-disabled-dividerColor)',
-    },
-  },
-
-  icon: {},
-
-  _circular: {
-    [GlobalClassNames.button]: {
-      // borderTopLeftRadius: 'var(--button-borderRadius)',
-      // borderBottomLeftRadius: 'var(--button-borderRadius)',
-    },
-  },
-
-  _size_smallest: {
-    '--button-dividerLength': 'var(--button-size-smallest)',
-  },
-
-  _size_smaller: {
-    '--button-dividerLength': 'var(--button-size-smaller)',
-  },
-
-  _size_small: {
-    '--button-dividerLength': 'var(--button-size-small)',
-  },
-
-  _size_large: {
-    '--button-dividerLength': 'var(--button-size-large)',
-  },
-
-  _size_larger: {
-    '--button-dividerLength': 'var(--button-size-larger)',
-  },
-
-  _size_largest: {
-    '--button-dividerLength': 'var(--button-size-largest)',
   },
 });

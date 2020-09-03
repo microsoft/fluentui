@@ -4,7 +4,7 @@ import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 import { renderMenuButton } from './renderMenuButton';
 
-export const menuButtonShorthandProps = ['icon', 'children', 'menuIcon', 'menu'];
+export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
 
 /**
  * Redefine the component factory, reusing button factory.
@@ -17,7 +17,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       ref,
       as: 'button',
       icon: { as: 'span' },
-      children: { as: 'span' },
+      content: { as: 'span' },
       menuIcon: { as: 'span' },
       menu: { as: 'span' },
     },

@@ -40,22 +40,22 @@ export const makeClasses = <TStyleSet extends { [key: string]: IStyle }>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (state: any) => {
     const classes = useStyles();
-    const classNames = Object.keys(classes);
+    const slotNames = Object.keys(classes);
 
-    for (const className of classNames) {
+    for (const slotName of slotNames) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const value = (classes as any)[className];
+      const value = (classes as any)[slotName];
 
       // If the renderer returns non-classNames (like subComponentStyles), ignore.
       if (typeof value === 'string') {
-        const parts = className.split('_');
+        const parts = slotName.split('_');
 
         switch (parts.length) {
           case 1:
-            if (className === 'root') {
+            if (slotName === 'root') {
               _setClass(state, value);
             } else {
-              _setClass(state, value, className);
+              _setClass(state, value, slotName);
             }
             break;
 
