@@ -6,7 +6,7 @@ const DatepickerExampleStandaloneCalendarButton = () => {
   return (
     <Datepicker
       onDateChange={(e, v) => {
-        alert(`You picked '${formatMonthDayYear(v.value, DEFAULT_CALENDAR_STRINGS)}'.`);
+        alert(`You selected '${formatMonthDayYear(v.value, DEFAULT_CALENDAR_STRINGS)}'.`);
       }}
       today={new Date(2020, 7, 30, 0, 0, 0, 0)}
       type={DatepickerType.ButtonOnly}
