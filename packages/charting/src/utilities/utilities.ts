@@ -65,7 +65,7 @@ export interface ITickParams {
 }
 
 export interface IYAxisParams {
-  yMinMaxValues: {
+  yMinMaxValues?: {
     startValue: number;
     endValue: number;
   };
@@ -176,7 +176,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
  */
 export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
-    yMinMaxValues,
+    yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
     yMaxValue = 0,
     yMinValue = 0,
