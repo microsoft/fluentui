@@ -16,6 +16,7 @@ const contstraintNavigatedDate = (
   targetDate: Date,
   direction: number,
   restrictedDatesOptions: IRestrictedDatesOptions,
+  navigateToDisabledDates: boolean,
 ) => {
   if (!targetDate) {
     // if we couldn't find a target date at all, do nothing
@@ -26,7 +27,7 @@ const contstraintNavigatedDate = (
     initialDate,
     targetDate,
     direction,
-    ...restrictedDatesOptions,
+    ...(!navigateToDisabledDates && restrictedDatesOptions),
   };
 
   let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
@@ -37,9 +38,9 @@ const contstraintNavigatedDate = (
     newNavigatedDate = findAvailableDate(findAvailableDateOptions);
   }
 
-  if (isAfterMaxDate(targetDate, restrictedDatesOptions)) {
+  if (!navigateToDisabledDates && isAfterMaxDate(targetDate, restrictedDatesOptions)) {
     newNavigatedDate = restrictedDatesOptions.maxDate;
-  } else if (isBeforeMinDate(targetDate, restrictedDatesOptions)) {
+  } else if (!navigateToDisabledDates && isBeforeMinDate(targetDate, restrictedDatesOptions)) {
     newNavigatedDate = restrictedDatesOptions.minDate;
   }
 
@@ -51,6 +52,7 @@ export const navigateToNewDate = (
   kind: NavigationKind,
   step: number,
   restrictedDatesOptions: IRestrictedDatesOptions,
+  navigateToDisabledDates: boolean,
 ): Date => {
   let targetDate: Date | null = null;
   const targetDayDirection = step > 0 ? 1 : -1;
@@ -72,5 +74,5 @@ export const navigateToNewDate = (
       break;
   }
 
-  return contstraintNavigatedDate(originalDate, targetDate, step, restrictedDatesOptions);
+  return contstraintNavigatedDate(originalDate, targetDate, step, restrictedDatesOptions, navigateToDisabledDates);
 };
