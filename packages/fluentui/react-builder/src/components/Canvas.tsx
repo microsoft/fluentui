@@ -19,7 +19,7 @@ export type CanvasProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
-  onKeyDown?: (KeyboardEvent) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
