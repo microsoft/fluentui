@@ -44,6 +44,47 @@ export const COMPONENT_GROUP = {
   Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
 };
 
+const VALID_DROP_COMPONENTS = [
+  'div',
+  'Alert',
+  'Header',
+  'Label',
+  'Form',
+  'FormField',
+  'Menu',
+  'MenuItem',
+  'Toolbar',
+  'ToolbarItem',
+  'ToolbarMenu',
+  'ToolbarMenuItem',
+  'Box',
+  'Flex',
+  'Grid',
+  'Layout',
+  'Table',
+  'TableCell',
+  'TableRow',
+  'ItemLayout',
+  'Card',
+  'CardBody',
+  'CardColumn',
+  'CardHeader',
+  'CardFooter',
+  'Carousel',
+  'CarouselItem',
+  'Accordion',
+  'AccordionContent',
+  'Segment',
+  'List',
+  'ListItem',
+  'ListItemContent',
+  'ListItemHeader',
+  'Tree',
+  'TreeItem',
+  'HierarchicalTree',
+  'HierarchicalTreeItem',
+];
+
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -483,7 +524,9 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
   }
 
   // TODO: prevent invalid drops, prob before they happen (ie isValidDrop() )
-
+  if (!isValidDrop(parent)) {
+    return;
+  }
   // TODO: This is where we'd handle special drop logic and json tree updates
   //       Right now, we just update the children of the element that was dropped on.
   // TODO: Icon component was removed
@@ -509,6 +552,10 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
   delete parent.props?.content;
 
   console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source: newChild, target: parent })));
+};
+
+export const isValidDrop = (element: JSONTreeElement) => {
+  return VALID_DROP_COMPONENTS.includes(element.type);
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////

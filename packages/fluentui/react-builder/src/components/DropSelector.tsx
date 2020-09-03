@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { isBrowser } from '@fluentui/react-northstar';
 import { FiberNavigator } from '../../../react-northstar/src/components/Debug/FiberNavigator';
-import { fiberNavFindJSONTreeElement, jsonTreeFindParent } from '../config';
+import { fiberNavFindJSONTreeElement, jsonTreeFindParent, isValidDrop } from '../config';
 import { JSONTreeElement } from './types';
 
 export type DropSelectorProps = {
@@ -104,6 +104,12 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       selectorRef.current.style.left = `${targetRect.left}px`;
       selectorRef.current.style.width = `${targetRect.width}px`;
       selectorRef.current.style.height = `${targetRect.height}px`;
+
+      if (!isValidDrop(jsonTreeElement)) {
+        selectorRef.current.style.background = 'rgba(255, 0, 0, 0.4)';
+      } else {
+        selectorRef.current.style.background = 'transparent';
+      }
 
       const inElementPosition = getInElementPosition(
         {
