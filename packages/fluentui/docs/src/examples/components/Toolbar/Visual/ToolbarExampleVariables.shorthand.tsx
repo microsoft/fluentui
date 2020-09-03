@@ -9,8 +9,13 @@ const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> =
   return behavior;
 };
 
+const stateReducer: React.Reducer<'item-menu' | 'item-menu-variables' | '', 'item-menu' | 'item-menu-variables'> = (
+  prevState,
+  action,
+) => action;
+
 const ToolbarExampleVariables = () => {
-  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
+  const [menu, dispatch] = React.useReducer(stateReducer, '');
 
   return (
     <>
@@ -123,9 +128,8 @@ const ToolbarExampleVariables = () => {
               ],
               styles: { width: '100px' /* decrease width to fit other menus */ },
             },
-            menuOpen,
+            menuOpen: menu === 'item-menu',
           },
-          { kind: 'divider', key: 'divider-menus', styles: { width: '200px' } },
           {
             icon: <MoreIcon />,
             key: 'item-menu-variables',
@@ -174,13 +178,16 @@ const ToolbarExampleVariables = () => {
               ],
               styles: { width: '100px' /* decrease width to fit other menus */ },
             },
-            menuOpen,
+            menuOpen: menu === 'item-menu-variables',
             variables: { menuBackground: 'pink', menuDividerBorder: 'white', menuItemForeground: 'olive' },
           },
         ]}
       />
-      <button id="open-menus" onClick={() => setMenuOpen(true)}>
-        Open menus
+      <button id="open-menu" onClick={() => dispatch('item-menu')}>
+        Open usual menu
+      </button>
+      <button id="open-menu-variables" onClick={() => dispatch('item-menu-variables')}>
+        Open styled menu
       </button>
     </>
   );
