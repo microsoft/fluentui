@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "prettier change",
-  "packageName": "@uifabric/experiments",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-27T21:11:31.859Z"
-}
