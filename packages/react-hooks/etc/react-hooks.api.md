@@ -62,7 +62,7 @@ export function useForceUpdate(): () => void;
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefObject<T>;
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): ((value: T) => void) & React.RefObject<T>;
 
 // @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;

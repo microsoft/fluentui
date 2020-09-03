@@ -5,7 +5,7 @@ import * as React from 'react';
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefObject<T> {
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): ((value: T) => void) & React.RefObject<T> {
   const mergedCallback = (React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.
@@ -22,7 +22,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.R
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
     [...refs],
-  ) as unknown) as React.RefObject<T>;
+  ) as unknown) as ((value: T) => void) & React.RefObject<T>;
 
   return mergedCallback;
 }

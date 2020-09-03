@@ -50,8 +50,7 @@ describe('useMergedRefs', () => {
     const TestComponent: React.FunctionComponent = () => {
       const mergedRef = useMergedRefs<boolean>(refObject, val => (refValue = val));
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (mergedRef as any)(true);
+      mergedRef(true);
 
       return null;
     };
@@ -62,13 +61,13 @@ describe('useMergedRefs', () => {
   });
 
   it('updates the current property', () => {
-    let mergedRef: React.RefObject<string> | undefined = undefined;
+    let mergedRef: (React.RefObject<string> & ((val: string) => void)) | undefined = undefined;
 
     const TestComponent: React.FunctionComponent = () => {
       mergedRef = useMergedRefs(React.useRef<string>(''), React.useRef<string>(''));
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (mergedRef as any)('123');
+      mergedRef('123');
+
       return null;
     };
 
@@ -109,8 +108,7 @@ describe('useMergedRefs', () => {
     const TestComponent: React.FunctionComponent = () => {
       const mergedRef = useMergedRefs<boolean>(refObject, refValueFunc);
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (mergedRef as any)(true);
+      mergedRef(true);
 
       return null;
     };
