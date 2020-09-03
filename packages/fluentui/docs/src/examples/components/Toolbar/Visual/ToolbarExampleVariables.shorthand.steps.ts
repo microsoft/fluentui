@@ -2,9 +2,9 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
-        .click('#open-menus')
+        .click('#open-menu')
         .snapshot('Shows a usual menu')
-        .click('#open-menus')
+        .click('#open-menu-variables')
         .snapshot('Shows a styled menu'),
   ],
 };
