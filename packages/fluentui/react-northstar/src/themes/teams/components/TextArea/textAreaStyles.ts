@@ -34,6 +34,11 @@ export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, Te
       color: v.disabledColor,
     }),
 
+    ...(p.autoResize && {
+      minHeight: v.minHeightAutoAdjust,
+      overflow: 'hidden',
+    }),
+
     '::placeholder': {
       color: v.placeholderColor,
       opacity: 1, // undo Firefox default opacity

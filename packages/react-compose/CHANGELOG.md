@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.17.1..@fluentui/react-compose_v0.18.1)
+
+### Patches
+
+- Fixing undefined merging, adding tests for mergeProps. ([PR #14856](https://github.com/microsoft/fluentui/pull/14856) by dzearing@hotmail.com)
 
 ## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.17.1)
 
