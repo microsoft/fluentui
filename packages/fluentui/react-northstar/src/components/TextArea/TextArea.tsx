@@ -52,9 +52,7 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
 export type TextAreaStylesProps = Required<
   Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'autoAdjustHeight'>
-> & {
-  autoHeight: number;
-};
+>;
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -95,7 +93,6 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
   });
 
   const inputRef = React.useRef<HTMLTextAreaElement>();
-  const [autoHeight, setAutoHeight] = React.useState();
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
 
@@ -115,7 +112,6 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
       fluid,
       disabled,
       autoAdjustHeight,
-      autoHeight,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -131,17 +127,14 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
-    setValue(prevValue => {
-      if (prevValue.length > newValue.length) {
-        // We need to reset the height to 0 otherwise the scrollHeight will not decrease
-        setAutoHeight(0);
-      }
-      return newValue;
-    });
+    setValue(newValue);
   };
 
-  React.useEffect(() => {
-    setAutoHeight(inputRef.current?.scrollHeight);
+  React.useLayoutEffect(() => {
+    if (autoAdjustHeight) {
+      inputRef.current.style.height = '0';
+      inputRef.current.style.height = `${inputRef.current?.scrollHeight}px`;
+    }
   }, [inputRef.current?.scrollHeight, autoAdjustHeight]);
 
   const element = (
