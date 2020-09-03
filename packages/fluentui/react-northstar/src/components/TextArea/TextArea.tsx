@@ -14,7 +14,6 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -45,14 +44,9 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
-
-  /** A textarea can be set to automatically adjust the height */
-  autoResize?: boolean;
 }
 
-export type TextAreaStylesProps = Required<
-  Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'autoResize'>
->;
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -73,15 +67,13 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
   setStart();
 
-  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, autoResize } = props;
+  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
 
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,
     initialValue: '',
   });
-
-  const inputRef = React.useRef<HTMLTextAreaElement>();
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
 
@@ -100,7 +92,6 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
       resize,
       fluid,
       disabled,
-      autoResize,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -115,29 +106,21 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
+
     _.invoke(props, 'onChange', e, { ...props, value: newValue });
     setValue(newValue);
   };
 
-  React.useLayoutEffect(() => {
-    if (autoResize) {
-      inputRef.current.style.height = '0';
-      inputRef.current.style.height = `${inputRef.current?.scrollHeight}px`;
-    }
-  }, [inputRef.current?.scrollHeight, autoResize]);
-
   const element = (
-    <Ref innerRef={inputRef}>
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          value,
-          disabled,
-          onChange: handleChange,
-          ...unhandledProps,
-        })}
-      />
-    </Ref>
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        value,
+        disabled,
+        onChange: handleChange,
+        ...unhandledProps,
+      })}
+    />
   );
   setEnd();
   return element;
@@ -154,7 +137,6 @@ TextArea.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
-  autoResize: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
