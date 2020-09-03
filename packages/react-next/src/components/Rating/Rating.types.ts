@@ -78,7 +78,7 @@ export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Callback for when the rating changes.
    */
-  onChange?: (event: React.SyntheticEvent<HTMLElement>, rating: number) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
 
   /**
    * Optional label format for each individual rating star (not the rating control as a whole)

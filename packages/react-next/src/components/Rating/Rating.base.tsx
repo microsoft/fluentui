@@ -121,12 +121,6 @@ export const RatingBase = React.forwardRef<HTMLDivElement, IRatingProps>((props,
 
   for (let starNum = 1; starNum <= max; starNum++) {
     const fillPercentage = getFillingPercentage(starNum, displayRating);
-    const ratingStarProps: IRatingStarProps = {
-      fillPercentage,
-      disabled,
-      classNames,
-      icon: fillPercentage > 0 ? icon : unselectedIcon,
-    };
 
     const onSelectStar = (ev: React.SyntheticEvent<HTMLElement>): void => {
       // Use the actual rating (not display value) here, to ensure that we update if the actual
@@ -154,7 +148,12 @@ export const RatingBase = React.forwardRef<HTMLDivElement, IRatingProps>((props,
         <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
           {format(ariaLabelFormat || '', starNum, max)}
         </span>
-        <RatingStar key={starNum + 'rating'} {...ratingStarProps} />
+        <RatingStar
+          fillPercentage={fillPercentage}
+          disabled={disabled}
+          classNames={classNames}
+          icon={fillPercentage > 0 ? icon : unselectedIcon}
+        />
       </button>,
     );
   }
@@ -164,7 +163,7 @@ export const RatingBase = React.forwardRef<HTMLDivElement, IRatingProps>((props,
   return (
     <div
       ref={ref}
-      className={css('ms-Rating-star', rootSizeClass)}
+      className={css('ms-Rating-star', classNames.root, rootSizeClass)}
       aria-label={!readOnly ? ariaLabel : ''}
       id={id}
       {...divProps}

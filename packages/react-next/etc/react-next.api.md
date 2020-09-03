@@ -1457,24 +1457,23 @@ export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
 export interface IRating {
+    rating: number;
 }
 
 // @public
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
-    // @deprecated
-    ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    defaultRating?: number;
+    disabled?: boolean;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
     // @deprecated
     min?: number;
-    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (rating: number) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;

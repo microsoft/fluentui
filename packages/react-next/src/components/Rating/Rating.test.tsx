@@ -6,6 +6,7 @@ import { IRatingProps, IRating } from './Rating.types';
 
 describe('Rating', () => {
   const ref = React.createRef<IRating>();
+  const noOp = () => undefined;
 
   it('renders correctly', () => {
     const component = renderer.create(<Rating />);
@@ -23,7 +24,7 @@ describe('Rating', () => {
     const onChange = jest.fn();
     const rating = mount(<Rating onChange={onChange} componentRef={ref} />);
 
-    expect(ref.current?.rating).toBeUndefined();
+    expect(ref.current?.rating).toBe(1);
     _checkState(rating, [100, 0, 0, 0, 0]);
 
     rating
@@ -61,7 +62,7 @@ describe('Rating', () => {
   });
 
   it('behaves correctly when controlled with allowZeroStars enabled', () => {
-    const rating = mount(<Rating rating={3} allowZeroStars componentRef={ref} />);
+    const rating = mount(<Rating rating={3} allowZeroStars componentRef={ref} onChange={noOp} />);
     expect(ref.current?.rating).toBe(3);
 
     rating.setProps({ rating: 0 });
