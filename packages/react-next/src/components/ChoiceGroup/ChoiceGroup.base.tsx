@@ -151,7 +151,7 @@ function useDebugWarnings(props: IChoiceGroupProps) {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
-      name: 'Checkbox',
+      name: COMPONENT_NAME.replace('Base', ''),
       props,
       mutuallyExclusive: {
         selectedKey: 'defaultSelectedKey',

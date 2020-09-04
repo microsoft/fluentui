@@ -3,12 +3,14 @@ import * as renderer from 'react-test-renderer';
 
 import { Modal } from './Modal';
 import { ContextualMenu } from '../../ContextualMenu';
+import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('Modal', () => {
   isConformant({
     Component: Modal,
     displayName: 'Modal',
+    componentPath: path.join(__dirname, 'Modal.ts'),
   });
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.

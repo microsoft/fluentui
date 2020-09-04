@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuButton } from './ContextualMenuButton';
+import { isConformant } from '../../../common/isConformant';
 
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
@@ -28,6 +29,11 @@ describe('ContextualMenuButton', () => {
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      Component: ContextualMenuButton,
+      displayName: 'ContextualMenuButton',
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {

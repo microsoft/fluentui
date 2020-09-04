@@ -4,12 +4,19 @@ import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
 import { MaskedTextField } from './MaskedTextField';
+import { isConformant } from '../../../common/isConformant';
 
 describe('MaskedTextField', () => {
   it('renders correctly', () => {
     const component = create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: MaskedTextField,
+    displayName: 'MaskedTextField',
+    disabledTests: ['has-top-level-file', 'exported-top-level'],
   });
 
   it('Moves caret on focus', () => {

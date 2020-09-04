@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { Grid } from './Grid';
 import { GridBase } from './Grid.base';
 import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../compat/Button';
 import { shallow } from 'enzyme';
+import { isConformant } from '../../common/isConformant';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DEFAULT_ITEMS: any[] = [
@@ -17,6 +19,11 @@ const DEFAULT_ITEMS: any[] = [
 ];
 
 describe('Grid', () => {
+  isConformant({
+    Component: Grid,
+    displayName: 'Grid',
+    disabledTests: ['component-renders', 'component-has-displayname', 'has-top-level-file', 'exported-top-level'],
+  });
   it('Can render a grid with width of four', () => {
     const wrapper = shallow(
       <GridBase

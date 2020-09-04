@@ -5,6 +5,5 @@ describe('SplitButton', () => {
   isConformant({
     Component: SplitButton,
     displayName: 'SplitButton',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
   });
 });

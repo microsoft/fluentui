@@ -4,6 +4,7 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import * as path from 'path';
 import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
 import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilities';
 
@@ -133,6 +134,7 @@ describe('TextField rendering values from props', () => {
   isConformant({
     Component: TextField,
     displayName: 'TextField',
+    componentPath: path.join(__dirname, 'TextField.ts'),
   });
 
   it('can render a value', () => {

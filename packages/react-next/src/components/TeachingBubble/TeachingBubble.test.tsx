@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { mount } from 'enzyme';
+import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('TeachingBubble', () => {
@@ -117,6 +118,7 @@ describe('TeachingBubble', () => {
   isConformant({
     Component: TeachingBubble,
     displayName: 'TeachingBubble',
+    componentPath: path.join(__dirname, 'TeachingBubble.ts'),
   });
 
   it('merges callout classNames', () => {

@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
+import { isConformant } from '../../../common/isConformant';
 
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
@@ -28,6 +29,11 @@ describe('ContextualMenuSplitButton', () => {
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      Component: ContextualMenuSplitButton,
+      displayName: 'ContextualMenuSplitButton',
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
