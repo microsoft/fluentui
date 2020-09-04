@@ -103,6 +103,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
+    // eslint-disable-next-line deprecation/deprecation
+    if (this.props.showYAxisGridLines !== undefined) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Warning: the prop showYAxisGridLines is deprecated, please do not use it, now lines are shown by default',
+      );
+    }
     const isXAxisDateType = getXAxisType(this._points);
     this._keys = this._createKeys();
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
@@ -134,6 +141,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         isXAxisDateType={isXAxisDateType}
         tickParams={tickParams}
         maxOfYVal={this.state._maxOfYVal}
+        getRerenderProp={this._getRerenderProp}
         getGraphData={this.state.isGraphDraw && this._getGraphData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -144,6 +152,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _getRerenderProp = (isReRender: boolean) => {
+    this.setState({ isGraphDraw: isReRender });
+  };
 
   private _createDataSet = () => {
     const allChartPoints: ILineChartDataPoint[] = [];

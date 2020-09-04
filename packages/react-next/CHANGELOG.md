@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.98)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.97..@fluentui/react-next_v8.0.0-alpha.98)
+
+### Changes
+
+- Updating SwatchColorPicker to a function component. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
+
+## [8.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.97)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.94..@fluentui/react-next_v8.0.0-alpha.97)
+
+### Changes
+
+- Updating Shimmer to a function component. ([PR #14763](https://github.com/microsoft/fluentui/pull/14763) by czearing@outlook.com)
+- Fabric component: styles prop respected. ([PR #14827](https://github.com/microsoft/fluentui/pull/14827) by dzearing@hotmail.com)
 
 ## [8.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.94)
 
