@@ -307,8 +307,9 @@ export class EventGroup {
     return EventGroup.raise(this._parent, eventName, eventArgs, bubbleEvent);
   }
 
-  //see https://github.com/alangpierce/sucrase/issues/545
   /** Declare an event as being supported by this instance of EventGroup. */
+  // Use quotes around 'declare' because it can also be a keyword in TS, which may cause problems
+  // for parsers (see https://github.com/alangpierce/sucrase/issues/545)
   public ['declare'](event: string | string[]): void {
     let declaredEvents = (this._parent.__declaredEvents = this._parent.__declaredEvents || {});
     if (typeof event === 'string') {
