@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/example-app-base_v7.15.4",
+      "version": "7.15.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding check for undefined FluentTheme in CodeSnippet.tsx.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bcf5ac28bfb4809a9097a8bec9bb26cba8d04ef6",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/example-app-base_v7.14.0",
       "version": "7.14.0",

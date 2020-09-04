@@ -16,7 +16,7 @@ describe('MaskedTextField', () => {
   isConformant({
     Component: MaskedTextField,
     displayName: 'MaskedTextField',
-    disabledTests: ['has-top-level-file', 'exported-top-level'],
+    disabledTests: ['has-top-level-file'],
   });
 
   it('Moves caret on focus', () => {
