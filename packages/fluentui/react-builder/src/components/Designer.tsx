@@ -123,7 +123,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         if (!isValidDrop(dropParent)) {
           draftState.droppingElement = {
             element: JSON.parse(JSON.stringify(draftState.draggingElement)),
-            parent: JSON.parse(JSON.stringify(dropParent)), // TODO: try it without stringify and parse
+            parent: dropParent,
           };
           draftState.draggingElement = null;
           break;
