@@ -211,8 +211,6 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'COMPONENT_STYLE_CHANGE':
-      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.redo = [];
       if (action.componentStyle) {
         const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
         if (editedComponent) {
