@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Button } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('Button', () => {
@@ -16,10 +15,8 @@ describe('Button', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Button.tsx'),
     Component: Button,
     displayName: 'Button',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
   });
 
   /**

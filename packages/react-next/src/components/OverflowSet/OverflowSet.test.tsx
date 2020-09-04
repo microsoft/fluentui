@@ -10,7 +10,6 @@ import { arraysEqual, find } from '../../Utilities';
 import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
@@ -72,7 +71,6 @@ describe('OverflowSet', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'OverflowSet.ts'),
     Component: OverflowSet,
     displayName: 'OverflowSet',
   });

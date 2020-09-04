@@ -4,7 +4,6 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('Rating', () => {
@@ -15,7 +14,6 @@ describe('Rating', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Rating.tsx'),
     Component: Rating,
     displayName: 'Rating',
   });

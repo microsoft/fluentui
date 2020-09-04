@@ -3,7 +3,6 @@ import { create } from '@uifabric/utilities/lib/test';
 import { setRTL } from '../../../Utilities';
 import * as PersonaTypes from '../Persona.types';
 import { PersonaPresence } from './PersonaPresence';
-import * as path from 'path';
 import { isConformant } from '../../../common/isConformant';
 
 describe('PersonaPresence', () => {
@@ -97,7 +96,6 @@ describe('PersonaPresence', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'PersonaPresence.tsx'),
     Component: PersonaPresence,
     displayName: 'PersonaPresence',
     disabledTests: ['exported-top-level', 'has-top-level-file'],

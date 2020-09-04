@@ -1,9 +1,11 @@
 import { isConformant as baseIsConformant, IsConformantOptions } from '@fluentui/react-conformance';
 
-export function isConformant(testInfo: IsConformantOptions) {
+export function isConformant(testInfo: Omit<IsConformantOptions, 'componentPath'>) {
   const defaultOptions = {
     disabledTests: ['has-docblock', 'kebab-aria-attributes'],
   };
 
-  baseIsConformant(defaultOptions, testInfo);
+  const path = { componentPath: module!.parent!.filename.replace('.test', '') };
+
+  baseIsConformant(defaultOptions, testInfo, path);
 }

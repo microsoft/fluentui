@@ -7,7 +7,6 @@ import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 const testImage1x1 =
@@ -120,7 +119,6 @@ describe('Persona', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Persona.tsx'),
     Component: Persona,
     displayName: 'Persona',
   });

@@ -432,6 +432,8 @@ function useDismissHandlers(
   return mouseDownHandlers;
 }
 
+const COMPONENT_NAME = 'CalloutContentBase';
+
 export const CalloutContentBase = React.memo(
   React.forwardRef((propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -562,7 +564,7 @@ export const CalloutContentBase = React.memo(
     return shallowCompare(previousProps, nextProps);
   },
 );
-CalloutContentBase.displayName = 'CalloutContentBase';
+CalloutContentBase.displayName = COMPONENT_NAME;
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPostionStyle: React.CSSProperties = {

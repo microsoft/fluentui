@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import * as path from 'path';
 import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList';
@@ -9,10 +8,9 @@ import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList'
 describe('SelectedPeopleList', () => {
   describe('Element keying behavior', () => {
     isConformant({
-      componentPath: path.join(__dirname, 'SelectedPeopleList.tsx'),
       Component: SelectedPeopleList,
       displayName: 'SelectedPeopleList',
-      disabledTests: [`exported-top-level`, `has-top-level-file`],
+      disabledTests: [`has-top-level-file`],
     });
 
     it('renders keyed personas when there is no context menu', () => {

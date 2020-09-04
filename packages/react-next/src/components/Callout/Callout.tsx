@@ -9,3 +9,4 @@ export const Callout = React.forwardRef(
     return doNotLayer ? content : <Layer {...layerProps}>{content}</Layer>;
   },
 );
+Callout.displayName = 'Callout';

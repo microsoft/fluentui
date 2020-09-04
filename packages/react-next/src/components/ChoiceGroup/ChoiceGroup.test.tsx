@@ -7,7 +7,6 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption, IChoiceGroup, IChoiceGroupProps } from './ChoiceGroup.types';
 import { merge, resetIds } from '../../Utilities';
 import { mountAttached } from '../../common/testUtilities';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
@@ -47,10 +46,8 @@ describe('ChoiceGroup', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'ChoiceGroup.tsx'),
     Component: ChoiceGroup,
     displayName: 'ChoiceGroup',
-    disabledTests: ['component-has-displayname'],
   });
 
   it('does not use className prop from parent on label', () => {

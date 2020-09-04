@@ -3,7 +3,6 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '@uifabric/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('Pivot', () => {
@@ -23,7 +22,6 @@ describe('Pivot', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Pivot.tsx'),
     Component: Pivot,
     displayName: 'Pivot',
   });

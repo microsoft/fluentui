@@ -4,7 +4,6 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 import { IFocusTrapZoneProps } from './FocusTrapZone.types';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 // rAF does not exist in node - let's mock it
@@ -74,7 +73,6 @@ describe('FocusTrapZone', () => {
   }
 
   isConformant({
-    componentPath: path.join(__dirname, 'FocusTrapZone.tsx'),
     Component: FocusTrapZone,
     displayName: 'FocusTrapZone',
   });

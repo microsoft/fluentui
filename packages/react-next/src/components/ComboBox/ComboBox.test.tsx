@@ -10,7 +10,6 @@ import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
-import * as path from 'path';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -86,7 +85,6 @@ describe('ComboBox', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'ComboBox.tsx'),
     Component: ComboBox,
     displayName: 'ComboBox',
   });

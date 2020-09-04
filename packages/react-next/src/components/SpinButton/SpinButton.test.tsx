@@ -7,7 +7,6 @@ import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('SpinButton', () => {
@@ -31,7 +30,6 @@ describe('SpinButton', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'SpinButton.tsx'),
     Component: SpinButton,
     displayName: 'SpinButton',
   });

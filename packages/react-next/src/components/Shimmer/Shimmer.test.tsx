@@ -6,7 +6,6 @@ import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 import { safeMount } from '@uifabric/test-utilities';
 import { resetIds } from '@uifabric/utilities';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 describe('Shimmer', () => {
@@ -61,7 +60,6 @@ describe('Shimmer', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Shimmer.tsx'),
     Component: Shimmer,
     displayName: 'Shimmer',
   });
