@@ -35,6 +35,15 @@ const config = {
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
   baseBranch,
+  browsers: [
+    {
+      browserName: 'chrome',
+    },
+    {
+      browserName: 'internet explorer',
+      version: '11',
+    },
+  ],
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
   ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
