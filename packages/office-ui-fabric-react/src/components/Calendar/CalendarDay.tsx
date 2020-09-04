@@ -838,6 +838,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        // Casting date parameter as an any to avoid [ object Object ] error.
         const originalDate = new Date(date as any);
         const dayInfo: IDayInfo = {
           key: date.toString(),
