@@ -32,7 +32,7 @@ import { Text, TextProps } from '../Text/Text';
 export interface DatepickerCalendarHeaderProps
   extends UIComponentProps,
     ContentComponentProps,
-    Partial<ICalendarStrings> {
+    Pick<ICalendarStrings, 'prevMonthAriaLabel' | 'nextMonthAriaLabel'> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarHeaderBehaviorProps>;
 
@@ -162,36 +162,8 @@ DatepickerCalendarHeader.propTypes = {
   disabledNextButton: PropTypes.bool,
   disabledPreviousButton: PropTypes.bool,
 
-  formatDay: PropTypes.func,
-  formatYear: PropTypes.func,
-  formatMonthDayYear: PropTypes.func,
-  formatMonthYear: PropTypes.func,
-
-  parseDate: PropTypes.func,
-
-  months: PropTypes.arrayOf(PropTypes.string),
-  shortMonths: PropTypes.arrayOf(PropTypes.string),
-  days: PropTypes.arrayOf(PropTypes.string),
-  shortDays: PropTypes.arrayOf(PropTypes.string),
-
-  isRequiredErrorMessage: PropTypes.string,
-  invalidInputErrorMessage: PropTypes.string,
-  isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
-  openCalendarTitle: PropTypes.string,
-  inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
-  prevYearAriaLabel: PropTypes.string,
-  nextYearAriaLabel: PropTypes.string,
-  prevYearRangeAriaLabel: PropTypes.string,
-  nextYearRangeAriaLabel: PropTypes.string,
-  monthPickerHeaderAriaLabel: PropTypes.string,
-  yearPickerHeaderAriaLabel: PropTypes.string,
-  closeButtonAriaLabel: PropTypes.string,
-  weekNumberFormatString: PropTypes.string,
-  selectedDateFormatString: PropTypes.string,
-  todayDateFormatString: PropTypes.string,
 };
 
 DatepickerCalendarHeader.defaultProps = {
@@ -200,7 +172,8 @@ DatepickerCalendarHeader.defaultProps = {
   previousButton: {},
   label: {},
 
-  ...DEFAULT_CALENDAR_STRINGS,
+  prevMonthAriaLabel: DEFAULT_CALENDAR_STRINGS.prevMonthAriaLabel,
+  nextMonthAriaLabel: DEFAULT_CALENDAR_STRINGS.nextMonthAriaLabel,
 };
 
 DatepickerCalendarHeader.handledProps = Object.keys(DatepickerCalendarHeader.propTypes) as any;

@@ -5,7 +5,6 @@ const items: MenuProps['items'] = [
   {
     key: 'editorials',
     content: 'Editorials',
-    on: 'hover',
     menu: {
       items: [
         { key: '1', content: 'item1' },

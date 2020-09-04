@@ -36,6 +36,7 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
+import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -95,6 +96,31 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
+const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
+  let formattedString = '';
+  if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
+    formattedString = format(
+      localizationStrings.inputBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
+    );
+  } else if (!!restrictedOptions.minDate) {
+    formattedString = format(
+      localizationStrings.inputMinBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+    );
+  } else if (!!restrictedOptions.maxDate) {
+    formattedString = format(
+      localizationStrings.inputMaxBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
+    );
+  } else {
+    formattedString = localizationStrings.inputAriaLabel;
+  }
+
+  return formattedString;
+};
+
 /**
  * A Datepicker is used to display dates.
  * This component is currently UNSTABLE!
@@ -142,6 +168,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     weekNumberFormatString: props.weekNumberFormatString,
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
+    calendarCellFormatString: props.calendarCellFormatString,
+    inputAriaLabel: props.inputAriaLabel,
+    inputBoundedFormatString: props.inputBoundedFormatString,
+    inputMinBoundedFormatString: props.inputMinBoundedFormatString,
+    inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
@@ -191,10 +222,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     debugName: Datepicker.displayName,
     actionHandlers: {
       open: e => {
-        if (!allowManualInput) {
-          e.preventDefault();
+        if (allowManualInput) {
+          setOpenState(!openState);
+        } else {
+          // Keep popup open in case we can only enter the date through calendar.
           setOpenState(true);
         }
+
+        e.preventDefault();
       },
     },
     rtl: context.rtl,
@@ -296,6 +331,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 readOnly: !allowManualInput,
                 required: props.required,
                 ref: inputRef,
+                'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
               }),
             overrideProps: overrideInputProps,
           })}
@@ -388,6 +424,12 @@ Datepicker.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
+  calendarCellFormatString: PropTypes.string,
+
+  inputAriaLabel: PropTypes.string,
+  inputBoundedFormatString: PropTypes.string,
+  inputMinBoundedFormatString: PropTypes.string,
+  inputMaxBoundedFormatString: PropTypes.string,
 };
 
 Datepicker.defaultProps = {
