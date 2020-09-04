@@ -11,8 +11,6 @@ import * as ReactIs from 'react-is';
 import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
-
-import { isExportedAtTopLevel } from './isExportedAtTopLevel';
 import {
   assertBodyContains,
   getDisplayName,
@@ -34,8 +32,6 @@ export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps
   hasAccessibilityProp?: boolean;
   /** Props required to render Component without errors or warnings. */
   requiredProps?: object;
-  /** Is this component exported as top level API? */
-  exportedAtTopLevel?: boolean;
   /** Does this component render a Portal powered component? */
   rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
@@ -64,7 +60,6 @@ export function isConformant(
     testPath,
     constructorName = Component.prototype.constructor.name,
     eventTargets = {},
-    exportedAtTopLevel = true,
     hasAccessibilityProp = true,
     requiredProps = {},
     rendersPortal = false,
@@ -163,22 +158,6 @@ export function isConformant(
       );
     });
     return null;
-  }
-
-  // find the apiPath in the top level API
-  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, info.apiPath));
-
-  exportedAtTopLevel && isExportedAtTopLevel(constructorName, info.displayName);
-  if (info.isChild) {
-    test('is a static component on its parent', () => {
-      const message =
-        `'${info.displayName}' is a child component (is in ${info.repoPath}).` +
-        ` It must be a static prop of its parent '${info.parentDisplayName}'`;
-      expect({ foundAsSubcomponent, message }).toEqual({
-        message,
-        foundAsSubcomponent: true,
-      });
-    });
   }
 
   // ----------------------------------------
