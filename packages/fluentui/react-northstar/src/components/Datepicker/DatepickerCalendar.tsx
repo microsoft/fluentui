@@ -262,6 +262,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             quiet: !day.isInMonth,
             today: compareDates(day.originalDate, props.today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
+            onFocus: () => setGridNavigatedDate(day.originalDate),
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
