@@ -6,7 +6,7 @@ import { arraysEqual } from './array';
  */
 type LocalState<TType, TValue> = {
   refs: (React.Ref<TType | null | TValue> | undefined)[];
-  resolver: (newValue: TType | TValue | null) => void;
+  resolver?: (newValue: TType | TValue | null) => void;
 };
 
 /**
@@ -28,9 +28,9 @@ const createResolver = <TType, TValue>(local: LocalState<TType, TValue>) => (new
  * Helper to merge refs from within class components.
  */
 export const createMergedRef = <TType, TValue = null>(value?: TValue) => {
-  const local: LocalState<TType, TValue> = ({
-    refs: [],
-  } as unknown) as LocalState<TType, TValue>;
+  const local: LocalState<TType, TValue> = {
+    refs: [] as LocalState<TType, TValue>['refs'],
+  };
 
   return (
     ...newRefs: (React.Ref<TType | null | TValue> | undefined)[]
@@ -41,6 +41,6 @@ export const createMergedRef = <TType, TValue = null>(value?: TValue) => {
 
     local.refs = newRefs;
 
-    return local.resolver;
+    return local.resolver!;
   };
 };
