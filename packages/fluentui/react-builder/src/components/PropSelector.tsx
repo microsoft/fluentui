@@ -34,7 +34,7 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
       value: 'replace',
     },
   ];
-  const [selectedProp, setSelectedProp] = React.useState(false);
+  const [selectedProp, setSelectedProp] = React.useState('');
   const handlePropChange = (e, props) => {
     setSelectedProp(props.value);
   };
@@ -53,7 +53,7 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
   return (
     <Dialog
       cancelButton="Cancel"
-      confirmButton={{ content: 'Insert', disabled: !selectedProp }}
+      confirmButton={{ content: 'Insert', disabled: selectedProp === '' }}
       onConfirm={() => onConfirm(selectedProp, operation, index)}
       onCancel={onCancel}
       header={`Inserting ${components.element.displayName} into ${components.parent.displayName}`}
