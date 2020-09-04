@@ -117,7 +117,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
   };
 
   /** A label for selected items listbox. */
-  a11ySelectedItemsListboxMessage?: string;
+  a11ySelectedItemsMessage?: string;
 
   /**
    * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
