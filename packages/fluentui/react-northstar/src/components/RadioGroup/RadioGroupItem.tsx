@@ -55,7 +55,7 @@ export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponent
   /** The radio item indicator can be customized. */
   indicator?: ShorthandValue<BoxProps>;
 
-  /** The radio item indicator can be customized. */
+  /** The checked radio item indicator can be customized. */
   checkedIndicator?: ShorthandValue<BoxProps>;
 
   /** The HTML input name. */
