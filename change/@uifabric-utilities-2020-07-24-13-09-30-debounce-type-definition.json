@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function",
-  "packageName": "@uifabric/utilities",
-  "email": "sllynn8907@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-24T20:09:30.237Z"
-}

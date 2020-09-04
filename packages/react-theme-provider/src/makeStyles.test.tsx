@@ -39,6 +39,22 @@ describe('makeStyles', () => {
     stylesheet.reset();
   });
 
+  it('can create basic styles as an object (no type errors)', () => {
+    makeStyles({
+      root: {
+        alignItems: 'center',
+      },
+    });
+  });
+
+  it('can create style functions (no type errors)', () => {
+    makeStyles(() => ({
+      root: {
+        alignItems: 'center',
+      },
+    }));
+  });
+
   it('can refer to styles from the default theme', () => {
     safeMount(<ThemeStyledComponent />);
     expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}');

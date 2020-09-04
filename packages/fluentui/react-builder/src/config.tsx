@@ -7,8 +7,13 @@ import * as FUIIcons from '@fluentui/react-icons-northstar';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
+import { CodeSandboxImport } from '@fluentui/docs-components';
 
 type FiberNavigator = FUI.FiberNavigator;
+
+const projectPackageJson = require('@fluentui/react-northstar/package.json');
+const sandboxPackageJson = require('@fluentui/code-sandbox/package.json');
+const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
@@ -419,6 +424,13 @@ export const resolveComponent = (displayName): React.ElementType => {
 
 // FIXME: breaks for <button>btn</button>
 const toJSONTreeElement = input => {
+  if (input?.as && _.isPlainObject(input.as)) {
+    return {
+      type: input.as.displayName,
+      props: { ...input, as: undefined },
+      $$typeof: 'Symbol(react.element)',
+    };
+  }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
@@ -441,8 +453,9 @@ const toJSONTreeElement = input => {
   return result;
 };
 
-export const resolveDraggingElement: (displayName: string, draggingElements?) => JSONTreeElement = (
+export const resolveDraggingElement: (displayName: string, module: string, draggingElements?) => JSONTreeElement = (
   displayName,
+  module,
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
   const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
@@ -450,7 +463,9 @@ export const resolveDraggingElement: (displayName: string, draggingElements?) =>
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
     type: displayName,
+    moduleName: module,
     displayName,
+    props: { children: [] },
     ...jsonTreeElement,
   };
 };
@@ -536,6 +551,95 @@ export const renderJSONTreeToJSXElement = (
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
   });
+};
+
+const packageImportList: Record<string, CodeSandboxImport> = {
+  '@fluentui/react-icons-northstar': {
+    version: projectPackageJson.version,
+    required: false,
+  },
+  '@fluentui/react-northstar': {
+    version: projectPackageJson.version,
+    required: false,
+  },
+};
+
+export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
+  if (tree.props?.icon) {
+    const iconModule =
+      tree.moduleName === '@fluentui/react-northstar' ? '@fluentui/react-icons-northstar' : 'ErrorNoPackage';
+    if (imports.hasOwnProperty(iconModule)) {
+      if (!imports[iconModule].includes(tree.props?.icon.type)) {
+        imports[iconModule].push(tree.props?.icon.type);
+      }
+    } else {
+      imports[iconModule] = [tree.props?.icon.type];
+    }
+  }
+  if (tree.moduleName && tree.props?.trigger) {
+    if (tree.props?.trigger.$$typeof === 'Symbol(react.element)') {
+      if (imports.hasOwnProperty(tree.moduleName)) {
+        if (!imports[tree.moduleName].includes(tree.props?.trigger.type)) {
+          imports[tree.moduleName].push(tree.props?.trigger.type);
+        }
+      } else {
+        imports[tree.moduleName] = [tree.props?.trigger.type];
+      }
+    }
+  }
+  if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
+    if (imports.hasOwnProperty(tree.moduleName)) {
+      if (!imports[tree.moduleName].includes(tree.displayName)) {
+        imports[tree.moduleName].push(tree.displayName);
+      }
+    } else {
+      imports[tree.moduleName] = [tree.displayName];
+    }
+  }
+
+  tree.props?.children?.forEach(item => {
+    if (typeof item !== 'string') {
+      imports = JSONTreeToImports(item, imports);
+    }
+  });
+  return imports;
+};
+
+export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
+  const imports: Record<string, string[]> = JSONTreeToImports(tree);
+  let codeSandboxExport = 'import * as React from "react";\n';
+  const packageImports: Record<string, CodeSandboxImport> = {
+    '@fluentui/code-sandbox': {
+      version: sandboxPackageJson.version,
+      required: true,
+    },
+    react: {
+      version: projectPackageJson.peerDependencies['react'],
+      required: true,
+    },
+    'react-dom': {
+      version: projectPackageJson.peerDependencies['react-dom'],
+      required: true,
+    },
+    prettier: {
+      version: docsComponentsPackageJson.peerDependencies['prettier'],
+      required: true,
+    },
+  };
+  for (const [module, components] of Object.entries(imports)) {
+    codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
+    if (packageImportList[module]) {
+      packageImports[module] = packageImportList[module];
+    } else {
+      console.error(
+        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
+      );
+    }
+  }
+  codeSandboxExport += `\n export default function Example() { \n return (\n
+  ${code} \n);}`;
+
+  return { code: codeSandboxExport, imports: packageImports };
 };
 
 /**
@@ -687,10 +791,12 @@ export const MultiTypeKnob: React.FunctionComponent<{
 
   // console.log('MultiTypeKnob', { label, value, type, types });
 
+  const propId = `prop-${label}`;
+
   return (
     <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
       <div>
-        {type !== 'boolean' && <label>{label} </label>}
+        {type !== 'boolean' && <label htmlFor={propId}>{label} </label>}
         {types.length === 1 ? (
           <code style={{ float: 'right' }}>{type}</code>
         ) : (
@@ -701,19 +807,20 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options: literalOptions, value, onChange })}
-      {type === 'boolean' && <label> {label}</label>}
+      {knob && knob({ options: literalOptions, value, onChange, id: propId })}
+      {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
     </div>
   );
 };
 
 export const knobs = {
-  boolean: ({ value, onChange }) => (
-    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
+  boolean: ({ value, onChange, id }) => (
+    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
   ),
 
-  number: ({ value, onChange }) => (
+  number: ({ value, onChange, id }) => (
     <input
+      id={id}
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
@@ -721,12 +828,12 @@ export const knobs = {
     />
   ),
 
-  string: ({ value, onChange }) => (
-    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
+  string: ({ value, onChange, id }) => (
+    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
   ),
 
-  literal: ({ options, value, onChange }) => (
-    <select onChange={e => onChange(e.target.value)} value={value}>
+  literal: ({ options, value, onChange, id }) => (
+    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
       {options?.map((
         opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
       ) => (
@@ -737,6 +844,6 @@ export const knobs = {
     </select>
   ),
 
-  ReactText: (value, onChange) => knobs.string({ value, onChange }),
-  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
+  ReactText: (value, onChange, id) => knobs.string({ value, onChange, id }),
+  'React.ElementType': (value, onChange, id) => knobs.string({ value, onChange, id }),
 };

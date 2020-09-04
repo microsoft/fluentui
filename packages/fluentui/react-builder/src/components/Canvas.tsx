@@ -7,6 +7,9 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { ReaderText } from './ReaderText';
+
+const showNarration = false;
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -16,15 +19,16 @@ export type CanvasProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
-  onKeyDown?: (KeyboardEvent) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
-  onDeleteComponent?: () => void;
+  onDeleteSelectedComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  role?: string;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -40,10 +44,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   selectedComponent,
   onCloneComponent,
   onMoveComponent,
-  onDeleteComponent,
+  onDeleteSelectedComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
+  role,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -120,6 +125,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       return () => null;
     }
 
+    role && iframe.setAttribute('role', role);
+
     // We need to wait one frame in the iframe in order to find the DOM nodes we're looking for
     const animationFrame = iframe.contentWindow.setTimeout(() => {
       // console.log('Canvas:effect');
@@ -156,27 +163,23 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               // We need to measure nodes without our style overrides applied.
               // Remove our attribute used in our debug style selector.
               element.removeAttribute('data-builder-id');
-              const { width, height } = element.getBoundingClientRect();
               const { marginTop, marginRight, marginBottom, marginLeft } = iframeWindow.getComputedStyle(element);
               element.setAttribute('data-builder-id', builderId);
 
-              const hasNoWidth = width === 0;
-              const hasNoHeight = height === 0;
+              const isContainer = element.tagName === 'DIV';
               const hasNoChildren = element.childElementCount === 0;
               const hasManyChildren = element.childElementCount > 1;
-
               const properties = [
-                hasNoChildren &&
-                  hasNoWidth &&
-                  `padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);`,
-                hasNoChildren &&
-                  hasNoHeight &&
-                  `padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
+                isContainer &&
+                  hasNoChildren &&
+                  `height: 0px;
+                  padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);
+                  padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
                 hasManyChildren && `padding: ${debugSize};`,
-                marginTop === '0px' && `margin-top: ${debugSize};`,
-                marginRight === '0px' && `margin-right: ${debugSize};`,
-                marginBottom === '0px' && `margin-bottom: ${debugSize};`,
-                marginLeft === '0px' && `margin-left: ${debugSize};`,
+                marginTop === '0px' ? `margin-top: ${debugSize};` : `margin-top: ${marginTop};`,
+                marginRight === '0px' ? `margin-right: ${debugSize};` : `margin-right: ${marginRight};`,
+                marginBottom === '0px' ? `margin-bottom: ${debugSize};` : `margin-bottom: ${marginBottom};`,
+                marginLeft === '0px' ? `margin-left: ${debugSize};` : `margin-left: ${marginLeft};`,
               ]
                 .filter(Boolean)
                 .join('\n');
@@ -184,7 +187,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               // console.log(
               //   element,
               //   '\nHAS\n',
-              //   { width, height, marginTop, marginRight, marginBottom, marginLeft },
+              //   { isContainer, hasNoChildren, marginTop, marginRight, marginBottom, marginLeft },
               //   '\nGETS\n',
               //   properties,
               // );
@@ -199,7 +202,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: 100vh;
+            min-height: ${showNarration ? 'calc(100vh - 1.5rem)' : '100vh'};
           }
           `,
         isExpanding &&
@@ -224,7 +227,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role]);
 
   return (
     <Frame
@@ -281,7 +284,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 componentName={selectedComponent.displayName}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
-                onDelete={onDeleteComponent}
+                onDelete={onDeleteSelectedComponent}
                 onGoToParent={onGoToParentComponent}
               />
             )}
@@ -306,6 +309,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 />
               )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {showNarration && selectedComponent && (
+                <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
+              )}
             </Provider>
           </>
         )}
