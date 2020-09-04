@@ -381,7 +381,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     error,
     fluid,
     getA11ySelectionMessage,
-    a11ySelectedItemsListboxMessage,
+    a11ySelectedItemsMessage,
     getA11yStatusMessage,
     inline,
     inverted,
@@ -771,7 +771,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       }),
     );
     return (
-      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsListboxMessage}>
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
         {selectedItems}
       </div>
     );
