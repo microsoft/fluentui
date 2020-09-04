@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/ie11-polyfills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Package to hold current and future ie11 polyfills",
   "main": "index.js",
   "typings": "index.d.ts",
