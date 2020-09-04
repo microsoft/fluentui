@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.134.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.2)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.1..office-ui-fabric-react_v7.134.2)
+
+### Patches
+
+- DetailsRow/DetailsHeader: Remove findDOMNode usage ([PR #14851](https://github.com/microsoft/fluentui/pull/14851) by elcraig@microsoft.com)
+
+## [7.134.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.0..office-ui-fabric-react_v7.134.1)
+
+### Patches
+
+- Calendar: Adding aria-current=date to present day. ([PR #14806](https://github.com/microsoft/fluentui/pull/14806) by humbertomakotomorimoto@gmail.com)
 
 ## [7.134.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.0)
 

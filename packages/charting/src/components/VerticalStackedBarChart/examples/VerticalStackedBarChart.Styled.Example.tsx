@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { VerticalStackedBarChart } from '@uifabric/charting';
+import { VerticalStackedBarChart, IVerticalStackedBarChartProps } from '@uifabric/charting';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
-import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, DefaultFontStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}> {
@@ -36,13 +36,13 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
       { chartData: firstChartPoints, xAxisPoint: 'September' },
     ];
 
-    const textStyle = {
+    const textStyle: IStyle = {
       fill: DefaultPalette.black,
       fontSize: '10px',
       lineHeight: '14px',
     };
 
-    const customStyles = () => {
+    const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
       return {
         chart: {
           paddingBottom: '45px',
@@ -68,6 +68,10 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
           // eslint-disable-next-line react/jsx-no-bind
           styles={customStyles}
           chartLabel="Card title"
+          yMaxValue={120}
+          // eslint-disable-next-line react/jsx-no-bind
+          yAxisTickFormat={(x) => `${x} h`}
+          margins={{left: 50}}
         />
       </div>
     );
