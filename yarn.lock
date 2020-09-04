@@ -2395,17 +2395,17 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.16.0.tgz#0c60394d54f37478a359d9965d6c102c1e09bbf1"
-  integrity sha512-cW8Vj1+VpwRPoC7wK0gG7GCt5W4ZcluUPJZfcOHA7ViVPMaW50Fkfv+jrunJLXCw1FuXE5caIUh2h/8aorYgRA==
+"@microsoft/fast-element@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.17.0.tgz#2d52b6c83375fbf2c6d05bc45211dad3960dff1a"
+  integrity sha512-bPkPPYcZ+hojPQ3m1WPdI5Z3d+fJbpddCdSspZy6T6NV9JoIDRg+gaJcBWWQmeBDsCsG+dVNK1RezXuWLP5qpA==
 
 "@microsoft/fast-foundation@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.7.0.tgz#084102ca3ee3ded043db1fccd6e98edebe4b1981"
-  integrity sha512-hJmzCdsX6s+BT/HRj5OhUMSUGZ27WCbCE7sXVE+0BU7NeQPYY1w6sG0sJz9fu8UBLsuesU7aWpVCEpVu277K6g==
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.7.1.tgz#17fede34bf76bd0195b5c5b76a73ce765d69edd1"
+  integrity sha512-8eTpcBRz6aLiVP6/FMUEiFw/t3DxA6xnT/8UkFI8NJQtBlZdIatt5+2PSwj5IsS4sqkniCeIv+wWa5jX6FHrSQ==
   dependencies:
-    "@microsoft/fast-element" "^0.16.0"
+    "@microsoft/fast-element" "^0.17.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
@@ -4231,7 +4231,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.13.tgz#ccebcdb990bd6139cd16e84c39dc2fb1023ca90c"
   integrity sha512-pMCcqU2zT4TjqYFrWtYHKal7Sl30Ims6ulZ4UFXxI4xbtQqK/qqKwkDoBFCfooRqqmRu9vY3xaJRwxSh673aYg==
 
-"@types/node@8.10.54", "@types/node@^8.0.19", "@types/node@^8.10.30":
+"@types/node@8.10.54", "@types/node@^8.0.19":
   version "8.10.54"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.54.tgz#1c88eb253ac1210f1a5876953fb70f7cc4928402"
   integrity sha512-kaYyLYf6ICn6/isAyD4K1MyWWd5Q3JgH6bnMN089LUx88+s4W8GvK9Q6JMBVu5vsFFp7pMdSxdKmlBXwH/VFRg==
@@ -9315,7 +9315,7 @@ doctrine@1.5.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-doctrine@^2.0.0, doctrine@^2.1.0:
+doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   integrity sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==
@@ -12922,6 +12922,11 @@ icss-utils@^4.0.0, icss-utils@^4.1.1:
   integrity sha512-4aFq7wvWyMHKgxsH8QQtGpvbASCf+eM3wPRLI6R+MgAnTCZ6STYsRvttLvRWK0Nfif5piF394St3HeJDaljGPA==
   dependencies:
     postcss "^7.0.14"
+
+ie11-custom-properties@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/ie11-custom-properties/-/ie11-custom-properties-4.1.0.tgz#fec74a4d62f746e1aa2ae52b0c3136edca119596"
+  integrity sha512-ep6R2iQvgfDEjd97ifkGKv119/Q+4La1GzKyshMsq2kIUVDlQUt74uc7WtMT4oN2G4d+tcA3QA86aUl7ESjBYw==
 
 ieee754@^1.1.4:
   version "1.1.13"
@@ -17076,17 +17081,6 @@ next-tick@^1.0.0, next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ngrok@^3.0.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/ngrok/-/ngrok-3.2.1.tgz#b9db022fce862711122e404b4763145eb6387aa3"
-  integrity sha512-gbRPHmAfBgIsgRGXE25c3NZXZXs4mpgPuQSPSq02r8QBk4VMoByiLJXKXrUCQm37x/Kfl8cIsWreWDgdNobtOQ==
-  dependencies:
-    "@types/node" "^8.10.30"
-    decompress-zip "^0.3.2"
-    request "^2.88.0"
-    request-promise-native "^1.0.5"
-    uuid "^3.3.2"
-
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -19962,6 +19956,13 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.3.0:
     prop-types "^15.6.2"
     react-is "^16.8.6"
     scheduler "^0.13.6"
+
+react-textarea-autosize@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.0.0.tgz#e4c1867f5a5ad6b1aaa1c82057da09cd58537c6a"
+  integrity sha512-zn6aFbqrzWDe8pb/U8ja9rODUsMd99YXN/uZLc9MPtda0Ks8qdFwEUZcghxJ1WYHtbDUNP6bvt6Wte695DjexQ==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-textarea-autosize@^7.1.0:
   version "7.1.2"
@@ -24585,7 +24586,7 @@ webpack-virtual-modules@^0.2.0:
   dependencies:
     debug "^3.0.0"
 
-webpack@4.35.0, webpack@^4.33.0, webpack@^4.35.0, webpack@^4.38.0, webpack@^4.43.0:
+webpack@4.43.0, webpack@^4.33.0, webpack@^4.38.0, webpack@^4.43.0:
   version "4.43.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.43.0.tgz#c48547b11d563224c561dad1172c8aa0b8a678e6"
   integrity sha512-GW1LjnPipFW2Y78OOab8NJlCflB7EFskMih2AHdvjbpKMeDJqEgSx24cXXXiPS65+WSwVyxtDsJH6jGX2czy+g==

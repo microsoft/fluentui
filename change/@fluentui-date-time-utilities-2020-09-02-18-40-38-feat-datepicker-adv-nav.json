@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add helper function to compute end of week date, give a current date and starting day of week",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-02T16:40:38.365Z"
+}

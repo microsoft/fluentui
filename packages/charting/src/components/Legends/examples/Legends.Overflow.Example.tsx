@@ -9,7 +9,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 1',
         color: DefaultPalette.red,
         action: () => {
-          alert('Legend1 clicked');
+          console.log('Legend1 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend1');
@@ -19,7 +19,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 2',
         color: DefaultPalette.green,
         action: () => {
-          alert('Legend2 clicked');
+          console.log('Legend2 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend2');
@@ -29,7 +29,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 3',
         color: DefaultPalette.yellow,
         action: () => {
-          alert('Legend3 clicked');
+          console.log('Legend3 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend3');
@@ -39,7 +39,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 4',
         color: DefaultPalette.blue,
         action: () => {
-          alert('Legend4 clicked');
+          console.log('Legend4 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend4');
@@ -49,7 +49,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 5',
         color: DefaultPalette.purpleLight,
         action: () => {
-          alert('Legend5 clicked');
+          console.log('Legend5 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend5');
@@ -59,7 +59,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 6',
         color: DefaultPalette.orange,
         action: () => {
-          alert('Legend6 clicked');
+          console.log('Legend6 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend6');
@@ -69,7 +69,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 7',
         color: DefaultPalette.magenta,
         action: () => {
-          alert('Legend7 clicked');
+          console.log('Legend7 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend7');
@@ -79,7 +79,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 8',
         color: DefaultPalette.themeDark,
         action: () => {
-          alert('Legend8 clicked');
+          console.log('Legend8 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend8');
@@ -89,7 +89,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 9',
         color: DefaultPalette.redDark,
         action: () => {
-          alert('Legend9 clicked');
+          console.log('Legend9 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend9');
@@ -99,7 +99,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 10',
         color: DefaultPalette.blueMid,
         action: () => {
-          alert('Legend10 clicked');
+          console.log('Legend10 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend10');
@@ -109,7 +109,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 11',
         color: DefaultPalette.blackTranslucent40,
         action: () => {
-          alert('Legend11 clicked');
+          console.log('Legend11 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend11');
@@ -119,7 +119,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 12',
         color: DefaultPalette.greenDark,
         action: () => {
-          alert('Legend12 clicked');
+          console.log('Legend12 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend12');
@@ -129,7 +129,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 13',
         color: DefaultPalette.yellowLight,
         action: () => {
-          alert('Legend13 clicked');
+          console.log('Legend13 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend13');
@@ -139,7 +139,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 14',
         color: DefaultPalette.magentaLight,
         action: () => {
-          alert('Legend14 clicked');
+          console.log('Legend14 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend14');
@@ -149,7 +149,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 15',
         color: DefaultPalette.purpleDark,
         action: () => {
-          alert('Legend15 clicked');
+          console.log('Legend15 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend15');
@@ -159,7 +159,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 16',
         color: DefaultPalette.blueMid,
         action: () => {
-          alert('Legend16 clicked');
+          console.log('Legend16 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend16');
@@ -169,7 +169,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 17',
         color: DefaultPalette.accent,
         action: () => {
-          alert('Legend17 clicked');
+          console.log('Legend17 clicked');
         },
         hoverAction: () => {
           console.log('Hover action for legend17');
@@ -181,8 +181,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       <Legends
         legends={legends}
         overflowText={'Overflow Items'}
-        allowFocusOnLegends
+        allowFocusOnLegends={false}
         overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }}
+        canSelectMultipleLegends
       />
     );
   }

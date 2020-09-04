@@ -7,10 +7,10 @@ trigger: none
 variables:
   - group: fabric-variables
 
-pool: 'fluentbuild'
+pool: 'Self Host Ubuntu'
 
 steps:
-  - template: azure-pipelines.tools.yml
+  - template: .devops/templates/tools.yml
 
   - script: |
       yarn

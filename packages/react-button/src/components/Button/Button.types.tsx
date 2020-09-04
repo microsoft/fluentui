@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
-import { RecursivePartial } from '../../utils/tempTypes';
+import { ColorTokenSet, RecursivePartial } from '@fluentui/theme';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -79,6 +78,9 @@ export type ButtonProps = ComponentProps &
 
     /** A button can emphasize that it represents an alternative action. */
     secondary?: boolean;
+
+    /** A button can blend into its background to become less emphasized. */
+    ghost?: boolean;
 
     /** A button can be sized. */
     size?: SizeValue;

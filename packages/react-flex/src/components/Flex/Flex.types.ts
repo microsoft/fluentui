@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/theme';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox

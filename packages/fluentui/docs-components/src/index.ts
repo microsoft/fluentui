@@ -24,3 +24,6 @@ export { renderElementToJSX } from './renderElementToJSX';
 export * from './Editor/Editor';
 
 export { ComponentExampleColorPicker } from './ColorPicker/ComponentExampleColorPicker';
+
+export * from './CodeSandboxExporter';
+export * from './CodeSandboxExporter/types';

@@ -1,8 +1,21 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.28.0..@uifabric/utilities_v7.30.0)
+
+### Minor changes
+
+- Added document type to element parameter within on.ts utility. ([PR #14238](https://github.com/microsoft/fluentui/pull/14238) by czearing@outlook.com)
+
+### Patches
+
+- Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function ([PR #14204](https://github.com/microsoft/fluentui/pull/14204) by sllynn8907@gmail.com)
 
 ## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.28.0)
 

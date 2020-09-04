@@ -1,2 +1,2 @@
-export * from './ChartHelper';
-export * from './ChartHelper.types';
+export * from './CartesianChart';
+export * from './CartesianChart.types';

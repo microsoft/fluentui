@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix typo in docs",
+  "packageName": "@fluentui/react-focus",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-02T22:55:02.427Z"
+}

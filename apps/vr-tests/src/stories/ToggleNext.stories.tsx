@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { IToggleProps, Toggle, ThemeProvider } from '@fluentui/react-next';
+import { IToggleProps, Toggle } from '@fluentui/react-next';
 
 const baseProps: IToggleProps = {
   label: 'Toggle label',
@@ -14,11 +14,9 @@ const baseProps: IToggleProps = {
 storiesOf('Toggle Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
   ))
   .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
   .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })

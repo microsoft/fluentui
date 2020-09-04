@@ -3,8 +3,8 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
-import { expectNodes, findNodes } from '../../common/testUtilities';
 import { resetIds } from '@uifabric/utilities';
+import { expectNodes, findNodes } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
@@ -57,9 +57,7 @@ describe('SwatchColorPicker', () => {
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onColorChanged={onChange} columnCount={4} />,
-    );
+    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onChange={onChange} columnCount={4} />);
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);

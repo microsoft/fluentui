@@ -11,7 +11,6 @@ import {
   IPivotItemProps,
   Label,
   Icon,
-  ThemeProvider,
   Fabric,
 } from '@fluentui/react-next';
 
@@ -21,22 +20,20 @@ storiesOf('Pivot Next', module)
   ))
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('.ms-Pivot-link.is-selected')
-          .snapshot('hover-selected', { cropTo: '.testWrapper' })
-          .hover('.ms-Pivot-link:not(.is-selected)')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('.ms-Pivot-link:not(.is-selected)')
-          .hover('.ms-Pivot-link.is-selected')
-          .snapshot('click', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Pivot-link.is-selected')
+        .snapshot('hover-selected', { cropTo: '.testWrapper' })
+        .hover('.ms-Pivot-link:not(.is-selected)')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Pivot-link:not(.is-selected)')
+        .hover('.ms-Pivot-link.is-selected')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory('Basic', () => (
     <Pivot aria-label="Basic Pivot Example">
@@ -134,25 +131,23 @@ storiesOf('Pivot Next Overflow', module)
     </div>
   ))
   .addDecorator(story => (
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .executeScript('document.getElementById("testWrapper").style.width = "500px"')
-          .snapshot('Medium', { cropTo: '.testWrapper' })
-          .executeScript('document.getElementById("testWrapper").style.width = "750px"')
-          .snapshot('Wide', { cropTo: '.testWrapper' })
-          .executeScript('document.getElementById("testWrapper").style.width = "250px"')
-          .click('.ms-Pivot-overflowMenuButton')
-          .click('.ms-Pivot-linkInMenu[data-last-tab]')
-          .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
-          .click('.ms-Pivot-overflowMenuButton')
-          .hover('.ms-Pivot-overflowMenuButton')
-          .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>
+    <Screener
+      steps={new Screener.Steps()
+        .executeScript('document.getElementById("testWrapper").style.width = "500px"')
+        .snapshot('Medium', { cropTo: '.testWrapper' })
+        .executeScript('document.getElementById("testWrapper").style.width = "750px"')
+        .snapshot('Wide', { cropTo: '.testWrapper' })
+        .executeScript('document.getElementById("testWrapper").style.width = "250px"')
+        .click('.ms-Pivot-overflowMenuButton')
+        .click('.ms-Pivot-linkInMenu[data-last-tab]')
+        .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
+        .click('.ms-Pivot-overflowMenuButton')
+        .hover('.ms-Pivot-overflowMenuButton')
+        .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory('Basic', () => (
     <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu">
