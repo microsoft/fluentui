@@ -49,6 +49,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added icons `BluetoothIcon`, `BreakoutRoomIcon`, `ConferenceRoomDeviceIcon`, `FilesErrorIcon` @TanelVari ([#14043](https://github.com/microsoft/fluentui/pull/14043))
 
 ### Documentation
+- Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))
 - Added copy paste keyboard shortcuts to UI builder @vyhnalekl ([#14631](https://github.com/microsoft/fluentui/pull/14631))
 - Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
 - Edited left side menu in UI builder @vyhnalekl ([#14436](https://github.com/microsoft/fluentui/pull/14436))
