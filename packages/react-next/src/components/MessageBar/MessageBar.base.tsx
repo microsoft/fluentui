@@ -95,7 +95,7 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
             </DelayedRender>
           </span>
         </div>
-        {/* expand/collapse button */ (!isMultiline && !actionsDiv && truncated && (
+        {/* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
           <div className={classNames.expandSingleLine}>
             <IconButton
               disabled={false}
@@ -106,11 +106,13 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
               aria-expanded={expandSingleLine}
             />
           </div>
-        )) ||
-          (onDismiss && <div className={classNames.dismissSingleLine}>{dismissButton}</div>)}
-        {/* dismiss */ isMultiline && dismissButton}
+        )}
+        {/* singleline dismiss */ !isMultiline && dismissButton && (
+          <div className={classNames.dismissSingleLine}>{dismissButton}</div>
+        )}
+        {/* multiline dismiss */ isMultiline && dismissButton}
       </div>
-      {/* actions */ isMultiline && actionsDiv}
+      {/* multiline actions */ isMultiline && actionsDiv}
     </div>
   );
 });
