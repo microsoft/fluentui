@@ -70,15 +70,13 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     width: pxToRem(12),
     height: pxToRem(12),
     verticalAlign: 'midddle',
-    color: v.indicatorBorderColorDefault,
+    color: v.indicatorColorDefault,
 
     ...(p.checked && {
       color: v.indicatorBackgroundColorChecked,
-      borderColor: 'transparent',
     }),
 
     ...(p.disabled && {
-      borderColor: v.colorDisabled,
       color: v.colorDisabled,
     }),
   }),
