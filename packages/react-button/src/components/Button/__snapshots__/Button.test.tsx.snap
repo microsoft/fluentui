@@ -28,6 +28,7 @@ exports[`Button renders a default state 1`] = `
         height: var(--button-height);
         justify-content: center;
         min-height: var(--button-minHeight);
+        min-width: var(--button-minWidth, 80);
         outline: none;
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);

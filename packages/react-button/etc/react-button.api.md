@@ -19,7 +19,7 @@ export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | 
 export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
-    children?: ShorthandProps;
+    content?: ShorthandProps;
     href?: string;
     target?: string;
     circular?: boolean;
@@ -58,7 +58,10 @@ export interface ButtonState extends ButtonProps {
 
 // @public (undocumented)
 export type ButtonTokenSet = ColorTokenSet & {
-    padding: string;
+    paddingLeft: string;
+    paddingRight: string;
+    paddingTop: string;
+    paddingBottom: string;
     margin: string;
     height: string;
     minWidth: string;
@@ -67,6 +70,10 @@ export type ButtonTokenSet = ColorTokenSet & {
     contentGap: string;
     iconSize: string;
     borderRadius: string;
+    borderTopLeftRadius: string;
+    borderTopRightRadius: string;
+    borderBottomLeftRadius: string;
+    borderBottomRightRadius: string;
     borderWidth: string;
     boxShadow: string;
     width: string;

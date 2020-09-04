@@ -17,7 +17,7 @@ export const renderMenuButton = (state: MenuButtonState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.icon {...slotProps.icon} />
-      {contentVisible && <slots.content {...slotProps.content}>{children}</slots.content>}
+      {contentVisible && <slots.content {...slotProps.content} />}
       {!iconOnly && <slots.menuIcon {...slotProps.menuIcon} />}
       {expanded && <slots.menu {...slotProps.menu} />}
     </slots.root>

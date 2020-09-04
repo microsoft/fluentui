@@ -35,6 +35,7 @@ export const useButtonClasses = makeClasses({
       boxShadow: 'var(--button-boxShadow)',
 
       width: 'var(--button-width)',
+      minWidth: 'var(--button-minWidth, 80)',
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
 

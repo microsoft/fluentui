@@ -17,7 +17,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       ref,
       as: 'button',
       icon: { as: 'span' },
-      content: { as: 'span' },
+      content: { as: 'span', children: props.children },
       menuIcon: { as: 'span' },
       menu: { as: 'span' },
     },

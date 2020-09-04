@@ -7,7 +7,7 @@ import { renderButton } from './renderButton';
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['icon', 'loader', 'children'];
+export const buttonShorthandProps = ['icon', 'loader', 'content'];
 
 /**
  * Given user props, returns state and render function for a Button.
@@ -22,7 +22,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       ref: resolvedRef,
       as: 'button',
       icon: { as: 'span' },
-      children: { as: 'span' },
+      content: { as: 'span', children: props.children },
       loader: { as: 'span' },
     },
     defaultProps,
