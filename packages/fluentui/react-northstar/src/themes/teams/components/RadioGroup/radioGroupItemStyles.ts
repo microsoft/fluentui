@@ -25,10 +25,10 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     alignItems: 'center',
     borderStyle: 'solid',
     borderWidth: `${pxToRem(1)}`,
+    borderColor: 'transparent',
     borderRadius: `${pxToRem(2)}`,
     color: v.textColorDefault,
     cursor: 'pointer',
-    borderColor: v.indicatorBorderColorDefault,
     display: p.vertical ? 'flex' : 'inline-flex',
     fontSize: v.textFontSize,
     padding: v.padding,
@@ -70,6 +70,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     width: pxToRem(12),
     height: pxToRem(12),
     verticalAlign: 'midddle',
+    borderColor: v.indicatorBorderColorDefault,
 
     ...(p.checked && {
       color: v.indicatorBackgroundColorChecked,
