@@ -15,6 +15,7 @@ import { Description } from './Description';
 import { Knobs } from './Knobs';
 import { List } from './List';
 import { Toolbar } from './Toolbar';
+import { PropSelector } from './PropSelector';
 
 import {
   jsonTreeCloneElement,
@@ -25,6 +26,7 @@ import {
   getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
+  isValidDrop,
 } from '../config';
 import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 
@@ -71,6 +73,7 @@ type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
+  droppingElement: { element: JSONTreeElement; parent: JSONTreeElement };
 };
 
 type DesignerAction =
@@ -92,7 +95,9 @@ type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
-  | { type: 'ADD_COMPONENT'; component: string; module: string };
+  | { type: 'ADD_COMPONENT'; component: string; module: string }
+  | { type: 'PROP_SELECT_CANCEL' }
+  | { type: 'PROP_SELECT_CONFIRM'; propName: string; operation: string; index: number };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -115,8 +120,13 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
     case 'DRAG_DROP':
       if (action.dropParent) {
         const dropParent = jsonTreeFindElement(draftState.jsonTree, action.dropParent.uuid);
-        if (dropParent.props?.items || dropParent.props?.fields) {
-          setSelectPropDialog(true);
+        if (!isValidDrop(dropParent)) {
+          draftState.droppingElement = {
+            element: JSON.parse(JSON.stringify(draftState.draggingElement)),
+            parent: JSON.parse(JSON.stringify(dropParent)), // TODO: try it without stringify and parse
+          };
+          draftState.draggingElement = null;
+          break;
         } else {
           resolveDrop(draftState.draggingElement, dropParent, action.dropIndex);
         }
@@ -152,6 +162,37 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
       );
       jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+      treeChanged = true;
+      break;
+
+    case 'PROP_SELECT_CANCEL':
+      draftState.droppingElement = null;
+      break;
+
+    case 'PROP_SELECT_CONFIRM':
+      if (!draftState.droppingElement) {
+        console.error('Cannot insert undefined components');
+        break;
+      }
+
+      const parentElement = jsonTreeFindElement(draftState.jsonTree, draftState.droppingElement.parent.uuid);
+      if (Array.isArray(parentElement.props[action.propName])) {
+        if (action.index > parentElement.props[action.propName].length) {
+          action.index = parentElement.props[action.propName].length;
+        } else if (action.index < 0) {
+          action.index = 0;
+        }
+
+        if (action.operation === 'add') {
+          parentElement.props[action.propName].splice(action.index, 0, draftState.droppingElement.element);
+        } else {
+          parentElement.props[action.propName][action.index] = draftState.droppingElement.element;
+        }
+      } else {
+        parentElement.props[action.propName] = draftState.droppingElement.element;
+      }
+
+      draftState.droppingElement = null;
       treeChanged = true;
       break;
 
@@ -342,12 +383,12 @@ export const Designer: React.FunctionComponent = () => {
       history: [],
       redo: [],
       insertComponent: null,
+      droppingElement: null,
     };
   });
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
-  const [selectPropDialog, setSelectPropDialog] = React.useState(false);
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -365,6 +406,7 @@ export const Designer: React.FunctionComponent = () => {
     code,
     codeError,
     insertComponent,
+    droppingElement,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
@@ -574,6 +616,17 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
+  const handlePropSelectCancel = React.useCallback(() => {
+    dispatch({ type: 'PROP_SELECT_CANCEL' });
+  }, [dispatch]);
+
+  const handlePropSelectConfirm = React.useCallback(
+    (propName, operation, index) => {
+      dispatch({ type: 'PROP_SELECT_CONFIRM', propName, operation, index });
+    },
+    [dispatch],
+  );
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -747,7 +800,13 @@ export const Designer: React.FunctionComponent = () => {
                 transition: 'box-shadow 0.5s',
               }}
             >
-              {selectPropDialog && <PropSelector />}
+              {droppingElement && (
+                <PropSelector
+                  components={droppingElement}
+                  onConfirm={handlePropSelectConfirm}
+                  onCancel={handlePropSelectCancel}
+                />
+              )}
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
                   draggingElement={draggingElement}

@@ -549,9 +549,6 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
     parent.props.children = [];
   }
 
-  if (parent.props.items || parent.props.fields) {
-    const [prop, index] = askForProp(parent);
-  }
   parent.props.children = [].concat(parent.props.children);
   parent.props.children.splice(childIndex, 0, newChild);
 
@@ -562,9 +559,7 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
 };
 
 export const isValidDrop = (element: JSONTreeElement) => {
-  return (
-    Object.keys(element.props).length === 0 || element.props?.children || element.props?.items || element.props?.fields
-  );
+  return element.type === 'div' || Object.keys(element.props).length === 0 || element.props?.children;
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////
