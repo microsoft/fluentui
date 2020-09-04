@@ -46,22 +46,19 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   const theme = (themeName && themes[themeName]) || {};
 
   return (
-    <>
-      <Provider id="visual-test-area" key={renderId} theme={theme} rtl={rtl === 'true'}>
-        <KnobProvider>
-          <SourceRender
-            babelConfig={babelConfig}
-            onRender={setError}
-            source={exampleSource.js}
-            resolver={importResolver}
-            hot
-          />
-          {/* This block allows to see issues with examples as visual regressions. */}
-          {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
-        </KnobProvider>
-      </Provider>
-      <div id="visual-test-mouse-point" />
-    </>
+    <Provider id="visual-test-area" key={renderId} theme={theme} rtl={rtl === 'true'}>
+      <KnobProvider>
+        <SourceRender
+          babelConfig={babelConfig}
+          onRender={setError}
+          source={exampleSource.js}
+          resolver={importResolver}
+          hot
+        />
+        {/* This block allows to see issues with examples as visual regressions. */}
+        {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
+      </KnobProvider>
+    </Provider>
   );
 };
 
