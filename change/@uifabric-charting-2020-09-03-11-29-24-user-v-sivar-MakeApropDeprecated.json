@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "making the prop 'showYAxisGridLines' as deprecated.",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-03T05:59:24.586Z"
-}
