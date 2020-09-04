@@ -1080,8 +1080,14 @@ export enum ImageLoadState {
     notLoaded = 0
 }
 
+// @public (undocumented)
+export interface IMaskedTextField extends ITextField {
+    value: string | undefined;
+}
+
 // @public
 export interface IMaskedTextFieldProps extends ITextFieldProps {
+    componentRef?: IRefObject<IMaskedTextField>;
     mask?: string;
     maskChar?: string;
     maskFormat?: {

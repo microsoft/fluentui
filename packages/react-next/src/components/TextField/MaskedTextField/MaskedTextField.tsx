@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, IMaskedTextFieldProps } from '../TextField.types';
+import { IMaskedTextFieldProps, IMaskedTextField } from '../TextField.types';
 import { KeyCodes, IRefObject } from '../../../Utilities';
 import {
   clearNext,
@@ -16,7 +16,7 @@ import {
 } from './inputMask';
 import { useConst } from '@uifabric/react-hooks';
 
-interface IMaskedTextFieldState {
+interface IMaskedTextFieldInternalState {
   maskCharData: IMaskValue[];
   isFocused: boolean;
   moveCursorOnMouseUp: boolean;
@@ -27,20 +27,12 @@ interface IMaskedTextFieldState {
   } | null;
 }
 
-interface IMaskedTextField extends ITextField {
-  /**
-   * The value of all filled format characters, or undefined if not all format characters are filled.
-   */
-  value: string | undefined;
-  setValue: (newValue: string) => void;
-}
 const COMPONENT_NAME = 'MaskedTextField';
 
 const useComponentRef = (
-  componentRef: IRefObject<ITextField> | undefined,
-  internalState: IMaskedTextFieldState,
-  textField: React.RefObject<ITextField>,
-  setValue: (newValue: string) => void,
+  componentRef: IRefObject<IMaskedTextField> | undefined,
+  internalState: IMaskedTextFieldInternalState,
+  textField: React.RefObject<IMaskedTextField>,
 ) => {
   React.useImperativeHandle(
     componentRef,
@@ -64,8 +56,6 @@ const useComponentRef = (
       get selectionEnd(): number | null {
         return textField.current && textField.current.selectionEnd ? textField.current.selectionEnd : -1;
       },
-
-      setValue,
 
       focus(): void {
         textField.current && textField.current.focus();
@@ -91,14 +81,14 @@ const useComponentRef = (
         textField.current && textField.current.setSelectionRange(start, end);
       },
     }),
-    [internalState, setValue, textField],
+    [internalState, textField],
   );
 };
 
 export const DEFAULT_MASK_CHAR = '_';
 
 export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskedTextFieldProps>((props, ref) => {
-  const textField = React.useRef<ITextField>(null);
+  const textField = React.useRef<IMaskedTextField>(null);
 
   const {
     componentRef,
@@ -115,7 +105,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskedTextField
     value,
   } = props;
 
-  const internalState = useConst<IMaskedTextFieldState>(() => ({
+  const internalState = useConst<IMaskedTextFieldInternalState>(() => ({
     maskCharData: parseMask(mask, maskFormat),
     isFocused: false,
     moveCursorOnMouseUp: false,
@@ -366,7 +356,7 @@ export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskedTextField
     }
   });
 
-  useComponentRef(componentRef, internalState, textField, setValue);
+  useComponentRef(componentRef, internalState, textField);
 
   return (
     <TextField

@@ -252,17 +252,17 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: string;
 
   /**
-   * @deprecated Deprecated, use IMaskTextField's mask.
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   mask?: string;
 
   /**
-   * @deprecated Deprecated, use IMaskTextField's maskChar.
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskChar?: string;
 
   /**
-   * @deprecated Deprecated, use IMaskTextField's maskFormat.
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskFormat?: { [key: string]: RegExp };
 }
@@ -362,11 +362,10 @@ export interface ITextFieldStyles {
 
 /**
  * MaskedTextField component props.
- * {@docCategory MaskedTextField}
+ * {@docCategory TextField}
  */
 export interface IMaskedTextFieldProps extends ITextFieldProps {
   /**
-   * Only used by MaskedTextField:
    * The masking string that defines the mask's behavior.
    * A backslash will escape any character.
    * Special format characters are:
@@ -379,14 +378,12 @@ export interface IMaskedTextFieldProps extends ITextFieldProps {
   mask?: string;
 
   /**
-   * Only used by MaskedTextField:
    * The character to show in place of unfilled characters of the mask.
    * @defaultvalue '_'
    */
   maskChar?: string;
 
   /**
-   * Only used by MaskedTextField:
    * An object defining the format characters and corresponding regexp values.
    * Default format characters: \{
    *  '9': /[0-9]/,
