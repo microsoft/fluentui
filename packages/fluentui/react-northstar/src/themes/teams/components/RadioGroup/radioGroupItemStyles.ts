@@ -63,22 +63,23 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     margin: `0 ${pxToRem(12)} 0 0`,
-    borderRadius: '50%',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: v.indicatorBorderColorDefault,
+    outline: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: pxToRem(12),
     height: pxToRem(12),
+    verticalAlign: 'midddle',
 
     ...(p.checked && {
-      background: v.indicatorBackgroundColorChecked,
+      color: v.indicatorBackgroundColorChecked,
       borderColor: 'transparent',
     }),
 
     ...(p.disabled && {
       borderColor: v.colorDisabled,
       ...(p.checked && {
-        background: v.colorDisabled,
+        color: v.colorDisabled,
       }),
     }),
   }),
