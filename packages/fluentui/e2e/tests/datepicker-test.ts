@@ -43,4 +43,36 @@ describe('Datepicker', () => {
     expect(await e2e.isFocused(datepickerCalendarCell(15))).toBe(true); // 15 is a magic number
     expect(await e2e.textOf(datepickerCalendarCell(15))).toBe('3'); // which represents August 3, 2020, cell which should be focused on after the grid update
   });
+
+  it('Advanced keyboard navigation works', async () => {
+    await e2e.focusOn(datepickerButton);
+    await e2e.pressKey('Enter'); // open calendar
+    expect(await e2e.exists(datepickerCalendar)).toBe(true);
+    expect(await e2e.isFocused(datepickerCalendarCell(32))).toBe(true); // 32 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(32))).toBe('23'); // which represents July 23, 2020, cell focused by default
+
+    await e2e.pressKey('Home');
+    expect(await e2e.isFocused(datepickerCalendarCell(29))).toBe(true); // 29 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(29))).toBe('20'); // which represents July 20, 2020, first cell in the same grid row
+
+    await e2e.pressKey('End');
+    expect(await e2e.isFocused(datepickerCalendarCell(35))).toBe(true); // 35 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(35))).toBe('26'); // which represents July 26, 2020, last cell in the same grid row
+
+    await e2e.pressKey('PageUp');
+    expect(await e2e.isFocused(datepickerCalendarCell(14))).toBe(true); // 14 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(14))).toBe('5'); // which represents July 5, 2020, first cell in the same grid column
+
+    await e2e.pressKey('PageDown');
+    expect(await e2e.isFocused(datepickerCalendarCell(42))).toBe(true); // 42 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(42))).toBe('2'); // which represents August 2, 2020, last cell in the same grid column
+
+    await e2e.pressKey('Home', 'Control');
+    expect(await e2e.isFocused(datepickerCalendarCell(8))).toBe(true); // 8 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(8))).toBe('29'); // which represents June 29, 2020, first cell in the grid
+
+    await e2e.pressKey('End', 'Control');
+    expect(await e2e.isFocused(datepickerCalendarCell(42))).toBe(true); // 42 is a magic number
+    expect(await e2e.textOf(datepickerCalendarCell(42))).toBe('2'); // which represents August 2, 2020, last cell in the grid
+  });
 });
