@@ -349,7 +349,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      // when we set focus to a specific child, we should recalculate the alignment depending on its position.
       this._setActiveElement(element, forceAlignment);
       if (this._activeElement) {
         this._activeElement.focus();
