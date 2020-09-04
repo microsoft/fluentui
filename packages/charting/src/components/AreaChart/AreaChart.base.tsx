@@ -122,7 +122,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
       id: `toolTip${this._uniqueCallOutID}`,
-      gapSpace: 20,
+      gapSpace: 15,
       isBeakVisible: false,
       setInitialFocus: true,
     };
@@ -427,6 +427,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           strokeWidth={3}
         />,
       );
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
         <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
           {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
