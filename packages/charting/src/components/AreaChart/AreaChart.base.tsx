@@ -219,7 +219,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
-    this._chart = this._drawGraph(containerHeight, yAxis, xAxis);
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis);
   };
 
   private _onLegendClick(customMessage: string): void {
@@ -348,7 +348,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _handleOnFocus = (xLineVal: number, x: number | Date, circleId: string, xAxisCalloutData: string) => {
     this._uniqueCallOutID = circleId;
-    d3Select('#' + circleId).attr('aria-labelledby', circleId);
+    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -398,12 +398,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (this.state.isCircleClicked && this.state.activeCircleId === circleId) {
       return lineColor;
     } else {
-      return this.state.activeCircleId === circleId ? '#fff' : lineColor;
+      return this.state.activeCircleId === circleId ? this.props.theme!.palette.white : lineColor;
     }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, yScale: any, xScale: any): JSX.Element[] => {
+  private _drawGraph = (containerHeight: number, xScale: any, yScale: any): JSX.Element[] => {
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
@@ -450,7 +450,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   this._refCallback(e!, circleId);
                 }}
                 onMouseOver={this._handleMouseHover.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
-                onMouseMove={this._handleMouseHover.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
                 onMouseOut={this._mouseOutAction}
                 onFocus={this._handleOnFocus.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
                 onBlur={this._mouseOutAction}
