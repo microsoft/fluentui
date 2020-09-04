@@ -66,7 +66,7 @@ export type DialogBehaviorProps = {
   headerId?: string;
   contentId?: string;
 
-  /** Indicates if dialogs's trigger is disabled. */
+  /** Indicates if Dialogs's trigger is disabled. */
   disabled?: boolean;
 } & PopupBehaviorProps &
   Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
