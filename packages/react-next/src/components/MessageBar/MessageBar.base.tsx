@@ -18,7 +18,7 @@ const COMPONENT_NAME = 'MessageBar';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
-const getAnnouncementPriority = (messageBarType: MessageBarType.info | MessageBarType): 'assertive' | 'polite' => {
+const getAnnouncementPriority = (messageBarType: MessageBarType): 'assertive' | 'polite' => {
   switch (messageBarType) {
     case MessageBarType.blocked:
     case MessageBarType.error:
@@ -63,9 +63,20 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
     className,
   });
 
-  const iconProps = { iconName: expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' };
+  const expandIconProps = { iconName: expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' };
   const regionProps = actions || onDismiss ? { 'aria-describedby': labelId, role: 'region' } : {};
   const actionsDiv = actions ? <div className={classNames.actions}>{actions}</div> : null;
+
+  const dismissButton = onDismiss ? (
+    <IconButton
+      disabled={false}
+      className={classNames.dismissal}
+      onClick={onDismiss}
+      iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+      title={dismissButtonAriaLabel}
+      ariaLabel={dismissButtonAriaLabel}
+    />
+  ) : null;
 
   return (
     <div ref={ref} className={classNames.root} {...regionProps}>
@@ -84,46 +95,22 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
             </DelayedRender>
           </span>
         </div>
-        {!isMultiline &&
-          (actionsDiv ||
-            (!actions && truncated && (
-              <div className={classNames.expandSingleLine}>
-                <IconButton
-                  disabled={false}
-                  className={classNames.expand}
-                  onClick={toggleExpandSingleLine}
-                  iconProps={iconProps}
-                  ariaLabel={overflowButtonAriaLabel}
-                  aria-expanded={expandSingleLine}
-                />
-              </div>
-            )) ||
-            (onDismiss && (
-              <div className={classNames.dismissSingleLine}>
-                {onDismiss ? (
-                  <IconButton
-                    disabled={false}
-                    className={classNames.dismissal}
-                    onClick={onDismiss}
-                    iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
-                    title={dismissButtonAriaLabel}
-                    ariaLabel={dismissButtonAriaLabel}
-                  />
-                ) : null}
-              </div>
-            )))}
-        {isMultiline && onDismiss ? (
-          <IconButton
-            disabled={false}
-            className={classNames.dismissal}
-            onClick={onDismiss}
-            iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
-            title={dismissButtonAriaLabel}
-            ariaLabel={dismissButtonAriaLabel}
-          />
-        ) : null}
+        {/* expand/collapse button */ (!isMultiline && !actionsDiv && truncated && (
+          <div className={classNames.expandSingleLine}>
+            <IconButton
+              disabled={false}
+              className={classNames.expand}
+              onClick={toggleExpandSingleLine}
+              iconProps={expandIconProps}
+              ariaLabel={overflowButtonAriaLabel}
+              aria-expanded={expandSingleLine}
+            />
+          </div>
+        )) ||
+          (onDismiss && <div className={classNames.dismissSingleLine}>{dismissButton}</div>)}
+        {/* dismiss */ isMultiline && dismissButton}
       </div>
-      {isMultiline && actionsDiv}
+      {/* actions */ isMultiline && actionsDiv}
     </div>
   );
 });
