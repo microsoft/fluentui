@@ -316,12 +316,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   barwidth?: number;
   /**
-   * Only using in area chart, as it won't re render after every change
-   * Used for to check re render of the graph or not.
-   * @memberof IModifiedCartesianChartProps
-   */
-  getRerenderProp?: (isReRender: boolean) => void;
-  /**
    * Define is given X axis is date or numeric
    */
   isXAxisDateType: boolean;
