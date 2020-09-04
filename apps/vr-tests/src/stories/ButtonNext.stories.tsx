@@ -6,7 +6,7 @@ import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/react-theme-provider';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
@@ -305,7 +305,7 @@ storiesOf('Button Next - Icon only', module)
   ));
 
 storiesOf('Button Next - Fluid', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener

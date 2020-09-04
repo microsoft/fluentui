@@ -1,8 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.134.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.2)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.1..office-ui-fabric-react_v7.134.2)
+
+### Patches
+
+- DetailsRow/DetailsHeader: Remove findDOMNode usage ([PR #14851](https://github.com/microsoft/fluentui/pull/14851) by elcraig@microsoft.com)
+
+## [7.134.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.0..office-ui-fabric-react_v7.134.1)
+
+### Patches
+
+- Calendar: Adding aria-current=date to present day. ([PR #14806](https://github.com/microsoft/fluentui/pull/14806) by humbertomakotomorimoto@gmail.com)
+
+## [7.134.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.0)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.133.0..office-ui-fabric-react_v7.134.0)
+
+### Minor changes
+
+- add wrapper styling to datepicker ([PR #13477](https://github.com/microsoft/fluentui/pull/13477) by kevin@infinite.red)
+
+### Patches
+
+- ResponsiveMode: remove findDomNode ([PR #14762](https://github.com/microsoft/fluentui/pull/14762) by joschect@microsoft.com)
+- Deprecating Shimmer's componentRef as it doesn't use any public methods. ([PR #14763](https://github.com/microsoft/fluentui/pull/14763) by czearing@outlook.com)
+- Fabric component: styles prop respected. ([PR #14827](https://github.com/microsoft/fluentui/pull/14827) by dzearing@hotmail.com)
 
 ## [7.133.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.133.0)
 

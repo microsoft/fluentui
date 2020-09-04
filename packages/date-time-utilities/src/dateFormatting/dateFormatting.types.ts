@@ -148,4 +148,29 @@ export interface ICalendarStrings extends IDateFormatting {
    * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
+
+  /**
+   * Aria-label format string for calendar cell. Should have 2 string params, 0 is date and 1 is dayOfWeek"
+   */
+  calendarCellFormatString?: string;
+
+  /**
+   * Aria-label for input."
+   */
+  inputAriaLabel?: string;
+
+  /**
+   * Aria-label format string for restricted input. Should have 2 string params, 0 is minDate and 1 is maxDate"
+   */
+  inputBoundedFormatString?: string;
+
+  /**
+   * Aria-label format string for restricted input only with minDate. Should have 1 string param, 0 is minDate"
+   */
+  inputMinBoundedFormatString?: string;
+
+  /**
+   * Aria-label format string for restricted input only with maxDate. Should have 1 string param, 0 is maxDate"
+   */
+  inputMaxBoundedFormatString?: string;
 }

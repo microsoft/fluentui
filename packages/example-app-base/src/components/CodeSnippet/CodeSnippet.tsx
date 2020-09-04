@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
-import { NeutralColors, FluentTheme, SharedColors } from '@uifabric/fluent-theme';
+import {
+  IStyleFunctionOrObject,
+  ITheme,
+  IStyle,
+  styled,
+  classNamesFunction,
+  IRawStyle,
+  DefaultPalette,
+} from 'office-ui-fabric-react';
+import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -38,7 +46,7 @@ style['hljs-comment'] = style['hljs-quote'] = {
 };
 
 style['hljs-built_in'] = style['builtin-name'] = {
-  color: FluentTheme.palette.themeDarker,
+  color: DefaultPalette.themeDarker,
 };
 
 style['hljs-link'] = style['hljs-regexp'] = {

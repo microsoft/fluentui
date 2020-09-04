@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-04T20:19:52.045Z"
+}
