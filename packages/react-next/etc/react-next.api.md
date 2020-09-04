@@ -117,12 +117,7 @@ export const CoachmarkBase: React.ForwardRefExoticComponent<ICoachmarkProps & Re
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-    // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
 export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
@@ -451,7 +446,7 @@ export type ICoachmarkTypes = ICoachmarkProps;
 
 // @public (undocumented)
 export interface IColorCellProps {
-    color?: string;
+    color: string;
     id: string;
     index?: number;
     label?: string;
@@ -461,7 +456,7 @@ export interface IColorCellProps {
 export interface IColorPickerGridCellProps {
     borderWidth?: number;
     circle?: boolean;
-    color?: string;
+    color: string;
     disabled?: boolean;
     height?: number;
     // @deprecated
@@ -1654,10 +1649,6 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
 }
 
 // @public (undocumented)
-export interface IShimmer {
-}
-
-// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -1788,7 +1779,6 @@ export interface IShimmerLineStyles {
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
-    componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
@@ -1796,11 +1786,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
     theme?: ITheme;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerState {
-    contentLoaded?: boolean;
 }
 
 // @public
@@ -1907,30 +1892,24 @@ export interface ISwatchColorPickerProps {
     className?: string;
     colorCells: IColorCellProps[];
     columnCount: number;
+    defaultSelectedId?: string | undefined;
     disabled?: boolean;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
+    // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
-    // @deprecated (undocumented)
-    positionInSet?: number;
     selectedId?: string;
-    // @deprecated (undocumented)
-    setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ISwatchColorPickerState {
-    // (undocumented)
-    selectedIndex?: number;
 }
 
 // @public
@@ -2374,17 +2353,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
-    constructor(props: IShimmerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IShimmerProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IShimmerProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerBase: React.ForwardRefExoticComponent<IShimmerProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
@@ -2452,17 +2421,7 @@ export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
-    constructor(props: ISwatchColorPickerProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISwatchColorPickerProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColorPickerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;

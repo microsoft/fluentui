@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.8)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.7..@fluentui/web-components_v0.1.8)
+
+### Patches
+
+- update fast packages and add font-family inherit to controls of button and accordion-item ([PR #14828](https://github.com/microsoft/fluentui/pull/14828) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
 

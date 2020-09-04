@@ -409,7 +409,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   sponews: {},
   spreadsheet: {
-    extensions: ['odc', 'ods', 'gsheet', 'numbers'],
+    extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   stream: {},
   rtf: {

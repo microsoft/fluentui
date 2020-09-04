@@ -25,6 +25,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -580,6 +581,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
       </button>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
