@@ -66,6 +66,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fixed incorrect margin and padding after drag&drop (UI builder) @vyhnalekl ([#14384](https://github.com/microsoft/fluentui/pull/14384))
 - Add `Form.Datepicker` example with error message handler @pompomon ([#14820](https://github.com/microsoft/fluentui/pull/14820))
 - Fixed as prop in UI builder @vyhnalekl ([#14815](https://github.com/microsoft/fluentui/pull/14815))
+- Fixed dragging selected component in canvas UI builder @vyhnalekl ([#14894](https://github.com/microsoft/fluentui/pull/14894))
 - Jaws bug - aria-selected and aria-checked are not output correctly for `Tree` @kolaps33 ([#14846](https://github.com/microsoft/fluentui/pull/14846))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
