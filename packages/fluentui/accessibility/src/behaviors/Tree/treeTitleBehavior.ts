@@ -1,4 +1,4 @@
-import { SpacebarKey } from '@fluentui/keyboard-key';
+import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AriaRole } from '../../types';
@@ -13,7 +13,7 @@ import { Accessibility, AriaRole } from '../../types';
  * Adds attribute 'aria-setsize=3' based on the property 'treeSize' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Adds attribute 'aria-posinset=2' based on the property 'index' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Adds attribute 'aria-level=1' based on the property 'level' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
- * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
+ * Triggers 'performClick' action with 'Spacebar' on 'root'.
  */
 export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const definition = {
@@ -33,7 +33,9 @@ export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props =>
     keyActions: {
       root: {
         performClick: {
-          keyCombinations: [{ keyCode: EnterKey }, { keyCode: SpacebarKey }],
+          keyCombinations: props.selectable
+            ? [{ keyCode: SpacebarKey }]
+            : [{ keyCode: SpacebarKey }, { keyCode: EnterKey }],
         },
       },
     },
