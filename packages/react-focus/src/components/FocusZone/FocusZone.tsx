@@ -337,7 +337,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
-   * @param forceAlignment If true, focus alignment will be set according to the element provided.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement, forceAlignment?: boolean): boolean {
