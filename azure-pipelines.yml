@@ -15,7 +15,7 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
@@ -56,7 +56,7 @@ jobs:
     variables:
       PR_DEPLOY: 1
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
@@ -103,15 +103,13 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
         displayName: yarn
 
       - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
           NODE_ENV=production yarn test:fluentui:visual
         displayName: run FUI VR Test
         env:
@@ -121,18 +119,13 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-        displayName: config git user and email
 
       - script: |
           yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped

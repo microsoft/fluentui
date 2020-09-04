@@ -21,6 +21,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
+    "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
     "update-api": "just-scripts update-api",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@fluentui/common-styles": "^0.2.5",
     "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/ie11-polyfills": "^0.1.0",
     "@fluentui/react-conformance": "^0.1.1",
     "@fluentui/storybook": "^0.4.4",
     "@types/enzyme": "3.10.3",
@@ -39,6 +41,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
+    "@uifabric/example-app-base": "^7.15.3",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
