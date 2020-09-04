@@ -22,9 +22,6 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '6', text: '6' },
 ];
 
-// Rendering Callouts require the current window to have focus
-jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
-
 describe('Dropdown', () => {
   let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;

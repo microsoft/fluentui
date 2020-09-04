@@ -69,7 +69,11 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     // eslint-disable-next-line deprecation/deprecation
     if (this.props.shouldRestoreFocus) {
       const { onRestoreFocus = defaultFocusRestorer } = this.props;
-      onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
+      onRestoreFocus({
+        originalElement: this._originalFocusedElement,
+        containsFocus: this._containsFocus,
+        documentContainsFocus: getWindow(this._root.current)?.document.hasFocus(),
+      });
     }
     // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
     delete this._originalFocusedElement;
@@ -168,10 +172,14 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   };
 }
 
-function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) {
-  const { originalElement, containsFocus } = options;
+function defaultFocusRestorer(options: {
+  originalElement?: HTMLElement | Window;
+  containsFocus: boolean;
+  documentContainsFocus: boolean;
+}) {
+  const { originalElement, containsFocus, documentContainsFocus } = options;
 
-  if (originalElement && containsFocus && originalElement !== window) {
+  if (originalElement && containsFocus && documentContainsFocus && originalElement !== window) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.

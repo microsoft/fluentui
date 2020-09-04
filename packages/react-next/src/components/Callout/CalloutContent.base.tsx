@@ -498,11 +498,6 @@ export const CalloutContentBase = React.memo(
       return null;
     }
 
-    // We probably just switched focus context to another window. Don't rerender
-    if (!targetWindowRef.current.document.hasFocus()) {
-      return null;
-    }
-
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
     const contentMaxHeight: number | undefined =
       calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
