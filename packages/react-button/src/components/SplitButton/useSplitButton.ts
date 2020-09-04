@@ -3,7 +3,7 @@ import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/n
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { renderSplitButton } from './renderSplitButton';
 import { useMergedRefs } from '@uifabric/react-hooks';
-import { useExpanded } from '../MenuButton';
+import { useExpanded } from '../MenuButton/useExpanded';
 
 export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
 
