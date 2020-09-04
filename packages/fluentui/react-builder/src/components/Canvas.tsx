@@ -9,7 +9,7 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderText } from './ReaderText';
 
-const showNarration = false;
+const showNarration = true;
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;

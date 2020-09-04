@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
+import MessageComputer from './MessageComputer';
+
+const mc: Messagecomputer = new MessageComputer();
 
 export type ReaderTextProps = {
   selector: string;
@@ -11,8 +14,10 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
 
   React.useEffect(() => {
     if (ref.current) {
-      const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
-      setText(`Narration: ${t}`);
+      const element = ref.current.ownerDocument.querySelector(selector);
+      mc.computeMessage(element, 'Win/JAWS').then(message => {
+        setText(`Narration: ${message}`);
+      });
     }
   }, [setText, ref, selector]);
 
