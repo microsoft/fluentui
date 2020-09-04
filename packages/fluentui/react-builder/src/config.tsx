@@ -605,9 +605,12 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
   return imports;
 };
 
-export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
+export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string, themeOverrides: object) => {
   const imports: Record<string, string[]> = JSONTreeToImports(tree);
   let codeSandboxExport = 'import * as React from "react";\n';
+  if (themeOverrides) {
+    codeSandboxExport += 'import {Provider} from "@fluentui/react-northstar";\n';
+  }
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
@@ -637,7 +640,8 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
-  ${code} \n);}`;
+    <Provider theme={${JSON.stringify(themeOverrides)}}>
+  ${code} \n </Provider>);}`;
 
   return { code: codeSandboxExport, imports: packageImports };
 };

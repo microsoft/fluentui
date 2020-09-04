@@ -653,7 +653,11 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
+  const codeSandboxData = getCodeSandboxInfo(
+    jsonTree,
+    renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)),
+    themeOverrides,
+  );
 
   return (
     <div
