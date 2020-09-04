@@ -217,7 +217,7 @@ export function enableBodyScroll(): void;
 // @public
 export class EventGroup {
     constructor(parent: any);
-    declare(event: string | string[]): void;
+    ['declare'](event: string | string[]): void;
     // (undocumented)
     dispose(): void;
     static isDeclared(target: any, eventName: string): boolean;
