@@ -115,7 +115,12 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
     case 'DRAG_DROP':
       if (action.dropParent) {
         const dropParent = jsonTreeFindElement(draftState.jsonTree, action.dropParent.uuid);
-        resolveDrop(draftState.draggingElement, dropParent, action.dropIndex);
+        if (dropParent.props?.items || dropParent.props?.fields) {
+          setSelectPropDialog(true);
+        } else {
+          resolveDrop(draftState.draggingElement, dropParent, action.dropIndex);
+        }
+
         treeChanged = true;
       }
 
@@ -342,6 +347,7 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [selectPropDialog, setSelectPropDialog] = React.useState(false);
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -741,6 +747,7 @@ export const Designer: React.FunctionComponent = () => {
                 transition: 'box-shadow 0.5s',
               }}
             >
+              {selectPropDialog && <PropSelector />}
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
                   draggingElement={draggingElement}
