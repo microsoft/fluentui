@@ -21,7 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
 - Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
-- Rename `indicatorBorderColorDefault` variable to `indicatorColorDefault` @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
+- Rename `indicatorBorderColorDefault` variable to `indicatorColorDefault` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
 
 ### Fixes
