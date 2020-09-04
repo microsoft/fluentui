@@ -351,6 +351,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus?: boolean;
     }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
@@ -1409,6 +1410,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus?: boolean;
     }) => void;
     role?: string;
     // @deprecated
