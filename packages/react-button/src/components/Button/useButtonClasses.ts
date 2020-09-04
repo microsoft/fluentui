@@ -1,11 +1,12 @@
 import { makeClasses } from '@fluentui/react-theme-provider';
+import { ButtonState } from './Button.types';
 
 const GlobalClassNames = {
   root: 'ms-Button',
   icon: 'ms-Button-icon',
 };
 
-export const useButtonClasses = makeClasses({
+export const useButtonClasses = makeClasses<ButtonState>({
   root: [
     GlobalClassNames.root,
     {

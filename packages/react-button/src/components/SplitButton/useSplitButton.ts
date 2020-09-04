@@ -22,6 +22,7 @@ export const useSplitButton = (
     primary,
     ghost,
     disabled,
+    loading,
     circular,
     fluid,
     menu,
@@ -35,6 +36,7 @@ export const useSplitButton = (
       as: 'span',
       className,
       style,
+      fluid,
 
       button: {
         as: 'span',
@@ -43,6 +45,8 @@ export const useSplitButton = (
         ghost,
         circular,
         disabled,
+        loading,
+        fluid,
         ...userProps,
       },
 
@@ -52,7 +56,7 @@ export const useSplitButton = (
         primary,
         ghost,
         circular,
-        disabled,
+        disabled: disabled || loading,
         menu: {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ...(menu as any),

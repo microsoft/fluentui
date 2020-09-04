@@ -23,4 +23,9 @@ export const useSplitButtonClasses = makeClasses({
     borderLeft: 'var(--button-dividerThickness) solid var(--button-dividerColor)',
     width: '0px',
   },
+
+  _fluid: {
+    width: '100%',
+    maxWidth: '100%',
+  },
 });

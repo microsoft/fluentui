@@ -32,13 +32,12 @@ import { makeStyles } from './makeStyles';
  * which matches the value in the className. for example, when the `size` enum value is `small`,
  * the "_size_small" enum class will be appended to the root className prop.
  */
-export const makeClasses = <TStyleSet extends { [key: string]: IStyle }>(
-  styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
+export const makeClasses = <TState extends {}>(
+  styleOrFunction: Record<string, IStyle> | ((theme: ITheme) => Record<string, IStyle>),
 ) => {
   const useStyles = makeStyles(styleOrFunction);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (state: any) => {
+  return (state: TState) => {
     const classes = useStyles();
     const slotNames = Object.keys(classes);
 
@@ -60,13 +59,15 @@ export const makeClasses = <TStyleSet extends { [key: string]: IStyle }>(
             break;
 
           case 2:
-            if (state[parts[1]]) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if ((state as any)[parts[1]]) {
               _setClass(state, value);
             }
             break;
 
           case 3:
-            if (state[parts[1]] === parts[2]) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if ((state as any)[parts[1]] === parts[2]) {
               _setClass(state, value);
             }
             break;

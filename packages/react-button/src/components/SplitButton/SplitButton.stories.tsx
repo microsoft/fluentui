@@ -73,7 +73,7 @@ export const SplitButtonCss = () => (
     <Text variant="xLarge">A split button can contain only an icon using the `iconOnly` prop.</Text>
     <SplitButtonVariants iconOnly icon="X" />
 
-    <Text>A split button can be both `circular` and `iconOnly`.</Text>
+    <Text variant="xLarge">A split button can be both `circular` and `iconOnly`.</Text>
     <SplitButtonVariants circular iconOnly icon="X" />
 
     <Text variant="xLarge">A split button can show a loading indicator using the `loading` prop.</Text>
