@@ -1,4 +1,5 @@
 /** @jsx withSlots */
+import * as React from 'react';
 import { KeytipData } from 'office-ui-fabric-react';
 import { withSlots } from '../../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../../Utilities';
@@ -31,7 +32,6 @@ export const ActionableView: IActionableComponent['view'] = (props, slots) => {
     <slots.root
       type={htmlType}
       role="button"
-      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       {...keytipAttributes}

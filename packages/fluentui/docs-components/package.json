@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/docs-components",
   "description": "A set of React components to build docs sites.",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -12,16 +12,18 @@
     "prismjs": "^1.16.0",
     "prop-types": "^15.7.2",
     "react-ace": "^5.1.2",
-    "react-element-to-jsx-string": "^14.0.2"
+    "react-element-to-jsx-string": "^14.0.2",
+    "react-codesandboxer": "^3.1.3"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "gulp": "^4.0.2",
     "prettier": "~1.19.1",
-    "react": "16.8.6"
+    "react": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

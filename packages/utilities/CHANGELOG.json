@@ -2,6 +2,193 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "createMergedRef: fix internal typings",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/utilities_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function",
+            "author": "sllynn8907@gmail.com",
+            "commit": "a021da77bff91b5df0f3b3ea97ecf7e7b6f6267c",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added document type to element parameter within on.ts utility.",
+            "author": "czearing@outlook.com",
+            "commit": "89eca359d7534b9bb6d7476cdf92781ea82c3dea",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/utilities_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `createMergedRef` utility for merging refs in a class component.",
+            "author": "dzearing@hotmail.com",
+            "commit": "79d99c0b79518ff201cd070e7aa597d5ba8d1864",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/utilities_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating getNativeProps default attribute set to include \"ref\" as a safe prop.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Aug 2020 12:40:14 GMT",
+      "tag": "@uifabric/utilities_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled",
+            "author": "xgao@microsoft.com",
+            "commit": "cbb81ccb1b78a8801abc8c272af331adb73edad0",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "@uifabric/utilities_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/utilities_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix warnControlledUsage doc comment",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bc90b07e1da53cd189082f7b7bbf4d1118967c95",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/utilities_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: get settings from CustomizerContext if exists.",
+            "author": "xgao@microsoft.com",
+            "commit": "f1047c3cd6fb28b558d2b40a005dc87a2f4ec714",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/utilities_v7.24.5",
+      "version": "7.24.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "7bea3a43f5f01a3aef8a36813b8d88484aa021bc",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/utilities_v7.24.4",
+      "version": "7.24.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@uifabric/utilities_v7.24.3",
       "version": "7.24.3",

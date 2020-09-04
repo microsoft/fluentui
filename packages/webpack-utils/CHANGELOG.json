@@ -2,6 +2,21 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/webpack-utils_v7.0.24",
+      "version": "7.0.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update stated webpack version to match actual version used",
+            "author": "elcraig@microsoft.com",
+            "commit": "d0dbdec3364f05e2862b61063dc5bcf981dc724a",
+            "package": "@uifabric/webpack-utils"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/webpack-utils_v7.0.18",
       "version": "7.0.18",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IRefObject } from '@uifabric/utilities';
 import { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
-import { IFocusZoneProps, IInputProps, Autofill } from 'office-ui-fabric-react';
+import { IFocusZoneProps, IInputProps, Autofill, IDragDropEvents } from 'office-ui-fabric-react';
 
 export interface IUnifiedPickerProps<T> {
   /**
@@ -82,4 +82,17 @@ export interface IUnifiedPickerProps<T> {
    * On input value change
    */
   onInputChange?: (filter: string) => void;
+
+  /**
+   * Drag drop events callback interface
+   */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * String used in drag drop to identify information for this specific control
+   * Is only used when dragDropEvents is not specified (default)
+   * getSerializedItems and getDeserializedItems on the selectedItemsListProps should be specified as well
+   * if this is used
+   */
+  customClipboardType?: string;
 }

@@ -12,6 +12,7 @@ export const positioningProps: Required<PositioningProps> = {
   flipBoundary: document.body,
   offset: [20, 20],
   overflowBoundary: document.body,
+  popperRef: React.createRef(),
   position: 'above',
   positionFixed: true,
   unstable_pinned: true,

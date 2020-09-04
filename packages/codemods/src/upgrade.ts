@@ -1,20 +1,13 @@
-import { runMods, getModsPaths, getTsConfigs, modEnabled, loadMod } from './modRunner/runnerUtilities';
+import { runMods, getTsConfigs, getEnabledMods } from './modRunner/runnerUtilities';
+import { CommandParserResult } from './command';
+import { Logger } from './modRunner/logger';
 import { Project } from 'ts-morph';
+// Injection point for logger so that it can easily be replaced.
+const logger: Logger = console;
+export function upgrade(options: CommandParserResult) {
+  const mods = getEnabledMods(logger).filter(options.modsFilter);
 
-// TODO actually do console logging, implement some nice callbacks.
-export function upgrade() {
-  const mods = getModsPaths()
-    .filter(pth => pth.endsWith('.js'))
-    .map(pth => {
-      console.log('fetching codeMod at ', pth);
-      return loadMod(pth, e => {
-        console.error(e);
-      });
-    })
-    .filter(modEnabled)
-    .map(v => v.value);
-
-  console.log('getting configs');
+  logger.log('getting configs');
   const configs = getTsConfigs();
 
   configs.forEach(configString => {
@@ -23,16 +16,18 @@ export function upgrade() {
     let error = false;
     try {
       const files = project.getSourceFiles();
-      runMods(mods, files, result => {
-        if (result.error) {
-          console.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
-          error = true;
-        } else {
-          console.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`);
-        }
+      runMods(mods, files, logValue => {
+        logValue.result.resolve(
+          v => {
+            logger.log(`Upgraded file ${logValue.file.getBaseName()} with mod ${logValue.mod.name}`, v.logs);
+          },
+          e => {
+            logger.warn(`Mod ${logValue.mod.name} did not run on file ${logValue.file.getBaseName()} for: `, e.reason);
+          },
+        );
       });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       error = true;
     }
     if (!error) {

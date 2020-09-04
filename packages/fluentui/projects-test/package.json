@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/projects-test",
+  "version": "0.51.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/react-northstar": "^0.51.0"
+  },
+  "devDependencies": {
+    "@uifabric/build": "^7.0.0",
+    "gulp": "^4.0.2",
+    "typescript": "3.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "gulp test"
+  }
+}

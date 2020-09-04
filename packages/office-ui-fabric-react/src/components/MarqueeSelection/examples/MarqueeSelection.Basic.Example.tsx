@@ -3,8 +3,8 @@ import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { useBoolean, useConst, useForceUpdate } from '@uifabric/react-hooks';
 
-import { useBoolean, useConstCallback, useConst } from '@uifabric/react-hooks';
 interface IPhoto extends IObjectWithKey {
   url: string;
   width: number;
@@ -52,11 +52,6 @@ const styles = mergeStyleSets({
     margin: '10px 0',
   },
 });
-
-const useForceUpdate = () => {
-  const [, setCount] = React.useState(0);
-  return useConstCallback(() => setCount(current => current + 1));
-};
 
 export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
   const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);

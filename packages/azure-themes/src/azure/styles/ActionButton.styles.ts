@@ -1,7 +1,6 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import * as StyleConstants from '../Constants';
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
@@ -16,17 +15,17 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   };
   return {
     root: {
-      fontSize: FontSizes.size13,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.buttonBackground,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonText,
-      ...iconColor(semanticColors.primaryButtonBackground),
+      ...iconColor(extendedSemanticColors.iconButtonFill),
     },
     rootDisabled: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextDisabled}`,
-      backgroundColor: semanticColors.buttonBackgroundDisabled,
-      color: semanticColors.buttonTextDisabled,
-      ...iconColor(semanticColors.primaryButtonBackgroundDisabled),
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+      color: semanticColors.primaryButtonTextDisabled,
+      ...iconColor(semanticColors.primaryButtonTextDisabled),
     },
     rootHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
@@ -34,7 +33,7 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.primaryButtonBackgroundHovered),
+          ...iconColor(extendedSemanticColors.iconButtonFillHovered),
         },
       },
     },
@@ -44,7 +43,7 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
+          ...iconColor(extendedSemanticColors.iconButtonFillHovered),
         },
       },
     },
@@ -52,7 +51,7 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonTextPressed,
-      ...iconColor(semanticColors.primaryButtonBackgroundPressed),
+      ...iconColor(extendedSemanticColors.iconButtonFillHovered),
     },
     rootCheckedHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
@@ -60,7 +59,7 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
+          ...iconColor(extendedSemanticColors.iconButtonFillHovered),
         },
       },
     },
@@ -70,7 +69,7 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
+          ...iconColor(extendedSemanticColors.iconButtonFillHovered),
         },
       },
     },

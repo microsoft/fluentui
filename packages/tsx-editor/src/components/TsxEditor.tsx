@@ -53,7 +53,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
     if (hasLoadedTypes && modelRef.current) {
       onChangeRef.current!(modelRef.current.getValue());
     }
-  }, [onChangeRef, hasLoadedTypes, modelRef.current]);
+  }, [onChangeRef, hasLoadedTypes, modelRef]);
 
   return (
     <Editor

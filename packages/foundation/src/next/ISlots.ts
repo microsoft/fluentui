@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyleSet } from '@uifabric/styling';
 import { ISlottableProps, ValidProps } from '../ISlots';
 import { IComponentOptions } from './IComponent';

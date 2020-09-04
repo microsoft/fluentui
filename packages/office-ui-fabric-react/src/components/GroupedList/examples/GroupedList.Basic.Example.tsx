@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { GroupedList } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
@@ -32,8 +31,8 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     return s;
   });
 
-  const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
-    return (
+  const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+    return item && itemIndex ? (
       <DetailsRow
         columns={columns}
         groupNestingDepth={nestingDepth}
@@ -43,7 +42,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         selectionMode={SelectionMode.multiple}
         compact={isCompactMode}
       />
-    );
+    ) : null;
   };
 
   return (
@@ -56,19 +55,17 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         offText="Normal"
         styles={toggleStyles}
       />
-      <FocusZone>
-        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-          <GroupedList
-            items={items}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCell={onRenderCell}
-            selection={selection}
-            selectionMode={SelectionMode.multiple}
-            groups={groups}
-            compact={isCompactMode}
-          />
-        </SelectionZone>
-      </FocusZone>
+      <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+        <GroupedList
+          items={items}
+          // eslint-disable-next-line react/jsx-no-bind
+          onRenderCell={onRenderCell}
+          selection={selection}
+          selectionMode={SelectionMode.multiple}
+          groups={groups}
+          compact={isCompactMode}
+        />
+      </SelectionZone>
     </div>
   );
 };

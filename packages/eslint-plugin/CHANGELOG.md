@@ -1,8 +1,53 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.0)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.4..@fluentui/eslint-plugin_v0.54.0)
+
+### Minor changes
+
+- Add no-global-react rule ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [0.53.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.4)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.3..@fluentui/eslint-plugin_v0.53.4)
+
+### Patches
+
+- Add rule to prevent accidental references to globals ([PR #14478](https://github.com/microsoft/fluentui/pull/14478) by elcraig@microsoft.com)
+
+## [0.53.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.3)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.2..@fluentui/eslint-plugin_v0.53.3)
+
+### Patches
+
+- Lint: update jsx-no-bind settings to ignore native elements ([PR #14416](https://github.com/microsoft/fluentui/pull/14416) by elcraig@microsoft.com)
+
+## [0.53.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.1..@fluentui/eslint-plugin_v0.53.2)
+
+### Patches
+
+- Add testUtilities.{ts,tsx} to list of test files ([PR #14263](https://github.com/microsoft/fluentui/pull/14263) by elcraig@microsoft.com)
+
+## [0.53.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.1)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.0..@fluentui/eslint-plugin_v0.53.1)
+
+### Patches
+
+- Enable react-hooks lint rules ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
 
 ## [0.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.0)
 

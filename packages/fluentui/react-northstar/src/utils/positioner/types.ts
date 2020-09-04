@@ -73,6 +73,8 @@ export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElemen
 
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
+export type PopperRefHandle = { updatePosition: () => void };
+
 export interface PositioningProps {
   /**
    * Alignment for the component.
@@ -84,6 +86,9 @@ export interface PositioningProps {
 
   /** The element which will define the boundaries of the popper position for the overflow behavior. */
   overflowBoundary?: Boundary;
+
+  /** An imperative handle to Popper methods. */
+  popperRef?: React.Ref<PopperRefHandle>;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
@@ -145,9 +150,7 @@ export interface PopperProps extends PositioningProps {
    */
   targetRef: React.RefObject<Element> | PopperJs.VirtualElement;
 
-  /**
-   * Rtl attribute for the component.
-   */
+  /** Rtl attribute for the component. */
   rtl?: boolean;
 }
 
@@ -164,3 +167,10 @@ export interface PopperChildrenProps {
 }
 
 export type PopperShorthandProps = PositioningProps;
+
+export type PopperPositionFix = {
+  patch: (popperInstance: PopperJsInstance) => void;
+  modifier: ModifierProps<'positionStyleFix', {}>;
+};
+
+export type PopperJsInstance = PopperJs.Instance & Partial<{ isFirstRun: boolean }>;

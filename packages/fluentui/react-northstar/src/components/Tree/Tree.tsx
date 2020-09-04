@@ -165,6 +165,7 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  * @accessibilityIssues
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
+ * [Aria-selected and aria-checked are not output correctly for trees #432](https://github.com/FreedomScientific/VFO-standards-support/issues/432)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
  */
 export const Tree: ComponentWithAs<'div', TreeProps> &
@@ -251,11 +252,18 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: updateActiveItemIds,
+      setActiveItemIdsState(prevActiveItemIds => {
+        // This is a hack to make it work with useAutoControlled since it's not keeping track of
+        // the controlled state in the first interaction breaking the expected behavior
+        // Remove this once the useAutoControle is fixed and the prevState will be stable
+        // see https://github.com/microsoft/fluentui/issues/14509
+        const nextActiveItemIds = updateActiveItemIds(stableProps.current.activeItemIds || prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
   );

@@ -2,6 +2,51 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "@uifabric/react-cards_v0.111.2",
+      "version": "0.111.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "react-cards: Updating imports to remove duplicated dependencies.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a492cb93ae74d10983f168f4e6f106b848e75c79",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/react-cards_v0.110.24",
+      "version": "0.110.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@uifabric/react-cards_v0.110.17",
+      "version": "0.110.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "react-cards: Importing Stack from lib specific path.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f63d521d625032919c12f706dd88887247d5e49a",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jul 2020 12:41:43 GMT",
       "tag": "@uifabric/react-cards_v0.110.0",
       "version": "0.110.0",

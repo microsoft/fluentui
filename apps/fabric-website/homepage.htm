@@ -115,7 +115,7 @@
 <script type="text/javascript">
   // @ts-check
   var isProduction = location.hostname === 'developer.microsoft.com';
-  var isDev = getParameterByName('isDev') === '1';
+  var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';

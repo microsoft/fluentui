@@ -8,3 +8,4 @@ export { findIntrinsicElement } from './findIntrinsicElement';
 export { getDisplayName } from './getDisplayName';
 export { nextFrame } from './nextFrame';
 export { EmptyThemeProvider, mountWithProvider, mountWithProviderAndGetComponent } from './withProvider';
+export { sharedIsConformant } from './sharedIsConformant';

@@ -1,7 +1,9 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.demoBlock {
+// This is so the class can be used directly in a Markdown file
+.demoBlock,
+:global(.LayoutPage-demoBlock) {
   background-color: $ms-color-neutralTertiary;
   color: $ms-color-white;
   font-weight: $ms-font-weight-semibold;

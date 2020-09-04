@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     className=
         ms-Toggle
@@ -56,7 +56,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       <button
         aria-checked={false}
         aria-labelledby="Toggle0-label Toggle0-stateText"
-        checked={false}
         className=
             ms-Toggle-background
             {
@@ -111,7 +110,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         role="switch"
         style={
           Object {
-            "display": "block",
             "marginBottom": "20px",
           }
         }
@@ -125,7 +123,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -177,7 +175,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         Shimmer
       </label>
     </div>
-  </div>
+  </div>,
   <div>
     <div
       className="ms-Viewport"
@@ -463,33 +461,33 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             role="presentation"
           >
             <div
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-                  {
-                    display: inline-block;
-                    min-height: 1px;
-                    min-width: 100%;
-                  }
-              data-focuszone-id="FocusZone3"
-              onBlur={[Function]}
-              onFocus={[Function]}
+              className="ms-SelectionZone"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDoubleClick={[Function]}
+              onFocusCapture={[Function]}
               onKeyDown={[Function]}
+              onKeyDownCapture={[Function]}
+              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
+              role="presentation"
             >
               <div
-                className="ms-SelectionZone"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onDoubleClick={[Function]}
-                onFocusCapture={[Function]}
+                className=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: inline-block;
+                      min-height: 1px;
+                      min-width: 100%;
+                    }
+                data-focuszone-id="FocusZone3"
+                onBlur={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
-                onKeyDownCapture={[Function]}
-                onMouseDown={[Function]}
                 onMouseDownCapture={[Function]}
-                role="presentation"
               >
                 <div
                   className=
@@ -3656,6 +3654,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

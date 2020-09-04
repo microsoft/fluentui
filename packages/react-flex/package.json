@@ -29,13 +29,19 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@fluentui/eslint-plugin": "^0.53.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.17",
+    "@fluentui/react-bindings": "^0.51.0",
+    "@fluentui/react-button": "^0.11.5",
+    "@fluentui/react-compose": "^0.18.1",
+    "@fluentui/react-theme-provider": "^0.11.0",
+    "@fluentui/theme": "^0.2.0",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.134.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

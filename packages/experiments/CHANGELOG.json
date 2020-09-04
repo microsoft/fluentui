@@ -2,6 +2,252 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/experiments_v7.32.4",
+      "version": "7.32.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where drop insert function can be called twice",
+            "author": "elvonspa@microsoft.com",
+            "commit": "63a9f9260bb824afa7bba6c7f44a357a2766de1b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@uifabric/experiments_v7.32.1",
+      "version": "7.32.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forwardRef to UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1aa0b9d49c7572e476c8148ea0aacae8fca0ad91",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "cf72dc9b1b66b9c5f383d4607cb4adfb80c03895",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/experiments_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make the floating sugggestions picker have an optional fixed width",
+            "author": "sadelson@microsoft.com",
+            "commit": "b283a05ad788a990243ba3eef4525fda0b1d3420",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@uifabric/experiments_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Drag drop between SelectedItemLists",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ffec1c2a0f98cadfc5d07e625eee644b2a31f1dc",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/experiments_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating ButtionGrid ID snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "3b0055c25dee24dee5e05159d7a1a29c3725db3f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixing drag drop infinite loop",
+            "author": "nebhatna@microsoft.com",
+            "commit": "44850ca3834a8441475679787e58f112f413a11f",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update SelectedItemsList and UnifiedPicker to use Clipboard API for copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2c399e0135ba08a7baac75303b405d57b6102a07",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/experiments_v7.29.1",
+      "version": "7.29.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/experiments_v7.28.3",
+      "version": "7.28.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/experiments_v7.28.2",
+      "version": "7.28.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add two well example and fix Remove ctx menu example",
+            "author": "sadelson@microsoft.com",
+            "commit": "ebe232d0c187ffa21e0c6f549d67d0d7b126e23d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/experiments_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add drag drop to the experiments SelectedItemsList (and therefor also UnifiedPicker)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "f47fe2c912f2b5f48cf4c3913ac18f817af4fd49",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/experiments_v7.27.20",
+      "version": "7.27.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/experiments_v7.27.15",
+      "version": "7.27.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/experiments_v7.27.14",
+      "version": "7.27.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/experiments_v7.27.9",
+      "version": "7.27.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker and SelectedItemsList: minor accessibility fixes",
+            "author": "elvonspa@microsoft.com",
+            "commit": "767b6094a42a4b5171844ccdc95741029e6e0ae8",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "5e06d57166032a570b08f077ed7ab8d4cf8d95f6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/experiments_v7.27.7",
+      "version": "7.27.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Fixing paste logic",
+            "author": "nebhatna@microsoft.com",
+            "commit": "fda47de92fc2f2dcb825c07e6452aafc87dc9d52",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/experiments_v7.27.2",
       "version": "7.27.2",

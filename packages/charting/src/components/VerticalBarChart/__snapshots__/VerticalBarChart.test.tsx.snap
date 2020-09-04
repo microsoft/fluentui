@@ -24,7 +24,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -93,7 +93,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         id="barGElement"
       >
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -111,7 +111,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           y={-35}
         />
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -119,7 +119,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               }
           data-is-focusable={true}
           fill="rgb(0, 32, 80)"
-          height={-55}
+          height={0}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
@@ -178,11 +178,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -194,6 +194,9 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     }
               >
                 <button
+                  aria-posinset={1}
+                  aria-selected={false}
+                  aria-setsize={2}
                   className=
 
                       {
@@ -230,12 +233,13 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
-                  data-is-focusable={false}
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -280,6 +284,9 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     }
               >
                 <button
+                  aria-posinset={2}
+                  aria-selected={false}
+                  aria-setsize={2}
                   className=
 
                       {
@@ -316,12 +323,13 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
-                  data-is-focusable={false}
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=

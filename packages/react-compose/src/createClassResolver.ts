@@ -59,7 +59,7 @@ type ResolvedMap = {
  * name/value, and modifiers are everything else. Creating this split definition keeps runtime
  * resolution work to a minimum.
  */
-function createResolvedMap(classes: ClassDictionary): ResolvedMap {
+export function createResolvedMap(classes: ClassDictionary): ResolvedMap {
   const resolvedMap: ResolvedMap = {
     slots: {},
     modifiers: {},

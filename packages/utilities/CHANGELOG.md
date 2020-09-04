@@ -1,8 +1,94 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.28.0..@uifabric/utilities_v7.30.0)
+
+### Minor changes
+
+- Added document type to element parameter within on.ts utility. ([PR #14238](https://github.com/microsoft/fluentui/pull/14238) by czearing@outlook.com)
+
+### Patches
+
+- Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function ([PR #14204](https://github.com/microsoft/fluentui/pull/14204) by sllynn8907@gmail.com)
+
+## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.28.0)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.27.0..@uifabric/utilities_v7.28.0)
+
+### Minor changes
+
+- Adding `createMergedRef` utility for merging refs in a class component. ([PR #14517](https://github.com/microsoft/fluentui/pull/14517) by dzearing@hotmail.com)
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.27.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.1..@uifabric/utilities_v7.27.0)
+
+### Minor changes
+
+- Updating getNativeProps default attribute set to include "ref" as a safe prop. ([PR #14274](https://github.com/microsoft/fluentui/pull/14274) by dzearing@microsoft.com)
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.26.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.1)
+
+Fri, 07 Aug 2020 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.0..@uifabric/utilities_v7.26.1)
+
+### Patches
+
+- useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled ([PR #14393](https://github.com/microsoft/fluentui/pull/14393) by xgao@microsoft.com)
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.1..@uifabric/utilities_v7.26.0)
+
+### Minor changes
+
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.1)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.0..@uifabric/utilities_v7.25.1)
+
+### Patches
+
+- omit: changed to for in for more perf improvement. ([PR #14313](https://github.com/microsoft/fluentui/pull/14313) by dzearing@microsoft.com)
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.0)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.6..@uifabric/utilities_v7.25.0)
+
+### Minor changes
+
+- Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce. ([PR #14281](https://github.com/microsoft/fluentui/pull/14281) by dzearing@microsoft.com)
+
+## [7.24.6](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.6)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.5..@uifabric/utilities_v7.24.6)
+
+### Patches
+
+- useCustomizationSettings: get settings from CustomizerContext if exists. ([PR #14145](https://github.com/microsoft/fluentui/pull/14145) by xgao@microsoft.com)
+
+## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.4..@uifabric/utilities_v7.24.5)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14099](https://github.com/microsoft/fluentui/pull/14099) by elcraig@microsoft.com)
 
 ## [7.24.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.3)
 

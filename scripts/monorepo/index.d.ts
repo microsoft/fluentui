@@ -4,6 +4,7 @@ export interface PackageJson {
   main: string;
   types?: string;
   module?: string;
+  private?: boolean;
   dependencies?: { [key: string]: string };
   devDependencies?: { [key: string]: string };
   peerDependencies?: { [key: string]: string };

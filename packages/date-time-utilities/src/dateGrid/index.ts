@@ -6,3 +6,4 @@ export * from './getDayGrid';
 export * from './isAfterMaxDate';
 export * from './isBeforeMinDate';
 export * from './isRestrictedDate';
+export * from './isContiguous';

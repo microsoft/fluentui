@@ -1,8 +1,17 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/jest-serializer-merge-styles_v7.1.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/jest-serializer-merge-styles_v7.0.30..@uifabric/jest-serializer-merge-styles_v7.1.0)
+
+### Minor changes
+
+- Adding test to ensure styles with selectors not wrapped in a selectors node still serialize. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
 
 ## [7.0.21](https://github.com/microsoft/fluentui/tree/@uifabric/jest-serializer-merge-styles_v7.0.21)
 

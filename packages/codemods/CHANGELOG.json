@@ -2,6 +2,264 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/codemods_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Support for configmod",
+            "author": "t-dama@microsoft.com",
+            "commit": "5fbd5de0cee7f48732206f4cd2289c69bfee181b",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "Codemods: Remove unneeded compat mods and refactor",
+            "author": "joschect@microsoft.com",
+            "commit": "0bda08660988eda0352603541dbe9c048c93dc70",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/codemods_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add list feature to codemods modruner",
+            "author": "t-dama@microsoft.com",
+            "commit": "ff8ef5b7d6b01e793c9fa99e20004330e5eb3f0a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/codemods_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add support for a config-based codemod execution",
+            "author": "t-dama@microsoft.com",
+            "commit": "45f173b8e21f7af712d6bcec1001b67e6abb78c3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/codemods_v0.9.4",
+      "version": "0.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add docs for codemod writing",
+            "author": "t-dama@microsoft.com",
+            "commit": "6d5f745892797a758f367efc63c51f6adc6ef340",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "@fluentui/codemods_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CodeMods: Improve logging and more result implementation",
+            "author": "joschect@microsoft.com",
+            "commit": "a3ca595598c82a1e828efeb31d3df0b4be332e58",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "add Maybe to prop utilities",
+            "author": "t-dama@microsoft.com",
+            "commit": "21b027b98d4e7d28fd505784f6e31076a5f7afab",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/codemods_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "bug fixes in renameProp",
+            "author": "t-dama@microsoft.com",
+            "commit": "e86f2f53ca9632c0b0ba31dda967649c1d0f585a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/codemods_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support for non-json codemod creation",
+            "author": "t-dama@microsoft.com",
+            "commit": "ab168f6af25c5fd601671ef93d95e89084f16e32",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/codemods_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add generic config mod",
+            "author": "t-dama@microsoft.com",
+            "commit": "d6a07da5cdffa784a570af0915151f628387dddf",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "add support for repathing and function dictionary",
+            "author": "t-dama@microsoft.com",
+            "commit": "3c63867445e6f9fcec486e9d891dd904db85a04b",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Codemods: Implement result and prepare for logging changes",
+            "author": "joschect@microsoft.com",
+            "commit": "160f6141e0bf41a118d71cac0744fd6282333f86",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/codemods_v0.6.15",
+      "version": "0.6.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "polish renameProp",
+            "author": "t-dama@microsoft.com",
+            "commit": "e6bac42a577d96a922c62e38c7b733d9496048f4",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@fluentui/codemods_v0.6.4",
+      "version": "0.6.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Result: add in an result helper to assit in the creation of codemods",
+            "author": "joschect@microsoft.com",
+            "commit": "65b946bd6bc9381f190816307a18d866fa585e37",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/codemods_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix documentation",
+            "author": "t-dama@microsoft.com",
+            "commit": "9f24389e2d1ec68a2555df860518273330e0e62a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix conflicts with new maybe",
+            "author": "t-dama@microsoft.com",
+            "commit": "a9f932261132ead0df90ac81614068e9b0951824",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Maybe: Improve chainability and readability.",
+            "author": "joschect@microsoft.com",
+            "commit": "a70f15f2724d572e515bfe7f97cda751f8bc69a7",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add general transforms that work with spread",
+            "author": "t-dama@microsoft.com",
+            "commit": "f7feb25732b3c959b6da4abd5a6c1dcb020c16a3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/codemods_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: Add in filtering based on cmd line strings",
+            "author": "joschect@microsoft.com",
+            "commit": "817557b56584d665e7a697d5d81d3b581815241d",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add support for components rendered without a function body",
+            "author": "t-dama@microsoft.com",
+            "commit": "dd5f32f6b039d1426a73ad686bf87750cfbc4aaa",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@fluentui/codemods_v0.4.0",
       "version": "0.4.0",

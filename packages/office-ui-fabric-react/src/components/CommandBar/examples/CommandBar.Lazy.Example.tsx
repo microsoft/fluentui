@@ -62,7 +62,7 @@ export const CommandBarLazyExample: React.FunctionComponent = () => {
         },
       },
     ];
-  }, [menuItems]);
+  }, [menuItems, loadItems, onMenuDismissed]);
 
   return (
     <div>

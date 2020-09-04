@@ -67,13 +67,7 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
 
   return (
     <>
-      <g
-        ref={gRef}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClick}
-        data-is-focusable={true}
-        style={{ cursor: 'pointer' }}
-      >
+      <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
           x={props.labelDef.x}

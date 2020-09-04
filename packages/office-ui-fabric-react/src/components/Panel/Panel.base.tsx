@@ -414,7 +414,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           this.props.onOuterClick();
           ev.preventDefault();
         } else {
-          this.dismiss();
+          this.dismiss(ev);
         }
       }
     }

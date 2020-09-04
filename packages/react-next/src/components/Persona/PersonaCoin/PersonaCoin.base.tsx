@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  warnDeprecations,
   classNamesFunction,
   divProperties,
   getInitials,
   getNativeProps,
   getRTL,
+  getPropsWithDefaults,
 } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
@@ -21,7 +21,7 @@ import {
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
-import { getPropsWithDefaults } from '@fluentui/react-next';
+import { useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -35,12 +35,15 @@ const DEFAULT_PROPS = {
   imageAlt: '',
 };
 
-function useWarnDeprecation(props: IPersonaCoinProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('PersonaCoin', props, { primaryText: 'text' });
-    }
-  }, []);
+function useDebugWarnings(props: IPersonaCoinProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'PersonaCoin',
+      props,
+      deprecations: { primaryText: 'text' },
+    });
+  }
 }
 
 function useImageLoadState({ onPhotoLoadingStateChange, imageUrl }: IPersonaCoinProps) {
@@ -67,7 +70,7 @@ export const PersonaCoinBase = React.forwardRef(
   (propsWithoutDefaults: IPersonaCoinProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    useWarnDeprecation(props);
+    useDebugWarnings(props);
 
     const [imageLoadState, onLoadingStateChange] = useImageLoadState(props);
 

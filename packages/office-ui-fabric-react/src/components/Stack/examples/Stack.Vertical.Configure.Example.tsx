@@ -5,7 +5,8 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-
+import { useBoolean } from '@uifabric/react-hooks';
+import { range } from '@uifabric/example-data';
 export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;
@@ -26,6 +27,25 @@ export interface IExampleOptions {
 }
 
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
+
+// Alignment options
+const verticalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Top' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Bottom' },
+  { key: 'space-around', text: 'Space around' },
+  { key: 'space-between', text: 'Space between' },
+  { key: 'space-evenly', text: 'Space evenly' },
+];
+const horizontalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Left' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Right' },
+];
+
+// Non-mutating tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
 const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
@@ -89,7 +109,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
       styles={stackStyles}
       tokens={exampleStackTokens}
     >
-      {_range(1, numItems).map((value: number, index: number) => {
+      {range(1, numItems).map((value: number, index: number) => {
         if (emptyChildren.indexOf(value.toString()) !== -1) {
           return hideEmptyChildren ? (
             <Stack.Item key={index} styles={stackItemStyles} />
@@ -108,256 +128,176 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
   );
 };
 
-function _range(start: number, end: number): number[] {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-}
+export const VerticalStackConfigureExample: React.FunctionComponent = () => {
+  const [numItems, setNumItems] = React.useState<number>(5);
+  const [showBoxShadow, { toggle: toggleShowBoxShadow }] = useBoolean(false);
+  const [preventOverflow, { toggle: togglePreventOverflow }] = useBoolean(false);
+  const [wrap, { toggle: toggleWrap }] = useBoolean(false);
+  const [disableShrink, { toggle: toggleDisableShrink }] = useBoolean(true);
+  const [stackHeight, setStackHeight] = React.useState<number>(200);
+  const [autoHeight, { toggle: toggleAutoHeight }] = useBoolean(true);
+  const [childrenGap, setChildrenGap] = React.useState<number>(0);
+  const [paddingLeft, setPaddingLeft] = React.useState<number>(0);
+  const [paddingRight, setPaddingRight] = React.useState<number>(0);
+  const [paddingTop, setPaddingTop] = React.useState<number>(0);
+  const [paddingBottom, setPaddingBottom] = React.useState<number>(0);
+  const [horizontalAlignment, setHorizontalAlignment] = React.useState<IStackProps['horizontalAlign']>('start');
+  const [verticalAlignment, setVerticalAlignment] = React.useState<IStackProps['verticalAlign']>('start');
+  const [hideEmptyChildren, { toggle: toggleHideEmptyChildren }] = useBoolean(false);
+  const [emptyChildren, setEmptyChildren] = React.useState<string[]>([]);
 
-// Non-mutating tokens definition
-const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-const configureStackTokens: IStackTokens = { childrenGap: 20 };
-
-export class VerticalStackConfigureExample extends React.Component<{}, IExampleOptions> {
-  public state: IExampleOptions = {
-    numItems: 5,
-    showBoxShadow: false,
-    preventOverflow: false,
-    disableShrink: true,
-    wrap: false,
-    stackHeight: 200,
-    autoHeight: true,
-    childrenGap: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    verticalAlignment: 'start',
-    horizontalAlignment: 'start',
-    hideEmptyChildren: false,
-    emptyChildren: [],
-  };
-  private _verticalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Top' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Bottom' },
-    { key: 'space-around', text: 'Space around' },
-    { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' },
-  ];
-  private _horizontalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Left' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Right' },
-  ];
-
-  public render(): JSX.Element {
-    const { autoHeight, verticalAlignment, horizontalAlignment } = this.state;
-
-    return (
-      <Stack tokens={sectionStackTokens}>
-        <Stack horizontal tokens={configureStackTokens}>
-          <Stack.Item grow>
-            <Stack>
-              <Slider
-                label="Number of items:"
-                min={1}
-                max={10}
-                step={1}
-                defaultValue={5}
-                showValue={true}
-                onChange={this._onNumItemsChange}
-              />
-              <Stack horizontal>
-                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={checkboxStyles} />
-                <Checkbox
-                  label="Prevent item overflow"
-                  onChange={this._onPreventOverflowChange}
-                  styles={checkboxStyles}
-                />
-                <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} styles={checkboxStyles} />
-                <Checkbox label="Wrap items" onChange={this._onWrapChange} />
-              </Stack>
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Stack horizontal tokens={configureStackTokens}>
+        <Stack.Item grow>
+          <Stack>
+            <Slider label="Number of items:" min={1} max={10} step={1} defaultValue={5} onChange={setNumItems} />
+            <Stack horizontal>
+              <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={checkboxStyles} />
+              <Checkbox label="Prevent item overflow" onChange={togglePreventOverflow} styles={checkboxStyles} />
+              <Checkbox label="Shrink items" onChange={toggleDisableShrink} styles={checkboxStyles} />
+              <Checkbox label="Wrap items" onChange={toggleWrap} />
             </Stack>
-          </Stack.Item>
-          <Stack.Item grow>
-            <Stack>
-              <Slider
-                label="Container height:"
-                min={1}
-                max={400}
-                step={1}
-                defaultValue={200}
-                showValue={true}
-                onChange={this._onStackHeightChange}
-                disabled={autoHeight}
-              />
-              <Checkbox
-                label="Automatic height (based on items)"
-                defaultChecked={true}
-                onChange={this._onAutoHeightChange}
-              />
-            </Stack>
-          </Stack.Item>
-        </Stack>
-
-        <Stack horizontal tokens={configureStackTokens}>
-          <Stack.Item grow>
-            <Stack>
-              <Slider
-                label="Vertical gap between items:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onGapChange}
-              />
-              <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
-                <Stack.Item grow>
-                  <Dropdown
-                    selectedKey={verticalAlignment}
-                    placeholder="Select Vertical Alignment"
-                    label="Vertical alignment:"
-                    options={this._verticalAlignmentOptions}
-                    onChange={this._onVerticalAlignChange}
-                  />
-                </Stack.Item>
-                <Stack.Item grow>
-                  <Dropdown
-                    selectedKey={horizontalAlignment}
-                    placeholder="Select Horizontal Alignment"
-                    label="Horizontal alignment:"
-                    options={this._horizontalAlignmentOptions}
-                    onChange={this._onHorizontalAlignChange}
-                  />
-                </Stack.Item>
-                <Stack.Item>
-                  <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
-                </Stack.Item>
-                <Stack.Item grow>
-                  <TextField label="List of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
-                </Stack.Item>
-              </Stack>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item grow>
-            <Stack>
-              <Slider
-                label="Left padding:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onPaddingLeftChange}
-              />
-              <Slider
-                label="Right padding:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onPaddingRightChange}
-              />
-            </Stack>
-          </Stack.Item>
-          <Stack.Item grow>
-            <Stack>
-              <Slider
-                label="Top padding:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onPaddingTopChange}
-              />
-              <Slider
-                label="Bottom padding:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onPaddingBottomChange}
-              />
-            </Stack>
-          </Stack.Item>
-        </Stack>
-
-        <VerticalStackConfigureExampleContent {...this.state} />
+          </Stack>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Stack>
+            <Slider
+              label="Container height:"
+              min={1}
+              max={400}
+              step={1}
+              defaultValue={200}
+              showValue
+              onChange={setStackHeight}
+              disabled={autoHeight}
+            />
+            <Checkbox label="Automatic height (based on items)" defaultChecked onChange={toggleAutoHeight} />
+          </Stack>
+        </Stack.Item>
       </Stack>
-    );
-  }
 
-  private _onNumItemsChange = (value: number): void => {
-    this.setState({ numItems: value });
-  };
+      <Stack horizontal tokens={configureStackTokens}>
+        <Stack.Item grow>
+          <Stack>
+            <Slider
+              label="Vertical gap between items:"
+              min={0}
+              max={50}
+              step={1}
+              defaultValue={0}
+              showValue
+              onChange={setChildrenGap}
+            />
+            <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
+              <Stack.Item grow>
+                <Dropdown
+                  selectedKey={verticalAlignment}
+                  placeholder="Select Vertical Alignment"
+                  label="Vertical alignment:"
+                  options={verticalAlignmentOptions}
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+                    setVerticalAlignment(option.key as IStackProps['verticalAlign'])
+                  }
+                />
+              </Stack.Item>
+              <Stack.Item grow>
+                <Dropdown
+                  selectedKey={horizontalAlignment}
+                  placeholder="Select Horizontal Alignment"
+                  label="Horizontal alignment:"
+                  options={horizontalAlignmentOptions}
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+                    setHorizontalAlignment(option.key as IStackProps['horizontalAlign'])
+                  }
+                />
+              </Stack.Item>
+              <Stack.Item>
+                <Checkbox label="Hide empty children" onChange={toggleHideEmptyChildren} />
+              </Stack.Item>
+              <Stack.Item grow>
+                <TextField
+                  label="List of empty children (e.g. 1 2 3):"
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onChange={(ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
+                    if (value === undefined) {
+                      return;
+                    }
+                    setEmptyChildren(value.replace(/,/g, '').split(' '));
+                  }}
+                />
+              </Stack.Item>
+            </Stack>
+          </Stack>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Stack>
+            <Slider
+              label="Left padding:"
+              min={0}
+              max={50}
+              step={1}
+              defaultValue={0}
+              showValue
+              onChange={setPaddingLeft}
+            />
+            <Slider
+              label="Right padding:"
+              min={0}
+              max={50}
+              step={1}
+              defaultValue={0}
+              showValue
+              onChange={setPaddingRight}
+            />
+          </Stack>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Stack>
+            <Slider
+              label="Top padding:"
+              min={0}
+              max={50}
+              step={1}
+              defaultValue={0}
+              showValue
+              onChange={setPaddingTop}
+            />
+            <Slider
+              label="Bottom padding:"
+              min={0}
+              max={50}
+              step={1}
+              defaultValue={0}
+              showValue
+              onChange={setPaddingBottom}
+            />
+          </Stack>
+        </Stack.Item>
+      </Stack>
 
-  private _onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ showBoxShadow: isChecked });
-  };
-
-  private _onPreventOverflowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ preventOverflow: isChecked });
-  };
-
-  private _onShrinkItemsChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ disableShrink: !isChecked });
-  };
-
-  private _onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ wrap: isChecked });
-  };
-
-  private _onStackHeightChange = (value: number): void => {
-    this.setState({ stackHeight: value });
-  };
-
-  private _onAutoHeightChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ autoHeight: isChecked });
-  };
-
-  private _onGapChange = (value: number): void => {
-    this.setState({ childrenGap: value });
-  };
-
-  private _onPaddingLeftChange = (value: number): void => {
-    this.setState({ paddingLeft: value });
-  };
-
-  private _onPaddingRightChange = (value: number): void => {
-    this.setState({ paddingRight: value });
-  };
-
-  private _onPaddingTopChange = (value: number): void => {
-    this.setState({ paddingTop: value });
-  };
-
-  private _onPaddingBottomChange = (value: number): void => {
-    this.setState({ paddingBottom: value });
-  };
-
-  private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ verticalAlignment: option.key as IStackProps['verticalAlign'] });
-  };
-
-  private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
-  };
-
-  private _onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ hideEmptyChildren: isChecked });
-  };
-
-  private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
-    if (value === undefined) {
-      return;
-    }
-    this.setState({ emptyChildren: value.replace(/,/g, '').split(' ') });
-  };
-}
+      <VerticalStackConfigureExampleContent
+        {...{
+          numItems,
+          showBoxShadow,
+          preventOverflow,
+          disableShrink,
+          wrap,
+          stackHeight,
+          autoHeight,
+          childrenGap,
+          paddingLeft,
+          paddingRight,
+          paddingTop,
+          paddingBottom,
+          verticalAlignment,
+          horizontalAlignment,
+          hideEmptyChildren,
+          emptyChildren,
+        }}
+      />
+    </Stack>
+  );
+};

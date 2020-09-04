@@ -12,6 +12,121 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
         &:focus {
           outline: none;
         }
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            cursor: default;
+            position: relative;
+          }
+    >
+      <div
+        className="ms-SelectionZone"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDoubleClick={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onKeyDownCapture={[Function]}
+        onMouseDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <div
+          className=
+              ms-BasePicker-text
+              ms-UnifiedPicker-text
+              {
+                align-items: center;
+                border: 1px solid #a19f9d;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 32px;
+                min-width: 180px;
+                padding-bottom: 1px;
+                padding-left: 1px;
+                padding-right: 1px;
+                padding-top: 1px;
+              }
+              &:hover {
+                border-color: #c7e0f4;
+              }
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
+            role="combobox"
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    border: none;
+                    flex-grow: 1;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-BasePicker
+        ms-BaseFloatingPicker
+        ms-FloatingSuggestions
+
+  />
+</div>
+`;
+
+exports[`UnifiedPicker renders correctly with selected and suggested items 1`] = `
+<div
+  className="ms-BasePicker ms-BaseExtendedPicker"
+  onCopy={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -57,175 +172,64 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
               &:hover {
                 border-color: #c7e0f4;
               }
-          role="list"
         >
-          <input
-            aria-activedescendant=""
-            aria-autocomplete="both"
-            aria-expanded={true}
-            aria-haspopup="true"
-            aria-owns="suggestion-list"
-            autoCapitalize="off"
-            autoComplete="off"
-            className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
-                {
-                  border: none;
-                  flex-grow: 1;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
-            role="combobox"
-            value=""
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-BasePicker
-        ms-BaseFloatingPicker
-        ms-FloatingSuggestions
-
-  />
-</div>
-`;
-
-exports[`UnifiedPicker renders correctly with selected and suggested items 1`] = `
-<div
-  className="ms-BasePicker ms-BaseExtendedPicker"
-  onCopy={[Function]}
-  onKeyDown={[Function]}
->
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone2"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <div
-      className=
-
-          {
-            cursor: default;
-            position: relative;
-          }
-    >
-      <div
-        className="ms-SelectionZone"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDoubleClick={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onKeyDownCapture={[Function]}
-        onMouseDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="presentation"
-      >
-        <div
-          className=
-              ms-BasePicker-text
-              ms-UnifiedPicker-text
-              {
-                align-items: center;
-                border: 1px solid #a19f9d;
-                box-sizing: border-box;
-                display: flex;
-                flex-wrap: wrap;
-                min-height: 32px;
-                min-width: 180px;
-                padding-bottom: 1px;
-                padding-left: 1px;
-                padding-right: 1px;
-                padding-top: 1px;
-              }
-              &:hover {
-                border-color: #c7e0f4;
-              }
-          role="list"
-        >
-          <div>
-             
-            red
-             
+          <div
+            role="list"
+          >
+            <div>
+               
+              red
+               
+            </div>
+            <div>
+               
+              green
+               
+            </div>
           </div>
-          <div>
-             
-            green
-             
-          </div>
-          <input
-            aria-activedescendant=""
-            aria-autocomplete="both"
-            aria-expanded={true}
-            aria-haspopup="true"
-            aria-owns="suggestion-list"
-            autoCapitalize="off"
-            autoComplete="off"
-            className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
-                {
-                  border: none;
-                  flex-grow: 1;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
             role="combobox"
-            value=""
-          />
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    border: none;
+                    flex-grow: 1;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>
