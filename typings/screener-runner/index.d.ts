@@ -28,7 +28,7 @@ declare module 'screener-runner' {
       click(selector: string): ScreenerStepBuilder;
 
       /** This will capture a visual snapshot. */
-      snapshot(name: string, options?: any): ScreenerStepBuilder;
+      snapshot(name: string, options?: { cropTo?: string }): ScreenerStepBuilder;
 
       /** this will move the mouse over the first element matching the provided css selector. */
       hover(selector: string): ScreenerStepBuilder;
