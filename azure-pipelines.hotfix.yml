@@ -2,14 +2,10 @@ pr: none
 
 trigger: none
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
 
 steps:
-  - task: NodeTool@0
-    displayName: 'Use Node 10.x'
-    inputs:
-      versionSpec: 10.x
+  - template: .devops/templates/tools.yml
 
   - script: |
       node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"

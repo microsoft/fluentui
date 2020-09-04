@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.5)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.0..@fluentui/react-button_v0.11.5)
+
+### Patches
+
+- Adding legacy startup for internal testing on IE11. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.0)
 

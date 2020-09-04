@@ -194,7 +194,6 @@ export const Popup: React.FC<PopupProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      disabled: false, // definition has this prop, but `Popup` doesn't support it
       isOpenedByRightClick,
       on,
       trapFocus,

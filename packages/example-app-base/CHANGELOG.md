@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.14.0..@uifabric/example-app-base_v7.15.4)
+
+### Patches
+
+- Adding check for undefined FluentTheme in CodeSnippet.tsx. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.14.0)
 

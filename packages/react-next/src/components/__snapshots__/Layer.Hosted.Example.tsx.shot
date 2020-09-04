@@ -1,0 +1,510 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
+<div
+  className=
+
+      & p {
+        margin-top: 30px;
+      }
+>
+  <div
+    className=
+        ms-Toggle
+        is-checked
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          ms-Toggle-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 16px;
+            margin-right: 0px;
+            margin-top: 0px;
+            order: 1;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-break: break-all;
+            word-wrap: break-word;
+          }
+      htmlFor="ToggleBase1"
+      id="ToggleBase1-label"
+    >
+      Show host
+    </label>
+    <div
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
+    >
+      <button
+        aria-checked={true}
+        aria-labelledby="ToggleBase1-label"
+        checked={true}
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #0078d4;
+              border-color: transparent;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 20px;
+              justify-content: flex-end;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 3px;
+              padding-right: 3px;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              background-color: #005a9e;
+              border-color: transparent;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              background-color: Highlight;
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
+        data-is-focusable={true}
+        data-ktp-target={true}
+        id="ToggleBase1"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="switch"
+        type="button"
+      >
+        <span
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #ffffff;
+                border-color: transparent;
+                border-radius: 50%;
+                border-style: solid;
+                border-width: 6px;
+                box-sizing: border-box;
+                display: block;
+                height: 12px;
+                transition: all 0.1s ease;
+                width: 12px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+                border-color: Window;
+              }
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className=
+        ms-LayerHost
+        {
+          background: rgba(255, 0, 0, 0.2);
+          border: 1px dashed #000000;
+          height: 100px;
+          padding-bottom: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 20px;
+          position: relative;
+        }
+        &:before {
+          content: "I am a LayerHost with id=layerhost1";
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+    id="layerHost0"
+  />
+  <p>
+    In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
+  </p>
+  <div
+    className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          ms-Toggle-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 16px;
+            margin-right: 0px;
+            margin-top: 0px;
+            order: 1;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-break: break-all;
+            word-wrap: break-word;
+          }
+      htmlFor="ToggleBase2"
+      id="ToggleBase2-label"
+    >
+      Render the box below in a Layer and target it at hostId=layerHost0
+    </label>
+    <div
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
+    >
+      <button
+        aria-checked={false}
+        aria-labelledby="ToggleBase2-label"
+        checked={false}
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 20px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 3px;
+              padding-right: 3px;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+        data-is-focusable={true}
+        data-ktp-target={true}
+        id="ToggleBase2"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="switch"
+        type="button"
+      >
+        <span
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #605e5c;
+                border-color: transparent;
+                border-radius: 50%;
+                border-style: solid;
+                border-width: 6px;
+                box-sizing: border-box;
+                display: block;
+                height: 12px;
+                transition: all 0.1s ease;
+                width: 12px;
+              }
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
+          animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          background-color: #0078d4;
+          color: #ffffff;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+  >
+    This is example layer content.
+  </div>
+  <div
+    className=
+
+        {
+          background-color: #c8c6c4;
+          line-height: 50px;
+          margin-bottom: 8px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 8px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+  >
+    I am normally below the content.
+  </div>
+  <p>
+    If you do not specify a hostId, the hosted layer will default to being fixed to the page by default.
+  </p>
+  <div
+    className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          ms-Toggle-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 16px;
+            margin-right: 0px;
+            margin-top: 0px;
+            order: 1;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-break: break-all;
+            word-wrap: break-word;
+          }
+      htmlFor="ToggleBase3"
+      id="ToggleBase3-label"
+    >
+      Render the box below in a Layer without specifying a host, fixing it to the top of the page
+    </label>
+    <div
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
+    >
+      <button
+        aria-checked={false}
+        aria-labelledby="ToggleBase3-label"
+        checked={false}
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 20px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 3px;
+              padding-right: 3px;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+        data-is-focusable={true}
+        data-ktp-target={true}
+        id="ToggleBase3"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="switch"
+        type="button"
+      >
+        <span
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #605e5c;
+                border-color: transparent;
+                border-radius: 50%;
+                border-style: solid;
+                border-width: 6px;
+                box-sizing: border-box;
+                display: block;
+                height: 12px;
+                transition: all 0.1s ease;
+                width: 12px;
+              }
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
+          animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          background-color: #0078d4;
+          color: #ffffff;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+  >
+    This is example layer content.
+  </div>
+</div>
+`;
