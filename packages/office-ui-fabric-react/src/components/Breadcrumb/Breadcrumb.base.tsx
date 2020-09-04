@@ -10,7 +10,7 @@ import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
-import { MenuButton } from '../../../../react-button/src/components/MenuButton';
+import { MenuButton } from '@fluentui/react-button/src/components/MenuButton';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
