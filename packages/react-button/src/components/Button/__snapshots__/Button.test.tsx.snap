@@ -92,7 +92,13 @@ exports[`Button renders a default state 1`] = `
         color: var(--button-disabled-iconColor);
       }
 >
-  <span>
+  <span
+    className=
+
+        {
+          line-height: 1;
+        }
+  >
     Default button
   </span>
 </button>

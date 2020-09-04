@@ -127,8 +127,13 @@ export const useButtonClasses = makeClasses<ButtonState>({
       height: 'var(--button-iconSize)',
       fontSize: 'var(--button-iconSize, inherit)',
       fontWeight: 'normal',
+      lineHeight: '1',
     },
   ],
+
+  content: {
+    lineHeight: '1',
+  },
 
   _primary: {
     '--button-background': 'var(--accent-background)',

@@ -26,6 +26,7 @@ export const useSplitButton = (
     circular,
     fluid,
     menu,
+    size,
     ...userProps
   } = resolveShorthandProps(props, splitButtonShorthandProps);
 
@@ -37,6 +38,7 @@ export const useSplitButton = (
       className,
       style,
       fluid,
+      size,
 
       button: {
         as: 'span',
@@ -47,6 +49,7 @@ export const useSplitButton = (
         disabled,
         loading,
         fluid,
+        size,
         ...userProps,
       },
 
@@ -56,6 +59,7 @@ export const useSplitButton = (
         primary,
         ghost,
         circular,
+        size,
         disabled: disabled || loading,
         menu: {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
