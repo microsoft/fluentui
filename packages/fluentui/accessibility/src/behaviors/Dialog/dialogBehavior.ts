@@ -32,6 +32,10 @@ export const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
   behaviorData.attributes.content = {
     id: defaultAriaDescribedBy,
   };
+  behaviorData.attributes.trigger = {
+    ...behaviorData.attributes.trigger,
+    'aria-disabled': props.disabled,
+  };
 
   return behaviorData;
 };
@@ -61,5 +65,8 @@ const getDefaultAriaDescribedBy = (props: DialogBehaviorProps) => {
 export type DialogBehaviorProps = {
   headerId?: string;
   contentId?: string;
+
+  /** Indicates if dialogs's trigger is disabled. */
+  disabled?: boolean;
 } & PopupBehaviorProps &
   Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
