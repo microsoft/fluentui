@@ -74,14 +74,10 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
-const getRidOfSecondsMinutesHours = (date: Date): Date => {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-};
-
 const normalizeDateInGrid = (date: Date): Date => {
   const result = new Date(date.getTime());
   result.setDate(1);
-  return getRidOfSecondsMinutesHours(result);
+  return result;
 };
 
 /**
@@ -181,7 +177,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const visibleGrid = React.useMemo<IDay[][]>(() => {
     const dayGridOptions: IDayGridOptions = {
-      selectedDate: getRidOfSecondsMinutesHours(selectedDate || props.today || new Date()),
+      selectedDate: selectedDate || props.today || new Date(),
       navigatedDate: normalizedGridDate,
       weeksToShow: props.weeksToShow,
       firstDayOfWeek: props.firstDayOfWeek,
