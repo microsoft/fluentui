@@ -369,7 +369,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 disableFirstFocus: true,
               },
               trigger: triggerButtonElement,
-              target: type === DatepickerType.InputOnly ? inputRef.current : null,
+              target: type !== DatepickerType.ButtonOnly ? inputRef.current : null,
+              position: 'below' as const,
+              align: 'end' as const,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
