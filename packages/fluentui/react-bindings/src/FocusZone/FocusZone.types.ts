@@ -25,9 +25,10 @@ export interface IFocusZone {
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
+   * @param forceAlignment If true, focus aligment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(childElement?: HTMLElement): boolean;
+  focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
 }
 
 // Heads up! Keep in sync with packages/accessibility/src/focusZone/types.ts
