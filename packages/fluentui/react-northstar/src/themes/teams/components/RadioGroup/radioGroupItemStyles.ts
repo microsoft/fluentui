@@ -79,9 +79,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
 
     ...(p.disabled && {
       borderColor: v.colorDisabled,
-      ...(p.checked && {
-        color: v.colorDisabled,
-      }),
+      color: v.colorDisabled,
     }),
   }),
 };
