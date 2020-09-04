@@ -36,7 +36,7 @@ const getStateForPath = (examplePath: string) => {
     name: exampleNameWithExtension,
 
     // https://www.npmjs.com/package/screener-runner#testing-interactions
-    steps: getScreenerSteps(pageUrl, exampleNameWithExtension, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
+    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
   };
 };
 
