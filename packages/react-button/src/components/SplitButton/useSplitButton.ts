@@ -32,6 +32,9 @@ export const useSplitButton = (
 
   ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
 
+  // A split button should be disabled when disabled or loading.
+  const disabledOrLoading = disabled || loading;
+
   const state = mergeProps(
     {
       as: 'span',
@@ -46,7 +49,7 @@ export const useSplitButton = (
         primary,
         ghost,
         circular,
-        disabled,
+        disabled: disabledOrLoading,
         loading,
         fluid,
         size,
@@ -60,7 +63,8 @@ export const useSplitButton = (
         ghost,
         circular,
         size,
-        disabled: disabled || loading,
+        disabled: disabledOrLoading,
+        loading,
         menu: {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ...(menu as any),

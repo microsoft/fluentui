@@ -24,7 +24,8 @@ export const TeamsTheme: PartialTheme = {
     },
 
     button: {
-      padding: '0 24px',
+      paddingLeft: 24,
+      paddingRight: 24,
       fontFamily: `"Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Helvetica, Arial, sans-serif`,
       fontWeight: 600,
       borderColor: '#e1dfdd',
