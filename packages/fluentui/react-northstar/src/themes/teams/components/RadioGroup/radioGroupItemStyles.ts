@@ -70,7 +70,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     width: pxToRem(12),
     height: pxToRem(12),
     verticalAlign: 'midddle',
-    borderColor: v.indicatorBorderColorDefault,
+    color: v.indicatorBorderColorDefault,
 
     ...(p.checked && {
       color: v.indicatorBackgroundColorChecked,
