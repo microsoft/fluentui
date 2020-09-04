@@ -158,6 +158,21 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ChatProps,
   },
 
+  ChatMessage: {
+    props: {
+      content: "Hi, can we talk? It's important!",
+      author: 'John Doe',
+      timestamp: 'Yesterday, 10:15 PM',
+      badge: {
+        icon: <FUIIcons.RedbangIcon />,
+      },
+      badgePosition: 'start',
+      variables: {
+        isImportant: true,
+      },
+    } as FUI.ChatMessageProps,
+  },
+
   Checkbox: {
     props: { label: 'Checkbox' } as FUI.CheckboxProps,
   },
@@ -190,7 +205,15 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.DropdownProps,
   },
 
-  // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
+  Embed: {
+    props: {
+      placeholder: 'https://raw.githubusercontent.com/bower-media-samples/big-buck-bunny-480p-5s/master/poster.jpg',
+      variables: {
+        width: '480px',
+      },
+      video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    } as FUI.EmbedProps,
+  },
 
   Flex: {
     props: {} as FUI.FlexProps,
@@ -229,6 +252,39 @@ export const DRAGGING_ELEMENTS = {
       ],
     } as FUI.FormProps,
   },
+
+  FormButton: { props: { content: 'Button' } } as FUI.FormButtonProps,
+
+  FormLabel: { props: { content: 'Label' } } as FUI.FormLabelProps,
+
+  FormRadioGroup: {
+    props: {
+      items: [
+        {
+          name: 'pizza',
+          key: 'Capricciosa',
+          label: 'Capricciosa',
+          value: 'capricciosa',
+        },
+        {
+          name: 'pizza',
+          key: 'Prosciutto',
+          label: 'Prosciutto',
+          value: 'prosciutto',
+          disabled: true,
+        },
+        {
+          name: 'pizza',
+          key: 'Pepperoni',
+          label: 'Pepperoni',
+          value: 'pepperoni',
+        },
+      ],
+      label: 'Pizza',
+      vertical: true,
+      defaultCheckedValue: 'prosciutto',
+    },
+  } as FUI.FormRadioGroupProps,
 
   // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
@@ -341,6 +397,23 @@ export const DRAGGING_ELEMENTS = {
     props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
+  ReactionGroup: {
+    props: {
+      items: [
+        {
+          icon: <FUIIcons.LikeIcon />,
+          content: '2K',
+          key: 'up',
+        },
+        {
+          icon: <FUIIcons.EmojiIcon />,
+          content: 10,
+          key: 'smile',
+        },
+      ],
+    } as FUI.ReactionGroupProps,
+  },
+
   Segment: {
     props: { content: 'Segment' } as FUI.SegmentProps,
   },
@@ -365,9 +438,107 @@ export const DRAGGING_ELEMENTS = {
     props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
   },
 
-  // Toolbar: { props: { content: 'Toolbar' } as FUI.ToolbarProps },
+  Toolbar: {
+    props: {
+      ariaLabel: 'Default',
+      items: [
+        {
+          icon: (
+            <FUIIcons.BoldIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'bold',
+          kind: 'toggle',
+          title: 'Toggle bold',
+        },
+        {
+          icon: (
+            <FUIIcons.ItalicIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'italic',
+          kind: 'toggle',
+          title: 'Toggle italic',
+        },
+        {
+          icon: (
+            <FUIIcons.UnderlineIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'underline',
+          kind: 'toggle',
+          title: 'Toggle underline',
+        },
+        {
+          key: 'divider-1',
+          kind: 'divider',
+        },
+        {
+          icon: (
+            <FUIIcons.FontSizeIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'font-size',
+          title: 'Font size',
+        },
+        {
+          icon: (
+            <FUIIcons.RemoveFormatIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'remove-format',
+          title: 'Remove formatting',
+        },
+        {
+          key: 'divider-2',
+          kind: 'divider',
+        },
+        {
+          icon: (
+            <FUIIcons.OutdentIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'outdent',
+          title: 'Outdent',
+        },
+        {
+          icon: (
+            <FUIIcons.IndentIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'indent',
+          title: 'Indent',
+        },
+        {
+          key: 'divider-3',
+          kind: 'divider',
+        },
+      ],
+    },
+  } as FUI.ToolbarProps,
 
-  // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
+  Tooltip: <FUI.Tooltip content="Hack application" trigger={<FUI.Button content="A trigger" />} />,
 
   Tree: {
     props: {
