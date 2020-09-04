@@ -24,10 +24,10 @@ export const TeamsTheme: PartialTheme = {
     },
 
     button: {
-      paddingLeft: 24,
-      paddingRight: 24,
+      paddingLeft: '24px',
+      paddingRight: '24px',
       fontFamily: `"Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Helvetica, Arial, sans-serif`,
-      fontWeight: 600,
+      fontWeight: '600',
       borderColor: '#e1dfdd',
       transition: 'all 100ms ease 0s',
       boxShadow: 'rgba(0, 0, 0, 0.25) 0px 0.2rem 0.4rem -0.075rem',
