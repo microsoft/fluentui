@@ -399,7 +399,7 @@ function useDismissHandlers(
     };
 
     const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
-      if (ev.relatedTarget === null && !targetWindowRef.current?.document?.hasFocus()) {
+      if (!preventDismissOnLostFocus && !targetWindowRef.current?.document?.hasFocus() && ev.relatedTarget === null) {
         onDismiss?.(ev);
       }
     };
