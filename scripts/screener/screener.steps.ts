@@ -6,7 +6,7 @@ import keys from 'screener-runner/src/keys';
 const DEFAULT_THEMES: ScreenerThemeName[] = ['teams'];
 
 Steps.prototype.resetExternalLayout = function resetExternalLayout() {
-  return this.executeScript(`window.resetExternalLayout()`);
+  return this.hover('#visual-test-mouse-point').executeScript(`window.resetExternalLayout()`);
 };
 
 Steps.prototype.switchTheme = function switchTheme(themeName: ScreenerThemeName) {
@@ -25,8 +25,8 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
       _.forEach(screenerSteps, screenerStep => {
         screenerStep(stepsBuilder, keys);
 
-        // We need to reload page to reset mouse position between tests
-        stepsBuilder.url(pageUrl).switchTheme(themeName);
+        // We need to reset layouts to reset mouse position and focusing between tests
+        stepsBuilder.resetExternalLayout();
       });
     });
   } else {
