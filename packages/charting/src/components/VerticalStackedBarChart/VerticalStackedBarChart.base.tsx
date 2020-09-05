@@ -45,8 +45,8 @@ export interface IVerticalStackedBarChartState {
 
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
-  IVerticalStackedBarChartState>
-{
+  IVerticalStackedBarChartState
+> {
   private _points: IVerticalStackedChartProps[];
   private _barWidth: number;
   private _yAxisTickCount: number;
@@ -254,16 +254,19 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createYAxis(dataset: IDataPoint[], node?: SVGElement | null) {
     const yMax = this._getYMax(dataset);
 
-    return createYAxis({
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
-      yAxisElement: node,
-      yAxisTickFormat: this.props.yAxisTickFormat,
-      yAxisTickCount: this._yAxisTickCount,
-      maxOfYVal: yMax,
-      tickPadding: 10,
-    }, this._isRtl)
+    return createYAxis(
+      {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight,
+        yAxisElement: node,
+        yAxisTickFormat: this.props.yAxisTickFormat,
+        yAxisTickCount: this._yAxisTickCount,
+        maxOfYVal: yMax,
+        tickPadding: 10,
+      },
+      this._isRtl,
+    );
   }
 
   private _onLegendClick(customMessage: string): void {
