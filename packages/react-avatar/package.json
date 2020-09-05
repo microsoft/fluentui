@@ -50,6 +50,7 @@
   "dependencies": {
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/react-compose": "^0.18.1",
+    "@fluentui/react-icons": "^0.3.0",
     "@fluentui/react-stylesheets": "^0.2.0",
     "@fluentui/react-theme-provider": "^0.11.0",
     "@uifabric/react-hooks": "^7.12.0",
