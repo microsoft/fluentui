@@ -107,6 +107,7 @@ export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>
             />
           </div>
         )}
+        {/* singleline actions */ !isMultiline && actionsDiv}
         {/* singleline dismiss */ !isMultiline && dismissButton && (
           <div className={classNames.dismissSingleLine}>{dismissButton}</div>
         )}
