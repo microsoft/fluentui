@@ -2,6 +2,44 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/charting_v3.5.0",
+      "version": "3.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making the prop 'showYAxisGridLines' as deprecated.",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "de0a066a83890963eae8240043326b61c45ed487",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Sep 2020 12:22:43 GMT",
+      "tag": "@uifabric/charting_v3.4.0",
+      "version": "3.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "VerticalStackedBarChart - add yMaxValue, yAxisTickFormat, margins",
+            "author": "mibes@microsoft.com",
+            "commit": "12e72defeec4e1c2a6c7326c9cef670f6c2b2a55",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "resize of area chart issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "151e95f19924c52ab71529a3ef56c72595caaf21",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Aug 2020 18:11:10 GMT",
       "tag": "@uifabric/charting_v3.3.1",
       "version": "3.3.1",

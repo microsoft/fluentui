@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@fluentui/web-components_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update fast packages and add font-family inherit to controls of button and accordion-item",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "3c24d28536c0c370e001922f031718bdbab069c5",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/web-components_v0.1.7",
       "version": "0.1.7",
