@@ -371,9 +371,11 @@ export const Popup: React.FC<PopupProps> &
 
   const shouldBlurClose = e => {
     return (
-      !e.currentTarget ||
-      !popupContentRef.current ||
-      (!e.currentTarget.contains(e.relatedTarget) && !popupContentRef.current.contains(e.relatedTarget))
+      isFromKeyboard() &&
+      (!e.currentTarget ||
+        !popupContentRef.current ||
+        !e.currentTarget.contains(e.relatedTarget) ||
+        !popupContentRef.current.contains(e.relatedTarget))
     );
   };
 
