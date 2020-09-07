@@ -22,13 +22,18 @@ describe('Popup With Close in the content and hover trigger', () => {
 
   it('When opened by hover & click, should be kept it opened on content click', async () => {
     await e2e.hover(popupTrigger);
+
     expect(await e2e.exists(popupContent)).toBe(true);
 
     await e2e.clickOn(popupTrigger);
+    expect(await e2e.isFocused(popupTrigger)).toBe(true);
+
     expect(await e2e.exists(popupContent)).toBe(true);
 
     await e2e.clickOn(popupContent);
+
     expect(await e2e.exists(popupContent)).toBe(true);
+
     await e2e.isFocused('body');
   });
 });

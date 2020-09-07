@@ -9,7 +9,6 @@ export const selectors = {
 
 const PopupInPopupExample = () => {
   const [open, setOpen] = React.useState(false);
-
   return (
     <Popup
       on="hover"
@@ -18,7 +17,8 @@ const PopupInPopupExample = () => {
         setOpen(open);
       }}
       content={
-        <div id={selectors.popupContentId}>
+        <div>
+          <p id={selectors.popupContentId}>CLick Here</p>
           <Button
             id={selectors.popupCloseId}
             onClick={() => {
