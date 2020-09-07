@@ -12,6 +12,8 @@ pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
+    variables:
+      CHROME_BIN: /usr/bin/google-chrome
     workspace:
       clean: all
     steps:
