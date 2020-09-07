@@ -19957,6 +19957,13 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.3.0:
     react-is "^16.8.6"
     scheduler "^0.13.6"
 
+react-textarea-autosize@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.0.0.tgz#e4c1867f5a5ad6b1aaa1c82057da09cd58537c6a"
+  integrity sha512-zn6aFbqrzWDe8pb/U8ja9rODUsMd99YXN/uZLc9MPtda0Ks8qdFwEUZcghxJ1WYHtbDUNP6bvt6Wte695DjexQ==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-textarea-autosize@^7.1.0:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.1.2.tgz#70fdb333ef86bcca72717e25e623e90c336e2cda"

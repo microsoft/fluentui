@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding legacy startup for internal testing on IE11.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-27T19:13:14.436Z"
-}
