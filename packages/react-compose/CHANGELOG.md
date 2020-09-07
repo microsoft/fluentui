@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.2)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.18.1..@fluentui/react-compose_v0.18.2)
+
+### Patches
+
+- getSlots: handles empty definitions and defaults 'as' to 'span'. Note this will change in an upcoming update, as we move to `components` rather than `as`. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
 
 ## [0.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.1)
 
