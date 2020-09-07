@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-avatar_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Avatar with improved slots support, tokens support, and visual alignment with the design spec.",
+            "author": "behowell@microsoft.com",
+            "commit": "a6337607bf1742ce64f73eb6ddb420960919bdb9",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Aug 2020 12:25:46 GMT",
       "tag": "@fluentui/react-avatar_v0.3.1",
       "version": "0.3.1",

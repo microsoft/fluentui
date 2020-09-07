@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "office-ui-fabric-react_v7.134.3",
+      "version": "7.134.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Factor out hook-based inner logic from DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "231236fd4d38bac9930f64b3b40e2eb0f187ca8d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Sep 2020 12:28:23 GMT",
       "tag": "office-ui-fabric-react_v7.134.2",
       "version": "7.134.2",
