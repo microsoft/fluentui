@@ -11,7 +11,6 @@ const PopupClickHandlingExample = () => {
   const [show, setShow] = React.useState(true);
   return (
     <Popup
-      on="hover"
       trigger={
         <Button id={selectors.triggerButtonId} content="Open Popup" icon="expand" onClick={() => setShow(true)} />
       }
@@ -22,7 +21,7 @@ const PopupClickHandlingExample = () => {
             content="click me"
             onClick={e => {
               e.preventDefault();
-              setShow(isOpen => !isOpen);
+              setShow(!show);
             }}
           />
         )
