@@ -29,7 +29,7 @@
     "@uifabric/build": "^7.0.0",
     "@types/react": "16.8.25",
     "@types/semver": "^5.5.0",
-    "office-ui-fabric-react": "^7.134.1"
+    "office-ui-fabric-react": "^7.134.2"
   },
   "dependencies": {
     "tslib": "^1.10.0",

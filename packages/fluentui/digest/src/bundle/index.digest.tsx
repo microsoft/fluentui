@@ -27,7 +27,13 @@ const selectedStory = queryParams.selectedStory ? (queryParams.selectedStory as 
 // TODO: make sure decorator impl doesn't affect perf.
 if (selectedKind && selectedStory) {
   ReactDOM.render(
-    decorator(<div>{Array.from({ length: iterations }, () => stories[selectedKind][selectedStory]())}</div>),
+    decorator(
+      <div>
+        {Array.from({ length: iterations }, (_, i) =>
+          React.createElement(stories[selectedKind][selectedStory], { key: i }),
+        )}
+      </div>,
+    ),
     div,
   );
 } else {
@@ -53,7 +59,7 @@ if (selectedKind && selectedStory) {
                         Story:{' '}
                         <a href={`?selectedKind=${kindKey}&selectedStory=${storyKey}&iterations=50`}>{storyKey}</a>
                       </div>
-                      <div>{stories[kindKey][storyKey]()}</div>
+                      <div>{React.createElement(stories[kindKey][storyKey])}</div>
                     </div>
                   );
                 })}

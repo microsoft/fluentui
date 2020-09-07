@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-button_v0.11.5",
+      "version": "0.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding legacy startup for internal testing on IE11.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bcf5ac28bfb4809a9097a8bec9bb26cba8d04ef6",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@fluentui/react-button_v0.11.0",
       "version": "0.11.0",
