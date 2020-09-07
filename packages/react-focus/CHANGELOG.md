@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.0)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.1..@fluentui/react-focus_v7.16.0)
+
+### Minor changes
+
+- FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided. ([PR #14911](https://github.com/microsoft/fluentui/pull/14911) by humbertomakotomorimoto@gmail.com)
 
 ## [7.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.1)
 

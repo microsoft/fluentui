@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update Avatar with improved slots support, tokens support, and visual alignment with the design spec.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-18T20:55:26.040Z"
-}
