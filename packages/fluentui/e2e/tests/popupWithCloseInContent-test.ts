@@ -31,7 +31,5 @@ describe('Popup With Close in the content and hover trigger', () => {
 
     await e2e.clickOn(popupContent);
     expect(await e2e.exists(popupContent)).toBe(true);
-
-    await e2e.isFocused('body');
   });
 });
