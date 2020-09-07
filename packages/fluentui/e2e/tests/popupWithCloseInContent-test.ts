@@ -26,7 +26,6 @@ describe('Popup With Close in the content and hover trigger', () => {
 
     await e2e.clickOn(popupTrigger);
     expect(await e2e.isFocused(popupTrigger)).toBe(true);
-
     expect(await e2e.exists(popupContent)).toBe(true);
 
     await e2e.clickOn(popupContent);
