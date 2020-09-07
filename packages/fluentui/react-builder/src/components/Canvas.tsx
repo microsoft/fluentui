@@ -235,7 +235,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       frameBorder="0"
       width="100%"
       height="100%"
-      initialContent='<!DOCTYPE html><html><head><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>'
+      initialContent='<!DOCTYPE html><html><head><script async src="https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.0.1/axe.min.js"></script><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>'
       style={style}
       id={iframeId}
     >

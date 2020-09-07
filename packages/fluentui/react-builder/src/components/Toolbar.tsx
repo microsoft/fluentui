@@ -17,7 +17,6 @@ export type ToolbarProps = {
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
-  showAxeErrors: () => void;
   style?: React.CSSProperties;
 };
 
@@ -35,7 +34,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   mode,
   showCode,
   showJSONTree,
-  showAxeErrors,
   style,
 }) => (
   <div
@@ -100,8 +98,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         checked={!!showJSONTree}
         onChange={(e, data) => onShowJSONTreeChange(data.checked)}
       />
-      &emsp;
-      <Button text onClick={showAxeErrors} icon={<EyeIcon />} content="Accessibility check" />
       &emsp;
       <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
     </div>

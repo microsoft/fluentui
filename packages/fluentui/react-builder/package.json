@@ -17,7 +17,8 @@
     "react-dom": "16.8.6",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
-    "use-immer": "^0.4.1"
+    "use-immer": "^0.4.1",
+    "axe-core": "3.3.2"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",

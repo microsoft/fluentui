@@ -61,27 +61,6 @@ const focusTreeTitle = uuid => {
 
 const affectedNodes = [];
 
-// const tableOfViolations = violations => {
-//   const rows = violations.map((violation, index) => {
-//     return {
-//       styles: { height: '12rem' },
-//       key: index,
-//       items: [
-//         violation.failureSummary,
-//         violation.description,
-//         violation.target,
-//         violation.html,
-//         violation.xpath,
-//         violation.dataBuilderId,
-//       ],
-//     };
-//   });
-//   const header = {
-//     items: ['Failure summary', 'Description', 'Target', 'HTML', 'XPATH', 'DataBuilderId'],
-//   };
-//   return violations.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
-// };
-
 function findDataBuilderId(element) {
   const parentElement = element.parentElement;
   if (!parentElement) {
@@ -411,54 +390,44 @@ export const Designer: React.FunctionComponent = () => {
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [axeErrors, setAxeErrors] = React.useState([]);
-  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const getAxeResults = () => {
-    const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
-    const $iframe = document.getElementById(iframeId);
 
-    axeCore.run(
-      $iframe.getElementsByTagName('body')[0],
-      {
-        xpath: true,
-        elementRef: true,
-        rules: {
-          // excluding rules which are related to the whole page not to components
-          'page-has-heading-one': { enabled: false },
-          region: { enabled: false },
-          'landmark-one-main': { enabled: false },
+  React.useEffect(() => {
+    if (state.selectedJSONTreeElementUuid) {
+      const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
+      const $iframe = document.getElementById(iframeId);
+      axeCore.run(
+        $iframe,
+        {
+          xpath: true,
+          elementRef: true,
+          rules: {
+            // excluding rules which are related to the whole page not to components
+            'page-has-heading-one': { enabled: false },
+            region: { enabled: false },
+            'landmark-one-main': { enabled: false },
+          },
         },
-      },
-      (err, result) => {
-        if (err) {
-          console.error('Axe failed', err);
-        } else {
-          console.table(result.violations);
-          if (result.violations.length > 0) {
-            result.violations.forEach(violation => {
-              if (violation.nodes.length > 0) {
-                const description = violation.description;
-                violation.nodes.forEach(node => {
-                  processNode(node, description);
-                });
-              }
-            });
+        (err, result) => {
+          if (err) {
+            console.error('Axe failed', err);
+          } else {
+            console.table(result.violations);
+            if (result.violations.length > 0) {
+              result.violations.forEach(violation => {
+                if (violation.nodes.length > 0) {
+                  const description = violation.description;
+                  violation.nodes.forEach(node => {
+                    processNode(node, description);
+                  });
+                }
+              });
+            }
+            setAxeErrors(affectedNodes);
           }
-          setAxeErrors(affectedNodes);
-        }
-      },
-    );
-  };
-
-  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
-    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
-  );
-  for (let i = 0; i < axeErrors.length; i++) {
-    const id = axeErrors[i].dataBuilderId;
-    if (!accessibilityErrors[id]) {
-      accessibilityErrors[id] = {};
+        },
+      );
     }
-    accessibilityErrors[id][i] = { source: 'AXE', error: axeErrors[i].failureSummary };
-  }
+  }, [state.selectedJSONTreeElementUuid]);
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -753,7 +722,6 @@ export const Designer: React.FunctionComponent = () => {
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
-        showAxeErrors={getAxeResults}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
@@ -944,6 +912,16 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
+            {
+              <ul>
+                {axeErrors.length > 0 &&
+                  axeErrors.map(error => (
+                    <li>
+                      <strong>{error.dataBuilderId}</strong>
+                    </li>
+                  ))}
+              </ul>
+            }
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
