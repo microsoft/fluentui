@@ -5,8 +5,6 @@ export const selectors = {
   triggerButtonId: 'trigger',
   popupContentClass: popupContentClassName,
   popupContentButtonId: 'content-button',
-  popupContentContainerId: 'popup-content-container',
-  outsideDivID: 'outside',
 };
 
 const PopupClickHandlingExample = () => {
@@ -19,16 +17,14 @@ const PopupClickHandlingExample = () => {
       }
       content={
         !!show && (
-          <div id={selectors.popupContentContainerId}>
-            <Button
-              id={selectors.popupContentButtonId}
-              content="click me"
-              onClick={e => {
-                e.preventDefault();
-                setShow(isOpen => !isOpen);
-              }}
-            />
-          </div>
+          <Button
+            id={selectors.popupContentButtonId}
+            content="click me"
+            onClick={e => {
+              e.preventDefault();
+              setShow(isOpen => !isOpen);
+            }}
+          />
         )
       }
     />
