@@ -12,6 +12,3 @@ module.exports = {
   testRegex: '.*-test\\.tsx?$',
   setupFilesAfterEnv: ['./setup.test.ts'],
 };
-
-console.log(process.env);
-throw new Error(11);

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
-    "types": ["node", "jest", "webpack-env"],
+    "types": ["node", "jest", "jest-environment-puppeteer", "webpack-env"],
     "skipLibCheck": true
   },
   "include": ["."]

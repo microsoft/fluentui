@@ -1,4 +1,4 @@
-import { menuItemClassName } from '@fluentui/react-northstar/src';
+import { menuItemClassName } from '@fluentui/react-northstar';
 
 const menuItem = `.${menuItemClassName}`;
 

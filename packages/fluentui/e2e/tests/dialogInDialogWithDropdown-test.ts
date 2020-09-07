@@ -1,5 +1,5 @@
+import { dropdownSlotClassNames } from '@fluentui/react-northstar';
 import { selectors } from './dialogInDialogWithDropdown-example';
-import { dropdownSlotClassNames } from '@fluentui/react-northstar/src';
 
 const outerHeader = `#${selectors.outerHeader}`;
 const outerTrigger = `#${selectors.outerTrigger}`;
