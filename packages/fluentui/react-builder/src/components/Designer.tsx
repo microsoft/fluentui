@@ -417,7 +417,7 @@ export const Designer: React.FunctionComponent = () => {
     const $iframe = document.getElementById(iframeId);
 
     axeCore.run(
-      $iframe,
+      $iframe.getElementsByTagName('body')[0],
       {
         xpath: true,
         elementRef: true,
@@ -753,6 +753,7 @@ export const Designer: React.FunctionComponent = () => {
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
+        showAxeErrors={getAxeResults}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
@@ -874,7 +875,6 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
-                  showAxeErrors={getAxeResults}
                   role="main"
                 />
               </ErrorBoundary>
