@@ -118,7 +118,7 @@
     "prettier": "~1.19.1",
     "progress": "^2.0.3",
     "prompts": "^2.3.0",
-    "puppeteer": "^1.13.0",
+    "puppeteer": "^5.2.1",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^4.12.15",
     "react-vis": "^1.11.6",

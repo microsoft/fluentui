@@ -18,7 +18,7 @@
     "jest-environment-puppeteer": "^4.1.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
-    "puppeteer": "^1.13.0",
+    "puppeteer": "^5.2.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "^5.2.0"

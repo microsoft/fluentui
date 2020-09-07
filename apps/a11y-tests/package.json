@@ -20,7 +20,7 @@
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
     "office-ui-fabric-react": "^7.134.2",
-    "puppeteer": "^1.13.0",
+    "puppeteer": "^5.2.1",
     "tslib": "^1.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
