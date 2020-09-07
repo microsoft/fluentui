@@ -75,7 +75,6 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
   {
     className: breadcrumbClassName,
     displayName: 'Breadcrumb',
-    overrideStyles: true,
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
