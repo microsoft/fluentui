@@ -175,6 +175,15 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: false,
   },
   {
+    id: 'text-area',
+    title: {
+      content: 'TextArea Auto Size',
+      as: NavLink,
+      to: '/prototype-text-area-autosize',
+    },
+    public: true,
+  },
+  {
     id: 'virtualized-table',
     title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
     public: true,

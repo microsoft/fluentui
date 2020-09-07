@@ -48,7 +48,7 @@ export interface IVerticalStackedBarChartProps {
    * Please look at https://github.com/d3/d3-format for all the formats supported
    */
   yAxisTickFormat?: (n: number) => string;
-  
+
   /**
    * Colors from which to select the color of each bar.
    */

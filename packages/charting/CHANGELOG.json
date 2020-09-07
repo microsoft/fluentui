@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/charting_v3.5.0",
+      "version": "3.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making the prop 'showYAxisGridLines' as deprecated.",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "de0a066a83890963eae8240043326b61c45ed487",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Sep 2020 12:22:43 GMT",
       "tag": "@uifabric/charting_v3.4.0",
       "version": "3.4.0",
