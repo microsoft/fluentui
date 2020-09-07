@@ -9,6 +9,7 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
 export * from './Breadcrumb/breadcrumbItemBehavior';
+export * from './Breadcrumb/breadcrumbDividerBehavior';
 
 export * from './Dropdown/dropdownSelectedItemBehavior';
 export * from './Dropdown/dropdownSelectedItemBehavior';
