@@ -42,7 +42,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _bars: JSX.Element[];
   private _isNumeric: boolean;
   private _barWidth: number;
-  // private _yAxisTickCount: number;
   private _colors: string[];
   private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
@@ -60,6 +59,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
+      hoverXValue: '',
+      YValueHover: [],
       xCalloutValue: '',
       yCalloutValue: '',
     };
@@ -313,6 +314,10 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.props.href ? (window.location.href = this.props.href) : '';
   }
 
+  private _getYMax(dataset: IDataPoint[]) {
+    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
+  }
+
   private _createBar = (
     xBarScale: NumericScale | StringScale,
     yBarScale: NumericScale,
@@ -351,7 +356,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             x={xPoint}
             y={containerHeight - this.margins.bottom! - yBarScale(startingPointOfY)}
             width={this._barWidth}
-            height={yBarScale(point.data) > 0 ? yBarScale(point.data) : 0}
+            height={Math.max(yBarScale(point.data), 0)}
             fill={color}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend, refArrayIndexNumber);
@@ -412,8 +417,4 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     return this._createBar(xBarScale, yBarScale, containerHeight);
   };
-
-  private _getYMax(dataset: IDataPoint[]) {
-    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
-  }
 }
