@@ -7,17 +7,23 @@ import {
   useStyles,
   useUnhandledProps,
   getElementType,
-  childrenExist,
 } from '@fluentui/react-bindings';
-import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
+import {
+  commonPropTypes,
+  UIComponentProps,
+  ContentComponentProps,
+  ChildrenComponentProps,
+  createShorthand,
+} from '../../utils';
+import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
+import { Box } from '../Box/Box';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 }
 
 export type BreadcrumbStylesProps = never;
@@ -64,7 +70,17 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <div role="list">{childrenExist(children) ? children : content}</div>
+        {createShorthand(
+          composeOptions.slots.list,
+          {},
+          {
+            defaultProps: () =>
+              getA11yProps('list', {
+                children,
+                content,
+              }),
+          },
+        )}
       </ElementType>,
     );
 
@@ -74,6 +90,9 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
   },
   {
     className: breadcrumbClassName,
+    slots: {
+      list: Box,
+    },
     displayName: 'Breadcrumb',
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
@@ -81,6 +100,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
 Breadcrumb.defaultProps = {
   as: 'nav',
+  accessibility: breadcrumbBehavior,
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();

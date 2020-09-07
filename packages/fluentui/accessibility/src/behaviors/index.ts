@@ -8,6 +8,8 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
+export * from './Breadcrumb/breadcrumbBehavior';
+
 export * from './Dropdown/dropdownSelectedItemBehavior';
 export * from './Dropdown/dropdownSelectedItemBehavior';
 
