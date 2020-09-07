@@ -375,7 +375,7 @@ export const Popup: React.FC<PopupProps> &
     const isInsideTarget = e.currentTarget?.contains(relatedTarget);
     // When clicking in the popup content that has no tabIndex focus goes to body
     // We shouldn't close the popup in this case
-    return e.relatedTarget && !(isInsideContent || isInsideTarget);
+    return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
