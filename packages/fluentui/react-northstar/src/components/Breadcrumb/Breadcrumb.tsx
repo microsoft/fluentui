@@ -106,4 +106,6 @@ Breadcrumb.propTypes = commonPropTypes.createCommon();
 Breadcrumb.Item = BreadcrumbItem;
 Breadcrumb.Divider = BreadcrumbDivider;
 
-Breadcrumb.create = createShorthandFactory({ Component: Breadcrumb, mappedArrayProp: 'items' });
+Breadcrumb.create = createShorthandFactory({
+  Component: Breadcrumb,
+});
