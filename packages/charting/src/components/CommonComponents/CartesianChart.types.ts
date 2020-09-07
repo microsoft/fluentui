@@ -5,8 +5,8 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins, ILineChartPoints } from '../../types/index';
-import { ChartTypes } from '../../utilities/index';
+import { IMargins, ILineChartPoints, IDataPoint } from '../../types/index';
+import { ChartTypes, XAxisTypes } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -291,7 +291,8 @@ export interface IChildProps {
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   maxOfYVal?: number;
-  points: ILineChartPoints[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  points: any;
   chartType: ChartTypes;
   getmargins: (margins: IMargins) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -304,7 +305,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   getRerenderProp?: (isReRender: boolean) => void;
   barwidth?: number;
-  isXAxisDateType: boolean;
   tickParams?: {
     tickValues?: number[] | Date[];
     tickFormat?: string;
@@ -329,4 +329,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     YValue?: string | number;
     XValue?: string;
   };
+
+  /** X axis type */
+  xAxisType: XAxisTypes;
+
+  /** dataset values to find out domain of the String axis
+   * Present using for only vertical stacked bar chart
+   */
+  datasetForXAxisDomain?: IDataPoint[];
 }

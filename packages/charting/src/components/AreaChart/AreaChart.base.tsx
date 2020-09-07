@@ -16,7 +16,7 @@ import {
 } from '../AreaChart/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { calloutData, getXAxisType, ChartTypes } from '../../utilities/index';
+import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 export interface IAreaChartAreaPoint {
@@ -138,11 +138,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         calloutProps={calloutProps}
         legendBars={legends}
         isMultiStackCallout
-        isXAxisDateType={isXAxisDateType}
+        // isXAxisDateType={isXAxisDateType}
         tickParams={tickParams}
         maxOfYVal={this.state._maxOfYVal}
         getRerenderProp={this._getRerenderProp}
         getGraphData={this.state.isGraphDraw && this._getGraphData}
+        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {

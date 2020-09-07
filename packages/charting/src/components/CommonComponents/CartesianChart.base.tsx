@@ -10,6 +10,7 @@ import {
 } from './CartesianChart.types';
 import {
   createNumericXAxis,
+  createStringXAxis,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -17,6 +18,7 @@ import {
   IMargins,
   getMinMaxOfYAxis,
   ChartTypes,
+  XAxisTypes,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -74,21 +76,23 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, isXAxisDateType, points, chartType } = this.props;
+    const { calloutProps, points, chartType } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
     // Callback for margins to the chart
     this.props.getmargins(this.margins);
 
+    // TO DO: need to send xAxis types based on condition
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
         this.margins,
         this.state.containerWidth,
         chartType,
-        isXAxisDateType,
         this._isRtl,
+        this.props.xAxisType, // need to change this as mandetory
+        this.props.barwidth!,
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
@@ -108,9 +112,22 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
     };
 
-    const xScale = this.props.isXAxisDateType
-      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
-      : createNumericXAxis(XAxisParams, this._isRtl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let xScale: any;
+    switch (this.props.xAxisType!) {
+      case XAxisTypes.NumericAxis:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        break;
+      case XAxisTypes.DateAxis:
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
+        break;
+      case XAxisTypes.StringAxis:
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this._isRtl, points);
+        break;
+      default:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+    }
+
     const yScale = createYAxis(YAxisParams, this._isRtl);
 
     // Callback function for chart, returns axis
@@ -167,7 +184,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          // need to handle for single callout (Future purpose)
           <Callout {...calloutProps}>
             {this.props.isMultiStackCallout ? (
               <div className={this._classNames.calloutContentRoot}>

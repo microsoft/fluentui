@@ -6,7 +6,7 @@ import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ILineChartProps, IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, ChartTypes, getXAxisType } from '../../utilities/index';
+import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -111,13 +111,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         {...this.props}
         points={this._points}
         chartType={ChartTypes.LineChart}
-        isXAxisDateType={isXAxisDateType}
         isMultiStackCallout
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
         getmargins={this._getMargins}
         getGraphData={this._getLinesData}
+        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
