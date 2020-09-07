@@ -1,6 +1,5 @@
 const commonConfig = require('@uifabric/build/jest');
-console.log(process.env);
-throw new Error(11);
+
 module.exports = {
   ...commonConfig,
   globalSetup: 'jest-environment-puppeteer/setup',
@@ -9,6 +8,10 @@ module.exports = {
     directory: require('@uifabric/build/monorepo/findGitRoot')(),
   }),
   name: 'e2e',
+  testEnvironment: 'jest-environment-puppeteer',
   testRegex: '.*-test\\.tsx?$',
   setupFilesAfterEnv: ['./setup.test.ts'],
 };
+
+console.log(process.env);
+throw new Error(11);
