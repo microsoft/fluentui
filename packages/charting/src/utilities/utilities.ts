@@ -165,25 +165,35 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   return xAxisScale;
 }
 
-export function createStringXAxis( // RTL support
+/**
+ * Create String X axis
+ * Currently using for only Vetical stacked bar chart.
+ *
+ * @export
+ * @param {IXAxisParams} xAxisParams
+ * @param {ITickParams} tickParams
+ * @param {boolean} isRtl
+ * @param {IDataPoint[]} dataset
+ * @returns
+ */
+export function createStringXAxis(
   xAxisParams: IXAxisParams,
   tickParams: ITickParams,
   isRtl: boolean,
   dataset: IDataPoint[],
 ) {
-  // need to send dataset here // need to check all the case and values
-  const { domainNRangeValues, xAxisElement, tickSize = 10, tickPadding = 10 } = xAxisParams;
+  const { domainNRangeValues } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset.map((point: IDataPoint) => point.x as string))
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .padding(0.1);
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(tickSize)
-    .tickFormat((x: string, index: number) => dataset[index].x as string)
-    .tickPadding(tickPadding);
+    .tickSize(xAxisParams.tickSize || 10)
+    .tickPadding(xAxisParams.tickPadding || 10)
+    .tickFormat((x: string, index: number) => dataset[index].x as string);
 
-  if (xAxisElement) {
-    d3Select(xAxisElement)
+  if (xAxisParams.xAxisElement) {
+    d3Select(xAxisParams.xAxisElement)
       .call(xAxis)
       .selectAll('text');
   }
@@ -503,15 +513,37 @@ export function domainRangeOfNumericForAreaChart(
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
 }
 
+/**
+ * Calculates Range values to the Vertical stacked bar chart for string axis
+ * For String axis, we need to give domain values (Not start and end array values)
+ * So sending 0 as domain values. Domain will be handled at creation of string axis
+ *
+ * @export
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
 export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
-  const rEndValue = width - margins.right!;
-  const rStartValue = margins.left!;
+  const rMin = margins.left!;
+  const rMax = width - margins.right! - (isRTL ? additionalMarginRight : 0);
 
   return isRTL
-    ? { dStartValue: 0, dEndValue: 0, rEndValue, rStartValue }
-    : { dStartValue: 0, dEndValue: 0, rStartValue, rEndValue };
+    ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
+    : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
 }
 
+/**
+ * Calculate domain and range values to the Vertical stacked bar chart - For Numeric axis
+ *
+ * @export
+ * @param {IDataPoint[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {number} barWidth
+ * @returns {IDomainNRange}
+ */
 export function domainRangeOfVSBCNumeric(
   points: IDataPoint[],
   margins: IMargins,
@@ -519,15 +551,14 @@ export function domainRangeOfVSBCNumeric(
   isRTL: boolean,
   barWidth: number,
 ): IDomainNRange {
-  const dStartValue = 0;
-  const dEndValue = d3Max(points, (point: IDataPoint) => point.x as number)!;
-
-  const rStartValue = margins.left! + barWidth / 2;
-  const rEndValue = width - margins.right! - (isRTL ? additionalMarginRight : 0) - barWidth / 2;
-
+  const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
+  // barWidth / 2 - for to get tick middle of the bar
+  const rMax = margins.left! + barWidth / 2;
+  const rMin = width - margins.right! - barWidth / 2 - (isRTL ? additionalMarginRight : 0);
   return isRTL
-    ? { dEndValue, dStartValue, rEndValue, rStartValue }
-    : { dStartValue, dEndValue, rStartValue, rEndValue };
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };
 }
 
 export function getDomainNRangeValues(
@@ -541,7 +572,6 @@ export function getDomainNRangeValues(
   barWidth?: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
-
   if (xAxisType === XAxisTypes.NumericAxis) {
     switch (chartType) {
       case ChartTypes.AreaChart:

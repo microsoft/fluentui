@@ -18,12 +18,11 @@ import {
   IChildProps,
 } from './VerticalStackedBarChart.types';
 import { IBasestate } from '../../types/index';
-import { ChartTypes, XAxisTypes } from '../../utilities/index';
+import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
-// type StringAxis = D3Axis<string>;
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = D3ScaleLinear<string, string>;
 
@@ -35,10 +34,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartState
 > {
   private _points: IVerticalStackedChartProps[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _xAxisScale: any = '';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _yAxisScale: any = '';
+  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // private _xAxisScale: any = '';
+  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // private _yAxisScale: any = '';
   private _dataset: IDataPoint[];
   private _bars: JSX.Element[];
   private _isNumeric: boolean;
@@ -87,7 +86,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   public render(): React.ReactNode {
-    // need to check data change and resize height and width
+    // need to check data change
     this._isNumeric = this._dataset.length > 0 && typeof this._dataset[0].x === 'number';
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
 
@@ -134,8 +133,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
-          this._xAxisScale = props.xScale!;
-          this._yAxisScale = props.yScale!;
+          // this._xAxisScale = props.xScale!; // need to update with scales
+          // this._yAxisScale = props.yScale!;
           return <g>{this._bars}</g>;
         }}
       />
@@ -143,14 +142,12 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _adjustProps(): void {
-    // this.margins = { ...this.margins, ...this.props.margins };
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 32;
     const { theme } = this.props;
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
   }
-  // Should add support of y max and min values like line chart
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
@@ -158,8 +155,8 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
-    this._xAxisScale = xScale;
-    this._yAxisScale = yScale;
+    // this._xAxisScale = xScale;
+    // this._yAxisScale = yScale;
     return (this._bars = this._isNumeric
       ? this._createNumericBars(containerHeight, containerWidth)
       : this._createStringBars(containerHeight, containerWidth));
@@ -384,7 +381,10 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xBarScale = d3ScaleLinear()
       .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
-      .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
+      .range([
+        this.margins.left!,
+        containerWidth - this.margins.right! - this._barWidth - (this._isRtl ? additionalMarginRight : 0),
+      ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -400,7 +400,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       .domain(this._isRtl ? [this._dataset.length - 1, 0] : [0, this._dataset.length - 1])
       .range([
         this.margins.left! + endpointDistance - 0.5 * this._barWidth,
-        containerWidth - this.margins.right! - endpointDistance - 0.5 * this._barWidth,
+        containerWidth -
+          this.margins.right! -
+          endpointDistance -
+          0.5 * this._barWidth -
+          (this._isRtl ? additionalMarginRight : 0),
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])

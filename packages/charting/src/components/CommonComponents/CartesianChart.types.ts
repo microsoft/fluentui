@@ -5,7 +5,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins, ILineChartPoints, IDataPoint } from '../../types/index';
+import { IMargins, IDataPoint } from '../../types/index';
 import { ChartTypes, XAxisTypes } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {

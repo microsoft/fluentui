@@ -2,10 +2,32 @@ import * as React from 'react';
 import { VerticalStackedBarChart, IVerticalStackedBarChartProps } from '@uifabric/charting';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}> {
+interface IVerticalStackedBarState {
+  width: number;
+  height: number;
+}
+
+export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
+  constructor(props: IVerticalStackedChartProps) {
+    super(props);
+    this.state = {
+      width: 650,
+      height: 350,
+    };
+  }
   public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
@@ -56,24 +78,32 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
         },
       };
     };
-    const rootStyle = mergeStyles({ width: '600px', height: '350px' });
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+
     return (
-      <div className={rootStyle}>
-        <VerticalStackedBarChart
-          data={data}
-          height={350}
-          width={600}
-          yAxisTickCount={10}
-          href={'www.google.com'}
-          // eslint-disable-next-line react/jsx-no-bind
-          styles={customStyles}
-          chartLabel="Card title"
-          yMaxValue={120}
-          // eslint-disable-next-line react/jsx-no-bind
-          yAxisTickFormat={x => `${x} h`}
-          margins={{ left: 50 }}
-        />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <VerticalStackedBarChart
+            data={data}
+            height={this.state.height}
+            width={this.state.width}
+            yAxisTickCount={10}
+            href={'www.google.com'}
+            // eslint-disable-next-line react/jsx-no-bind
+            styles={customStyles}
+            chartLabel="Card title"
+            yMaxValue={120}
+            yMinValue={20}
+            // eslint-disable-next-line react/jsx-no-bind
+            yAxisTickFormat={x => `${x} h`}
+            margins={{ left: 50 }}
+          />
+        </div>
+      </>
     );
   }
 }
