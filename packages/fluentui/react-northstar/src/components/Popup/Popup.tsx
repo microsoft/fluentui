@@ -370,12 +370,9 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const shouldBlurClose = e => {
-    // const noContent = !popupContentRef.current;
-    // const noTarget = !e.currentTarget;
-    const isOutsideContent = !popupContentRef.current?.contains(e.relatedTarget);
-    const isOutsideTarget = !e.currentTarget?.contains(e.relatedTarget);
-
-    return e.relatedTarget && (isOutsideContent || isOutsideTarget);
+    const isInsideContent = popupContentRef.current?.contains(e.relatedTarget);
+    const isInsideTarget = e.currentTarget?.contains(e.relatedTarget);
+    return e.relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
