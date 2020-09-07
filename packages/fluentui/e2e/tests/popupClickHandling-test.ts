@@ -25,7 +25,9 @@ describe('Popup - on content click', () => {
   it('should keep it open on content click', async () => {
     await e2e.hover(popupTrigger); // opens popup
     await e2e.clickOn(popupTrigger); // clicks setting focus on trigger ( should keep open )
-    await e2e.clickOn(popupContentContainer); // clicks on the container ( focus goes to body but still open)
+
+    await e2e.clickOn(popupContentContainer); // clicks on the container (focus goes to body but still open)
+    await e2e.isFocused('body')
 
     // popup should be open
     expect(await e2e.exists(popupContent)).toBe(true);
