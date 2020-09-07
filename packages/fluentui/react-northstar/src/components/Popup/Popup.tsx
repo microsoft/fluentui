@@ -370,13 +370,12 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const shouldBlurClose = e => {
-    return (
-      isFromKeyboard() &&
-      (!e.currentTarget ||
-        !popupContentRef.current ||
-        !e.currentTarget.contains(e.relatedTarget) ||
-        !popupContentRef.current.contains(e.relatedTarget))
-    );
+    // const noContent = !popupContentRef.current;
+    // const noTarget = !e.currentTarget;
+    const isOutsideContent = !popupContentRef.current?.contains(e.relatedTarget);
+    const isOutsideTarget = !e.currentTarget?.contains(e.relatedTarget);
+
+    return e.relatedTarget && (isOutsideContent || isOutsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
