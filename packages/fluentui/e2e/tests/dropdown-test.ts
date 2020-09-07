@@ -14,7 +14,7 @@ describe('Dropdown', () => {
       await e2e.pressKey('ArrowDown'); // open dropdown list
       await e2e.pressKey('Tab'); // TAB from opened dropdown list
 
-      expect(await e2e.isFocused(triggerButton)).toBe(true);
+      await e2e.isFocused(triggerButton);
     });
 
     it('keeps focused on Shift+TAB from the dropdown list', async () => {
@@ -23,7 +23,7 @@ describe('Dropdown', () => {
       await e2e.pressKey('ArrowDown'); // open dropdown list
       await e2e.pressKey('Tab', 'Shift'); // Shift+TAB from opened dropdown list
 
-      expect(await e2e.isFocused(triggerButton)).toBe(true);
+      await e2e.isFocused(triggerButton);
     });
   });
 });

@@ -15,12 +15,11 @@ describe('Popup in ToolbarMenu', () => {
   it('Submenu can be opened using mouse', async () => {
     // opens menu
     await e2e.clickOn(moreButtonId);
-    expect(await e2e.exists(toolbarMenuId)).toBe(true);
+    await e2e.exists(toolbarMenuId);
 
     // opens submenu
     await e2e.clickOn(playId);
-
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(true);
+    await e2e.exists(toolbarMenuSubmenuId);
   });
 
   it('Submenu can be opened using keyboard', async () => {
@@ -29,34 +28,31 @@ describe('Popup in ToolbarMenu', () => {
 
     // opens menu
     await e2e.pressKey('Enter');
-    expect(await e2e.exists(toolbarMenuId)).toBe(true);
+    await e2e.exists(toolbarMenuId);
 
     // opens submenu
     await e2e.pressKey('Enter');
-
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(true);
+    await e2e.exists(toolbarMenuSubmenuId);
   });
 
   it('Submenu should be closed when clicking on some item that does not have submenu', async () => {
     // opens menu
     await e2e.clickOn(moreButtonId);
-    expect(await e2e.exists(toolbarMenuId)).toBe(true);
+    await e2e.exists(toolbarMenuId);
 
     // opens submenu
     await e2e.clickOn(playId);
-
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(true);
+    await e2e.exists(toolbarMenuSubmenuId);
 
     // opens second submenu
     await e2e.clickOn(playVideoId);
-
-    expect(await e2e.exists(hdId)).toBe(true);
+    await e2e.exists(hdId);
 
     // closes all menus
     await e2e.clickOn(hdId);
 
-    expect(await e2e.exists(toolbarMenuId)).toBe(false);
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(false);
+    await e2e.hidden(toolbarMenuId);
+    await e2e.hidden(toolbarMenuSubmenuId);
   });
 
   it('Submenu should be closed when pressing enter/space on some item that does not have submenu', async () => {
@@ -65,17 +61,15 @@ describe('Popup in ToolbarMenu', () => {
 
     // opens menu
     await e2e.pressKey('Enter');
-    expect(await e2e.exists(toolbarMenuId)).toBe(true);
+    await e2e.exists(toolbarMenuId);
 
     // opens submenu
     await e2e.pressKey('Enter');
-
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(true);
+    await e2e.exists(toolbarMenuSubmenuId);
 
     // closes all menus
     await e2e.pressKey('Enter');
-
-    expect(await e2e.exists(toolbarMenuId)).toBe(false);
-    expect(await e2e.exists(toolbarMenuSubmenuId)).toBe(false);
+    await e2e.hidden(toolbarMenuId);
+    await e2e.hidden(toolbarMenuSubmenuId);
   });
 });

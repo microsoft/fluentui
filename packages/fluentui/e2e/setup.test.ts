@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 import { safeLaunchOptions } from '@uifabric/build/puppeteer/puppeteer.config';
 import { E2EApi } from './e2eApi';
 
-jest.setTimeout(10000);
+jest.setTimeout(30000);
 
 let browser: puppeteer.Browser;
 let page: puppeteer.Page;

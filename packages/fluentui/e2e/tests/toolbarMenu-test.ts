@@ -14,50 +14,50 @@ describe('Toolbar menu on', () => {
   it('TAB moves focus to next tabbable element after toolbar', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);
-    expect(await e2e.exists(toolbarMenu)).toBe(true);
+    await e2e.exists(toolbarMenu);
 
     // TAB from opened menu
     await e2e.pressKey('Tab');
 
-    expect(await e2e.isFocused(afterToolbarId)).toBe(true);
-    expect(await e2e.exists(toolbarMenu)).toBe(false);
+    await e2e.isFocused(afterToolbarId);
+    await e2e.hidden(toolbarMenu);
   });
 
   it('Should toggle the menu', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);
-    expect(await e2e.exists(toolbarMenu)).toBe(true);
+    await e2e.exists(toolbarMenu);
 
     await e2e.clickOn(menuTrigger);
 
-    expect(await e2e.isFocused(menuTrigger)).toBe(true);
-    expect(await e2e.exists(toolbarMenu)).toBe(false);
+    await e2e.isFocused(menuTrigger);
+    await e2e.hidden(toolbarMenu);
   });
 
   it('Shift+TAB moves focus to previous tabbable element before toolbar', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);
-    expect(await e2e.exists(toolbarMenu)).toBe(true);
+    await e2e.exists(toolbarMenu);
 
     // Shift+TAB from opened menu
     await e2e.pressKey('Tab', 'Shift');
 
-    expect(await e2e.isFocused(beforeToolbarId)).toBe(true);
-    expect(await e2e.exists(toolbarMenu)).toBe(false);
+    await e2e.isFocused(beforeToolbarId);
+    await e2e.hidden(toolbarMenu);
   });
 
   it('moves focus to particular element, after press "Enter" on menu item', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);
-    expect(await e2e.exists(toolbarMenu)).toBe(true);
-    expect(await e2e.isFocused(menuItemButton(0))).toBe(true);
+    await e2e.exists(toolbarMenu);
+    await e2e.isFocused(menuItemButton(0));
 
     // press enter on first menu item
     await e2e.pressKey('Enter');
 
     // verify focus was moved to button, this action is defined in 'onClick'
-    expect(await e2e.isFocused(afterToolbarId)).toBe(true);
+    await e2e.isFocused(afterToolbarId);
     // verify menu was closed
-    expect(await e2e.exists(toolbarMenu)).toBe(false);
+    await e2e.hidden(toolbarMenu);
   });
 });

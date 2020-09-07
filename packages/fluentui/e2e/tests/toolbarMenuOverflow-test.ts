@@ -32,15 +32,14 @@ describe('Toolbar menu overflow', () => {
 
     // clicks to set focus on last un-wrapped item.
     await e2e.clickOn(toolbarItem(itemToBeHiddenIndex));
-
-    expect(await e2e.isFocused(toolbarItem(itemToBeHiddenIndex))).toBe(true);
+    await e2e.isFocused(toolbarItem(itemToBeHiddenIndex));
 
     // resizes the viewport to hide the focused item.
     await e2e.resizeViewport({ width: itemWidth * (itemsCount / 2) });
     await e2e.wait(500);
 
     // check that the focus was applied to first item as fall-back.
-    expect(await e2e.isFocused(toolbarItem(itemToReceiveFocusIndex))).toBe(true);
+    await e2e.isFocused(toolbarItem(itemToReceiveFocusIndex));
   });
 
   it('hiding focused wrapped item will set focus to first focusable element', async () => {
@@ -49,15 +48,14 @@ describe('Toolbar menu overflow', () => {
 
     // clicks to set focus on first wrapped item.
     await e2e.clickOn(toolbarItemWrapped(itemToBeHiddenIndex));
-
-    expect(await e2e.isFocused(toolbarItemWrapped(itemToBeHiddenIndex))).toBe(true);
+    await e2e.isFocused(toolbarItemWrapped(itemToBeHiddenIndex));
 
     // resizes the viewport to hide that item.
     await e2e.resizeViewport({ width: itemWidth * (itemsCount / 2) });
     await e2e.wait(500);
 
     // check that the focus was applied to first item as fall-back.
-    expect(await e2e.isFocused(toolbarItem(itemToReceiveFocusIndex))).toBe(true);
+    await e2e.isFocused(toolbarItem(itemToReceiveFocusIndex));
   });
 
   it('moves focus to particular element, after click on menu item', async () => {
@@ -65,18 +63,18 @@ describe('Toolbar menu overflow', () => {
     await e2e.wait(500);
 
     // wait menu trigger button exists and then opens menu
-    expect(await e2e.exists(menuTrigger)).toBe(true);
+    await e2e.exists(menuTrigger);
     await e2e.clickOn(menuTrigger);
 
     // verify menu was opened and last item exists
-    expect(await e2e.exists(toolbarMenu)).toBe(true);
-    expect(await e2e.exists(toolbarItemButton(itemsCount - 1))).toBe(true);
+    await e2e.exists(toolbarMenu);
+    await e2e.exists(toolbarItemButton(itemsCount - 1));
 
     // click on the last item in overflow menu where action in 'onClick' is defined
     await e2e.clickOn(toolbarItemButton(itemsCount - 1));
 
     // verify focus was moved to button and menu was closed
-    expect(await e2e.isFocused(buttonAfterToolbarId)).toBe(true);
-    expect(await e2e.exists(toolbarMenu)).toBe(false);
+    await e2e.isFocused(buttonAfterToolbarId);
+    await e2e.hidden(toolbarMenu);
   });
 });

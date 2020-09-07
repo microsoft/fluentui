@@ -35,47 +35,78 @@ export class E2EApi {
     return await this.page.hover(selector);
   };
 
-  public getAttributeValue = async (selector: string, attr) => {
-    return this.page.$eval(selector, (el, attribute) => el.getAttribute(attribute), attr);
+  public hasComputedStyle = async (
+    selector: string,
+    property: keyof CSSStyleDeclaration,
+    value: string,
+  ): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, property, value) => {
+        return window.getComputedStyle(document.querySelector(selector))[property] === value;
+      },
+      { timeout: 10 * 1000 },
+      selector,
+      property,
+      value,
+    );
   };
 
   public getPropertyValue = async (selector: string, prop) => {
     return this.page.$eval(selector, (el, prop) => el[prop], prop);
   };
 
-  public count = async (selector: string) => {
-    return (await this.page.$$(selector)).length;
+  public count = async (selector: string, count: number): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, count) => {
+        return document.querySelectorAll(selector).length === count;
+      },
+      { timeout: 10 * 1000 },
+      selector,
+      count,
+    );
   };
 
-  public exists = async (selector: string) => {
-    return (await this.count(selector)) > 0;
+  public exists = async (selector: string): Promise<void> => {
+    await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
   };
 
-  public clickOn = async (selector: string) => await (await this.getElement(selector)).click();
-
-  public clickOnPosition = async (selector: string, x: number, y: number) => {
-    const elementHandle = await this.getElement(selector);
-    const boundingBox = await elementHandle.boundingBox();
-
-    await this.page.mouse.click(Math.round(boundingBox.x) + x, Math.round(boundingBox.y) + y);
+  public hidden = async (selector: string): Promise<void> => {
+    await this.page.waitForSelector(selector, { hidden: true, timeout: 10 * 1000 });
   };
 
-  public textOf = async (selector: string) => {
-    const element = await this.getElement(selector);
-    return await (await element.getProperty('textContent')).jsonValue();
+  public clickOn = async (selector: string): Promise<void> => {
+    await (await this.getElement(selector)).click();
   };
 
-  public focusOn = async (selector: string) => await (await this.getElement(selector)).focus();
+  public textOf = async (selector: string, text: string): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, text) => {
+        return document.querySelector(selector).innerText === text;
+      },
+      { timeout: 10 * 1000 },
+      selector,
+      text,
+    );
+  };
 
-  public isFocused = async (selector: string) =>
-    await this.page.evaluate(selector => {
-      const activeElement = document.activeElement;
-      const selectorElement = document.querySelector(selector);
+  public focusOn = async (selector: string): Promise<void> => {
+    await (await this.getElement(selector)).focus();
+  };
 
-      return activeElement === selectorElement;
-    }, selector);
+  public isFocused = async (selector: string): Promise<void> => {
+    await this.page.waitForFunction(
+      selector => {
+        const activeElement = document.activeElement;
+        const selectorElement = document.querySelector(selector);
 
-  public pressKey = async (key: string, modifier?: string) => {
+        return activeElement === selectorElement;
+      },
+      { timeout: 10 * 1000 },
+      selector,
+    );
+  };
+
+  public pressKey = async (key: string, modifier?: string): Promise<void> => {
     if (modifier) {
       await this.page.keyboard.down(modifier);
     }
@@ -87,13 +118,13 @@ export class E2EApi {
     }
   };
 
-  public resizeViewport = async (size: Partial<Viewport>) => {
+  public resizeViewport = async (size: Partial<Viewport>): Promise<void> => {
     const { height, width } = this.page.viewport();
     await this.page.setViewport({ height, width, ...size });
   };
 
   // Once we update puppeteer we should replace this by using https://pptr.dev/#?product=Puppeteer&version=v5.2.1&show=api-mousewheeloptions
-  public simulatePageMove = async () => {
+  public simulatePageMove = async (): Promise<void> => {
     await this.page.evaluate(_ => {
       const type = 'move';
       const event = document.createEvent('Event') as TouchEvent;
@@ -103,5 +134,5 @@ export class E2EApi {
     });
   };
 
-  public wait = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
 }

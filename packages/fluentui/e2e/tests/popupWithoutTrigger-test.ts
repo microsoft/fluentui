@@ -10,30 +10,30 @@ describe('Popup without `trigger`', () => {
 
   it('Popup can be opened on button click', async () => {
     await e2e.clickOn(button);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
   });
 
   it('Popup can be closed on button click', async () => {
     await e2e.clickOn(button);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
 
     await e2e.clickOn(button);
-    expect(await e2e.exists(popupContent)).toBe(false);
+    await e2e.hidden(popupContent);
   });
 
   it('Popup can be closed on click outside', async () => {
     await e2e.clickOn(button);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
 
     await e2e.clickOn('body');
-    expect(await e2e.exists(popupContent)).toBe(false);
+    await e2e.hidden(popupContent);
   });
 
   it('Popup stays open on click inside', async () => {
     await e2e.clickOn(button);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
 
     await e2e.clickOn(popupContent);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
   });
 });
