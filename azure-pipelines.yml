@@ -5,6 +5,10 @@ pr:
 trigger:
   - master
 
+env:
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+  PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+
 variables:
   - group: fabric-variables
 
@@ -12,8 +16,6 @@ pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
-    variables:
-      CHROME_BIN: /usr/bin/google-chrome
     workspace:
       clean: all
     steps:
