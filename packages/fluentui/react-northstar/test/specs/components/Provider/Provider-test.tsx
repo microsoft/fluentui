@@ -326,7 +326,7 @@ describe('Provider', () => {
     it('reacts on "className" update and keeps node in HTML tree', () => {
       const className = 'a-sample-classname';
       const wrapper = mount(
-        <Provider className="foo">
+        <Provider className={className}>
           <PortalInner>
             <div id="sample" />
           </PortalInner>
