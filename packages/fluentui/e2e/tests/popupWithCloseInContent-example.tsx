@@ -9,6 +9,7 @@ export const selectors = {
 
 const PopupInPopupExample = () => {
   const [open, setOpen] = React.useState(false);
+
   return (
     <Popup
       on="hover"
