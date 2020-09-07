@@ -1,8 +1,30 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 31 Aug 2020 18:11:10 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.5.0)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.4.0..@uifabric/charting_v3.5.0)
+
+### Minor changes
+
+- making the prop 'showYAxisGridLines' as deprecated. ([PR #14872](https://github.com/microsoft/fluentui/pull/14872) by v-sivsar@microsoft.com)
+
+## [3.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.4.0)
+
+Thu, 03 Sep 2020 12:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.1..@uifabric/charting_v3.4.0)
+
+### Minor changes
+
+- VerticalStackedBarChart - add yMaxValue, yAxisTickFormat, margins ([PR #14830](https://github.com/microsoft/fluentui/pull/14830) by mibes@microsoft.com)
+
+### Patches
+
+- resize of area chart issue fixed ([PR #14840](https://github.com/microsoft/fluentui/pull/14840) by v-jasha@microsoft.com)
 
 ## [3.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.1)
 

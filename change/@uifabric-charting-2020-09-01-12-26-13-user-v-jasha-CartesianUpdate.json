@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "resize of area chart issue fixed",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-01T06:56:13.046Z"
-}

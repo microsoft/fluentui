@@ -22,6 +22,13 @@ export interface IAreaChartProps extends ICartesianChartProps {
   data: IChartProps;
 
   /**
+   * This prop is used to draw Y axis grid lines on the chart. Default value will be false
+   * @deprecated now lines are shown by default
+   * no need to use this prop
+   */
+  showYAxisGridLines?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
