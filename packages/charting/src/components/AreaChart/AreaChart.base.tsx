@@ -236,7 +236,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
     } else {
       this.setState({
-        isLegendSelected: true,
         activeLegend: customMessage,
       });
     }
