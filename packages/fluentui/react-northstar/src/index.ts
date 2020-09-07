@@ -46,6 +46,7 @@ export * from './components/Button/ButtonGroup';
 export * from './components/Button/ButtonContent';
 
 export * from './components/Breadcrumb/Breadcrumb';
+export * from './components/Breadcrumb/BreadcrumbItem';
 
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';

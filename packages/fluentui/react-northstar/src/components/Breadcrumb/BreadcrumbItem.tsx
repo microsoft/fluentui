@@ -8,37 +8,27 @@ import {
   useUnhandledProps,
   getElementType,
   childrenExist,
-  ShorthandConfig,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  ShorthandFactory,
-  createShorthandFactory,
-} from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-import { BreadcrumbItem } from './BreadcrumbItem';
+import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import { Accessibility, breadcrumbItemBehavior } from '@fluentui/accessibility';
 
-export interface BreadcrumbProps
-  extends UIComponentProps<BreadcrumbProps>,
+export interface BreadcrumbItemProps
+  extends UIComponentProps<BreadcrumbItemProps>,
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
 }
 
-export type BreadcrumbStylesProps = never;
+export type BreadcrumbItemStylesProps = never;
 
-export const breadcrumbClassName = 'ui-breadcrumb';
+export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 
 /**
- * Breadcrumb is a a component that indicates the path of the current page
+ * BreadcrumbItem an actionable item within a Breadcrumb
  * This component is currently UNSTABLE!
  */
-export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps, {}, {}>(
+export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -50,7 +40,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
       rtl: context.rtl,
     });
 
-    const { classes } = useStyles<BreadcrumbStylesProps>(composeOptions.displayName, {
+    const { classes } = useStyles<BreadcrumbItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
       mapPropsToInlineStyles: () => ({
@@ -74,7 +64,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <div role="list">{childrenExist(children) ? children : content}</div>
+        {childrenExist(children) ? children : content}
       </ElementType>,
     );
 
@@ -83,24 +73,15 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     return result;
   },
   {
-    className: breadcrumbClassName,
-    displayName: 'Breadcrumb',
+    className: breadcrumbItemClassName,
+    displayName: 'BreadcrumbItem',
     overrideStyles: true,
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
-) as ComponentWithAs<'nav', BreadcrumbProps> & {
-  create: ShorthandFactory<BreadcrumbProps>;
-  shorthandConfig: ShorthandConfig<BreadcrumbProps>;
+);
 
-  Item: typeof BreadcrumbItem;
+BreadcrumbItem.defaultProps = {
+  accessibility: breadcrumbItemBehavior,
 };
 
-Breadcrumb.defaultProps = {
-  as: 'nav',
-};
-
-Breadcrumb.propTypes = commonPropTypes.createCommon();
-
-Breadcrumb.Item = BreadcrumbItem;
-
-Breadcrumb.create = createShorthandFactory({ Component: Breadcrumb, mappedArrayProp: 'items' });
+BreadcrumbItem.propTypes = commonPropTypes.createCommon();
