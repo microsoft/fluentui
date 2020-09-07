@@ -369,9 +369,10 @@ export const Popup: React.FC<PopupProps> &
     return contentHandlerProps;
   };
 
-  const shouldBlurClose = e => {
-    const isInsideContent = popupContentRef.current?.contains(e.relatedTarget);
-    const isInsideTarget = e.currentTarget?.contains(e.relatedTarget);
+  const shouldBlurClose = (e: React.FocusEvent) => {
+    const relatedTarget = e.relatedTarget as Node;
+    const isInsideContent = popupContentRef.current?.contains(relatedTarget);
+    const isInsideTarget = e.currentTarget?.contains(relatedTarget);
     // When clicking in the popup content that has no tabIndex focus goes to body
     // We shouldn't close the popup in this case
     return e.relatedTarget && !(isInsideContent || isInsideTarget);
