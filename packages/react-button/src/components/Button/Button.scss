@@ -128,8 +128,7 @@
   }
 
   &._fluid {
-    width: 100%;
-    --button-maxWidth: 100%;
+    --button-width: 100%;
   }
 
   // TODO: confirm if we should support size prop.

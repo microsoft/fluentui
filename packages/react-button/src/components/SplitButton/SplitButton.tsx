@@ -14,9 +14,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
     menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
   });
 
-  // Styling hooks.
   useSplitButtonClasses(state);
-
   useFocusRects(state.ref);
 
   // TODO remove any

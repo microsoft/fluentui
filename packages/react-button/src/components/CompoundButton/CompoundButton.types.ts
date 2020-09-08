@@ -12,14 +12,14 @@ export interface CompoundButtonProps extends ButtonProps {
   /**
    * Container that wraps the children and secondaryContent slots.
    */
-  contentWrapper?: ShorthandProps;
+  contentContainer?: ShorthandProps;
 }
 
 export interface CompoundButtonState extends CompoundButtonProps {}
 
 export interface CompoundButtonSlots extends ButtonSlots {
   secondaryContent?: React.ElementType;
-  contentWrapper?: React.ElementType;
+  contentContainer?: React.ElementType;
 }
 
 export type CompoundButtonSlotProps = SlotProps<

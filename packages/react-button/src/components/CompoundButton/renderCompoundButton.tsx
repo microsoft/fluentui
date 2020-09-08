@@ -15,10 +15,10 @@ export const renderCompoundButton = (state: CompoundButtonState) => {
       {loading && <slots.loader {...slotProps.loader} />}
       {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
       {!iconOnly && (
-        <slots.contentWrapper {...slotProps.contentWrapper}>
+        <slots.contentContainer {...slotProps.contentContainer}>
           <slots.children {...slotProps.children} />
           <slots.secondaryContent {...slotProps.secondaryContent} />
-        </slots.contentWrapper>
+        </slots.contentContainer>
       )}
       {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
     </slots.root>
