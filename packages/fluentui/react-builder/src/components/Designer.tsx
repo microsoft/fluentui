@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import { FilesCodeIcon, AcceptIcon, ErrorIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
@@ -57,51 +57,6 @@ const focusTreeTitle = uuid => {
   // TODO: use refs
   const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
   element && element.focus();
-};
-
-const affectedNodes = [];
-
-function findDataBuilderId(element) {
-  const parentElement = element.parentElement;
-  if (!parentElement) {
-    return 'cannot find parent element';
-  }
-  const parentElementDataBuilderId = parentElement.getAttribute('data-builder-id');
-  if (parentElementDataBuilderId) {
-    return parentElementDataBuilderId;
-  }
-  return findDataBuilderId(parentElement);
-}
-
-const getDataBuilderId = element => {
-  if (!element) {
-    return 'data-builder-id not found';
-  }
-  const dataBuilderId = (element as any).getAttribute('data-builder-id');
-  if (dataBuilderId) {
-    return dataBuilderId;
-  }
-  return findDataBuilderId(element);
-};
-
-const processNode = (node, errDescription) => {
-  if (node.target[0] && node.target[1] && node.target[0].indexOf('frame') >= 0 && node.target[1].indexOf('html') >= 0) {
-    // return because these errors are reported generally for iframe, what is not real case
-    return;
-  }
-
-  const iframe: any = document.querySelector(`${node.target[0]}`);
-  const affectedElement = iframe.contentWindow.document.querySelector(`${node.target[1]}`);
-
-  const dataBuilderIdValue = getDataBuilderId(affectedElement);
-  affectedNodes.push({
-    html: node.html,
-    dataBuilderId: dataBuilderIdValue,
-    failureSummary: node.failureSummary,
-    description: errDescription,
-    target: node.target.length > 1 ? node.target.join(' ') : node.target[0],
-    xpath: node.xpath.length > 1 ? node.xpath.join(' ') : node.xpath[0],
-  });
 };
 
 type JSONTreeOrigin = 'store' | 'url';
@@ -393,13 +348,11 @@ export const Designer: React.FunctionComponent = () => {
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
-      const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
-      const $iframe = document.getElementById(iframeId);
+      const iframe = document.getElementsByTagName('iframe')[0];
+      const selectedComponentAxeErrors = [];
       axeCore.run(
-        $iframe,
+        iframe,
         {
-          xpath: true,
-          elementRef: true,
           rules: {
             // excluding rules which are related to the whole page not to components
             'page-has-heading-one': { enabled: false },
@@ -411,19 +364,19 @@ export const Designer: React.FunctionComponent = () => {
           if (err) {
             console.error('Axe failed', err);
           } else {
-            console.table(result.violations);
-            if (result.violations.length > 0) {
-              result.violations.forEach(violation => {
-                if (violation.nodes.length > 0) {
-                  const description = violation.description;
-                  violation.nodes.forEach(node => {
-                    processNode(node, description);
-                  });
+            result.violations.forEach(violation => {
+              violation.nodes.forEach(node => {
+                if (node.html.includes(`data-builder-id="${state.selectedJSONTreeElementUuid}"`)) {
+                  selectedComponentAxeErrors.push(
+                    node.failureSummary
+                      .replace('Fix all of the following:', '-')
+                      .replace('Fix any of the following:', '-'),
+                  );
                 }
               });
-            }
-            setAxeErrors(affectedNodes);
+            });
           }
+          setAxeErrors(selectedComponentAxeErrors);
         },
       );
     }
@@ -911,16 +864,25 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {
-              <ul>
-                {axeErrors.length > 0 &&
-                  axeErrors.map(error => (
+            {axeErrors.length > 0 && (
+              <div
+                style={{
+                  background: '#e3404022',
+                }}
+              >
+                <h4 style={{ padding: '0rem 0.7rem', marginBottom: '0rem' }}>
+                  <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility Errors
+                </h4>
+                <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
+                  {axeErrors.map(error => (
                     <li>
-                      <strong>{error.dataBuilderId}</strong>
+                      <strong>AXE</strong>&nbsp;
+                      {error}
                     </li>
                   ))}
-              </ul>
-            }
+                </ul>
+              </div>
+            )}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
