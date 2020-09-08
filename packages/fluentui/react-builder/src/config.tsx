@@ -32,17 +32,18 @@ export const EXCLUDED_COMPONENTS = [
   'AttachmentDescription',
   'AttachmentIcon',
   'ChatMessageDetails',
-  'ChatMessageHeaders',
+  'ChatMessageHeader',
   'ChatMessageReadStatus',
   'DatepickerCalendarCell',
   'DatepickerCalendarHeader',
   'DividerContent',
   'HeaderDescription',
   'SvgIcon',
+  'TooltipContent',
   'FlexItem',
   'ItemLayout',
   'DropdownSelectedItem',
-  'DropdownSearchItem',
+  'DropdownSearchInput',
   'FormFieldCustom',
   'FormMessage',
   'InputLabel',
@@ -492,13 +493,54 @@ export const DRAGGING_ELEMENTS = {
     props: {} as FUI.SliderProps,
   },
 
-  // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
+  SplitButton: {
+    props: {
+      menu: [
+        {
+          key: 'group',
+          content: 'New group message',
+        },
+        {
+          key: 'channel',
+          content: 'New channel message',
+        },
+      ],
+      button: {
+        content: 'New conversation',
+        'aria-roledescription': 'splitbutton',
+        'aria-describedby': 'instruction-message',
+      },
+      toggleButton: {
+        'aria-label': 'more options',
+      },
+    },
+  } as FUI.SplitButtonProps,
 
   Status: {
     props: { state: 'success' } as FUI.StatusProps,
   },
 
-  // Table: { props: { content: 'Table' } as FUI.TableProps },
+  Table: {
+    props: {
+      header: {
+        items: ['id', 'Name', 'Picture', 'Age'],
+      },
+      rows: [
+        {
+          key: 1,
+          items: ['1', 'Roman van von der Longername', 'None', '30 years'],
+        },
+        {
+          key: 2,
+          items: ['2', 'Alex', 'None', '1 year'],
+        },
+        {
+          key: 3,
+          items: ['3', 'Ali', 'None', '30000000000000 years'],
+        },
+      ],
+    },
+  } as FUI.TableProps,
 
   Text: {
     props: { content: 'Text' } as FUI.TextProps,
