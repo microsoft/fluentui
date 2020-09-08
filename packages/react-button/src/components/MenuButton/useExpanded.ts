@@ -70,8 +70,8 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
 
   // Assign extra props to the menu slot.
   draftState.menu = {
-    ...draftState.menu,
     target: rootRef,
+    ...draftState.menu,
     onDismiss: React.useCallback(() => {
       onMenuDismiss?.();
 

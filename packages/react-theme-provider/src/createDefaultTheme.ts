@@ -54,6 +54,8 @@ export const defaultTokens: Tokens = {
       contentColor: 'var(--acent-pressed-contentColor)',
     },
   },
+
+  // TODO: this should be a variant.
   ghost: {
     background: 'var(--body-background)',
     borderColor: 'transparent',
@@ -101,6 +103,8 @@ export const defaultTokens: Tokens = {
       iconColor: '#004578',
     },
   },
+
+  // TODO: these should not be here.
   button: {
     size: {
       // smallest size supported by default theme is 24px.
@@ -112,7 +116,11 @@ export const defaultTokens: Tokens = {
       larger: '48px',
       largest: '64px',
     },
-    padding: '0 16px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    paddingTop: '0',
+    paddingBottom: '0',
+    minWiedth: '80px',
     minHeight: 'var(--button-size-regular)',
     contentGap: '10px',
     iconSize: '16px',
@@ -124,6 +132,8 @@ export const defaultTokens: Tokens = {
     fontWeight: 400,
     focusColor: '#605e5c',
     focusInnerColor: '#ffffff',
+    focusWidth: '2px',
+    innerFocusWidth: '2px',
     background: '#ffffff',
     borderColor: '#8a8886',
     contentColor: '#323130',
@@ -132,6 +142,7 @@ export const defaultTokens: Tokens = {
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
+
     disabled: {
       background: '#f3f2f1',
       borderColor: '#f3f2f1',
@@ -139,6 +150,7 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--button-disabled-contentColor)',
       dividerColor: '#c8c6c4',
     },
+
     hovered: {
       background: '#f3f2f1',
       borderColor: '#8a8886',
@@ -146,6 +158,7 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
     },
+
     pressed: {
       background: '#edebe9',
       borderColor: '#8a8886',
@@ -153,6 +166,7 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
     },
+
     focused: {
       background: 'var(--button-background)',
       borderColor: 'var(--button-borderColor)',
@@ -160,10 +174,12 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--button-iconColor)',
       menuIconColor: 'var(--button-menuIconColor)',
     },
+
     checked: {
       background: 'var(--button-pressed-background)',
       contentColor: 'var(--button-pressed-contentColor)',
     },
+
     checkedHovered: {
       background: 'var(--button-pressed-background)',
       contentColor: 'var(--button-pressed-contentColor)',

@@ -22,7 +22,7 @@ export type ButtonProps = ComponentProps &
     /**
      * Shorthand children content within the button.
      */
-    children?: ShorthandProps;
+    content?: ShorthandProps;
 
     /**
      * Defines the href to navigate to. If applied, will render the button as an anchor
@@ -105,7 +105,10 @@ export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHT
 
 export type ButtonTokenSet = ColorTokenSet & {
   /* sizing */
-  padding: string;
+  paddingLeft: string;
+  paddingRight: string;
+  paddingTop: string;
+  paddingBottom: string;
   margin: string;
   height: string;
   minWidth: string;
@@ -114,6 +117,10 @@ export type ButtonTokenSet = ColorTokenSet & {
   contentGap: string;
   iconSize: string;
   borderRadius: string;
+  borderTopLeftRadius: string;
+  borderTopRightRadius: string;
+  borderBottomLeftRadius: string;
+  borderBottomRightRadius: string;
   borderWidth: string;
   boxShadow: string;
   width: string;

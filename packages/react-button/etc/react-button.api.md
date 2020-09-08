@@ -19,7 +19,7 @@ export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | 
 export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
-    children?: ShorthandProps;
+    content?: ShorthandProps;
     href?: string;
     target?: string;
     circular?: boolean;
@@ -58,7 +58,10 @@ export interface ButtonState extends ButtonProps {
 
 // @public (undocumented)
 export type ButtonTokenSet = ColorTokenSet & {
-    padding: string;
+    paddingLeft: string;
+    paddingRight: string;
+    paddingTop: string;
+    paddingBottom: string;
     margin: string;
     height: string;
     minWidth: string;
@@ -67,6 +70,10 @@ export type ButtonTokenSet = ColorTokenSet & {
     contentGap: string;
     iconSize: string;
     borderRadius: string;
+    borderTopLeftRadius: string;
+    borderTopRightRadius: string;
+    borderBottomLeftRadius: string;
+    borderBottomRightRadius: string;
     borderWidth: string;
     boxShadow: string;
     width: string;
@@ -198,7 +205,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: Record<string, any>) => void;
+export const useButtonClasses: (state: ButtonState) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
@@ -216,9 +223,6 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
@@ -228,19 +232,10 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
-export const useSplitButtonState: (state: SplitButtonState) => void;
-
-// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
-
-// @public (undocumented)
-export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
 
 // (No @packageDocumentation comment for this package)
