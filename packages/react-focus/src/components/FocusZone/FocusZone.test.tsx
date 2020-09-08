@@ -6,6 +6,7 @@ import { getCode, EnterKey } from '@fluentui/keyboard-key';
 import { setRTL, KeyCodes } from '@uifabric/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
+import { isConformant } from '../../common/isConformant';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -72,6 +73,12 @@ describe('FocusZone', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: FocusZone,
+    displayName: 'FocusZone',
+    disabledTests: ['as-renders-fc', 'as-renders-react-class', 'as-passes-as-value', 'has-top-level-file'],
   });
 
   it('can use arrows vertically', () => {
