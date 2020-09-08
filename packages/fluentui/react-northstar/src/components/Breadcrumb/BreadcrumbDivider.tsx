@@ -75,7 +75,6 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
   {
     className: breadcrumbDividerClassName,
     displayName: 'BreadcrumbDivider',
-    overrideStyles: true,
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
