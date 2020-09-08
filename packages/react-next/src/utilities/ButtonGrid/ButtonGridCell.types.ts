@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
 
-export interface IGridCellProps<T> {
+export interface IButtonGridCellProps<T> {
   /**
    * The option that will be made available to the user
    */
