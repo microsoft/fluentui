@@ -1,10 +1,13 @@
 import { Accessibility } from '../../types';
 
 /**
+ * @description
+ * Breadcrumb divider is usually only visual representation and therefore is hidden from screen readers.
+ *
  * @specification
- * Indicator is usually only visual representation and therefore is hidden from screen readers, unless 'aria-label' property is provided.
+ * Adds attribute 'aria-hidden=true' to 'root' slot.
  */
-export const BreadcrumbDividerBehavior: Accessibility<BreadcrumbDividerBehaviorProps> = () => ({
+export const breadcrumbDividerBehavior: Accessibility<BreadcrumbDividerBehaviorProps> = () => ({
   attributes: {
     root: {
       'aria-hidden': true,
