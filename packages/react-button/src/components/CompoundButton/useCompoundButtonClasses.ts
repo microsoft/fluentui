@@ -47,10 +47,6 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     },
   ],
 
-  _disabled: {
-    '--button-secondaryContentColor': 'var(--button-disabled-secondaryContentColor)',
-  },
-
   _iconOnly: {
     '--button-minHeight': 'var(--button-size-regular)',
     '--button-padding': 0,
@@ -69,5 +65,9 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     '--button-focused-secondaryContentColor': 'var(--accent-focused-secondaryContentColor)',
     '--button-hovered-secondaryContentColor': 'var(--accent-hovered-secondaryContentColor)',
     '--button-pressed-secondaryContentColor': 'var(--accent-pressed-secondaryContentColor)',
+  },
+
+  _disabled: {
+    '--button-secondaryContentColor': 'var(--button-disabled-secondaryContentColor)',
   },
 });
