@@ -2,14 +2,14 @@ import * as React from 'react';
 import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
 import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
-const Types = () => (
-  <ExampleSection title="Types">
+const Content = () => (
+  <ExampleSection title="Content">
     <ComponentExample
-      title="Default"
-      description="A default breadcrumb."
-      examplePath="components/Breadcrumb/Types/BreadcrumbExample"
+      title="Configuring divider"
+      description="The divider can be customized"
+      examplePath="components/Breadcrumb/Content/BreadcrumbExampleIconDivider"
     />
   </ExampleSection>
 );
 
-export default Types;
+export default Content;
