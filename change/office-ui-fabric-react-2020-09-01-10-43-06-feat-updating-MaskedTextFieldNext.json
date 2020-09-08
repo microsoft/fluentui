@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps.",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-01T17:43:06.903Z"
+}

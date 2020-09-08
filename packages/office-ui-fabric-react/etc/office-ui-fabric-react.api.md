@@ -5577,6 +5577,15 @@ export interface IMarqueeSelectionStyles {
 }
 
 // @public
+export interface IMaskedTextFieldProps extends ITextFieldProps {
+    mask?: string;
+    maskChar?: string;
+    maskFormat?: {
+        [key: string]: RegExp;
+    };
+}
+
+// @public
 export interface IMaskedTextFieldState {
     displayValue: string;
     maskCursorPosition?: number;
@@ -7759,8 +7768,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
+    // @deprecated (undocumented)
     mask?: string;
+    // @deprecated (undocumented)
     maskChar?: string;
+    // @deprecated (undocumented)
     maskFormat?: {
         [key: string]: RegExp;
     };
@@ -8202,14 +8214,14 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: ITextFieldProps);
+export class MaskedTextField extends React.Component<IMaskedTextFieldProps, IMaskedTextFieldState> implements ITextField {
+    constructor(props: IMaskedTextFieldProps);
     // (undocumented)
     blur(): void;
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    static defaultProps: ITextFieldProps;
+    static defaultProps: IMaskedTextFieldProps;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -8229,7 +8241,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     // (undocumented)
     setValue(newValue: string): void;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
+    UNSAFE_componentWillReceiveProps(newProps: IMaskedTextFieldProps): void;
     // (undocumented)
     readonly value: string | undefined;
 }

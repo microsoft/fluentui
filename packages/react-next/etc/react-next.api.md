@@ -1148,10 +1148,19 @@ export enum ImageLoadState {
     notLoaded = 0
 }
 
+// @public (undocumented)
+export interface IMaskedTextField extends ITextField {
+    value: string | undefined;
+}
+
 // @public
-export interface IMaskedTextFieldState {
-    displayValue: string;
-    maskCursorPosition?: number;
+export interface IMaskedTextFieldProps extends ITextFieldProps {
+    componentRef?: IRefObject<IMaskedTextField>;
+    mask?: string;
+    maskChar?: string;
+    maskFormat?: {
+        [key: string]: RegExp;
+    };
 }
 
 // @public (undocumented)
@@ -2031,15 +2040,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLDivElement>;
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
-    mask?: string;
-    maskChar?: string;
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
@@ -2115,37 +2121,7 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: ITextFieldProps);
-    // (undocumented)
-    blur(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: ITextFieldProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    select(): void;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    setSelectionEnd(value: number): void;
-    // (undocumented)
-    setSelectionRange(start: number, end: number): void;
-    // (undocumented)
-    setSelectionStart(value: number): void;
-    // (undocumented)
-    setValue(newValue: string): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
-    // (undocumented)
-    readonly value: string | undefined;
-}
+export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{
