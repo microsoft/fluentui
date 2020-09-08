@@ -843,7 +843,6 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
-                  role="main"
                 />
               </ErrorBoundary>
             </BrowserWindow>

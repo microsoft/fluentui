@@ -18,7 +18,7 @@
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
     "use-immer": "^0.4.1",
-    "axe-core": "3.3.2"
+    "axe-core": "3.5.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
