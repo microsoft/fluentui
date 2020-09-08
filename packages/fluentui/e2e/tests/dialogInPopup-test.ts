@@ -2,10 +2,10 @@ import { selectors } from './dialogInPopup-example';
 
 const dialogCancel = `#${selectors.dialogCancel}`;
 const dialogHeader = `.${selectors.dialogHeader}`;
-const dialogOverlay = `.${selectors.dialogOverlay}`;
 const dialogTrigger = `#${selectors.dialogTrigger}`;
 const popupContent = `#${selectors.popupContent}`;
 const popupTrigger = `#${selectors.popupTrigger}`;
+const overlayPoint = `#${selectors.overlayPoint}`;
 
 // https://github.com/microsoft/fluent-ui-react/issues/1674
 describe('Dialog in Popup', () => {
@@ -43,8 +43,8 @@ describe('Dialog in Popup', () => {
   it('"Popup" will be kept open on a click inside "Dialog" overlay', async () => {
     await e2e.clickOn(popupTrigger);
     await e2e.clickOn(dialogTrigger);
-    await e2e.clickOnPosition(dialogOverlay, 0, 0);
 
+    await e2e.clickOn(overlayPoint);
     await e2e.exists(popupContent);
     await e2e.hidden(dialogHeader);
   });

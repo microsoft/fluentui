@@ -2,12 +2,11 @@ import { selectors } from './dialogInDialog-example';
 
 const outerClose = `#${selectors.outerClose}`;
 const outerHeader = `#${selectors.outerHeader}`;
-const outerOverlay = `#${selectors.outerOverlay}`;
 const outerTrigger = `#${selectors.outerTrigger}`;
 const innerClose = `#${selectors.innerClose}`;
 const innerHeader = `#${selectors.innerHeader}`;
 const innerTrigger = `#${selectors.innerTrigger}`;
-const innerOverlay = `#${selectors.innerOverlay}`;
+const overlayPoint = `#${selectors.overlayPoint}`;
 
 // https://github.com/microsoft/fluent-ui-react/issues/1674
 describe('Dialog in Dialog', () => {
@@ -37,11 +36,11 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
 
-    await e2e.clickOnPosition(innerOverlay, 0, 0);
+    await e2e.clickOn(overlayPoint);
     await e2e.exists(outerHeader);
     await e2e.hidden(innerHeader);
 
-    await e2e.clickOnPosition(outerOverlay, 0, 0);
+    await e2e.clickOn(overlayPoint);
     await e2e.hidden(outerHeader);
     await e2e.hidden(innerHeader);
   });

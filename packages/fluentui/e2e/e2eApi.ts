@@ -78,13 +78,6 @@ export class E2EApi {
     await (await this.getElement(selector)).click();
   };
 
-  public clickOnPosition = async (selector: string, x: number, y: number): Promise<void> => {
-    const elementHandle = await this.getElement(selector);
-    const boundingBox = await elementHandle.boundingBox();
-
-    await this.page.mouse.click(Math.round(boundingBox.x) + x, Math.round(boundingBox.y) + y);
-  };
-
   public textOf = async (selector: string, text: string): Promise<void> => {
     await this.page.waitForFunction(
       (selector, text) => {
