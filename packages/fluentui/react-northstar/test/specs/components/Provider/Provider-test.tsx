@@ -2,7 +2,6 @@ import { useFluentContext, RendererContext } from '@fluentui/react-bindings';
 import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
-import * as faker from 'faker';
 import * as React from 'react';
 
 import { Provider } from 'src/components/Provider/Provider';
@@ -310,7 +309,7 @@ describe('Provider', () => {
 
   describe('document.body', () => {
     it('adds an element to document.body', () => {
-      const className = faker.lorem.word();
+      const className = 'a-sample-classname';
       const wrapper = mount(
         <Provider className={className}>
           <div />
@@ -325,7 +324,7 @@ describe('Provider', () => {
     });
 
     it('reacts on "className" update and keeps node in HTML tree', () => {
-      const className = faker.lorem.word();
+      const className = 'a-sample-classname';
       const wrapper = mount(
         <Provider className={className}>
           <PortalInner>
@@ -337,7 +336,7 @@ describe('Provider', () => {
       expect(document.querySelector(`.${className}`)).toBeInTheDocument();
       expect(document.querySelector(`.${className} #sample`)).toBeInTheDocument();
 
-      const newClassName = faker.lorem.word();
+      const newClassName = 'an-another-classname';
       wrapper.setProps({ className: newClassName });
 
       expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "update back-compat tests for ContextualMenu in react-next",
+  "packageName": "@fluentui/react-next",
+  "email": "jokonuko@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-08T19:22:55.111Z"
+}
