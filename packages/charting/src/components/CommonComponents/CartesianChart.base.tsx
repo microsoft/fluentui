@@ -78,7 +78,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this._fitParentContainer();
     }
     // Callback for margins to the chart
-    this.props.getmargins(this.margins);
+    this.props.getmargins && this.props.getmargins(this.margins);
 
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
@@ -281,7 +281,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
-  private _fitParentContainer(): void {
+  private _fitParentContainer(fromDidUpdate?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
 
     this._reqID = requestAnimationFrame(() => {

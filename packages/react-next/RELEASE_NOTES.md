@@ -63,12 +63,12 @@ TODO: document any API or functionality changes
 
 ### Function component conversions
 
-- The `ref` prop for such components no longer refers to a component class instance; instead, the ref is forwarded to the underlying DOM. 
+- The `ref` prop for such components no longer refers to a component class instance; instead, the ref is forwarded to the underlying DOM.
   - We will ensure all function components correctly return a reference to the root DOM element.
   - For components with an imperative API, you can still access that via `componentRef`.
-  - See React's docs for [`useRef`](https://reactjs.org/docs/hooks-reference.html#useref) and [`forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref) for more on using refs with function components. 
-- The [deprecated `ReactDOM.findDOMNode` API](https://reactjs.org/docs/react-dom.html#finddomnode) can't be used to find root elements (this is a React limitation).  Instead, use `ref` as described above.
-- Class extension of most components is no longer supported. 
+  - See React's docs for [`useRef`](https://reactjs.org/docs/hooks-reference.html#useref) and [`forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref) for more on using refs with function components.
+- The [deprecated `ReactDOM.findDOMNode` API](https://reactjs.org/docs/react-dom.html#finddomnode) can't be used to find root elements (this is a React limitation). Instead, use `ref` as described above.
+- Class extension of most components is no longer supported.
   - Due to time constraints, not all components will be converted by the time of v8 release. However, they may be converted at any time in the future within a minor version.
   - Exception: Class extension of Pickers will continue to be supported for now since the current architecture relies on it. (This will change in a future major release, but not within v8.)
 - Accessing `state` of converted components is no longer possible.
@@ -86,6 +86,13 @@ TODO: document any API or functionality changes
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+### SwatchColorPicker
+
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ## Other notable changes
 
