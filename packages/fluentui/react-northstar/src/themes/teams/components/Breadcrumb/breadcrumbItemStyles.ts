@@ -1,12 +1,10 @@
 import { BreadcrumbItemStylesProps } from '../../../../components/Breadcrumb/BreadcrumbItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-export const breadcrumbItemStyles: ComponentSlotStylesPrepared<BreadcrumbItemStylesProps, BreadcrumbVariables> = {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+export const breadcrumbItemStyles: ComponentSlotStylesPrepared<BreadcrumbItemStylesProps, {}> = {
+  root: ({ props: p }): ICSSInJSStyle => {
     return {
       display: 'inline-block',
     };
   },
-
-  breadcrumb: ({ variables: v }) => ({ zIndex: v.breadcrumbZIndex }),
 };
