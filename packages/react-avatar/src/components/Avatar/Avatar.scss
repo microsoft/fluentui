@@ -1,20 +1,8 @@
 // Define default variable values
 :root {
-  --avatarSizeSmallest: 20px;
-  --avatarSizeSmaller: 24px;
-  --avatarSizeSmall: 28px;
-  --avatarSizeMedium: 32px;
-  --avatarSizeLarge: 44px;
-  --avatarSizeLarger: 64px;
-  --avatarSizeLargest: 96px;
-  --avatarBorderColor: transparent;
-  --avatarBorderWidth: 0;
-  --avatarBorderRadius: 9999px;
-
-  --squareAvatarBorderRadius: 3px;
-  --statusBorderColor: transparent;
-  --statusBorderWidth: 2px;
-  --avatarFill: rgb(232, 232, 232);
+  --avatar-size: 32px;
+  --avatar-borderRadius: 9999px;
+  --avatar-background: rgb(232, 232, 232);
 }
 
 // Root slot
@@ -24,21 +12,21 @@
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
-  width: var(--avatarSize, var(--avatarSizeMedium));
-  height: var(--avatarSize, var(--avatarSizeMedium));
+  width: var(--avatar-size);
+  height: var(--avatar-size);
 }
 
 // Image slot
 .image {
   position: absolute;
-  border-radius: var(--avatarBorderRadius);
+  border-radius: var(--avatar-borderRadius);
   top: 0;
   left: 0;
-  width: var(--avatarSize, var(--avatarSizeMedium));
-  height: var(--avatarSize, var(--avatarSizeMedium));
-  height: 100%;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   object-fit: cover;
   vertical-align: top;
+  clip-path: var(--avatar-clipPath);
 }
 
 // Label slot
@@ -46,64 +34,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--avatarFill);
+  background-color: var(--avatar-background);
 
-  font-size: calc(var(--avatarSize) / 2.333);
-  width: var(--avatarSize, var(--avatarSizeMedium));
-  height: var(--avatarSize, var(--avatarSizeMedium));
+  font-size: var(--avatar-fontSize, calc(var(--avatar-size) / 2.333));
+  width: var(--avatar-size);
+  height: var(--avatar-size);
 
   vertical-align: top;
   text-align: center;
   padding: 0px;
-  border-radius: 99999px;
+  border-radius: var(--avatar-borderRadius);
+  clip-path: var(--avatar-clipPath);
 }
 
-// Status slot
-.status {
+// Badge slot
+.badge {
   position: absolute;
   bottom: 0;
   right: 0;
-  box-shadow: 0 0 0 var(--statusBorderWidth) var(--statusBorderColor);
-}
 
-// Root modifier when props.size_ smallest
-._size_smallest {
-  --avatarSize: var(--avatarSizeSmallest);
-}
-
-// Root modifier when props.size_ smaller
-._size_smaller {
-  --avatarSize: var(--avatarSizeSmaller);
-}
-
-// Root modifier when props.size_ small
-._size_small {
-  --avatarSize: var(--avatarSizeSmall);
-}
-
-// Root modifier when props.size_ large
-._size_large {
-  --avatarSize: var(--avatarSizeLarge);
-}
-
-// Root modifier when props.size_ larger
-// larger-abc123
-._size_larger {
-  --avatarSize: var(--avatarSizeLarger);
-}
-
-// Root modifier when props.size_ largest
-._size_largest {
-  --avatarSize: var(--avatarSizeLargest);
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Modifiers
 ._square {
-  .image {
-    border-radius: var(--squareAvatarBorderRadius);
-  }
+  --avatar-borderRadius: calc(var(--avatar-size) / 12);
+}
 
-  .label {
-    border-radius: var(--squareAvatarBorderRadius);
-  }
+._display_icon {
+  // The icon should be half the size of the avatar
+  --avatar-fontSize: calc(var(--avatar-size) / 2);
 }

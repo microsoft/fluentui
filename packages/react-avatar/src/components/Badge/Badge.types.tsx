@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
 
-export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Renders the status using a custom color to be inlined using  `style`.
+   * Renders the badge using a custom color to be inlined using  `style`.
    * Note: May want to deprecate in favor of variables.
    */
   color?: string;
@@ -21,6 +21,21 @@ export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 
   /** The pre-defined state values which can be consumed directly. */
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
+
+  /** Style tokens */
+  tokens?: BadgeTokenSet;
 }
 
-export type StatusState = StatusProps;
+/**
+ * Style tokens for Badge
+ */
+export type BadgeTokenSet = {
+  size?: string;
+  borderColor?: string;
+  borderWidth?: string;
+  borderRadius?: string;
+  color?: string;
+  iconColor?: string;
+};
+
+export type BadgeState = BadgeProps;

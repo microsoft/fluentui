@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.134.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.3)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.2..office-ui-fabric-react_v7.134.3)
+
+### Patches
+
+- Factor out hook-based inner logic from DetailsList ([PR #12870](https://github.com/microsoft/fluentui/pull/12870) by tmichon@microsoft.com)
 
 ## [7.134.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.2)
 

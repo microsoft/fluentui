@@ -58,7 +58,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
 
   return {
     ':focus': {
-      outline: 0,
+      outline: 'none',
     },
     ':focus-visible': {
       borderColor: 'transparent',
