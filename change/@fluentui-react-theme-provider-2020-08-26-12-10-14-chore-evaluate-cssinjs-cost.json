@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Minor tweaks in theme styling.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-26T19:10:14.436Z"
-}
