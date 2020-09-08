@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon, EyeIcon } from '@fluentui/react-icons-northstar';
+import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
