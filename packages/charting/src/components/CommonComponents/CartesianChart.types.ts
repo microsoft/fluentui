@@ -277,6 +277,7 @@ export interface IYValueHover {
   legend?: string;
   y?: number;
   color?: string;
+  data?: string | number;
 }
 
 export interface IChildProps {

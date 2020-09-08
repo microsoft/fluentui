@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -46,6 +46,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _refArray: IRefArrayData[];
+  private _barRefArray: IRefArrayData[];
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
 
@@ -127,7 +128,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isMultiStackCallout={false}
+        isMultiStackCallout={this.props.isMultiStackCallout!}
         barwidth={this._barWidth}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
@@ -260,28 +261,48 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._refArray[index] = { index: legendTitle, refElement: element };
   }
 
-  private _onBarHover(
-    point: IVSChartDataPoint,
+  // private _barRefCallback = (barElement: SVGGElement, index: number): void => {
+  //   this._barRefArray.push({ index: index, refElement: barElement });
+  // };
+
+  private _onRectHover(
     xAxisPoint: string,
-    color: string,
+    point: IVSChartDataPoint,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
-    mouseEvent.persist();
+    mouseEvent.persist(); // getting error here
     if (
       this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      (this.state.isLegendSelected && this.state.selectedLegendTitle === point!.legend)
     ) {
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
         selectedLegendTitle: point.legend,
         dataForHoverCard: point.data,
-        color: color,
+        color: point.color!,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
       });
     }
   }
+
+  private _onBarHover = (xAxisPoint: string, mouseEvent: React.MouseEvent<SVGPathElement>): void => {
+    if (this.props.isMultiStackCallout) {
+      const found = find(
+        this._points,
+        (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
+          sinlgePoint.xAxisPoint === xAxisPoint,
+      );
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        // selectedLegendTitle: point.legend,
+        YValueHover: found!.chartData,
+        hoverXValue: xAxisPoint,
+      });
+    }
+  };
 
   private _onBarFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, refArrayIndexNumber: number): void {
     if (
@@ -363,9 +384,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             }}
             data-is-focusable={true}
             focusable={'true'}
-            onMouseOver={this._onBarHover.bind(this, point, singleChartData.xAxisPoint, color)}
-            onMouseMove={this._onBarHover.bind(this, point, singleChartData.xAxisPoint, color)}
             aria-labelledby={this._calloutId}
+            onMouseOver={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
+            onMouseMove={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
             onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber)}
             onBlur={this._onBarLeave}
@@ -374,9 +395,38 @@ export class VerticalStackedBarChartBase extends React.Component<
         );
       });
 
-      return <g key={indexNumber}>{singleBar}</g>;
+      return (
+        <g
+          key={indexNumber}
+          id="mySIngleBar"
+          // ref={(e: SVGRectElement) => {
+          //   this._barRefCallback(e);
+          // }}
+          onMouseOver={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
+          onMouseMove={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
+          onMouseLeave={this._onBarLeave}
+          onFocus={this._onSingleBarFocus.bind(this, singleChartData.xAxisPoint)}
+          onBlur={this._onBarLeave}
+        >
+          {singleBar}
+        </g>
+      );
     });
     return bars;
+  };
+
+  private _onSingleBarFocus = (xAxisPoint: string | number) => {
+    const found = find(
+      this._points,
+      (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
+        sinlgePoint.xAxisPoint === xAxisPoint,
+    );
+    this.setState({
+      refSelected: 'gkl',
+      isCalloutVisible: true,
+      YValueHover: found!.chartData,
+      hoverXValue: xAxisPoint,
+    });
   };
 
   private _createNumericBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {

@@ -96,8 +96,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             // eslint-disable-next-line react/jsx-no-bind
             styles={customStyles}
             chartLabel="Card title"
+            isMultiStackCallout
             yMaxValue={120}
-            yMinValue={20}
+            yMinValue={10}
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={x => `${x} h`}
             margins={{ left: 50 }}

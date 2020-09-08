@@ -33,6 +33,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   colors?: string[];
 
   /**
+   * To display multi stack callout or single callout
+   */
+  isMultiStackCallout?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;

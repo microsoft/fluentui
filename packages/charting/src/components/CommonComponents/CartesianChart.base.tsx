@@ -245,6 +245,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       y?: number;
       color?: string;
       yAxisCalloutData?: string | { [id: string]: number };
+      data?: string | number;
     },
     index: number,
     yValueHoverSubCountsExists: boolean,
@@ -268,7 +269,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           >
             <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
             <div className={this._classNames.calloutContentY}>
-              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
             </div>
           </div>
         </div>
