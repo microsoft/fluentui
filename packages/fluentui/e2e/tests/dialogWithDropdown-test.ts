@@ -7,7 +7,7 @@ const dropdownSelector = `#${selectors.dropdown}`;
 const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
 const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
 
-describe('Dialog scroll', () => {
+describe('Dialog with dropdown', () => {
   beforeEach(async () => {
     await e2e.gotoTestCase(__filename, dialogTrigger);
   });
