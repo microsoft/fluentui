@@ -28,7 +28,7 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
   const id = useId('checkbox-', props.id);
 
   const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
+  const mergedRootRefs: React.Ref<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
