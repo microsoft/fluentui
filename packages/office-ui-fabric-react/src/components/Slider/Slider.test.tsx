@@ -2,14 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as path from 'path';
-
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { sharedIsConformant } from '../../common/sharedIsConformant';
+import { isConformant } from '../../common/isConformant';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
@@ -25,11 +23,9 @@ describe('Slider', () => {
     }
   });
 
-  sharedIsConformant({
-    componentPath: path.join(__dirname, 'Slider.tsx'),
+  isConformant({
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {
