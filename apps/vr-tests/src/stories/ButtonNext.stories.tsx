@@ -46,7 +46,8 @@ storiesOf('Button Next', module)
     <Button primary disabled>
       Hello, world
     </Button>
-  ));
+  ))
+  .addStory('Anchor', () => <Button href="https://www.bing.com">Hello, world</Button>);
 
 storiesOf('Button Next - Teams Theme', module)
   .addDecorator(FabricDecorator)

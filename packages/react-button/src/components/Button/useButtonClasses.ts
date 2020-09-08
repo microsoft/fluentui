@@ -20,7 +20,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
       userSelect: 'none',
       boxSizing: 'border-box',
       verticalAlign: 'middle',
-
+      textDecoration: 'none',
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
       borderColor: 'var(--button-borderColor)',

@@ -35,6 +35,7 @@ exports[`Button renders a default state 1`] = `
         padding-right: var(--button-paddingRight);
         padding-top: var(--button-paddingTop);
         position: relative;
+        text-decoration: none;
         transition: var(--button-transition);
         user-select: none;
         vertical-align: middle;
@@ -139,6 +140,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         padding-right: var(--button-paddingRight);
         padding-top: var(--button-paddingTop);
         position: relative;
+        text-decoration: none;
         transition: var(--button-transition);
         user-select: none;
         vertical-align: middle;
