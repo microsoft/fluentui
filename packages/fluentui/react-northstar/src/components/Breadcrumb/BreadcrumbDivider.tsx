@@ -10,7 +10,7 @@ import {
   childrenExist,
 } from '@fluentui/react-bindings';
 import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
-import { Accessibility, breadcrumbDividerBehavior } from '@fluentui/accessibility';
+import { Accessibility, breadcrumbDividerBehavior, BreadcrumbDividerBehaviorProps } from '@fluentui/accessibility';
 
 export interface BreadcrumbDividerProps
   extends UIComponentProps<BreadcrumbDividerProps>,
