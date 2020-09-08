@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 import { Text } from './Text';
 
@@ -14,5 +16,12 @@ describe('Text', () => {
     const component = renderer.create(<Text>{0}</Text>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Text,
+    displayName: 'Text',
+    componentPath: path.join(__dirname, 'Text.ts'),
+    disabledTests: [`as-renders-fc`, `as-renders-react-class`, `as-passes-as-value`, 'as-renders-html'],
   });
 });
