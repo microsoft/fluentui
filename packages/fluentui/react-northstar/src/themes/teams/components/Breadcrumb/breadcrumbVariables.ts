@@ -1,9 +1,9 @@
 import { pxToRem } from '../../../../utils';
 
 export interface BreadcrumbVariables {
-  horizontalDividerMargin: string;
+  dividerMargin: string;
 }
 
 export const breadcrumbVariables = (): BreadcrumbVariables => ({
-  horizontalDividerMargin: `0 ${pxToRem(8)}`,
+  dividerMargin: `0 ${pxToRem(8)}`,
 });

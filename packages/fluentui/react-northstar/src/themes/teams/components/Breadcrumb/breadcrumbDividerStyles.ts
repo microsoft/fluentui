@@ -5,7 +5,7 @@ import { BreadcrumbVariables } from './breadcrumbVariables';
 export const breadcrumbDividerStyles: ComponentSlotStylesPrepared<BreadcrumbDividerStylesProps, BreadcrumbVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
-      margin: v.horizontalDividerMargin,
+      margin: v.dividerMargin,
     };
   },
 };
