@@ -824,7 +824,16 @@ export { DateRangeType }
 export { DayOfWeek }
 
 // @public (undocumented)
+export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps;
+
+// @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
+
+// @public (undocumented)
+export const DEFAULT_ROW_HEIGHTS: {
+    rowHeight: number;
+    compactRowHeight: number;
+};
 
 // @public (undocumented)
 export class DefaultButton extends React.Component<IButtonProps, {}> {
@@ -1253,6 +1262,9 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
+// @public (undocumented)
+export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
+
 // @public
 export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | null;
 
@@ -1283,6 +1295,9 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public (undocumented)
+export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1907,7 +1922,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     description?: IStyle;
     disabled?: boolean;
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
-    // Warning: (ae-forgotten-export) The symbol "ISplitButtonClassNames" needs to be exported by the entry point index.d.ts
     getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
     href?: string;
     iconProps?: IIconProps;
@@ -7288,6 +7302,20 @@ export interface ISpinnerStyles {
     label?: IStyle;
     root?: IStyle;
     screenReaderText?: IStyle;
+}
+
+// @public (undocumented)
+export interface ISplitButtonClassNames {
+    // (undocumented)
+    divider?: string;
+    // (undocumented)
+    flexContainer?: string;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    splitButtonContainer?: string;
 }
 
 // @public (undocumented)
