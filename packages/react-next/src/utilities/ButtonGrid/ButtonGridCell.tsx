@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { IGridCellProps } from './GridCell.types';
+import { IButtonGridCellProps } from './ButtonGridCell.types';
 import { CommandButton } from '../../compat/Button';
 import { useId } from '@uifabric/react-hooks';
 
-export const GridCell = <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => {
+export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => {
   const defaultId = useId('gridCell');
   const {
     item,
