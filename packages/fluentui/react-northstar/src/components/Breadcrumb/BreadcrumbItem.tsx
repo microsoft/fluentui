@@ -75,7 +75,6 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
   {
     className: breadcrumbItemClassName,
     displayName: 'BreadcrumbItem',
-    overrideStyles: true,
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
