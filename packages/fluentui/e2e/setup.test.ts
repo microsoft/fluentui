@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import { E2EApi } from './e2eApi';
 
-jest.setTimeout(10000);
+jest.setTimeout(15000);
 
 let page: puppeteer.Page;
 let consoleErrors: string[] = [];

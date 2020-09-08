@@ -3,6 +3,7 @@ import { selectors } from './popupEscHandling-example';
 const popupTrigger = `#${selectors.popupTriggerId}`;
 const popupContent = `.${selectors.popupContentClass}`;
 const dropdownTriggerButton = `.${selectors.dropdownTriggerClass}`;
+const dropdownList = `.${selectors.dropdownListClass}`;
 
 // https://github.com/microsoft/fluent-ui-react/issues/1079
 describe('Popup - on ESC key press', () => {
@@ -12,11 +13,14 @@ describe('Popup - on ESC key press', () => {
 
   it('is not closed if ESC is handled by children', async () => {
     await e2e.clickOn(popupTrigger);
+    await e2e.exists(popupContent);
 
     await e2e.clickOn(dropdownTriggerButton); // opens dropdown list
-    await e2e.pressKey('Escape'); // closes dropdown list
+    await e2e.exists(dropdownList);
 
-    expect(await e2e.isFocused(dropdownTriggerButton)).toBe(true);
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.pressKey('Escape'); // closes dropdown list
+    await e2e.exists(dropdownTriggerButton);
+    await e2e.exists(popupContent);
+    await e2e.isFocused(dropdownTriggerButton);
   });
 });

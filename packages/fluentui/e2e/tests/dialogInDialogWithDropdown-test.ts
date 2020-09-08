@@ -17,7 +17,7 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
 
-    expect(await e2e.exists(dropdownSelector)).toBe(true);
+    await e2e.exists(dropdownSelector);
   });
 
   it('Should not close any modal when ESC pressed inside dropdown"', async () => {
@@ -27,9 +27,9 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(dropdownIndicator);
     await e2e.pressKey('Escape');
 
-    expect(await e2e.exists(innerHeader)).toBe(true);
-    expect(await e2e.exists(outerHeader)).toBe(true);
-    expect(await e2e.exists(dropdownSelector)).toBe(true);
+    await e2e.exists(innerHeader);
+    await e2e.exists(outerHeader);
+    await e2e.exists(dropdownSelector);
   });
 
   it('Should modal with dropdown when ESC pressed outside dropdown"', async () => {
@@ -39,8 +39,8 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerHeader);
     await e2e.pressKey('Escape');
 
-    expect(await e2e.exists(dropdownSelector)).toBe(false);
-    expect(await e2e.exists(innerHeader)).toBe(false);
-    expect(await e2e.exists(outerHeader)).toBe(true);
+    await e2e.hidden(dropdownSelector);
+    await e2e.hidden(innerHeader);
+    await e2e.exists(outerHeader);
   });
 });

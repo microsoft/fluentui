@@ -9,6 +9,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   getElementType,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -220,7 +221,7 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
     initialValue: false,
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (open) {
       lockBodyScroll(context.target);
     }

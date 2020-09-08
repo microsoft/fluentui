@@ -17,11 +17,11 @@ describe('Dialog in Dialog', () => {
 
   it('An outer "Dialog" should be open after inner "Dialog" will be opened', async () => {
     await e2e.clickOn(outerTrigger);
-    expect(await e2e.exists(outerHeader)).toBe(true);
+    await e2e.exists(outerHeader);
 
     await e2e.clickOn(innerTrigger);
-    expect(await e2e.exists(outerHeader)).toBe(true);
-    expect(await e2e.exists(innerHeader)).toBe(true);
+    await e2e.exists(outerHeader);
+    await e2e.exists(innerHeader);
   });
 
   it('A click inside inner "Dialog" should not close dialogs', async () => {
@@ -29,8 +29,8 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
     await e2e.clickOn(innerHeader);
 
-    expect(await e2e.exists(outerHeader)).toBe(true);
-    expect(await e2e.exists(innerHeader)).toBe(true);
+    await e2e.exists(outerHeader);
+    await e2e.exists(innerHeader);
   });
 
   it('A click on overlay should close only the last opened "Dialog"', async () => {
@@ -38,13 +38,12 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
 
     await e2e.clickOnPosition(innerOverlay, 0, 0);
-
-    expect(await e2e.exists(outerHeader)).toBe(true);
-    expect(await e2e.exists(innerHeader)).toBe(false);
+    await e2e.exists(outerHeader);
+    await e2e.hidden(innerHeader);
 
     await e2e.clickOnPosition(outerOverlay, 0, 0);
-    expect(await e2e.exists(outerHeader)).toBe(false);
-    expect(await e2e.exists(innerHeader)).toBe(false);
+    await e2e.hidden(outerHeader);
+    await e2e.hidden(innerHeader);
   });
 
   it('A click on cancel button should close only matching "Dialog"', async () => {
@@ -52,38 +51,38 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
 
     await e2e.clickOn(innerClose);
-    expect(await e2e.exists(outerHeader)).toBe(true);
-    expect(await e2e.exists(innerHeader)).toBe(false);
+    await e2e.exists(outerHeader);
+    await e2e.hidden(innerHeader);
 
     await e2e.clickOn(outerClose);
-    expect(await e2e.exists(outerHeader)).toBe(false);
-    expect(await e2e.exists(innerHeader)).toBe(false);
+    await e2e.hidden(outerHeader);
+    await e2e.hidden(innerHeader);
   });
 
   it('A click on content and pressing ESC button should close the last opened dialog', async () => {
     await e2e.clickOn(outerTrigger); // opens dialog
-    expect(await e2e.exists(outerHeader)).toBe(true);
+    await e2e.exists(outerHeader);
 
     await e2e.clickOn(innerTrigger); // opens nested dialog
-    expect(await e2e.exists(innerHeader)).toBe(true);
+    await e2e.exists(innerHeader);
 
     await e2e.clickOn(innerHeader);
 
     // check that focus moved to body after clicking on Dialog content
-    expect(await e2e.isFocused('body')).toBe(true);
+    await e2e.isFocused('body');
 
     // press ESC and check if nested dialog is closed and focus is on nested trigger
     await e2e.pressKey('Escape');
-    expect(await e2e.exists(innerHeader)).toBe(false);
-    expect(await e2e.isFocused(innerTrigger)).toBe(true);
+    await e2e.hidden(innerHeader);
+    await e2e.isFocused(innerTrigger);
 
     // click on dialog content to move focus to body
     await e2e.clickOn(outerHeader);
-    expect(await e2e.isFocused('body')).toBe(true);
+    await e2e.isFocused('body');
 
     // press ESC again and check if the last dialog is closed and focus is on trigger
     await e2e.pressKey('Escape');
-    expect(await e2e.exists(outerHeader)).toBe(false);
-    expect(await e2e.isFocused(outerTrigger)).toBe(true);
+    await e2e.hidden(outerHeader);
+    await e2e.isFocused(outerTrigger);
   });
 });

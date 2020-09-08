@@ -3,6 +3,6 @@ module.exports = {
     args: ['--disable-dev-shm-usage'],
     headless: true,
     dumpio: false,
-    slowMo: 25,
+    slowMo: 0,
   },
 };

@@ -5,9 +5,6 @@ const outerTrigger = `#${selectors.outerTrigger}`;
 const innerClose = `#${selectors.innerClose}`;
 const innerTrigger = `#${selectors.innerTrigger}`;
 
-const hiddenOverflow = 'overflow: hidden';
-const unsetOverflow = 'overflow: unset';
-
 describe('Dialog scroll', () => {
   beforeEach(async () => {
     await e2e.gotoTestCase(__filename, outerTrigger);
@@ -15,34 +12,34 @@ describe('Dialog scroll', () => {
 
   it('should prevent scroll on the body when dialog is open', async () => {
     await e2e.clickOn(outerTrigger);
-    const bodyStyles = await e2e.getAttributeValue('body', 'style');
-    expect(bodyStyles).toContain(hiddenOverflow);
+    await e2e.exists(outerClose);
+    await e2e.hasComputedStyle('body', 'overflow', 'hidden');
   });
 
-  it('should increment the dialogs counter in the body attribute', async () => {
+  it('should prevent scroll on the body when nested dialog is open', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
-    const bodyStyles = await e2e.getAttributeValue('body', 'style');
-    expect(bodyStyles).toContain(hiddenOverflow);
+    await e2e.exists(innerClose);
+    await e2e.hasComputedStyle('body', 'overflow', 'hidden');
   });
 
-  it('should decrement the dialogs counter in the body attribute', async () => {
+  it('should prevent scroll on the body when nested dialog is closed', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
-    const bodyStyles = await e2e.getAttributeValue('body', 'style');
+    await e2e.exists(innerClose);
+    await e2e.hasComputedStyle('body', 'overflow', 'hidden');
 
-    expect(bodyStyles).toContain(hiddenOverflow);
     await e2e.clickOn(innerClose);
+    await e2e.hidden(innerClose);
   });
 
-  it('should reset overflow and reset the dialogs counter', async () => {
+  it('should reset overflow', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
-    const bodyStyles = await e2e.getAttributeValue('body', 'style');
-    expect(bodyStyles).toContain(hiddenOverflow);
+    await e2e.hasComputedStyle('body', 'overflow', 'hidden');
+
     await e2e.clickOn(innerClose);
     await e2e.clickOn(outerClose);
-    const bodyStylesAfterCloseInner = await e2e.getAttributeValue('body', 'style');
-    expect(bodyStylesAfterCloseInner).toContain(unsetOverflow);
+    await e2e.hasComputedStyle('body', 'overflow', 'visible');
   });
 });

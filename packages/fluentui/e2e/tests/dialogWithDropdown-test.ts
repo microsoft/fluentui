@@ -14,33 +14,33 @@ describe('Dialog scroll', () => {
 
   it('should render with dropdown', async () => {
     await e2e.clickOn(outerTrigger);
-    expect(await e2e.exists(dropdownSelector)).toBe(true);
+    await e2e.exists(dropdownSelector);
   });
 
   it('should not close dialog and keep focus on dropdown when pressing ESC', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(dropdownIndicator);
     await e2e.pressKey('Escape');
-    expect(await e2e.exists(dropdownSelector)).toBe(true);
+    await e2e.exists(dropdownSelector);
   });
 
   it('should close when ESC pressed in the dialog', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(dropdownIndicator);
     await e2e.pressKey('Escape');
-    expect(await e2e.exists(dropdownSelector)).toBe(true);
+    await e2e.exists(dropdownSelector);
     await e2e.clickOn(dialogHeader);
     await e2e.pressKey('Escape');
-    expect(await e2e.exists(dropdownSelector)).toBe(false);
+    await e2e.hidden(dropdownSelector);
   });
 
   it('should close when ESC pressed in the closed dropdown', async () => {
     await e2e.clickOn(outerTrigger); // open dialog
     await e2e.focusOn(dropdownSelector);
     await e2e.pressKey('ArrowDown'); // open list
-    expect(await e2e.exists(dropdownList)).toBe(true);
+    await e2e.exists(dropdownList);
     await e2e.pressKey('Escape'); // closes list
     await e2e.pressKey('Escape'); // closes dialog
-    expect(await e2e.exists(dropdownSelector)).toBe(false);
+    await e2e.hidden(dropdownSelector);
   });
 });
