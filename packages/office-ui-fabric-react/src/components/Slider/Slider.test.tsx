@@ -7,7 +7,6 @@ import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { isConformant } from '../../common/isConformant';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
@@ -21,11 +20,6 @@ describe('Slider', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-  });
-
-  isConformant({
-    Component: Slider,
-    displayName: 'Slider',
   });
 
   it('renders correctly', () => {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { isConformant } from '../../common/isConformant';
 
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
@@ -21,11 +20,6 @@ describe('Shimmer', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  isConformant({
-    Component: Shimmer,
-    displayName: 'Shimmer',
   });
 
   it('renders Shimmer with custom elements correctly', () => {
