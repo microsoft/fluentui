@@ -2141,7 +2141,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
-        documentContainsFocus?: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
@@ -3142,7 +3142,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
-        documentContainsFocus?: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
@@ -6391,7 +6391,7 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
-        documentContainsFocus?: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     role?: string;
     // @deprecated

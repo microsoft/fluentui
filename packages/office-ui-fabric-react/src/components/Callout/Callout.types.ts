@@ -260,7 +260,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   onRestoreFocus?: (options: {
     originalElement?: HTMLElement | Window;
     containsFocus: boolean;
-    documentContainsFocus?: boolean;
+    documentContainsFocus: boolean;
   }) => void;
 }
 
