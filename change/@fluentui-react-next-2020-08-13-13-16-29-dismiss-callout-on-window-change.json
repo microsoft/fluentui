@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Callout: Dismiss when blurring to a new window.",
-  "packageName": "@fluentui/react-next",
-  "email": "jokonuko@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-13T20:16:29.093Z"
-}

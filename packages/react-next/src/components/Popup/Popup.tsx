@@ -59,7 +59,6 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
       props.onRestoreFocus?.({
         originalElement: originalFocusedElement.current,
         containsFocus: containsFocus.current,
-        documentContainsFocus: getDocument()?.hasFocus(),
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown

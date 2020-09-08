@@ -15,7 +15,6 @@ describe('Callout', () => {
     realDom = document.createElement('div');
     document.body.appendChild(realDom);
   });
-
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(realDom);
     document.body.removeChild(realDom);
@@ -32,7 +31,6 @@ describe('Callout', () => {
           addEventListener: jest.fn(),
           removeEventListener: jest.fn(),
         },
-        hasFocus: jest.fn(() => true),
       },
     });
     spyOn(positioning, 'getBoundsFromTargetWindow').and.returnValue({
