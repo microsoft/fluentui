@@ -5,5 +5,5 @@ export interface BreadcrumbVariables {
 }
 
 export const breadcrumbVariables = (): BreadcrumbVariables => ({
-  horizontalDividerMargin: `0 ${pxToRem(8)}`,
+  dividerMargin: `0 ${pxToRem(8)}`,
 });
