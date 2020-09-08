@@ -118,12 +118,12 @@ export function getTokens(theme: Theme): Tokens {
       },
 
       button: {
-        fontWeight: fonts?.medium?.fontWeight,
+        fontWeight: 600, // fonts?.medium?.fontWeight,
         fontSize: fonts?.medium?.fontSize,
         fontFamily: fonts?.medium?.fontFamily,
         iconSize: fonts?.mediumPlus?.fontSize,
         borderRadius: effects?.roundedCorner2,
-        focusColor: palette?.neutralSecondary,
+        focusColor: palette?.black,
         focusInnerColor: palette?.white,
 
         background: semanticColors?.buttonBackground,
@@ -139,14 +139,8 @@ export function getTokens(theme: Theme): Tokens {
 
         pressed: {
           background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextPressed,
           borderColor: semanticColors?.buttonBorder,
-        },
-
-        disabled: {
-          background: semanticColors?.buttonBackgroundDisabled,
-          borderColor: semanticColors?.buttonBorderDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
+          contentColor: semanticColors?.buttonTextPressed,
         },
 
         checked: {
@@ -157,6 +151,12 @@ export function getTokens(theme: Theme): Tokens {
         checkedHovered: {
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextCheckedHovered,
+        },
+
+        disabled: {
+          background: semanticColors?.buttonBackgroundDisabled,
+          borderColor: semanticColors?.buttonBorderDisabled,
+          contentColor: semanticColors?.buttonTextDisabled,
         },
       },
     },
