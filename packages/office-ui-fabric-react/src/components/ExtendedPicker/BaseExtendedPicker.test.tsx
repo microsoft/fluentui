@@ -8,6 +8,7 @@ import { BaseExtendedPicker } from './BaseExtendedPicker';
 import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
 import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../SelectedItemsList/index';
 import { KeyCodes } from '../../Utilities';
+import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -137,6 +138,12 @@ describe('Pickers', () => {
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      Component: BaseExtendedPicker,
+      displayName: 'BaseExtendedPicker',
+      disabledTests: ['component-renders', 'has-top-level-file'],
     });
 
     it('force resolves to the first suggestion', () => {
