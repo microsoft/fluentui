@@ -11,6 +11,7 @@ import {
   ISuggestionsStyles,
   ISuggestions,
 } from './Suggestions.types';
+import { isConformant } from '../../../common/isConformant';
 
 const suggestions = [
   'black',
@@ -102,6 +103,12 @@ describe('Suggestions', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Suggestions,
+    displayName: 'Suggestions',
+    disabledTests: ['has-top-level-file', 'component-renders'],
   });
 
   it('hasSuggestedAction is true when action provided', () => {

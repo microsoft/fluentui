@@ -3,6 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { Icon } from './index';
 import { TestImages } from '@uifabric/example-data';
+import { isConformant } from '../../common/isConformant';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
@@ -45,5 +46,11 @@ describe('Icon', () => {
 
     const component = renderer.create(<Icon className="className" iconName="Upload" styles={customStyles} />);
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Icon,
+    displayName: 'Icon',
+    disabledTests: ['component-has-displayname'],
   });
 });

@@ -10,8 +10,17 @@ import { GroupShowAll } from './GroupShowAll';
 import { Link } from '../Link/Link';
 import { GroupHeader } from './GroupHeader';
 import { getTheme } from '../../Styling';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('GroupedList', () => {
+  isConformant({
+    Component: GroupedList,
+    displayName: 'GroupedList',
+    componentPath: path.join(__dirname, 'GroupedList.ts'),
+    disabledTests: ['component-renders'],
+  });
+
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
     const _selection = new Selection();
     const _items: Array<any> = [];
