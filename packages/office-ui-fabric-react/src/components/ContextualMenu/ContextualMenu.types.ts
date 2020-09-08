@@ -278,7 +278,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   onRestoreFocus?: (options: {
     originalElement?: HTMLElement | Window;
     containsFocus: boolean;
-    documentContainsFocus?: boolean;
+    documentContainsFocus: boolean;
   }) => void;
 }
 

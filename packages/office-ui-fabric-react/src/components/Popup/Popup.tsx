@@ -72,7 +72,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
       onRestoreFocus({
         originalElement: this._originalFocusedElement,
         containsFocus: this._containsFocus,
-        documentContainsFocus: getDocument()?.hasFocus(),
+        documentContainsFocus: getDocument()?.hasFocus() || false,
       });
     }
     // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown

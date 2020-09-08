@@ -54,6 +54,6 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
   onRestoreFocus?: (options: {
     originalElement?: HTMLElement | Window;
     containsFocus: boolean;
-    documentContainsFocus?: boolean;
+    documentContainsFocus: boolean;
   }) => void;
 }
