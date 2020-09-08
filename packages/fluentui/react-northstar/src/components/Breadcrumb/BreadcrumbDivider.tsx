@@ -17,7 +17,7 @@ export interface BreadcrumbDividerProps
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbDividerBehaviorProps>;
 }
 
 export type BreadcrumbDividerStylesProps = never;
