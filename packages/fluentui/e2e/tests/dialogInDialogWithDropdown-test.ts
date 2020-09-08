@@ -13,14 +13,14 @@ describe('Dialog in Dialog', () => {
     await e2e.gotoTestCase(__filename, outerTrigger);
   });
 
-  it('Nested dialog should have dropdown"', async () => {
+  it('Nested dialog should have dropdown', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
 
     await e2e.exists(dropdownSelector);
   });
 
-  it('Should not close any modal when ESC pressed inside dropdown"', async () => {
+  it('Should not close any modal when ESC pressed inside dropdown', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
 
@@ -32,7 +32,7 @@ describe('Dialog in Dialog', () => {
     await e2e.exists(dropdownSelector);
   });
 
-  it('Should modal with dropdown when ESC pressed outside dropdown"', async () => {
+  it('Should modal with dropdown when ESC pressed outside dropdown', async () => {
     await e2e.clickOn(outerTrigger);
     await e2e.clickOn(innerTrigger);
 
