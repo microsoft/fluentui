@@ -9,7 +9,7 @@ const BreadcrumbExampleIconDivider = props => (
     <Breadcrumb.Item>
       <a href="">Home</a>
     </Breadcrumb.Item>
-    <Breadcrumb.Divider content={<ChevronEndMediumIcon />} />
+    <Breadcrumb.Divider><ChevronEndMediumIcon /></Breadcrumb.Divider>
     <Breadcrumb.Item>
       <a href="">Store</a>
     </Breadcrumb.Item>
