@@ -325,9 +325,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
           return;
         }
-        if (!treeItemProps.selected && !treeItemProps.expanded) {
-          expandItems(e, treeItemProps);
-        }
+
         setSelectedItemIds(e, currSelectedItemIds => processItemsForSelection(treeItemProps, currSelectedItemIds));
       }
     },
