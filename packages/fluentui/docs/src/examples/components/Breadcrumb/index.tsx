@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import Usage from './Usage';
+import Types from './Types';
 
 const BreadcrumbExamples = () => (
   <>
-    <Usage />
+    <Types />
   </>
 );
 
