@@ -56,7 +56,7 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = getA11yProps.unstable_wrapWithFocusZone(
+    const result = (
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
