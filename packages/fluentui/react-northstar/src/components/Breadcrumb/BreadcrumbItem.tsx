@@ -65,7 +65,7 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
         })}
       >
         {childrenExist(children) ? children : content}
-      </ElementType>,
+      </ElementType>
     );
 
     setEnd();

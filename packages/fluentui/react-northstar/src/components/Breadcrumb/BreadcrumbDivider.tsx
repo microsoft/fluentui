@@ -10,7 +10,7 @@ import {
   childrenExist,
 } from '@fluentui/react-bindings';
 import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
-import { Accessibility, BreadcrumbDividerBehavior } from '@fluentui/accessibility';
+import { Accessibility, breadcrumbDividerBehavior } from '@fluentui/accessibility';
 
 export interface BreadcrumbDividerProps
   extends UIComponentProps<BreadcrumbDividerProps>,
@@ -65,7 +65,7 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
         })}
       >
         {childrenExist(children) ? children : content}
-      </ElementType>,
+      </ElementType>
     );
 
     setEnd();
@@ -82,7 +82,7 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
 BreadcrumbDivider.defaultProps = {
   as: 'span',
   content: '/',
-  accessibility: BreadcrumbDividerBehavior,
+  accessibility: breadcrumbDividerBehavior,
 };
 
 BreadcrumbDivider.propTypes = commonPropTypes.createCommon();
