@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add helper function to compute end of week date, give a current date and starting day of week",
+            "author": "pompomon@gmail.com",
+            "commit": "9d27071b647e74a737e3f2c449586c904c400715",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "@fluentui/date-time-utilities_v7.7.0",
       "version": "7.7.0",

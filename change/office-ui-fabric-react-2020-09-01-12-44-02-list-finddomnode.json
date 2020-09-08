@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsRow/DetailsHeader: Remove findDOMNode usage",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-01T19:44:02.836Z"
-}
