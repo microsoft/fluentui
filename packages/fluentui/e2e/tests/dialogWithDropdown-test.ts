@@ -29,6 +29,7 @@ describe('Dialog with dropdown', () => {
   it('should close when ESC pressed in the dialog', async () => {
     await e2e.clickOn(dialogTrigger);
     await e2e.clickOn(dropdownIndicator);
+    await e2e.exists(dropdownList);
 
     await e2e.pressKey('Escape');
     await e2e.exists(dropdownSelector);

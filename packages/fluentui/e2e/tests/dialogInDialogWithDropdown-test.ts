@@ -7,6 +7,7 @@ const innerHeader = `#${selectors.innerHeader}`;
 const innerTrigger = `#${selectors.innerTrigger}`;
 const dropdownSelector = `#${selectors.dropdown}`;
 const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
 
 describe('Dialog in Dialog', () => {
   beforeEach(async () => {
@@ -25,11 +26,12 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
 
     await e2e.clickOn(dropdownIndicator);
+    await e2e.exists(dropdownList);
     await e2e.pressKey('Escape');
 
+    await e2e.exists(dropdownSelector);
     await e2e.exists(innerHeader);
     await e2e.exists(outerHeader);
-    await e2e.exists(dropdownSelector);
   });
 
   it('Should modal with dropdown when ESC pressed outside dropdown', async () => {
