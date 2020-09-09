@@ -19,7 +19,7 @@ import {
   ShorthandFactory,
   createShorthandFactory,
 } from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 
@@ -28,7 +28,7 @@ export interface BreadcrumbProps
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 }
 
 export type BreadcrumbStylesProps = never;
@@ -67,7 +67,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = (
+    const result = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
@@ -75,8 +75,8 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <div role="list">{childrenExist(children) ? children : content}</div>
-      </ElementType>
+        <div role="grid">{childrenExist(children) ? children : content}</div>
+      </ElementType>,
     );
 
     setEnd();
@@ -98,6 +98,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
 Breadcrumb.defaultProps = {
   as: 'nav',
+  accessibility: breadcrumbBehavior,
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();

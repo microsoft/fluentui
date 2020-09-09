@@ -7,7 +7,7 @@ import { Accessibility } from '../../types';
 export const breadcrumbItemBehavior: Accessibility<BreadcrumbItemBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'listitem',
+      role: 'gridcell',
     },
   },
 });
