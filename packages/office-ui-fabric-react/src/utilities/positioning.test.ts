@@ -29,10 +29,10 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
   expect(result.elementRectangle).toEqual(validate.callout);
 
   for (const key in beak) {
-    if (beak[key]) {
-      const beakValue = beak[key];
+    if ((beak as any)[key]) {
+      const beakValue = (beak as any)[key];
       const validateBeakValue = (validate.beak as any)[key];
-      const beakGood = beakValue && validateBeakValue && beak[key] === beakValue;
+      const beakGood = beakValue && validateBeakValue && (beak as any)[key] === beakValue;
       expect(beakGood).toBe(true);
     }
   }

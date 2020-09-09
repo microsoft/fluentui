@@ -1,5 +1,5 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle } from '../../Utilities';
+import { IRectangle, Point } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
@@ -15,7 +15,7 @@ export enum Position {
   end = 3,
 }
 export interface IPositionProps {
-  target?: Element | MouseEvent | IPoint;
+  target?: Element | MouseEvent | Point;
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
   /**
@@ -99,18 +99,6 @@ export interface IPosition {
   right?: number;
   [key: string]: number | undefined;
 }
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface Point {
-  left?: number;
-  top?: number;
-  /** @deprecated Use `left` instead */
-  x?: number;
-  /** @deprecated Use `top` instead */
-  y?: number;
-}
-
-export interface IPoint extends Point {}
 
 export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;

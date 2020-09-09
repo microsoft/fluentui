@@ -39,10 +39,22 @@ import { Omit } from '@uifabric/utilities';
 import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { Rectangle } from '@uifabric/utilities';
 import { Selection } from '@uifabric/utilities';
 import { SELECTION_CHANGE } from '@uifabric/utilities';
 import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
+
+// @public (undocumented)
+export const __positioningTestPackage: {
+    _finalizePositionData: typeof _finalizePositionData;
+    _finalizeBeakPosition: typeof _finalizeBeakPosition;
+    _calculateActualBeakWidthInPixels: typeof _calculateActualBeakWidthInPixels;
+    _positionElementWithinBounds: typeof _positionElementWithinBounds;
+    _positionBeak: typeof _positionBeak;
+    _getPositionData: typeof _getPositionData;
+    _getMaxHeightFromTargetRectangle: typeof _getMaxHeightFromTargetRectangle;
+};
 
 // @public (undocumented)
 export class ActionButton extends React.Component<IButtonProps, {}> {
@@ -462,6 +474,9 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
 // @public (undocumented)
 export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
 
+// @public
+export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
+
 // @public @deprecated
 export class Button extends React.Component<IButtonProps, {}> {
     constructor(props: IButtonProps);
@@ -728,6 +743,9 @@ export enum ConstrainMode {
 }
 
 // @public
+export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void;
+
+// @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
@@ -798,6 +816,15 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
 
 // @public
 export function cssColor(color?: string): IRGB | undefined;
+
+// @public (undocumented)
+export const DATAKTP_ARIA_TARGET = "data-ktp-aria-target";
+
+// @public (undocumented)
+export const DATAKTP_EXECUTE_TARGET = "data-ktp-execute-target";
+
+// @public (undocumented)
+export const DATAKTP_TARGET = "data-ktp-target";
 
 // @public
 export const DatePicker: React.FunctionComponent<IDatePickerProps>;
@@ -1247,8 +1274,16 @@ export const FontIcon: React.FunctionComponent<IFontIconProps>;
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
+// @public
+export function getAriaDescribedBy(keySequences: string[]): string;
+
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// Warning: (ae-forgotten-export) The symbol "IWindowWithSegments" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1275,6 +1310,9 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
 // @public
+export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+
+// @public
 export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
@@ -1289,6 +1327,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public
+export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
@@ -2103,6 +2144,12 @@ export interface ICalendarStrings {
 }
 
 // @public (undocumented)
+export interface ICalloutBeakPositionedInfo extends IPositionedData {
+    // (undocumented)
+    closestEdge: RectangleEdge;
+}
+
+// @public (undocumented)
 export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
@@ -2110,7 +2157,6 @@ export interface ICalloutContentStyleProps {
     calloutWidth?: number;
     className?: string;
     overflowYHidden?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "ICalloutPositionedInfo" needs to be exported by the entry point index.d.ts
     positions?: ICalloutPositionedInfo;
     theme: ITheme;
 }
@@ -2122,6 +2168,18 @@ export interface ICalloutContentStyles {
     calloutMain: IStyle;
     container: IStyle;
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface ICalloutPositionedInfo extends IPositionedData {
+    // (undocumented)
+    beakPosition: ICalloutBeakPositionedInfo;
+}
+
+// @public (undocumented)
+export interface ICalloutPositionProps extends IPositionProps {
+    beakWidth?: number;
+    isBeakVisible?: boolean;
 }
 
 // @public (undocumented)
@@ -2460,7 +2518,6 @@ export interface ICoachmarkState {
     isMeasured: boolean;
     isMeasuring: boolean;
     isMouseInProximity: boolean;
-    // Warning: (ae-forgotten-export) The symbol "RectangleEdge" needs to be exported by the entry point index.d.ts
     targetAlignment?: RectangleEdge;
     targetPosition?: RectangleEdge;
     transformOrigin?: string;
@@ -4578,6 +4635,22 @@ export interface IEditingSelectedPeopleItemStylesProps {
 }
 
 // @public
+export interface IElementPosition {
+    // (undocumented)
+    alignmentEdge: RectangleEdge | undefined;
+    // (undocumented)
+    elementRectangle: Rectangle;
+    // (undocumented)
+    targetEdge: RectangleEdge;
+}
+
+// @public (undocumented)
+export interface IElementPositionInfo extends IElementPosition {
+    // (undocumented)
+    targetRectangle: Rectangle;
+}
+
+// @public
 export interface IEntityRect {
     // (undocumented)
     height: number;
@@ -5263,6 +5336,27 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 // @public (undocumented)
+export interface IKeytipConfig {
+    // (undocumented)
+    keytips: IKeytipConfigItem[];
+}
+
+// @public (undocumented)
+export interface IKeytipConfigItem {
+    children?: IKeytipConfigItem[];
+    content: string;
+    id: string;
+    optionalProps?: Partial<IKeytipProps>;
+    sequence?: string;
+}
+
+// @public (undocumented)
+export interface IKeytipConfigMap {
+    // (undocumented)
+    [id: string]: IKeytipProps;
+}
+
+// @public (undocumented)
 export interface IKeytipLayer {
 }
 
@@ -5272,7 +5366,6 @@ export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
     content: string;
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
-    // Warning: (ae-forgotten-export) The symbol "IKeytipTransitionKey" needs to be exported by the entry point index.d.ts
     keytipStartSequences?: IKeytipTransitionKey[];
     onEnterKeytipMode?: () => void;
     onExitKeytipMode?: (ev?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) => void;
@@ -5327,6 +5420,14 @@ export interface IKeytipStyleProps {
 export interface IKeytipStyles {
     container: IStyle;
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IKeytipTransitionKey {
+    // (undocumented)
+    key: string;
+    // (undocumented)
+    modifierKeys?: KeytipTransitionModifier[];
 }
 
 // @public (undocumented)
@@ -6448,6 +6549,39 @@ export interface IPopupState {
     needsVerticalScrollBar?: boolean;
 }
 
+// @public
+export interface IPosition {
+    // (undocumented)
+    [key: string]: number | undefined;
+    // (undocumented)
+    bottom?: number;
+    // (undocumented)
+    left?: number;
+    // (undocumented)
+    right?: number;
+    // (undocumented)
+    top?: number;
+}
+
+// @public (undocumented)
+export interface IPositionDirectionalHintData {
+    // (undocumented)
+    alignmentEdge?: RectangleEdge;
+    // (undocumented)
+    alignTargetEdge?: boolean;
+    // (undocumented)
+    isAuto?: boolean;
+    // (undocumented)
+    targetEdge: RectangleEdge;
+}
+
+// @public (undocumented)
+export interface IPositionedData {
+    alignmentEdge?: RectangleEdge;
+    elementPosition: IPosition;
+    targetEdge: RectangleEdge;
+}
+
 // @public (undocumented)
 export interface IPositioningContainer {
 }
@@ -6471,7 +6605,6 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     offsetFromTarget?: number;
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
-    // Warning: (ae-forgotten-export) The symbol "IPositionedData" needs to be exported by the entry point index.d.ts
     onPositioned?: (positions?: IPositionedData) => void;
     positioningContainerMaxHeight?: number;
     positioningContainerWidth?: number;
@@ -6493,6 +6626,19 @@ export interface IPositioningContainerState {
 
 // @public @deprecated (undocumented)
 export type IPositioningContainerTypes = IPositioningContainerProps;
+
+// @public (undocumented)
+export interface IPositionProps {
+    alignTargetEdge?: boolean;
+    bounds?: IRectangle;
+    coverTarget?: boolean;
+    directionalHint?: DirectionalHint;
+    directionalHintFixed?: boolean;
+    directionalHintForRTL?: DirectionalHint;
+    gapSpace?: number;
+    // (undocumented)
+    target?: Element | MouseEvent | Point;
+}
 
 // @public (undocumented)
 export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
@@ -6603,6 +6749,21 @@ export interface IRatingStyles {
     rootIsLarge: IStyle;
     // (undocumented)
     rootIsSmall: IStyle;
+}
+
+// @public (undocumented)
+export interface IRelativePositions {
+    // (undocumented)
+    beakPosition: {
+        position: IPosition | undefined;
+        display: 'block';
+    };
+    // (undocumented)
+    calloutPosition: IPosition;
+    // (undocumented)
+    directionalClassName: string;
+    // (undocumented)
+    submenuDirection: DirectionalHint;
 }
 
 // @public (undocumented)
@@ -7219,7 +7380,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-    // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
     labelPosition?: Position;
     max?: number;
     min?: number;
@@ -8092,6 +8252,14 @@ export interface ITooltipStyles {
     subText: IStyle;
 }
 
+// @public (undocumented)
+export interface IUniqueKeytip {
+    // (undocumented)
+    keytip: IKeytipProps;
+    // (undocumented)
+    uniqueID: string;
+}
+
 // @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
     divider: string;
@@ -8152,6 +8320,26 @@ export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderCompo
 export type KeytipDataOptions = IKeytipDataProps;
 
 // @public (undocumented)
+export namespace KeytipEvents {
+    const // (undocumented)
+    KEYTIP_ADDED = "keytipAdded";
+    const // (undocumented)
+    KEYTIP_REMOVED = "keytipRemoved";
+    const // (undocumented)
+    KEYTIP_UPDATED = "keytipUpdated";
+    const // (undocumented)
+    PERSISTED_KEYTIP_ADDED = "persistedKeytipAdded";
+    const // (undocumented)
+    PERSISTED_KEYTIP_REMOVED = "persistedKeytipRemoved";
+    const // (undocumented)
+    PERSISTED_KEYTIP_EXECUTE = "persistedKeytipExecute";
+    const // (undocumented)
+    ENTER_KEYTIP_MODE = "enterKeytipMode";
+    const // (undocumented)
+    EXIT_KEYTIP_MODE = "exitKeytipMode";
+}
+
+// @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
 
 // @public
@@ -8175,6 +8363,62 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     render(): JSX.Element;
     showKeytips(ids: string[]): void;
     }
+
+// @public
+export class KeytipManager {
+    addParentOverflow(keytipProps: IKeytipProps): IKeytipProps;
+    // (undocumented)
+    delayUpdatingKeytipChange: boolean;
+    enterKeytipMode(): void;
+    exitKeytipMode(): void;
+    static getInstance(): KeytipManager;
+    getKeytips(): IKeytipProps[];
+    init(delayUpdatingKeytipChange: boolean): void;
+    // (undocumented)
+    inKeytipMode: boolean;
+    // (undocumented)
+    keytips: {
+        [key: string]: IUniqueKeytip;
+    };
+    menuExecute(overflowButtonSequences: string[], keytipSequences: string[]): void;
+    // (undocumented)
+    persistedKeytips: {
+        [key: string]: IUniqueKeytip;
+    };
+    register(keytipProps: IKeytipProps, persisted?: boolean): string;
+    // (undocumented)
+    sequenceMapping: {
+        [key: string]: IKeytipProps;
+    };
+    // (undocumented)
+    shouldEnterKeytipMode: boolean;
+    unregister(keytipToRemove: IKeytipProps, uniqueID: string, persisted?: boolean): void;
+    update(keytipProps: IKeytipProps, uniqueID: string): void;
+}
+
+// @public (undocumented)
+export type KeytipTransitionModifier = typeof KeyCodes.shift | typeof KeyCodes.ctrl | typeof KeyCodes.alt | typeof KeyCodes.leftWindow;
+
+// @public (undocumented)
+export const KTP_ARIA_SEPARATOR = ", ";
+
+// @public (undocumented)
+export const KTP_FULL_PREFIX: string;
+
+// @public (undocumented)
+export const KTP_LAYER_ID = "ktp-layer-id";
+
+// @public (undocumented)
+export const KTP_PREFIX = "ktp";
+
+// @public (undocumented)
+export const KTP_SEPARATOR = "-";
+
+// @public
+export function ktpTargetFromId(keytipId: string): string;
+
+// @public
+export function ktpTargetFromSequences(keySequences: string[]): string;
 
 // @public (undocumented)
 export const Label: React.FunctionComponent<ILabelProps>;
@@ -8339,6 +8583,9 @@ export const MeasuredContext: React.Context<{
 // @public (undocumented)
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
 }
+
+// @public
+export function mergeOverflows(keySequences: string[], overflowKeySequences: string[]): string[];
 
 // @public (undocumented)
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
@@ -8745,6 +8992,27 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
 
 // @public (undocumented)
+export enum Position {
+    // (undocumented)
+    bottom = 1,
+    // (undocumented)
+    end = 3,
+    // (undocumented)
+    start = 2,
+    // (undocumented)
+    top = 0
+}
+
+// @public (undocumented)
+export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+
+// @public (undocumented)
+export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+
+// @public
+export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData): IPositionedData;
+
+// @public (undocumented)
 export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
     constructor(props: IPositioningContainerProps);
     // (undocumented)
@@ -8824,6 +9092,18 @@ export enum RatingSize {
     Large = 1,
     // (undocumented)
     Small = 0
+}
+
+// @public (undocumented)
+export enum RectangleEdge {
+    // (undocumented)
+    bottom = -1,
+    // (undocumented)
+    left = 2,
+    // (undocumented)
+    right = -2,
+    // (undocumented)
+    top = 1
 }
 
 // @public (undocumented)
@@ -9046,6 +9326,9 @@ export const Separator: React.FunctionComponent<ISeparatorProps>;
 
 // @public (undocumented)
 export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
+
+// @public
+export function sequencesToID(keySequences: string[]): string;
 
 // @public
 export enum Shade {
@@ -9680,6 +9963,12 @@ export enum TooltipOverflowMode {
 }
 
 // @public
+export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytipTransitionKey): boolean;
+
+// @public
+export function transitionKeysContain(keys: IKeytipTransitionKey[], key: IKeytipTransitionKey): boolean;
+
+// @public
 export function updateA(color: IColor, a: number): IColor;
 
 // @public
@@ -9728,10 +10017,18 @@ export * from "@fluentui/react-focus";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
+export * from "office-ui-fabric-react/lib/DragDrop";
 
 // Warnings were encountered during analysis:
 //
 // lib/components/ColorPicker/ColorPicker.base.d.ts:11:9 - (ae-forgotten-export) The symbol "ColorComponent" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:37:5 - (ae-forgotten-export) The symbol "_finalizePositionData" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:38:5 - (ae-forgotten-export) The symbol "_finalizeBeakPosition" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:39:5 - (ae-forgotten-export) The symbol "_calculateActualBeakWidthInPixels" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:40:5 - (ae-forgotten-export) The symbol "_positionElementWithinBounds" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:41:5 - (ae-forgotten-export) The symbol "_positionBeak" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:42:5 - (ae-forgotten-export) The symbol "_getPositionData" needs to be exported by the entry point index.d.ts
+// lib/utilities/positioning/positioning.d.ts:43:5 - (ae-forgotten-export) The symbol "_getMaxHeightFromTargetRectangle" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

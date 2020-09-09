@@ -1,19 +1,15 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL, Rectangle as FullRectangle, IRectangle } from '../../Utilities';
+import { getScrollbarWidth, getRTL, IRectangle } from '../../Utilities';
 import {
   IPositionDirectionalHintData,
   IPositionedData,
-  Point,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
   ICalloutPositionProps,
   RectangleEdge,
 } from './positioning.types';
-
-export class Rectangle extends FullRectangle {
-  [key: string]: number | boolean | any;
-}
+import { Point, Rectangle } from '../../Utilities';
 
 function _createPositionData(
   targetEdge: RectangleEdge,
@@ -108,11 +104,11 @@ function _getOutOfBoundsEdges(rect: Rectangle, boundingRect: Rectangle): Rectang
 }
 
 function _getEdgeValue(rect: Rectangle, edge: RectangleEdge): number {
-  return rect[RectangleEdge[edge]];
+  return (rect as any)[RectangleEdge[edge]] as number;
 }
 
 function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
-  rect[RectangleEdge[edge]] = value;
+  (rect as any)[RectangleEdge[edge]] = value;
   return rect;
 }
 
