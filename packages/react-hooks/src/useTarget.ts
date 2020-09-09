@@ -1,5 +1,6 @@
-import { Point, getDocument, getWindow } from '@uifabric/utilities';
+import { Point, getDocument } from '@uifabric/utilities';
 import * as React from 'react';
+import { useWindow } from '@fluentui/react-window-provider';
 
 export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
@@ -13,7 +14,7 @@ export type Target = Element | string | MouseEvent | Point | null | React.RefObj
 export function useTarget<TElement extends HTMLElement = HTMLElement>(
   target: Target | undefined,
   hostElement?: React.RefObject<TElement | null>,
-): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, React.RefObject<Window | undefined>]> {
+): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]> {
   const previousTargetProp = React.useRef<
     Element | string | MouseEvent | Point | React.RefObject<Element> | null | undefined
   >();
@@ -23,7 +24,7 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(
    * Stores an instance of Window, used to check
    * for server side rendering and if focus was lost.
    */
-  const targetWindowRef = React.useRef<Window>();
+  const targetWindow = useWindow();
 
   // If the target element changed, find the new one. If we are tracking
   // target with class name, always find element because we do not know if
@@ -34,25 +35,18 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument(currentElement)!;
         targetRef.current = currentDoc ? currentDoc.querySelector(target) : null;
-        targetWindowRef.current = getWindow(currentElement)!;
       } else if ('stopPropagation' in target) {
-        targetWindowRef.current = getWindow(target.target as Element)!;
         targetRef.current = target;
       } else if ('getBoundingClientRect' in target) {
-        targetWindowRef.current = getWindow(currentElement)!;
         targetRef.current = target;
       } else if ('current' in target) {
         targetRef.current = target.current;
-        targetWindowRef.current = getWindow(target.current)!;
       } else {
-        targetWindowRef.current = getWindow(currentElement)!;
         targetRef.current = target;
       }
-    } else {
-      targetWindowRef.current = getWindow(currentElement)!;
     }
     previousTargetProp.current = target;
   }
 
-  return [targetRef, targetWindowRef] as const;
+  return [targetRef, targetWindow] as const;
 }

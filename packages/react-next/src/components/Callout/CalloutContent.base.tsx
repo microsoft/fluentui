@@ -66,21 +66,17 @@ const DEFAULT_PROPS = {
 function useBounds(
   { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
+  targetWindow: Window | undefined,
 ) {
   const cachedBounds = React.useRef<IRectangle | undefined>();
 
   const getBounds = React.useCallback((): IRectangle | undefined => {
     if (!cachedBounds.current) {
       let currentBounds =
-        typeof bounds === 'function'
-          ? targetWindowRef.current
-            ? bounds(target, targetWindowRef.current)
-            : undefined
-          : bounds;
+        typeof bounds === 'function' ? (targetWindow ? bounds(target, targetWindow) : undefined) : bounds;
 
-      if (!currentBounds && targetWindowRef.current) {
-        currentBounds = getBoundsFromTargetWindow(targetRef.current, targetWindowRef.current);
+      if (!currentBounds && targetWindow) {
+        currentBounds = getBoundsFromTargetWindow(targetRef.current, targetWindow);
         currentBounds = {
           top: currentBounds.top + minPagePadding,
           left: currentBounds.left + minPagePadding,
@@ -93,7 +89,7 @@ function useBounds(
       cachedBounds.current = currentBounds;
     }
     return cachedBounds.current;
-  }, [bounds, minPagePadding, target, targetRef, targetWindowRef]);
+  }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
   return getBounds;
 }
@@ -292,7 +288,7 @@ function useDismissHandlers(
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
+  targetWindow: Window | undefined,
 ) {
   const isMouseDownOnPopup = React.useRef(false);
   const async = useAsync();
@@ -339,7 +335,7 @@ function useDismissHandlers(
 
       if (
         (!targetRef.current && isEventTargetOutsideCallout) ||
-        (ev.target !== targetWindowRef.current &&
+        (ev.target !== targetWindow &&
           isEventTargetOutsideCallout &&
           (!targetRef.current ||
             'stopPropagation' in targetRef.current ||
@@ -354,12 +350,12 @@ function useDismissHandlers(
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the callout.
     async.setTimeout(() => {
-      if (!hidden && targetWindowRef.current) {
+      if (!hidden && targetWindow) {
         const disposables = [
-          on(targetWindowRef.current, 'scroll', dismissOnScroll, true),
-          on(targetWindowRef.current, 'resize', dismissOnResize, true),
-          on(targetWindowRef.current.document.documentElement, 'focus', dismissOnLostFocus, true),
-          on(targetWindowRef.current.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindow, 'scroll', dismissOnScroll, true),
+          on(targetWindow, 'resize', dismissOnResize, true),
+          on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
+          on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
         ];
 
         return () => {
@@ -372,7 +368,7 @@ function useDismissHandlers(
     async,
     hostElement,
     targetRef,
-    targetWindowRef,
+    targetWindow,
     onDismiss,
     preventDismissOnLostFocus,
     preventDismissOnResize,
@@ -415,8 +411,8 @@ export const CalloutContentBase = React.memo(
     const calloutElement = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
-    const [targetRef, targetWindowRef] = useTarget(props.target, calloutElement);
-    const getBounds = useBounds(props, targetRef, targetWindowRef);
+    const [targetRef, targetWindow] = useTarget(props.target, calloutElement);
+    const getBounds = useBounds(props, targetRef, targetWindow);
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
@@ -425,7 +421,7 @@ export const CalloutContentBase = React.memo(
       positions,
       hostElement,
       targetRef,
-      targetWindowRef,
+      targetWindow,
     );
 
     useAutoFocus(props, positions, calloutElement);
@@ -438,7 +434,7 @@ export const CalloutContentBase = React.memo(
     }, [hidden]);
 
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!targetWindowRef.current) {
+    if (!targetWindow) {
       return null;
     }
 

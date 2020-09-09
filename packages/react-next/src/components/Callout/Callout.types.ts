@@ -6,6 +6,8 @@ import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/pos
 import { ILayerProps } from '../../Layer';
 import { Target } from '@uifabric/react-hooks';
 
+export { Target };
+
 /**
  * {@docCategory Callout}
  */

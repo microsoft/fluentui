@@ -46,7 +46,7 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
-function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: React.RefObject<Window | undefined>) {
+function useCachedBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
   /** The bounds used when determining if and where the PositioningContainer should be placed. */
   const positioningBounds = React.useRef<IRectangle>();
 
@@ -58,10 +58,10 @@ function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: Rea
         currentBounds = {
           top: 0 + props.minPagePadding!,
           left: 0 + props.minPagePadding!,
-          right: targetWindowRef.current!.innerWidth - props.minPagePadding!,
-          bottom: targetWindowRef.current!.innerHeight - props.minPagePadding!,
-          width: targetWindowRef.current!.innerWidth - props.minPagePadding! * 2,
-          height: targetWindowRef.current!.innerHeight - props.minPagePadding! * 2,
+          right: targetWindow!.innerWidth - props.minPagePadding!,
+          bottom: targetWindow!.innerHeight - props.minPagePadding!,
+          width: targetWindow!.innerWidth - props.minPagePadding! * 2,
+          height: targetWindow!.innerHeight - props.minPagePadding! * 2,
         };
       }
       positioningBounds.current = currentBounds;
@@ -186,7 +186,7 @@ function useMaxHeight(
 function useAutoDismissEvents(
   { onDismiss, preventDismissOnScroll }: IPositioningContainerProps,
   positionedHost: React.RefObject<HTMLDivElement | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
+  targetWindow: Window | undefined,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   positions: IPositionedData | undefined,
   updateAsyncPosition: () => void,
@@ -213,7 +213,7 @@ function useAutoDismissEvents(
 
     if (
       (!targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== targetWindowRef.current &&
+      (ev.target !== targetWindow &&
         clickedOutsideCallout &&
         ((targetRef.current as MouseEvent).stopPropagation ||
           !targetRef.current ||
@@ -230,10 +230,10 @@ function useAutoDismissEvents(
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     async.setTimeout(() => {
-      events.on(targetWindowRef.current, 'scroll', async.throttle(dismissOnScroll, 10), true);
-      events.on(targetWindowRef, 'resize', async.throttle(onResize, 10), true);
-      events.on(targetWindowRef.current?.document?.body, 'focus', dismissOnLostFocus, true);
-      events.on(targetWindowRef.current?.document?.body, 'click', dismissOnLostFocus, true);
+      events.on(targetWindow, 'scroll', async.throttle(dismissOnScroll, 10), true);
+      events.on(targetWindow, 'resize', async.throttle(onResize, 10), true);
+      events.on(targetWindow?.document?.body, 'focus', dismissOnLostFocus, true);
+      events.on(targetWindow?.document?.body, 'click', dismissOnLostFocus, true);
     }, 0);
 
     return () => events.dispose();
@@ -295,8 +295,8 @@ export const PositioningContainer = React.forwardRef(
     const positionedHost = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    const [targetRef, targetWindowRef] = useTarget(props.target, positionedHost);
-    const getCachedBounds = useCachedBounds(props, targetWindowRef);
+    const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
+    const getCachedBounds = useCachedBounds(props, targetWindow);
     const [positions, updateAsyncPosition] = usePositionState(
       props,
       positionedHost,
@@ -308,13 +308,13 @@ export const PositioningContainer = React.forwardRef(
     const heightOffset = useHeightOffset(props, contentHost);
 
     useSetInitialFocus(props, contentHost, positions);
-    useAutoDismissEvents(props, positionedHost, targetWindowRef, targetRef, positions, updateAsyncPosition);
+    useAutoDismissEvents(props, positionedHost, targetWindow, targetRef, positions, updateAsyncPosition);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
     React.useEffect(() => props.onLayerMounted?.(), []);
 
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!targetWindowRef.current) {
+    if (!targetWindow) {
       return null;
     }
 

@@ -38,11 +38,11 @@ export interface IWarningOptions<P> {
 // @public
 export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
 
-// @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
-
 // @public
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
+// @public (undocumented)
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public
 export function useAsync(): Async;
@@ -99,7 +99,7 @@ export type UseSetTimeoutReturnType = {
 };
 
 // @public
-export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, React.RefObject<Window | undefined>]>;
+export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]>;
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;

@@ -159,23 +159,6 @@ export const ContextualMenuBase: {
     displayName: string;
 };
 
-// Warning: (ae-forgotten-export) The symbol "IContextualMenuInternalProps" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
-    constructor(props: IContextualMenuInternalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean;
-    }
-
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
 
@@ -2474,6 +2457,8 @@ export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>
 
 // @public (undocumented)
 export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColorPickerProps & React.RefAttributes<HTMLElement>>;
+
+export { Target }
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
