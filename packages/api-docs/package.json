@@ -26,7 +26,7 @@
     "@uifabric/react-cards": "^0.112.5",
     "@uifabric/styling": "^7.16.0",
     "@uifabric/utilities": "^7.31.0",
-    "office-ui-fabric-react": "^7.134.3"
+    "office-ui-fabric-react": "^7.135.0"
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.7.1",

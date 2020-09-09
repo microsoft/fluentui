@@ -20,7 +20,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
       userSelect: 'none',
       boxSizing: 'border-box',
       verticalAlign: 'middle',
-
+      textDecoration: 'none',
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
       borderColor: 'var(--button-borderColor)',
@@ -202,8 +202,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _fluid: {
-    width: '100%',
-    maxWidth: '100%',
+    '--button-width': '100%',
   },
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

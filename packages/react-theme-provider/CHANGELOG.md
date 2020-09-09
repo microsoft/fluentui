@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.2)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.1..@fluentui/react-theme-provider_v0.11.2)
+
+### Patches
+
+- Adding token definition for tokens related to CompoundButton. ([PR #14855](https://github.com/microsoft/fluentui/pull/14855) by humbertomakotomorimoto@gmail.com)
 
 ## [0.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.1)
 
