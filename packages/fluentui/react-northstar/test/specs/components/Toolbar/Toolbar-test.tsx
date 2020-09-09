@@ -74,12 +74,8 @@ describe('Toolbar', () => {
         />,
       );
 
-      const overflowItem = wrapper.find('ToolbarItem').last();
-
-      expect(overflowItem.prop('menu')).toMatchObject({
-        items: [],
-        popper: { positionFixed: true, offset: [0, 4], position: 'below' }, // it should have default positionFixed prop and the new props passed
-      });
+      expect(wrapper.find('Popper').prop('positionFixed').toBe(true)
+      expect(wrapper.find('Popper').prop('position').toBe('below')
     });
   });
 });
