@@ -9,11 +9,12 @@ import { skeletonAvatarClassName } from '../../../../../components/Skeleton/Skel
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',
   overflow: 'hidden',
-  animationDuration: '2s',
+  animationDuration: '4.8s',
   animationName: wave,
   animationIterationCount: 'infinite',
   backgroundColor: '#FFFFFF',
-  backgroundImage: `linear-gradient(to right, ${primaryColor}, ${secondoryColor} 15%, ${primaryColor})`,
+  animationTimingFunction: 'linear',
+  backgroundImage: `linear-gradient(to right, ${secondoryColor} 0%, ${primaryColor} 20%, ${secondoryColor} 40%)`,
   backgroundSize: '1200px 100%',
 });
 

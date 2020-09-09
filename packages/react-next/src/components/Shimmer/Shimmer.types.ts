@@ -1,23 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-
-/**
- * {@docCategory Shimmer}
- */
-export interface IShimmer {}
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * Shimmer component props.
  * {@docCategory Shimmer}
  */
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
-  /**
-   * Optional callback to access the IShimmer interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IShimmer>;
-
   /**
    * Sets the width value of the shimmer wave wrapper.
    * @defaultvalue 100%

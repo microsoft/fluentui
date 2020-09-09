@@ -36,6 +36,7 @@ import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
+import TextAreaAutoSize from './prototypes/TextAreaAutoSize';
 
 const _Builder = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
@@ -142,6 +143,7 @@ const Routes = () => (
                 <Route exact path="/prototype-alerts" component={AlertsPrototype} />
                 <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
                 <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
+                <Route exact path="/prototype-text-area-autosize" component={TextAreaAutoSize} />
                 <Route exact path="/prototype-table" component={TablePrototype} />
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
