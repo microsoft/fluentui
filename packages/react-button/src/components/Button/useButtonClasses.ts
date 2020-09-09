@@ -202,8 +202,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _fluid: {
-    width: '100%',
-    maxWidth: '100%',
+    '--button-width': '100%',
   },
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
