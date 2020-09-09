@@ -463,7 +463,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             this._refCallback(e, point.legend, refArrayIndexNumber);
           }}
           data-is-focusable={true}
-          focusable={'true'}
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
