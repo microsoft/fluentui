@@ -12,7 +12,6 @@ import { useToggleButtonClasses } from './useToggleButtonClasses';
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const { render, state } = useToggleButton(props, ref);
 
-  // style stuff
   useButtonClasses(state);
   useToggleButtonClasses(state);
   useFocusRects(state.ref);

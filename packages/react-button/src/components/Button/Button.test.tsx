@@ -28,6 +28,12 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders anchor when href prop is provided', () => {
+    const component = renderer.create(<Button href="https://www.bing.com">Default button</Button>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can be focused', () => {
     const rootRef = React.createRef<HTMLButtonElement>();
 

@@ -24,7 +24,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ShorthandValue, ObjectShorthandValue } from '../../types';
 import {
   childrenExist,
   createShorthand,
@@ -50,6 +50,7 @@ import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicat
 import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarMenuContextProvider } from './toolbarMenuContext';
+import { PopperShorthandProps } from '../../utils/positioner';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -65,6 +66,10 @@ type PositionOffset = {
 };
 
 const WAS_FOCUSABLE_ATTRIBUTE = 'data-was-focusable';
+
+type ToolbarOverflowItemProps = Omit<ToolbarItemProps, 'menu'> & {
+  menu?: ObjectShorthandValue<ToolbarMenuProps & { popper?: PopperShorthandProps }>;
+};
 
 export interface ToolbarProps
   extends UIComponentProps,
@@ -91,7 +96,7 @@ export interface ToolbarProps
    * Shorthand for the overflow item which is displayed when `overflow` is enabled and regular toolbar items do not fit.
    * Do not set any menu on this item, Toolbar overrides it.
    */
-  overflowItem?: ShorthandValue<ToolbarItemProps>;
+  overflowItem?: ShorthandValue<ToolbarOverflowItemProps>;
 
   /**
    * Called when overflow is recomputed (after render, update or window resize). Even if all items fit.
@@ -467,10 +472,10 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const renderOverflowItem = overflowItem =>
       createShorthand(composeOptions.slots.overflowItem, overflowItem, {
         defaultProps: () => slotProps.overflowItem,
-        overrideProps: {
+        overrideProps: (predefinedProps: ToolbarOverflowItemProps) => ({
           menu: {
             items: overflowOpen ? (collectOverflowItems() as ToolbarMenuProps['items']) : [],
-            popper: { positionFixed: true },
+            popper: { positionFixed: true, ...predefinedProps.menu?.popper },
           },
           menuOpen: overflowOpen,
           onMenuOpenChange: (e, { menuOpen }) => {
@@ -479,7 +484,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
           wrapper: {
             ref: overflowItemWrapperRef,
           },
-        },
+        }),
       });
 
     React.useEffect(() => {

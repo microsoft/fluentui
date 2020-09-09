@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { ButtonGridBase } from './ButtonGrid.base';
 import { ButtonGrid } from './ButtonGrid';
 import { getStyles } from './ButtonGrid.styles';
 import { DefaultButton } from '../../compat/Button';
-import { shallow } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { shallow } from 'enzyme';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DEFAULT_ITEMS: any[] = [
@@ -26,7 +27,7 @@ describe('ButtonGrid', () => {
 
   it('Can render a ButtonGrid with width of four', () => {
     const wrapper = shallow(
-      <ButtonGrid
+      <ButtonGridBase
         items={DEFAULT_ITEMS}
         columnCount={4}
         styles={getStyles}
@@ -43,7 +44,7 @@ describe('ButtonGrid', () => {
   });
   it('Can render a ButtonGrid with width of 2', () => {
     const wrapper = shallow(
-      <ButtonGrid
+      <ButtonGridBase
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
@@ -60,7 +61,7 @@ describe('ButtonGrid', () => {
   });
   it('Can render a ButtonGrid with posInSet and setSize', () => {
     const wrapper = shallow(
-      <ButtonGrid
+      <ButtonGridBase
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}

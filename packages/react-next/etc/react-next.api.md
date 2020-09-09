@@ -2824,7 +2824,7 @@ export type Target = Element | string | MouseEvent | Point | null | React.RefObj
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export const TeachingBubbleBase: React.ForwardRefExoticComponent<Pick<ITeachingBubbleProps, "key" | "theme" | "styles" | "componentRef" | "ariaLabelledBy" | "ariaDescribedBy" | "target" | "onDismiss" | "elementToFocusOnDismiss" | "isClickableOutsideFocusTrap" | "ignoreExternalFocusing" | "forceFocusInsideTrap" | "firstFocusableSelector" | "calloutProps" | "hasCondensedHeadline" | "hasSmallHeadline" | "isWide" | "headline" | "focusTrapZoneProps" | "hasCloseIcon" | "hasCloseButton" | "illustrationImage" | "primaryButtonProps" | "secondaryButtonProps" | "footerContent" | "targetElement" | "closeButtonAriaLabel"> & React.RefAttributes<HTMLDivElement>>;
+export const TeachingBubbleBase: React.ForwardRefExoticComponent<Pick<ITeachingBubbleProps, "key" | "theme" | "styles" | "componentRef" | "ariaLabelledBy" | "ariaDescribedBy" | "target" | "onDismiss" | "elementToFocusOnDismiss" | "isClickableOutsideFocusTrap" | "ignoreExternalFocusing" | "forceFocusInsideTrap" | "firstFocusableSelector" | "calloutProps" | "targetElement" | "hasCondensedHeadline" | "hasSmallHeadline" | "isWide" | "headline" | "focusTrapZoneProps" | "hasCloseIcon" | "hasCloseButton" | "illustrationImage" | "primaryButtonProps" | "secondaryButtonProps" | "footerContent" | "closeButtonAriaLabel"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
