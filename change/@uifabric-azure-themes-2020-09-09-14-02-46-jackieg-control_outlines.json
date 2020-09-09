@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "control outlines update, pivot style fix",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-09T21:02:46.981Z"
+}
