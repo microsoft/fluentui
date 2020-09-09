@@ -64,7 +64,7 @@ describe('Toolbar', () => {
   });
 
   describe('overflowItem', () => {
-    it('Should override popper properties', () => {
+    it('popper props can be overriden', () => {
       const wrapper = mountWithProvider(
         <Toolbar
           aria-label="Toolbar overflow menu"
