@@ -974,16 +974,6 @@ export interface IDropdown {
     readonly selectedOptions: IDropdownOption[];
 }
 
-// @public
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
-    // (undocumented)
-    hoisted: {
-        rootRef: React.Ref<HTMLDivElement>;
-        selectedIndices: number[];
-        setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
-    };
-}
-
 // @public (undocumented)
 export interface IDropdownOption extends ISelectableOption {
     // @deprecated
@@ -1015,15 +1005,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     selectedKeys?: string[] | number[] | null;
     styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IDropdownState {
-    // (undocumented)
-    calloutRenderEdge?: RectangleEdge;
-    hasFocus: boolean;
-    // (undocumented)
-    isOpen: boolean;
 }
 
 // @public
