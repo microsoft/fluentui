@@ -277,6 +277,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnScroll = (ev: Event) => {
+    // eslint-disable-next-line deprecation/deprecation
     const { preventDismissOnEvent, preventDismissOnScroll } = this.props;
     if (
       this.state.positions &&
@@ -287,6 +288,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnResize = (ev: Event) => {
+    // eslint-disable-next-line deprecation/deprecation
     const { preventDismissOnEvent, preventDismissOnResize } = this.props;
     if ((preventDismissOnEvent && !preventDismissOnEvent(ev)) || (!preventDismissOnEvent && !preventDismissOnResize)) {
       this.dismiss(ev);
@@ -294,6 +296,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
+    // eslint-disable-next-line deprecation/deprecation
     const { preventDismissOnEvent, preventDismissOnLostFocus } = this.props;
     if (
       (preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
