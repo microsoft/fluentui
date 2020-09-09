@@ -54,7 +54,7 @@ import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
   hoisted: {
     rootRef: React.Ref<HTMLDivElement>;
     selectedIndices: number[];
@@ -62,7 +62,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
   };
 }
 
-export interface IDropdownState {
+interface IDropdownState {
   isOpen: boolean;
   /** Whether the root dropdown element has focus. */
   hasFocus: boolean;

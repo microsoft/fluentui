@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Work around API extractor issue",
   "packageName": "office-ui-fabric-react",
   "email": "miclo@microsoft.com",
