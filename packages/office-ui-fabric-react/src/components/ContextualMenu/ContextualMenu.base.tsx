@@ -424,6 +424,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     // Popup uses to determine if focus is contained when dismissal occurs
     this._tryFocusPreviousActiveElement({
       containsFocus: this._focusingPreviousElement,
+      documentContainsFocus: this._targetWindow.document.hasFocus(),
       originalElement: this._previousActiveElement,
     });
 
@@ -447,6 +448,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (this.props.onRestoreFocus) {

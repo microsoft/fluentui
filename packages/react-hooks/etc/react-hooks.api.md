@@ -9,7 +9,6 @@ import { ISettingsMap } from '@uifabric/utilities/lib/warn';
 import { IWarnControlledUsageParams } from '@uifabric/utilities/lib/warn';
 import { Point } from '@uifabric/utilities';
 import * as React from 'react';
-import { Ref } from 'react';
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
@@ -43,6 +42,9 @@ export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
 export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public
+export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
+// @public
 export function useAsync(): Async;
 
 // @public
@@ -67,7 +69,7 @@ export function useForceUpdate(): () => void;
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: (Ref<T> | undefined)[]): (instance: T) => void;
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
