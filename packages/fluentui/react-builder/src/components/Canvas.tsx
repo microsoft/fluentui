@@ -320,7 +320,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
             <EventListener type="keydown" listener={onKeyDown} target={document} />
-            <Provider theme={teamsTheme} target={document} tabIndex={0}>
+            <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {draggingElement && (
