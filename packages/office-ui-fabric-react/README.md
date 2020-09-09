@@ -36,7 +36,6 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
   - [Testing](#testing)
   - [Advanced building tips](#advanced-building-tips)
 - [Licenses](#licenses)
-- [Looking for Office UI Fabric React?](#looking-for-office-ui-fabric-react)
 - [Changelog](#changelog)
 
 ## Using Fluent UI React
@@ -140,14 +139,6 @@ Usage of the fonts and icons referenced in Fluent UI React is subject to the ter
 ## Changelog
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/microsoft/fluentui/releases) page.
-
-# Looking for Office UI Fabric React?
-
-:tada: The **Office UI Fabric React** project has evolved to **Fluent UI**. :tada:
-
-The `office-ui-fabric-react` repo has moved! This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location.
-
-We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 
 ---
 
