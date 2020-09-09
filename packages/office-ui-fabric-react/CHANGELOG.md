@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 18:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.136.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.136.0)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.135.0..office-ui-fabric-react_v7.136.0)
+
+### Minor changes
+
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
 
 ## [7.135.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.135.0)
 

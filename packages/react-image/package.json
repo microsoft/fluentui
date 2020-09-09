@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/storybook": "^0.4.7",
+    "@fluentui/storybook": "^0.4.8",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
