@@ -8,6 +8,9 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
+export * from './Breadcrumb/breadcrumbItemBehavior';
+export * from './Breadcrumb/breadcrumbDividerBehavior';
+
 export * from './Dropdown/dropdownSelectedItemBehavior';
 export * from './Dropdown/dropdownSelectedItemBehavior';
 
@@ -116,6 +119,7 @@ export * from './Video/videoBehavior';
 
 export { hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
 
+export * from './Datepicker/datepickerBehavior';
 export * from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarHeaderBehavior';
 export * from './Datepicker/datepickerCalendarGridBehavior';

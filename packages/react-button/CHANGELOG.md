@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.6)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.5..@fluentui/react-button_v0.11.6)
+
+### Patches
+
+- Updated styling to use makeStyles. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [0.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.5)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.0..@fluentui/react-button_v0.11.5)
+
+### Patches
+
+- Adding legacy startup for internal testing on IE11. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.10.3..@fluentui/react-button_v0.11.0)
+
+### Minor changes
+
+- Button: Adding ghost prop for stealth styling. ([PR #14743](https://github.com/microsoft/fluentui/pull/14743) by humbertomakotomorimoto@gmail.com)
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.10.3)
 

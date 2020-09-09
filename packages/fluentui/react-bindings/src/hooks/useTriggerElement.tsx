@@ -48,6 +48,7 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
     React.useEffect(() => {
       if (ref.current) {
         if (isDisabledInteractive(ref.current)) {
+          // eslint-disable-next-line no-console
           console.warn(
             [
               'useTriggerElement(): Disabled elements should used as a "trigger" accurately as it may lead to ',
@@ -59,11 +60,10 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
           );
         }
 
-        const treeWalker = document.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
+        const treeWalker = ref.current.ownerDocument?.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
           acceptNode: isInteractiveFilter,
         });
-
-        while (treeWalker.nextNode()) {
+        while (treeWalker?.nextNode()) {
           const node = treeWalker.currentNode;
           const nodeStyles = node.ownerDocument?.defaultView?.getComputedStyle(node as Element);
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.3)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.0..@fluentui/codemods_v0.11.3)
+
+### Patches
+
+- Support for configmod ([PR #14837](https://github.com/microsoft/fluentui/pull/14837) by t-dama@microsoft.com)
+- Codemods: Remove unneeded compat mods and refactor ([PR #14849](https://github.com/microsoft/fluentui/pull/14849) by joschect@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.10.0..@fluentui/codemods_v0.11.0)
+
+### Minor changes
+
+- add list feature to codemods modruner ([PR #14785](https://github.com/microsoft/fluentui/pull/14785) by t-dama@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.10.0)
 
