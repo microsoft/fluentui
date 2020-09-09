@@ -154,7 +154,6 @@ export function getTokens(theme: Theme): Tokens {
           background: semanticColors?.buttonBackgroundPressed,
           borderColor: semanticColors?.buttonBorder,
           contentColor: semanticColors?.buttonTextPressed,
-
           secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
