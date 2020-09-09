@@ -82,13 +82,8 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
 
 BreadcrumbDivider.defaultProps = {
   as: 'span',
-  content: '/',
+  children: '/',
   accessibility: breadcrumbDividerBehavior,
 };
 
-BreadcrumbDivider.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: false,
-  }),
-  content: customPropTypes.shorthandAllowingChildren,
-};
+BreadcrumbDivider.propTypes = commonPropTypes.createCommon();
