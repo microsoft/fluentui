@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/DragDrop';
+export * from './utilities/dragdrop/index';
