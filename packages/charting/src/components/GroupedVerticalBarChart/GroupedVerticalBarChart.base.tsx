@@ -539,7 +539,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
     const yAxis = axis
       .tickPadding(5)
-      .tickFormat(d3Format('.2s'))
+      .tickFormat(d3Format('.2~s'))
       .tickValues(domains);
 
     this._showYAxisGridLines &&
