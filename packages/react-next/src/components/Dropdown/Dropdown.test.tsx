@@ -93,7 +93,7 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      safeCreate(
+      wrapper = mount(
         <Dropdown
           label="testgroup"
           options={[
@@ -101,13 +101,11 @@ describe('Dropdown', () => {
             { key: '2', text: '2' },
           ]}
         />,
-        container => {
-          const dropdownOptionText = container.root.find(node => {
-            return node.props.className?.includes?.('ms-Dropdown-title');
-          });
-          expect(dropdownOptionText.children?.[0]).toBe('1');
-        },
       );
+
+      const titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.text()).toEqual('1');
     });
 
     it('Renders a selected item in uncontrolled case', () => {
