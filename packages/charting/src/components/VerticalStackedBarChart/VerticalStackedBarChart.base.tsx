@@ -26,6 +26,11 @@ type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = D3ScaleLinear<string, string>;
 
+interface IBarRef {
+  index: number | string;
+  refElement: SVGGElement;
+}
+
 export interface IVerticalStackedBarChartState extends IBasestate {
   selectedLegendTitle: string;
 }
@@ -46,7 +51,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _refArray: IRefArrayData[];
-  private _barRefArray: IRefArrayData[];
+  private _barRefArray: IBarRef[];
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
 
@@ -69,6 +74,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
     this._refArray = [];
+    this._barRefArray = []; // need of this?
     this._adjustProps();
     this._dataset = this._createDataSetLayer();
   }
@@ -257,20 +263,20 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
   };
 
-  private _refCallback(element: SVGRectElement, legendTitle: string, index: number): void {
-    this._refArray[index] = { index: legendTitle, refElement: element };
+  private _refCallback(rectElement: SVGRectElement, legendTitle: string, index: number): void {
+    this._refArray[index] = { index: legendTitle, refElement: rectElement };
   }
 
-  // private _barRefCallback = (barElement: SVGGElement, index: number): void => {
-  //   this._barRefArray.push({ index: index, refElement: barElement });
-  // };
+  private _barRefCallback = (barElement: SVGGElement, index: number, xAxisPoint: number | string): void => {
+    this._barRefArray[index] = { index: xAxisPoint, refElement: barElement };
+  };
 
   private _onRectHover(
     xAxisPoint: string,
     point: IVSChartDataPoint,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
-    mouseEvent.persist(); // getting error here
+    mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point!.legend)
@@ -297,17 +303,17 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
-        // selectedLegendTitle: point.legend,
         YValueHover: found!.chartData,
         hoverXValue: xAxisPoint,
       });
     }
   };
 
-  private _onBarFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, refArrayIndexNumber: number): void {
+  private _onRectFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, refArrayIndexNumber: number): void {
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      !this.props.isMultiStackCallout &&
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend))
     ) {
       this._refArray.forEach((obj: IRefArrayData, index: number) => {
         if (obj.index === point.legend && refArrayIndexNumber === index) {
@@ -324,6 +330,26 @@ export class VerticalStackedBarChartBase extends React.Component<
       });
     }
   }
+
+  private _onSingleBarFocus = (xAxisPoint: string | number): void => {
+    if (this.props.isMultiStackCallout) {
+      const found = find(
+        this._points,
+        (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
+          sinlgePoint.xAxisPoint === xAxisPoint,
+      );
+      this._barRefArray.forEach((obj: IBarRef) => {
+        if (obj.index === xAxisPoint) {
+          this.setState({
+            refSelected: obj.refElement,
+            isCalloutVisible: true,
+            YValueHover: found!.chartData,
+            hoverXValue: xAxisPoint,
+          });
+        }
+      });
+    }
+  };
 
   private _onBarLeave = (): void => {
     this.setState({
@@ -382,26 +408,27 @@ export class VerticalStackedBarChartBase extends React.Component<
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend, refArrayIndexNumber);
             }}
-            data-is-focusable={true}
-            focusable={'true'}
+            data-is-focusable={!this.props.isMultiStackCallout}
+            focusable={this.props.isMultiStackCallout ? 'false' : 'true'}
             aria-labelledby={this._calloutId}
             onMouseOver={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
             onMouseMove={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber)}
+            onFocus={this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this._redirectToUrl}
           />
         );
       });
-
       return (
         <g
           key={indexNumber}
-          id="mySIngleBar"
-          // ref={(e: SVGRectElement) => {
-          //   this._barRefCallback(e);
-          // }}
+          id={`${indexNumber}-singleBar`}
+          data-is-focusable={this.props.isMultiStackCallout}
+          ref={(gElement: SVGGElement) => {
+            this._barRefCallback(gElement, indexNumber, singleChartData.xAxisPoint);
+          }}
+          focusable={this.props.isMultiStackCallout ? 'true' : 'false'}
           onMouseOver={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
           onMouseMove={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
           onMouseLeave={this._onBarLeave}
@@ -413,20 +440,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
     });
     return bars;
-  };
-
-  private _onSingleBarFocus = (xAxisPoint: string | number) => {
-    const found = find(
-      this._points,
-      (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
-        sinlgePoint.xAxisPoint === xAxisPoint,
-    );
-    this.setState({
-      refSelected: 'gkl',
-      isCalloutVisible: true,
-      YValueHover: found!.chartData,
-      hoverXValue: xAxisPoint,
-    });
   };
 
   private _createNumericBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {
