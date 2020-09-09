@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.135.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.135.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.3..office-ui-fabric-react_v7.135.0)
+
+### Minor changes
+
+- Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Expose popupProps on Panel ([PR #14868](https://github.com/microsoft/fluentui/pull/14868) by matejera@microsoft.com)
+
+### Patches
+
+- Callout: Dismiss when blurring to a new window. ([PR #14363](https://github.com/microsoft/fluentui/pull/14363) by jokonuko@microsoft.com)
 
 ## [7.134.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.3)
 

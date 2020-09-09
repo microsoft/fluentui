@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.101)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.100..@fluentui/react-next_v8.0.0-alpha.101)
+
+### Changes
+
+- Updating MaskedTextField to a function component. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14854](https://github.com/microsoft/fluentui/pull/14854) by czearing@outlook.com)
 
 ## [8.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.100)
 
