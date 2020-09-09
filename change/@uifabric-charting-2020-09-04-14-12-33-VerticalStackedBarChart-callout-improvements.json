@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "major",
   "comment": "Vertical stacked bar chart combined callout and other tweaks",
   "packageName": "@uifabric/charting",
   "email": "mibes@microsoft.com",

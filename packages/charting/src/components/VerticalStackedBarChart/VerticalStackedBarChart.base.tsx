@@ -24,10 +24,10 @@ type StringAxis = D3Axis<string>;
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = D3ScaleLinear<string, string>;
 
-export interface IRefArrayData {
+interface IRefArrayData {
   refElement?: SVGGElement | null;
 }
-export interface IVerticalStackedBarChartState {
+interface IVerticalStackedBarChartState {
   containerWidth: number;
   containerHeight: number;
   selectedLegendTitle: string;
@@ -469,7 +469,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           height={Math.max(yBarScale(point.data), 0)}
           fill={color}
           ref={e => ref.refElement = e}
-          data-is-focusable={usingPointCallout}
+          data-is-focusable={usingPointCallout || undefined}
           {...focusProps}
           onClick={this._redirectToUrl.bind(this, href)}
         />
@@ -502,7 +502,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return (
       <g
         key={indexNumber}
-        data-is-focusable={!usingPointCallout}
+        data-is-focusable={!usingPointCallout || undefined}
         {...stackFocusProps}
         ref={e => groupRef.refElement = e}
       >
