@@ -338,9 +338,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(element: HTMLElement): boolean {
+  focusElement(element: HTMLElement, forceAlignment?: boolean): boolean {
     const { shouldReceiveFocus } = this.props;
 
     if (shouldReceiveFocus && !shouldReceiveFocus(element)) {
@@ -348,7 +349,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (element) {
-      this.setActiveElement(element);
+      this.setActiveElement(element, forceAlignment);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -514,7 +515,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
   };
 
-  setActiveElement(element: HTMLElement, forceAlignemnt?: boolean): void {
+  setActiveElement(element: HTMLElement, forceAlignment?: boolean): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
@@ -528,7 +529,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (this._activeElement) {
-      if (!this._focusAlignment || forceAlignemnt) {
+      if (!this._focusAlignment || forceAlignment) {
         this.setFocusAlignment(element, true, true);
       }
 
