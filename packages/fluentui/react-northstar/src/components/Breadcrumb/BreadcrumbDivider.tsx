@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-bindings';
 import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
 import { Accessibility, breadcrumbDividerBehavior, BreadcrumbDividerBehaviorProps } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
 
 export interface BreadcrumbDividerProps
   extends UIComponentProps<BreadcrumbDividerProps>,
@@ -85,4 +86,9 @@ BreadcrumbDivider.defaultProps = {
   accessibility: breadcrumbDividerBehavior,
 };
 
-BreadcrumbDivider.propTypes = commonPropTypes.createCommon();
+BreadcrumbDivider.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  content: customPropTypes.shorthandAllowingChildren,
+};
