@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adding DragDrop and Positioning top level export files.",
+  "comment": "Exporting some of the interfaces that are being deep imported in product code.",
   "packageName": "@fluentui/react-next",
   "email": "dzearing@hotmail.com",
   "dependentChangeType": "patch",
