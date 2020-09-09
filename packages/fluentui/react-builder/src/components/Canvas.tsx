@@ -115,6 +115,15 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [iframeCoordinatesToWindowCoordinates, onMoveComponent],
   );
 
+  const [bodyFocused, setBodyFocused] = React.useState(false);
+  const handleFocus = (ev: FocusEvent) => {
+    if (ev.target && (ev.target as any).getAttribute('data-builder-id') === null) {
+      setBodyFocused(true);
+    } else {
+      bodyFocused && setBodyFocused(false);
+    }
+  };
+
   const debugSize = '8px';
 
   React.useEffect(() => {
@@ -198,6 +207,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             .join('\n');
 
       style.innerHTML = [
+        bodyFocused &&
+          `
+          body {
+            border: 5px solid red;
+          }
+          `,
         isSelecting &&
           `
           [data-builder-id="builder-root"] {
@@ -227,7 +242,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, role]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused]);
 
   return (
     <Frame
@@ -298,7 +313,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
             <EventListener type="keydown" listener={onKeyDown} target={document} />
-            <Provider theme={teamsTheme} target={document}>
+            <Provider theme={teamsTheme} target={document} tabIndex={0}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {draggingElement && (
@@ -308,6 +323,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   target={document}
                 />
               )}
+              <EventListener capture type="focus" listener={handleFocus} target={document} />
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {showNarration && selectedComponent && (
                 <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
