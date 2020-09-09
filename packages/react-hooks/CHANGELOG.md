@@ -1,8 +1,26 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.12.0)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.11.0..@uifabric/react-hooks_v7.12.0)
+
+### Minor changes
+
+- useMergedRefs now properly returns a more usable React.RefObject type. ([PR #14887](https://github.com/microsoft/fluentui/pull/14887) by dzearing@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.10.0..@uifabric/react-hooks_v7.11.0)
+
+### Patches
+
+- Fix useControllableValue onChange event typing. ([PR #14774](https://github.com/microsoft/fluentui/pull/14774) by xgao@microsoft.com)
 
 ## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.10.0)
 

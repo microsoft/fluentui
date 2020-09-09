@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-link",
-  "version": "0.1.0",
+  "version": "0.2.7",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,12 +22,13 @@
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
     "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/storybook": "^0.3.4",
+    "@fluentui/storybook": "^0.4.7",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -35,7 +36,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -43,12 +44,12 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.17.2",
-    "@uifabric/react-hooks": "^7.10.0",
+    "@fluentui/react-compose": "^0.18.2",
+    "@uifabric/react-hooks": "^7.12.0",
     "@uifabric/set-version": "^7.0.22",
-    "@uifabric/styling": "^7.15.3",
-    "@uifabric/utilities": "^7.30.0",
-    "office-ui-fabric-react": "^7.132.0",
+    "@uifabric/styling": "^7.16.0",
+    "@uifabric/utilities": "^7.31.0",
+    "office-ui-fabric-react": "^7.135.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
