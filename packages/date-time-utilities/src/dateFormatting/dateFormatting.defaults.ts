@@ -61,4 +61,9 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   isRequiredErrorMessage: 'A date selection is required',
   invalidInputErrorMessage: 'Manually entered date is not in correct format.',
   isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',
+  calendarCellFormatString: '{0}; {1}',
+  inputAriaLabel: 'Select a date.',
+  inputBoundedFormatString: 'Input a date between {0} and {1}.',
+  inputMinBoundedFormatString: 'Input a date starting from {0}.',
+  inputMaxBoundedFormatString: 'Input a date ending at {0}.',
 };

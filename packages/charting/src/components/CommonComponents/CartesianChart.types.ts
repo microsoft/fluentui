@@ -136,7 +136,7 @@ export interface ICartesianChartProps {
   height?: number;
 
   /**
-   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   * this prop takes its parent as a HTML element to define the width and height of the chart
    */
   parentRef?: HTMLElement | null;
 
@@ -167,7 +167,7 @@ export interface ICartesianChartProps {
   hideTooltip?: boolean;
 
   /**
-   * this prop takes values that you want the line chart to render on x-axis
+   * this prop takes values that you want the chart to render on x-axis
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
@@ -290,21 +290,52 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Only used for Area chart
+   * Value used to draw y axis of that chart.
+   */
   maxOfYVal?: number;
   points: ILineChartPoints[];
+  /**
+   * Type of chart
+   */
   chartType: ChartTypes;
-  getmargins: (margins: IMargins) => void;
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  getmargins?: (margins: IMargins) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getGraphData?: any;
+  /**
+   * Legeds of the chart.
+   */
   legendBars: JSX.Element;
+  /**
+   * Used for bar chart graphs.
+   * To define width of the bar
+   */
   barwidth?: number;
+  /**
+   * Define is given X axis is date or numeric
+   */
   isXAxisDateType: boolean;
+  /**
+   * Tick styles of the chart
+   */
   tickParams?: {
     tickValues?: number[] | Date[];
     tickFormat?: string;
   };
   children(props: IChildProps): React.ReactNode;
+  /**
+   * To enable multi callout or single callout
+   *
+   * @type {boolean}
+   */
   isMultiStackCallout: boolean;
+  /**
+   * Callout props
+   */
   calloutProps: Partial<ICalloutProps> & {
     isCalloutVisible: boolean;
     id: string;

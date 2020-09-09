@@ -2,6 +2,74 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@uifabric/charting_v3.6.0",
+      "version": "3.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart re design and updated Cartesian (removed reRenderProp method from Cartesian as it only uses for area chart previously. Now code udpated, so no need of that method.)",
+            "author": "v-jasha@microsoft.com",
+            "commit": "fc296ba32ac182ba4aea5349fb4ab960f660eb08",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@uifabric/charting_v3.5.1",
+      "version": "3.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Text formatting.",
+            "author": "dzearing@microsoft.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/charting_v3.5.0",
+      "version": "3.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making the prop 'showYAxisGridLines' as deprecated.",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "de0a066a83890963eae8240043326b61c45ed487",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Sep 2020 12:22:43 GMT",
+      "tag": "@uifabric/charting_v3.4.0",
+      "version": "3.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "VerticalStackedBarChart - add yMaxValue, yAxisTickFormat, margins",
+            "author": "mibes@microsoft.com",
+            "commit": "12e72defeec4e1c2a6c7326c9cef670f6c2b2a55",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "resize of area chart issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "151e95f19924c52ab71529a3ef56c72595caaf21",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Aug 2020 18:11:10 GMT",
       "tag": "@uifabric/charting_v3.3.1",
       "version": "3.3.1",
