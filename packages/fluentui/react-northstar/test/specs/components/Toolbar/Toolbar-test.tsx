@@ -69,7 +69,7 @@ describe('Toolbar', () => {
         <Toolbar
           items={[]}
           overflow
-          overflowItem={{ title: 'More', menu: { popper: { offset: [0, 4], position: 'below' } } }}
+          overflowItem={{ menu: { popper: { position: 'below' } } }}
         />,
       );
 
