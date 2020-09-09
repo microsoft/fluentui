@@ -62,4 +62,24 @@ describe('Toolbar', () => {
       expect(getRenderedAttribute(italicToolbarButton, 'aria-pressed', '')).toBe('false');
     });
   });
+
+  describe('Overflow Toolbar', () => {
+    it('Should override popper properties', () => {
+      const wrapper = mountWithProvider(
+        <Toolbar
+          aria-label="Toolbar overflow menu"
+          items={[]}
+          overflow
+          overflowItem={{ title: 'More', menu: { popper: { offset: [0, 4], position: 'below' } } }}
+        />,
+      );
+
+      const overflowItem = wrapper.find('ToolbarItem').last();
+
+      expect(overflowItem.prop('menu')).toMatchObject({
+        items: [],
+        popper: { positionFixed: true, offset: [0, 4], position: 'below' }, // it should have default positionFixed prop and the new props passed
+      });
+    });
+  });
 });
