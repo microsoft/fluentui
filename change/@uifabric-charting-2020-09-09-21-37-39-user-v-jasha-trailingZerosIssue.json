@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Insiginificant trailing zeros removed from ticks",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-09-09T16:07:39.001Z"
+}
