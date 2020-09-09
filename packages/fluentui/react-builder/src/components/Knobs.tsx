@@ -2,9 +2,77 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Divider, Slider, Menu, Popup, Text, Flex, Checkbox } from '@fluentui/react-northstar';
 import { ComponentExampleColorPicker } from '@fluentui/docs-components';
-import { ComponentInfo } from '../componentInfo/types';
+import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from '../config';
+
+const A11YPROPS: ComponentProp[] = [
+  {
+    name: 'aria-label',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'define a string that labels the current element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'role',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'describes the role of an element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'aria-hidden',
+    required: false,
+    defaultValue: false,
+    tags: [],
+    description: 'removes the element and all of its children from the accessibility tree',
+    types: [{ name: 'boolean' }],
+  },
+  {
+    name: 'aria-labelledby',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'establishes relationships between objects and their label(s)',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'aria-describedby',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'indicates the IDs of the elements that describe the object',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'title',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'specifies extra information about an element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'tabIndex',
+    required: false,
+    defaultValue: 0,
+    tags: [],
+    description:
+      'indicates that its element can be focused, and where it participates in sequential keyboard navigation',
+    types: [{ name: 'number' }],
+  },
+  {
+    name: 'data-is-focusable',
+    required: false,
+    defaultValue: false,
+    tags: [],
+    description: 'define if data is focusable',
+    types: [{ name: 'boolean' }],
+  },
+];
 
 const designUnit = 1;
 const sizeRamp = [
@@ -166,6 +234,11 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
             content: 'Design',
             onClick: () => setMenuActivePane('design'),
           },
+          {
+            key: 'accessibility',
+            content: 'Accessibility',
+            onClick: () => setMenuActivePane('accessibility'),
+          },
         ]}
         underlined
         primary
@@ -202,6 +275,35 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               />
             );
           })}
+
+      {menuActivePane === 'accessibility' &&
+        A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
+          const propValue = jsonTreeElement.props?.[prop.name];
+          const types = _.uniq(_.map(prop.types, 'name'));
+          const isLiteral = _.every(types, name => name === 'literal');
+          const options = isLiteral ? _.map(prop.types, 'value') : null;
+
+          const defaultValues = {
+            boolean: false,
+            number: 0,
+            string: '',
+          };
+
+          const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+
+          return (
+            <MultiTypeKnob
+              key={prop.name}
+              label={prop.name}
+              types={types as any}
+              literalOptions={options}
+              value={value}
+              onChange={value => {
+                onPropChange({ jsonTreeElement, name: prop.name, value });
+              }}
+            />
+          );
+        })}
 
       {menuActivePane === 'design' && (
         <>
