@@ -5,7 +5,10 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
+import { IRawFontStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyle } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
@@ -21,15 +24,25 @@ export const FluentTheme: Theme;
 // @public (undocumented)
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
+export { IRawFontStyle }
+
+export { IRawStyle }
+
+export { IStyle }
+
+export { IStyleFunctionOrObject }
+
+// Warning: (ae-forgotten-export) The symbol "StyleRenderer" needs to be exported by the entry point index.d.ts
+//
 // @public
 export const makeClasses: <TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any, theme?: Theme | undefined) => void;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme) => {
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
     [key in keyof TStyleSet]: string;
 };
 
@@ -54,12 +67,14 @@ export const TeamsTheme: PartialTheme;
 
 export { Theme }
 
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
+
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-    // Warning: (ae-forgotten-export) The symbol "StyleRenderer" needs to be exported by the entry point index.d.ts
     renderer?: StyleRenderer;
     targetWindow?: Window | null;
     theme?: PartialTheme | Theme;
@@ -89,7 +104,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: any, theme?: import("@fluentui/theme").Theme | undefined) => void;
+export const useThemeProviderClasses: (state: any, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import("./styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;

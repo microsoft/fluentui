@@ -1,8 +1,45 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.1..@uifabric/experiments_v7.32.4)
+
+### Patches
+
+- Fix bug where drop insert function can be called twice ([PR #14865](https://github.com/microsoft/fluentui/pull/14865) by elvonspa@microsoft.com)
+
+## [7.32.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.1)
+
+Mon, 31 Aug 2020 12:25:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.0..@uifabric/experiments_v7.32.1)
+
+### Patches
+
+- add forwardRef to UnifiedPicker ([PR #14787](https://github.com/microsoft/fluentui/pull/14787) by elvonspa@microsoft.com)
+- Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature ([PR #14758](https://github.com/microsoft/fluentui/pull/14758) by v-gorraj@microsoft.com)
+
+## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.31.0..@uifabric/experiments_v7.32.0)
+
+### Minor changes
+
+- Make the floating sugggestions picker have an optional fixed width ([PR #14598](https://github.com/microsoft/fluentui/pull/14598) by sadelson@microsoft.com)
+
+## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
+
+### Minor changes
+
+- Drag drop between SelectedItemLists ([PR #14572](https://github.com/microsoft/fluentui/pull/14572) by elvonspa@microsoft.com)
 
 ## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
 

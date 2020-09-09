@@ -29,6 +29,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     onFloatingSuggestionsDismiss,
     targetElement,
     calloutProps,
+    pickerWidth,
     onKeyDown,
   } = props;
 
@@ -69,6 +70,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             suggestionsContainerAriaLabel={suggestionsContainerAriaLabel}
             selectedSuggestionIndex={selectedSuggestionIndex}
             suggestionsHeaderText={suggestionsHeaderText}
+            pickerWidth={pickerWidth}
           />
         </Callout>
       ) : null}

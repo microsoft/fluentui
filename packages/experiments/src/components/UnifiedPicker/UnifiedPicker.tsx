@@ -20,7 +20,6 @@ import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
 
-
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
   const classNames = getClassNames(getStyles);
@@ -75,6 +74,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
+  React.useImperativeHandle(props.componentRef, () => ({
+    clearInput: () => {
+      if (input.current) {
+        input.current.clear();
+      }
+    },
+    focus: () => {
+      if (input.current) {
+        input.current.focus();
+      }
+    },
+  }));
+
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
   const theme = getTheme();
   const dragEnterClass = mergeStyles({
@@ -106,11 +118,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const data = event.dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+          isDropHandled = true;
           data[i].getAsString((dropText: string) => {
             if (props.selectedItemsListProps.deserializeItemsFromDrop) {
               const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
               _dropItemsAt(insertIndex, newItems);
-              isDropHandled = true;
             }
           });
         }
@@ -301,6 +313,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
+      pickerWidth: props.floatingSuggestionProps.pickerWidth ? props.floatingSuggestionProps.pickerWidth : '300px',
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,

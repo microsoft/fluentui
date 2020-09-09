@@ -32,7 +32,7 @@ export class KeytipManager {
   /**
    * Static function to get singleton KeytipManager instance
    *
-   * @returns {KeytipManager} Singleton KeytipManager instance
+   * @returns Singleton KeytipManager instance
    */
   public static getInstance(): KeytipManager {
     return this._instance;
@@ -54,7 +54,7 @@ export class KeytipManager {
    *
    * @param keytipProps - Keytip to register
    * @param persisted - T/F if this keytip should be persisted, default is false
-   * @returns {string} Unique ID for this keytip
+   * @returns Unique ID for this keytip
    */
   public register(keytipProps: IKeytipProps, persisted: boolean = false): string {
     let props: IKeytipProps = keytipProps;
@@ -150,7 +150,7 @@ export class KeytipManager {
   /**
    * Gets all IKeytipProps from this.keytips
    *
-   * @returns {IKeytipProps[]} All keytips stored in the manager
+   * @returns All keytips stored in the manager
    */
   public getKeytips(): IKeytipProps[] {
     return Object.keys(this.keytips).map(key => this.keytips[key].keytip);
@@ -160,7 +160,7 @@ export class KeytipManager {
    * Adds the overflowSetSequence to the keytipProps if its parent keytip also has it
    *
    * @param keytipProps - Keytip props to add overflowSetSequence to if necessary
-   * @returns {IKeytipProps} - Modified keytip props, if needed to be modified
+   * @returns - Modified keytip props, if needed to be modified
    */
   public addParentOverflow(keytipProps: IKeytipProps): IKeytipProps {
     const fullSequence = [...keytipProps.keySequences];
@@ -179,9 +179,6 @@ export class KeytipManager {
 
   /**
    * Public function to bind for overflow items that have a submenu
-   *
-   * @param overflowButtonSequences
-   * @param keytipSequences
    */
   public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
@@ -195,7 +192,7 @@ export class KeytipManager {
    *
    * @param keytipProps - IKeytipProps
    * @param uniqueID - Unique ID, will default to the next unique ID if not passed
-   * @returns {IUniqueKeytip} IUniqueKeytip object
+   * @returns IUniqueKeytip object
    */
   private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId()): IUniqueKeytip {
     return { keytip: { ...keytipProps }, uniqueID };

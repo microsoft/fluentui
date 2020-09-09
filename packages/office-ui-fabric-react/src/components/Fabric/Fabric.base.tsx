@@ -9,7 +9,6 @@ import {
   getRTL,
   FocusRects,
 } from '../../Utilities';
-import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
@@ -69,8 +68,8 @@ export class FabricBase extends React.Component<IFabricProps> {
   }
 
   private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
-    const { className, theme, applyTheme } = this.props;
-    const classNames = getClassNames(getStyles, {
+    const { className, theme, applyTheme, styles } = this.props;
+    const classNames = getClassNames(styles, {
       theme: theme!,
       applyTheme: applyTheme,
       className,

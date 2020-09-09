@@ -27,6 +27,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/verticalbarchart',
         },
         {
+          component: require<any>('../components/VerticalStackedBarChart/VerticalStackedBarChartPage')
+            .VerticalBarChartPage,
+          key: 'VerticalStackedBarChart',
+          name: 'VerticalStackedBarChart',
+          url: '#/examples/VerticalStackedBarChart',
+        },
+        {
           component: require<any>('../components/HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',

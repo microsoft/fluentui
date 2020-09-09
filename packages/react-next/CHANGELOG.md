@@ -1,8 +1,70 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.101)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.100..@fluentui/react-next_v8.0.0-alpha.101)
+
+### Changes
+
+- Updating MaskedTextField to a function component. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14854](https://github.com/microsoft/fluentui/pull/14854) by czearing@outlook.com)
+
+## [8.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.100)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.98..@fluentui/react-next_v8.0.0-alpha.100)
+
+### Changes
+
+- Add ComponentConformance and ComponentExamples tests to react-next ([PR #14886](https://github.com/microsoft/fluentui/pull/14886) by elcraig@microsoft.com)
+- undefined ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [8.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.98)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.97..@fluentui/react-next_v8.0.0-alpha.98)
+
+### Changes
+
+- Updating SwatchColorPicker to a function component. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
+
+## [8.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.97)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.94..@fluentui/react-next_v8.0.0-alpha.97)
+
+### Changes
+
+- Updating Shimmer to a function component. ([PR #14763](https://github.com/microsoft/fluentui/pull/14763) by czearing@outlook.com)
+- Fabric component: styles prop respected. ([PR #14827](https://github.com/microsoft/fluentui/pull/14827) by dzearing@hotmail.com)
+
+## [8.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.94)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.93..@fluentui/react-next_v8.0.0-alpha.94)
+
+### Changes
+
+- Move Link from react-next to react-link. ([PR #14782](https://github.com/microsoft/fluentui/pull/14782) by xgao@microsoft.com)
+- Move Toggle from react-next to react-toggle ([PR #14784](https://github.com/microsoft/fluentui/pull/14784) by xgao@microsoft.com)
+
+## [8.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.93)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.92..@fluentui/react-next_v8.0.0-alpha.93)
+
+### Changes
+
+- Move Slider from react-next to react-slider ([PR #14750](https://github.com/microsoft/fluentui/pull/14750) by xgao@microsoft.com)
+- Update release notes for Pivot ([PR #14725](https://github.com/microsoft/fluentui/pull/14725) by xgao@microsoft.com)
+- Moving messageBar into react-next for future function component conversion. ([PR #14747](https://github.com/microsoft/fluentui/pull/14747) by czearing@outlook.com)
+- Moving Shimmer to react-next for future function component conversion. ([PR #14748](https://github.com/microsoft/fluentui/pull/14748) by czearing@outlook.com)
+- Move Checkbox from react-next to react-checkbox. ([PR #14751](https://github.com/microsoft/fluentui/pull/14751) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.92)
 

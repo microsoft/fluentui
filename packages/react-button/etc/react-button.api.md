@@ -19,7 +19,7 @@ export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | 
 export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
-    children?: ShorthandProps;
+    content?: ShorthandProps;
     href?: string;
     target?: string;
     circular?: boolean;
@@ -31,6 +31,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
+    ghost?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokenSet>;
 };
@@ -57,7 +58,10 @@ export interface ButtonState extends ButtonProps {
 
 // @public (undocumented)
 export type ButtonTokenSet = ColorTokenSet & {
-    padding: string;
+    paddingLeft: string;
+    paddingRight: string;
+    paddingTop: string;
+    paddingBottom: string;
     margin: string;
     height: string;
     minWidth: string;
@@ -66,6 +70,10 @@ export type ButtonTokenSet = ColorTokenSet & {
     contentGap: string;
     iconSize: string;
     borderRadius: string;
+    borderTopLeftRadius: string;
+    borderTopRightRadius: string;
+    borderBottomLeftRadius: string;
+    borderBottomRightRadius: string;
     borderWidth: string;
     boxShadow: string;
     width: string;
@@ -103,6 +111,33 @@ export interface CheckedState {
     onClick?: React.DOMAttributes<HTMLElement>['onClick'];
     // (undocumented)
     role?: string;
+}
+
+// @public
+export const CompoundButton: React.ForwardRefExoticComponent<Pick<CompoundButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonProps extends ButtonProps {
+    contentContainer?: ShorthandProps;
+    secondaryContent?: ShorthandProps;
+}
+
+// @public
+export const compoundButtonShorthandProps: string[];
+
+// @public (undocumented)
+export type CompoundButtonSlotProps = SlotProps<CompoundButtonSlots, CompoundButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonSlots extends ButtonSlots {
+    // (undocumented)
+    contentContainer?: React.ElementType;
+    // (undocumented)
+    secondaryContent?: React.ElementType;
+}
+
+// @public (undocumented)
+export interface CompoundButtonState extends CompoundButtonProps {
 }
 
 // @public (undocumented)
@@ -197,13 +232,22 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: any) => void;
+export const useButtonClasses: (state: any, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useCompoundButtonClasses: (state: any, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
@@ -215,9 +259,6 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
@@ -227,19 +268,10 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
-export const useSplitButtonState: (state: SplitButtonState) => void;
-
-// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
-
-// @public (undocumented)
-export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
 
 // (No @packageDocumentation comment for this package)

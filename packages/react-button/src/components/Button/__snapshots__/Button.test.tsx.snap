@@ -2,10 +2,212 @@
 
 exports[`Button renders a default state 1`] = `
 <button
-  className="ms-Button root-45"
+  className=
+      ms-Button
+      {
+        align-items: center;
+        background: var(--button-background, white);
+        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+        border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
+        border-color: var(--button-borderColor);
+        border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
+        border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
+        border-style: solid;
+        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+        border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
+        box-shadow: var(--button-boxShadow);
+        box-sizing: border-box;
+        color: var(--button-contentColor);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: var(--button-fontFamily);
+        font-size: var(--button-fontSize);
+        font-weight: var(--button-fontWeight);
+        height: var(--button-height);
+        justify-content: center;
+        min-height: var(--button-minHeight);
+        min-width: var(--button-minWidth, 80);
+        outline: none;
+        padding-bottom: var(--button-paddingBottom);
+        padding-left: var(--button-paddingLeft);
+        padding-right: var(--button-paddingRight);
+        padding-top: var(--button-paddingTop);
+        position: relative;
+        text-decoration: none;
+        transition: var(--button-transition);
+        user-select: none;
+        vertical-align: middle;
+        white-space: var(--button-whiteSpace, nowrap);
+        width: var(--button-width);
+      }
+      .ms-Fabric--isFocusVisible &:focus::after {
+        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+        border-color: var(--button-focusColor, black);
+        border-style: solid;
+        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+        border-width: var(--button-focusWidth, 1.6px);
+        bottom: -1px;
+        box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
+        content: "";
+        left: -1px;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+      }
+      & > *:not(:first-child) {
+        margin-left: var(--button-contentGap);
+      }
+      &:hover {
+        background: var(--button-hovered-background, var(--button-background));
+        border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+        box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+        color: var(--button-hovered-contentColor, var(--button-contentColor));
+      }
+      &:hover .ms-Button-icon {
+        color: var(--button-hovered-iconColor, var(--button-iconColor));
+      }
+      &:active {
+        background: var(--button-pressed-background, var(--button-hovered-background));
+        border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+        box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+        color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+        transform: var(--button-pressed-transform);
+        transition: var(--button-pressed-transition);
+      }
+      &:active .ms-Button-icon {
+        color: var(--button-pressed-iconColor, var(--button-iconColor));
+      }
+      &[aria-disabled=true] {
+        background-color: var(--button-disabled-background);
+        border-color: var(--button-disabled-borderColor);
+        box-shadow: var(--button-disabled-boxShadow);
+        color: var(--button-disabled-contentColor);
+        opacity: var(--button-disabled-opacity);
+        pointer-events: none;
+      }
+      &[aria-disabled=true] .ms-Button-icon {
+        color: var(--button-disabled-iconColor);
+      }
 >
-  <span>
+  <span
+    className=
+
+        {
+          line-height: 1;
+        }
+  >
     Default button
   </span>
 </button>
+`;
+
+exports[`Button renders anchor when href prop is provided 1`] = `
+<a
+  className=
+      ms-Button
+      {
+        align-items: center;
+        background: var(--button-background, white);
+        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+        border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
+        border-color: var(--button-borderColor);
+        border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
+        border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
+        border-style: solid;
+        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+        border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
+        box-shadow: var(--button-boxShadow);
+        box-sizing: border-box;
+        color: var(--button-contentColor);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: var(--button-fontFamily);
+        font-size: var(--button-fontSize);
+        font-weight: var(--button-fontWeight);
+        height: var(--button-height);
+        justify-content: center;
+        min-height: var(--button-minHeight);
+        min-width: var(--button-minWidth, 80);
+        outline: none;
+        padding-bottom: var(--button-paddingBottom);
+        padding-left: var(--button-paddingLeft);
+        padding-right: var(--button-paddingRight);
+        padding-top: var(--button-paddingTop);
+        position: relative;
+        text-decoration: none;
+        transition: var(--button-transition);
+        user-select: none;
+        vertical-align: middle;
+        white-space: var(--button-whiteSpace, nowrap);
+        width: var(--button-width);
+      }
+      .ms-Fabric--isFocusVisible &:focus::after {
+        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+        border-color: var(--button-focusColor, black);
+        border-style: solid;
+        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+        border-width: var(--button-focusWidth, 1.6px);
+        bottom: -1px;
+        box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
+        content: "";
+        left: -1px;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+      }
+      & > *:not(:first-child) {
+        margin-left: var(--button-contentGap);
+      }
+      &:hover {
+        background: var(--button-hovered-background, var(--button-background));
+        border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+        box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+        color: var(--button-hovered-contentColor, var(--button-contentColor));
+      }
+      &:hover .ms-Button-icon {
+        color: var(--button-hovered-iconColor, var(--button-iconColor));
+      }
+      &:active {
+        background: var(--button-pressed-background, var(--button-hovered-background));
+        border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+        box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+        color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+        transform: var(--button-pressed-transform);
+        transition: var(--button-pressed-transition);
+      }
+      &:active .ms-Button-icon {
+        color: var(--button-pressed-iconColor, var(--button-iconColor));
+      }
+      &[aria-disabled=true] {
+        background-color: var(--button-disabled-background);
+        border-color: var(--button-disabled-borderColor);
+        box-shadow: var(--button-disabled-boxShadow);
+        color: var(--button-disabled-contentColor);
+        opacity: var(--button-disabled-opacity);
+        pointer-events: none;
+      }
+      &[aria-disabled=true] .ms-Button-icon {
+        color: var(--button-disabled-iconColor);
+      }
+  href="https://www.bing.com"
+  role="button"
+>
+  <span
+    className=
+
+        {
+          line-height: 1;
+        }
+  >
+    Default button
+  </span>
+</a>
 `;
