@@ -122,7 +122,7 @@ storiesOf('Button Compound', module)
   .addStory('Primary Checked', () => (
     <CompoundButton {...baseProps} primary={true} checked={true} />
   ))
-  .addStory('No Icon', () => <CompoundButton>Button</CompoundButton>);
+  .addStory('No Icon', () => <CompoundButton {...baseProps} iconProps={undefined} />);
 
 storiesOf('Button Command', module)
   .addDecorator(story => (
