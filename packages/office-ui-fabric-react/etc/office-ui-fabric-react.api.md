@@ -2141,6 +2141,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
@@ -3141,6 +3142,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
@@ -5575,6 +5577,15 @@ export interface IMarqueeSelectionStyles {
 }
 
 // @public
+export interface IMaskedTextFieldProps extends ITextFieldProps {
+    mask?: string;
+    maskChar?: string;
+    maskFormat?: {
+        [key: string]: RegExp;
+    };
+}
+
+// @public
 export interface IMaskedTextFieldState {
     displayValue: string;
     maskCursorPosition?: number;
@@ -5997,6 +6008,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onRenderNavigation?: IRenderFunction<IPanelProps>;
     onRenderNavigationContent?: IRenderFunction<IPanelProps>;
     overlayProps?: IOverlayProps;
+    popupProps?: IPopupProps;
     styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
     theme?: ITheme;
     type?: PanelType;
@@ -6389,6 +6401,7 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     role?: string;
     // @deprecated
@@ -7755,8 +7768,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
+    // @deprecated (undocumented)
     mask?: string;
+    // @deprecated (undocumented)
     maskChar?: string;
+    // @deprecated (undocumented)
     maskFormat?: {
         [key: string]: RegExp;
     };
@@ -8198,14 +8214,14 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: ITextFieldProps);
+export class MaskedTextField extends React.Component<IMaskedTextFieldProps, IMaskedTextFieldState> implements ITextField {
+    constructor(props: IMaskedTextFieldProps);
     // (undocumented)
     blur(): void;
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    static defaultProps: ITextFieldProps;
+    static defaultProps: IMaskedTextFieldProps;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -8225,7 +8241,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     // (undocumented)
     setValue(newValue: string): void;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
+    UNSAFE_componentWillReceiveProps(newProps: IMaskedTextFieldProps): void;
     // (undocumented)
     readonly value: string | undefined;
 }
