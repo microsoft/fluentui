@@ -240,12 +240,20 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setSelectedItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
-        ...stableProps.current,
-        selectedItemIds: updateSelectedItemIds,
-      });
+      setSelectedItemIdsState(prevSelectedItemIds => {
+        // This is a hack to make it work with useAutoControlled since it's not keeping track of
+        // the controlled state in the first interaction breaking the expected behavior
+        // Remove this once the useAutoControle is fixed and the prevState will be stable
+        // see https://github.com/microsoft/fluentui/issues/14509
+        const nextSelectedItemIds = updateSelectedItemIds(stableProps.current.selectedItemIds || prevSelectedItemIds);
 
-      setSelectedItemIdsState(updateSelectedItemIds);
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+
+        return nextSelectedItemIds;
+      });
     },
     [stableProps, setSelectedItemIdsState],
   );
@@ -300,18 +308,17 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
       const treeItemHasSubtree = hasSubtree(treeItemProps);
-
       if (!treeItemProps) {
         return;
       }
 
-      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
         expandItems(e, treeItemProps);
       }
 
       if (treeItemProps.selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        if (treeItemHasSubtree && !treeItemProps.selectableParent) {
           return;
         }
 
