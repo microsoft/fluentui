@@ -17,6 +17,14 @@ export enum Position {
   start = 2,
   end = 3,
 }
+
+/**
+ * Window with typings for experimental features regarding Dual Screen devices.
+ */
+export interface IWindowWithSegments extends Window {
+  getWindowSegments?: () => DOMRect[];
+}
+
 export interface IPositionProps {
   target?: Element | MouseEvent | Point;
   /** how the element should be positioned */

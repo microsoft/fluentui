@@ -8,6 +8,7 @@ import {
   IPositionProps,
   ICalloutPositionProps,
   RectangleEdge,
+  IWindowWithSegments,
 } from './positioning.types';
 import { Point, Rectangle } from '../../Utilities';
 
@@ -894,13 +895,6 @@ export function getMaxHeight(
  */
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
   return edge * -1;
-}
-
-/**
- * Window with typings for experimental features regarding Dual Screen devices.
- */
-export interface IWindowWithSegments extends Window {
-  getWindowSegments?: () => DOMRect[];
 }
 
 function _getBoundsFromTargetWindow(

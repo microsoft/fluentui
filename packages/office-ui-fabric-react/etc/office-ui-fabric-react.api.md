@@ -1284,8 +1284,6 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
-// Warning: (ae-forgotten-export) The symbol "IWindowWithSegments" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
 
@@ -8317,6 +8315,12 @@ export interface IVerticalDividerStyles {
 export interface IViewport {
     height: number;
     width: number;
+}
+
+// @public
+export interface IWindowWithSegments extends Window {
+    // (undocumented)
+    getWindowSegments?: () => DOMRect[];
 }
 
 // @public
