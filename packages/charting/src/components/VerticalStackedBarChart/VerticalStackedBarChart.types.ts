@@ -29,11 +29,13 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
 
   /**
    * Colors from which to select the color of each bar.
+   * @deprecated Not using this prop. DIrectly taking color from given data.
    */
   colors?: string[];
 
   /**
    * To display multi stack callout or single callout
+   * @default flase
    */
   isMultiStackCallout?: boolean;
 

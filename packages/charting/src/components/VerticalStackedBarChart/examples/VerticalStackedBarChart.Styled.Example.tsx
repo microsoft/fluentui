@@ -100,7 +100,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             yMaxValue={120}
             yMinValue={10}
             // eslint-disable-next-line react/jsx-no-bind
-            yAxisTickFormat={x => `${x} h`}
+            yAxisTickFormat={(x: number | string) => `${x} h`}
             margins={{ left: 50 }}
           />
         </div>

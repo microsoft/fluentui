@@ -39,15 +39,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartState
 > {
   private _points: IVerticalStackedChartProps[];
-  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // private _xAxisScale: any = '';
-  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // private _yAxisScale: any = '';
   private _dataset: IDataPoint[];
   private _bars: JSX.Element[];
   private _isNumeric: boolean;
   private _barWidth: number;
-  private _colors: string[];
   private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _refArray: IRefArrayData[];
@@ -74,7 +69,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
     this._refArray = [];
-    this._barRefArray = []; // need of this?
+    this._barRefArray = [];
     this._adjustProps();
     this._dataset = this._createDataSetLayer();
   }
@@ -94,7 +89,8 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   public render(): React.ReactNode {
-    // need to check data change
+    this._adjustProps();
+    this._dataset = this._createDataSetLayer();
     this._isNumeric = this._dataset.length > 0 && typeof this._dataset[0].x === 'number';
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
 
@@ -141,8 +137,6 @@ export class VerticalStackedBarChartBase extends React.Component<
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
-          // this._xAxisScale = props.xScale!; // need to update with scales
-          // this._yAxisScale = props.yScale!;
           return <g>{this._bars}</g>;
         }}
       />
@@ -152,9 +146,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _adjustProps(): void {
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 32;
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
   }
 
   private _getMargins = (margins: IMargins) => {
@@ -163,8 +154,6 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
-    // this._xAxisScale = xScale;
-    // this._yAxisScale = yScale;
     return (this._bars = this._isNumeric
       ? this._createNumericBars(containerHeight, containerWidth)
       : this._createStringBars(containerHeight, containerWidth));
@@ -374,7 +363,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       let startingPointOfY = 0;
       const singleBar = singleChartData.chartData.map((point: IVSChartDataPoint, index: number) => {
         startingPointOfY = startingPointOfY + point.data;
-        const color = point.color ? point.color : this._colors[index];
         const refArrayIndexNumber = indexNumber * singleChartData.chartData.length + index;
 
         let shouldHighlight = true;
@@ -404,17 +392,16 @@ export class VerticalStackedBarChartBase extends React.Component<
             y={containerHeight - this.margins.bottom! - yBarScale(startingPointOfY)}
             width={this._barWidth}
             height={Math.max(yBarScale(point.data), 0)}
-            fill={color}
+            fill={point.color}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend, refArrayIndexNumber);
             }}
             data-is-focusable={!this.props.isMultiStackCallout}
-            focusable={this.props.isMultiStackCallout ? 'false' : 'true'}
             aria-labelledby={this._calloutId}
             onMouseOver={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
             onMouseMove={this._onRectHover.bind(this, singleChartData.xAxisPoint, point)}
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber)}
+            onFocus={this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, point.color!, refArrayIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this._redirectToUrl}
           />
@@ -428,7 +415,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           ref={(gElement: SVGGElement) => {
             this._barRefCallback(gElement, indexNumber, singleChartData.xAxisPoint);
           }}
-          focusable={this.props.isMultiStackCallout ? 'true' : 'false'}
           onMouseOver={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
           onMouseMove={this._onBarHover.bind(this, singleChartData.xAxisPoint)}
           onMouseLeave={this._onBarLeave}
