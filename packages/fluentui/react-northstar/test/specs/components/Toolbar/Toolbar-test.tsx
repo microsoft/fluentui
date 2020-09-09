@@ -66,16 +66,12 @@ describe('Toolbar', () => {
   describe('overflowItem', () => {
     it('popper props can be overriden', () => {
       const wrapper = mountWithProvider(
-        <Toolbar
-          items={[]}
-          overflow
-          overflowOpen
-          overflowItem={{ menu: { popper: { position: 'below' } } }}
-        />,
+        <Toolbar items={[]} overflow overflowOpen overflowItem={{ menu: { popper: { position: 'below' } } }} />,
       );
 
-      expect(wrapper.find('Popper').prop('positionFixed').toBe(true)
-      expect(wrapper.find('Popper').prop('position').toBe('below')
+      expect(wrapper.find('Popper').prop('positionFixed')).toBe(true);
+
+      expect(wrapper.find('Popper').prop('position')).toBe('below');
     });
   });
 });
