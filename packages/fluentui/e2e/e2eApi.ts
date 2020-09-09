@@ -29,6 +29,8 @@ type E2EKeys =
   | 'F'
   | 'O';
 
+const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
+
 export class E2EApi {
   constructor(private readonly page: Page) {}
 
@@ -43,7 +45,7 @@ export class E2EApi {
   };
 
   public getElement = async (selector: string) => {
-    return await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
+    return await this.page.waitForSelector(selector, { timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
   public hover = async (selector: string) => {
@@ -59,15 +61,23 @@ export class E2EApi {
       (selector, property, value) => {
         return window.getComputedStyle(document.querySelector(selector))[property] === value;
       },
-      { timeout: 10 * 1000 },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
       selector,
       property,
       value,
     );
   };
 
-  public getPropertyValue = async (selector: string, prop) => {
-    return this.page.$eval(selector, (el, prop) => el[prop], prop);
+  public hasPropertyValue = async (selector: string, property: string, value: number | string): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, property, value) => {
+        return document.querySelector(selector)[property] === value;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+      property,
+      value,
+    );
   };
 
   public count = async (selector: string, count: number): Promise<void> => {
@@ -75,18 +85,18 @@ export class E2EApi {
       (selector, count) => {
         return document.querySelectorAll(selector).length === count;
       },
-      { timeout: 10 * 1000 },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
       selector,
       count,
     );
   };
 
   public exists = async (selector: string): Promise<void> => {
-    await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
+    await this.page.waitForSelector(selector, { timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
   public hidden = async (selector: string): Promise<void> => {
-    await this.page.waitForSelector(selector, { hidden: true, timeout: 10 * 1000 });
+    await this.page.waitForSelector(selector, { hidden: true, timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
   public clickOn = async (selector: string): Promise<void> => {
@@ -98,7 +108,7 @@ export class E2EApi {
       (selector, text) => {
         return document.querySelector(selector).innerText === text;
       },
-      { timeout: 10 * 1000 },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
       selector,
       text,
     );
@@ -116,7 +126,7 @@ export class E2EApi {
 
         return activeElement === selectorElement;
       },
-      { timeout: 10 * 1000 },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
       selector,
     );
   };
