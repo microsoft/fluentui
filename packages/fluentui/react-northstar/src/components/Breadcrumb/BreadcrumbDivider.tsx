@@ -82,7 +82,7 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
 
 BreadcrumbDivider.defaultProps = {
   as: 'span',
-  children: '/',
+  children: () => '/',
   accessibility: breadcrumbDividerBehavior,
 };
 
