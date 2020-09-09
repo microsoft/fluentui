@@ -1,7 +1,12 @@
+@import 'tokens';
+
 // Define default variable values
 :root {
   --avatar-size: 32px;
-  --avatar-borderRadius: 9999px;
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-body};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+  --avatar-borderRadius: #{$borderRadius-circle};
   --avatar-background: rgb(232, 232, 232);
 }
 
@@ -14,6 +19,10 @@
   flex-shrink: 0;
   width: var(--avatar-size);
   height: var(--avatar-size);
+
+  @include fontFamily-base;
+  font-size: var(--avatar-fontSize);
+  font-weight: var(--avatar-fontWeight);
 }
 
 // Image slot
@@ -36,7 +45,6 @@
   justify-content: center;
   background-color: var(--avatar-background);
 
-  font-size: var(--avatar-fontSize, calc(var(--avatar-size) / 2.333));
   width: var(--avatar-size);
   height: var(--avatar-size);
 
@@ -58,11 +66,70 @@
 }
 
 // Modifiers
+._sizeClass_20,
+._sizeClass_24 {
+  --avatar-iconSize: #{$iconSize-small};
+  --avatar-fontSize: #{$fontSize-legal};
+  --avatar-fontWeight: #{$fontWeight-legal};
+}
+._sizeClass_28 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-legal};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
+._sizeClass_32,
+._sizeClass_36,
+._sizeClass_40 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-body};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
+._sizeClass_48,
+._sizeClass_56 {
+  --avatar-iconSize: #{$iconSize-large};
+  --avatar-fontSize: #{$fontSize-subheadline};
+  --avatar-fontWeight: #{$fontWeight-subheadline};
+}
+._sizeClass_64,
+._sizeClass_72,
+._sizeClass_96 {
+  --avatar-iconSize: #{$iconSize-larger};
+  --avatar-fontSize: #{$fontSize-headline};
+  --avatar-fontWeight: #{$fontWeight-headline};
+}
+._sizeClass_120,
+._sizeClass_128 {
+  --avatar-iconSize: #{$iconSize-largest};
+  --avatar-fontSize: #{$fontSize-title3};
+  --avatar-fontWeight: #{$fontWeight-title3};
+}
+
 ._square {
-  --avatar-borderRadius: calc(var(--avatar-size) / 12);
+  &._sizeClass_20,
+  &._sizeClass_24 {
+    --avatar-borderRadius: #{$borderRadius-small};
+  }
+  &._sizeClass_28,
+  &._sizeClass_32,
+  &._sizeClass_36,
+  &._sizeClass_40,
+  &._sizeClass_48 {
+    --avatar-borderRadius: #{$borderRadius-medium};
+  }
+  &._sizeClass_56,
+  &._sizeClass_64,
+  &._sizeClass_72 {
+    --avatar-borderRadius: #{$borderRadius-large};
+  }
+  &._sizeClass_96,
+  &._sizeClass_120,
+  &._sizeClass_128 {
+    --avatar-borderRadius: #{$borderRadius-xlarge};
+  }
 }
 
 ._display_icon {
-  // The icon should be half the size of the avatar
-  --avatar-fontSize: calc(var(--avatar-size) / 2);
+  // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
+  font-size: var(--avatar-iconSize);
+  font-weight: #{$fontWeight-regular};
 }

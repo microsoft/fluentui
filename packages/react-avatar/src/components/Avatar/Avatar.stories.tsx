@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from './Avatar';
-import { AvatarProps, CustomAvatarSize } from './Avatar.types';
+import { AvatarProps, avatarSizes } from './Avatar.types';
 import { StoryExample } from '../utils/StoryExample';
 import {
   GroupIcon,
@@ -10,104 +10,130 @@ import {
   TelemarketerIcon,
   RoomIcon,
   RobotIcon,
-  ChatBotIcon,
   SkypeClockIcon,
   SkypeCheckIcon,
   SkypeMinusIcon,
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 
-const imageUrl = 'http://www.fillmurray.com/192/192';
-
 export const AvatarExamples = () => (
   <>
-    <StoryExample title="Icon">
-      <Avatar size={20} icon={<CatIcon />} badge="success" />
-      <Avatar size={24} icon={<CalendarIcon />} badge="warning" />
-      <Avatar size={28} icon={<RoomIcon />} badge="error" square />
-      <Avatar badge="success" />
-      <Avatar size={48} icon={<TelemarketerIcon />} name="(206) 555-0123" badge="info" />
-      <Avatar size={64} icon={<IDBadgeIcon />} badge="error" />
-      <Avatar size={96} icon={<GroupIcon />} badge="warning" square />
-      {/* display="icon" should override the initials and image even if available */}
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} display="icon" />
-    </StoryExample>
-    <StoryExample title="Badge icon">
-      <Avatar size={20} badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} />
-      <Avatar size={24} badge={{ state: 'warning', icon: { as: SkypeClockIcon } }} square />
-      <Avatar size={28} badge={{ state: 'error', icon: { as: SkypeMinusIcon } }} />
-      <Avatar badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} square />
-      <Avatar size={48} badge={{ state: 'info', icon: { as: SkypeArrowIcon } }} />
-      <Avatar size={64} badge={{ state: 'error', icon: { as: SkypeMinusIcon } }} square />
-      <Avatar size={96} badge={{ state: 'warning', icon: { as: SkypeClockIcon } }} />
-      <Avatar size={128} badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} square />
-    </StoryExample>
-    <StoryExample title="Initials (round)">
-      <Avatar size={20} name="John Doe" badge="success" />
+    <StoryExample title="Basic examples">
+      <Avatar />
       <Avatar size={24} name="John Doe" badge="warning" />
-      <Avatar size={28} name="John Doe" badge="error" />
-      <Avatar name="John Doe" badge="success" />
-      <Avatar size={48} name="Jane Doe" badge="info" />
-      <Avatar size={64} name="Lorem Ipsum" badge="error" />
-      <Avatar size={96} name="Lorem Ipsum" badge="warning" />
-      {/* display="label" should override the image even if available */}
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} display="label" />
+      <Avatar name="Group" icon={<GroupIcon />} square />
+      <Avatar size={48} name="Ade Matthews" image="images/avatar/ade.png" />
+      <Avatar size={64} name="Group" icon={<GroupIcon />} square display="icon" />
+      <Avatar size={96} name="Joe Daniels" image="images/avatar/joe.png" badge="success" />
     </StoryExample>
-    <StoryExample title="Initials (square)">
-      <Avatar square size={20} name="John Doe" badge="success" />
-      <Avatar square size={24} name="John Doe" badge="warning" />
-      <Avatar square size={28} name="John Doe" badge="error" />
-      <Avatar square name="John Doe" badge="success" />
-      <Avatar square size={48} name="Jane Doe" badge="info" />
-      <Avatar square size={64} name="Lorem Ipsum" badge="error" />
-      <Avatar square size={96} name="Lorem Ipsum" badge="warning" />
-      <Avatar square size={128} name="Lorem Ipsum" />
+    <StoryExample title="Image">
+      <AvatarExampleList display="image" />
+      <AvatarExampleList display="image" square />
     </StoryExample>
-    <StoryExample title="Image (round)">
-      <Avatar size={20} name="John Doe" badge="success" image={imageUrl} />
-      <Avatar size={24} name="John Doe" badge="warning" image={imageUrl} />
-      <Avatar size={28} name="John Doe" badge="error" image={imageUrl} />
-      <Avatar name="John Doe" badge="success" image={imageUrl} />
-      <Avatar size={48} name="Jane Doe" badge="info" image={imageUrl} />
-      <Avatar size={64} name="Lorem Ipsum" badge="error" image={imageUrl} />
-      <Avatar size={96} name="Lorem Ipsum" badge="warning" image={imageUrl} />
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} />
+    <StoryExample title="Initials">
+      <AvatarExampleList display="label" />
+      <AvatarExampleList display="label" square />
     </StoryExample>
-    <StoryExample title="Image (square)">
-      <Avatar square size={20} name="John Doe" image={imageUrl} badge="success" />
-      <Avatar square size={24} name="John Doe" image={imageUrl} badge="warning" />
-      <Avatar square size={28} name="John Doe" image={imageUrl} badge="error" />
-      <Avatar square name="John Doe" image={imageUrl} badge="success" />
-      <Avatar square size={48} name="Jane Doe" image={imageUrl} badge="info" />
-      <Avatar square size={64} name="Lorem Ipsum" image={imageUrl} badge="error" />
-      <Avatar square size={96} name="Lorem Ipsum" image={imageUrl} badge="warning" />
-      <Avatar square size={128} name="Lorem Ipsum" image={imageUrl} />
+    <StoryExample title="Icon">
+      <AvatarExampleList display="icon" />
+      <AvatarExampleList display="icon" square />
+    </StoryExample>
+    <StoryExample title="Custom shape">
+      <AvatarExampleList
+        icon={<RobotIcon />}
+        display="icon"
+        tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
+      />
     </StoryExample>
     <StoryExample title="Custom Size">
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(17)} />
-      <Avatar name="Custom Size" badge="warning" size={CustomAvatarSize(42)} />
-      <Avatar name="Custom Size" badge="error" size={CustomAvatarSize(55)} />
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(100)} />
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(150)} />
-    </StoryExample>
-    <StoryExample title="Custom Shape">
-      <RobotAvatar size={20} name="Mr. Robot" />
-      <RobotAvatar size={24} name="Mr. Robot" />
-      <RobotAvatar size={28} name="Mr. Robot" />
-      <RobotAvatar size={32} name="Mr. Robot" />
-      <RobotAvatar size={48} name="Mr. Robot" />
-      <RobotAvatar size={64} name="Chat Bot" icon={<ChatBotIcon />} badge={{ tokens: { color: 'hotpink' } }} />
-      <RobotAvatar size={96} name="Mr. Robot" />
-      <RobotAvatar size={128} name="Mr. Robot" />
+      <Avatar name="Custom Size" badge="success" customSize={17} />
+      <Avatar name="Custom Size" badge="warning" customSize={42} />
+      <Avatar name="Custom Size" badge="error" customSize={55} />
+      <Avatar name="Custom Size" badge="success" customSize={100} />
+      <Avatar name="Custom Size" badge="success" customSize={150} />
     </StoryExample>
   </>
 );
 
-const RobotAvatar = (props: AvatarProps) => (
-  <Avatar
-    icon={<RobotIcon />}
-    display="icon"
-    tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
-    {...props}
-  />
-);
+/**
+ * Examples for the name and image props used by AvatarExampleList
+ */
+const people: readonly Pick<AvatarProps, 'name' | 'image'>[] = [
+  { name: 'Ade Laura', image: 'images/avatar/ade.png' },
+  { name: 'Christain Matthew', image: 'images/avatar/christian.png' },
+  { name: 'Daniel Molly', image: 'images/avatar/daniel.png' },
+  { name: 'Elliot Nan', image: 'images/avatar/elliot.png' },
+  { name: 'Elyse Patrick', image: 'images/avatar/elyse.png' },
+  { name: 'Helen Rachel', image: 'images/avatar/helen.png' },
+  { name: 'Jenny Steve', image: 'images/avatar/jenny.png' },
+  { name: 'Joe Stevie', image: 'images/avatar/joe.png' },
+  { name: 'Justen Tom', image: 'images/avatar/justen.png' },
+  { name: 'Kristy Veronika', image: 'images/avatar/kristy.png' },
+  { name: 'Laura Zoe', image: 'images/avatar/laura.png' },
+  { name: 'Matt Ade', image: 'images/avatar/matt.png' },
+  { name: 'Matthew Chris', image: 'images/avatar/matthew.png' },
+  { name: 'Molly Christain', image: 'images/avatar/molly.png' },
+  { name: 'Nan Daniel', image: 'images/avatar/nan.png' },
+  { name: 'Patrick Elliot', image: 'images/avatar/patrick.png' },
+  { name: 'Rachel Elyse', image: 'images/avatar/rachel.png' },
+  { name: 'Steve Helen', image: 'images/avatar/steve.png' },
+  { name: 'Stevie Jenny', image: 'images/avatar/stevie.png' },
+  { name: 'Tom Joe', image: 'images/avatar/tom.png' },
+  { name: 'Veronika Justen', image: 'images/avatar/veronika.png' },
+  { name: 'Zoe Kristy', image: 'images/avatar/zoe.png' },
+];
+
+/**
+ * Examples for the icon prop used by AvatarExampleList
+ */
+const icons: readonly Pick<AvatarProps, 'icon'>[] = [
+  {}, // default icon
+  { icon: <GroupIcon /> },
+  { icon: <CatIcon /> },
+  { icon: <CalendarIcon /> },
+  { icon: <RoomIcon /> },
+  { icon: <IDBadgeIcon /> },
+  { icon: <TelemarketerIcon /> },
+];
+
+/**
+ * Examples for the badge prop used by AvatarExampleList
+ */
+const badges: readonly Pick<AvatarProps, 'badge'>[] = [
+  {}, // no badge (default)
+  { badge: 'success' },
+  { badge: 'warning' },
+  { badge: 'error' },
+  { badge: 'info' },
+  {}, // no badge (default)
+  { badge: { state: 'success', icon: { as: SkypeCheckIcon } } },
+  { badge: { state: 'warning', icon: { as: SkypeClockIcon } } },
+  { badge: { state: 'error', icon: { as: SkypeMinusIcon } } },
+  { badge: { state: 'info', icon: { as: SkypeArrowIcon } } },
+];
+
+// Keep track of the offset in the example arrays, so the same size doesn't always line up with the same image/icon/etc
+let offset = 0;
+
+const AvatarExampleList = (props: Exclude<AvatarProps, 'size'>) => {
+  const avatars = avatarSizes.map((size, i) => (
+    <div key={size} style={{ margin: '5px' }}>
+      <Avatar
+        size={size}
+        {...people[(i + offset) % people.length]}
+        {...badges[(i + offset) % badges.length]}
+        {...icons[(i + offset) % icons.length]}
+        {...props}
+      />
+    </div>
+  ));
+
+  offset += avatars.length;
+
+  return (
+    <div style={{ display: 'flex', margin: '0', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex' }}>{avatars.slice(0, 9)}</div>
+      <div style={{ display: 'flex' }}>{avatars.slice(9)}</div>
+    </div>
+  );
+};
