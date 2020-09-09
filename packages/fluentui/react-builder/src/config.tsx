@@ -44,47 +44,6 @@ export const COMPONENT_GROUP = {
   Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
 };
 
-const VALID_DROP_COMPONENTS = [
-  'div',
-  'Alert',
-  'Header',
-  'Label',
-  'Form',
-  'FormField',
-  'Menu',
-  'MenuItem',
-  'Toolbar',
-  'ToolbarItem',
-  'ToolbarMenu',
-  'ToolbarMenuItem',
-  'Box',
-  'Flex',
-  'Grid',
-  'Layout',
-  'Table',
-  'TableCell',
-  'TableRow',
-  'ItemLayout',
-  'Card',
-  'CardBody',
-  'CardColumn',
-  'CardHeader',
-  'CardFooter',
-  'Carousel',
-  'CarouselItem',
-  'Accordion',
-  'AccordionContent',
-  'Segment',
-  'List',
-  'ListItem',
-  'ListItemContent',
-  'ListItemHeader',
-  'Tree',
-  'TreeItem',
-  'HierarchicalTree',
-  'HierarchicalTreeItem',
-];
-
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -511,10 +470,6 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   };
 };
 
-const askForProp = (parent: JSONTreeElement) => {
-  console.log(parent);
-  return React.createElement(FUI.Dialog);
-};
 // TODO: this allows mutating `target`, OK?
 /**
  * Handles dropping a new child element into a parent element.
@@ -527,10 +482,6 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
     return;
   }
 
-  // TODO: prevent invalid drops, prob before they happen (ie isValidDrop() )
-  if (!isValidDrop(parent)) {
-    return;
-  }
   // TODO: This is where we'd handle special drop logic and json tree updates
   //       Right now, we just update the children of the element that was dropped on.
   // TODO: Icon component was removed
@@ -559,7 +510,9 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
 };
 
 export const isValidDrop = (element: JSONTreeElement) => {
-  return element.type === 'div' || Object.keys(element.props).length === 0 || element.props?.children;
+  return (
+    element.type === 'div' || (element.props && Object.keys(element.props).length === 0) || element.props?.children
+  );
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////

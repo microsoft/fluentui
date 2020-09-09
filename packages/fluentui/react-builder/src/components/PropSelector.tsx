@@ -6,8 +6,6 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
   onConfirm,
   onCancel,
 }) => {
-  console.log(JSON.parse(JSON.stringify(components)));
-  components;
   const propItems = components.parent.props
     ? Object.keys(components.parent.props).map(prop => {
         return { name: 'prop', key: prop, label: prop, value: prop };
@@ -35,17 +33,17 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
     },
   ];
   const [selectedProp, setSelectedProp] = React.useState('');
-  const handlePropChange = (e, props) => {
+  const handlePropChange = (_, props) => {
     setSelectedProp(props.value);
   };
 
   const [operation, setOperation] = React.useState('add');
-  const handleOperationChange = (e, props) => {
+  const handleOperationChange = (_, props) => {
     setOperation(props.value);
   };
 
   const [index, setIndex] = React.useState(0);
-  const handleIndexChange = (e, props) => {
+  const handleIndexChange = (_, props) => {
     setIndex(props.value);
     return false;
   };
