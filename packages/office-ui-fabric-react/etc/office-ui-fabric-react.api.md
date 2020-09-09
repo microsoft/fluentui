@@ -19,6 +19,7 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
+import { IPoint } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
@@ -6564,6 +6565,8 @@ export interface IPlainCardStyleProps extends IBaseCardStyleProps {
 export interface IPlainCardStyles extends IBaseCardStyles {
 }
 
+export { IPoint }
+
 // @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaDescribedBy?: string;
@@ -9008,6 +9011,8 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
+
+export { Point }
 
 // @public
 export class Popup extends React.Component<IPopupProps, IPopupState> {
