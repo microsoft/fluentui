@@ -3,8 +3,7 @@ import { FocusZoneDirection } from '../../focusZone/types';
 
 /**
  * @description
- * Implements ARIA Toolbar design pattern.
- * Child item components need to have toolbarItemBehavior assigned.
+ * Implements ARIA grid layout for breadcrumb
  * @specification
  * Adds role 'toolbar' to 'root' slot.
  */
