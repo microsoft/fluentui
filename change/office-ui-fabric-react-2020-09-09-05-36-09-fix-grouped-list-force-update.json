@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "GroupedList: Fixed forceListUpdate was not propagating to subgroups",
+  "packageName": "office-ui-fabric-react",
+  "email": "marwankhalili@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-09T03:36:09.946Z"
+}
