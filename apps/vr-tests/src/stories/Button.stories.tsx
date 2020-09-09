@@ -23,6 +23,7 @@ const baseProps: IButtonProps = {
 const commandProps: IButtonProps = {
   iconProps: { iconName: 'Add' },
   text: 'Create account',
+  // eslint-disable-next-line no-alert
   onClick: () => alert('Clicked'),
   menuProps: {
     items: [
@@ -66,9 +67,14 @@ storiesOf('Button Default', module)
   .addStory('Primary Disabled', () => (
     <DefaultButton {...baseProps} primary={true} disabled={true} />
   ))
-  .addStory('Primary Checked', () => (
-    <DefaultButton {...baseProps} primary={true} checked={true} />
-  ));
+  .addStory('Primary Checked', () => <DefaultButton {...baseProps} primary={true} checked={true} />)
+  .addStory('Primary Anchor', () => (
+    <DefaultButton primary href="http://www.bing.com">
+      Button
+    </DefaultButton>
+  ))
+  .addStory('No Icon', () => <DefaultButton>Button</DefaultButton>)
+  .addStory('Icon Only', () => <DefaultButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Action', module)
   .addDecorator(FabricDecorator)
@@ -87,7 +93,9 @@ storiesOf('Button Action', module)
   ))
   .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
-  .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />);
+  .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />)
+  .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
+  .addStory('Icon Only', () => <ActionButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Compound', module)
   .addDecorator(FabricDecorator)
@@ -113,7 +121,8 @@ storiesOf('Button Compound', module)
   ))
   .addStory('Primary Checked', () => (
     <CompoundButton {...baseProps} primary={true} checked={true} />
-  ));
+  ))
+  .addStory('No Icon', () => <CompoundButton>Button</CompoundButton>);
 
 storiesOf('Button Command', module)
   .addDecorator(story => (
