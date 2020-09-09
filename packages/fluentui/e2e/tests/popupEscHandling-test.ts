@@ -18,7 +18,7 @@ describe('Popup - on ESC key press', () => {
     await e2e.clickOn(dropdownTriggerButton); // opens dropdown list
     await e2e.exists(dropdownList);
 
-    await e2e.pressKey('Escape'); // closes dropdown list
+    await e2e.waitForSelectorAndPressKey(dropdownList, 'Escape'); // closes dropdown list
     await e2e.exists(dropdownTriggerButton);
     await e2e.exists(popupContent);
     await e2e.isFocused(dropdownTriggerButton);

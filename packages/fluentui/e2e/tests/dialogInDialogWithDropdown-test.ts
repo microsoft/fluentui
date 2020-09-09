@@ -26,8 +26,7 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
 
     await e2e.clickOn(dropdownIndicator);
-    await e2e.exists(dropdownList);
-    await e2e.pressKey('Escape');
+    await e2e.waitForSelectorAndPressKey(dropdownList, 'Escape');
 
     await e2e.exists(dropdownSelector);
     await e2e.exists(innerHeader);
@@ -39,7 +38,7 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerTrigger);
 
     await e2e.clickOn(innerHeader);
-    await e2e.pressKey('Escape');
+    await e2e.waitForSelectorAndPressKey(innerHeader, 'Escape');
 
     await e2e.hidden(dropdownSelector);
     await e2e.hidden(innerHeader);

@@ -71,7 +71,7 @@ describe('Dialog in Dialog', () => {
     await e2e.isFocused('body');
 
     // press ESC and check if nested dialog is closed and focus is on nested trigger
-    await e2e.pressKey('Escape');
+    await e2e.waitForSelectorAndPressKey(innerHeader, 'Escape');
     await e2e.hidden(innerHeader);
     await e2e.isFocused(innerTrigger);
 
@@ -80,7 +80,7 @@ describe('Dialog in Dialog', () => {
     await e2e.isFocused('body');
 
     // press ESC again and check if the last dialog is closed and focus is on trigger
-    await e2e.pressKey('Escape');
+    await e2e.waitForSelectorAndPressKey(outerHeader, 'Escape');
     await e2e.hidden(outerHeader);
     await e2e.isFocused(outerTrigger);
   });

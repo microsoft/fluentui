@@ -14,6 +14,21 @@ export const exampleUrlTokenFromFilePath = (filePath: string) => {
   return _.kebabCase(testName);
 };
 
+type E2EKeys =
+  | 'ArrowDown'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'ArrowUp'
+  | 'End'
+  | 'Enter'
+  | 'Escape'
+  | 'Home'
+  | 'PageDown'
+  | 'PageUp'
+  | 'Tab'
+  | 'F'
+  | 'O';
+
 export class E2EApi {
   constructor(private readonly page: Page) {}
 
@@ -106,7 +121,13 @@ export class E2EApi {
     );
   };
 
-  public pressKey = async (key: string, modifier?: string): Promise<void> => {
+  public waitForSelectorAndPressKey = async (
+    selector: string,
+    key: E2EKeys,
+    modifier?: 'Control' | 'Shift',
+  ): Promise<void> => {
+    await this.getElement(selector);
+
     if (modifier) {
       await this.page.keyboard.down(modifier);
     }

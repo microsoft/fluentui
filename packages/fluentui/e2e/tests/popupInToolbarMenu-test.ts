@@ -23,14 +23,14 @@ describe('Popup in ToolbarMenu', () => {
 
   it('Popup can be opened using keyboard', async () => {
     // focuses menu button
-    await e2e.pressKey('Tab');
+    await e2e.waitForSelectorAndPressKey(menuButtonId, 'Tab');
 
     // opens menu
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(menuButtonId, 'Enter');
     await e2e.exists(toolbarMenuId);
 
     // opens Popup
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(toolbarMenuId, 'Enter');
     await e2e.exists(popupElementId);
   });
 
@@ -51,7 +51,7 @@ describe('Popup in ToolbarMenu', () => {
 
     // opens Popup
     await e2e.clickOn(popupTriggerId);
-    await e2e.pressKey('Tab');
+    await e2e.waitForSelectorAndPressKey(popupTriggerId, 'Tab');
     await e2e.exists(popupElementId);
   });
 

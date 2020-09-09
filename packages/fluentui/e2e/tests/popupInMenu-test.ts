@@ -28,19 +28,19 @@ describe('Popup of menu item', () => {
 
   it('open/close and navigate in menu by keyboard', async () => {
     await e2e.focusOn(menuItem(3));
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(menuItem(3), 'Enter');
     await e2e.isFocused(itemPopup(3));
 
-    await e2e.pressKey('Escape'); // close the popup
+    await e2e.waitForSelectorAndPressKey(itemPopup(3), 'Escape'); // close the popup
     await e2e.isFocused(menuItem(3));
 
-    await e2e.pressKey('ArrowLeft'); // moves to previous menu item
+    await e2e.waitForSelectorAndPressKey(menuItem(3), 'ArrowLeft'); // moves to previous menu item
     await e2e.isFocused(menuItem(2));
 
-    await e2e.pressKey('ArrowLeft'); // moves to previous menu item
+    await e2e.waitForSelectorAndPressKey(menuItem(2), 'ArrowLeft'); // moves to previous menu item
     await e2e.isFocused(menuItem(1));
 
-    await e2e.pressKey('ArrowRight'); // moves to next menu item
+    await e2e.waitForSelectorAndPressKey(menuItem(1), 'ArrowRight'); // moves to next menu item
     await e2e.isFocused(menuItem(2));
   });
 });

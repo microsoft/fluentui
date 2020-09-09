@@ -24,14 +24,14 @@ describe('Popup in ToolbarMenu', () => {
 
   it('Submenu can be opened using keyboard', async () => {
     // focuses menu button
-    await e2e.pressKey('Tab');
+    await e2e.waitForSelectorAndPressKey(moreButtonId, 'Tab');
 
     // opens menu
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(moreButtonId, 'Enter');
     await e2e.exists(toolbarMenuId);
 
     // opens submenu
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(toolbarMenuId, 'Enter');
     await e2e.exists(toolbarMenuSubmenuId);
   });
 
@@ -57,18 +57,18 @@ describe('Popup in ToolbarMenu', () => {
 
   it('Submenu should be closed when pressing enter/space on some item that does not have submenu', async () => {
     // focuses menu button
-    await e2e.pressKey('Tab');
+    await e2e.waitForSelectorAndPressKey(moreButtonId, 'Tab');
 
     // opens menu
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(moreButtonId, 'Enter');
     await e2e.exists(toolbarMenuId);
 
     // opens submenu
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(toolbarMenuId, 'Enter');
     await e2e.exists(toolbarMenuSubmenuId);
 
     // closes all menus
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(toolbarMenuSubmenuId, 'Enter');
     await e2e.hidden(toolbarMenuId);
     await e2e.hidden(toolbarMenuSubmenuId);
   });

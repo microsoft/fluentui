@@ -17,7 +17,7 @@ describe('Toolbar menu on', () => {
     await e2e.exists(toolbarMenu);
 
     // TAB from opened menu
-    await e2e.pressKey('Tab');
+    await e2e.waitForSelectorAndPressKey(toolbarMenu, 'Tab');
 
     await e2e.isFocused(afterToolbarId);
     await e2e.hidden(toolbarMenu);
@@ -40,7 +40,7 @@ describe('Toolbar menu on', () => {
     await e2e.exists(toolbarMenu);
 
     // Shift+TAB from opened menu
-    await e2e.pressKey('Tab', 'Shift');
+    await e2e.waitForSelectorAndPressKey(toolbarMenu, 'Tab', 'Shift');
 
     await e2e.isFocused(beforeToolbarId);
     await e2e.hidden(toolbarMenu);
@@ -53,7 +53,7 @@ describe('Toolbar menu on', () => {
     await e2e.isFocused(menuItemButton(0));
 
     // press enter on first menu item
-    await e2e.pressKey('Enter');
+    await e2e.waitForSelectorAndPressKey(menuItemButton(0), 'Enter');
 
     // verify focus was moved to button, this action is defined in 'onClick'
     await e2e.isFocused(afterToolbarId);
