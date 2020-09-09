@@ -29,6 +29,8 @@ export type CanvasProps = {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
   role?: string;
+  inUseMode?: boolean;
+  setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -49,6 +51,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   style,
   role,
+  inUseMode,
+  setHeaderMessage,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -118,8 +122,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   const [bodyFocused, setBodyFocused] = React.useState(false);
   const handleFocus = (ev: FocusEvent) => {
     if (ev.target && (ev.target as any).getAttribute('data-builder-id') === null) {
-      setBodyFocused(true);
+      !bodyFocused && setHeaderMessage('Warning: Focus on body.');
+      !bodyFocused && setBodyFocused(true);
     } else {
+      bodyFocused && setHeaderMessage('');
       bodyFocused && setBodyFocused(false);
     }
   };
@@ -208,9 +214,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       style.innerHTML = [
         bodyFocused &&
+          inUseMode &&
           `
           body {
-            border: 5px solid red;
+            border: 3px solid red;
           }
           `,
         isSelecting &&
@@ -242,7 +249,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused, inUseMode]);
 
   return (
     <Frame
@@ -323,7 +330,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   target={document}
                 />
               )}
-              <EventListener capture type="focus" listener={handleFocus} target={document} />
+              {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {showNarration && selectedComponent && (
                 <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
