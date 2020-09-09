@@ -402,6 +402,9 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
   optionTextWrapper: IStyle;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxClassNames {
   container: string;
   label: string;
@@ -416,6 +419,9 @@ export interface IComboBoxClassNames {
   screenReaderText: string;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxOptionClassNames {
   optionText: string;
   root: string;

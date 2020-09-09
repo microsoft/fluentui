@@ -361,6 +361,9 @@ export interface ISpinButtonStyles {
   arrowButtonsContainerDisabled: IStyle;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonClassNames {
   root: string;
   labelWrapper: string;
