@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/react-hooks_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "useMergedRefs now properly returns a more usable React.RefObject type.",
+            "author": "dzearing@microsoft.com",
+            "commit": "1992572e12879ee948dc79c040c620a84191b582",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@uifabric/react-hooks_v7.11.0",
       "version": "7.11.0",

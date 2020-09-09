@@ -2,6 +2,59 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@fluentui/react-button_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CompoundButton: Adding initial component to react-button package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0d0c48f6cfb2eb9dd22f62a56f11a1d2120257ab",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix rendering as anchor when href is passed.",
+            "author": "xgao@microsoft.com",
+            "commit": "f8910a6199963dde8bed7b0224f1c9077e574f1d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-button_v0.11.6",
+      "version": "0.11.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated styling to use makeStyles.",
+            "author": "dzearing@microsoft.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-button_v0.11.5",
+      "version": "0.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding legacy startup for internal testing on IE11.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bcf5ac28bfb4809a9097a8bec9bb26cba8d04ef6",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@fluentui/react-button_v0.11.0",
       "version": "0.11.0",

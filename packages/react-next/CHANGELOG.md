@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 18:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.102)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.101..@fluentui/react-next_v8.0.0-alpha.102)
+
+### Changes
+
+- Updating Rating to a function component inside React-Next. ([PR #14703](https://github.com/microsoft/fluentui/pull/14703) by czearing@outlook.com)
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
+
+## [8.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.101)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.100..@fluentui/react-next_v8.0.0-alpha.101)
+
+### Changes
+
+- Updating MaskedTextField to a function component. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14854](https://github.com/microsoft/fluentui/pull/14854) by czearing@outlook.com)
+
+## [8.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.100)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.98..@fluentui/react-next_v8.0.0-alpha.100)
+
+### Changes
+
+- Add ComponentConformance and ComponentExamples tests to react-next ([PR #14886](https://github.com/microsoft/fluentui/pull/14886) by elcraig@microsoft.com)
+- undefined ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
 
 ## [8.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.98)
 

@@ -2,6 +2,88 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 09 Sep 2020 18:41:54 GMT",
+      "tag": "office-ui-fabric-react_v7.136.0",
+      "version": "7.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting some of the interfaces that are being deep imported in product code.",
+            "author": "dzearing@hotmail.com",
+            "commit": "cc72899b69926f902d68f3164a7845401f1dc700",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "office-ui-fabric-react_v7.135.0",
+      "version": "7.135.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Dismiss when blurring to a new window.",
+            "author": "jokonuko@microsoft.com",
+            "commit": "4df444481b0712ab0704d34714a4edcd62850561",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps.",
+            "author": "czearing@outlook.com",
+            "commit": "a095c2695dca01d37ec7fe93a5149fb46b3b78fe",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Expose popupProps on Panel",
+            "author": "matejera@microsoft.com",
+            "commit": "cdcec95330cfe09a80a5d08dc22628f9a3c5c04a",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Casting PivotItem and CalendarDay date prop as any.",
+            "author": "czearing@outlook.com",
+            "commit": "3111738ea7a855f71dcb4c593e34cd4a961b2627",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "office-ui-fabric-react_v7.134.3",
+      "version": "7.134.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Factor out hook-based inner logic from DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "231236fd4d38bac9930f64b3b40e2eb0f187ca8d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "office-ui-fabric-react_v7.134.2",
+      "version": "7.134.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsRow/DetailsHeader: Remove findDOMNode usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "office-ui-fabric-react_v7.134.1",
       "version": "7.134.1",
