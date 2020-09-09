@@ -852,7 +852,7 @@ export function positionCard(
 }
 
 /**
- * Get's the maximum height that a rectangle can have in order to fit below or above a target.
+ * Gets the maximum height that a rectangle can have in order to fit below or above a target.
  * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
@@ -899,7 +899,7 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
 /**
  * Window with typings for experimental features regarding Dual Screen devices.
  */
-interface IWindowWithSegments extends Window {
+export interface IWindowWithSegments extends Window {
   getWindowSegments?: () => DOMRect[];
 }
 
