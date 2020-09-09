@@ -24,6 +24,7 @@
   user-select: none;
   box-sizing: border-box;
   vertical-align: middle;
+  text-decoration: none;
 
   background: var(--button-background, white);
   color: var(--button-contentColor, #2c2621);
@@ -34,6 +35,7 @@
   box-shadow: var(--button-boxShadow);
 
   width: var(--button-width);
+  max-width: var(--button-maxWidth);
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
@@ -127,8 +129,7 @@
   }
 
   &._fluid {
-    width: 100%;
-    max-width: 100%;
+    --button-width: 100%;
   }
 
   // TODO: confirm if we should support size prop.

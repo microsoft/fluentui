@@ -5,11 +5,11 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from '../../utilities/grid/Grid';
+import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
-import { IGridProps } from '../../utilities/grid/Grid.types';
+import { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
 
 interface ISwatchColorPickerInternalState {
   isNavigationIdle: boolean;
@@ -316,8 +316,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
   }
 
   return (
-    <Grid
-      {...((props as unknown) as IGridProps)}
+    <ButtonGrid
+      {...((props as unknown) as IButtonGridProps)}
       ref={ref}
       id={id}
       items={itemsWithIndex}

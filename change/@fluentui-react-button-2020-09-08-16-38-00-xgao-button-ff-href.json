@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix rendering as anchor when href is passed.",
+  "packageName": "@fluentui/react-button",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-08T23:38:00.479Z"
+}

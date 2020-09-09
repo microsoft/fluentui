@@ -17,7 +17,6 @@ import {
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
-  ChartTypes,
   XAxisTypes,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
@@ -71,7 +70,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
-      this._fitParentContainer(true);
+      this._fitParentContainer();
     }
   }
 
@@ -81,7 +80,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this._fitParentContainer();
     }
     // Callback for margins to the chart
-    this.props.getmargins(this.margins);
+    this.props.getmargins && this.props.getmargins(this.margins);
 
     // TO DO: need to send xAxis types based on condition
     const XAxisParams = {
@@ -91,7 +90,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.state.containerWidth,
         chartType,
         this._isRtl,
-        this.props.xAxisType, // need to change this as mandetory
+        this.props.xAxisType,
         this.props.barwidth!,
       ),
       xAxisElement: this.xAxisElement!,
@@ -318,19 +317,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState(
-          {
-            containerWidth: currentContainerWidth,
-            containerHeight: currentContainerHeight - legendContainerHeight,
-          },
-          () => {
-            if (fromDidUpdate) {
-              this.props.chartType === ChartTypes.AreaChart &&
-                this.props.getRerenderProp &&
-                this.props.getRerenderProp(true);
-            }
-          },
-        );
+        this.setState({
+          containerWidth: currentContainerWidth,
+          containerHeight: currentContainerHeight - legendContainerHeight,
+        });
       }
     });
   }

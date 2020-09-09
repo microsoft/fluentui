@@ -291,32 +291,31 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Only used for Area chart
+   * Value used to draw y axis of that chart.
+   */
   maxOfYVal?: number;
+
+  /**
+   * Data of the chart
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   points: any;
+
+  /**
+   * Define type of the chart
+   */
   chartType: ChartTypes;
-  getmargins: (margins: IMargins) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getGraphData?: any;
+
+  /** X axis type */
+  xAxisType: XAxisTypes;
+
+  /**
+   * Legeds of the chart.
+   */
   legendBars: JSX.Element;
-  /**
-   * Only using in area chart, as it won't re render after every change
-   * Used for to check re render of the graph or not.
-   * @memberof IModifiedCartesianChartProps
-   */
-  getRerenderProp?: (isReRender: boolean) => void;
-  barwidth?: number;
-  tickParams?: {
-    tickValues?: number[] | Date[];
-    tickFormat?: string;
-  };
-  children(props: IChildProps): React.ReactNode;
-  /**
-   * To enable multi callout or single callout
-   *
-   * @type {boolean}
-   */
-  isMultiStackCallout: boolean;
+
   /**
    * Callout props
    */
@@ -331,8 +330,36 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     XValue?: string;
   };
 
-  /** X axis type */
-  xAxisType: XAxisTypes;
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  getmargins?: (margins: IMargins) => void;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getGraphData?: any;
+
+  /**
+   * Used for bar chart graphs.
+   * To define width of the bar
+   */
+  barwidth?: number;
+
+  /**
+   * Used for tick styles of the x axis of the chart
+   */
+  tickParams?: {
+    tickValues?: number[] | Date[];
+    tickFormat?: string;
+  };
+
+  children(props: IChildProps): React.ReactNode;
+
+  /**
+   * To enable multi callout or single callout
+   * @default false
+   * @type {boolean}
+   */
+  isMultiStackCallout?: boolean;
 
   /** dataset values to find out domain of the String axis
    * Present using for only vertical stacked bar chart

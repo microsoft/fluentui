@@ -19,7 +19,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
-interface ISpinButtonState {
+interface ISpinButtonInternalState {
   inputId: string;
   labelId: string;
   lastValidValue: string;
@@ -114,7 +114,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const { current: internalState } = React.useRef<ISpinButtonState>({
+  const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     inputId: getId('input'),
     labelId: getId('Label'),
     lastValidValue: initialValue,
