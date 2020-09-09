@@ -1096,6 +1096,20 @@ export enum DocumentCardType {
 }
 
 // @public (undocumented)
+export class DragDropHelper implements IDragDropHelper {
+    constructor(params: IDragDropHelperParams);
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions): {
+        key: string;
+        dispose(): void;
+    };
+    // (undocumented)
+    unsubscribe(root: HTMLElement, key: string): void;
+}
+
+// @public (undocumented)
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
@@ -4450,6 +4464,11 @@ export interface IDragDropContext {
     isGroup?: boolean;
 }
 
+// @public (undocumented)
+export interface IDragDropEvent {
+    isHandled?: boolean;
+}
+
 // @public
 export interface IDragDropEvents {
     canDrag?: (item?: any) => boolean;
@@ -4473,6 +4492,14 @@ export interface IDragDropHelper {
     unsubscribe: (root: HTMLElement, key: string) => void;
 }
 
+// @public (undocumented)
+export interface IDragDropHelperParams {
+    // (undocumented)
+    minimumPixelsForDrag?: number;
+    // (undocumented)
+    selection: ISelection;
+}
+
 // @public
 export interface IDragDropOptions {
     canDrag?: (item?: any) => boolean;
@@ -4489,6 +4516,16 @@ export interface IDragDropOptions {
     onDrop?: (item?: any, event?: DragEvent) => void;
     selectionIndex: number;
     updateDropState: (isDropping: boolean, event: DragEvent) => void;
+}
+
+// @public (undocumented)
+export interface IDragDropTarget {
+    // (undocumented)
+    key: string;
+    // (undocumented)
+    options: IDragDropOptions;
+    // (undocumented)
+    root: HTMLElement;
 }
 
 // @public (undocumented)
@@ -10017,7 +10054,6 @@ export * from "@fluentui/react-focus";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
-export * from "office-ui-fabric-react/lib/DragDrop";
 
 // Warnings were encountered during analysis:
 //
