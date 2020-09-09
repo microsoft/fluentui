@@ -2,6 +2,43 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "office-ui-fabric-react_v7.135.0",
+      "version": "7.135.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Dismiss when blurring to a new window.",
+            "author": "jokonuko@microsoft.com",
+            "commit": "4df444481b0712ab0704d34714a4edcd62850561",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps.",
+            "author": "czearing@outlook.com",
+            "commit": "a095c2695dca01d37ec7fe93a5149fb46b3b78fe",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Expose popupProps on Panel",
+            "author": "matejera@microsoft.com",
+            "commit": "cdcec95330cfe09a80a5d08dc22628f9a3c5c04a",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Casting PivotItem and CalendarDay date prop as any.",
+            "author": "czearing@outlook.com",
+            "commit": "3111738ea7a855f71dcb4c593e34cd4a961b2627",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Sep 2020 12:26:26 GMT",
       "tag": "office-ui-fabric-react_v7.134.3",
       "version": "7.134.3",
