@@ -450,7 +450,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       let focusProps: React.SVGAttributes<SVGRectElement> = {};
       if (usingPointCallout) {
         focusProps = {
-          focusable: 'true',
           onMouseOver: this._onBarHover.bind(this, calloutData),
           onMouseMove: this._onBarHover.bind(this, calloutData),
           'aria-labelledby': this._calloutId,
@@ -492,7 +491,6 @@ export class VerticalStackedBarChartBase extends React.Component<
         xAxisCalloutData,
       };
       stackFocusProps = {
-        focusable: 'true',
         onMouseOver: this._onStackHover.bind(this, calloutData),
         onMouseMove: this._onStackHover.bind(this, calloutData),
         'aria-labelledby': this._calloutId,
