@@ -1534,36 +1534,29 @@ export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
 export interface IRating {
+    rating: number;
 }
 
 // @public
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
-    // @deprecated
-    ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    defaultRating?: number;
+    disabled?: boolean;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
     // @deprecated
     min?: number;
-    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (rating: number) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingState {
-    // (undocumented)
-    rating: number | null | undefined;
 }
 
 // @public (undocumented)
@@ -2361,13 +2354,7 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-    constructor(props: IRatingProps);
-    // (undocumented)
-    static defaultProps: IRatingProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const RatingBase: React.ForwardRefExoticComponent<IRatingProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum RatingSize {
