@@ -18,16 +18,16 @@ storiesOf('Button Next', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -59,16 +59,16 @@ storiesOf('Button Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -94,16 +94,16 @@ storiesOf('Button Next - With icon before content', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
 
         .end()}
     >
@@ -147,16 +147,16 @@ storiesOf('Button Next - With icon after content', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -203,16 +203,16 @@ storiesOf('Button Next - Circular', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -259,16 +259,16 @@ storiesOf('Button Next - Icon only', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -315,16 +315,16 @@ storiesOf('Button Next - Fluid', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -371,16 +371,16 @@ storiesOf('Button Next - Inverted', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -427,16 +427,16 @@ storiesOf('Button Next - Loading', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -483,16 +483,16 @@ storiesOf('Button Next - Sizes', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
@@ -539,16 +539,16 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-Button')
         .end()}
     >
       {story()}
