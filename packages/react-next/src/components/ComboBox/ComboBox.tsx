@@ -130,14 +130,14 @@ function useOptionsState({ options, defaultSelectedKey, selectedKey }: IComboBox
   const [suggestedDisplayValue, setSuggestedDisplayValue] = React.useState<string>();
 
   React.useEffect(() => {
-    if (defaultSelectedKey === undefined) {
+    if (selectedKey !== undefined) {
       const selectedKeys: string[] | number[] = buildSelectedKeys(selectedKey);
       const indices: number[] = getSelectedIndices(options, selectedKeys);
 
       setSelectedIndices(indices);
     }
     setCurrentOptions(options);
-  }, [defaultSelectedKey, options, selectedKey]);
+  }, [options, selectedKey]);
 
   React.useEffect(() => {
     if (selectedKey === null) {
