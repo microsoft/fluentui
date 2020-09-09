@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Export getMenuItemStyles from ContextualMenu",
+  "packageName": "office-ui-fabric-react",
+  "email": "anpablo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-09T23:05:30.683Z"
+}
