@@ -63,7 +63,7 @@ describe('Toolbar', () => {
     });
   });
 
-  describe('Overflow Toolbar', () => {
+  describe('overflowItem', () => {
     it('Should override popper properties', () => {
       const wrapper = mountWithProvider(
         <Toolbar
