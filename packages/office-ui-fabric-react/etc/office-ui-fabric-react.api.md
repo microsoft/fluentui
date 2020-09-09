@@ -47,17 +47,6 @@ import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
 
 // @public (undocumented)
-export const __positioningTestPackage: {
-    _finalizePositionData: typeof _finalizePositionData;
-    _finalizeBeakPosition: typeof _finalizeBeakPosition;
-    _calculateActualBeakWidthInPixels: typeof _calculateActualBeakWidthInPixels;
-    _positionElementWithinBounds: typeof _positionElementWithinBounds;
-    _positionBeak: typeof _positionBeak;
-    _getPositionData: typeof _getPositionData;
-    _getMaxHeightFromTargetRectangle: typeof _getMaxHeightFromTargetRectangle;
-};
-
-// @public (undocumented)
 export class ActionButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
@@ -10063,13 +10052,6 @@ export * from "@uifabric/utilities";
 // Warnings were encountered during analysis:
 //
 // lib/components/ColorPicker/ColorPicker.base.d.ts:11:9 - (ae-forgotten-export) The symbol "ColorComponent" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:37:5 - (ae-forgotten-export) The symbol "_finalizePositionData" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:38:5 - (ae-forgotten-export) The symbol "_finalizeBeakPosition" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:39:5 - (ae-forgotten-export) The symbol "_calculateActualBeakWidthInPixels" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:40:5 - (ae-forgotten-export) The symbol "_positionElementWithinBounds" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:41:5 - (ae-forgotten-export) The symbol "_positionBeak" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:42:5 - (ae-forgotten-export) The symbol "_getPositionData" needs to be exported by the entry point index.d.ts
-// lib/utilities/positioning/positioning.d.ts:43:5 - (ae-forgotten-export) The symbol "_getMaxHeightFromTargetRectangle" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
