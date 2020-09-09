@@ -278,29 +278,16 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   }
 
   public forceListUpdate() {
-    const { group } = this.props;
-
     if (this._list.current) {
       this._list.current.forceUpdate();
+    }
 
-      if (group && group.children && group.children.length > 0) {
-        const subGroupCount = group.children.length;
-
-        for (let i = 0; i < subGroupCount; i++) {
-          const subGroup = this._list.current.pageRefs['subGroup_' + String(i)] as GroupedListSection;
-
-          if (subGroup) {
-            subGroup.forceListUpdate();
-          }
-        }
-      }
-    } else {
-      const subGroup = this._subGroupRefs['subGroup_' + String(0)];
-
+    Object.keys(this._subGroupRefs).forEach(refKey => {
+      const subGroup = this._subGroupRefs[refKey];
       if (subGroup) {
         subGroup.forceListUpdate();
       }
-    }
+    });
   }
 
   private _onRenderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {

@@ -313,26 +313,17 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   };
 
-  private _forceListUpdates(groups?: IGroup[]): void {
-    groups = groups || this.state.groups;
-
-    const groupCount = groups ? groups.length : 1;
-
+  private _forceListUpdates(): void {
     if (this._list.current) {
       this._list.current.forceUpdate();
+    }
 
-      for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.pageRefs['group_' + String(i)] as GroupedListSection;
-        if (group) {
-          group.forceListUpdate();
-        }
-      }
-    } else {
-      const group = this._groupRefs['group_' + String(0)];
+    Object.keys(this._groupRefs).forEach(refKey => {
+      const group = this._groupRefs[refKey];
       if (group) {
         group.forceListUpdate();
       }
-    }
+    });
   }
 
   private _onToggleSummarize = (group: IGroup): void => {
