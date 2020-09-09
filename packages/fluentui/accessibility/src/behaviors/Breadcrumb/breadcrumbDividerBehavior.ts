@@ -11,6 +11,7 @@ export const breadcrumbDividerBehavior: Accessibility<BreadcrumbDividerBehaviorP
   attributes: {
     root: {
       'aria-hidden': true,
+      role: 'gridcell',
     },
   },
 });
