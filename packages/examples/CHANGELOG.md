@@ -1,8 +1,17 @@
 # Change Log - @fluentui/examples
 
-This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.124](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.124)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.1.98..@fluentui/examples_v0.1.124)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [0.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.59)
 

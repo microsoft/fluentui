@@ -63,11 +63,11 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
 
     this._id = getId('Rating');
     this._min = this.props.allowZeroStars ? 0 : 1;
-    // tslint:disable:deprecation
+    /* eslint-disable deprecation/deprecation */
     if (this.props.min !== undefined && this.props.min !== 1) {
       this._min = this.props.min;
     }
-    // tslint:enable:deprecation
+    /* eslint-enable deprecation/deprecation */
     this._labelId = getId('RatingLabel');
 
     this.state = {
@@ -186,7 +186,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
         rating: value,
       } as IRatingState);
 
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       const { onChange, onChanged } = this.props;
 
       if (onChange) {

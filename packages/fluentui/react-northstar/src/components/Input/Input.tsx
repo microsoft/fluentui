@@ -4,8 +4,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   partitionHTMLProps,
   UIComponentProps,
@@ -14,21 +13,25 @@ import {
   createShorthandFactory,
   ShorthandFactory,
   createShorthand,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { ShorthandValue, ComponentEventHandler } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
   useAutoControlled,
   getElementType,
   useUnhandledProps,
   useTelemetry,
+  useFluentContext,
   useStyles,
   useAccessibility,
   compose,
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
+import { InputLabel, InputLabelProps, LabelPosition } from './InputLabel';
+import { FormFieldBaseContext } from '../Form/utils/formFieldBaseContext';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -80,6 +83,12 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** The value of the input. */
   value?: string | number;
 
+  /** A label for the input. */
+  label?: ShorthandValue<InputLabelProps>;
+
+  /** Poisition for the label */
+  labelPosition?: LabelPosition;
+
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
 
@@ -107,7 +116,10 @@ export interface InputSlotClassNames {
 export const inputClassName = 'ui-input';
 
 export type InputStylesProps = Required<
-  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
+  Pick<
+    InputProps,
+    'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error' | 'labelPosition'
+  > & {
     hasIcon: boolean;
     hasValue: boolean;
     requiredAndSuccessful: boolean;
@@ -125,9 +137,9 @@ export const inputSlotClassNames: InputSlotClassNames = {
  * @accessibility
  * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for input.
  */
-const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
+export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
     const {
@@ -150,8 +162,15 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       error,
       errorIndicator,
       showSuccessIndicator,
+      label,
+      labelPosition,
     } = props;
+
     const inputRef = React.useRef<HTMLInputElement>();
+
+    const { labelId } = React.useContext(FormFieldBaseContext);
+    const inputId = React.useRef<string>();
+    inputId.current = props.id || getOrGenerateIdFromShorthand('ui-input-', '', inputId.current);
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
@@ -170,7 +189,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       ? ((required && hasValue) || showSuccessIndicator) && !error
       : showSuccessIndicator;
 
-    const hasIcon = !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !!error;
+    const hasIcon = !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !_.isNil(error);
 
     const { classes, styles: resolvedStyles } = useStyles<InputStylesProps>(composeOptions.displayName, {
       className: inputClassName,
@@ -184,6 +203,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         requiredAndSuccessful,
         iconPosition,
         hasValue,
+        labelPosition,
         error,
       }),
       mapPropsToInlineStyles: () => ({
@@ -259,10 +279,21 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       return icon || null;
     };
 
-    const element = Box.create(wrapper, {
-      defaultProps: () =>
-        getA11yProps('root', {
-          className: classes.root,
+    const labelElement = createShorthand(composeOptions.slots.label, label, {
+      defaultProps: () => ({
+        labelPosition,
+        label,
+        required,
+        htmlFor: inputId.current,
+        hasValue,
+        id: labelId,
+      }),
+    });
+
+    const inputElement = Box.create(
+      {},
+      {
+        defaultProps: () => ({
           children: (
             <>
               <Ref
@@ -281,6 +312,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                       type,
                       required,
                       value: value || '',
+                      id: inputId.current,
                       className: inputSlotClassNames.input,
                       styles: resolvedStyles.input,
                       onChange: handleChange,
@@ -295,6 +327,21 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                   }),
                 overrideProps: handleIconOverrides,
               })}
+            </>
+          ),
+          styles: resolvedStyles.inputContainer,
+        }),
+      },
+    );
+
+    const element = Box.create(wrapper, {
+      defaultProps: () =>
+        getA11yProps('root', {
+          className: classes.root,
+          children: (
+            <>
+              {labelElement}
+              {inputElement}
             </>
           ),
           styles: resolvedStyles.root,
@@ -313,6 +360,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     slots: {
       control: Box,
       icon: Box,
+      label: InputLabel,
     },
     handledProps: [
       'accessibility',
@@ -341,10 +389,13 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       'error',
       'errorIndicator',
       'showSuccessIndicator',
+      'label',
+      'labelPosition',
     ],
   },
-) as ComponentWithAs<'div', InputProps> & {
+) as ComponentWithAs<'input', InputProps> & {
   create: ShorthandFactory<InputProps>;
+  Label: typeof InputLabel;
 };
 
 Input.propTypes = {
@@ -355,6 +406,8 @@ Input.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
+  label: customPropTypes.itemShorthand,
+  labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,
@@ -381,6 +434,6 @@ Input.defaultProps = {
   successIndicator: <PresenceAvailableIcon />,
 };
 
-Input.create = createShorthandFactory({ Component: Input });
+Input.Label = InputLabel;
 
-export default Input;
+Input.create = createShorthandFactory({ Component: Input });

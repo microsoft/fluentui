@@ -1,21 +1,19 @@
 import * as React from 'react';
 
-import AccordionContent from 'src/components/Accordion/AccordionContent';
+import { AccordionContent } from 'src/components/Accordion/AccordionContent';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, mountWithProvider as mount } from 'test/utils';
-import { isConformant as newIsConformant } from '@fluentui/react-conformance';
+import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
 
 describe('AccordionContent', () => {
   isConformant(AccordionContent, { constructorName: 'AccordionContent' });
 
-  newIsConformant({
-    Component: AccordionContent,
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
-    displayName: 'AccordionContent',
-    useDefaultExport: true,
-    customMount: mount,
-    disabledTests: ['has-docblock', 'has-top-level-file'],
-  });
+  sharedIsConformant(
+    {
+      Component: AccordionContent,
+      displayName: 'AccordionContent',
+    },
+    __filename,
+  );
 
   describe('accessiblity', () => {
     handlesAccessibility(AccordionContent);

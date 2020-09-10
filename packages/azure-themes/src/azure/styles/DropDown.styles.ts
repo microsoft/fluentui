@@ -1,5 +1,4 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { FontSizes } from '../AzureType';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 
@@ -15,7 +14,6 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       boxShadow: Depths.depth8,
       selectors: {
         ['.ms-Callout-main']: {
-          // dropdown container
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
@@ -38,13 +36,13 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     ],
     dropdown: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
 
         selectors: {
           ':focus::after, :focus': {
-            borderColor: semanticColors.primaryButtonBackground,
+            //borderColor: semanticColors.inputBorderHovered,
           },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
@@ -91,7 +89,6 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           span: {
             lineHeight: StyleConstants.inputControlHeight,
             position: 'absolute',
-            top: '10px',
           },
         },
       },
@@ -113,22 +110,22 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItem: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
           borderColor: 'transparent',
-          color: semanticColors.bodyText,
+          color: semanticColors.buttonTextHovered,
         },
       },
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
       selectors: {
@@ -140,12 +137,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     },
     dropdownItemHeader: {
-      color: semanticColors.primaryButtonBackground,
-      fontWeight: '400',
+      color: semanticColors.inputText,
+      fontWeight: '600',
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

@@ -3,6 +3,7 @@ import {
   useTelemetry,
   useAccessibility,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useStyles,
   ComponentWithAs,
@@ -21,10 +22,9 @@ import {
   rtlTextContainer,
   createShorthand,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
-import DividerContent from './DividerContent';
+
+import { FluentComponentStaticProps } from '../../types';
+import { DividerContent } from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -60,11 +60,11 @@ export const dividerClassName = 'ui-divider';
 /**
  * A Divider visually segments content.
  */
-const Divider: ComponentWithAs<'div', DividerProps> &
+export const Divider: ComponentWithAs<'div', DividerProps> &
   FluentComponentStaticProps<DividerProps> & {
     Content: typeof DividerContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
   const {
@@ -141,5 +141,3 @@ Divider.Content = DividerContent;
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 
 Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });
-
-export default Divider;

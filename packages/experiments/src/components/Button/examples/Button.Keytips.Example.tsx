@@ -87,7 +87,6 @@ const menuProps: IMenuButtonProps['menu'] = {
   shouldFocusOnMount: true,
 };
 
-// tslint:disable:jsx-no-lambda
 export class ButtonKeytipsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const stackTokens: IStackTokens = { childrenGap: 12 };

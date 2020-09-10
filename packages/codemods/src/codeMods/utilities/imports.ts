@@ -1,11 +1,16 @@
 import { SourceFile, ImportDeclaration, ImportSpecifierStructure } from 'ts-morph';
+import { ModFunctionResult, ModResult, NoOp } from '../types';
+import { Ok, Err, Result } from '../../helpers/result';
 
-export function renameImport(file: SourceFile, originalImport: string, renamedImport: string) {
+export function renameImport(file: SourceFile, originalImport: string, renamedImport: string): Result<ModResult, NoOp> {
   const imps = file.getImportDeclarations().filter(cond => {
     return cond.getNamedImports().some(val => {
       return val.getText() === originalImport;
     });
   });
+  if (imps.length === 0) {
+    return Err({ reason: 'No matching imports could be found.' });
+  }
   imps[0].getNamedImports().forEach(name => {
     if (name.getText() === originalImport) {
       name.renameAlias(renamedImport);
@@ -13,6 +18,7 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
     }
   });
   imps[0].addNamedImport(renamedImport);
+  return Ok({ logs: [`Renamed import ${originalImport} successfully.`] });
 }
 
 /**
@@ -20,7 +26,10 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
  * @param file File to search through
  * @param pathOrRegex If a string is given, it will do an exact match, otherwise it will use regex
  */
-export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp): ImportDeclaration[] {
+export function getImportsByPath(
+  file: SourceFile,
+  pathOrRegex: string | RegExp,
+): ModFunctionResult<ImportDeclaration[]> {
   let imps: ImportDeclaration[] = [];
   if (typeof pathOrRegex === 'string') {
     imps = file.getImportDeclarations().filter(cond => {
@@ -32,14 +41,14 @@ export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp)
     });
   }
 
-  return imps;
+  return Ok(imps);
 }
 
 export function appendOrCreateNamedImport(
   file: SourceFile,
   moduleSpecifier: string,
   namedImports: (string | ImportSpecifierStructure)[],
-) {
+): ModFunctionResult<ImportDeclaration> {
   const found = file.getImportDeclaration(val => {
     if (val.getModuleSpecifierValue() === moduleSpecifier) {
       const currentNamedImports = val.getNamedImports();
@@ -53,18 +62,26 @@ export function appendOrCreateNamedImport(
     return false;
   });
   if (!found) {
-    file.addImportDeclaration({
-      moduleSpecifier,
-      namedImports,
-    });
+    return Ok(
+      file.addImportDeclaration({
+        moduleSpecifier,
+        namedImports,
+      }),
+    );
   }
+
+  return Err({ reason: 'Named import is already not present in module' });
 }
 
-export function repathImport(imp: ImportDeclaration, replacementString: string, regex?: RegExp) {
+export function repathImport(
+  imp: ImportDeclaration,
+  replacementString: string,
+  regex?: RegExp,
+): ModFunctionResult<ImportDeclaration> {
   if (regex) {
     const current = imp.getModuleSpecifierValue();
-    imp.setModuleSpecifier(current.replace(regex, replacementString));
+    return Ok(imp.setModuleSpecifier(current.replace(regex, replacementString)));
   } else {
-    imp.setModuleSpecifier(replacementString);
+    return Ok(imp.setModuleSpecifier(replacementString));
   }
 }

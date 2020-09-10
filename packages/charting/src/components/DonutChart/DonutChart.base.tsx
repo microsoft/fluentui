@@ -8,7 +8,7 @@ import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -24,6 +24,7 @@ interface IDonutChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   focusedArcId?: string;
+  selectedLegend: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -34,7 +35,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
   private _uniqText: string;
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private _currentHoverElement: any;
   private _calloutId: string;
 
@@ -62,6 +63,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      selectedLegend: 'none',
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -120,7 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={href}
                 calloutId={this._calloutId}
-                valueInsideDonut={valueInsideDonut}
+                valueInsideDonut={this._valueInsideDonut(valueInsideDonut!, chartData!)}
                 theme={theme!}
               />
             </svg>
@@ -212,6 +214,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        selectedLegend={this.state.selectedLegend}
+        {...this.props.legendProps}
       />
     );
     return legends;
@@ -223,7 +227,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: true,
       value: data.data!.toString(),
       legend: data.legend,
+      activeLegend: data.legend,
       color: data.color!,
+      selectedLegend: data.legend!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
@@ -235,17 +241,34 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this.setState({
       showHover: true,
       value: data.data!.toString(),
+      selectedLegend: data.legend!,
       legend: data.legend,
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
+      activeLegend: data.legend,
     });
   };
   private _onBlur = (): void => {
-    this.setState({ showHover: false, focusedArcId: '' });
+    this.setState({ showHover: false, focusedArcId: '', activeLegend: '', selectedLegend: 'none' });
   };
 
   private _hoverLeave(): void {
-    this.setState({ showHover: false });
+    this.setState({ showHover: false, activeLegend: '', selectedLegend: 'none', focusedArcId: '' });
+  }
+
+  private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
+    if (valueInsideDonut !== undefined && this.state.activeLegend !== '' && !this.state.showHover) {
+      let legendValue = valueInsideDonut;
+      data!.map((point: IChartDataPoint, index: number) => {
+        if (point.legend === this.state.activeLegend) {
+          legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+        }
+        return;
+      });
+      return legendValue;
+    } else {
+      return valueInsideDonut;
+    }
   }
 }

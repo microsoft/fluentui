@@ -1,4 +1,3 @@
-// tslint:disable:no-any
 import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 

@@ -36,7 +36,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     this._updateEventHandlers(this.props);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
@@ -96,6 +95,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
         position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them

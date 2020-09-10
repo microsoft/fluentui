@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-checkbox",
+  "entries": [
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@fluentui/react-checkbox_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove usage of compose and scss from Checkbox; Move latest code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "ce86950845e03bc4baf63b301e85a41c47a8c1bd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-checkbox_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Checkbox from react-next to react-checkbox.",
+            "author": "xgao@microsoft.com",
+            "commit": "aa0811b0a7717043e011214fb7c81138f96dc15f",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    }
+  ]
+}

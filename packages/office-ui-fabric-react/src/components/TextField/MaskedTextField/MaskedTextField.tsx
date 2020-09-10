@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, ITextFieldProps } from '../TextField.types';
+import { ITextField, IMaskedTextFieldProps } from '../TextField.types';
 import { initializeComponentRef, KeyCodes } from '../../../Utilities';
 
 import {
@@ -35,8 +35,9 @@ export const DEFAULT_MASK_CHAR = '_';
 
 type InputChangeType = 'default' | 'backspace' | 'delete' | 'textPasted';
 
-export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-  public static defaultProps: ITextFieldProps = {
+export class MaskedTextField extends React.Component<IMaskedTextFieldProps, IMaskedTextFieldState>
+  implements ITextField {
+  public static defaultProps: IMaskedTextFieldProps = {
     maskChar: DEFAULT_MASK_CHAR,
     maskFormat: DEFAULT_MASK_FORMAT_CHARS,
   };
@@ -70,7 +71,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     selectionEnd: number;
   } | null;
 
-  constructor(props: ITextFieldProps) {
+  constructor(props: IMaskedTextFieldProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -88,8 +89,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     };
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps) {
+  public UNSAFE_componentWillReceiveProps(newProps: IMaskedTextFieldProps) {
     if (newProps.mask !== this.props.mask || newProps.value !== this.props.value) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
       newProps.value !== undefined && this.setValue(newProps.value);
@@ -140,8 +140,8 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
   }
 
   public setValue(newValue: string): void {
-    let valueIndex = 0,
-      charDataIndex = 0;
+    let valueIndex = 0;
+    let charDataIndex = 0;
 
     while (valueIndex < newValue.length && charDataIndex < this._maskCharData.length) {
       // Test if the next character in the new value fits the next format character
@@ -278,10 +278,10 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     const { changeType, selectionStart, selectionEnd } = this._changeSelectionData;
 
     if (changeType === 'textPasted') {
-      const charsSelected = selectionEnd - selectionStart,
-        charCount = value.length + charsSelected - displayValue.length,
-        startPos = selectionStart,
-        pastedString = value.substr(startPos, charCount);
+      const charsSelected = selectionEnd - selectionStart;
+      const charCount = value.length + charsSelected - displayValue.length;
+      const startPos = selectionStart;
+      const pastedString = value.substr(startPos, charCount);
 
       // Clear any selected characters
       if (charsSelected) {
@@ -290,8 +290,8 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       cursorPos = insertString(this._maskCharData, startPos, pastedString);
     } else if (changeType === 'delete' || changeType === 'backspace') {
       // isDel is true If the characters are removed LTR, otherwise RTL
-      const isDel = changeType === 'delete',
-        charCount = selectionEnd - selectionStart;
+      const isDel = changeType === 'delete';
+      const charCount = selectionEnd - selectionStart;
 
       if (charCount) {
         // charCount is > 0 if range was deleted
@@ -309,9 +309,9 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       }
     } else if (value.length > displayValue.length) {
       // This case is if the user added characters
-      const charCount = value.length - displayValue.length,
-        startPos = selectionEnd - charCount,
-        enteredString = value.substr(startPos, charCount);
+      const charCount = value.length - displayValue.length;
+      const startPos = selectionEnd - charCount;
+      const enteredString = value.substr(startPos, charCount);
 
       cursorPos = insertString(this._maskCharData, startPos, enteredString);
     } else if (value.length <= displayValue.length) {
@@ -319,10 +319,10 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
        * This case is reached only if the user has selected a block of 1 or more
        * characters and input a character replacing the characters they've selected.
        */
-      const charCount = 1,
-        selectCount = displayValue.length + charCount - value.length,
-        startPos = selectionEnd - charCount,
-        enteredString = value.substr(startPos, charCount);
+      const charCount = 1;
+      const selectCount = displayValue.length + charCount - value.length;
+      const startPos = selectionEnd - charCount;
+      const enteredString = value.substr(startPos, charCount);
 
       // Clear the selected range
       this._maskCharData = clearRange(this._maskCharData, startPos, selectCount);
@@ -363,8 +363,8 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
 
       // On backspace or delete, store the selection and the keyCode
       if (keyCode === KeyCodes.backspace || keyCode === KeyCodes.del) {
-        const selectionStart = (event.target as HTMLInputElement).selectionStart,
-          selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+        const selectionStart = (event.target as HTMLInputElement).selectionStart;
+        const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
 
         // Check if backspace or delete press is valid.
         if (
@@ -388,8 +388,8 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       this.props.onPaste(event);
     }
 
-    const selectionStart = (event.target as HTMLInputElement).selectionStart,
-      selectionEnd = (event.target as HTMLInputElement).selectionEnd;
+    const selectionStart = (event.target as HTMLInputElement).selectionStart;
+    const selectionEnd = (event.target as HTMLInputElement).selectionEnd;
     // Store the paste selection range
     this._changeSelectionData = {
       changeType: 'textPasted',

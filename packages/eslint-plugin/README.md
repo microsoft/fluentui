@@ -43,6 +43,33 @@ Example:
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
 
+### `max-len`
+
+Enforces max line length, more performantly than [ESLint's `max-len`](https://eslint.org/docs/rules/max-len).
+
+This rule is significantly faster than the default `max-len` rule because it **does not** support:
+
+- Expanding tabs (only handles spaces for indentation)
+- Multi-byte unicode characters (they will be counted as multiple characters)
+- Extra options for handling comments, strings, or URLs
+
+(Skipping these extra features lets us do a basic string length check before running any regular expressions or other extra logic, which makes the huge majority of line length checks very fast.)
+
+#### Options
+
+The rule requires an options object containing:
+
+- `max` (required): the maximum line length
+- `ignorePatterns` (optional): ignore the line if it matches any of these regular expressions
+
+### `no-global-react`
+
+Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
+
+### `no-tslint-comments`
+
+Ban `tslint:disable` and `tslint:enable` comments.
+
 ### `no-visibility-modifiers`
 
 Prevent visibility modifiers (`public`, `protected`, `private`) from being specified on class members/methods.

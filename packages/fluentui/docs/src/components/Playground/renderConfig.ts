@@ -4,7 +4,6 @@ import * as Bindings from '@fluentui/react-bindings';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
 import * as FluentUIIcons from '@fluentui/react-icons-northstar';
-import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -81,11 +80,6 @@ export const imports: Record<string, CodeSandboxImport> = {
     version: projectPackageJson.peerDependencies['react-dom'],
     module: ReactDOM,
     required: true,
-  },
-  'react-fela': {
-    version: projectPackageJson.dependencies['react-fela'],
-    module: ReactFela,
-    required: false,
   },
   prettier: {
     version: docsComponentsPackageJson.peerDependencies['prettier'],

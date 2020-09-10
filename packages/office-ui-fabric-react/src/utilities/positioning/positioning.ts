@@ -1,19 +1,16 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL, Rectangle as FullRectangle, IRectangle } from '../../Utilities';
+import { getScrollbarWidth, getRTL, IRectangle } from '../../Utilities';
 import {
   IPositionDirectionalHintData,
   IPositionedData,
-  Point,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
   ICalloutPositionProps,
   RectangleEdge,
+  IWindowWithSegments,
 } from './positioning.types';
-
-export class Rectangle extends FullRectangle {
-  [key: string]: number | boolean | any;
-}
+import { Point, Rectangle } from '../../Utilities';
 
 function _createPositionData(
   targetEdge: RectangleEdge,
@@ -89,7 +86,7 @@ function _isRectangleWithinBounds(rect: Rectangle, boundingRect: Rectangle): boo
  * If there are no out of bounds edges it returns an empty array.
  */
 function _getOutOfBoundsEdges(rect: Rectangle, boundingRect: Rectangle): RectangleEdge[] {
-  const outOfBounds: RectangleEdge[] = new Array<RectangleEdge>();
+  const outOfBounds: RectangleEdge[] = [];
 
   if (rect.top < boundingRect.top) {
     outOfBounds.push(RectangleEdge.top);
@@ -108,11 +105,11 @@ function _getOutOfBoundsEdges(rect: Rectangle, boundingRect: Rectangle): Rectang
 }
 
 function _getEdgeValue(rect: Rectangle, edge: RectangleEdge): number {
-  return rect[RectangleEdge[edge]];
+  return (rect as any)[RectangleEdge[edge]] as number;
 }
 
 function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
-  rect[RectangleEdge[edge]] = value;
+  (rect as any)[RectangleEdge[edge]] = value;
   return rect;
 }
 
@@ -250,7 +247,7 @@ function _flipToFit(
   return {
     elementRectangle: rect,
     targetEdge: positionData.targetEdge,
-    alignmentEdge: currentAlignment,
+    alignmentEdge: positionData.alignmentEdge,
   };
 }
 
@@ -641,17 +638,19 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
 function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
+    // eslint-disable-next-line no-extra-boolean-cast
     if (!!(target as MouseEvent).preventDefault) {
       const ev = target as MouseEvent;
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+      // eslint-disable-next-line no-extra-boolean-cast
     } else if (!!(target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const point: Point = target as Point;
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       const left = point.left || point.x;
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       const top = point.top || point.y;
       targetRectangle = new Rectangle(left, left, top, top);
     }
@@ -811,7 +810,6 @@ function _positionCard(
 }
 // END PRIVATE FUNCTIONS
 
-/* tslint:disable:variable-name */
 export const __positioningTestPackage = {
   _finalizePositionData,
   _finalizeBeakPosition,
@@ -821,7 +819,6 @@ export const __positioningTestPackage = {
   _getPositionData,
   _getMaxHeightFromTargetRectangle,
 };
-/* tslint:enable:variable-name */
 
 /**
  * Used to position an element relative to the given positioning props.
@@ -856,7 +853,7 @@ export function positionCard(
 }
 
 /**
- * Get's the maximum height that a rectangle can have in order to fit below or above a target.
+ * Gets the maximum height that a rectangle can have in order to fit below or above a target.
  * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
@@ -876,11 +873,12 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const left = pointTarget.left || pointTarget.x;
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const top = pointTarget.top || pointTarget.y;
 
+  // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
   if (!!mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
   } else if (left !== undefined && top !== undefined) {
@@ -897,13 +895,6 @@ export function getMaxHeight(
  */
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
   return edge * -1;
-}
-
-/**
- * Window with typings for experimental features regarding Dual Screen devices.
- */
-interface IWindowWithSegments extends Window {
-  getWindowSegments?: () => DOMRect[];
 }
 
 function _getBoundsFromTargetWindow(
@@ -939,9 +930,9 @@ function _getBoundsFromTargetWindow(
   }
   // If the target is not null get x-axis and y-axis coordinates directly.
   else if (target !== null) {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     x = (target as Point).left || (target as MouseEvent | Point).x;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     y = (target as Point).top || (target as MouseEvent | Point).y;
   }
 

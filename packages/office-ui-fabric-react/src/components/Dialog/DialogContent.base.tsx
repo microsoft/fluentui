@@ -39,7 +39,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
       subTextId,
       subText,
       titleProps = {},
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       titleId,
       title,
       type,

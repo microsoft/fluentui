@@ -115,6 +115,7 @@ export const baseElementProperties = toObjectMap([
   'htmlFor', // global
   'id', // global
   'lang', // global
+  'ref', // global
   'role', // global
   'style', // global
   'tabIndex', // global
@@ -403,9 +404,9 @@ export const divProperties = htmlElementProperties;
  * @param allowedPropsNames - The array or record of allowed prop names.
  * @returns The filtered props
  */
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeProps<T extends Record<string, any>>(
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: Record<string, any>,
   allowedPropNames: string[] | Record<string, number>,
   excludedPropNames?: string[],
@@ -417,7 +418,7 @@ export function getNativeProps<T extends Record<string, any>>(
   // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
 
   const isArray = Array.isArray(allowedPropNames);
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {};
   const keys = Object.keys(props);
 
@@ -429,7 +430,7 @@ export function getNativeProps<T extends Record<string, any>>(
       key.indexOf('aria-') === 0;
 
     if (isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       result[key] = props![key] as any;
     }
   }

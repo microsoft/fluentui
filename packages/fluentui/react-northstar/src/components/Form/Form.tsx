@@ -12,32 +12,28 @@ import {
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import FormField, { FormFieldProps } from './FormField';
+import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { FormField, FormFieldProps } from './FormField';
 import {
   ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
   useStyles,
+  useFluentContext,
   useAccessibility,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import FormLabel from './FormLabel';
-import FormMessage from './FormMessage';
-import FormInput from './FormInput';
-import FormCheckbox from './FormCheckbox';
-import FormDropdown from './FormDropdown';
-import FormButton from './FormButton';
-import FormRadioGroup from './FormRadioGroup';
-import FormSlider from './FormSlider';
-import FormFieldCustom from './FormFieldCustom';
+
+import { FormLabel } from './FormLabel';
+import { FormMessage } from './FormMessage';
+import { FormInput } from './FormInput';
+import { FormCheckbox } from './FormCheckbox';
+import { FormDropdown } from './FormDropdown';
+import { FormButton } from './FormButton';
+import { FormRadioGroup } from './FormRadioGroup';
+import { FormSlider } from './FormSlider';
+import { FormFieldCustom } from './FormFieldCustom';
+import { FormDatepicker } from './FormDatepicker';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -66,7 +62,7 @@ export type FormStylesProps = never;
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
  */
-const Form: ComponentWithAs<'form', FormProps> &
+export const Form: ComponentWithAs<'form', FormProps> &
   FluentComponentStaticProps<FormProps> & {
     Field: typeof FormField;
     Label: typeof FormLabel;
@@ -78,8 +74,9 @@ const Form: ComponentWithAs<'form', FormProps> &
     RadioGroup: typeof FormRadioGroup;
     Slider: typeof FormSlider;
     FieldCustom: typeof FormFieldCustom;
+    Datepicker: typeof FormDatepicker;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
   setStart();
   const { className, design, styles, variables, action, children, accessibility } = props;
@@ -164,5 +161,4 @@ Form.Dropdown = FormDropdown;
 Form.Button = FormButton;
 Form.RadioGroup = FormRadioGroup;
 Form.Slider = FormSlider;
-
-export default Form;
+Form.Datepicker = FormDatepicker;

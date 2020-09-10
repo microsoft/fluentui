@@ -23,8 +23,7 @@ function start(): void {
   );
 }
 
-// tslint:disable-next-line:no-string-literal
-if (document && document['body']) {
+if (document?.body) {
   start();
 } else {
   window.onload = start;

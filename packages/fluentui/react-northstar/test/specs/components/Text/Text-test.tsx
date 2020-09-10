@@ -3,7 +3,7 @@ import * as React from 'react';
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
-import Text from 'src/components/Text/Text';
+import { Text } from 'src/components/Text/Text';
 
 describe('Text', () => {
   isConformant(Text, { constructorName: 'Text' });

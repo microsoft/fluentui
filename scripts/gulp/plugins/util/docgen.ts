@@ -335,7 +335,7 @@ export class Parser {
 
       const propTypeString = this.checker.typeToString(propType);
 
-      // tslint:disable-next-line:no-bitwise
+      // eslint-disable-next-line no-bitwise
       const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
       const jsDocComment = this.findDocComment(prop);
@@ -712,7 +712,7 @@ function isInterfaceOrTypeAliasDeclaration(node: ts.Node): node is ts.InterfaceD
   return node.kind === ts.SyntaxKind.InterfaceDeclaration || node.kind === ts.SyntaxKind.TypeAliasDeclaration;
 }
 
-function parseWithProgramProvider(
+export function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,

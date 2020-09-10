@@ -118,10 +118,8 @@ describe('rtlifyRules', () => {
   });
 
   it('does not crash when name or value are not strings', () => {
-    // tslint:disable:no-any
     rtlifyRules({ rtl: true }, ['left', null] as any, 0);
     rtlifyRules({ rtl: true }, ['left', {}] as any, 0);
     rtlifyRules({ rtl: true }, [null, 'abc'] as any, 0);
-    // tslint:enable:no-any
   });
 });

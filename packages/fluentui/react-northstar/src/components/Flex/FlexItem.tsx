@@ -1,14 +1,11 @@
-import { ComponentSlotClasses, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentSlotClasses, useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 
 type ChildrenFunction = (params: { styles: ComponentSlotStylesPrepared; classes: string }) => React.ReactElement;
 
@@ -73,8 +70,8 @@ export const flexItemClassName = 'ui-flex__item';
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
 
@@ -147,5 +144,3 @@ FlexItem.propTypes = {
 // However, there are  concerns related to browser compatibility if Symbols will be used.
 // Completely alternative approach - check class name of React element (and generalize this logic).
 FlexItem.__isFlexItem = true;
-
-export default FlexItem;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { useKeytipData, KeytipDataOptions } from './useKeytipData';
+import { KeytipDataOptions } from './KeytipData.types';
+import { useKeytipData } from './useKeytipData';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 
 describe('usePrevious', () => {
@@ -26,8 +27,7 @@ describe('usePrevious', () => {
     mount(<TestComponent />);
     expect(keytipData).toEqual({
       ariaDescribedBy: undefined,
-      executeElementAttributes: {},
-      targetElementAttributes: {},
+      keytipId: undefined,
     });
 
     expect(keytipManagerRegisterSpy).toBeCalledTimes(0);
@@ -49,12 +49,7 @@ describe('usePrevious', () => {
     mount(<TestComponent />);
     expect(keytipData).toEqual({
       ariaDescribedBy: 'ktp-layer-id ktp-a-1',
-      executeElementAttributes: {
-        'data-ktp-execute-target': 'ktp-a-1',
-      },
-      targetElementAttributes: {
-        'data-ktp-target': 'ktp-a-1',
-      },
+      keytipId: 'ktp-a-1',
     });
 
     expect(keytipManagerRegisterSpy).toBeCalledTimes(1);
@@ -78,12 +73,7 @@ describe('usePrevious', () => {
 
     expect(keytipData).toEqual({
       ariaDescribedBy: 'ktp-layer-id ktp-a-1',
-      executeElementAttributes: {
-        'data-ktp-execute-target': 'ktp-a-1',
-      },
-      targetElementAttributes: {
-        'data-ktp-target': 'ktp-a-1',
-      },
+      keytipId: 'ktp-a-1',
     });
 
     expect(keytipManagerRegisterSpy).toBeCalledTimes(1);
@@ -99,12 +89,7 @@ describe('usePrevious', () => {
 
     expect(keytipData).toEqual({
       ariaDescribedBy: 'ktp-layer-id ktp-b-1',
-      executeElementAttributes: {
-        'data-ktp-execute-target': 'ktp-b-1',
-      },
-      targetElementAttributes: {
-        'data-ktp-target': 'ktp-b-1',
-      },
+      keytipId: 'ktp-b-1',
     });
 
     expect(keytipManagerRegisterSpy).toBeCalledTimes(1);

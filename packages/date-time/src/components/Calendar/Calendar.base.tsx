@@ -142,13 +142,13 @@ function useFocusLogic({ componentRef }: ICalendarProps, isDayPickerVisible: boo
   const monthPicker = React.useRef<ICalendarMonth>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = () => {
+  const focus = React.useCallback(() => {
     if (isDayPickerVisible && dayPicker.current) {
       focusAsync(dayPicker.current);
     } else if (isMonthPickerVisible && monthPicker.current) {
       focusAsync(monthPicker.current);
     }
-  };
+  }, [isDayPickerVisible, isMonthPickerVisible]);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -356,11 +356,13 @@ export const CalendarBase = React.forwardRef(
             navigatedDate={navigatedDay!}
             today={props.today}
             onSelectDate={onDateSelected}
+            // eslint-disable-next-line react/jsx-no-bind
             onNavigateDate={onNavigateDayDate}
             onDismiss={props.onDismiss}
             firstDayOfWeek={firstDayOfWeek!}
             dateRangeType={dateRangeType!}
             strings={strings!}
+            // eslint-disable-next-line react/jsx-no-bind
             onHeaderSelect={onHeaderSelect}
             navigationIcons={navigationIcons!}
             showWeekNumbers={props.showWeekNumbers}
@@ -384,10 +386,12 @@ export const CalendarBase = React.forwardRef(
               navigatedDate={navigatedMonth}
               selectedDate={navigatedDay}
               strings={strings!}
+              // eslint-disable-next-line react/jsx-no-bind
               onNavigateDate={onNavigateMonthDate}
               today={props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
+              // eslint-disable-next-line react/jsx-no-bind
               onHeaderSelect={onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={props.dateTimeFormatter!}

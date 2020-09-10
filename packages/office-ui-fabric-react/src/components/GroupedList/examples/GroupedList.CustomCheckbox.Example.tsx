@@ -2,33 +2,35 @@ import * as React from 'react';
 import {
   GroupHeader,
   GroupedList,
-  IGroup,
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
+  IGroupRenderProps,
 } from 'office-ui-fabric-react/lib/GroupedList';
-import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn, IObjectWithKey, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-
+import { useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const groupCount = 3;
 const groupDepth = 1;
 
-export interface IGroupedListCustomCheckboxExampleState {}
+const groupProps: IGroupRenderProps = {
+  onRenderHeader: (props?: IGroupHeaderProps): JSX.Element => (
+    <GroupHeader onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox} {...props} />
+  ),
+};
 
-export class GroupedListCustomCheckboxExample extends React.Component<{}, IGroupedListCustomCheckboxExampleState> {
-  private _items: IExampleItem[];
-  private _columns: IColumn[];
-  private _groups: IGroup[];
-  private _selection: Selection;
+const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => (
+  <Toggle checked={props ? props.checked : undefined} />
+);
 
-  constructor(props: {}) {
-    super(props);
-
-    this._items = createListItems(Math.pow(groupCount, groupDepth + 1));
-    this._columns = Object.keys(this._items[0])
+export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
+  const items: IObjectWithKey[] = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
+  const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
+  const columns = useConst(() =>
+    Object.keys(items[0])
       .slice(0, 3)
       .map(
         (key: string): IColumn => ({
@@ -37,54 +39,38 @@ export class GroupedListCustomCheckboxExample extends React.Component<{}, IGroup
           fieldName: key,
           minWidth: 300,
         }),
-      );
-    this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
+      ),
+  );
+  const selection = useConst(() => new Selection({ items }));
 
-    this._selection = new Selection();
-    this._selection.setItems(this._items);
-
-    this.state = {};
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div>
-        <FocusZone>
-          <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>
-            <GroupedList
-              items={this._items}
-              onRenderCell={this._onRenderCell}
-              selection={this._selection}
-              selectionMode={SelectionMode.multiple}
-              groups={this._groups}
-              groupProps={{
-                onRenderHeader: this._onRenderHeader,
-              }}
-            />
-          </SelectionZone>
-        </FocusZone>
-      </div>
-    );
-  }
-
-  private _onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
-    return <GroupHeader onRenderGroupHeaderCheckbox={this._onRenderGroupHeaderCheckbox} {...props} />;
-  };
-
-  private _onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps) => {
-    return <Toggle checked={props.checked} />;
-  };
-
-  private _onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
-    return (
+  const onRenderCell = React.useCallback(
+    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
       <DetailsRow
-        columns={this._columns}
+        columns={columns}
         groupNestingDepth={nestingDepth}
         item={item}
-        itemIndex={itemIndex}
-        selection={this._selection}
+        itemIndex={itemIndex!}
+        selection={selection}
         selectionMode={SelectionMode.multiple}
       />
-    );
-  };
-}
+    ),
+    [columns, selection],
+  );
+
+  return (
+    <div>
+      <FocusZone>
+        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+          <GroupedList
+            items={items}
+            onRenderCell={onRenderCell}
+            selection={selection}
+            selectionMode={SelectionMode.multiple}
+            groups={groups}
+            groupProps={groupProps}
+          />
+        </SelectionZone>
+      </FocusZone>
+    </div>
+  );
+};

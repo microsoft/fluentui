@@ -10,7 +10,7 @@ interface DebugPanelDataProps {
   commentKeyPredicate?: (val: any) => boolean;
 }
 
-const DebugPanelData: React.FC<DebugPanelDataProps> = props => {
+export const DebugPanelData: React.FC<DebugPanelDataProps> = props => {
   const { data, indent = 2, highlightKey, overrides, comments, commentKeyPredicate } = props;
 
   const isValidComment = typeof comments === 'string' && commentKeyPredicate && commentKeyPredicate(comments);
@@ -59,5 +59,3 @@ const DebugPanelData: React.FC<DebugPanelDataProps> = props => {
     </>
   );
 };
-
-export default DebugPanelData;

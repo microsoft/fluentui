@@ -1,7 +1,7 @@
 import * as React from 'react';
-import FiberNavigator from './FiberNavigator';
-import DebugLine from './DebugLine';
-import ScrollToBottom from './ScrollToBottom';
+import { FiberNavigator } from './FiberNavigator';
+import { DebugLine } from './DebugLine';
+import { ScrollToBottom } from './ScrollToBottom';
 
 export type DebugComponentViewerProps = {
   fiberNav: FiberNavigator;
@@ -20,7 +20,7 @@ const style: React.CSSProperties = {
   fontWeight: 'bold',
 };
 
-const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
+export const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
   const { fiberNav, onFiberChanged, onFiberSelected } = props;
 
   const ownerNav = fiberNav.owner || ({ jsxString: 'unknown' } as FiberNavigator);
@@ -91,5 +91,3 @@ const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
     </ScrollToBottom>
   );
 };
-
-export default DebugComponentViewer;

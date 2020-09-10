@@ -10,14 +10,14 @@ import {
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useAccessibility,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -59,9 +59,9 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
  * @accessibility
  * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
  */
-const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
+export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
   FluentComponentStaticProps<CarouselItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
   setStart();
   const unhandledProps = useUnhandledProps(CarouselItem.handledProps, props);
@@ -140,5 +140,3 @@ CarouselItem.defaultProps = {
 CarouselItem.handledProps = Object.keys(CarouselItem.propTypes) as any;
 
 CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedProp: 'content' });
-
-export default CarouselItem;

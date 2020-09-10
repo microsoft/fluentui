@@ -15,6 +15,7 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 /**
  * Temporary Text until there's one in its own package.
  */
+// eslint-disable-next-line jsx-a11y/heading-has-content -- content passed via children
 const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const ButtonVariants = (props: ButtonProps) => (
@@ -31,8 +32,30 @@ const ButtonVariants = (props: ButtonProps) => (
     <Button {...props} primary disabled icon="X">
       Hello, world
     </Button>
+    <Button {...props} ghost icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} ghost disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
+
+export const ButtonFocus = () => {
+  const buttonRef = React.useRef<HTMLElement | null>(null);
+  return (
+    <Stack>
+      <Button
+        onClick={() => {
+          buttonRef.current?.focus();
+        }}
+      >
+        Focus the other button
+      </Button>
+      <Button ref={buttonRef}>I get focused</Button>
+    </Stack>
+  );
+};
 
 export const ButtonCss = () => (
   <Stack>
@@ -54,6 +77,12 @@ export const ButtonCss = () => (
         Hello, world
       </Button>
       <Button fluid primary disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost icon="X">
+        Hello, world
+      </Button>
+      <Button fluid ghost disabled icon="X">
         Hello, world
       </Button>
     </Stack>

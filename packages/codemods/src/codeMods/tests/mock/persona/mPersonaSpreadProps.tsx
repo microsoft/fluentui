@@ -7,7 +7,7 @@ const renderCoin: IRenderFunction<IPersonaSharedProps> = (props: IPersonaSharedP
   return <div>Foo</div>;
 };
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderPersona = (props: any) => {
   const propsTest = { onRenderCoin: renderCoin, primaryText: 'ConstPersona' };
   return (
@@ -21,9 +21,9 @@ export const RenderPersona = (props: any) => {
   );
 };
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderLetPersona = (props: any) => {
-  // tslint:disable-next-line: prefer-const
+  // eslint-disable-next-line prefer-const
   let propsTest = { onRenderCoin: renderCoin, primaryText: 'LetPersona' };
   return (
     <div>
@@ -48,7 +48,7 @@ export const RenderPersonaProps = (props: IPersonaProps) => {
   );
 };
 
-// tslint:disable-next-line: function-name
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function RenderPersonaPropsFunc(props: IPersonaProps) {
   return (
     <div>

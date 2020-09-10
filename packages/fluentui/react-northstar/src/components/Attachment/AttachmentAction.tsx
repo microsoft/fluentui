@@ -3,7 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
+import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 export interface AttachmentActionOwnProps {}
 export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {
@@ -23,12 +23,13 @@ export type AttachmentActionStylesProps = ButtonStylesProps & {
   fluid?: never;
   inverted?: never;
 };
+
 export const attachmentActionClassName = 'ui-attachment__action';
 
 /**
  * An AttachmentAction provides a slot for actions in the Attachment.
  */
-const AttachmentAction = compose<
+export const AttachmentAction = compose<
   'button',
   AttachmentActionOwnProps,
   AttachmentActionStylesProps,
@@ -62,5 +63,3 @@ AttachmentAction.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
 };
-
-export default AttachmentAction;

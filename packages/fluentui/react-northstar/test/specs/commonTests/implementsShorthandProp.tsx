@@ -26,7 +26,7 @@ export type ShorthandPropTestsFactory = <TComponent extends React.ComponentType>
   Component: TComponent,
 ) => ShorthandPropTestsRunner<TComponent>;
 
-export default ((Component: React.ComponentType) => {
+export const implementsShorthandProp = ((Component: React.ComponentType) => {
   return function implementsShorthandProp(
     shorthandProp: string,
     ShorthandComponent: React.ComponentType,

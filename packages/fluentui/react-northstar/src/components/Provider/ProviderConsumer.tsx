@@ -1,9 +1,7 @@
+import { useFluentContext } from '@fluentui/react-bindings';
 import { ThemePrepared } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { FelaTheme } from 'react-fela';
-
-import { ProviderContextPrepared } from '../../types';
 
 export interface ProviderConsumerProps {
   /**
@@ -16,13 +14,14 @@ export interface ProviderConsumerProps {
 /**
  * A ProviderConsumer is used to consume Fluent UI context from Provider.
  */
-const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = ({ render }) => (
-  <FelaTheme>{(context: ProviderContextPrepared) => render(context.theme)}</FelaTheme>
-);
+export const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = props => {
+  const { render } = props;
+  const context = useFluentContext();
+
+  return <>{render(context.theme)}</>;
+};
 
 ProviderConsumer.displayName = 'ProviderConsumer';
 ProviderConsumer.propTypes = {
   render: PropTypes.func.isRequired,
 };
-
-export default ProviderConsumer;

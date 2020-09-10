@@ -1,12 +1,11 @@
-import { ComponentDesignProp } from '@fluentui/react-bindings';
+import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import * as customPropTypes from '@fluentui/react-proptypes';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import { ProviderContextPrepared, ReactChildren } from '../../types';
+import { ReactChildren } from '../../types';
 
 export type DesignProps = {
   /** A render function that receives the generated className as its only argument */
@@ -19,8 +18,8 @@ export type DesignProps = {
 /**
  * The Design component provides a theme safe subset of CSS for designing layouts.
  */
-function Design<DesignProps>({ config, children }) {
-  const context = React.useContext<ProviderContextPrepared>(ThemeContext);
+export function Design<DesignProps>({ config, children }) {
+  const context = useFluentContext();
   const getConfig = React.useCallback(() => config, [config]);
 
   // Heads Up! Keep in sync with renderComponent.tsx
@@ -43,5 +42,3 @@ Design.propTypes = {
 
   config: customPropTypes.design.isRequired,
 };
-
-export default Design;

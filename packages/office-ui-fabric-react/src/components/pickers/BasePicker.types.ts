@@ -36,7 +36,7 @@ export interface IBasePicker<T> {
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}
  */
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
@@ -191,9 +191,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   onInputChange?: (input: string) => string;
 
   /**
-   * A callback to override the default behavior of adding the selected suggestion on dismiss.
+   * A callback to override the default behavior of adding the selected suggestion on dismiss. If it returns true or
+   * nothing, the selected item will be added on dismiss. If false, the selected item will not be added on dismiss.
+   *
    */
-  onDismiss?: (ev?: any, selectedItem?: T) => void;
+  onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
 
   /**
    * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below,

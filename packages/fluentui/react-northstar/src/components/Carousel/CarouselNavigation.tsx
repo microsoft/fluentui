@@ -4,6 +4,7 @@ import {
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -21,15 +22,8 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  ShorthandCollection,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -76,9 +70,9 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
+export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
   const {
@@ -192,5 +186,3 @@ CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
   mappedArrayProp: 'items',
 });
-
-export default CarouselNavigation;

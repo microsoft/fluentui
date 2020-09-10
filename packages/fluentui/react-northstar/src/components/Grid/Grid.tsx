@@ -4,14 +4,13 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -21,7 +20,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface GridProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -44,8 +43,8 @@ export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
 /**
  * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
  */
-const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
   setStart();
 
@@ -101,5 +100,3 @@ Grid.propTypes = {
   rows: PropTypes.number,
 };
 Grid.handledProps = Object.keys(Grid.propTypes) as any;
-
-export default Grid;

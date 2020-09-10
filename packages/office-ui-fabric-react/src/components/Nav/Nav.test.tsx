@@ -41,8 +41,7 @@ describe('Nav', () => {
   });
 
   it('render Nav with overrides correctly', () => {
-    // tslint:disable-next-line:function-name
-    function LinkAs(props: IComponentAsProps<INavButtonProps>): JSX.Element | null {
+    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
       const { defaultRender: DefaultRender, ...buttonProps } = props;
 
       if (!DefaultRender) {
@@ -54,7 +53,7 @@ describe('Nav', () => {
           <DefaultRender {...buttonProps} />
         </div>
       );
-    }
+    };
 
     function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
       if (!props || !defaultRender) {

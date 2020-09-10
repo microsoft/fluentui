@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FiberNavigator from './FiberNavigator';
+import { FiberNavigator } from './FiberNavigator';
 
 interface DebugRectProps {
   showBackground?: boolean;
@@ -15,7 +15,7 @@ const cropMarkStyle: React.CSSProperties = {
   background: '#6495ed88',
 };
 
-class DebugRect extends React.Component<DebugRectProps> {
+export class DebugRect extends React.Component<DebugRectProps> {
   selectorRef = React.createRef<HTMLPreElement>();
 
   static defaultProps = {
@@ -208,5 +208,3 @@ class DebugRect extends React.Component<DebugRectProps> {
     );
   }
 }
-
-export default DebugRect;

@@ -8,7 +8,6 @@ import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPick
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -37,6 +36,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     this.state = {
       queryString: '',
+      // TODO: determine whether this can be removed
+      // eslint-disable-next-line react/no-unused-state
       suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
@@ -49,20 +50,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
-  // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.state.selectedItems
-      ? this.state.selectedItems
-      : this.selectedItemsList.current
-      ? this.selectedItemsList.current.items
-      : null;
+    return this.state.selectedItems ?? this.selectedItemsList.current?.items ?? null;
   }
 
   public componentDidMount(): void {
     this.forceUpdate();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     if (newProps.floatingPickerProps) {
       this.floatingPickerProps = newProps.floatingPickerProps;

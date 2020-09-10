@@ -129,17 +129,12 @@ describe('Toggle', () => {
     const wrapper = mount(
       <form
         action="#"
-        // tslint:disable-next-line:jsx-no-lambda
         onSubmit={e => {
           onSubmit();
           e.preventDefault();
         }}
       >
-        <Toggle
-          // tslint:disable-next-line:jsx-no-lambda
-          componentRef={ref => (component = ref)}
-          label="Label"
-        />
+        <Toggle componentRef={ref => (component = ref)} label="Label" />
       </form>,
     );
     const button: any = wrapper.find('button');

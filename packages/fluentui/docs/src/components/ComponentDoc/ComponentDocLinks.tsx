@@ -1,6 +1,8 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, constants, Image } from '@fluentui/react-northstar';
+import { Flex, Image } from '@fluentui/react-northstar';
+
+import config from '../../config';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {
@@ -29,7 +31,7 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
           <code>
             <a
               style={{ color: 'rgba(0,0,0,.4)' }}
-              href={`${constants.repoURL}/blob/master/${repoPath}`}
+              href={`${config.repoURL}/blob/master/${repoPath}`}
               target="_blank"
               rel="noopener noreferrer"
             >

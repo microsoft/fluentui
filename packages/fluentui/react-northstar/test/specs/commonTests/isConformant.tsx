@@ -11,7 +11,7 @@ import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
-import isExportedAtTopLevel from './isExportedAtTopLevel';
+import { isExportedAtTopLevel } from './isExportedAtTopLevel';
 import {
   assertBodyContains,
   consoleUtil,
@@ -19,7 +19,7 @@ import {
   mountWithProvider as mount,
   syntheticEvent,
 } from 'test/utils';
-import helpers from './commonHelpers';
+import { commonHelpers } from './commonHelpers';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
@@ -50,7 +50,7 @@ export interface Conformant {
  * Assert Component conforms to guidelines that are applicable to all components.
  * @param Component - A component that should conform.
  */
-export default function isConformant(
+export function isConformant(
   Component: React.ComponentType<any> & {
     handledProps?: string[];
     autoControlledProps?: string[];
@@ -71,7 +71,7 @@ export default function isConformant(
     passesUnhandledPropsTo,
     forwardsRefTo,
   } = options;
-  const { throwError } = helpers('isConformant', Component);
+  const { throwError } = commonHelpers('isConformant', Component);
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config
@@ -127,7 +127,7 @@ export default function isConformant(
   // This is pretty ugly because:
   // - jest doesn't support custom error messages
   // - jest will run all test
-  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
+  const infoJSONPath = `@fluentui/react-northstar/componentInfo/${constructorName}.info.json`;
 
   let info;
 

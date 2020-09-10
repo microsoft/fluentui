@@ -57,7 +57,9 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
         Sample Text
       </div>
       <SwatchColorPicker
+        // eslint-disable-next-line react/jsx-no-bind
         onCellHovered={swatchColorPickerOnCellHovered}
+        // eslint-disable-next-line react/jsx-no-bind
         onCellFocused={swatchColorPickerOnCellHovered}
         columnCount={4}
         cellShape={'circle'}

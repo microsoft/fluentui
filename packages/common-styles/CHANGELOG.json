@@ -1,0 +1,50 @@
+{
+  "name": "@fluentui/common-styles",
+  "entries": [
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/common-styles_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/common-styles_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update focus-border to include $radius parameter and add focus-box-shadow and after-box-shadow.",
+            "author": "behowell@microsoft.com",
+            "commit": "639c468815c9e389eb3002fa54acc159b3fae048",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/common-styles_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create @fluentui/common-styles package, for style definitions shared between components",
+            "author": "behowell@microsoft.com",
+            "commit": "940524c755d5cf60ca3f80b705e30fca61b2d5ba",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    }
+  ]
+}

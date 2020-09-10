@@ -56,13 +56,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
           <p>The URL may be misspelled or the page you are looking for is no longer available.</p>
           <ul>
             <li>
-              <Link
-                href="#/"
-                onClick={
-                  // tslint:disable-next-line jsx-no-lambda
-                  ev => this._onInternalLinkClick(ev, '#/')
-                }
-              >
+              <Link href="#/" onClick={ev => this._onInternalLinkClick(ev, '#/')}>
                 Fluent UI Home
               </Link>
             </li>
@@ -83,13 +77,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
       return (
         <li>
-          <Link
-            href={url}
-            onClick={
-              // tslint:disable-next-line jsx-no-lambda
-              ev => this._onInternalLinkClick(ev, url)
-            }
-          >
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)}>
             {title}
           </Link>
         </li>

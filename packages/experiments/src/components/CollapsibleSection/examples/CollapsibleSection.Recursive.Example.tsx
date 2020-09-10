@@ -48,7 +48,6 @@ interface IExampleFileProps {
   indent: number;
 }
 
-/* tslint:disable:jsx-ban-props */
 const ExampleFile = (props: IExampleFileProps) => {
   return (
     <div

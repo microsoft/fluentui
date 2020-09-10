@@ -263,7 +263,6 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
       return false;
     }
 
-    /* tslint:disable-next-line:no-string-literal */
     const matchesSelectorFn: Function =
         element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector /* for IE */;
 

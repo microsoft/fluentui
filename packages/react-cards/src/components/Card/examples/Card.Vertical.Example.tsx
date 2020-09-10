@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
-import { FontWeights } from '@uifabric/styling';
 import {
   ActionButton,
+  FontWeights,
   IButtonStyles,
   Icon,
   IIconStyles,

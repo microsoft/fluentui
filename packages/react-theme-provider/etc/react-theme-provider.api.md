@@ -4,55 +4,45 @@
 
 ```ts
 
+import { ColorTokenSet } from '@fluentui/theme';
+import { IRawFontStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { ITheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
+import { Theme } from '@fluentui/theme';
+import { TokenSetType } from '@fluentui/theme';
+
+// @public
+export const createDefaultTheme: () => Theme;
 
 // @public (undocumented)
-export type ColorPlateSet = ColorTokens & ColorTokenStates;
-
-// @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    subTextColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-}>;
-
-// @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export const FluentTheme: Theme;
 
 // @public (undocumented)
-export type FontTokens = Partial<{
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-}>;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
-// @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorPlateSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export { IRawFontStyle }
 
-// @public
-export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
+export { IRawStyle }
+
+export { IStyle }
+
+export { IStyleFunctionOrObject }
 
 // @public
-export interface PartialTheme extends RecursivePartial<Theme> {
-}
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: ITheme) => Record<string, IStyle>)) => (state: TState) => void;
 
 // @public
-export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {
+    [key in keyof TStyleSet]: string;
 };
+
+export { PartialTheme }
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {
@@ -61,23 +51,20 @@ export interface StyleOptions<TProps> {
 }
 
 // @public
-export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     style?: React.CSSProperties;
     // (undocumented)
     tokens?: TTokens;
 }
 
-// @public
-export interface Theme {
-    // (undocumented)
-    stylesheets: string[];
-    // (undocumented)
-    tokens: {
-        body: ColorPlateSet & TokenSetType;
-        [key: string]: TokenSetType;
-    };
-}
+// @public (undocumented)
+export const TeamsTheme: PartialTheme;
+
+export { Theme }
+
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
@@ -87,19 +74,14 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
     theme?: PartialTheme | Theme;
 }
 
-// @public
-export type TokenSetType = string | {
-    [key: string]: TokenSetType | undefined;
-};
-
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: {
-    [key: string]: string | {
-        [key: string]: string | any | undefined;
-    } | undefined;
-} | undefined, prefix?: string | undefined, style?: {
-    [key: string]: string | number | undefined;
-}) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
+
+// @public
+export const useInlineTokens: (draftState: {
+    style?: React.CSSProperties | undefined;
+    tokens?: TokenSetType | undefined;
+}, prefix: string) => void;
 
 // @public
 export const useTheme: () => Theme;

@@ -2,6 +2,160 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Body text font size clean up, <Text>",
+            "author": "jagaheri@microsoft.com",
+            "commit": "b18df8a0cb88d05759e65508a40043ab5323a43f",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.3.6",
+      "version": "7.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Messagebar palette update, defaultbutton as primiary styling fix",
+            "author": "jagaheri@microsoft.com",
+            "commit": "4388199c13687c6113b21de4b17704d6e62cba99",
+            "package": "@uifabric/azure-themes"
+          },
+          {
+            "comment": "fix publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "High contrast light + dark themes",
+            "author": "jagaheri@microsoft.com",
+            "commit": "91fff79253d0aa6b9b6572abbf7691a04371253c",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/azure-themes_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "High contrast light + dark themes",
+            "author": "jagaheri@microsoft.com",
+            "commit": "91fff79253d0aa6b9b6572abbf7691a04371253c",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.49",
+      "version": "7.1.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix choicegroup's disabled style for Azure theme",
+            "author": "hyoshi@microsoft.com",
+            "commit": "455be87d6ce147b967dec8c1a4ddeae2526e6559",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.43",
+      "version": "7.1.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "style updates per devops ",
+            "author": "jagaheri@microsoft.com",
+            "commit": "23029b1fa37aac673e664121001c6e15d46bca50",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.41",
+      "version": "7.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.40",
+      "version": "7.1.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed primary button color on expand",
+            "author": "67673432+q-xg@users.noreply.github.com",
+            "commit": "d499abcc6840aace2761ad10bfc668202c4b3ae7",
+            "package": "@uifabric/azure-themes"
+          },
+          {
+            "author": "jagaheri@microsoft.com",
+            "commit": "8df4df38a9af3fe5dccf54c5db844af4805cfc83",
+            "package": "@uifabric/azure-themes"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/azure-themes_v7.1.31",
       "version": "7.1.31",

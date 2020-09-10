@@ -4,16 +4,15 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface ImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Alternative text. */
@@ -51,8 +50,8 @@ export const imageClassName = 'ui-image';
  *  - when image has role='presentation' then screen readers navigate to the element in scan/virtual mode. To avoid this, the attribute "aria-hidden='true'" is applied by the default image behavior.
  *  - when alt property is used in combination with aria-label, arialabbeledby or title, additional screen readers verification is needed as each screen reader handles this combination differently.
  */
-const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
   setStart();
 
@@ -122,5 +121,3 @@ Image.propTypes = {
 Image.handledProps = Object.keys(Image.propTypes) as any;
 
 Image.create = createShorthandFactory({ Component: Image, mappedProp: 'src', allowsJSX: false });
-
-export default Image;

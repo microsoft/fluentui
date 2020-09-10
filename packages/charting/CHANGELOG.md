@@ -1,8 +1,252 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 12:23:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.0.0)
+
+Thu, 10 Sep 2020 12:23:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.2..@uifabric/charting_v4.0.0)
+
+### Major changes
+
+- Vertical stacked bar chart combined callout and other tweaks ([PR #14912](https://github.com/microsoft/fluentui/pull/14912) by mibes@microsoft.com)
+
+## [3.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.2)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.0..@uifabric/charting_v3.6.2)
+
+### Patches
+
+- Fix issue when we focus on charts in IE ([PR #14946](https://github.com/microsoft/fluentui/pull/14946) by v-gorraj@microsoft.com)
+
+## [3.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.5.1..@uifabric/charting_v3.6.0)
+
+### Minor changes
+
+- Area chart re design and updated Cartesian (removed reRenderProp method from Cartesian as it only uses for area chart previously. Now code udpated, so no need of that method.) ([PR #14892](https://github.com/microsoft/fluentui/pull/14892) by v-jasha@microsoft.com)
+
+## [3.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.5.0)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.4.0..@uifabric/charting_v3.5.0)
+
+### Minor changes
+
+- making the prop 'showYAxisGridLines' as deprecated. ([PR #14872](https://github.com/microsoft/fluentui/pull/14872) by v-sivsar@microsoft.com)
+
+## [3.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.4.0)
+
+Thu, 03 Sep 2020 12:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.1..@uifabric/charting_v3.4.0)
+
+### Minor changes
+
+- VerticalStackedBarChart - add yMaxValue, yAxisTickFormat, margins ([PR #14830](https://github.com/microsoft/fluentui/pull/14830) by mibes@microsoft.com)
+
+### Patches
+
+- resize of area chart issue fixed ([PR #14840](https://github.com/microsoft/fluentui/pull/14840) by v-jasha@microsoft.com)
+
+## [3.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.1)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.0..@uifabric/charting_v3.3.1)
+
+### Patches
+
+- Redesign of Chart helper and updated associate files ([PR #14781](https://github.com/microsoft/fluentui/pull/14781) by v-jasha@microsoft.com)
+
+## [3.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.0)
+
+Mon, 31 Aug 2020 12:25:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.2.0..@uifabric/charting_v3.3.0)
+
+### Minor changes
+
+- added multiselection of legends for the line chart. ([PR #14758](https://github.com/microsoft/fluentui/pull/14758) by v-gorraj@microsoft.com)
+
+## [3.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.2.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.5..@uifabric/charting_v3.2.0)
+
+### Minor changes
+
+- added rtl support for all the cartesian charts such as linechart, areachart, verticalbarchart, groupedvertical chart and vertical stacked bar chart. also added styleprop isRtl to add some styles ([PR #14584](https://github.com/microsoft/fluentui/pull/14584) by v-sivsar@microsoft.com)
+
+## [3.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.5)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.4..@uifabric/charting_v3.1.5)
+
+### Patches
+
+- IE11 support for xAxis labels and utility created for x axis labels wrapping ([PR #14628](https://github.com/microsoft/fluentui/pull/14628) by v-jasha@microsoft.com)
+- making legends focusable by default. ([PR #14731](https://github.com/microsoft/fluentui/pull/14731) by v-sivsar@microsoft.com)
+
+## [3.1.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.4)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.3..@uifabric/charting_v3.1.4)
+
+### Patches
+
+- Y axis ticks values duplicating issue resolved. removed ticks() and added tickFormat() ([PR #14657](https://github.com/microsoft/fluentui/pull/14657) by v-jasha@microsoft.com)
+
+## [3.1.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.0..@uifabric/charting_v3.1.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [3.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.10..@uifabric/charting_v3.1.0)
+
+### Minor changes
+
+- focusing the legends based on the the prop 'allowFocusOnLegends' and exposing all the new prop 'legendProps' on all the charts which are using legends form which they can manipulate the respective lengends with this prop ([PR #14463](https://github.com/microsoft/fluentui/pull/14463) by v-sivsar@microsoft.com)
+
+### Patches
+
+- For Stacked area chart need to calculate highest Y value based on given input data(after processing the data only). This needs to be send charthelper. ([PR #14521](https://github.com/microsoft/fluentui/pull/14521) by v-jasha@microsoft.com)
+
+## [3.0.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.10)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.7..@uifabric/charting_v3.0.10)
+
+### Patches
+
+- fix publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [3.0.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.7)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.5..@uifabric/charting_v3.0.7)
+
+### Patches
+
+- Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated. ([PR #14433](https://github.com/microsoft/fluentui/pull/14433) by v-jasha@microsoft.com)
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.0..@uifabric/charting_v3.0.2)
+
+### Patches
+
+- yMax and yMin values added to prop types of chart helper ([PR #14256](https://github.com/microsoft/fluentui/pull/14256) by v-jasha@microsoft.com)
+- Grouped vertical bar chart refresh issue in admin controls resoled ([PR #14277](https://github.com/microsoft/fluentui/pull/14277) by v-jasha@microsoft.com)
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
+
+### Major changes
+
+- reverted sankey chart code ([PR #14301](https://github.com/microsoft/fluentui/pull/14301) by v-jasha@microsoft.com)
+
+## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.7..@uifabric/charting_v2.8.0)
+
+### Minor changes
+
+- Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart ([PR #14169](https://github.com/microsoft/fluentui/pull/14169) by jijun@microsoft.com)
+
+## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
+
+### Patches
+
+- common chartHelper added to charting package ([PR #14177](https://github.com/microsoft/fluentui/pull/14177) by v-jasha@microsoft.com)
+- Charting: Add Accessibility support for Sankey chart ([PR #14196](https://github.com/microsoft/fluentui/pull/14196) by v-gorraj@microsoft.com)
+
+## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
+
+### Patches
+
+- Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers. ([PR #14195](https://github.com/microsoft/fluentui/pull/14195) by v-gorraj@microsoft.com)
+
+## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.2..@uifabric/charting_v2.7.4)
+
+### Patches
+
+- Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings. ([PR #14137](https://github.com/microsoft/fluentui/pull/14137) by v-jasha@microsoft.com)
+- Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception. ([PR #14161](https://github.com/microsoft/fluentui/pull/14161) by v-gorraj@microsoft.com)
+
+## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.0..@uifabric/charting_v2.7.2)
+
+### Patches
+
+- Charting: Fix sankey chart dark mode text not visble properly ([PR #14082](https://github.com/microsoft/fluentui/pull/14082) by v-gorraj@microsoft.com)
+- Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined ([PR #14093](https://github.com/microsoft/fluentui/pull/14093) by 57419611+hki-237@users.noreply.github.com)
+
+## [2.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.0)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.6.0..@uifabric/charting_v2.7.0)
+
+### Minor changes
+
+- When legend is hovered, center of donut chart updates to the value cooresponding to the legend. ([PR #14055](https://github.com/microsoft/fluentui/pull/14055) by 57419611+hki-237@users.noreply.github.com)
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.6.0)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.2..@uifabric/charting_v2.6.0)
+
+### Minor changes
+
+- Charting:Add New Sankey chart to charting package ([PR #13982](https://github.com/microsoft/fluentui/pull/13982) by v-gorraj@microsoft.com)
+
+### Patches
+
+- lineChart & verticalCharts - y axis lines high contrast styles updated ([PR #14037](https://github.com/microsoft/fluentui/pull/14037) by v-jasha@microsoft.com)
+- wrapping chartHoverCard in styled component and deleting static Theme ([PR #14038](https://github.com/microsoft/fluentui/pull/14038) by v-sivsar@microsoft.com)
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.2)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.1..@uifabric/charting_v2.5.2)
+
+### Patches
+
+- Legends:Skip all legends in data viz as it is confusing to non sighted users as they have just gone through the data viz. ([PR #14019](https://github.com/microsoft/fluentui/pull/14019) by v-gorraj@microsoft.com)
+
+## [2.5.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.0..@uifabric/charting_v2.5.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations, including unnecessary map() usage and naming ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Donut chart: when hover/focus on arc the arc should be highlight and remaining arcs are disable ([PR #13980](https://github.com/microsoft/fluentui/pull/13980) by v-gorraj@microsoft.com)
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.0)
 

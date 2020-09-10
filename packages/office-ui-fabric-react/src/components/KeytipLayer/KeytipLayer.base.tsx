@@ -79,7 +79,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
   private _keyHandled = false;
 
-  // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 
@@ -471,7 +470,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      // Ensure existing children are still shown.
+      this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
+
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+
       // Ensure the child of currentKeytip is successfully added to currentKeytip's children and update it if not.
       // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node
       // in currentKeytip when that parent is the currentKeytip.

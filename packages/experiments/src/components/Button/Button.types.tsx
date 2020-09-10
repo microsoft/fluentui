@@ -1,3 +1,4 @@
+import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
 import { IRawFontStyle, IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';

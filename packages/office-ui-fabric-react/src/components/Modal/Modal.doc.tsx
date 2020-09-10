@@ -25,10 +25,7 @@ export const ModalPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
-  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalA11y.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

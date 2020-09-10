@@ -4,25 +4,26 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
 import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+  createShorthandFactory,
+  UIComponentProps,
+  ChildrenComponentProps,
+  commonPropTypes,
+  shouldPreventDefaultOnKeyDown,
+} from '../../utils';
+import { Box, BoxProps } from '../Box/Box';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useAutoControlled,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { CircleIcon } from '@fluentui/react-icons-northstar';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
@@ -53,6 +54,9 @@ export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponent
 
   /** The radio item indicator can be customized. */
   indicator?: ShorthandValue<BoxProps>;
+
+  /** The checked radio item indicator can be customized. */
+  checkedIndicator?: ShorthandValue<BoxProps>;
 
   /** The HTML input name. */
   name?: string;
@@ -87,12 +91,23 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  * @accessibility
  * Radio items need to be grouped to correctly handle accessibility.
  */
-const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
+export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   FluentComponentStaticProps<RadioGroupItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
-  const { label, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } = props;
+  const {
+    label,
+    checkedIndicator,
+    indicator,
+    disabled,
+    vertical,
+    className,
+    design,
+    styles,
+    variables,
+    shouldFocus,
+  } = props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -135,7 +150,9 @@ const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
     debugName: RadioGroupItem.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         handleClick(e);
       },
     },
@@ -162,7 +179,7 @@ const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
           ...unhandledProps,
         })}
       >
-        {Box.create(indicator, {
+        {Box.create(checked ? checkedIndicator : indicator, {
           defaultProps: () => ({
             className: radioGroupItemSlotClassNames.indicator,
             styles: resolvedStyles.indicator,
@@ -190,6 +207,7 @@ RadioGroupItem.propTypes = {
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
+  checkedIndicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
   name: PropTypes.string,
   onClick: PropTypes.func,
@@ -201,11 +219,10 @@ RadioGroupItem.propTypes = {
 
 RadioGroupItem.defaultProps = {
   accessibility: radioGroupItemBehavior,
-  indicator: {},
+  indicator: <CircleIcon outline size="small" />,
+  checkedIndicator: <CircleIcon size="small" />,
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;
 
 RadioGroupItem.create = createShorthandFactory({ Component: RadioGroupItem, mappedProp: 'label' });
-
-export default RadioGroupItem;

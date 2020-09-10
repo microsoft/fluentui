@@ -1,4 +1,11 @@
-import { ComponentWithAs, getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  getUnhandledProps,
+  useStyles,
+  useFluentContext,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import {
   SvgIconProps,
   svgIconClassName,
@@ -8,10 +15,6 @@ import {
 } from '@fluentui/react-icons-northstar';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-
-import { ProviderContextPrepared } from '../../types';
 
 export type SvgIconStylesProps = Required<
   Pick<SvgIconProps, 'bordered' | 'circular' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'>
@@ -20,10 +23,10 @@ export type SvgIconStylesProps = Required<
 /**
  * An SvgIcon displays a pictogram with semantic meaning.
  */
-const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }> & {
+export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }> & {
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
 
   const { setStart, setEnd } = useTelemetry(SvgIcon.displayName, context.telemetry);
   setStart();
@@ -86,5 +89,3 @@ SvgIcon.defaultProps = {
   size: 'medium',
   rotate: 0,
 };
-
-export default SvgIcon;

@@ -23,6 +23,7 @@ const SplitButtonExampleToggleButtonShorthand = () => {
         }}
         onOpenChange={(e, { open }) => setOpen(open)}
         onMainButtonClick={() => alert('button was clicked')}
+        open={open}
       />
       <span aria-hidden="true" id="instruction-message-icon" style={{ opacity: 0 }}>
         to open menu, press Alt + Arrow Down

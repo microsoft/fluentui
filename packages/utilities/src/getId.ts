@@ -5,7 +5,7 @@ import { Stylesheet } from '@uifabric/merge-styles';
 const CURRENT_ID_PROPERTY = '__currentId__';
 const DEFAULT_ID_STRING = 'id__';
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let _global: any = getWindow() || {};
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {

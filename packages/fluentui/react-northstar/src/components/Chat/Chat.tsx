@@ -3,6 +3,7 @@ import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -11,8 +12,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -22,10 +21,12 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import ChatItem, { ChatItemProps } from './ChatItem';
-import ChatMessage from './ChatMessage';
-import ChatMessageDetails from './ChatMessageDetails';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { ChatItem, ChatItemProps } from './ChatItem';
+import { ChatMessage } from './ChatMessage';
+import { ChatMessageDetails } from './ChatMessageDetails';
+import { ChatMessageReadStatus } from './ChatMessageReadStatus';
+import { ChatMessageHeader } from './ChatMessageHeader';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -48,13 +49,15 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 /**
  * A Chat displays messages from a conversation between multiple users.
  */
-const Chat: ComponentWithAs<'ul', ChatProps> &
+export const Chat: ComponentWithAs<'ul', ChatProps> &
   FluentComponentStaticProps<ChatProps> & {
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
     MessageDetails: typeof ChatMessageDetails;
+    MessageReadStatus: typeof ChatMessageReadStatus;
+    MessageHeader: typeof ChatMessageHeader;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
@@ -116,8 +119,8 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
+Chat.MessageHeader = ChatMessageHeader;
 Chat.MessageDetails = ChatMessageDetails;
+Chat.MessageReadStatus = ChatMessageReadStatus;
 
 Chat.create = createShorthandFactory({ Component: Chat });
-
-export default Chat;

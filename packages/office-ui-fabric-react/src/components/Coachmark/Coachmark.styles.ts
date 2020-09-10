@@ -134,8 +134,10 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     beaconColorTwo,
     delayBeforeCoachmarkAnimation,
     isCollapsed,
+    // eslint-disable-next-line deprecation/deprecation
     isBeaconAnimating,
     isMeasuring,
+    // eslint-disable-next-line deprecation/deprecation
     isMeasured,
     entityHostHeight,
     entityHostWidth,

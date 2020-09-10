@@ -34,7 +34,7 @@ export class ThemeGenerator {
       if (typeof color === 'string') {
         colorAsIColor = getColorFromString(color)!; // the ! is a lie here but we'll verify it in the next line
         if (!colorAsIColor) {
-          throw 'color is invalid in setSlot(): ' + color;
+          throw new Error('color is invalid in setSlot(): ' + color);
         }
       } else {
         colorAsIColor = color;
@@ -58,7 +58,7 @@ export class ThemeGenerator {
         const rule: IThemeSlotRule = slotRules[ruleName];
         if (!rule.inherits && !rule.value) {
           if (!rule.color) {
-            throw 'A color slot rule that does not inherit must provide its own color.';
+            throw new Error('A color slot rule that does not inherit must provide its own color.');
           }
           ThemeGenerator._setSlot(rule, rule.color, isInverted, false, false);
         }

@@ -16,17 +16,16 @@ import {
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TextProps
   extends UIComponentProps,
@@ -93,8 +92,8 @@ export const textClassName = 'ui-text';
 /**
  * A Text consistently styles and formats occurrences of text.
  */
-const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
 
@@ -191,5 +190,3 @@ Text.propTypes = {
 Text.handledProps = Object.keys(Text.propTypes) as any;
 
 Text.create = createShorthandFactory({ Component: Text, mappedProp: 'content' });
-
-export default Text;

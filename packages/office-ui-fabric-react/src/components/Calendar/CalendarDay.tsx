@@ -104,7 +104,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     this._onClose = this._onClose.bind(this);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps),
@@ -362,6 +361,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-readonly={true}
+                          aria-current={day.isToday ? 'date' : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
@@ -705,8 +705,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
 
   private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) {
     if (this.state.weeks) {
-      this.state.weeks.map((week: IDayInfo[], weekIndex: number) => {
-        week.map(day => {
+      this.state.weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+        week.forEach(day => {
           const ref = this.days[day.key];
           func(ref, day, weekIndex);
         });
@@ -838,7 +838,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
+        // Casting date parameter as an any to avoid [ object Object ] error.
+        const originalDate = new Date(date as any);
         const dayInfo: IDayInfo = {
           key: date.toString(),
           date: date.getDate().toString(),

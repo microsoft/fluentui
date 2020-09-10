@@ -4,7 +4,6 @@ import { keyboardKey } from '@fluentui/keyboard-key';
 import { act } from 'react-dom/test-utils';
 
 import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
-import { UIComponent } from 'src/utils';
 import { EVENT_TARGET_ATTRIBUTE, getEventTargetComponent } from './eventTarget';
 
 export const getRenderedAttribute = (renderedComponent, propName, partSelector) => {
@@ -27,7 +26,7 @@ const TestBehavior: Accessibility = (props: any) => ({
  * Assert Component handles accessibility attributes correctly.
  * @param Component - A component that should conform.
  */
-export default (
+export const handlesAccessibility = (
   Component: React.ComponentType<any>,
   options: {
     /** Props required to render Component without errors or warnings */
@@ -92,7 +91,6 @@ export default (
     });
 
     test(`handles "onKeyDown" overrides`, () => {
-      const actionHandler = jest.fn();
       const eventHandler = jest.fn();
 
       const actionBehavior: Accessibility = () => ({
@@ -114,25 +112,12 @@ export default (
 
       const wrapper = mountWithProvider(<Component {...wrapperProps} />);
       const component = wrapper.find(Component);
-      const instance = component.instance() as UIComponent<any, any>;
-
-      if (instance) {
-        if (instance.actionHandlers) {
-          instance.actionHandlers.mockAction = actionHandler;
-        }
-        // Force render component to apply updated key handlers
-        wrapper.setProps({});
-      }
 
       act(() => {
         getEventTargetComponent(component, 'onKeyDown').simulate('keydown', {
           keyCode: keyboardKey.Enter,
         });
       });
-
-      if (instance && instance.actionHandlers) {
-        expect(actionHandler).toBeCalledTimes(1);
-      }
 
       expect(eventHandler).toBeCalledTimes(1);
     });

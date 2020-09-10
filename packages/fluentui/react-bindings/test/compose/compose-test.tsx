@@ -1,14 +1,18 @@
-import { compose, StylesContextValue, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  compose,
+  ProviderContextPrepared,
+  useStyles,
+  useUnhandledProps,
+  Unstable_FluentContextProvider,
+} from '@fluentui/react-bindings';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
-  const value: StylesContextValue = {
+  const value: ProviderContextPrepared = {
     disableAnimations: false,
     renderer: {
       ...noopRenderer,
@@ -27,6 +31,8 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
       enableBooleanVariablesCaching: false,
     },
     rtl: false,
+    telemetry: undefined,
+    target: undefined,
     theme: {
       ...emptyTheme,
       // Noop to pass all props as styles to `renderRule()`
@@ -34,7 +40,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
     },
   };
 
-  return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;
+  return <Unstable_FluentContextProvider value={value}>{props.children}</Unstable_FluentContextProvider>;
 };
 
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;

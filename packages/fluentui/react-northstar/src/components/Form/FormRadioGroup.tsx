@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
-import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
+import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { RadioGroup, RadioGroupProps } from '../RadioGroup/RadioGroup';
 
 interface FormRadioGroupOwnProps extends RadioGroupProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -16,21 +16,27 @@ export const formRadioGroupClassName = 'ui-forms';
 /**
  * An FormRadioGroup renders a RadioGroup wrapped by FormField.
  */
-const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesProps, SelectedFormFieldCustomProps, {}>(
-  _FormFieldBase,
-  {
-    className: formRadioGroupClassName,
-    displayName: 'FormRadioGroup',
-    overrideStyles: true,
-    slots: {
-      control: RadioGroup,
-    },
+export const FormRadioGroup = compose<
+  'div',
+  FormRadioGroupProps,
+  FormRadioGroupStylesProps,
+  SelectedFormFieldCustomProps,
+  {}
+>(_FormFieldBase, {
+  className: formRadioGroupClassName,
+  displayName: 'FormRadioGroup',
+  overrideStyles: true,
+  slots: {
+    control: RadioGroup,
   },
-);
+  slotProps: ({ errorMessage }) => ({
+    message: {
+      error: !!errorMessage,
+    },
+  }),
+});
 
 FormRadioGroup.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,
 });
-
-export default FormRadioGroup;

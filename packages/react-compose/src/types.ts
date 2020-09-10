@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// tslint:disable-next-line:interface-name
 export interface ShorthandConfig<TProps> {
   mappedProp?: keyof TProps;
   mappedArrayProp?: keyof TProps;
@@ -12,24 +11,23 @@ export interface ShorthandConfig<TProps> {
 //
 
 export type PropsOfElement<
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 > = E extends { __PRIVATE_PROPS: any }
   ? E['__PRIVATE_PROPS']
   : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
-// tslint:disable-next-line:interface-name
 export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<
   TExtendedElementType extends React.ElementType = TElementType
 >(
   props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
 ) => JSX.Element) & {
   propTypes?: React.WeakValidationMap<TProps> & {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   contextTypes?: React.ValidationMap<any>;
   defaultProps?: Partial<TProps & { as: TElementType }>;
   displayName?: string;
@@ -60,7 +58,7 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
 export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: ComposePreparedOptions & { state: any },
 ) => React.ReactElement | null;
 
@@ -89,14 +87,14 @@ export type ComposeOptions<
 
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
 export type MergePropsResult<
   TState extends GenericDictionary,
   TSlots = GenericDictionary,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TSlotProps = { [key in keyof TSlots]: any }
 > = {
   state: TState;
@@ -107,7 +105,7 @@ export type MergePropsResult<
 /**
  * Generic name to any dictionary.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 /**
@@ -123,7 +121,7 @@ export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary)
 /**
  * Merged ComposeOptions.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState = TProps> = {
   className: string;
   classes: (undefined | ClassDictionary | ClassFunction)[];
@@ -162,7 +160,7 @@ export interface BaseSlots {
 }
 
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
 } & {
   root: TRootProps;

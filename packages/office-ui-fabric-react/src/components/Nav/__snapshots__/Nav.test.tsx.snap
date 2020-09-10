@@ -215,7 +215,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -373,7 +372,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -593,7 +591,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;

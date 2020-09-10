@@ -1,4 +1,4 @@
-### Control Name
+### Control name
 
 `Link` in Swift, `MSFLink` in Objective-C
 

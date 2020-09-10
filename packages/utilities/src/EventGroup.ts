@@ -1,12 +1,10 @@
-/* tslint:disable:no-string-literal */
 import { assign } from './object';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
- * EventRecord interface.
- *
  * @internal
  */
-// tslint:disable:no-any
 export interface IEventRecord {
   target: any;
   eventName: string;
@@ -16,11 +14,8 @@ export interface IEventRecord {
   objectCallback?: (args?: any) => void;
   options?: boolean | AddEventListenerOptions;
 }
-// tslint:enable:no-any
 
 /**
- * EventRecordsByName interface.
- *
  * @internal
  */
 export interface IEventRecordsByName {
@@ -28,8 +23,6 @@ export interface IEventRecordsByName {
 }
 
 /**
- * EventRecordList interface.
- *
  * @internal
  */
 export interface IEventRecordList {
@@ -38,8 +31,6 @@ export interface IEventRecordList {
 }
 
 /**
- * DeclaredEventsByName interface.
- *
  * @internal
  */
 export interface IDeclaredEventsByName {
@@ -59,7 +50,6 @@ export interface IDeclaredEventsByName {
  */
 export class EventGroup {
   private static _uniqueId: number = 0;
-  // tslint:disable-next-line:no-any
   private _parent: any;
   private _eventRecords: IEventRecord[];
   private _id: number = EventGroup._uniqueId++;
@@ -71,14 +61,7 @@ export class EventGroup {
    *  which may lead to unexpected behavior if it differs from the defaults.
    *
    */
-  public static raise(
-    // tslint:disable-next-line:no-any
-    target: any,
-    eventName: string,
-    // tslint:disable-next-line:no-any
-    eventArgs?: any,
-    bubbleEvent?: boolean,
-  ): boolean | undefined {
+  public static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined {
     let retVal;
 
     if (EventGroup._isElement(target)) {
@@ -90,11 +73,9 @@ export class EventGroup {
         assign(ev, eventArgs);
 
         retVal = target.dispatchEvent(ev);
-        // tslint:disable-next-line:no-any
-      } else if (typeof document !== 'undefined' && (document as any)['createEventObject']) {
+      } else if (typeof document !== 'undefined' && (document as any).createEventObject) {
         // IE8
-        // tslint:disable-next-line:no-any
-        let evObj = (document as any)['createEventObject'](eventArgs);
+        let evObj = (document as any).createEventObject(eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }
@@ -127,7 +108,6 @@ export class EventGroup {
     return retVal;
   }
 
-  // tslint:disable-next-line:no-any
   public static isObserved(target: any, eventName: string): boolean {
     let events = target && <IEventRecordsByName>target.__events__;
 
@@ -135,14 +115,12 @@ export class EventGroup {
   }
 
   /** Check to see if the target has declared support of the given event. */
-  // tslint:disable-next-line:no-any
   public static isDeclared(target: any, eventName: string): boolean {
     let declaredEvents = target && <IDeclaredEventsByName>target.__declaredEvents;
 
     return !!declaredEvents && !!declaredEvents[eventName];
   }
 
-  // tslint:disable-next-line:no-any
   public static stopPropagation(event: any): void {
     if (event.stopPropagation) {
       event.stopPropagation();
@@ -159,7 +137,6 @@ export class EventGroup {
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
-  // tslint:disable-next-line:no-any
   public constructor(parent: any) {
     this._parent = parent;
     this._eventRecords = [];
@@ -175,7 +152,6 @@ export class EventGroup {
   }
 
   /** On the target, attach a set of events, where the events object is a name to function mapping. */
-  // tslint:disable-next-line:no-any
   public onAll(target: any, events: { [key: string]: (args?: any) => void }, useCapture?: boolean): void {
     for (let eventName in events) {
       if (events.hasOwnProperty(eventName)) {
@@ -189,9 +165,9 @@ export class EventGroup {
    * of this instance of EventGroup.
    */
   public on(
-    target: any, // tslint:disable-line:no-any
+    target: any,
     eventName: string,
-    callback: (args?: any) => void, // tslint:disable-line:no-any
+    callback: (args?: any) => void,
     options?: boolean | AddEventListenerOptions,
   ): void {
     if (eventName.indexOf(',') > -1) {
@@ -222,7 +198,6 @@ export class EventGroup {
       events[eventName].count++;
 
       if (EventGroup._isElement(target)) {
-        // tslint:disable-next-line:no-any
         let processElementEvent = (...args: any[]) => {
           if (this._isDisposed) {
             return;
@@ -245,7 +220,7 @@ export class EventGroup {
               e.cancelBubble = true;
             }
           } catch (e) {
-            /* ErrorHelper.log(e); */
+            // ignore
           }
 
           return result;
@@ -254,15 +229,12 @@ export class EventGroup {
         eventRecord.elementCallback = processElementEvent;
 
         if (target.addEventListener) {
-          /* tslint:disable:ban-native-functions */
           (<EventTarget>target).addEventListener(eventName, processElementEvent, options);
-          /* tslint:enable:ban-native-functions */
         } else if (target.attachEvent) {
           // IE8
           target.attachEvent('on' + eventName, processElementEvent);
         }
       } else {
-        // tslint:disable-next-line:no-any
         let processObjectEvent = (...args: any[]) => {
           if (this._isDisposed) {
             return;
@@ -280,9 +252,9 @@ export class EventGroup {
   }
 
   public off(
-    target?: any, // tslint:disable-line:no-any
+    target?: any,
     eventName?: string,
-    callback?: (args?: any) => void, // tslint:disable-line:no-any
+    callback?: (args?: any) => void,
     options?: boolean | AddEventListenerOptions,
   ): void {
     for (let i = 0; i < this._eventRecords.length; i++) {
@@ -331,7 +303,6 @@ export class EventGroup {
   }
 
   /** Trigger the given event in the context of this instance of EventGroup. */
-  // tslint:disable-next-line:no-any
   public raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined {
     return EventGroup.raise(this._parent, eventName, eventArgs, bubbleEvent);
   }

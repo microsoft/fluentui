@@ -14,23 +14,17 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   getElementType,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
@@ -97,9 +91,9 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
  */
-const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
+export const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
   setStart();
   const {
@@ -255,5 +249,3 @@ AccordionTitle.defaultProps = {
 };
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-export default AccordionTitle;

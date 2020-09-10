@@ -6,4 +6,4 @@ if (command.shouldExit) {
   process.exit(1);
 }
 
-upgrade();
+upgrade(command);

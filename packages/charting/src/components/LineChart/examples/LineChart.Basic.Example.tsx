@@ -36,8 +36,18 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 217000,
+              y: 216000,
               onDataPointClick: () => alert('click on 217000'),
+            },
+            {
+              x: new Date('2020-03-03T10:00:00.000Z'),
+              y: 218123,
+              onDataPointClick: () => alert('click on 217123'),
+            },
+            {
+              x: new Date('2020-03-03T11:00:00.000Z'),
+              y: 217124,
+              onDataPointClick: () => alert('click on 217124'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),

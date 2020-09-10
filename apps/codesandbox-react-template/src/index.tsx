@@ -13,13 +13,13 @@ import {
 } from '@fluentui/react';
 
 let _rootDiv: HTMLElement;
-let choicegroupOptions = [
+const choicegroupOptions = [
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
   { key: 'C', text: 'Option C', disabled: true },
   { key: 'D', text: 'Option D' },
 ];
-let dropdownOptions = [
+const dropdownOptions = [
   { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
   { key: 'apple', text: 'Apple' },
   { key: 'banana', text: 'Banana' },
@@ -31,7 +31,7 @@ let dropdownOptions = [
   { key: 'carrot', text: 'Carrot' },
   { key: 'lettuce', text: 'Lettuce' },
 ];
-let dropdownStyles = {
+const dropdownStyles = {
   dropdown: { width: 300 },
 };
 
@@ -45,18 +45,10 @@ function start(): void {
     <Fabric>
       <Stack gap={8}>
         <Checkbox label="Unchecked checkbox (uncontrolled)" />
-        <ChoiceGroup defaultSelectedKey="B" options={choicegroupOptions} label="Pick One" required={true} />
-        <Slider
-          label="Snapping slider example"
-          min={0}
-          max={50}
-          step={10}
-          defaultValue={20}
-          showValue={true}
-          snapToStep={true}
-        />
+        <ChoiceGroup defaultSelectedKey="B" options={choicegroupOptions} label="Pick One" required />
+        <Slider label="Snapping slider example" min={0} max={50} step={10} defaultValue={20} showValue snapToStep />
         <TextField label="Standard" />
-        <Toggle label="Enabled and checked" defaultChecked={true} onText="On" offText="Off" />
+        <Toggle label="Enabled and checked" defaultChecked onText="On" offText="Off" />
         <Dropdown
           placeholder="Select an option"
           label="Basic uncontrolled example"

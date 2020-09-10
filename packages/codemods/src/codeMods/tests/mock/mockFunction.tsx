@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ToImport } from './mockImport';
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const JSXFunctionalNormalTag = (props: any) => {
-  // tslint:disable-next-line: jsx-self-close
+  // eslint-disable-next-line react/self-closing-comp
   return <div></div>;
 };
 

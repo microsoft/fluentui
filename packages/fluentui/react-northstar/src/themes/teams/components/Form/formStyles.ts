@@ -1,9 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { FormStylesProps } from '../../../../components/Form/Form';
-import { pxToRem } from '../../../../utils';
+import { FormVariables } from './formVariables';
 
-export const formStyles: ComponentSlotStylesPrepared<FormStylesProps, any> = {
-  root: ({ props, variables }): ICSSInJSStyle => ({
+export const formStyles: ComponentSlotStylesPrepared<FormStylesProps, FormVariables> = {
+  root: ({ props, variables: v }): ICSSInJSStyle => ({
     height: '100%',
     width: '100%',
     display: 'flex',
@@ -11,7 +11,10 @@ export const formStyles: ComponentSlotStylesPrepared<FormStylesProps, any> = {
     justifyContent: 'space-evenly',
     justifyItems: 'start',
     '> *:not(:last-child)': {
-      marginBottom: pxToRem(20),
+      marginBottom: v.fieldsMarginBottom,
+    },
+    '> :last-child': {
+      marginTop: v.lastChildMarginTop,
     },
   }),
 };

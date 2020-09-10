@@ -1,8 +1,26 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Fri, 03 Jul 2020 12:36:49 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.1.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.37..@uifabric/test-utilities_v7.1.0)
+
+### Minor changes
+
+- Making safeMount take the callback as optional. ([PR #14599](https://github.com/microsoft/fluentui/pull/14599) by dzearing@hotmail.com)
+
+## [7.0.32](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.32)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.31..@uifabric/test-utilities_v7.0.32)
+
+### Patches
+
+- Fix for the test-utility safeMount to check if wrapper should unmount. ([PR #13973](https://github.com/microsoft/fluentui/pull/13973) by czearing@outlook.com)
 
 ## [7.0.31](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.31)
 

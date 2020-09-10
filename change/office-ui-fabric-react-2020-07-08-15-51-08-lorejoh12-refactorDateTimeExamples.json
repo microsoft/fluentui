@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes",
-  "packageName": "office-ui-fabric-react",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T22:51:08.435Z"
-}

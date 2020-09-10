@@ -57,7 +57,6 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
     if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
@@ -76,10 +75,10 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       styles,
       imageUrl,
       isOutOfOffice,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       onRenderCoin = this._onRenderCoin,
       onRenderPersonaCoin = onRenderCoin,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       onRenderInitials = this._onRenderInitials,
       presence,
       presenceTitle,
@@ -121,7 +120,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
     return (
       <div role="presentation" {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
@@ -197,7 +196,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
    * Deprecation helper for getting text.
    */
   private _getText(): string {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     return this.props.text || this.props.primaryText || '';
   }
 

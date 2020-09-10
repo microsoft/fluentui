@@ -1,12 +1,6 @@
 // @ts-check
 const configHelpers = require('../utils/configHelpers');
 
-// Regular expression parts for the naming convention rule
-const camelOrPascalCase = '[a-zA-Z][a-zA-Z\\d]*'; // must start with letter
-const upperCase = '[A-Z][A-Z\\d]*(_[A-Z\\d]*)*'; // must start with letter, no consecutive underscores
-const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
-const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
-
 /** @type {import("eslint").Linter.Config} */
 const config = {
   extends: [
@@ -35,7 +29,9 @@ const config = {
     browser: true,
     'jest/globals': true,
   },
-  reportUnusedDisableDirectives: true,
+  // We have to disable this when running lint-staged, or it will incorrectly flag eslint-disable
+  // directives for rules which are disabled only in that context.
+  reportUnusedDisableDirectives: !configHelpers.isLintStaged,
   // matched relative to cwd
   ignorePatterns: [
     'coverage',
@@ -51,44 +47,27 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
-    // tslint: function-name, variable-name
-    '@typescript-eslint/naming-convention': [
+    '@fluentui/no-global-react': 'error',
+    '@fluentui/max-len': [
       'error',
-      { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
-      { selector: 'method', modifiers: ['private'], format: ['camelCase'], leadingUnderscore: 'require' },
-      { selector: 'method', modifiers: ['protected'], format: ['camelCase'], leadingUnderscore: 'allow' },
-      // This will also pick up default-visibility methods and methods on plain objects,
-      // which is not really what we want, but there's not a good way around it.
-      { selector: 'method', modifiers: ['public'], format: ['camelCase'], leadingUnderscore: 'forbid' },
-      { selector: 'typeLike', format: ['PascalCase'], leadingUnderscore: 'forbid' },
-      // No leading I for interfaces
-      { selector: 'interface', format: ['PascalCase'], custom: { regex: '^I[A-Z]', match: false } },
       {
-        selector: 'default',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-        filter: {
-          // Allow leading and optional trailing __
-          // (the rest of the regex just enforces the same casing constraint listed above)
-          regex: `^__${camelOrPascalOrUpperCase}(__)?$`,
-          match: false,
-        },
-        custom: {
-          // Ban names overlapping with built-in types.
-          regex: builtins,
-          match: false,
-        },
-        // An alternative way to set up this rule is set `format: null` and pass a single custom
-        // regex which matches absolutely everything. However, this leads to unhelpful error messages:
-        //   "Variable name `whatever` must match the RegExp: /someAbsurdlyLongUnreadableRegex/"
-        // For reference in case we ever want this anyway:
-        // format: null,
-        // custom: {
-        //   regex: `(?!${builtins})^(_?${camelOrPascalOrUpperCase}|__${camelOrPascalOrUpperCase}(__)?)$`,
-        //   match: true
-        // }
+        ignorePatterns: [
+          'require(<.*?>)?\\(',
+          'https?:\\/\\/',
+          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
+          '^import \\* as',
+          '^\\s+(<path )?d=',
+          '!raw-loader!',
+          '\\bdata:image/',
+        ],
+        max: 120,
       },
     ],
+    '@fluentui/no-tslint-comments': 'error',
+
+    // tslint: function-name, variable-name
+    ...configHelpers.getNamingConventionRule(false /* prefixWithI */),
+
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error', // tslint: no-any
     '@typescript-eslint/prefer-namespace-keyword': 'error',
@@ -99,21 +78,6 @@ const config = {
     'guard-for-in': 'error',
     'import/no-extraneous-dependencies': ['error', { devDependencies: [...configHelpers.devDependenciesFiles] }],
     'jsx-a11y/tabindex-no-positive': 'error',
-    'max-len': [
-      'error',
-      {
-        ignorePattern: [
-          'require(<.*?>)?\\(',
-          'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
-          '^\\s+(<path )?d=',
-          '!raw-loader!',
-          '\\bdata:image/',
-        ].join('|'),
-        code: 120,
-      },
-    ],
     'no-alert': 'error',
     'no-bitwise': 'error',
     'no-caller': 'error',
@@ -124,6 +88,13 @@ const config = {
     'no-empty': 'error',
     'no-eval': 'error',
     'no-new-wrappers': 'error',
+    'no-restricted-globals': [
+      'error',
+      ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map(name => ({
+        name,
+        message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
+      })),
+    ],
     'no-restricted-properties': [
       'error',
       { object: 'describe', property: 'only', message: 'describe.only should only be used during test development' },
@@ -141,10 +112,14 @@ const config = {
         allowArrowFunctions: false, // tslint: jsx-no-lambda
         allowFunctions: false,
         allowBind: false,
+        ignoreDOMComponents: true,
+        ignoreRefs: true,
       },
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
@@ -153,7 +128,6 @@ const config = {
     'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
-    'import/export': 'off',
     'import/extensions': 'off',
     'import/first': 'off',
     'import/newline-after-import': 'off',
@@ -163,7 +137,6 @@ const config = {
     'import/no-unresolved': 'off',
     'import/no-useless-path-segments': 'off',
     'import/order': 'off',
-    'import/prefer-default-export': 'off',
     'jsx-a11y/alt-text': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
@@ -232,18 +205,21 @@ const config = {
     'react/static-property-placement': 'off',
     'spaced-comment': 'off',
 
-    // Enable ASAP (not done in this PR to make resulting changes reviewable)
-    'react-hooks/exhaustive-deps': 'off',
-    'react-hooks/rules-of-hooks': 'off',
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
     // but this is a very powerful rule we may want to use in other ways
     'no-restricted-syntax': 'off',
 
     // permanently disable because we disagree with these rules
+    'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
-    'no-restricted-globals': 'off', // airbnb bans isNaN in favor of Number.isNaN which is unavailable in IE 11
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
+
+    // permanently disable due to performance issues (using custom rule `@fluentui/max-len` instead)
+    'max-len': 'off',
+
+    // permanently disable due to being unnecessary or having limited benefit for TS
+    'import/export': 'off',
 
     // permanently disable due to perf problems and limited benefit
     // see here for perf testing (note that you must run eslint directly)

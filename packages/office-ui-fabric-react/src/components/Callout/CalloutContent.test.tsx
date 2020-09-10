@@ -1,10 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import { CalloutContentBase } from './CalloutContent.base';
 import { mount } from 'enzyme';
-import { Rectangle } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Rectangle } from '../../Utilities';
 
 describe('CalloutContentBase', () => {
   it('Ensure callout content updates when needed', () => {

@@ -118,7 +118,7 @@ const getShimmerStyles = (props: IShimmerStyleProps): IShimmerStyles => {
 
 export const ShimmerStylingExample: React.FunctionComponent = () => {
   return (
-    <React.Fragment>
+    <>
       <div>
         Style overrides of shimmering wave and space around in cases where Shimmer is placed on backgrounds different
         than the main background of the app. There are several scenarios that can be considered bellow:
@@ -172,6 +172,6 @@ export const ShimmerStylingExample: React.FunctionComponent = () => {
         <Shimmer width="75%" styles={getShimmerStyles} />
         <Shimmer width="75%" styles={getShimmerStyles} />
       </div>
-    </React.Fragment>
+    </>
   );
 };

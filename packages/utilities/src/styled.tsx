@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@uifabric/merge-styles';
-import { Customizations } from './customizations/Customizations';
-import { CustomizerContext } from './customizations/CustomizerContext';
+import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -29,11 +28,6 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
   /** True if no styles prop or styles from Customizer is passed to wrapped component. */
   __noStyleOverride__: boolean;
 };
-
-function useForceUpdate() {
-  const [, reducer] = React.useReducer((state: number) => state + 1, 0);
-  return () => reducer(null);
-}
 
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
@@ -96,22 +90,11 @@ export function styled<
   const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
-    const forceUpdate = useForceUpdate();
-    const context = React.useContext(CustomizerContext);
-
-    React.useEffect((): void | (() => void) => {
-      if (!context.customizations.inCustomizerContext) {
-        Customizations.observe(forceUpdate);
-
-        return () => Customizations.unobserve(forceUpdate);
-      }
-    }, []);
-
-    const settings = Customizations.getSettings(fields, scope, context.customizations);
+    const settings = useCustomizationSettings(fields, scope);
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
     if (!styles.current || customizedStyles !== cache[1] || props.styles !== cache[2]) {
       // Using styled components as the Component arg will result in nested styling arrays.
@@ -136,7 +119,7 @@ export function styled<
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Wrapped.displayName = `Styled${Component.displayName || (Component as any).name}`;
 
   // This preserves backwards compatibility.

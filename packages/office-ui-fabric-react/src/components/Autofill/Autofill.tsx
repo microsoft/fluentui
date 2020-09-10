@@ -68,7 +68,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void {
     if (this.props.updateValueInWillReceiveProps) {
       const updatedInputValue = this.props.updateValueInWillReceiveProps();

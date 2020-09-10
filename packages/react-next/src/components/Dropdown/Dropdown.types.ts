@@ -6,9 +6,9 @@ import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilit
 import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from '../Checkbox/Checkbox.types';
-import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/src/components/Label/Label.types';
-import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/src/components/Panel/Panel.types';
+import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
@@ -86,8 +86,8 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 
   /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
-   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
-   * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
+   * ResponsiveMode.large would, for instance, disable the behavior where Dropdown options
+   * get rendered into a Panel while ResponsiveMode.small would result in the Dropdown
    * options always getting rendered in a Panel.
    */
   responsiveMode?: ResponsiveMode;

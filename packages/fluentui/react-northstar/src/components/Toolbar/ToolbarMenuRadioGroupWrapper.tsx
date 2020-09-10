@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface ToolbarMenuRadioGroupWrapperOwnProps {}
 export interface ToolbarMenuRadioGroupWrapperProps extends ToolbarMenuRadioGroupWrapperOwnProps, BoxProps {}
@@ -12,7 +12,7 @@ export const toolbarMenuRadioGroupWrapperClassName = 'ui-toolbars'; // FIXME: re
 /**
  * An ToolbarMenuRadioGroupWrapper provides a wrapping slot for in  ToolbarMenuRadioGroup.
  */
-const ToolbarMenuRadioGroupWrapper = compose<
+export const ToolbarMenuRadioGroupWrapper = compose<
   'li',
   ToolbarMenuRadioGroupWrapperOwnProps,
   ToolbarMenuRadioGroupWrapperStylesProps,
@@ -30,5 +30,3 @@ ToolbarMenuRadioGroupWrapper.defaultProps = {
   as: 'li',
 };
 ToolbarMenuRadioGroupWrapper.propTypes = commonPropTypes.createCommon();
-
-export default ToolbarMenuRadioGroupWrapper;

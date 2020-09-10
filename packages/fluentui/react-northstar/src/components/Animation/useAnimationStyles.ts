@@ -2,12 +2,10 @@ import {
   ComponentAnimationProp,
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
-import { ProviderContextPrepared } from '../../types';
 import { ThemePrepared } from '@fluentui/styles';
-import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import * as _ from 'lodash';
 import { AnimationProps } from './Animation';
 
@@ -20,10 +18,8 @@ type UseAnimationStylesResult = {
 const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationStylesResult>>();
 export const animationClassName = 'ui-animation';
 
-const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
-  const { theme, rtl, disableAnimations, renderer, performance }: ProviderContextPrepared = React.useContext(
-    ThemeContext,
-  );
+export const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
+  const { theme, rtl, disableAnimations, renderer, performance } = useFluentContext();
 
   if (disableAnimations) {
     return {
@@ -83,6 +79,7 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnim
     },
     saveDebug: _.noop,
     theme,
+    telemetry: undefined,
   });
 
   const result = {
@@ -97,5 +94,3 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnim
   }
   return result;
 };
-
-export default useAnimationStyles;

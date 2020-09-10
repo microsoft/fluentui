@@ -51,11 +51,11 @@ export class Async {
     clearImmediate(id: number, targetElement?: Element | null): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
-    debounce<T extends Function>(func: T, wait?: number, options?: {
+    debounce<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         maxWait?: number;
         trailing?: boolean;
-    }): ICancelable<T> & (() => void);
+    }): ICancelable<T> & T;
     dispose(): void;
     // (undocumented)
     protected _logError(e: any): void;
@@ -64,10 +64,10 @@ export class Async {
     setImmediate(callback: () => void, targetElement?: Element | null): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
-    throttle<T extends Function>(func: T, wait?: number, options?: {
+    throttle<T extends (...args: any[]) => any>(func: T, wait?: number, options?: {
         leading?: boolean;
         trailing?: boolean;
-    }): T | (() => void);
+    }): T;
     }
 
 // @public
@@ -133,6 +133,9 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 
 // @public
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
+
+// @public
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -221,12 +224,8 @@ export class EventGroup {
     // (undocumented)
     static isObserved(target: any, eventName: string): boolean;
     // (undocumented)
-    off(target?: any, // tslint:disable-line:no-any
-    eventName?: string, callback?: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
-    on(target: any, // tslint:disable-line:no-any
-    eventName: string, callback: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
+    off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+    on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
@@ -334,7 +333,7 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
@@ -420,8 +419,8 @@ export interface IBaseProps<T = any> {
 }
 
 // @public (undocumented)
-export type ICancelable<T> = {
-    flush: () => T;
+export type ICancelable<T extends (...args: any[]) => any> = {
+    flush: () => ReturnType<T>;
     cancel: () => void;
     pending: () => boolean;
 };
@@ -503,7 +502,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IDeclaredEventsByName {
     // (undocumented)
     [eventName: string]: boolean;
@@ -537,7 +536,7 @@ export interface IDisposable {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecord" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecord {
     // (undocumented)
     callback: (args?: any) => void;
@@ -557,7 +556,7 @@ export interface IEventRecord {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordList" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordList {
     // (undocumented)
     [id: string]: IEventRecord[] | number;
@@ -567,7 +566,7 @@ export interface IEventRecordList {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordsByName {
     // (undocumented)
     [eventName: string]: IEventRecordList;
@@ -952,7 +951,7 @@ export function memoize<T extends Function>(target: any, key: string, descriptor
 };
 
 // @public
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
 
 // @public
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
@@ -980,8 +979,11 @@ export const olProperties: Record<string, number>;
 
 export { Omit }
 
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
 // @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+export function on(element: Element | Window | Document, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -1202,7 +1204,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
+export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;

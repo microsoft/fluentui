@@ -56,6 +56,7 @@ export function createApp(
           <Route key="minimal" path="?minimal" component={_getComponent}>
             {routes}
           </Route>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
           <Route key="app" component={renderApp}>
             {routes}
           </Route>

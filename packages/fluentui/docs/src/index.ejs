@@ -21,6 +21,10 @@
         history.replaceState(null, null, redirect)
       }
     })()
+
+    var versions = {
+      babelStandalone: "<%= htmlWebpackPlugin.options.versions.babelStandalone %>",
+    };
   </script>
   <style>
     html {
@@ -46,8 +50,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@hot-loader/react-dom@<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.development.js"></script>
     <%}%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom-server.browser<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@<%= htmlWebpackPlugin.options.versions.babelStandalone %>/babel.min.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-vis@<%= htmlWebpackPlugin.options.versions.reactVis %>/dist/style.min.css" />

@@ -29,7 +29,6 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
 export class ButtonVariantsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const menuProps: ISplitButtonProps['menu'] = {

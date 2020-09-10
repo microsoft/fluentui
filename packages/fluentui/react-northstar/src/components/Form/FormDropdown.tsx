@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
+import { Dropdown, DropdownProps } from '../Dropdown/Dropdown';
+import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormDropdownOwnProps extends DropdownProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -16,7 +16,7 @@ export const formDropdownClassName = 'ui-form__dropdown';
 /**
  * An FormDropdown renders a Dropdown wrapped by FormField.
  */
-const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
+export const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
     className: formDropdownClassName,
@@ -38,5 +38,3 @@ FormDropdown.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,
 });
-
-export default FormDropdown;

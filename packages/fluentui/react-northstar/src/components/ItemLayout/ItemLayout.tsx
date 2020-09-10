@@ -2,6 +2,7 @@ import {
   ComponentWithAs,
   ComponentSlotClasses,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -17,10 +18,8 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import Layout from '../Layout/Layout';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Layout } from '../Layout/Layout';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface ItemLayoutSlotClassNames {
   header: string;
@@ -75,8 +74,9 @@ export type ItemLayoutStylesProps = never;
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
  */
-const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> & FluentComponentStaticProps<ItemLayoutProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
+  FluentComponentStaticProps<ItemLayoutProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
   setStart();
   const {
@@ -247,5 +247,3 @@ ItemLayout.defaultProps = {
 ItemLayout.handledProps = Object.keys(ItemLayout.propTypes) as any;
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
-
-export default ItemLayout;

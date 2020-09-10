@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface ToolbarItemIconOwnProps {}
 
@@ -12,7 +12,7 @@ export const toolbarItemIconClassName = 'ui-toolbar__itemicon';
 /**
  * A ToolbarItemIcon allows a user to have a dedicated component that can be targeted from the theme.
  */
-const ToolbarItemIcon = compose<'div', ToolbarItemIconProps, ToolbarItemIconStylesProps, BoxProps, {}>(Box, {
+export const ToolbarItemIcon = compose<'div', ToolbarItemIconProps, ToolbarItemIconStylesProps, BoxProps, {}>(Box, {
   className: toolbarItemIconClassName,
   displayName: 'ToolbarItemIcon',
 
@@ -23,5 +23,3 @@ const ToolbarItemIcon = compose<'div', ToolbarItemIconProps, ToolbarItemIconStyl
 });
 
 ToolbarItemIcon.propTypes = commonPropTypes.createCommon();
-
-export default ToolbarItemIcon;

@@ -4,7 +4,7 @@ import { Component } from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function findNodes(wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> {
   return wrapper.find(className).filterWhere((node: ReactWrapper<any, any>) => typeof node.type() === 'string');
 }
@@ -20,7 +20,7 @@ export function expectOne(wrapper: ReactWrapper<any, any>, className: string): v
 export function expectMissing(wrapper: ReactWrapper<any, any>, className: string): void {
   expectNodes(wrapper, className, 0);
 }
-// tslint:enable:no-any
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
@@ -39,7 +39,7 @@ export function mountAttached<C extends Component, P = C['props'], S = C['state'
   return mount(element, { attachTo: parent });
 }
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
   const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);

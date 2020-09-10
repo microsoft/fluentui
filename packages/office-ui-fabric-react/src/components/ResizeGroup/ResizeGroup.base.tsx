@@ -381,7 +381,6 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },

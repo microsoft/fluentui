@@ -11,7 +11,6 @@ export const baseDefinition: ISiteDefinition = {
       isContentFullBleed: true,
       isHomePage: true,
       component: () => <LoadingComponent title="Fluent UI React Example App Base" />,
-      // tslint:disable-next-line:no-any
       // getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage))
     },
   ],

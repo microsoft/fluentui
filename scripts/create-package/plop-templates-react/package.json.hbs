@@ -6,9 +6,7 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": ["lib/version.js"],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -28,6 +26,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "",
+    "@fluentui/storybook": "",
     "@types/enzyme": "",
     "@types/enzyme-adapter-react-16": "",
     "@types/jest": "",
@@ -36,7 +36,6 @@
     "@types/react-test-renderer": "",
     "@types/webpack-env": "",
     "@uifabric/build": "",
-    "@uifabric/tslint-rules": "",
     "enzyme": "",
     "enzyme-adapter-react-16": "",
     "react": "",

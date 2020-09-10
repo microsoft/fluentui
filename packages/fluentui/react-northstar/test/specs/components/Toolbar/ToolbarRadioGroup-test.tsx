@@ -1,6 +1,6 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 
-import ToolbarRadioGroup from 'src/components/Toolbar/ToolbarRadioGroup';
+import { ToolbarRadioGroup } from 'src/components/Toolbar/ToolbarRadioGroup';
 import { mountWithProvider } from 'test/utils';
 import * as React from 'react';
 

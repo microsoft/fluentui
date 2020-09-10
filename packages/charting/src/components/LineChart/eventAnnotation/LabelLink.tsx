@@ -24,8 +24,7 @@ interface ILabelLinkProps {
   mergedLabel: (count: number) => string;
 }
 
-/* tslint:disable-next-line:function-name */
-export function LabelLink(props: ILabelLinkProps) {
+export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
   const onDismiss = () => setShowCard(false);
@@ -37,9 +36,19 @@ export function LabelLink(props: ILabelLinkProps) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
       callout = (
-        <Callout target={gRef.current} onDismiss={onDismiss} setInitialFocus={true} role="dialog">
+        <Callout
+          target={gRef.current}
+          // eslint-disable-next-line react/jsx-no-bind
+          onDismiss={onDismiss}
+          setInitialFocus={true}
+          role="dialog"
+        >
           <FocusZone isCircularNavigation={true} direction={FocusZoneDirection.vertical}>
-            <List<() => React.ReactNode> items={cards} onRenderCell={onRenderCell} />
+            <List<() => React.ReactNode>
+              items={cards}
+              // eslint-disable-next-line react/jsx-no-bind
+              onRenderCell={onRenderCell}
+            />
           </FocusZone>
         </Callout>
       );
@@ -58,7 +67,6 @@ export function LabelLink(props: ILabelLinkProps) {
 
   return (
     <>
-      {/* tslint:disable-next-line: jsx-ban-props */}
       <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
@@ -74,4 +82,4 @@ export function LabelLink(props: ILabelLinkProps) {
       {callout}
     </>
   );
-}
+};

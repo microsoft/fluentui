@@ -13,19 +13,14 @@ import {
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useTelemetry,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -90,9 +85,9 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
+export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
 
@@ -209,7 +204,7 @@ CarouselNavigationItem.propTypes = {
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
 
 CarouselNavigationItem.defaultProps = {
-  accessibility: tabBehavior as Accessibility,
+  accessibility: tabBehavior,
   as: 'li',
   indicator: {},
 };
@@ -218,5 +213,3 @@ CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
   mappedArrayProp: 'content',
 });
-
-export default CarouselNavigationItem;

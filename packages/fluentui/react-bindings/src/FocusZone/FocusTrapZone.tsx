@@ -20,7 +20,7 @@ import { FocusTrapZoneProps } from './FocusTrapZone.types';
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
  *  Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone. */
-export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
+export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
   static _focusStack: FocusTrapZone[] = [];
 
   _root: { current: HTMLElement | null } = { current: null };
@@ -126,6 +126,7 @@ export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {
     const ElementType = getElementType(this.props);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
         position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them

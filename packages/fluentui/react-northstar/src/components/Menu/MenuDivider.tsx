@@ -4,6 +4,7 @@ import {
   ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
+  useFluentContext,
   useAccessibility,
   useTelemetry,
   useStyles,
@@ -12,8 +13,6 @@ import {
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   createShorthandFactory,
@@ -25,7 +24,6 @@ import {
   rtlTextContainer,
   ShorthandFactory,
 } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 import { MenuContext, MenuDividerSubscribedValue } from './menuContext';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -51,9 +49,9 @@ export const menuDividerClassName = 'ui-menu__divider';
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
-const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
+export const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
   (inputProps, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -172,5 +170,3 @@ MenuDivider.propTypes = {
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
-
-export default MenuDivider;

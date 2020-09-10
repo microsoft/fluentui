@@ -10,6 +10,9 @@ module.exports = {
   rules: {
     'ban-imports': require('./rules/ban-imports'),
     'deprecated-keyboard-event-props': require('./rules/deprecated-keyboard-event-props'),
+    'max-len': require('./rules/max-len'),
+    'no-global-react': require('./rules/no-global-react'),
+    'no-tslint-comments': require('./rules/no-tslint-comments'),
     'no-visibility-modifiers': require('./rules/no-visibility-modifiers'),
   },
 

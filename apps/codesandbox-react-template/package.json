@@ -5,28 +5,23 @@
   "private": true,
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
+    "code-style": "just-scripts code-style"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/tslint-rules": "^7.2.2",
     "@uifabric/build": "^7.0.0",
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.15",
+    "@uifabric/set-version": "^7.0.22",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react": "^7.121.12",
+    "@fluentui/react": "^7.137.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"
   }

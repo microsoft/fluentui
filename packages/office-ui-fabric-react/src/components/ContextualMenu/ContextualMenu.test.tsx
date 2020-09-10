@@ -9,9 +9,10 @@ import * as Utilities from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
-import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
+import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
+import { IRenderFunction } from '@uifabric/utilities';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -457,7 +458,7 @@ describe('ContextualMenu', () => {
         key: 'TestKey1',
         split: true,
         onClick: () => {
-          alert('test');
+          console.log('test');
         },
         subMenuProps: {
           items: [
@@ -1040,7 +1041,7 @@ describe('ContextualMenu', () => {
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
     });
 
-    it('Menu should correctly return focus to previously focused element when dismissed', () => {
+    it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
       const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
           <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
@@ -1067,7 +1068,10 @@ describe('ContextualMenu', () => {
 
       // Ensure that the Menu has closed and that focus has returned to the button
       expect(document.querySelector('.ms-ContextualMenu-Callout')).toBeNull();
-      expect(document.activeElement).toEqual(btn);
+
+      if (document.hasFocus()) {
+        expect(document.activeElement).toEqual(btn);
+      }
     });
   });
 
@@ -1262,6 +1266,49 @@ describe('ContextualMenu', () => {
         contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
+    });
+  });
+
+  describe('onRenderMenuList function tests', () => {
+    it('List has default role as menu.', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          text: 'TestText 1',
+          key: 'TestKey1',
+        },
+      ];
+
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+
+      expect(internalList).toBeTruthy();
+      expect(internalList.getAttribute('role')).toEqual('menu');
+    });
+
+    it('List applies role that is set by custom onRenderMenuList function.', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          text: 'TestText 1',
+          key: 'TestKey1',
+        },
+      ];
+
+      const onRenderMenuList: IRenderFunction<IContextualMenuListProps> = (props, defaultRender) => {
+        if (props) {
+          props.role = 'grid';
+        }
+        return defaultRender?.(props) ?? null;
+      };
+
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <ContextualMenu items={items} onRenderMenuList={onRenderMenuList} />,
+      );
+
+      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+
+      expect(internalList).toBeTruthy();
+      expect(internalList.getAttribute('role')).toEqual('grid');
     });
   });
 

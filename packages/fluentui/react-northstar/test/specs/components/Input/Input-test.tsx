@@ -5,8 +5,8 @@ import * as _ from 'lodash';
 import * as React from 'react';
 
 import { htmlInputAttrs } from 'src/utils';
-import Box from 'src/components/Box/Box';
-import Input, { inputSlotClassNames } from 'src/components/Input/Input';
+import { Box } from 'src/components/Box/Box';
+import { Input, inputSlotClassNames } from 'src/components/Input/Input';
 import { consoleUtil, mountWithProvider as mount } from 'test/utils';
 import { isConformant, implementsShorthandProp, implementsWrapperProp } from 'test/specs/commonTests';
 

@@ -37,6 +37,7 @@ const getCommandBarButtonStyles = memoizeFunction(
 // Custom renderer for main command bar items
 const CustomButton: React.FunctionComponent<IButtonProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.text} clicked`);
+  // eslint-disable-next-line react/jsx-no-bind
   return <CommandBarButton {...props} onClick={buttonOnMouseClick} styles={getCommandBarButtonStyles(props.styles)} />;
 };
 
@@ -46,6 +47,7 @@ const CustomButton: React.FunctionComponent<IButtonProps> = props => {
 const CustomMenuItem: React.FunctionComponent<IContextualMenuItemProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.item.text} clicked`);
   // Due to ContextualMenu implementation quirks, passing styles here doesn't work
+  // eslint-disable-next-line react/jsx-no-bind
   return <ContextualMenuItem {...props} onClick={buttonOnMouseClick} />;
 };
 

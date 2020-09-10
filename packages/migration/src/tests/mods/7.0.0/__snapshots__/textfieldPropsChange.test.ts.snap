@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`textfieldPropsChange transforms value to text 1`] = `
-"import { TextField } from 'office-ui-fabric-react';
+"import * as React from 'react';
+import { TextField } from 'office-ui-fabric-react';
 
 class TextFieldExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

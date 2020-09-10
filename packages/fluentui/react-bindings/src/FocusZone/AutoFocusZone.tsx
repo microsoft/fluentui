@@ -10,7 +10,7 @@ import { AutoFocusZoneProps } from './AutoFocusZone.types';
 import { getNextElement, focusAsync } from './focusUtilities';
 
 /** AutoFocusZone is used to focus inner element on mount. */
-export default class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
+export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
   root = React.createRef<HTMLElement>();
 
   static propTypes = {

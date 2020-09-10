@@ -4,6 +4,7 @@ import {
   ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -18,11 +19,9 @@ import {
   SizeValue,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 
 export interface LoaderSlotClassNames {
   indicator: string;
@@ -76,11 +75,11 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-const Loader: ComponentWithAs<'div', LoaderProps> &
+export const Loader: ComponentWithAs<'div', LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
   const { delay, label, indicator, svg, inline, labelPosition, className, design, styles, variables, size } = props;
@@ -192,5 +191,3 @@ Loader.handledProps = Object.keys(Loader.propTypes) as any;
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
 
 Loader.shorthandConfig = { mappedProp: 'label' };
-
-export default Loader;

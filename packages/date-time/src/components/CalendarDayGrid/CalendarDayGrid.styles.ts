@@ -7,6 +7,7 @@ import {
   AnimationStyles,
   IRawStyle,
   keyframes,
+  HighContrastSelector,
 } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { AnimationDirection } from '../Calendar/Calendar.types';
@@ -14,6 +15,8 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
   pressedStyle: 'ms-CalendarDay-pressedStyle',
+  dayIsTodayStyle: 'ms-CalendarDay-dayIsToday',
+  daySelectedStyle: 'ms-CalendarDay-daySelected',
 };
 
 const transitionRowDisappearance = keyframes({
@@ -104,12 +107,41 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
       cursor: 'pointer',
+      position: 'relative',
       selectors: {
+        [HighContrastSelector]: {
+          color: 'WindowText',
+          backgroundColor: 'Window',
+          zIndex: 0,
+          MsHighContrastAdjust: 'none',
+        },
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLighter,
+          selectors: {
+            [HighContrastSelector]: {
+              zIndex: 3,
+              backgroundColor: 'Window',
+              outline: '1px solid Highlight',
+            },
+          },
         },
         ['&.' + classNames.pressedStyle]: {
           backgroundColor: palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'Highlight',
+              color: 'Highlight',
+              backgroundColor: 'Window',
+            },
+          },
+        },
+        ['&.' + classNames.pressedStyle + '.' + classNames.hoverStyle]: {
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window',
+              outline: '1px solid Highlight',
+            },
+          },
         },
       },
     },
@@ -119,6 +151,18 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'HighlightText!important',
+                background: 'Highlight!important',
+              },
+            },
+          },
+          [HighContrastSelector]: {
+            background: 'Highlight!important',
+            color: 'HighlightText!important',
+            borderColor: 'Highlight!important',
+            MsHighContrastAdjust: 'none',
           },
         },
       },
@@ -171,6 +215,14 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       borderRadius: '100%',
       color: palette.white + '!important',
       fontWeight: (FontWeights.semibold + '!important') as 'initial',
+      selectors: {
+        [HighContrastSelector]: {
+          background: 'WindowText!important',
+          color: 'Window!important',
+          borderColor: 'WindowText!important',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
     firstTransitionWeek: {
       position: 'absolute',
@@ -190,6 +242,38 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       marginTop: -28,
       ...lastTransitionRowAnimationStyle,
       animationName: lastTransitionRowAnimationStyle.animationName + ',' + transitionRowDisappearance,
+    },
+    dayMarker: {
+      width: 4,
+      height: 4,
+      backgroundColor: palette.neutralSecondary,
+      borderRadius: '100%',
+      bottom: 1,
+      left: 0,
+      right: 0,
+      position: 'absolute',
+      margin: 'auto',
+      selectors: {
+        ['.' + classNames.dayIsTodayStyle + ' &']: {
+          backgroundColor: palette.white,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window',
+            },
+          },
+        },
+        ['.' + classNames.daySelectedStyle + ' &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'HighlightText',
+            },
+          },
+        },
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
     topRightCornerDate: {
       borderTopRightRadius: '2px',

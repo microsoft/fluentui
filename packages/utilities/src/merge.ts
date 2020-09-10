@@ -17,7 +17,7 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
  * there is a circular reference, the value will not be deep cloned and will persist
  * the reference.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _merge<T extends Object>(target: T, source: T, circularReferences: any[] = []): T {
   circularReferences.push(source);
 

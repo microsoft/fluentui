@@ -1,7 +1,14 @@
-import { getModsPaths, getTsConfigs, runMods, filterMods, getModsPattern, getModsRootPath } from '../runnerUtilities';
+import {
+  getModsPaths,
+  getTsConfigs,
+  runMods,
+  getModsPattern,
+  getModsRootPath,
+  getEnabledMods,
+} from '../runnerUtilities';
 import { CodeMod, CodeModResult } from '../../codeMods/types';
-
-import { Range } from 'semver';
+import { Maybe, Nothing } from '../../helpers/maybe';
+import { Ok } from '../../helpers/result';
 
 describe('modRunner tests', () => {
   it('gets the appropriate path to mods based on current dir', () => {
@@ -12,8 +19,15 @@ describe('modRunner tests', () => {
   it('returns the right paths to run for mods', () => {
     const gottenPaths = getModsPaths(`${process.cwd()}/src/modRunner/tests/mocks/MockMods`, getModsPattern(true));
 
-    expect(gottenPaths.length).toEqual(1);
+    expect(gottenPaths.length).toEqual(2);
     expect(gottenPaths[0]).toContain('CodeMod.mock.ts');
+  });
+
+  it('only returns .js files when includeTs is false', () => {
+    const gottenPaths = getModsPaths(`${process.cwd()}/src/modRunner/tests/mocks/MockMods`, getModsPattern(false));
+
+    expect(gottenPaths.length).toEqual(1);
+    expect(gottenPaths[0]).toContain('JSMock.mod.js');
   });
 
   it('finds the right ts-config files', () => {
@@ -27,7 +41,7 @@ describe('modRunner tests', () => {
     let runCount = 0;
     const runCallBack = (foo: string): CodeModResult => {
       runCount = runCount + 1;
-      return {};
+      return Ok({ logs: [] });
     };
     const mods: CodeMod<string>[] = [
       {
@@ -46,36 +60,41 @@ describe('modRunner tests', () => {
         version: '1.1.1',
       },
     ];
-    runMods(mods, [''], () => void 0);
+    runMods(mods, [''], () => undefined);
     expect(runCount).toEqual(3);
   });
 
-  it('filtersMods to version', () => {
+  it('filters enabled and nothing Mods', () => {
     const runcallBack = (foo: string): CodeModResult => {
-      return {};
+      return Ok({ logs: [] });
     };
 
-    const mods: CodeMod<string>[] = [
-      {
+    // use a generator to simulate getting each mod back
+    function* modGen(): Generator<Maybe<CodeMod<string>>> {
+      yield Maybe({
         name: 'a',
         run: runcallBack,
-        version: '1.1.1',
-      },
-      // This is the only valid mod, it's both enabled and has the appropriate version
-      {
+      });
+      yield Maybe({
         name: 'b',
         run: runcallBack,
-        version: '2.1.1',
         enabled: true,
-      },
-      {
+      });
+      yield Maybe({
         name: 'c',
         run: runcallBack,
-        version: '3.1.1',
-      },
-    ];
+      });
+      yield Nothing();
+    }
 
-    const filtered = filterMods(mods, new Range('>1.0.0 <=3.0.0'));
+    const gen = modGen();
+
+    const filtered = getEnabledMods(
+      console,
+      () => ['1', '2', '3', '4'],
+      () => gen.next().value,
+    );
     expect(filtered.length).toEqual(1);
+    expect(filtered[0].name).toEqual('b');
   });
 });

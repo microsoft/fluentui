@@ -1,5 +1,5 @@
 import { Accessibility, textAreaBehavior, TextAreaBehaviorProps } from '@fluentui/accessibility';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -10,11 +10,10 @@ import {
   getElementType,
   useTelemetry,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -61,8 +60,9 @@ export const textAreaClassName = 'ui-textarea';
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-const TextArea: ComponentWithAs<'textarea', TextAreaProps> & FluentComponentStaticProps<TextAreaProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
+  FluentComponentStaticProps<TextAreaProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
   setStart();
@@ -136,6 +136,7 @@ TextArea.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  inverted: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
@@ -148,5 +149,3 @@ TextArea.handledProps = Object.keys(TextArea.propTypes) as any;
 TextArea.create = createShorthandFactory({
   Component: TextArea,
 });
-
-export default TextArea;

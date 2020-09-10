@@ -1,23 +1,20 @@
-import { CodeMod } from '../codeMods/types';
+import { CodeMod, CodeModResult } from '../codeMods/types';
 import { Glob } from 'glob';
-import { Range } from 'semver';
-import { Maybe, Nothing, Just } from '../maybe';
+import { Maybe, Nothing, Something } from '../helpers/maybe';
+import { Err } from '../helpers/result';
+import { Logger } from './logger';
 
-// TODO ensure that async for all these utilities works
 export function runMods<T>(
   codeMods: CodeMod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: CodeMod<T>; file: T; error?: Error }) => void,
+  loggingCallback: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    // Run every mod on each file?
-    // I like that
     for (const mod of codeMods) {
       try {
-        mod.run(file);
-        loggingCallback({ mod, file });
+        loggingCallback({ mod, file, result: mod.run(file) });
       } catch (e) {
-        loggingCallback({ mod, file, error: e });
+        loggingCallback({ mod, file, result: Err({ reason: e }) });
       }
     }
   }
@@ -72,18 +69,18 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
   return Nothing();
 }
 
-// tslint:disable-next-line: no-any
-export function filterMods(codeMods: CodeMod<any>[], semverRange: Range) {
-  return codeMods.filter(mod => shouldRunMod(mod, semverRange));
+export function getEnabledMods(logger: Logger, getPaths = getModsPaths, loadM = loadMod) {
+  return getPaths()
+    .map(pth => {
+      logger.log('fetching codeMod at ', pth);
+      return loadM(pth, e => {
+        logger.error(e);
+      });
+    })
+    .filter(modEnabled)
+    .map(v => v.value);
 }
 
-// Defaults to allowing almost any version to run.
-// tslint:disable-next-line: no-any
-export function shouldRunMod(mod: CodeMod<any>, semverRange: Range = new Range('>0 <1000')) {
-  return mod.enabled && semverRange.test(mod.version || '*');
-}
-
-// tslint:disable-next-line: no-any
-export function modEnabled(mod: Maybe<CodeMod<any>>): mod is Just<CodeMod<any>> {
+export function modEnabled<T>(mod: Maybe<CodeMod<T>>): mod is Something<CodeMod<T>> {
   return mod.then(v => !!v.enabled).orElse(false);
 }

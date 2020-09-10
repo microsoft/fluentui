@@ -19,13 +19,13 @@ describe('warnDeprecations', () => {
   afterEach(sharedAfterEach);
 
   it('does not warn when unnecessary', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnDeprecations('Foo', { bar: 1 }, { foo: null } as any);
     expect(warningCallback).not.toHaveBeenCalled();
   });
 
   it('can warn on a deprecated prop', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnDeprecations('Foo', { foo: 1 }, { foo: null } as any);
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' was used but has been deprecated.`);
@@ -65,7 +65,7 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('does not warn unnecessarily when the key of the exclusive map is implicitly undefined', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnMutuallyExclusive('Foo', { bar: 1 }, { foo: 'bar' } as any);
     expect(warningCallback).not.toHaveBeenCalled();
   });
@@ -118,13 +118,13 @@ describe('warnConditionallyRequiredProps', () => {
   afterEach(sharedAfterEach);
 
   it('does not warn when unnecessary', () => {
-    warnConditionallyRequiredProps('Foo', { Foo: 1, Bar: 1 }, ['Foo', 'Bar'], 'Foo', 'foo' === 'foo');
+    warnConditionallyRequiredProps('Foo', { foo: 1, bar: 1 }, ['foo', 'bar'], 'foo', true);
     expect(warningCallback).not.toHaveBeenCalled();
   });
 
   it('can warn on required props', () => {
-    warnConditionallyRequiredProps('Foo', { Foo: 1, bar: 1 }, ['Foo', 'Bar'], 'Foo', 'foo' === 'foo');
+    warnConditionallyRequiredProps('Foo', { foo: 1 }, ['foo', 'bar'], 'foo', true);
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'Bar' is required when 'Foo' is used.'`);
+    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'bar' is required when 'foo' is used.'`);
   });
 });

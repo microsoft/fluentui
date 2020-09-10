@@ -1,21 +1,22 @@
 {
   "name": "@fluentui/accessibility",
   "description": "A set of reusable framework accessibility behaviours.",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
-    "@fluentui/keyboard-key": "^0.2.4",
+    "@babel/runtime": "^7.10.4",
+    "@fluentui/keyboard-key": "^0.2.11",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.51.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "gulp": "^4.0.2",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

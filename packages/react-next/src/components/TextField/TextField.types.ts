@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
@@ -50,6 +50,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ITextField>;
+
+  /**
+   * Optional callback to access the root DOM element.
+   * @deprecated Temporary solution which will be replaced with ref once TextField is converted to a function component.
+   */
+  elementRef?: React.Ref<HTMLDivElement>;
 
   /**
    * Whether or not the text field is a multiline text field.
@@ -250,37 +256,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
   autoComplete?: string;
-
-  /**
-   * Only used by MaskedTextField:
-   * The masking string that defines the mask's behavior.
-   * A backslash will escape any character.
-   * Special format characters are:
-   * '9': [0-9]
-   * 'a': [a-zA-Z]
-   * '*': [a-zA-Z0-9]
-   *
-   * @example `Phone Number: (999) 999-9999`
-   */
-  mask?: string;
-
-  /**
-   * Only used by MaskedTextField:
-   * The character to show in place of unfilled characters of the mask.
-   * @defaultvalue '_'
-   */
-  maskChar?: string;
-
-  /**
-   * Only used by MaskedTextField:
-   * An object defining the format characters and corresponding regexp values.
-   * Default format characters: \{
-   *  '9': /[0-9]/,
-   *  'a': /[a-zA-Z]/,
-   *  '*': /[a-zA-Z0-9]/
-   * \}
-   */
-  maskFormat?: { [key: string]: RegExp };
 }
 
 /**
@@ -318,14 +293,14 @@ export interface ITextFieldSubComponentStyles {
    */
   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
   // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   label: IStyleFunctionOrObject<any, any>;
 }
 
 /**
  * {@docCategory TextField}
  */
-export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+export interface ITextFieldStyles {
   /**
    * Style for root element.
    */
@@ -375,4 +350,52 @@ export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
    * Styling for subcomponents.
    */
   subComponentStyles: ITextFieldSubComponentStyles;
+}
+
+export interface IMaskedTextField extends ITextField {
+  /**
+   * The value of all filled format characters, or undefined if not all format characters are filled.
+   */
+  value: string | undefined;
+}
+
+/**
+ * MaskedTextField component props.
+ * {@docCategory TextedField}
+ */
+export interface IMaskedTextFieldProps extends ITextFieldProps {
+  /**
+   * Optional callback to access the IMaskedTextField interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IMaskedTextField>;
+
+  /**
+   * The masking string that defines the mask's behavior.
+   * A backslash will escape any character.
+   * Special format characters are:
+   * '9': [0-9]
+   * 'a': [a-zA-Z]
+   * '*': [a-zA-Z0-9]
+   *
+   * @example `Phone Number: (999) 999-9999`
+   */
+  mask?: string;
+
+  /**
+   * The character to show in place of unfilled characters of the mask.
+   * @defaultvalue '_'
+   */
+  maskChar?: string;
+
+  /**
+   * Only used by MaskedTextField:
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: \{
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * \}
+   */
+  maskFormat?: { [key: string]: RegExp };
 }

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IRefObject } from '../../Utilities';
 import {
   IComponent,

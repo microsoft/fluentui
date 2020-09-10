@@ -1,6 +1,0 @@
-{
-  "extends": ["@uifabric/tslint-rules"],
-  "rules": {
-    "interface-name": [true, "never-prefix"]
-  }
-}

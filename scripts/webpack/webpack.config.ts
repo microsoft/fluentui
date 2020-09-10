@@ -98,10 +98,7 @@ const webpackConfig: webpack.Configuration = {
         reactVis: require('react-vis/package.json').version,
       },
     }),
-    new webpack.IgnorePlugin({
-      resourceRegExp: /^\.\/locale$/,
-      contextRegExp: /moment$/,
-    }),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
       // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
       // spam the log (note that build:docs is the resolved command used by lerna run build --stream)

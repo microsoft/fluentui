@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  warnDeprecations,
   classNamesFunction,
   divProperties,
   getInitials,
   getNativeProps,
   getRTL,
+  getPropsWithDefaults,
 } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
@@ -21,7 +21,7 @@ import {
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
-import { getPropsWithDefaults } from '@fluentui/react-next';
+import { useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -35,12 +35,15 @@ const DEFAULT_PROPS = {
   imageAlt: '',
 };
 
-function useWarnDeprecation(props: IPersonaCoinProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('PersonaCoin', props, { primaryText: 'text' });
-    }
-  }, []);
+function useDebugWarnings(props: IPersonaCoinProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'PersonaCoin',
+      props,
+      deprecations: { primaryText: 'text' },
+    });
+  }
 }
 
 function useImageLoadState({ onPhotoLoadingStateChange, imageUrl }: IPersonaCoinProps) {
@@ -67,7 +70,7 @@ export const PersonaCoinBase = React.forwardRef(
   (propsWithoutDefaults: IPersonaCoinProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    useWarnDeprecation(props);
+    useDebugWarnings(props);
 
     const [imageLoadState, onLoadingStateChange] = useImageLoadState(props);
 
@@ -81,10 +84,10 @@ export const PersonaCoinBase = React.forwardRef(
       styles,
       imageUrl,
       isOutOfOffice,
-      // tslint:disable:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderCoin = renderCoin,
+      // eslint-disable-next-line deprecation/deprecation
       onRenderPersonaCoin = onRenderCoin,
-      // tslint:enable:deprecation
       onRenderInitials = renderPersonaCoinInitials,
       presence,
       presenceTitle,
@@ -129,7 +132,7 @@ export const PersonaCoinBase = React.forwardRef(
     return (
       <div role="presentation" {...divProps} className={classNames.coin} ref={forwardedRef}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
@@ -202,7 +205,7 @@ const renderPersonaCoinInitials = ({
   allowPhoneInitials,
   showUnknownPersonaCoin,
   text,
-  // tslint:disable-next-line: deprecation
+  // eslint-disable-next-line deprecation/deprecation
   primaryText,
   theme,
 }: IPersonaCoinProps): JSX.Element => {

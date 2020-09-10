@@ -22,11 +22,9 @@ describe('ShimmeredDetailsList', () => {
     const component = renderer.create(
       <ShimmeredDetailsList
         items={mockItems(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         enableShimmer={true}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );

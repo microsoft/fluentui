@@ -13,15 +13,14 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
-import AccordionContent, { AccordionContentProps } from './AccordionContent';
+import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
+import { AccordionContent, AccordionContentProps } from './AccordionContent';
 
 import {
   ComponentEventHandler,
   ShorthandValue,
   ShorthandRenderFunction,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
@@ -29,12 +28,11 @@ import {
   useAutoControlled,
   useAccessibility,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   getElementType,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface AccordionSlotClassNames {
   content: string;
@@ -110,12 +108,12 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
  * @accessibility
  * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
  */
-const Accordion: ComponentWithAs<'dl', AccordionProps> &
+export const Accordion: ComponentWithAs<'dl', AccordionProps> &
   FluentComponentStaticProps<AccordionProps> & {
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Accordion.displayName, context.telemetry);
   setStart();
   const {
@@ -356,5 +354,3 @@ Accordion.Content = AccordionContent;
 Accordion.create = createShorthandFactory({
   Component: Accordion,
 });
-
-export default Accordion;

@@ -15,14 +15,6 @@ export interface ComponentProps {
   className?: string;
 }
 
-export type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? RecursivePartial<U>[]
-    : T[P] extends object
-    ? RecursivePartial<T[P]>
-    : T[P];
-};
-
 export type ShorthandValue<TProps> = string | boolean | number | null | undefined | TProps | JSX.Element;
 
 export type ComposeRender<TProps, TOptions> = (
@@ -31,10 +23,10 @@ export type ComposeRender<TProps, TOptions> = (
   options?: TOptions,
 ) => JSX.Element;
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ClassDictionary = any;
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
@@ -49,7 +41,7 @@ export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
 
 export type ComposedComponent<
   TProps = {},
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TOptions = ComposeOptions<any, any, any, any>
 > = React.ForwardRefExoticComponent<TProps> & {
   options: TOptions;

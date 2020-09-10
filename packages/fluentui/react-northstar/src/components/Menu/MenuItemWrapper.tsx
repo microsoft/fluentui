@@ -2,7 +2,7 @@ import { compose } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface MenuItemWrapperOwnProps {
   /** A menu item wrapper can be active. */
@@ -37,6 +37,9 @@ interface MenuItemWrapperOwnProps {
 
   /** A vertical menu displays elements vertically. */
   vertical?: boolean;
+
+  /** Menu can be set to open on hover */
+  on?: 'hover';
 }
 
 export interface MenuItemWrapperProps extends BoxProps, MenuItemWrapperOwnProps {}
@@ -53,6 +56,7 @@ export type MenuItemWrapperStylesProps = Required<
     | 'secondary'
     | 'underlined'
     | 'vertical'
+    | 'on'
   >
 >;
 
@@ -61,7 +65,7 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
 /**
  * A MenuItemWrapper allows a user to have a dedicated component that can be targeted from the theme.
  */
-const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
+export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
   className: menuItemWrapperClassName,
   displayName: 'MenuItemWrapper',
   mapPropsToStylesProps: props => ({
@@ -75,6 +79,7 @@ const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStyle
     underlined: props.underlined,
     vertical: props.vertical,
     primary: props.primary,
+    on: props.on,
   }),
   handledProps: [
     'active',
@@ -87,6 +92,7 @@ const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStyle
     'underlined',
     'vertical',
     'primary',
+    'on',
   ],
 
   overrideStyles: true,
@@ -111,5 +117,3 @@ MenuItemWrapper.propTypes = {
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
 };
-
-export default MenuItemWrapper;

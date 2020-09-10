@@ -1,4 +1,5 @@
 /** @jsx withSlots */
+import * as React from 'react';
 import { KeytipData } from 'office-ui-fabric-react';
 import { withSlots } from '../../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../../Utilities';
@@ -6,7 +7,7 @@ import { getNativeProps, anchorProperties, buttonProperties } from '../../../Uti
 import { IActionableComponent, IActionableViewProps } from './Actionable.types';
 
 export const ActionableSlots: IActionableComponent['slots'] = props => ({
-  root: !!props.href ? 'a' : 'button',
+  root: props.href ? 'a' : 'button',
 });
 
 export const ActionableView: IActionableComponent['view'] = (props, slots) => {
@@ -59,7 +60,7 @@ interface IActionableRootType {
 }
 
 function _deriveRootType(props: IActionableViewProps): IActionableRootType {
-  return !!props.href
+  return props.href
     ? { htmlType: 'link', propertiesType: anchorProperties }
     : { htmlType: 'button', propertiesType: buttonProperties };
 }

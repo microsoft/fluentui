@@ -1,7 +1,8 @@
 import { ComponentSlotStylesResolved, ComponentVariablesObject, isDebugEnabled } from '@fluentui/styles';
 import * as _ from 'lodash';
 
-import { ComponentSlotClasses, ResolveStylesOptions, StylesContextValue } from '../styles/types';
+import { ProviderContextPrepared } from '../context';
+import { ComponentSlotClasses, ResolveStylesOptions } from '../styles/types';
 import { resolveVariables } from './resolveVariables';
 import { resolveStyles } from './resolveStyles';
 
@@ -9,7 +10,7 @@ export type GetStylesResult = {
   classes: ComponentSlotClasses;
   variables: ComponentVariablesObject;
   styles: ComponentSlotStylesResolved;
-  theme: StylesContextValue['theme'];
+  theme: ProviderContextPrepared['theme'];
 };
 
 export const getStyles = (options: ResolveStylesOptions): GetStylesResult => {

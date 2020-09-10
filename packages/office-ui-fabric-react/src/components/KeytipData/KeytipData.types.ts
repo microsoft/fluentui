@@ -18,3 +18,5 @@ export interface IKeytipDataProps {
    */
   disabled?: boolean;
 }
+
+export type KeytipDataOptions = IKeytipDataProps;

@@ -8,14 +8,15 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Ref } from '@fluentui/react-component-ref';
-import TreeItem, { TreeItemProps } from './TreeItem';
-import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { TreeItem, TreeItemProps } from './TreeItem';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import {
   childrenExist,
   commonPropTypes,
@@ -30,7 +31,6 @@ import {
   ComponentEventHandler,
   ObjectShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import {
   getAllSelectableChildrenId,
@@ -42,8 +42,6 @@ import {
   TreeRenderContextValue,
   processItemsForSelection,
 } from './utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -167,14 +165,15 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  * @accessibilityIssues
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
+ * [Aria-selected and aria-checked are not output correctly for trees #432](https://github.com/FreedomScientific/VFO-standards-support/issues/432)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
  */
-const Tree: ComponentWithAs<'div', TreeProps> &
+export const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {
     Item: typeof TreeItem;
     Title: typeof TreeTitle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
   setStart();
 
@@ -241,23 +240,38 @@ const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setSelectedItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
-        ...stableProps.current,
-        selectedItemIds: updateSelectedItemIds,
-      });
+      setSelectedItemIdsState(prevSelectedItemIds => {
+        // This is a hack to make it work with useAutoControlled since it's not keeping track of
+        // the controlled state in the first interaction breaking the expected behavior
+        // Remove this once the useAutoControle is fixed and the prevState will be stable
+        // see https://github.com/microsoft/fluentui/issues/14509
+        const nextSelectedItemIds = updateSelectedItemIds(stableProps.current.selectedItemIds || prevSelectedItemIds);
 
-      setSelectedItemIdsState(updateSelectedItemIds);
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+
+        return nextSelectedItemIds;
+      });
     },
     [stableProps, setSelectedItemIdsState],
   );
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: updateActiveItemIds,
+      setActiveItemIdsState(prevActiveItemIds => {
+        // This is a hack to make it work with useAutoControlled since it's not keeping track of
+        // the controlled state in the first interaction breaking the expected behavior
+        // Remove this once the useAutoControle is fixed and the prevState will be stable
+        // see https://github.com/microsoft/fluentui/issues/14509
+        const nextActiveItemIds = updateActiveItemIds(stableProps.current.activeItemIds || prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
   );
@@ -294,18 +308,17 @@ const Tree: ComponentWithAs<'div', TreeProps> &
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
       const treeItemHasSubtree = hasSubtree(treeItemProps);
-
       if (!treeItemProps) {
         return;
       }
 
-      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
         expandItems(e, treeItemProps);
       }
 
       if (treeItemProps.selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        if (treeItemHasSubtree && !treeItemProps.selectableParent) {
           return;
         }
 
@@ -503,5 +516,3 @@ Tree.create = createShorthandFactory({
   Component: Tree,
   mappedArrayProp: 'items',
 });
-
-export default Tree;

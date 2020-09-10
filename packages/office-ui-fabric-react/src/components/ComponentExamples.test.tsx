@@ -115,7 +115,7 @@ declare const global: any;
  *    what you expect before submitting a PR.
  */
 describe('Component Examples', () => {
-  const realDate = Date;
+  const RealDate = Date;
   const realToLocaleString = global.Date.prototype.toLocaleString;
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
@@ -141,11 +141,11 @@ describe('Component Examples', () => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
-        return new realDate(constantDate);
+        return new RealDate(constantDate);
       }
 
       constructor() {
-        return new realDate(constantDate);
+        return new RealDate(constantDate);
       }
     };
 
@@ -166,7 +166,7 @@ describe('Component Examples', () => {
 
     ReactDOM.createPortal = createPortal;
 
-    global.Date = realDate;
+    global.Date = RealDate;
     global.Date.prototype.toLocaleString = realToLocaleString;
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
     global.Date.prototype.toLocaleDateString = realToLocaleDateString;

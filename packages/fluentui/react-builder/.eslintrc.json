@@ -1,4 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
-  "root": true
+  "root": true,
+  "rules": {
+    "no-console": "off"
+  }
 }

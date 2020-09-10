@@ -90,11 +90,14 @@ export const PeoplePickerCompactExample: React.FunctionComponent = () => {
   return (
     <div>
       <CompactPeoplePicker
+        // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
+        // eslint-disable-next-line react/jsx-no-bind
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}
         className={'ms-PeoplePicker'}
+        // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
         inputProps={{
@@ -109,12 +112,14 @@ export const PeoplePickerCompactExample: React.FunctionComponent = () => {
       <Checkbox
         label="Disable People Picker"
         checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDisabledButtonClick}
         styles={checkboxStyles}
       />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />

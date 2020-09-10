@@ -4,7 +4,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
-import ListItem from 'src/components/List/ListItem';
+import { ListItem } from 'src/components/List/ListItem';
 
 describe('ListItem', () => {
   isConformant(ListItem, {

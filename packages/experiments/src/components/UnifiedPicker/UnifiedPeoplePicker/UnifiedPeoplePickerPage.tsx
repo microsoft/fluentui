@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
+import { DoubleUnifiedPeoplePickerExample } from './examples/DoubleUnifiedPeoplePicker.Example';
 
 const UnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.Example') as string;
+const DoubleUnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/DoubleUnifiedPeoplePicker.Example') as string;
 
 export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -12,8 +14,12 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
         componentName="UnifiedPeoplePicker"
         exampleCards={
           <div>
-            <ExampleCard title="Basic" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
+            <ExampleCard title="Single Well" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
               <UnifiedPeoplePickerExample />
+            </ExampleCard>
+
+            <ExampleCard title="Double Well" isOptIn={true} code={DoubleUnifiedPeoplePickerExampleCode}>
+              <DoubleUnifiedPeoplePickerExample />
             </ExampleCard>
           </div>
         }
@@ -22,7 +28,6 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
             sources={[
               require<
                 string
-                // tslint:disable-next-line:max-line-length
               >('!raw-loader!@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts'),
             ]}
           />

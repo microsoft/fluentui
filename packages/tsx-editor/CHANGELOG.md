@@ -1,8 +1,44 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.131](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.131)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.112..@uifabric/tsx-editor_v0.11.131)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.11.112](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.112)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.111..@uifabric/tsx-editor_v0.11.112)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
+
+## [0.11.111](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.111)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.109..@uifabric/tsx-editor_v0.11.111)
+
+### Patches
+
+- Prevent infinite render loops on error ([PR #14078](https://github.com/microsoft/fluentui/pull/14078) by elcraig@microsoft.com)
+
+## [0.11.108](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.108)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.99..@uifabric/tsx-editor_v0.11.108)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
 
 ## [0.11.95](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.95)
 

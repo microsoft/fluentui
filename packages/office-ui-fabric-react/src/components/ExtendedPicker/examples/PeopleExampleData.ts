@@ -1,10 +1,10 @@
 // If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
 
+/* eslint-disable import/no-extraneous-dependencies, deprecation/deprecation */
+
 import { PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { TestImages } from '@uifabric/example-data';
-
-// tslint:disable:deprecation
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const people: (IExtendedPersonaProps & { key: string | number })[] = [

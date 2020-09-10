@@ -7,7 +7,7 @@ export const codeFontFamily = 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inco
 export const baseCodeStyle: IRawStyle = {
   fontFamily: codeFontFamily,
   fontSize: FontSizes.size14,
-  background: NeutralColors.gray20,
+  background: NeutralColors.gray10,
   color: NeutralColors.gray160,
 };
 

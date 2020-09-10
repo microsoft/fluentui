@@ -67,6 +67,7 @@ export const ShimmerLoadDataExample: React.FunctionComponent = () => {
     <div className={wrapperClass}>
       <Toggle
         checked={isDataLoadedOne}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={getContentOne}
         onText="Toggle to show shimmer"
         offText="Toggle to load content"
@@ -88,6 +89,7 @@ export const ShimmerLoadDataExample: React.FunctionComponent = () => {
       </Shimmer>
       <Toggle
         checked={isDataLoadedTwo}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={getContentTwo}
         onText="Toggle to show shimmer"
         offText="Toggle to load content"

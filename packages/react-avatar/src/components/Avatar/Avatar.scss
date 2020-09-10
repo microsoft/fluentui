@@ -1,0 +1,68 @@
+// Define default variable values
+:root {
+  --avatar-size: 32px;
+  --avatar-borderRadius: 9999px;
+  --avatar-background: rgb(232, 232, 232);
+}
+
+// Root slot
+.root {
+  position: relative;
+  background-color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+}
+
+// Image slot
+.image {
+  position: absolute;
+  border-radius: var(--avatar-borderRadius);
+  top: 0;
+  left: 0;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  object-fit: cover;
+  vertical-align: top;
+  clip-path: var(--avatar-clipPath);
+}
+
+// Label slot
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--avatar-background);
+
+  font-size: var(--avatar-fontSize, calc(var(--avatar-size) / 2.333));
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+
+  vertical-align: top;
+  text-align: center;
+  padding: 0px;
+  border-radius: var(--avatar-borderRadius);
+  clip-path: var(--avatar-clipPath);
+}
+
+// Badge slot
+.badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-size) / 4);
+}
+
+// Modifiers
+._square {
+  --avatar-borderRadius: calc(var(--avatar-size) / 12);
+}
+
+._display_icon {
+  // The icon should be half the size of the avatar
+  --avatar-fontSize: calc(var(--avatar-size) / 2);
+}

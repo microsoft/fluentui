@@ -6,15 +6,14 @@ import {
   useAccessibility,
   useStyles,
   useTelemetry,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { Ref } from '@fluentui/react-component-ref';
 
+import { Ref } from '@fluentui/react-component-ref';
 import {
   childrenExist,
   createShorthandFactory,
@@ -22,6 +21,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
+  shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -29,9 +29,8 @@ import {
   ShorthandValue,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
-import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
@@ -112,8 +111,8 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
 
@@ -146,9 +145,10 @@ const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticPro
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         e.stopPropagation();
-
         handleTitleClick(e);
       },
       focusParent: e => {
@@ -314,5 +314,3 @@ TreeItem.create = createShorthandFactory({
   Component: TreeItem,
   mappedProp: 'title',
 });
-
-export default TreeItem;

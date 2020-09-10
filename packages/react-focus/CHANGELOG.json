@@ -2,6 +2,89 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-focus_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d1423ec6ee302d74966497ba4b8f6abb022aa884",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-focus_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix typo in docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/react-focus_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add temporary elementRef prop to FocusZone.",
+            "author": "czearing@outlook.com",
+            "commit": "05b9c8e6a0118a4073a8d308bd0583405762a4fd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/react-focus_v7.12.22",
+      "version": "7.12.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix memory leak in FocusZone",
+            "author": "mistastn@microsoft.com",
+            "commit": "042d257c2ebd8a9353a3c8fc9dfdf39084c498dc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-focus_v7.12.19",
+      "version": "7.12.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jul 2020 21:59:04 GMT",
       "tag": "@fluentui/react-focus_v7.12.18",
       "version": "7.12.18",

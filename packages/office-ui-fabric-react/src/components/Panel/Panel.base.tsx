@@ -146,7 +146,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const {
       className = '',
       elementToFocusOnDismiss,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       firstFocusableSelector,
       focusTrapZoneProps,
       forceFocusInsideTrap,
@@ -154,13 +154,14 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       headerText,
       headerClassName = '',
       ignoreExternalFocusing,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       isBlocking,
       isFooterAtBottom,
       isLightDismiss,
       isHiddenOnDismiss,
       layerProps,
       overlayProps,
+      popupProps,
       type,
       styles,
       theme,
@@ -226,6 +227,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
+          {...popupProps}
         >
           <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}
@@ -292,7 +294,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   /** isActive is true when panel is open or opening. */
-  get isActive(): boolean {
+  public get isActive(): boolean {
     return (
       this.state.visibility === PanelVisibilityState.open ||
       this.state.visibility === PanelVisibilityState.animatingOpen
@@ -339,7 +341,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           {!this._hasCustomNavigation && onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
           <IconButton
             styles={iconButtonStyles}
-            // tslint:disable-next-line:deprecation
+            // eslint-disable-next-line deprecation/deprecation
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}
@@ -414,7 +416,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           this.props.onOuterClick();
           ev.preventDefault();
         } else {
-          this.dismiss();
+          this.dismiss(ev);
         }
       }
     }

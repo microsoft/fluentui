@@ -1,287 +1,161 @@
 import * as React from 'react';
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { select as d3Select, event as d3Event } from 'd3-selection';
+import { max as d3Max } from 'd3-array';
+import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { ILineChartProps, ILineChartStyleProps, ILineChartStyles } from '../LineChart/index';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
+import { IPalette } from 'office-ui-fabric-react/lib/Styling';
+import {
+  IAreaChartProps,
+  IChildProps,
+  IRefArrayData,
+  IBasestate,
+  ILineChartDataPoint,
+  ILineChartPoints,
+} from '../AreaChart/index';
 import { ILegend, Legends } from '../Legends/index';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
-import { calloutData, createNumericXAxis, createDateXAxis, createYAxis, fitContainer } from '../../utilities/index';
-const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
-
-export interface IRefArrayData {
-  legendText?: string;
-  refElement?: SVGGElement;
-}
+import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { calloutData, getXAxisType, ChartTypes } from '../../utilities/index';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
 
 export interface IAreaChartAreaPoint {
   xVal: string | number;
   values: IAreaChartDataSetPoint;
 }
-
 export interface IAreaChartDataSetPoint {
   [key: string]: number | string;
 }
-
 export interface IDPointType {
-  index: number;
-  point: {
-    values: { 0: number; 1: number; data: {} };
-    xVal: number;
-  };
+  values: { 0: number; 1: number; data: {} };
+  xVal: number;
 }
 
-export interface IContainerValues {
-  width: number;
-  height: number;
-  shouldResize: boolean;
-  reqID: number;
+export interface IAreaChartState extends IBasestate {
+  lineXValue: number;
+  displayOfLine: string;
+  activeCircleId: string;
+  isCircleClicked: boolean;
 }
 
-export interface IAreaChartState {
-  _width: number;
-  _height: number;
-  activeLegend: string;
-  color: string;
-  containerWidth: number;
-  containerHeight: number;
-  dataForHoverCard: number;
-  isCalloutVisible: boolean;
-  isLegendSelected: boolean;
-  isLegendHovered: boolean;
-  // tslint:disable-next-line:no-any
-  refSelected: any;
-  YValueHover: { legend?: string; y?: number; color?: string }[];
-  hoverYValue: string | number | null;
-  hoverXValue: string | number | null;
-  xCalloutValue?: string;
-  yCalloutValue?: string;
-}
-
-export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartState> {
-  // tslint:disable-next-line:no-any
+export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _points: ILineChartPoints[];
-  private _classNames: IProcessedStyleSet<ILineChartStyles>;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private dataSet: any;
   private _colors: string[];
   private _keys: string[];
   private _refArray: IRefArrayData[];
-  private _isGraphDraw: boolean = true;
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
-  private _callOutId: string;
-  private xAxisElement: SVGElement | null;
-  private yAxisElement: SVGElement | null;
-  private containerParams: IContainerValues;
-  private chartContainer: HTMLDivElement;
-  private legendContainer: HTMLDivElement;
-  // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _circleId: string;
+  private _uniqueCallOutID: string;
+  private containerHeight: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _stackedData: any;
+  private _chart: JSX.Element[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxisScale: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _yAxisScale: any;
 
-  public constructor(props: ILineChartProps) {
+  public constructor(props: IAreaChartProps) {
     super(props);
     this.state = {
-      _width: this.props.width || 600,
-      _height: this.props.height || 350,
       activeLegend: '',
-      color: '',
-      containerHeight: 0,
-      containerWidth: 0,
-      dataForHoverCard: 0,
-      hoverYValue: '',
       hoverXValue: '',
       isCalloutVisible: false,
       isLegendSelected: false,
       isLegendHovered: false,
       refSelected: null,
       YValueHover: [],
-      xCalloutValue: '',
-      yCalloutValue: '',
+      lineXValue: 0,
+      displayOfLine: 'hidden',
+      activeCircleId: '',
+      isCircleClicked: false,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
+    this._circleId = getId('circle');
     this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
     this.dataSet = this._createDataSet();
   }
 
-  public componentDidMount(): void {
-    this._fitParentContainer();
-  }
-
-  public componentDidUpdate(prevProps: ILineChartProps): void {
+  public componentDidUpdate(prevProps: IAreaChartProps): void {
     if (
       prevProps.data !== this.props.data ||
       prevProps.height !== this.props.height ||
-      prevProps.width !== this.props.width ||
-      this._isGraphDraw
+      prevProps.width !== this.props.width
     ) {
-      this._fitParentContainer();
       this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
       this.dataSet = this._createDataSet();
       this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
-      this._drawGraph();
-      this._isGraphDraw = false;
+      this._drawGraph(this.containerHeight, this._xAxisScale, this._yAxisScale);
     }
-  }
-
-  public componentWillUnmount(): void {
-    cancelAnimationFrame(this.containerParams.reqID);
-    d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat } = this.props;
-    if (this.props.parentRef) {
-      this._fitParentContainer();
+    // eslint-disable-next-line deprecation/deprecation
+    if (this.props.showYAxisGridLines !== undefined) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Warning: the prop showYAxisGridLines is deprecated, please do not use it, now lines are shown by default',
+      );
     }
-    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
-    })!;
-    const xMin = d3Min(this._points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
-    })!;
-    const XAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      xAxisElement: this.xAxisElement!,
-      xMin,
-      xMax,
-      showRoundOffXTickValues: true,
-    };
-    const tickParams = {
-      tickValues: tickValues,
-      tickFormat: tickFormat,
-    };
-    let isDateType = false;
-    if (this._points && this._points.length > 0) {
-      this._points.map((chartData: ILineChartPoints) => {
-        if (chartData.data.length > 0) {
-          isDateType = chartData.data[0].x instanceof Date;
-          return;
-        }
-      });
-    }
-
-    isDateType ? createDateXAxis(this._points, XAxisParams, tickParams) : createNumericXAxis(this._points, XAxisParams);
+    const isXAxisDateType = getXAxisType(this._points);
     this._keys = this._createKeys();
+    this._colors = this._getColors();
+    const stackedInfo = this._getStackedData();
+    this._stackedData = stackedInfo.stackedData;
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: this.state._width,
-      height: this.state._height,
-      className,
-    });
-    const svgDimensions = {
-      width: this.state.containerWidth,
-      height: this.state.containerHeight,
+
+    const tickParams = {
+      tickValues: this.props.tickValues,
+      tickFormat: this.props.tickFormat,
+    };
+
+    const calloutProps = {
+      target: this.state.refSelected,
+      isCalloutVisible: this.state.isCalloutVisible,
+      directionalHint: DirectionalHint.topRightEdge,
+      YValueHover: this.state.YValueHover,
+      hoverXValue: this.state.hoverXValue,
+      id: `toolTip${this._uniqueCallOutID}`,
+      gapSpace: 15,
+      isBeakVisible: false,
+      setInitialFocus: true,
     };
     return (
-      <div
-        id="d3AreaChart"
-        className={this._classNames.root}
-        role={'presentation'}
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-      >
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
-            <g
-              ref={(e: SVGElement | null) => {
-                this.xAxisElement = e;
-              }}
-              id="xAxisGElement"
-              transform={`translate(0, ${svgDimensions.height - 35})`}
-              className={this._classNames.xAxis}
-            />
-            <g
-              ref={(e: SVGElement | null) => {
-                this.yAxisElement = e;
-              }}
-              id="yAxisGElement"
-              transform={`translate(40, 0)`}
-              className={this._classNames.yAxis}
-            />
-            <g id={`graphGElement_${this._uniqueIdForGraph}`} />
-          </svg>
-        </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {legends}
-        </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-          <Callout
-            id={this._callOutId}
-            target={this.state.refSelected}
-            gapSpace={15}
-            isBeakVisible={false}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-          >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
-                <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
-              </div>
-              <div className={this._classNames.calloutInfoContainer}>
-                {this.state.YValueHover &&
-                  this.state.YValueHover.map(
-                    (
-                      xValue: {
-                        legend?: string;
-                        y?: number;
-                        color?: string;
-                        yAxisCalloutData?: string;
-                      },
-                      index: number,
-                    ) => (
-                      <div
-                        className={mergeStyles(this._classNames.calloutBlockContainer, {
-                          borderLeft: `4px solid ${xValue.color}`,
-                        })}
-                      >
-                        <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}>
-                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
-                        </div>
-                      </div>
-                    ),
-                  )}
-              </div>
-            </div>
-          </Callout>
-        ) : null}
-      </div>
+      <CartesianChart
+        {...this.props}
+        points={this._points}
+        chartType={ChartTypes.AreaChart}
+        calloutProps={calloutProps}
+        legendBars={legends}
+        isMultiStackCallout
+        isXAxisDateType={isXAxisDateType}
+        tickParams={tickParams}
+        maxOfYVal={stackedInfo.maxOfYVal}
+        getGraphData={this._getGraphData}
+        /* eslint-disable react/jsx-no-bind */
+        // eslint-disable-next-line react/no-children-prop
+        children={(props: IChildProps) => {
+          this.containerHeight = props.containerHeight!;
+          this._xAxisScale = props.xScale!;
+          this._yAxisScale = props.yScale!;
+          return <g>{this._chart}</g>;
+        }}
+      />
     );
   }
 
-  private _fitParentContainer(): void {
-    const reqParams = {
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
-      hideLegend: this.props.hideLegend!,
-      legendContainer: this.legendContainer,
-      container: this.props.parentRef ? this.props.parentRef : this.chartContainer,
-    };
-    this.containerParams = fitContainer(reqParams);
-    if (this.containerParams.shouldResize) {
-      this.setState({
-        containerWidth: this.containerParams.width,
-        containerHeight: this.containerParams.height,
-      });
-    }
-  }
-
   private _createDataSet = () => {
-    let allChartPoints: ILineChartDataPoint[] = [];
+    const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     this._points.length &&
-      this._points.map((singleChartPoint: ILineChartPoints) => {
-        allChartPoints = [...allChartPoints, ...singleChartPoint.data];
+      this._points.forEach((singleChartPoint: ILineChartPoints) => {
+        allChartPoints.push(...singleChartPoint.data);
       });
 
     let tempArr = allChartPoints;
@@ -291,9 +165,9 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         (point: ILineChartDataPoint) =>
           (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
       );
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
-      filteredChartPoints.map((singleDataPoint: ILineChartDataPoint, index: number) => {
+      filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
         singleDataset.xVal = singleDataPoint.x;
         singleDataset[`chart${index}`] = singleDataPoint.y;
       });
@@ -321,6 +195,33 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     return keys;
   };
 
+  private _getStackedData = () => {
+    const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
+    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
+    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    stackedValues.forEach((layer: any) => {
+      const currentStack: IAreaChartDataSetPoint[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      layer.forEach((d: any) => {
+        currentStack.push({
+          values: d,
+          xVal: d.data.xVal,
+        });
+      });
+      stackedData.push(currentStack);
+    });
+    return {
+      stackedData,
+      maxOfYVal,
+    };
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis);
+  };
+
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
       if (this.state.activeLegend === customMessage) {
@@ -338,7 +239,6 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         activeLegend: customMessage,
       });
     }
-    this._isGraphDraw = true;
   }
 
   private _onLegendHover(customMessage: string): void {
@@ -347,7 +247,6 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         activeLegend: customMessage,
         isLegendHovered: true,
       });
-      this._isGraphDraw = true;
     }
   }
 
@@ -356,9 +255,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       this.setState({
         activeLegend: '',
         isLegendHovered: false,
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
-      this._isGraphDraw = true;
     }
   }
 
@@ -367,7 +265,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
-    data.map((singleChartData: ILineChartPoints) => {
+    data.forEach((singleChartData: ILineChartPoints) => {
       const color: string = singleChartData.color
         ? singleChartData.color
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -400,107 +298,83 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
 
-  private updateVerticalLine = (xLineVal: number, visibilityStatus: string) => {
-    d3Select(`#${this._verticalLineId}`).attr('x1', xLineVal);
-    d3Select(`#${this._verticalLineId}`).attr('x2', xLineVal);
-    d3Select(`#${this._verticalLineId}`).attr('visibility', visibilityStatus);
-  };
+  private _refCallback(element: SVGGElement, legendTitle: string): void {
+    this._refArray.push({ index: legendTitle, refElement: element });
+  }
 
-  private onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
-    const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
-    const presentData = found.values[0];
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
-    ) {
-      this.setState({
-        refSelected: target,
-        isCalloutVisible: true,
-        activeLegend: presentData.legend,
-        dataForHoverCard: presentData.y,
-        hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-        YValueHover: found.values,
-        color: presentData.color,
-      });
-    }
-  };
-
-  private handleMouseAction = (xLineVal: number, x: number | Date, refArrayIndex: string, xAxisCalloutData: string) => {
-    d3Select(`#dot${refArrayIndex}`)
-      .attr('fill', '#fff')
-      .attr('r', 8);
-    this._callOutId = refArrayIndex;
-    this.updateVerticalLine(xLineVal, 'visibility');
-    this.onMouseHover(d3Event.target, x, xAxisCalloutData);
-  };
-
-  private mouseOutAction = (refArrayIndex: string, color: string) => {
-    this.updateVerticalLine(0, 'hidden');
-    d3Select(`#dot${refArrayIndex}`)
-      .attr('fill', color)
-      .attr('r', 0.01);
+  private _handleMouseHover = (
+    xLineVal: number,
+    xVal: number | Date,
+    circleId: string,
+    xAxisCalloutData: string,
+    mouseEvent: React.MouseEvent<SVGPathElement>,
+  ) => {
+    mouseEvent.persist();
+    this._uniqueCallOutID = circleId;
+    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
+    const formattedDate = xVal instanceof Date ? xVal.toLocaleDateString() : xVal;
+    const modifiedXVal = xVal instanceof Date ? xVal.getTime() : xVal;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
+      return element.x === modifiedXVal;
+    });
     this.setState({
-      isCalloutVisible: false,
+      refSelected: mouseEvent,
+      isCalloutVisible: true,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+      YValueHover: found.values,
+      lineXValue: xLineVal,
+      displayOfLine: 'visibility',
+      activeCircleId: circleId,
+      isCircleClicked: false,
     });
   };
 
-  private onChartFocus = (
-    target: SVGCircleElement,
-    refArrayIndex: string,
-    x: number | Date,
-    xAxisCalloutData: string,
-  ) => {
+  private _mouseOutAction = (): void => {
+    this.setState({
+      isCalloutVisible: false,
+      lineXValue: 0,
+      displayOfLine: 'hidden',
+      activeCircleId: '',
+      isCircleClicked: false,
+    });
+  };
+
+  private _handleOnFocus = (xLineVal: number, x: number | Date, circleId: string, xAxisCalloutData: string) => {
+    this._uniqueCallOutID = circleId;
+    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
-    const presentData = found.values[0];
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
-    ) {
-      this._refArray.map((obj: IRefArrayData) => {
-        if (obj.legendText === refArrayIndex) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            activeLegend: presentData.legend,
-            dataForHoverCard: presentData.y,
-            color: presentData.color,
-            hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-            YValueHover: found.values,
-          });
-        }
-      });
-    }
+    const xVal = x instanceof Date ? x.getTime() : x;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
+      return element.x === xVal;
+    });
+    this._refArray.forEach((obj: IRefArrayData) => {
+      if (obj.index === circleId) {
+        this.setState({
+          refSelected: obj.refElement,
+          isCalloutVisible: true,
+          hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+          YValueHover: found.values,
+          lineXValue: xLineVal,
+          displayOfLine: 'visibility',
+          activeCircleId: circleId,
+          isCircleClicked: false,
+        });
+      }
+    });
   };
 
-  private handleFocusAction = (
-    xLineVal: number,
-    x: number | Date,
-    legendTitle: string,
-    refArrayIndex: string,
-    xAxisCalloutData: string,
-  ) => {
-    this._callOutId = refArrayIndex;
-    this._refArray.push({ legendText: refArrayIndex, refElement: d3Event.target });
-    d3Select(`#dot${refArrayIndex}`)
-      .attr('fill', '#fff')
-      .attr('r', 8);
-    this.updateVerticalLine(xLineVal, 'visibility');
-    this.onChartFocus(d3Event.target, refArrayIndex, x, xAxisCalloutData);
-  };
-
-  private onDataPointClick = (func: () => void, refArrayIndex: string, color: string) => {
-    d3Select(`#dot${refArrayIndex}`)
-      .attr('fill', color)
-      .attr('r', 8);
-    if (!!func) {
+  private _onDataPointClick = (func: (() => void) | undefined, circleId: string, color: string) => {
+    if (func) {
       func();
     }
+    this.setState({ isCircleClicked: true, activeCircleId: circleId });
   };
 
   private _getOpacity = (selectedArea: string) => {
@@ -516,183 +390,99 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.activeLegend === selectedArea;
     }
-    this._isGraphDraw = true;
     return shouldHighlight ? 'visibility' : 'hidden';
   };
 
-  private _drawGraph = (): void => {
-    d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
-    const { showYAxisGridLines, yAxisTickCount, yAxisTickFormat } = this.props;
-    const that = this;
-    const chartContainer = d3Select(`#graphGElement_${this._uniqueIdForGraph}`)
-      .append('g')
-      .attr('id', `firstGElementForChart123_${this._uniqueIdForGraph}`);
+  private _updateCircleFillColor = (circleId: string, lineColor: string): string => {
+    if (this.state.isCircleClicked && this.state.activeCircleId === circleId) {
+      return lineColor;
+    } else {
+      return this.state.activeCircleId === circleId ? this.props.theme!.palette.white : lineColor;
+    }
+  };
 
-    this._colors = this._getColors();
-    const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
-
-    // tslint:disable-next-line:no-any
-    const stackedData: any[] = [];
-    // tslint:disable-next-line:no-any
-    stackedValues.forEach((layer: any) => {
-      const currentStack: IAreaChartDataSetPoint[] = [];
-      // tslint:disable-next-line: no-any
-      layer.forEach((d: any) => {
-        currentStack.push({
-          values: d,
-          xVal: d.data.xVal,
-        });
-      });
-      stackedData.push(currentStack);
-    });
-
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-
-    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
-    })!;
-
-    const xMin = d3Min(this._points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
-    })!;
-
-    const yAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
-      yAxisElement: this.yAxisElement,
-      yAxisTickFormat: yAxisTickFormat!,
-      yAxisTickCount: yAxisTickCount ? yAxisTickCount : 4,
-      finalYMaxVal: maxOfYVal,
-      finalYMinVal: 0,
-      tickPadding: 10,
-      showYAxisGridLines: showYAxisGridLines!,
-    };
-    createYAxis(this._points, yAxisParams);
-
-    const xScale = d3ScaleLinear()
-      .range([this.margins.left, this.state.containerWidth - this.margins.right])
-      .domain([xMin, xMax]);
-
-    this._points[0].data[0].x instanceof Date ? xScale : xScale.nice();
-
-    const yScale = d3ScaleLinear()
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top])
-      .domain([0, maxOfYVal]);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _drawGraph = (containerHeight: number, xScale: any, yScale: any): JSX.Element[] => {
     const area = d3Area()
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y0((d: any) => yScale(d.values[0]))
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y1((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);
 
-    const series = chartContainer
-      .selectAll('.series')
-      .data(stackedData)
-      .enter();
-
-    series
-      .append('path')
-      .style('fill', (d: string, i: number) => this._colors[i])
-      .attr('stroke-width', 3)
-      .attr('d', area)
-      .attr('fill-opacity', (d: IDPointType, index: number) => {
-        return that._getOpacity(this._points[index].legend);
-      });
-
-    const points = chartContainer
-      .selectAll('.dots')
-      .data(stackedData)
-      .enter()
-      .append('g')
-      .attr('class', 'dots')
-      .attr('d', area)
-      .attr('clip-path', 'url(#clip)');
-
-    points
-      .selectAll('.dot')
-      .data((point: [], index: number) => {
-        // tslint:disable-next-line:no-any
-        const formatedArr: any = [];
-        point.map((subPoint: IDPointType) => {
-          formatedArr.push({ point: subPoint, index: index });
-        });
-        return formatedArr;
-      })
-      .enter()
-      .append('circle')
-      .attr('class', 'dot')
-      .attr(
-        'id',
-        (d: IDPointType, index: number) => `dot${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-      )
-      .attr('focusable', true)
-      .attr(
-        'aria-labelledby',
-        (d: IDPointType, index: number) => `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-      )
-      .attr('data-is-focusable', true)
-      .attr('cx', (d: IDPointType) => xScale(d.point.xVal))
-      .attr('cy', (d: IDPointType) => yScale(d.point.values[1]))
-      .attr('r', 0.01)
-      .attr('stroke', (d: IDPointType, index: number) => this._points[d.index].color)
-      .attr('stroke-width', 3)
-      .attr('visibility', (d: IDPointType, index: number) => {
-        return that._getOpacityOfCircle(this._points[d.index].legend);
-      })
-      .attr('fill', (d: IDPointType, index: number) => this._points[d.index].color)
-      .on('mouseover', (d: IDPointType, index: number) => {
-        return that.handleMouseAction(
-          xScale(d.point.xVal),
-          d.point.xVal,
-          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-          this._points[d.index].data[index].xAxisCalloutData!,
-        );
-      })
-      .on('mouseout', (d: IDPointType, index: number) =>
-        that.mouseOutAction(
-          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-          this._points[d.index].color,
-        ),
-      )
-      .on('focus', (d: IDPointType, index: number) => {
-        const refArrayIndex = `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`;
-        return that.handleFocusAction(
-          xScale(d.point.xVal),
-          d.point.xVal,
-          this._points[d.index].legend,
-          refArrayIndex,
-          this._points[d.index].data[index].xAxisCalloutData!,
-        );
-      })
-      .on('blur', (d: IDPointType, index: number) =>
-        that.mouseOutAction(
-          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-          this._points[d.index].color,
-        ),
-      )
-      .on('click', (d: IDPointType, index: number) =>
-        that.onDataPointClick(
-          this._points[d.index].data[index].onDataPointClick!,
-          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
-          this._points[d.index].color,
-        ),
+    const graph: JSX.Element[] = [];
+    let lineColor: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+      graph.push(
+        <path
+          id={`${index}-graph-${this._uniqueIdForGraph}`}
+          key={`${index}-graph-${this._uniqueIdForGraph}`}
+          d={area(singleStackedData)!}
+          fill={this._colors[index]}
+          fillOpacity={this._getOpacity(this._points[index].legend)}
+          strokeWidth={3}
+        />,
       );
+    });
 
-    chartContainer
-      .append('line')
-      .attr('class', 'verticalLine')
-      .attr('id', this._verticalLineId)
-      .attr('x1', 0)
-      .attr('x2', 0)
-      .attr('y1', 0)
-      .attr('y2', this.state.containerHeight)
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 1)
-      .attr('visibility', 'hidden')
-      .attr('stroke-dasharray', '5,5');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+      graph.push(
+        <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
+          {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
+            const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+            const xLineVal = xScale(singlePoint.xVal);
+            const xAxisCalloutData = this._points[index].data[index].xAxisCalloutData!;
+            lineColor = this._points[index].color;
+            return (
+              <circle
+                key={circleId}
+                id={circleId}
+                data-is-focusable={true}
+                cx={xScale(singlePoint.xVal)}
+                cy={yScale(singlePoint.values[1])}
+                r={this.state.activeCircleId === circleId ? 8 : 0.01}
+                stroke={lineColor}
+                strokeWidth={3}
+                visibility={this._getOpacityOfCircle(this._points[index].legend)}
+                fill={this._updateCircleFillColor(circleId, lineColor)}
+                ref={(e: SVGCircleElement | null) => {
+                  this._refCallback(e!, circleId);
+                }}
+                onMouseOver={this._handleMouseHover.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
+                onMouseOut={this._mouseOutAction}
+                onFocus={this._handleOnFocus.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
+                onBlur={this._mouseOutAction}
+                onClick={this._onDataPointClick.bind(
+                  this,
+                  this._points[index].data[pointIndex].onDataPointClick!,
+                  circleId,
+                  lineColor,
+                )}
+              />
+            );
+          })}
+        </g>,
+      );
+    });
+    graph.push(
+      <line
+        id={this._verticalLineId}
+        key={this._verticalLineId}
+        x1={this.state.lineXValue}
+        y1={0}
+        x2={this.state.lineXValue}
+        y2={containerHeight}
+        strokeWidth={1}
+        strokeDasharray={5.5}
+        stroke={lineColor!}
+        opacity={0.5}
+        visibility={this.state.displayOfLine}
+      />,
+    );
+    return graph;
   };
 }

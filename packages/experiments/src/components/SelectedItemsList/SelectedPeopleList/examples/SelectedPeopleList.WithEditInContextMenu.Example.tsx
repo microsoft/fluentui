@@ -5,14 +5,12 @@ import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList,
   SelectedPersona,
   TriggerOnContextMenu,
   ItemWithContextMenu,
   EditableItem,
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
-  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
@@ -25,8 +23,6 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
   {},
   IPeopleSelectedItemsListExampleState
 > {
-  private _selectionList: ISelectedPeopleList;
-
   // Used to resolve suggestions on the editableItem
   private model = new ExampleSuggestionsModel<IPersonaProps>(people);
   private suggestionsStore = new SuggestionsStore<IPersonaProps>();
@@ -45,19 +41,21 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
         />
       ),
     }),
-    itemComponent: ItemWithContextMenu({
+    itemComponent: ItemWithContextMenu<IPersona>({
       menuItems: (item, onTrigger) => [
         {
           key: 'remove',
           text: 'Remove',
           onClick: () => {
-            this._selectionList.removeItems([item]);
+            this._onItemsRemoved([item]);
           },
         },
         {
           key: 'copy',
           text: 'Copy',
-          onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+          onClick: () => {
+            this._copyToClipboard(this._getCopyItemsText([item]));
+          },
         },
         {
           key: 'edit',
@@ -113,6 +111,18 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
     });
+  };
+
+  private _copyToClipboard = (copyString: string): void => {
+    navigator.clipboard.writeText(copyString).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+        throw new Error();
+      },
+    );
   };
 
   private _getCopyItemsText(items: IPersonaProps[]): string {

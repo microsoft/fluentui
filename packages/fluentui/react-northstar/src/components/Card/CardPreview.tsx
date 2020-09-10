@@ -6,12 +6,12 @@ import {
   useAccessibility,
   useStyles,
   useTelemetry,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+
+import { FluentComponentStaticProps } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardPreviewProps extends UIComponentProps, ChildrenComponentProps {
@@ -33,8 +33,9 @@ export const cardPreviewClassName = 'ui-card__preview';
 /**
  * A CardPreview is used to display data Card preview.
  */
-const CardPreview: ComponentWithAs<'div', CardPreviewProps> & FluentComponentStaticProps<CardPreviewProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const CardPreview: ComponentWithAs<'div', CardPreviewProps> &
+  FluentComponentStaticProps<CardPreviewProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
   setStart();
 
@@ -83,5 +84,3 @@ CardPreview.propTypes = {
 CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;
 
 CardPreview.create = createShorthandFactory({ Component: CardPreview });
-
-export default CardPreview;

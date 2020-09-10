@@ -66,10 +66,8 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -82,10 +80,8 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true, true)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -97,10 +93,8 @@ describe('DetailsList', () => {
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -112,11 +106,9 @@ describe('DetailsList', () => {
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -128,11 +120,9 @@ describe('DetailsList', () => {
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         compact={true}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -145,7 +135,6 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(5)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         groups={[
           {
@@ -175,10 +164,8 @@ describe('DetailsList', () => {
     mount(
       <DetailsList
         items={mockData(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -314,10 +301,8 @@ describe('DetailsList', () => {
     mount(
       <DetailsList
         items={mockData(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
         getCellValueKey={getCellValueKey}
@@ -354,10 +339,8 @@ describe('DetailsList', () => {
         items={mockData(5)}
         setKey={'key1'}
         initialFocusedIndex={0}
-        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );
@@ -390,14 +373,7 @@ describe('DetailsList', () => {
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    mount(
-      <DetailsList
-        items={mockData(2)}
-        columns={columns}
-        // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={() => false}
-      />,
-    );
+    mount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />);
 
     expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
     expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
@@ -410,7 +386,6 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeaderMock}
       />,
@@ -433,7 +408,6 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(NUM_COLUMNS)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
@@ -450,7 +424,6 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderCheckbox={onRenderCheckboxMock}
         checkboxVisibility={CheckboxVisibility.always}

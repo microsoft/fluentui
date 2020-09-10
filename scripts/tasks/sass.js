@@ -15,7 +15,6 @@ function createTypeScriptModule(fileName, css) {
   // Create a source file.
   const minifiedCSS = new CleanCSS().minify(css).styles;
   const source = [
-    `/* tslint:disable */`,
     `/* eslint-disable */`,
     `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
     `loadStyles(${JSON.stringify(splitStyles(minifiedCSS))});`,
