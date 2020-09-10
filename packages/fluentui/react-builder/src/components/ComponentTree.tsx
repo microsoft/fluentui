@@ -47,7 +47,6 @@ const jsonTreeToTreeItems: (
   handleDeleteSelected: React.MouseEventHandler<HTMLButtonElement>,
   handleAddComponent: (uuid, where) => void,
   handleDeleteComponent: (uuid) => void,
-  titleRenderer: (Component, { content, expanded, hasSubtree, ...rest }) => React.ReactFragment,
 ) => TreeItemProps = (
   tree,
   selectedComponentId,
@@ -57,7 +56,6 @@ const jsonTreeToTreeItems: (
   handleDeleteSelected,
   handleAddComponent,
   handleDeleteComponent,
-  titleRenderer,
 ) => {
   if (typeof tree === 'string') {
     return {
@@ -78,7 +76,6 @@ const jsonTreeToTreeItems: (
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
-      children: titleRenderer,
       content: tree.displayName,
       styles: {
         display: 'flex',
@@ -122,7 +119,6 @@ const jsonTreeToTreeItems: (
         handleDeleteSelected,
         handleAddComponent,
         handleDeleteComponent,
-        titleRenderer,
       ),
     ),
   };
@@ -179,26 +175,6 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     }
   };
 
-  const titleRenderer = (Component, { content, expanded, hasSubtree, ...rest }) => {
-    return (
-      <>
-        {rest['level'] !== 1 ? (
-          <span
-            style={{
-              paddingRight: '1rem',
-              borderLeft: '1px solid #eee',
-              borderBottom: '1px solid #eee',
-              borderBottomLeftRadius: '0.5rem',
-            }}
-          />
-        ) : null}
-        <div {...rest} style={{ display: 'inline-block', cursor: 'pointer', padding: '2px 4px' }}>
-          {content}
-        </div>
-      </>
-    );
-  };
-
   const handleAddComponent = React.useCallback(
     (uuid, where) => {
       onAddComponent?.(uuid, where);
@@ -228,7 +204,6 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleDeleteSelected,
         handleAddComponent,
         handleDeleteComponent,
-        titleRenderer,
       ),
     ) ?? [];
   items.forEach(item => getActiveItemIds(item));
