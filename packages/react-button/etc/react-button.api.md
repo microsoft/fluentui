@@ -113,6 +113,33 @@ export interface CheckedState {
     role?: string;
 }
 
+// @public
+export const CompoundButton: React.ForwardRefExoticComponent<Pick<CompoundButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonProps extends ButtonProps {
+    contentContainer?: ShorthandProps;
+    secondaryContent?: ShorthandProps;
+}
+
+// @public
+export const compoundButtonShorthandProps: string[];
+
+// @public (undocumented)
+export type CompoundButtonSlotProps = SlotProps<CompoundButtonSlots, CompoundButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonSlots extends ButtonSlots {
+    // (undocumented)
+    contentContainer?: React.ElementType;
+    // (undocumented)
+    secondaryContent?: React.ElementType;
+}
+
+// @public (undocumented)
+export interface CompoundButtonState extends CompoundButtonProps {
+}
+
 // @public (undocumented)
 export type ExpandedState = {
     ref?: React.Ref<unknown>;
@@ -212,6 +239,15 @@ export const useButtonState: (draftState: ButtonState) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;

@@ -275,7 +275,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * contains focus. If this prop is provided, focus will not be restored automatically,
    * you'll need to call originalElement.focus()
    */
-  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }
 
 /**

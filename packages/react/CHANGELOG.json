@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 09 Sep 2020 18:41:54 GMT",
+      "tag": "@fluentui/react_v7.136.0",
+      "version": "7.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exposing additional exports to reduce deep imports we're seeing in partner code.",
+            "author": "dzearing@hotmail.com",
+            "commit": "cc72899b69926f902d68f3164a7845401f1dc700",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/react_v7.128.2",
       "version": "7.128.2",
