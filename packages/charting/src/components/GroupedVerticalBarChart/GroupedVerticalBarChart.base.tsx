@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { format as d3Format } from 'd3-format';
+import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-
+import { createWrapOfXLabels, tooltipOfXAxislabels } from '../../utilities/index';
 import {
   IGroupedVerticalBarChartProps,
   IGroupedVerticalBarChartStyleProps,
@@ -66,6 +67,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _refArray: IRefArrayData[];
   private _reqID: number;
   private _calloutId: string;
+  private _tooltipId: string;
   private _yMax: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
@@ -76,7 +78,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
-  private _noOfCharsToTruncate: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxis: any;
   private _xAxisTickPadding: number;
@@ -86,6 +87,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -108,6 +110,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._adjustProps();
     this._uniqLineText = getId('GroupedVerticalChart_');
+    this._tooltipId = getId('GVBCTooltipId_');
   }
 
   public componentDidMount(): void {
@@ -156,6 +159,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       href: this.props.href,
       width: this.state._width,
       height: this.state._height,
+      isRtl: this._isRtl,
     });
 
     const svgDimensions = {
@@ -180,7 +184,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
               id="yAxisGElement"
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
-              transform={`translate(40, 0)`}
+              transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right - 10 : 40}, 0)`}
             />
             <g id={`barGElement_${this._uniqLineText}`} className="barGElement" />
           </svg>
@@ -221,7 +225,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
     this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
-    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
   }
 
   private _fitParentContainer(calledFromDidMount?: boolean): void {
@@ -385,7 +388,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .enter()
         .append('rect')
         .style('fill', (d: IGVSingleDataPoint) => d[datasetKey].color)
-        .attr('focusable', true)
         .attr('data-is-focusable', true)
         .attr('class', this._classNames.opacityChangeOnHover)
         .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))
@@ -435,33 +437,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
 
-    if (this.props.showXAxisLablesTooltip && !this.props.wrapXAxisLables) {
-      const aa = document.getElementsByClassName('tooltip-47');
-      while (aa[0]) {
-        // removing multiple elemnts
-        aa[0].remove();
-      }
-      const div = d3Select('body')
-        .append('div')
-        .attr('id', 'tooltipId')
-        .attr('class', this._classNames.tooltip)
-        .style('opacity', 0);
-
-      this._xAxis.selectAll('.tick')._groups[0].forEach((d1: SVGGElement) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const data: any = d3Select(d1).data();
-        d3Select(d1)
-          .on('mouseover', d => {
-            div.style('opacity', 0.9);
-            div
-              .html(data)
-              .style('left', d3Event.pageX + 'px')
-              .style('top', d3Event.pageY - 28 + 'px');
-          })
-          .on('mouseout', d => {
-            div.style('opacity', 0);
-          });
-      });
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: this._xAxis,
+      };
+      tooltipOfXAxislabels(tooltipProps);
     }
   };
 
@@ -511,7 +497,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX0Scale = (xAxisLabels: string[]) => {
     const x0Axis = d3ScaleBand()
       .domain(xAxisLabels.map((label: string) => label))
-      .range([this.margins.left, this.state.containerWidth - this.margins.right])
+      .range(
+        this._isRtl
+          ? [this.state.containerWidth - this.margins.right, this.margins.left]
+          : [this.margins.left, this.state.containerWidth - this.margins.right],
+      )
       .padding(this._groupPadding / 100);
     return x0Axis;
   };
@@ -520,7 +510,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX1Scale = (xScale0: any): any => {
     return d3ScaleBand()
       .domain(this._keys)
-      .range([0, xScale0.bandwidth()])
+      .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
       .padding(0.05);
   };
 
@@ -545,9 +535,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
-    const yAxis = d3AxisLeft(yAxisScale)
+    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+    const yAxis = axis
       .tickPadding(5)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2s'))
       .tickValues(domains);
 
     this._showYAxisGridLines &&
@@ -639,101 +630,22 @@ export class GroupedVerticalBarChartBase extends React.Component<
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createWrapOfXLabels(node: SVGGElement | null, xAxis: any) {
-    const that = this;
-    if (node === null) {
-      return;
-    }
-    const axisNode = d3Select(node).call(xAxis);
-    axisNode.selectAll('.tick text').call(_wrap, 10);
-    let removeVal = 0;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _wrap(allTexts: any, width: number) {
-      const arr: number[] = [];
-      allTexts.each(function() {
-        const text = d3Select(this);
-        const totalWord = text.text();
-        const truncatedWord = `${text.text().slice(0, that._noOfCharsToTruncate)}...`;
-        const totalWordLength = text.text().length;
-        const words = text
-          .text()
-          .split(/\s+/)
-          .reverse();
-        arr.push(words.length);
-        let word: string = '';
-        let line: string[] = [];
-        let lineNumber: number = 0;
-        const lineHeight = 1.1; // ems
-        const y = text.attr('y');
-        const dy = parseFloat(text.attr('dy'));
-        let tspan = text
-          .text(null)
-          .append('tspan')
-          .attr('x', 0)
-          .attr('y', y)
-          .attr('id', 'BaseSpan')
-          .attr('dy', dy + 'em');
-
-        if (that.props.showXAxisLablesTooltip && totalWordLength > that._noOfCharsToTruncate) {
-          tspan = text
-            .append('tspan')
-            .attr('id', 'showDots')
-            .attr('x', 0)
-            .attr('y', y)
-            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-            .text(truncatedWord);
-          this._target = tspan;
-        } else if (that.props.showXAxisLablesTooltip && totalWordLength <= that._noOfCharsToTruncate) {
-          tspan = text
-            .append('tspan')
-            .attr('id', 'LessLength')
-            .attr('x', 0)
-            .attr('y', y)
-            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-            .text(totalWord);
-        } else {
-          while ((word = words.pop()!)) {
-            line.push(word);
-            tspan.text(line.join(' '));
-            if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
-              line.pop();
-              tspan.text(line.join(' '));
-              line = [word];
-              tspan = text
-                .append('tspan')
-                .attr('id', 'WordBreakId')
-                .attr('x', 0)
-                .attr('y', y)
-                .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-                .text(word);
-            }
-          }
-          const maxDigit = Math.max(...arr);
-          let maxHeight = 0;
-          axisNode.selectAll('text').each(() => {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const outerHTMLElement = document.getElementById('WordBreakId') as any;
-            const BoxCordinates = outerHTMLElement ? outerHTMLElement.getBBox() : '';
-            const boxHeight = BoxCordinates!.height || 12;
-            if (boxHeight > maxHeight) {
-              maxHeight = boxHeight;
-            }
-          });
-          removeVal = (maxDigit - 3) * maxHeight;
-          that._removalValue = removeVal > 0 ? removeVal : 0;
-        }
-      });
-    }
-  }
-
   private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
     this._xAxis = d3Select(node).call(xAxis);
-
-    (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) && this._createWrapOfXLabels(node, xAxis);
+    const wrapLabelProps = {
+      node: node,
+      xAxis: xAxis,
+      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+      noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+    };
+    let temp = 0;
+    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+      temp = createWrapOfXLabels(wrapLabelProps) as number;
+    }
+    this._removalValue = temp;
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {

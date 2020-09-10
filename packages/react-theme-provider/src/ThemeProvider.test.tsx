@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes } from './mergeThemes';
+import { mergeThemes } from '@fluentui/theme';
 import { createDefaultTheme } from './createDefaultTheme';
 
 const lightTheme = mergeThemes({

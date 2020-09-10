@@ -1,8 +1,55 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.3)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.0..@fluentui/codemods_v0.11.3)
+
+### Patches
+
+- Support for configmod ([PR #14837](https://github.com/microsoft/fluentui/pull/14837) by t-dama@microsoft.com)
+- Codemods: Remove unneeded compat mods and refactor ([PR #14849](https://github.com/microsoft/fluentui/pull/14849) by joschect@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.10.0..@fluentui/codemods_v0.11.0)
+
+### Minor changes
+
+- add list feature to codemods modruner ([PR #14785](https://github.com/microsoft/fluentui/pull/14785) by t-dama@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.10.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.4..@fluentui/codemods_v0.10.0)
+
+### Minor changes
+
+- add support for a config-based codemod execution ([PR #14765](https://github.com/microsoft/fluentui/pull/14765) by t-dama@microsoft.com)
+
+## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.4)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.2..@fluentui/codemods_v0.9.4)
+
+### Patches
+
+- Add docs for codemod writing ([PR #14718](https://github.com/microsoft/fluentui/pull/14718) by t-dama@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.2)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.1..@fluentui/codemods_v0.9.2)
+
+### Patches
+
+- CodeMods: Improve logging and more result implementation ([PR #14645](https://github.com/microsoft/fluentui/pull/14645) by joschect@microsoft.com)
+- add Maybe to prop utilities ([PR #14642](https://github.com/microsoft/fluentui/pull/14642) by t-dama@microsoft.com)
 
 ## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.1)
 

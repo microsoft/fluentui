@@ -37,10 +37,10 @@ export interface IKeytipConfigMap {
 }
 
 /**
- * Builds a map of ID -> IKeytipProps
+ * Builds a map of ID to IKeytipProps
  *
  * @param config - IKeytipConfig object
- * @returns {IKeytipConfigMap} - Config map
+ * @returns Config map
  */
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
   const configMap: IKeytipConfigMap = {};

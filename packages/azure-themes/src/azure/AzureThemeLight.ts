@@ -30,6 +30,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxCheck: LightSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: LightSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: LightSemanticColors.checkBox.rest.hover,
+  checkBoxCheckedDisabledBackground: LightSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: LightSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: LightSemanticColors.checkBox.rest.check,
   checkBoxIndeterminateDefaultChecked: LightSemanticColors.checkBox.checked.default,
@@ -128,7 +129,7 @@ export const AzureThemeLight: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   },
   palette: {

@@ -2,6 +2,44 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "createMergedRef: fix internal typings",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/utilities_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function",
+            "author": "sllynn8907@gmail.com",
+            "commit": "a021da77bff91b5df0f3b3ea97ecf7e7b6f6267c",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added document type to element parameter within on.ts utility.",
+            "author": "czearing@outlook.com",
+            "commit": "89eca359d7534b9bb6d7476cdf92781ea82c3dea",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Aug 2020 12:43:53 GMT",
       "tag": "@uifabric/utilities_v7.28.0",
       "version": "7.28.0",

@@ -24,6 +24,7 @@
   user-select: none;
   box-sizing: border-box;
   vertical-align: middle;
+  text-decoration: none;
 
   background: var(--button-background, white);
   color: var(--button-contentColor, #2c2621);
@@ -34,6 +35,7 @@
   box-shadow: var(--button-boxShadow);
 
   width: var(--button-width);
+  max-width: var(--button-maxWidth);
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
@@ -90,6 +92,33 @@
     --button-disabled-iconColor: var(--accent-disabled-iconColor);
   }
 
+  &._ghost {
+    --button-background: var(--ghost-background);
+    --button-borderColor: var(--ghost-borderColor);
+    --button-contentColor: var(--ghost-contentColor);
+    --button-iconColor: var(--ghost-iconColor);
+
+    --button-disabled-background: var(--ghost-disabled-background);
+    --button-disabled-borderColor: var(--ghost-disabled-borderColor);
+    --button-disabled-contentColor: var(--ghost-disabled-contentColor);
+    --button-disabled-iconColor: var(--ghost-disabled-iconColor);
+
+    --button-focused-background: var(--ghost-focused-background);
+    --button-focused-borderColor: var(--ghost-focused-borderColor);
+    --button-focused-contentColor: var(--ghost-focused-contentColor);
+    --button-focused-iconColor: var(--ghost-focused-iconColor);
+
+    --button-hovered-background: var(--ghost-hovered-background);
+    --button-hovered-borderColor: var(--ghost-hovered-borderColor);
+    --button-hovered-contentColor: var(--ghost-hovered-contentColor);
+    --button-hovered-iconColor: var(--ghost-hovered-iconColor);
+
+    --button-pressed-background: var(--ghost-pressed-background);
+    --button-pressed-borderColor: var(--ghost-pressed-borderColor);
+    --button-pressed-contentColor: var(--ghost-pressed-contentColor);
+    --button-pressed-iconColor: var(--ghost-pressed-iconColor);
+  }
+
   &._iconOnly {
     --button-width: var(--button-height, var(--button-minHeight));
     --button-padding: 0;
@@ -100,8 +129,7 @@
   }
 
   &._fluid {
-    width: 100%;
-    max-width: 100%;
+    --button-width: 100%;
   }
 
   // TODO: confirm if we should support size prop.

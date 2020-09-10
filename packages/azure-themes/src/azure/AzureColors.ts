@@ -43,7 +43,7 @@ export namespace BaseColors {
   export const RED_E00B1C = '#e00b1c';
   export const RED_442726 = '#442726';
   export const RED_61050C = '#61050c';
-  export const RED_800002 = '#800002';
+  export const RED_800000 = '#800002';
   export const ORANGE_DB7500 = '#DB7500';
   export const ORANGE_FFDFB8 = '#ffdfb8';
   export const ORANGE_FFF8F0 = '#FFF8F0';
@@ -246,6 +246,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_484644,
+      background: BaseColors.GRAY_484644,
     },
   },
   controlOutlines: {
@@ -328,7 +329,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     value: BaseColors.WHITE,
     icon: BaseColors.WHITE,
     label: BaseColors.WHITE,
-    disabled: BaseColors.GRAY_A19F9D,
+    disabled: BaseColors.GREEN_0AFF00,
     hyperlink: BaseColors.YELLOW_FEFF00,
     hyperlinkHovered: BaseColors.BLACK,
     hyperlinkBackgroundHovered: BaseColors.BLUE_00FFFF,
@@ -423,7 +424,8 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       hoverBorder: BaseColors.PURPLE_800080,
     },
     disabled: {
-      border: BaseColors.GRAY_484644,
+      border: BaseColors.GREEN_0AFF00,
+      background: BaseColors.TRANSPARENT,
     },
   },
   controlOutlines: {
@@ -501,7 +503,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   text: {
     list: BaseColors.GRAY_302928,
     heading: BaseColors.GRAY_302928,
-    body: BaseColors.GRAY_302928,
+    body: BaseColors.GRAY_323130,
     bodyHovered: BaseColors.GRAY_201F1E,
     value: BaseColors.GRAY_302928,
     icon: BaseColors.GRAY_302928,
@@ -602,11 +604,12 @@ export const LightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
+      background: BaseColors.GRAY_C8C6C4,
     },
   },
   controlOutlines: {
     rest: BaseColors.GRAY_323130,
-    disabled: BaseColors.GRAY_C8C6C4,
+    disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
     error: BaseColors.RED_E00B1C,
@@ -684,13 +687,13 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     value: BaseColors.BLACK,
     icon: BaseColors.BLACK,
     label: BaseColors.BLACK,
-    disabled: BaseColors.GRAY_A19F9D,
+    disabled: BaseColors.RED_800000,
     hyperlink: BaseColors.BLUE_0000CD,
     hyperlinkHovered: BaseColors.WHITE,
     hyperlinkBackgroundHovered: BaseColors.PURPLE_800080,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_E00B1C,
-    placeholder: BaseColors.RED_800002,
+    placeholder: BaseColors.RED_800000,
   },
   statusBar: {
     link: BaseColors.BLUE_0000CD,
@@ -735,8 +738,8 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,
-      border: BaseColors.RED_800002,
-      text: BaseColors.RED_800002,
+      border: BaseColors.RED_800000,
+      text: BaseColors.RED_800000,
     },
     focus: {
       text: BaseColors.BLACK,
@@ -744,7 +747,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.WHITE,
-    text: BaseColors.RED_800002,
+    text: BaseColors.RED_800000,
   },
   secondaryButton: {
     rest: {
@@ -780,11 +783,12 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
+      background: BaseColors.TRANSPARENT,
     },
   },
   controlOutlines: {
     rest: BaseColors.BLACK,
-    disabled: BaseColors.GRAY_C8C6C4,
+    disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.PURPLE_800080,
     error: BaseColors.RED_E00B1C,
@@ -828,11 +832,11 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     circle: {
       uncheckedRest: BaseColors.BLACK,
       checkedDisabled: BaseColors.BLACK,
-      borderDisabled: BaseColors.RED_800002,
+      borderDisabled: BaseColors.RED_800000,
     },
     pill: {
-      disabled: BaseColors.RED_800002,
-      uncheckedDisabled: BaseColors.RED_800002,
+      disabled: BaseColors.RED_800000,
+      uncheckedDisabled: BaseColors.RED_800000,
       checkedHover: BaseColors.BLUE_0078D4,
       uncheckedHover: BaseColors.PURPLE_800080,
     },

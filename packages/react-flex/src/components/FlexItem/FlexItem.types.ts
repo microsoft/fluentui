@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { Alignment } from '../Flex/Flex.types';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/theme';
 
 export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
   /**

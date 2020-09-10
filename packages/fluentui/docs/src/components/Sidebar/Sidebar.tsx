@@ -31,7 +31,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const componentsBlackList = ['Debug', 'Design', 'Datepicker', process.env.NODE_ENV === 'production' && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -162,6 +162,24 @@ const prototypesTreeItems: TreeProps['items'] = [
       content: 'Table',
       as: NavLink,
       to: '/prototype-table',
+    },
+    public: true,
+  },
+  {
+    id: 'menulist',
+    title: {
+      content: 'Menu List',
+      as: NavLink,
+      to: '/prototype-menu-list',
+    },
+    public: false,
+  },
+  {
+    id: 'text-area',
+    title: {
+      content: 'TextArea Auto Size',
+      as: NavLink,
+      to: '/prototype-text-area-autosize',
     },
     public: true,
   },
