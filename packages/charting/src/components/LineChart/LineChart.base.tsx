@@ -26,8 +26,10 @@ export interface IContainerValues {
   reqID: number;
 }
 export interface ILineChartState extends IBasestate {
-  // This array contais data of selected legends
+  // This array contains data of selected legends for points
   selectedLegendPoints: ILineChartPoints[];
+  // This array contains data of selected legends for color bars
+  selectedColorBarLegend: IColorFillBarsProps[];
   // This is a boolean value which is set to true
   // when at least one legend is selected
   isSelectedLegend: boolean;
@@ -50,8 +52,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   private lines: JSX.Element[];
-  private colorFillBars: IColorFillBarsProps[];
   private _renderedColorFillBars: JSX.Element[];
+  private _colorFillBars: IColorFillBarsProps[];
+  private _colorFillBarsOpacity: number;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -63,22 +66,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       selectedLegend: '',
       isCalloutVisible: false,
       selectedLegendPoints: [],
+      selectedColorBarLegend: [],
       isSelectedLegend: false,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData || [];
+    this._colorFillBars = [];
+    this._colorFillBarsOpacity = 0.4;
     this._calloutPoints = calloutData(this._points) || [];
-    this.colorFillBars = this.props.colorFillBars || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
-    this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 35,
-    };
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -187,51 +186,27 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
-    this._renderedColorFillBars = this._createColorFillBars(containerHeight);
+    this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
     this.lines = this._createLines();
   };
 
-  private _canSelectOnlySingleLegend = (point: ILineChartPoints) => {
-    if (this.state.selectedLegend === point.legend) {
-      this.setState({ selectedLegend: '', activeLegend: point.legend });
-      this._handleLegendClick(point, null);
+  private _handleSingleLegendSelectionAction = (lineChartItem: ILineChartPoints | IColorFillBarsProps) => {
+    if (this.state.selectedLegend === lineChartItem.legend) {
+      this.setState({ selectedLegend: '', activeLegend: lineChartItem.legend });
+      this._handleLegendClick(lineChartItem, null);
     } else {
       this.setState({
-        selectedLegend: point.legend,
-        activeLegend: point.legend,
+        selectedLegend: lineChartItem.legend,
+        activeLegend: lineChartItem.legend,
       });
-      this._handleLegendClick(point, point.legend);
+      this._handleLegendClick(lineChartItem, lineChartItem.legend);
     }
-  };
-
-  private _canSelectMultipleLegends = (
-    point: ILineChartPoints,
-    isLegendMultiSelectEnabled: boolean,
-    selectedLegendTitles: string[],
-  ) => {
-    let values: ILineChartPoints[];
-    const selectedLegendIndex = selectedLegendTitles.indexOf(point.legend);
-    if (selectedLegendIndex === -1) {
-      values = [...this.state.selectedLegendPoints, point];
-    } else {
-      values = this.state.selectedLegendPoints
-        .slice(0, selectedLegendIndex)
-        .concat(this.state.selectedLegendPoints.slice(selectedLegendIndex + 1));
-    }
-    const totalLegendsLength =
-      this.props.data && this.props.data.lineChartData && this.props.data.lineChartData!.length;
-    const points = values.length === totalLegendsLength ? [] : values;
-    this.setState({
-      selectedLegendPoints: isLegendMultiSelectEnabled ? points : [],
-      isSelectedLegend: points.length >= 1 ? true : false,
-    });
-    const selectedLegendTitlesToPass = points.map((item: ILineChartPoints) => item.legend);
-    this._handleLegendClick(point, selectedLegendTitlesToPass);
   };
 
   private _onHoverCardHide = () => {
     this.setState({
       selectedLegendPoints: [],
+      selectedColorBarLegend: [],
       isSelectedLegend: false,
     });
   };
@@ -239,7 +214,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
     const { legendProps } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const selectedLegendTitles = this.state.selectedLegendPoints.map((item: ILineChartPoints) => item.legend);
     const legendDataItems = data.map((point: ILineChartPoints, index: number) => {
       const color: string = point.color;
       // mapping data to the format Legends component needs
@@ -248,9 +222,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         color: color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
-            this._canSelectMultipleLegends(point, isLegendMultiSelectEnabled, selectedLegendTitles);
+            this._handleMultipleLineLegendSelectionAction(point);
           } else {
-            this._canSelectOnlySingleLegend(point);
+            this._handleSingleLegendSelectionAction(point);
           }
         },
         onMouseOutAction: () => {
@@ -263,32 +237,31 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       return legend;
     });
 
-    const colorFillBarsLegendDataItems = this.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
-      const title = colorFillBar.name;
-      const legend: ILegend = {
-        title,
-        color: colorFillBar.color,
-        action: () => {
-          if (this.state.selectedLegend === title) {
-            this.setState({ selectedLegend: '' });
-            this._handleColorFillBarLengendClick(colorFillBar, null);
-          } else {
-            this.setState({ selectedLegend: title });
-            this._handleColorFillBarLengendClick(colorFillBar, title);
-          }
-          this.setState({ activeLegend: title });
-        },
-        onMouseOutAction: () => {
-          this.setState({ activeLegend: '' });
-        },
-        hoverAction: () => {
-          this.setState({ activeLegend: title });
-        },
-        opacity: 0.4,
-        stripePattern: colorFillBar.applyPattern,
-      };
-      return legend;
-    });
+    const colorFillBarsLegendDataItems = this.props.colorFillBars
+      ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
+          const title = colorFillBar.legend;
+          const legend: ILegend = {
+            title,
+            color: colorFillBar.color,
+            action: () => {
+              if (isLegendMultiSelectEnabled) {
+                this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
+              } else {
+                this._handleSingleLegendSelectionAction(colorFillBar);
+              }
+            },
+            onMouseOutAction: () => {
+              this.setState({ activeLegend: '' });
+            },
+            hoverAction: () => {
+              this.setState({ activeLegend: title });
+            },
+            opacity: this._colorFillBarsOpacity,
+            stripePattern: colorFillBar.applyPattern,
+          };
+          return legend;
+        })
+      : [];
 
     const legends = (
       <Legends
@@ -306,10 +279,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createLines(): JSX.Element[] {
     const lines = [];
-    if (this.state.selectedLegendPoints.length > 0) {
+    if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
       // eslint-disable-next-line no-console
       console.log(this.state.selectedLegendPoints);
+    } else {
+      this._points = this.props.data && this.props.data.lineChartData ? this.props.data.lineChartData : [];
     }
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
@@ -336,12 +311,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const x2 = this._points[i].data[j].x;
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
-        if (
-          this.state.activeLegend === legendVal ||
-          this.state.activeLegend === '' ||
-          this.state.selectedLegendPoints.length > 0 ||
-          this.state.isSelectedLegend
-        ) {
+        if (this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend) {
           lines.push(
             <line
               id={lineId}
@@ -440,29 +410,33 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createColorFillBars = (containerHeight: number) => {
     const colorFillBars: JSX.Element[] = [];
-    for (let i = 0; i < this.colorFillBars.length; i++) {
-      const colorFillBar = this.colorFillBars[i];
-      const colorFillBarId = getId(colorFillBar.name.replace(/\W/g, ''));
+    if (this.state.isSelectedLegend) {
+      this._colorFillBars = this.state.selectedColorBarLegend;
+    } else {
+      this._colorFillBars = this.props.colorFillBars!;
+    }
+    for (let i = 0; i < this._colorFillBars.length; i++) {
+      const colorFillBar = this._colorFillBars[i];
+      const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+
       if (colorFillBar.applyPattern) {
-        colorFillBars.push(
-          <pattern
-            id={`${this._colorFillBarPatternId}${i}`}
-            width={16}
-            height={16}
-            key={`${this._colorFillBarPatternId}${i}`}
-            patternUnits={'userSpaceOnUse'}
-          >
-            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={colorFillBar.color} strokeWidth={2} />
-          </pattern>,
-        );
+        // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
+        colorFillBars.push(this._getStripePattern(colorFillBar.color, i));
       }
+
       for (let j = 0; j < colorFillBar.data.length; j++) {
         const startX = colorFillBar.data[j].startX;
         const endX = colorFillBar.data[j].endX;
+        const opacity =
+          this.state.activeLegend === colorFillBar.legend ||
+          this.state.activeLegend === '' ||
+          this.state.isSelectedLegend
+            ? this._colorFillBarsOpacity
+            : 0.1;
         colorFillBars.push(
           <rect
             fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}${i})` : colorFillBar.color}
-            fillOpacity={this.state.activeLegend === colorFillBar.name || this.state.activeLegend === '' ? 0.4 : 0.1}
+            fillOpacity={opacity}
             x={this._xAxisScale(startX)}
             y={this._yAxisScale(0) - containerHeight}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
@@ -473,6 +447,23 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
     return colorFillBars;
+  };
+
+  private _getStripePattern = (color: string, id: number) => {
+    // This describes a tile pattern that resembles diagonal stripes
+    // For more information: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+    const stripePath = 'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8';
+    return (
+      <pattern
+        id={`${this._colorFillBarPatternId}${id}`}
+        width={16}
+        height={16}
+        key={`${this._colorFillBarPatternId}${id}`}
+        patternUnits={'userSpaceOnUse'}
+      >
+        <path d={stripePath} stroke={color} strokeWidth={2} />
+      </pattern>
+    );
   };
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {
@@ -564,18 +555,109 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  private _handleLegendClick = (point: ILineChartPoints, selectedLegend: string | null | string[]): void => {
-    if (point.onLegendClick) {
-      point.onLegendClick(selectedLegend);
+  private _handleLegendClick = (
+    lineChartItem: ILineChartPoints | IColorFillBarsProps,
+    selectedLegend: string | null | string[],
+  ): void => {
+    if (lineChartItem.onLegendClick) {
+      lineChartItem.onLegendClick(selectedLegend);
     }
   };
 
-  private _handleColorFillBarLengendClick = (
-    colorFillBar: IColorFillBarsProps,
-    selectedLegend: string | null,
-  ): void => {
-    if (colorFillBar.onLegendClick) {
-      colorFillBar.onLegendClick(selectedLegend);
+  private _handleMultipleLineLegendSelectionAction = (selectedLine: ILineChartPoints) => {
+    const selectedLineIndex = this.state.selectedLegendPoints.reduce((acc, line, index) => {
+      if (acc > -1 || line.legend !== selectedLine.legend) {
+        return acc;
+      } else {
+        return index;
+      }
+    }, -1);
+
+    let selectedLines: ILineChartPoints[];
+    if (selectedLineIndex === -1) {
+      selectedLines = [...this.state.selectedLegendPoints, selectedLine];
+    } else {
+      selectedLines = this.state.selectedLegendPoints
+        .slice(0, selectedLineIndex)
+        .concat(this.state.selectedLegendPoints.slice(selectedLineIndex + 1));
     }
+
+    const areAllLineLegendsSelected = this.props.data && selectedLines.length === this.props.data.lineChartData!.length;
+
+    if (
+      areAllLineLegendsSelected &&
+      ((this.props.colorFillBars && this.props.colorFillBars.length === this.state.selectedColorBarLegend.length) ||
+        !this.props.colorFillBars)
+    ) {
+      // Clear all legends if all legends including color fill bar legends are selected
+      // Or clear all legends if all legends are selected and there are no color fill bars
+      this._clearMultipleLegendSelections();
+    } else if (!selectedLines.length && !this.state.selectedColorBarLegend.length) {
+      // Clear all legends if no legends including color fill bar legends are selected
+      this._clearMultipleLegendSelections();
+    } else {
+      // Otherwise, set state when one or more legends are selected, including color fill bar legends
+      this.setState({
+        selectedLegendPoints: selectedLines,
+        isSelectedLegend: true,
+      });
+    }
+
+    const selectedLegendTitlesToPass = selectedLines.map((line: ILineChartPoints) => line.legend);
+    this._handleLegendClick(selectedLine, selectedLegendTitlesToPass);
+  };
+
+  private _handleMultipleColorFillBarLegendSelectionAction = (selectedColorFillBar: IColorFillBarsProps) => {
+    const selectedColorFillBarIndex = this.state.selectedColorBarLegend.reduce((acc, colorFillBar, index) => {
+      if (acc > -1 || colorFillBar.legend !== selectedColorFillBar.legend) {
+        return acc;
+      } else {
+        return index;
+      }
+    }, -1);
+
+    let selectedColorFillBars: IColorFillBarsProps[];
+    if (selectedColorFillBarIndex === -1) {
+      selectedColorFillBars = [...this.state.selectedColorBarLegend, selectedColorFillBar];
+    } else {
+      selectedColorFillBars = this.state.selectedColorBarLegend
+        .slice(0, selectedColorFillBarIndex)
+        .concat(this.state.selectedColorBarLegend.slice(selectedColorFillBarIndex + 1));
+    }
+
+    const areAllColorFillBarLegendsSelected =
+      selectedColorFillBars.length === (this.props.colorFillBars && this.props.colorFillBars!.length);
+
+    if (
+      areAllColorFillBarLegendsSelected &&
+      ((this.props.data && this.props.data.lineChartData!.length === this.state.selectedLegendPoints.length) ||
+        !this.props.data)
+    ) {
+      // Clear all legends if all legends, including line legends, are selected
+      // Or clear all legends if all legends are selected and there is no line data
+      this._clearMultipleLegendSelections();
+    } else if (!selectedColorFillBars.length && !this.state.selectedLegendPoints.length) {
+      // Clear all legends if no legends are selected, including line legends
+      this._clearMultipleLegendSelections();
+    } else {
+      // set state when one or more legends are selected, including line legends
+      this.setState({
+        selectedColorBarLegend: selectedColorFillBars,
+        isSelectedLegend: true,
+      });
+    }
+
+    const selectedLegendTitlesToPass = selectedColorFillBars.map(
+      (colorFillBar: IColorFillBarsProps) => colorFillBar.legend,
+    );
+    this._handleLegendClick(selectedColorFillBar, selectedLegendTitlesToPass);
+  };
+
+  private _clearMultipleLegendSelections = () => {
+    this.setState({
+      selectedColorBarLegend: [],
+      selectedLegendPoints: [],
+      isSelectedLegend: false,
+    });
   };
 }

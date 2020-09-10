@@ -138,9 +138,10 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             height={this.state.height}
             width={this.state.width}
             margins={margins}
+            legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
             colorFillBars={[
               {
-                name: 'Time range 1',
+                legend: 'Time range 1',
                 color: 'blue',
                 data: [
                   {
@@ -150,7 +151,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
                 ],
               },
               {
-                name: 'Time range 2',
+                legend: 'Time range 2',
                 color: 'red',
                 data: [
                   {

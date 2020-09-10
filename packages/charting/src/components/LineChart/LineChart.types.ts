@@ -7,6 +7,7 @@ import {
   ICartesianChartStyles,
   IChildProps,
 } from '../CommonComponents/index';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 export interface ILineChartProps extends ICartesianChartProps {
@@ -44,11 +45,11 @@ export interface ILineChartStyles extends ICartesianChartStyles {}
 export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
 
 export interface IColorFillBarsProps {
-  name: string;
+  legend: string;
   color: string;
   data: IColorFillBarData[];
   applyPattern?: boolean;
-  onLegendClick?: (selectedLegend: string | null) => void | undefined;
+  onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
 }
 
 export interface IColorFillBarData {

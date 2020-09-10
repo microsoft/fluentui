@@ -54,7 +54,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : props.opacity ? props.opacity : '',
       backgroundImage: props.stripePattern
-        ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
+        ? // eslint-disable-next-line @fluentui/max-len
+          `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
         : '',
     },
     triangle: {
