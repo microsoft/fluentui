@@ -7,9 +7,7 @@ import { buttonBehaviorDefinition } from '@fluentui/accessibility';
 import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 
 describe('ButtonBehavior', () => {
-  test('test behavior', () => {
-    const testFacade = new ComponentTestFacade(Button, {});
-    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
-    expect(errors).toEqual([]);
-  });
+  const testFacade = new ComponentTestFacade(Button, {});
+  const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+  expect(errors).toEqual([]);
 });

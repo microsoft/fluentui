@@ -52,7 +52,9 @@ export const validateBehavior = (rules: Rule[], testFacade: TestFacade) => {
   rules.map(rule => {
     try {
       if (rule instanceof SlotRule) {
-        validateSlot(rule, testFacade);
+        test(rule.stringify(), () => {
+          validateSlot(rule, testFacade);
+        });
       }
     } catch (e) {
       errors.push({ rule: rule.stringify(), error: e.message });

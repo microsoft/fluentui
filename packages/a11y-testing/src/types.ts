@@ -18,7 +18,7 @@ export interface Slot {
   checkClick: boolean;
   checkSpaceKeyPressed: boolean;
   checkEnterKeyPressed: boolean;
-  wasOnclickExecuted: boolean;
+  checkOnClickWasExecuted: boolean;
 }
 
 export interface TestFacade {

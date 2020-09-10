@@ -8,10 +8,8 @@ import { toggleButtonBehavior } from '@fluentui/accessibility';
 import { toggleButtonBehaviorDefinition } from '@fluentui/accessibility';
 import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 
-describe('ButtonBehavior', () => {
-  test('test behavior', () => {
-    const testFacade = new ComponentTestFacade(Button, { accessibility: toggleButtonBehavior });
-    const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
-    expect(errors).toEqual([]);
-  });
+describe('ButtonToggleBehavior', () => {
+  const testFacade = new ComponentTestFacade(Button, { accessibility: toggleButtonBehavior });
+  const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
+  expect(errors).toEqual([]);
 });

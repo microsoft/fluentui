@@ -50,7 +50,6 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/react-compose": "^0.18.2",
     "@fluentui/keyboard-key": "^0.2.11",
     "@fluentui/react-icons": "^0.3.0",

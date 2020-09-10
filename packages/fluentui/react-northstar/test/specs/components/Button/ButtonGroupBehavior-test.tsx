@@ -16,9 +16,7 @@ const buttons = [
 ];
 
 describe('ButtonGroupBehavior', () => {
-  test('test behavior', () => {
-    const testFacade = new ComponentTestFacade(Button.Group, { buttons });
-    const errors = validateBehavior(buttonGroupBehaviorDefinition, testFacade);
-    expect(errors).toEqual([]);
-  });
+  const testFacade = new ComponentTestFacade(Button.Group, { buttons });
+  const errors = validateBehavior(buttonGroupBehaviorDefinition, testFacade);
+  expect(errors).toEqual([]);
 });
