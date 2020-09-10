@@ -7,3 +7,4 @@ export const ButtonGrid = styled<IButtonGridProps, IButtonGridStyleProps, IButto
   ButtonGridBase,
   getStyles,
 );
+ButtonGrid.displayName = 'ButtonGrid';

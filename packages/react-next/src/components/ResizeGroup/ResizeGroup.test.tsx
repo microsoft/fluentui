@@ -54,7 +54,13 @@ describe('ResizeGroup', () => {
   isConformant({
     Component: ResizeGroup,
     displayName: 'ResizeGroup',
-    disabledTests: [`component-renders`],
+    requiredProps: {
+      data: { content: 5 },
+      onRenderData: () => {
+        return;
+      },
+      onReduceData: onReduceScalingData,
+    },
   });
 
   it('renders the result of onRenderData', () => {

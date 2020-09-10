@@ -36,7 +36,7 @@ describe('SwatchColorPicker', () => {
   isConformant({
     Component: SwatchColorPicker,
     displayName: 'SwatchColorPicker',
-    disabledTests: ['component-renders'],
+    requiredProps: { colorCells: DEFAULT_OPTIONS, columnCount: 4 },
   });
 
   it('Can render in full without being parented to a button', () => {

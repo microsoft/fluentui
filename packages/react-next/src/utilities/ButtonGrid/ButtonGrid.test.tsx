@@ -22,7 +22,15 @@ describe('ButtonGrid', () => {
   isConformant({
     Component: ButtonGrid,
     displayName: 'ButtonGrid',
-    disabledTests: ['component-renders', 'component-has-displayname', 'has-top-level-file', 'exported-top-level'],
+    requiredProps: {
+      items: DEFAULT_ITEMS,
+      columnCount: 4,
+      styles: getStyles,
+      onRenderItem: () => {
+        return;
+      },
+    },
+    disabledTests: ['has-top-level-file'],
   });
 
   it('Can render a ButtonGrid with width of four', () => {
