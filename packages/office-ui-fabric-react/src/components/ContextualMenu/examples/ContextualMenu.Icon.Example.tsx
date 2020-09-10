@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConst, useConstCallback } from '@uifabric/react-hooks';
+import { useConst, useBoolean } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import {
@@ -14,10 +14,7 @@ import * as stylesImport from './ContextualMenuExample.scss';
 const styles: any = stylesImport;
 
 export const ContextualMenuIconExample: React.FunctionComponent = () => {
-  const [showCallout, setShowCallout] = React.useState(false);
-
-  const onShowCallout = useConstCallback(() => setShowCallout(true));
-  const onHideCallout = useConstCallback(() => setShowCallout(false));
+  const [showCallout, { setTrue: onShowCallout, setFalse: onHideCallout }] = useBoolean(false);
 
   const menuItems: IContextualMenuItem[] = useConst([
     {

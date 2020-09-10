@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConstCallback, useConst } from '@uifabric/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { ISearchBoxStyles, SearchBox } from '@fluentui/react-next/lib/SearchBox';
 import { Icon } from '@fluentui/react-next/lib/Icon';
@@ -9,11 +9,11 @@ import { IRenderFunction } from '@fluentui/react-next/lib/Utilities';
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
 
-  const onAbort = useConstCallback(() => {
+  const onAbort = React.useCallback(() => {
     setItems(menuItems);
-  });
+  }, []);
 
-  const onChange = useConstCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
+  const onChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = menuItems.filter(
       item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
     );
@@ -31,9 +31,9 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     }
 
     setItems(filteredItems);
-  });
+  }, []);
 
-  const renderMenuList = useConstCallback(
+  const renderMenuList = React.useCallback(
     (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
       return (
         <div>
@@ -50,6 +50,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
         </div>
       );
     },
+    [onAbort, onChange],
   );
 
   const menuProps = useConst(() => ({

@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export const PanelControlledExample: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const openPanel = useConstCallback(() => setIsOpen(true));
-  const dismissPanel = useConstCallback(() => setIsOpen(false));
+  const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   return (
     <div>
