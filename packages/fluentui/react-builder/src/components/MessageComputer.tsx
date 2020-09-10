@@ -37,7 +37,7 @@ export default class MessageComputer {
         const state = split[0];
         const stateValue = split[1];
         const stateAndValueMatch = element.getAttribute(state) === stateValue;
-        const checkedDOMPropAndValueMatch =
+        const checkedDOMpropAndValueMatch =
           state === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
         if (stateAndValueMatch || checkedDOMPropAndValueMatch) {
           // Begin if 2
