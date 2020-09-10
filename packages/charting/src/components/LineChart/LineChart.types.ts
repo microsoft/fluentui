@@ -7,7 +7,6 @@ import {
   ICartesianChartStyles,
   IChildProps,
 } from '../CommonComponents/index';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 export interface ILineChartProps extends ICartesianChartProps {
