@@ -109,7 +109,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * If it returns true, then callout will not dismiss for this event.
    * If not defined or returns false, callout can dismiss for this event.
    */
-  preventDismissOnEvent?: (ev: any) => boolean;
+  preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
