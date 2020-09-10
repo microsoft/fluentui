@@ -31,7 +31,6 @@
     "@fluentui/eslint-plugin": "^0.53.3",
     "@fluentui/react-conformance": "^0.1.0",
     "@fluentui/storybook": "^0.2.6",
-    "@testing-library/react": "^10.4.9",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
