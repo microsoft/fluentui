@@ -22,6 +22,7 @@ const globalClassNames = {
   prefix: 'ms-TextField-prefix',
   suffix: 'ms-TextField-suffix',
   wrapper: 'ms-TextField-wrapper',
+  reveal: 'ms-TextField-reveal',
 
   multiline: 'ms-TextField--multiline',
   borderless: 'ms-TextField--borderless',
@@ -79,6 +80,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasErrorMessage,
     inputClassName,
     autoAdjustHeight,
+    hasRevealButton,
   } = props;
 
   const { semanticColors, effects, fonts } = theme;
@@ -336,9 +338,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         autoAdjustHeight && {
           overflow: 'hidden',
         },
-      hasIcon && {
-        paddingRight: 24,
-      },
+      hasIcon &&
+        !hasRevealButton && {
+          paddingRight: 24,
+        },
       multiline &&
         hasIcon && {
           paddingRight: 40,
@@ -416,5 +419,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     subComponentStyles: {
       label: getLabelStyles(props),
     },
+    revealButton: [
+      classNames.reveal,
+      {
+        height: 30,
+      },
+      hasIcon && {
+        marginRight: 28,
+      },
+    ],
   };
 }
