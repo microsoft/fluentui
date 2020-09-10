@@ -2,11 +2,12 @@ import { createContext } from '@fluentui/react-context-selector';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 import { Accessibility } from '@fluentui/accessibility';
+import { MenuItemProps } from './MenuItem';
 
 export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
-  onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
+  onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
 
   slotProps: {
     item: Record<string, any>;
