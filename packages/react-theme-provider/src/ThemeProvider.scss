@@ -5,14 +5,10 @@
  */
 // TODO: ensure correct styles are being set here
 .root {
-  background: var(--body-background);
-  color: var(--body-contentColor);
+  // TODO: apply body theme using `applyTo` prop.
+  // background: var(--body-background);
+  // color: var(--body-contentColor);
   font-family: var(--body-fontFamily);
   font-weight: var(--body-fontWeight);
   font-size: var(--body-fontSize);
-  line-height: var(--body-fontLineHeight);
-
-  > * {
-    box-sizing: border-box;
-  }
 }
