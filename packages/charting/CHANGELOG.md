@@ -1,8 +1,26 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.2)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.0..@uifabric/charting_v3.6.2)
+
+### Patches
+
+- Fix issue when we focus on charts in IE ([PR #14946](https://github.com/microsoft/fluentui/pull/14946) by v-gorraj@microsoft.com)
+
+## [3.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.5.1..@uifabric/charting_v3.6.0)
+
+### Minor changes
+
+- Area chart re design and updated Cartesian (removed reRenderProp method from Cartesian as it only uses for area chart previously. Now code udpated, so no need of that method.) ([PR #14892](https://github.com/microsoft/fluentui/pull/14892) by v-jasha@microsoft.com)
 
 ## [3.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.5.0)
 
