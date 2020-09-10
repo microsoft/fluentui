@@ -252,33 +252,17 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: string;
 
   /**
-   * Only used by MaskedTextField:
-   * The masking string that defines the mask's behavior.
-   * A backslash will escape any character.
-   * Special format characters are:
-   * '9': [0-9]
-   * 'a': [a-zA-Z]
-   * '*': [a-zA-Z0-9]
-   *
-   * @example `Phone Number: (999) 999-9999`
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   mask?: string;
 
   /**
-   * Only used by MaskedTextField:
-   * The character to show in place of unfilled characters of the mask.
-   * @defaultvalue '_'
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskChar?: string;
 
   /**
-   * Only used by MaskedTextField:
-   * An object defining the format characters and corresponding regexp values.
-   * Default format characters: \{
-   *  '9': /[0-9]/,
-   *  'a': /[a-zA-Z]/,
-   *  '*': /[a-zA-Z0-9]/
-   * \}
+   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskFormat?: { [key: string]: RegExp };
 }
@@ -374,4 +358,38 @@ export interface ITextFieldStyles {
    * Styling for subcomponents.
    */
   subComponentStyles: ITextFieldSubComponentStyles;
+}
+
+/**
+ * MaskedTextField component props.
+ * {@docCategory TextField}
+ */
+export interface IMaskedTextFieldProps extends ITextFieldProps {
+  /**
+   * The masking string that defines the mask's behavior.
+   * A backslash will escape any character.
+   * Special format characters are:
+   * '9': [0-9]
+   * 'a': [a-zA-Z]
+   * '*': [a-zA-Z0-9]
+   *
+   * @example `Phone Number: (999) 999-9999`
+   */
+  mask?: string;
+
+  /**
+   * The character to show in place of unfilled characters of the mask.
+   * @defaultvalue '_'
+   */
+  maskChar?: string;
+
+  /**
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: \{
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * \}
+   */
+  maskFormat?: { [key: string]: RegExp };
 }

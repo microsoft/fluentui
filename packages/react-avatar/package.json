@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "0.2.4",
+  "version": "0.4.3",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,8 +27,9 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/react-conformance": "^0.1.0",
-    "@fluentui/storybook": "^0.3.4",
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/react-conformance": "^0.1.1",
+    "@fluentui/storybook": "^0.4.9",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -37,7 +38,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "es6-weak-map": "^2.0.2",
@@ -48,12 +49,13 @@
   },
   "dependencies": {
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/react-compose": "^0.17.2",
-    "@fluentui/react-stylesheets": "^0.1.18",
-    "@fluentui/react-theme-provider": "^0.9.1",
-    "@uifabric/react-hooks": "^7.10.0",
+    "@fluentui/react-compose": "^0.18.2",
+    "@fluentui/react-icons": "^0.3.0",
+    "@fluentui/react-stylesheets": "^0.2.0",
+    "@fluentui/react-theme-provider": "^0.11.2",
+    "@uifabric/react-hooks": "^7.12.0",
     "@uifabric/set-version": "^7.0.22",
-    "@uifabric/utilities": "^7.30.0",
+    "@uifabric/utilities": "^7.31.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

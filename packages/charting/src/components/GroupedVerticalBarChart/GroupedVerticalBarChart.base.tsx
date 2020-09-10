@@ -388,7 +388,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .enter()
         .append('rect')
         .style('fill', (d: IGVSingleDataPoint) => d[datasetKey].color)
-        .attr('focusable', true)
         .attr('data-is-focusable', true)
         .attr('class', this._classNames.opacityChangeOnHover)
         .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))

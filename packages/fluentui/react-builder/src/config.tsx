@@ -424,6 +424,13 @@ export const resolveComponent = (displayName): React.ElementType => {
 
 // FIXME: breaks for <button>btn</button>
 const toJSONTreeElement = input => {
+  if (input?.as && _.isPlainObject(input.as)) {
+    return {
+      type: input.as.displayName,
+      props: { ...input, as: undefined },
+      $$typeof: 'Symbol(react.element)',
+    };
+  }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
@@ -621,7 +628,13 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   };
   for (const [module, components] of Object.entries(imports)) {
     codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    packageImports[module] = packageImportList[module];
+    if (packageImportList[module]) {
+      packageImports[module] = packageImportList[module];
+    } else {
+      console.error(
+        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
+      );
+    }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
   ${code} \n);}`;
