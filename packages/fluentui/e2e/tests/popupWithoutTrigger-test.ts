@@ -18,7 +18,7 @@ describe('Popup without `trigger`', () => {
     await e2e.exists(popupContent);
 
     await e2e.clickOn(button);
-    await e2e.hidden(popupContent);
+    await e2e.expectHidden(popupContent);
   });
 
   it('Popup can be closed on click outside', async () => {
@@ -26,7 +26,7 @@ describe('Popup without `trigger`', () => {
     await e2e.exists(popupContent);
 
     await e2e.clickOn('body');
-    await e2e.hidden(popupContent);
+    await e2e.expectHidden(popupContent);
   });
 
   it('Popup stays open on click inside', async () => {

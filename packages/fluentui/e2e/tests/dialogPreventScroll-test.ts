@@ -30,7 +30,7 @@ describe('Dialog scroll', () => {
     await e2e.hasComputedStyle('body', 'overflow', 'hidden');
 
     await e2e.clickOn(innerClose);
-    await e2e.hidden(innerClose);
+    await e2e.expectHidden(innerClose);
   });
 
   it('should reset overflow', async () => {

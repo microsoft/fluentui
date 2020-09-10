@@ -33,10 +33,10 @@ describe('Dropdown', () => {
 
     it('closes dropdown on outside click', async () => {
       await e2e.clickOn(triggerButton);
-      await e2e.count(listItem, inputItems.length);
+      await e2e.expectCount(listItem, inputItems.length);
 
       await e2e.clickOn(previousFocusableSibling);
-      await e2e.count(listItem, 0);
+      await e2e.expectCount(listItem, 0);
     });
   });
 });

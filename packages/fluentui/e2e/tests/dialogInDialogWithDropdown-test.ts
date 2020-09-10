@@ -40,8 +40,8 @@ describe('Dialog in Dialog', () => {
     await e2e.clickOn(innerHeader);
     await e2e.waitForSelectorAndPressKey(innerHeader, 'Escape');
 
-    await e2e.hidden(dropdownSelector);
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(dropdownSelector);
+    await e2e.expectHidden(innerHeader);
     await e2e.exists(outerHeader);
   });
 });

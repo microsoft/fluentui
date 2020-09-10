@@ -99,8 +99,8 @@ describe('Popup in ToolbarMenu', () => {
     // opens Popup
     await e2e.clickOn(popupTriggerId);
     await e2e.clickOn(dummyButtonId);
-    await e2e.hidden(popupElementId);
-    await e2e.hidden(popupTriggerId);
+    await e2e.expectHidden(popupElementId);
+    await e2e.expectHidden(popupTriggerId);
   });
 
   it('Click outside of Popup but inside of Menu closes Popup but leaves Menu open', async () => {
@@ -115,7 +115,7 @@ describe('Popup in ToolbarMenu', () => {
     // opens Popup
     await e2e.clickOn(popupTriggerId);
     await e2e.clickOn(popupTriggerId);
-    await e2e.hidden(popupElementId);
+    await e2e.expectHidden(popupElementId);
     await e2e.exists(popupTriggerId);
   });
 });

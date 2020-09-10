@@ -75,6 +75,6 @@ describe('Toolbar menu overflow', () => {
 
     // verify focus was moved to button and menu was closed
     await e2e.isFocused(buttonAfterToolbarId);
-    await e2e.hidden(toolbarMenu);
+    await e2e.expectHidden(toolbarMenu);
   });
 });

@@ -28,7 +28,7 @@ describe('Dialog in Popup', () => {
     await e2e.clickOn(dialogCancel);
 
     await e2e.exists(popupContent);
-    await e2e.hidden(dialogHeader);
+    await e2e.expectHidden(dialogHeader);
   });
 
   it('"Popup" and "Dialog" will be kept open on a click inside "Dialog"', async () => {
@@ -46,7 +46,7 @@ describe('Dialog in Popup', () => {
 
     await e2e.clickOn(overlayPoint);
     await e2e.exists(popupContent);
-    await e2e.hidden(dialogHeader);
+    await e2e.expectHidden(dialogHeader);
   });
 
   it('A click on content and pressing ESC button should close the first opened dialog', async () => {
@@ -63,7 +63,7 @@ describe('Dialog in Popup', () => {
 
     // press ESC and check if nested popup is closed and focus is on nested trigger
     await e2e.waitForSelectorAndPressKey(popupContent, 'Escape');
-    await e2e.hidden(dialogHeader);
+    await e2e.expectHidden(dialogHeader);
     await e2e.isFocused(dialogTrigger);
 
     // click on popup content to move focus to body
@@ -72,7 +72,7 @@ describe('Dialog in Popup', () => {
 
     // press ESC again and check if the last popup is closed and focus is on trigger
     await e2e.waitForSelectorAndPressKey(popupContent, 'Escape');
-    await e2e.hidden(popupContent);
+    await e2e.expectHidden(popupContent);
     await e2e.isFocused(popupTrigger);
   });
 });

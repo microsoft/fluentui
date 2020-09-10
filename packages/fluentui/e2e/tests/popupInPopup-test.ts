@@ -24,7 +24,7 @@ describe('Popup in Popup', () => {
 
     // press ESC and check if nested popup is closed and focus is on nested trigger
     await e2e.waitForSelectorAndPressKey(popupContentNested, 'Escape');
-    await e2e.hidden(popupContentNested);
+    await e2e.expectHidden(popupContentNested);
     await e2e.isFocused(popupTriggerNested);
 
     // click on popup content to move focus to body
@@ -33,7 +33,7 @@ describe('Popup in Popup', () => {
 
     // press ESC again and check if the last popup is closed and focus is on trigger
     await e2e.waitForSelectorAndPressKey(popupContent, 'Escape');
-    await e2e.hidden(popupContent);
+    await e2e.expectHidden(popupContent);
     await e2e.isFocused(popupTrigger);
   });
 });

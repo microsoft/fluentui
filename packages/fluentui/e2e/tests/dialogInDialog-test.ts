@@ -38,11 +38,11 @@ describe('Dialog in Dialog', () => {
 
     await e2e.clickOn(overlayPoint);
     await e2e.exists(outerHeader);
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(innerHeader);
 
     await e2e.clickOn(overlayPoint);
-    await e2e.hidden(outerHeader);
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(outerHeader);
+    await e2e.expectHidden(innerHeader);
   });
 
   it('A click on cancel button should close only matching "Dialog"', async () => {
@@ -51,11 +51,11 @@ describe('Dialog in Dialog', () => {
 
     await e2e.clickOn(innerClose);
     await e2e.exists(outerHeader);
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(innerHeader);
 
     await e2e.clickOn(outerClose);
-    await e2e.hidden(outerHeader);
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(outerHeader);
+    await e2e.expectHidden(innerHeader);
   });
 
   it('A click on content and pressing ESC button should close the last opened dialog', async () => {
@@ -72,7 +72,7 @@ describe('Dialog in Dialog', () => {
 
     // press ESC and check if nested dialog is closed and focus is on nested trigger
     await e2e.waitForSelectorAndPressKey(innerHeader, 'Escape');
-    await e2e.hidden(innerHeader);
+    await e2e.expectHidden(innerHeader);
     await e2e.isFocused(innerTrigger);
 
     // click on dialog content to move focus to body
@@ -81,7 +81,7 @@ describe('Dialog in Dialog', () => {
 
     // press ESC again and check if the last dialog is closed and focus is on trigger
     await e2e.waitForSelectorAndPressKey(outerHeader, 'Escape');
-    await e2e.hidden(outerHeader);
+    await e2e.expectHidden(outerHeader);
     await e2e.isFocused(outerTrigger);
   });
 });

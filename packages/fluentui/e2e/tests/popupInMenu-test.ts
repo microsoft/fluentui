@@ -14,15 +14,15 @@ describe('Popup of menu item', () => {
 
   it('should close when another menu item is clicked', async () => {
     await e2e.clickOn(menuItem(0));
-    await e2e.count(popupContent, 1);
+    await e2e.expectCount(popupContent, 1);
     await e2e.exists(itemPopup(0));
 
     await e2e.clickOn(menuItem(1));
-    await e2e.count(popupContent, 1);
+    await e2e.expectCount(popupContent, 1);
     await e2e.exists(itemPopup(1));
 
     await e2e.clickOn(menuItem(2));
-    await e2e.count(popupContent, 1);
+    await e2e.expectCount(popupContent, 1);
     await e2e.exists(itemPopup(2));
   });
 

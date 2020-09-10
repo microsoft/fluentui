@@ -15,7 +15,7 @@ describe('Popup - on content click', () => {
     await e2e.clickOn(popupContentButton); // clicks on button in popup
 
     // button disappears from popup content
-    await e2e.hidden(popupContentButton);
+    await e2e.expectHidden(popupContentButton);
 
     // but popup content itself remains to be opened
     await e2e.exists(popupContent);

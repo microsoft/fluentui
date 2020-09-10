@@ -80,7 +80,7 @@ export class E2EApi {
     );
   };
 
-  public count = async (selector: string, count: number): Promise<void> => {
+  public expectCount = async (selector: string, count: number): Promise<void> => {
     await this.page.waitForFunction(
       (selector, count) => {
         return document.querySelectorAll(selector).length === count;
@@ -95,7 +95,7 @@ export class E2EApi {
     await this.page.waitForSelector(selector, { timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
-  public hidden = async (selector: string): Promise<void> => {
+  public expectHidden = async (selector: string): Promise<void> => {
     await this.page.waitForSelector(selector, { hidden: true, timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
@@ -103,7 +103,7 @@ export class E2EApi {
     await (await this.getElement(selector)).click();
   };
 
-  public textOf = async (selector: string, text: string): Promise<void> => {
+  public expectTextOf = async (selector: string, text: string): Promise<void> => {
     await this.page.waitForFunction(
       (selector, text) => {
         return document.querySelector(selector).innerText === text;

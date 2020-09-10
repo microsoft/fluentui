@@ -34,7 +34,7 @@ describe('Dialog with dropdown', () => {
 
     await e2e.clickOn(dialogHeader);
     await e2e.waitForSelectorAndPressKey(dialogHeader, 'Escape');
-    await e2e.hidden(dropdownSelector);
+    await e2e.expectHidden(dropdownSelector);
   });
 
   it('should close when ESC pressed in the closed dropdown', async () => {
@@ -44,7 +44,7 @@ describe('Dialog with dropdown', () => {
 
     await e2e.waitForSelectorAndPressKey(dropdownList, 'Escape'); // closes list
     await e2e.waitForSelectorAndPressKey(dialogHeader, 'Escape'); // closes dialog
-    await e2e.hidden(dropdownSelector);
-    await e2e.hidden(dialogHeader);
+    await e2e.expectHidden(dropdownSelector);
+    await e2e.expectHidden(dialogHeader);
   });
 });

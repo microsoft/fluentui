@@ -20,7 +20,7 @@ describe('Toolbar menu on', () => {
     await e2e.waitForSelectorAndPressKey(toolbarMenu, 'Tab');
 
     await e2e.isFocused(afterToolbarId);
-    await e2e.hidden(toolbarMenu);
+    await e2e.expectHidden(toolbarMenu);
   });
 
   it('Should toggle the menu', async () => {
@@ -31,7 +31,7 @@ describe('Toolbar menu on', () => {
     await e2e.clickOn(menuTrigger);
 
     await e2e.isFocused(menuTrigger);
-    await e2e.hidden(toolbarMenu);
+    await e2e.expectHidden(toolbarMenu);
   });
 
   it('Shift+TAB moves focus to previous tabbable element before toolbar', async () => {
@@ -43,7 +43,7 @@ describe('Toolbar menu on', () => {
     await e2e.waitForSelectorAndPressKey(toolbarMenu, 'Tab', 'Shift');
 
     await e2e.isFocused(beforeToolbarId);
-    await e2e.hidden(toolbarMenu);
+    await e2e.expectHidden(toolbarMenu);
   });
 
   it('moves focus to particular element, after press "Enter" on menu item', async () => {
@@ -58,6 +58,6 @@ describe('Toolbar menu on', () => {
     // verify focus was moved to button, this action is defined in 'onClick'
     await e2e.isFocused(afterToolbarId);
     // verify menu was closed
-    await e2e.hidden(toolbarMenu);
+    await e2e.expectHidden(toolbarMenu);
   });
 });

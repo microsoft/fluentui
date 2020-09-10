@@ -51,8 +51,8 @@ describe('Popup in ToolbarMenu', () => {
     // closes all menus
     await e2e.clickOn(hdId);
 
-    await e2e.hidden(toolbarMenuId);
-    await e2e.hidden(toolbarMenuSubmenuId);
+    await e2e.expectHidden(toolbarMenuId);
+    await e2e.expectHidden(toolbarMenuSubmenuId);
   });
 
   it('Submenu should be closed when pressing enter/space on some item that does not have submenu', async () => {
@@ -69,7 +69,7 @@ describe('Popup in ToolbarMenu', () => {
 
     // closes all menus
     await e2e.waitForSelectorAndPressKey(toolbarMenuSubmenuId, 'Enter');
-    await e2e.hidden(toolbarMenuId);
-    await e2e.hidden(toolbarMenuSubmenuId);
+    await e2e.expectHidden(toolbarMenuId);
+    await e2e.expectHidden(toolbarMenuSubmenuId);
   });
 });
