@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix button styles to match v7 buttons.",
+  "packageName": "@fluentui/react-button",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-10T00:59:34.380Z"
+}

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-// eslint-disable @typescript-eslint/naming-convention
 import { makeClasses } from '@fluentui/react-theme-provider';
 
 export const useSplitButtonClasses = makeClasses({
@@ -18,6 +17,9 @@ export const useSplitButtonClasses = makeClasses({
     '--button-borderLeftWidth': 0,
     '--button-borderTopLeftRadius': 0,
     '--button-borderBottomLeftRadius': 0,
+    '--button-width': 32,
+    '--button-paddingLeft': 0,
+    '--button-paddingRight': 0,
   },
 
   divider: {

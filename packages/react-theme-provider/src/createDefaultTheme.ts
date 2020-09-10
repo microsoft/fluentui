@@ -75,6 +75,7 @@ export const defaultTokens: Tokens = {
 
   // TODO: this should be a variant.
   ghost: {
+    fontWeight: 'normal',
     background: 'var(--color-body-background)',
     borderColor: 'transparent',
     contentColor: '#323130',
@@ -146,7 +147,7 @@ export const defaultTokens: Tokens = {
     paddingBottom: '0',
     minWiedth: '80px',
     minHeight: 'var(--button-size-regular)',
-    contentGap: '10px',
+    contentGap: '8px',
     iconSize: '16px',
     borderRadius: '2px',
     borderWidth: '1px',
@@ -159,11 +160,14 @@ export const defaultTokens: Tokens = {
     contentColor: '#323130',
     iconColor: 'inherit',
     menuIconColor: 'inherit',
+    menuIconSize: '12px',
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
     secondaryContentColor: '#605e5c',
     secondaryContentFontSize: '12px',
+    secondaryContentFontWeight: 'normal',
+    secondaryContentMarginTop: '5px',
 
     disabled: {
       background: '#f3f2f1',

@@ -18,6 +18,9 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
       '--button-paddingLeft': '12px',
       '--button-paddingRight': '12px',
       '--button-paddingTop': '16px',
+      '--button-iconSize': '28px',
+
+      alignItems: 'flex-start',
 
       '&:hover': {
         '--button-secondaryContentColor': 'var(--button-hovered-secondaryContentColor)',
@@ -43,6 +46,8 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     {
       color: 'var(--button-secondaryContentColor)',
       fontSize: 'var(--button-secondaryContentFontSize)',
+      fontWeight: 'var(--button-secondaryContentFontWeight)',
+      marginTop: 'var(--button-secondaryContentMarginTop)',
       lineHeight: '100%',
     },
   ],

@@ -11,7 +11,7 @@ import { MenuButton } from '../MenuButton/index';
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const { state, render } = useSplitButton(props, ref, {
     button: { as: Button },
-    menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
+    menuButton: { as: MenuButton, menuIcon: <ChevronDownIcon /> },
   });
 
   useSplitButtonClasses(state);

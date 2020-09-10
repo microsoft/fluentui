@@ -36,6 +36,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
       boxShadow: 'var(--button-boxShadow)',
 
       width: 'var(--button-width)',
+      maxWidth: 'var(--button-maxWidth)',
       minWidth: 'var(--button-minWidth, 80)',
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
@@ -46,13 +47,12 @@ export const useButtonClasses = makeClasses<ButtonState>({
       paddingBottom: 'var(--button-paddingBottom)',
 
       transition: 'var(--button-transition)',
-      whiteSpace: 'var(--button-whiteSpace, nowrap)',
+      whiteSpace: 'var(--button-whiteSpace)',
 
       fontFamily: 'var(--button-fontFamily)',
       fontSize: 'var(--button-fontSize)',
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      fontWeight: 'var(--button-fontWeight)' as any,
+      fontWeight: 'var(--button-fontWeight)',
+      WebkitFontSmoothing: 'antialiased',
 
       ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
         //'&::after': {
@@ -133,6 +133,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
   content: {
     lineHeight: '1',
+    flexGrow: 1,
   },
 
   _primary: {
@@ -163,6 +164,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _ghost: {
+    '--button-fontWeight': 'var(--ghost-fontWeight)',
     '--button-background': 'var(--ghost-background)',
     '--button-borderColor': 'var(--ghost-borderColor)',
     '--button-contentColor': 'var(--ghost-contentColor)',
