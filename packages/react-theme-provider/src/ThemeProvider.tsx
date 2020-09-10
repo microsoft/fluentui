@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ThemeProviderProps } from './ThemeProvider.types';
-import { useThemeProviderClasses } from './ThemeProvider.styles';
+import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
-import { useThemeVariables } from './useThemeVariables';
+import { useThemeTokenClass } from './useThemeTokenClass';
+import { useStylesheet } from '@fluentui/react-stylesheets';
 
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
@@ -16,13 +17,16 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
       renderer: mergeStylesRenderer,
     });
 
+    // Register stylesheets as needed.
+    useStylesheet(state.theme.stylesheets);
+
     // Render styles.
     useThemeProviderClasses(state, state.theme, state.renderer);
 
     // Render tokens as css variables.
-    useThemeVariables(state);
+    useThemeTokenClass(state);
 
-    // Render component.
+    // Return the rendered content.
     return render(state);
   },
 );

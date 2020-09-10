@@ -232,7 +232,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: any, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
+export const useButtonClasses: (state: ButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
@@ -247,7 +247,7 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTML
 };
 
 // @public (undocumented)
-export const useCompoundButtonClasses: (state: any, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
+export const useCompoundButtonClasses: (state: CompoundButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider/lib/styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;

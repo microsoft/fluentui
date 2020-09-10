@@ -2,7 +2,7 @@ import './version';
 
 export * from './ThemeProvider';
 export * from './ThemeProvider.types';
-export * from './ThemeProvider.styles';
+export * from './useThemeProviderClasses';
 export * from './useThemeProvider';
 export * from './useThemeProviderState';
 

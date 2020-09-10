@@ -5,11 +5,12 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
+import { IFontFace } from '@uifabric/merge-styles';
+import { IKeyframes } from '@uifabric/merge-styles';
 import { IRawFontStyle } from '@uifabric/merge-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyle } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
-import { ITheme } from '@fluentui/theme';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';
@@ -35,9 +36,7 @@ export { IStyleFunctionOrObject }
 // Warning: (ae-forgotten-export) The symbol "StyleRenderer" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const makeClasses: <TStyleSet extends {
-    [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)) => (state: any, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
@@ -104,7 +103,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: any, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import("./styleRenderers/types").StyleRenderer | undefined) => void;
+export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import("./styleRenderers/types").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;

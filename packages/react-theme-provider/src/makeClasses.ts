@@ -1,5 +1,5 @@
 import { IStyle } from '@uifabric/merge-styles';
-import { ITheme, Theme } from '@fluentui/theme';
+import { Theme } from '@fluentui/theme';
 import { makeStyles } from './makeStyles';
 import { StyleRenderer } from './styleRenderers/types';
 
@@ -33,41 +33,42 @@ import { StyleRenderer } from './styleRenderers/types';
  * which matches the value in the className. for example, when the `size` enum value is `small`,
  * the "_size_small" enum class will be appended to the root className prop.
  */
-export const makeClasses = <TStyleSet extends { [key: string]: IStyle }>(
-  styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet),
+export const makeClasses = <TState extends {}>(
+  styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>),
 ) => {
   const useStyles = makeStyles(styleOrFunction);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (state: any, theme?: Theme, renderer?: StyleRenderer) => {
+  return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
     const classes = useStyles(theme, renderer);
-    const classNames = Object.keys(classes);
+    const slotNames = Object.keys(classes);
 
-    for (const className of classNames) {
+    for (const slotName of slotNames) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const value = (classes as any)[className];
+      const value = (classes as any)[slotName];
 
       // If the renderer returns non-classNames (like subComponentStyles), ignore.
       if (typeof value === 'string') {
-        const parts = className.split('_');
+        const parts = slotName.split('_');
 
         switch (parts.length) {
           case 1:
-            if (className === 'root') {
+            if (slotName === 'root') {
               _setClass(state, value);
             } else {
-              _setClass(state, value, className);
+              _setClass(state, value, slotName);
             }
             break;
 
           case 2:
-            if (state[parts[1]]) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if ((state as any)[parts[1]]) {
               _setClass(state, value);
             }
             break;
 
           case 3:
-            if (state[parts[1]] === parts[2]) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if ((state as any)[parts[1]] === parts[2]) {
               _setClass(state, value);
             }
             break;

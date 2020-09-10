@@ -1,5 +1,6 @@
-// :( todo: this needs to be ... removed or abstracted.
-import { Stylesheet, IStyle } from '@uifabric/merge-styles';
+// TODO: Move IStyle into a separate typing library
+import { IStyle } from '@uifabric/merge-styles';
+
 import { Theme } from '@fluentui/theme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { useTheme } from './useTheme';
@@ -38,11 +39,6 @@ const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
   graphNode.set(path[path.length - 1], value);
 };
 
-// TODO: this needs to be removed or abstracted.
-// If the stylesheet reset call is made, invalidate the cache keys.
-let _seed = 0;
-Stylesheet.getInstance().onReset(() => _seed++);
-
 /**
  * Registers a css object, optionally as a function of the theme.
  *
@@ -60,16 +56,16 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
 
     // Expected: theme is either always provided or never.
     theme = theme || useTheme();
-    renderer = renderer || useStyleRenderer();
+    renderer = (renderer || useStyleRenderer()) as StyleRenderer;
 
-    const path = theme ? [_seed, win, theme] : [_seed, win];
+    const id = renderer.getId();
+    const path = theme ? [id, win, theme] : [id, win];
     let value = graphGet(graph, path);
 
     if (!value) {
       const styles = typeof styleOrFunction !== 'function' ? styleOrFunction : styleOrFunction(theme);
 
       value = renderer.renderStyles(styles, { targetWindow: win!, rtl: !!theme.rtl });
-      // value = mergeStyleSets(styles);
       graphSet(graph, path, value);
     }
 

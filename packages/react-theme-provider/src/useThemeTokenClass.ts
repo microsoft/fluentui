@@ -3,9 +3,15 @@ import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { tokensToStyleObject } from './tokensToStyleObject';
 
-export const useThemeVariables = (state: ThemeProviderState) => {
+/**
+ * Give the tokens defined within the theme, create a className
+ * to append to the className on state. Memoizes the result to
+ * avoid re-computations.
+ */
+export const useThemeTokenClass = (state: ThemeProviderState) => {
   const { theme, renderer, className } = state;
-  const { tokens, rtl } = theme;
+  const { tokens, rtl = false } = theme;
+  const targetWindow = useWindow();
 
   state.className = React.useMemo<string>(
     () =>
@@ -14,11 +20,10 @@ export const useThemeVariables = (state: ThemeProviderState) => {
           tokens: [tokensToStyleObject(tokens), className],
         },
         {
-          rtl: !!rtl,
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          targetWindow: useWindow()!,
+          rtl,
+          targetWindow,
         },
       ).tokens,
-    [renderer, rtl, tokens, className],
+    [renderer, rtl, tokens, targetWindow, className],
   );
 };

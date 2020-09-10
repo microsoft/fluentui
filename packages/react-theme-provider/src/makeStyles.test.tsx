@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { makeStyles } from './makeStyles';
 import { Customizer } from '@uifabric/utilities';
 import { createTheme, loadTheme } from '@uifabric/styling';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { safeMount } from '@uifabric/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import { makeStyles } from './makeStyles';
+import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
+import { StyleRendererContext } from './styleRenderers/useStyleRenderer';
+import { ThemeProvider } from './ThemeProvider';
+
+const MergeStylesProvider = ({ children }: React.PropsWithChildren<{}>) => (
+  <StyleRendererContext.Provider value={mergeStylesRenderer}>{children}</StyleRendererContext.Provider>
+);
 
 describe('makeStyles', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -16,11 +23,17 @@ describe('makeStyles', () => {
     },
   }));
 
-  const ThemeStyledComponent = () => {
+  const ThemeStyledComponentInner = () => {
     const classes = useThemedStyles();
 
     return <div className={classes.root} />;
   };
+
+  const ThemeStyledComponent = () => (
+    <MergeStylesProvider>
+      <ThemeStyledComponentInner />
+    </MergeStylesProvider>
+  );
 
   const useStaticStyles = makeStyles({
     root: {
@@ -28,11 +41,17 @@ describe('makeStyles', () => {
     },
   });
 
-  const StaticStyledComponent = () => {
+  const StaticStyledComponentInner = () => {
     const classes = useStaticStyles();
 
     return <div className={classes.root} />;
   };
+
+  const StaticStyledComponent = () => (
+    <MergeStylesProvider>
+      <StaticStyledComponentInner />
+    </MergeStylesProvider>
+  );
 
   beforeEach(() => {
     stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -84,16 +103,20 @@ describe('makeStyles', () => {
     let wrapper: ReactWrapper;
 
     act(() => {
-      wrapper = mount(<ThemeStyledComponent />);
+      wrapper = mount(
+        <ThemeProvider>
+          <ThemeStyledComponent />
+        </ThemeProvider>,
+      );
     });
 
-    expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}');
+    const rules = stylesheet.getRules();
 
     act(() => {
       loadTheme(createTheme({ palette: { themePrimary: 'red' } }));
     });
 
-    expect(stylesheet.getRules()).toEqual('.root-0{background:#0078d4;}.root-1{background:red;}');
+    expect(stylesheet.getRules()).not.toEqual(rules);
 
     wrapper!.unmount();
   });

@@ -1,7 +1,21 @@
 import { StyleRenderer } from './types';
-import { mergeCssSets, fontFace as mergeFontFace, keyframes as mergeKeyframes } from '@uifabric/merge-styles';
+import {
+  Stylesheet,
+  mergeCssSets,
+  fontFace as mergeFontFace,
+  keyframes as mergeKeyframes,
+} from '@uifabric/merge-styles';
+
+let _seed = 0;
 
 export const mergeStylesRenderer: StyleRenderer = {
+  reset: () => {
+    // If the stylesheet reset call is made, invalidate the cache keys.
+    Stylesheet.getInstance().onReset(() => _seed++);
+  },
+
+  getId: () => _seed,
+
   renderStyles: (styleSet, options) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return mergeCssSets([styleSet as any], options) as any;
