@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "@uifabric/charting_v3.6.2",
+      "version": "3.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue when we focus on charts in IE",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d0bdb5b1f6dae8c39be8ef012f70c3a5688a10f0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Sep 2020 12:24:19 GMT",
       "tag": "@uifabric/charting_v3.6.0",
       "version": "3.6.0",
