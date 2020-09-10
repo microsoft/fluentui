@@ -60,9 +60,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="list"
+          role="tablist"
         >
           <li
+            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -71,7 +72,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="listitem"
+            role="tab"
           >
             <div
               className=
@@ -214,6 +215,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
             </div>
           </li>
           <li
+            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -222,7 +224,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="listitem"
+            role="tab"
           >
             <div
               className=
@@ -399,9 +401,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="list"
+          role="tablist"
         >
           <li
+            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -410,7 +413,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="listitem"
+            role="tab"
           >
             <div
               className=
@@ -553,6 +556,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
             </div>
           </li>
           <li
+            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -561,7 +565,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="listitem"
+            role="tab"
           >
             <div
               className=
