@@ -5,6 +5,7 @@ exports[`Button renders a default state 1`] = `
   className=
       ms-Button
       {
+        -webkit-font-smoothing: antialiased;
         align-items: center;
         background: var(--button-background, white);
         border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
@@ -27,6 +28,7 @@ exports[`Button renders a default state 1`] = `
         font-weight: var(--button-fontWeight);
         height: var(--button-height);
         justify-content: center;
+        max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
         min-width: var(--button-minWidth, 80);
         outline: none;
@@ -39,7 +41,7 @@ exports[`Button renders a default state 1`] = `
         transition: var(--button-transition);
         user-select: none;
         vertical-align: middle;
-        white-space: var(--button-whiteSpace, nowrap);
+        white-space: var(--button-whiteSpace);
         width: var(--button-width);
       }
       .ms-Fabric--isFocusVisible &:focus::after {
@@ -97,6 +99,7 @@ exports[`Button renders a default state 1`] = `
     className=
 
         {
+          flex-grow: 1;
           line-height: 1;
         }
   >
@@ -110,6 +113,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
   className=
       ms-Button
       {
+        -webkit-font-smoothing: antialiased;
         align-items: center;
         background: var(--button-background, white);
         border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
@@ -132,6 +136,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         font-weight: var(--button-fontWeight);
         height: var(--button-height);
         justify-content: center;
+        max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
         min-width: var(--button-minWidth, 80);
         outline: none;
@@ -144,7 +149,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         transition: var(--button-transition);
         user-select: none;
         vertical-align: middle;
-        white-space: var(--button-whiteSpace, nowrap);
+        white-space: var(--button-whiteSpace);
         width: var(--button-width);
       }
       .ms-Fabric--isFocusVisible &:focus::after {
@@ -204,6 +209,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
     className=
 
         {
+          flex-grow: 1;
           line-height: 1;
         }
   >
