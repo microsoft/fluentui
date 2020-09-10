@@ -9,6 +9,9 @@ export const config: BeachballConfig = {
       disallowedChangeTypes: ['major'],
     },
   ],
+  // This prevents accidental major changes. You can manually do a major change by selecting
+  // "minor" on the command line and then changing it to "major" by editing the change file.
+  disallowedChangeTypes: ['major'],
   changelog: {
     customRenderers: {
       renderHeader,
