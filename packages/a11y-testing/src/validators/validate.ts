@@ -20,7 +20,7 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
       testFacade.pressEnterKey(slot.name);
     }
 
-    if (slot.wasOnclickExecuted) {
+    if (slot.checkOnClickWasExecuted) {
       if (!testFacade.verifyOnclickExecution(slot.name)) {
         throw new Error(`Onclick was not called.`);
       }

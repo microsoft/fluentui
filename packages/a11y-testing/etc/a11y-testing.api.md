@@ -4,7 +4,10 @@
 
 ```ts
 
+import { Props as Props_2 } from '@fluentui/a11y-testing';
+import { PropValue as PropValue_2 } from '@fluentui/a11y-testing';
 import * as React from 'react';
+import { TestFacade as TestFacade_2 } from '@fluentui/a11y-testing';
 
 // @public (undocumented)
 export type AccessibilityBehavior = (props: Props) => any;
@@ -18,42 +21,27 @@ export class BehaviorRule {
 }
 
 // @public (undocumented)
-export class ComponentTestFacade implements TestFacade {
-    constructor(Component: React.FC, props: Props);
+export class ComponentTestFacade implements TestFacade_2 {
+    constructor(Component: React.FC, props?: Props_2);
     // (undocumented)
     afterClick(selector: string): void;
-    // (undocumented)
-    afterEvent(selector: string, eventName: string, event: Event): void;
     // (undocumented)
     attributeExists(selector: string, attributeName: string): boolean;
     // (undocumented)
-    attributeHasValue(selector: string, attributeName: string, value: PropValue): boolean;
+    attributeHasValue(selector: string, attributeName: string, value: PropValue_2): boolean;
     // (undocumented)
-    forProps: (props: Props) => ComponentTestFacade;
+    forProps: (props: Props_2) => TestFacade_2;
     // (undocumented)
     getAttributeValue: (selector: string, attributeName: string) => any;
     // (undocumented)
+    pressEnterKey(selector: string): void;
+    // (undocumented)
+    pressSpaceKey(selector: string): void;
+    // (undocumented)
     slotExists(selector: string): boolean;
+    // (undocumented)
+    verifyOnclickExecution: (selector: string) => boolean;
 }
-
-// @public (undocumented)
-export class HookTestFacade implements TestFacade {
-    constructor(hook: Function, props: Props);
-    // (undocumented)
-    afterClick(selector: string): void;
-    // (undocumented)
-    afterEvent: (slotName: string, eventName: string, event: Event) => void;
-    // (undocumented)
-    attributeExists(slotName: string, attributeName: string): boolean;
-    // (undocumented)
-    attributeHasValue(slotName: string, attributeName: string, value: PropValue): boolean;
-    // (undocumented)
-    forProps: (props: Props) => HookTestFacade;
-    // (undocumented)
-    getAttributeValue: (slotName: string, attribute: string) => any;
-    // (undocumented)
-    slotExists(slotName: string): boolean;
-    }
 
 // @public (undocumented)
 export type Props = {
@@ -72,13 +60,15 @@ export interface Rule {
 // @public (undocumented)
 export interface Slot {
     // (undocumented)
-    afterEvent: string;
-    // (undocumented)
     afterEventData: Event;
     // (undocumented)
     checkClick: boolean;
     // (undocumented)
-    checkEvent: boolean;
+    checkEnterKeyPressed: boolean;
+    // (undocumented)
+    checkOnClickWasExecuted: boolean;
+    // (undocumented)
+    checkSpaceKeyPressed: boolean;
     // (undocumented)
     description: string;
     // (undocumented)
@@ -101,8 +91,6 @@ export class SlotRule implements Rule {
     // (undocumented)
     afterClick: () => this;
     // (undocumented)
-    afterEvent: (eventName: string, event: Event) => this;
-    // (undocumented)
     description: (description: string) => this;
     // (undocumented)
     doesNotHaveAttribute: (expectedAttribute: string) => this;
@@ -111,19 +99,23 @@ export class SlotRule implements Rule {
     // (undocumented)
     getData: () => Slot;
     // (undocumented)
-    hasAttribute: (expectedAttribute: string, expectedValue: PropValue) => this;
+    hasAttribute: (expectedAttribute: string, expectedValue?: PropValue) => this;
     // (undocumented)
     hide: () => this;
     // (undocumented)
+    pressEnterKey: () => this;
+    // (undocumented)
+    pressSpaceKey: () => this;
+    // (undocumented)
     stringify: () => string;
-    }
+    // (undocumented)
+    verifyOnclickExecution: () => this;
+}
 
 // @public (undocumented)
 export interface TestFacade {
     // (undocumented)
     afterClick(slotName: string): void;
-    // (undocumented)
-    afterEvent(slotName: string, eventName: string, event: Event): void;
     // (undocumented)
     attributeExists(slotName: string, attributeName: string): boolean;
     // (undocumented)
@@ -133,7 +125,13 @@ export interface TestFacade {
     // (undocumented)
     getAttributeValue(slotName: string, attribute: string): PropValue;
     // (undocumented)
+    pressEnterKey(slotName: string): void;
+    // (undocumented)
+    pressSpaceKey(slotName: string): void;
+    // (undocumented)
     slotExists(slotName: string): boolean;
+    // (undocumented)
+    verifyOnclickExecution(slotName: string): boolean;
 }
 
 // @public (undocumented)

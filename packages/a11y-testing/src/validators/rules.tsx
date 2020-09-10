@@ -28,7 +28,7 @@ export class SlotRule implements Rule {
   };
 
   public verifyOnclickExecution = () => {
-    this.data.wasOnclickExecuted = true;
+    this.data.checkOnClickWasExecuted = true;
     return this;
   };
 
