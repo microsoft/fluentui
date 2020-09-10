@@ -1,5 +1,8 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle } from '../../Utilities';
+import { IRectangle, Point } from '../../Utilities';
+
+// eslint-disable-next-line deprecation/deprecation
+export { Point, IPoint } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
@@ -14,8 +17,16 @@ export enum Position {
   start = 2,
   end = 3,
 }
+
+/**
+ * Window with typings for experimental features regarding Dual Screen devices.
+ */
+export interface IWindowWithSegments extends Window {
+  getWindowSegments?: () => DOMRect[];
+}
+
 export interface IPositionProps {
-  target?: Element | MouseEvent | IPoint;
+  target?: Element | MouseEvent | Point;
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
   /**
@@ -99,18 +110,6 @@ export interface IPosition {
   right?: number;
   [key: string]: number | undefined;
 }
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface Point {
-  left?: number;
-  top?: number;
-  /** @deprecated Use `left` instead */
-  x?: number;
-  /** @deprecated Use `top` instead */
-  y?: number;
-}
-
-export interface IPoint extends Point {}
 
 export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;

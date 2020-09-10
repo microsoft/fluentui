@@ -1,42 +1,28 @@
 import * as React from 'react';
-import {
-  warnDeprecations,
-  initializeComponentRef,
-  classNamesFunction,
-  css,
-  format,
-  getId,
-  divProperties,
-  getNativeProps,
-} from '../../Utilities';
+import { classNamesFunction, css, format, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRating } from './Rating.types';
+import { useId, useWarnings, useControllableValue } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 
-interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
+interface IRatingStarProps {
   fillPercentage: number;
   disabled?: boolean;
-  readOnly?: boolean;
   classNames: IProcessedStyleSet<IRatingStyles>;
-  icon?: string;
-}
-
-export interface IRatingState {
-  rating: number | null | undefined;
+  icon: string;
 }
 
 const RatingStar = (props: IRatingStarProps) => {
-  const icon = props.icon || 'FavoriteStarFill';
   return (
-    <div className={props.classNames.ratingStar} key={props.id}>
-      <Icon className={props.classNames.ratingStarBack} iconName={icon} />
+    <div className={props.classNames.ratingStar}>
+      <Icon className={props.classNames.ratingStarBack} iconName={props.icon} />
       {!props.disabled && (
         <Icon
           className={props.classNames.ratingStarFront}
-          iconName={icon}
+          iconName={props.icon}
           style={{ width: props.fillPercentage + '%' }}
         />
       )}
@@ -44,209 +30,161 @@ const RatingStar = (props: IRatingStarProps) => {
   );
 };
 
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-  public static defaultProps: IRatingProps = {
-    min: 1,
-    max: 5,
-  };
-  private _id: string;
-  private _min: number;
-  private _labelId: string;
-  private _classNames: IProcessedStyleSet<IRatingStyles>;
+const useComponentRef = (componentRef: React.Ref<IRating> | undefined, rating: number) => {
+  React.useImperativeHandle(
+    componentRef,
+    () => ({
+      rating,
+    }),
+    [rating],
+  );
+};
 
-  constructor(props: IRatingProps) {
-    super(props);
+const useDebugWarnings = (props: IRatingProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Rating',
+      props,
+      controlledUsage: {
+        valueProp: 'rating',
+        defaultValueProp: 'defaultRating',
+        onChangeProp: 'onChange',
+        readOnlyProp: 'readOnly',
+      },
+    });
+  }
+};
 
-    initializeComponentRef(this);
+const getClampedRating = (rating: number | undefined, min: number, max: number): number => {
+  return Math.min(Math.max(rating ?? min, min), max);
+};
 
-    warnDeprecations('Rating', props, { onChanged: 'onChange' });
+const getFillingPercentage = (starNum: number, displayRating: number): number => {
+  const ceilValue = Math.ceil(displayRating);
+  let fillPercentage = 100;
 
-    this._id = getId('Rating');
-    this._min = this.props.allowZeroStars ? 0 : 1;
-    /* eslint-disable deprecation/deprecation */
-    if (this.props.min !== undefined && this.props.min !== 1) {
-      this._min = this.props.min;
-    }
-    /* eslint-enable deprecation/deprecation */
-    this._labelId = getId('RatingLabel');
+  if (starNum === displayRating) {
+    fillPercentage = 100;
+  } else if (starNum === ceilValue) {
+    fillPercentage = 100 * (displayRating % 1);
+  } else if (starNum > ceilValue) {
+    fillPercentage = 0;
+  }
+  return fillPercentage;
+};
 
-    this.state = {
-      rating: this._getInitialValue(props),
+const getStarId = (id: string, starNum: number) => {
+  return `${id}-star-${starNum - 1}`;
+};
+
+export const RatingBase = React.forwardRef<HTMLDivElement, IRatingProps>((props, ref) => {
+  const id = useId('Rating');
+  const labelId = useId('RatingLabel');
+  const {
+    ariaLabelFormat,
+    disabled,
+    getAriaLabel,
+    styles,
+    // eslint-disable-next-line deprecation/deprecation
+    min: minFromProps = props.allowZeroStars ? 0 : 1,
+    max = 5,
+    readOnly,
+    size,
+    theme,
+    icon = 'FavoriteStarFill',
+    unselectedIcon = 'FavoriteStar',
+  } = props;
+
+  // Ensure min is >= 0 to avoid issues elsewhere
+  const min = Math.max(minFromProps, 0);
+
+  const [rating, setRating] = useControllableValue(props.rating, props.defaultRating, props.onChange);
+  /** Rating clamped within valid range. Will be `min` if `rating` is undefined. */
+  const displayRating = getClampedRating(rating, min, max);
+
+  useDebugWarnings(props);
+
+  useComponentRef(props.componentRef, displayRating);
+
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+
+  const classNames = getClassNames(styles!, {
+    disabled,
+    readOnly,
+    theme: theme!,
+  });
+
+  const ariaLabel = getAriaLabel?.(displayRating, max);
+
+  const stars: JSX.Element[] = [];
+
+  for (let starNum = 1; starNum <= max; starNum++) {
+    const fillPercentage = getFillingPercentage(starNum, displayRating);
+
+    const onSelectStar = (ev: React.SyntheticEvent<HTMLElement>): void => {
+      // Use the actual rating (not display value) here, to ensure that we update if the actual
+      // rating is undefined and the user clicks the first star.
+      if (rating === undefined || Math.ceil(rating) !== starNum) {
+        setRating(starNum, ev);
+      }
     };
+
+    stars.push(
+      <button
+        className={css(
+          classNames.ratingButton,
+          size === RatingSize.Large ? classNames.ratingStarIsLarge : classNames.ratingStarIsSmall,
+        )}
+        id={getStarId(id, starNum)}
+        key={starNum}
+        {...(starNum === Math.ceil(displayRating) && { 'data-is-current': true })}
+        onFocus={onSelectStar}
+        onClick={onSelectStar} // For Safari & Firefox on OSX
+        disabled={!!(disabled || readOnly)}
+        role="presentation"
+        type="button"
+      >
+        <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
+          {format(ariaLabelFormat || '', starNum, max)}
+        </span>
+        <RatingStar
+          fillPercentage={fillPercentage}
+          disabled={disabled}
+          classNames={classNames}
+          icon={fillPercentage > 0 ? icon : unselectedIcon}
+        />
+      </button>,
+    );
   }
 
-  public render(): JSX.Element {
-    const {
-      disabled,
-      getAriaLabel,
-      styles,
-      max,
-      readOnly,
-      size,
-      theme,
-      icon = 'FavoriteStarFill',
-      unselectedIcon = 'FavoriteStar',
-    } = this.props;
+  const rootSizeClass = size === RatingSize.Large ? classNames.rootIsLarge : classNames.rootIsSmall;
 
-    const id = this._id;
-    const stars = [];
-    const starIds = [];
-    const rating = this._getRating();
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-
-    this._classNames = getClassNames(styles!, {
-      disabled,
-      readOnly,
-      theme: theme!,
-    });
-
-    for (let i = this._min as number; i <= (max as number); i++) {
-      if (i !== 0) {
-        const fillPercentage = this._getFillingPercentage(i);
-        const ratingStarProps: IRatingStarProps = {
-          fillPercentage,
-          disabled,
-          classNames: this._classNames,
-          icon: fillPercentage > 0 ? icon : unselectedIcon,
-        };
-
-        starIds.push(this._getStarId(i - 1));
-
-        stars.push(
-          <button
-            className={css(this._classNames.ratingButton, {
-              [this._classNames.ratingStarIsLarge]: size === RatingSize.Large,
-              [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large,
-            })}
-            id={starIds[i - 1]}
-            key={i}
-            {...(i === Math.ceil(rating) ? { 'data-is-current': true } : {})}
-            onFocus={this._onFocus.bind(this, i)}
-            onClick={this._onFocus.bind(this, i)} // For Safari & Firefox on OSX
-            disabled={disabled || readOnly ? true : false}
-            role="presentation"
-            type="button"
-          >
-            {this._getLabel(i)}
-            <RatingStar key={i + 'rating'} {...ratingStarProps} />
-          </button>,
-        );
-      }
-    }
-
-    const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : undefined;
-
-    // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element
-    // is read-only. https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
-    const readOnlyProps: IFocusZoneProps | undefined = readOnly
-      ? ({
+  return (
+    <div
+      ref={ref}
+      className={css('ms-Rating-star', classNames.root, rootSizeClass)}
+      aria-label={!readOnly ? ariaLabel : ''}
+      id={id}
+      {...divProps}
+    >
+      <FocusZone
+        direction={FocusZoneDirection.horizontal}
+        className={css(classNames.ratingFocusZone, rootSizeClass)}
+        defaultActiveElement={'#' + getStarId(id, Math.ceil(displayRating))}
+        // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element
+        // is read-only. https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
+        {...(readOnly && {
           allowFocusRoot: true,
           disabled: true,
           'aria-label': ariaLabel,
           'aria-readonly': true,
           'data-is-focusable': true,
           tabIndex: 0,
-        } as IFocusZoneProps)
-      : undefined;
-
-    return (
-      <div
-        className={css('ms-Rating-star', this._classNames.root, {
-          [this._classNames.rootIsLarge]: size === RatingSize.Large,
-          [this._classNames.rootIsSmall]: size !== RatingSize.Large,
         })}
-        aria-label={!readOnly ? ariaLabel : ''}
-        id={id}
-        {...divProps}
       >
-        <FocusZone
-          direction={FocusZoneDirection.horizontal}
-          className={css(this._classNames.ratingFocusZone, {
-            [this._classNames.rootIsLarge]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall]: size !== RatingSize.Large,
-          })}
-          defaultActiveElement={
-            rating ? starIds[Math.ceil(rating) - 1] && '#' + starIds[Math.ceil(rating) - 1] : undefined
-          }
-          {...readOnlyProps}
-        >
-          {stars}
-        </FocusZone>
-      </div>
-    );
-  }
-
-  private _getStarId(index: number): string {
-    return this._id + '-star-' + index;
-  }
-
-  private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    if (Math.ceil(this.state.rating!) !== value) {
-      this.setState({
-        rating: value,
-      } as IRatingState);
-
-      // eslint-disable-next-line deprecation/deprecation
-      const { onChange, onChanged } = this.props;
-
-      if (onChange) {
-        onChange(ev, value);
-      }
-
-      if (onChanged) {
-        onChanged(value);
-      }
-    }
-  }
-
-  private _getLabel(rating: number): JSX.Element {
-    const text = this.props.ariaLabelFormat || '';
-
-    return (
-      <span id={`${this._labelId}-${rating}`} className={this._classNames.labelText}>
-        {format(text, rating, this.props.max)}
-      </span>
-    );
-  }
-
-  private _getInitialValue(props: IRatingProps): number | undefined {
-    if (typeof props.rating === 'undefined') {
-      return this._min;
-    }
-
-    if (props.rating === null) {
-      return undefined;
-    }
-
-    return this._getClampedRating(props.rating);
-  }
-
-  private _getClampedRating(rating: number): number {
-    return Math.min(Math.max(rating, this._min as number), this.props.max as number);
-  }
-
-  private _getRating(): number {
-    if (this.props.rating !== undefined) {
-      return this._getClampedRating(this.props.rating);
-    }
-    if (this.state.rating !== undefined && this.state.rating !== null) {
-      return this._getClampedRating(this.state.rating);
-    }
-    return 0;
-  }
-
-  private _getFillingPercentage(starPosition: number): number {
-    const rating = this._getRating();
-    const ceilValue = Math.ceil(rating as number);
-    let fillPercentage = 100;
-
-    if (starPosition === rating) {
-      fillPercentage = 100;
-    } else if (starPosition === ceilValue) {
-      fillPercentage = 100 * ((rating as number) % 1);
-    } else if (starPosition > ceilValue) {
-      fillPercentage = 0;
-    }
-    return fillPercentage;
-  }
-}
+        {stars}
+      </FocusZone>
+    </div>
+  );
+});

@@ -132,7 +132,6 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     </span>
   );
 });
-
 LayerBase.displayName = 'LayerBase';
 
 let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };

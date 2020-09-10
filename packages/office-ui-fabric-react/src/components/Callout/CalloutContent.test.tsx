@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CalloutContentBase } from './CalloutContent.base';
 import { mount } from 'enzyme';
-import { Rectangle } from '../../utilities/positioning';
+import { Rectangle } from '../../Utilities';
 
 describe('CalloutContentBase', () => {
   it('Ensure callout content updates when needed', () => {
