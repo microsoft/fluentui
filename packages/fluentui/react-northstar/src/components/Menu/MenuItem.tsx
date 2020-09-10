@@ -340,7 +340,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
       performClick(e);
 
-      _.invoke({ onClick: parentProps.onItemSelect, ...props }, 'onClick', e, props);
+      _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemSelect', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -481,7 +482,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       },
       onClick: (e: React.MouseEvent) => {
         handleClick(e);
-        _.invoke(predefinedProps, 'onClick', e, props);
+        // _.invoke(predefinedProps, 'onClick', e, props);
       },
       ...(on === 'hover' && {
         onMouseEnter: e => {
