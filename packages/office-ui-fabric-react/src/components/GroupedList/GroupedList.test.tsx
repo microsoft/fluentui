@@ -39,7 +39,7 @@ describe('GroupedList', () => {
         children: [],
       },
     ];
-    //
+
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
       return (
         <DetailsRow
