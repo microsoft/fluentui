@@ -8,9 +8,20 @@ import {
   useUnhandledProps,
   getElementType,
   childrenExist,
+  ShorthandConfig,
+  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import {
+  commonPropTypes,
+  UIComponentProps,
+  ContentComponentProps,
+  ChildrenComponentProps,
+  ShorthandFactory,
+  createShorthandFactory,
+} from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
+import { BreadcrumbItem } from './BreadcrumbItem';
+import { BreadcrumbDivider } from './BreadcrumbDivider';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
@@ -77,10 +88,23 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     displayName: 'Breadcrumb',
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
-);
+) as ComponentWithAs<'nav', BreadcrumbProps> & {
+  create: ShorthandFactory<BreadcrumbProps>;
+  shorthandConfig: ShorthandConfig<BreadcrumbProps>;
+
+  Item: typeof BreadcrumbItem;
+  Divider: typeof BreadcrumbDivider;
+};
 
 Breadcrumb.defaultProps = {
   as: 'nav',
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();
+
+Breadcrumb.Item = BreadcrumbItem;
+Breadcrumb.Divider = BreadcrumbDivider;
+
+Breadcrumb.create = createShorthandFactory({
+  Component: Breadcrumb,
+});

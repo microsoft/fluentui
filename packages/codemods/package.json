@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/codemods",
-  "version": "0.11.4",
+  "version": "0.11.6",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "@uifabric/build": "^7.0.0",
     "@types/react": "16.8.25",
     "@types/semver": "^5.5.0",
-    "office-ui-fabric-react": "^7.134.3"
+    "office-ui-fabric-react": "^7.137.0"
   },
   "dependencies": {
     "tslib": "^1.10.0",

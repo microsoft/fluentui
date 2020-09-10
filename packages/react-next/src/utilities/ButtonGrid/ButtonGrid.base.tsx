@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
+import { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 import { useId } from '@uifabric/react-hooks';
-const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) => {
+const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
+
+export const ButtonGridBase = React.forwardRef<HTMLElement, IButtonGridProps>((props, ref) => {
   const id = useId(undefined, props.id);
 
   const {
@@ -60,7 +61,6 @@ export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) =
     </table>
   );
 
-  // Create the table/grid
   return doNotContainWithinFocusZone ? (
     content
   ) : (

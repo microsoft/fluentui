@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Area chart re design and updated Cartesian (removed reRenderProp method from Cartesian as it only uses for area chart previously. Now code udpated, so no need of that method.)",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-04T05:53:43.741Z"
-}
