@@ -265,6 +265,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         hasMenu: !!menu,
         disabled,
         vertical,
+        active, // for tabBehavior
       }),
       rtl: context.rtl,
     });
