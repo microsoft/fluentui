@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@uifabric/merge-styles/lib/Stylesheet';
 import { JSONTreeElement } from '../components/types';
 
 /**

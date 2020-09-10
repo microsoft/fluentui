@@ -1384,6 +1384,15 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/react@^7.137.0":
+  version "7.137.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react/-/react-7.137.0.tgz#15f3ee50cb0a96617bdd42984c0c7b9dc5d2db20"
+  integrity sha512-JsPtbzf+5lN+hq7cP0mQBK4xDSJ/fichvs7VOiiMoo/KAjxAqFJxmi+j35Soto1KIfrIcVFZeBb3T0ZRFPZCeA==
+  dependencies:
+    "@uifabric/set-version" "^7.0.22"
+    office-ui-fabric-react "^7.137.0"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -17856,6 +17865,26 @@ office-ui-fabric-core@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/office-ui-fabric-core/-/office-ui-fabric-core-11.0.0.tgz#73f43c8d1bd40e87971c7cda0ff1aa7bfa246410"
   integrity sha512-K6+KGnBXXjfSxxZpp+4oDXVLgUc//7OnXrn8F08VoJnGhEz27WUf4ZuMa32SjGoqirWlb4JlKkXbOpC9cis6dQ==
+
+office-ui-fabric-react@^7.137.0:
+  version "7.137.0"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-7.137.0.tgz#4aec104e57b40a323d171296327acc0ab157caf3"
+  integrity sha512-FOm5hI7tc1+/fhHJ1z+HEVdPnf3PIo/0MZ8mrT6yEsirQFY6IuyqmgWZrDG0KF4q0GUCqg4jle34KxL3g91Qog==
+  dependencies:
+    "@fluentui/date-time-utilities" "^7.8.0"
+    "@fluentui/react-focus" "^7.16.0"
+    "@fluentui/react-icons" "^0.3.0"
+    "@fluentui/react-window-provider" "^0.3.0"
+    "@microsoft/load-themed-styles" "^1.10.26"
+    "@uifabric/foundation" "^7.9.0"
+    "@uifabric/icons" "^7.5.0"
+    "@uifabric/merge-styles" "^7.18.0"
+    "@uifabric/react-hooks" "^7.12.0"
+    "@uifabric/set-version" "^7.0.22"
+    "@uifabric/styling" "^7.16.0"
+    "@uifabric/utilities" "^7.31.0"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
 
 on-finished@~2.3.0:
   version "2.3.0"
