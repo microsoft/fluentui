@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Props, PropValue, TestFacade } from '@fluentui/a11y-testing';
-import { mountWithProviderAndGetComponent } from './withProvider';
+import { mount } from 'enzyme';
 
 export class ComponentTestFacade implements TestFacade {
   private actual: any;
@@ -22,7 +22,7 @@ export class ComponentTestFacade implements TestFacade {
     this.actual = container.lastChild;
 
     // we need to render it in this way because using simulate function to fire mouse/keyboard event
-    this.renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />);
+    this.renderedComponent = mount(<Component {...props} />).find(Component);
   }
 
   public slotExists(selector: string) {
