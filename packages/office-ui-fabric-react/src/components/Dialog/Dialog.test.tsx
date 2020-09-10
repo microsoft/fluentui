@@ -56,7 +56,6 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
-    disabledTests: ['component-has-displayname'],
   });
 
   it('Fires dismissed after closing', () => {

@@ -109,7 +109,8 @@ describe('SelectionZone - disabled touch targets', () => {
   isConformant({
     Component: SelectionZone,
     displayName: 'SelectionZone',
-    disabledTests: [`component-renders`, `has-top-level-file`],
+    requiredProps: { selection: new Selection() },
+    disabledTests: [`has-top-level-file`],
   });
 
   it('toggles an item on click of toggle element', () => {

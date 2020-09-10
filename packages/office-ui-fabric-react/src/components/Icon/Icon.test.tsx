@@ -51,6 +51,5 @@ describe('Icon', () => {
   isConformant({
     Component: Icon,
     displayName: 'Icon',
-    disabledTests: ['component-has-displayname'],
   });
 });

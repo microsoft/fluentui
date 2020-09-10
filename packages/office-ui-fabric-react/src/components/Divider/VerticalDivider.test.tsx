@@ -5,6 +5,6 @@ describe('VerticalDivider', () => {
   isConformant({
     Component: VerticalDivider,
     displayName: 'VerticalDivider',
-    disabledTests: ['has-top-level-file', 'component-has-displayname'],
+    disabledTests: ['has-top-level-file'],
   });
 });

@@ -5,6 +5,5 @@ describe('Separator', () => {
   isConformant({
     Component: Separator,
     displayName: 'Separator',
-    disabledTests: ['component-has-displayname'],
   });
 });

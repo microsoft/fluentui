@@ -143,7 +143,13 @@ describe('Pickers', () => {
     isConformant({
       Component: BaseExtendedPicker,
       displayName: 'BaseExtendedPicker',
-      disabledTests: ['component-renders', 'has-top-level-file'],
+      requiredProps: {
+        floatingPickerProps: floatingPickerProps,
+        selectedItemsListProps: selectedItemsListProps,
+        onRenderSelectedItems: basicRenderSelectedItemsList,
+        onRenderFloatingPicker: basicRenderFloatingPicker,
+      },
+      disabledTests: ['has-top-level-file'],
     });
 
     it('force resolves to the first suggestion', () => {

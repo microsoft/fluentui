@@ -108,7 +108,12 @@ describe('Suggestions', () => {
   isConformant({
     Component: Suggestions,
     displayName: 'Suggestions',
-    disabledTests: ['has-top-level-file', 'component-renders'],
+    requiredProps: {
+      onRenderSuggestion: basicSuggestionRenderer,
+      onSuggestionClick: mockOnClick,
+      suggestions: generateSimpleSuggestions(),
+    },
+    disabledTests: ['has-top-level-file'],
   });
 
   it('hasSuggestedAction is true when action provided', () => {

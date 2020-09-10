@@ -18,7 +18,12 @@ describe('GroupedList', () => {
     Component: GroupedList,
     displayName: 'GroupedList',
     componentPath: path.join(__dirname, 'GroupedList.ts'),
-    disabledTests: ['component-renders'],
+    requiredProps: {
+      items: [],
+      onRenderCell: () => {
+        return <div />;
+      },
+    },
   });
 
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
@@ -34,7 +39,7 @@ describe('GroupedList', () => {
         children: [],
       },
     ];
-
+    //
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
       return (
         <DetailsRow
