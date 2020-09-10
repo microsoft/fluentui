@@ -3,7 +3,6 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
-
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {

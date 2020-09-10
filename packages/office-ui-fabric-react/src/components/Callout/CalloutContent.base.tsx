@@ -346,6 +346,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
   }
 
+  private _dismissOnTargetWindowBlur = (ev: FocusEvent) => {
+    const { preventDismissOnLostFocus } = this.props;
+    if (!preventDismissOnLostFocus && !this._targetWindow.document.hasFocus() && ev.relatedTarget === null) {
+      this.dismiss(ev);
+    }
+  };
+
   private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
@@ -357,6 +364,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
         on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
         on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true),
+        on(this._targetWindow, 'blur', this._dismissOnTargetWindowBlur, true),
       );
       this._hasListeners = true;
     }, 0);

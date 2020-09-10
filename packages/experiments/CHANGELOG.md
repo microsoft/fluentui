@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 31 Aug 2020 12:25:46 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.1..@uifabric/experiments_v7.32.4)
+
+### Patches
+
+- Fix bug where drop insert function can be called twice ([PR #14865](https://github.com/microsoft/fluentui/pull/14865) by elvonspa@microsoft.com)
 
 ## [7.32.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.1)
 
