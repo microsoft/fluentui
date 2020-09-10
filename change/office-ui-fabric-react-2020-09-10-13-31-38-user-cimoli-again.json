@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "change roles for nav items to tab to use aria-selected",
+  "packageName": "office-ui-fabric-react",
+  "email": "cimoli@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-10T20:31:37.999Z"
+}
