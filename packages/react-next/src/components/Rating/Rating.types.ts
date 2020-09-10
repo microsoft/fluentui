@@ -5,13 +5,16 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 /**
  * {@docCategory Rating}
  */
-export interface IRating {}
+export interface IRating {
+  /** Current displayed rating value. Will be `min` if the user has not yet set a rating. */
+  rating: number;
+}
 
 /**
  * Rating component props.
  * {@docCategory Rating}
  */
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IRating interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -19,66 +22,75 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<IRating>;
 
   /**
-   * Selected rating, has to be an integer between min and max
+   * Current rating. Must be a number between `min` and `max`. Only provide this if the Rating
+   * is a controlled component where you are maintaining its current state; otherwise, use the
+   * `defaultRating` property.
    */
   rating?: number;
 
   /**
-   * Minimum rating, defaults to 1, has to be \>= 0
-   * @deprecated No longer used.
+   * Default rating. Must be a number between `min` and `max`. Only provide this if the Rating
+   * is an uncontrolled component; otherwise, use the `rating` property.
+   */
+  defaultRating?: number;
+
+  /**
+   * Minimum rating. Must be \>= 0.
+   * @defaultvalue 0 if `allowZeroStars` is true, 1 otherwise
+   * @deprecated Use `allowZeroStars` instead.
    */
   min?: number;
 
   /**
-   * Maximum rating, defaults to 5, has to be \>= min
+   * Maximum rating. Must be \>= `min`.
+   * @defaultvalue 5
    */
   max?: number;
 
   /**
-   * Allow the rating value to be set to 0 instead of a minimum of 1.
+   * Allow the initial rating value (or updated values passed in through `rating`) to be 0.
+   * Note that a value of 0 still won't be selectable by mouse or keyboard.
    */
   allowZeroStars?: boolean;
 
   /**
-   * Custom icon
+   * Whether the control should be disabled.
+   */
+  disabled?: boolean;
+
+  /**
+   * Custom icon name for selected rating elements.
    * @defaultvalue FavoriteStarFill
    */
   icon?: string;
 
   /**
-   * Custom icon for unselected rating elements.
+   * Custom icon name for unselected rating elements.
    * @defaultvalue FavoriteStar
    */
   unselectedIcon?: string;
 
   /**
-   * Size of rating, defaults to small
+   * Size of rating
+   * @defaultvalue Small
    */
   size?: RatingSize;
 
   /**
-   * Callback issued when the rating changes.
+   * Callback for when the rating changes.
    */
-  onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
 
   /**
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (rating: number) => void;
-
-  /**
-   * Optional label format for a rating star that will be read by screen readers.
-   * Can be used like "\{0\} of \{1\} stars selected",
-   * where \{0\} will be substituted by the current rating and \{1\} will be substituted by the max rating.
-   * @defaultvalue empty string.
+   * Optional label format for each individual rating star (not the rating control as a whole)
+   * that will be read by screen readers. Placeholder `{0}` is the current rating and placeholder
+   * `{1}` is the max: for example, `"Select {0} of {1} stars"`.
+   *
+   * (To set the label for the control as a whole, use `getAriaLabel` or `aria-label`.)
+   *
+   * @defaultvalue ''
    */
   ariaLabelFormat?: string;
-
-  /**
-   * Deprecated: Optional id of label describing this instance of Rating.
-   * @deprecated Use `getAriaLabel` instead.
-   */
-  ariaLabelId?: string;
 
   /**
    * Optional flag to mark rating control as readOnly

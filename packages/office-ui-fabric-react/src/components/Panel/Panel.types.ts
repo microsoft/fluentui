@@ -6,6 +6,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonStyles } from '../Button/Button.types';
 import { PanelBase } from './Panel.base';
+import { IPopupProps } from '../../Popup';
 
 /**
  * {@docCategory Panel}
@@ -185,6 +186,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * Optional props to pass to the Overlay component that the panel uses.
    */
   overlayProps?: IOverlayProps;
+
+  /**
+   * Optional props to pass the Popup component that the panel uses.
+   */
+  popupProps?: IPopupProps;
 
   /**
    * Optional custom function to handle clicks outside the panel in lightdismiss mode

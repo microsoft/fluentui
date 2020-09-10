@@ -7,7 +7,6 @@ import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
  * Adds tabIndex='0' to 'trigger' slot, if it is not tabbable element and no tabIndex attribute provided.
  *
  * @specification
- * Adds attribute 'aria-disabled=true' to 'trigger' slot if 'disabled' property is true. Does not set the attribute otherwise.
  * Adds attribute 'aria-modal=true' to 'popup' slot.
  * Adds attribute 'role=dialog' to 'popup' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'popup' slot.

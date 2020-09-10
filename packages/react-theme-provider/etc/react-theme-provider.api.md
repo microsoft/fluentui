@@ -5,7 +5,10 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
+import { IRawFontStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyle } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
@@ -20,6 +23,17 @@ export const FluentTheme: Theme;
 
 // @public (undocumented)
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
+
+export { IRawFontStyle }
+
+export { IRawStyle }
+
+export { IStyle }
+
+export { IStyleFunctionOrObject }
+
+// @public
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: ITheme) => Record<string, IStyle>)) => (state: TState) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
@@ -48,6 +62,9 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
 export const TeamsTheme: PartialTheme;
 
 export { Theme }
+
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;

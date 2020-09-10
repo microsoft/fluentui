@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 28 Aug 2020 12:29:20 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.2)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.1..@fluentui/react-theme-provider_v0.11.2)
+
+### Patches
+
+- Adding token definition for tokens related to CompoundButton. ([PR #14855](https://github.com/microsoft/fluentui/pull/14855) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.1)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.0..@fluentui/react-theme-provider_v0.11.1)
+
+### Patches
+
+- Minor tweaks in theme styling. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.0)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.10.0..@fluentui/react-theme-provider_v0.11.0)
+
+### Minor changes
+
+- Export ThemeContext. ([PR #14803](https://github.com/microsoft/fluentui/pull/14803) by xgao@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.10.0)
 

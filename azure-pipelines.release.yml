@@ -23,7 +23,7 @@ workspace:
   clean: all
 
 steps:
-  - template: azure-pipelines.tools.yml
+  - template: .devops/templates/tools.yml
 
   - script: |
       git config user.name "Fluent UI Build"

@@ -161,6 +161,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       isHiddenOnDismiss,
       layerProps,
       overlayProps,
+      popupProps,
       type,
       styles,
       theme,
@@ -226,6 +227,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
+          {...popupProps}
         >
           <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}
