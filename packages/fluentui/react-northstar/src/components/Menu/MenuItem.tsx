@@ -482,7 +482,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       },
       onClick: (e: React.MouseEvent) => {
         handleClick(e);
-        // _.invoke(predefinedProps, 'onClick', e, props);
       },
       ...(on === 'hover' && {
         onMouseEnter: e => {
