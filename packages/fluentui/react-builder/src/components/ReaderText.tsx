@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
 import MessageComputer from './MessageComputer';
 
-const mc: Messagecomputer = new MessageComputer();
+const mc: MessageComputer = new MessageComputer();
 
 export type ReaderTextProps = {
   selector: string;

@@ -78,7 +78,6 @@ const jsonTreeToTreeItems: (
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
-      children: titleRenderer,
       content: tree.displayName,
       styles: {
         display: 'flex',

@@ -19,7 +19,7 @@ export default class MessageComputer {
   };
 
   // Asynchronously computes and returns the complete screen reader message for the given element and platform.
-  async computeMessage(element: HTMLElement, platform: string): Promise<string> {
+  async computeMessage(element: Element, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Determine and save the usage string
@@ -28,7 +28,7 @@ export default class MessageComputer {
     if (usages) {
       // Begin if 1
       if (usages['[default]']) {
-        // Begin if 2
+        // Begin if   2
         this.computedMessageParts.usage = usages['[default]'];
       } // End if 2
       for (let usageName in usages) {
@@ -37,7 +37,7 @@ export default class MessageComputer {
         const state = split[0];
         const stateValue = split[1];
         const stateAndValueMatch = element.getAttribute(state) === stateValue;
-        const checkedDOMpropAndValueMatch =
+        const checkedDOMPropAndValueMatch =
           state === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
         if (stateAndValueMatch || checkedDOMPropAndValueMatch) {
           // Begin if 2
@@ -172,7 +172,7 @@ export default class MessageComputer {
   } // End computeMessage
 
   // Returns the definition name based on the given DOM element, platform and definition type.
-  getDefinitionName(element: HTMLElement, platform: string, definitionType: string): string {
+  getDefinitionName(element: Element, platform: string, definitionType: string): string {
     // Determine the definitions source by the definition type
     let definitions;
     if (definitionType === 'readingOrder') {
