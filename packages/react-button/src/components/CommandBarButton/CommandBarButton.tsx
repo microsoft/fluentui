@@ -5,7 +5,7 @@ import { useFocusRects } from '@uifabric/utilities';
 import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import * as commandBarButtonClasses from './CommandBarButton.scss';
-import { useButtonClasses } from '../Button/Button';
+import { useButtonClasses } from '../Button/useButtonClasses';
 
 // Create a hook to resolve classnames.
 export const useCommandBarButtonClasses = makeClasses(commandBarButtonClasses);
