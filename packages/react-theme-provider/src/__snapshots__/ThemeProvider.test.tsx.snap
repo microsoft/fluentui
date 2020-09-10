@@ -37,6 +37,7 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         --accent-pressed-secondaryContentColor: #ffffff;
         --accent-secondaryContentColor: #ffffff;
         --body-background: #ffffff;
+        --body-contentColor: #323130;
         --button-background: #ffffff;
         --button-borderColor: #8a8886;
         --button-borderRadius: 2px;
@@ -415,6 +416,7 @@ exports[`ThemeProvider renders a div 1`] = `
         --accent-pressed-secondaryContentColor: #ffffff;
         --accent-secondaryContentColor: #ffffff;
         --body-background: #ffffff;
+        --body-contentColor: #323130;
         --button-background: #ffffff;
         --button-borderColor: #8a8886;
         --button-borderRadius: 2px;

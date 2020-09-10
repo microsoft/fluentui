@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exposing additional exports to reduce deep imports we're seeing in partner code.",
-  "packageName": "@fluentui/react",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-09T00:46:26.407Z"
-}

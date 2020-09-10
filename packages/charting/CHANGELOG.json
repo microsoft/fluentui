@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 10 Sep 2020 12:23:32 GMT",
+      "tag": "@uifabric/charting_v4.0.0",
+      "version": "4.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart combined callout and other tweaks",
+            "author": "mibes@microsoft.com",
+            "commit": "df56f468742c728e62d06a3934d3cef329969b1f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "@uifabric/charting_v3.6.2",
+      "version": "3.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue when we focus on charts in IE",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d0bdb5b1f6dae8c39be8ef012f70c3a5688a10f0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Sep 2020 12:24:19 GMT",
       "tag": "@uifabric/charting_v3.6.0",
       "version": "3.6.0",
