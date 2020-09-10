@@ -496,6 +496,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   return {
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
+    type: displayName,
     moduleName: module,
     displayName,
     props: { children: [] },

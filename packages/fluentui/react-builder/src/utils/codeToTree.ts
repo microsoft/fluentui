@@ -28,7 +28,7 @@ const prefixElementNamesPlugin = ({ types }) => {
   };
 };
 
-const prefix = {
+const prefixToModuleName = {
   Fluent: '@fluentui/react-northstar',
   Fabric: '@fluentui/react/lib/Button',
 };
@@ -51,13 +51,24 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
-    const uuid = props?.['data-builder-id'] ?? getUUID();
+    const isIcon = props?.['data-builder-id'] === undefined;
+    const isDiv = name === 'div';
+    const isComponent = objectName && objectName[1] && prefixToModuleName[objectName[1]];
+    if (!(isIcon || isDiv || isComponent)) {
+      name = `Fluent.${name}`;
+    }
+
+    const uuid = props?.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
     delete props?.['data-builder-id'];
 
     return {
       type: name,
       displayName: name,
-      ...(objectName && objectName[1] && prefix[objectName[1]] && { moduleName: prefix[objectName[1]] }),
+      ...(isComponent
+        ? { moduleName: prefixToModuleName[objectName[1]] }
+        : isIcon || isDiv
+        ? {}
+        : { moduleName: prefixToModuleName['Fluent'] }),
       uuid,
       ...(name.match(/^[A-Za-z]/) && { $$typeof: 'Symbol(react.element)' }),
       props: { ...props, ...(children.length > 0 && { children }) },
