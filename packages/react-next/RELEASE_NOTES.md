@@ -43,6 +43,14 @@ TODO: Diff of OUFR vs date-time DatePicker
   - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
   - TODO: enumerate all removed props
 
+### Rating
+
+- Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
+- `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
+- Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
+- Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
+
 ### Slider
 
 TODO: document any API or functionality changes
@@ -55,6 +63,13 @@ TODO: document any API or functionality changes
 ### Shimmer
 
 - Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+
+### SwatchColorPicker
+
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ### TeachingBubble
 
@@ -80,19 +95,13 @@ TODO: document any API or functionality changes
 - `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
+- `WindowProvider` is required for child windows/embeds.
 
 ## Minor changes
 
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
-
-### SwatchColorPicker
-
-- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
-- Added an `onChange` prop and deprecated `onColorChanged`.
-- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
-- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ## Other notable changes
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.103)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.102..@fluentui/react-next_v8.0.0-alpha.103)
+
+### Changes
+
+- Fix snapshot tests ([PR #14962](https://github.com/microsoft/fluentui/pull/14962) by miclo@microsoft.com)
+
+## [8.0.0-alpha.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.102)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.101..@fluentui/react-next_v8.0.0-alpha.102)
+
+### Changes
+
+- Updating Rating to a function component inside React-Next. ([PR #14703](https://github.com/microsoft/fluentui/pull/14703) by czearing@outlook.com)
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
 
 ## [8.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.101)
 

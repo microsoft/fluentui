@@ -1513,36 +1513,29 @@ export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
 export interface IRating {
+    rating: number;
 }
 
 // @public
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
-    // @deprecated
-    ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    defaultRating?: number;
+    disabled?: boolean;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
     // @deprecated
     min?: number;
-    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (rating: number) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingState {
-    // (undocumented)
-    rating: number | null | undefined;
 }
 
 // @public (undocumented)
@@ -2340,13 +2333,7 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-    constructor(props: IRatingProps);
-    // (undocumented)
-    static defaultProps: IRatingProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const RatingBase: React.ForwardRefExoticComponent<IRatingProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum RatingSize {
@@ -2537,6 +2524,7 @@ export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
 export * from "office-ui-fabric-react/lib/DocumentCard";
+export * from "office-ui-fabric-react/lib/DragDrop";
 export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
@@ -2557,6 +2545,7 @@ export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Pickers";
+export * from "office-ui-fabric-react/lib/Positioning";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
@@ -2572,6 +2561,7 @@ export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
+export * from "office-ui-fabric-react/lib/utilities/keytips/index";
 
 // (No @packageDocumentation comment for this package)
 

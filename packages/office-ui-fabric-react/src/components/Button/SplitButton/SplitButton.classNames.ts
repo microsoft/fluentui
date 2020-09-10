@@ -9,7 +9,8 @@ export interface ISplitButtonClassNames {
   flexContainer?: string;
   divider?: string;
 }
-export const getClassNames = memoizeFunction(
+
+export const getSplitButtonClassNames = memoizeFunction(
   (
     styles: IButtonStyles,
     disabled: boolean,

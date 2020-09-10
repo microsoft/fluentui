@@ -15,6 +15,8 @@ export type JestPluginConfig = {
 
 const jest = (config: JestPluginConfig) => cb => {
   process.env.NODE_ENV = 'test';
+  // Alias env variables as Azure Pipelines do not set it
+  process.env.CI = process.env.TF_BUILD ? 'true' : undefined;
 
   // in watch mode jest never exits
   // let the gulp task complete to prevent blocking subsequent tasks
