@@ -126,14 +126,12 @@ export interface ICartesianChartStyles {
 
 export interface ICartesianChartProps {
   /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
+   * Below height and width used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
    */
   height?: number;
+  width?: number;
 
   /**
    * this prop takes its parent as a HTML element to define the width and height of the chart
@@ -271,6 +269,11 @@ export interface ICartesianChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+
+  /**
+   * Callout customization props
+   */
+  calloutProps?: ICalloutProps;
 }
 
 export interface IYValueHover {

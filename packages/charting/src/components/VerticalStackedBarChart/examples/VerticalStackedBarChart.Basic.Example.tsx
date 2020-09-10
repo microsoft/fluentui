@@ -143,7 +143,6 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         <div style={rootStyle}>
           <VerticalStackedBarChart
             data={data}
-            chartLabel="Card title"
             height={this.state.height}
             width={this.state.width}
             legendProps={{

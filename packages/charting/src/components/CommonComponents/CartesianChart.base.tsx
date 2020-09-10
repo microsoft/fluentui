@@ -31,6 +31,16 @@ export interface ICartesianChartState {
   _height: number;
 }
 
+/**
+ * Cartesian chart used for
+ * 1.draw X and Y axis of the chart
+ * 2.Callout
+ * 3.Fit parent Continer
+ *
+ * To draw the graph, we need Axis scales. For line chart and area chart, sending scales from here.
+ * Vertical stacked bar chart creating it's own scales to draw the graph.
+ *
+ */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;

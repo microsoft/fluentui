@@ -100,6 +100,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      ...this.props.calloutProps,
     };
     const tickParams = {
       tickValues: tickValues,

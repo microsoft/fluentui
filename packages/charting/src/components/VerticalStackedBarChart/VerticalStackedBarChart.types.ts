@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IVerticalStackedChartProps,
@@ -8,12 +8,7 @@ import {
   IDataPoint,
   IVSChartDataPoint,
 } from '../../types/index';
-import {
-  ICartesianChartProps,
-  ICartesianChartStyleProps,
-  ICartesianChartStyles,
-  IChildProps,
-} from '../CommonComponents/index';
+import { ICartesianChartProps, IChildProps } from '../CommonComponents/index';
 export { IMargins, IBasestate, IRefArrayData, IVerticalStackedChartProps, IDataPoint, IVSChartDataPoint, IChildProps };
 
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
@@ -45,23 +40,43 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
 }
 
-export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {
+export interface IVerticalStackedBarChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
   /**
    * color of the datapoint legend
    */
   legendColor?: string;
+
+  /**
+   * Link to redirect if click action for graph
+   */
+  href?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  shouldHighlight?: boolean;
 }
 
-export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
-  /**
-   * Style for the chart.
-   */
-  chart?: IStyle;
+// interface IVerticalStackedBarSubComponentStyles {
+//   // CartesianStyles?: ICartesianChartProps['styles'];
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   CartesianStyles?: IStyleFunctionOrObject<ICartesianChartProps, any>;
+// }
 
+export interface IVerticalStackedBarChartStyles {
   /**
    * Style for the chart label.
+   * @deprecated Use your own chart label to the chart.
    */
   chartLabel?: IStyle;
+
+  // subComponentStyles?: IVerticalStackedBarSubComponentStyles;
+
+  opacityChangeOnHover?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
