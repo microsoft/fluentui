@@ -187,9 +187,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const { styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, { theme: theme!, groups });
-    const isSelected = this._isLinkSelected(link);
+
     return (
-      <li key={link.key || linkIndex} role="tab" className={classNames.navItem} aria-selected={isSelected}>
+      <li key={link.key || linkIndex} role="listitem" className={classNames.navItem}>
         {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null}
       </li>
@@ -208,7 +208,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, groups });
 
     return (
-      <ul role="tablist" className={classNames.navItems}>
+      <ul role="list" className={classNames.navItems}>
         {linkElements}
       </ul>
     );

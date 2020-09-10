@@ -139,10 +139,9 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="list"
         >
           <li
-            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -151,7 +150,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="listitem"
           >
             <div
               className=
@@ -300,7 +299,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
             </div>
           </li>
           <li
-            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -309,7 +307,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="listitem"
           >
             <div
               className=
@@ -520,10 +518,9 @@ exports[`Nav renders Nav correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="list"
         >
           <li
-            aria-selected={false}
             className=
                 ms-Nav-navItem
                 {
@@ -532,7 +529,7 @@ exports[`Nav renders Nav correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="listitem"
           >
             <div
               className=
