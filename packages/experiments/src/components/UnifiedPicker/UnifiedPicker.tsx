@@ -255,7 +255,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (!composing) {
       // update query string
       setQueryString(value);
-      !isSuggestionsVisible ? showPicker(true) : null;
+      !isSuggestionsShown ? showPicker(true) : null;
       onInputChange ? onInputChange(value) : null;
     }
   };
