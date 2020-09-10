@@ -8,12 +8,22 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
   slotProps.map(props => {
     const testFacade = baseTestFacade.forProps(props);
 
-    if (slot.checkEvent) {
-      testFacade.afterEvent(slot.name, slot.afterEvent, slot.afterEventData);
-    }
-
     if (slot.checkClick) {
       testFacade.afterClick(slot.name);
+    }
+
+    if (slot.checkSpaceKeyPressed) {
+      testFacade.pressSpaceKey(slot.name);
+    }
+
+    if (slot.checkEnterKeyPressed) {
+      testFacade.pressEnterKey(slot.name);
+    }
+
+    if (slot.wasOnclickExecuted) {
+      if (!testFacade.verifyOnclickExecution(slot.name)) {
+        throw new Error(`Onclick was not called.`);
+      }
     }
 
     if (slot.expectAttribute) {

@@ -1,11 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Props, PropValue, TestFacade } from '../types';
+import { Props, PropValue, TestFacade } from '@fluentui/a11y-testing';
+import { mountWithProviderAndGetComponent } from './withProvider';
 
 export class ComponentTestFacade implements TestFacade {
   private actual: any;
+  private renderedComponent: any;
+  private onClickExecuted: boolean;
 
-  constructor(private Component: React.FC, private props: Props) {
+  constructor(private Component: React.FC, private props: Props = {}) {
+    props.onClick = () => {
+      this.onClickExecuted = true;
+    };
+
     // reset body
     document.body.innerHTML = '';
     const container = document.createElement('div');
@@ -13,6 +20,9 @@ export class ComponentTestFacade implements TestFacade {
 
     ReactDOM.render(<Component {...props} />, container);
     this.actual = container.lastChild;
+
+    // we need to render it in this way because using simulate function to fire mouse/keyboard event
+    this.renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />);
   }
 
   public slotExists(selector: string) {
@@ -52,29 +62,34 @@ export class ComponentTestFacade implements TestFacade {
     return null;
   };
 
-  // eventName is necessary only for the HookTestFacade
-  public afterEvent(selector: string, eventName: string, event: Event) {
-    if (selector === 'root') {
-      this.actual.dispatchEvent(event);
-    }
-
-    const element = document.getElementById(selector);
-    if (element) element.dispatchEvent(event);
-  }
+  public verifyOnclickExecution = (selector: string) => {
+    const previousValue = this.onClickExecuted;
+    this.onClickExecuted = false;
+    return previousValue;
+  };
 
   public afterClick(selector: string): void {
-    this.afterEvent(
-      selector,
-      'onClick',
-      new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    if (selector === 'root') {
+      return this.renderedComponent.simulate('click');
+    }
+    this.renderedComponent.find(selector).simulate('click');
   }
 
-  public forProps = (props: Props) => {
+  public pressSpaceKey(selector: string): void {
+    if (selector === 'root') {
+      return this.renderedComponent.simulate('keydown', { keyCode: 32 });
+    }
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
+  }
+
+  public pressEnterKey(selector: string): void {
+    if (selector === 'root') {
+      return this.renderedComponent.simulate('keydown', { keyCode: 13 });
+    }
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
+  }
+
+  public forProps = (props: Props): TestFacade => {
     return new ComponentTestFacade(this.Component, { ...this.props, ...props });
   };
 }

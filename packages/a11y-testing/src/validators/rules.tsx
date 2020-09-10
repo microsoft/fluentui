@@ -12,21 +12,31 @@ export class SlotRule implements Rule {
     return this;
   };
 
-  public afterEvent = (eventName: string, event: Event) => {
-    this.data.afterEvent = eventName;
-    this.data.afterEventData = event;
-    this.data.checkEvent = true;
-    return this;
-  };
-
   public afterClick = () => {
     this.data.checkClick = true;
     return this;
   };
 
-  public hasAttribute = (expectedAttribute: string, expectedValue: PropValue) => {
+  public pressSpaceKey = () => {
+    this.data.checkSpaceKeyPressed = true;
+    return this;
+  };
+
+  public pressEnterKey = () => {
+    this.data.checkEnterKeyPressed = true;
+    return this;
+  };
+
+  public verifyOnclickExecution = () => {
+    this.data.wasOnclickExecuted = true;
+    return this;
+  };
+
+  public hasAttribute = (expectedAttribute: string, expectedValue?: PropValue) => {
     this.data.expectedAttribute = expectedAttribute;
-    this.data.expectedValue = expectedValue;
+    if (expectedValue) {
+      this.data.expectedValue = expectedValue;
+    }
     this.data.expectAttribute = true;
     return this;
   };
@@ -50,11 +60,29 @@ export class SlotRule implements Rule {
 
   public getData = () => this.data;
 
+  private expectedAttributeAndValueFormat = (
+    expectAttribute: boolean,
+    expectedAttribute: string,
+    expectedValue: any,
+  ) => {
+    if (expectAttribute) {
+      return expectedValue ? `'${expectedAttribute}=${expectedValue}'` : `'${expectedAttribute}'`;
+    } else {
+      return `'${this.data.expectedAttribute}'`;
+    }
+  };
+
   public stringify = () => {
     return [
-      this.data.expectAttribute ? 'Adds' : 'Does not add',
-      this.data.expectedAttribute,
-      this.data.expectAttribute && this.data.expectedValue,
+      this.data.expectAttribute !== undefined && this.data.expectAttribute ? 'Adds' : 'Does not add attribute',
+      this.data.expectAttribute !== undefined &&
+        this.expectedAttributeAndValueFormat(
+          this.data.expectAttribute,
+          this.data.expectedAttribute,
+          this.data.expectedValue,
+        ),
+      this.data.checkSpaceKeyPressed && `Triggers 'performClick' action with 'Space'`,
+      this.data.checkEnterKeyPressed && `Triggers 'performClick' action with 'Enter'`,
       this.data.name && this.data.name !== 'root' && `to slot ${this.data.name}`,
       this.data.description ? this.data.description : this.data.props && `for props ${this.stringifyProps()}`,
     ]

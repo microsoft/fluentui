@@ -20,6 +20,11 @@ type BehaviorMenuItem = {
   };
 };
 
+async function importFile(pathDir, name) {
+  const path = `${pathDir}\\${name}.ts`;
+  return await import(path);
+}
+
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
   const resultToken = commentTokens.find(token => token.title === tokenTitle);
   return resultToken ? resultToken.description : '';
@@ -59,12 +64,32 @@ export default () => {
         variation.specification = getTextFromCommentToken(commentTokens, 'specification');
       }
 
-      result.push({
-        displayName: behaviorName,
-        type: componentType,
-        variations: variation,
-      });
-      cb();
+      // generate behavior description from 'behavior definition' file if no was found in behavior file
+      if (!variation.description && !variation.specification) {
+        const variationName = variation.name.replace('.ts', '');
+        const behaviorDefinitionName = `${variationName}Definition`;
+
+        let descriptionFromDefinition = [];
+        importFile(dir, behaviorDefinitionName).then(file => {
+          file[behaviorDefinitionName].forEach(definition => {
+            descriptionFromDefinition.push(definition.stringify());
+          });
+          variation.description = descriptionFromDefinition.join('\r\n');
+          result.push({
+            displayName: behaviorName,
+            type: componentType,
+            variations: variation,
+          });
+          cb();
+        });
+      } else {
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
+      }
     } catch (err) {
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);

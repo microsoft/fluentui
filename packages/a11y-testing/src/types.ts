@@ -14,10 +14,11 @@ export interface Slot {
   expectedValue: PropValue;
   description: string;
   hidden: boolean;
-  afterEvent: string;
   afterEventData: Event;
-  checkEvent: boolean;
   checkClick: boolean;
+  checkSpaceKeyPressed: boolean;
+  checkEnterKeyPressed: boolean;
+  wasOnclickExecuted: boolean;
 }
 
 export interface TestFacade {
@@ -26,6 +27,8 @@ export interface TestFacade {
   attributeHasValue(slotName: string, attributeName: string, value: PropValue): boolean;
   getAttributeValue(slotName: string, attribute: string): PropValue;
   forProps(props: Props): TestFacade;
-  afterEvent(slotName: string, eventName: string, event: Event): void;
   afterClick(slotName: string): void;
+  pressSpaceKey(slotName: string): void;
+  pressEnterKey(slotName: string): void;
+  verifyOnclickExecution(slotName: string): boolean;
 }

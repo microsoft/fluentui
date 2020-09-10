@@ -124,3 +124,7 @@ export * from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarHeaderBehavior';
 export * from './Datepicker/datepickerCalendarGridBehavior';
 export * from './Datepicker/datepickerCalendarCellBehavior';
+
+export * from './Button/buttonBehaviorDefinition';
+export * from './Button/buttonGroupBehaviorDefinition';
+export * from './Button/toggleButtonBehaviorDefinition';

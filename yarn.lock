@@ -1418,6 +1418,14 @@
     eslint-plugin-react-hooks "^4.0.8"
     jju "^1.4.0"
 
+"@fluentui/react-stylesheets@^0.1.16":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-stylesheets/-/react-stylesheets-0.1.18.tgz#09b2836b962f47fc2dc5a09c17aa57bd0a497252"
+  integrity sha512-AWN1n+O0ePrGMEmImkfMRFgpG2yJtlqEk3yfos6aXuj2/33bSXN8FJKBP46NvhFPHd8MVTR2C8Nofkj8F9uLqQ==
+  dependencies:
+    "@uifabric/set-version" "^7.0.22"
+    tslib "^1.10.0"
+
 "@fluentui/react-theme-provider@^0.7.3":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-0.7.3.tgz#1bdf36f4a3224b69277ff2886187547e147da59b"
