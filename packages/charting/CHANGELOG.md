@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.2)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.0..@uifabric/charting_v3.6.2)
+
+### Patches
+
+- Fix issue when we focus on charts in IE ([PR #14946](https://github.com/microsoft/fluentui/pull/14946) by v-gorraj@microsoft.com)
 
 ## [3.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.0)
 

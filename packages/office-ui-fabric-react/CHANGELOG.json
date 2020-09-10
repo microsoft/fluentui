@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "office-ui-fabric-react_v7.137.0",
+      "version": "7.137.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export getMenuItemStyles from ContextualMenu",
+            "author": "anpablo@microsoft.com",
+            "commit": "770f5bf5a6dae83bc25a8000245408e1bf2054ff",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Sep 2020 18:41:54 GMT",
       "tag": "office-ui-fabric-react_v7.136.0",
       "version": "7.136.0",

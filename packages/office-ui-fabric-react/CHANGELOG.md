@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Sep 2020 18:41:54 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.137.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.0)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.136.0..office-ui-fabric-react_v7.137.0)
+
+### Minor changes
+
+- Export getMenuItemStyles from ContextualMenu ([PR #14963](https://github.com/microsoft/fluentui/pull/14963) by anpablo@microsoft.com)
 
 ## [7.136.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.136.0)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix issue when we focus on charts in IE",
-  "packageName": "@uifabric/charting",
-  "email": "v-gorraj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-09T05:47:25.235Z"
-}

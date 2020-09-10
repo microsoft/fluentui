@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
     "@fluentui/react-conformance": "^0.1.1",
-    "@fluentui/storybook": "^0.4.8",
+    "@fluentui/storybook": "^0.4.9",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",

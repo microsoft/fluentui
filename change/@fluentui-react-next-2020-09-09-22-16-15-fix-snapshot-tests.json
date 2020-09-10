@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix snapshot tests",
-  "packageName": "@fluentui/react-next",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-09T22:16:15.003Z"
-}
