@@ -10,6 +10,7 @@ export const DialogStyles = css`
     --elevation: 14;
     --dialog-height: 480px;
     --dialog-width: 640px;
+    --dialog-z-index: 0;
     display: block;
   }
 
@@ -32,6 +33,7 @@ export const DialogStyles = css`
     left: 0;
     right: 0;
     overflow: auto;
+    z-index: var(--dialog-z-index);
   }
 
   .control {
