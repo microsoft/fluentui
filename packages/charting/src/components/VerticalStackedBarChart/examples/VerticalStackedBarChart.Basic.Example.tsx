@@ -1,10 +1,32 @@
 import * as React from 'react';
 import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class VerticalStackedBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
+interface IVerticalStackedBarState {
+  width: number;
+  height: number;
+}
+
+export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
+  constructor(props: IVerticalStackedChartProps) {
+    super(props);
+    this.state = {
+      width: 650,
+      height: 350,
+    };
+  }
   public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
@@ -110,25 +132,30 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
       { chartData: firstChartPoints, xAxisPoint: 100 },
     ];
 
-    const rootStyle = mergeStyles({ width: '600px', height: '350px' });
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <div className={rootStyle}>
-        <VerticalStackedBarChart
-          data={data}
-          chartLabel="Card title"
-          height={350}
-          width={600}
-          legendProps={{
-            overflowProps: {
-              focusZoneProps: {
-                'aria-label': 'Legends container',
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <VerticalStackedBarChart
+            data={data}
+            height={this.state.height}
+            width={this.state.width}
+            legendProps={{
+              overflowProps: {
+                focusZoneProps: {
+                  'aria-label': 'Legends container',
+                },
               },
-            },
-            allowFocusOnLegends: true,
-          }}
-        />
-      </div>
+              allowFocusOnLegends: true,
+            }}
+          />
+        </div>
+      </>
     );
   }
 }

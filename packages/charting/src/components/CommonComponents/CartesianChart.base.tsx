@@ -10,12 +10,14 @@ import {
 } from './CartesianChart.types';
 import {
   createNumericXAxis,
+  createStringXAxis,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
+  XAxisTypes,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -29,6 +31,16 @@ export interface ICartesianChartState {
   _height: number;
 }
 
+/**
+ * Cartesian chart used for
+ * 1.draw X and Y axis of the chart
+ * 2.Callout
+ * 3.Fit parent Continer
+ *
+ * To draw the graph, we need Axis scales. For line chart and area chart, sending scales from here.
+ * Vertical stacked bar chart creating it's own scales to draw the graph.
+ *
+ */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
@@ -73,21 +85,23 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, isXAxisDateType, points, chartType } = this.props;
+    const { calloutProps, points, chartType } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
 
+    // TO DO: need to send xAxis types based on condition
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
         this.margins,
         this.state.containerWidth,
         chartType,
-        isXAxisDateType,
         this._isRtl,
+        this.props.xAxisType,
+        this.props.barwidth!,
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
@@ -107,9 +121,22 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
     };
 
-    const xScale = this.props.isXAxisDateType
-      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
-      : createNumericXAxis(XAxisParams, this._isRtl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let xScale: any;
+    switch (this.props.xAxisType!) {
+      case XAxisTypes.NumericAxis:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        break;
+      case XAxisTypes.DateAxis:
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
+        break;
+      case XAxisTypes.StringAxis:
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this._isRtl, points);
+        break;
+      default:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+    }
+
     const yScale = createYAxis(YAxisParams, this._isRtl);
 
     // Callback function for chart, returns axis
@@ -166,7 +193,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          // need to handle for single callout (Future purpose)
           <Callout {...calloutProps}>
             {this.props.isMultiStackCallout ? (
               <div className={this._classNames.calloutContentRoot}>
@@ -228,6 +254,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       y?: number;
       color?: string;
       yAxisCalloutData?: string | { [id: string]: number };
+      data?: string | number;
     },
     index: number,
     yValueHoverSubCountsExists: boolean,
@@ -251,7 +278,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           >
             <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
             <div className={this._classNames.calloutContentY}>
-              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
             </div>
           </div>
         </div>

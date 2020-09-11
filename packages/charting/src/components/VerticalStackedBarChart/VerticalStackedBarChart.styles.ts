@@ -1,113 +1,25 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
-import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { isIE11 } from 'office-ui-fabric-react';
-
-const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { className, theme, shouldHighlight, href, isRtl } = props;
+  const { shouldHighlight, href } = props;
+
+  // const subStyles: Partial<ICartesianChartStyles> = {
+  //   legendContainer: [
+  //     {
+  //       marginTop: '8px',
+  //     },
+  //   ],
+  // };
 
   return {
-    root: [
-      theme.fonts.medium,
-      {
-        display: 'flex',
-        width: '100%',
-        height: '100%',
-        flexDirection: 'column',
-        overflow: 'hidden',
-      },
-      className,
-    ],
-
-    chartLabel: [
-      {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus,
-      },
-    ],
-
-    xAxis: [
-      {
-        selectors: {
-          line: {
-            opacity: 0.3,
-            width: '1px',
-            stroke: theme.semanticColors.bodyText,
-            selectors: {
-              [HighContrastSelectorBlack]: {
-                stroke: 'rgb(179, 179, 179)',
-              },
-            },
-          },
-          path: {
-            display: 'none',
-          },
-        },
-      },
-    ],
-
-    yAxis: [
-      {
-        selectors: {
-          text: [
-            theme.fonts.tiny,
-            {
-              fontWeight: FontWeights.semibold,
-              fill: theme.semanticColors.bodyText,
-              selectors: {
-                [HighContrastSelectorBlack]: {
-                  fill: 'rgb(179, 179, 179)',
-                },
-              },
-            },
-          ],
-          line: {
-            opacity: 0.2,
-            width: '1px',
-            stroke: theme.semanticColors.bodyText,
-            selectors: {
-              [HighContrastSelectorBlack]: {
-                stroke: 'rgb(179, 179, 179)',
-              },
-            },
-          },
-          path: {
-            display: 'none',
-          },
-          g: [
-            isRtl &&
-              !isIE11Var && {
-                textAnchor: 'end',
-              },
-          ],
-        },
-      },
-    ],
-
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
     },
 
-    legendContainer: [
-      {
-        marginTop: '8px',
-        marginLeft: '20px',
-      },
-    ],
-
-    xAxisText: [
-      theme.fonts.tiny,
-      {
-        fontWeight: FontWeights.semibold,
-        fill: theme.semanticColors.bodyText,
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            fill: 'rgb(179, 179, 179)',
-          },
-        },
-      },
-    ],
+    // Need to add styles from props
+    // subComponentStyles: {
+    //   CartesianStyles: subStyles,
+    // },
   };
 };
