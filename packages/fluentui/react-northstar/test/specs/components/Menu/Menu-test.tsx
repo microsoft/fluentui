@@ -278,7 +278,7 @@ describe('Menu', () => {
       });
     });
 
-    describe('chidlren API', () => {
+    describe('children', () => {
       it('should should select items', () => {
         const onActiveIndexChange = jest.fn();
         const wrapper = mountWithProvider(
