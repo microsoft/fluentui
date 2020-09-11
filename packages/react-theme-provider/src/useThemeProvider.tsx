@@ -1,8 +1,10 @@
 import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import * as React from 'react';
 import { renderThemeProvider as render } from './renderThemeProvider';
-import { mergeProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { useThemeProviderState } from './useThemeProviderState';
+
+const mergeProps = makeMergeProps<ThemeProviderState>();
 
 /**
  * Returns the ThemeProvider render function and calculated state, given user input, ref, and
@@ -13,7 +15,7 @@ export const useThemeProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps: ThemeProviderProps,
 ) => {
-  const state = mergeProps<ThemeProviderState>(
+  const state = mergeProps(
     {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       ref: ref || React.useRef(),
@@ -22,7 +24,6 @@ export const useThemeProvider = (
     defaultProps,
     props,
   );
-
   // Apply changes to state.
   useThemeProviderState(state);
 

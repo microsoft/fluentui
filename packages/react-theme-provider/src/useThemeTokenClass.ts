@@ -10,20 +10,21 @@ import { tokensToStyleObject } from './tokensToStyleObject';
  */
 export const useThemeTokenClass = (state: ThemeProviderState) => {
   const { theme, renderer, className } = state;
-  const { tokens, rtl = false } = theme;
+  const { tokens, rtl } = theme;
   const targetWindow = useWindow();
 
-  state.className = React.useMemo<string>(
+  const tokenClassName = React.useMemo<string>(
     () =>
       renderer!.renderStyles(
         {
-          tokens: [tokensToStyleObject(tokens), className],
+          tokens: [{ displayName: 'ThemeProvider-tokens' }, tokensToStyleObject(tokens), className],
         },
         {
           rtl,
           targetWindow,
         },
       ).tokens,
-    [renderer, rtl, tokens, targetWindow, className],
+    [renderer, tokens, className, targetWindow, rtl],
   );
+  state.className = (state.className || '') + ' ' + tokenClassName;
 };

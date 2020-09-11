@@ -1,4 +1,3 @@
-import { useStylesheet } from '@fluentui/react-stylesheets';
 import { mergeThemes, Theme } from '@fluentui/theme';
 import * as React from 'react';
 import { getTokens } from './getTokens';
@@ -18,7 +17,4 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
     mergedTheme.tokens = getTokens(mergedTheme);
     return mergedTheme;
   }, [parentTheme, userTheme]);
-
-  // Register stylesheets as needed.
-  useStylesheet(draftState.theme.stylesheets);
 };

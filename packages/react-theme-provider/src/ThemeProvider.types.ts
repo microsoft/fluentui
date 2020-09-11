@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { StyleRenderer } from './styleRenderers/types';
 import { Theme, PartialTheme } from './types';
-
+import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 /**
  * Props for the ThemeProvider component.
  */
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Optional ref to the root element.
+   */
+  ref?: React.Ref<HTMLElement>;
+
   /**
    * Defines the theme provided by the user.
    */

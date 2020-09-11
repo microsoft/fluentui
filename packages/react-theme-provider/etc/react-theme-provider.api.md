@@ -5,6 +5,7 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
+import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IKeyframes } from '@uifabric/merge-styles';
 import { IRawFontStyle } from '@uifabric/merge-styles';
@@ -23,6 +24,9 @@ export const createDefaultTheme: () => Theme;
 export const FluentTheme: Theme;
 
 // @public (undocumented)
+export type FontFace = IFontFace;
+
+// @public (undocumented)
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
 
 export { IRawFontStyle }
@@ -33,8 +37,9 @@ export { IStyle }
 
 export { IStyleFunctionOrObject }
 
-// Warning: (ae-forgotten-export) The symbol "StyleRenderer" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export type KeyFrames = IKeyframes;
+
 // @public
 export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
@@ -44,6 +49,14 @@ export function makeStyles<TStyleSet extends {
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
     [key in keyof TStyleSet]: string;
 };
+
+// @public (undocumented)
+export const MergeStylesProvider: ({ children }: {
+    children?: React.ReactNode;
+}) => JSX.Element;
+
+// @public (undocumented)
+export const mergeStylesRenderer: StyleRenderer;
 
 export { PartialTheme }
 
@@ -62,6 +75,26 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
 }
 
 // @public (undocumented)
+export interface StyleRenderer {
+    getId: () => number;
+    renderFontFace: (fontFace: FontFace, options: StyleRendererOptions) => void;
+    renderKeyframes: (keyframes: KeyFrames, options: StyleRendererOptions) => string;
+    renderStyles: <TRuleSet>(ruleSet: TRuleSet, options: StyleRendererOptions) => {
+        [key in keyof TRuleSet]: string;
+    };
+    reset: () => void;
+}
+
+// @public (undocumented)
+export const StyleRendererContext: React.Context<StyleRenderer>;
+
+// @public (undocumented)
+export type StyleRendererOptions = {
+    rtl: boolean;
+    targetWindow: Window | undefined;
+};
+
+// @public (undocumented)
 export const TeamsTheme: PartialTheme;
 
 export { Theme }
@@ -70,10 +103,11 @@ export { Theme }
 export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
-export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
+export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderProps, string | number> & React.RefAttributes<HTMLDivElement>>;
 
 // @public
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+    ref?: React.Ref<HTMLElement>;
     renderer?: StyleRenderer;
     targetWindow?: Window | null;
     theme?: PartialTheme | Theme;
@@ -93,6 +127,9 @@ export const useInlineTokens: (draftState: {
     tokens?: TokenSetType | undefined;
 }, prefix: string) => void;
 
+// @public (undocumented)
+export const useStyleRenderer: () => StyleRenderer;
+
 // @public
 export const useTheme: () => Theme;
 
@@ -103,7 +140,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import("./styleRenderers/types").StyleRenderer | undefined) => void;
+export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;

@@ -6,13 +6,8 @@ import { safeMount } from '@uifabric/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { makeStyles } from './makeStyles';
-import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
-import { StyleRendererContext } from './styleRenderers/useStyleRenderer';
+import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
 import { ThemeProvider } from './ThemeProvider';
-
-const MergeStylesProvider = ({ children }: React.PropsWithChildren<{}>) => (
-  <StyleRendererContext.Provider value={mergeStylesRenderer}>{children}</StyleRendererContext.Provider>
-);
 
 describe('makeStyles', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();

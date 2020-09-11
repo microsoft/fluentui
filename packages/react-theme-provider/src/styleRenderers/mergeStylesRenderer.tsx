@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { StyleRenderer } from './types';
+import { StyleRendererContext } from './useStyleRenderer';
 import {
   Stylesheet,
   mergeCssSets,
@@ -30,3 +32,7 @@ export const mergeStylesRenderer: StyleRenderer = {
     return mergeKeyframes(keyframes as any);
   },
 };
+
+export const MergeStylesProvider = ({ children }: React.PropsWithChildren<{}>) => (
+  <StyleRendererContext.Provider value={mergeStylesRenderer}>{children}</StyleRendererContext.Provider>
+);
