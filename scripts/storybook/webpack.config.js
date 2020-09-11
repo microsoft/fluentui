@@ -2,22 +2,15 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
 const getResolveAlias = require('../webpack/getResolveAlias');
+const webpack = require('webpack');
 
-module.exports = ({ config }) => {
-  config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    use: [
-      {
-        loader: require.resolve('ts-loader'),
-        options: {
-          transpileOnly: true,
-          experimentalWatchApi: true,
-          configFile: 'tsconfig.json',
-        },
-      },
-    ],
-  });
-
+/**
+ * @param {Object} param0
+ * @param {webpack.Configuration} param0.config
+ * @param {string} [param0.cwd] - cwd containing package.json resolve aliases should be based on
+ * (if different from actual cwd)
+ */
+function custom({ config, cwd }) {
   config.resolveLoader = {
     ...config.resolveLoader,
     modules: [
@@ -27,55 +20,67 @@ module.exports = ({ config }) => {
     ],
   };
 
-  config.module.rules.push({
-    test: /\.scss$/,
-    enforce: 'pre',
-    exclude: [/node_modules/],
-    use: [
-      {
-        loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
-      },
-      {
-        loader: 'css-loader', // translates CSS into CommonJS
-        options: {
-          modules: {
-            localIdentName: '[name]_[local]_[hash:base64:5]',
-          },
-          importLoaders: 2,
-        },
-      },
-      {
-        loader: 'postcss-loader',
-        options: {
-          plugins: function() {
-            return [require('autoprefixer')];
+  config.module.rules.push(
+    {
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true,
+            experimentalWatchApi: true,
+            configFile: 'tsconfig.json',
           },
         },
-      },
-      {
-        loader: 'sass-loader',
-      },
-    ],
-  });
-
-  config.module.rules.push({
-    test: /\.(gif|jpg|jpeg|png|svg)$/,
-    loader: 'file-loader?name=[name].[ext]',
-  });
-
-  config.module.rules.push({
-    test: /\.(woff|woff2|ttf)$/,
-    loader: 'file-loader?name=[name].[ext]',
-  });
-
-  config.module.rules.push({
-    test: /\.md$/,
-    loader: 'raw-loader',
-  });
+      ],
+    },
+    {
+      test: /\.scss$/,
+      enforce: 'pre',
+      exclude: [/node_modules/],
+      use: [
+        {
+          loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+        },
+        {
+          loader: 'css-loader', // translates CSS into CommonJS
+          options: {
+            modules: {
+              localIdentName: '[name]_[local]_[hash:base64:5]',
+            },
+            importLoaders: 2,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function() {
+              return [require('autoprefixer')];
+            },
+          },
+        },
+        {
+          loader: 'sass-loader',
+        },
+      ],
+    },
+    {
+      test: /\.(gif|jpg|jpeg|png|svg)$/,
+      loader: 'file-loader?name=[name].[ext]',
+    },
+    {
+      test: /\.(woff|woff2|ttf)$/,
+      loader: 'file-loader?name=[name].[ext]',
+    },
+    {
+      test: /\.md$/,
+      loader: 'raw-loader',
+    },
+  );
 
   config.resolve.extensions.push('.ts', '.tsx');
 
-  config.resolve.alias = getResolveAlias();
+  config.resolve.alias = getResolveAlias(cwd);
 
   config.plugins.push(
     new HardSourceWebpackPlugin(),
@@ -101,4 +106,6 @@ module.exports = ({ config }) => {
   config.optimization.minimize = false;
 
   return config;
-};
+}
+
+module.exports = custom;
