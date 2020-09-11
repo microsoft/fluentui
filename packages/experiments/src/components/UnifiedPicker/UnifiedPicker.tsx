@@ -19,6 +19,7 @@ import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -110,6 +111,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     dropItemsAt(insertIndex, newItems, indicesToRemove);
   };
 
+  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
+    return dropContext!.index != draggedIndex;
+  };
+
   const _onDrop = (item?: any, event?: DragEvent): void => {
     const insertIndex = selectedItems.indexOf(item);
     let isDropHandled = false;
@@ -165,7 +170,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
-    canDrop: () => true,
+    canDrop: _canDrop,
     canDrag: () => true,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
