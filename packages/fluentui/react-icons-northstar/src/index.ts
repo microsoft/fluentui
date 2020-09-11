@@ -47,6 +47,7 @@ export { CameraIcon } from './components/CameraIcon';
 export { CanvasAddPageIcon } from './components/CanvasAddPageIcon';
 export { CallMissedLineIcon } from './components/CallMissedLineIcon';
 export { CallParkingIcon } from './components/CallParkingIcon';
+export { CastingIcon } from './components/CastingIcon';
 export { ChatIcon } from './components/ChatIcon';
 export { ChevronDownIcon } from './components/ChevronDownIcon';
 export { ChevronDownMediumIcon } from './components/ChevronDownMediumIcon';
