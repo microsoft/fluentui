@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 import { buttonClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {

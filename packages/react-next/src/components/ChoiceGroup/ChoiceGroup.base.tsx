@@ -10,7 +10,7 @@ import {
 } from './ChoiceGroup.types';
 import { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue, useWarnings, useConstCallback } from '@uifabric/react-hooks';
+import { useId, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -89,13 +89,13 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
     useDebugWarnings(props);
     useComponentRef(options, keyChecked, id, componentRef);
 
-    const onFocus = useConstCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
+    const onFocus = React.useCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
       setKeyFocused(option.itemKey);
-    });
+    }, []);
 
-    const onBlur = useConstCallback((ev: React.FocusEvent<HTMLElement>) => {
+    const onBlur = React.useCallback((ev: React.FocusEvent<HTMLElement>) => {
       setKeyFocused(undefined);
-    });
+    }, []);
 
     const onOptionChange = React.useCallback(
       (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOptionProps) => {

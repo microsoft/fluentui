@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { useConstCallback } from './useConstCallback';
