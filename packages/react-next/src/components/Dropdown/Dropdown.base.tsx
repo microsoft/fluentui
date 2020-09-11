@@ -84,6 +84,30 @@ function useSelectedItemsState({
   const oldOptions = usePrevious(options);
   const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
 
+  // In controlled component usage where selectedKey is provided, update the selectedIndex
+  // state if the key or options change.
+  let selectedKeyPropToUse: string | number | string[] | number[] | null | undefined;
+
+  // this does a shallow compare (assumes options are pure), for the purposes of determining whether
+  // defaultSelectedKey/defaultSelectedKeys are respected.
+  const didOptionsChange = options !== oldOptions;
+
+  if (multiSelect) {
+    if (didOptionsChange && defaultSelectedKeys !== undefined) {
+      selectedKeyPropToUse = defaultSelectedKeys;
+    } else {
+      selectedKeyPropToUse = selectedKeys;
+    }
+  } else {
+    if (didOptionsChange && defaultSelectedKey !== undefined) {
+      selectedKeyPropToUse = defaultSelectedKey;
+    } else {
+      selectedKeyPropToUse = selectedKey;
+    }
+  }
+
+  const oldSelectedKeyProp = usePrevious(selectedKeyPropToUse);
+
   React.useEffect(() => {
     /** Get all selected indexes for multi-select mode */
     const getSelectedIndexes = (): number[] => {
@@ -124,44 +148,13 @@ function useSelectedItemsState({
       });
     };
 
-    // In controlled component usage where selectedKey is provided, update the selectedIndex
-    // state if the key or options change.
-    let selectedKeyPropToUse: string | number | string[] | number[] | null | undefined;
-
-    // this does a shallow compare (assumes options are pure), for the purposes of determining whether
-    // defaultSelectedKey/defaultSelectedKeys are respected.
-    const didOptionsChange = options !== oldOptions;
-
-    if (multiSelect) {
-      if (didOptionsChange && defaultSelectedKeys !== undefined) {
-        selectedKeyPropToUse = defaultSelectedKeys;
-      } else {
-        selectedKeyPropToUse = selectedKeys;
-      }
-    } else {
-      if (didOptionsChange && defaultSelectedKey !== undefined) {
-        selectedKeyPropToUse = defaultSelectedKey;
-      } else {
-        selectedKeyPropToUse = selectedKey;
-      }
-    }
-
     if (
       (selectedKeyPropToUse !== undefined || !oldOptions) &&
-      (selectedKeyPropToUse !== selectedIndices || didOptionsChange)
+      (selectedKeyPropToUse !== oldSelectedKeyProp || didOptionsChange)
     ) {
       setSelectedIndices(getSelectedIndexes());
     }
-  }, [
-    defaultSelectedKeys,
-    selectedKeys,
-    defaultSelectedKey,
-    selectedKey,
-    options,
-    multiSelect,
-    oldOptions,
-    selectedIndices,
-  ]);
+  }, [didOptionsChange, multiSelect, oldOptions, oldSelectedKeyProp, options, selectedKeyPropToUse]);
 
   return [selectedIndices, setSelectedIndices] as const;
 }
