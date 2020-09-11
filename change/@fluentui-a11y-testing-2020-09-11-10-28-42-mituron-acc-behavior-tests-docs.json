@@ -1,0 +1,8 @@
+{
+  "type": "major",
+  "comment": "adding package to allow tests a11y behaviors",
+  "packageName": "@fluentui/a11y-testing",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-09-11T08:28:42.509Z"
+}
