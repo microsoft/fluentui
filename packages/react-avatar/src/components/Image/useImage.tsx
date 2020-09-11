@@ -16,11 +16,10 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, default
     },
     defaultProps,
     props,
-    {
-      children: undefined,
-      src: props.src || props.children,
-    },
   );
+
+  state.src = state.src || state.children;
+  delete state.children;
 
   return { state, render: renderImage };
 };
