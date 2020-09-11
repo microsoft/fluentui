@@ -25,12 +25,13 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * To display multi stack callout or single callout
    * @default flase
    */
-  isMultiStackCallout?: boolean;
+  isCalloutForStack?: boolean;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+
   /**
    * Define a custom callout renderer for a stack; default is to render per data point
    */

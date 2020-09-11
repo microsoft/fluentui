@@ -19,7 +19,6 @@ import {
   IMargins,
   IChildProps,
 } from '@uifabric/charting';
-// import { IBasestate } from '../../types/index';
 import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
 import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
 import { CartesianChart } from '@uifabric/charting';
@@ -73,7 +72,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     };
     warnDeprecations(COMPONENT_NAME, props, { colors: 'IVSChartDataPoint.color', chartLabel: 'Use your own title' });
     this._onLegendLeave = this._onLegendLeave.bind(this);
-    this._onBarLeave = this._onBarLeave.bind(this);
+    this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._refArray = [];
     this._barRefArray = [];
@@ -101,7 +100,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._classNames = getClassNames(this.props.styles!, {
       href: this.props.href!,
       theme: this.props.theme!,
-      // legendColor: this.state.color,
     });
 
     const calloutProps = {
@@ -134,10 +132,11 @@ export class VerticalStackedBarChartBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isMultiStackCallout={this.props.isMultiStackCallout!}
+        // isCalloutForStack={this.props.isCalloutForStack!}
         barwidth={this._barWidth}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        customizedCallout={this._getCustomizedCallout()}
         // styles={this._classNames.subComponentStyles?.CartesianStyles}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -158,6 +157,14 @@ export class VerticalStackedBarChartBase extends React.Component<
       />
     ) : null;
   }
+
+  private _getCustomizedCallout = () => {
+    return this.props.onRenderCalloutPerStack
+      ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
+      : this.props.onRenderCalloutPerDataPoint
+      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
+      : null;
+  };
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
@@ -272,15 +279,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
   }
 
-  private _onStackHover(calloutData: IVerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGGElement>): void {
-    mouseEvent.persist();
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      // stackCalloutProps: calloutData,
-    });
-  }
-
   private _refCallback(rectElement: SVGRectElement, legendTitle: string, index: number): void {
     this._refArray[index] = { index: legendTitle, refElement: rectElement };
   }
@@ -307,11 +305,12 @@ export class VerticalStackedBarChartBase extends React.Component<
         color: point.color!,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
+        dataPointCalloutProps: point,
       });
     }
   }
 
-  private _onBarHover = (xAxisPoint: string, mouseEvent: React.MouseEvent<SVGPathElement>): void => {
+  private _onStackHover = (xAxisPoint: string, mouseEvent: React.MouseEvent<SVGPathElement>): void => {
     mouseEvent.persist();
     const found = find(
       this._points,
@@ -323,6 +322,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       isCalloutVisible: true,
       YValueHover: found!.chartData,
       hoverXValue: xAxisPoint,
+      stackCalloutProps: found!,
     });
   };
 
@@ -341,13 +341,14 @@ export class VerticalStackedBarChartBase extends React.Component<
             color: color,
             xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
             yCalloutValue: point.yAxisCalloutData,
+            dataPointCalloutProps: point,
           });
         }
       });
     }
   }
 
-  private _onSingleBarFocus = (xAxisPoint: string | number): void => {
+  private _onStackFocus = (xAxisPoint: string | number): void => {
     const found = find(
       this._points,
       (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
@@ -360,12 +361,13 @@ export class VerticalStackedBarChartBase extends React.Component<
           isCalloutVisible: true,
           YValueHover: found!.chartData,
           hoverXValue: xAxisPoint,
+          stackCalloutProps: found!,
         });
       }
     });
   };
 
-  private _onBarLeave = (): void => {
+  private _handleMouseOut = (): void => {
     this.setState({
       isCalloutVisible: false,
     });
@@ -386,7 +388,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   ): JSX.Element[] => {
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
       let startingPointOfY = 0;
-      const isMultiStackCallout = this.props.isMultiStackCallout || false;
+      const isCalloutForStack = this.props.isCalloutForStack || false;
 
       const singleBar = singleChartData.chartData.map((point: IVSChartDataPoint, index: number) => {
         startingPointOfY = startingPointOfY + point.data;
@@ -402,7 +404,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
           href: this.props.href,
-          // legendColor: this.state.color,
         });
         let xPoint;
         if (this._isNumeric) {
@@ -411,14 +412,14 @@ export class VerticalStackedBarChartBase extends React.Component<
           xPoint = xBarScale(indexNumber);
         }
 
-        const rectFocusProps = !isMultiStackCallout && {
+        const rectFocusProps = !isCalloutForStack && {
           'data-is-focusable': true,
           'aria-labelledby': this._calloutId,
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
-          onMouseLeave: this._onBarLeave,
+          onMouseLeave: this._handleMouseOut,
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber),
-          onBlur: this._onBarLeave,
+          onBlur: this._handleMouseOut,
           onClick: this._redirectToUrl,
         };
         return (
@@ -437,20 +438,20 @@ export class VerticalStackedBarChartBase extends React.Component<
           />
         );
       });
-      const stackFocusProps = isMultiStackCallout && {
+      const stackFocusProps = isCalloutForStack && {
         'data-is-focusable': true,
-        onMouseOver: this._onBarHover.bind(this, singleChartData.xAxisPoint),
-        onMouseMove: this._onBarHover.bind(this, singleChartData.xAxisPoint),
-        onMouseLeave: this._onBarLeave,
-        onFocus: this._onSingleBarFocus.bind(this, singleChartData.xAxisPoint),
-        onBlur: this._onBarLeave,
+        onMouseOver: this._onStackHover.bind(this, singleChartData.xAxisPoint),
+        onMouseMove: this._onStackHover.bind(this, singleChartData.xAxisPoint),
+        onMouseLeave: this._handleMouseOut,
+        onFocus: this._onStackFocus.bind(this, singleChartData.xAxisPoint),
+        onBlur: this._handleMouseOut,
         onClick: this._redirectToUrl,
       };
       return (
         <g
           key={indexNumber}
           id={`${indexNumber}-singleBar`}
-          data-is-focusable={this.props.isMultiStackCallout}
+          data-is-focusable={this.props.isCalloutForStack}
           ref={(gElement: SVGGElement) => {
             this._barRefCallback(gElement, indexNumber, singleChartData.xAxisPoint);
           }}
@@ -502,10 +503,3 @@ export class VerticalStackedBarChartBase extends React.Component<
     return this._createBar(xBarScale, yBarScale, containerHeight);
   };
 }
-
-// IMp code
-// {this.props.onRenderCalloutPerStack
-//   ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
-//   : this.props.onRenderCalloutPerDataPoint
-//   ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
-//   : this._renderCallout(this.state.dataPointCalloutProps)}

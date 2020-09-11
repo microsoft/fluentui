@@ -358,14 +358,19 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   children(props: IChildProps): React.ReactNode;
 
   /**
-   * To enable multi callout or single callout
+   * To enable callout for bar. Using for only Vertical stacked bar chart.
    * @default false
    * @type {boolean}
    */
-  isMultiStackCallout?: boolean;
+  isCalloutForStack?: boolean;
 
   /** dataset values to find out domain of the String axis
    * Present using for only vertical stacked bar chart
    */
   datasetForXAxisDomain?: IDataPoint[];
+
+  /** Own callout design */
+  // need to add type here
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customizedCallout?: any;
 }

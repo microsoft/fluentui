@@ -7,7 +7,7 @@ import {
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-} from './CartesianChart.types';
+} from '@uifabric/charting';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -158,7 +158,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xScale,
       yScale,
     });
-    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
       <div
         id={this.idForGraph}
@@ -192,35 +191,15 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {this.props.legendBars}
         </div>
+        {/* {console.log(this.props.isCalloutForStack, this.props.customizedCallout, 'iiiiiiiiii')} */}
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
           <Callout {...calloutProps}>
-            {this.props.isMultiStackCallout ? (
-              <div className={this._classNames.calloutContentRoot}>
-                <div
-                  className={this._classNames.calloutDateTimeContainer}
-                  style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-                >
-                  <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
-                </div>
-                <div
-                  className={this._classNames.calloutInfoContainer}
-                  style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-                >
-                  {calloutProps!.YValueHover &&
-                    calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-                      const isLast: boolean = index + 1 === yValues.length;
-                      return (
-                        <div
-                          key={`callout-content-${index}`}
-                          style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
-                        >
-                          {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-            ) : (
+            {/** Given callout will render. Other conditions will negligable  */}
+            {this.props.customizedCallout!}
+            {/** Stack callout - all y points will shown at individual x points. */}
+            {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+            {/** Default callout - single y point will display at individual x points */}
+            {!this.props.customizedCallout && !this.props.isCalloutForStack && (
               <ChartHoverCard
                 XValue={calloutProps.XValue}
                 Legend={calloutProps.legend!}
@@ -233,6 +212,39 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
+
+  // TO DO: Write a common funtional component for Multi value callout and divide sub count method
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _multiValueCallout = (calloutProps: any) => {
+    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+    return (
+      <div className={this._classNames.calloutContentRoot}>
+        <div
+          className={this._classNames.calloutDateTimeContainer}
+          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+        >
+          <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+        </div>
+        <div
+          className={this._classNames.calloutInfoContainer}
+          style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+        >
+          {calloutProps!.YValueHover &&
+            calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+              const isLast: boolean = index + 1 === yValues.length;
+              return (
+                <div
+                  key={`callout-content-${index}`}
+                  style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                >
+                  {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    );
+  };
 
   private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
     if (yValueHover) {
@@ -308,7 +320,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
-  private _fitParentContainer(fromDidUpdate?: boolean): void {
+  private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
 
     this._reqID = requestAnimationFrame(() => {

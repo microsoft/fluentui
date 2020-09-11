@@ -6,8 +6,8 @@ import { DirectionalHint } from 'office-ui-fabric-react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 const options: IChoiceGroupOption[] = [
-  { key: 'singleCallout', text: 'Single rect Callout' },
-  { key: 'MultiCallout', text: 'Multi stack callout' },
+  { key: 'singleCallout', text: 'Single callout' },
+  { key: 'MultiCallout', text: 'Stack callout' },
 ];
 
 interface IVerticalStackedBarState {
@@ -87,7 +87,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             width={this.state.width}
             yAxisTickCount={10}
             chartLabel="Card title"
-            isMultiStackCallout={this.state.selectedCallout === 'MultiCallout'}
+            isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             yMaxValue={120}
             yMinValue={10}
             calloutProps={{

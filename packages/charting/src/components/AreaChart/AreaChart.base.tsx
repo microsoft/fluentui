@@ -132,7 +132,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
-        isMultiStackCallout
+        isCalloutForStack
         tickParams={tickParams}
         maxOfYVal={stackedInfo.maxOfYVal}
         getGraphData={this._getGraphData}
