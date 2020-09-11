@@ -49,7 +49,7 @@ export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallback
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
-// @public
+// @public @deprecated (undocumented)
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
 // @public

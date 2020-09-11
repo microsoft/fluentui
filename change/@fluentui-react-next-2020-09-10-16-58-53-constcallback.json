@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove useConstCallback usage",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-10T23:58:53.184Z"
+}

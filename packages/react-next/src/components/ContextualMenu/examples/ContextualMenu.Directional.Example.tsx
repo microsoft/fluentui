@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { Checkbox, ICheckboxStyles } from '@fluentui/react-next/lib/Checkbox';
 import {
@@ -39,24 +38,26 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
     DirectionalHint.bottomLeftEdge,
   );
 
-  const onShowBeakChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+  const onShowBeakChange = React.useCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     setIsBeakVisible(isVisible);
-  });
+  }, []);
 
-  const onUseRtlHintChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+  const onUseRtlHintChange = React.useCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     setUseDirectionalHintForRTL(isVisible);
-  });
+  }, []);
 
-  const onDirectionalChanged = useConstCallback(
+  const onDirectionalChanged = React.useCallback(
     (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
       setDirectionalHint(option.key as DirectionalHint);
     },
+    [],
   );
 
-  const onDirectionalRtlChanged = useConstCallback(
+  const onDirectionalRtlChanged = React.useCallback(
     (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
       setDirectionalHintForRTL(option.key as DirectionalHint);
     },
+    [],
   );
 
   const menuProps: IContextualMenuProps = React.useMemo(

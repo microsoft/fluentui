@@ -3,7 +3,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, IPanelProps } from 'office-ui-fabric-react/lib/Panel';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const explanation =
   'This panel has custom content in the navigation region (the part at the top which normally ' +
@@ -12,23 +12,23 @@ const explanation =
 const searchboxStyles = { root: { margin: '5px', height: 'auto', width: '100%' } };
 
 export const PanelNavigationExample: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
-  const openPanel = useConstCallback(() => setIsOpen(true));
-  const dismissPanel = useConstCallback(() => setIsOpen(false));
-
-  const onRenderNavigationContent: IRenderFunction<IPanelProps> = useConstCallback((props, defaultRender) => (
-    <>
-      <SearchBox
-        placeholder="Search here..."
-        styles={searchboxStyles}
-        ariaLabel="Sample search box. Does not actually search anything."
-      />
-      {// This custom navigation still renders the close button (defaultRender).
-      // If you don't use defaultRender, be sure to provide some other way to close the panel.
-      defaultRender!(props)}
-    </>
-  ));
+  const onRenderNavigationContent: IRenderFunction<IPanelProps> = React.useCallback(
+    (props, defaultRender) => (
+      <>
+        <SearchBox
+          placeholder="Search here..."
+          styles={searchboxStyles}
+          ariaLabel="Sample search box. Does not actually search anything."
+        />
+        {// This custom navigation still renders the close button (defaultRender).
+        // If you don't use defaultRender, be sure to provide some other way to close the panel.
+        defaultRender!(props)}
+      </>
+    ),
+    [],
+  );
 
   return (
     <div>

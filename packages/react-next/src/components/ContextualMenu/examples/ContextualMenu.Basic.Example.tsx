@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export const ContextualMenuBasicExample: React.FunctionComponent = () => {
   const linkRef = React.useRef(null);
-  const [showContextualMenu, setShowContextualMenu] = React.useState(false);
-  const onShowContextualMenu = useConstCallback(() => setShowContextualMenu(true));
-  const onHideContextualMenu = useConstCallback(() => setShowContextualMenu(false));
+  const [showContextualMenu, { setTrue: onShowContextualMenu, setFalse: onHideContextualMenu }] = useBoolean(false);
 
   return (
     <div>

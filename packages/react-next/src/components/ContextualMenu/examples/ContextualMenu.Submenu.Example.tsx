@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { IContextualMenuProps, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
 import { TextField, ITextFieldStyles } from '@fluentui/react-next/lib/TextField';
@@ -19,10 +18,11 @@ export interface IContextualMenuSubmenuExampleState {
 export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
   const [hoverDelay, setHoverDelay] = React.useState(250);
 
-  const onHoverDelayChanged = useConstCallback(
+  const onHoverDelayChanged = React.useCallback(
     (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
       setHoverDelay(Number(newValue) || 0);
     },
+    [],
   );
 
   const menuProps: IContextualMenuProps = React.useMemo(
