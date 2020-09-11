@@ -8,7 +8,7 @@ export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
   onItemClick: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
-  onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
+  onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
 
   slotProps: {
     item: Record<string, any>;
