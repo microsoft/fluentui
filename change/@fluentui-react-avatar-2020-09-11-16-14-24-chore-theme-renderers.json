@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating state to use mergeProps with limitted deep cloning.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-11T23:14:09.072Z"
+}
