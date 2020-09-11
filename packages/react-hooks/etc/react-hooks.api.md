@@ -7,6 +7,7 @@
 import { Async } from '@uifabric/utilities';
 import { ISettingsMap } from '@uifabric/utilities/lib/warn';
 import { IWarnControlledUsageParams } from '@uifabric/utilities/lib/warn';
+import { Point } from '@uifabric/utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -39,6 +40,9 @@ export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
 
 // @public
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
+// @public (undocumented)
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public
 export function useAsync(): Async;
@@ -93,6 +97,9 @@ export type UseSetTimeoutReturnType = {
     setTimeout: (callback: () => void, duration: number) => number;
     clearTimeout: (id: number) => void;
 };
+
+// @public
+export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]>;
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;

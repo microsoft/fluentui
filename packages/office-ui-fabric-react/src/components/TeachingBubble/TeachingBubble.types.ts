@@ -5,10 +5,11 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
+import { Target } from '@uifabric/react-hooks';
 
 /**
  * {@docCategory TeachingBubble}

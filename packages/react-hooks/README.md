@@ -15,6 +15,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
 - [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted
 - [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
+- [useTarget](#usetarget) - Logic used by several popup components to determine the target element or point to position against
 - [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
 
 ## useBoolean
@@ -298,6 +299,19 @@ const MyComponent = () => {
   clearTimeout(id);
 };
 ```
+
+## useTarget
+
+```ts
+type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+
+function useTarget<TElement extends HTMLElement = HTMLElement>(
+  target: Target | undefined,
+  hostElement?: React.RefObject<TElement | null>,
+): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, React.RefObject<Window | undefined>]>;
+```
+
+Hook which queries the document for the element indicated by a CSS query string (if provided), or returns the element/event/point provided. Also attempts to determine the Window object for the provided target.
 
 ## useWarnings
 
