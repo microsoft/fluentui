@@ -252,7 +252,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = axis
       .tickPadding(5)
       .tickValues(domains)
-      .tickFormat(d3Format('.2s'))
+      .tickFormat(d3Format('.2~s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }
