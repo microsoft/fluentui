@@ -243,9 +243,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     );
 
     const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
-      onClick: (e, itemProps) => {
-        _.invoke(predefinedProps, 'onClick', e, itemProps);
-      },
       onActiveChanged: (e, props) => {
         const { index, active } = props;
         if (active) {
