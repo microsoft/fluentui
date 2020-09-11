@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/storybook": "^0.4.4",
     "@types/chalk": "^2.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",

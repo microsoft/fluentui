@@ -211,7 +211,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             icon={<Icon iconName={!onRenderOverflowIcon ? 'More' : ''} />}
             role="button"
             aria-haspopup="true"
-            ariaLabel={overflowAriaLabel}
+            aria-label={overflowAriaLabel}
             menuIcon={onRenderMenuIcon}
             menu={{
               items: contextualItems,
