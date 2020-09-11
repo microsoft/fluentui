@@ -41,7 +41,7 @@ function lintImports() {
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup',
+    '@fluentui/examples/lib/office-ui-fabric-react/Keytip/examples/KeytipSetup',
     'office-ui-fabric-react/lib/utilities/dateMath/DateMath',
     'office-ui-fabric-react/lib/utilities/keytips/index',
     'office-ui-fabric-react/lib/utilities/positioning',
@@ -50,11 +50,11 @@ function lintImports() {
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',
-    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers',
+    '@fluentui/examples/lib/experiments/TilesList/examples/ExampleHelpers',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@uifabric/foundation/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.
-    '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
+    '@fluentui/examples/lib/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
   ];
   const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
   const reExportedPackages = {
@@ -276,7 +276,7 @@ function lintImports() {
         _addError(importErrors.pathRelative, relativePath, importPath);
       }
 
-      if (pathIsDeep && !allowedDeepImports.includes(importPath)) {
+      if (pathIsDeep && !isScss && !allowedDeepImports.includes(importPath)) {
         _addError(importErrors.pathDeep, relativePath, importPath);
       }
 
@@ -335,13 +335,13 @@ function lintImports() {
       pathAbsolute:
         'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
-        '{count} import path(s) do not reference physical files. This can break AMD imports. ' +
+        'import path(s) do not reference physical files. This can break AMD imports. ' +
         'Please ensure the following imports reference physical files:',
       pathRelative:
         'example files are using relative imports. For example portability, please ensure that the following imports are absolute:',
       pathDeep:
-        'example files are using deep imports. ' +
-        'To promote best practices, please only import from root-level files (<package-name> or <package-name>/lib/<file>).',
+        'example files are using deep imports. To promote best practices, ' +
+        `please only import from root-level files ('<package-name>' or '<package-name>/lib/<file>').`,
       pathReExported:
         'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
         'Please change the following imports to reference office-ui-fabric-react instead:',

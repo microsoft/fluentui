@@ -2,8 +2,6 @@ const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 
 module.exports = resources.createServeConfig({
-  entry: './src/demo/index.tsx',
-
   output: {
     filename: 'demo-app.js',
   },

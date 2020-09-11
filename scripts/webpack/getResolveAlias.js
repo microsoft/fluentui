@@ -17,6 +17,7 @@ function getResolveAlias(cwd) {
   const gitRoot = findGitRoot();
   const deps = findRepoDeps(cwd);
 
+  /** @type {{ [key: string]: string }} */
   const alias = {};
   const excludedPackages = [
     '@fluentui/eslint-rules',

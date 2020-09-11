@@ -3,10 +3,20 @@ import { initializeIcons } from '@uifabric/icons';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
+import { withPerformance } from 'storybook-addon-performance';
+import { withKnobs } from '@storybook/addon-knobs';
+import { withThemeProvider, withStrictMode } from '@fluentui/storybook';
+import { withKeytipLayer } from './decorators';
 import * as React from 'react';
 
 addDecorator(withInfo());
 addDecorator(withA11y());
+addDecorator(withPerformance);
+addDecorator(withKnobs({ escapeHTML: false }));
+addDecorator(withThemeProvider);
+addDecorator(withStrictMode);
+addDecorator(withKeytipLayer);
+
 addParameters({
   a11y: {
     manual: true,
@@ -32,7 +42,7 @@ function loadStories() {
 }
 
 /**
- * @param options {{ key: string, stories: Map, req: (key: string) => any }}
+ * @param {{ key: string, stories: Map, req: (key: string) => any }} options
  */
 function generateStoriesFromExamples({ key, stories, req }) {
   const nameMatcher = /\.\/([^/]+)\//;

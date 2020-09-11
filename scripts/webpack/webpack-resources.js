@@ -231,6 +231,15 @@ module.exports = {
       customConfig,
     );
 
+    if (!config.entry) {
+      // Handle packages which have a legacy demo app in the examples package
+      const packageName = path.basename(process.cwd());
+      const demoEntryInExamples = path.resolve(__dirname, '../../packages/examples/src', packageName, 'demo/index.tsx');
+      if (fs.existsSync(demoEntryInExamples)) {
+        config.entry = demoEntryInExamples;
+      }
+    }
+
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
   },
