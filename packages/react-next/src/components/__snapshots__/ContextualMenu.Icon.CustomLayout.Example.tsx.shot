@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Example.tsx correctly 1`] = `
+exports[`Component Examples renders ContextualMenu.Icon.CustomLayout.Example.tsx correctly 1`] = `
 <button
   aria-expanded={false}
   aria-haspopup={true}

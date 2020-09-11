@@ -2,10 +2,13 @@
 
 exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1`] = `
 <div>
-  This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fluent UI Button components.
+  <p>
+    This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fluent UI Button components.
+  </p>
   <p>
     <b>
       <a
+        href="#"
         onClick={[Function]}
       >
         Click for ContextualMenu
