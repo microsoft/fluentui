@@ -62,6 +62,8 @@ export { CodeSnippetIcon } from './components/CodeSnippetIcon';
 export { CollapseIcon } from './components/CollapseIcon';
 export { CompanionIcon } from './components/CompanionIcon';
 export { ComposeIcon } from './components/ComposeIcon';
+export { ComputerAudioIcon } from './components/ComputerAudioIcon';
+export { ComputerAudioOffIcon } from './components/ComputerAudioOffIcon';
 export { ConferenceRoomDeviceIcon } from './components/ConferenceRoomDeviceIcon';
 export { ContactGroupCallIcon } from './components/ContactGroupCallIcon';
 export { ContactGroupIcon } from './components/ContactGroupIcon';
