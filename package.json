@@ -54,8 +54,8 @@
     "start-exp": "yarn workspace @uifabric/experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
-    "syncpack:list-mismatches": "syncpack list-mismatches --prod --dev --source \"{apps/*,packages/!(web-components),packages/fluentui/*,scripts,.}/package.json\"",
-    "syncpack:fix": "syncpack fix-mismatches --prod --dev --source \"{apps/*,packages/!(web-components),packages/fluentui/*,scripts,.}/package.json\"",
+    "syncpack:list-mismatches": "syncpack list-mismatches",
+    "syncpack:fix": "syncpack fix-mismatches",
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
@@ -76,7 +76,7 @@
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^4.5.4"
+    "syncpack": "^5.6.7"
   },
   "license": "MIT",
   "workspaces": {
@@ -103,5 +103,32 @@
     "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
+  },
+  "syncpack": {
+    "prod": true,
+    "dev": true,
+    "peer": false,
+    "source": [
+      "package.json",
+      "apps/*/package.json",
+      "packages/!(web-components)/package.json",
+      "packages/fluentui/*/package.json",
+      "scripts/package.json"
+    ],
+    "versionGroups": [
+      {
+        "packages": [
+          "@fluentui/web-components"
+        ],
+        "dependencies": [
+          "mocha",
+          "ts-loader",
+          "ts-node",
+          "tslib",
+          "typescript",
+          "webpack"
+        ]
+      }
+    ]
   }
 }
