@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "target": "es5",
+    "outDir": "lib",
+    "target": "es6",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -16,13 +16,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"],
-    "paths": {
-      "@fluentui/a11y-testing/lib/*": ["./src/*"],
-      "@fluentui/a11y-testing": ["./src"]
-    }
+    "lib": ["es2017", "dom"],
+    "types": ["jest"]
   },
   "include": ["src"]
 }

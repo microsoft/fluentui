@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Props, PropValue, TestFacade } from '@fluentui/a11y-testing';
+import { Props, PropValue, TestFacade } from '../types';
 import { mount } from 'enzyme';
 
 export class ComponentTestFacade implements TestFacade {
