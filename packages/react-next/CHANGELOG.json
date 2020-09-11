@@ -2,6 +2,33 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.105",
+      "version": "8.0.0-alpha.105",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy ContextualMenu to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "e34570d86cd27872c5b76c06022757afbaf22707",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "ContextualMenu: port missing changes to react-next and clean up examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "fa40d5038b8cb6600de48cc71a45fafb5ed0ceef",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Sep 2020 01:20:26 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.103",
       "version": "8.0.0-alpha.103",
