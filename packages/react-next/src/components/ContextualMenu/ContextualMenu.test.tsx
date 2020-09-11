@@ -1072,7 +1072,9 @@ describe('ContextualMenu', () => {
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
 
       // 2. Open sub menu
-      contextualItem.current!.openSubMenu();
+      ReactTestUtils.act(() => {
+        contextualItem.current!.openSubMenu();
+      });
       expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
 
       // 3. Dismiss parent menu - sub menu should disappear from DOM.
@@ -1087,7 +1089,9 @@ describe('ContextualMenu', () => {
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
 
       // 2. Open sub menu
-      contextualItem.current!.openSubMenu();
+      ReactTestUtils.act(() => {
+        contextualItem.current!.openSubMenu();
+      });
       expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
 
       // 3. Dismiss parent menu - sub menu should disappear from DOM.

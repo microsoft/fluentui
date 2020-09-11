@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.137.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.1)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.0..office-ui-fabric-react_v7.137.1)
+
+### Patches
+
+- Migrate Target type to @uifabric/react-hooks ([PR #14513](https://github.com/microsoft/fluentui/pull/14513) by miclo@microsoft.com)
+- ContextualMenu: clean up examples ([PR #14989](https://github.com/microsoft/fluentui/pull/14989) by elcraig@microsoft.com)
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
 
 ## [7.137.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.0)
 
