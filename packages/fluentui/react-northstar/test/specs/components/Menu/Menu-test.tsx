@@ -277,5 +277,34 @@ describe('Menu', () => {
         });
       });
     });
+
+    describe('chidlren API', () => {
+      it('should should select items', () => {
+        const onActiveIndexChange = jest.fn();
+        const wrapper = mountWithProvider(
+          <Menu defaultActiveIndex={0} onActiveIndexChange={onActiveIndexChange}>
+            <Menu.Item index={0}>
+              <Menu.ItemContent>Editorials</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={1}>
+              <Menu.ItemContent>Reviews</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={2}>
+              <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
+            </Menu.Item>
+          </Menu>,
+        );
+
+        wrapper
+          .find('MenuItem')
+          .at(1)
+          .simulate('click');
+
+        expect(onActiveIndexChange).toHaveBeenCalledWith(
+          expect.objectContaining({ type: 'click' }),
+          expect.objectContaining({ activeIndex: 1 }),
+        );
+      });
+    });
   });
 });
