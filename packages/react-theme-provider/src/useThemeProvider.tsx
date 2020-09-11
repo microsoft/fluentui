@@ -13,7 +13,7 @@ export const useThemeProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps: ThemeProviderProps,
 ) => {
-  const state: ThemeProviderState = mergeProps(
+  const state = mergeProps<ThemeProviderState>(
     {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       ref: ref || React.useRef(),
@@ -21,7 +21,7 @@ export const useThemeProvider = (
     },
     defaultProps,
     props,
-  ) as ThemeProviderState;
+  );
 
   // Apply changes to state.
   useThemeProviderState(state);

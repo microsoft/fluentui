@@ -9,7 +9,10 @@ import { GenericDictionary } from './types';
  * @param target - the target object to merge onto.
  * @param propSets - one or more prop sets to deep merge onto the target.
  */
-export const mergeProps = (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => {
+export const mergeProps = <TState = GenericDictionary>(
+  target: GenericDictionary,
+  ...propSets: (GenericDictionary | undefined)[]
+) => {
   for (const props of propSets) {
     if (props) {
       for (const propName of Object.keys(props)) {
@@ -49,5 +52,5 @@ export const mergeProps = (target: GenericDictionary, ...propSets: (GenericDicti
     }
   }
 
-  return target;
+  return target as TState;
 };
