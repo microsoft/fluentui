@@ -243,8 +243,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     );
 
     const handleSelect = React.useCallback(
-      (e, itemProps) => {
-        const { index } = itemProps;
+      (e, index) => {
         setActiveIndex(e, index);
       },
       [setActiveIndex],
