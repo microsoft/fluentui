@@ -1,4 +1,5 @@
 import { buttonClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 
 const selectors = {
   trigger: `.${buttonClassName}`,

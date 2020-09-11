@@ -7,7 +7,7 @@ import {
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
+import { mountWithProviderAndGetComponent, sharedIsConformant, mountWithProvider } from 'test/utils';
 import { MenuItem } from 'src/components/Menu/MenuItem';
 import { Menu } from 'src/components/Menu/Menu';
 import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
@@ -66,6 +66,16 @@ describe('MenuItem', () => {
         .exists(),
     ).toBe(false);
     expect(menuItem.text()).toBe('Home');
+  });
+
+  describe('wrapper', () => {
+    it('onClick should be called', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithProvider(<MenuItem wrapper={{ onClick }}>Home</MenuItem>);
+
+      wrapper.find('MenuItemWrapper').simulate('click');
+      expect(onClick).toHaveBeenCalled();
+    });
   });
 
   describe('accessibility', () => {

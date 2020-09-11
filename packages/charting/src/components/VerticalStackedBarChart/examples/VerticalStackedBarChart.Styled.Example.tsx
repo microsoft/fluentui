@@ -76,15 +76,15 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
             allowFocusOnLegends: true,
             styles: {
               rect: {
-                borderRadius: "3px"
-              }
-            }
+                borderRadius: '3px',
+              },
+            },
           }}
           calloutProps={{
-            directionalHint: DirectionalHint.rightTopEdge
+            directionalHint: DirectionalHint.rightTopEdge,
           }}
           // eslint-disable-next-line react/jsx-no-bind
-          onRenderCalloutPerDataPoint={props => (
+          onRenderCalloutPerDataPoint={props =>
             props ? (
               <ChartHoverCard
                 XValue={props.xAxisCalloutData}
@@ -93,7 +93,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
                 color={props.color}
               />
             ) : null
-          )}
+          }
         />
       </div>
     );
