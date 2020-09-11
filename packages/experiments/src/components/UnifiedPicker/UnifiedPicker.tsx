@@ -112,7 +112,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
-    return dropContext!.index != draggedIndex;
+    return !focusedItemIndices.includes(dropContext!.index);
   };
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
