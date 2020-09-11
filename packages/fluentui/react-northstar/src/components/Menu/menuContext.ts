@@ -7,6 +7,7 @@ import { MenuItemProps } from './MenuItem';
 export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
+  onItemClick: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
   onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
 
   slotProps: {
@@ -24,7 +25,7 @@ export type MenuContextValue = {
   };
 };
 
-export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemSelect'> & {
+export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemClick' | 'onItemSelect'> & {
   slotProps: MenuContextValue['slotProps']['item'];
   accessibility: MenuContextValue['behaviors']['item'];
   menuSlot: MenuContextValue['slots']['menu'];
@@ -40,6 +41,7 @@ export const MenuContext = createContext<MenuContextValue>(
   {
     activeIndex: -1,
     variables: {},
+    onItemClick: null,
     onItemSelect: null,
     slotProps: {
       item: {},

@@ -242,6 +242,14 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       [actualProps, setActiveIndex],
     );
 
+    const handleSelect = React.useCallback(
+      (e, itemProps) => {
+        const { index } = itemProps;
+        setActiveIndex(e, index);
+      },
+      [setActiveIndex],
+    );
+
     const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
       onActiveChanged: (e, props) => {
         const { index, active } = props;
@@ -291,7 +299,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
-      onItemSelect: handleClick,
+      onItemClick: handleClick,
+      onItemSelect: handleSelect,
       variables,
 
       slotProps: {

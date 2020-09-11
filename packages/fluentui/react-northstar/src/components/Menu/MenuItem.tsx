@@ -188,6 +188,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const parentProps = (useContextSelectors(MenuContext, {
       active: v => v.activeIndex === inputProps.index,
+      onItemClick: v => v.onItemClick,
       onItemSelect: v => v.onItemSelect,
       variables: v => v.variables,
       menuSlot: v => v.slots.menu,
@@ -341,7 +342,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       performClick(e);
 
       _.invoke(props, 'onClick', e, props);
-      _.invoke(parentProps, 'onItemSelect', e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
