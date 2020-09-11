@@ -68,13 +68,14 @@ describe('MenuItem', () => {
     expect(menuItem.text()).toBe('Home');
   });
 
-  it('Wrapper onClick must be called', () => {
-    const onClick = jest.fn();
-    const menuItem = mountWithProviderAndGetComponent(MenuItem, <MenuItem wrapper={{ onClick }}>Home</MenuItem>);
+  describe('wrapper', () => {
+    it('onClick should be called', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithProvider(<MenuItem wrapper={{ onClick }}>Home</MenuItem>);
 
-    menuItem.simulate('click');
-
-    expect(onClick).toHaveBeenCalled();
+      wrapper.find('MenuItemWrapper').simulate('click');
+      expect(onClick).toHaveBeenCalled();
+    });
   });
 
   describe('accessibility', () => {
