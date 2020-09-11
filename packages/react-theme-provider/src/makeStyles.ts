@@ -54,18 +54,19 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
   return (theme?: Theme, renderer?: StyleRenderer) => {
     const win = useWindow();
 
-    // Expected: theme is either always provided or never.
+    // Expected: theme and renderer are either always provided or never.
     theme = theme || useTheme();
     renderer = (renderer || useStyleRenderer()) as StyleRenderer;
 
     const id = renderer.getId();
-    const path = theme ? [id, win, theme] : [id, win];
+    const isStyleFunction = typeof styleOrFunction === 'function';
+    const path = isStyleFunction ? [id, win, theme] : [id, win];
     let value = graphGet(graph, path);
 
     if (!value) {
-      const styles = typeof styleOrFunction !== 'function' ? styleOrFunction : styleOrFunction(theme);
+      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => TStyleSet)(theme) : styleOrFunction;
 
-      value = renderer.renderStyles(styles, { targetWindow: win!, rtl: !!theme.rtl });
+      value = renderer.renderStyles(styles, { targetWindow: win, rtl: !!theme.rtl });
       graphSet(graph, path, value);
     }
 
