@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
 import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
@@ -42,7 +42,7 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
     keyActions: {
       root: {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+          keyCombinations: [{ keyCode: EnterKey }, { keyCode: SpacebarKey }],
         },
         ...(isSubtreeExpanded(props) && {
           collapse: {

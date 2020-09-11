@@ -93,6 +93,9 @@ export const formatYear: (date: Date) => string;
 export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
 
 // @public
+export function getDatePartHashValue(date: Date): number;
+
+// @public
 export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
 
 // @public
@@ -100,6 +103,9 @@ export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays:
 
 // @public
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
+
+// @public
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
 
 // @public
 export function getMonthEnd(date: Date): Date;
@@ -131,8 +137,14 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 
 // @public (undocumented)
 export interface ICalendarStrings extends IDateFormatting {
+    calendarCellFormatString?: string;
     closeButtonAriaLabel?: string;
     goToToday: string;
+    inputAriaLabel?: string;
+    inputBoundedFormatString?: string;
+    inputMaxBoundedFormatString?: string;
+    inputMinBoundedFormatString?: string;
+    inputPlaceholder: string;
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
@@ -140,6 +152,7 @@ export interface ICalendarStrings extends IDateFormatting {
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
+    openCalendarTitle: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
@@ -152,8 +165,8 @@ export interface ICalendarStrings extends IDateFormatting {
 // @public (undocumented)
 export interface IDateFormatting extends IDateGridStrings {
     formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date) => string;
-    formatMonthYear: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
+    formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
     parseDate: (date: string) => Date | null;
 }

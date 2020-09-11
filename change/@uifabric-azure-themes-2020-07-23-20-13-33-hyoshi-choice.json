@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix choicegroup's disabled style for Azure theme",
-  "packageName": "@uifabric/azure-themes",
-  "email": "hyoshi@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-24T03:13:33.635Z"
-}

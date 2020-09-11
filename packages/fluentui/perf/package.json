@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
-    "@fluentui/docs": "^0.50.0",
-    "@fluentui/eslint-plugin": "^0.53.1",
-    "@fluentui/react-northstar": "^0.50.0",
+    "@fluentui/docs": "^0.51.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/react-northstar": "^0.51.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -16,6 +16,9 @@
     "minimatch": "^3.0.4",
     "react": "16.8.6",
     "react-dom": "16.8.6"
+  },
+  "devDependencies": {
+    "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"

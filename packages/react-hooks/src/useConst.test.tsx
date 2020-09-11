@@ -1,20 +1,14 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { useConst } from './useConst';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useConst', () => {
-  it('returns the same value with value initializer', () => {
-    const TestComponent: React.FunctionComponent = () => {
-      const value = useConst(Math.random());
-      return <div>{value}</div>;
-    };
-    const wrapper = mount(<TestComponent />);
-    const firstValue = wrapper.text();
-    // Re-render the component
-    wrapper.update();
-    // Text should be the same
-    expect(wrapper.text()).toBe(firstValue);
-  });
+  validateHookValueNotChanged('returns the same value with value initializer', () => [useConst(Math.random())]);
+
+  validateHookValueNotChanged('returns the same value with function initializer', () => [
+    useConst(() => Math.random()),
+  ]);
 
   it('calls the function initializer only once', () => {
     const initializer = jest.fn(() => Math.random());

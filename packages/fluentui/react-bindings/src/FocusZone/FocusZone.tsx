@@ -45,7 +45,27 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 
-const _outerZones: Set<FocusZone> = new Set();
+const outerZones = {
+  _windowToOuterZoneMap: new Map<Window, Set<FocusZone>>(),
+  register(window: Window, FZ: FocusZone) {
+    if (this._windowToOuterZoneMap.get(window)) {
+      this._windowToOuterZoneMap.get(window)?.add(FZ);
+    } else {
+      this._windowToOuterZoneMap.set(window, new Set([FZ]));
+    }
+
+    return this._windowToOuterZoneMap.get(window)?.size;
+  },
+  unregister(window: Window, FZ: FocusZone) {
+    this._windowToOuterZoneMap.get(window)?.delete(FZ);
+    if (this._windowToOuterZoneMap.get(window)?.size === 0) {
+      this._windowToOuterZoneMap.delete(window);
+    }
+  },
+  getOutZone(window: Window) {
+    return this._windowToOuterZoneMap.get(window);
+  },
+};
 
 interface Point {
   left: number;
@@ -60,7 +80,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    _outerZones.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
   }
 }
 
@@ -100,10 +120,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   static displayName = 'FocusZone';
   static className = 'ms-FocusZone';
 
-  /** Used for testing purposes only. */
-  static getOuterZones(): number {
-    return _outerZones.size;
-  }
+  static outerZones = outerZones;
 
   _root: { current: HTMLElement | null } = { current: null };
   _id: string;
@@ -168,10 +185,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    if (!this._isInnerZone) {
-      _outerZones.add(this);
+    if (!this._isInnerZone && this.windowElement) {
+      outerZones.register(this.windowElement, this);
 
-      if (this.windowElement && _outerZones.size === 1) {
+      if (outerZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
@@ -220,11 +237,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
   componentWillUnmount() {
     delete _allInstances[this._id];
+    outerZones.unregister(this.windowElement!, this);
 
     if (!this._isInnerZone) {
-      _outerZones.delete(this);
-
-      if (this.windowElement && _outerZones.size === 0) {
+      if (this.windowElement && !outerZones.getOutZone(this.windowElement)) {
         this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
       }
     }
@@ -322,9 +338,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(element: HTMLElement): boolean {
+  focusElement(element: HTMLElement, forceAlignment?: boolean): boolean {
     const { shouldReceiveFocus } = this.props;
 
     if (shouldReceiveFocus && !shouldReceiveFocus(element)) {
@@ -332,7 +349,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (element) {
-      this.setActiveElement(element);
+      this.setActiveElement(element, forceAlignment);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -498,7 +515,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
   };
 
-  setActiveElement(element: HTMLElement, forceAlignemnt?: boolean): void {
+  setActiveElement(element: HTMLElement, forceAlignment?: boolean): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
@@ -512,7 +529,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (this._activeElement) {
-      if (!this._focusAlignment || forceAlignemnt) {
+      if (!this._focusAlignment || forceAlignment) {
         this.setFocusAlignment(element, true, true);
       }
 

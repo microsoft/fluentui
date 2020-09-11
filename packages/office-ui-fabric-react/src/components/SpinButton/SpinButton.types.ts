@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
-import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
@@ -360,4 +359,17 @@ export interface ISpinButtonStyles {
    * Style override for the arrowButtonsContainer when control is disabled.
    */
   arrowButtonsContainerDisabled: IStyle;
+}
+
+/**
+ * {@docCategory SpinButton}
+ */
+export interface ISpinButtonClassNames {
+  root: string;
+  labelWrapper: string;
+  icon: string;
+  label: string;
+  spinButtonWrapper: string;
+  input: string;
+  arrowBox: string;
 }

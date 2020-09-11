@@ -77,5 +77,16 @@ export const DatePickerBoundedExample: React.FC = () => (
       disabled={true}
       value={today}
     />
+    <DatePicker
+      className={controlClass.control}
+      isRequired={false}
+      firstDayOfWeek={firstDayOfWeek}
+      strings={DayPickerStrings}
+      placeholder="Select a date..."
+      ariaLabel="Select a date"
+      minDate={minDate}
+      maxDate={maxDate}
+      allowTextInput={true}
+    />
   </div>
 );

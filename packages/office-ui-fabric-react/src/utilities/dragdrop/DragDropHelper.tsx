@@ -1,5 +1,3 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { EventGroup, getDocument } from '../../Utilities';
 import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
@@ -379,9 +377,7 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * determine whether the child target is a descendant of the parent
    */
-  private _isChild(parent: React.ReactInstance, child: React.ReactInstance): boolean {
-    const parentElement = ReactDOM.findDOMNode(parent);
-    let childElement = ReactDOM.findDOMNode(child);
+  private _isChild(parentElement: HTMLElement, childElement: HTMLElement): boolean {
     while (childElement && childElement.parentElement) {
       if (childElement.parentElement === parentElement) {
         return true;

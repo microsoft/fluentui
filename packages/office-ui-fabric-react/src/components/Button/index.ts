@@ -9,3 +9,4 @@ export * from './DefaultButton/DefaultButton';
 export * from './MessageBarButton/MessageBarButton';
 export * from './PrimaryButton/PrimaryButton';
 export * from './IconButton/IconButton';
+export * from './SplitButton/SplitButton.classNames';

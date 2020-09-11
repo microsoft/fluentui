@@ -2,6 +2,102 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Body text font size clean up, <Text>",
+            "author": "jagaheri@microsoft.com",
+            "commit": "b18df8a0cb88d05759e65508a40043ab5323a43f",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/azure-themes_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.3.6",
+      "version": "7.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Messagebar palette update, defaultbutton as primiary styling fix",
+            "author": "jagaheri@microsoft.com",
+            "commit": "4388199c13687c6113b21de4b17704d6e62cba99",
+            "package": "@uifabric/azure-themes"
+          },
+          {
+            "comment": "fix publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "High contrast light + dark themes",
+            "author": "jagaheri@microsoft.com",
+            "commit": "91fff79253d0aa6b9b6572abbf7691a04371253c",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/azure-themes_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "High contrast light + dark themes",
+            "author": "jagaheri@microsoft.com",
+            "commit": "91fff79253d0aa6b9b6572abbf7691a04371253c",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.49",
+      "version": "7.1.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix choicegroup's disabled style for Azure theme",
+            "author": "hyoshi@microsoft.com",
+            "commit": "455be87d6ce147b967dec8c1a4ddeae2526e6559",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Jul 2020 00:04:51 GMT",
       "tag": "@uifabric/azure-themes_v7.1.43",
       "version": "7.1.43",

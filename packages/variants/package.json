@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/variants",
-  "version": "7.1.101",
+  "version": "7.2.12",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,12 +23,12 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/eslint-plugin": "^0.54.0",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.18",
-    "office-ui-fabric-react": "^7.123.9",
+    "@uifabric/set-version": "^7.0.22",
+    "office-ui-fabric-react": "^7.137.1",
     "tslib": "^1.10.0"
   }
 }

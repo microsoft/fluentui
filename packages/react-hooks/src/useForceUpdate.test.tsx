@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { useForceUpdate } from './useForceUpdate';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useForceUpdate', () => {
-  it('component updates when force update is called', () => {
+  it('updates component when called', () => {
     let renderCount = 0;
     const TestComponent: React.FunctionComponent = () => {
       const forceUpdate = useForceUpdate();
@@ -17,22 +18,5 @@ describe('useForceUpdate', () => {
     expect(renderCount).toBe(2);
   });
 
-  it('returns the same callback each time', () => {
-    let latestForceUpdate: (() => void) | undefined;
-    let renderCount = 0;
-
-    const TestComponent: React.FunctionComponent = props => {
-      latestForceUpdate = useForceUpdate();
-      renderCount++;
-      return <div />;
-    };
-
-    const wrapper = mount(<TestComponent />);
-    const firstForceUpate = latestForceUpdate;
-    latestForceUpdate = undefined;
-
-    wrapper.setProps({});
-    expect(renderCount).toBe(2);
-    expect(latestForceUpdate).toBe(firstForceUpate);
-  });
+  validateHookValueNotChanged('returns the same callback each time', () => [useForceUpdate()]);
 });

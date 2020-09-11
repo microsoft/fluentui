@@ -12,8 +12,6 @@ export interface IHomePageStyleProps {
   isMountedOffset: boolean;
   /** On this page, a *light* background is inverted and a dark background is normal. */
   isInverted?: boolean;
-  beforeColor?: string;
-  afterColor?: string;
 }
 
 export interface IHomePageStyles {

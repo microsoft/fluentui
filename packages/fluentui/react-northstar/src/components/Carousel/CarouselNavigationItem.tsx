@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, tabBehavior } from '@fluentui/accessibility';
+import { Accessibility, tabBehavior, TabBehaviorProps } from '@fluentui/accessibility';
 
 import {
   childrenExist,
@@ -35,7 +35,7 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TabBehaviorProps>;
 
   /** A menu item can be active. */
   active?: boolean;
@@ -113,6 +113,9 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
     actionHandlers: {
       performClick: event => !event.defaultPrevented && handleClick(event),
     },
+    mapPropsToBehavior: () => ({
+      active,
+    }),
   });
 
   const { classes, styles: resolvedStyles } = useStyles<CarouselNavigationItemStylesProps>(
@@ -204,7 +207,7 @@ CarouselNavigationItem.propTypes = {
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
 
 CarouselNavigationItem.defaultProps = {
-  accessibility: tabBehavior as Accessibility,
+  accessibility: tabBehavior,
   as: 'li',
   indicator: {},
 };

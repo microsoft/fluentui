@@ -4,7 +4,7 @@ import { Menu } from 'src/components/Menu/Menu';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
-import { MenuItem } from 'src/components/Menu/MenuItem';
+import { MenuItem, MenuItemProps } from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import { SpacebarKey } from '@fluentui/keyboard-key';
@@ -52,6 +52,29 @@ describe('Menu', () => {
         .first()
         .simulate('click');
       expect(items[0].onClick).toHaveBeenCalled();
+    });
+
+    it('should open on hover and keep open on click', () => {
+      const items: MenuItemProps[] = getNestedItems();
+      items[1].on = 'hover';
+      const menu = mountWithProvider(<Menu items={items} />);
+
+      expect(menu.find('MenuItem').length).toBe(2);
+
+      menu
+        .find('MenuItem')
+        .at(1)
+        .simulate('click');
+
+      expect(menu.find('MenuItem').length).toBe(4);
+
+      menu
+        .find('MenuItem')
+        .at(1)
+        .simulate('mouseenter')
+        .simulate('click');
+
+      expect(menu.find('MenuItem').length).toBe(4);
     });
 
     it('does not call onClick handler for disabled item', () => {
@@ -252,6 +275,35 @@ describe('Menu', () => {
           expect(getRenderedAttribute(menuItemComponents.at(0), 'role', 'a')).toBe('tab');
           expect(getRenderedAttribute(menuItemComponents.at(1), 'role', 'a')).toBe('tab');
         });
+      });
+    });
+
+    describe('children', () => {
+      it('should should select items', () => {
+        const onActiveIndexChange = jest.fn();
+        const wrapper = mountWithProvider(
+          <Menu defaultActiveIndex={0} onActiveIndexChange={onActiveIndexChange}>
+            <Menu.Item index={0}>
+              <Menu.ItemContent>Editorials</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={1}>
+              <Menu.ItemContent>Reviews</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={2}>
+              <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
+            </Menu.Item>
+          </Menu>,
+        );
+
+        wrapper
+          .find('MenuItem')
+          .at(1)
+          .simulate('click');
+
+        expect(onActiveIndexChange).toHaveBeenCalledWith(
+          expect.objectContaining({ type: 'click' }),
+          expect.objectContaining({ activeIndex: 1 }),
+        );
       });
     });
   });

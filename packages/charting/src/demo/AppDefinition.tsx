@@ -9,6 +9,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/AreaChart/AreaChartPage').AreaChart,
+          key: 'AreaChart',
+          name: 'AreaChart',
+          url: '#/examples/areachart',
+        },
+        {
           component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
           name: 'LineChart',
@@ -19,6 +25,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'VerticalBarChart',
           name: 'VerticalBarChart',
           url: '#/examples/verticalbarchart',
+        },
+        {
+          component: require<any>('../components/VerticalStackedBarChart/VerticalStackedBarChartPage')
+            .VerticalBarChartPage,
+          key: 'VerticalStackedBarChart',
+          name: 'VerticalStackedBarChart',
+          url: '#/examples/VerticalStackedBarChart',
         },
         {
           component: require<any>('../components/HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
@@ -51,10 +64,11 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/stackedbarchart',
         },
         {
-          component: require<any>('../components/SankeyChart/SankeyChartPage').SankeyChartPage,
-          key: 'SankeyChart',
-          name: 'SankeyChart',
-          url: '#/examples/sankeychart',
+          component: require<any>('../components/GroupedVerticalBarChart/GroupedVerticalBarChartPage')
+            .GroupedVerticalBarChart,
+          key: 'GroupedVerticalBarChart',
+          name: 'GroupedVerticalBarChart',
+          url: '#/examples/GroupedVerticalBarChart',
         },
       ],
     },

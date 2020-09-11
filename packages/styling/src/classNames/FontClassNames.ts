@@ -1,5 +1,5 @@
 import { buildClassMap } from '../utilities/buildClassMap';
-import { IFontStyles } from '../interfaces/IFontStyles';
+import { IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from '../styles/DefaultFontStyles';
 
 /**

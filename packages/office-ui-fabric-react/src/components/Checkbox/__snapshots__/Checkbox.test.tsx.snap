@@ -19,7 +19,7 @@ exports[`Checkbox renders checked correctly 1`] = `
         border-color: #005a9e;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-        background: Window;
+        background: Highlight;
         border-color: Highlight;
       }
       @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -32,7 +32,7 @@ exports[`Checkbox renders checked correctly 1`] = `
         color: Window;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-        color: Highlight;
+        color: Window;
       }
       &:hover .ms-Checkbox-text {
         color: #201f1e;

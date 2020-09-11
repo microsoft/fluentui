@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import {
+  IStyleFunctionOrObject,
+  ITheme,
+  IStyle,
+  styled,
+  classNamesFunction,
+  IRawStyle,
+  DefaultPalette,
+} from 'office-ui-fabric-react';
+import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -33,8 +41,16 @@ style.hljs = {
 };
 // Darken comment color for accessibility
 style['hljs-comment'] = style['hljs-quote'] = {
-  color: NeutralColors.gray120,
+  color: NeutralColors.gray130,
   fontStyle: 'italic',
+};
+
+style['hljs-built_in'] = style['builtin-name'] = {
+  color: DefaultPalette.themeDarker,
+};
+
+style['hljs-link'] = style['hljs-regexp'] = {
+  color: SharedColors.green20,
 };
 
 export interface ICodeSnippetProps {

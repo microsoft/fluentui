@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { ICommandBarItemProps, CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IExampleItem, createListItems } from '@uifabric/example-data';
+import { IRawStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { useConst, useForceUpdate } from '@uifabric/react-hooks';
+
+interface ISelectionItemExampleProps {
+  item: IExampleItem;
+  itemIndex?: number;
+  selection?: ISelection;
+  selectionMode?: SelectionMode;
+}
 
 const commonStyles: IRawStyle = {
   display: 'inline-block',
@@ -31,28 +37,31 @@ const classNames = mergeStyleSets({
       overflow: 'hidden',
       height: 36,
       padding: 8,
+      userSelect: 'none',
     },
   ],
 });
 
+const alertItem = (item: IExampleItem): void => {
+  alert('item invoked: ' + item.name);
+};
+
+const startsWithVowel = (item: IExampleItem): boolean => {
+  return /^[aeiou]/.test(item.name || '');
+};
+
+const selectionModes = {
+  [SelectionMode[SelectionMode.none]]: 'None',
+  [SelectionMode[SelectionMode.single]]: 'Single select',
+  [SelectionMode[SelectionMode.multiple]]: 'Multi select',
+};
+const selectableItemTypes = {
+  all: 'All items',
+  vowels: 'Names starting with vowels',
+};
+
 const ITEM_COUNT = 100;
 
-export interface ISelectionBasicExampleState {
-  items: IExampleItem[];
-  selection: ISelection;
-  canSelect: 'all' | 'vowels';
-}
-
-interface ISelectionItemExampleProps {
-  item: IExampleItem;
-  itemIndex?: number;
-  selection?: ISelection;
-  selectionMode?: SelectionMode;
-}
-
-/**
- * The SelectionItemExample controls and displays the selection state of a single item
- */
 const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
   props: ISelectionItemExampleProps,
 ) => {
@@ -64,9 +73,9 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
   }
 
   return (
-    <div className={classNames.item} data-is-focusable={true} data-selection-index={itemIndex}>
+    <div className={classNames.item} data-is-focusable data-selection-index={itemIndex}>
       {selection && selection.canSelectItem(item) && selection.mode !== SelectionMode.none && (
-        <div className={classNames.check} data-is-focusable={true} data-selection-toggle={true}>
+        <div className={classNames.check} data-is-focusable data-selection-toggle>
           <Check checked={isSelected} />
         </div>
       )}
@@ -74,167 +83,77 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
       <a className={classNames.cell} href="https://bing.com" target="_blank">
         Link that avoids selection
       </a>
-      <a className={classNames.cell} data-selection-select={true} href="https://bing.com" target="_blank">
+      <a className={classNames.cell} data-selection-select href="https://bing.com" target="_blank">
         Link that selects first
       </a>
     </div>
   );
 };
 
-/**
- * The SelectionBasicExample controls the selection state of all items
- */
-export class SelectionBasicExample extends React.Component<{}, ISelectionBasicExampleState> {
-  private _hasMounted: boolean;
+export const SelectionBasicExample: React.FunctionComponent = () => {
+  const [selectableItemType, setSelectableItemType] = React.useState<'all' | 'vowels'>('all');
+  const [selectionMode, setSelectionMode] = React.useState(SelectionMode.multiple);
+  const forceUpdate = useForceUpdate();
+  const items = useConst<IExampleItem[]>(() => createListItems(ITEM_COUNT));
+  const selection = React.useMemo(
+    () =>
+      new Selection({
+        canSelectItem: selectableItemType === 'vowels' ? startsWithVowel : undefined,
+        selectionMode,
+        onSelectionChanged: forceUpdate,
+        items,
+      }),
+    [selectableItemType, selectionMode, forceUpdate, items],
+  );
 
-  constructor(props: {}) {
-    super(props);
-
-    this._hasMounted = false;
-    // Memoizing this means that given the same parameters, it will return the same array of command objects
-    // (performance optimization)
-    this._getCommandItems = memoizeFunction(this._getCommandItems);
-
-    this.state = {
-      items: createListItems(ITEM_COUNT),
-      selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
-      canSelect: 'all',
-    };
-    this.state.selection.setItems(this.state.items, false);
-  }
-
-  public componentDidMount(): void {
-    this._hasMounted = true;
-  }
-
-  public render(): JSX.Element {
-    const { items, selection, canSelect } = this.state;
-
-    return (
-      <div className="ms-SelectionBasicExample">
-        <CommandBar items={this._getCommandItems(selection.mode, canSelect)} />
-        <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
-          <SelectionZone selection={selection} onItemInvoked={this._alertItem}>
-            {items.map((item: IExampleItem, index: number) => (
-              <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
-            ))}
-          </SelectionZone>
-        </MarqueeSelection>
-      </div>
-    );
-  }
-
-  private _alertItem = (item: IExampleItem): void => {
-    alert('item invoked: ' + item.name);
-  };
-
-  private _onSelectionChanged = (): void => {
-    if (this._hasMounted) {
-      this.forceUpdate();
-    }
-  };
-
-  private _onToggleSelectAll = (): void => {
-    const { selection } = this.state;
-    selection.toggleAllSelected();
-  };
-
-  private _onSelectionModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    this.setState((previousState: ISelectionBasicExampleState) => {
-      const newSelection = new Selection({
-        onSelectionChanged: this._onSelectionChanged,
-        canSelectItem: previousState.canSelect === 'vowels' ? this._canSelectItem : undefined,
-        selectionMode: menuItem.data,
-      });
-      newSelection.setItems(previousState.items, false);
-
-      return {
-        selection: newSelection,
-      };
-    });
-  };
-
-  private _onCanSelectChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    const canSelectItem = menuItem.data === 'vowels' ? this._canSelectItem : undefined;
-
-    this.setState((previousState: ISelectionBasicExampleState) => {
-      const newSelection = new Selection({
-        onSelectionChanged: this._onSelectionChanged,
-        canSelectItem: canSelectItem,
-        selectionMode: previousState.selection.mode,
-      });
-      newSelection.setItems(previousState.items, false);
-      return {
-        selection: newSelection,
-        canSelect: menuItem.data === 'vowels' ? 'vowels' : 'all',
-      };
-    });
-  };
-
-  private _canSelectItem = (item: IExampleItem): boolean => {
-    return /^[aeiou]/.test(item.name || '');
-  };
-
-  private _getCommandItems = (selectionMode: SelectionMode, canSelect: 'all' | 'vowels'): IContextualMenuItem[] => {
-    return [
+  const commandItems = React.useMemo<ICommandBarItemProps[]>(
+    () => [
       {
         key: 'selectionMode',
-        text: 'Selection Mode',
-        items: [
-          {
-            key: SelectionMode[SelectionMode.none],
-            name: 'None',
+        text: 'Selection mode: ' + selectionModes[SelectionMode[selectionMode]],
+        subMenuProps: {
+          items: Object.keys(selectionModes).map((mode: keyof typeof SelectionMode) => ({
+            key: mode,
+            name: selectionModes[mode],
             canCheck: true,
-            checked: selectionMode === SelectionMode.none,
-            onClick: this._onSelectionModeChanged,
-            data: SelectionMode.none,
-          },
-          {
-            key: SelectionMode[SelectionMode.single],
-            name: 'Single select',
-            canCheck: true,
-            checked: selectionMode === SelectionMode.single,
-            onClick: this._onSelectionModeChanged,
-            data: SelectionMode.single,
-          },
-          {
-            key: SelectionMode[SelectionMode.multiple],
-            name: 'Multi select',
-            canCheck: true,
-            checked: selectionMode === SelectionMode.multiple,
-            onClick: this._onSelectionModeChanged,
-            data: SelectionMode.multiple,
-          },
-        ],
-      },
-      {
-        key: 'selectAll',
-        text: 'Select All',
-        iconProps: { iconName: 'CheckMark' },
-        onClick: this._onToggleSelectAll,
+            checked: selectionMode === SelectionMode[mode],
+            onClick: () => setSelectionMode(SelectionMode[mode]),
+          })),
+        },
       },
       {
         key: 'allowCanSelect',
-        text: 'Choose selectable items',
-        items: [
-          {
-            key: 'all',
-            name: 'All items',
-            canCheck: true,
-            checked: canSelect === 'all',
-            onClick: this._onCanSelectChanged,
-            data: 'all',
-          },
-          {
-            key: 'a',
-            name: 'Names starting with vowels',
-            canCheck: true,
-            checked: canSelect === 'vowels',
-            onClick: this._onCanSelectChanged,
-            data: 'vowels',
-          },
-        ],
+        text: 'Selectable item type: ' + selectableItemType,
+        subMenuProps: {
+          items: Object.keys(selectableItemTypes).map((itemType: keyof typeof selectableItemTypes) => ({
+            key: itemType,
+            name: selectableItemTypes[itemType],
+            checked: selectableItemType === itemType,
+            onClick: () => setSelectableItemType(itemType),
+          })),
+        },
       },
-    ];
-  };
-}
+      {
+        key: 'selectAll',
+        text: 'Toggle select all',
+        iconProps: { iconName: 'CheckMark' },
+        onClick: () => selection.toggleAllSelected(),
+        disabled: selectionMode !== SelectionMode.multiple,
+      },
+    ],
+    [selectionMode, selection, selectableItemType],
+  );
+
+  return (
+    <div>
+      <CommandBar items={commandItems} />
+      <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
+        <SelectionZone selection={selection} onItemInvoked={alertItem}>
+          {items.map((item: IExampleItem, index: number) => (
+            <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
+          ))}
+        </SelectionZone>
+      </MarqueeSelection>
+    </div>
+  );
+};

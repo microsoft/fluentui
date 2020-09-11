@@ -1,18 +1,17 @@
-import * as React from 'react';
-import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { IContextualMenuProps } from 'office-ui-fabric-react';
-import { ButtonProps, ButtonState, ButtonTokens } from '../Button/Button.types';
+import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ButtonProps, ButtonState, ButtonTokenSet } from '../Button/Button.types';
+import { ExpandedState } from './useExpanded';
 
-export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Menu that is displayed when the button is pressed.
    */
-  menu?: SlotProp<IContextualMenuProps>;
+  menu?: ShorthandProps;
 
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
    */
-  menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+  menuIcon?: ShorthandProps;
 
   /**
    * Defines the inital expanded state of the MenuButton. Use this if you want the MenuButton to maintain its own state.
@@ -32,19 +31,10 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPositio
    * Defines a callback that runs after the MenuButton's contextual menu has been dismissed.
    */
   onMenuDismiss?: () => void;
+};
+
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+  menu: ExpandedState['menu'];
 }
 
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {}
-
-export interface MenuButtonSlots extends BaseSlots {
-  menu: React.ElementType;
-  menuIcon: React.ElementType;
-}
-
-export type MenuButtonSlotProps = SlotProps<
-  MenuButtonSlots,
-  MenuButtonProps,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->;
-
-export type MenuButtonTokens = ButtonTokens;
+export type MenuButtonTokens = ButtonTokenSet;
