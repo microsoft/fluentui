@@ -27,22 +27,16 @@ export default class MessageComputer {
     const usages = SRMC.usageStrings[platform][definitionName];
     if (usages) {
       // Begin if 1
-      if (usages['[default]']) {
-        // Begin if   2
-        this.computedMessageParts.usage = usages['[default]'];
-      } // End if 2
+      this.computedMessageParts.usage = usages['[default]'] || '';
+      this.computedMessageParts.usage = usages['[default]'] || '';
       for (let usageName in usages) {
         // Begin for 1
-        const split = usageName.split('=');
-        const state = split[0];
-        const stateValue = split[1];
+        const [state, stateValue] = usageName.split('=');
         const stateAndValueMatch = element.getAttribute(state) === stateValue;
         const checkedDOMPropAndValueMatch =
           state === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
-        if (stateAndValueMatch || checkedDOMPropAndValueMatch) {
-          // Begin if 2
-          this.computedMessageParts.usage = usages[usageName];
-        } // End if 2
+        this.computedMessageParts.usage =
+          stateAndValueMatch || checkedDOMPropAndValueMatch ? usages[usageName] : this.computedMessageParts.usage;
       } // End for 1
     } // End if 1
 
@@ -60,22 +54,15 @@ export default class MessageComputer {
       computedDescription = SRMC.stateStrings['Win/JAWS']['textarea']['[extra1]'];
     } else {
       // else if 1
-      const describedby = element.getAttribute('aria-describedby');
-      let descElement;
-      if (describedby) {
-        // Begin if 2
-        const computedDescriptionArr = [];
-        const describedbyArr = describedby.split(/\s+/);
-        for (let i = 0; i < describedbyArr.length; i++) {
-          // Begin for 1
-          descElement = document.getElementById(describedbyArr[i]);
-          if (descElement) {
-            // Begin if 3
-            computedDescriptionArr.push(descElement.textContent);
-          } // End if 3
-        } // End for 1
-        computedDescription = computedDescriptionArr.join('');
-      } // End if 2
+      computedDescription =
+        element
+          .getAttribute('aria-describedby')
+          ?.split(/\s+/)
+          .map(x => {
+            return element.ownerDocument?.getElementById(x)?.textContent || null;
+          })
+          .filter(x => x !== null)
+          .join('') || '';
     } // End if 1
 
     // Save the computed accessible description
@@ -106,7 +93,7 @@ export default class MessageComputer {
     } // End if 1
 
     // Compute the element's type and state
-    this.computedMessageParts.type = '[' + node.role + ']';
+    this.computedMessageParts.type = `[${node.role}]`;
     this.computedMessageParts.state = '';
     const rules = SRMC.stateRules[platform][definitionName];
     if (rules) {
