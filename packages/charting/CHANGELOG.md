@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 10 Sep 2020 01:20:26 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Sep 2020 12:23:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.0.0)
+
+Thu, 10 Sep 2020 12:23:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.2..@uifabric/charting_v4.0.0)
+
+### Major changes
+
+- Vertical stacked bar chart combined callout and other tweaks ([PR #14912](https://github.com/microsoft/fluentui/pull/14912) by mibes@microsoft.com)
 
 ## [3.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.2)
 

@@ -11,7 +11,6 @@ import {
   updateA,
 } from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 const white = getColorFromString('#ffffff')!;
 
@@ -20,8 +19,8 @@ export const ColorPickerBasicExample: React.FunctionComponent = () => {
   const [showPreview, setShowPreview] = React.useState(true);
   const [alphaType, setAlphaType] = React.useState<IColorPickerProps['alphaType']>('alpha');
 
-  const updateColor = useConstCallback((ev: any, colorObj: IColor) => setColor(colorObj));
-  const onShowPreviewClick = useConstCallback((ev: any, checked?: boolean) => setShowPreview(!!checked));
+  const updateColor = React.useCallback((ev: any, colorObj: IColor) => setColor(colorObj), []);
+  const onShowPreviewClick = React.useCallback((ev: any, checked?: boolean) => setShowPreview(!!checked), []);
   const onAlphaTypeChange = React.useCallback(
     (ev: any, option: IChoiceGroupOption = alphaOptions[0]) => {
       if (option.key === 'none') {

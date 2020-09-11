@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.11",
-    "@fluentui/react-button": "^0.12.2",
+    "@fluentui/react-button": "^0.12.3",
     "@fluentui/react-compose": "^0.18.2",
-    "@fluentui/react-next": "^8.0.0-alpha.103",
+    "@fluentui/react-next": "^8.0.0-alpha.104",
     "@uifabric/experiments": "^7.32.7",
     "@uifabric/set-version": "^7.0.22",
     "@uifabric/styling": "^7.16.0",
