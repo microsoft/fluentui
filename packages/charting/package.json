@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/charting",
-  "version": "3.6.2",
+  "version": "4.0.0",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -7,7 +7,7 @@ const Types = () => (
     <ComponentExample
       title="Default"
       description="A default breadcrumb."
-      examplePath="components/Breadcrumb/Types/BreadcrumbExample"
+      examplePath="components/Breadcrumb/Types/BreadcrumbExampleBasic"
     />
   </ExampleSection>
 );
