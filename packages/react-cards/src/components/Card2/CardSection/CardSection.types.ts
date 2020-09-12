@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-compose';
-import { ColorPlateSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/theme';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -15,4 +15,4 @@ export interface CardSectionSlots extends BaseSlots {}
 
 export type CardSectionSlotProps = SlotProps<CardSectionSlots, CardSectionProps, React.HTMLAttributes<HTMLDivElement>>;
 
-export type CardSectionTokens = ColorPlateSet & {};
+export type CardSectionTokens = ColorTokenSet & {};

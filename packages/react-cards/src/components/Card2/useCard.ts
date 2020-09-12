@@ -1,23 +1,16 @@
 import * as React from 'react';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
+import { mergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { CardProps, CardState } from './Card.types';
-import { useCardBehavior } from './useCardBehavior';
+import { renderCard } from './renderCard';
+import { useCardState } from './useCardState';
 
 /**
- * The useCard hook processes the Card component props and returns state.
- * @param props - Card props to derive state from.
+ * Given user props, returns state and render function for a Card.
  */
-export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions): CardState => {
-  const cardRef = React.useRef<HTMLDivElement | null>(null);
-  useFocusRects(cardRef);
+export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps) => {
+  const state = mergeProps({ ref, as: 'div' }, defaultProps, resolveShorthandProps(props, [])) as CardState;
 
-  const cardBehaviorProps = useCardBehavior(props);
+  useCardState(state);
 
-  return {
-    ...cardBehaviorProps,
-    cardRef,
-    style: getStyleFromPropsAndOptions(props, options, '--card'),
-  };
+  return { state, render: renderCard };
 };
