@@ -2,8 +2,8 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { IButtonProps } from '../Button/Button.types';
-
+//import { IButtonProps } from '../Button/Button.types';
+import { ButtonProps } from '@fluentui/react-button/src/components/Button';
 /**
  * {@doccategory Nav}
  */
@@ -419,7 +419,7 @@ export interface INavStyles {
 /**
  * {@docCategory Nav}
  */
-export interface INavButtonProps extends IButtonProps {
+export interface INavButtonProps extends ButtonProps {
   /**
    * (Optional) Link to be rendered.
    */

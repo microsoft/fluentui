@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ActionButton } from '../../Button';
-import { buttonStyles } from './Nav.styles';
+//import { ActionButton } from '../../Button';
+import { Button } from '@fluentui/react-button/src/components/Button';
+//import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -115,7 +116,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
-    const LinkAs = this.props.linkAs ? composeComponentAs(this.props.linkAs, ActionButton) : ActionButton;
+    const LinkAs = this.props.linkAs ? composeComponentAs(this.props.linkAs, Button) : Button;
     const onRenderLink = this.props.onRenderLink
       ? composeRenderFunction(this.props.onRenderLink, this._onRenderLink)
       : this._onRenderLink;
@@ -123,9 +124,17 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     return (
       <LinkAs
         className={classNames.link}
-        styles={buttonStyles}
+        //styles={buttonStyles}
+        content={{
+          styles: {
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          },
+        }}
+        ghost
         href={link.url || (link.forceAnchor ? '#' : undefined)}
-        iconProps={link.iconProps || { iconName: link.icon }}
+        icon={link.iconProps || { iconName: link.icon }}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={
           link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)
