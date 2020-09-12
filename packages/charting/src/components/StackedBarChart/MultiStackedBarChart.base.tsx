@@ -154,7 +154,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             this._refCallback(e, point.legend!);
           }}
           data-is-focusable={true}
-          focusable={'true'}
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,

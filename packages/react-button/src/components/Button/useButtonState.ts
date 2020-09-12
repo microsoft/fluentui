@@ -32,5 +32,5 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  draftState.disabled = draftState['aria-disabled'] = draftState.disabled || draftState.loading;
 };

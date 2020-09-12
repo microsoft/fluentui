@@ -17,6 +17,9 @@ export { buttonVariables as Button } from './components/Button/buttonVariables';
 export { buttonGroupVariables as ButtonGroup } from './components/Button/buttonGroupVariables';
 export { buttonContentVariables as ButtonContent } from './components/Button/buttonContentVariables';
 
+export { breadcrumbVariables as Breadcrumb } from './components/Breadcrumb/breadcrumbVariables';
+export { breadcrumbDividerVariables as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerVariables';
+
 export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatItemVariables as ChatItem } from './components/Chat/chatItemVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';

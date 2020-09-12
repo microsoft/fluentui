@@ -118,11 +118,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const data = event.dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+          isDropHandled = true;
           data[i].getAsString((dropText: string) => {
             if (props.selectedItemsListProps.deserializeItemsFromDrop) {
               const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
               _dropItemsAt(insertIndex, newItems);
-              isDropHandled = true;
             }
           });
         }
@@ -255,7 +255,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (!composing) {
       // update query string
       setQueryString(value);
-      !isSuggestionsVisible ? showPicker(true) : null;
+      !isSuggestionsShown ? showPicker(true) : null;
       onInputChange ? onInputChange(value) : null;
     }
   };
