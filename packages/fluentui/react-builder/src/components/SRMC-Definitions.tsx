@@ -71,7 +71,7 @@ const SRMC: { [key: string]: any } = {
       textarea: {
         'aria-invalid=true': 'invalid entry',
         'aria-required=true': 'Required',
-        '[extra1]': 'Contains text',
+        '[containsText]': 'Contains text',
       }, // End textarea
       a: {
         'aria-expanded=true': 'expanded',
@@ -187,7 +187,6 @@ const SRMC: { [key: string]: any } = {
       '[default]': ['name', 'type', 'state', 'description', 'usage'],
       'input:text': ['name', 'type', 'state', 'value', 'description', 'usage'],
       'role=combobox': 'input:text',
-      textarea: 'input:text',
       a: ['name', 'state', 'type', 'description', 'usage'],
       'role=menuitem': ['name', 'type', 'state', 'position', 'description', 'usage'],
       'role=menuitemcheckbox': 'role=menuitem',

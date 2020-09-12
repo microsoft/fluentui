@@ -61,10 +61,6 @@ SRMC.stateRules['Win/JAWS'] = {
   ], // End input:text
   'input:checkbox': [
     {
-      combination: [],
-      elementType: SRMC.typeStrings['Win/JAWS'].checkboxInput,
-    },
-    {
       combination: ['checked'],
       elementType: SRMC.typeStrings['Win/JAWS'].checkboxInput,
     },
@@ -100,10 +96,6 @@ SRMC.stateRules['Win/JAWS'] = {
     },
   ], // End role=checkbox
   'input:radio': [
-    {
-      combination: [],
-      elementType: SRMC.typeStrings['Win/JAWS'].radioInput,
-    },
     {
       combination: ['checked'],
       elementType: SRMC.typeStrings['Win/JAWS'].radioInput,

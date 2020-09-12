@@ -2,7 +2,7 @@
  TODO:
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
- * Should we also detect the "disabled" state?
+ * Should we also consider the "disabled" state?
  */
 import SRMC from './SRMC-Definitions';
 import './SRMC-Rules-Win_JAWS';
@@ -18,14 +18,14 @@ export default class MessageComputer {
     usage: '',
   };
 
-  // Asynchronously computes and returns the complete screen reader narration for the given element and platform.
+  // Computes and returns the complete screen reader narration for the given element and platform.
   async computeMessage(element: Element, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Retrieve the computed accessible node
     const node = await (window as any).getComputedAccessibleNode(element);
 
-    // Compute and save all the narration parts
+    // Compute and store all the narration parts
     this.computeUsage(definitionName, element, platform);
     this.computeDescription(definitionName, element, platform);
     this.computeNameAndTitle(node, element);
@@ -38,7 +38,7 @@ export default class MessageComputer {
     return computedMessage;
   } // End computeMessage
 
-  // Returns the definition name based on the given DOM element, platform and definition type.
+  // Returns the definition name based on the given element, platform and definition type.
   getDefinitionName(element: Element, platform: string, definitionType: string): string {
     // Determine the definitions source by the definition type
     let definitions;
@@ -95,26 +95,30 @@ export default class MessageComputer {
     return definitionName;
   } // End getDefinitionName
 
-  // Computes and saves the usage part of the narration for the given definitionName, element and platform.
+  // Computes and stores the usage part of the narration for the given definitionName, element and platform.
   computeUsage(definitionName: string, element: Element, platform: string) {
     this.computedParts.usage = '';
     const usages = SRMC.usageStrings[platform][definitionName];
     if (usages) {
       // Begin if 1
       this.computedParts.usage = usages['[default]'] || '';
+
+      // Find the usage which matches the element's state
       for (let usageName in usages) {
         // Begin for 1
-        const [state, stateValue] = usageName.split('=');
-        const stateAndValueMatch = element.getAttribute(state) === stateValue;
+        const [stateName, stateValue] = usageName.split('=');
+        const stateNameAndValueMatch = element.getAttribute(stateName) === stateValue;
+
+        // Handle the special case of the "checked" state name where we are looking for the DOM property instead of the state attribute
         const checkedDOMPropAndValueMatch =
-          state === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
+          stateName === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
         this.computedParts.usage =
-          stateAndValueMatch || checkedDOMPropAndValueMatch ? usages[usageName] : this.computedParts.usage;
+          stateNameAndValueMatch || checkedDOMPropAndValueMatch ? usages[usageName] : this.computedParts.usage;
       } // End for 1
     } // End if 1
   } // End computeUsage
 
-  // Computes and saves the accessible description part of the narration for the given definitionName, element and platform.
+  // Computes and stores the accessible description part of the narration for the given definitionName, element and platform.
   computeDescription(definitionName: string, element: Element, platform: string) {
     // First, handle some special case conditions
     let value;
@@ -124,7 +128,7 @@ export default class MessageComputer {
     } // End if 1
     if (definitionName === 'textarea' && platform === 'Win/JAWS' && value) {
       // Begin if 1
-      this.computedParts.description = SRMC.stateStrings['Win/JAWS']['textarea']['[extra1]'];
+      this.computedParts.description = SRMC.stateStrings['Win/JAWS']['textarea']['[containsText]'];
     } else {
       // else if 1
       this.computedParts.description =
@@ -139,11 +143,11 @@ export default class MessageComputer {
     } // End if 1
   } // End computeDescription
 
-  // Computes and saves the accessible name and title parts of the narration for the given element using the given computed node.
+  // Computes and stores the accessible name and title parts of the narration for the given element using the given computed node.
   computeNameAndTitle(node: any, element: Element) {
     this.computedParts.name = node.name;
 
-    // If the title attribute is present, set its value as accessible description if it was not computed as accessible name and if no accessible description was computed before
+    // If the title attribute is present, set its value as the description part of the narration if it was not computed as accessible name and if no accessible description was computed before
     let title = element.getAttribute('title');
     if (title && this.computedParts.name !== title && !this.computedParts.description) {
       // Begin if 1
@@ -151,7 +155,7 @@ export default class MessageComputer {
     } // End if 1
   } //End computeNameAndTitle
 
-  // Computes the value part of the narration for the given element.
+  // Computes the value part of the narration using the given computed node.
   computeValue(node: any) {
     this.computedParts.value = node.valueText;
   } //End computeValue
@@ -182,24 +186,33 @@ export default class MessageComputer {
           const possibleState = possibleStates[j];
           const stateValue = element.getAttribute(possibleState);
 
-          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list
+          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around
           const elementHasState =
             stateValue !== null && (stateValue !== 'false' || !SRMC.falseMeansOmitted.includes(possibleState));
-          const elementHasCheckedProp = (element as HTMLInputElement).checked !== undefined;
+
+          // Handle the special case of the "checked" state where we are not looking for an attribute but a DOM property
+          const elementHasCheckedProp =
+            possibleState === 'checked' && (element as HTMLInputElement).checked !== undefined;
+
           const elementHasStateOrCheckedProp = elementHasState || elementHasCheckedProp;
           const combinationHasState = rule.combination.includes(possibleState);
+
+          // Check if the presence of the state on the element matches its presence in the combination list. If not, continue with the next rule
           if (elementHasStateOrCheckedProp !== combinationHasState) {
             // Begin if 2
             continue rulesLoop;
           } //End if 2
         } // End for 2
 
-        // We have found the matching rule, retrieve and save the element's type
+        // We have found the matching rule, retrieve and store the element's type
         this.computedParts.type = rule.elementType;
 
-        // Compute and save the element's state
+        // Compute and store the element's state
         const computedStateArr = [];
+        const stateStrings = SRMC.stateStrings[platform][definitionName];
         let order;
+
+        // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
         if (rule.combination.length <= 1 && !rule.order) {
           // Begin if 2
           order = rule.combination;
@@ -207,22 +220,27 @@ export default class MessageComputer {
           // else if 2
           order = rule.order;
         } // End if 2
+
+        // Determine the state narration for each state in the order list by looking if corresponding state and its value exist in the state strings definitions
         for (let j = 0; j < order.length; j++) {
           // Begin for 2
-          const state = order[j];
+          const stateName = order[j];
           let stateValue;
-          if (state === 'checked') {
+          if (stateName === 'checked') {
             // Begin if 2
+            // Handle the special case of the "checked" state name where we are looking for the DOM property value instead of the state attribute value
             stateValue = (element as HTMLInputElement).checked;
           } else {
             // else if 2
-            stateValue = element.getAttribute(state) || 'false';
+            // Get the state attribute value. If the attribute is not present, consider it as if it had "false" value
+            stateValue = element.getAttribute(stateName) || 'false';
           } // End if 2
-          const strings = SRMC.stateStrings[platform][definitionName];
-          const statePart = strings[state + '=' + stateValue] || strings[state + '='];
-          if (statePart) {
+
+          // Determine the state string by using "<stateName>=<stateValue>" as the definition key. If such key does not exist, try using "<stateName>=" as the key. Therefore, "<stateName>=" key will match the given stateName and any not defined stateValue
+          const partialState = stateStrings[stateName + '=' + stateValue] || stateStrings[stateName + '='];
+          if (partialState) {
             // Begin if 2
-            computedStateArr.push(statePart);
+            computedStateArr.push(partialState);
           } // End if 2
         } // End for 2
         this.computedParts.state = computedStateArr.join(SRMC.STATE_PART_SEPARATOR);
@@ -231,7 +249,7 @@ export default class MessageComputer {
     } // End if 1
   } // End computeTypeAndState
 
-  // Composes and returns the complete screen reader narration according to the values of all the computed parts in the correct order and based on the given definition name and platform.
+  // Composes and returns the complete screen reader narration according to the values of all the internally stored computed parts in the correct order and based on the given definition name and platform.
   composeMessageFromParts(definitionName: string, platform: string): string {
     const readingOrder = SRMC.readingOrder[platform][definitionName];
     const computedMessageArr = [];
