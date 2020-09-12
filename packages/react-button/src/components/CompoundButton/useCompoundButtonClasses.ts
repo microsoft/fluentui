@@ -12,6 +12,7 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     GlobalClassNames.root,
     {
       '--button-height': 'auto',
+
       '--button-maxWidth': '280px',
       '--button-minWidth': '72px',
       '--button-paddingBottom': '16px',

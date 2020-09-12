@@ -5,6 +5,7 @@ exports[`Button renders a default state 1`] = `
   className=
       ms-Button
       {
+        -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: center;
         background: var(--button-background, white);
@@ -30,7 +31,7 @@ exports[`Button renders a default state 1`] = `
         justify-content: center;
         max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
-        min-width: var(--button-minWidth, 80);
+        min-width: var(--button-minWidth);
         outline: none;
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);
@@ -59,6 +60,7 @@ exports[`Button renders a default state 1`] = `
         position: absolute;
         right: -1px;
         top: -1px;
+        z-index: 1;
       }
       & > *:not(:first-child) {
         margin-left: var(--button-contentGap);
@@ -113,6 +115,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
   className=
       ms-Button
       {
+        -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: center;
         background: var(--button-background, white);
@@ -138,7 +141,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         justify-content: center;
         max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
-        min-width: var(--button-minWidth, 80);
+        min-width: var(--button-minWidth);
         outline: none;
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);
@@ -167,6 +170,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         position: absolute;
         right: -1px;
         top: -1px;
+        z-index: 1;
       }
       & > *:not(:first-child) {
         margin-left: var(--button-contentGap);

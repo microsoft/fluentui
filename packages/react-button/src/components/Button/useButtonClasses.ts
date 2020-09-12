@@ -23,8 +23,8 @@ export const useButtonClasses = makeClasses<ButtonState>({
       textDecoration: 'none',
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
-      borderColor: 'var(--button-borderColor)',
 
+      borderColor: 'var(--button-borderColor)',
       borderTopLeftRadius: 'var(--button-borderTopLeftRadius, var(--button-borderRadius))',
       borderTopRightRadius: 'var(--button-borderTopRightRadius, var(--button-borderRadius))',
       borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
@@ -37,7 +37,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
       width: 'var(--button-width)',
       maxWidth: 'var(--button-maxWidth)',
-      minWidth: 'var(--button-minWidth, 80)',
+      minWidth: 'var(--button-minWidth)',
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
 
@@ -53,9 +53,9 @@ export const useButtonClasses = makeClasses<ButtonState>({
       fontSize: 'var(--button-fontSize)',
       fontWeight: 'var(--button-fontWeight)',
       WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
 
       ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
-        //'&::after': {
         content: '""',
         position: 'absolute',
         left: -1,
@@ -70,6 +70,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
         borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
         borderBottomRightRadius: 'var(--button-borderBottomRightRadius, var(--button-borderRadius))',
         boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
+        zIndex: 1,
       },
 
       ['& > *:not(:first-child)']: {
@@ -192,6 +193,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _iconOnly: {
+    '--button-minHeight': 'var(--button-minHeight)',
     '--button-width': 'var(--button-height, var(--button-minHeight))',
     '--button-paddingTop': 0,
     '--button-paddingLeft': 0,
