@@ -9,7 +9,7 @@ import {
   warn,
   initializeComponentRef,
 } from '../../Utilities';
-import { CommandButton } from '../../Button';
+//import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -17,6 +17,7 @@ import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
+import { Button } from '@fluentui/react-button/src/components/Button';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 const PivotName = 'Pivot';
@@ -174,10 +175,11 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     contentString += link.itemIcon ? ' xx' : '';
 
     return (
-      <CommandButton
+      <Button
         {...headerButtonProps}
         id={tabId}
         key={itemKey}
+        ghost
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onLinkClick.bind(this, itemKey)}
@@ -191,7 +193,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         data-content={contentString}
       >
         {linkContent}
-      </CommandButton>
+      </Button>
     );
   };
 

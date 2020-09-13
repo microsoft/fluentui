@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
+//import { IButtonProps } from '../../Button';
+import { ButtonProps } from '@fluentui/react-button/src/components/Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 
@@ -27,7 +28,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Props for the header command button. This provides a way to pass in native props, such as data-* and aria-*,
    * for each pivot header/link element.
    */
-  headerButtonProps?: IButtonProps | { [key: string]: string | number | boolean };
+  headerButtonProps?: ButtonProps | { [key: string]: string | number | boolean };
 
   /**
    * An required key to uniquely identify a pivot item.

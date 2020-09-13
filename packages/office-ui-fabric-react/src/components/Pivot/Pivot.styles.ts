@@ -224,7 +224,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       classNames.text,
       {
         display: 'inline-block',
-        verticalAlign: 'top',
+        verticalAlign: 'text-top',
       },
     ],
     count: [

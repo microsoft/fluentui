@@ -68,6 +68,8 @@
   "dependencies": {
     "@fluentui/react-focus": "^7.16.0",
     "@fluentui/react-icons": "^0.3.0",
+    "@fluentui/react-button": "0.12.4",
+    "@fluentui/react-theme-provider": "0.11.3",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.8.0",
     "@uifabric/foundation": "^7.9.0",
