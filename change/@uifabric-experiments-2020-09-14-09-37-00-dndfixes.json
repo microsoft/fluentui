@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Drag and drop fixes",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-14T16:37:00.383Z"
+}
