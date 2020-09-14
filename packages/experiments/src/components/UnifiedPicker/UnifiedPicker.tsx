@@ -155,7 +155,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    if (event && event.dataTransfer?.dropEffect == 'move') {
+    if (event && event.dataTransfer?.dropEffect === 'move') {
       const itemstoRemove = focusedItemIndices.includes(draggedIndex)
         ? (getSelectedItems() as T[])
         : [selectedItems[draggedIndex]];
