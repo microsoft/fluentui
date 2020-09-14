@@ -83,6 +83,7 @@ export class ComponentTestFacade implements TestFacade {
   public afterClick(selector: string) {
     if (selector === 'root') {
       this.renderedComponent.simulate('click');
+      return;
     }
     this.renderedComponent.find(selector).simulate('click');
   }
@@ -90,6 +91,7 @@ export class ComponentTestFacade implements TestFacade {
   public pressSpaceKey(selector: string) {
     if (selector === 'root') {
       this.renderedComponent.simulate('keydown', { keyCode: 32 });
+      return;
     }
     this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
   }
@@ -97,6 +99,7 @@ export class ComponentTestFacade implements TestFacade {
   public pressEnterKey(selector: string) {
     if (selector === 'root') {
       this.renderedComponent.simulate('keydown', { keyCode: 13 });
+      return;
     }
     this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
   }
