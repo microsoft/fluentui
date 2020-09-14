@@ -14,20 +14,22 @@ export const useCardState = (draftState: CardState) => {
   draftState.role = 'group';
   draftState.tabIndex = !disabled && onClick ? 0 : undefined;
 
-  draftState.onClick = (ev: React.MouseEvent<HTMLDivElement>) => {
-    if (!disabled) {
-      onClick?.(ev);
-    }
-  };
+  draftState.onClick = onClick
+    ? (ev: React.MouseEvent<HTMLDivElement>) => {
+        if (!disabled) {
+          onClick(ev);
+        }
+      }
+    : undefined;
 
   draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (!disabled) {
       onKeyDown?.(ev);
 
-      if (onClick) {
+      if (draftState.onClick) {
         const eventCode = getCode(ev);
         if (eventCode === EnterKey || eventCode === SpacebarKey) {
-          onClick(ev as any);
+          draftState.onClick(ev as any);
         }
       }
     }

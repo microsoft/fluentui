@@ -1,9 +1,18 @@
-import { compose, createClassResolver } from '@fluentui/react-compose';
-import { CardSection } from '../CardSection/CardSection';
+import * as React from 'react';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useFocusRects } from '@uifabric/utilities';
 import { CardSectionProps } from '../CardSection/CardSection.types';
-import * as classes from './CardHeader.scss';
+import { useCardSection } from '../CardSection/useCardSection';
+import { useCardHeaderClasses } from './useCardHeaderClasses';
 
-export const CardHeader = compose<'div', CardSectionProps, CardSectionProps, {}, {}>(CardSection, {
-  classes: createClassResolver(classes),
-  displayName: 'CardHeader',
+export const CardHeader = React.forwardRef<HTMLElement, CardSectionProps>((props, ref) => {
+  const { render, state } = useCardSection(props, ref);
+
+  useCardHeaderClasses(state);
+  useFocusRects(state.ref as any);
+  useInlineTokens(state, '--cardHeader');
+
+  return render(state);
 });
+
+CardHeader.displayName = 'CardHeader';

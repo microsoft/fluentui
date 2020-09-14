@@ -18,28 +18,13 @@ export const useCardClasses = makeClasses<CardState>({
       borderColor: 'var(--card-borderColor)',
       borderRadius: 'var(--card-borderRadius)',
       borderWidth: 'var(--card-borderWidth)',
+      boxShadow: 'var(--card-boxShadow)',
       height: 'var(--card-height)',
       margin: 'var(--card-margin)',
       minHeight: 'var(--card-minHeight)',
       minWidth: 'var(--card-minWidth)',
       padding: 'var(--card-padding)',
       width: 'var(--card-width)',
-
-      '--card-borderRadius': 'var(--card-size-medium-borderRadius)',
-      '--card-height': 'var(--card-size-medium-height)',
-      '--card-margin': 'var(--card-size-medium-margin)',
-      '--card-padding': 'var(--card-size-medium-padding)',
-      '--card-width': 'var(--card-size-medium-width)',
-
-      '--card-hovered-backgroundColor': 'var(--card-backgroundColor)',
-      '--card-hovered-borderColor': 'var(--card-borderColor)',
-      '--card-hovered-borderWidth': 'var(--card-borderWidth)',
-      '--card-hovered-boxShadow': 'var(--card-boxShadow)',
-
-      '--card-pressed-backgroundColor': 'var(--card-backgroundColor)',
-      '--card-pressed-borderColor': 'var(--card-borderColor)',
-      '--card-pressed-borderWidth': 'var(--card-borderWidth)',
-      '--card-pressed-boxShadow': 'var(--card-boxShadow)',
 
       ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
         content: '""',
@@ -57,14 +42,14 @@ export const useCardClasses = makeClasses<CardState>({
       },
 
       '&:hover': {
-        background: 'var(--card-hovered-background, var(--card-background))',
+        backgroundColor: 'var(--card-hovered-backgroundColor, var(--card-backgroundColor))',
         borderColor: 'var(--card-hovered-borderColor, var(--card-borderColor))',
         borderWidth: 'var(--card-hovered-borderWidth, var(--card-borderWidth))',
         boxShadow: 'var(--card-hovered-boxShadow, var(--card-boxShadow))',
       },
 
       '&:active': {
-        background: 'var(--card-pressed-background, var(--card-background))',
+        backgroundColor: 'var(--card-pressed-backgroundColor, var(--card-backgroundColor))',
         borderColor: 'var(--card-pressed-borderColor, var(--card-borderColor))',
         borderWidth: 'var(--card-pressed-borderWidth, var(--card-borderWidth))',
         boxShadow: 'var(--card-pressed-boxShadow, var(--card-boxShadow))',

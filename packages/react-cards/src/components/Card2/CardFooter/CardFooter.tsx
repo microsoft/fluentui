@@ -1,9 +1,18 @@
-import { compose, createClassResolver } from '@fluentui/react-compose';
-import { CardSection } from '../CardSection/CardSection';
+import * as React from 'react';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useFocusRects } from '@uifabric/utilities';
 import { CardSectionProps } from '../CardSection/CardSection.types';
-import * as classes from './CardFooter.scss';
+import { useCardSection } from '../CardSection/useCardSection';
+import { useCardFooterClasses } from './useCardFooterClasses';
 
-export const CardFooter = compose<'div', CardSectionProps, CardSectionProps, {}, {}>(CardSection, {
-  classes: createClassResolver(classes),
-  displayName: 'CardFooter',
+export const CardFooter = React.forwardRef<HTMLElement, CardSectionProps>((props, ref) => {
+  const { render, state } = useCardSection(props, ref);
+
+  useCardFooterClasses(state);
+  useFocusRects(state.ref as any);
+  useInlineTokens(state, '--cardFooter');
+
+  return render(state);
 });
+
+CardFooter.displayName = 'CardFooter';

@@ -64,7 +64,7 @@ export const TeamsCards = () => (
     </div>
     <div>
       <Text variant="xLarge">Only footer</Text>
-      <Card>
+      <Card onClick={onClick}>
         <CardFooter fitted>
           <Stack horizontal horizontalAlign="space-between">
             <DefaultButton text="Action" />

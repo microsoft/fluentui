@@ -89,9 +89,9 @@
   --card-clickable-hovered-boxShadow: 0 3.2px 7.2px rgba(0, 0, 0, 0.1);
 
   --card-clickable-pressed-backgroundColor: #f5f5f5;
-  --card-clickable-pressed-borderColor: var(--card-borderColor);
+  --card-clickable-pressed-borderColor: var(--card-clickable-borderColor);
   --card-clickable-pressed-borderWidth: 2px;
-  --card-clickable-pressed-boxShadow: var(--card-boxShadow);
+  --card-clickable-pressed-boxShadow: var(--card-clickable-boxShadow);
 
   /* compact cards */
   --card-compact-padding: 0;
