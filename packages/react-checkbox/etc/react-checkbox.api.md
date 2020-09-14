@@ -14,10 +14,10 @@ import { ITheme } from '@uifabric/styling';
 import * as React from 'react';
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const CheckboxBase: React.FunctionComponent<ICheckboxProps>;
 
 // @public
 export interface ICheckbox {
@@ -47,6 +47,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    ref?: React.Ref<HTMLDivElement>;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
 }

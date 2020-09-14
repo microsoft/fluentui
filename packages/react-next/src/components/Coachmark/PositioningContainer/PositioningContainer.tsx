@@ -283,81 +283,82 @@ export function useHeightOffset(
   return heightOffset;
 }
 
-export const PositioningContainer = React.forwardRef(
-  (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
+  HTMLDivElement,
+  IPositioningContainerProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    // @TODO rename to reflect the name of this class
-    const contentHost = React.useRef<HTMLDivElement>(null);
-    /**
-     * The primary positioned div.
-     */
-    const positionedHost = React.useRef<HTMLDivElement>(null);
-    const rootRef = useMergedRefs(forwardedRef, positionedHost);
+  // @TODO rename to reflect the name of this class
+  const contentHost = React.useRef<HTMLDivElement>(null);
+  /**
+   * The primary positioned div.
+   */
+  const positionedHost = React.useRef<HTMLDivElement>(null);
+  const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
-    const getCachedBounds = useCachedBounds(props, targetWindow);
-    const [positions, updateAsyncPosition] = usePositionState(
-      props,
-      positionedHost,
-      contentHost,
-      targetRef,
-      getCachedBounds,
-    );
-    const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
-    const heightOffset = useHeightOffset(props, contentHost);
+  const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
+  const getCachedBounds = useCachedBounds(props, targetWindow);
+  const [positions, updateAsyncPosition] = usePositionState(
+    props,
+    positionedHost,
+    contentHost,
+    targetRef,
+    getCachedBounds,
+  );
+  const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
+  const heightOffset = useHeightOffset(props, contentHost);
 
-    useSetInitialFocus(props, contentHost, positions);
-    useAutoDismissEvents(props, positionedHost, targetWindow, targetRef, positions, updateAsyncPosition);
+  useSetInitialFocus(props, contentHost, positions);
+  useAutoDismissEvents(props, positionedHost, targetWindow, targetRef, positions, updateAsyncPosition);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
-    React.useEffect(() => props.onLayerMounted?.(), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
+  React.useEffect(() => props.onLayerMounted?.(), []);
 
-    // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!targetWindow) {
-      return null;
-    }
+  // If there is no target window then we are likely in server side rendering and we should not render anything.
+  if (!targetWindow) {
+    return null;
+  }
 
-    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
+  const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
-    const styles = getClassNames();
+  const styles = getClassNames();
 
-    const directionalClassName =
-      positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
+  const directionalClassName =
+    positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number = getCachedMaxHeight() + heightOffset!;
-    const contentMaxHeight: number =
-      positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
-        ? getContentMaxHeight
-        : positioningContainerMaxHeight!;
-    const content = (
-      <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
-        <div
-          className={mergeStyles(
-            'ms-PositioningContainer-layerHost',
-            styles.root,
-            className,
-            directionalClassName,
-            !!positioningContainerWidth && { width: positioningContainerWidth },
-          )}
-          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
-          // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          tabIndex={-1}
-          ref={contentHost}
-        >
-          {children}
-          {
-            // @TODO apply to the content container
-            contentMaxHeight
-          }
-        </div>
+  const getContentMaxHeight: number = getCachedMaxHeight() + heightOffset!;
+  const contentMaxHeight: number =
+    positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
+      ? getContentMaxHeight
+      : positioningContainerMaxHeight!;
+  const content = (
+    <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
+      <div
+        className={mergeStyles(
+          'ms-PositioningContainer-layerHost',
+          styles.root,
+          className,
+          directionalClassName,
+          !!positioningContainerWidth && { width: positioningContainerWidth },
+        )}
+        style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+        // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+        // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+        tabIndex={-1}
+        ref={contentHost}
+      >
+        {children}
+        {
+          // @TODO apply to the content container
+          contentMaxHeight
+        }
       </div>
-    );
+    </div>
+  );
 
-    return props.doNotLayer ? content : <Layer>{content}</Layer>;
-  },
-);
+  return props.doNotLayer ? content : <Layer>{content}</Layer>;
+});
 PositioningContainer.displayName = 'PositioningContainer';
 
 function arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {

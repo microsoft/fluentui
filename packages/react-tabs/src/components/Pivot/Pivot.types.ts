@@ -20,6 +20,11 @@ export interface IPivot {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
+   * Ref that is forwarded to the root element.
+   */
+  ref?: React.Ref<HTMLDivElement>;
+
+  /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
