@@ -3,6 +3,8 @@ import fs from 'fs';
 import Steps from 'screener-runner/src/steps';
 import keys from 'screener-runner/src/keys';
 
+import { ScreenerStepBuilder, ScreenerTestsConfig, ScreenerThemeName } from './screener.types';
+
 const DEFAULT_THEMES: ScreenerThemeName[] = ['teams'];
 
 Steps.prototype.resetExternalLayout = function resetExternalLayout() {

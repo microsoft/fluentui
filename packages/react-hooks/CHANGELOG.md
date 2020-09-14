@@ -1,8 +1,21 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.13.0)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.12.0..@uifabric/react-hooks_v7.13.0)
+
+### Minor changes
+
+- Create useTarget hook for common Callout logic reuse ([PR #14513](https://github.com/microsoft/fluentui/pull/14513) by miclo@microsoft.com)
+
+### Patches
+
+- Deprecate useConstCallback ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
 
 ## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.12.0)
 
