@@ -21,8 +21,8 @@ type BehaviorMenuItem = {
 };
 
 async function importFile(pathDir, name) {
-  const path = `${pathDir}\\${name}.ts`;
-  return await import(path);
+  const pathToFile = path.join(pathDir, `${name}.ts`);
+  return await import(pathToFile);
 }
 
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
@@ -69,10 +69,9 @@ export default () => {
         const variationName = variation.name.replace('.ts', '');
         const behaviorDefinitionName = `${variationName}Definition`;
 
-        let descriptionFromDefinition = [];
         importFile(dir, behaviorDefinitionName).then(file => {
-          file[behaviorDefinitionName].forEach(definition => {
-            descriptionFromDefinition.push(definition.stringify());
+          const descriptionFromDefinition = file[behaviorDefinitionName].map(definition => {
+            return definition.stringify();
           });
           variation.description = descriptionFromDefinition.join('\r\n');
           result.push({
