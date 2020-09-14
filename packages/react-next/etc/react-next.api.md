@@ -213,26 +213,7 @@ export { DirectionalHint }
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
-export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
-    constructor(props: IDropdownProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: {
-        options: IDropdownOption[];
-    };
-    // (undocumented)
-    focus(shouldOpenOnFocus?: boolean): void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IDropdownOption[];
-    // (undocumented)
-    setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
-}
+export const DropdownBase: React.ForwardRefExoticComponent<IDropdownProps & React.RefAttributes<HTMLDivElement>>;
 
 export { DropdownMenuItemType }
 
@@ -1103,10 +1084,6 @@ export interface IDropdown {
     readonly selectedOptions: IDropdownOption[];
 }
 
-// @public
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
-}
-
 // @public (undocumented)
 export interface IDropdownOption extends ISelectableOption {
     // @deprecated
@@ -1138,17 +1115,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     selectedKeys?: string[] | number[] | null;
     styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IDropdownState {
-    // (undocumented)
-    calloutRenderEdge?: RectangleEdge;
-    hasFocus: boolean;
-    // (undocumented)
-    isOpen: boolean;
-    // (undocumented)
-    selectedIndices: number[];
 }
 
 // @public

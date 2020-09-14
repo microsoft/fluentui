@@ -90,6 +90,12 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
+
+  /** Marks that the datepicker should only render the input field and not the trigger button with an icon. */
+  inputOnly?: boolean;
+
+  /** Marks that the datepicker should only render the trigger button with an icon and not the input field. */
+  buttonOnly?: boolean;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
@@ -312,6 +318,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     },
   });
 
+  const triggerButtonElement = props.inputOnly ? null : (
+    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} />
+  );
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -321,20 +331,21 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          {createShorthand(Input, input, {
-            defaultProps: () =>
-              getA11yProps('input', {
-                placeholder: props.inputPlaceholder,
-                disabled: props.disabled,
-                error: !!error,
-                value: formattedDate,
-                readOnly: !allowManualInput,
-                required: props.required,
-                ref: inputRef,
-                'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
-              }),
-            overrideProps: overrideInputProps,
-          })}
+          {!props.buttonOnly &&
+            createShorthand(Input, input, {
+              defaultProps: () =>
+                getA11yProps('input', {
+                  placeholder: props.inputPlaceholder,
+                  disabled: props.disabled,
+                  error: !!error,
+                  value: formattedDate,
+                  readOnly: !allowManualInput,
+                  required: props.required,
+                  ref: inputRef,
+                  'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
+                }),
+              overrideProps: overrideInputProps,
+            })}
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
               open: openState && !props.disabled,
@@ -342,7 +353,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               trapFocus: {
                 disableFirstFocus: true,
               },
-              trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />,
+              trigger: triggerButtonElement,
+              target: !props.buttonOnly ? inputRef.current : null,
+              position: 'below' as const,
+              align: 'start' as const,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
@@ -381,6 +395,9 @@ Datepicker.propTypes = {
 
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),
+
+  inputOnly: PropTypes.bool,
+  buttonOnly: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -435,6 +452,8 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
+  inputOnly: false,
+  buttonOnly: false,
   calendar: {},
   popup: {},
   input: {},
