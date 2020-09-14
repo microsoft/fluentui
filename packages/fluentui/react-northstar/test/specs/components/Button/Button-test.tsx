@@ -11,6 +11,9 @@ import { toggleButtonBehavior } from '@fluentui/accessibility';
 
 import { Button } from 'src/components/Button/Button';
 
+import { buttonBehaviorDefinition, toggleButtonBehaviorDefinition } from '@fluentui/accessibility';
+import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+
 describe('Button', () => {
   isConformant(Button, {
     constructorName: 'Button',
@@ -161,5 +164,17 @@ describe('Button', () => {
         expect.objectContaining({ onClick }),
       );
     });
+  });
+
+  describe('ButtonBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, {});
+    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('ButtonToggleBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, { accessibility: toggleButtonBehavior });
+    const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
   });
 });
