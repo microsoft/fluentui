@@ -155,18 +155,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    if (event && event.dataTransfer?.dropEffect === 'move') {
-      const itemstoRemove = focusedItemIndices.includes(draggedIndex)
-        ? (getSelectedItems() as T[])
-        : [selectedItems[draggedIndex]];
-      _onRemoveSelectedItems(itemstoRemove);
-    }
-    setDraggedIndex(-1);
     if (event) {
-      const dataList = event?.dataTransfer?.items;
+      if (event.dataTransfer?.dropEffect === 'move') {
+        const itemsToRemove = focusedItemIndices.includes(draggedIndex)
+          ? (getSelectedItems() as T[])
+          : [selectedItems[draggedIndex]];
+        _onRemoveSelectedItems(itemsToRemove);
+      }
       // Clear any remaining drag data
+      const dataList = event?.dataTransfer?.items;
       dataList?.clear();
     }
+    setDraggedIndex(-1);
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
