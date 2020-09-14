@@ -55,7 +55,7 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
     const win = useWindow();
 
     // Expected: theme and renderer are either always provided or never.
-    theme = useCustomizationSettings(['theme']).theme as Theme;
+    theme = theme || (useCustomizationSettings(['theme']).theme as Theme) || {};
     renderer = (renderer || useStyleRenderer()) as StyleRenderer;
 
     const id = renderer.getId();
