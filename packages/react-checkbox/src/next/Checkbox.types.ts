@@ -26,12 +26,9 @@ export interface ICheckbox {
  * Checkbox properties.
  * {@docCategory Checkbox}
  */
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
-  /**
-   * Ref that is forwarded to the root element.
-   */
-  ref?: React.Ref<HTMLElement>;
-
+export interface ICheckboxProps
+  extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
+    React.RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */

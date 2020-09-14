@@ -19,7 +19,7 @@ export interface ISlider {
 }
 
 // @public (undocumented)
-export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
     'aria-label'?: string;
     // @deprecated
     ariaLabel?: string;
@@ -35,7 +35,6 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
-    ref?: React.Ref<HTMLDivElement>;
     showValue?: boolean;
     snapToStep?: boolean;
     step?: number;

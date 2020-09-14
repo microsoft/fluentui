@@ -63,12 +63,11 @@ export interface ILinkOptions {
 }
 
 // @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     // @deprecated
     keytipProps?: IKeytipProps;
-    ref?: React.Ref<HTMLElement>;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
 }
