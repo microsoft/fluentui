@@ -3,7 +3,6 @@ import { ThemeProviderProps } from './ThemeProvider.types';
 import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
-import { useThemeTokenClass } from './useThemeTokenClass';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 
 /**
@@ -22,9 +21,6 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
 
     // Render styles.
     useThemeProviderClasses(state, state.theme, state.renderer);
-
-    // Render tokens as css variables.
-    useThemeTokenClass(state);
 
     // Return the rendered content.
     return render(state);

@@ -259,6 +259,9 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
+export const useMenuButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
+// @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
@@ -268,10 +271,16 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
+export const useSplitButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
+// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
+
+// @public (undocumented)
+export const useToggleButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)
