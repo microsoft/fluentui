@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import { ScreenerRunnerConfig } from './screener.types';
 
 const SCREENER_ENDPOINT = 'https://screener.io/api/v2/projects';
+const SCREENER_PROXY_ENDPOINT = 'https://screener-proxy.vercel.app/api/ci';
 
 function wait(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -59,18 +60,28 @@ async function scheduleScreenerBuild(
   }
 
   const data = await response.json();
+  const url = `https://screener.io/v2/dashboard/${data.project}/${encodeURIComponent(data.branch)}`;
 
   console.log(`screener-runner: Screener tests for "${buildInfo.commit}" commit were queued.`);
-  console.log(
-    `screener-runner: See job status at https://screener.io/v2/dashboard/${data.project}/${encodeURIComponent(
-      data.branch,
-    )}`,
-  );
+  console.log(`screener-runner: See job status at ${url}`);
+
+  return url;
+}
+
+async function notifyIntegration(commit: string, url: string) {
+  const payload = { commit, url };
+
+  await fetch(SCREENER_PROXY_ENDPOINT, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function screenerRunner(screenerConfigPath) {
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
 
+  const commit = process.env.BUILD_SOURCEVERSION;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
   // remove prefix if exists
@@ -78,12 +89,14 @@ export async function screenerRunner(screenerConfigPath) {
     branchName = branchName.replace('refs/heads/', '');
   }
 
-  await scheduleScreenerBuild(screenerConfig, {
+  const checkUrl = await scheduleScreenerBuild(screenerConfig, {
     build: process.env.BUILD_BUILDID,
     branchName,
-    commit: process.env.BUILD_SOURCEVERSION,
+    commit,
     pullRequest: process.env.SYSTEM_PULLREQUEST_PULLREQUESTID
       ? process.env.SYSTEM_PULLREQUEST_PULLREQUESTID.toString()
       : undefined,
   });
+
+  await notifyIntegration(commit, checkUrl);
 }
