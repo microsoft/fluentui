@@ -2,8 +2,8 @@
 import { IStyle } from '@uifabric/merge-styles';
 
 import { Theme } from '@fluentui/theme';
+import { useCustomizationSettings } from '@uifabric/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
-import { useTheme } from './useTheme';
 import { useStyleRenderer } from './styleRenderers/useStyleRenderer';
 import { StyleRenderer } from './styleRenderers/types';
 
@@ -55,7 +55,7 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
     const win = useWindow();
 
     // Expected: theme and renderer are either always provided or never.
-    theme = theme || useTheme();
+    theme = useCustomizationSettings(['theme']).theme as Theme;
     renderer = (renderer || useStyleRenderer()) as StyleRenderer;
 
     const id = renderer.getId();
