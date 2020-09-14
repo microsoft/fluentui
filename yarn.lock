@@ -6435,17 +6435,19 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.31.2:
-  version "1.31.2"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.31.2.tgz#068792e0d202797a28fa1cce3929d51197435c31"
-  integrity sha512-waXb4KXYijdy7SqAl+xH0Rm/agMoXzlsEIHlfFi8AkTJ93I0wU2rbqojuetXOm1DHARybr54KzYb2YQJjuighw==
+beachball@^1.36.0:
+  version "1.36.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.36.0.tgz#646bc89b1d212f896fc5f4ca55ad10f0cb85357a"
+  integrity sha512-l5qB/tJ+jZwwHtAQT2j3cAJ+iRifDIBUY6iDoGA4at/cyY5g1TDfp+A6MXushMZ/HWg+Xbh7+Ro9rjzEXjriJQ==
   dependencies:
     cosmiconfig "^6.0.0"
+    execa "^4.0.3"
     fs-extra "^8.0.1"
     git-url-parse "^11.1.2"
     glob "^7.1.4"
     lodash "^4.17.15"
     minimatch "^3.0.4"
+    p-limit "^3.0.2"
     prompts "~2.1.0"
     semver "^6.1.1"
     toposort "^2.0.2"
@@ -18101,6 +18103,13 @@ p-limit@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.2.tgz#61279b67721f5287aa1c13a9a7fbbc48c9291b1e"
   integrity sha512-WGR+xHecKTr7EbUEhyLSh5Dube9JtdiG78ufaeLxTgpudf/20KqyMioIUZJAezlTIi6evxuoUs9YXc11cU+yzQ==
+  dependencies:
+    p-try "^2.0.0"
+
+p-limit@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.0.2.tgz#1664e010af3cadc681baafd3e2a437be7b0fb5fe"
+  integrity sha512-iwqZSOoWIW+Ew4kAGUlN16J4M7OB3ysMLSZtnhmqx7njIHFPlxWBX8xo3lVTyFVq6mI/lL9qt2IsN1sHwaxJkg==
   dependencies:
     p-try "^2.0.0"
 
