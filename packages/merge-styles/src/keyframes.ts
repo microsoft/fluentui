@@ -1,5 +1,4 @@
 import { IKeyframes } from './IKeyframes';
-import { IRawStyle } from './IRawStyle';
 import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { serializeRuleEntries } from './styleToClassName';
