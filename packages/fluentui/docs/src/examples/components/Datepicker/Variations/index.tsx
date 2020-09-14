@@ -9,8 +9,8 @@ const Variations = () => (
       title="Standalone DatepickerCalendar with Button"
       description={
         <>
-          One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. The way to achieve this is
-          through Datepicker.type prop.
+          One can decide to use the <code>DatepickerCalendar</code> without <code>Input</code>, just with the triger
+          <code>Button</code>. The way to achieve this is through <code>buttonOnly</code> prop.
         </>
       }
       examplePath="components/Datepicker/Variants/DatepickerExampleStandaloneCalendarButton"
@@ -19,8 +19,8 @@ const Variations = () => (
       title="Standalone DatepickerCalendar with Input"
       description={
         <>
-          One can also use the <code>DatepickerCalendar</code> without <code>Button</code>. The way to achieve this is
-          through Datepicker.type prop.
+          One can also use the <code>DatepickerCalendar</code> without trigger <code>Button</code>. The way to achieve
+          this is through <code>inputOnly</code> prop.
         </>
       }
       examplePath="components/Datepicker/Variants/DatepickerExampleStandaloneCalendarInput"
