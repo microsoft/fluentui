@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Updating state to use mergeProps with limitted deep cloning.",
+  "comment": "Updating state to use makeProps (mergeProps with explicit deep cloning, rather than implicit.)",
   "packageName": "@fluentui/react-avatar",
   "email": "dzearing@hotmail.com",
   "dependentChangeType": "patch",
