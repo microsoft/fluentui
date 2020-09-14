@@ -7,8 +7,8 @@ const DatepickerExampleStandaloneCalendarButton = () => {
       onDateChange={(e, v) => {
         alert(`You picked '${v.value}'.`);
       }}
-      input={null}
       today={new Date(2020, 7, 30, 0, 0, 0, 0)}
+      buttonOnly
       popup={{
         trigger: <Button title="Open calendar" content="Click to Open " />,
       }}
