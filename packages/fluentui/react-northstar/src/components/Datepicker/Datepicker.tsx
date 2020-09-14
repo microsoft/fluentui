@@ -181,18 +181,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
-  const {
-    calendar,
-    popup,
-    input,
-    className,
-    design,
-    styles,
-    variables,
-    formatMonthDayYear,
-    allowManualInput,
-    type,
-  } = props;
+  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
   const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
