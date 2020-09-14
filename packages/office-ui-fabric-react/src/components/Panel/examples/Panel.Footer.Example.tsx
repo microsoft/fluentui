@@ -1,26 +1,26 @@
 import * as React from 'react';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const buttonStyles = { root: { marginRight: 8 } };
 
 export const PanelFooterExample: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const openPanel = useConstCallback(() => setIsOpen(true));
-  const dismissPanel = useConstCallback(() => setIsOpen(false));
+  const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   // This panel doesn't actually save anything; the buttons are just an example of what
   // someone might want to render in a panel footer.
-  const onRenderFooterContent = useConstCallback(() => (
-    <div>
-      <PrimaryButton onClick={dismissPanel} styles={buttonStyles}>
-        Save
-      </PrimaryButton>
-      <DefaultButton onClick={dismissPanel}>Cancel</DefaultButton>
-    </div>
-  ));
+  const onRenderFooterContent = React.useCallback(
+    () => (
+      <div>
+        <PrimaryButton onClick={dismissPanel} styles={buttonStyles}>
+          Save
+        </PrimaryButton>
+        <DefaultButton onClick={dismissPanel}>Cancel</DefaultButton>
+      </div>
+    ),
+    [dismissPanel],
+  );
 
   return (
     <div>

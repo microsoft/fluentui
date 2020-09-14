@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
 
 ### Fixes
+- Fix `MenuItem` and `CarouselNavigationItem` to correctly map `active` prop to behavior @yuanboxue-amber ([#14970](https://github.com/microsoft/fluentui/pull/14970))
 - Fix default focused outline in Safari @yuanboxue-amber ([#14917](https://github.com/microsoft/fluentui/pull/14917))
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
@@ -56,6 +57,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `checkedIndicator` prop to `RadioGroupItem` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Added `Breadcrumb` component @assuncaocharles ([#14922](https://github.com/microsoft/fluentui/pull/14922))
 - Added `BreadcrumbItem` and `BreadcrumbDivider` components @yuanboxue-amber ([#14926](https://github.com/microsoft/fluentui/pull/14926))
+- Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
 
 ### Documentation
 - Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))

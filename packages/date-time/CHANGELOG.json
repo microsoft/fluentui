@@ -2,6 +2,36 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "@uifabric/date-time_v7.17.1",
       "version": "7.17.1",

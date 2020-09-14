@@ -148,13 +148,11 @@ export class VerticalStackedBarChartBase extends React.Component<
           id={this._calloutId}
           {...this.props.calloutProps}
         >
-          {
-            this.props.onRenderCalloutPerStack
-              ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
-              : this.props.onRenderCalloutPerDataPoint
-                ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
-                : this._renderCallout(this.state.dataPointCalloutProps)
-          }
+          {this.props.onRenderCalloutPerStack
+            ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
+            : this.props.onRenderCalloutPerDataPoint
+            ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
+            : this._renderCallout(this.state.dataPointCalloutProps)}
         </Callout>
       </div>
     );
@@ -357,7 +355,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: mouseEvent,
       isCalloutVisible: true,
-      stackCalloutProps: calloutData
+      stackCalloutProps: calloutData,
     });
   }
 
@@ -365,7 +363,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: ref.refElement,
       isCalloutVisible: true,
-      stackCalloutProps: calloutData
+      stackCalloutProps: calloutData,
     });
   }
 
@@ -378,7 +376,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
-        dataPointCalloutProps: calloutData
+        dataPointCalloutProps: calloutData,
       });
     }
   }
@@ -391,7 +389,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.setState({
         refSelected: ref.refElement,
         isCalloutVisible: true,
-        dataPointCalloutProps: calloutData
+        dataPointCalloutProps: calloutData,
       });
     }
   }
@@ -416,7 +414,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   ): JSX.Element {
     let startingPointOfY = 0;
     const nonZeroBars = singleChartData.chartData.filter(point => point.data > 0);
-    const xPoint = xBarScale(isNumeric ? singleChartData.xAxisPoint as number : indexNumber);
+    const xPoint = xBarScale(isNumeric ? (singleChartData.xAxisPoint as number) : indexNumber);
     const usingPointCallout = !this.props.onRenderCalloutPerStack;
     const stackCalloutData: IVSChartDataPoint[] = [];
     const xAxisCalloutData = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint.toString();
@@ -444,7 +442,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         yAxisCalloutData: point.yAxisCalloutData || point.data.toString(),
         color: color,
         data: point.data,
-        legend: point.legend
+        legend: point.legend,
       };
 
       let focusProps: React.SVGAttributes<SVGRectElement> = {};
@@ -470,7 +468,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           width={this._barWidth}
           height={Math.max(yBarScale(point.data), 0)}
           fill={color}
-          ref={e => ref.refElement = e}
+          ref={e => (ref.refElement = e)}
           data-is-focusable={usingPointCallout || undefined}
           {...focusProps}
           onClick={this._redirectToUrl.bind(this, href)}
@@ -505,7 +503,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         key={indexNumber}
         data-is-focusable={!usingPointCallout || undefined}
         {...stackFocusProps}
-        ref={e => groupRef.refElement = e}
+        ref={e => (groupRef.refElement = e)}
       >
         {bars}
       </g>
@@ -554,11 +552,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return this._createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
   }
 
-  private _getBars(
-    _points: IVerticalStackedChartProps[],
-    dataset: IDataPoint[],
-    isNumeric: boolean,
-  ): JSX.Element[] {
+  private _getBars(_points: IVerticalStackedChartProps[], dataset: IDataPoint[], isNumeric: boolean): JSX.Element[] {
     const bars: JSX.Element[] = _points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
       return isNumeric
         ? this._createNumericBars(singleChartData, dataset, index, this.props.href!)
