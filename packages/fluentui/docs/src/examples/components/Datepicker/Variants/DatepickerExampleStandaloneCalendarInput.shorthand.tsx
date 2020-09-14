@@ -1,7 +1,7 @@
-import { Datepicker, DatepickerType } from '@fluentui/react-northstar';
+import { Datepicker } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DatepickerExampleStandaloneCalendarInput = () => {
-  return <Datepicker type={DatepickerType.InputOnly} />;
+  return <Datepicker inputOnly />;
 };
 export default DatepickerExampleStandaloneCalendarInput;

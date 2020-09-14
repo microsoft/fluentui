@@ -1,4 +1,4 @@
-import { Datepicker, DatepickerType, Button } from '@fluentui/react-northstar';
+import { Datepicker, Button } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DatepickerExampleStandaloneCalendarButton = () => {
@@ -8,7 +8,7 @@ const DatepickerExampleStandaloneCalendarButton = () => {
         alert(`You picked '${v.value}'.`);
       }}
       today={new Date(2020, 7, 30, 0, 0, 0, 0)}
-      type={DatepickerType.ButtonOnly}
+      buttonOnly
       popup={{
         trigger: <Button title="Open calendar" content="Click to Open " />,
       }}

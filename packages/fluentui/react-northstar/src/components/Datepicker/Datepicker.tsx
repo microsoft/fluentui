@@ -38,12 +38,6 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
-export enum DatepickerType {
-  ButtonOnly = 0,
-  InputOnly = 1,
-  InputAndButton = 2,
-}
-
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
@@ -97,8 +91,11 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
 
-  /** Marks which type of datepicker should be rendered. */
-  type?: DatepickerType;
+  /** Marks that the datepicker should only contain input and not the icon. */
+  inputOnly?: boolean;
+
+  /** Marks that the datepicker should only contain icon and not the input. */
+  iconOnly?: boolean;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
@@ -332,10 +329,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     },
   });
 
-  const triggerButtonElement =
-    type !== DatepickerType.InputOnly ? (
-      <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />
-    ) : null;
+  const triggerButtonElement = props.inputOnly ? null : (
+    <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />
+  );
 
   const element = (
     <Ref innerRef={datepickerRef}>
@@ -346,7 +342,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          {type !== DatepickerType.ButtonOnly &&
+          {!props.buttonOnly &&
             createShorthand(Input, input, {
               defaultProps: () =>
                 getA11yProps('input', {
@@ -369,7 +365,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 disableFirstFocus: true,
               },
               trigger: triggerButtonElement,
-              target: type !== DatepickerType.ButtonOnly ? inputRef.current : null,
+              target: !props.buttonOnly ? inputRef.current : null,
               position: 'below' as const,
               align: 'end' as const,
             }),
@@ -411,7 +407,8 @@ Datepicker.propTypes = {
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),
 
-  type: PropTypes.oneOf(Object.keys(DatepickerType).map(name => DatepickerType[name])),
+  inputOnly: PropTypes.bool,
+  iconOnly: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -466,7 +463,8 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
-  type: DatepickerType.InputAndButton,
+  inputOnly: false,
+  iconOnly: false,
   calendar: {},
   popup: {},
   input: {},
