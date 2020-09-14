@@ -82,21 +82,21 @@ export class ComponentTestFacade implements TestFacade {
 
   public afterClick(selector: string) {
     if (selector === 'root') {
-      return this.renderedComponent.simulate('click');
+      this.renderedComponent.simulate('click');
     }
     this.renderedComponent.find(selector).simulate('click');
   }
 
   public pressSpaceKey(selector: string) {
     if (selector === 'root') {
-      return this.renderedComponent.simulate('keydown', { keyCode: 32 });
+      this.renderedComponent.simulate('keydown', { keyCode: 32 });
     }
     this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
   }
 
   public pressEnterKey(selector: string) {
     if (selector === 'root') {
-      return this.renderedComponent.simulate('keydown', { keyCode: 13 });
+      this.renderedComponent.simulate('keydown', { keyCode: 13 });
     }
     this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
   }
