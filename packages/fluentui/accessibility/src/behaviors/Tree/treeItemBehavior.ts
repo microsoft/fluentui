@@ -29,7 +29,7 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
         role: 'none',
         ...(props.hasSubtree && {
           'aria-expanded': props.expanded,
-          'aria-selected': props.selectable ? props.selected || false : undefined,
+          'aria-checked': props.selectable ? props.selected || false : undefined,
           tabIndex: -1,
           [IS_FOCUSABLE_ATTRIBUTE]: true,
           role: 'treeitem' as AriaRole,
