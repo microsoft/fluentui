@@ -24,6 +24,8 @@ export interface DatepickerVariables {
   calendarHeaderPaddingBottom: string;
   calendarHeaderLabelPaddingLeft: string;
   calendarHeaderLabelFontWeight;
+
+  calendarMinHeight: string;
 }
 
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
@@ -50,4 +52,6 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarHeaderPaddingBottom: pxToRem(5),
   calendarHeaderLabelPaddingLeft: pxToRem(10),
   calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
+
+  calendarMinHeight: pxToRem(266),
 });

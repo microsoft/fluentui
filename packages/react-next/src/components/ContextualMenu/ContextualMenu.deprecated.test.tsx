@@ -4,6 +4,7 @@ import { KeyCodes, setWarningCallback } from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
+import { mount } from 'enzyme';
 import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
 
@@ -82,13 +83,9 @@ describe('ContextualMenu', () => {
   it('applies in-line style property if present on ContextualMenuItem', () => {
     const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1', style: { background: 'red' } }];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    const wrapper = mount(<ContextualMenu items={items} />);
 
-    const menuItem = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
-
-    expect(menuItem.style.background).toEqual('red');
+    expect(wrapper.find('[background="red"]'));
   });
 
   it('applies getItemClassNames for split menu items', () => {
