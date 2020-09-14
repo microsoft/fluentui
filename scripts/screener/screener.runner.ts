@@ -81,7 +81,7 @@ async function notifyIntegration(commit: string, url: string) {
 export async function screenerRunner(screenerConfigPath) {
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
 
-  const commit = process.env.BUILD_SOURCEVERSION;
+  const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
   // remove prefix if exists
