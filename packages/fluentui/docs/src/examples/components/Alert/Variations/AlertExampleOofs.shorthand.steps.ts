@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 import { getHoverScreenerSteps } from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {

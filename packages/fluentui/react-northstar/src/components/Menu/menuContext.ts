@@ -2,10 +2,12 @@ import { createContext } from '@fluentui/react-context-selector';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 import { Accessibility } from '@fluentui/accessibility';
+import { MenuItemProps } from './MenuItem';
 
 export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
+  onItemClick: (e: React.KeyboardEvent | React.MouseEvent, itemProps: MenuItemProps) => void;
   onItemSelect: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
 
   slotProps: {
@@ -23,7 +25,7 @@ export type MenuContextValue = {
   };
 };
 
-export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemSelect'> & {
+export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemClick' | 'onItemSelect'> & {
   slotProps: MenuContextValue['slotProps']['item'];
   accessibility: MenuContextValue['behaviors']['item'];
   menuSlot: MenuContextValue['slots']['menu'];
@@ -39,6 +41,7 @@ export const MenuContext = createContext<MenuContextValue>(
   {
     activeIndex: -1,
     variables: {},
+    onItemClick: null,
     onItemSelect: null,
     slotProps: {
       item: {},
