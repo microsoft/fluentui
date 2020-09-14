@@ -1,3 +1,5 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
+
 const config: ScreenerTestsConfig = {
   steps: [
     builder =>

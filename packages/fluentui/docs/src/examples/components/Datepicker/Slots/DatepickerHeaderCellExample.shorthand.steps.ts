@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 import { inputClassName, datepickerCalendarHeaderCellClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {

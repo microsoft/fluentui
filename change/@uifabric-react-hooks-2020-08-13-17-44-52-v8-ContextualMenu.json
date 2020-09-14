@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Create useTarget hook for common Callout logic reuse",
-  "packageName": "@uifabric/react-hooks",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-13T17:44:52.124Z"
-}

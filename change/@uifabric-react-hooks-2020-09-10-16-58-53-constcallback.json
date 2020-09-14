@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecate useConstCallback",
-  "packageName": "@uifabric/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-10T23:58:50.082Z"
-}

@@ -65,7 +65,7 @@
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "^1.0.0-5",
     "babel-plugin-lodash": "^3.3.4",
-    "beachball": "^1.31.2",
+    "beachball": "^1.36.0",
     "chalk": "^2.1.0",
     "chrome-remote-interface": "^0.28.2",
     "circular-dependency-plugin": "^5.0.2",

@@ -188,6 +188,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const parentProps = (useContextSelectors(MenuContext, {
       active: v => v.activeIndex === inputProps.index,
+      onItemClick: v => v.onItemClick,
       onItemSelect: v => v.onItemSelect,
       variables: v => v.variables,
       menuSlot: v => v.slots.menu,
@@ -342,6 +343,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       performClick(e);
 
       _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -411,7 +413,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             setWhatInputSource(context.target, 'mouse');
             trySetMenuOpen(true, e);
             _.invoke(props, 'onMouseEnter', e, props);
-            _.invoke(parentProps, 'onItemSelect', e, props);
+            _.invoke(parentProps, 'onItemSelect', e, props.index);
           },
           onMouseLeave: e => {
             trySetMenuOpen(false, e);
@@ -489,7 +491,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
           _.invoke(predefinedProps, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props);
+          _.invoke(parentProps, 'onItemSelect', e, props.index);
         },
         onMouseLeave: e => {
           trySetMenuOpen(false, e);
