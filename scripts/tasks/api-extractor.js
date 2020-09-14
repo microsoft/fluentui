@@ -13,7 +13,7 @@ function verifyApiExtractor() {
     ? series(
         ...apiExtractorConfigs.map(([configPath, configName]) => {
           const taskName = `api-extractor:${configName}:verify`;
-          task(taskName, apiExtractorVerifyTask({ configJsonFilePath: configPath }));
+          task(taskName, apiExtractorVerifyTask({ configJsonFilePath: configPath, fixNewlines: true }));
           return taskName;
         }),
       )
@@ -25,7 +25,7 @@ function updateApiExtractor() {
     ? series(
         ...apiExtractorConfigs.map(([configPath, configName]) => {
           const taskName = `api-extractor:${configName}:update`;
-          task(taskName, apiExtractorUpdateTask({ configJsonFilePath: configPath }));
+          task(taskName, apiExtractorUpdateTask({ configJsonFilePath: configPath, fixNewlines: true }));
           return taskName;
         }),
       )

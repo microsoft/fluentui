@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix API file newlines",
+  "packageName": "@uifabric/react-hooks",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-11T20:46:10.335Z"
+}

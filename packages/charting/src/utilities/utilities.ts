@@ -245,7 +245,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickPadding(tickPadding)
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement
     ? d3Select(yAxisElement)
         .call(yAxis)
