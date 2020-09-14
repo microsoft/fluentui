@@ -16,11 +16,11 @@
   "dependencies": {
     "@fluentui/react-button": "^0.12.4",
     "@fluentui/react-icons": "^0.3.0",
-    "@fluentui/react-next": "^8.0.0-alpha.105",
+    "@fluentui/react-next": "^8.0.0-alpha.106",
     "@fluentui/react-theme-provider": "^0.11.3",
     "@fluentui/storybook": "^0.4.11",
     "@uifabric/example-data": "^7.1.3",
-    "@uifabric/experiments": "^7.32.8",
+    "@uifabric/experiments": "^7.32.9",
     "@uifabric/react-cards": "^0.112.8",
     "@uifabric/react-hooks": "^7.13.0",
     "@uifabric/set-version": "^7.0.22",

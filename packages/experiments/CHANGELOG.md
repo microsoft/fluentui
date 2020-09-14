@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Sep 2020 12:22:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.9)
+
+Mon, 14 Sep 2020 12:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.4..@uifabric/experiments_v7.32.9)
+
+### Patches
+
+- allow FloatingPeopleSuggestions onRenderSuggestions property to be used ([PR #14983](https://github.com/microsoft/fluentui/pull/14983) by elvonspa@microsoft.com)
 
 ## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
 
