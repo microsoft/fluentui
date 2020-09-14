@@ -30,11 +30,11 @@ export const buttonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
     .forProps({ disabled: true })
     .hasAttribute('aria-disabled', 'true')
-    .description(`based on the property 'disabled'.`),
+    .description(`if property 'disabled' is 'true'.`),
   BehaviorRule.root()
     .forProps({ loading: true })
     .hasAttribute('aria-disabled', 'true')
-    .description(`based on the property 'loading'.`),
+    .description(`if property 'aria-disabled' is 'true'.`),
   BehaviorRule.root()
     .forProps({ as: 'div' })
     .pressSpaceKey()

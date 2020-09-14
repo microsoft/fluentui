@@ -7,7 +7,6 @@
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/a11y-testing": "0.1.0",
     "@fluentui/date-time-utilities": "^7.8.0",
     "@fluentui/keyboard-key": "^0.2.11",
     "@fluentui/react-bindings": "^0.51.0",
@@ -32,6 +31,7 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
+    "@fluentui/a11y-testing": "0.1.0",
     "@fluentui/eslint-plugin": "^0.54.0",
     "@fluentui/react-conformance": "^0.1.1",
     "@testing-library/jest-dom": "^5.1.1",
