@@ -1,62 +1,37 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
   ContextualMenuItemType,
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import './ContextualMenuExample.scss';
-
-const DIRECTION_OPTIONS = [
-  { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
-  { key: DirectionalHint.topCenter, text: 'Top Center' },
-  { key: DirectionalHint.topRightEdge, text: 'Top Right Edge' },
-  { key: DirectionalHint.topAutoEdge, text: 'Top Auto Edge' },
-  { key: DirectionalHint.bottomLeftEdge, text: 'Bottom Left Edge' },
-  { key: DirectionalHint.bottomCenter, text: 'Bottom Center' },
-  { key: DirectionalHint.bottomRightEdge, text: 'Bottom Right Edge' },
-  { key: DirectionalHint.bottomAutoEdge, text: 'Bottom Auto Edge' },
-  { key: DirectionalHint.leftTopEdge, text: 'Left Top Edge' },
-  { key: DirectionalHint.leftCenter, text: 'Left Center' },
-  { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
-  { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
-  { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
-];
-
-const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
-  const [isBeakVisible, setIsBeakVisible] = React.useState(false);
-  const [useDirectionalHintForRTL, setUseDirectionalHintForRTL] = React.useState(false);
+  const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(false);
+  const [useDirectionalHintForRTL, { toggle: toggleUseDirectionalHintForRTL }] = useBoolean(false);
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
   const [directionalHintForRTL, setDirectionalHintForRTL] = React.useState<DirectionalHint>(
     DirectionalHint.bottomLeftEdge,
   );
 
-  const onShowBeakChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-    setIsBeakVisible(isVisible);
-  });
-
-  const onUseRtlHintChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-    setUseDirectionalHintForRTL(isVisible);
-  });
-
-  const onDirectionalChanged = useConstCallback(
+  const onDirectionalChanged = React.useCallback(
     (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
       setDirectionalHint(option.key as DirectionalHint);
     },
+    [],
   );
 
-  const onDirectionalRtlChanged = useConstCallback(
+  const onDirectionalRtlChanged = React.useCallback(
     (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
       setDirectionalHintForRTL(option.key as DirectionalHint);
     },
+    [],
   );
 
   const menuProps: IContextualMenuProps = React.useMemo(
@@ -73,59 +48,65 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
   );
 
   return (
-    <div className="ms-ContextualMenuDirectionalExample">
-      <div className="ms-ContextualMenuDirectionalExample-configArea">
-        <Checkbox styles={checkboxStyles} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
+    <div>
+      <Stack horizontal wrap tokens={stackTokens}>
+        <Toggle label="Show beak" checked={isBeakVisible} onChange={toggleIsBeakVisible} />
         <Dropdown
           label="Directional hint"
-          selectedKey={directionalHint!}
-          options={DIRECTION_OPTIONS}
+          selectedKey={directionalHint}
+          options={directionOptions}
           onChange={onDirectionalChanged}
+          styles={dropdownStyles}
         />
         {getRTL() && (
-          <Checkbox label="Use RTL directional hint" checked={useDirectionalHintForRTL} onChange={onUseRtlHintChange} />
+          <Toggle
+            label="Use RTL directional hint"
+            checked={useDirectionalHintForRTL}
+            onChange={toggleUseDirectionalHintForRTL}
+          />
         )}
         {getRTL() && (
           <Dropdown
             label="Directional hint for RTL"
-            selectedKey={directionalHintForRTL!}
-            options={DIRECTION_OPTIONS}
+            selectedKey={directionalHintForRTL}
+            options={directionOptions}
             onChange={onDirectionalRtlChanged}
             disabled={!useDirectionalHintForRTL}
+            styles={dropdownStyles}
           />
         )}
-      </div>
-      <div className="ms-ContextualMenuDirectionalExample-buttonArea">
-        <DefaultButton text="Show context menu" menuProps={menuProps} />
-      </div>
+      </Stack>
+      <br />
+      <DefaultButton text="Show context menu" menuProps={menuProps} />
     </div>
   );
 };
 
 const menuItems: IContextualMenuItem[] = [
-  {
-    key: 'newItem',
-    text: 'New',
-  },
-  {
-    key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider,
-  },
-  {
-    key: 'rename',
-    text: 'Rename',
-  },
-  {
-    key: 'edit',
-    text: 'Edit',
-  },
-  {
-    key: 'properties',
-    text: 'Properties',
-  },
-  {
-    key: 'disabled',
-    text: 'Disabled item',
-    disabled: true,
-  },
+  { key: 'newItem', text: 'New' },
+  { key: 'divider_1', itemType: ContextualMenuItemType.Divider },
+  { key: 'rename', text: 'Rename' },
+  { key: 'edit', text: 'Edit' },
+  { key: 'properties', text: 'Properties' },
+  { key: 'disabled', text: 'Disabled item', disabled: true },
 ];
+
+const directionOptions: IDropdownOption[] = [
+  { key: DirectionalHint.topLeftEdge, text: 'Top left edge' },
+  { key: DirectionalHint.topCenter, text: 'Top center' },
+  { key: DirectionalHint.topRightEdge, text: 'Top right edge' },
+  { key: DirectionalHint.topAutoEdge, text: 'Top auto edge' },
+  { key: DirectionalHint.bottomLeftEdge, text: 'Bottom left edge' },
+  { key: DirectionalHint.bottomCenter, text: 'Bottom center' },
+  { key: DirectionalHint.bottomRightEdge, text: 'Bottom right edge' },
+  { key: DirectionalHint.bottomAutoEdge, text: 'Bottom auto edge' },
+  { key: DirectionalHint.leftTopEdge, text: 'Left top edge' },
+  { key: DirectionalHint.leftCenter, text: 'Left center' },
+  { key: DirectionalHint.leftBottomEdge, text: 'Left bottom edge' },
+  { key: DirectionalHint.rightTopEdge, text: 'Right top edge' },
+  { key: DirectionalHint.rightCenter, text: 'Right center' },
+  { key: DirectionalHint.rightBottomEdge, text: 'Right bottom edge' },
+];
+
+const stackTokens: Partial<IStackTokens> = { childrenGap: 30 };
+const dropdownStyles: Partial<IDropdownStyles> = { root: { width: 200 } };
