@@ -5,15 +5,6 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
   className=
 
       {
-        background: var(--body-background);
-        box-sizing: border-box;
-        color: var(--body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
-      }
-      {
         --accent-background: #0078d4;
         --accent-borderColor: transparent;
         --accent-checked-background: #005a9e;
@@ -393,15 +384,6 @@ exports[`ThemeProvider renders a div 1`] = `
   className=
 
       {
-        background: var(--body-background);
-        box-sizing: border-box;
-        color: var(--body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
-      }
-      {
         --accent-background: #0078d4;
         --accent-borderColor: transparent;
         --accent-checked-background: #005a9e;
@@ -779,15 +761,6 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 <div
   className=
 
-      {
-        background: var(--body-background);
-        box-sizing: border-box;
-        color: var(--body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
-      }
       {
         --accent-background: #0078d4;
         --accent-borderColor: transparent;
@@ -1167,15 +1140,6 @@ exports[`ThemeProvider renders nested themes 1`] = `
   className=
 
       {
-        background: var(--body-background);
-        box-sizing: border-box;
-        color: var(--body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
-      }
-      {
         --accent-background: #0078d4;
         --accent-borderColor: transparent;
         --accent-checked-background: #005a9e;
@@ -1551,15 +1515,6 @@ exports[`ThemeProvider renders nested themes 1`] = `
   <div
     className=
 
-        {
-          background: var(--body-background);
-          box-sizing: border-box;
-          color: var(--body-contentColor);
-          font-family: var(--body-fontFamily);
-          font-size: var(--body-fontSize);
-          font-weight: var(--body-fontWeight);
-          line-height: var(--body-fontLineHeight);
-        }
         {
           --accent-background: #0078d4;
           --accent-borderColor: transparent;

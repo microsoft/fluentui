@@ -12,11 +12,12 @@ const NON_PIXEL_NUMBER_PROPS = [
 ];
 
 export function provideUnits(rulePairs: (string | number)[], index: number): void {
-  const name = rulePairs[index];
+  const name = rulePairs[index] as string;
   const value = rulePairs[index + 1];
 
   if (typeof value === 'number') {
-    const unit = NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1 ? 'px' : '';
+    const convertToPixel = NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1 && name.indexOf('--') === -1;
+    const unit = convertToPixel ? 'px' : '';
 
     rulePairs[index + 1] = `${value}${unit}`;
   }
