@@ -2,11 +2,10 @@ import * as React from 'react';
 import {
   ChartHoverCard,
   VerticalStackedBarChart,
-  IVerticalStackedBarChartProps,
   IVSChartDataPoint,
   IVerticalStackedChartProps,
 } from '@uifabric/charting';
-import { DefaultPalette, DefaultFontStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react';
 
 interface IVerticalStackedBarState {
@@ -64,26 +63,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       { chartData: firstChartPoints, xAxisPoint: 'September' },
     ];
 
-    const textStyle: IStyle = {
-      fill: DefaultPalette.black,
-      fontSize: '10px',
-      lineHeight: '14px',
-    };
-
-    const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
-      return {
-        chart: {
-          paddingBottom: '45px',
-        },
-        chartLabel: {
-          color: DefaultPalette.blueMid,
-          ...DefaultFontStyles.large,
-        },
-        xAxisText: {
-          ...textStyle,
-        },
-      };
-    };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -99,8 +78,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             width={this.state.width}
             yAxisTickCount={10}
             href={'www.google.com'}
-            // eslint-disable-next-line react/jsx-no-bind
-            styles={customStyles}
+            // styles={customStyles}
             yMaxValue={120}
             yMinValue={10}
             calloutProps={{
@@ -123,7 +101,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 <ChartHoverCard
                   XValue={props.xAxisCalloutData}
                   Legend={props.legend}
-                  YValue={`${props.yAxisCalloutData} h`}
+                  YValue={`${props.yAxisCalloutData || props.data} h`}
                   color={props.color}
                 />
               ) : null

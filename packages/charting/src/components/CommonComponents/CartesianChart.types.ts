@@ -126,11 +126,17 @@ export interface ICartesianChartStyles {
 
 export interface ICartesianChartProps {
   /**
-   * Below height and width used for resizing of the chart
+   * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
    * These values decide wheather chart re render or not. Please check examples for reference
    */
   height?: number;
+
+  /**
+   * Below width used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
+   */
   width?: number;
 
   /**

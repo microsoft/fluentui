@@ -36,10 +36,6 @@ export interface ICartesianChartState {
  * 1.draw X and Y axis of the chart
  * 2.Callout
  * 3.Fit parent Continer
- *
- * To draw the graph, we need Axis scales. For line chart and area chart, sending scales from here.
- * Vertical stacked bar chart creating it's own scales to draw the graph.
- *
  */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
@@ -92,7 +88,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
 
-    // TO DO: need to send xAxis types based on condition
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
@@ -121,6 +116,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
     };
 
+    /**
+     * These scales used for 2 purposes.
+     * 1. To create x and y axis
+     * 2. To draw the graph.
+     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+     */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let xScale: any;
     switch (this.props.xAxisType!) {
@@ -137,6 +138,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams, this._isRtl);
     }
 
+    /**
+     * These scales used for 2 purposes.
+     * 1. To create x and y axis
+     * 2. To draw the graph.
+     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+     */
     const yScale = createYAxis(YAxisParams, this._isRtl);
 
     // Callback function for chart, returns axis
@@ -191,14 +198,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {this.props.legendBars}
         </div>
-        {/* {console.log(this.props.isCalloutForStack, this.props.customizedCallout, 'iiiiiiiiii')} */}
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
           <Callout {...calloutProps}>
-            {/** Given callout will render. Other conditions will negligable  */}
-            {this.props.customizedCallout!}
-            {/** Stack callout - all y points will shown at individual x points. */}
+            {/** Given custom callout, then it will render */}
+            {this.props.customizedCallout && this.props.customizedCallout}
+            {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
             {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-            {/** Default callout - single y point will display at individual x points */}
+            {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
             {!this.props.customizedCallout && !this.props.isCalloutForStack && (
               <ChartHoverCard
                 XValue={calloutProps.XValue}

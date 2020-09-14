@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "major",
   "comment": "Vertical stacked bar chart code refactoring",
   "packageName": "@uifabric/charting",
   "email": "v-jasha@microsoft.com",

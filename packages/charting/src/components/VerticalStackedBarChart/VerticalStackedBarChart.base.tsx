@@ -70,7 +70,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       xCalloutValue: '',
       yCalloutValue: '',
     };
-    warnDeprecations(COMPONENT_NAME, props, { colors: 'IVSChartDataPoint.color', chartLabel: 'Use your own title' });
+    warnDeprecations(COMPONENT_NAME, props, { colors: 'IVSChartDataPoint.color' });
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
@@ -132,12 +132,11 @@ export class VerticalStackedBarChartBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        // isCalloutForStack={this.props.isCalloutForStack!}
+        isCalloutForStack={this.props.isCalloutForStack!}
         barwidth={this._barWidth}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
         customizedCallout={this._getCustomizedCallout()}
-        // styles={this._classNames.subComponentStyles?.CartesianStyles}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
