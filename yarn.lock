@@ -1403,38 +1403,6 @@
     eslint-plugin-react-hooks "^4.0.8"
     jju "^1.4.0"
 
-"@fluentui/react-stylesheets@^0.1.16":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-stylesheets/-/react-stylesheets-0.1.18.tgz#09b2836b962f47fc2dc5a09c17aa57bd0a497252"
-  integrity sha512-AWN1n+O0ePrGMEmImkfMRFgpG2yJtlqEk3yfos6aXuj2/33bSXN8FJKBP46NvhFPHd8MVTR2C8Nofkj8F9uLqQ==
-  dependencies:
-    "@uifabric/set-version" "^7.0.22"
-    tslib "^1.10.0"
-
-"@fluentui/react-theme-provider@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-0.7.3.tgz#1bdf36f4a3224b69277ff2886187547e147da59b"
-  integrity sha512-AYmup541Uik8ZBvH7mp/YmwKWJIu0BeItGMWLcCutPduVwq7GB2GMWVdnv5/2o3ttyReJeyhIkOqAXs5sJC7ig==
-  dependencies:
-    "@fluentui/react-stylesheets" "^0.1.16"
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/styling" "^7.14.13"
-    "@uifabric/utilities" "^7.28.0"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
-"@fluentui/storybook@^0.2.6":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@fluentui/storybook/-/storybook-0.2.9.tgz#0dc77e9d943334398eb5afa3e5ef40b568358698"
-  integrity sha512-8BimQLrTktmYgEz0VZ/yaw+W717YxnG8LC1ji+vCQDSECX9SR7KFgsNEwbOJYfzzExWIJ9d9trW1UhbKr3md6w==
-  dependencies:
-    "@fluentui/react-theme-provider" "^0.7.3"
-    "@storybook/addon-knobs" "^5.3.8"
-    "@uifabric/azure-themes" "^7.3.6"
-    "@uifabric/mdl2-theme" "^0.1.132"
-    "@uifabric/theme-samples" "^7.0.126"
-    tslib "^1.10.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -4257,13 +4225,6 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-7.0.2.tgz#b17f16cf933597e10d6d78eae3251e692ce8b0ce"
   integrity sha512-ZvO2tAcjmMi8V/5Z3JsyofMe3hasRcaw88cto5etSVMwVQfeivGAlEYmaQgceUSVYFofVjT+ioHsATjdWcFt1w==
 
-"@types/mock-fs@3.6.30":
-  version "3.6.30"
-  resolved "https://registry.yarnpkg.com/@types/mock-fs/-/mock-fs-3.6.30.tgz#4d812541e87b23577261a5aa95f704dd3d01e410"
-  integrity sha1-TYElQeh7I1dyYaWqlfcE3T0B5BA=
-  dependencies:
-    "@types/node" "*"
-
 "@types/node-fetch@^2.5.0":
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.7.tgz#20a2afffa882ab04d44ca786449a276f9f6bbf3c"
@@ -4801,17 +4762,6 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
-
-"@uifabric/mdl2-theme@^0.1.132":
-  version "0.1.132"
-  resolved "https://registry.yarnpkg.com/@uifabric/mdl2-theme/-/mdl2-theme-0.1.132.tgz#03e0457e56c11173bd3e90d67a8ebc8111b970ff"
-  integrity sha512-lhms0dBM21uDvYrbb8R513cQrNmnUHiRHY/v0ypP5HG5UpZCxgg25CM+i0betSYXfZPyIwqBPv913nbwJMU92g==
-  dependencies:
-    "@uifabric/set-version" "^7.0.21"
-    "@uifabric/styling" "^7.14.13"
-    "@uifabric/variants" "^7.1.117"
-    office-ui-fabric-react "^7.128.3"
-    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -16951,11 +16901,6 @@ mocha@^7.1.2:
     yargs "13.3.2"
     yargs-parser "13.1.2"
     yargs-unparser "1.6.0"
-
-mock-fs@4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/mock-fs/-/mock-fs-4.10.0.tgz#1d017f797416c9f4879dd58ee9438d8b9323a731"
-  integrity sha512-eBpLEjI6tK4RKK44BbUBQu89lrNh+5WeX3wf2U6Uwo6RtRGAQ77qvKeuuQh3lVXHF1aPndVww9VcjqmLThIdtA==
 
 modify-values@^1.0.0:
   version "1.0.1"

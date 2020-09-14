@@ -2,10 +2,10 @@ import { Rule, TestFacade } from '../types';
 
 import { SlotRule } from './rules';
 
-export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
+export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void => {
   const slot = rule.getData();
   const slotProps = slot.props || [{}];
-  slotProps.map(props => {
+  slotProps.forEach(props => {
     const testFacade = baseTestFacade.forProps(props);
 
     if (slot.checkClick) {
@@ -48,8 +48,9 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade) => {
 };
 
 export const validateBehavior = (rules: Rule[], testFacade: TestFacade) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const errors: any[] = [];
-  rules.map(rule => {
+  rules.forEach(rule => {
     try {
       if (rule instanceof SlotRule) {
         test(rule.stringify(), () => {

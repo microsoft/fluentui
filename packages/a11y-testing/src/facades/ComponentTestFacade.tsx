@@ -1,11 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Props, PropValue, TestFacade } from '../types';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 
 export class ComponentTestFacade implements TestFacade {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private actual: any;
-  private renderedComponent: any;
+  private renderedComponent: ReactWrapper<
+    {
+      children?: React.ReactNode;
+    },
+    never,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    React.Component<{}, {}, any>
+  >;
   private onClickExecuted: boolean;
 
   constructor(private Component: React.FC, private props: Props = {}) {
@@ -35,9 +43,9 @@ export class ComponentTestFacade implements TestFacade {
     }
 
     const element = document.getElementById(selector);
-    if (element)
+    if (element) {
       return element.getAttribute(attributeName) !== undefined && element.getAttribute(attributeName) !== null;
-
+    }
     return false;
   }
 
@@ -47,7 +55,9 @@ export class ComponentTestFacade implements TestFacade {
     }
 
     const element = document.getElementById(selector);
-    if (element) return element.getAttribute(attributeName) === value;
+    if (element) {
+      return element.getAttribute(attributeName) === value;
+    }
 
     return false;
   }
@@ -57,7 +67,9 @@ export class ComponentTestFacade implements TestFacade {
       return this.actual.getAttribute(attributeName) as PropValue;
     }
     const element = document.getElementById(selector);
-    if (element) return element.getAttribute(attributeName) as PropValue;
+    if (element) {
+      return element.getAttribute(attributeName) as PropValue;
+    }
 
     return null;
   };
@@ -68,21 +80,21 @@ export class ComponentTestFacade implements TestFacade {
     return previousValue;
   };
 
-  public afterClick(selector: string): void {
+  public afterClick(selector: string) {
     if (selector === 'root') {
       return this.renderedComponent.simulate('click');
     }
     this.renderedComponent.find(selector).simulate('click');
   }
 
-  public pressSpaceKey(selector: string): void {
+  public pressSpaceKey(selector: string) {
     if (selector === 'root') {
       return this.renderedComponent.simulate('keydown', { keyCode: 32 });
     }
     this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
   }
 
-  public pressEnterKey(selector: string): void {
+  public pressEnterKey(selector: string) {
     if (selector === 'root') {
       return this.renderedComponent.simulate('keydown', { keyCode: 13 });
     }
