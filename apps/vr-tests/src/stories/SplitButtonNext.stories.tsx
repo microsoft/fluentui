@@ -72,7 +72,7 @@ storiesOf('SplitButton Next', module)
     </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ))
   .addStory('Customized divider styles', () => (
     <ThemeProvider theme={{ tokens: { button: { dividerLength: '30px' } } }}>
@@ -144,5 +144,5 @@ storiesOf('SplitButton Next - Teams Theme', module)
     </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));

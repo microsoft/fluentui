@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { makeClasses } from '@fluentui/react-theme-provider';
 import { ButtonState } from './Button.types';
 
@@ -209,33 +210,33 @@ export const useButtonClasses = makeClasses<ButtonState>({
     '--button-width': '100%',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smallest: {
+    '--button-height': 'var(--button-size-smallest)',
     '--button-minHeight': 'var(--button-size-smallest)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smaller: {
+    '--button-height': 'var(--button-size-smaller)',
     '--button-minHeight': 'var(--button-size-smaller)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_small: {
+    '--button-height': 'var(--button-size-small)',
     '--button-minHeight': 'var(--button-size-small)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_large: {
+    '--button-height': 'var(--button-size-large)',
     '--button-minHeight': 'var(--button-size-large)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_larger: {
+    '--button-height': 'var(--button-size-larger)',
     '--button-minHeight': 'var(--button-size-larger)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_largest: {
+    '--button-height': 'var(--button-size-largest)',
     '--button-minHeight': 'var(--button-size-largest)',
   },
 });

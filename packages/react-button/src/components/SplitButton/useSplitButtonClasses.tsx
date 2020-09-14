@@ -58,28 +58,4 @@ export const useSplitButtonClasses = makeClasses({
       width: menuButtonWidth,
     },
   },
-
-  _size_smallest: {
-    '--button-minHeight': 'var(--button-size-smallest)',
-  },
-
-  _size_smaller: {
-    '--button-minHeight': 'var(--button-size-smaller)',
-  },
-
-  _size_small: {
-    '--button-minHeight': 'var(--button-size-small)',
-  },
-
-  _size_large: {
-    '--button-minHeight': 'var(--button-size-large)',
-  },
-
-  _size_larger: {
-    '--button-minHeight': 'var(--button-size-larger)',
-  },
-
-  _size_largest: {
-    '--button-minHeight': 'var(--button-size-largest)',
-  },
 });

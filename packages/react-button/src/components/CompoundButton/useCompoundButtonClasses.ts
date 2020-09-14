@@ -39,6 +39,7 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
       display: 'flex',
       flexDirection: 'column',
       textAlign: 'left',
+      flexGrow: 1,
     },
   ],
 
@@ -48,8 +49,11 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
       color: 'var(--button-secondaryContentColor)',
       fontSize: 'var(--button-secondaryContentFontSize)',
       fontWeight: 'var(--button-secondaryContentFontWeight)',
-      marginTop: 'var(--button-secondaryContentMarginTop)',
       lineHeight: '100%',
+
+      '&:nth-child(2)': {
+        marginTop: 'var(--button-secondaryContentMarginTop)',
+      },
     },
   ],
 
