@@ -10,7 +10,8 @@ import {
   inputProperties,
 } from '../../Utilities';
 
-import { IconButton } from '../../Button';
+//import { IconButton } from '../../Button';
+import { Button } from '@fluentui/react-button/src/components/Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
@@ -121,10 +122,11 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
         />
         {value!.length > 0 && (
           <div className={classNames.clearButton}>
-            <IconButton
+            <Button
+              iconOnly
+              ghost
               onBlur={this._onBlur}
-              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
-              iconProps={{ iconName: 'Clear' }}
+              icon={<Icon iconName="Clear" />}
               {...clearButtonProps}
               onClick={this._onClearClick}
             />

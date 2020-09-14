@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../Button';
+//import { IButtonProps } from '../../Button';
+import { ButtonProps } from '@fluentui/react-button/src/components/Button';
 import { IIconProps } from '../../Icon';
 
 /**
@@ -91,7 +92,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * The props for the clear button.
    */
-  clearButtonProps?: IButtonProps;
+  clearButtonProps?: ButtonProps;
 
   /**
    * The props for the icon.
