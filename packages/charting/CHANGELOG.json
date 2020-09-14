@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/charting_v4.0.1",
+      "version": "4.0.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixing prettier formatting issues.",
+            "author": "dzearing@hotmail.com",
+            "commit": "d88a62dd6c3856a7484382529a3cbc5cb6f6896f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Sep 2020 12:23:32 GMT",
       "tag": "@uifabric/charting_v4.0.0",
       "version": "4.0.0",

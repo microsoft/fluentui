@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix API file newlines",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-11T20:46:06.957Z"
+}
