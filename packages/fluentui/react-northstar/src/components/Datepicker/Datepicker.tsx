@@ -91,11 +91,11 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
 
-  /** Marks that the datepicker should only contain input and not the icon. */
+  /** Marks that the datepicker should only render the input field and not the trigger button with an icon. */
   inputOnly?: boolean;
 
-  /** Marks that the datepicker should only contain icon and not the input. */
-  iconOnly?: boolean;
+  /** Marks that the datepicker should only render the trigger button with an icon and not the input field. */
+  buttonOnly?: boolean;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
@@ -319,7 +319,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
-    <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />
+    <Button icon={<CalendarIcon />} title="Open calendar" buttonOnly disabled={props.disabled} />
   );
 
   const element = (
@@ -356,7 +356,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               trigger: triggerButtonElement,
               target: !props.buttonOnly ? inputRef.current : null,
               position: 'below' as const,
-              align: 'end' as const,
+              align: 'start' as const,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
@@ -397,7 +397,7 @@ Datepicker.propTypes = {
   defaultSelectedDate: PropTypes.instanceOf(Date),
 
   inputOnly: PropTypes.bool,
-  iconOnly: PropTypes.bool,
+  buttonOnly: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -453,7 +453,7 @@ Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
   inputOnly: false,
-  iconOnly: false,
+  buttonOnly: false,
   calendar: {},
   popup: {},
   input: {},
