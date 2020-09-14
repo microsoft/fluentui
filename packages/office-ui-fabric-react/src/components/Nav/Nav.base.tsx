@@ -189,7 +189,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, groups });
     const isSelected = this._isLinkSelected(link);
     return (
-      <li key={link.key || linkIndex} role="tab" className={classNames.navItem} aria-selected={isSelected}>
+      // Known issue: Aria-selected and aria-checked are not output correctly for trees
+      // https://github.com/FreedomScientific/VFO-standards-support/issues/432
+      <li key={link.key || linkIndex} role="treeitem" className={classNames.navItem} aria-selected={isSelected}>
         {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null}
       </li>
@@ -208,7 +210,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, groups });
 
     return (
-      <ul role="tablist" className={classNames.navItems}>
+      <ul role="tree" className={classNames.navItems}>
         {linkElements}
       </ul>
     );

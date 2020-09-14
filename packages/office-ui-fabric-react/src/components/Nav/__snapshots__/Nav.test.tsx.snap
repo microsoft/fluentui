@@ -139,7 +139,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="tree"
         >
           <li
             aria-selected={false}
@@ -151,7 +151,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
@@ -309,7 +309,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
@@ -520,7 +520,7 @@ exports[`Nav renders Nav correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="tree"
         >
           <li
             aria-selected={false}
@@ -532,7 +532,7 @@ exports[`Nav renders Nav correctly 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=

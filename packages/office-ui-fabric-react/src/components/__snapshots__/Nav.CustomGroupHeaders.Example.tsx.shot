@@ -60,7 +60,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="tree"
         >
           <li
             aria-selected={false}
@@ -72,7 +72,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
@@ -224,7 +224,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
@@ -401,7 +401,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          role="tablist"
+          role="tree"
         >
           <li
             aria-selected={false}
@@ -413,7 +413,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
@@ -565,7 +565,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                 }
-            role="tab"
+            role="treeitem"
           >
             <div
               className=
