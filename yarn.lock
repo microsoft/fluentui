@@ -2052,7 +2052,7 @@
     tar "^4.4.8"
     temp-write "^3.4.0"
 
-"@lerna/package-graph@3.14.0":
+"@lerna/package-graph@3.14.0", "@lerna/package-graph@^3.14.0":
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/@lerna/package-graph/-/package-graph-3.14.0.tgz#4ccdf446dccedfbbeb4efff3eb720cb6fcb109fc"
   integrity sha512-dNpA/64STD5YXhaSlg4gT6Z474WPJVCHoX1ibsVIFu0fVgH609Y69bsdmbvTRdI7r6Dcu4ZfGxdR636RTrH+Eg==
@@ -2079,7 +2079,7 @@
   dependencies:
     semver "^5.5.0"
 
-"@lerna/project@3.15.0":
+"@lerna/project@3.15.0", "@lerna/project@^3.15.0":
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/@lerna/project/-/project-3.15.0.tgz#733b0993a849dcf5b68fcd0ec11d8f7de38a6999"
   integrity sha512-eNGUWiMbQ9kh9kGkomtMnsLypS0rfLqxKgZP2+VnNVtIXjnLv4paeTm+1lkL+naNJUwhnpMk2NSLEeoxT/20QA==
