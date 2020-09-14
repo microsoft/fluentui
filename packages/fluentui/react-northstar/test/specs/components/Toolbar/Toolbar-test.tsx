@@ -62,4 +62,16 @@ describe('Toolbar', () => {
       expect(getRenderedAttribute(italicToolbarButton, 'aria-pressed', '')).toBe('false');
     });
   });
+
+  describe('overflowItem', () => {
+    it('popper props can be overriden', () => {
+      const wrapper = mountWithProvider(
+        <Toolbar items={[]} overflow overflowOpen overflowItem={{ menu: { popper: { position: 'below' } } }} />,
+      );
+
+      expect(wrapper.find('Popper').prop('positionFixed')).toBe(true);
+
+      expect(wrapper.find('Popper').prop('position')).toBe('below');
+    });
+  });
 });

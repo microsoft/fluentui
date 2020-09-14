@@ -19,6 +19,7 @@ import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -110,6 +111,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     dropItemsAt(insertIndex, newItems, indicesToRemove);
   };
 
+  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
+    return !focusedItemIndices.includes(dropContext!.index);
+  };
+
   const _onDrop = (item?: any, event?: DragEvent): void => {
     const insertIndex = selectedItems.indexOf(item);
     let isDropHandled = false;
@@ -150,16 +155,22 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    setDraggedIndex(-1);
     if (event) {
-      const dataList = event?.dataTransfer?.items;
+      if (event.dataTransfer?.dropEffect === 'move') {
+        const itemsToRemove = focusedItemIndices.includes(draggedIndex)
+          ? (getSelectedItems() as T[])
+          : [selectedItems[draggedIndex]];
+        _onRemoveSelectedItems(itemsToRemove);
+      }
       // Clear any remaining drag data
+      const dataList = event?.dataTransfer?.items;
       dataList?.clear();
     }
+    setDraggedIndex(-1);
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
-    canDrop: () => true,
+    canDrop: _canDrop,
     canDrag: () => true,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
@@ -247,15 +258,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
   };
-  const _onInputClick = () => {
+  const _onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
     unselectAll();
     showPicker(true);
+    if (props.inputProps && props.inputProps.onClick) {
+      props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
+    }
   };
   const _onInputChange = (value: string, composing?: boolean) => {
     if (!composing) {
       // update query string
       setQueryString(value);
-      !isSuggestionsVisible ? showPicker(true) : null;
+      !isSuggestionsShown ? showPicker(true) : null;
       onInputChange ? onInputChange(value) : null;
     }
   };

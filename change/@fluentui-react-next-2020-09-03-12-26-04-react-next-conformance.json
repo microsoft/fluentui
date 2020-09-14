@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add ComponentConformance and ComponentExamples tests to react-next",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-03T19:26:04.632Z"
-}

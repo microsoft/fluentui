@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const explanation =
   'If this panel is closed using light dismiss (clicking outside the panel), a confirmation dialog will appear.';
@@ -16,20 +16,20 @@ const dialogModalProps = {
 };
 
 export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
-  const [isPanelOpen, setIsPanelOpen] = React.useState(false);
-  const [isDialogVisible, setIsDialogVisible] = React.useState(false);
+  const [isPanelOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
+  const [isDialogVisible, { setTrue: showDialog, setFalse: hideDialog }] = useBoolean(false);
 
-  const openPanel = useConstCallback(() => setIsPanelOpen(true));
-  const dismissPanel = useConstCallback(() => setIsPanelOpen(false));
-  const showDialog = useConstCallback(() => setIsDialogVisible(true));
-  const hideDialog = useConstCallback(ev => {
-    ev.preventDefault();
-    setIsDialogVisible(false);
-  });
-  const hideDialogAndPanel = useConstCallback(() => {
-    setIsPanelOpen(false);
-    setIsDialogVisible(false);
-  });
+  const onHideDialog = React.useCallback(
+    ev => {
+      ev.preventDefault();
+      hideDialog();
+    },
+    [hideDialog],
+  );
+  const onHideDialogAndPanel = React.useCallback(() => {
+    dismissPanel();
+    hideDialog();
+  }, [dismissPanel, hideDialog]);
 
   return (
     <div>
@@ -51,13 +51,13 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
       </Panel>
       <Dialog
         hidden={!isDialogVisible}
-        onDismiss={hideDialog}
+        onDismiss={onHideDialog}
         dialogContentProps={dialogContentProps}
         modalProps={dialogModalProps}
       >
         <DialogFooter>
-          <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
-          <DefaultButton onClick={hideDialog} text="No" />
+          <PrimaryButton onClick={onHideDialogAndPanel} text="Yes" />
+          <DefaultButton onClick={onHideDialog} text="No" />
         </DialogFooter>
       </Dialog>
     </div>
