@@ -60,7 +60,7 @@ async function scheduleScreenerBuild(
 
   const data = await response.json();
 
-  console.log('screener-runner: Screener tests queued.');
+  console.log(`screener-runner: Screener tests for "${buildInfo.commit}" commit were queued.`);
   console.log(
     `screener-runner: See job status at https://screener.io/v2/dashboard/${data.project}/${encodeURIComponent(
       data.branch,
