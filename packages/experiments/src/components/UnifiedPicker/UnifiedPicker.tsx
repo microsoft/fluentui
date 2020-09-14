@@ -247,9 +247,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
   };
-  const _onInputClick = () => {
+  const _onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
     unselectAll();
     showPicker(true);
+    if (props.inputProps && props.inputProps.onClick) {
+      props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
+    }
   };
   const _onInputChange = (value: string, composing?: boolean) => {
     if (!composing) {
