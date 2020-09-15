@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "[VerticalStackedBarChart] Legend options and fixes",
+  "packageName": "@uifabric/charting",
+  "email": "mibes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-15T18:06:58.432Z"
+}
