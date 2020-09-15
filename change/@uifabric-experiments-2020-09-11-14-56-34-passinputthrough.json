@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "allow consumers of the UPP to use the onClick input property",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-11T21:56:34.854Z"
+}
