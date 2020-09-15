@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/merge-styles_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Aug 2020 12:29:20 GMT",
       "tag": "@uifabric/merge-styles_v7.18.0",
       "version": "7.18.0",
