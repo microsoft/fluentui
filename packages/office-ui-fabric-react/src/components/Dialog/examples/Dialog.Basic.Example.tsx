@@ -11,6 +11,7 @@ const dragOptions = {
   moveMenuItemText: 'Move',
   closeMenuItemText: 'Close',
   menu: ContextualMenu,
+  keepInBounds: true,
 };
 const screenReaderOnly = mergeStyles(hiddenContentStyle);
 const dialogContentProps = {
