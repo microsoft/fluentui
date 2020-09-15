@@ -65,7 +65,7 @@ export async function packProjectPackages(logger: Function): Promise<PackedPacka
     }),
   );
 
-  logger(`✔️ Packages were packages to ${tmpDirectory}`);
+  logger(`✔️ Packages were packaged to ${tmpDirectory}`);
 
   return packedPackages;
 }
