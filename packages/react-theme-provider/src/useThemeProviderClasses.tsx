@@ -13,7 +13,6 @@ export const useThemeProviderClasses = makeClasses(theme => {
         fontFamily: 'var(--body-fontFamily)',
         fontWeight: 'var(--body-fontWeight)',
         fontSize: 'var(--body-fontSize)',
-        lineHeight: 'var(--body-fontLineHeight)',
       },
     ],
   };

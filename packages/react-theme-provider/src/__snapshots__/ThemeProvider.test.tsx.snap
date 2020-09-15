@@ -370,7 +370,6 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         font-family: var(--body-fontFamily);
         font-size: var(--body-fontSize);
         font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
       }
 >
   Hello
@@ -746,7 +745,6 @@ exports[`ThemeProvider renders a div 1`] = `
         font-family: var(--body-fontFamily);
         font-size: var(--body-fontSize);
         font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
       }
 >
   Hello
@@ -1122,7 +1120,6 @@ exports[`ThemeProvider renders a div with styling 1`] = `
         font-family: var(--body-fontFamily);
         font-size: var(--body-fontSize);
         font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
       }
 >
   Hello
@@ -1498,7 +1495,6 @@ exports[`ThemeProvider renders nested themes 1`] = `
         font-family: var(--body-fontFamily);
         font-size: var(--body-fontSize);
         font-weight: var(--body-fontWeight);
-        line-height: var(--body-fontLineHeight);
       }
 >
   <div>
@@ -1872,7 +1868,6 @@ exports[`ThemeProvider renders nested themes 1`] = `
           font-family: var(--body-fontFamily);
           font-size: var(--body-fontSize);
           font-weight: var(--body-fontWeight);
-          line-height: var(--body-fontLineHeight);
         }
   >
     <div>
