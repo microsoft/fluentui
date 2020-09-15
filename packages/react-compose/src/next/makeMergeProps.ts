@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { css } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
 
@@ -36,8 +37,8 @@ export const makeMergeProps = <TState = GenericDictionary>(options: MergePropsOp
 
                 if (
                   typeof target[propName] !== 'object' ||
-                  // React.isValidElement(propValue) ||
-                  // (propValue && typeof propValue === 'object' && propValue.hasOwnProperty('current')) ||
+                  React.isValidElement(propValue) ||
+                  (propValue && typeof propValue === 'object' && propValue.hasOwnProperty('current')) ||
                   deepMerge.indexOf(propName) === -1
                 ) {
                   // if target is not an object, or value is JSX,  or a ref object, replace
