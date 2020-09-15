@@ -466,25 +466,25 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         }
         case KeyCodes.up: {
           this.setState({
-            y: this._getClampedPositionY({ y: this.state.y - delta }),
+            y: this._getClampedPositionY(this.state.y - delta),
           });
           break;
         }
         case KeyCodes.down: {
           this.setState({
-            y: this._getClampedPositionY({ y: this.state.y + delta }),
+            y: this._getClampedPositionY(this.state.y + delta),
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this._getClampedPositionX({ x: this.state.x - delta }),
+            x: this._getClampedPositionX(this.state.x - delta),
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this._getClampedPositionX({ x: this.state.x + delta }),
+            x: this._getClampedPositionX(this.state.x + delta),
           });
           break;
         }
