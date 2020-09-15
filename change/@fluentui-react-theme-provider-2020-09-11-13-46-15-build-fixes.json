@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix API file newlines",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-11T20:46:12.734Z"
-}

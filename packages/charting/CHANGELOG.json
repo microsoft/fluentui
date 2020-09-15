@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/charting_v4.0.2",
+      "version": "4.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Insiginificant trailing zeros removed from ticks",
+            "author": "v-jasha@microsoft.om",
+            "commit": "39969826b72177b33069c4627fc06c9482ed100c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Sep 2020 12:27:31 GMT",
       "tag": "@uifabric/charting_v4.0.1",
       "version": "4.0.1",
