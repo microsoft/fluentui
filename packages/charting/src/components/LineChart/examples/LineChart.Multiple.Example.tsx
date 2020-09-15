@@ -236,6 +236,33 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       new Date('06-01-2018'),
       new Date('07-01-2018'),
     ];
+    const colorFillBarData = [
+      {
+        legend: 'Time range 1',
+        color: 'blue',
+        data: [
+          {
+            startX: new Date('2018/01/06'),
+            endX: new Date('2018/01/25'),
+          },
+        ],
+      },
+      {
+        legend: 'Time range 2',
+        color: 'red',
+        data: [
+          {
+            startX: new Date('2018/01/18'),
+            endX: new Date('2018/02/20'),
+          },
+          {
+            startX: new Date('2018/04/17'),
+            endX: new Date('2018/05/10'),
+          },
+        ],
+        applyPattern: true,
+      },
+    ];
     return (
       <div style={rootStyle}>
         <LineChart
@@ -246,6 +273,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           height={this.state.height}
           width={this.state.width}
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
+          colorFillBars={colorFillBarData}
         />
       </div>
     );
