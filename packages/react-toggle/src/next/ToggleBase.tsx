@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { IToggleProps } from '../components/Toggle/Toggle.types';
+import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
 export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(

@@ -379,8 +379,8 @@ function useDismissHandlers(
   return mouseDownHandlers;
 }
 
-export const CalloutContentBase = React.memo(
-  React.forwardRef((propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.memo(
+  React.forwardRef<HTMLDivElement, ICalloutProps>((propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     const {
