@@ -74,7 +74,7 @@ const TreeAsListExampleShorthand = () => (
   <Tree
     items={items}
     aria-label="Tree with list accessibility roles"
-    aria-aria-multiselectable="true"
+    aria-multiselectable="true"
     accessibility={treeAsListBehavior}
     selectable
   />
