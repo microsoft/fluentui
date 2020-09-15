@@ -16,8 +16,9 @@ export function provideUnits(rulePairs: (string | number)[], index: number): voi
   const value = rulePairs[index + 1];
 
   if (typeof value === 'number') {
-    const convertToPixel = NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1 && name.indexOf('--') === -1;
-    const unit = convertToPixel ? 'px' : '';
+    const isNonPixelProp = NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1;
+    const isVariableOrPrefixed = name.indexOf('--') === -1;
+    const unit = isNonPixelProp || isVariableOrPrefixed ? '' : 'px';
 
     rulePairs[index + 1] = `${value}${unit}`;
   }
