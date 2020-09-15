@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-link",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/storybook": "^0.4.11",
     "@fluentui/react-conformance": "^0.1.1",
+    "@fluentui/storybook": "^0.4.12",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -37,7 +37,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.1",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -45,12 +45,12 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.18.2",
-    "@uifabric/react-hooks": "^7.13.0",
+    "@fluentui/react-compose": "^0.19.0",
+    "@uifabric/react-hooks": "^7.13.1",
     "@uifabric/set-version": "^7.0.22",
-    "@uifabric/styling": "^7.16.0",
-    "@uifabric/utilities": "^7.31.0",
-    "office-ui-fabric-react": "^7.137.1",
+    "@uifabric/styling": "^7.16.1",
+    "@uifabric/utilities": "^7.31.1",
+    "office-ui-fabric-react": "^7.137.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

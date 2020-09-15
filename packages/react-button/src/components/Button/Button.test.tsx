@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { Button } from './Button';
+import { Button as ButtonComponent } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { MergeStylesProvider } from '@fluentui/react-theme-provider';
+import { ButtonProps } from './Button.types';
+
+/** Use merge-styles provider to ensure styles show up in snapshots. */
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+  <MergeStylesProvider>
+    <ButtonComponent {...props} ref={ref} />
+  </MergeStylesProvider>
+));
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -15,7 +24,7 @@ describe('Button', () => {
   });
 
   isConformant({
-    Component: Button,
+    Component: ButtonComponent,
     displayName: 'Button',
   });
 
