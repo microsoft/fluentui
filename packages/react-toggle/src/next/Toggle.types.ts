@@ -16,7 +16,7 @@ export interface IToggle {
  * Toggle component props.
  * {@docCategory Toggle}
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */

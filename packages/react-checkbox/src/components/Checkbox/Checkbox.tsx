@@ -4,8 +4,8 @@ import { CheckboxBase } from './Checkbox.base';
 import { getStyles } from './Checkbox.styles';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 
-export const Checkbox = styled<
-  ICheckboxProps & React.RefAttributes<HTMLDivElement>,
+export const Checkbox: React.FunctionComponent<ICheckboxProps> = styled<
+  ICheckboxProps,
   ICheckboxStyleProps,
   ICheckboxStyles
 >(CheckboxBase, getStyles, undefined, { scope: 'Checkbox' });
