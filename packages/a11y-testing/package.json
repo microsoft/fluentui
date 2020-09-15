@@ -1,0 +1,34 @@
+{
+  "name": "@fluentui/a11y-testing",
+  "version": "0.1.0",
+  "description": "Fluent UI tests for a11y patterns.",
+  "private": true,
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint"
+  },
+  "dependencies": {
+    "@fluentui/a11y-rules": "0.1.0",
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@types/enzyme": "3.10.3",
+    "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@uifabric/build": "^7.0.0",
+    "enzyme": "~3.10.0",
+    "jest": "~24.9.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "tslib": "^1.10.0"
+  }
+}
