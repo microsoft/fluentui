@@ -115,16 +115,16 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
-export const BreadcrumbBase: React.ForwardRefExoticComponent<IBreadcrumbProps & React.RefAttributes<HTMLDivElement>>;
+export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
-export const ButtonGrid: import("react").ForwardRefExoticComponent<IButtonGridProps & import("react").RefAttributes<HTMLElement>>;
+export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
 export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
-export const Callout: React.ForwardRefExoticComponent<ICalloutProps & React.RefAttributes<HTMLDivElement>>;
+export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -136,7 +136,7 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export const CoachmarkBase: React.ForwardRefExoticComponent<ICoachmarkProps & React.RefAttributes<HTMLDivElement>>;
+export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps>;
 
 // @public (undocumented)
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
@@ -213,7 +213,7 @@ export { DirectionalHint }
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
-export const DropdownBase: React.ForwardRefExoticComponent<IDropdownProps & React.RefAttributes<HTMLDivElement>>;
+export const DropdownBase: React.FunctionComponent<IDropdownProps>;
 
 export { DropdownMenuItemType }
 
@@ -230,7 +230,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
-export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+export const FabricBase: React.FunctionComponent<IFabricProps>;
 
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
@@ -342,7 +342,7 @@ export interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
@@ -420,7 +420,7 @@ export interface IButtonGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement>, React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     columnCount: number;
@@ -474,7 +474,7 @@ export interface ICalloutContentStyles {
 }
 
 // @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -532,7 +532,7 @@ export interface ICoachmark {
 }
 
 // @public
-export interface ICoachmarkProps {
+export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     ariaAlertText?: string;
     ariaDescribedBy?: string;
     ariaDescribedByText?: string;
@@ -1058,7 +1058,7 @@ export interface IDropdownOption extends ISelectableOption {
 }
 
 // @public (undocumented)
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number;
     // @deprecated
@@ -1176,7 +1176,7 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 }
 
 // @public (undocumented)
-export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     applyTheme?: boolean;
     applyThemeToBody?: boolean;
     as?: React.ElementType;
@@ -1236,7 +1236,7 @@ export interface IImage {
 }
 
 // @public (undocumented)
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
     // @deprecated
@@ -1298,7 +1298,7 @@ export interface ILine extends IShimmerElement {
 export const Image: React.FunctionComponent<IImageProps>;
 
 // @public (undocumented)
-export const ImageBase: React.ForwardRefExoticComponent<IImageProps & React.RefAttributes<HTMLImageElement>>;
+export const ImageBase: React.FunctionComponent<IImageProps>;
 
 // @public
 export enum ImageCoverStyle {
@@ -1356,7 +1356,7 @@ export interface IMessageBar {
 }
 
 // @public (undocumented)
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     actions?: JSX.Element;
     // @deprecated
     ariaLabel?: string;
@@ -1372,16 +1372,6 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarState {
-    // (undocumented)
-    expandSingleLine?: boolean;
-    // (undocumented)
-    labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)
@@ -1582,7 +1572,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
@@ -1654,7 +1644,7 @@ export interface IPersonaStyles {
 }
 
 // @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -1674,7 +1664,7 @@ export interface IPositioningContainer {
 }
 
 // @public (undocumented)
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -1715,7 +1705,7 @@ export interface IRating {
 }
 
 // @public
-export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
@@ -1778,7 +1768,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -1818,7 +1808,7 @@ export interface ISearchBox {
 }
 
 // @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     clearButtonProps?: IButtonProps_2;
@@ -2035,7 +2025,7 @@ export interface IShimmerLineStyles {
 }
 
 // @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React.ReactNode;
@@ -2140,7 +2130,7 @@ export interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     cellBorderWidth?: number;
@@ -2302,13 +2292,7 @@ export const MeasuredContext: React.Context<{
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-    constructor(props: IMessageBarProps);
-    // (undocumented)
-    static defaultProps: IMessageBarProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
 export enum MessageBarType {
@@ -2346,19 +2330,19 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export const OverflowSetBase: React.ForwardRefExoticComponent<Pick<IOverflowSetProps, "vertical" | "key" | "items" | "styles" | "className" | "role" | "componentRef" | "onRenderItem" | "overflowSide" | "overflowItems" | "onRenderOverflowButton" | "keytipSequences" | "itemSubMenuProvider"> & React.RefAttributes<HTMLDivElement>>;
+export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
 
 // @public
 export const Persona: React.FunctionComponent<IPersonaProps>;
 
 // @public
-export const PersonaBase: React.ForwardRefExoticComponent<IPersonaProps & React.RefAttributes<HTMLDivElement>>;
+export const PersonaBase: React.FunctionComponent<IPersonaProps>;
 
 // @public
 export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public
-export const PersonaCoinBase: React.ForwardRefExoticComponent<IPersonaCoinProps & React.RefAttributes<HTMLDivElement>>;
+export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
@@ -2512,10 +2496,10 @@ export namespace personaSize {
 }
 
 // @public
-export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
-export const PositioningContainer: React.ForwardRefExoticComponent<IPositioningContainerProps & React.RefAttributes<HTMLDivElement>>;
+export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps>;
 
 // @public (undocumented)
 export const presenceBoolean: (presence: PersonaPresence) => {
@@ -2531,7 +2515,7 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export const RatingBase: React.ForwardRefExoticComponent<IRatingProps & React.RefAttributes<HTMLDivElement>>;
+export const RatingBase: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
 export enum RatingSize {
@@ -2542,10 +2526,10 @@ export enum RatingSize {
 }
 
 // @public (undocumented)
-export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
+export const ResizeGroup: import("react").FunctionComponent<import("./ResizeGroup.types").IResizeGroupProps>;
 
 // @public (undocumented)
-export const ResizeGroupBase: React.ForwardRefExoticComponent<IResizeGroupProps & React.RefAttributes<HTMLDivElement>>;
+export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {
@@ -2561,7 +2545,7 @@ export { ResponsiveMode }
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export const SearchBoxBase: React.ForwardRefExoticComponent<ISearchBoxProps & React.RefAttributes<HTMLDivElement>>;
+export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
@@ -2575,7 +2559,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export const ShimmerBase: React.ForwardRefExoticComponent<IShimmerProps & React.RefAttributes<HTMLDivElement>>;
+export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
@@ -2643,7 +2627,7 @@ export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColorPickerProps & React.RefAttributes<HTMLElement>>;
+export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps>;
 
 export { Target }
 

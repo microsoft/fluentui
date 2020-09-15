@@ -54,7 +54,7 @@ import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
     rootRef: React.Ref<HTMLDivElement>;
     selectedIndices: number[];
@@ -159,8 +159,8 @@ function useSelectedItemsState({
   return [selectedIndices, setSelectedIndices] as const;
 }
 
-export const DropdownBase = React.forwardRef(
-  (propsWithoutDefaults: IDropdownProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwardRef<HTMLDivElement, IDropdownProps>(
+  (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     const rootRef = React.useRef<HTMLDivElement>(null);
@@ -171,7 +171,7 @@ export const DropdownBase = React.forwardRef(
 
     return (
       <DropdownInternal
-        {...props}
+        {...(props as Omit<IDropdownProps, 'ref'>)}
         responsiveMode={responsiveMode}
         hoisted={{ rootRef: mergedRootRef, selectedIndices, setSelectedIndices }}
       />

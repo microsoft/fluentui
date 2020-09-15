@@ -21,6 +21,7 @@ import {
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
 const OVERFLOW_KEY = 'overflow';
+const COMPONENT_NAME = 'BreadcrumbBase';
 const nullFunction = (): null => null;
 
 const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
@@ -52,7 +53,10 @@ const useComponentRef = (props: IBreadcrumbProps, focusZone: React.RefObject<Foc
   );
 };
 
-export const BreadcrumbBase = React.forwardRef<HTMLDivElement, IBreadcrumbProps>((props, ref) => {
+export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.forwardRef<
+  HTMLDivElement,
+  IBreadcrumbProps
+>((props, ref) => {
   const focusZone = React.useRef<FocusZone>(null);
 
   /**
@@ -256,3 +260,4 @@ export const BreadcrumbBase = React.forwardRef<HTMLDivElement, IBreadcrumbProps>
     />
   );
 });
+BreadcrumbBase.displayName = COMPONENT_NAME;

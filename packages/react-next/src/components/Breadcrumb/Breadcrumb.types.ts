@@ -28,7 +28,7 @@ export interface IBreadcrumb {
 /**
  * {@docCategory Breadcrumb}
  */
-export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
