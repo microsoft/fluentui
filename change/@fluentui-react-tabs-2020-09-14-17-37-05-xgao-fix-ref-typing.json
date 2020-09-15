@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add missing ref prop typing.",
   "packageName": "@fluentui/react-tabs",
   "email": "xgao@microsoft.com",
