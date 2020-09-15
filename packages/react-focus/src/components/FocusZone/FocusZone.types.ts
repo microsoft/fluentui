@@ -25,10 +25,11 @@ export interface IFocusZone {
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param element - The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(childElement?: HTMLElement): boolean;
+  focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
 
   /**
    * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather
@@ -51,7 +52,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Optional callback to access the root DOM element.
-   *  @deprecated Temporary solution which will be replaced with ref in the V8 release.
+   * @deprecated Temporary solution which will be replaced with ref in the V8 release.
    */
   elementRef?: React.Ref<HTMLElement>;
 

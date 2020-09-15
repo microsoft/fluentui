@@ -3,15 +3,12 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 // The panel type and description are passed in by the PanelSizesExample component (later in this file)
 const PanelExample: React.FunctionComponent<{ panelType: PanelType; description: string }> = props => {
   const { description, panelType } = props;
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const openPanel = useConstCallback(() => setIsOpen(true));
-  const dismissPanel = useConstCallback(() => setIsOpen(false));
+  const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   const a = 'aeiou'.indexOf(description[0]) === -1 ? 'a' : 'an'; // grammar...
 
@@ -54,7 +51,7 @@ const firstPStyle = { marginTop: 0 };
 
 export const PanelSizesExample: React.FunctionComponent = () => {
   const [option, setOption] = React.useState<IDropdownOption>(options[0]);
-  const updateOption = useConstCallback((ev: any, opt: IDropdownOption) => setOption(opt));
+  const updateOption = React.useCallback((ev: any, opt: IDropdownOption) => setOption(opt), []);
 
   const description = option.text.toLowerCase().replace(' (default)', '');
   return (

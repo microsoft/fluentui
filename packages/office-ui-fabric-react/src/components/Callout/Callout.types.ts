@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Point, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
+import { Target } from '@uifabric/react-hooks';
 
-/**
- * {@docCategory Callout}
- */
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+export { Target };
 
 /**
  * {@docCategory Callout}
@@ -257,7 +255,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * contains focus. If this is provided, focus will not be restored automatically,
    * you'll need to call originalElement.focus()
    */
-  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }
 
 /**

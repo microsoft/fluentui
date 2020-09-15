@@ -11,11 +11,11 @@ type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type StringAxis = D3Axis<string>;
 
 export enum ChartTypes {
-  AreaChart = 1,
-  LineChart = 2,
-  VerticalBarChart = 3,
-  VerticalStackedBarChart = 4,
-  GroupedVerticalBarChart = 5,
+  AreaChart,
+  LineChart,
+  VerticalBarChart,
+  VerticalStackedBarChart,
+  GroupedVerticalBarChart,
 }
 
 export interface IWrapLabelProps {
@@ -65,7 +65,7 @@ export interface ITickParams {
 }
 
 export interface IYAxisParams {
-  yMinMaxValues: {
+  yMinMaxValues?: {
     startValue: number;
     endValue: number;
   };
@@ -176,7 +176,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
  */
 export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
-    yMinMaxValues,
+    yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
     yMaxValue = 0,
     yMinValue = 0,
@@ -204,7 +204,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickPadding(tickPadding)
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement
     ? d3Select(yAxisElement)
         .call(yAxis)

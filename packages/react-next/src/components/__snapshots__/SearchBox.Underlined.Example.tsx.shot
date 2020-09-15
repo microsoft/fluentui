@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-SearchBox
+      is-underlined
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: stretch;
+        background-color: #ffffff;
+        border-radius: 0px;
+        border-width: 0 0 1px 0;
+        border: 1px solid #605e5c;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #323130;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 32px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 1px;
+        padding-left: 8px;
+        padding-right: 0;
+        padding-top: 1px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-color: WindowText;
+      }
+      &:hover {
+        border-color: #323130;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+      }
+      &:hover .ms-SearchBox-iconContainer {
+        color: #005a9e;
+      }
+  onFocusCapture={[Function]}
+  role="search"
+>
+  <div
+    aria-hidden={true}
+    className=
+        ms-SearchBox-iconContainer
+        {
+          color: #0078d4;
+          cursor: text;
+          display: flex;
+          flex-direction: column;
+          flex-shrink: 0;
+          font-size: 16px;
+          justify-content: center;
+          text-align: center;
+          transition: width 0.167s;
+          width: 32px;
+        }
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden={true}
+      className=
+          ms-SearchBox-icon
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            opacity: 1;
+            speak: none;
+            transition: opacity 0.167s 0s;
+          }
+      data-icon-name="Search"
+    >
+      
+    </i>
+  </div>
+  <input
+    className=
+        ms-SearchBox-field
+        {
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          flex: 1 1 0px;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          min-width: 0px;
+          outline: none;
+          overflow: hidden;
+          padding-bottom: 0.5px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          text-overflow: ellipsis;
+        }
+        &::placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
+        }
+    id="SearchBox0"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search"
+    role="searchbox"
+    value=""
+  />
+</div>
+`;

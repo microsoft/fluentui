@@ -18,7 +18,7 @@ class RadioGroupColorPickerExample extends React.Component {
             name: color,
             'aria-label': color,
             variables: {
-              indicatorBorderColorDefault: color,
+              indicatorColorDefault: color,
               indicatorBackgroundColorChecked: color,
               indicatorBorderColorDefaultHover: color,
             },
