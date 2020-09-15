@@ -29,14 +29,14 @@ describe('Toolbar menu overflow with wrapped first item', () => {
     // clicks to set focus on last un-wrapped item.
     await e2e.clickOn(toolbarItem(itemToBeHiddenIndex));
 
-    expect(await e2e.isFocused(toolbarItem(itemToBeHiddenIndex))).toBe(true);
+    await e2e.isFocused(toolbarItem(itemToBeHiddenIndex));
 
     // resizes the viewport to hide the focused item.
     await e2e.resizeViewport({ width: itemWidth * (itemsCount / 2) });
     await e2e.wait(500);
 
     // check that the focus was applied to first item as fall-back.
-    expect(await e2e.isFocused(toolbarItemWrapped(itemToReceiveFocusIndex))).toBe(true);
+    await e2e.isFocused(toolbarItemWrapped(itemToReceiveFocusIndex));
   });
 
   it("hiding focused wrapped item will set focus to first focusable element, even if it's wrapped", async () => {
@@ -46,13 +46,13 @@ describe('Toolbar menu overflow with wrapped first item', () => {
     // clicks to set focus on first wrapped item.
     await e2e.clickOn(toolbarItemWrapped(itemToBeHiddenIndex));
 
-    expect(await e2e.isFocused(toolbarItemWrapped(itemToBeHiddenIndex))).toBe(true);
+    await e2e.isFocused(toolbarItemWrapped(itemToBeHiddenIndex));
 
     // resizes the viewport to hide that item.
     await e2e.resizeViewport({ width: itemWidth * (itemsCount / 2) });
     await e2e.wait(500);
 
     // check that the focus was applied to first item as fall-back.
-    expect(await e2e.isFocused(toolbarItemWrapped(itemToReceiveFocusIndex))).toBe(true);
+    await e2e.isFocused(toolbarItemWrapped(itemToReceiveFocusIndex));
   });
 });

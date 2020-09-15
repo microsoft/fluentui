@@ -1,18 +1,8 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles, IStyle } from '../../Styling';
-import { ISpinButtonStyles } from './SpinButton.types';
+import { ISpinButtonClassNames, ISpinButtonStyles } from './SpinButton.types';
 import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
-
-export interface ISpinButtonClassNames {
-  root: string;
-  labelWrapper: string;
-  icon: string;
-  label: string;
-  spinButtonWrapper: string;
-  input: string;
-  arrowBox: string;
-}
 
 export const getClassNames = memoizeFunction(
   (

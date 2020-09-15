@@ -118,8 +118,8 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
   // Copy dep versions in package.json from actual current versions.
   // This is preferable over hardcoding dependency versions to keep things in sync.
   // As of writing, @uifabric/experiments also depends on all the packages the React template needs,
-  // so we grab the current versions from there (or @uifabric/migration for the node template).
-  const referencePackage = target === 'node' ? 'migration' : 'experiments';
+  // so we grab the current versions from there (or @fluentui/codemods for the node template).
+  const referencePackage = target === 'node' ? 'codemods' : 'experiments';
   const referencePackageJson: PackageJson = fs.readJSONSync(
     path.join(root, 'packages', referencePackage, 'package.json'),
   );

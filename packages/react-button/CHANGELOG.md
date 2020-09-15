@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.5)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.12.4..@fluentui/react-button_v0.12.5)
+
+### Patches
+
+- Updated styling to use makeStyles. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@hotmail.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.6..@fluentui/react-button_v0.12.0)
+
+### Minor changes
+
+- CompoundButton: Adding initial component to react-button package. ([PR #14855](https://github.com/microsoft/fluentui/pull/14855) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Fix rendering as anchor when href is passed. ([PR #14941](https://github.com/microsoft/fluentui/pull/14941) by xgao@microsoft.com)
 
 ## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.6)
 

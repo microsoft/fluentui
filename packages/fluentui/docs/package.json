@@ -71,6 +71,8 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
-    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs"
+    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
+    "vr:build": "cross-env NODE_ENV=production gulp screener:build",
+    "vr:test": "gulp screener:runner"
   }
 }
