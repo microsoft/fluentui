@@ -13,4 +13,4 @@ export interface ComponentProps {
   className?: string;
 }
 
-export type ShorthandValue<TProps> = string | boolean | number | null | undefined | TProps | JSX.Element;
+export type ShorthandValue<TProps> = string | boolean | number | TProps | JSX.Element;

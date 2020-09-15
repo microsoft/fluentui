@@ -198,7 +198,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _circular: {
-    '--button-borderRadius': 50000,
+    '--button-borderRadius': '50000px',
   },
 
   _fluid: {
