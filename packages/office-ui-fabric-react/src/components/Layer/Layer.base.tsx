@@ -129,6 +129,10 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     const { onLayerWillUnmount } = this.props;
     const { layerElement } = this.state;
 
+    if (layerElement) {
+      setVirtualParent(layerElement, null);
+    }
+
     if (onLayerWillUnmount) {
       onLayerWillUnmount();
     }

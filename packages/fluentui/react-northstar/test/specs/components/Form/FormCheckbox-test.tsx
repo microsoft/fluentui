@@ -4,6 +4,7 @@ import { Checkbox } from 'src/components/Checkbox/Checkbox';
 
 describe('FormCheckbox', () => {
   isConformant(FormCheckbox, {
+    testPath: __filename,
     constructorName: 'FormCheckbox',
     // TODO: point to correct once Checkbox will be using compose
     forwardsRefTo: false,
