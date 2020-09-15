@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 import { renderMenuButton } from './renderMenuButton';
 
 export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
+
+const mergeProps = makeMergeProps({ deepMerge: menuButtonShorthandProps });
 
 /**
  * Redefine the component factory, reusing button factory.
