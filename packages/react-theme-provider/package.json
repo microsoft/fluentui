@@ -44,6 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-compose": "^0.18.2",
     "@fluentui/react-stylesheets": "^0.2.0",
     "@fluentui/theme": "^0.2.0",
     "@fluentui/react-window-provider": "^0.3.0",
