@@ -85,7 +85,6 @@ const jsonTreeToTreeItems: (
         ...(selectedComponentId === tree.uuid && {
           background: '#ffc65c',
           color: '#444',
-          borderBottomLeftRadius: '0.5rem',
         }),
       },
     },
@@ -93,17 +92,11 @@ const jsonTreeToTreeItems: (
       renderItemTitle: (C, { content, ...props }) => {
         return (
           <C {...props}>
+            <span style={{ flex: 1 }}>{content}</span>
             <>
-              {props['level'] === 1 ? (
-                <span style={{ flex: 1 }}>{content}</span>
-              ) : (
-                <span style={{ flex: 1, marginLeft: '1rem' }}>{content}</span>
-              )}
-              <>
-                <MoveDebugButton onClick={handleMove} />
-                <CloneDebugButton onClick={handleClone} />
-                <TrashDebugButton onClick={handleDeleteSelected} />
-              </>
+              <MoveDebugButton onClick={handleMove} />
+              <CloneDebugButton onClick={handleClone} />
+              <TrashDebugButton onClick={handleDeleteSelected} />
             </>
           </C>
         );
