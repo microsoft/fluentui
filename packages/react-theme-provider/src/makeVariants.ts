@@ -1,6 +1,6 @@
 import { useTheme } from './useTheme';
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { TokenSetType, Variants } from './types';
+import { TokenSetType, Variants } from '@fluentui/theme';
 import { mergeStyles, IStyle } from '@uifabric/merge-styles';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

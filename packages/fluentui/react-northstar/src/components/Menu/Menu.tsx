@@ -295,7 +295,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
-      onItemClick: handleClick,
+      onItemSelect: handleClick,
       variables,
 
       slotProps: {

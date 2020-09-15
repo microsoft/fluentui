@@ -1,7 +1,6 @@
 import { ButtonVariants } from './Button.types';
-import { RecursivePartial } from '@fluentui/react-theme-provider';
 
-export const buttonVariants: RecursivePartial<ButtonVariants> = {
+export const buttonVariants: ButtonVariants = {
   base: {
     size: {
       smallest: '24px',
@@ -13,7 +12,52 @@ export const buttonVariants: RecursivePartial<ButtonVariants> = {
       largest: '64px',
     },
 
-    padding: '0 24px',
+    // fontWeight: 600, // fonts?.medium?.fontWeight,
+    // fontSize: fonts?.medium?.fontSize,
+    // fontFamily: fonts?.medium?.fontFamily,
+    // iconSize: fonts?.mediumPlus?.fontSize,
+    // borderRadius: effects?.roundedCorner2,
+    // focusColor: palette?.black,
+    // focusInnerColor: palette?.white,
+
+    // background: semanticColors?.buttonBackground,
+    // borderColor: semanticColors?.buttonBorder,
+    // contentColor: semanticColors?.buttonText,
+    // dividerColor: palette?.neutralTertiaryAlt,
+
+    // hovered: {
+    //   background: semanticColors?.buttonBackgroundHovered,
+    //   borderColor: semanticColors?.buttonBorder,
+    //   contentColor: semanticColors?.buttonTextHovered,
+    // },
+
+    // pressed: {
+    //   background: semanticColors?.buttonBackgroundPressed,
+    //   borderColor: semanticColors?.buttonBorder,
+    //   contentColor: semanticColors?.buttonTextPressed,
+    // },
+
+    // checked: {
+    //   background: semanticColors?.buttonBackgroundPressed,
+    //   contentColor: semanticColors?.buttonTextChecked,
+    // },
+
+    // checkedHovered: {
+    //   background: semanticColors?.buttonBackgroundPressed,
+    //   contentColor: semanticColors?.buttonTextCheckedHovered,
+    // },
+
+    // disabled: {
+    //   background: semanticColors?.buttonBackgroundDisabled,
+    //   borderColor: semanticColors?.buttonBorderDisabled,
+    //   contentColor: semanticColors?.buttonTextDisabled,
+    // },
+
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    paddingTop: '0',
+    paddingBottom: '0',
+
     margin: '0',
 
     minWidth: '96px',
@@ -22,12 +66,12 @@ export const buttonVariants: RecursivePartial<ButtonVariants> = {
 
     minHeight: 'var(--button-size-regular)',
 
-    contentGap: '10px',
+    contentGap: '8px',
     iconSize: '16px',
 
     borderRadius: '2px',
     borderWidth: '1px',
-    boxShadow: '0px 2px 4px -0.75px rgba(0, 0, 0, 0.1)',
+    boxShadow: 'none',
 
     fontFamily: '"Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Helvetica, Arial, sans-serif',
     fontSize: '14px',
@@ -49,10 +93,10 @@ export const buttonVariants: RecursivePartial<ButtonVariants> = {
     },
 
     pressed: {
-      transform: 'scale(0.95)',
-      transition: 'transform 0.1s linear',
+      transform: 'none',
+      transition: 'none',
 
-      background: 'rgb(225, 223, 221)',
+      background: 'var(--color-button-background)',
       borderColor: 'var(--button-borderColor)',
       contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
@@ -68,8 +112,10 @@ export const buttonVariants: RecursivePartial<ButtonVariants> = {
   },
 
   iconOnly: {
+    minWidth: 'var(--button-height)',
     width: 'var(--button-height, var(--button-minHeight))',
-    padding: '0',
+    paddingLeft: '0',
+    paddingRight: '0',
   },
 
   circular: {
@@ -82,23 +128,21 @@ export const buttonVariants: RecursivePartial<ButtonVariants> = {
   },
 
   primary: {
-    background: 'var(--color-brand-background, rgb(98, 100, 167))',
-    borderColor: 'transparent',
-    contentColor: 'white',
+    background: 'var(--color-brand-background)',
+    borderColor: 'var(--color-brand-borderColor)',
+    contentColor: 'var(--color-brand-contentColor)',
     iconColor: 'inherit',
 
     hovered: {
-      background: 'var(--color-brand-hovered-background, rgb(88, 90, 150))',
+      background: 'var(--color-brand-hovered-background)',
       borderColor: 'var(--color-brand-hovered-borderColor)',
       contentColor: 'var(--color-brand-hovered-contentColor)',
-      iconColor: 'var(--color-brand-icon)',
     },
 
     pressed: {
-      background: 'rgb(70, 71, 117)',
-      borderColor: 'var(--color-brand-borderColor)',
-      contentColor: 'var(--color-brand-contentColor)',
-      iconColor: 'var(--color-brand-iconColor)',
+      background: 'var(--color-brand-pressed-background)',
+      borderColor: 'var(--color-brand-pressed-borderColor)',
+      contentColor: 'var(--color-brand-pressed-contentColor)',
     },
   },
 };

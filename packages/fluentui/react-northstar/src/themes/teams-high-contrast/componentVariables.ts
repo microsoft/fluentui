@@ -16,8 +16,6 @@ export { menuItemContentVariables as MenuItemIndicator } from './components/Menu
 export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { radioGroupItemVariables as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
-export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonVariables';
-export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonVariables';
 export { textVariables as Text } from './components/Text/textVariables';
 export { textAreaVariables as TextArea } from './components/TextArea/textAreaVariables';
 export { toolbarVariables as Toolbar } from './components/Toolbar/toolbarVariables';

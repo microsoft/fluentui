@@ -1,4 +1,4 @@
-import { Tokens, Theme } from './types';
+import { Tokens, Theme } from '@fluentui/theme';
 import { defaultTokens } from './createDefaultTheme';
 import { merge } from '@uifabric/utilities';
 
@@ -13,7 +13,6 @@ export function getTokens(theme: Theme): Tokens {
     rtl,
     isInverted,
     disableGlobalClassNames,
-    defaultFontStyle,
     tokens,
     stylesheets,
     ...passThroughTokens
@@ -24,90 +23,146 @@ export function getTokens(theme: Theme): Tokens {
     {},
     defaultTokens,
     {
-      // accent is currently only mapped for primary button to use.
-      accent: {
-        background: semanticColors?.primaryButtonBackground,
-        borderColor: semanticColors?.primaryButtonBorder,
-        contentColor: semanticColors?.primaryButtonText,
-        iconColor: palette?.white,
-        dividerColor: palette?.white,
+      color: {
+        // accent is currently only mapped for primary button to use.
+        brand: {
+          background: semanticColors?.primaryButtonBackground,
+          borderColor: semanticColors?.primaryButtonBorder,
+          contentColor: semanticColors?.primaryButtonText,
+          iconColor: palette?.white,
+          dividerColor: palette?.white,
 
-        hovered: {
-          background: semanticColors?.primaryButtonBackgroundHovered,
-          contentColor: semanticColors?.primaryButtonTextHovered,
+          hovered: {
+            background: semanticColors?.primaryButtonBackgroundHovered,
+            contentColor: semanticColors?.primaryButtonTextHovered,
+          },
+
+          pressed: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+          },
+
+          disabled: {
+            background: semanticColors?.primaryButtonBackgroundDisabled,
+            contentColor: semanticColors?.buttonTextDisabled,
+            dividerColor: palette?.neutralTertiaryAlt,
+          },
+
+          checked: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+          },
+
+          checkedHovered: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+          },
         },
 
-        pressed: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
+        // ghost is currently only mapped for ghost button to use.
+        ghost: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralPrimary,
+          iconColor: palette?.themeDarkAlt,
+          menuIconColor: palette?.neutralSecondary,
+
+          checked: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.black,
+            iconColor: palette?.themeDarker,
+          },
+
+          checkedHovered: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.themePrimary,
+            iconColor: palette?.themePrimary,
+          },
+
+          disabled: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.neutralTertiary,
+            iconColor: 'inherit',
+          },
+
+          expanded: {
+            contentColor: palette?.themePrimary,
+          },
+
+          focused: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.neutralPrimary,
+            iconColor: palette?.themeDarkAlt,
+          },
+
+          hovered: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.themePrimary,
+            iconColor: palette?.themePrimary,
+          },
+
+          pressed: {
+            background: semanticColors?.bodyBackground,
+            borderColor: 'transparent',
+            contentColor: palette?.black,
+            iconColor: palette?.themeDarker,
+          },
         },
 
-        disabled: {
-          background: semanticColors?.primaryButtonBackgroundDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-          dividerColor: palette?.neutralTertiaryAlt,
-        },
-
-        checked: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
+        body: {
+          background: semanticColors?.bodyBackground,
         },
       },
+      //   button: {
+      //     fontWeight: 600, // fonts?.medium?.fontWeight,
+      //     fontSize: fonts?.medium?.fontSize,
+      //     fontFamily: fonts?.medium?.fontFamily,
+      //     iconSize: fonts?.mediumPlus?.fontSize,
+      //     borderRadius: effects?.roundedCorner2,
+      //     focusColor: palette?.black,
+      //     focusInnerColor: palette?.white,
 
-      body: {
-        background: semanticColors?.bodyBackground,
-      },
+      //     background: semanticColors?.buttonBackground,
+      //     borderColor: semanticColors?.buttonBorder,
+      //     contentColor: semanticColors?.buttonText,
+      //     dividerColor: palette?.neutralTertiaryAlt,
 
-      button: {
-        fontWeight: fonts?.medium?.fontWeight,
-        fontSize: fonts?.medium?.fontSize,
-        fontFamily: fonts?.medium?.fontFamily,
-        iconSize: fonts?.mediumPlus?.fontSize,
-        borderRadius: effects?.roundedCorner2,
-        focusColor: palette?.neutralSecondary,
-        focusInnerColor: palette?.white,
+      //     hovered: {
+      //       background: semanticColors?.buttonBackgroundHovered,
+      //       borderColor: semanticColors?.buttonBorder,
+      //       contentColor: semanticColors?.buttonTextHovered,
+      //     },
 
-        background: semanticColors?.buttonBackground,
-        borderColor: semanticColors?.buttonBorder,
-        contentColor: semanticColors?.buttonText,
-        dividerColor: palette?.neutralTertiaryAlt,
+      //     pressed: {
+      //       background: semanticColors?.buttonBackgroundPressed,
+      //       borderColor: semanticColors?.buttonBorder,
+      //       contentColor: semanticColors?.buttonTextPressed,
+      //     },
 
-        hovered: {
-          background: semanticColors?.buttonBackgroundHovered,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextHovered,
-        },
+      //     checked: {
+      //       background: semanticColors?.buttonBackgroundPressed,
+      //       contentColor: semanticColors?.buttonTextChecked,
+      //     },
 
-        pressed: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextPressed,
-          borderColor: semanticColors?.buttonBorder,
-        },
+      //     checkedHovered: {
+      //       background: semanticColors?.buttonBackgroundPressed,
+      //       contentColor: semanticColors?.buttonTextCheckedHovered,
+      //     },
 
-        disabled: {
-          background: semanticColors?.buttonBackgroundDisabled,
-          borderColor: semanticColors?.buttonBorderDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-        },
-
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-      },
+      //     disabled: {
+      //       background: semanticColors?.buttonBackgroundDisabled,
+      //       borderColor: semanticColors?.buttonBorderDisabled,
+      //       contentColor: semanticColors?.buttonTextDisabled,
+      //     },
+      //   },
     },
     tokens,
   );
 
-  return { ...(passThroughTokens as Tokens), ...preparedTokens };
+  return { ...((passThroughTokens as unknown) as Tokens), ...preparedTokens };
 }

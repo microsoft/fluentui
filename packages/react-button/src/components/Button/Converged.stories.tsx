@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { mergeThemes, ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider';
+import { mergeThemes, PartialTheme } from '@fluentui/theme';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
@@ -11,33 +12,29 @@ const paletteStrongest = 'var(--palette-strongest)';
 const getThemes = (accent: string) => {
   const lightTheme = mergeThemes({
     tokens: {
-      palette: {
-        accent: accent,
-        softest: 'white',
-        strongest: 'black',
-      },
+      color: {
+        body: {
+          background: 'white',
+          contentColor: 'black',
+        },
 
-      body: {
-        background: 'white',
-        contentColor: 'black',
-      },
-
-      accent: {
-        background: paletteAccent,
-        contentColor: paletteSoftest,
-
-        hovered: {
+        brand: {
           background: paletteAccent,
           contentColor: paletteSoftest,
-        },
-        pressed: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
-        },
-      },
 
-      button: {
-        background: '#ddd',
+          hovered: {
+            background: paletteAccent,
+            contentColor: paletteSoftest,
+          },
+          pressed: {
+            background: paletteAccent,
+            contentColor: paletteSoftest,
+          },
+        },
+
+        button: {
+          background: '#ddd',
+        },
       },
     },
     stylesheets: [],
@@ -45,33 +42,30 @@ const getThemes = (accent: string) => {
 
   const darkTheme = mergeThemes(lightTheme, {
     tokens: {
-      palette: {
-        softest: 'black',
-        strongest: 'white',
-      },
-
-      body: {
-        background: '#333',
-        contentColor: paletteStrongest,
-      },
-
-      button: {
-        background: 'transparent',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
+      color: {
+        body: {
+          background: '#333',
           contentColor: paletteStrongest,
         },
-      },
 
-      accent: {
-        background: 'blue',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
+        button: {
+          background: 'transparent',
           contentColor: paletteStrongest,
+
+          hovered: {
+            background: '#555',
+            contentColor: paletteStrongest,
+          },
+        },
+
+        accent: {
+          background: 'blue',
+          contentColor: paletteStrongest,
+
+          hovered: {
+            background: '#555',
+            contentColor: paletteStrongest,
+          },
         },
       },
     },

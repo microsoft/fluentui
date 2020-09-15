@@ -1,8 +1,35 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.0..@uifabric/date-time_v7.17.1)
+
+### Patches
+
+- Calendar: Adding aria-current=date to present day. ([PR #14806](https://github.com/microsoft/fluentui/pull/14806) by humbertomakotomorimoto@gmail.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.0)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.16.0..@uifabric/date-time_v7.17.0)
+
+### Minor changes
+
+- add wrapper styling to datepicker ([PR #13477](https://github.com/microsoft/fluentui/pull/13477) by kevin@infinite.red)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.16.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.4..@uifabric/date-time_v7.16.0)
+
+### Patches
+
+- adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future ([PR #14764](https://github.com/microsoft/fluentui/pull/14764) by lorejoh12@gmail.com)
 
 ## [7.14.4](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.4)
 

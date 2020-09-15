@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { TokenSetType } from '@fluentui/react-theme-provider';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -17,7 +17,7 @@ export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | 
 export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
-    children?: ShorthandProps;
+    content?: ShorthandProps;
     href?: string;
     target?: string;
     circular?: boolean;
@@ -29,6 +29,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
+    ghost?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokenSet>;
 };
@@ -37,11 +38,17 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export type ButtonState = ButtonProps;
+export interface ButtonState extends ButtonProps {
+    // (undocumented)
+    buttonRef?: React.RefObject<HTMLButtonElement>;
+}
 
 // @public (undocumented)
-export type ButtonTokenSet = TokenSetType & ColorTokenSet & {
-    padding: string;
+export type ButtonTokenSet = ColorTokenSet & {
+    paddingLeft: string;
+    paddingRight: string;
+    paddingTop: string;
+    paddingBottom: string;
     margin: string;
     height: string;
     minWidth: string;
@@ -50,9 +57,18 @@ export type ButtonTokenSet = TokenSetType & ColorTokenSet & {
     contentGap: string;
     iconSize: string;
     borderRadius: string;
+    borderTopLeftRadius: string;
+    borderTopRightRadius: string;
+    borderBottomLeftRadius: string;
+    borderBottomRightRadius: string;
     borderWidth: string;
     boxShadow: string;
     width: string;
+    transform: string;
+    transition: string;
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
     size: {
         smallest: string;
         smaller: string;
@@ -62,11 +78,6 @@ export type ButtonTokenSet = TokenSetType & ColorTokenSet & {
         larger: string;
         largest: string;
     };
-    transform: string;
-    transition: string;
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
     pressed: {
         transform: string;
         transition: string;
@@ -75,11 +86,11 @@ export type ButtonTokenSet = TokenSetType & ColorTokenSet & {
 
 // @public (undocumented)
 export type ButtonVariants = {
-    base: ButtonTokenSet;
-    primary: ButtonTokenSet;
-    iconOnly: ButtonTokenSet;
-    circular: ButtonTokenSet;
-    fluid: ButtonTokenSet;
+    base?: RecursivePartial<ButtonTokenSet>;
+    primary?: RecursivePartial<ButtonTokenSet>;
+    iconOnly?: RecursivePartial<ButtonTokenSet>;
+    circular?: RecursivePartial<ButtonTokenSet>;
+    fluid?: RecursivePartial<ButtonTokenSet>;
 };
 
 // @public (undocumented)
@@ -179,14 +190,14 @@ export interface ToggleButtonState extends ToggleButtonProps {
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
     state: Record<string, any>;
-    render: (state: ButtonProps) => JSX.Element;
+    render: (state: import("./Button.types").ButtonState) => JSX.Element;
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: Record<string, any>) => void;
+export const useButtonClasses: (state: ButtonState) => void;
 
 // @public
-export const useButtonState: (draftState: import("./Button.types").ButtonProps) => void;
+export const useButtonState: (draftState: ButtonState) => void;
 
 // @public (undocumented)
 export const useButtonVariants: (state: Record<string, any>) => void;
@@ -204,9 +215,6 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
@@ -216,24 +224,11 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: Record<string, any>) => void;
-
-// @public (undocumented)
-export const useSplitButtonState: (state: SplitButtonState) => void;
-
-// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
-    render: (state: import("../Button").ButtonProps) => JSX.Element;
+    render: (state: import("../Button").ButtonState) => JSX.Element;
 };
 
-// @public (undocumented)
-export const useToggleButtonClasses: (state: Record<string, any>) => void;
-
-
-// Warnings were encountered during analysis:
-//
-// lib/components/Button/Button.types.d.ts:64:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -100,6 +100,31 @@ class ResultInternal<R, E> implements Chainable<R> {
     }
     return fnErr(this.value);
   }
+
+  /**
+   * This function will either return the current Ok value or use
+   * the function provided to generate that from the Err value that it contains
+   * @param fnErr Function that maps from Err value(E) to current type R
+   */
+  public resolveOk(this: Result<R, E>, fnErr: (v: E) => R): R {
+    if (this.ok) {
+      return this.value;
+    }
+    return fnErr(this.value);
+  }
+
+  /**
+   * This function will either return the current Err value or use
+   * the function provided to generate that from the Ok value that it contains
+   *
+   * @param fnOk Function that maps from Ok value(R) to current type E
+   */
+  public resolveErr(this: Result<R, E>, fnOk: (v: R) => E): E {
+    if (this.ok) {
+      return fnOk(this.value);
+    }
+    return this.value;
+  }
 }
 
 export const Ok = <R, E>(value: R): Ok<R, E> => {

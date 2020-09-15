@@ -2,13 +2,9 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
 import { useFocusRects } from '@uifabric/utilities';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
-import { makeVariants, useInlineTokens } from '@fluentui/react-theme-provider';
-import * as classes from './Button.scss';
 import { buttonVariants } from './Button.variants';
-
-// Create a hook to resolve classnames.
-export const useButtonClasses = makeClasses(classes);
+import { makeVariants, useInlineTokens } from '@fluentui/react-theme-provider';
+import { useButtonClasses } from './useButtonClasses';
 
 export const useButtonVariants = makeVariants('Button', '--button', buttonVariants);
 
