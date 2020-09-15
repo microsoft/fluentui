@@ -47,10 +47,10 @@ const calcSizeClass = (customSize: number): AvatarSizeValue => {
 interface AvatarStyleProps {
   size: AvatarSizeValue;
   tokens: AvatarTokenSet | undefined;
-  inactive: true | undefined;
-  hasRing: boolean | undefined;
-  hasShadow: boolean | undefined;
-  hasGlow: boolean | undefined;
+  inactive: boolean | undefined;
+  activeRing: boolean | undefined;
+  activeShadow: boolean | undefined;
+  activeGlow: boolean | undefined;
 }
 
 const calcStyleProps = (state: AvatarState): AvatarStyleProps => ({
@@ -58,12 +58,12 @@ const calcStyleProps = (state: AvatarState): AvatarStyleProps => ({
   size: state.customSize ? calcSizeClass(state.customSize) : state.size || defaultAvatarSize,
   // If a custom size was specified, override the size token
   tokens: state.customSize ? { size: `${state.customSize}px` } : undefined,
-  inactive: state.active === false || undefined,
-  hasRing: state.active
-    ? state.activeDisplay === 'ring' || state.activeDisplay === 'ringShadow' || state.activeDisplay === 'ringGlow'
+  inactive: state.active === false,
+  activeRing: state.active
+    ? state.activeDisplay === 'ring' || state.activeDisplay === 'ring-shadow' || state.activeDisplay === 'ring-glow'
     : undefined,
-  hasShadow: state.active ? state.activeDisplay === 'shadow' || state.activeDisplay === 'ringShadow' : undefined,
-  hasGlow: state.active ? state.activeDisplay === 'glow' || state.activeDisplay === 'ringGlow' : undefined,
+  activeShadow: state.active ? state.activeDisplay === 'shadow' || state.activeDisplay === 'ring-shadow' : undefined,
+  activeGlow: state.active ? state.activeDisplay === 'glow' || state.activeDisplay === 'ring-glow' : undefined,
 });
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {

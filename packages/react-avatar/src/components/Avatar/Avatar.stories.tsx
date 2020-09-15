@@ -66,7 +66,7 @@ const examples = {
     { state: 'info', icon: { as: SkypeArrowIcon } },
   ],
   display: ['label', 'image', 'icon'],
-  activeDisplay: ['ring', 'ringShadow', 'ringGlow', 'shadow', 'glow'],
+  activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
   customSize: [19, 23, 28, 34, 41, 49, 58, 68, 79, 91, 104, 118, 133, 149, 166, 184],
 } as const;
 
@@ -105,8 +105,8 @@ export const BasicExamples = () => {
         <Avatar name="Tom Z" active={true} />
         <Avatar image="images/avatar/molly.png" active={true} activeDisplay="shadow" />
         <Avatar image="images/avatar/nan.png" active={true} activeDisplay="glow" />
-        <Avatar image="images/avatar/patrick.png" active={true} activeDisplay="ringShadow" />
-        <Avatar image="images/avatar/veronika.png" active={true} activeDisplay="ringGlow" />
+        <Avatar image="images/avatar/patrick.png" active={true} activeDisplay="ring-shadow" />
+        <Avatar image="images/avatar/veronika.png" active={true} activeDisplay="ring-glow" />
         <Avatar image="images/avatar/kristy.png" active={false} />
       </StoryExample>
     </>
@@ -130,9 +130,9 @@ export const AllSizes = () => (
     <StoryExample title="Active">
       <AvatarExampleList display="image" active={true} activeDisplay="ring" exampleIndex={39} />
       <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
-      <AvatarExampleList display="image" active={true} activeDisplay="ringShadow" exampleIndex={52} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ring-shadow" exampleIndex={52} />
       <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={78} />
-      <AvatarExampleList display="image" active={true} activeDisplay="ringGlow" exampleIndex={91} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ring-glow" exampleIndex={91} />
     </StoryExample>
     <StoryExample title="Inactive">
       <AvatarExampleList display="image" active={false} exampleIndex={26} />

@@ -28,7 +28,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * The type of visual treatment to use when `active="true"`
    * @defaultvalue ring
    */
-  activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ringShadow' | 'ringGlow';
+  activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
   /** Badge to show the avatar's status. */
   badge?: ShorthandValue<BadgeProps>;

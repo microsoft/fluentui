@@ -27,9 +27,6 @@
   @include fontFamily-base;
   font-size: var(--avatar-fontSize);
   font-weight: var(--avatar-fontWeight);
-
-  // Size the badge appropriately for this avatar size
-  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Image slot
@@ -67,6 +64,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
+
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Modifiers
@@ -126,9 +126,7 @@
 // ._size_32,
 // ._size_36,
 // ._size_40 {
-//   --avatar-iconSize: #{$iconSize-medium};
-//   --avatar-fontSize: #{$fontSize-body};
-//   --avatar-fontWeight: #{$fontWeight-semibold};
+// defaults are in .root
 // }
 ._size_48,
 ._size_56 {
@@ -177,7 +175,7 @@
 }
 
 // ActiveDisplay modifiers
-._hasRing {
+._activeRing {
   &._size_20,
   &._size_24,
   &._size_28 {
@@ -205,7 +203,7 @@
     --avatar-ringWidth: #{$stroke-thickest};
   }
 }
-._hasShadow {
+._activeShadow {
   &._size_20,
   &._size_24,
   &._size_28 {
@@ -229,7 +227,7 @@
     --avatar-shadow: #{$shadow-28};
   }
 }
-._hasGlow {
+._activeGlow {
   &._size_20,
   &._size_24,
   &._size_28 {
