@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/tsx-editor",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "Live tsx editor for Fabric website.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -40,8 +40,8 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.3",
     "@uifabric/monaco-editor": "^0.5.17",
-    "@uifabric/react-hooks": "^7.13.0",
-    "office-ui-fabric-react": "^7.137.1",
+    "@uifabric/react-hooks": "^7.13.1",
+    "office-ui-fabric-react": "^7.137.2",
     "raw-loader": "^0.5.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0",
