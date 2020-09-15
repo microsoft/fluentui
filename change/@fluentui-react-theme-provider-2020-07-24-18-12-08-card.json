@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Moving SizeValue const from react-button to react-theme-provider package.",
+  "comment": "Adding Card tokens to theme.",
   "packageName": "@fluentui/react-theme-provider",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
