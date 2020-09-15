@@ -2,6 +2,88 @@
 
 ## Breaking changes
 
+### Button
+
+The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance increases for the most common cases.
+
+As a result, please see the table below on the replacements:
+
+### Component renames
+
+#### Common buttons
+
+Common buttons now all map to `Button`:
+
+| Old                                              | New                                                          |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                              |
+| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`                      |
+| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button iconOnly ghost icon={ <Icon iconName="Add" /> } />` |
+
+### Toggle buttons
+
+Toggle variants, which toggle on and off (play/pause, mute, etc) are separated out into a `ToggleButton` extension, which also has similar variants as above.
+
+### Menu buttons
+
+Menu
+
+### Split menu buttons
+
+The `SplitButton` is now its own component, rather being baked into the button components. This helps overall reduce the default `Button` complexity, runtime overhead, and bundle size:
+
+Before:
+
+```jsx
+<PrimaryButton split onClick={ () => alert('action')} menuProps={{ items: [ ... ] }} text="Hello, world" />
+```
+
+After:
+
+```jsx
+<SplitButton primary onClick={ () => alert('action')} menu={{ items: [ ... ] }} />
+```
+
+Additional changes:
+
+- Now 2 tab targets rather than 1: The action part of the button and the menu part are now separate focus targets. This helps with predictability for users who want to either execute the action or expand the menu. It also helps with accessibility, as we can keep the action with a normal `button` role, and the menu with an `aria-haspopup` attribute, making it more clear for screen readers to differentiate from a typical menu button.
+
+### Button: slots support
+
+Buttons now support slots. Slot support replaces `onRender*` and `*Props` props. The `iconProps` is an example of this. Before, you would provide the props directly. Now you can provide JSX, which lets the implementation own prop typing:
+
+Before:
+
+```jsx
+<DefaultButton iconProps={{ iconName: 'Add' }}> />
+```
+
+After:
+
+```jsx
+<Button icon={<Icon iconName="Add" />} />
+```
+
+This ensures that `Button` components work not just with Fluent UI icons, but with any other icon set.
+
+### Additional button modifiers and enums
+
+These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
+| Modifier | Description |
+| ---------- | --------------------------------------------------------------------------------------- |
+| `circular` | Make the button rounded on the edges (pill button.) |
+| `fluid` | Stretches the button to the container width. |
+| `iconOnly` | Makes the width match the height. Can be combined with circular to make circle buttons. |
+| `ghost` | Makes the button inherit the background color. |
+| `primary` | Uses the brand color to indicate the button is a primary action. |
+| `size` | Controls the size of the button, based on an enum value: `smallest`, `smaller`, `small`, `regular`, `large`, `larger`, `largest`. Defaults to `regular`. |
+
+### Button styling changes
+
+- `vertical-align` is now set to `middle` to ensure they align correctly. See https://codesandbox.io/s/align-buttons-middle-6u5nu for an example of why this is important.
+- Focus rectangles have been adjusted to be more visible and consistent with our new focus styling approach (note that not everything has been updated to the 2px black border 1px inverted inner.)
+- Gaps between elements within the button were changed to margins rather than combo of padding/margin.
+
 ### Calendar
 
 TODO: Diff of OUFR vs date-time Calendar
