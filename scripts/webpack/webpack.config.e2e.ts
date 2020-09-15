@@ -10,7 +10,7 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  mode: 'development',
+  mode: config.compiler_mode,
   entry: {
     app: paths.e2eSrc('app'),
   },

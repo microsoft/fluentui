@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/experiments_v7.32.9",
+      "version": "7.32.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "allow FloatingPeopleSuggestions onRenderSuggestions property to be used",
+            "author": "elvonspa@microsoft.com",
+            "commit": "708946f8a09e5a24278f130f061cdb804295215b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Sep 2020 12:28:23 GMT",
       "tag": "@uifabric/experiments_v7.32.4",
       "version": "7.32.4",

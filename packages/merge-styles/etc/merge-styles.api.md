@@ -64,6 +64,9 @@ export interface IFontFace extends IRawFontStyle {
 // @public (undocumented)
 export type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | '100' | 100 | '200' | 200 | '300' | 300 | '400' | 400 | '500' | 500 | '600' | 600 | '700' | 700 | '800' | 800 | '900' | 900;
 
+// @public
+export type IKeyframes = Record<string, IRawStyle>;
+
 // @public (undocumented)
 export const InjectionMode: {
     none: 0;
@@ -428,9 +431,7 @@ export interface IStyleSheetConfig {
 }
 
 // @public
-export function keyframes(timeline: {
-    [key: string]: {};
-}): string;
+export function keyframes(timeline: IKeyframes): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //
