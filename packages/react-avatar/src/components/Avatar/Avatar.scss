@@ -2,27 +2,34 @@
 
 // Define default variable values
 :root {
+  --avatar-background: rgb(232, 232, 232);
+  --avatar-ringColor: #0078d4; // TODO: brand color
+  --avatar-glowColor: rgba(0, 120, 212, 0.3); // TODO: brand color
+}
+
+// Root slot
+.root {
   --avatar-size: 32px;
   --avatar-iconSize: #{$iconSize-medium};
   --avatar-fontSize: #{$fontSize-body};
   --avatar-fontWeight: #{$fontWeight-semibold};
   --avatar-borderRadius: #{$borderRadius-circle};
-  --avatar-background: rgb(232, 232, 232);
-}
 
-// Root slot
-.root {
   position: relative;
   background-color: inherit;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
+
   width: var(--avatar-size);
   height: var(--avatar-size);
 
   @include fontFamily-base;
   font-size: var(--avatar-fontSize);
   font-weight: var(--avatar-fontWeight);
+
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Image slot
@@ -60,74 +67,215 @@
   position: absolute;
   bottom: 0;
   right: 0;
-
-  // Size the badge appropriately for this avatar size
-  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Modifiers
-._sizeClass_20,
-._sizeClass_24 {
+._size_20 {
+  --avatar-size: 20px;
+}
+._size_24 {
+  --avatar-size: 24px;
+}
+._size_28 {
+  --avatar-size: 28px;
+}
+._size_32 {
+  --avatar-size: 32px;
+}
+._size_36 {
+  --avatar-size: 36px;
+}
+._size_40 {
+  --avatar-size: 40px;
+}
+._size_48 {
+  --avatar-size: 48px;
+}
+._size_56 {
+  --avatar-size: 56px;
+}
+._size_64 {
+  --avatar-size: 64px;
+}
+._size_72 {
+  --avatar-size: 72px;
+}
+._size_96 {
+  --avatar-size: 96px;
+}
+._size_120 {
+  --avatar-size: 120px;
+}
+._size_128 {
+  --avatar-size: 128px;
+}
+
+// Icon and text sizes
+._size_20,
+._size_24 {
   --avatar-iconSize: #{$iconSize-small};
   --avatar-fontSize: #{$fontSize-legal};
   --avatar-fontWeight: #{$fontWeight-legal};
 }
-._sizeClass_28 {
+._size_28 {
   --avatar-iconSize: #{$iconSize-medium};
   --avatar-fontSize: #{$fontSize-legal};
   --avatar-fontWeight: #{$fontWeight-semibold};
 }
-._sizeClass_32,
-._sizeClass_36,
-._sizeClass_40 {
-  --avatar-iconSize: #{$iconSize-medium};
-  --avatar-fontSize: #{$fontSize-body};
-  --avatar-fontWeight: #{$fontWeight-semibold};
-}
-._sizeClass_48,
-._sizeClass_56 {
+// default size:
+// ._size_32,
+// ._size_36,
+// ._size_40 {
+//   --avatar-iconSize: #{$iconSize-medium};
+//   --avatar-fontSize: #{$fontSize-body};
+//   --avatar-fontWeight: #{$fontWeight-semibold};
+// }
+._size_48,
+._size_56 {
   --avatar-iconSize: #{$iconSize-large};
   --avatar-fontSize: #{$fontSize-subheadline};
   --avatar-fontWeight: #{$fontWeight-subheadline};
 }
-._sizeClass_64,
-._sizeClass_72,
-._sizeClass_96 {
+._size_64,
+._size_72,
+._size_96 {
   --avatar-iconSize: #{$iconSize-larger};
   --avatar-fontSize: #{$fontSize-headline};
   --avatar-fontWeight: #{$fontWeight-headline};
 }
-._sizeClass_120,
-._sizeClass_128 {
+._size_120,
+._size_128 {
   --avatar-iconSize: #{$iconSize-largest};
   --avatar-fontSize: #{$fontSize-title3};
   --avatar-fontWeight: #{$fontWeight-title3};
 }
 
+// Square modifier
 ._square {
-  &._sizeClass_20,
-  &._sizeClass_24 {
+  &._size_20,
+  &._size_24 {
     --avatar-borderRadius: #{$borderRadius-small};
   }
-  &._sizeClass_28,
-  &._sizeClass_32,
-  &._sizeClass_36,
-  &._sizeClass_40,
-  &._sizeClass_48 {
-    --avatar-borderRadius: #{$borderRadius-medium};
-  }
-  &._sizeClass_56,
-  &._sizeClass_64,
-  &._sizeClass_72 {
+  // default size:
+  // &._size_28,
+  // &._size_32,
+  // &._size_36,
+  // &._size_40,
+  // &._size_48 {
+  --avatar-borderRadius: #{$borderRadius-medium};
+  // }
+  &._size_56,
+  &._size_64,
+  &._size_72 {
     --avatar-borderRadius: #{$borderRadius-large};
   }
-  &._sizeClass_96,
-  &._sizeClass_120,
-  &._sizeClass_128 {
+  &._size_96,
+  &._size_120,
+  &._size_128 {
     --avatar-borderRadius: #{$borderRadius-xlarge};
   }
 }
 
+// ActiveDisplay modifiers
+._hasRing {
+  &._size_20,
+  &._size_24,
+  &._size_28 {
+    --avatar-ringMargin: -2px;
+    --avatar-ringWidth: #{$stroke-thin};
+  }
+  // default size:
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-ringMargin: -2px;
+  --avatar-ringWidth: #{$stroke-thin};
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-ringMargin: -4px;
+    --avatar-ringWidth: #{$stroke-thick};
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-ringMargin: -8px;
+    --avatar-ringWidth: #{$stroke-thickest};
+  }
+}
+._hasShadow {
+  &._size_20,
+  &._size_24,
+  &._size_28 {
+    --avatar-shadow: #{$shadow-4-darker};
+  }
+  // default size:
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-shadow: #{$shadow-8-darker};
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-shadow: #{$shadow-16-darker};
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-shadow: #{$shadow-28};
+  }
+}
+._hasGlow {
+  &._size_20,
+  &._size_24,
+  &._size_28 {
+    --avatar-shadow: #{$shadow-4-darker}, 0 0 4px 2px var(--avatar-glowColor);
+  }
+  // default size:
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-shadow: #{$shadow-8-darker}, 0 0 8px 2px var(--avatar-glowColor);
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-shadow: #{$shadow-16-darker}, 0 0 8px 2px var(--avatar-glowColor);
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-shadow: #{$shadow-28}, 0 0 28px 4px var(--avatar-glowColor);
+  }
+}
+
+// Activity modifiers
+._active {
+  &:before {
+    content: '';
+    position: absolute;
+    top: var(--avatar-ringMargin, 0);
+    left: var(--avatar-ringMargin, 0);
+    bottom: var(--avatar-ringMargin, 0);
+    right: var(--avatar-ringMargin, 0);
+    border-radius: var(--avatar-borderRadius);
+    border-style: solid;
+    border-color: var(--avatar-ringColor);
+    border-width: var(--avatar-ringWidth, 0);
+    box-shadow: var(--avatar-shadow);
+  }
+}
+._inactive {
+  opacity: 0.8;
+  transform: scale(0.8);
+}
+
+// Display modifiers
 ._display_icon {
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
   font-size: var(--avatar-iconSize);

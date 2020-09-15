@@ -16,6 +16,20 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    *  if the avatar has initials that could be shown as the label. */
   display?: 'image' | 'label' | 'icon';
 
+  /**
+   * Optional activity indicator
+   * * true: the avatar will be decorated according to activeDisplay
+   * * false: the avatar will be reduced in size and partially transparent
+   * * undefined (default): normal display
+   */
+  active?: boolean;
+
+  /**
+   * The type of visual treatment to use when `active="true"`
+   * @defaultvalue ring
+   */
+  activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ringShadow' | 'ringGlow';
+
   /** Badge to show the avatar's status. */
   badge?: ShorthandValue<BadgeProps>;
 
@@ -55,12 +69,9 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
  * It's recommended to use one of these sizes to conform to the design guidelines;
  * however, it is possible to specify a different value using the customSize property.
  */
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
-// !! Important: when adding new AvatarSizeValues, add corresponding "._sizeClass" classes in Avatar.scss,
-// and add it to the avatarSizes array.
-
-/** Supported Avatar sizes as an array; should match the values allowed in AvatarSizeValue */
-export const avatarSizes: readonly AvatarSizeValue[] = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
+export const avatarSizeValues = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
+export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 | ... | 128
+// !! Important: when adding new AvatarSizeValues, add corresponding "._size" classes in Avatar.scss
 
 /** Default Avatar size if not specified */
 export const defaultAvatarSize: AvatarSizeValue = 32;

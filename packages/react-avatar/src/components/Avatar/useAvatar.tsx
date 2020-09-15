@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState, AvatarSizeValue, avatarSizes, defaultAvatarSize } from './Avatar.types';
+import {
+  AvatarProps,
+  AvatarState,
+  AvatarSizeValue,
+  avatarSizeValues,
+  defaultAvatarSize,
+  AvatarTokenSet,
+} from './Avatar.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
@@ -26,18 +33,38 @@ export const renderAvatar = (state: AvatarState) => {
  */
 const calcSizeClass = (customSize: number): AvatarSizeValue => {
   // Note: deliberately skipping i = 0 because it's the default return value below
-  for (let i = avatarSizes.length - 1; i > 0; i--) {
-    if (customSize >= avatarSizes[i]) {
-      return avatarSizes[i];
+  for (let i = avatarSizeValues.length - 1; i > 0; i--) {
+    if (customSize >= avatarSizeValues[i]) {
+      return avatarSizeValues[i];
     }
   }
 
-  return avatarSizes[0];
+  return avatarSizeValues[0];
 };
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
-  const { size = defaultAvatarSize, customSize } = props;
+interface AvatarStyleProps {
+  size: AvatarSizeValue;
+  tokens: AvatarTokenSet | undefined;
+  inactive: true | undefined;
+  hasRing: boolean | undefined;
+  hasShadow: boolean | undefined;
+  hasGlow: boolean | undefined;
+}
 
+const calcStyleProps = (state: AvatarState): AvatarStyleProps => ({
+  // Make sure the size prop has a valid size from AvatarSizeValues
+  size: state.customSize ? calcSizeClass(state.customSize) : state.size || defaultAvatarSize,
+  // If a custom size was specified, override the size token
+  tokens: state.customSize ? { size: `${state.customSize}px` } : undefined,
+  inactive: state.active === false || undefined,
+  hasRing: state.active
+    ? state.activeDisplay === 'ring' || state.activeDisplay === 'ringShadow' || state.activeDisplay === 'ringGlow'
+    : undefined,
+  hasShadow: state.active ? state.activeDisplay === 'shadow' || state.activeDisplay === 'ringShadow' : undefined,
+  hasGlow: state.active ? state.activeDisplay === 'glow' || state.activeDisplay === 'ringGlow' : undefined,
+});
+
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
   const state = mergeProps(
     {
       as: 'span',
@@ -45,22 +72,25 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       label: { as: 'span' },
       image: { as: Image },
       badge: { as: nullRender },
+      activeDisplay: 'ring',
+      inactive: props.active === false,
       getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
-      sizeClass: customSize ? calcSizeClass(customSize) : size,
-      tokens: { size: `${customSize || size}px` },
     },
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
+
+  // Add in props used for styling
+  mergeProps(state, calcStyleProps(state));
 
   // Display the initials if there's no label
   if (!state.label.children) {
     const initials = state.getInitials(state.name || '', /*isRtl: */ false);
     if (initials) {
       state.label.children = initials;
-    } else {
-      state.display = 'icon'; // If there are no initials, fall back to the icon
+    } else if (state.display === 'label') {
+      state.display = 'icon'; // If there are no initials or image, fall back to the icon
     }
   }
 
