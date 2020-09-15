@@ -6,7 +6,8 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
-import { IButtonProps } from '../Button/Button.types';
+//import { IButtonProps } from '../Button/Button.types';
+import { ButtonProps } from '@fluentui/react-button';
 
 /**
  * {@docCategory SpinButton}
@@ -252,7 +253,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Additional props for the up and down arrow buttons.
    */
-  iconButtonProps?: IButtonProps;
+  iconButtonProps?: ButtonProps;
 }
 
 /**

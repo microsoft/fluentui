@@ -4,10 +4,12 @@ import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKeytipLayer } from './decorators';
+import { withThemeProvider } from '@fluentui/storybook';
 
 addDecorator(withA11y());
 addDecorator(withPerformance);
 addDecorator(withKeytipLayer);
+addDecorator(withThemeProvider);
 
 addParameters({
   a11y: {

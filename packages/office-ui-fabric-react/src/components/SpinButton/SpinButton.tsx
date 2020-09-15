@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
+//import { IconButton } from '../../Button';
+import { Button } from '@fluentui/react-button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -139,9 +140,9 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       max,
       labelPosition,
       iconProps,
-      incrementButtonIcon,
+      //incrementButtonIcon,
       incrementButtonAriaLabel,
-      decrementButtonIcon,
+      //decrementButtonIcon,
       decrementButtonAriaLabel,
       ariaLabel,
       ariaDescribedBy,
@@ -240,31 +241,33 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
                 {...inputProps}
               />
               <span className={classNames.arrowBox}>
-                <IconButton
+                <Button
+                  iconOnly
                   styles={getArrowButtonStyles(theme!, true, customUpArrowButtonStyles)}
                   className={'ms-UpButton'}
                   checked={keyboardSpinDirection === KeyboardSpinDirection.up}
                   disabled={disabled}
-                  iconProps={incrementButtonIcon}
+                  icon={<Icon iconName="ChevronUpSmall" />}
                   onMouseDown={this._onIncrementMouseDown}
                   onMouseLeave={this._stop}
                   onMouseUp={this._stop}
                   tabIndex={-1}
-                  ariaLabel={incrementButtonAriaLabel}
+                  aria-label={incrementButtonAriaLabel}
                   data-is-focusable={false}
                   {...iconButtonProps}
                 />
-                <IconButton
+                <Button
+                  iconOnly
                   styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
                   className={'ms-DownButton'}
                   checked={keyboardSpinDirection === KeyboardSpinDirection.down}
                   disabled={disabled}
-                  iconProps={decrementButtonIcon}
+                  icon={<Icon iconName="ChevronDownSmall" />}
                   onMouseDown={this._onDecrementMouseDown}
                   onMouseLeave={this._stop}
                   onMouseUp={this._stop}
                   tabIndex={-1}
-                  ariaLabel={decrementButtonAriaLabel}
+                  aria-label={decrementButtonAriaLabel}
                   data-is-focusable={false}
                   {...iconButtonProps}
                 />
