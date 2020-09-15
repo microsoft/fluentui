@@ -173,7 +173,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText} style={{display: "block"}}>
+          <svg
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+            id={this._uniqLineText}
+            style={{ display: 'block' }}
+          >
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}

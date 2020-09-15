@@ -100,7 +100,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xAxis: NumericAxis | StringAxis = isNumeric
       ? this._createNumericXAxis(dataset)
       : this._createStringXAxis(dataset);
-    const legends: JSX.Element | undefined = this.props.hideLegend ? undefined : this._getLegendData(this._points, this.props.theme!.palette);
+    const legends: JSX.Element | undefined = this.props.hideLegend
+      ? undefined
+      : this._getLegendData(this._points, this.props.theme!.palette);
     const bars: JSX.Element[] = this._getBars(this._points, dataset, isNumeric);
     const { isCalloutVisible } = this.state;
 
@@ -119,7 +121,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}>
         <FocusZone direction={FocusZoneDirection.vertical}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} style={{display: "block"}}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
