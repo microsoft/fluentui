@@ -196,10 +196,6 @@ export const DRAGGING_ELEMENTS = {
     props: {} as FUI.FlexProps,
   },
 
-  FlexItem: {
-    props: {} as FUI.FlexItemProps,
-  },
-
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
   Form: {
