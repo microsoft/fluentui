@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Card } from './Card';
+import { Card } from '@uifabric/react-cards/lib/next';
 import * as classes from './Card.stories.scss';
 
 function onClick() {
+  // eslint-disable-next-line no-alert
   alert('Card was clicked');
 }
 
