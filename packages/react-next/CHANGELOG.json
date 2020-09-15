@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.106",
+      "version": "8.0.0-alpha.106",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Make Dropdown React.StrictMode compliant",
+            "author": "miclo@microsoft.com",
+            "commit": "a59fc3f91276b5b26d77cbd91b8007c7972d358d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Sep 2020 12:27:31 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.105",
       "version": "8.0.0-alpha.105",

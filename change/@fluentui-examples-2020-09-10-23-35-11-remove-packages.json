@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove reference to lists package",
-  "packageName": "@fluentui/examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-11T06:35:11.199Z"
-}

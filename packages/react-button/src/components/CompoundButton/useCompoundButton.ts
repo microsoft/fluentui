@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useButtonState } from '../Button/useButtonState';
 import { renderCompoundButton } from './renderCompoundButton';
@@ -8,6 +8,10 @@ import { renderCompoundButton } from './renderCompoundButton';
  * Consts listing which props are shorthand props.
  */
 export const compoundButtonShorthandProps = ['icon', 'loader', 'content', 'contentContainer', 'secondaryContent'];
+
+const mergeProps = makeMergeProps({
+  deepMerge: compoundButtonShorthandProps,
+});
 
 /**
  * Given user props, returns state and render function for a Button.
