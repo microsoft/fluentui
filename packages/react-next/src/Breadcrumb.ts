@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Breadcrumb';
+export * from 'src/components/Breadcrumb';

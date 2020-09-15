@@ -2626,7 +2626,6 @@ export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
-export * from "office-ui-fabric-react/lib/Breadcrumb";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
@@ -2673,6 +2672,7 @@ export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
 export * from "office-ui-fabric-react/lib/utilities/keytips/index";
+export * from "src/components/Breadcrumb";
 
 // (No @packageDocumentation comment for this package)
 
