@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { mergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { CardProps, CardState } from './Card.types';
 import { renderCard } from './renderCard';
 import { useCardState } from './useCardState';
+
+const mergeProps = makeMergeProps({ deepMerge: [] });
 
 /**
  * Given user props, returns state and render function for a Card.
