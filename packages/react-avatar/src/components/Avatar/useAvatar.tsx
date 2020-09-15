@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import {
   AvatarProps,
   AvatarState,
@@ -26,6 +26,8 @@ export const renderAvatar = (state: AvatarState) => {
     </slots.root>
   );
 };
+
+const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
 
 /**
  * The "size class" of the avatar is the closest AvatarSizeValue that is less-or-equal to the given custom size.

@@ -13,7 +13,6 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
     menu: { as: ContextualMenu },
   });
 
-  // Styling hooks.
   useButtonClasses(state);
   useMenuButtonClasses(state);
 

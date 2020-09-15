@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { ImageProps, ImageState } from './Image.types';
-import { getSlots, mergeProps } from '@fluentui/react-compose/lib/next/index';
+import { getSlots, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 
 export const renderImage = (state: ImageState) => {
   const { slots, slotProps } = getSlots(state);
 
   return <slots.root {...slotProps.root} />;
 };
+
+const mergeProps = makeMergeProps<ImageState>();
 
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps) => {
   const state = mergeProps(
@@ -16,10 +18,11 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, default
     },
     defaultProps,
     props,
+    {
+      src: props.src || props.children,
+      children: null,
+    },
   );
-
-  state.src = state.src || state.children;
-  delete state.children;
 
   return { state, render: renderImage };
 };

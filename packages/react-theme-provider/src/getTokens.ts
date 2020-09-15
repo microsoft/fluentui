@@ -30,21 +30,25 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: semanticColors?.primaryButtonText,
         iconColor: palette?.white,
         dividerColor: palette?.white,
+        secondaryContentColor: palette?.white,
 
         hovered: {
           background: semanticColors?.primaryButtonBackgroundHovered,
           contentColor: semanticColors?.primaryButtonTextHovered,
+          secondaryContentColor: palette?.white,
         },
 
         pressed: {
           background: semanticColors?.primaryButtonBackgroundPressed,
           contentColor: semanticColors?.primaryButtonTextPressed,
+          secondaryContentColor: semanticColors?.primaryButtonTextPressed,
         },
 
         disabled: {
           background: semanticColors?.primaryButtonBackgroundDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
           dividerColor: palette?.neutralTertiaryAlt,
+          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
 
         checked: {
@@ -65,6 +69,7 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: palette?.neutralPrimary,
         iconColor: palette?.themeDarkAlt,
         menuIconColor: palette?.neutralSecondary,
+        secondaryContentColor: palette?.neutralPrimary,
 
         checked: {
           background: semanticColors?.bodyBackground,
@@ -85,6 +90,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
+          secondaryContentColor: palette?.neutralTertiary,
         },
 
         expanded: {
@@ -96,6 +102,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
+          secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
@@ -103,6 +110,7 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
+          secondaryContentColor: palette?.themePrimary,
         },
 
         pressed: {
@@ -110,15 +118,17 @@ export function getTokens(theme: Theme): Tokens {
           borderColor: 'transparent',
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
+          secondaryContentColor: palette?.black,
         },
       },
 
       body: {
         background: semanticColors?.bodyBackground,
+        contentColor: semanticColors?.bodyText,
       },
 
       button: {
-        fontWeight: 600, // fonts?.medium?.fontWeight,
+        fontWeight: '600',
         fontSize: fonts?.medium?.fontSize,
         fontFamily: fonts?.medium?.fontFamily,
         iconSize: fonts?.mediumPlus?.fontSize,
@@ -131,16 +141,21 @@ export function getTokens(theme: Theme): Tokens {
         contentColor: semanticColors?.buttonText,
         dividerColor: palette?.neutralTertiaryAlt,
 
+        secondaryContentColor: palette?.neutralSecondary,
+        secondaryContentFontSize: fonts?.small.fontSize,
+
         hovered: {
           background: semanticColors?.buttonBackgroundHovered,
           borderColor: semanticColors?.buttonBorder,
           contentColor: semanticColors?.buttonTextHovered,
+          secondaryContentColor: palette?.neutralDark,
         },
 
         pressed: {
           background: semanticColors?.buttonBackgroundPressed,
           borderColor: semanticColors?.buttonBorder,
           contentColor: semanticColors?.buttonTextPressed,
+          secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
         checked: {
@@ -157,6 +172,7 @@ export function getTokens(theme: Theme): Tokens {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
+          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
       },
     },
