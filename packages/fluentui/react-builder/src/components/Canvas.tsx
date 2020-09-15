@@ -121,12 +121,14 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const [bodyFocused, setBodyFocused] = React.useState(false);
   const handleFocus = (ev: FocusEvent) => {
-    if (ev.target && (ev.target as any).getAttribute('data-builder-id') === null) {
-      !bodyFocused && setHeaderMessage('Warning: Focus on body.');
-      !bodyFocused && setBodyFocused(true);
-    } else {
-      bodyFocused && setHeaderMessage('');
-      bodyFocused && setBodyFocused(false);
+    const isFocusOnBody = ev.target && (ev.target as any).getAttribute('data-builder-id') === null;
+    if (isFocusOnBody && !bodyFocused) {
+      setHeaderMessage('Warning: Focus on body.');
+      setBodyFocused(true);
+    }
+    if (!isFocusOnBody && bodyFocused) {
+      setHeaderMessage('');
+      setBodyFocused(false);
     }
   };
 
