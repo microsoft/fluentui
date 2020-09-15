@@ -1,8 +1,7 @@
 // TODO: Move IStyle into a separate typing library
 import { IStyle } from '@uifabric/merge-styles';
-
 import { Theme } from '@fluentui/theme';
-import { useCustomizationSettings } from '@uifabric/utilities';
+import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { useStyleRenderer } from './styleRenderers/useStyleRenderer';
 import { StyleRenderer } from './styleRenderers/types';
@@ -55,7 +54,7 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
     const win = useWindow();
 
     // Expected: theme and renderer are either always provided or never.
-    theme = theme || (useCustomizationSettings(['theme']).theme as Theme) || {};
+    theme = theme || useTheme() || {};
     renderer = (renderer || useStyleRenderer()) as StyleRenderer;
 
     const id = renderer.getId();
@@ -64,9 +63,9 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
     let value = graphGet(graph, path);
 
     if (!value) {
-      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => TStyleSet)(theme) : styleOrFunction;
+      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => TStyleSet)(theme!) : styleOrFunction;
 
-      value = renderer.renderStyles(styles, { targetWindow: win, rtl: !!theme.rtl });
+      value = renderer.renderStyles(styles, { targetWindow: win, rtl: !!theme!.rtl });
       graphSet(graph, path, value);
     }
 
