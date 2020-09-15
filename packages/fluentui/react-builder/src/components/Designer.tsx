@@ -346,41 +346,45 @@ export const Designer: React.FunctionComponent = () => {
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [axeErrors, setAxeErrors] = React.useState([]);
 
+  const runAxeOnElement = React.useCallback(selectedElementUuid => {
+    const iframe = document.getElementsByTagName('iframe')[0];
+    const selectedComponentAxeErrors = [];
+    axeCore.run(
+      iframe,
+      {
+        rules: {
+          // excluding rules which are related to the whole page not to components
+          'page-has-heading-one': { enabled: false },
+          region: { enabled: false },
+          'landmark-one-main': { enabled: false },
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.error('Axe failed', err);
+        } else {
+          result.violations.forEach(violation => {
+            violation.nodes.forEach(node => {
+              if (node.html.includes(`data-builder-id="${selectedElementUuid}"`)) {
+                selectedComponentAxeErrors.push(
+                  node.failureSummary
+                    .replace('Fix all of the following:', '-')
+                    .replace('Fix any of the following:', '-'),
+                );
+              }
+            });
+          });
+        }
+        setAxeErrors(selectedComponentAxeErrors);
+      },
+    );
+  }, []);
+
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
-      const iframe = document.getElementsByTagName('iframe')[0];
-      const selectedComponentAxeErrors = [];
-      axeCore.run(
-        iframe,
-        {
-          rules: {
-            // excluding rules which are related to the whole page not to components
-            'page-has-heading-one': { enabled: false },
-            region: { enabled: false },
-            'landmark-one-main': { enabled: false },
-          },
-        },
-        (err, result) => {
-          if (err) {
-            console.error('Axe failed', err);
-          } else {
-            result.violations.forEach(violation => {
-              violation.nodes.forEach(node => {
-                if (node.html.includes(`data-builder-id="${state.selectedJSONTreeElementUuid}"`)) {
-                  selectedComponentAxeErrors.push(
-                    node.failureSummary
-                      .replace('Fix all of the following:', '-')
-                      .replace('Fix any of the following:', '-'),
-                  );
-                }
-              });
-            });
-          }
-          setAxeErrors(selectedComponentAxeErrors);
-        },
-      );
+      runAxeOnElement(state.selectedJSONTreeElementUuid);
     }
-  }, [state.selectedJSONTreeElementUuid]);
+  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
