@@ -63,7 +63,7 @@ export interface ILinkOptions {
 }
 
 // @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     // @deprecated
@@ -98,7 +98,7 @@ export interface ILinkStyles {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: React.ForwardRefExoticComponent<Pick<ILinkProps, string | number> & React.RefAttributes<HTMLElement>>;
+export const LinkBase: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
 export type LinkSlotProps = {
