@@ -4,7 +4,7 @@ import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent as mount } from 'test/utils';
 
 describe('Card', () => {
-  isConformant(Card, { constructorName: 'Card' });
+  isConformant(Card, { testPath: __filename, constructorName: 'Card' });
 
   describe('accessiblity', () => {
     handlesAccessibility(Card, { defaultRootRole: 'group' });

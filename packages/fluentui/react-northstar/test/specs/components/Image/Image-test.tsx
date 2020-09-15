@@ -6,6 +6,7 @@ import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Image', () => {
   isConformant(Image, {
+    testPath: __filename,
     constructorName: 'Image',
   });
 

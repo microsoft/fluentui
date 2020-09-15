@@ -4,6 +4,7 @@ import { ToolbarMenuItemSubmenuIndicator } from 'src/components/Toolbar/ToolbarM
 
 describe('ToolbarMenuItemSubmenuIndicator', () => {
   isConformant(ToolbarMenuItemSubmenuIndicator, {
+    testPath: __filename,
     constructorName: 'ToolbarMenuItemSubmenuIndicator',
   });
 });

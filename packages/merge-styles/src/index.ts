@@ -1,4 +1,8 @@
-export { IRawStyle, IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+export { IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+
+export { IRawStyle } from './IRawStyle';
+
+export { IKeyframes } from './IKeyframes';
 
 export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
