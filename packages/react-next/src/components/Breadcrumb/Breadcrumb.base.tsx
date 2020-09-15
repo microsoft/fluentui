@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  initializeComponentRef,
-  getRTL,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties,
-} from '../../Utilities';
+import { getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -23,9 +17,6 @@ import {
   IBreadcrumbStyleProps,
   IBreadcrumbStyles,
 } from './Breadcrumb.types';
-
-/** @deprecated Use IBreadcrumbData */
-export type IBreadCrumbData = IBreadcrumbData;
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
@@ -47,132 +38,129 @@ const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
   },
 };
 
-/**
- * {@docCategory Breadcrumb}
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
-  public static defaultProps: IBreadcrumbProps = {
-    items: [],
-    maxDisplayedItems: 999,
-    overflowIndex: 0,
-  };
+const useComponentRef = (props: IBreadcrumbProps, focusZone: React.RefObject<FocusZone>) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      focus() {
+        if (focusZone.current) {
+          focusZone.current.focus();
+        }
+      },
+    }),
+    [focusZone],
+  );
+};
 
-  private _classNames: IProcessedStyleSet<IBreadcrumbStyles>;
-  private _focusZone = React.createRef<FocusZone>();
-
-  constructor(props: IBreadcrumbProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this._validateProps(props);
-  }
+export const BreadcrumbBase = React.forwardRef<HTMLDivElement, IBreadcrumbProps>((props, ref) => {
+  const focusZone = React.useRef<FocusZone>(null);
 
   /**
-   * Sets focus to the first breadcrumb link.
+   * Remove the first rendered item past the overlow point and put it at the end the overflow set.
    */
-  public focus(): void {
-    if (this._focusZone.current) {
-      this._focusZone.current.focus();
-    }
-  }
-
-  public render(): JSX.Element {
-    this._validateProps(this.props);
-
-    const {
-      onReduceData = this._onReduceData,
-      onGrowData = this._onGrowData,
-      overflowIndex,
-      maxDisplayedItems,
-      items,
-      className,
-      theme,
-      styles,
-    } = this.props;
-    const renderedItems = [...items];
-    const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
-    const breadcrumbData: IBreadcrumbData = {
-      props: this.props,
-      renderedItems,
-      renderedOverflowItems,
-    };
-
-    this._classNames = getClassNames(styles, {
-      className,
-      theme: theme!,
-    });
-
-    return (
-      <ResizeGroup
-        onRenderData={this._onRenderBreadcrumb}
-        onReduceData={onReduceData}
-        onGrowData={onGrowData}
-        data={breadcrumbData}
-      />
-    );
-  }
-
-  /**
-   * Remove the first rendered item past the overlow point and put it and the end the overflow set.
-   */
-  private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
-    let { renderedItems, renderedOverflowItems } = data;
-    const { overflowIndex } = data.props;
-
-    const movedItem = renderedItems[overflowIndex!];
+  const reduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+    const movedItem = renderedItems[data.props.overflowIndex!];
 
     if (!movedItem) {
       return undefined;
     }
 
-    renderedItems = [...renderedItems];
-    renderedItems.splice(overflowIndex!, 1);
+    data.renderedItems = [...data.renderedItems];
+    data.renderedItems.splice(data.props.overflowIndex!, 1);
 
-    renderedOverflowItems = [...renderedOverflowItems, movedItem];
+    data.renderedOverflowItems = [...data.renderedOverflowItems, movedItem];
 
-    return { ...data, renderedItems, renderedOverflowItems };
+    return { ...data };
   };
 
   /**
-   * Remove the last item of the overflow set and insert the item as the start of the rendered set past the overflow
+   * Remove the last item of the overflow set and insert the item at the start of the rendered set past the overflow
    * point.
    */
-  private _onGrowData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
-    let { renderedItems, renderedOverflowItems } = data;
-    const { overflowIndex, maxDisplayedItems } = data.props;
-
-    renderedOverflowItems = [...renderedOverflowItems];
+  const growData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+    data.renderedOverflowItems = [...data.renderedOverflowItems];
     const movedItem = renderedOverflowItems.pop();
 
-    if (!movedItem || renderedItems.length >= maxDisplayedItems!) {
+    if (!movedItem || data.renderedItems.length >= data.props.maxDisplayedItems!) {
       return undefined;
     }
 
-    renderedItems = [...renderedItems];
-    renderedItems.splice(overflowIndex!, 0, movedItem);
+    data.renderedItems = [...data.renderedItems];
+    data.renderedItems.splice(data.props.overflowIndex!, 0, movedItem);
 
-    return { ...data, renderedItems, renderedOverflowItems };
+    return { ...data };
   };
 
-  private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
+  const {
+    items = [],
+    maxDisplayedItems = 999,
+    overflowIndex = 0,
+    onReduceData = reduceData,
+    onGrowData = growData,
+    className,
+    theme,
+    tooltipHostProps,
+    styles,
+  } = props;
+
+  const classNames: IProcessedStyleSet<IBreadcrumbStyles> = getClassNames(styles, {
+    className,
+    theme: theme!,
+  });
+
+  const renderedItems = [...items];
+  const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
+
+  const breadcrumbData: IBreadcrumbData = {
+    props: props,
+    renderedItems,
+    renderedOverflowItems,
+  };
+
+  const renderItem = (item: IBreadcrumbItem) => {
+    if (item.onClick || item.href) {
+      return (
+        <Link
+          as={item.as}
+          className={classNames.itemLink}
+          href={item.href}
+          aria-current={item.isCurrentItem ? 'page' : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onBreadcrumbClicked.bind(this, item)}
+        >
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...tooltipHostProps}>
+            {item.text}
+          </TooltipHost>
+        </Link>
+      );
+    } else {
+      const Tag = item.as || 'span';
+      return (
+        <Tag className={classNames.item}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...tooltipHostProps}>
+            {item.text}
+          </TooltipHost>
+        </Tag>
+      );
+    }
+  };
+
+  const renderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
       dividerAs: DividerType = Icon as React.ElementType<IDividerAsProps>,
-      onRenderItem = this._onRenderItem,
+      onRenderItem = renderItem,
       overflowAriaLabel,
-      overflowIndex,
       onRenderOverflowIcon,
     } = data.props;
-    const { renderedOverflowItems, renderedItems } = data;
 
-    const contextualItems = renderedOverflowItems.map(
+    const contextualItems = data.renderedOverflowItems.map(
       (item): IContextualMenuItem => {
         const isActionable = !!(item.onClick || item.href);
         return {
           name: item.text,
           key: item.key,
-          onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
+          onClick: item.onClick ? onBreadcrumbClicked.bind(ref, item) : null,
           href: item.href,
           disabled: !isActionable,
           itemProps: isActionable ? undefined : nonActionableItemProps,
@@ -182,16 +170,16 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
 
     // Find index of last rendered item so the divider icon
     // knows not to render on that item
-    const lastItemIndex = renderedItems.length - 1;
-    const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
+    const lastItemIndex = data.renderedItems.length - 1;
+    const hasOverflowItems = data.renderedOverflowItems && data.renderedOverflowItems.length !== 0;
 
-    const itemElements: JSX.Element[] = renderedItems.map((item, index) => (
-      <li className={this._classNames.listItem} key={item.key || String(index)}>
-        {onRenderItem(item, this._onRenderItem)}
-        {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
+    const itemElements: JSX.Element[] = data.renderedItems.map((item, index) => (
+      <li className={classNames.listItem} key={item.key || String(index)}>
+        {onRenderItem(item, onRenderItem)}
+        {(index !== lastItemIndex || (hasOverflowItems && index === data.props.overflowIndex! - 1)) && (
           <DividerType
-            className={this._classNames.chevron}
-            iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
+            className={classNames.chevron}
+            iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'}
             item={item}
           />
         )}
@@ -203,11 +191,11 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
 
       itemElements.splice(
-        overflowIndex!,
+        data.props.overflowIndex!,
         0,
-        <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
+        <li className={classNames.overflow} key={OVERFLOW_KEY}>
           <IconButton
-            className={this._classNames.overflowButton}
+            className={classNames.overflowButton}
             iconProps={iconProps}
             role="button"
             aria-haspopup="true"
@@ -218,10 +206,10 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
               directionalHint: DirectionalHint.bottomLeftEdge,
             }}
           />
-          {overflowIndex !== lastItemIndex + 1 && (
+          {data.props.overflowIndex !== lastItemIndex + 1 && (
             <DividerType
-              className={this._classNames.chevron}
-              iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
+              className={classNames.chevron}
+              iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'}
               item={renderedOverflowItems[renderedOverflowItems.length - 1]}
             />
           )}
@@ -229,69 +217,42 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       );
     }
 
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, [
       'className',
     ]);
 
     return (
-      <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
-        <FocusZone
-          componentRef={this._focusZone}
-          direction={FocusZoneDirection.horizontal}
-          {...this.props.focusZoneProps}
-        >
-          <ol className={this._classNames.list}>{itemElements}</ol>
+      <div className={classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
+        <FocusZone componentRef={focusZone} direction={FocusZoneDirection.horizontal} {...props.focusZoneProps}>
+          <ol className={classNames.list}>{itemElements}</ol>
         </FocusZone>
       </div>
     );
   };
 
-  private _onRenderItem = (item: IBreadcrumbItem) => {
-    if (item.onClick || item.href) {
-      return (
-        <Link
-          as={item.as}
-          className={this._classNames.itemLink}
-          href={item.href}
-          aria-current={item.isCurrentItem ? 'page' : undefined}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={this._onBreadcrumbClicked.bind(this, item)}
-        >
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
-          </TooltipHost>
-        </Link>
-      );
-    } else {
-      const Tag = item.as || 'span';
-      return (
-        <Tag className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
-          </TooltipHost>
-        </Tag>
-      );
-    }
+  const onBreadcrumbClicked = (item: IBreadcrumbItem, ev: React.MouseEvent<HTMLElement>) => {
+    item.onClick?.(ev, item);
   };
 
-  private _onBreadcrumbClicked = (item: IBreadcrumbItem, ev: React.MouseEvent<HTMLElement>) => {
-    if (item.onClick) {
-      item.onClick(ev, item);
-    }
-  };
-
-  /**
-   * Validate incoming props
-   * @param props - Props to validate
-   */
-  private _validateProps(props: IBreadcrumbProps): void {
-    const { maxDisplayedItems, overflowIndex, items } = props;
-    if (
-      overflowIndex! < 0 ||
-      (maxDisplayedItems! > 1 && overflowIndex! > maxDisplayedItems! - 1) ||
-      (items.length > 0 && overflowIndex! > items.length - 1)
-    ) {
-      throw new Error('Breadcrumb: overflowIndex out of range');
-    }
+  // Validate incoming props during the initial render.
+  if (
+    overflowIndex! < 0 ||
+    (maxDisplayedItems! > 1 && overflowIndex! > maxDisplayedItems! - 1) ||
+    (items.length > 0 && overflowIndex! > items.length - 1)
+  ) {
+    throw new Error('Breadcrumb: overflowIndex out of range');
   }
-}
+
+  useComponentRef(props, focusZone);
+
+  return (
+    <ResizeGroup
+      ref={ref}
+      // eslint-disable-next-line react/jsx-no-bind -- dependencies will likely mutate.
+      onRenderData={renderBreadcrumb}
+      onReduceData={onReduceData}
+      onGrowData={onGrowData}
+      data={breadcrumbData}
+    />
+  );
+});

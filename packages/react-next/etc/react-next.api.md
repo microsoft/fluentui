@@ -20,6 +20,7 @@ import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compa
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -43,6 +44,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
@@ -108,6 +110,12 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
 }
+
+// @public (undocumented)
+export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
+
+// @public (undocumented)
+export const BreadcrumbBase: React.ForwardRefExoticComponent<IBreadcrumbProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ButtonGrid: import("react").ForwardRefExoticComponent<IButtonGridProps & import("react").RefAttributes<HTMLElement>>;
@@ -306,6 +314,81 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
+}
+
+// @public (undocumented)
+export interface IBreadcrumb {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbData {
+    // (undocumented)
+    props: IBreadcrumbProps;
+    // (undocumented)
+    renderedItems: IBreadcrumbItem[];
+    // (undocumented)
+    renderedOverflowItems: IBreadcrumbItem[];
+}
+
+// @public (undocumented)
+export interface IBreadcrumbItem {
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+    href?: string;
+    isCurrentItem?: boolean;
+    key: string;
+    onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IBreadcrumb>;
+    dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
+    items: IBreadcrumbItem[];
+    maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+    overflowAriaLabel?: string;
+    overflowIndex?: number;
+    // (undocumented)
+    styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+    // (undocumented)
+    theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyles {
+    // (undocumented)
+    chevron: IStyle;
+    // (undocumented)
+    item: IStyle;
+    // (undocumented)
+    itemLink: IStyle;
+    // (undocumented)
+    list: IStyle;
+    // (undocumented)
+    listItem: IStyle;
+    // (undocumented)
+    overflow: IStyle;
+    // (undocumented)
+    overflowButton: IStyle;
+    // (undocumented)
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -945,6 +1028,11 @@ export interface IDialogState {
     x: number;
     // (undocumented)
     y: number;
+}
+
+// @public (undocumented)
+export interface IDividerAsProps extends IIconProps {
+    item?: IBreadcrumbItem;
 }
 
 // @public (undocumented)
@@ -2672,7 +2760,6 @@ export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
 export * from "office-ui-fabric-react/lib/utilities/keytips/index";
-export * from "src/components/Breadcrumb";
 
 // (No @packageDocumentation comment for this package)
 

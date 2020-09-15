@@ -1,1 +1,1 @@
-export * from 'src/components/Breadcrumb';
+export * from './components/Breadcrumb/index';
