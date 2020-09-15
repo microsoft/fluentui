@@ -60,6 +60,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
 
 ### Documentation
+- Fixed icon margins after code change in UI builder @vyhnalekl ([#14859](https://github.com/microsoft/fluentui/pull/14859))
 - Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))
 - Added copy paste keyboard shortcuts to UI builder @vyhnalekl ([#14631](https://github.com/microsoft/fluentui/pull/14631))
 - Removed parameters from url after switch to store (UI builder) @vyhnalekl ([#14754](https://github.com/microsoft/fluentui/pull/14754))
