@@ -13,7 +13,7 @@ export const treeAsListBehavior: Accessibility<TreeBehaviorProps> = props => {
   return _.merge(behavior, {
     attributes: {
       root: {
-        role: 'list',
+        role: 'listbox',
       },
     },
     childBehaviors: {

@@ -14,7 +14,7 @@ export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorPr
     attributes: {
       root: {
         ...(!props.hasSubtree && {
-          role: 'listitem',
+          role: 'option',
         }),
       },
     },
