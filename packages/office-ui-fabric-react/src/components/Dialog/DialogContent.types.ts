@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DialogContentBase } from './DialogContent.base';
-import { IButtonProps } from '../Button/Button.types';
+//import { IButtonProps } from '../Button/Button.types';
+import { ButtonProps } from '@fluentui/react-button/src/components/Button';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
@@ -45,7 +46,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * Other top buttons that will show up next to the close button
    */
-  topButtonsProps?: IButtonProps[];
+  topButtonsProps?: ButtonProps[];
 
   /**
    * Optional override class name

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { classNamesFunction, css, warnDeprecations, initializeComponentRef } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { IconButton } from '../../Button';
+//import { IconButton } from '../../Button';
+import { Button } from '@fluentui/react-button/src/components/Button';
 import { DialogFooter } from './DialogFooter';
 import { IDialogFooterProps } from './DialogFooter.types';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
@@ -80,13 +82,15 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
           </div>
           <div className={classNames.topButton}>
             {this.props.topButtonsProps!.map((props, index) => (
-              <IconButton key={props.uniqueId || index} {...props} />
+              <Button iconOnly ghost key={props.uniqueId || index} {...props} />
             ))}
             {(type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) && (
-              <IconButton
+              <Button
+                iconOnly
+                ghost
                 className={classNames.button}
-                iconProps={{ iconName: 'Cancel' }}
-                ariaLabel={closeButtonAriaLabel}
+                icon={<Icon iconName="Cancel" />}
+                aria-label={closeButtonAriaLabel}
                 onClick={onDismiss as any}
                 title={closeButtonAriaLabel}
               />
