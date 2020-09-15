@@ -1,11 +1,12 @@
-import { Rule, TestFacade } from '../types';
+import { Props, TestFacade } from '../types';
 
-import { SlotRule } from './rules';
+import { SlotRule, Rule } from '@fluentui/a11y-rules';
 
 export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void => {
   const slot = rule.getData();
   const slotProps = slot.props || [{}];
-  slotProps.forEach(props => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  slotProps.forEach((props: Props) => {
     const testFacade = baseTestFacade.forProps(props);
 
     if (slot.checkClick) {

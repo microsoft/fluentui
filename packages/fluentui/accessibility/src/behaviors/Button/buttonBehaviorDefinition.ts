@@ -1,4 +1,4 @@
-import { BehaviorRule, Rule } from '@fluentui/a11y-testing';
+import { Rule, BehaviorRule } from '@fluentui/a11y-rules';
 
 export const buttonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()

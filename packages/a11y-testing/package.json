@@ -18,6 +18,7 @@
     "lint": "just-scripts lint"
   },
   "dependencies": {
+    "@fluentui/a11y-rules": "0.1.0",
     "@fluentui/eslint-plugin": "^0.54.0",
     "@types/enzyme": "3.10.3",
     "@types/jest": "~24.9.0",

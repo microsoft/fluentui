@@ -10,6 +10,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@fluentui/a11y-rules": "0.1.0",
     "@fluentui/a11y-testing": "0.1.0",
     "@fluentui/eslint-plugin": "^0.54.0",
     "@types/gulp": "^4.0.6",
