@@ -76,7 +76,7 @@ export const defaultTokens: Tokens = {
   // TODO: this should be a variant.
   ghost: {
     fontWeight: 'normal',
-    background: 'var(--color-body-background)',
+    background: 'transparent',
     borderColor: 'transparent',
     contentColor: '#323130',
     iconColor: '#106ebe',
@@ -84,13 +84,13 @@ export const defaultTokens: Tokens = {
     secondaryContentColor: 'var(--ghost-contentColor)',
 
     checked: {
-      background: 'var(--ghost-background)',
+      background: '#edebe9',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#000000',
       iconColor: '#004578',
     },
     checkedHovered: {
-      background: 'var(--ghost-background)',
+      background: '#e1dfdd',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: 'var(--ghost-hovered-contentColor)',
       iconColor: 'var(--ghost-hovered-iconColor)',
@@ -113,14 +113,14 @@ export const defaultTokens: Tokens = {
       secondaryContentColor: 'var(--ghost-focused-contentColor)',
     },
     hovered: {
-      background: 'var(--ghost-background)',
+      background: '#f3f2f1',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#0078d4',
       iconColor: '#0078d4',
       secondaryContentColor: 'var(--ghost-hovered-contentColor)',
     },
     pressed: {
-      background: 'var(--ghost-background)',
+      background: '#edebe9',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#000000',
       iconColor: '#004578',
@@ -145,7 +145,6 @@ export const defaultTokens: Tokens = {
     paddingRight: '20px',
     paddingTop: '0',
     paddingBottom: '0',
-    minWiedth: '80px',
     height: 'var(--button-size-regular)',
     minHeight: 'var(--button-size-regular)',
     contentGap: '8px',

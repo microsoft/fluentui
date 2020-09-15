@@ -135,7 +135,6 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
   content: {
     lineHeight: '1',
-    flexGrow: 1,
   },
 
   _primary: {
@@ -208,6 +207,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
   _fluid: {
     '--button-width': '100%',
+    '--button-maxWidth': '100%',
   },
 
   _size_smallest: {

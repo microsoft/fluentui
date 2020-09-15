@@ -101,7 +101,6 @@ exports[`Button renders a default state 1`] = `
     className=
 
         {
-          flex-grow: 1;
           line-height: 1;
         }
   >
@@ -213,7 +212,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
     className=
 
         {
-          flex-grow: 1;
           line-height: 1;
         }
   >

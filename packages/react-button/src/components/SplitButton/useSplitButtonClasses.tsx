@@ -7,7 +7,7 @@ const GlobalClassNames = {
 };
 
 // TODO: move this to a token.
-const menuButtonWidth = 32;
+const menuButtonWidth = '32px';
 
 export const useSplitButtonClasses = makeClasses({
   root: {
