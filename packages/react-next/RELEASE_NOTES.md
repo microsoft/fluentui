@@ -10,8 +10,6 @@ As a result, please see the table below on the replacements:
 
 ### Component renames
 
-#### Common buttons
-
 Common buttons now all map to `Button`:
 
 | Old                                              | New                                                          |
@@ -22,11 +20,43 @@ Common buttons now all map to `Button`:
 
 ### Toggle buttons
 
-Toggle variants, which toggle on and off (play/pause, mute, etc) are separated out into a `ToggleButton` extension, which also has similar variants as above.
+The `ToggleButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `ToggleButton` respects a `checked` or `defaultChecked` flag.
+
+```jsx
+const App = () => {
+  const [isChecked, setChecked] = React.useState(false);
+
+  return (
+    <ToggleButton checked={checked} onClick={() => setChecked(!isChecked)}>
+      {checked ? 'Pause' : 'Play'}
+    </ToggleButton>
+  );
+};
+```
 
 ### Menu buttons
 
-Menu
+The `MenuButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `MenuButton` takes in a `menu` prop to provide the menu:
+
+```jsx
+const App = () => {
+  const [ isChecked, setChecked ] = React.useState(false);
+
+  return (
+    <MenuButton
+      iconOnly
+      circular
+      ghost
+      icon={ <EllipsisIcon /> }
+      menu={
+        items: [
+          { key: 'a', ... }
+        ]
+      }
+   />
+  );
+}
+```
 
 ### Split menu buttons
 
