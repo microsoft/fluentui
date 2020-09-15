@@ -15,7 +15,7 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
@@ -54,9 +54,9 @@ jobs:
     workspace:
       clean: all
     variables:
-      PR_DEPLOY: 1
+      - template: .devops/templates/variables.yml
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
@@ -97,23 +97,35 @@ jobs:
           azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
           storage: fabricweb
           ContainerName: '$web'
-          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+          BlobPrefix: '$(deployBasePath)'
 
   - job: ScreenerFluent
     workspace:
       clean: all
+    variables:
+      - template: .devops/templates/variables.yml
+        parameters:
+          pathPrefix: SourceVersion
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: yarn
         displayName: yarn
 
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-          NODE_ENV=production yarn test:fluentui:visual
-        displayName: run FUI VR Test
+      - script: yarn workspace @fluentui/docs vr:build
+        displayName: build FUI N* VR Test
+
+      - task: AzureUpload@1
+        displayName: Upload N* doc site
+        inputs:
+          SourcePath: 'packages/fluentui/docs/dist'
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          storage: fabricweb
+          ContainerName: '$web'
+          BlobPrefix: '$(deployBasePath)/react-northstar'
+
+      - script: yarn workspace @fluentui/docs vr:test
+        displayName: start FUI N* VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
 
@@ -121,18 +133,13 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
       - script: |
           yarn
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-        displayName: config git user and email
 
       - script: |
           yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped

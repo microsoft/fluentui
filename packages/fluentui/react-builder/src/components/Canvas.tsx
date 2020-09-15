@@ -166,10 +166,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               const { marginTop, marginRight, marginBottom, marginLeft } = iframeWindow.getComputedStyle(element);
               element.setAttribute('data-builder-id', builderId);
 
+              const isContainer = element.tagName === 'DIV';
               const hasNoChildren = element.childElementCount === 0;
               const hasManyChildren = element.childElementCount > 1;
               const properties = [
-                hasNoChildren &&
+                isContainer &&
+                  hasNoChildren &&
                   `height: 0px;
                   padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);
                   padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
@@ -185,7 +187,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               // console.log(
               //   element,
               //   '\nHAS\n',
-              //   { width, height, marginTop, marginRight, marginBottom, marginLeft },
+              //   { isContainer, hasNoChildren, marginTop, marginRight, marginBottom, marginLeft },
               //   '\nGETS\n',
               //   properties,
               // );

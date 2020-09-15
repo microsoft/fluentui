@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/styling_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/styling_v7.15.2",
       "version": "7.15.2",

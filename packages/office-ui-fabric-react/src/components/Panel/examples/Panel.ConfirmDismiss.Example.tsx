@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 const explanation = 'When this panel is closed, a confirmation dialog will appear.';
 const dialogContentProps = {
@@ -18,20 +17,20 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
   const [isPanelOpen, setIsPanelOpen] = React.useState(false);
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
-  const openPanel = useConstCallback(() => setIsPanelOpen(true));
-  const onDismiss = useConstCallback((ev?: React.SyntheticEvent) => {
+  const openPanel = React.useCallback(() => setIsPanelOpen(true), []);
+  const onDismiss = React.useCallback((ev?: React.SyntheticEvent) => {
     if (ev) {
       // Instead of closing the panel immediately, cancel that action and show a dialog
       ev.preventDefault();
       setIsDialogVisible(true);
     }
-  });
+  }, []);
 
-  const hideDialog = useConstCallback(() => setIsDialogVisible(false));
-  const hideDialogAndPanel = useConstCallback(() => {
+  const hideDialog = React.useCallback(() => setIsDialogVisible(false), []);
+  const hideDialogAndPanel = React.useCallback(() => {
     setIsPanelOpen(false);
     setIsDialogVisible(false);
-  });
+  }, []);
 
   return (
     <div>
