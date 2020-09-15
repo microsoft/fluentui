@@ -3,6 +3,7 @@ import * as React from 'react';
 import { makeClasses } from './makeClasses';
 import { safeMount } from '@uifabric/test-utilities';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
+import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
 
 describe('makeClasses', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -10,12 +11,20 @@ describe('makeClasses', () => {
   let lastState: any;
   let useClassesHook: any;
 
-  const TestComponent = (props: any) => {
+  const TestComponentInner = (props: any) => {
     lastState = { ...props };
 
     useClassesHook(lastState);
 
     return null;
+  };
+
+  const TestComponent = (props: any) => {
+    return (
+      <MergeStylesProvider>
+        <TestComponentInner {...props} />
+      </MergeStylesProvider>
+    );
   };
 
   beforeEach(() => {

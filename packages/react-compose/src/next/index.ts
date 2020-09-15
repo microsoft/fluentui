@@ -1,5 +1,5 @@
 export * from './types';
 export * from './getSlots';
-export * from './mergeProps';
+export * from './makeMergeProps';
 export * from './resolveShorthandProps';
 export * from './makeClasses';
