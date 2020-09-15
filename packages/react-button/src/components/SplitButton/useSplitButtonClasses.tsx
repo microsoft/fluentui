@@ -39,22 +39,18 @@ export const useSplitButtonClasses = makeClasses({
     '--button-minHeight': 'var(--button-size-smaller)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_small: {
     '--button-minHeight': 'var(--button-size-small)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_large: {
     '--button-minHeight': 'var(--button-size-large)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_larger: {
     '--button-minHeight': 'var(--button-size-larger)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_largest: {
     '--button-minHeight': 'var(--button-size-largest)',
   },

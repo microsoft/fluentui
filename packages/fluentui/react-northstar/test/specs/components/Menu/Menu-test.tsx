@@ -12,7 +12,7 @@ import { SpacebarKey } from '@fluentui/keyboard-key';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, { testPath: __filename, constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [

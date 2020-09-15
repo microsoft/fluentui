@@ -32,10 +32,10 @@ const macKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
 const treeKeyDown = isMac ? macKeyDown : undefined;
 
 const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
-  { content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
-  { content: 'Add before', onClick: () => handleAddComponent(uuid, 'before') },
-  { content: 'Add child', onClick: () => handleAddComponent(uuid, 'child') },
-  { content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
+  { key: 'add after', content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
+  { key: 'add before', content: 'Add before', onClick: () => handleAddComponent(uuid, 'before') },
+  { key: 'add child', content: 'Add child', onClick: () => handleAddComponent(uuid, 'child') },
+  { key: 'remove', content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
 ];
 
 const jsonTreeToTreeItems: (
@@ -47,7 +47,6 @@ const jsonTreeToTreeItems: (
   handleDeleteSelected: React.MouseEventHandler<HTMLButtonElement>,
   handleAddComponent: (uuid, where) => void,
   handleDeleteComponent: (uuid) => void,
-  titleRenderer: (Component, { content, expanded, hasSubtree, ...rest }) => React.ReactFragment,
 ) => TreeItemProps = (
   tree,
   selectedComponentId,
@@ -57,7 +56,6 @@ const jsonTreeToTreeItems: (
   handleDeleteSelected,
   handleAddComponent,
   handleDeleteComponent,
-  titleRenderer,
 ) => {
   if (typeof tree === 'string') {
     return {
@@ -72,15 +70,15 @@ const jsonTreeToTreeItems: (
       <MenuButton
         contextMenu
         trigger={<C {...p} />}
+        key={`context menu ${tree.uuid}`}
         menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
       />
     ),
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
-      children: titleRenderer,
       content: tree.displayName,
-      styles: {
+      style: {
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
@@ -88,7 +86,6 @@ const jsonTreeToTreeItems: (
         ...(selectedComponentId === tree.uuid && {
           background: '#ffc65c',
           color: '#444',
-          borderBottomLeftRadius: '0.5rem',
         }),
       },
     },
@@ -96,17 +93,11 @@ const jsonTreeToTreeItems: (
       renderItemTitle: (C, { content, ...props }) => {
         return (
           <C {...props}>
+            <span style={{ flex: 1 }}>{content}</span>
             <>
-              {props['level'] === 1 ? (
-                <span style={{ flex: 1 }}>{content}</span>
-              ) : (
-                <span style={{ flex: 1, marginLeft: '1rem' }}>{content}</span>
-              )}
-              <>
-                <MoveDebugButton onClick={handleMove} />
-                <CloneDebugButton onClick={handleClone} />
-                <TrashDebugButton onClick={handleDeleteSelected} />
-              </>
+              <MoveDebugButton onClick={handleMove} />
+              <CloneDebugButton onClick={handleClone} />
+              <TrashDebugButton onClick={handleDeleteSelected} />
             </>
           </C>
         );
@@ -122,7 +113,6 @@ const jsonTreeToTreeItems: (
         handleDeleteSelected,
         handleAddComponent,
         handleDeleteComponent,
-        titleRenderer,
       ),
     ),
   };
@@ -179,26 +169,6 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     }
   };
 
-  const titleRenderer = (Component, { content, expanded, hasSubtree, ...rest }) => {
-    return (
-      <>
-        {rest['level'] !== 1 ? (
-          <span
-            style={{
-              paddingRight: '1rem',
-              borderLeft: '1px solid #eee',
-              borderBottom: '1px solid #eee',
-              borderBottomLeftRadius: '0.5rem',
-            }}
-          />
-        ) : null}
-        <div {...rest} style={{ display: 'inline-block', cursor: 'pointer', padding: '2px 4px' }}>
-          {content}
-        </div>
-      </>
-    );
-  };
-
   const handleAddComponent = React.useCallback(
     (uuid, where) => {
       onAddComponent?.(uuid, where);
@@ -228,7 +198,6 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleDeleteSelected,
         handleAddComponent,
         handleDeleteComponent,
-        titleRenderer,
       ),
     ) ?? [];
   items.forEach(item => getActiveItemIds(item));
