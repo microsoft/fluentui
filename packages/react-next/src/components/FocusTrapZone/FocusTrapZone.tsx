@@ -41,7 +41,7 @@ const useComponentRef = (
   );
 };
 
-export const FocusTrapZone: React.ForwardRefExoticComponent<IFocusTrapZoneProps> & {
+export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   focusStack: string[];
 } = React.forwardRef<HTMLElement, IFocusTrapZoneProps>((props, ref) => {
   const root = React.useRef<HTMLDivElement>(null);
