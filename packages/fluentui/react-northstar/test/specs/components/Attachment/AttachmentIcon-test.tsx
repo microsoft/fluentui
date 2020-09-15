@@ -2,5 +2,5 @@ import { isConformant } from 'test/specs/commonTests';
 import { AttachmentIcon } from 'src/components/Attachment/AttachmentIcon';
 
 describe('AttachmentIcon', () => {
-  isConformant(AttachmentIcon, { constructorName: 'AttachmentIcon' });
+  isConformant(AttachmentIcon, { testPath: __filename, constructorName: 'AttachmentIcon' });
 });

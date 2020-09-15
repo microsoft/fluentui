@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.18.2..@fluentui/react-compose_v0.19.0)
+
+### Minor changes
+
+- Updated mergeProps to makeMergeProps, which can be configured with options. ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
 
 ## [0.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.2)
 
