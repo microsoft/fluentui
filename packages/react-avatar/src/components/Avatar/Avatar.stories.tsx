@@ -16,6 +16,64 @@ import {
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 
+const examplePeople = [
+  { name: 'Ade Q', image: 'images/avatar/ade.png' },
+  { name: 'Christain W', image: 'images/avatar/christian.png' },
+  { name: 'Daniel E', image: 'images/avatar/daniel.png' },
+  { name: 'Elliot R', image: 'images/avatar/elliot.png' },
+  { name: 'Elyse T', image: 'images/avatar/elyse.png' },
+  { name: 'Helen Y', image: 'images/avatar/helen.png' },
+  { name: 'Jenny U', image: 'images/avatar/jenny.png' },
+  { name: 'Joe I', image: 'images/avatar/joe.png' },
+  { name: 'Justen O', image: 'images/avatar/justen.png' },
+  { name: 'Kristy P', image: 'images/avatar/kristy.png' },
+  { name: 'Laura A', image: 'images/avatar/laura.png' },
+  { name: 'Matt S', image: 'images/avatar/matt.png' },
+  { name: 'Matthew D', image: 'images/avatar/matthew.png' },
+  { name: 'Molly F', image: 'images/avatar/molly.png' },
+  { name: 'Nan G', image: 'images/avatar/nan.png' },
+  { name: 'Patrick H', image: 'images/avatar/patrick.png' },
+  { name: 'Rachel J', image: 'images/avatar/rachel.png' },
+  { name: 'Steve K', image: 'images/avatar/steve.png' },
+  { name: 'Stevie L', image: 'images/avatar/stevie.png' },
+  { name: 'Tom Z', image: 'images/avatar/tom.png' },
+  { name: 'Veronika X', image: 'images/avatar/veronika.png' },
+  { name: 'Zoe C', image: 'images/avatar/zoe.png' },
+] as const;
+
+/** Values used for the example avatars */
+const examples = {
+  names: examplePeople.map(p => p.name),
+  images: examplePeople.map(p => p.image),
+  icons: [
+    /* eslint-disable react/jsx-key */
+    <GroupIcon />,
+    <CatIcon />,
+    <CalendarIcon />,
+    <RoomIcon />,
+    <IDBadgeIcon />,
+    <TelemarketerIcon />,
+    /* eslint-enable react/jsx-key */
+  ],
+  badges: [
+    'success',
+    'warning',
+    'error',
+    'info',
+    { state: 'success', icon: { as: SkypeCheckIcon } },
+    { state: 'warning', icon: { as: SkypeClockIcon } },
+    { state: 'error', icon: { as: SkypeMinusIcon } },
+    { state: 'info', icon: { as: SkypeArrowIcon } },
+  ],
+  display: ['label', 'image', 'icon'],
+  activeDisplay: ['ring', 'ringShadow', 'ringGlow', 'shadow', 'glow'],
+  customSize: [19, 23, 28, 34, 41, 49, 58, 68, 79, 91, 104, 118, 133, 149, 166, 184],
+} as const;
+
+const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
+const badgeToString = (badge: typeof examples.badges[number] | undefined): string =>
+  typeof badge === 'object' ? `{ state: '${badge.state}', icon: { as: ${badge.icon.as.displayName} } }` : `${badge}`;
+
 export const BasicExamples = () => {
   return (
     <>
@@ -55,95 +113,6 @@ export const BasicExamples = () => {
   );
 };
 
-/** Helper to get an array index, wrapping around to the start of the array if the index is out of bounds */
-const wrapIndex = <T,>(array: readonly T[], i: number) => array[(i + array.length) % array.length];
-
-/** Construct an array with a range of numbers */
-const range = (from: number, to: number, step: number = 1) =>
-  Array.from({ length: (to - from + step) / step }, (_, i) => i * step + from);
-
-// Generates a list of Avatars with sample properties
-const AvatarExampleList = (props: AvatarProps & { exampleIndex?: number }) => {
-  const { exampleIndex = 0 } = props;
-  const avatars = avatarSizeValues.map((size, i) => (
-    <div key={size} style={{ margin: `8px` }}>
-      <Avatar
-        size={size}
-        {...wrapIndex(examples.people, i + exampleIndex)}
-        badge={wrapIndex(examples.badges, i + exampleIndex)}
-        icon={wrapIndex(examples.icons, i + exampleIndex)}
-        {...props}
-      />
-    </div>
-  ));
-
-  return (
-    <div style={{ display: 'flex', margin: '0', flexWrap: 'wrap' }}>
-      <div style={{ display: 'flex' }}>{avatars.slice(0, 9)}</div>
-      <div style={{ display: 'flex' }}>{avatars.slice(9)}</div>
-    </div>
-  );
-};
-
-// Values used for the example avatars
-const examplePeople = [
-  { name: 'Ade Q', image: 'images/avatar/ade.png' },
-  { name: 'Christain W', image: 'images/avatar/christian.png' },
-  { name: 'Daniel E', image: 'images/avatar/daniel.png' },
-  { name: 'Elliot R', image: 'images/avatar/elliot.png' },
-  { name: 'Elyse T', image: 'images/avatar/elyse.png' },
-  { name: 'Helen Y', image: 'images/avatar/helen.png' },
-  { name: 'Jenny U', image: 'images/avatar/jenny.png' },
-  { name: 'Joe I', image: 'images/avatar/joe.png' },
-  { name: 'Justen O', image: 'images/avatar/justen.png' },
-  { name: 'Kristy P', image: 'images/avatar/kristy.png' },
-  { name: 'Laura A', image: 'images/avatar/laura.png' },
-  { name: 'Matt S', image: 'images/avatar/matt.png' },
-  { name: 'Matthew D', image: 'images/avatar/matthew.png' },
-  { name: 'Molly F', image: 'images/avatar/molly.png' },
-  { name: 'Nan G', image: 'images/avatar/nan.png' },
-  { name: 'Patrick H', image: 'images/avatar/patrick.png' },
-  { name: 'Rachel J', image: 'images/avatar/rachel.png' },
-  { name: 'Steve K', image: 'images/avatar/steve.png' },
-  { name: 'Stevie L', image: 'images/avatar/stevie.png' },
-  { name: 'Tom Z', image: 'images/avatar/tom.png' },
-  { name: 'Veronika X', image: 'images/avatar/veronika.png' },
-  { name: 'Zoe C', image: 'images/avatar/zoe.png' },
-] as const;
-
-const examples = {
-  people: examplePeople,
-  names: examplePeople.map(p => p.name),
-  images: examplePeople.map(p => p.image),
-  icons: [
-    /* eslint-disable react/jsx-key */
-    <GroupIcon />,
-    <CatIcon />,
-    <CalendarIcon />,
-    <RoomIcon />,
-    <IDBadgeIcon />,
-    <TelemarketerIcon />,
-    /* eslint-enable react/jsx-key */
-  ],
-  badges: [
-    'success',
-    'warning',
-    'error',
-    'info',
-    { state: 'success', icon: { as: SkypeCheckIcon } },
-    { state: 'warning', icon: { as: SkypeClockIcon } },
-    { state: 'error', icon: { as: SkypeMinusIcon } },
-    { state: 'info', icon: { as: SkypeArrowIcon } },
-  ],
-  display: ['label', 'image', 'icon'],
-  activeDisplay: ['ring', 'ringShadow', 'ringGlow', 'shadow', 'glow'],
-  customSize: range(15, 200, 4.25),
-} as const;
-
-const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
-const badgeToString = (badge: typeof examples.badges[number] | undefined): string =>
-  typeof badge === 'object' ? `{ state: '${badge.state}', icon: { as: ${badge.icon.as.displayName} } }` : `${badge}`;
-
 export const AllSizes = () => (
   <>
     <StoryExample title="Image">
@@ -158,15 +127,15 @@ export const AllSizes = () => (
       <AvatarExampleList display="icon" />
       <AvatarExampleList display="icon" square exampleIndex={avatarSizeValues.length} />
     </StoryExample>
+    <StoryExample title="Active">
+      <AvatarExampleList display="image" active={true} activeDisplay="ring" exampleIndex={39} />
+      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ringShadow" exampleIndex={52} />
+      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={78} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ringGlow" exampleIndex={91} />
+    </StoryExample>
     <StoryExample title="Inactive">
       <AvatarExampleList display="image" active={false} exampleIndex={26} />
-    </StoryExample>
-    <StoryExample title="Active">
-      <AvatarExampleList display="image" active={true} exampleIndex={39} />
-      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
-      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={52} />
-      <AvatarExampleList display="image" active={true} activeDisplay="ringShadow" exampleIndex={78} />
-      <AvatarExampleList display="image" active={true} activeDisplay="ringGlow" exampleIndex={91} />
     </StoryExample>
   </>
 );
@@ -195,34 +164,6 @@ export const CustomShape = () => {
   );
 };
 
-const useValueSelector = <Prop extends keyof AvatarProps>(
-  name: Prop,
-  values: readonly AvatarProps[Prop][],
-  initialValue?: AvatarProps[Prop],
-  valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
-) => {
-  const [value, setValue] = React.useState(initialValue === undefined ? values[0] : initialValue);
-  const [enabled, setEnabled] = React.useState(initialValue !== undefined);
-  const next = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) + 1)), [values]);
-  const prev = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) - 1)), [values]);
-  const toggleEnabled = React.useCallback(() => setEnabled(e => !e), []);
-  return {
-    assignValue: (props: AvatarProps) => enabled && (props[name] = value),
-    renderSelector: () => (
-      <div style={{ opacity: !enabled ? '50%' : undefined }}>
-        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
-        <button onClick={enabled ? next : toggleEnabled}>&gt;</button>
-        <input id={`prop_${name}`} type="checkbox" onChange={toggleEnabled} checked={enabled} />
-        <label htmlFor={`prop_${name}`}>{`${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
-      </div>
-    ),
-    renderValue: () => {
-      const quotes = typeof value === 'string' ? '""' : '{}';
-      return enabled && <span>{`${name}=${quotes[0]}${valueToString(value)}${quotes[1]}`}</span>;
-    },
-  };
-};
-
 export const AvatarPlayground = () => {
   const propSelectors = [
     useValueSelector('size', avatarSizeValues, 96),
@@ -237,23 +178,13 @@ export const AvatarPlayground = () => {
     useValueSelector('activeDisplay', examples.activeDisplay),
   ];
 
-  const propValues = propSelectors.reduce((props, { assignValue }) => {
-    assignValue(props);
-    return props;
-  }, {} as AvatarProps);
+  // Build an AvatarProps object with the selected property values
+  const propValues: AvatarProps = {};
+  propSelectors.forEach(({ assignValue }) => assignValue(propValues));
 
   return (
     <div style={{ display: 'flex' }}>
-      <div
-        style={{
-          margin: '20px',
-          width: '200px',
-          height: '200px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+      <div style={{ width: '225px', height: '225px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
@@ -266,4 +197,73 @@ export const AvatarPlayground = () => {
       </div>
     </div>
   );
+};
+
+/**
+ * Helpers
+ */
+
+/** Get an array index, wrapping around to the start of the array if the index is out of bounds */
+const wrapIndex = <T,>(array: readonly T[], i: number) => array[(i + array.length) % array.length];
+
+/**
+ * Generate a list of Avatars with sample properties
+ */
+const AvatarExampleList = (props: AvatarProps & { exampleIndex?: number }) => {
+  const { exampleIndex = 0 } = props;
+  const avatars = avatarSizeValues.map((size, i) => (
+    <div key={size} style={{ margin: `10px` }}>
+      <Avatar
+        size={size}
+        name={wrapIndex(examples.names, i + exampleIndex)}
+        image={wrapIndex(examples.images, i + exampleIndex)}
+        badge={wrapIndex(examples.badges, i + exampleIndex)}
+        icon={wrapIndex(examples.icons, i + exampleIndex)}
+        {...props}
+      />
+    </div>
+  ));
+
+  return (
+    <div style={{ display: 'flex', margin: '0', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex' }}>{avatars.slice(0, 9)}</div>
+      <div style={{ display: 'flex' }}>{avatars.slice(9)}</div>
+    </div>
+  );
+};
+
+/**
+ * Create a selector UI for a property value, allowing the user to toggle among the available property values
+ */
+const useValueSelector = <Prop extends keyof AvatarProps>(
+  name: Prop,
+  values: readonly AvatarProps[Prop][],
+  initialValue?: AvatarProps[Prop],
+  valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
+) => {
+  const [value, setValue] = React.useState(initialValue === undefined ? values[0] : initialValue);
+  const [enabled, setEnabled] = React.useState(initialValue !== undefined);
+  const next = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) + 1)), [values]);
+  const prev = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) - 1)), [values]);
+  const toggleEnabled = React.useCallback(() => setEnabled(e => !e), []);
+  return {
+    /** Assign this property's value to the given props object, if the property is set */
+    assignValue: (props: AvatarProps) => enabled && (props[name] = value),
+
+    /** Render the UI to select the property value */
+    renderSelector: () => (
+      <div style={{ opacity: !enabled ? '50%' : undefined }}>
+        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
+        <button onClick={enabled ? next : toggleEnabled}>&gt;</button>
+        <input id={`prop_${name}`} type="checkbox" onChange={toggleEnabled} checked={enabled} />
+        <label htmlFor={`prop_${name}`}>{`${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
+      </div>
+    ),
+
+    /** Render a span with propName="propValue" inside, if the property is set */
+    renderValue: () => {
+      const quotes = typeof value === 'string' ? '""' : '{}';
+      return enabled && <span>{`${name}=${quotes[0]}${valueToString(value)}${quotes[1]}`}</span>;
+    },
+  };
 };
