@@ -32,10 +32,10 @@ const macKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
 const treeKeyDown = isMac ? macKeyDown : undefined;
 
 const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
-  { content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
-  { content: 'Add before', onClick: () => handleAddComponent(uuid, 'before') },
-  { content: 'Add child', onClick: () => handleAddComponent(uuid, 'child') },
-  { content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
+  { key: 'add after', content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
+  { key: 'add before', content: 'Add before', onClick: () => handleAddComponent(uuid, 'before') },
+  { key: 'add child', content: 'Add child', onClick: () => handleAddComponent(uuid, 'child') },
+  { key: 'remove', content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
 ];
 
 const jsonTreeToTreeItems: (
@@ -72,6 +72,7 @@ const jsonTreeToTreeItems: (
       <MenuButton
         contextMenu
         trigger={<C {...p} />}
+        key={`context menu ${tree.uuid}`}
         menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
       />
     ),
@@ -80,7 +81,7 @@ const jsonTreeToTreeItems: (
     title: {
       children: titleRenderer,
       content: tree.displayName,
-      styles: {
+      style: {
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
@@ -179,7 +180,20 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     }
   };
 
-  const titleRenderer = (Component, { content, expanded, hasSubtree, ...rest }) => {
+  const titleRenderer = (
+    Component,
+    {
+      content,
+      expanded,
+      hasSubtree,
+      treeSize,
+      selectable,
+      selectableParent,
+      selectionIndicator,
+      accessibility,
+      ...rest
+    },
+  ) => {
     return (
       <>
         {rest['level'] !== 1 ? (
