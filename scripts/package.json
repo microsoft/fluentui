@@ -134,7 +134,6 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.2.1",
     "through2": "^2.0.3",
-    "tmp": "^0.0.33",
     "ts-jest": "24.0.1",
     "ts-loader": "^4.1.0",
     "ts-node": "^7.0.0",
