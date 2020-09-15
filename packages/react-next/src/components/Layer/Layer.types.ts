@@ -10,7 +10,7 @@ export interface ILayer {}
 /**
  * {@docCategory Layer}
  */
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
