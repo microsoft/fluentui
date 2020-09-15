@@ -28,7 +28,10 @@ const getAnnouncementPriority = (messageBarType: MessageBarType): 'assertive' | 
   return 'polite';
 };
 
-export const MessageBarBase = React.forwardRef<HTMLDivElement, IMessageBarProps>((props, ref) => {
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.forwardRef<
+  HTMLDivElement,
+  IMessageBarProps
+>((props, ref) => {
   const [expandSingleLine, { toggle: toggleExpandSingleLine }] = useBoolean(false);
   const labelId = useId('MessageBar');
 
