@@ -1,0 +1,37 @@
+{
+  "name": "@fluentui/dom-utilities",
+  "version": "1.0.0",
+  "description": "DOM utilities for use within Fluent web components",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "clean": "just-scripts clean",
+    "start-test": "just-scripts jest-watch",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "start": "just-scripts dev:storybook",
+    "update-api": "just-scripts update-api"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@types/jest": "~24.9.0",
+    "@uifabric/build": "^7.0.0"
+  },
+  "dependencies": {
+    "@uifabric/set-version": "^7.0.22",
+    "tslib": "^1.10.0"
+  }
+}

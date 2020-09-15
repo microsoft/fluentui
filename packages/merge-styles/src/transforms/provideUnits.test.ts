@@ -11,6 +11,14 @@ describe('provideUnits', () => {
     });
   });
 
+  it('ignores css variables', () => {
+    const testSet: (string | number)[] = ['--button-fontWeight', 600];
+
+    provideUnits(testSet, 0);
+
+    expect(testSet).toEqual(['--button-fontWeight', '600']);
+  });
+
   it('can provide units for directional props', () => {
     ['padding', 'margin', 'border'].forEach((property: string) => {
       const testSet: (string | number)[] = [
