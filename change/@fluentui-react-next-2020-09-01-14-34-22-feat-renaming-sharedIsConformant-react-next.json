@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Renaming sharedIsConformant to isConformant.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",

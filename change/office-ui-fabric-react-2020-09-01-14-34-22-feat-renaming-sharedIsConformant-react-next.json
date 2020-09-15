@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Renaming sharedIsConformant to isConformant.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",

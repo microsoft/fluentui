@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adding isConformant files to testFiles array.",
+  "comment": "Adding isConformant files to list of test files.",
   "packageName": "@fluentui/eslint-plugin",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",

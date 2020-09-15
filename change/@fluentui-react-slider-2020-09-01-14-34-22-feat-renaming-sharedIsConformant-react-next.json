@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Renaming sharedIsConformant to isConformant.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
