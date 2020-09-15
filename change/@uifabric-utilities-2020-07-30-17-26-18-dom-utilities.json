@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Consume virtual DOM functions from new location",
+  "packageName": "@uifabric/utilities",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-31T00:26:18.039Z"
+}
