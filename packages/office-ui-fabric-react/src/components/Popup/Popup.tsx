@@ -69,7 +69,11 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     // eslint-disable-next-line deprecation/deprecation
     if (this.props.shouldRestoreFocus) {
       const { onRestoreFocus = defaultFocusRestorer } = this.props;
-      onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
+      onRestoreFocus({
+        originalElement: this._originalFocusedElement,
+        containsFocus: this._containsFocus,
+        documentContainsFocus: getDocument()?.hasFocus() || false,
+      });
     }
     // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
     delete this._originalFocusedElement;
@@ -168,7 +172,11 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   };
 }
 
-function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) {
+function defaultFocusRestorer(options: {
+  originalElement?: HTMLElement | Window;
+  containsFocus: boolean;
+  documentContainsFocus: boolean;
+}) {
   const { originalElement, containsFocus } = options;
 
   if (originalElement && containsFocus && originalElement !== window) {
