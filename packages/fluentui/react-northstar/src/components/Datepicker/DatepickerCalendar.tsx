@@ -27,7 +27,6 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -87,7 +86,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
   setStart();
-  const datepickerCalendarRef = React.useRef<HTMLElement>();
 
   const {
     className,
@@ -331,59 +329,57 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   );
 
   const element = (
-    <Ref innerRef={datepickerCalendarRef}>
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          ...unhandledProps,
-        })}
-      >
-        {createShorthand(DatepickerCalendarHeader, header, {
-          defaultProps: () => ({
-            label: formatMonthYear(normalizedGridDate, dateFormatting),
-            'aria-label': formatMonthYear(normalizedGridDate, dateFormatting),
-            disabledNextButton: nextMonthOutOfBounds,
-            disabledPreviousButton: prevMonthOutOfBounds,
-            prevMonthAriaLabel: props.prevMonthAriaLabel,
-            nextMonthAriaLabel: props.nextMonthAriaLabel,
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {createShorthand(DatepickerCalendarHeader, header, {
+        defaultProps: () => ({
+          label: formatMonthYear(normalizedGridDate, dateFormatting),
+          'aria-label': formatMonthYear(normalizedGridDate, dateFormatting),
+          disabledNextButton: nextMonthOutOfBounds,
+          disabledPreviousButton: prevMonthOutOfBounds,
+          prevMonthAriaLabel: props.prevMonthAriaLabel,
+          nextMonthAriaLabel: props.nextMonthAriaLabel,
+        }),
+        overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
+          onPreviousClick: (e, data) => {
+            changeMonth(false);
+            _.invoke(predefinedProps, 'onPreviousClick', e, data);
+          },
+          onNextClick: (e, data) => {
+            changeMonth(true);
+            _.invoke(predefinedProps, 'onNextClick', e, data);
+          },
+        }),
+      })}
+      {createShorthand(DatepickerCalendarGrid, calendarGrid, {
+        defaultProps: () =>
+          getA11yProps('calendarGrid', {
+            content: (
+              <>
+                <thead>
+                  <tr key={0}>
+                    {_.times(DAYS_IN_WEEK, dayNumber =>
+                      createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
+                        defaultProps: () =>
+                          getA11yProps('calendarHeaderCell', {
+                            'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                            content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                            key: dayNumber,
+                          }),
+                      }),
+                    )}
+                  </tr>
+                </thead>
+                <tbody>{_.map(visibleGrid, (week, idx) => renderWeekRow(week, idx))}</tbody>
+              </>
+            ),
           }),
-          overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
-            onPreviousClick: (e, data) => {
-              changeMonth(false);
-              _.invoke(predefinedProps, 'onPreviousClick', e, data);
-            },
-            onNextClick: (e, data) => {
-              changeMonth(true);
-              _.invoke(predefinedProps, 'onNextClick', e, data);
-            },
-          }),
-        })}
-        {createShorthand(DatepickerCalendarGrid, calendarGrid, {
-          defaultProps: () =>
-            getA11yProps('calendarGrid', {
-              content: (
-                <>
-                  <thead>
-                    <tr key={0}>
-                      {_.times(DAYS_IN_WEEK, dayNumber =>
-                        createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
-                          defaultProps: () =>
-                            getA11yProps('calendarHeaderCell', {
-                              'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                              content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                              key: dayNumber,
-                            }),
-                        }),
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>{_.map(visibleGrid, (week, idx) => renderWeekRow(week, idx))}</tbody>
-                </>
-              ),
-            }),
-        })}
-      </ElementType>
-    </Ref>
+      })}
+    </ElementType>
   );
   setEnd();
   return element;

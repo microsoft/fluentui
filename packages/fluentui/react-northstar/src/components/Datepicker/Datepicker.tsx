@@ -19,7 +19,6 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -143,7 +142,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
-  const datepickerRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLElement>();
 
   const dateFormatting: ICalendarStrings = {
@@ -322,55 +320,51 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} />
   );
 
-  const element = (
-    <Ref innerRef={datepickerRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
-        <ElementType
-          {...getA11yProps('root', {
-            className: classes.root,
-            ...unhandledProps,
-          })}
-        >
-          {!props.buttonOnly &&
-            createShorthand(Input, input, {
-              defaultProps: () =>
-                getA11yProps('input', {
-                  placeholder: props.inputPlaceholder,
-                  disabled: props.disabled,
-                  error: !!error,
-                  value: formattedDate,
-                  readOnly: !allowManualInput,
-                  required: props.required,
-                  ref: inputRef,
-                  'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
-                }),
-              overrideProps: overrideInputProps,
-            })}
-          {createShorthand(Popup, popup, {
-            defaultProps: () => ({
-              open: openState && !props.disabled,
-              content: calendarElement,
-              trapFocus: {
-                disableFirstFocus: true,
-              },
-              trigger: triggerButtonElement,
-              target: !props.buttonOnly ? inputRef.current : null,
-              position: 'below' as const,
-              align: 'start' as const,
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {!props.buttonOnly &&
+        createShorthand(Input, input, {
+          defaultProps: () =>
+            getA11yProps('input', {
+              placeholder: props.inputPlaceholder,
+              disabled: props.disabled,
+              error: !!error,
+              value: formattedDate,
+              readOnly: !allowManualInput,
+              required: props.required,
+              ref: inputRef,
+              'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
             }),
-            overrideProps: (predefinedProps: PopupProps): PopupProps => ({
-              onOpenChange: (e, { open }) => {
-                // In case the event is a click on input, we ignore such events as it should be directly handled by input.
-                if (!(e.type === 'click' && e.target === inputRef?.current)) {
-                  setOpenState(open);
-                  _.invoke(predefinedProps, 'onOpenChange', e, { open });
-                }
-              },
-            }),
-          })}
-        </ElementType>,
-      )}
-    </Ref>
+          overrideProps: overrideInputProps,
+        })}
+      {createShorthand(Popup, popup, {
+        defaultProps: () => ({
+          open: openState && !props.disabled,
+          content: calendarElement,
+          trapFocus: {
+            disableFirstFocus: true,
+          },
+          trigger: triggerButtonElement,
+          target: !props.buttonOnly ? inputRef.current : null,
+          position: 'below' as const,
+          align: 'start' as const,
+        }),
+        overrideProps: (predefinedProps: PopupProps): PopupProps => ({
+          onOpenChange: (e, { open }) => {
+            // In case the event is a click on input, we ignore such events as it should be directly handled by input.
+            if (!(e.type === 'click' && e.target === inputRef?.current)) {
+              setOpenState(open);
+              _.invoke(predefinedProps, 'onOpenChange', e, { open });
+            }
+          },
+        }),
+      })}
+    </ElementType>,
   );
   setEnd();
   return element;
