@@ -1,6 +1,8 @@
 /**
  * The Webpack Context for doc examples.
  */
+//                          It's required for a hot reload
+// eslint-disable-next-line import/no-mutable-exports
 export let examplesContext = require.context('../examples/', true, /(\w+Example(\w|\.)*|\w+.perf|\w+.bsize)\.tsx$/);
 
 // ----------------------------------------
