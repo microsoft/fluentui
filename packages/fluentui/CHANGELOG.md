@@ -81,6 +81,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Removed console errors in UI builder @vyhnalekl ([#14858](https://github.com/microsoft/fluentui/pull/14858))
 - Fixed dragging selected component in canvas UI builder @vyhnalekl ([#14894](https://github.com/microsoft/fluentui/pull/14894))
 - Jaws bug - aria-selected and aria-checked are not output correctly for `Tree` @kolaps33 ([#14846](https://github.com/microsoft/fluentui/pull/14846))
+- Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->

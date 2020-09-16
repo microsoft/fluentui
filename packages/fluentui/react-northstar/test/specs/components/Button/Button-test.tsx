@@ -13,6 +13,7 @@ import { Button } from 'src/components/Button/Button';
 
 describe('Button', () => {
   isConformant(Button, {
+    testPath: __filename,
     constructorName: 'Button',
   });
 

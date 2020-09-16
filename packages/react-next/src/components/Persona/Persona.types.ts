@@ -12,7 +12,7 @@ export interface IPersona {}
 /**
  * {@docCategory Persona}
  */
-export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
    */

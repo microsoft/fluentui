@@ -52,6 +52,11 @@ export interface ILegendsStyles {
   overflowIndicationTextStyle: IStyle;
 
   /**
+   * Style for the overflow container
+   */
+  hoverCardRoot: IStyle;
+
+  /**
    * sub component styles
    */
   subComponentStyles: ILegendSubComponentStyles;

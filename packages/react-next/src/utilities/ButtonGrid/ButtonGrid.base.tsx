@@ -6,7 +6,10 @@ import { useId } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 
-export const ButtonGridBase = React.forwardRef<HTMLElement, IButtonGridProps>((props, ref) => {
+export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.forwardRef<
+  HTMLElement,
+  IButtonGridProps
+>((props, forwardedRef) => {
   const id = useId(undefined, props.id);
 
   const {
@@ -65,7 +68,7 @@ export const ButtonGridBase = React.forwardRef<HTMLElement, IButtonGridProps>((p
     content
   ) : (
     <FocusZone
-      elementRef={ref}
+      elementRef={forwardedRef}
       isCircularNavigation={props.shouldFocusCircularNavigate}
       className={classNames.focusedContainer}
       onBlur={props.onBlur}
