@@ -105,13 +105,6 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     onChange,
   );
 
-  // const [spinButtonValue, setSpinButtonValue] = React.useState(value);
-
-  // useControllableValue(
-  //   value,
-  //   defaultValue !== undefined ? defaultValue : String(min || '0'),
-  // );
-
   let { value: initialValue = defaultValue } = props;
 
   if (initialValue === undefined) {
