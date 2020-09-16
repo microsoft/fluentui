@@ -23,6 +23,16 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
    * implementation.
    */
   renderer?: StyleRenderer;
+
+  /**
+   * Defines where body-related theme is applied to.
+   * Setting to 'element' will apply body styles to the root element of ThemeProvider.
+   * Setting to 'body' will apply body styles to document body.
+   * Setting to 'none' will not apply body styles to either element or body.
+   *
+   * @default 'none';
+   */
+  applyTo?: 'none' | 'element' | 'body';
 }
 
 /**

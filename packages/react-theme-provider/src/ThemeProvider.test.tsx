@@ -82,4 +82,39 @@ describe('ThemeProvider', () => {
     const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
     expect(resolvedTheme).toEqual(expectedTheme);
   });
+
+  it('can apply body theme to root element', () => {
+    expect(document.body.className).toBe('');
+    const component = renderer.create(
+      <ThemeProvider className="foo" theme={darkTheme} applyTo="element">
+        app
+      </ThemeProvider>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    expect(document.body.className).toBe('');
+  });
+
+  it('can apply body theme to body', () => {
+    expect(document.body.className).toBe('');
+    const testClass = 'foo';
+    const TestComponent = (
+      <ThemeProvider className={testClass} theme={darkTheme} applyTo="body">
+        app
+      </ThemeProvider>
+    );
+
+    const wrapper = mount(TestComponent);
+    const rootClass = wrapper.find('div').prop('className');
+    expect(rootClass).toBe(`${testClass} ${document.body.className}`);
+
+    wrapper.unmount();
+
+    expect(document.body.className).toBe('');
+
+    const component = renderer.create(TestComponent);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

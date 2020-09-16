@@ -40,7 +40,7 @@ export const NestedTheming = () => {
   const [isLight, setIsLight] = React.useState(true);
 
   return (
-    <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
+    <ThemeProvider className="root" applyTo="body" theme={isLight ? lightTheme : darkTheme}>
       <button onClick={() => setIsLight(l => !l)}>Toggle theme</button>
       <div>I am {isLight ? 'light theme' : 'dark theme'}</div>
       <ThemeProvider theme={isLight ? darkTheme : lightTheme}>

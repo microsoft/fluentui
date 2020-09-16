@@ -12,9 +12,19 @@ export const createDefaultTheme = (): Theme => {
   return defaultTheme;
 };
 
+// TODO: use default fonts from `theme` package.
+const defaultFonts = {
+  // eslint-disable-next-line @fluentui/max-len
+  fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
+  fontSize: '14px',
+  fontWeight: 400,
+  MozOsxFontSmoothing: 'grayscale',
+  WebkitFontSmoothing: 'antialiased',
+};
+
 export const defaultTokens: Tokens = {
   color: {
-    body: { background: '#ffffff', contentColor: '#323130' },
+    body: { background: '#ffffff', contentColor: '#323130', ...defaultFonts },
 
     brand: {
       background: '#0078d4',
@@ -129,6 +139,7 @@ export const defaultTokens: Tokens = {
       larger: '48px',
       largest: '64px',
     },
+    ...defaultFonts,
     paddingLeft: '20px',
     paddingRight: '20px',
     paddingTop: '0',
@@ -139,10 +150,6 @@ export const defaultTokens: Tokens = {
     iconSize: '16px',
     borderRadius: '2px',
     borderWidth: '1px',
-    // eslint-disable-next-line @fluentui/max-len
-    fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
-    fontSize: '14px',
-    fontWeight: 400,
     focusColor: '#605e5c',
     focusInnerColor: '#ffffff',
     focusWidth: '2px',
