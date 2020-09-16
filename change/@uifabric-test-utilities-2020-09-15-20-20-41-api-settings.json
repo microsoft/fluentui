@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Delete API report which isn't being updated",
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-16T03:20:41.581Z"
+}
