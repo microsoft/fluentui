@@ -8,12 +8,12 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * Adds role='grid'.
  */
 export const datepickerCalendarGridBehavior: Accessibility<DatepickerCalendarGridBehaviorProps> = props => ({
-  focusZone: {
-    attributes: {
-      root: {
-        role: 'grid',
-      },
+  attributes: {
+    root: {
+      role: 'grid',
     },
+  },
+  focusZone: {
     props: {
       direction: FocusZoneDirection.bidirectional,
       pagingSupportDisabled: true,
