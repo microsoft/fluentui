@@ -9,7 +9,7 @@ import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { sharedIsConformant } from '../../common/sharedIsConformant';
+import { isConformant } from '../../common/isConformant';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
@@ -25,7 +25,7 @@ describe('Slider', () => {
     }
   });
 
-  sharedIsConformant({
+  isConformant({
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',

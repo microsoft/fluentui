@@ -19,7 +19,7 @@ const buttons = [
 ];
 
 describe('ButtonGroup', () => {
-  isConformant(ButtonGroup, { constructorName: 'ButtonGroup' });
+  isConformant(ButtonGroup, { testPath: __filename, constructorName: 'ButtonGroup' });
   buttonGroupImplementsCollectionShorthandProp('buttons', Button);
 });
 

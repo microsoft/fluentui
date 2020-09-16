@@ -59,7 +59,6 @@
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
-    "test:fluentui:visual": "gulp screener",
     "test:fluentui:projects": "yarn workspace @fluentui/projects-test test",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "lerna run update-snapshots --stream",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.1",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",

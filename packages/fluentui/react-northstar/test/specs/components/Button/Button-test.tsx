@@ -18,6 +18,7 @@ import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 
 describe('Button', () => {
   isConformant(Button, {
+    testPath: __filename,
     constructorName: 'Button',
   });
 

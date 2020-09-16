@@ -4,6 +4,7 @@
 
 ```ts
 
+import { IComponentAs } from '@uifabric/utilities';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
@@ -22,8 +23,9 @@ export interface IToggleOptions {
 }
 
 // @public
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -76,10 +78,10 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
+export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.ForwardRefExoticComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
+export const ToggleBase: React.FunctionComponent<IToggleProps>;
 
 
 // (No @packageDocumentation comment for this package)

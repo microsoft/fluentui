@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support passing different renderer and default to use merge-styles",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-26T19:10:14.436Z"
-}
