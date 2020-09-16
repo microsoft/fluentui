@@ -601,11 +601,12 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
     }
   }
 
-  tree.props?.children?.forEach(item => {
-    if (typeof item !== 'string') {
-      imports = JSONTreeToImports(item, imports);
-    }
-  });
+  Array.isArray(tree.props?.children) &&
+    tree.props?.children?.forEach(item => {
+      if (typeof item !== 'string') {
+        imports = JSONTreeToImports(item, imports);
+      }
+    });
   return imports;
 };
 

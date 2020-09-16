@@ -104,12 +104,6 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       selectorRef.current.style.width = `${targetRect.width}px`;
       selectorRef.current.style.height = `${targetRect.height}px`;
 
-      if (!isValidDrop(jsonTreeElement)) {
-        selectorRef.current.style.background = 'rgba(255, 0, 0, 0.4)';
-      } else {
-        selectorRef.current.style.background = 'transparent';
-      }
-
       const inElementPosition = getInElementPosition(
         {
           top: targetRect.top,
@@ -120,8 +114,14 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         { x: e.x, y: e.y },
       );
 
+      selectorRef.current.style.background = 'transparent';
+
       if (inElementPosition === 'center' || jsonTreeElement.uuid === 'builder-root') {
+        if (!isValidDrop(jsonTreeElement)) {
+          selectorRef.current.style.background = 'rgba(255, 0, 0, 0.4)';
+        }
         selectorRef.current.style[`boxShadow`] = 'none';
+
         // We're inside an element so we care about where we drop among it's children here
         if (jsonTreeElement.props?.children?.length > 0) {
           // Drop inside parent WITH children

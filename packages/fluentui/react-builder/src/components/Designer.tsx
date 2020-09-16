@@ -72,6 +72,7 @@ type DesignerState = {
   codeError: string | null;
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
+  isComponentMoved: boolean;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
   droppingElement: { element: JSONTreeElement; parent: JSONTreeElement };
 };
@@ -109,6 +110,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       draftState.redo = [];
 
       draftState.draggingElement = action.component;
+      draftState.isComponentMoved = false;
       break;
 
     case 'DRAG_ABORT':
@@ -151,6 +153,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
       );
+      draftState.isComponentMoved = false;
       break;
 
     case 'DRAG_MOVE':
@@ -163,10 +166,16 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       );
       jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
       treeChanged = true;
+      draftState.isComponentMoved = true;
       break;
 
     case 'PROP_SELECT_CANCEL':
       draftState.droppingElement = null;
+      if (draftState.isComponentMoved) {
+        if (draftState.history.length > 0) {
+          draftState.jsonTree = draftState.history.pop();
+        }
+      }
       break;
 
     case 'PROP_SELECT_CONFIRM':
@@ -382,6 +391,7 @@ export const Designer: React.FunctionComponent = () => {
       codeError: null,
       history: [],
       redo: [],
+      isComponentMoved: false,
       insertComponent: null,
       droppingElement: null,
     };

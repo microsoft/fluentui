@@ -1,23 +1,28 @@
 import * as React from 'react';
 import { Dialog, Flex, RadioGroup, Divider, Text, Input } from '@fluentui/react-northstar';
 
+const VALID_PROPS = ['items', 'fields', 'content', 'label', 'header', 'description'];
+
 export const PropSelector: React.FunctionComponent<{ components: any; onConfirm: any; onCancel: () => void }> = ({
   components,
   onConfirm,
   onCancel,
 }) => {
-  const propItems = components.parent.props
-    ? Object.keys(components.parent.props).map(prop => {
-        return { name: 'prop', key: prop, label: prop, value: prop };
-      })
-    : [
-        {
-          name: 'prop',
-          key: 'children',
-          label: 'Children',
-          value: 'children',
-        },
-      ];
+  const propItems = [
+    {
+      name: 'prop',
+      key: 'children',
+      label: 'children',
+      value: 'children',
+    },
+    ...(components.parent.props &&
+      Object.keys(components.parent.props)
+        .filter(prop => VALID_PROPS.includes(prop))
+        .map(prop => {
+          return { name: 'prop', key: prop, label: prop, value: prop };
+        })),
+  ];
+
   const optionsItems = [
     {
       name: 'options',
@@ -32,7 +37,7 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
       value: 'replace',
     },
   ];
-  const [selectedProp, setSelectedProp] = React.useState('');
+  const [selectedProp, setSelectedProp] = React.useState('children');
   const handlePropChange = (_, props) => {
     setSelectedProp(props.value);
   };
@@ -70,7 +75,7 @@ export const PropSelector: React.FunctionComponent<{ components: any; onConfirm:
               />
             </Flex>
             <Divider vertical />
-            {Array.isArray(components.parent.props[selectedProp]) && (
+            {(Array.isArray(components.parent.props[selectedProp]) || selectedProp === 'children') && (
               <>
                 <Flex fill column>
                   <Text content="Select the operation" />
