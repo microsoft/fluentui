@@ -9,7 +9,7 @@ export const useThemeProviderClasses = makeClasses(theme => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       tokensToStyleObject(tokens) as any,
       {
-        color: 'var(--body-contentColor)',
+        color: 'var(--color-body-contentColor)',
         fontFamily: 'var(--body-fontFamily)',
         fontWeight: 'var(--body-fontWeight)',
         fontSize: 'var(--body-fontSize)',
