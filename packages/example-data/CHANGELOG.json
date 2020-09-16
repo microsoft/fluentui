@@ -2,6 +2,21 @@
   "name": "@uifabric/example-data",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/example-data_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/example-data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Sep 2020 12:22:12 GMT",
       "tag": "@uifabric/example-data_v7.1.3",
       "version": "7.1.3",

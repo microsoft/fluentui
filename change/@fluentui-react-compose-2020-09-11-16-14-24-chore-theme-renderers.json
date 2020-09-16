@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updated mergeProps to makeMergeProps, which can be configured with options.",
-  "packageName": "@fluentui/react-compose",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-11T23:14:24.562Z"
-}

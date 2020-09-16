@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.1)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.54.0..@fluentui/eslint-plugin_v0.54.1)
+
+### Patches
+
+- Adding isConformant files to list of test files. ([PR #14853](https://github.com/microsoft/fluentui/pull/14853) by czearing@outlook.com)
 
 ## [0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.0)
 

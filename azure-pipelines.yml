@@ -115,14 +115,15 @@ jobs:
       - script: yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
 
-      - task: AzureUpload@1
+      - task: AzureUpload@2
         displayName: Upload N* doc site
         inputs:
-          SourcePath: 'packages/fluentui/docs/dist'
           azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-          storage: fabricweb
-          ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/react-northstar'
+          CacheControl: 'public, max-age=600000'
+          ContainerName: '$web'
+          SourcePath: 'packages/fluentui/docs/dist'
+          storage: fabricweb
 
       - script: yarn workspace @fluentui/docs vr:test
         displayName: start FUI N* VR Test

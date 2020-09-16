@@ -345,6 +345,7 @@ export const Designer: React.FunctionComponent = () => {
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [axeErrors, setAxeErrors] = React.useState([]);
+  const [headerMessage, setHeaderMessage] = React.useState('');
 
   const runAxeOnElement = React.useCallback(selectedElementUuid => {
     const iframe = document.getElementsByTagName('iframe')[0];
@@ -738,6 +739,7 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
+                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{headerMessage}</Text>}</div>,
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
@@ -801,6 +803,8 @@ export const Designer: React.FunctionComponent = () => {
                   onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
                   role="main"
+                  inUseMode={mode === 'use'}
+                  setHeaderMessage={setHeaderMessage}
                 />
               </ErrorBoundary>
             </BrowserWindow>
