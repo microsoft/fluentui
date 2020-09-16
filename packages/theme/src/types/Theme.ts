@@ -67,7 +67,9 @@ export type RecursivePartial<T> = {
 };
 
 export interface Tokens {
-  body: ColorTokenSet & TokenSetType;
+  color: {
+    body: ColorTokenSet & TokenSetType;
+  };
   [key: string]: TokenSetType;
 }
 
