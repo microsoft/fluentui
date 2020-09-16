@@ -1,8 +1,8 @@
 import { IEventsAnnotationProps } from '../components/LineChart/index';
-import { ILineChartPoints, ILineChartDataPoint } from '../types/index';
+import { ILineChartPoints, ILineChartDataPoint, IDataPoint } from '../types/index';
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -16,6 +16,12 @@ export enum ChartTypes {
   VerticalBarChart,
   VerticalStackedBarChart,
   GroupedVerticalBarChart,
+}
+
+export enum XAxisTypes {
+  NumericAxis,
+  DateAxis,
+  StringAxis,
 }
 
 export interface IWrapLabelProps {
@@ -153,6 +159,41 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
     d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text');
+  }
+  return xAxisScale;
+}
+
+/**
+ * Create String X axis
+ * Currently using for only Vetical stacked bar chart.
+ *
+ * @export
+ * @param {IXAxisParams} xAxisParams
+ * @param {ITickParams} tickParams
+ * @param {boolean} isRtl
+ * @param {IDataPoint[]} dataset
+ * @returns
+ */
+export function createStringXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  isRtl: boolean,
+  dataset: IDataPoint[],
+) {
+  const { domainNRangeValues } = xAxisParams;
+  const xAxisScale = d3ScaleBand()
+    .domain(dataset.map((point: IDataPoint) => point.x as string))
+    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
+    .padding(0.1);
+  const xAxis = d3AxisBottom(xAxisScale)
+    .tickSize(xAxisParams.tickSize || 10)
+    .tickPadding(xAxisParams.tickPadding || 10)
+    .tickFormat((x: string, index: number) => dataset[index].x as string);
+
+  if (xAxisParams.xAxisElement) {
+    d3Select(xAxisParams.xAxisElement)
       .call(xAxis)
       .selectAll('text');
   }
@@ -472,18 +513,78 @@ export function domainRangeOfNumericForAreaChart(
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
 }
 
+/**
+ * Calculates Range values to the Vertical stacked bar chart for string axis
+ * For String axis, we need to give domain values (Not start and end array values)
+ * So sending 0 as domain values. Domain will be handled at creation of string axis
+ *
+ * @export
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
+  const rMin = margins.left!;
+  const rMax = width - margins.right! - (isRTL ? additionalMarginRight : 0);
+
+  return isRTL
+    ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
+    : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
+}
+
+/**
+ * Calculate domain and range values to the Vertical stacked bar chart - For Numeric axis
+ *
+ * @export
+ * @param {IDataPoint[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {number} barWidth
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfVSBCNumeric(
+  points: IDataPoint[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  barWidth: number,
+): IDomainNRange {
+  const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
+  // barWidth / 2 - for to get tick middle of the bar
+  const rMax = margins.left! + barWidth / 2;
+  const rMin = width - margins.right! - barWidth / 2 - (isRTL ? additionalMarginRight : 0);
+  return isRTL
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };
+}
+
 export function getDomainNRangeValues(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   points: any,
   margins: IMargins,
   width: number,
   chartType: ChartTypes,
-  isXAxisDateType: boolean,
   isRTL: boolean,
+  xAxisType: XAxisTypes,
+  barWidth?: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
-
-  if (isXAxisDateType) {
+  if (xAxisType === XAxisTypes.NumericAxis) {
+    switch (chartType) {
+      case ChartTypes.AreaChart:
+      case ChartTypes.LineChart:
+        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+        break;
+      case ChartTypes.VerticalStackedBarChart:
+        domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+        break;
+      default:
+        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+  } else if (xAxisType === XAxisTypes.DateAxis) {
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
@@ -494,11 +595,9 @@ export function getDomainNRangeValues(
     }
   } else {
     switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      case ChartTypes.VerticalStackedBarChart:
+        domainNRangeValue = domainRangeOfStrForVSBC(margins, width, isRTL);
         break;
-
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -527,6 +626,13 @@ export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: 
   };
 }
 
+export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: number; endValue: number } {
+  const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
+  const yMin = d3Min(dataset, (point: IDataPoint) => point.y)!;
+
+  return { startValue: yMin, endValue: yMax };
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startValue: number; endValue: number } {
   let minMaxValues: { startValue: number; endValue: number };
@@ -536,7 +642,9 @@ export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startVal
     case ChartTypes.LineChart:
       minMaxValues = findNumericMinMaxOfY(points);
       break;
-
+    case ChartTypes.VerticalStackedBarChart:
+      minMaxValues = findVSBCNumericMinMaxOfY(points);
+      break;
     default:
       minMaxValues = { startValue: 0, endValue: 0 };
   }

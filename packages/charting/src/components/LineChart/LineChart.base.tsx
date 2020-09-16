@@ -3,11 +3,18 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from './LineChart.types';
+import {
+  CartesianChart,
+  IBasestate,
+  IChildProps,
+  ILineChartProps,
+  ILineChartPoints,
+  IMargins,
+  IRefArrayData,
+} from '@uifabric/charting';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, ChartTypes, getXAxisType } from '../../utilities/index';
-import { CartesianChart } from '../CommonComponents/CartesianChart';
+import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -100,6 +107,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      ...this.props.calloutProps,
     };
     const tickParams = {
       tickValues: tickValues,
@@ -111,13 +119,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         {...this.props}
         points={this._points}
         chartType={ChartTypes.LineChart}
-        isXAxisDateType={isXAxisDateType}
-        isMultiStackCallout
+        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
         getmargins={this._getMargins}
         getGraphData={this._getLinesData}
+        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
