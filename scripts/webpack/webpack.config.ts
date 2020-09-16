@@ -8,6 +8,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import config from '../config';
+import { ResourcePreloadWebpackPlugin } from './resourcePreloadWebpackPlugin';
 
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
@@ -97,6 +98,10 @@ const webpackConfig: webpack.Configuration = {
         fluentUI: require('../package.json').version,
         reactVis: require('react-vis/package.json').version,
       },
+    }),
+    new ResourcePreloadWebpackPlugin({
+      cwd: paths.docsSrc(),
+      glob: '**/*.{png,jpg,jpeg}',
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
