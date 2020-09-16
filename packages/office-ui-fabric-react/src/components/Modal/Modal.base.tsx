@@ -326,7 +326,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
   /**
    * Clamps the position coordinates to the maximum/minimum value specified in props
-   * @param position The position to be clamped
    */
   private _getClampedPosition(position: ICoordinates) {
     if (!this.props.dragOptions || !this.props.dragOptions.keepInBounds) {
