@@ -6,7 +6,6 @@ const GlobalClassNames = {
   menuButton: 'ms-SplitButton-menuButton',
 };
 
-// TODO: move this to a token.
 const menuButtonWidth = '32px';
 
 export const useSplitButtonClasses = makeClasses({
