@@ -10,7 +10,7 @@ export interface IImage {}
 /**
  * {@docCategory Image}
  */
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */

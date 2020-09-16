@@ -61,7 +61,12 @@ const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsic
 jest.useFakeTimers();
 
 describe('Carousel', () => {
-  isConformant(Carousel, { constructorName: 'Carousel', autoControlledProps: ['activeIndex'] });
+  isConformant(Carousel, {
+    testPath: __filename,
+    constructorName: 'Carousel',
+    autoControlledProps: ['activeIndex'],
+    disabledTests: ['kebab-aria-attributes'],
+  });
 
   describe('activeIndex', () => {
     it('should increase at paddle next press', () => {
