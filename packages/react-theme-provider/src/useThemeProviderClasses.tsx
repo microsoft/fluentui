@@ -20,6 +20,8 @@ export const useThemeProviderClasses = makeClasses(theme => {
         fontFamily: 'var(--body-fontFamily)',
         fontWeight: 'var(--body-fontWeight)',
         fontSize: 'var(--body-fontSize)',
+        MozOsxFontSmoothing: 'var(--body-mozOsxFontSmoothing)',
+        WebkitFontSmoothing: 'var(--body-webkitFontSmoothing)',
       },
       {
         '& input': inheritFont,

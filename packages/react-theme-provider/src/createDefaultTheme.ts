@@ -18,8 +18,8 @@ const defaultFonts = {
   fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
   fontSize: '14px',
   fontWeight: 400,
-  MozOsxFontSmoothing: 'grayscale',
-  WebkitFontSmoothing: 'antialiased',
+  mozOsxFontSmoothing: 'grayscale',
+  webkitFontSmoothing: 'antialiased',
 };
 
 export const defaultTokens: Tokens = {

@@ -27,6 +27,11 @@ export function getTokens(theme: Theme): Tokens {
         body: {
           background: semanticColors?.bodyBackground,
           contentColor: semanticColors?.bodyText,
+          fontFamily: fonts?.medium.fontFamily,
+          fontWeight: fonts?.medium.fontWeight,
+          fontSize: fonts?.medium.fontSize,
+          mozOsxFontSmoothing: fonts?.medium.MozOsxFontSmoothing,
+          webkitFontSmoothing: fonts?.medium.WebkitFontSmoothing,
         },
 
         // accent is currently only mapped for primary button to use.
