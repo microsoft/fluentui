@@ -173,7 +173,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
+          <svg
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+            id={this._uniqLineText}
+            style={{ display: 'block' }}
+          >
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
@@ -538,7 +543,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
     const yAxis = axis
       .tickPadding(5)
-      .tickFormat(d3Format('.2s'))
+      .tickFormat(d3Format('.2~s'))
       .tickValues(domains);
 
     this._showYAxisGridLines &&

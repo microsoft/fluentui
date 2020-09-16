@@ -100,7 +100,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xAxis: NumericAxis | StringAxis = isNumeric
       ? this._createNumericXAxis(dataset)
       : this._createStringXAxis(dataset);
-    const legends: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+    const legends: JSX.Element | undefined = this.props.hideLegend
+      ? undefined
+      : this._getLegendData(this._points, this.props.theme!.palette);
     const bars: JSX.Element[] = this._getBars(this._points, dataset, isNumeric);
     const { isCalloutVisible } = this.state;
 
@@ -119,7 +121,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}>
         <FocusZone direction={FocusZoneDirection.vertical}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
@@ -133,11 +135,11 @@ export class VerticalStackedBarChartBase extends React.Component<
             <g>{bars}</g>
           </svg>
         </FocusZone>
-        {
+        {legends && (
           <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {legends}
           </div>
-        }
+        )}
         <Callout
           gapSpace={15}
           isBeakVisible={false}
@@ -148,13 +150,11 @@ export class VerticalStackedBarChartBase extends React.Component<
           id={this._calloutId}
           {...this.props.calloutProps}
         >
-          {
-            this.props.onRenderCalloutPerStack
-              ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
-              : this.props.onRenderCalloutPerDataPoint
-                ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
-                : this._renderCallout(this.state.dataPointCalloutProps)
-          }
+          {this.props.onRenderCalloutPerStack
+            ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
+            : this.props.onRenderCalloutPerDataPoint
+            ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
+            : this._renderCallout(this.state.dataPointCalloutProps)}
         </Callout>
       </div>
     );
@@ -185,11 +185,14 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { containerWidth, containerHeight } = this.state;
 
     this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
+      let legendContainerHeight = 0;
+      if (!this.props.hideLegend) {
+        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        legendContainerHeight =
+          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+          parseFloat(legendContainerComputedStyles.marginTop || '0') +
+          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+      }
 
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
       const currentContainerWidth = container.getBoundingClientRect().width;
@@ -347,6 +350,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
       />
     );
@@ -357,7 +361,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: mouseEvent,
       isCalloutVisible: true,
-      stackCalloutProps: calloutData
+      stackCalloutProps: calloutData,
     });
   }
 
@@ -365,7 +369,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: ref.refElement,
       isCalloutVisible: true,
-      stackCalloutProps: calloutData
+      stackCalloutProps: calloutData,
     });
   }
 
@@ -378,7 +382,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
-        dataPointCalloutProps: calloutData
+        dataPointCalloutProps: calloutData,
       });
     }
   }
@@ -391,7 +395,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.setState({
         refSelected: ref.refElement,
         isCalloutVisible: true,
-        dataPointCalloutProps: calloutData
+        dataPointCalloutProps: calloutData,
       });
     }
   }
@@ -416,7 +420,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   ): JSX.Element {
     let startingPointOfY = 0;
     const nonZeroBars = singleChartData.chartData.filter(point => point.data > 0);
-    const xPoint = xBarScale(isNumeric ? singleChartData.xAxisPoint as number : indexNumber);
+    const xPoint = xBarScale(isNumeric ? (singleChartData.xAxisPoint as number) : indexNumber);
     const usingPointCallout = !this.props.onRenderCalloutPerStack;
     const stackCalloutData: IVSChartDataPoint[] = [];
     const xAxisCalloutData = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint.toString();
@@ -444,7 +448,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         yAxisCalloutData: point.yAxisCalloutData || point.data.toString(),
         color: color,
         data: point.data,
-        legend: point.legend
+        legend: point.legend,
       };
 
       let focusProps: React.SVGAttributes<SVGRectElement> = {};
@@ -470,7 +474,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           width={this._barWidth}
           height={Math.max(yBarScale(point.data), 0)}
           fill={color}
-          ref={e => ref.refElement = e}
+          ref={e => (ref.refElement = e)}
           data-is-focusable={usingPointCallout || undefined}
           {...focusProps}
           onClick={this._redirectToUrl.bind(this, href)}
@@ -505,7 +509,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         key={indexNumber}
         data-is-focusable={!usingPointCallout || undefined}
         {...stackFocusProps}
-        ref={e => groupRef.refElement = e}
+        ref={e => (groupRef.refElement = e)}
       >
         {bars}
       </g>
@@ -554,11 +558,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return this._createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
   }
 
-  private _getBars(
-    _points: IVerticalStackedChartProps[],
-    dataset: IDataPoint[],
-    isNumeric: boolean,
-  ): JSX.Element[] {
+  private _getBars(_points: IVerticalStackedChartProps[], dataset: IDataPoint[], isNumeric: boolean): JSX.Element[] {
     const bars: JSX.Element[] = _points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
       return isNumeric
         ? this._createNumericBars(singleChartData, dataset, index, this.props.href!)

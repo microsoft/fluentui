@@ -132,7 +132,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{display: "block"}}>
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
@@ -252,7 +252,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = axis
       .tickPadding(5)
       .tickValues(domains)
-      .tickFormat(d3Format('.2s'))
+      .tickFormat(d3Format('.2~s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }

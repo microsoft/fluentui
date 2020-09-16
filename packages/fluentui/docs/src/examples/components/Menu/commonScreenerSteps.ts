@@ -1,4 +1,5 @@
 import { menuClassName } from '@fluentui/react-northstar';
+import { ScreenerSteps } from '@uifabric/build/screener';
 
 interface StepsOptions {
   vertical?: boolean;

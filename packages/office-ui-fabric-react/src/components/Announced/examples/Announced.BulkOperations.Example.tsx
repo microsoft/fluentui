@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import { useConst, useConstCallback } from '@uifabric/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Text } from 'office-ui-fabric-react/lib/Text';
@@ -35,13 +35,13 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
   );
   const [deletedCount, setDeletedCount] = React.useState<number>(0);
 
-  const onDelete = useConstCallback(() => {
+  const onDelete = React.useCallback(() => {
     setDeletedCount(selection.count);
     setItems(prevItems => {
       const selectedIndices = selection.getSelectedIndices();
       return prevItems.filter((item, i) => selectedIndices.indexOf(i) === -1);
     });
-  });
+  }, [selection]);
 
   return (
     <Stack tokens={stackTokens}>

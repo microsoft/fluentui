@@ -124,10 +124,11 @@ export function getTokens(theme: Theme): Tokens {
 
       body: {
         background: semanticColors?.bodyBackground,
+        contentColor: semanticColors?.bodyText,
       },
 
       button: {
-        fontWeight: 600, // fonts?.medium?.fontWeight,
+        fontWeight: '600',
         fontSize: fonts?.medium?.fontSize,
         fontFamily: fonts?.medium?.fontFamily,
         iconSize: fonts?.mediumPlus?.fontSize,

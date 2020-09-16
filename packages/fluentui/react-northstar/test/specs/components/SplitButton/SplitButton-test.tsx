@@ -22,7 +22,7 @@ const getMenuItems = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElem
 const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${menuClassName}`);
 
 describe('SplitButton', () => {
-  isConformant(SplitButton, { constructorName: 'SplitButton', autoControlledProps: ['open'] });
+  isConformant(SplitButton, { testPath: __filename, constructorName: 'SplitButton', autoControlledProps: ['open'] });
   implementsPopperProps(SplitButton, { requiredProps: { open: true } });
 
   describe('open', () => {

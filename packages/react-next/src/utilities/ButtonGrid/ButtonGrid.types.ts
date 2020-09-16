@@ -4,7 +4,9 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IButtonGrid {}
 
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IButtonGridProps
+  extends React.TableHTMLAttributes<HTMLTableElement>,
+    React.RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */

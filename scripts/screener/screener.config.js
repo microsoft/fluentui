@@ -40,15 +40,8 @@ const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
-  projectRepo: 'microsoft/fluentui/fluentui',
-
   apiKey: process.env.SCREENER_API_KEY,
-
-  tunnel: {
-    host: `${config.server_host}:${config.server_port}`,
-    gzip: true, // gzip compress all content being served from tunnel host
-    cache: true, // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
-  },
+  projectRepo: 'microsoft/fluentui/fluentui',
 
   diffOptions: {
     structure: true,
