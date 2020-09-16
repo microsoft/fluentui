@@ -2,14 +2,14 @@ import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import { DemoPage } from '../DemoPage';
-import { ThemePageProps } from 'office-ui-fabric-react/lib/components/Theme/Theme.doc';
+import { ThemePageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Theme/Theme.doc';
 import {
   IThemePageStyleProps,
   IThemePageStyles,
   IThemePageState,
-} from 'office-ui-fabric-react/lib/components/Theme/ThemePage.types';
+} from '@fluentui/examples/lib/office-ui-fabric-react/Theme/ThemePage.types';
 import { defaultPalette, defaultSemanticColors } from 'office-ui-fabric-react/lib/components/Theme/defaultTheme';
-import { getStyles } from 'office-ui-fabric-react/lib/components/Theme/ThemePage.styles';
+import { getStyles } from '@fluentui/examples/lib/office-ui-fabric-react/Theme/ThemePage.styles';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';

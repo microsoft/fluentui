@@ -22,10 +22,10 @@ import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { TeachingBubbleBasicExample } from 'office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from 'office-ui-fabric-react/lib/components/TextField/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from 'office-ui-fabric-react/lib/components/Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from 'office-ui-fabric-react/lib/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { TeachingBubbleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TextField/examples/TextField.Basic.Example';
+import { ToggleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/Toggle/examples/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 
 export interface IColorsPageState {
   themeRules: IThemeRules;
@@ -142,7 +142,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
          * We use that API to identify the most prominent background and foreground colors, and the accent color,
          * and generate a theme based off of those.
          * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/@fluentui/examples/src/office-ui-fabric-react/ThemeGenerator/ThemeGeneratorPage.tsx
          * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
