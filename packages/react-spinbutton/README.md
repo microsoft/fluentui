@@ -1,7 +1,11 @@
 # @fluentui/react-spinbutton
 
-**React Spinbutton for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Spinbutton components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-Package to hold SpinButton using button v8
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
-TODO: Add more details!
+To import React Spinbutton components:
+
+```js
+import { ComponentName } from '@fluentui/react-spinbutton';
+```
