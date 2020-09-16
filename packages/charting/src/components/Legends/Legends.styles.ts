@@ -24,6 +24,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         whiteSpace: 'nowrap',
         width: '100%',
         alignItems: 'center',
+        margin: '-8px 0 0 -8px',
       },
       className,
     ],
@@ -33,9 +34,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
-        margin: props.overflow ? '16px 5px 16px 16px' : '',
         border: 'none',
-        padding: '0px',
+        padding: '8px',
         background: 'none',
       },
     ],
@@ -75,7 +75,6 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     text: {
       ...fonts.small,
       lineHeight: '16px',
-      marginRight: '16px',
       color: theme?.semanticColors.bodyText,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
     },
@@ -87,11 +86,18 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       border: '1px solid',
       borderColor: props.borderColor ? props.borderColor : palette.black,
     },
-    overflowIndicationTextStyle: {
-      cursor: 'pointer',
-      color: theme?.semanticColors.bodyText,
-      ...fonts.small,
-      lineHeight: '14px',
+    overflowIndicationTextStyle: [
+      getFocusStyle(theme!, options),
+      {
+        cursor: 'pointer',
+        color: theme?.semanticColors.bodyText,
+        ...fonts.small,
+        lineHeight: '16px',
+        padding: '8px',
+      }
+    ],
+    hoverCardRoot: {
+      padding: '8px',
     },
     subComponentStyles: {
       hoverCardStyles: {

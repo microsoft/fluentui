@@ -40,8 +40,8 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
 };
 
 describe('Toolbar', () => {
-  isConformant(Toolbar, { constructorName: 'Toolbar' });
   isConformant(Toolbar, {
+    testPath: __filename,
     constructorName: 'Toolbar',
     requiredProps: { overflow: true },
   });
