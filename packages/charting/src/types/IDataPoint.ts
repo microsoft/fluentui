@@ -267,9 +267,10 @@ export interface IVerticalStackedChartProps {
   xAxisPoint: number | string;
 
   /**
-   * chart title for the chart
+   * Callout data for x axis
+   * This is an optional prop, If haven't given, legend will take
    */
-  chartTitle?: string;
+  xAxisCalloutData?: string;
 }
 
 export interface IGVBarChartSeriesPoint {

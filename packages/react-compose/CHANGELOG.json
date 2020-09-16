@@ -2,6 +2,51 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@fluentui/react-compose_v0.19.0",
+      "version": "0.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated mergeProps to makeMergeProps, which can be configured with options.",
+            "author": "dzearing@hotmail.com",
+            "commit": "1838dcc8b214345f6cc8f9c0904a2cc66cc39f71",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react-compose_v0.18.2",
+      "version": "0.18.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-compose_v0.18.2",
+      "version": "0.18.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getSlots: handles empty definitions and defaults 'as' to 'span'. Note this will change in an upcoming update, as we move to `components` rather than `as`.",
+            "author": "dzearing@microsoft.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "@fluentui/react-compose_v0.18.1",
       "version": "0.18.1",

@@ -2,6 +2,111 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@uifabric/charting_v4.0.3",
+      "version": "4.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Merge branch 'master' of https://github.com/microsoft/fluentui into chore/theme-renderers",
+            "author": "dzearing@hotmail.com",
+            "commit": "1838dcc8b214345f6cc8f9c0904a2cc66cc39f71",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/charting_v4.0.2",
+      "version": "4.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Insiginificant trailing zeros removed from ticks",
+            "author": "v-jasha@microsoft.om",
+            "commit": "39969826b72177b33069c4627fc06c9482ed100c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/charting_v4.0.1",
+      "version": "4.0.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixing prettier formatting issues.",
+            "author": "dzearing@hotmail.com",
+            "commit": "d88a62dd6c3856a7484382529a3cbc5cb6f6896f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 12:23:32 GMT",
+      "tag": "@uifabric/charting_v4.0.0",
+      "version": "4.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart combined callout and other tweaks",
+            "author": "mibes@microsoft.com",
+            "commit": "df56f468742c728e62d06a3934d3cef329969b1f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "@uifabric/charting_v3.6.2",
+      "version": "3.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue when we focus on charts in IE",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d0bdb5b1f6dae8c39be8ef012f70c3a5688a10f0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@uifabric/charting_v3.6.0",
+      "version": "3.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart re design and updated Cartesian (removed reRenderProp method from Cartesian as it only uses for area chart previously. Now code udpated, so no need of that method.)",
+            "author": "v-jasha@microsoft.com",
+            "commit": "fc296ba32ac182ba4aea5349fb4ab960f660eb08",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@uifabric/charting_v3.5.1",
+      "version": "3.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Text formatting.",
+            "author": "dzearing@microsoft.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Sep 2020 12:28:23 GMT",
       "tag": "@uifabric/charting_v3.5.0",
       "version": "3.5.0",

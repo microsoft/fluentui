@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
@@ -19,10 +18,11 @@ export interface IContextualMenuSubmenuExampleState {
 export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
   const [hoverDelay, setHoverDelay] = React.useState(250);
 
-  const onHoverDelayChanged = useConstCallback(
+  const onHoverDelayChanged = React.useCallback(
     (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
       setHoverDelay(Number(newValue) || 0);
     },
+    [],
   );
 
   const menuProps: IContextualMenuProps = React.useMemo(
@@ -53,16 +53,8 @@ const menuItems: IContextualMenuItem[] = [
     key: 'newItem',
     subMenuProps: {
       items: [
-        {
-          key: 'emailMessage',
-          text: 'Email message',
-          title: 'Create an email',
-        },
-        {
-          key: 'calendarEvent',
-          text: 'Calendar event',
-          title: 'Create a calendar event',
-        },
+        { key: 'emailMessage', text: 'Email message', title: 'Create an email' },
+        { key: 'calendarEvent', text: 'Calendar event', title: 'Create a calendar event' },
       ],
     },
     href: 'https://bing.com',
@@ -74,29 +66,15 @@ const menuItems: IContextualMenuItem[] = [
     key: 'share',
     subMenuProps: {
       items: [
-        {
-          key: 'sharetotwitter',
-          text: 'Share to Twitter',
-        },
-        {
-          key: 'sharetofacebook',
-          text: 'Share to Facebook',
-        },
+        { key: 'sharetotwitter', text: 'Share to Twitter' },
+        { key: 'sharetofacebook', text: 'Share to Facebook' },
         {
           key: 'sharetoemail',
           text: 'Share to Email',
           subMenuProps: {
             items: [
-              {
-                key: 'sharetooutlook_1',
-                text: 'Share to Outlook',
-                title: 'Share to Outlook',
-              },
-              {
-                key: 'sharetogmail_1',
-                text: 'Share to Gmail',
-                title: 'Share to Gmail',
-              },
+              { key: 'sharetooutlook_1', text: 'Share to Outlook', title: 'Share to Outlook' },
+              { key: 'sharetogmail_1', text: 'Share to Gmail', title: 'Share to Gmail' },
             ],
           },
         },
@@ -111,29 +89,15 @@ const menuItems: IContextualMenuItem[] = [
     'aria-roledescription': 'split button',
     subMenuProps: {
       items: [
-        {
-          key: 'sharetotwittersplit',
-          text: 'Share to Twitter',
-        },
-        {
-          key: 'sharetofacebooksplit',
-          text: 'Share to Facebook',
-        },
+        { key: 'sharetotwittersplit', text: 'Share to Twitter' },
+        { key: 'sharetofacebooksplit', text: 'Share to Facebook' },
         {
           key: 'sharetoemailsplit',
           text: 'Share to Email',
           subMenuProps: {
             items: [
-              {
-                key: 'sharetooutlooksplit_1',
-                text: 'Share to Outlook',
-                title: 'Share to Outlook',
-              },
-              {
-                key: 'sharetogmailsplit_1',
-                text: 'Share to Gmail',
-                title: 'Share to Gmail',
-              },
+              { key: 'sharetooutlooksplit_1', text: 'Share to Outlook', title: 'Share to Outlook' },
+              { key: 'sharetogmailsplit_1', text: 'Share to Gmail', title: 'Share to Gmail' },
             ],
           },
         },
