@@ -1975,7 +1975,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -2001,6 +2001,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onChange?: (ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onDecrement?: (value: string) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onIncrement?: (value: string) => string | void;

@@ -42,18 +42,26 @@ const onSpinButtonValidate = (value: string) => {
   return String(value) + suffix;
 };
 
-export const SpinButtonStatefulExample: React.FC = () => (
-  <div style={{ width: '400px' }}>
-    <SpinButton
-      label={'SpinButton with custom implementation:'}
-      min={0}
-      max={100}
-      value={'7' + suffix}
-      onValidate={onSpinButtonValidate}
-      onIncrement={onSpinButtonIncrement}
-      onDecrement={onSpinButtonDecrement}
-      incrementButtonAriaLabel={'Increase value by 2'}
-      decrementButtonAriaLabel={'Decrease value by 2'}
-    />
-  </div>
-);
+export const SpinButtonStatefulExample: React.FC = () => {
+  const [spinButtonValue, setSpinButtonValue] = React.useState<string>('7' + suffix);
+
+  return (
+    <div style={{ width: '400px' }}>
+      <SpinButton
+        label={'SpinButton with custom implementation:'}
+        min={0}
+        max={100}
+        value={spinButtonValue}
+        onValidate={onSpinButtonValidate}
+        onIncrement={onSpinButtonIncrement}
+        onDecrement={onSpinButtonDecrement}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void =>
+          setSpinButtonValue(newValue)
+        }
+        incrementButtonAriaLabel={'Increase value by 2'}
+        decrementButtonAriaLabel={'Decrease value by 2'}
+      />
+    </div>
+  );
+};

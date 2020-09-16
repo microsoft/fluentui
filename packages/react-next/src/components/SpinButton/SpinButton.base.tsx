@@ -91,6 +91,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     iconButtonProps,
     onValidate,
     onFocus,
+    onChange,
     onBlur,
     styles,
   } = props as ISpinButtonProps;
@@ -101,18 +102,26 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   const [spinButtonValue, setSpinButtonValue] = useControllableValue(
     value,
     defaultValue !== undefined ? defaultValue : String(min || '0'),
+    onChange,
   );
 
-  const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
-    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
-    return precision;
-  };
+  // const [spinButtonValue, setSpinButtonValue] = React.useState(value);
+
+  // useControllableValue(
+  //   value,
+  //   defaultValue !== undefined ? defaultValue : String(min || '0'),
+  // );
 
   let { value: initialValue = defaultValue } = props;
 
   if (initialValue === undefined) {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
+
+  const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
+    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
+    return precision;
+  };
 
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     lastValidValue: initialValue,
@@ -123,6 +132,10 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     initialStepDelay: 400,
     stepDelay: 75,
   });
+
+  if (value !== undefined) {
+    internalState.lastValidValue = value;
+  }
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -138,10 +151,6 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     'onFocus',
     'className',
   ]);
-
-  if (value !== undefined) {
-    internalState.lastValidValue = value;
-  }
 
   const handleValidate = (valueProp: string, ev?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (onValidate) {
@@ -169,6 +178,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       internalState.valueToValidate !== internalState.lastValidValue
     ) {
       const newValue = handleValidate!(internalState.valueToValidate, ev);
+
       // Done validating this value, so clear it
       internalState.valueToValidate = undefined;
       if (newValue !== undefined) {
@@ -204,7 +214,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   const updateValue = React.useCallback(
     (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
       const newValue: string | void = stepFunction(spinButtonValue || '');
-      if (newValue !== undefined) {
+      if (newValue) {
         setSpinButtonValue(newValue);
       }
 
@@ -247,10 +257,8 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     [internalState, min, onDecrement, step],
   );
 
-  //  The method is needed to ensure we are updating the actual input value.
-  //  without this our value will never change (and validation will not have the correct number)
-  const handleInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const element: HTMLInputElement = event.target as HTMLInputElement;
+  const handleInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const element: HTMLInputElement = ev.target as HTMLInputElement;
     const elementValue: string = element.value;
     internalState.valueToValidate = elementValue;
     setSpinButtonValue(elementValue);
@@ -277,18 +285,6 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     setFalseIsFocused();
     onBlur?.(ev);
   };
-
-  const handleChange = React.useCallback((): void => {
-    /**
-     * A noop input change handler. Using onInput instead of onChange was meant to address an issue
-     * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
-     * The no-op onChange handler was still needed because React gives console errors if an input
-     * doesn't have onChange.
-     *
-     * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
-     * ours or 3rd-party, which simulate entering text in a SpinButton)
-     */
-  }, []);
 
   //  Handle keydown on the text field. We need to update
   //  the value when up or down arrow are depressed
@@ -382,7 +378,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
             <input
               value={spinButtonValue}
               id={inputId}
-              onChange={handleChange}
+              onChange={handleInputChange}
               onInput={handleInputChange}
               className={classNames.input}
               type="text"
