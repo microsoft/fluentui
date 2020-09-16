@@ -155,9 +155,9 @@ function useOptionsState({ options, defaultSelectedKey, selectedKey }: IComboBox
   ] as const;
 }
 
-export const ComboBox = React.forwardRef(
+export const ComboBox: React.FunctionComponent<IComboBoxProps> = React.forwardRef<HTMLDivElement, IComboBoxProps>(
   (propsWithoutDefaults: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const rootRef = React.useRef<HTMLDivElement>(null);
 
     const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
@@ -190,7 +190,7 @@ export const ComboBox = React.forwardRef(
 );
 ComboBox.displayName = COMPONENT_NAME;
 
-interface IComboBoxInternalProps extends IComboBoxProps {
+interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
   hoisted: {
     mergedRootRef: React.Ref<HTMLDivElement>;
     rootRef: React.RefObject<HTMLDivElement>;

@@ -152,7 +152,7 @@ export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellPr
 export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export const ComboBox: React.ForwardRefExoticComponent<IComboBoxProps & React.RefAttributes<HTMLDivElement>>;
+export const ComboBox: React.FunctionComponent<IComboBoxProps>;
 
 // @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
@@ -678,7 +678,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
