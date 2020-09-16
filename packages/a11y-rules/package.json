@@ -16,5 +16,12 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.0",
+    "@uifabric/build": "^7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
   }
 }
