@@ -25,7 +25,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@babel/register": "^7.10.4",
     "@babel/standalone": "^7.10.4",
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@mdx-js/loader": "^1.5.5",
     "@microsoft/api-extractor": "7.7.1",
     "@microsoft/load-themed-styles": "^1.10.26",

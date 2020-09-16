@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update API Extractor settings to share config and handle newlines better",
-  "packageName": "@uifabric/styling",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-16T00:26:02.705Z"
-}
