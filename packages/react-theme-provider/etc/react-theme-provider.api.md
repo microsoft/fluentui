@@ -140,7 +140,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;
