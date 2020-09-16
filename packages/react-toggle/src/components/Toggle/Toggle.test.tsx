@@ -24,6 +24,7 @@ describe('Toggle', () => {
   isConformant({
     Component: Toggle,
     displayName: 'Toggle',
+    disabledTests: ['as-passes-as-value'],
   });
 
   it('renders toggle correctly', () => {

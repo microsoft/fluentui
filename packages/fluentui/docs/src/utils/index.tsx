@@ -1,13 +1,5 @@
 export { default as componentInfoContext } from './componentInfoContext';
-export {
-  examplesContext,
-  exampleIndexContext,
-  usageIndexContext,
-  exampleBestPracticesContext,
-  examplePlaygroundContext,
-  exampleSourcesContext,
-} from './exampleContexts';
-export { default as exampleKebabNameToSourceFilename } from './exampleKebabNameToSourceFilename';
+export { exampleKebabNameToFilename } from './exampleKebabNameToFilename';
 export { default as examplePathToHash } from './examplePathToHash';
 export { default as getComponentGroup } from './getComponentGroup';
 export { default as getComponentPathname } from './getComponentPathname';
