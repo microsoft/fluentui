@@ -25,7 +25,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@fluentui/storybook": "",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
@@ -36,7 +36,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/set-version": "^7.0.23",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
