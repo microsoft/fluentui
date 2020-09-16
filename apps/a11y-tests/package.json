@@ -13,13 +13,13 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^7.8.7",
+    "@uifabric/fabric-website-resources": "^7.8.10",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^7.137.0",
+    "office-ui-fabric-react": "^7.137.3",
     "puppeteer": "^1.13.0",
     "tslib": "^1.10.0",
     "react": "16.8.6",
@@ -27,7 +27,7 @@
     "react-dom": "16.8.6"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/glob": "^7.1.1",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
@@ -36,6 +36,6 @@
     "@types/react-dom": "16.8.4",
     "@types/sarif": "^2.1.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/icons": "^7.5.0"
+    "@uifabric/icons": "^7.5.2"
   }
 }

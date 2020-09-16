@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConst } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { ISearchBoxStyles, SearchBox } from '@fluentui/react-next/lib/SearchBox';
 import { Icon } from '@fluentui/react-next/lib/Icon';
@@ -37,7 +36,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
       return (
         <div>
-          <div style={wrapperStyle}>
+          <div style={{ borderBottom: '1px solid #ccc' }}>
             <SearchBox
               ariaLabel="Filter actions by text"
               placeholder="Filter actions"
@@ -53,17 +52,19 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     [onAbort, onChange],
   );
 
-  const menuProps = useConst(() => ({
-    onRenderMenuList: renderMenuList,
-    title: 'Actions',
-    shouldFocusOnMount: true,
-    items,
-  }));
+  const menuProps = React.useMemo(
+    () => ({
+      onRenderMenuList: renderMenuList,
+      title: 'Actions',
+      shouldFocusOnMount: true,
+      items,
+    }),
+    [items, renderMenuList],
+  );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-const wrapperStyle: React.CSSProperties = { borderBottom: '1px solid #ccc' };
 const filteredItemsStyle: React.CSSProperties = {
   width: '100%',
   height: '100px',
@@ -76,37 +77,12 @@ const searchBoxStyles: ISearchBoxStyles = {
 };
 
 const menuItems: IContextualMenuItem[] = [
-  {
-    key: 'newItem',
-    text: 'New',
-    onClick: () => console.log('New clicked'),
-  },
-  {
-    key: 'rename',
-    text: 'Rename',
-    onClick: () => console.log('Rename clicked'),
-  },
-  {
-    key: 'edit',
-    text: 'Edit',
-    onClick: () => console.log('Edit clicked'),
-  },
-  {
-    key: 'properties',
-    text: 'Properties',
-    onClick: () => console.log('Properties clicked'),
-  },
-  {
-    key: 'linkNoTarget',
-    text: 'Link same window',
-    href: 'http://bing.com',
-  },
-  {
-    key: 'linkWithTarget',
-    text: 'Link new window',
-    href: 'http://bing.com',
-    target: '_blank',
-  },
+  { key: 'newItem', text: 'New', onClick: () => console.log('New clicked') },
+  { key: 'rename', text: 'Rename', onClick: () => console.log('Rename clicked') },
+  { key: 'edit', text: 'Edit', onClick: () => console.log('Edit clicked') },
+  { key: 'properties', text: 'Properties', onClick: () => console.log('Properties clicked') },
+  { key: 'linkNoTarget', text: 'Link same window', href: 'http://bing.com' },
+  { key: 'linkWithTarget', text: 'Link new window', href: 'http://bing.com', target: '_blank' },
   {
     key: 'linkWithOnClick',
     name: 'Link click',

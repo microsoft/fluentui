@@ -53,7 +53,7 @@ const getStaticStyles = (props: IToggleStyleProps): Required<IToggleStyles> => {
   return getStaticStylesMemoized(theme!, className, checked, disabled, inlineLabel, onOffMissing);
 };
 
-export const Toggle = styled<IToggleProps & React.RefAttributes<HTMLDivElement>, IToggleStyleProps, IToggleStyles>(
+export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps, IToggleStyleProps, IToggleStyles>(
   compose<'div', {}, {}, IToggleProps, IToggleProps>(ToggleBase, {
     slots: {
       label: Label,

@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 import { chatMessageClassName } from '@fluentui/react-northstar';
 
 const selectors = {
