@@ -30,7 +30,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/a11y-rules": "0.1.0",
+    "@fluentui/a11y-rules": "^0.1.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
