@@ -22,12 +22,6 @@ The Fluent UI web repository is home to 3 main projects today, the following tab
 
 > The goal of these projects is to dedupe functionality and increase interoperability over time. Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI)
 
-## Roadmap
-
-Each project within the Fluent UI ecosystem has its own roadmap. Here, you can find a high-level roadmap for the entire effort itself.
-
-TODO: LINK to high-level roadmap
-
 ## Licenses
 
 All files on the Fluent UI React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
