@@ -277,7 +277,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       setTrueIsFocused();
       onFocus?.(ev);
     },
-    [internalState.spinningByMouse, keyboardSpinDirection, onFocus, setTrueIsFocused, stop],
+    [internalState, keyboardSpinDirection, onFocus, setTrueIsFocused, stop],
   );
 
   const handleBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
