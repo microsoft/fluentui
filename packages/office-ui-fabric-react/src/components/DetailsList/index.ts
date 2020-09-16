@@ -9,7 +9,7 @@ export * from './DetailsList.types';
 export * from './DetailsRow';
 export * from './DetailsRow.base';
 export * from './DetailsRow.types';
-export { DetailsRowGlobalClassNames } from './DetailsRow.styles';
+export * from './DetailsRow.styles';
 export * from './DetailsRowCheck';
 export * from './DetailsRowCheck.types';
 export * from './DetailsRowFields';

@@ -4,7 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { useConst, useConstCallback } from '@uifabric/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
@@ -68,15 +68,15 @@ export const ListGridExample: React.FunctionComponent = () => {
   const columnCount = React.useRef(0);
   const rowHeight = React.useRef(0);
 
-  const getItemCountForPage = useConstCallback((itemIndex: number, surfaceRect: IRectangle) => {
+  const getItemCountForPage = React.useCallback((itemIndex: number, surfaceRect: IRectangle) => {
     if (itemIndex === 0) {
       columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
     }
     return columnCount.current * ROWS_PER_PAGE;
-  });
+  }, []);
 
-  const onRenderCell = useConstCallback((item: IExampleItem, index: number | undefined) => {
+  const onRenderCell = React.useCallback((item: IExampleItem, index: number | undefined) => {
     return (
       <div
         className={classNames.listGridExampleTile}
@@ -93,13 +93,14 @@ export const ListGridExample: React.FunctionComponent = () => {
         </div>
       </div>
     );
-  });
+  }, []);
 
-  const getPageHeight = useConstCallback((): number => {
+  const getPageHeight = React.useCallback((): number => {
     return rowHeight.current * ROWS_PER_PAGE;
-  });
+  }, []);
 
   const items = useConst(() => createListItems(5000));
+
   return (
     <FocusZone>
       <List

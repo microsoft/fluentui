@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Point, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ILayerProps } from '../../Layer';
+import { Target } from '@uifabric/react-hooks';
 
-/**
- * {@docCategory Callout}
- */
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+export { Target };
 
 /**
  * {@docCategory Callout}

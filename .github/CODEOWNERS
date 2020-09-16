@@ -60,9 +60,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
-packages/lists/ @dzearing @aditima
 packages/merge-styles/ @dzearing
-packages/migration/ @ecraig12345
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing

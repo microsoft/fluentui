@@ -1,20 +1,13 @@
 import _ from 'lodash';
 import fs from 'fs';
-import Steps from 'screener-runner/src/steps';
-import keys from 'screener-runner/src/keys';
+
+import { keys, Steps } from './screener.api';
+import { ScreenerTestsConfig, ScreenerThemeName } from './screener.types';
 
 const DEFAULT_THEMES: ScreenerThemeName[] = ['teams'];
 
-Steps.prototype.resetExternalLayout = function resetExternalLayout() {
-  return this.executeScript(`window.resetExternalLayout()`);
-};
-
-Steps.prototype.switchTheme = function switchTheme(themeName: ScreenerThemeName) {
-  return this.executeScript(`window.switchTheme("${themeName}")`);
-};
-
 const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
-  const stepsBuilder: ScreenerStepBuilder = new Steps();
+  const stepsBuilder = new Steps();
 
   if (fs.existsSync(`${stepsModulePath}.ts`)) {
     const { steps: screenerSteps, themes = DEFAULT_THEMES }: ScreenerTestsConfig = require(stepsModulePath).default;
