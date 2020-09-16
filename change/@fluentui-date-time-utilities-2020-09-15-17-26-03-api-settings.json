@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update API Extractor settings to share config and handle newlines better",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-16T00:25:41.673Z"
+}
