@@ -5,7 +5,7 @@ import { Accessibility } from '../../types';
  * Behavior for a datepicker calendar grid.
  * @specification
  * Adds attribute 'aria-selected' based on the property 'selected' to 'root' slot.
- * Adds role='grid
+ * Adds role='gridcell'.
  */
 export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {
