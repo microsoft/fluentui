@@ -120,6 +120,7 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
+      faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
     },
   },

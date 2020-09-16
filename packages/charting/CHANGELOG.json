@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/charting_v4.1.0",
+      "version": "4.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "[VerticalStackedBarChart] Legend options and fixes",
+            "author": "mibes@microsoft.com",
+            "commit": "d2a2bc064b9444d86476e5f5e6a8828f576f210c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Sep 2020 12:26:06 GMT",
       "tag": "@uifabric/charting_v4.0.3",
       "version": "4.0.3",
