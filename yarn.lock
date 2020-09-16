@@ -5800,6 +5800,11 @@ axe-core@3.5.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.0.tgz#161b17fc6ce07a5470ff179e0703957c422b2220"
   integrity sha512-wJqOIreoFiGjvZ1UZvGLAUs8H3QQ3cS833+6ctFcCdr/xFd5oB66mmwGWnwQlBXFFaefRt+KR+m2dY9em2RxVg==
 
+axe-core@^3.5.0:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.5.tgz#84315073b53fa3c0c51676c588d59da09a192227"
+  integrity sha512-5P0QZ6J5xGikH780pghEdbEKijCTrruK9KxtPZCFWUpef0f6GipO+xEZ5GKCb020mmqgbiNO6TcA55CriL784Q==
+
 axe-puppeteer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/axe-puppeteer/-/axe-puppeteer-1.0.0.tgz#cebbeec2c65a2e0cb7d5fd1e7aef26c5f71895a4"
