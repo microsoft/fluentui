@@ -4,6 +4,7 @@ import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import { useStylesheet } from '@fluentui/react-stylesheets';
+import { useFocusRects } from '@uifabric/utilities';
 
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
@@ -22,6 +23,8 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
 
     // Render styles.
     useThemeProviderClasses(state);
+
+    useFocusRects(state.ref);
 
     // Return the rendered content.
     return render(state);

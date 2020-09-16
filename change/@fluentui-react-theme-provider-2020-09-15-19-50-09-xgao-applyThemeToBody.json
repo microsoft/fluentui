@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Support applyTo prop.",
+  "comment": "Support applyTo prop and align styles with Fabric component.",
   "packageName": "@fluentui/react-theme-provider",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
