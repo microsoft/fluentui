@@ -4,10 +4,10 @@
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
  * Should we also consider the "disabled" state?
  */
-import SRMC from './SRMC-Definitions';
-import './SRMC-Rules-Win_JAWS';
+import SRNC from './SRNC-Definitions';
+import './SRNC-Rules-Win_JAWS';
 
-export default class MessageComputer {
+export default class NarrationComputer {
   private computedParts: Record<string, string> = {
     value: '',
     name: '',
@@ -19,7 +19,7 @@ export default class MessageComputer {
   };
 
   // Computes and returns the complete screen reader narration for the given element and platform.
-  async computeMessage(element: Element, platform: string): Promise<string> {
+  async computeNarration(element: Element, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Retrieve the computed accessible node
@@ -34,9 +34,9 @@ export default class MessageComputer {
     this.computeTypeAndState(node, definitionName, element, platform);
 
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
-    const computedMessage = this.composeMessageFromParts(definitionName, platform);
-    return computedMessage;
-  } // End computeMessage
+    const computedNarration = this.composeNarrationFromParts(definitionName, platform);
+    return computedNarration;
+  } // End computeNarration
 
   // Returns the definition name based on the given element, platform and definition type.
   getDefinitionName(element: Element, platform: string, definitionType: string): string {
@@ -44,10 +44,10 @@ export default class MessageComputer {
     let definitions;
     if (definitionType === 'readingOrder') {
       // Begin if 1
-      definitions = SRMC.readingOrder[platform];
+      definitions = SRNC.readingOrder[platform];
     } else if (definitionType === 'stateRules') {
       // else if 1
-      definitions = SRMC.stateRules[platform];
+      definitions = SRNC.stateRules[platform];
     } // End if 1
 
     // Determine the definition name
@@ -98,7 +98,7 @@ export default class MessageComputer {
   // Computes and stores the usage part of the narration for the given definitionName, element and platform.
   computeUsage(definitionName: string, element: Element, platform: string) {
     this.computedParts.usage = '';
-    const usages = SRMC.usageStrings[platform][definitionName];
+    const usages = SRNC.usageStrings[platform][definitionName];
     if (usages) {
       // Begin if 1
       this.computedParts.usage = usages['[default]'] || '';
@@ -128,7 +128,7 @@ export default class MessageComputer {
     } // End if 1
     if (definitionName === 'textarea' && platform === 'Win/JAWS' && value) {
       // Begin if 1
-      this.computedParts.description = SRMC.stateStrings['Win/JAWS']['textarea']['[containsText]'];
+      this.computedParts.description = SRNC.stateStrings['Win/JAWS']['textarea']['[containsText]'];
     } else {
       // else if 1
       this.computedParts.description =
@@ -174,13 +174,13 @@ export default class MessageComputer {
     this.computedParts.state = '';
 
     // Find the rule which matches the states that are present on the element
-    const rules = SRMC.stateRules[platform][definitionName];
+    const rules = SRNC.stateRules[platform][definitionName];
     if (rules) {
       // Begin if 1
       rulesLoop: for (let i = 0; i < rules.length; i++) {
         // Begin for 1
         const rule = rules[i];
-        const possibleStates = SRMC.possibleStates[definitionName];
+        const possibleStates = SRNC.possibleStates[definitionName];
         for (let j = 0; j < possibleStates.length; j++) {
           // Begin for 2
           const possibleState = possibleStates[j];
@@ -188,7 +188,7 @@ export default class MessageComputer {
 
           // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around
           const elementHasState =
-            stateValue !== null && (stateValue !== 'false' || !SRMC.falseMeansOmitted.includes(possibleState));
+            stateValue !== null && (stateValue !== 'false' || !SRNC.falseMeansOmitted.includes(possibleState));
 
           // Handle the special case of the "checked" state where we are not looking for an attribute but a DOM property
           const elementHasCheckedProp =
@@ -209,7 +209,7 @@ export default class MessageComputer {
 
         // Compute and store the element's state
         const computedStateArr = [];
-        const stateStrings = SRMC.stateStrings[platform][definitionName];
+        const stateStrings = SRNC.stateStrings[platform][definitionName];
         let order;
 
         // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
@@ -243,26 +243,26 @@ export default class MessageComputer {
             computedStateArr.push(partialState);
           } // End if 2
         } // End for 2
-        this.computedParts.state = computedStateArr.join(SRMC.STATE_PART_SEPARATOR);
+        this.computedParts.state = computedStateArr.join(SRNC.STATE_PART_SEPARATOR);
         break;
       } // End for 1
     } // End if 1
   } // End computeTypeAndState
 
   // Composes and returns the complete screen reader narration according to the values of all the internally stored computed parts in the correct order and based on the given definition name and platform.
-  composeMessageFromParts(definitionName: string, platform: string): string {
-    const readingOrder = SRMC.readingOrder[platform][definitionName];
-    const computedMessageArr = [];
+  composeNarrationFromParts(definitionName: string, platform: string): string {
+    const readingOrder = SRNC.readingOrder[platform][definitionName];
+    const computedNarrationArr = [];
     for (let i = 0; i < readingOrder.length; i++) {
       // Begin for 1
       const partName = readingOrder[i];
       const partValue = this.computedParts[partName];
       if (partValue) {
         // Begin if 1
-        computedMessageArr.push(partValue);
+        computedNarrationArr.push(partValue);
       } // End if 1
     } // End for 1
-    const computedMessage = computedMessageArr.join(SRMC.PART_SEPARATOR);
-    return computedMessage;
-  } // End composeMessageFromParts
-} // End MessageComputer
+    const computedNarration = computedNarrationArr.join(SRNC.PART_SEPARATOR);
+    return computedNarration;
+  } // End composeNarrationFromParts
+} // End NarrationComputer

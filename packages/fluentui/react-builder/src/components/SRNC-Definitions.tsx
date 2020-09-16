@@ -1,4 +1,4 @@
-const SRMC: { [key: string]: any } = {
+const SRNC: { [key: string]: any } = {
   PART_SEPARATOR: ' ',
   STATE_PART_SEPARATOR: ' ',
 
@@ -176,12 +176,12 @@ const SRMC: { [key: string]: any } = {
   // State attributes of which "false" value means the attribute is omitted
   falseMeansOmitted: ['aria-haspopup', 'aria-invalid', 'aria-required'], // End falseMeansOmitted
 
-  // Rules for the message type and state computation based on the element state attributes combination (the definitions for each platform are stored in a separate file)
+  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions for each platform are stored in a separate file)
   stateRules: {
     'Win/JAWS': {},
   }, // End stateRules
 
-  // Computed message parts reading order for each platform and definition name
+  // Computed narration parts reading order for each platform and definition name
   readingOrder: {
     'Win/JAWS': {
       '[default]': ['name', 'type', 'state', 'description', 'usage'],
@@ -218,4 +218,4 @@ const SRMC: { [key: string]: any } = {
   }, // End possibleStates
 };
 
-export default SRMC;
+export default SRNC;
