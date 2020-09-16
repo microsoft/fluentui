@@ -27,6 +27,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "@uifabric/set-version": "^7.0.22"
   }
 }
