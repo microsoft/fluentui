@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/Breadcrumb';
+export * from './components/Breadcrumb/index';

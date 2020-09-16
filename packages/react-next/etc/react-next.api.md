@@ -20,11 +20,13 @@ import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compa
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
 import { ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
@@ -42,6 +44,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
@@ -107,6 +110,19 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
 }
+
+// @public (undocumented)
+export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
+
+// @public (undocumented)
+export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
+    constructor(props: IBreadcrumbProps);
+    // (undocumented)
+    static defaultProps: IBreadcrumbProps;
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
 
 // @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
@@ -305,6 +321,84 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
+}
+
+// @public (undocumented)
+export interface IBreadcrumb {
+    focus(): void;
+}
+
+// @public @deprecated (undocumented)
+export type IBreadCrumbData = IBreadcrumbData;
+
+// @public (undocumented)
+export interface IBreadcrumbData {
+    // (undocumented)
+    props: IBreadcrumbProps;
+    // (undocumented)
+    renderedItems: IBreadcrumbItem[];
+    // (undocumented)
+    renderedOverflowItems: IBreadcrumbItem[];
+}
+
+// @public (undocumented)
+export interface IBreadcrumbItem {
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+    href?: string;
+    isCurrentItem?: boolean;
+    key: string;
+    onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IBreadcrumb>;
+    dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
+    items: IBreadcrumbItem[];
+    maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+    overflowAriaLabel?: string;
+    overflowIndex?: number;
+    // (undocumented)
+    styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+    // (undocumented)
+    theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyles {
+    // (undocumented)
+    chevron: IStyle;
+    // (undocumented)
+    item: IStyle;
+    // (undocumented)
+    itemLink: IStyle;
+    // (undocumented)
+    list: IStyle;
+    // (undocumented)
+    listItem: IStyle;
+    // (undocumented)
+    overflow: IStyle;
+    // (undocumented)
+    overflowButton: IStyle;
+    // (undocumented)
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -947,6 +1041,11 @@ export interface IDialogState {
 }
 
 // @public (undocumented)
+export interface IDividerAsProps extends IIconProps {
+    item?: IBreadcrumbItem;
+}
+
+// @public (undocumented)
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
@@ -1197,38 +1296,6 @@ export interface IImageStyleProps {
 export interface IImageStyles {
     image: IStyle;
     root: IStyle;
-}
-
-// @public (undocumented)
-export interface ILayer {
-}
-
-// @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: IRefObject<ILayer>;
-    eventBubblingEnabled?: boolean;
-    hostId?: string;
-    insertFirst?: boolean;
-    onLayerDidMount?: () => void;
-    // @deprecated
-    onLayerMounted?: () => void;
-    onLayerWillUnmount?: () => void;
-    styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyleProps {
-    className?: string;
-    isNotHost?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyles {
-    content?: IStyle;
-    root?: IStyle;
 }
 
 // @public
@@ -2224,17 +2291,6 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const Layer: React.FunctionComponent<ILayerProps>;
-
-// @public (undocumented)
-export const LayerBase: React.FunctionComponent<ILayerProps>;
-
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const LayerHost: (props: ILayerHostProps) => JSX.Element;
-
-// @public (undocumented)
 export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -2652,7 +2708,6 @@ export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
-export * from "office-ui-fabric-react/lib/Breadcrumb";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
@@ -2675,6 +2730,7 @@ export * from "office-ui-fabric-react/lib/Keytip";
 export * from "office-ui-fabric-react/lib/KeytipData";
 export * from "office-ui-fabric-react/lib/KeytipLayer";
 export * from "office-ui-fabric-react/lib/Label";
+export * from "office-ui-fabric-react/lib/Layer";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/Nav";

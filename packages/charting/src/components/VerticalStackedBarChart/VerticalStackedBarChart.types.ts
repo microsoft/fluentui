@@ -101,6 +101,17 @@ export interface IVerticalStackedBarChartProps {
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 
   /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * decides wether to show/hide legends
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
    * props for the legends in the chart
    */
   legendProps?: Partial<ILegendsProps>;
