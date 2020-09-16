@@ -10,7 +10,7 @@ import {
 /**
  * {@docCategory SwatchColorPicker}
  */
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
   /**
    * Number of columns for the swatch color picker
    */

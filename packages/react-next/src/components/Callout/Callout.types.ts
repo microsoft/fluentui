@@ -11,7 +11,7 @@ export { Target };
 /**
  * {@docCategory Callout}
  */
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
