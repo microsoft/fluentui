@@ -120,7 +120,7 @@ jobs:
         inputs:
           azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
           BlobPrefix: '$(deployBasePath)/react-northstar'
-          CacheControl: 'public, must-revalidate, max-age=600'
+          CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
           SourcePath: 'packages/fluentui/docs/dist'
           storage: fabricweb
