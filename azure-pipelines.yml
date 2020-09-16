@@ -103,6 +103,8 @@ jobs:
     workspace:
       clean: all
     variables:
+      - name: screener
+        value: true
       - template: .devops/templates/variables.yml
         parameters:
           pathPrefix: SourceVersion

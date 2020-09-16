@@ -99,10 +99,13 @@ const webpackConfig: webpack.Configuration = {
         reactVis: require('react-vis/package.json').version,
       },
     }),
-    new ResourcePreloadWebpackPlugin({
-      cwd: paths.docsSrc(),
-      glob: '**/*.{png,jpg,jpeg}',
-    }),
+    // Adds specified assets to <link rel="preload">
+    // It's done for Screener only to avoid broken screenshots when it fails to load images due a slow connection
+    process.env.SCREENER &&
+      new ResourcePreloadWebpackPlugin({
+        cwd: paths.docsSrc(),
+        glob: '**/*.{png,jpg,jpeg}',
+      }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
       // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
