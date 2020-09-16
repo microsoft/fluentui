@@ -26,7 +26,7 @@ const DropdownExampleSearchMultiple = () => (
 );
 
 const getA11ySelectionMessage = {
-  onAdd: item => `${item} has been selected.`,
+  onAdd: item => `${item} selected. Press left or right arrow keys to navigate selected items.`,
   onRemove: item => `${item} has been removed.`,
 };
 
