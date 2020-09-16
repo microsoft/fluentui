@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating SpinButton to handle onChange.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-16T02:13:39.040Z"
+}
