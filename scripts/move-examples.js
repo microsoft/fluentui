@@ -66,13 +66,13 @@ function fixDocPageTypesPaths() {
 
 /** Update all references in examples, website, and resources */
 function fixDocFilePaths() {
-  // \b(?:@[\w-]+\/)?               optional scope
+  // (?:@)?\b(?:[\w-]+\/)?               optional scope
   // ([\w-]+)\/                     package name (1)
   // (lib|src)\/                    source type (2)
   // ([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)  (3)
   //   [\w\/]+\/                   the rest of the path
   //   (?:examples|docs|\w+\.doc|\w+Page)\b doc path parts
-  const docRegex = /\b(?:@[\w-]+\/)?([\w-]+)\/(lib|src)\/([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)/g;
+  const docRegex = /(?:@)?\b(?:[\w-]+\/)?([\w-]+)\/(lib|src)\/([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)/g;
   // @ts-ignore
   replaceInFile.sync({
     files: [
