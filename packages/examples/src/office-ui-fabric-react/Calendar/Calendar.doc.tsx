@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DateRangeType, DayOfWeek } from '../../Calendar';
+import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ExtendedPeoplePickerBasicExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
-import { ExtendedPeoplePickerControlledExample } from '../examples/ExtendedPeoplePicker.Controlled.Example';
+import { ExtendedPeoplePickerBasicExample } from './examples/ExtendedPeoplePicker.Basic.Example';
+import { ExtendedPeoplePickerControlledExample } from './examples/ExtendedPeoplePicker.Controlled.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 

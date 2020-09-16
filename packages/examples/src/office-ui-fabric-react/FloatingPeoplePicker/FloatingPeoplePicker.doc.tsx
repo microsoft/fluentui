@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FloatingPeoplePickerTypesExample } from '../PeoplePicker/examples/FloatingPeoplePicker.Basic.Example';
+import { FloatingPeoplePickerTypesExample } from './examples/FloatingPeoplePicker.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
