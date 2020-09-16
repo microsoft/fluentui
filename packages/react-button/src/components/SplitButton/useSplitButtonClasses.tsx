@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { makeClasses } from '@fluentui/react-theme-provider';
 
 const GlobalClassNames = {
@@ -13,6 +12,10 @@ export const useSplitButtonClasses = makeClasses({
     display: 'inline-flex',
     justifyContent: 'stretch',
     position: 'relative',
+
+    [`.${GlobalClassNames.menuButton}`]: {
+      '--button-width': menuButtonWidth,
+    },
   },
 
   button: [
@@ -30,9 +33,7 @@ export const useSplitButtonClasses = makeClasses({
       '--button-borderLeftWidth': 0,
       '--button-borderTopLeftRadius': 0,
       '--button-borderBottomLeftRadius': 0,
-      '--button-width': menuButtonWidth,
-      '--button-paddingLeft': 0,
-      '--button-paddingRight': 0,
+      '--button-iconSize': 'var(--button-menuIconSize)',
     },
   ],
 

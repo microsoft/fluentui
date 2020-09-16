@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useFocusRects } from '@uifabric/utilities';
 import { SplitButtonProps } from './SplitButton.types';
@@ -10,7 +11,7 @@ import { MenuButton } from '../MenuButton/index';
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const { state, render } = useSplitButton(props, ref, {
     button: { as: Button },
-    menuButton: { as: MenuButton },
+    menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
   });
 
   useSplitButtonClasses(state);
