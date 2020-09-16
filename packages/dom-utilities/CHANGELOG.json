@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/dom-utilities",
+  "entries": [
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/dom-utilities_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add API report file",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/dom-utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Port over virtual DOM utilities and tests",
+            "author": "tmichon@microsoft.com",
+            "commit": "0903cff93e15f9865634c79a42fb2fbc14e7964e",
+            "package": "@fluentui/dom-utilities"
+          }
+        ]
+      }
+    }
+  ]
+}

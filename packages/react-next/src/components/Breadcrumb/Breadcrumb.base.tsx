@@ -20,9 +20,10 @@ import {
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
+const nullFunction = (): null => null;
+
 const OVERFLOW_KEY = 'overflow';
 const COMPONENT_NAME = 'BreadcrumbBase';
-const nullFunction = (): null => null;
 
 const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
   styles: props => {
@@ -107,11 +108,6 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
     styles,
   } = props;
 
-  const classNames: IProcessedStyleSet<IBreadcrumbStyles> = getClassNames(styles, {
-    className,
-    theme: theme!,
-  });
-
   const renderedItems = [...items];
   const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
 
@@ -120,6 +116,11 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
     renderedItems,
     renderedOverflowItems,
   };
+
+  const classNames: IProcessedStyleSet<IBreadcrumbStyles> = getClassNames(styles, {
+    className,
+    theme: theme!,
+  });
 
   const renderItem = (item: IBreadcrumbItem) => {
     if (item.onClick || item.href) {
