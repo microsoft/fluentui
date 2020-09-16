@@ -6,6 +6,7 @@ import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from '@fluentui/theme';
 import { createDefaultTheme } from './createDefaultTheme';
+import { Stylesheet } from '@uifabric/merge-styles';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -27,6 +28,12 @@ const darkTheme = mergeThemes({
 });
 
 describe('ThemeProvider', () => {
+  const stylesheet: Stylesheet = Stylesheet.getInstance();
+
+  beforeEach(() => {
+    stylesheet.reset();
+  });
+
   it('renders a div', () => {
     const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
     const tree = component.toJSON();
@@ -106,8 +113,10 @@ describe('ThemeProvider', () => {
     );
 
     const wrapper = mount(TestComponent);
-    const rootClass = wrapper.find('div').prop('className');
-    expect(rootClass).toBe(`${testClass} ${document.body.className}`);
+    expect(document.body.className).not.toBe('');
+
+    const bodyStyles = stylesheet.insertedRulesFromClassName(document.body.className);
+    expect(bodyStyles).toMatchSnapshot();
 
     wrapper.unmount();
 

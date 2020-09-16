@@ -10,19 +10,23 @@ export default {
 
 const lightTheme: PartialTheme = {
   tokens: {
-    body: {
-      background: 'white',
-      contentColor: 'black',
-      fontFamily: 'Segoe UI',
+    color: {
+      body: {
+        background: 'white',
+        contentColor: 'black',
+        fontFamily: 'Segoe UI',
+      },
     },
   },
 };
 
 const darkTheme: PartialTheme = {
   tokens: {
-    body: {
-      background: 'black',
-      contentColor: 'white',
+    color: {
+      body: {
+        background: 'black',
+        contentColor: 'white',
+      },
     },
   },
 };
