@@ -372,9 +372,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   isCalloutForStack?: boolean;
 
   /** dataset values to find out domain of the String axis
-   * Present using for only vertical stacked bar chart
+   * Present using for only vertical stacked bar chart and grouped vertical bar chart
    */
-  datasetForXAxisDomain?: IDataPoint[];
+  datasetForXAxisDomain?: string[];
 
   /** Own callout design */
   // need to add type here

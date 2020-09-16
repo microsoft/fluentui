@@ -43,6 +43,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 > {
   private _points: IVerticalStackedChartProps[];
   private _dataset: IDataPoint[];
+  private _xAxisLabels: string[];
   private _bars: JSX.Element[];
   private _isNumeric: boolean;
   private _barWidth: number;
@@ -133,6 +134,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        datasetForXAxisDomain={this._xAxisLabels}
         isCalloutForStack={this.props.isCalloutForStack!}
         barwidth={this._barWidth}
         getmargins={this._getMargins}
@@ -157,16 +159,19 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _createDataSetLayer(): IDataPoint[] {
+    const tempArr: string[] = [];
     const dataset: IDataPoint[] = this._points.map(singlePointData => {
       let total: number = 0;
       singlePointData.chartData!.forEach((point: IVSChartDataPoint) => {
         total = total + point.data;
       });
+      !this._isNumeric && tempArr.push(singlePointData.xAxisPoint as string);
       return {
         x: singlePointData.xAxisPoint,
         y: total,
       };
     });
+    this._xAxisLabels = tempArr;
     return dataset;
   }
 

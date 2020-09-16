@@ -79,7 +79,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <ChoiceGroup options={options} defaultSelectedKey="MultiCallout" onChange={this._onChange} label="Pick one" />;
+        <ChoiceGroup options={options} defaultSelectedKey="MultiCallout" onChange={this._onChange} label="Pick one" />
         <div style={rootStyle}>
           <VerticalStackedBarChart
             data={data}

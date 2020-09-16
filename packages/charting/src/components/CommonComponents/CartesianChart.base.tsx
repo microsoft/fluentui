@@ -132,7 +132,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this._isRtl, points);
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
         break;
       default:
         xScale = createNumericXAxis(XAxisParams, this._isRtl);
@@ -173,7 +173,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;

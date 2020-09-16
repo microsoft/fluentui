@@ -167,30 +167,24 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
 
 /**
  * Create String X axis
- * Currently using for only Vetical stacked bar chart.
+ * Currently using for only Vetical stacked bar chart and grouped vertical bar chart
  *
  * @export
  * @param {IXAxisParams} xAxisParams
  * @param {ITickParams} tickParams
- * @param {boolean} isRtl
- * @param {IDataPoint[]} dataset
+ * @param {string[]} dataset
  * @returns
  */
-export function createStringXAxis(
-  xAxisParams: IXAxisParams,
-  tickParams: ITickParams,
-  isRtl: boolean,
-  dataset: IDataPoint[],
-) {
+export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
   const { domainNRangeValues } = xAxisParams;
   const xAxisScale = d3ScaleBand()
-    .domain(dataset.map((point: IDataPoint) => point.x as string))
+    .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .padding(0.1);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxisParams.tickSize || 10)
     .tickPadding(xAxisParams.tickPadding || 10)
-    .tickFormat((x: string, index: number) => dataset[index].x as string);
+    .tickFormat((x: string, index: number) => dataset[index] as string);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement)
