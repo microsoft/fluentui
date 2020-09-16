@@ -166,3 +166,4 @@ export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './co
 export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
 export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';
 export { datepickerCalendarGridStyles as DatepickerCalendarGrid } from './components/Datepicker/datepickerCalendarGridStyles';
+export { datepickerCalendarGridRowStyles as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowStyles';
