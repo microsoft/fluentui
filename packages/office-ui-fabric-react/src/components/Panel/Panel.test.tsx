@@ -147,6 +147,32 @@ describe('Panel', () => {
     });
   });
 
+  it('allows the consumer to pass through popup props', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const originalCreatePortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
+      <Panel
+        isOpen={true}
+        headerText="Test Panel"
+        headerTextProps={{
+          className: 'panel_class',
+          'aria-level': 3,
+        }}
+        popupProps={{ ariaLabel: 'I am an aria label', ariaLabelledBy: '' }}
+      >
+        <span>Content goes here</span>
+      </Panel>,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    ReactDOM.createPortal = originalCreatePortal;
+  });
+
   describe('onClose', () => {
     beforeEach(() => {
       div = document.createElement('div');

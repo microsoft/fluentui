@@ -2,6 +2,36 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "createMergedRef: fix internal typings",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/utilities_v7.30.0",
       "version": "7.30.0",

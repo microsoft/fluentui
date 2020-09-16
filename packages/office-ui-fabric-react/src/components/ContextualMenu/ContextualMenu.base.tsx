@@ -39,7 +39,7 @@ import {
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import {
   ContextualMenuSplitButton,
@@ -49,6 +49,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
+import { Target } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -423,6 +424,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     // Popup uses to determine if focus is contained when dismissal occurs
     this._tryFocusPreviousActiveElement({
       containsFocus: this._focusingPreviousElement,
+      documentContainsFocus: this._targetWindow.document.hasFocus(),
       originalElement: this._previousActiveElement,
     });
 
@@ -446,6 +448,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (this.props.onRestoreFocus) {

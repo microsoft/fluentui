@@ -6,7 +6,7 @@ import { mountWithProvider } from 'test/utils';
 import { act } from 'react-dom/test-utils';
 
 describe('Loader', () => {
-  isConformant(Loader, { constructorName: 'Loader' });
+  isConformant(Loader, { testPath: __filename, constructorName: 'Loader' });
 
   describe('delay', () => {
     it('is "0" by default', () => {

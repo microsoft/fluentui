@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.6)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.1..@uifabric/date-time_v7.17.6)
+
+### Patches
+
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
 
 ## [7.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.1)
 

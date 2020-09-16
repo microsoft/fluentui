@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 import { treeItemClassName, treeTitleClassName } from '@fluentui/react-northstar';
 
 const selectors = {

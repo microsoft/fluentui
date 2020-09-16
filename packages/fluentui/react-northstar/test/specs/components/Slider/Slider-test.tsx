@@ -1,11 +1,9 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { sharedIsConformant } from 'test/utils';
 import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
-  sharedIsConformant({ Component: Slider, displayName: 'Slider' }, __filename);
-
   isConformant(Slider, {
+    testPath: __filename,
     constructorName: 'Slider',
     eventTargets: {
       onChange: 'input',
