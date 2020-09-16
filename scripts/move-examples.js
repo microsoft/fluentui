@@ -59,7 +59,7 @@ function fixDocPageTypesPaths() {
   // @ts-ignore types are wrong--they declare a default export, but the js assigns to module.exports
   replaceInFile.sync({
     files: path.posix.join(examplesSrc, '**/*'),
-    from: /(..\/)+common\/DocPage\.types/,
+    from: /(\.\.\/)+common\/DocPage\.types/,
     to: 'office-ui-fabric-react/lib/common/DocPage.types',
   });
 }
