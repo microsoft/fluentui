@@ -34,7 +34,7 @@ export enum KeyboardSpinDirection {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
