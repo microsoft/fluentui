@@ -923,6 +923,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
     protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps> | undefined) => JSX.Element;
@@ -930,9 +932,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-}
+    }
 
 // @public (undocumented)
 export enum DetailsListLayoutMode {
@@ -954,6 +954,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     componentWillUnmount(): void;
     // (undocumented)
     focus(forceIntoFirstElement?: boolean): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsRowBaseProps, previousState: IDetailsRowState): IDetailsRowState;
     measureCell(index: number, onMeasureDone: (width: number) => void): void;
     // (undocumented)
     protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
@@ -961,8 +963,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void;
     }
 
 // @public (undocumented)
@@ -1373,6 +1373,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps(nextProps: IGroupedListProps, previousState: IGroupedListState): IGroupedListState;
+    // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
     render(): JSX.Element;
@@ -1380,8 +1382,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     toggleCollapseAll(allCollapsed: boolean): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void;
     }
 
 // @public (undocumented)
@@ -3733,6 +3733,8 @@ export interface IDetailsListState {
     // (undocumented)
     focusedItemIndex: number;
     // (undocumented)
+    getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
     isSizing?: boolean;
@@ -5046,6 +5048,8 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)
@@ -5665,6 +5669,8 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
 
 // @public (undocumented)
 export interface IListState<T = any> {
+    // (undocumented)
+    getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
@@ -8535,6 +8541,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
@@ -8546,6 +8554,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps<T = any>(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
@@ -8555,8 +8565,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void;
     }
 
 // @public (undocumented)
