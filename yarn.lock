@@ -2052,7 +2052,7 @@
     tar "^4.4.8"
     temp-write "^3.4.0"
 
-"@lerna/package-graph@3.14.0":
+"@lerna/package-graph@3.14.0", "@lerna/package-graph@^3.14.0":
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/@lerna/package-graph/-/package-graph-3.14.0.tgz#4ccdf446dccedfbbeb4efff3eb720cb6fcb109fc"
   integrity sha512-dNpA/64STD5YXhaSlg4gT6Z474WPJVCHoX1ibsVIFu0fVgH609Y69bsdmbvTRdI7r6Dcu4ZfGxdR636RTrH+Eg==
@@ -2079,7 +2079,7 @@
   dependencies:
     semver "^5.5.0"
 
-"@lerna/project@3.15.0":
+"@lerna/project@3.15.0", "@lerna/project@^3.15.0":
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/@lerna/project/-/project-3.15.0.tgz#733b0993a849dcf5b68fcd0ec11d8f7de38a6999"
   integrity sha512-eNGUWiMbQ9kh9kGkomtMnsLypS0rfLqxKgZP2+VnNVtIXjnLv4paeTm+1lkL+naNJUwhnpMk2NSLEeoxT/20QA==
@@ -14960,10 +14960,10 @@ just-extend@^4.0.2:
   resolved "https://registry.yarnpkg.com/just-extend/-/just-extend-4.0.2.tgz#f3f47f7dfca0f989c55410a7ebc8854b07108afc"
   integrity sha512-FrLwOgm+iXrPV+5zDU6Jqu4gCRXbWEQg2O3SKONsWE4w7AXFRkryS53bpWdaL9cNol+AmR3AEYz6kn+o0fCPnw==
 
-"just-scripts-utils@>=0.9.0 <1.0.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-0.9.0.tgz#6aed5e96e6d0c3315424448ae21ff5968b500d33"
-  integrity sha512-KjetF19abghOAPCe0LAVFEwMjz80lo1r7NmKqKHNEGqQGYuf/3F+vh9kMydXBjtLAx/RUuEbtx0kcuAZrKZ3LA==
+"just-scripts-utils@>=0.9.1 <1.0.0":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-0.9.1.tgz#ae23f4a658d860081124496cafdabc954c8537c0"
+  integrity sha512-9vVBV7JpvYjAPMyNVyzyAwYqVTqMRhuMV4erhLLb3JJ44UiuRkMB/1RmYrTsIekn0K74OrPMUInZYEATvyfthA==
   dependencies:
     fs-extra "^7.0.1"
     glob "^7.1.3"
@@ -14992,19 +14992,18 @@ just-scripts-utils@^0.8.3:
     tar "^4.4.8"
     yargs "^12.0.5"
 
-just-scripts@0.43.1:
-  version "0.43.1"
-  resolved "https://registry.yarnpkg.com/just-scripts/-/just-scripts-0.43.1.tgz#eda4feba48efc7dea6cd8326c88047b6c6d4d536"
-  integrity sha512-h1tANBGnQLmRvEpiJQQ7Tv5xVPbrY6xCLihlInzmxAM/g5vRXVHz4lCOnhT4JFHkL2ZBSZwv6G4lVY8ay3NIAA==
+just-scripts@0.44.5:
+  version "0.44.5"
+  resolved "https://registry.yarnpkg.com/just-scripts/-/just-scripts-0.44.5.tgz#df58d50329a27c7db742a2dc18c158bf30427819"
+  integrity sha512-NFN2Z9WToDdACKj02MVgBjfKpIBVXKArg3WP10SGks8565hIJgfCpDNbmLnTCrxgYvmSjRgUU0xoWlI/+ZT5tg==
   dependencies:
     "@types/node" "^10.12.18"
     chalk "^2.4.1"
     diff-match-patch "1.0.4"
     fs-extra "^7.0.1"
     glob "^7.1.3"
-    just-scripts-utils ">=0.9.0 <1.0.0"
+    just-scripts-utils ">=0.9.1 <1.0.0"
     just-task ">=0.17.0 <1.0.0"
-    npm-registry-fetch "^3.9.0"
     prompts "^2.0.1"
     run-parallel-limit "^1.0.5"
     supports-color "^7.1.0"
@@ -17571,18 +17570,6 @@ npm-registry-fetch@^3.8.0:
     figgy-pudding "^3.4.1"
     lru-cache "^5.1.1"
     make-fetch-happen "^4.0.2"
-    npm-package-arg "^6.1.0"
-
-npm-registry-fetch@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/npm-registry-fetch/-/npm-registry-fetch-3.9.0.tgz#44d841780e2833f06accb34488f8c7450d1a6856"
-  integrity sha512-srwmt8YhNajAoSAaDWndmZgx89lJwIZ1GWxOuckH4Coek4uHv5S+o/l9FLQe/awA+JwTnj4FJHldxhlXdZEBmw==
-  dependencies:
-    JSONStream "^1.3.4"
-    bluebird "^3.5.1"
-    figgy-pudding "^3.4.1"
-    lru-cache "^4.1.3"
-    make-fetch-happen "^4.0.1"
     npm-package-arg "^6.1.0"
 
 npm-registry-fetch@^4.0.0:
