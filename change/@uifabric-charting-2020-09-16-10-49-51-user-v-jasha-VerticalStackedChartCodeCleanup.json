@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "Vertical stacked bar chart code refactored",
+  "comment": "Vertical stacked bar chart code refactored - Cartesinan chart impletemented in base file.",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-09-16T05:19:51.644Z"
 }
