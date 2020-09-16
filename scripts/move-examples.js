@@ -82,7 +82,7 @@ function fixDocFilePaths() {
     from: docRegex,
     to: substr => {
       docRegex.lastIndex = 0;
-      if (substr.includes('DocPage.types')) {
+      if (/\bDocPage|fabric-website/.test(substr)) {
         return substr;
       }
       const match = docRegex.exec(substr);
@@ -100,7 +100,7 @@ function fixDemoAppPaths() {
     files: path.posix.join(examplesSrc, '*/demo/AppDefinition.tsx'),
     // remove "components" or other extra segments which don't exist in the new layout
     from: /'\.\.\/(\w+)/,
-    to: '..',
+    to: "'..",
   });
 }
 
