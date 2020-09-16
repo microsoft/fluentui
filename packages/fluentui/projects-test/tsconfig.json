@@ -1,0 +1,10 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

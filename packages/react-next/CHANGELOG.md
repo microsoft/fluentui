@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 14 Sep 2020 12:22:12 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.108)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.106..@fluentui/react-next_v8.0.0-alpha.108)
+
+### Changes
+
+- Updating MessageBar to a function component inside React-Next. ([PR #14769](https://github.com/microsoft/fluentui/pull/14769) by czearing@outlook.com)
+- Add missing ref prop typing. ([PR #15027](https://github.com/microsoft/fluentui/pull/15027) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.106)
 
