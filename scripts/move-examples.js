@@ -25,7 +25,7 @@ function moveDocFiles() {
     const demoAppPath = path.join(packagePath, 'src/demo');
 
     // exclude certain packages
-    if (['example-app-base', 'tsx-editor'].includes(packageName)) {
+    if (['examples', 'example-app-base', 'tsx-editor'].includes(packageName)) {
       continue;
     }
 
