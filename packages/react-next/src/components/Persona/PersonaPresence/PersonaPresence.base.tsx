@@ -9,6 +9,7 @@ import {
   PersonaSize,
 } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
@@ -25,73 +26,76 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  * PersonaPresence with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaPresenceBase = React.forwardRef(
-  (props: IPersonaPresenceProps, forwarededRef: React.Ref<HTMLDivElement>) => {
-    const {
-      coinSize,
-      isOutOfOffice,
-      styles, // Use getStyles from props.
-      presence,
-      theme,
-      presenceTitle,
-      presenceColors,
-    } = props;
-    const size = sizeBoolean(props.size as PersonaSize);
+export const PersonaPresenceBase: React.FunctionComponent<IPersonaPresenceProps> = React.forwardRef<
+  HTMLDivElement,
+  IPersonaPresenceProps
+>((props, forwardedRef) => {
+  const {
+    coinSize,
+    isOutOfOffice,
+    styles, // Use getStyles from props.
+    presence,
+    theme,
+    presenceTitle,
+    presenceColors,
+  } = props;
 
-    // Render Presence Icon if Persona is above size 32.
-    const renderIcon =
-      !(size.isSize8 || size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) &&
-      (coinSize ? coinSize > 32 : true);
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
-    const presenceHeightWidth: string = coinSize
-      ? coinSize / coinSizePresenceScaleFactor < presenceMaxSize
-        ? coinSize / coinSizePresenceScaleFactor + 'px'
-        : presenceMaxSize + 'px'
-      : '';
-    const presenceFontSize: string = coinSize
-      ? coinSize / coinSizeFontScaleFactor < presenceFontMaxSize
-        ? coinSize / coinSizeFontScaleFactor + 'px'
-        : presenceFontMaxSize + 'px'
-      : '';
-    const coinSizeWithPresenceIconStyle = coinSize
-      ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth }
-      : undefined;
-    const coinSizeWithPresenceStyle = coinSize
-      ? { width: presenceHeightWidth, height: presenceHeightWidth }
-      : undefined;
+  const size = sizeBoolean(props.size as PersonaSize);
 
-    // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      presence,
-      size: props.size,
-      isOutOfOffice,
-      presenceColors,
-    });
+  // Render Presence Icon if Persona is above size 32.
+  const renderIcon =
+    !(size.isSize8 || size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) &&
+    (coinSize ? coinSize > 32 : true);
 
-    if (presence === PersonaPresenceEnum.none) {
-      return null;
-    }
+  const presenceHeightWidth: string = coinSize
+    ? coinSize / coinSizePresenceScaleFactor < presenceMaxSize
+      ? coinSize / coinSizePresenceScaleFactor + 'px'
+      : presenceMaxSize + 'px'
+    : '';
+  const presenceFontSize: string = coinSize
+    ? coinSize / coinSizeFontScaleFactor < presenceFontMaxSize
+      ? coinSize / coinSizeFontScaleFactor + 'px'
+      : presenceFontMaxSize + 'px'
+    : '';
+  const coinSizeWithPresenceIconStyle = coinSize
+    ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth }
+    : undefined;
+  const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
-    return (
-      <div
-        role="presentation"
-        className={classNames.presence}
-        style={coinSizeWithPresenceStyle}
-        title={presenceTitle}
-        ref={forwarededRef}
-      >
-        {renderIcon && (
-          <Icon
-            className={classNames.presenceIcon}
-            iconName={determineIcon(props.presence, props.isOutOfOffice)}
-            style={coinSizeWithPresenceIconStyle}
-          />
-        )}
-      </div>
-    );
-  },
-);
+  // Use getStyles from props, or fall back to getStyles from styles file.
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    presence,
+    size: props.size,
+    isOutOfOffice,
+    presenceColors,
+  });
+
+  if (presence === PersonaPresenceEnum.none) {
+    return null;
+  }
+
+  return (
+    <div
+      role="presentation"
+      className={classNames.presence}
+      style={coinSizeWithPresenceStyle}
+      title={presenceTitle}
+      ref={mergedRootRef}
+    >
+      {renderIcon && (
+        <Icon
+          className={classNames.presenceIcon}
+          iconName={determineIcon(props.presence, props.isOutOfOffice)}
+          style={coinSizeWithPresenceIconStyle}
+        />
+      )}
+    </div>
+  );
+});
 PersonaPresenceBase.displayName = 'PersonaPresenceBase';
 
 function determineIcon(

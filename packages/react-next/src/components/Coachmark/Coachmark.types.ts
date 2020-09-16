@@ -18,7 +18,7 @@ export interface ICoachmark {
  * Coachmark component props
  * {@docCategory Coachmark}
  */
-export interface ICoachmarkProps {
+export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

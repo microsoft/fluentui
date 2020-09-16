@@ -27,7 +27,10 @@ const useComponentRef = (
   );
 };
 
-export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.forwardRef<
+  HTMLDivElement,
+  ISearchBoxProps
+>((props, forwardedRef) => {
   const [hasFocus, setHasFocus] = React.useState(false);
   const [value = '', setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
   const rootElementRef = React.useRef<HTMLDivElement>(null);

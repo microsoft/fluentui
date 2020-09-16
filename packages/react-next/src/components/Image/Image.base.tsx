@@ -74,68 +74,70 @@ function useLoadState(
   return [loadState, onImageLoaded, onImageError] as const;
 }
 
-export const ImageBase = React.forwardRef((props: IImageProps, forwardedRef: React.Ref<HTMLImageElement>) => {
-  const frameElement = React.useRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
-  const imageElement = React.useRef<HTMLImageElement>() as React.RefObject<HTMLImageElement>;
-  const [loadState, onImageLoaded, onImageError] = useLoadState(props, imageElement);
+export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<HTMLImageElement, IImageProps>(
+  (props, forwardedRef) => {
+    const frameElement = React.useRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
+    const imageElement = React.useRef<HTMLImageElement>() as React.RefObject<HTMLImageElement>;
+    const [loadState, onImageLoaded, onImageError] = useLoadState(props, imageElement);
 
-  const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(props, imgProperties, [
-    'width',
-    'height',
-  ]);
-  const {
-    src,
-    alt,
-    width,
-    height,
-    shouldFadeIn = true,
-    shouldStartVisible,
-    className,
-    imageFit,
-    role,
-    maximizeFrame,
-    styles,
-    theme,
-  } = props;
-  const coverStyle = useCoverStyle(props, loadState, imageElement, frameElement);
-  const classNames = getClassNames(styles!, {
-    theme: theme!,
-    className,
-    width,
-    height,
-    maximizeFrame,
-    shouldFadeIn,
-    shouldStartVisible,
-    isLoaded:
-      loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && props.shouldStartVisible),
-    isLandscape: coverStyle === ImageCoverStyle.landscape,
-    isCenter: imageFit === ImageFit.center,
-    isCenterContain: imageFit === ImageFit.centerContain,
-    isCenterCover: imageFit === ImageFit.centerCover,
-    isContain: imageFit === ImageFit.contain,
-    isCover: imageFit === ImageFit.cover,
-    isNone: imageFit === ImageFit.none,
-    isError: loadState === ImageLoadState.error,
-    isNotImageFit: imageFit === undefined,
-  });
+    const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(props, imgProperties, [
+      'width',
+      'height',
+    ]);
+    const {
+      src,
+      alt,
+      width,
+      height,
+      shouldFadeIn = true,
+      shouldStartVisible,
+      className,
+      imageFit,
+      role,
+      maximizeFrame,
+      styles,
+      theme,
+    } = props;
+    const coverStyle = useCoverStyle(props, loadState, imageElement, frameElement);
+    const classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      width,
+      height,
+      maximizeFrame,
+      shouldFadeIn,
+      shouldStartVisible,
+      isLoaded:
+        loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && props.shouldStartVisible),
+      isLandscape: coverStyle === ImageCoverStyle.landscape,
+      isCenter: imageFit === ImageFit.center,
+      isCenterContain: imageFit === ImageFit.centerContain,
+      isCenterCover: imageFit === ImageFit.centerCover,
+      isContain: imageFit === ImageFit.contain,
+      isCover: imageFit === ImageFit.cover,
+      isNone: imageFit === ImageFit.none,
+      isError: loadState === ImageLoadState.error,
+      isNotImageFit: imageFit === undefined,
+    });
 
-  // If image dimensions aren't specified, the natural size of the image is used.
-  return (
-    <div className={classNames.root} style={{ width: width, height: height }} ref={frameElement}>
-      <img
-        {...imageProps}
-        onLoad={onImageLoaded}
-        onError={onImageError}
-        key={KEY_PREFIX + props.src || ''}
-        className={classNames.image}
-        ref={useMergedRefs(imageElement, forwardedRef)}
-        src={src}
-        alt={alt}
-        role={role}
-      />
-    </div>
-  );
-});
+    // If image dimensions aren't specified, the natural size of the image is used.
+    return (
+      <div className={classNames.root} style={{ width: width, height: height }} ref={frameElement}>
+        <img
+          {...imageProps}
+          onLoad={onImageLoaded}
+          onError={onImageError}
+          key={KEY_PREFIX + props.src || ''}
+          className={classNames.image}
+          ref={useMergedRefs(imageElement, forwardedRef)}
+          src={src}
+          alt={alt}
+          role={role}
+        />
+      </div>
+    );
+  },
+);
 ImageBase.displayName = 'ImageBase';
 
 function useCoverStyle(
