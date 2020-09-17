@@ -34,7 +34,10 @@ function useDebugWarnings(props: ISwatchColorPickerProps) {
   }
 }
 
-export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorPickerProps>((props, ref) => {
+export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps> = React.forwardRef<
+  HTMLElement,
+  ISwatchColorPickerProps
+>((props, ref) => {
   const defaultId = useId('swatchColorPicker');
   const id = props.id || defaultId;
 

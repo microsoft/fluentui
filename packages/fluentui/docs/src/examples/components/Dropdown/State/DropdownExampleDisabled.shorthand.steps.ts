@@ -1,4 +1,5 @@
 import { dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 
 const selectors = {
   triggerButton: `.${dropdownSlotClassNames.triggerButton}`,

@@ -35,7 +35,20 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     [filterRegexp],
   );
 
-  const titleComponent = (Component, { content, expanded, ...rest }) => {
+  const titleComponent = (
+    Component,
+    {
+      content,
+      expanded,
+      hasSubtree,
+      treeSize,
+      selectable,
+      selectableParent,
+      selectionIndicator,
+      accessibility,
+      ...rest
+    },
+  ) => {
     return (
       <div {...rest}>
         {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}

@@ -2,6 +2,66 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support passing different renderer and default to use merge-styles",
+            "author": "dzearing@hotmail.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 22:29:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up default styles applied on ThemeProvider root to match Fabric",
+            "author": "xgao@microsoft.com",
+            "commit": "591e2cfebdce8b9b3a8108c49ee6ca54a381cdb8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Sep 2020 12:24:19 GMT",
       "tag": "@fluentui/react-theme-provider_v0.11.2",
       "version": "0.11.2",

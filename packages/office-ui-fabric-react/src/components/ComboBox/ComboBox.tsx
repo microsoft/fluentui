@@ -24,8 +24,14 @@ import { Checkbox } from '../../Checkbox';
 import { CommandButton, IButtonStyles, IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
-import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
+import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
+import {
+  IComboBoxOption,
+  IComboBoxOptionStyles,
+  IComboBoxProps,
+  IOnRenderComboBoxLabelProps,
+  IComboBoxClassNames,
+} from './ComboBox.types';
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';

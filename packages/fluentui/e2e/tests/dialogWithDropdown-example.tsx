@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Button, Dialog, Dropdown } from '@fluentui/react-northstar';
 
 export const selectors = {
-  outerTrigger: 'outer-trigger',
+  dialogTrigger: 'outer-trigger',
   dropdown: 'dropdown-id',
-  closer: 'dialog-close',
+  dialogClose: 'dialog-close',
   dialogHeader: 'header',
 };
 
@@ -35,10 +35,10 @@ const DropdownExampleSearch = () => (
 
 const DialogWithDropdown = () => (
   <Dialog
-    cancelButton={{ content: 'Close', id: selectors.closer }}
+    cancelButton={{ content: 'Close', id: selectors.dialogClose }}
     content={<DropdownExampleSearch />}
     header={{ content: 'An outer', id: selectors.dialogHeader }}
-    trigger={<Button id={selectors.outerTrigger} content="Open a dialog" />}
+    trigger={<Button id={selectors.dialogTrigger} content="Open a dialog" />}
   />
 );
 

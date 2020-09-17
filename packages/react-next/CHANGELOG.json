@@ -2,6 +2,119 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.108",
+      "version": "8.0.0-alpha.108",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating MessageBar to a function component inside React-Next.",
+            "author": "czearing@outlook.com",
+            "commit": "78462444756883b4f6c747d9d570a1c696a6a661",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Add missing ref prop typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "a17c428e073721e981aaa402339d37b87fd8d385",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Renaming sharedIsConformant to isConformant.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.106",
+      "version": "8.0.0-alpha.106",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Make Dropdown React.StrictMode compliant",
+            "author": "miclo@microsoft.com",
+            "commit": "a59fc3f91276b5b26d77cbd91b8007c7972d358d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.105",
+      "version": "8.0.0-alpha.105",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy ContextualMenu to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "e34570d86cd27872c5b76c06022757afbaf22707",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "ContextualMenu: port missing changes to react-next and clean up examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "fa40d5038b8cb6600de48cc71a45fafb5ed0ceef",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.103",
+      "version": "8.0.0-alpha.103",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix snapshot tests",
+            "author": "miclo@microsoft.com",
+            "commit": "a857ac9761acc140c6d04b1645950896f61af8af",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 18:41:54 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.102",
+      "version": "8.0.0-alpha.102",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating Rating to a function component inside React-Next.",
+            "author": "czearing@outlook.com",
+            "commit": "111f69ee4d3eec407f1d0680c4a8774c4bd76ad8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Exporting some of the interfaces that are being deep imported in product code.",
+            "author": "dzearing@hotmail.com",
+            "commit": "cc72899b69926f902d68f3164a7845401f1dc700",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Sep 2020 12:24:19 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.101",
       "version": "8.0.0-alpha.101",

@@ -12,57 +12,70 @@ export const createDefaultTheme = (): Theme => {
   return defaultTheme;
 };
 
+// TODO: use default fonts from `theme` package.
+const defaultFonts = {
+  // eslint-disable-next-line @fluentui/max-len
+  fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
+  fontSize: '14px',
+  fontWeight: 400,
+  mozOsxFontSmoothing: 'grayscale',
+  webkitFontSmoothing: 'antialiased',
+};
+
 export const defaultTokens: Tokens = {
-  body: { background: '#ffffff' },
-  accent: {
-    background: '#0078d4',
-    contentColor: '#ffffff',
-    borderColor: 'transparent',
-    iconColor: '#ffffff',
-    dividerColor: '#ffffff',
-    secondaryContentColor: '#ffffff',
-    disabled: {
-      background: '#f3f2f1',
-      contentColor: '#c8c6c4',
-      borderColor: 'var(--accent-disabled-background)',
-      iconColor: 'var(--accent-disabled-contentColor)',
-      dividerColor: '#c8c6c4',
-      secondaryContentColor: 'var(--accent-disabled-contentColor)',
-    },
-    hovered: {
-      background: '#106ebe',
+  color: {
+    body: { background: '#ffffff', contentColor: '#323130', ...defaultFonts },
+
+    brand: {
+      background: '#0078d4',
       contentColor: '#ffffff',
-      borderColor: 'var(--accent-borderColor)',
+      borderColor: 'transparent',
       iconColor: '#ffffff',
-      secondaryContentColor: 'var(--accent-hovered-contentColor)',
-    },
-    pressed: {
-      background: '#005a9e',
-      contentColor: 'var(--accent-contentColor)',
-      borderColor: 'var(--accent-borderColor)',
-      iconColor: 'var(--accent-iconColor)',
-      secondaryContentColor: 'var(--accent-pressed-contentColor)',
-    },
-    focused: {
-      background: 'var(--accent-background)',
-      borderColor: 'var(--accent-borderColor)',
-      contentColor: 'var(--accent-contentColor)',
-      iconColor: 'var(--accent-iconColor)',
-      secondaryContentColor: 'var(--accent-focused-contentColor)',
-    },
-    checked: {
-      background: 'var(--acent-pressed-background)',
-      contentColor: 'var(--acent-pressed-contentColor)',
-    },
-    checkedHovered: {
-      background: 'var(--acent-pressed-background)',
-      contentColor: 'var(--acent-pressed-contentColor)',
+      dividerColor: '#ffffff',
+      secondaryContentColor: '#ffffff',
+      disabled: {
+        background: '#f3f2f1',
+        contentColor: '#c8c6c4',
+        borderColor: 'var(--color-brand-disabled-background)',
+        iconColor: 'var(--color-brand-disabled-contentColor)',
+        dividerColor: '#c8c6c4',
+        secondaryContentColor: 'var(--color-brand-disabled-contentColor)',
+      },
+      hovered: {
+        background: '#106ebe',
+        contentColor: '#ffffff',
+        borderColor: 'var(--color-brand-borderColor)',
+        iconColor: '#ffffff',
+        secondaryContentColor: 'var(--color-brand-hovered-contentColor)',
+      },
+      pressed: {
+        background: '#005a9e',
+        contentColor: 'var(--color-brand-contentColor)',
+        borderColor: 'var(--color-brand-borderColor)',
+        iconColor: 'var(--color-brand-iconColor)',
+        secondaryContentColor: 'var(--color-brand-pressed-contentColor)',
+      },
+      focused: {
+        background: 'var(--color-brand-background)',
+        borderColor: 'var(--color-brand-borderColor)',
+        contentColor: 'var(--color-brand-contentColor)',
+        iconColor: 'var(--color-brand-iconColor)',
+        secondaryContentColor: 'var(--color-brand-focused-contentColor)',
+      },
+      checked: {
+        background: 'var(--color-brand-pressed-background)',
+        contentColor: 'var(--color-brand-pressed-contentColor)',
+      },
+      checkedHovered: {
+        background: 'var(--color-brand-pressed-background)',
+        contentColor: 'var(--color-brand-pressed-contentColor)',
+      },
     },
   },
 
   // TODO: this should be a variant.
   ghost: {
-    background: 'var(--body-background)',
+    background: 'var(--color-body-background)',
     borderColor: 'transparent',
     contentColor: '#323130',
     iconColor: '#106ebe',
@@ -126,6 +139,7 @@ export const defaultTokens: Tokens = {
       larger: '48px',
       largest: '64px',
     },
+    ...defaultFonts,
     paddingLeft: '20px',
     paddingRight: '20px',
     paddingTop: '0',
@@ -136,10 +150,6 @@ export const defaultTokens: Tokens = {
     iconSize: '16px',
     borderRadius: '2px',
     borderWidth: '1px',
-    // eslint-disable-next-line @fluentui/max-len
-    fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
-    fontSize: '14px',
-    fontWeight: 400,
     focusColor: '#605e5c',
     focusInnerColor: '#ffffff',
     focusWidth: '2px',

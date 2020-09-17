@@ -1,8 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.137.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.3)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.1..office-ui-fabric-react_v7.137.3)
+
+### Patches
+
+- Unset virtual parent when closing popups ([PR #15039](https://github.com/microsoft/fluentui/pull/15039) by tmichon@microsoft.com)
+
+## [7.137.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.1)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.0..office-ui-fabric-react_v7.137.1)
+
+### Patches
+
+- Migrate Target type to @uifabric/react-hooks ([PR #14513](https://github.com/microsoft/fluentui/pull/14513) by miclo@microsoft.com)
+- ContextualMenu: clean up examples ([PR #14989](https://github.com/microsoft/fluentui/pull/14989) by elcraig@microsoft.com)
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
+
+## [7.137.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.0)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.136.0..office-ui-fabric-react_v7.137.0)
+
+### Minor changes
+
+- Export getMenuItemStyles from ContextualMenu ([PR #14963](https://github.com/microsoft/fluentui/pull/14963) by anpablo@microsoft.com)
+
+## [7.136.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.136.0)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.135.0..office-ui-fabric-react_v7.136.0)
+
+### Minor changes
+
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
 
 ## [7.135.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.135.0)
 

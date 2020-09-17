@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle, IListProps, ShimmeredDetailsList } from '@fluentui/react-next';
-import { useSetInterval, useConst, useConstCallback } from '@uifabric/react-hooks';
+import { useSetInterval, useConst } from '@uifabric/react-hooks';
 
 interface IShimmerApplicationExampleState {
   lastIntervalId: number;
@@ -91,22 +91,25 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
 
   const { setInterval, clearInterval } = useSetInterval();
 
-  const loadMoreItems = (): void => {
-    state.visibleCount = Math.min(exampleItems.length, state.visibleCount + 2);
+  const onLoadData = React.useCallback(
+    (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+      const loadMoreItems = (): void => {
+        state.visibleCount = Math.min(exampleItems.length, state.visibleCount + 2);
 
-    setItems(exampleItems.map((current, index) => (index < state.visibleCount ? current : null)) as IExampleItem[]);
-  };
+        setItems(exampleItems.map((current, index) => (index < state.visibleCount ? current : null)) as IExampleItem[]);
+      };
 
-  const onLoadData = useConstCallback((ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
-    state.visibleCount = 0;
-    if (checked) {
-      loadMoreItems();
-      state.lastIntervalId = setInterval(loadMoreItems, INTERVAL_DELAY);
-    } else {
-      setItems(undefined);
-      clearInterval(state.lastIntervalId);
-    }
-  });
+      state.visibleCount = 0;
+      if (checked) {
+        loadMoreItems();
+        state.lastIntervalId = setInterval(loadMoreItems, INTERVAL_DELAY);
+      } else {
+        setItems(undefined);
+        clearInterval(state.lastIntervalId);
+      }
+    },
+    [clearInterval, setInterval, state],
+  );
 
   return (
     <>

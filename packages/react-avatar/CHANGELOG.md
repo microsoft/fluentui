@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.5.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.4.0..@fluentui/react-avatar_v0.5.0)
+
+### Minor changes
+
+- Updating state to use makeProps (mergeProps with explicit deep cloning, rather than implicit.) ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.4.0)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.12",
+      "version": "0.2.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@fluentui/keyboard-key_v0.2.5",
       "version": "0.2.5",
