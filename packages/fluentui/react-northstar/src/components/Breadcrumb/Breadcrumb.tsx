@@ -19,7 +19,7 @@ import {
   ShorthandFactory,
   createShorthandFactory,
 } from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 
@@ -28,7 +28,7 @@ export interface BreadcrumbProps
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 }
 
 export type BreadcrumbStylesProps = never;
@@ -98,6 +98,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
 Breadcrumb.defaultProps = {
   as: 'nav',
+  accessibility: breadcrumbBehavior,
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();
