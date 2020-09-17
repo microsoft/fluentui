@@ -3,7 +3,7 @@ import * as React from 'react';
 /**
  * {@docCategory Popup}
  */
-export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Aria role for popup
    */

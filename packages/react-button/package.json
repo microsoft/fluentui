@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.12.2",
+  "version": "0.12.6",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,11 +28,11 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^0.2.5",
-    "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/ie11-polyfills": "^0.1.1",
-    "@fluentui/react-conformance": "^0.1.1",
-    "@fluentui/storybook": "^0.4.9",
+    "@fluentui/common-styles": "^0.2.6",
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/ie11-polyfills": "^0.1.2",
+    "@fluentui/react-conformance": "^0.1.2",
+    "@fluentui/storybook": "^0.4.13",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -41,7 +41,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.15.7",
+    "@uifabric/example-app-base": "^7.15.10",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -50,22 +50,22 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.18.2",
-    "@fluentui/keyboard-key": "^0.2.11",
-    "@fluentui/react-icons": "^0.3.0",
-    "@fluentui/react-theme-provider": "^0.11.2",
-    "@fluentui/theme": "^0.2.0",
+    "@fluentui/react-compose": "^0.19.1",
+    "@fluentui/keyboard-key": "^0.2.12",
+    "@fluentui/react-icons": "^0.3.2",
+    "@fluentui/react-theme-provider": "^0.12.1",
+    "@fluentui/theme": "^0.2.2",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.12.0",
-    "@uifabric/set-version": "^7.0.22",
-    "@uifabric/utilities": "^7.31.0",
-    "office-ui-fabric-react": "^7.137.0",
+    "@uifabric/react-hooks": "^7.13.2",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/utilities": "^7.32.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "react-dom": ">=16.8.0 <17.0.0",
+    "office-ui-fabric-react": ">=7.137.3 <8.0.0"
   }
 }

@@ -136,30 +136,30 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _primary: {
-    '--button-background': 'var(--accent-background)',
-    '--button-borderColor': 'var(--accent-borderColor)',
-    '--button-contentColor': 'var(--accent-contentColor)',
-    '--button-iconColor': 'var(--accent-iconColor)',
+    '--button-background': 'var(--color-brand-background)',
+    '--button-borderColor': 'var(--color-brand-borderColor)',
+    '--button-contentColor': 'var(--color-brand-contentColor)',
+    '--button-iconColor': 'var(--color-brand-iconColor)',
 
-    '--button-hovered-background': 'var(--accent-hovered-background)',
-    '--button-hovered-borderColor': 'var(--accent-hovered-borderColor)',
-    '--button-hovered-contentColor': 'var(--accent-hovered-contentColor)',
-    '--button-hovered-iconColor': 'var(--accent-hovered-iconColor)',
+    '--button-hovered-background': 'var(--color-brand-hovered-background)',
+    '--button-hovered-borderColor': 'var(--color-brand-hovered-borderColor)',
+    '--button-hovered-contentColor': 'var(--color-brand-hovered-contentColor)',
+    '--button-hovered-iconColor': 'var(--color-brand-hovered-iconColor)',
 
-    '--button-focused-background': 'var(--accent-focused-background)',
-    '--button-focused-borderColor': 'var(--accent-focused-borderColor)',
-    '--button-focused-contentColor': 'var(--accent-focused-contentColor)',
-    '--button-focused-iconColor': 'var(--accent-focused-iconColor)',
+    '--button-focused-background': 'var(--color-brand-focused-background)',
+    '--button-focused-borderColor': 'var(--color-brand-focused-borderColor)',
+    '--button-focused-contentColor': 'var(--color-brand-focused-contentColor)',
+    '--button-focused-iconColor': 'var(--color-brand-focused-iconColor)',
 
-    '--button-pressed-background': 'var(--accent-pressed-background)',
-    '--button-pressed-borderColor': 'var(--accent-pressed-borderColor)',
-    '--button-pressed-contentColor': 'var(--accent-pressed-contentColor)',
-    '--button-pressed-iconColor': 'var(--accent-pressed-iconColor)',
+    '--button-pressed-background': 'var(--color-brand-pressed-background)',
+    '--button-pressed-borderColor': 'var(--color-brand-pressed-borderColor)',
+    '--button-pressed-contentColor': 'var(--color-brand-pressed-contentColor)',
+    '--button-pressed-iconColor': 'var(--color-brand-pressed-iconColor)',
 
-    '--button-disabled-background': 'var(--accent-disabled-background)',
-    '--button-disabled-borderColor': 'var(--accent-disabled-borderColor)',
-    '--button-disabled-contentColor': 'var(--accent-disabled-contentColor)',
-    '--button-disabled-iconColor': 'var(--accent-disabled-iconColor)',
+    '--button-disabled-background': 'var(--color-brand-disabled-background)',
+    '--button-disabled-borderColor': 'var(--color-brand-disabled-borderColor)',
+    '--button-disabled-contentColor': 'var(--color-brand-disabled-contentColor)',
+    '--button-disabled-iconColor': 'var(--color-brand-disabled-iconColor)',
   },
 
   _ghost: {
@@ -198,7 +198,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _circular: {
-    '--button-borderRadius': 50000,
+    '--button-borderRadius': '50000px',
   },
 
   _fluid: {

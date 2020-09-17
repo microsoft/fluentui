@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Wed, 09 Sep 2020 12:24:19 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.0)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v0.2.7..@fluentui/react-checkbox_v0.3.0)
+
+### Minor changes
+
+- Add missing ref prop typing. ([PR #15027](https://github.com/microsoft/fluentui/pull/15027) by xgao@microsoft.com)
 
 ## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.2.7)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Fluent UI React Slider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,8 +27,9 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
-    "@fluentui/storybook": "^0.4.9",
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react-conformance": "^0.1.2",
+    "@fluentui/storybook": "^0.4.13",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,7 +37,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -44,11 +45,11 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/react-hooks": "^7.12.0",
-    "@uifabric/set-version": "^7.0.22",
-    "@uifabric/styling": "^7.16.0",
-    "@uifabric/utilities": "^7.31.0",
-    "office-ui-fabric-react": "^7.137.0",
+    "@uifabric/react-hooks": "^7.13.2",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/styling": "^7.16.2",
+    "@uifabric/utilities": "^7.32.0",
+    "office-ui-fabric-react": "^7.137.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

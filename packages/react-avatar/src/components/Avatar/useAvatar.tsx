@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { AvatarProps, AvatarState } from './Avatar.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials, nullRender } from '@uifabric/utilities';
@@ -19,6 +19,8 @@ export const renderAvatar = (state: AvatarState) => {
     </slots.root>
   );
 };
+
+const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
   const state = mergeProps(
