@@ -90,6 +90,9 @@ export type AvatarTokenSet = {
   /** Border radius */
   borderRadius?: string;
 
+  /** Font used by the initials */
+  fontFamily?: string;
+
   /** Font size used by the initials */
   fontSize?: string;
 
@@ -101,6 +104,18 @@ export type AvatarTokenSet = {
 
   /** Custom clip path for the image or background fill */
   clipPath?: string;
+
+  /** Color of the ring when active=true and activeDisplay includes 'ring' */
+  activeRingColor?: string;
+
+  /** Color of the glow when active=true and activeDisplay includes 'glow' */
+  activeGlowColor?: string;
+
+  /** Opacity of the avatar when active=false */
+  inactiveOpacity?: string;
+
+  /** Scale transform applied to the avatar when active=false */
+  inactiveScaleFactor?: string;
 };
 
 export type AvatarState = AvatarProps;
