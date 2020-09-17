@@ -81,7 +81,7 @@ export const defaultAvatarSize: AvatarSizeValue = 32;
  */
 export type AvatarTokenSet = {
   /** Size of the avatar.
-   * @defaultvalue - The Avatar's `size` prop */
+   * @defaultvalue - The Avatar's `size` prop, or `customSize` if specified */
   size?: string;
 
   /** Background fill when there is no image */
