@@ -1,0 +1,15 @@
+parameters:
+  - name: pathPrefix
+    type: string
+    default: SourceBranch
+    values:
+      - SourceBranch # matches branch/PR ref
+      - SourceVersion # matches commit SHA
+
+variables:
+  ${{ if eq( parameters.pathPrefix, 'SourceBranch' ) }}:
+    deployBasePath: "pr-deploy-site/${{ variables['Build.SourceBranch'] }}"
+  ${{ if eq( parameters.pathPrefix, 'SourceVersion' ) }}:
+    deployBasePath: "pr-deploy-site/${{ variables['Build.SourceVersion'] }}"
+
+  deployHost: 'fabricweb.z5.web.core.windows.net'

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.54.1",
+      "version": "0.54.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding isConformant files to list of test files.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@fluentui/eslint-plugin_v0.54.0",
       "version": "0.54.0",

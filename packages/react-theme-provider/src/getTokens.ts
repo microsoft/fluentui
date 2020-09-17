@@ -24,6 +24,11 @@ export function getTokens(theme: Theme): Tokens {
     defaultTokens,
     {
       color: {
+        body: {
+          background: semanticColors?.bodyBackground,
+          contentColor: semanticColors?.bodyText,
+        },
+
         // accent is currently only mapped for primary button to use.
         brand: {
           background: semanticColors?.primaryButtonBackground,
@@ -31,21 +36,25 @@ export function getTokens(theme: Theme): Tokens {
           contentColor: semanticColors?.primaryButtonText,
           iconColor: palette?.white,
           dividerColor: palette?.white,
+          secondaryContentColor: palette?.white,
 
           hovered: {
             background: semanticColors?.primaryButtonBackgroundHovered,
             contentColor: semanticColors?.primaryButtonTextHovered,
+            secondaryContentColor: palette?.white,
           },
 
           pressed: {
             background: semanticColors?.primaryButtonBackgroundPressed,
             contentColor: semanticColors?.primaryButtonTextPressed,
+            secondaryContentColor: semanticColors?.primaryButtonTextPressed,
           },
 
           disabled: {
             background: semanticColors?.primaryButtonBackgroundDisabled,
             contentColor: semanticColors?.buttonTextDisabled,
             dividerColor: palette?.neutralTertiaryAlt,
+            secondaryContentColor: semanticColors?.buttonTextDisabled,
           },
 
           checked: {
@@ -58,64 +67,115 @@ export function getTokens(theme: Theme): Tokens {
             contentColor: semanticColors?.primaryButtonTextPressed,
           },
         },
+      },
 
-        // ghost is currently only mapped for ghost button to use.
-        ghost: {
+      // TODO: This will be moved out as a button variant.
+      ghost: {
+        background: semanticColors?.bodyBackground,
+        borderColor: 'transparent',
+        contentColor: palette?.neutralPrimary,
+        iconColor: palette?.themeDarkAlt,
+        menuIconColor: palette?.neutralSecondary,
+        secondaryContentColor: palette?.neutralPrimary,
+
+        checked: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        disabled: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.neutralTertiary,
+          iconColor: 'inherit',
+          secondaryContentColor: palette?.neutralTertiary,
+        },
+
+        expanded: {
+          contentColor: palette?.themePrimary,
+        },
+
+        focused: {
           background: semanticColors?.bodyBackground,
           borderColor: 'transparent',
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
-          menuIconColor: palette?.neutralSecondary,
-
-          checked: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.black,
-            iconColor: palette?.themeDarker,
-          },
-
-          checkedHovered: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.themePrimary,
-            iconColor: palette?.themePrimary,
-          },
-
-          disabled: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.neutralTertiary,
-            iconColor: 'inherit',
-          },
-
-          expanded: {
-            contentColor: palette?.themePrimary,
-          },
-
-          focused: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.neutralPrimary,
-            iconColor: palette?.themeDarkAlt,
-          },
-
-          hovered: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.themePrimary,
-            iconColor: palette?.themePrimary,
-          },
-
-          pressed: {
-            background: semanticColors?.bodyBackground,
-            borderColor: 'transparent',
-            contentColor: palette?.black,
-            iconColor: palette?.themeDarker,
-          },
+          secondaryContentColor: palette?.neutralPrimary,
         },
 
-        body: {
+        hovered: {
           background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+          secondaryContentColor: palette?.themePrimary,
+        },
+
+        pressed: {
+          background: semanticColors?.bodyBackground,
+          borderColor: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+          secondaryContentColor: palette?.black,
+        },
+      },
+
+      // TODO: This will be moved out as a button variant.
+      button: {
+        fontWeight: '600',
+        fontSize: fonts?.medium?.fontSize,
+        fontFamily: fonts?.medium?.fontFamily,
+        iconSize: fonts?.mediumPlus?.fontSize,
+        borderRadius: effects?.roundedCorner2,
+        focusColor: palette?.black,
+        focusInnerColor: palette?.white,
+
+        background: semanticColors?.buttonBackground,
+        borderColor: semanticColors?.buttonBorder,
+        contentColor: semanticColors?.buttonText,
+        dividerColor: palette?.neutralTertiaryAlt,
+
+        secondaryContentColor: palette?.neutralSecondary,
+        secondaryContentFontSize: fonts?.small.fontSize,
+
+        hovered: {
+          background: semanticColors?.buttonBackgroundHovered,
+          borderColor: semanticColors?.buttonBorder,
+          contentColor: semanticColors?.buttonTextHovered,
+          secondaryContentColor: palette?.neutralDark,
+        },
+
+        pressed: {
+          background: semanticColors?.buttonBackgroundPressed,
+          borderColor: semanticColors?.buttonBorder,
+          contentColor: semanticColors?.buttonTextPressed,
+          secondaryContentColor: semanticColors?.buttonTextPressed,
+        },
+
+        checked: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextChecked,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextCheckedHovered,
+        },
+
+        disabled: {
+          background: semanticColors?.buttonBackgroundDisabled,
+          borderColor: semanticColors?.buttonBorderDisabled,
+          contentColor: semanticColors?.buttonTextDisabled,
+          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
       },
       //   button: {

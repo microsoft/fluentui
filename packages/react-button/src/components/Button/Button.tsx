@@ -14,13 +14,11 @@ export const useButtonVariants = makeVariants('Button', '--button', buttonVarian
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const { render, state } = useButton(props, ref);
 
-  // Apply styling.
   useButtonClasses(state);
   useFocusRects(state.ref);
   useButtonVariants(state);
   useInlineTokens(state, '--button');
 
-  // Render component.
   return render(state);
 });
 

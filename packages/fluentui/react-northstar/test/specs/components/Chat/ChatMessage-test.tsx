@@ -10,6 +10,7 @@ const chatMessageImplementsShorthandProp = implementsShorthandProp(ChatMessage);
 
 describe('ChatMessage', () => {
   isConformant(ChatMessage, {
+    testPath: __filename,
     constructorName: 'ChatMessage',
   });
 

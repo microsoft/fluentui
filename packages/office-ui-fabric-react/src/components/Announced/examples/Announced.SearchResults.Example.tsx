@@ -3,7 +3,6 @@ import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { TagPicker, ITag, IInputProps, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 const inputProps: IInputProps = {
   'aria-label': 'Tag Picker',
@@ -47,7 +46,7 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
   const [hasFilterText, setHasFilterText] = React.useState(false);
   const [suggestionCount, setSuggestionCount] = React.useState(0);
 
-  const onFilterChanged = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
+  const onFilterChanged = React.useCallback((filterText: string, tagList: ITag[]): ITag[] => {
     setHasFilterText(!!filterText);
     const filteredTags = filterText
       ? _testTags
@@ -56,7 +55,7 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
       : [];
     setSuggestionCount(filteredTags.length);
     return filteredTags;
-  });
+  }, []);
 
   return (
     <Stack tokens={stackTokens}>

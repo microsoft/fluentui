@@ -7,7 +7,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 export type ColorTokens = Partial<{
   background: string;
   contentColor: string;
-  subTextColor: string;
+  secondaryContentColor: string;
   linkColor: string;
   iconColor: string;
   borderColor: string;
@@ -67,7 +67,12 @@ export type RecursivePartial<T> = {
 };
 
 export interface Tokens {
-  body: ColorTokenSet & TokenSetType;
+  color: {
+    body: ColorTokenSet & TokenSetType;
+    brand: ColorTokenSet & TokenSetType;
+    [key: string]: TokenSetType;
+  };
+
   [key: string]: TokenSetType;
 }
 
