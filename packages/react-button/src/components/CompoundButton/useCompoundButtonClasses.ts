@@ -79,4 +79,8 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
   _disabled: {
     '--button-secondaryContentColor': 'var(--button-disabled-secondaryContentColor)',
   },
+
+  _fluid: {
+    '--button-maxWidth': '100%',
+  },
 });

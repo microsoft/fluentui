@@ -96,7 +96,7 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--ghost-hovered-iconColor)',
     },
     disabled: {
-      background: 'var(--ghost-background)',
+      background: '#f3f2f1',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#a19f9d',
       iconColor: 'inherit',

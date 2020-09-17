@@ -97,6 +97,7 @@ export function getTokens(theme: Theme): Tokens {
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
           secondaryContentColor: palette?.neutralTertiary,
+          background: semanticColors?.disabledBackground,
         },
 
         expanded: {
