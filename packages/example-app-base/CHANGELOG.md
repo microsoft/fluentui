@@ -1,8 +1,86 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.14.0..@uifabric/example-app-base_v7.15.4)
+
+### Patches
+
+- Adding check for undefined FluentTheme in CodeSnippet.tsx. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.14.0)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.13.0..@uifabric/example-app-base_v7.14.0)
+
+### Minor changes
+
+- Markdown: add support for custom HTML ([PR #14545](https://github.com/microsoft/fluentui/pull/14545) by elcraig@microsoft.com)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.13.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.114..@uifabric/example-app-base_v7.13.0)
+
+### Patches
+
+- Add back UHF link style overrides via Customizer ([PR #14542](https://github.com/microsoft/fluentui/pull/14542) by elcraig@microsoft.com)
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.12.114](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.114)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.109..@uifabric/example-app-base_v7.12.114)
+
+### Patches
+
+- @uifabric/example-app-base: Updating dependencies to resolve security issues. ([PR #14543](https://github.com/microsoft/fluentui/pull/14543) by humbertomakotomorimoto@gmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.105..@uifabric/example-app-base_v7.12.106)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
+
+## [7.12.105](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.105)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.101..@uifabric/example-app-base_v7.12.105)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
+
+## [7.12.101](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.101)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.97..@uifabric/example-app-base_v7.12.101)
+
+### Patches
+
+- updated syntax highlighting to remove a11y violations ([PR #14139](https://github.com/microsoft/fluentui/pull/14139) by mgodbolt@microsoft.com)
+
+## [7.12.97](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.97)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.95..@uifabric/example-app-base_v7.12.97)
+
+### Patches
+
+- Style tweaks for new doc content ([PR #13887](https://github.com/microsoft/fluentui/pull/13887) by mgodbolt@microsoft.com)
 
 ## [7.12.95](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.95)
 

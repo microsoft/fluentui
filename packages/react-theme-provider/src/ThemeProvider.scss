@@ -3,15 +3,13 @@
  * token values to the container DIV, so that fonts and default colors, which
  * refer to token values, can be applied.
  */
+// TODO: ensure correct styles are being set here
 .root {
-  background: var(--body-background);
-  color: var(--body-contentColor);
+  // TODO: apply body theme based on `applyTo` prop.
+  // background: var(--color-body-background);
+
+  color: var(--color-body-contentColor);
   font-family: var(--body-fontFamily);
   font-weight: var(--body-fontWeight);
   font-size: var(--body-fontSize);
-  line-height: var(--body-fontLineHeight);
-
-  > * {
-    box-sizing: border-box;
-  }
 }

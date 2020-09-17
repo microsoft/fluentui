@@ -10,6 +10,7 @@ import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { showOnlyExamples } from '../../utilities/showOnlyExamples';
+import { getQueryParam } from '../../utilities/index2';
 
 export interface IAppState {
   isMenuVisible: boolean;
@@ -22,11 +23,13 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   public state: IAppState = { isMenuVisible: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
+  private _isStrict: boolean;
 
   constructor(props: IAppProps) {
     super(props);
 
     this._showOnlyExamples = showOnlyExamples();
+    this._isStrict = getQueryParam('strict') === 'all';
   }
 
   public componentDidMount() {
@@ -111,6 +114,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         app = <Customizer {...otherCustomizations}>{app}</Customizer>;
       }
     }
+
+    if (this._isStrict) {
+      app = <React.StrictMode>{app}</React.StrictMode>;
+    }
+
     return app;
   }
 

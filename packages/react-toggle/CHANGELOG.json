@@ -1,0 +1,58 @@
+{
+  "name": "@fluentui/react-toggle",
+  "entries": [
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-toggle_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add missing ref prop typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "a17c428e073721e981aaa402339d37b87fd8d385",
+            "package": "@fluentui/react-toggle"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-toggle_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove usage of compose and scss from Toggle; Move latest code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "c38170ee4c3a18fc290112ed6c5cffb22e8b03e5",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-toggle_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Toggle from react-next to react-toggle",
+            "author": "xgao@microsoft.com",
+            "commit": "0fed0283189ace758b92a0fa404d6d67343f4cfa",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,6 +2,21 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.16",
+      "version": "0.5.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix violation of newly added lint rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/monaco-editor_v0.5.11",
       "version": "0.5.11",

@@ -23,6 +23,7 @@ import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenCompone
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
+import { getQueryParam } from '../../utilities/index2';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
@@ -58,6 +59,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private _activeCustomizations: ICustomizations | undefined;
+  private _isStrict: boolean;
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -68,6 +70,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       themeIndex: 0,
       latestCode: code,
     };
+
+    const strict = getQueryParam('strict');
+    this._isStrict = strict === 'ex' || strict === 'examples';
 
     this._transformedInitialCode = this._transformCode(code);
 
@@ -179,7 +184,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   {children}
                 </EditorWrapper>
               ) : (
-                <ExamplePreview>{children}</ExamplePreview>
+                <ExamplePreview>
+                  {// Only use strict mode when not editing. Might have unpredictable results otherwise.
+                  this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children}
+                </ExamplePreview>
               )}
 
               {this._getDosAndDonts()}

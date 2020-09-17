@@ -7,5 +7,5 @@
 ### Content
 
 - Include a short label above the text field to communicate what information should be entered. Don't use placeholder text instead of a label. Placeholder text poses a variety of accessibility issues (including possible problems with color/contrast, and people thinking the form input is already filled out).
-- When part of a form, make it clear which fields are required vs. optional. If the input is required, add an asterisks "*" to the label. For screenreaders, make sure the ARIA property on the field is set to required.
-- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.  
+- When part of a form, make it clear which fields are required vs. optional. If the input is required, add "(required)" to the label. Don't exclusively use "\*" to indicate required inputs as it is often not read by screen readers. For example, "First name (required)".
+- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.

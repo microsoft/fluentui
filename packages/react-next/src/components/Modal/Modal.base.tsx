@@ -17,7 +17,7 @@ import { Overlay } from '@fluentui/react-next/lib/Overlay';
 import { ILayerProps, Layer } from '@fluentui/react-next/lib/Layer';
 import { Popup } from '@fluentui/react-next/lib/Popup';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '@fluentui/react-next/lib/Callout';
+import { DirectionalHint } from '@fluentui/react-next';
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';

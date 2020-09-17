@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../../Utilities';
 import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import { ShimmerTileBase } from './ShimmerTile.base';

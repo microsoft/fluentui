@@ -3,7 +3,9 @@
 exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
-Array [
+<div
+  role="list"
+>
   <div
     aria-labelledby="selectedItemPersona-id__0"
     className=
@@ -87,7 +89,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -422,7 +423,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -512,7 +512,7 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
+  </div>
   <div
     aria-labelledby="selectedItemPersona-id__8"
     className=
@@ -596,7 +596,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -931,7 +930,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1021,12 +1019,14 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
-Array [
+<div
+  role="list"
+>
   <div
     aria-labelledby="selectedItemPersona-id__16"
     className=
@@ -1110,7 +1110,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1445,7 +1444,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1535,7 +1533,7 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
+  </div>
   <div
     aria-labelledby="selectedItemPersona-id__24"
     className=
@@ -1619,7 +1617,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1954,7 +1951,6 @@ Array [
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -2044,6 +2040,6 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Callout';
+export * from './components/Callout';

@@ -45,7 +45,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -320,6 +319,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             margin-top: 0;
             text-align: center;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            color: GrayText;
+          }
       data-icon-name="ChevronDown"
       role="presentation"
       style={
@@ -382,7 +384,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -531,7 +532,6 @@ exports[`Button renders DefaultButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -651,7 +651,6 @@ exports[`Button renders IconButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -784,7 +783,6 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;

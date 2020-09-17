@@ -1,9 +1,21 @@
-import { compose, createClassResolver } from '@fluentui/react-compose';
-import { ButtonBase } from './ButtonBase';
+import * as React from 'react';
+import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
-import * as classes from './Button.scss';
+import { useFocusRects } from '@uifabric/utilities';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useButtonClasses } from './useButtonClasses';
 
-export const Button = compose<'button', ButtonProps, ButtonProps, {}, {}>(ButtonBase, {
-  classes: createClassResolver(classes),
-  displayName: 'Button',
+/**
+ * Define a styled Button, using the `useButton` hook.
+ */
+export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
+  const { render, state } = useButton(props, ref);
+
+  useButtonClasses(state);
+  useFocusRects(state.ref);
+  useInlineTokens(state, '--button');
+
+  return render(state);
 });
+
+Button.displayName = 'Button';

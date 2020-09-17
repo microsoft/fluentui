@@ -25,7 +25,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import {
-  getClassNames as getBaseSplitButtonClassNames,
+  getSplitButtonClassNames as getBaseSplitButtonClassNames,
   ISplitButtonClassNames,
 } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
@@ -676,7 +676,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.stopPropagation();
       };
-      // eslint-disable-next-line react/jsx-no-bind
       return <span className={classNames.divider} aria-hidden={true} onClick={onClick} />;
     }
     return null;

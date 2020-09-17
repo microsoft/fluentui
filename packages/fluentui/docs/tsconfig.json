@@ -4,6 +4,7 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
+      "@fluentui/dom-utilities": ["packages/dom-utilities/src"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
       "@fluentui/react-compose": ["packages/react-compose/src/index"],
       "@uifabric/merge-styles": ["packages/merge-styles/src"],
@@ -14,7 +15,8 @@
       "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
-    "types": ["node", "webpack-env", "screener-runner"]
+    "types": ["node", "webpack-env"],
+    "skipLibCheck": true
   },
   "include": ["./src"]
 }

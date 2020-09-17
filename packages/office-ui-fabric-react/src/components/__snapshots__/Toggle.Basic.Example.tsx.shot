@@ -123,7 +123,10 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={true}
         id="Toggle0"
@@ -140,7 +143,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -313,7 +316,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -479,7 +482,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -646,7 +649,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -822,7 +825,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -988,7 +991,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -1165,7 +1168,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -1290,7 +1293,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -1402,7 +1405,10 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={true}
         id="Toggle8"
@@ -1419,7 +1425,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;

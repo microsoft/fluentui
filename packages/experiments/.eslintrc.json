@@ -2,9 +2,6 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    // Disable until issues are dealt with
-    "react-hooks/exhaustive-deps": "off",
-    "react-hooks/rules-of-hooks": "off"
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

@@ -29,48 +29,53 @@
     "change": "beachball change --scope \"!packages/fluentui/*\"",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
+    "lage": "lage",
     "lint": "lerna run lint --stream",
+    "lint:log": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev && node ./scripts/no-tslint.js",
+    "prelint": "yarn satisfied && yarn syncpack:list-mismatches && node ./scripts/no-tslint.js",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
-    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "rebuild": "node ./scripts/invalidate-just-cache.js && npm run build",
     "release:fluentui:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
+    "runto": "node ./scripts/monorepo/runTo.js",
+    "run:published": "node ./scripts/monorepo/runPublished.js",
     "satisfied": "satisfied --skip-invalid",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
     "start": "node scripts/start.js",
+    "start:northstar": "yarn workspace @fluentui/docs start",
     "start-exp": "yarn workspace @uifabric/experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
-    "syncpack:fix": "syncpack fix-mismatches --prod --dev",
+    "syncpack:list-mismatches": "syncpack list-mismatches",
+    "syncpack:fix": "syncpack fix-mismatches",
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
-    "test:fluentui:e2e": "gulp test:e2e",
-    "test:fluentui:visual": "gulp screener",
-    "test:fluentui:projects": "gulp test:projects",
+    "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
+    "test:fluentui:projects": "yarn workspace @fluentui/projects-test test",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "lerna run update-snapshots --stream",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.31.2",
+    "beachball": "^1.36.0",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
     "lerna": "^3.15.0",
+    "lage": "^0.19.0",
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^4.5.4",
-    "tsconfig-paths": "^3.7.0"
+    "syncpack": "^5.6.7"
   },
   "license": "MIT",
   "workspaces": {
@@ -79,11 +84,50 @@
       "packages/*",
       "scripts",
       "packages/fluentui/*"
+    ],
+    "nohoist": [
+      "packages/web-components/typescript",
+      "packages/web-components/typescript/**",
+      "packages/web-components/ts-loader",
+      "packages/web-components/ts-loader/**",
+      "packages/web-components/ts-node",
+      "packages/web-components/ts-node/**",
+      "packages/web-components/mocha",
+      "packages/web-components/mocha/**",
+      "packages/web-components/webpack",
+      "packages/web-components/webpack/**"
     ]
   },
   "resolutions": {
-    "webpack": "^4.35.0",
+    "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
+  },
+  "syncpack": {
+    "prod": true,
+    "dev": true,
+    "peer": false,
+    "source": [
+      "package.json",
+      "apps/*/package.json",
+      "packages/!(web-components)/package.json",
+      "packages/fluentui/*/package.json",
+      "scripts/package.json"
+    ],
+    "versionGroups": [
+      {
+        "packages": [
+          "@fluentui/web-components"
+        ],
+        "dependencies": [
+          "mocha",
+          "ts-loader",
+          "ts-node",
+          "tslib",
+          "typescript",
+          "webpack"
+        ]
+      }
+    ]
   }
 }

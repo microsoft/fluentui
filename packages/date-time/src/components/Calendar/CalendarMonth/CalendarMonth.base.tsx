@@ -46,13 +46,13 @@ function useFocusLogic({ componentRef }: ICalendarMonthProps) {
   const calendarYearRef = React.useRef<ICalendarYear>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = () => {
+  const focus = React.useCallback(() => {
     if (calendarYearRef.current) {
       calendarYearRef.current.focus();
     } else if (navigatedMonthRef.current) {
       navigatedMonthRef.current.focus();
     }
-  };
+  }, []);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -210,7 +210,6 @@ export const CalendarMonthBase = React.forwardRef(
         <div className={classNames.headerContainer}>
           <button
             className={classNames.currentItemButton}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={onHeaderSelect}
             onKeyDown={onButtonKeyDown(onHeaderSelect)}
             aria-label={headerAriaLabel}

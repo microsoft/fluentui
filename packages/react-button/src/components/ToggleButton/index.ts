@@ -1,4 +1,5 @@
 export * from './ToggleButton.types';
-export * from './ToggleButtonBase';
+export * from './useToggleButton';
+export * from './useToggleButtonClasses';
 export * from './ToggleButton';
-export * from './useToggle';
+export * from './useChecked';

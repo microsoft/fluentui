@@ -1,26 +1,27 @@
 {
   "name": "@fluentui/react-northstar",
   "description": "A themable React component library.",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/accessibility": "^0.50.0",
-    "@fluentui/date-time-utilities": "^7.1.5",
-    "@fluentui/keyboard-key": "^0.2.7",
-    "@fluentui/react-bindings": "^0.50.0",
-    "@fluentui/react-component-event-listener": "^0.50.0",
-    "@fluentui/react-component-nesting-registry": "^0.50.0",
-    "@fluentui/react-component-ref": "^0.50.0",
-    "@fluentui/react-compose": "^0.12.4",
-    "@fluentui/react-context-selector": "^0.50.0",
-    "@fluentui/react-icons-northstar": "^0.50.0",
-    "@fluentui/react-northstar-styles-renderer": "^0.50.0",
-    "@fluentui/react-proptypes": "^0.50.0",
-    "@fluentui/state": "^0.50.0",
-    "@fluentui/styles": "^0.50.0",
+    "@fluentui/accessibility": "^0.51.0",
+    "@fluentui/date-time-utilities": "^7.8.1",
+    "@fluentui/keyboard-key": "^0.2.12",
+    "@fluentui/react-bindings": "^0.51.0",
+    "@fluentui/react-component-event-listener": "^0.51.0",
+    "@fluentui/react-component-nesting-registry": "^0.51.0",
+    "@fluentui/react-component-ref": "^0.51.0",
+    "@fluentui/react-compose": "^0.19.2",
+    "@fluentui/react-context-selector": "^0.51.0",
+    "@fluentui/react-icons-northstar": "^0.51.0",
+    "@fluentui/react-northstar-styles-renderer": "^0.51.0",
+    "@fluentui/react-proptypes": "^0.51.0",
+    "@fluentui/state": "^0.51.0",
+    "@fluentui/styles": "^0.51.0",
     "@popperjs/core": "^2.4.2",
+    "@uifabric/utilities": "^7.32.1",
     "classnames": "^2.2.6",
     "compute-scroll-into-view": "1.0.11",
     "downshift": "5.0.5",
@@ -30,7 +31,8 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react-conformance": "^0.1.2",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
@@ -39,7 +41,6 @@
     "@types/react-dom": "16.8.4",
     "@types/react-is": "^16.7.1",
     "@types/simulant": "^0.2.0",
-    "@fluentui/react-conformance": "^0.1.0",
     "@uifabric/build": "^7.0.0",
     "csstype": "^2.6.7",
     "faker": "^4.1.0",
@@ -51,7 +52,8 @@
     "qs": "^6.8.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "simulant": "^0.2.2"
+    "simulant": "^0.2.2",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
@@ -69,9 +71,13 @@
     "access": "public"
   },
   "repository": "microsoft/fluentui.git",
+  "gulp": {
+    "componentInfo": "./src/components/*/[A-Z]*.tsx"
+  },
   "scripts": {
-    "build": "gulp bundle:package",
-    "clean": "gulp bundle:package:clean",
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "gulp test",

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { useBoolean, IUseBooleanCallbacks } from './useBoolean';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useBoolean', () => {
   it('respects initial value', () => {
@@ -18,23 +19,9 @@ describe('useBoolean', () => {
     expect(value!).toBe(false);
   });
 
-  it('returns the same callbacks', () => {
-    let callbacks: IUseBooleanCallbacks;
-
-    const TestComponent: React.FunctionComponent = () => {
-      [, callbacks] = useBoolean(true);
-      return <div />;
-    };
-
-    const wrapper = mount(<TestComponent />);
-    const result1 = callbacks!;
-
-    // Re-render the component
-    wrapper.update();
-    // Callbacks should be the same
-    expect(callbacks!.setTrue).toBe(result1.setTrue);
-    expect(callbacks!.setFalse).toBe(result1.setFalse);
-    expect(callbacks!.toggle).toBe(result1.toggle);
+  validateHookValueNotChanged('returns the same callbacks', () => {
+    const [, { setTrue, setFalse, toggle }] = useBoolean(true);
+    return [setTrue, setFalse, toggle];
   });
 
   it('updates the value', () => {

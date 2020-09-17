@@ -11,16 +11,16 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/set-version": "^7.0.23",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react": "^7.123.5",
+    "@fluentui/react": "^7.137.5",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"

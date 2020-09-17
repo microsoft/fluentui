@@ -9,26 +9,20 @@ const commandBarFarItemsProps = [
   {
     key: 'farItem1',
     text: 'Options',
-    iconProps: {
-      iconName: 'SortLines',
-    },
+    iconProps: { iconName: 'SortLines' },
     keytipProps: keytipMap.CommandButton3Keytip,
     subMenuProps: {
       items: [
         {
           key: 'emailMessage',
           text: 'Send Email',
-          iconProps: {
-            iconName: 'Mail',
-          },
+          iconProps: { iconName: 'Mail' },
           keytipProps: keytipMap.SubmenuKeytip1,
         },
         {
           key: 'calendarEvent',
           text: 'Make Calendar Event',
-          iconProps: {
-            iconName: 'Calendar',
-          },
+          iconProps: { iconName: 'Calendar' },
           keytipProps: keytipMap.SubmenuKeytip2,
           subMenuProps: {
             items: [
@@ -77,18 +71,14 @@ export const KeytipsCommandBarExample: React.FunctionComponent = () => {
     {
       key: 'commandBarItem1',
       text: 'New',
-      iconProps: {
-        iconName: 'Add',
-      },
+      iconProps: { iconName: 'Add' },
       onClick: toggleShowModal,
       keytipProps: keytipMap.CommandButton1Keytip,
     },
     {
       key: 'commandBarItem2',
       text: 'Upload',
-      iconProps: {
-        iconName: 'Upload',
-      },
+      iconProps: { iconName: 'Upload' },
       onClick: toggleShowMessageBar,
       keytipProps: keytipMap.CommandButton2Keytip,
     },

@@ -106,6 +106,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   private _id: string;
   private _async: Async;
 
+  public static getDerivedStateFromProps(newProps: IBasePickerProps<any>) {
+    if (newProps.selectedItems) {
+      return { items: newProps.selectedItems };
+    }
+    return null;
+  }
+
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
@@ -138,43 +145,23 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return this.state.items;
   }
 
-  public UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void {
-    if (newState.items && newState.items !== this.state.items) {
-      this.selection.setItems(newState.items);
-    }
-  }
-
   public componentDidMount(): void {
     this.selection.setItems(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: P): void {
-    const newItems = newProps.selectedItems;
-
-    if (newItems) {
-      let focusIndex: number;
-
-      // If there are less new items than old items then something was removed and we
-      // should try to keep focus consistent
-      if (newItems.length < this.state.items.length) {
-        focusIndex = this.state.items.indexOf(this.selection.getSelection()[0]);
+  public componentDidUpdate(oldProps: P, oldState: IBasePickerState) {
+    if (this.state.items && this.state.items !== oldState.items) {
+      const currentSelectedIndex = this.selection.getSelectedIndices()[0];
+      this.selection.setItems(this.state.items);
+      if (this.state.isFocused) {
+        // Reset focus and selection so that selected item stays in sync if something
+        // has been removed
+        if (this.state.items.length < oldState.items.length) {
+          this.selection.setIndexSelected(currentSelectedIndex, true, true);
+          this.resetFocus(currentSelectedIndex);
+        }
       }
-
-      this.setState(
-        {
-          items: newProps.selectedItems,
-        },
-        () => {
-          // Only update the focus if this component is currently focused to ensure that the basepicker
-          // doesn't steal focus from something else.
-          if (this.state.isFocused) {
-            // Need to reset focus in the same that way that we do if an item is selected by a non-controlled component
-            // See _onSelectedItemsUpdated.
-            this.resetFocus(focusIndex);
-          }
-        },
-      );
     }
   }
 
@@ -199,16 +186,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   public dismissSuggestions = (ev?: any): void => {
     const selectItemFunction = () => {
+      let addItemOnDismiss: boolean | void = true;
       if (this.props.onDismiss) {
-        this.props.onDismiss(
+        addItemOnDismiss = this.props.onDismiss(
           ev,
           this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined,
         );
       }
 
       if (!ev || (ev && !ev.defaultPrevented)) {
-        // Select the first suggestion if one is available when user leaves.
-        if (this.canAddItems() && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+        // Select the first suggestion if one is available and permitted by onDismiss when user leaves.
+        if (
+          addItemOnDismiss !== false &&
+          this.canAddItems() &&
+          this.suggestionStore.hasSelectedSuggestion() &&
+          this.state.suggestedDisplayValue
+        ) {
           this.addItemByIndex(0);
         }
       }
@@ -537,12 +530,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   };
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
+    this.selection.setAllSelected(false);
     // Only trigger all of the focus if this component isn't already focused.
     // For example when an item is selected or removed from the selected list it should be treated
     // as though the input is still focused.
     if (!this.state.isFocused) {
       this.setState({ isFocused: true });
-      this.selection.setAllSelected(false);
 
       this._userTriggeredSuggestions();
 
@@ -808,17 +801,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
     if (index >= 0) {
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-      this._updateSelectedItems(newItems, focusNextItem ? index : undefined);
+      this._updateSelectedItems(newItems);
     }
   };
 
   protected removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
     const newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
-    const firstItemToRemove = itemsToRemove[0];
-    const index: number = items.indexOf(firstItemToRemove);
 
-    this._updateSelectedItems(newItems, index);
+    this._updateSelectedItems(newItems);
   };
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
@@ -907,19 +898,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
    * Controls what happens whenever there is an action that impacts the selected items.
    * If `selectedItems` is provided, this will act as a controlled component and it will not update its own state.
    */
-  private _updateSelectedItems(items: T[], focusIndex?: number): void {
+  private _updateSelectedItems(items: T[]): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
       this.setState({ items: items }, () => {
-        this._onSelectedItemsUpdated(items, focusIndex);
+        this._onSelectedItemsUpdated(items);
       });
     }
   }
 
-  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
-    this.resetFocus(focusIndex);
+  private _onSelectedItemsUpdated(items?: T[]): void {
     this.onChange(items);
   }
 

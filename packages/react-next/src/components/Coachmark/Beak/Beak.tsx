@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef } from '../../../Utilities';
+import { classNamesFunction } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
@@ -8,15 +8,9 @@ import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning'
 export const BEAK_HEIGHT = 10;
 export const BEAK_WIDTH = 18;
 
-export class Beak extends React.Component<IBeakProps, {}> {
-  constructor(props: IBeakProps) {
-    super(props);
-
-    initializeComponentRef(this);
-  }
-
-  public render(): JSX.Element {
-    const { left, top, bottom, right, color, direction = RectangleEdge.top } = this.props;
+export const Beak: React.FunctionComponent<IBeakProps> = React.forwardRef<HTMLDivElement, IBeakProps>(
+  (props, forwardedRef) => {
+    const { left, top, bottom, right, color, direction = RectangleEdge.top } = props;
 
     let svgHeight: number;
     let svgWidth: number;
@@ -75,11 +69,12 @@ export class Beak extends React.Component<IBeakProps, {}> {
     });
 
     return (
-      <div className={classNames.root} role="presentation">
+      <div className={classNames.root} role="presentation" ref={forwardedRef}>
         <svg height={svgHeight} width={svgWidth} className={classNames.beak}>
           <polygon points={pointOne + ' ' + pointTwo + ' ' + pointThree} />
         </svg>
       </div>
     );
-  }
-}
+  },
+);
+Beak.displayName = 'Beak';

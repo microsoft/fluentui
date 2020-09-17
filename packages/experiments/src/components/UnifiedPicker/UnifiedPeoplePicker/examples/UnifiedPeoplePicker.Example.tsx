@@ -8,6 +8,7 @@ import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePick
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
+import { IInputProps } from 'office-ui-fabric-react';
 
 const _suggestions = [
   {
@@ -58,6 +59,8 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   ]);
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+
+  const ref = React.useRef<any>();
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -121,6 +124,29 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
+  const _dropItemsAt = (insertIndex: number, newItems: IPersonaProps[], indicesToRemove: number[]): void => {
+    // Insert those items into the current list
+    if (insertIndex > -1) {
+      const currentItems: IPersonaProps[] = [...peopleSelectedItems];
+      const updatedItems: IPersonaProps[] = [];
+
+      for (let i = 0; i < currentItems.length; i++) {
+        const item = currentItems[i];
+        // If this is the insert before index, insert the dragged items, then the current item
+        if (i === insertIndex) {
+          newItems.forEach(draggedItem => {
+            updatedItems.push(draggedItem);
+          });
+          updatedItems.push(item);
+        } else if (!indicesToRemove.includes(i)) {
+          // only insert items into the new list that are not being dragged
+          updatedItems.push(item);
+        }
+      }
+      setPeopleSelectedItems(updatedItems);
+    }
+  };
+
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
     // Updating the local copy as well at the parent level.
     const currentItems: IPersonaProps[] = [...peopleSelectedItems];
@@ -135,6 +161,15 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
+    // Clear the input if the user types a semicolon or comma
+    // This is meant to be an example of using the forward ref,
+    // feel free to comment out if it impacts your testing
+    const lastCharIndex = filterText.length - 1;
+    const lastChar = filterText[lastCharIndex];
+    if (lastChar === ';' || lastChar === ',') {
+      ref.current?.clearInput();
+    }
+
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
@@ -158,6 +193,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     noResultsFoundText: 'No suggestions',
     onFloatingSuggestionsDismiss: undefined,
     showSuggestionRemoveButton: true,
+    pickerWidth: '300px',
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
@@ -165,13 +201,20 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
+    dropItemsAt: _dropItemsAt,
   } as ISelectedPeopleListProps<IPersonaProps>;
+
+  const inputProps = {
+    'aria-label': 'Add people',
+  } as IInputProps;
 
   return (
     <>
       <UnifiedPeoplePicker
+        componentRef={ref}
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
+        inputProps={inputProps}
         // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind

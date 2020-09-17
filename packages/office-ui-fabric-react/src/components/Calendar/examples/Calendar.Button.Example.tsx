@@ -32,6 +32,8 @@ const DayPickerStrings = {
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
   closeButtonAriaLabel: 'Close',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };
 
 export interface ICalendarButtonExampleProps {
@@ -68,10 +70,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
 
   return (
     <div>
-      <div
-        // eslint-disable-next-line react/jsx-no-bind
-        ref={calendarBtn => (calendarButtonElement = calendarBtn!)}
-      >
+      <div ref={calendarBtn => (calendarButtonElement = calendarBtn!)}>
         <DefaultButton
           onClick={toggleShowCalendar}
           text={!selectedDate ? buttonString : selectedDate.toLocaleDateString()}

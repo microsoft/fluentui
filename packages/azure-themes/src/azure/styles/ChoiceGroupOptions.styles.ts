@@ -1,6 +1,5 @@
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
@@ -9,14 +8,18 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       color: extendedSemanticColors.labelText,
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '.ms-ChoiceFieldLabel': {
-          color: semanticColors.bodyText,
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
           verticalAlign: 'middle',
+        },
+        '.is-inFocus': {
+          border: `${extendedSemanticColors.choiceGroupContainerBorder}
+          ${extendedSemanticColors.choiceGroupContainerBorderStyle}
+          ${extendedSemanticColors.checkboxBorderChecked}`,
         },
       },
     },
@@ -30,7 +33,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             },
             checked && {
               backgroundColor: 'transparent',
-              borderColor: extendedSemanticColors.primaryButtonBackground,
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
@@ -45,7 +48,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The dot
           ':after': [
             {
-              borderColor: semanticColors.primaryButtonBackground,
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             checked &&
               disabled && {
@@ -64,18 +67,24 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 ':before': {
                   borderColor: extendedSemanticColors.controlOutlineHovered,
                 },
+                ':after': {
+                  borderColor: extendedSemanticColors.checkboxBorderChecked,
+                  backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
+                },
               },
             },
             !disabled &&
               checked && {
                 selectors: {
                   ':before': {
-                    // hover circle border
                     borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
                   },
                 },
               },
           ],
+          '.ms-ChoiceFieldLabel': {
+            color: disabled ? semanticColors.disabledBodyText : semanticColors.bodyText,
+          },
         },
       },
       (hasIcon || hasImage) &&
@@ -90,13 +99,6 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
       (hasIcon || hasImage) && {
         borderWidth: StyleConstants.borderWidth,
         borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground,
-      },
-      disabled && {
-        selectors: {
-          '.ms-ChoiceFieldLabel': {
-            color: semanticColors.disabledBodyText,
-          },
-        },
       },
       checked &&
         disabled && {

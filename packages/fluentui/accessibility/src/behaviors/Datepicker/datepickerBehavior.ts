@@ -1,14 +1,19 @@
 import { Accessibility } from '../../types';
+import { keyboardKey } from '@fluentui/keyboard-key';
+
 /**
  * @description
  * Behavior for a datepicker component
  * @specification
- * Adds role='group'.
+ * Triggers 'open' action with 'Enter' on 'input'.
  */
+
 export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props => ({
-  attributes: {
-    root: {
-      role: 'group',
+  keyActions: {
+    input: {
+      open: {
+        keyCombinations: [{ keyCode: keyboardKey.Enter }],
+      },
     },
   },
 });
