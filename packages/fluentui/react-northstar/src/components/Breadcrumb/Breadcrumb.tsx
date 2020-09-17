@@ -75,7 +75,9 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <div role="grid">{childrenExist(children) ? children : content}</div>
+        <div role="grid">
+          <div role="row">{childrenExist(children) ? children : content}</div>
+        </div>
       </ElementType>,
     );
 
