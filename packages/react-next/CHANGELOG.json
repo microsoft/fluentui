@@ -2,6 +2,62 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.109",
+      "version": "8.0.0-alpha.109",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Floating/ExtendedPicker: added to react-next in prep for release",
+            "author": "joschect@microsoft.com",
+            "commit": "c1dfa563028bc36ec2b156b92f7b7f007516f467",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Breadcrumb to react-next for future function component conversion.",
+            "author": "czearing@outlook.com",
+            "commit": "714236544d77f30c228e051559e145807f23e24a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.108",
+      "version": "8.0.0-alpha.108",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating MessageBar to a function component inside React-Next.",
+            "author": "czearing@outlook.com",
+            "commit": "78462444756883b4f6c747d9d570a1c696a6a661",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Add missing ref prop typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "a17c428e073721e981aaa402339d37b87fd8d385",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Renaming sharedIsConformant to isConformant.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Sep 2020 12:22:12 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.106",
       "version": "8.0.0-alpha.106",

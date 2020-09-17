@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 12:25:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.2.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.8..@fluentui/web-components_v0.2.0)
+
+### Minor changes
+
+- Feat: convert card to be design system provider ([PR #15068](https://github.com/microsoft/fluentui/pull/15068) by jes@microsoft.com)
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.8)
 

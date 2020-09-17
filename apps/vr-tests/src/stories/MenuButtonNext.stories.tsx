@@ -72,7 +72,7 @@ storiesOf('MenuButton Next', module)
     </MenuButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
 storiesOf('MenuButton Next - Teams Theme', module)
@@ -139,5 +139,5 @@ storiesOf('MenuButton Next - Teams Theme', module)
     </MenuButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));

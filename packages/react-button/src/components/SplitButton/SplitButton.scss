@@ -99,11 +99,11 @@
   width: 0px;
 
   ._primary & {
-    --button-dividerColor: var(--accent-dividerColor);
+    --button-dividerColor: var(--color-brand-dividerColor);
   }
 
   ._disabled & {
-    --button-dividerColor: var(--accent-disabled-dividerColor);
+    --button-dividerColor: var(--color-brand-disabled-dividerColor);
   }
 }
 

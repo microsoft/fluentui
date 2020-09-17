@@ -107,9 +107,9 @@ export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderPr
 
 // @public
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+    applyTo?: 'element' | 'body' | 'none';
     ref?: React.Ref<HTMLElement>;
     renderer?: StyleRenderer;
-    targetWindow?: Window | null;
     theme?: PartialTheme | Theme;
 }
 
@@ -140,7 +140,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;

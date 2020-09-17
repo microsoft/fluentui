@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/charting",
-  "version": "4.0.3",
+  "version": "4.1.2",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -37,8 +37,8 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.15.9",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.1",
+    "@uifabric/example-app-base": "^7.15.12",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -47,7 +47,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^7.16.1",
+    "@fluentui/react-focus": "^7.16.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -56,8 +56,8 @@
     "@types/d3-selection": "1.4.1",
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
-    "@uifabric/icons": "^7.5.1",
-    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/icons": "^7.5.4",
+    "@uifabric/set-version": "^7.0.23",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-format": "^1.4.4",
@@ -70,7 +70,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
-    "office-ui-fabric-react": "^7.137.2",
+    "office-ui-fabric-react": "^7.137.5",
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"

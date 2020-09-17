@@ -2,6 +2,35 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-slider_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Renaming sharedIsConformant to isConformant.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-slider"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add missing ref prop typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "a17c428e073721e981aaa402339d37b87fd8d385",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Aug 2020 12:25:46 GMT",
       "tag": "@fluentui/react-slider_v0.2.1",
       "version": "0.2.1",
