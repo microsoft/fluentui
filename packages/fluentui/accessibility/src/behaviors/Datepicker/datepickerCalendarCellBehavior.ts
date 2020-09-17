@@ -9,11 +9,14 @@ import { Accessibility } from '../../types';
  */
 export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {
-    root: {
+    button: {
       role: 'gridcell',
       'aria-selected': props.selected || false,
       ...(props.disabled && { 'aria-disabled': true }),
       ...(props.today && { 'aria-current': 'date' }),
+    },
+    tableCell: {
+      role: 'none',
     },
   },
 });
