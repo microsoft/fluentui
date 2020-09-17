@@ -1,10 +1,11 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IVerticalStackedChartProps } from '../../types/index';
-import { ILegendsProps } from '../Legends/index';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IVerticalStackedChartProps, IVSChartDataPoint } from '../../types/index';
 import { IMargins } from '../../utilities/index';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IVerticalStackedBarChartProps {
   /**
@@ -28,7 +29,7 @@ export interface IVerticalStackedBarChartProps {
   barWidth?: number;
 
   /**
-   * Margins for the chart
+   * Margins for the chart (note that these values are not adjusted for RTL)
    */
   margins?: IMargins;
 
@@ -48,7 +49,7 @@ export interface IVerticalStackedBarChartProps {
    * Please look at https://github.com/d3/d3-format for all the formats supported
    */
   yAxisTickFormat?: (n: number) => string;
-  
+
   /**
    * Colors from which to select the color of each bar.
    */
@@ -100,16 +101,42 @@ export interface IVerticalStackedBarChartProps {
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 
   /**
-   * Do not show tooltips in chart
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * decides wether to show/hide legends
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
+
+  /**
+   * Do not show tooltips (callout) in chart
    *
    * @default false
    */
   hideTooltip?: boolean;
 
   /**
-   * props for the legends in the chart
+   * Define a custom callout renderer for a stack; default is to render per data point
    */
-  legendProps?: Partial<ILegendsProps>;
+  onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
+
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IVerticalStackedBarChartStyleProps {
@@ -134,17 +161,12 @@ export interface IVerticalStackedBarChartStyleProps {
   height?: number;
 
   /**
-   * color of the datapoint legend
-   */
-  legendColor?: string;
-
-  /**
    * Link to redirect if click action for graph
    */
   href?: string;
 
   /**
-   * prop to check if the chart is selcted or hovered upon to determine opacity
+   * prop to check if the chart is selected or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
 

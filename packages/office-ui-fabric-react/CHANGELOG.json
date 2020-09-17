@@ -2,6 +2,180 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "office-ui-fabric-react_v7.137.3",
+      "version": "7.137.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Unset virtual parent when closing popups",
+            "author": "tmichon@microsoft.com",
+            "commit": "0903cff93e15f9865634c79a42fb2fbc14e7964e",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Renaming sharedIsConformant to isConformant.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "office-ui-fabric-react_v7.137.1",
+      "version": "7.137.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Work around API extractor issue",
+            "author": "miclo@microsoft.com",
+            "commit": "a59fc3f91276b5b26d77cbd91b8007c7972d358d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "office-ui-fabric-react_v7.137.1",
+      "version": "7.137.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Migrate Target type to @uifabric/react-hooks",
+            "author": "miclo@microsoft.com",
+            "commit": "0837e44efb2a1e85ff8ee3260ab5faffc48fe139",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ContextualMenu: clean up examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "fa40d5038b8cb6600de48cc71a45fafb5ed0ceef",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 01:20:26 GMT",
+      "tag": "office-ui-fabric-react_v7.137.0",
+      "version": "7.137.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export getMenuItemStyles from ContextualMenu",
+            "author": "anpablo@microsoft.com",
+            "commit": "770f5bf5a6dae83bc25a8000245408e1bf2054ff",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 18:41:54 GMT",
+      "tag": "office-ui-fabric-react_v7.136.0",
+      "version": "7.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting some of the interfaces that are being deep imported in product code.",
+            "author": "dzearing@hotmail.com",
+            "commit": "cc72899b69926f902d68f3164a7845401f1dc700",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "office-ui-fabric-react_v7.135.0",
+      "version": "7.135.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Dismiss when blurring to a new window.",
+            "author": "jokonuko@microsoft.com",
+            "commit": "4df444481b0712ab0704d34714a4edcd62850561",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps.",
+            "author": "czearing@outlook.com",
+            "commit": "a095c2695dca01d37ec7fe93a5149fb46b3b78fe",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Expose popupProps on Panel",
+            "author": "matejera@microsoft.com",
+            "commit": "cdcec95330cfe09a80a5d08dc22628f9a3c5c04a",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Casting PivotItem and CalendarDay date prop as any.",
+            "author": "czearing@outlook.com",
+            "commit": "3111738ea7a855f71dcb4c593e34cd4a961b2627",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "office-ui-fabric-react_v7.134.3",
+      "version": "7.134.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Factor out hook-based inner logic from DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "231236fd4d38bac9930f64b3b40e2eb0f187ca8d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "office-ui-fabric-react_v7.134.2",
+      "version": "7.134.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsRow/DetailsHeader: Remove findDOMNode usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "office-ui-fabric-react_v7.134.1",
       "version": "7.134.1",

@@ -11,7 +11,7 @@ import {
 
 export type NavigationKind = 'Month' | 'Week' | 'Day';
 
-const contstraintNavigatedDate = (
+export const contstraintNavigatedDate = (
   initialDate: Date,
   targetDate: Date,
   direction: number,

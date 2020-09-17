@@ -11,8 +11,6 @@ import {
   css,
   elementContains,
   focusFirstChild,
-  getWindow,
-  getDocument,
   EventGroup,
   getPropsWithDefaults,
 } from '../../../Utilities';
@@ -27,7 +25,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
-import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -48,49 +46,7 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
-function useTargets({ target }: IPositioningContainerProps, positionedHost: React.RefObject<HTMLDivElement | null>) {
-  const previousTargetProp = React.useRef<HTMLElement | string | MouseEvent | Point | null | undefined>();
-
-  const targetRef = React.useRef<HTMLElement | MouseEvent | Point | null>(null);
-  /** Stores an instance of Window, used to check for server side rendering and if focus was lost. */
-  const targetWindowRef = React.useRef<Window>();
-
-  // If the target element changed, find the new one. If we are tracking target with class name,
-  // always find element because the element may have been disposed and re-rendered.
-  if (target !== previousTargetProp.current || typeof target === 'string') {
-    const currentElement = positionedHost.current;
-
-    if (target) {
-      if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
-        targetRef.current = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        targetWindowRef.current = getWindow(currentElement)!;
-      } else if ('stopPropagation' in target) {
-        targetWindowRef.current = getWindow((target as MouseEvent).target as HTMLElement)!;
-        targetRef.current = target;
-      } else if (
-        // eslint-disable-next-line deprecation/deprecation
-        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // eslint-disable-next-line deprecation/deprecation
-        ((target as Point).top !== undefined || (target as Point).y !== undefined)
-      ) {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target;
-      } else {
-        const targetElement: HTMLElement = target as HTMLElement;
-        targetWindowRef.current = getWindow(targetElement)!;
-        targetRef.current = target;
-      }
-    } else {
-      targetWindowRef.current = getWindow(currentElement)!;
-    }
-    previousTargetProp.current = target;
-  }
-
-  return [targetRef, targetWindowRef] as const;
-}
-
-function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: React.RefObject<Window | undefined>) {
+function useCachedBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
   /** The bounds used when determining if and where the PositioningContainer should be placed. */
   const positioningBounds = React.useRef<IRectangle>();
 
@@ -102,10 +58,10 @@ function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: Rea
         currentBounds = {
           top: 0 + props.minPagePadding!,
           left: 0 + props.minPagePadding!,
-          right: targetWindowRef.current!.innerWidth - props.minPagePadding!,
-          bottom: targetWindowRef.current!.innerHeight - props.minPagePadding!,
-          width: targetWindowRef.current!.innerWidth - props.minPagePadding! * 2,
-          height: targetWindowRef.current!.innerHeight - props.minPagePadding! * 2,
+          right: targetWindow!.innerWidth - props.minPagePadding!,
+          bottom: targetWindow!.innerHeight - props.minPagePadding!,
+          width: targetWindow!.innerWidth - props.minPagePadding! * 2,
+          height: targetWindow!.innerHeight - props.minPagePadding! * 2,
         };
       }
       positioningBounds.current = currentBounds;
@@ -120,7 +76,7 @@ function usePositionState(
   props: IPositioningContainerProps,
   positionedHost: React.RefObject<HTMLDivElement | null>,
   contentHost: React.RefObject<HTMLDivElement | null>,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getCachedBounds: () => IRectangle,
 ) {
   const async = useAsync();
@@ -189,7 +145,7 @@ function useSetInitialFocus(
 
 function useMaxHeight(
   { directionalHintFixed, offsetFromTarget, directionalHint, target }: IPositioningContainerProps,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getCachedBounds: () => IRectangle,
 ) {
   /**
@@ -230,8 +186,8 @@ function useMaxHeight(
 function useAutoDismissEvents(
   { onDismiss, preventDismissOnScroll }: IPositioningContainerProps,
   positionedHost: React.RefObject<HTMLDivElement | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetWindow: Window | undefined,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   positions: IPositionedData | undefined,
   updateAsyncPosition: () => void,
 ) {
@@ -257,7 +213,7 @@ function useAutoDismissEvents(
 
     if (
       (!targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== targetWindowRef.current &&
+      (ev.target !== targetWindow &&
         clickedOutsideCallout &&
         ((targetRef.current as MouseEvent).stopPropagation ||
           !targetRef.current ||
@@ -274,10 +230,10 @@ function useAutoDismissEvents(
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     async.setTimeout(() => {
-      events.on(targetWindowRef.current, 'scroll', async.throttle(dismissOnScroll, 10), true);
-      events.on(targetWindowRef, 'resize', async.throttle(onResize, 10), true);
-      events.on(targetWindowRef.current?.document?.body, 'focus', dismissOnLostFocus, true);
-      events.on(targetWindowRef.current?.document?.body, 'click', dismissOnLostFocus, true);
+      events.on(targetWindow, 'scroll', async.throttle(dismissOnScroll, 10), true);
+      events.on(targetWindow, 'resize', async.throttle(onResize, 10), true);
+      events.on(targetWindow?.document?.body, 'focus', dismissOnLostFocus, true);
+      events.on(targetWindow?.document?.body, 'click', dismissOnLostFocus, true);
     }, 0);
 
     return () => events.dispose();
@@ -327,81 +283,82 @@ export function useHeightOffset(
   return heightOffset;
 }
 
-export const PositioningContainer = React.forwardRef(
-  (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
+  HTMLDivElement,
+  IPositioningContainerProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    // @TODO rename to reflect the name of this class
-    const contentHost = React.useRef<HTMLDivElement>(null);
-    /**
-     * The primary positioned div.
-     */
-    const positionedHost = React.useRef<HTMLDivElement>(null);
-    const rootRef = useMergedRefs(forwardedRef, positionedHost);
+  // @TODO rename to reflect the name of this class
+  const contentHost = React.useRef<HTMLDivElement>(null);
+  /**
+   * The primary positioned div.
+   */
+  const positionedHost = React.useRef<HTMLDivElement>(null);
+  const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
-    const getCachedBounds = useCachedBounds(props, targetWindowRef);
-    const [positions, updateAsyncPosition] = usePositionState(
-      props,
-      positionedHost,
-      contentHost,
-      targetRef,
-      getCachedBounds,
-    );
-    const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
-    const heightOffset = useHeightOffset(props, contentHost);
+  const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
+  const getCachedBounds = useCachedBounds(props, targetWindow);
+  const [positions, updateAsyncPosition] = usePositionState(
+    props,
+    positionedHost,
+    contentHost,
+    targetRef,
+    getCachedBounds,
+  );
+  const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
+  const heightOffset = useHeightOffset(props, contentHost);
 
-    useSetInitialFocus(props, contentHost, positions);
-    useAutoDismissEvents(props, positionedHost, targetWindowRef, targetRef, positions, updateAsyncPosition);
+  useSetInitialFocus(props, contentHost, positions);
+  useAutoDismissEvents(props, positionedHost, targetWindow, targetRef, positions, updateAsyncPosition);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
-    React.useEffect(() => props.onLayerMounted?.(), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
+  React.useEffect(() => props.onLayerMounted?.(), []);
 
-    // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!targetWindowRef.current) {
-      return null;
-    }
+  // If there is no target window then we are likely in server side rendering and we should not render anything.
+  if (!targetWindow) {
+    return null;
+  }
 
-    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
+  const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
-    const styles = getClassNames();
+  const styles = getClassNames();
 
-    const directionalClassName =
-      positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
+  const directionalClassName =
+    positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number = getCachedMaxHeight() + heightOffset!;
-    const contentMaxHeight: number =
-      positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
-        ? getContentMaxHeight
-        : positioningContainerMaxHeight!;
-    const content = (
-      <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
-        <div
-          className={mergeStyles(
-            'ms-PositioningContainer-layerHost',
-            styles.root,
-            className,
-            directionalClassName,
-            !!positioningContainerWidth && { width: positioningContainerWidth },
-          )}
-          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
-          // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          tabIndex={-1}
-          ref={contentHost}
-        >
-          {children}
-          {
-            // @TODO apply to the content container
-            contentMaxHeight
-          }
-        </div>
+  const getContentMaxHeight: number = getCachedMaxHeight() + heightOffset!;
+  const contentMaxHeight: number =
+    positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
+      ? getContentMaxHeight
+      : positioningContainerMaxHeight!;
+  const content = (
+    <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
+      <div
+        className={mergeStyles(
+          'ms-PositioningContainer-layerHost',
+          styles.root,
+          className,
+          directionalClassName,
+          !!positioningContainerWidth && { width: positioningContainerWidth },
+        )}
+        style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+        // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+        // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+        tabIndex={-1}
+        ref={contentHost}
+      >
+        {children}
+        {
+          // @TODO apply to the content container
+          contentMaxHeight
+        }
       </div>
-    );
+    </div>
+  );
 
-    return props.doNotLayer ? content : <Layer>{content}</Layer>;
-  },
-);
+  return props.doNotLayer ? content : <Layer>{content}</Layer>;
+});
 PositioningContainer.displayName = 'PositioningContainer';
 
 function arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {

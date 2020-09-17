@@ -19,7 +19,7 @@ export const RatingPageProps: IDocPageProps = {
       view: <RatingBasicExample />,
     },
     {
-      title: 'Button Controlled Rating',
+      title: 'Button-controlled rating',
       code: RatingButtonControlledExampleCode,
       view: <RatingButtonControlledExample />,
     },

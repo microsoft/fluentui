@@ -2,6 +2,21 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/examples_v0.3.13",
+      "version": "0.3.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove reference to lists package",
+            "author": "elcraig@microsoft.com",
+            "commit": "855a9153a7361786e41c7fff5a90a2d646de382f",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/examples_v0.1.124",
       "version": "0.1.124",

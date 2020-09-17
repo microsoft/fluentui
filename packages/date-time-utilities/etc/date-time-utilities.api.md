@@ -105,6 +105,9 @@ export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays:
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
 
 // @public
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+
+// @public
 export function getMonthEnd(date: Date): Date;
 
 // @public
@@ -134,7 +137,6 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 
 // @public (undocumented)
 export interface ICalendarStrings extends IDateFormatting {
-    calendarCellFormatString?: string;
     closeButtonAriaLabel?: string;
     goToToday: string;
     inputAriaLabel?: string;

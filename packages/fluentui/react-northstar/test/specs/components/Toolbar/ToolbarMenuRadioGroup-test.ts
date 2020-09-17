@@ -5,6 +5,7 @@ import { ToolbarMenuRadioGroupWrapper } from 'src/components/Toolbar/ToolbarMenu
 
 describe('ToolbarMenuRadioGroup', () => {
   isConformant(ToolbarMenuRadioGroup, {
+    testPath: __filename,
     wrapperComponent: ToolbarMenuRadioGroupWrapper,
     constructorName: 'ToolbarMenuRadioGroup',
   });

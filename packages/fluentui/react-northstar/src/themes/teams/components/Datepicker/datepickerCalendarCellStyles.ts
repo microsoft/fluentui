@@ -24,12 +24,15 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
       borderRadius: v.calendarCellBorderRadius,
       cursor: 'pointer',
       border: v.calendarCellBorder,
+
+      display: 'table-cell',
+
       position: 'relative',
+
+      ...borderFocusStyles,
 
       backgroundColor: v.calendarCellBackgroundColor,
       color: v.calendarCellColor,
-
-      ...borderFocusStyles,
 
       ...(p.today && {
         backgroundColor: v.calendarCellTodayBackgroundColor,
