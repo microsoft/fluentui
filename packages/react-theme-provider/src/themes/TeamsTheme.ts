@@ -2,24 +2,26 @@ import { PartialTheme } from '../types';
 
 export const TeamsTheme: PartialTheme = {
   tokens: {
-    accent: {
-      background: '#6264a7',
+    color: {
+      brand: {
+        background: '#6264a7',
 
-      disabled: {
-        background: '#edebe9',
-        contentColor: '#c8c6c4',
-        borderColor: 'var(--accent-disabled-background)',
-      },
-      pressed: {
-        background: '#464775',
-      },
+        disabled: {
+          background: '#edebe9',
+          contentColor: '#c8c6c4',
+          borderColor: 'var(--color-brand-disabled-background)',
+        },
+        pressed: {
+          background: '#464775',
+        },
 
-      focused: {
-        background: '#585a96',
-      },
+        focused: {
+          background: '#585a96',
+        },
 
-      hovered: {
-        background: '#585a96',
+        hovered: {
+          background: '#585a96',
+        },
       },
     },
 
