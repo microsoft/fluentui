@@ -27,7 +27,6 @@ const DefaultLayerProps: ILayerProps = {
 };
 
 export interface IModalInternalState {
-  responsiveModes: ResponsiveMode | undefined;
   onModalCloseTimer: number;
   allowTouchBodyScroll: boolean;
   hasRegisteredKeyUp: boolean;
@@ -52,17 +51,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const [modalPosition, setModalPosition] = React.useState<number | undefined>();
 
     const { setTimeout, clearTimeout } = useSetTimeout();
-
-    const internalState = useConst<IModalInternalState>(() => ({
-      responsiveModes: undefined,
-      onModalCloseTimer: 0,
-      allowTouchBodyScroll: false,
-      hasRegisteredKeyUp: false,
-      scrollableContent: null,
-      lastSetXCoordinate: 0,
-      lastSetYCoordinate: 0,
-      events: new EventGroup({}),
-    }));
 
     const {
       className = '',
@@ -93,6 +81,16 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       onDismissed,
     } = props;
 
+    const internalState = useConst<IModalInternalState>(() => ({
+      onModalCloseTimer: 0,
+      allowTouchBodyScroll: false,
+      hasRegisteredKeyUp: false,
+      scrollableContent: null,
+      lastSetXCoordinate: 0,
+      lastSetYCoordinate: 0,
+      events: new EventGroup({}),
+    }));
+
     const [isModalOpen, { toggle: toggleModalOpen, setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(
       !!isOpen,
     );
@@ -105,8 +103,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(!!isOpen);
 
     const [hasOpened, { setFalse: setHasOpenedFalse, setTrue: setHasOpenedTrue }] = useBoolean(!!isOpen);
-
-    const safeSetTimeout = useSetTimeout();
 
     const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
       !!isOpen,
@@ -418,22 +414,24 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       topOffsetFixed,
     ]);
 
-    React.useEffect(() => {
-      if (!isOpen && !isVisible) {
-        setIsVisibleTrue;
-      }
-    }, [isOpen, isVisible, setIsVisibleTrue]);
+    // React.useEffect(() => {
+    //   if (!isOpen && !isVisible) {
+    //     setIsVisibleTrue;
+    //   }
+    // }, [isOpen, isVisible, setIsVisibleTrue]);
 
-    React.useEffect(() => {
-      if (isOpen && isVisible) {
-        registerForKeyUp();
-      }
-    }, [isOpen, isVisible, registerForKeyUp]);
+    // React.useEffect(() => {
+    //   if (isOpen && isVisible) {
+    //     registerForKeyUp();
+    //   }
+    // }, [isOpen, isVisible, registerForKeyUp]);
 
     useDebugWarnings(props);
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (ModalResponsiveMode! >= ResponsiveMode.small) {
+      console.log(ModalResponsiveMode);
+
       return (
         <Layer {...mergedLayerProps} ref={mergedRef}>
           <Popup
@@ -473,6 +471,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         </Layer>
       );
     }
+    return null;
   },
 );
 ModalBase.displayName = COMPONENT_NAME;
