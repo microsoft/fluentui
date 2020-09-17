@@ -161,7 +161,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       moveToStartOfWeek: e => {
         e.preventDefault();
         const targetDate = getStartDateOfWeek(gridNavigatedDate, firstDayOfWeek);
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          false,
+        );
 
         if (!!newNavigatedDate) {
           setShouldFocusInDayGrid(true);
@@ -171,7 +177,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       moveToEndOfWeek: e => {
         e.preventDefault();
         const targetDate = getEndDateOfWeek(gridNavigatedDate, firstDayOfWeek);
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          false,
+        );
 
         if (!!newNavigatedDate) {
           setShouldFocusInDayGrid(true);
@@ -183,7 +195,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         const targetDayOfWeek = gridNavigatedDate.getDay();
         const targetDate = _.find(visibleGrid[0], day => day.originalDate.getDay() === targetDayOfWeek)?.originalDate;
 
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          false,
+        );
 
         if (!!newNavigatedDate) {
           setShouldFocusInDayGrid(true);
@@ -198,7 +216,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           day => day.originalDate.getDay() === targetDayOfWeek,
         )?.originalDate;
 
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          false,
+        );
 
         if (!!newNavigatedDate) {
           setShouldFocusInDayGrid(true);
