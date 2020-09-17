@@ -489,6 +489,25 @@ describe('SpinButton', () => {
     expect(onValidate).toHaveBeenCalledTimes(1);
   });
 
+  it('handles controlled scenarios', () => {
+    let spinButtonValue = '5';
+
+    wrapper = mount(
+      <SpinButton
+        value={spinButtonValue}
+        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
+          spinButtonValue = newValue;
+        }}
+      />,
+    );
+
+    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-DownButton')[0];
+
+    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+
+    expect(spinButtonValue).toBe('4');
+  });
+
   it('does not call onValidate again on enter key press until the input changes', () => {
     const onValidate = jest.fn((value: string) => value);
 
