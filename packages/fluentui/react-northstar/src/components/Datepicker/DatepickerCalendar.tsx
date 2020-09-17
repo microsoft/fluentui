@@ -140,22 +140,22 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     actionHandlers: {
       addWeek: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', 1, restrictedDatesOptions, false);
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', 1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
       subtractWeek: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', -1, restrictedDatesOptions, false);
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', -1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
       addDay: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', 1, restrictedDatesOptions, false);
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', 1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
       subtractDay: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions, false);
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
       moveToStartOfWeek: e => {
@@ -166,7 +166,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           targetDate,
           -1,
           restrictedDatesOptions,
-          false,
+          true,
         );
 
         if (!!newNavigatedDate) {
@@ -182,7 +182,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           targetDate,
           -1,
           restrictedDatesOptions,
-          false,
+          true,
         );
 
         if (!!newNavigatedDate) {
@@ -200,7 +200,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           targetDate,
           -1,
           restrictedDatesOptions,
-          false,
+          true,
         );
 
         if (!!newNavigatedDate) {
@@ -221,7 +221,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           targetDate,
           -1,
           restrictedDatesOptions,
-          false,
+          true,
         );
 
         if (!!newNavigatedDate) {
@@ -303,7 +303,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       'Month',
       nextMonth ? 1 : -1,
       restrictedDatesOptions,
-      false,
+      true,
     );
     if (!!newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);

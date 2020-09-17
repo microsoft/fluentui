@@ -130,7 +130,6 @@ export const DatepickerCalendarCell = compose<
             className: classes.root,
             onClick: handleClick,
             ref,
-            disabled,
             ...unhandledProps,
           })}
         >
