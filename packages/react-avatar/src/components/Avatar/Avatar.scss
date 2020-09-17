@@ -1,7 +1,8 @@
 @import 'tokens';
 
 // Define default variable values
-$default-size: 32px;
+$default-width: 32px;
+$default-height: 32px;
 $default-iconSize: $iconSize-medium;
 $default-borderRadius: $borderRadius-circle;
 $default-fontFamily: $fontFamily-base;
@@ -22,9 +23,8 @@ $default-inactiveScaleFactor: 0.8;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
-
-  width: var(--avatar-size, $default-size);
-  height: var(--avatar-size, $default-size);
+  width: var(--avatar-width, $default-width);
+  height: var(--avatar-height, $default-height);
   font-family: var(--avatar-fontFamily, $default-fontFamily);
   font-size: var(--avatar-fontSize, $default-fontSize);
   font-weight: var(--avatar-fontWeight, $default-fontWeight);
@@ -36,11 +36,10 @@ $default-inactiveScaleFactor: 0.8;
   border-radius: var(--avatar-borderRadius, $default-borderRadius);
   top: 0;
   left: 0;
-  width: var(--avatar-size, $default-size);
-  height: var(--avatar-size, $default-size);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   vertical-align: top;
-  clip-path: var(--avatar-clipPath);
 }
 
 // Label slot
@@ -49,15 +48,12 @@ $default-inactiveScaleFactor: 0.8;
   align-items: center;
   justify-content: center;
   background: var(--avatar-background, $default-background);
-
-  width: var(--avatar-size, $default-size);
-  height: var(--avatar-size, $default-size);
-
+  width: 100%;
+  height: 100%;
   vertical-align: top;
   text-align: center;
   padding: 0px;
   border-radius: var(--avatar-borderRadius, $default-borderRadius);
-  clip-path: var(--avatar-clipPath);
 }
 
 // Badge slot
@@ -67,48 +63,61 @@ $default-inactiveScaleFactor: 0.8;
   right: 0;
 
   // Size the badge appropriately for this avatar size
-  --badge-size: calc(var(--avatar-size, $default-size) / 4);
+  --badge-size: calc(var(--avatar-height, $default-height) / 4);
 }
 
 // Modifiers
 ._size_20 {
-  --avatar-size: 20px;
+  --avatar-width: 20px;
+  --avatar-height: 20px;
 }
 ._size_24 {
-  --avatar-size: 24px;
+  --avatar-width: 24px;
+  --avatar-height: 24px;
 }
 ._size_28 {
-  --avatar-size: 28px;
+  --avatar-width: 28px;
+  --avatar-height: 28px;
 }
 ._size_32 {
-  --avatar-size: 32px;
+  --avatar-width: 32px;
+  --avatar-height: 32px;
 }
 ._size_36 {
-  --avatar-size: 36px;
+  --avatar-width: 36px;
+  --avatar-height: 36px;
 }
 ._size_40 {
-  --avatar-size: 40px;
+  --avatar-width: 40px;
+  --avatar-height: 40px;
 }
 ._size_48 {
-  --avatar-size: 48px;
+  --avatar-width: 48px;
+  --avatar-height: 48px;
 }
 ._size_56 {
-  --avatar-size: 56px;
+  --avatar-width: 56px;
+  --avatar-height: 56px;
 }
 ._size_64 {
-  --avatar-size: 64px;
+  --avatar-width: 64px;
+  --avatar-height: 64px;
 }
 ._size_72 {
-  --avatar-size: 72px;
+  --avatar-width: 72px;
+  --avatar-height: 72px;
 }
 ._size_96 {
-  --avatar-size: 96px;
+  --avatar-width: 96px;
+  --avatar-height: 96px;
 }
 ._size_120 {
-  --avatar-size: 120px;
+  --avatar-width: 120px;
+  --avatar-height: 120px;
 }
 ._size_128 {
-  --avatar-size: 128px;
+  --avatar-width: 128px;
+  --avatar-height: 128px;
 }
 
 // Icon and text sizes
@@ -127,7 +136,7 @@ $default-inactiveScaleFactor: 0.8;
 // ._size_32,
 // ._size_36,
 // ._size_40 {
-// defaults are in .root
+// defaults are in var() fallbacks
 // }
 ._size_48,
 ._size_56 {

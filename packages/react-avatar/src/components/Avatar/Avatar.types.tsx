@@ -80,11 +80,13 @@ export const defaultAvatarSize: AvatarSizeValue = 32;
  * Style tokens for the Avatar
  */
 export type AvatarTokenSet = {
-  /** Size of the avatar.
-   * @defaultvalue - The Avatar's `size` prop, or `customSize` if specified */
-  size?: string;
+  /** Width of the avatar */
+  width?: string;
 
-  /** Background fill when there is no image */
+  /** Height of the avatar */
+  height?: string;
+
+  /** Background shown behind the initials or icon */
   background?: string;
 
   /** Border radius */
@@ -101,9 +103,6 @@ export type AvatarTokenSet = {
 
   /** Font size used by the icon */
   iconSize?: string;
-
-  /** Custom clip path for the image or background fill */
-  clipPath?: string;
 
   /** Color of the ring when active=true and activeDisplay includes 'ring' */
   activeRingColor?: string;
