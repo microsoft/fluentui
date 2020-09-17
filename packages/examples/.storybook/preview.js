@@ -32,7 +32,7 @@ function loadStories() {
 }
 
 /**
- * @param options {{ key: string, stories: Map, req: (key: string) => any }}
+ * @param {{ key: string, stories: Map, req: (key: string) => any }} options stuff
  */
 function generateStoriesFromExamples({ key, stories, req }) {
   const nameMatcher = /\.\/([^/]+)\//;
