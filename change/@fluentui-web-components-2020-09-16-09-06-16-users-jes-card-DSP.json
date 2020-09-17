@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Feat: convert card to be design system provider",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-16T16:06:16.034Z"
+}

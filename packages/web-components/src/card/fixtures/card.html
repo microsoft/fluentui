@@ -8,6 +8,12 @@
     .state-override:hover {
       --elevation: 12;
     }
+
+    .controls {
+      display: flex;
+      margin: 20px;
+      flex-direction: column;
+    }
   </style>
   <div>
     <fluent-card style="--card-height: 400px; --card-width: 500px;">
@@ -19,5 +25,15 @@
     </fluent-card>
     <br />
     <fluent-card class="state-override">Custom depth on hover using CSS</fluent-card>
+    <br />
+    <fluent-card background-color="#333333" style="--card-height: 400px; --card-width: 500px; color: white">
+      Custom background
+      <div class="controls">
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
+    </fluent-card>
   </div>
 </fluent-design-system-provider>
