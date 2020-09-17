@@ -7,8 +7,8 @@ import { Accessibility } from '../../types';
  * Thus the keyboard navigation works properly.
  * @specification
  * Adds attribute 'aria-selected' based on the property 'selected' to 'button' slot.
- * Adds role='gridcell' to 'button' slot.
- * Adds role='none' to 'tableCell' slot.
+ * Adds role 'gridcell' to 'button' slot.
+ * Adds role 'none' to 'tableCell' slot.
  */
 export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {
