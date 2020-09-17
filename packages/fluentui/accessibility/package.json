@@ -6,13 +6,11 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/keyboard-key": "^0.2.11",
+    "@fluentui/keyboard-key": "^0.2.12",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/a11y-rules": "0.1.0",
-    "@fluentui/a11y-testing": "0.1.0",
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
