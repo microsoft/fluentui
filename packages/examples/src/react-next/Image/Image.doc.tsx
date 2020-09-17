@@ -8,7 +8,6 @@ import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageDefaultExample } from './examples/Image.Default.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
-import './ImagePage.global.scss';
 
 const ImageDefaultExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Image/examples/Image.Default.Example.tsx') as string;
 const ImageCenterExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Image/examples/Image.Center.Example.tsx') as string;

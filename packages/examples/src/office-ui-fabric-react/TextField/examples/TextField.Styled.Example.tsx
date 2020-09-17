@@ -3,7 +3,6 @@ import { ITextFieldStyleProps, ITextFieldStyles, TextField } from 'office-ui-fab
 import { ILabelStyles, ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
 import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import './TextField.Styled.Example.scss';
 
 const textStyles: Partial<ITextStyles> = { root: { maxWidth: 600 } };
 
@@ -11,12 +10,12 @@ export const TextFieldStyledExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={{ childrenGap: 15 }}>
       <Text styles={textStyles}>
-        These examples show how components that used to be styled using CSS can be styled using JS styling. The
-        preferred method is JS styling for several reasons: type safety for styling, more predictable behavior, and
-        clear feedback via typing when component changes affect existing styling code.
+        This example shows how components that used to be styled using CSS can be styled using JS styling. (Look at the
+        bottom of the code to see the equivalent SCSS.) The preferred method is JS styling for several reasons: type
+        safety for styling, more predictable behavior, and clear feedback via typing when component changes affect
+        existing styling code.
       </Text>
-      <TextField label="Theme Primary Label, Red Top Border (JS):" required styles={getStyles} />
-      <TextField label="Theme Primary Label, Red Top Border (CSS):" required className="textField-cssStyled" />
+      <TextField label="Custom styled TextField" required styles={getStyles} />
     </Stack>
   );
 };
@@ -39,11 +38,9 @@ function getStyles(props: ITextFieldStyleProps): Partial<ITextFieldStyles> {
 function getLabelStyles(props: ILabelStyleProps): ILabelStyles {
   const { required } = props;
   return {
-    root: [
-      required && {
-        color: props.theme.palette.themePrimary,
-      },
-    ],
+    root: required && {
+      color: props.theme.palette.themePrimary,
+    },
   };
 }
 

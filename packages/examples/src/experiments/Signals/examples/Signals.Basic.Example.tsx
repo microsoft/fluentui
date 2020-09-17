@@ -27,7 +27,7 @@ import {
 } from '@uifabric/experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from 'office-ui-fabric-react';
 import { lorem } from '@uifabric/example-data';
-import * as SignalStylesModule from '../Signal.scss';
+import * as SignalStylesModule from '@uifabric/experiments/lib/components/signals/Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
 
 const SignalStyles: any = SignalStylesModule;
@@ -76,18 +76,9 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
             defaultSelectedKey={fontSize}
             onChanged={this._onFontSizeChoiceChanged}
             options={[
-              {
-                key: 'small',
-                text: 'Small',
-              },
-              {
-                key: 'medium',
-                text: 'Medium',
-              },
-              {
-                key: 'large',
-                text: 'Large',
-              },
+              { key: 'small', text: 'Small' },
+              { key: 'medium', text: 'Medium' },
+              { key: 'large', text: 'Large' },
             ]}
           />
         </p>
