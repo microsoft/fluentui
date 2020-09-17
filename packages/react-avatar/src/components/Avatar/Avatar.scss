@@ -193,27 +193,27 @@ $default-inactiveScaleFactor: 0.8;
   &._size_20,
   &._size_24,
   &._size_28 {
-    --avatar-activeEffectMargin: -2px;
+    --avatar-activeRingMargin: -2px;
     --avatar-activeRingWidth: #{$stroke-thin};
   }
   // default size:
   // &._size_32,
   // &._size_36,
   // &._size_40 {
-  --avatar-activeEffectMargin: -2px;
+  --avatar-activeRingMargin: -2px;
   --avatar-activeRingWidth: #{$stroke-thin};
   // }
   &._size_48,
   &._size_56,
   &._size_64 {
-    --avatar-activeEffectMargin: -4px;
+    --avatar-activeRingMargin: -4px;
     --avatar-activeRingWidth: #{$stroke-thick};
   }
   &._size_72,
   &._size_96,
   &._size_120,
   &._size_128 {
-    --avatar-activeEffectMargin: -8px;
+    --avatar-activeRingMargin: -8px;
     --avatar-activeRingWidth: #{$stroke-thickest};
   }
 }
@@ -271,10 +271,10 @@ $default-inactiveScaleFactor: 0.8;
   &:before {
     content: '';
     position: absolute;
-    top: var(--avatar-activeEffectMargin, 0);
-    left: var(--avatar-activeEffectMargin, 0);
-    bottom: var(--avatar-activeEffectMargin, 0);
-    right: var(--avatar-activeEffectMargin, 0);
+    top: var(--avatar-activeRingMargin, 0);
+    left: var(--avatar-activeRingMargin, 0);
+    bottom: var(--avatar-activeRingMargin, 0);
+    right: var(--avatar-activeRingMargin, 0);
     border-radius: var(--avatar-borderRadius, $default-borderRadius);
     border-style: solid;
     border-color: var(--avatar-activeRingColor, $default-activeRingColor);
