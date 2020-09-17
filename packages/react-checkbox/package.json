@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Fluent UI React Checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/storybook": "^0.4.15",
+    "@fluentui/storybook": "^0.4.16",
     "@uifabric/build": "^7.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -46,14 +46,14 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.2",
-    "@fluentui/react-icons": "^0.3.3",
-    "@fluentui/react-theme-provider": "^0.13.1",
-    "@uifabric/react-hooks": "^7.13.3",
+    "@fluentui/react-compose": "^0.19.3",
+    "@fluentui/react-icons": "^0.3.4",
+    "@fluentui/react-theme-provider": "^0.13.2",
+    "@uifabric/react-hooks": "^7.13.4",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.4",
-    "@uifabric/utilities": "^7.32.1",
-    "office-ui-fabric-react": "^7.137.5",
+    "@uifabric/styling": "^7.16.5",
+    "@uifabric/utilities": "^7.32.2",
+    "office-ui-fabric-react": "^7.138.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
