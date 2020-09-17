@@ -4,7 +4,7 @@
 
 ### Button
 
-The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance increases for the most common cases.
+The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance hits for the most common cases.
 
 As a result, please see the table below on the replacements:
 
