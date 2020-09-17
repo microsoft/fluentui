@@ -319,7 +319,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
-    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} />
+    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
   );
 
   const element = (
