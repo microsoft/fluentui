@@ -1,7 +1,7 @@
-import { customElement } from '@microsoft/fast-element';
 import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
-import { designSystemProperty, DesignSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
+import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem } from '@microsoft/fast-components-styles-msft';
+import { FluentDesignSystemProvider } from '..';
 import { CardStyles as styles } from './card.styles';
 
 /**
@@ -13,12 +13,12 @@ import { CardStyles as styles } from './card.styles';
  * @remarks
  * HTML Element: \<fluent-card\>
  */
-@customElement({
+@designSystemProvider({
   name: 'fluent-card',
   template,
   styles,
 })
-export class FluentCard extends DesignSystemProvider
+export class FluentCard extends FluentDesignSystemProvider
   implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
   /**
    * Background color for the banner component. Sets context for the design system.
@@ -31,7 +31,7 @@ export class FluentCard extends DesignSystemProvider
     default: '#FFFFFF',
   })
   public backgroundColor: string;
-  private backgroundColorChanged(): void {
+  protected backgroundColorChanged(): void {
     const parsedColor = parseColorHexRGB(this.backgroundColor);
     this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
   }
