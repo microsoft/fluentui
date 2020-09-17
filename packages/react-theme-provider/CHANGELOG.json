@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 15:52:49 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix button styles to match v7 buttons.",
+            "author": "xgao@microsoft.com",
+            "commit": "70025f8282c9ba918580a1679ef3ae2ee217ecc9",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 12:25:04 GMT",
       "tag": "@fluentui/react-theme-provider_v0.13.0",
       "version": "0.13.0",
