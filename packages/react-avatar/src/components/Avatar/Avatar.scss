@@ -1,42 +1,43 @@
 @import 'tokens';
 
 // Define default variable values
-:root {
-  --avatar-background: rgb(232, 232, 232);
-  --avatar-ringColor: #0078d4; // TODO: brand color
-  --avatar-glowColor: rgba(0, 120, 212, 0.3); // TODO: brand color
-}
+$default-size: 32px;
+$default-iconSize: $iconSize-medium;
+$default-borderRadius: $borderRadius-circle;
+$default-fontFamily: $fontFamily-base;
+$default-fontSize: $fontSize-body;
+$default-fontWeight: $fontWeight-semibold;
+$default-background: rgb(232, 232, 232);
+
+$default-activeRingColor: #0078d4; // TODO: brand colors
+$default-activeGlowColor: rgba(0, 120, 212, 0.3); // TODO: brand colors
+
+$default-inactiveOpacity: 0.8;
+$default-inactiveScaleFactor: 0.8;
 
 // Root slot
 .root {
-  --avatar-size: 32px;
-  --avatar-iconSize: #{$iconSize-medium};
-  --avatar-fontSize: #{$fontSize-body};
-  --avatar-fontWeight: #{$fontWeight-semibold};
-  --avatar-borderRadius: #{$borderRadius-circle};
-
   position: relative;
   background-color: inherit;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
 
-  width: var(--avatar-size);
-  height: var(--avatar-size);
-
-  @include fontFamily-base;
-  font-size: var(--avatar-fontSize);
-  font-weight: var(--avatar-fontWeight);
+  width: var(--avatar-size, $default-size);
+  height: var(--avatar-size, $default-size);
+  font-family: var(--avatar-fontFamily, $default-fontFamily);
+  font-size: var(--avatar-fontSize, $default-fontSize);
+  font-weight: var(--avatar-fontWeight, $default-fontWeight);
 }
 
 // Image slot
 .image {
   position: absolute;
-  border-radius: var(--avatar-borderRadius);
+  border-radius: var(--avatar-borderRadius, $default-borderRadius);
   top: 0;
   left: 0;
-  width: var(--avatar-size);
-  height: var(--avatar-size);
+  width: var(--avatar-size, $default-size);
+  height: var(--avatar-size, $default-size);
   object-fit: cover;
   vertical-align: top;
   clip-path: var(--avatar-clipPath);
@@ -47,15 +48,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--avatar-background);
+  background: var(--avatar-background, $default-background);
 
-  width: var(--avatar-size);
-  height: var(--avatar-size);
+  width: var(--avatar-size, $default-size);
+  height: var(--avatar-size, $default-size);
 
   vertical-align: top;
   text-align: center;
   padding: 0px;
-  border-radius: var(--avatar-borderRadius);
+  border-radius: var(--avatar-borderRadius, $default-borderRadius);
   clip-path: var(--avatar-clipPath);
 }
 
@@ -66,7 +67,7 @@
   right: 0;
 
   // Size the badge appropriately for this avatar size
-  --badge-size: calc(var(--avatar-size) / 4);
+  --badge-size: calc(var(--avatar-size, $default-size) / 4);
 }
 
 // Modifiers
@@ -183,76 +184,76 @@
   &._size_20,
   &._size_24,
   &._size_28 {
-    --avatar-ringMargin: -2px;
-    --avatar-ringWidth: #{$stroke-thin};
+    --avatar-activeEffectMargin: -2px;
+    --avatar-activeRingWidth: #{$stroke-thin};
   }
   // default size:
   // &._size_32,
   // &._size_36,
   // &._size_40 {
-  --avatar-ringMargin: -2px;
-  --avatar-ringWidth: #{$stroke-thin};
+  --avatar-activeEffectMargin: -2px;
+  --avatar-activeRingWidth: #{$stroke-thin};
   // }
   &._size_48,
   &._size_56,
   &._size_64 {
-    --avatar-ringMargin: -4px;
-    --avatar-ringWidth: #{$stroke-thick};
+    --avatar-activeEffectMargin: -4px;
+    --avatar-activeRingWidth: #{$stroke-thick};
   }
   &._size_72,
   &._size_96,
   &._size_120,
   &._size_128 {
-    --avatar-ringMargin: -8px;
-    --avatar-ringWidth: #{$stroke-thickest};
+    --avatar-activeEffectMargin: -8px;
+    --avatar-activeRingWidth: #{$stroke-thickest};
   }
 }
 ._activeShadow {
   &._size_20,
   &._size_24,
   &._size_28 {
-    --avatar-shadow: #{$shadow-4-darker};
+    --avatar-activeShadow: #{$shadow-4-darker};
   }
   // default size:
   // &._size_32,
   // &._size_36,
   // &._size_40 {
-  --avatar-shadow: #{$shadow-8-darker};
+  --avatar-activeShadow: #{$shadow-8-darker};
   // }
   &._size_48,
   &._size_56,
   &._size_64 {
-    --avatar-shadow: #{$shadow-16-darker};
+    --avatar-activeShadow: #{$shadow-16-darker};
   }
   &._size_72,
   &._size_96,
   &._size_120,
   &._size_128 {
-    --avatar-shadow: #{$shadow-28};
+    --avatar-activeShadow: #{$shadow-28};
   }
 }
 ._activeGlow {
   &._size_20,
   &._size_24,
   &._size_28 {
-    --avatar-shadow: #{$shadow-4-darker}, 0 0 4px 2px var(--avatar-glowColor);
+    --avatar-activeShadow: #{$shadow-4-darker}, 0 0 4px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
   }
   // default size:
   // &._size_32,
   // &._size_36,
   // &._size_40 {
-  --avatar-shadow: #{$shadow-8-darker}, 0 0 8px 2px var(--avatar-glowColor);
+  --avatar-activeShadow: #{$shadow-8-darker}, 0 0 8px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
   // }
   &._size_48,
   &._size_56,
   &._size_64 {
-    --avatar-shadow: #{$shadow-16-darker}, 0 0 8px 2px var(--avatar-glowColor);
+    --avatar-activeShadow: #{$shadow-16-darker}, 0 0 8px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
   }
   &._size_72,
   &._size_96,
   &._size_120,
   &._size_128 {
-    --avatar-shadow: #{$shadow-28}, 0 0 28px 4px var(--avatar-glowColor);
+    --avatar-activeShadow: #{$shadow-28}, 0 0 28px 4px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
   }
 }
 
@@ -261,25 +262,25 @@
   &:before {
     content: '';
     position: absolute;
-    top: var(--avatar-ringMargin, 0);
-    left: var(--avatar-ringMargin, 0);
-    bottom: var(--avatar-ringMargin, 0);
-    right: var(--avatar-ringMargin, 0);
-    border-radius: var(--avatar-borderRadius);
+    top: var(--avatar-activeEffectMargin, 0);
+    left: var(--avatar-activeEffectMargin, 0);
+    bottom: var(--avatar-activeEffectMargin, 0);
+    right: var(--avatar-activeEffectMargin, 0);
+    border-radius: var(--avatar-borderRadius, $default-borderRadius);
     border-style: solid;
-    border-color: var(--avatar-ringColor);
-    border-width: var(--avatar-ringWidth, 0);
-    box-shadow: var(--avatar-shadow);
+    border-color: var(--avatar-activeRingColor, $default-activeRingColor);
+    border-width: var(--avatar-activeRingWidth, 0);
+    box-shadow: var(--avatar-activeShadow);
   }
 }
 ._inactive {
-  opacity: 0.8;
-  transform: scale(0.8);
+  opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
+  transform: scale(var(--avatar-inactiveScaleFactor, $default-inactiveScaleFactor));
 }
 
 // Display modifiers
 ._display_icon {
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
-  font-size: var(--avatar-iconSize);
-  font-weight: #{$fontWeight-regular};
+  font-size: var(--avatar-iconSize, $default-iconSize);
+  font-weight: initial;
 }

@@ -1,15 +1,7 @@
 // TODO move to common styles
-@mixin fontFamily-base($fontFamily: font-family) {
-  #{$fontFamily}: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-@mixin fontFamily-monospace($fontFamily: font-family) {
-  #{$fontFamily}: Consolas, 'Courier New', Courier, monospace;
-}
-
-@mixin fontFamily-numeric($fontFamily: font-family) {
-  #{$fontFamily}: Bahnschrift, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+$fontFamily-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$fontFamily-monospace: Consolas, 'Courier New', Courier, monospace;
+$fontFamily-numeric: Bahnschrift, $fontFamily-base;
 
 // TODO double-check icon sizes
 $iconSize-small: 12px;
