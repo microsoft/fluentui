@@ -23,74 +23,81 @@ export function getTokens(theme: Theme): Tokens {
     {},
     defaultTokens,
     {
-      // accent is currently only mapped for primary button to use.
-      accent: {
-        background: semanticColors?.primaryButtonBackground,
-        borderColor: semanticColors?.primaryButtonBorder,
-        contentColor: semanticColors?.primaryButtonText,
-        iconColor: palette?.white,
-        dividerColor: palette?.white,
-        secondaryContentColor: palette?.white,
+      color: {
+        body: {
+          background: semanticColors?.bodyBackground,
+          contentColor: semanticColors?.bodyText,
+          fontFamily: fonts?.medium.fontFamily,
+          fontWeight: fonts?.medium.fontWeight,
+          fontSize: fonts?.medium.fontSize,
+          mozOsxFontSmoothing: fonts?.medium.MozOsxFontSmoothing,
+          webkitFontSmoothing: fonts?.medium.WebkitFontSmoothing,
+        },
 
-        hovered: {
-          background: semanticColors?.primaryButtonBackgroundHovered,
-          contentColor: semanticColors?.primaryButtonTextHovered,
+        // accent is currently only mapped for primary button to use.
+        brand: {
+          background: semanticColors?.primaryButtonBackground,
+          borderColor: semanticColors?.primaryButtonBorder,
+          contentColor: semanticColors?.primaryButtonText,
+          iconColor: palette?.white,
+          dividerColor: palette?.white,
           secondaryContentColor: palette?.white,
-        },
 
-        pressed: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-          secondaryContentColor: semanticColors?.primaryButtonTextPressed,
-        },
+          hovered: {
+            background: semanticColors?.primaryButtonBackgroundHovered,
+            contentColor: semanticColors?.primaryButtonTextHovered,
+            secondaryContentColor: palette?.white,
+          },
 
-        disabled: {
-          background: semanticColors?.primaryButtonBackgroundDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-          dividerColor: palette?.neutralTertiaryAlt,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
-        },
+          pressed: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+            secondaryContentColor: semanticColors?.primaryButtonTextPressed,
+          },
 
-        checked: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-        },
+          disabled: {
+            background: semanticColors?.primaryButtonBackgroundDisabled,
+            contentColor: semanticColors?.buttonTextDisabled,
+            dividerColor: palette?.neutralTertiaryAlt,
+            secondaryContentColor: semanticColors?.buttonTextDisabled,
+          },
 
-        checkedHovered: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
+          checked: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+          },
+
+          checkedHovered: {
+            background: semanticColors?.primaryButtonBackgroundPressed,
+            contentColor: semanticColors?.primaryButtonTextPressed,
+          },
         },
       },
 
-      // ghost is currently only mapped for ghost button to use.
+      // TODO: This will be moved out as a button variant.
       ghost: {
-        background: semanticColors?.bodyBackground,
-        borderColor: 'transparent',
         contentColor: palette?.neutralPrimary,
         iconColor: palette?.themeDarkAlt,
         menuIconColor: palette?.neutralSecondary,
         secondaryContentColor: palette?.neutralPrimary,
 
         checked: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
         },
 
         checkedHovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralQuaternaryAlt,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
         },
 
         disabled: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
           secondaryContentColor: palette?.neutralTertiary,
+          background: semanticColors?.disabledBackground,
         },
 
         expanded: {
@@ -98,35 +105,27 @@ export function getTokens(theme: Theme): Tokens {
         },
 
         focused: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
           secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLighter,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
           secondaryContentColor: palette?.themePrimary,
         },
 
         pressed: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
           secondaryContentColor: palette?.black,
         },
       },
 
-      body: {
-        background: semanticColors?.bodyBackground,
-        contentColor: semanticColors?.bodyText,
-      },
-
+      // TODO: This will be moved out as a button variant.
       button: {
         fontWeight: '600',
         fontSize: fonts?.medium?.fontSize,

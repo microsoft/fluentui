@@ -17,18 +17,22 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
   theme?: PartialTheme | Theme;
 
   /**
-   * Defines the target window to render into. Defaults to the global window. Providing `null`
-   * will opt out of style rendering, which is used for SSR.
-   */
-  targetWindow?: Window | null;
-
-  /**
    * Optional interface for registering dynamic styles. Defaults to using `merge-styles`. Use this
    * to opt into a particular rendering implementation, such as `emotion`, `styled-components`, or `jss`.
    * Note: performance will differ between all renders. Please measure your scenarios before using an alternative
    * implementation.
    */
   renderer?: StyleRenderer;
+
+  /**
+   * Defines where body-related theme is applied to.
+   * Setting to 'element' will apply body styles to the root element of ThemeProvider.
+   * Setting to 'body' will apply body styles to document body.
+   * Setting to 'none' will not apply body styles to either element or body.
+   *
+   * @default 'element';
+   */
+  applyTo?: 'element' | 'body' | 'none';
 }
 
 /**

@@ -89,7 +89,7 @@ storiesOf('CompoundButton Next', module)
     <CompoundButton
       secondaryContent="This is some secondary text"
       icon={<AddIcon />}
-      tokens={{ iconSize: '40px' }}
+      tokens={{ iconSize: '30px' }}
     />
   ));
 
@@ -174,6 +174,6 @@ storiesOf('CompoundButton Next - Teams Theme', module)
     <CompoundButton
       secondaryContent="This is some secondary text"
       icon={<AddIcon />}
-      tokens={{ iconSize: '40px' }}
+      tokens={{ iconSize: '30px' }}
     />
   ));
