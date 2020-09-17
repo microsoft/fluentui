@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 12:25:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.12.1..@fluentui/react-theme-provider_v0.13.0)
+
+### Minor changes
+
+- Support applyTo prop and align styles with Fabric component. ([PR #14696](https://github.com/microsoft/fluentui/pull/14696) by xgao@microsoft.com)
+- Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`. ([PR #15070](https://github.com/microsoft/fluentui/pull/15070) by dzearing@hotmail.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.12.0)
 
