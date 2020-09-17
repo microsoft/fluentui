@@ -4,11 +4,11 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 
 import { VerticalStackedBarChartBasicExample } from './examples/VerticalStackedBarChart.Basic.Example';
 import { VerticalStackedBarChartStyledExample } from './examples/VerticalStackedBarChart.Styled.Example';
-import { VerticalStackedBarChartCalloutExample } from './examples/VerticalStackedBarChart.Example';
+import { VerticalStackedBarChartCalloutExample } from './examples/VerticalStackedBarChart.Callout.Example';
 
 const VerticalBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Basic.Example.tsx') as string;
 const VerticalBarChartStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Styled.Example.tsx') as string;
-const VerticalBarChartCalloutExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Example.tsx') as string;
+const VerticalBarChartCalloutExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Callout.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

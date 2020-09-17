@@ -20,6 +20,7 @@ import {
   IVerticalStackedChartProps,
   IVSChartDataPoint,
 } from '@uifabric/charting';
+import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -137,6 +138,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         datasetForXAxisDomain={this._xAxisLabels}
         isCalloutForStack={this.props.isCalloutForStack!}
         barwidth={this._barWidth}
+        focusZoneDirection={this.props.isCalloutForStack ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
         customizedCallout={this._getCustomizedCallout()}

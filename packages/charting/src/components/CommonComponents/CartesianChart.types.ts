@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IMargins } from '../../types/index';
@@ -380,4 +380,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   // need to add type here
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customizedCallout?: any;
+
+  /**
+   * Focus zone direction to the chart
+   * @default FocusZoneDirection.horizontal
+   */
+  focusZoneDirection?: FocusZoneDirection;
 }

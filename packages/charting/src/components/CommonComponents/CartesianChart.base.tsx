@@ -165,6 +165,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xScale,
       yScale,
     });
+    let focusDirection;
+    if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
+      focusDirection = this.props.focusZoneDirection;
+    } else if (this.props.focusZoneDirection) {
+      focusDirection = this.props.focusZoneDirection;
+    } else {
+      focusDirection = FocusZoneDirection.horizontal;
+    }
     return (
       <div
         id={this.idForGraph}
@@ -172,7 +180,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+        <FocusZone direction={focusDirection}>
           <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(e: SVGElement | null) => {
