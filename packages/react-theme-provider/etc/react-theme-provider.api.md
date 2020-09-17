@@ -107,7 +107,7 @@ export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderPr
 
 // @public
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
-    applyTo?: 'none' | 'element' | 'body';
+    applyTo?: 'element' | 'body' | 'none';
     ref?: React.Ref<HTMLElement>;
     renderer?: StyleRenderer;
     theme?: PartialTheme | Theme;
