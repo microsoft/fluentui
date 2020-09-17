@@ -20,7 +20,7 @@ import {
   EventGroup,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../compat/Checkbox';
+import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
