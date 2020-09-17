@@ -8,8 +8,8 @@ import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPick
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
-/* eslint-disable */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -39,6 +39,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.state = {
       queryString: '',
       // TODO: determine whether this can be removed
+      // eslint-disable-next-line react/no-unused-state
       suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
@@ -260,7 +261,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
       const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-        ? (this.props.onItemSelected as any)(item)
+        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (this.props.onItemSelected as any)(item)
         : item;
 
       if (processedItem === null) {
