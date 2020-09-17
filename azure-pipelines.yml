@@ -90,7 +90,7 @@ jobs:
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)
 
-      - task: AzureUpload@1
+      - task: AzureUpload@2
         displayName: Upload PR deploy site
         inputs:
           SourcePath: 'apps/pr-deploy-site/dist'
@@ -98,6 +98,17 @@ jobs:
           storage: fabricweb
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)'
+
+      - task: AzureUpload@2
+        displayName: Upload demo images (master)
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          BlobPrefix: 'assets'
+          CacheControl: 'public, max-age=600000'
+          ContainerName: 'fabric-website' # this container has a CDN
+          SourcePath: 'packages/fluentui/docs/src/public'
+          storage: fabricweb
 
   - job: ScreenerFluent
     workspace:
