@@ -1,7 +1,7 @@
 import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
 import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem } from '@microsoft/fast-components-styles-msft';
-import { FluentDesignSystemProvider } from '..';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import { CardStyles as styles } from './card.styles';
 
 /**
