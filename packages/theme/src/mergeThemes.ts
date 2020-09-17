@@ -9,9 +9,7 @@ export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | Part
 
   // Correctly merge stylesheets array
   partialTheme.stylesheets = [];
-  themes.forEach(
-    theme => theme && theme.stylesheets && partialTheme.stylesheets?.push(...(theme.stylesheets as string[])),
-  );
+  themes.forEach(theme => theme && theme.stylesheets && partialTheme.stylesheets?.push(...theme.stylesheets));
 
   return partialTheme as TResult;
 }

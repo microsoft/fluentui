@@ -6,7 +6,7 @@ import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 
 /**
- * ThemeProvider, used for providing a theme, consisting of css variables and stylesheets.
+ * ThemeProvider, used for providing css variables and registering stylesheets.
  */
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
   (props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {

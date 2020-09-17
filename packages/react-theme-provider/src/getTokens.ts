@@ -178,48 +178,6 @@ export function getTokens(theme: Theme): Tokens {
           secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
       },
-      //   button: {
-      //     fontWeight: 600, // fonts?.medium?.fontWeight,
-      //     fontSize: fonts?.medium?.fontSize,
-      //     fontFamily: fonts?.medium?.fontFamily,
-      //     iconSize: fonts?.mediumPlus?.fontSize,
-      //     borderRadius: effects?.roundedCorner2,
-      //     focusColor: palette?.black,
-      //     focusInnerColor: palette?.white,
-
-      //     background: semanticColors?.buttonBackground,
-      //     borderColor: semanticColors?.buttonBorder,
-      //     contentColor: semanticColors?.buttonText,
-      //     dividerColor: palette?.neutralTertiaryAlt,
-
-      //     hovered: {
-      //       background: semanticColors?.buttonBackgroundHovered,
-      //       borderColor: semanticColors?.buttonBorder,
-      //       contentColor: semanticColors?.buttonTextHovered,
-      //     },
-
-      //     pressed: {
-      //       background: semanticColors?.buttonBackgroundPressed,
-      //       borderColor: semanticColors?.buttonBorder,
-      //       contentColor: semanticColors?.buttonTextPressed,
-      //     },
-
-      //     checked: {
-      //       background: semanticColors?.buttonBackgroundPressed,
-      //       contentColor: semanticColors?.buttonTextChecked,
-      //     },
-
-      //     checkedHovered: {
-      //       background: semanticColors?.buttonBackgroundPressed,
-      //       contentColor: semanticColors?.buttonTextCheckedHovered,
-      //     },
-
-      //     disabled: {
-      //       background: semanticColors?.buttonBackgroundDisabled,
-      //       borderColor: semanticColors?.buttonBorderDisabled,
-      //       contentColor: semanticColors?.buttonTextDisabled,
-      //     },
-      //   },
     },
     tokens,
   );
