@@ -6,7 +6,7 @@
 ### Content
 
 - Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.
-- The dropdown label should describe what can be found in the menu.
+- The dropdown label should describe what can be found in the list of options.
 - Use shortened statements or single words as list options.
 - If there isn't a default option, use "Select an option" as placeholder text.
 - If "None" is an option, include it.

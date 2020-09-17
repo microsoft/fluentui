@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix TextField best practices guidance for required fields",
+  "comment": "Update website content for ComboBox, Dropdown, and TextField",
   "packageName": "office-ui-fabric-react",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
