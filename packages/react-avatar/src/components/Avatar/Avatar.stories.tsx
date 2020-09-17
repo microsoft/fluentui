@@ -9,7 +9,7 @@ import {
   CalendarIcon,
   TelemarketerIcon,
   RoomIcon,
-  RobotIcon,
+  ChatBotIcon,
   SkypeClockIcon,
   SkypeCheckIcon,
   SkypeMinusIcon,
@@ -156,9 +156,13 @@ export const CustomShape = () => {
     <>
       <StoryExample title="Custom shape">
         <AvatarExampleList
-          icon={<RobotIcon />}
+          icon={<ChatBotIcon />}
           display="icon"
-          tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
+          tokens={{
+            width: 'calc(var(--avatar-height) * 1.125)',
+            background: 'url("images/avatar/hexagon.svg") 0px/contain no-repeat',
+            borderRadius: '0',
+          }}
         />
       </StoryExample>
     </>
