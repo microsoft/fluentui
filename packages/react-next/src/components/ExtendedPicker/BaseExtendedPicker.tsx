@@ -39,7 +39,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.state = {
       queryString: '',
       // TODO: determine whether this can be removed
-      // eslint-disable-next-line react/no-unused-state
       suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
