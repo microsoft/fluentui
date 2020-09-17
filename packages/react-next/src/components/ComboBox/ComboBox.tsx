@@ -20,7 +20,7 @@ import {
   EventGroup,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox } from '../../compat/Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
@@ -33,22 +33,15 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/selectableOption/index';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
+import { useMergedRefs } from '@uifabric/react-hooks';
+import { getPropsWithDefaults } from '../../utilities/index';
 
 export interface IComboBoxState {
   /** The open state */
   isOpen?: boolean;
 
-  /** The currently selected indices */
-  selectedIndices?: number[];
-
   /** The focused state of the comboBox */
   focusState?: 'none' | 'focused' | 'focusing';
-
-  /** This value is used for the autocomplete hint value */
-  suggestedDisplayValue?: string;
-
-  /** The options currently available for the callout */
-  currentOptions: IComboBoxOption[];
 
   /**
    * When taking input, this will store the index that the options input matches
@@ -104,34 +97,114 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 }
 
 /**
- * Internal class that is used to wrap all ComboBox options.
+ * Internal component that is used to wrap all ComboBox options.
  * This is used to customize when we want to rerender components,
  * so we don't rerender every option every time render is executed.
  */
-class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
-  public render(): React.ReactNode {
-    return this.props.render();
-  }
-
-  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
+const ComboBoxOptionWrapper = React.memo(
+  ({ render }: IComboBoxOptionWrapperProps) => render(),
+  (
+    { render: oldRender, ...oldProps }: IComboBoxOptionWrapperProps,
+    { render: newRender, ...newProps }: IComboBoxOptionWrapperProps,
+  ) =>
     // The render function will always be different, so we ignore that prop
-    return !shallowCompare({ ...this.props, render: undefined }, { ...newProps, render: undefined });
-  }
-}
+    shallowCompare(oldProps, newProps),
+);
 
 const COMPONENT_NAME = 'ComboBox';
+const DEFAULT_PROPS: Partial<IComboBoxProps> = {
+  options: [],
+  allowFreeform: false,
+  autoComplete: 'on',
+  buttonIconProps: { iconName: 'ChevronDown' },
+};
+
+function useOptionsState({ options, defaultSelectedKey, selectedKey }: IComboBoxProps) {
+  /** The currently selected indices */
+  const [selectedIndices, setSelectedIndices] = React.useState<number[]>(() =>
+    getSelectedIndices(options, buildDefaultSelectedKeys(defaultSelectedKey, selectedKey)),
+  );
+  /** The options currently available for the callout */
+  const [currentOptions, setCurrentOptions] = React.useState<IComboBoxOption[]>(options);
+  /** This value is used for the autocomplete hint value */
+  const [suggestedDisplayValue, setSuggestedDisplayValue] = React.useState<string>();
+
+  React.useEffect(() => {
+    if (selectedKey !== undefined) {
+      const selectedKeys: string[] | number[] = buildSelectedKeys(selectedKey);
+      const indices: number[] = getSelectedIndices(options, selectedKeys);
+
+      setSelectedIndices(indices);
+    }
+    setCurrentOptions(options);
+  }, [options, selectedKey]);
+
+  React.useEffect(() => {
+    if (selectedKey === null) {
+      setSuggestedDisplayValue(undefined);
+    }
+  }, [selectedKey]);
+
+  return [
+    selectedIndices,
+    setSelectedIndices,
+    currentOptions,
+    setCurrentOptions,
+    suggestedDisplayValue,
+    setSuggestedDisplayValue,
+  ] as const;
+}
+
+export const ComboBox: React.FunctionComponent<IComboBoxProps> = React.forwardRef<HTMLDivElement, IComboBoxProps>(
+  (propsWithoutDefaults: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const rootRef = React.useRef<HTMLDivElement>(null);
+
+    const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
+
+    const [
+      selectedIndices,
+      setSelectedIndices,
+      currentOptions,
+      setCurrentOptions,
+      suggestedDisplayValue,
+      setSuggestedDisplayValue,
+    ] = useOptionsState(props);
+
+    return (
+      <ComboBoxInternal
+        {...props}
+        hoisted={{
+          mergedRootRef,
+          rootRef,
+          selectedIndices,
+          setSelectedIndices,
+          currentOptions,
+          setCurrentOptions,
+          suggestedDisplayValue,
+          setSuggestedDisplayValue,
+        }}
+      />
+    );
+  },
+);
+ComboBox.displayName = COMPONENT_NAME;
+
+interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
+  hoisted: {
+    mergedRootRef: React.Ref<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement>;
+    selectedIndices: number[];
+    currentOptions: IComboBoxOption[];
+    suggestedDisplayValue?: string;
+    setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
+    setCurrentOptions: React.Dispatch<React.SetStateAction<IComboBoxOption[]>>;
+    setSuggestedDisplayValue: React.Dispatch<React.SetStateAction<string | undefined>>;
+  };
+}
 
 @customizable('ComboBox', ['theme', 'styles'], true)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
-  public static defaultProps: IComboBoxProps = {
-    options: [],
-    allowFreeform: false,
-    autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' },
-  };
-
-  private _root = React.createRef<HTMLDivElement>();
-
+class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> {
   /** The input aspect of the comboBox */
   private _autofill = React.createRef<IAutofill>();
 
@@ -182,7 +255,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _async: Async;
   private _events: EventGroup;
 
-  constructor(props: IComboBoxProps) {
+  constructor(props: IComboBoxInternalProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -197,24 +270,15 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     });
 
     this._id = props.id || getId('ComboBox');
-    const selectedKeys: string[] | number[] = this._buildDefaultSelectedKeys(
-      props.defaultSelectedKey,
-      props.selectedKey,
-    );
 
     this._isScrollIdle = true;
     this._processingTouch = false;
     this._gotMouseMove = false;
     this._processingClearPendingInfo = false;
 
-    const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
-
     this.state = {
       isOpen: false,
-      selectedIndices: initialSelectedIndices,
       focusState: 'none',
-      suggestedDisplayValue: undefined,
-      currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
       currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
@@ -225,7 +289,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * All selected options
    */
   public get selectedOptions(): IComboBoxOption[] {
-    const { currentOptions, selectedIndices } = this.state;
+    const { currentOptions, selectedIndices } = this.props.hoisted;
 
     return getAllSelectedOptions(currentOptions, selectedIndices!);
   }
@@ -243,32 +307,15 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
-    // Update the selectedIndex and currentOptions state if
-    // the selectedKey, value, or options have changed
-    if (
-      newProps.selectedKey !== this.props.selectedKey ||
-      newProps.text !== this.props.text ||
-      newProps.options !== this.props.options
-    ) {
-      const selectedKeys: string[] | number[] = this._buildSelectedKeys(newProps.selectedKey);
-      const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
-
-      this.setState({
-        selectedIndices: indices,
-        currentOptions: newProps.options,
-      });
-      if (newProps.selectedKey === null) {
-        this.setState({
-          suggestedDisplayValue: undefined,
-        });
-      }
-    }
-  }
-
-  public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
-    const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
-    const { isOpen, selectedIndices, currentPendingValueValidIndex } = this.state;
+  public componentDidUpdate(prevProps: IComboBoxInternalProps, prevState: IComboBoxState) {
+    const {
+      allowFreeform,
+      text,
+      onMenuOpen,
+      onMenuDismissed,
+      hoisted: { selectedIndices },
+    } = this.props;
+    const { isOpen, currentPendingValueValidIndex } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -305,9 +352,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         (this._hasFocus() &&
           ((!isOpen &&
             !this.props.multiSelect &&
-            prevState.selectedIndices &&
+            prevProps.hoisted.selectedIndices &&
             selectedIndices &&
-            prevState.selectedIndices[0] !== selectedIndices[0]) ||
+            prevProps.hoisted.selectedIndices[0] !== selectedIndices[0]) ||
             !allowFreeform ||
             text !== prevProps.text)))
     ) {
@@ -350,15 +397,16 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       keytipProps,
       persistMenu,
       multiSelect,
+      hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
     } = this.props;
-    const { isOpen, suggestedDisplayValue } = this.state;
+    const { isOpen } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     // Single select is already accessible since the whole text is selected
     // when focus enters the input. Since multiselect appears to clear the input
     // it needs special accessible text
     const multiselectAccessibleText = multiSelect
-      ? this._getMultiselectDisplayString(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue)
+      ? this._getMultiselectDisplayString(selectedIndices, currentOptions, suggestedDisplayValue)
       : undefined;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
@@ -401,7 +449,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     );
 
     return (
-      <div {...divProps} ref={this._root} className={this._classNames.container}>
+      <div {...divProps} ref={this.props.hoisted.mergedRootRef} className={this._classNames.container}>
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
@@ -411,7 +459,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index })),
+              options: currentOptions.map((item, index) => ({ ...item, index: index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
@@ -510,9 +558,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       tabIndex,
       autofill,
       iconButtonProps,
+      hoisted: { suggestedDisplayValue },
     } = this.props;
 
-    const { isOpen, suggestedDisplayValue } = this.state;
+    const { isOpen } = this.state;
 
     // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
@@ -599,7 +648,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
   private _onShouldSelectFullInputValueInAutofillComponentDidUpdate = (): boolean => {
-    return this._currentVisibleValue === this.state.suggestedDisplayValue;
+    return this._currentVisibleValue === this.props.hoisted.suggestedDisplayValue;
   };
 
   /**
@@ -608,15 +657,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @returns the value to pass to the input
    */
   private _getVisibleValue = (): string | undefined => {
-    const { text, allowFreeform, autoComplete } = this.props;
     const {
-      selectedIndices,
-      currentPendingValueValidIndex,
-      currentOptions,
-      currentPendingValue,
-      suggestedDisplayValue,
-      isOpen,
-    } = this.state;
+      text,
+      allowFreeform,
+      autoComplete,
+      hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
+    } = this.props;
+    const { currentPendingValueValidIndex, currentPendingValue, isOpen } = this.state;
 
     const currentPendingIndexValid = this._indexWithinBounds(currentOptions, currentPendingValueValidIndex);
 
@@ -746,7 +793,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @param updatedValue - the input's newly changed value
    */
   private _processInputChangeWithFreeform(updatedValue: string): void {
-    const { currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
     let newCurrentPendingValueValidIndex = -1;
 
     // if the new value is empty, see if we have an exact match
@@ -836,7 +883,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @param updatedValue - the input's newly changed value
    */
   private _processInputChangeWithoutFreeform(updatedValue: string): void {
-    const { currentPendingValue, currentPendingValueValidIndex, currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
+    const { currentPendingValue, currentPendingValueValidIndex } = this.state;
 
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on while allow freeform is off,
@@ -896,7 +944,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   }
 
   private _getFirstSelectedIndex(): number {
-    return this.state.selectedIndices && this.state.selectedIndices.length > 0 ? this.state.selectedIndices[0] : -1;
+    return this.props.hoisted.selectedIndices && this.props.hoisted.selectedIndices.length > 0
+      ? this.props.hoisted.selectedIndices[0]
+      : -1;
   }
 
   /**
@@ -908,7 +958,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
    */
   private _getNextSelectableIndex(index: number, searchDirection: SearchDirection): number {
-    const { currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
 
     let newIndex = index + searchDirection;
 
@@ -954,9 +1004,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     submitPendingValueEvent: React.SyntheticEvent<any>,
     searchDirection: SearchDirection = SearchDirection.none,
   ): void {
-    const { onChange, onPendingValueChanged } = this.props;
-    const { currentOptions } = this.state;
-    const { selectedIndices: initialIndices } = this.state;
+    const {
+      onChange,
+      onPendingValueChanged,
+      hoisted: { selectedIndices: initialIndices, currentOptions },
+    } = this.props;
 
     // Clone selectedIndices so we don't mutate state
     let selectedIndices = initialIndices ? initialIndices.slice() : [];
@@ -1012,23 +1064,18 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         changedOptions[index] = option;
 
         // Call onChange after state is updated
-        this.setState(
-          {
-            selectedIndices: selectedIndices,
-            currentOptions: changedOptions,
-          },
-          () => {
-            // If ComboBox value is changed, revert preview first
-            if (this._hasPendingValue && onPendingValueChanged) {
-              onPendingValueChanged();
-              this._hasPendingValue = false;
-            }
+        this.props.hoisted.setSelectedIndices(selectedIndices);
+        this.props.hoisted.setCurrentOptions(changedOptions);
 
-            if (onChange) {
-              onChange(submitPendingValueEvent, option, index, undefined);
-            }
-          },
-        );
+        // If ComboBox value is changed, revert preview first
+        if (this._hasPendingValue && onPendingValueChanged) {
+          onPendingValueChanged();
+          this._hasPendingValue = false;
+        }
+
+        if (onChange) {
+          onChange(submitPendingValueEvent, option, index, undefined);
+        }
       }
     }
     if (this.props.multiSelect && this.state.isOpen) {
@@ -1060,24 +1107,20 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _onResolveOptions = (): void => {
     if (this.props.onResolveOptions) {
       // get the options
-      const newOptions = this.props.onResolveOptions([...this.state.currentOptions]);
+      const newOptions = this.props.onResolveOptions([...this.props.hoisted.currentOptions]);
 
       // Check to see if the returned value is an array, if it is update the state
       // If the returned value is not an array then check to see if it's a promise or PromiseLike.
       // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
-        this.setState({
-          currentOptions: newOptions,
-        });
+        this.props.hoisted.setCurrentOptions(newOptions);
       } else if (newOptions && newOptions.then) {
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
         const promise: PromiseLike<IComboBoxOption[]> = (this._currentPromise = newOptions);
         promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
           if (promise === this._currentPromise) {
-            this.setState({
-              currentOptions: newOptionsFromPromise,
-            });
+            this.props.hoisted.setCurrentOptions(newOptionsFromPromise);
           }
         });
       }
@@ -1105,7 +1148,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     if (
       relatedTarget &&
       // when event coming from withing the comboBox title
-      ((this._root.current && this._root.current.contains(relatedTarget as HTMLElement)) ||
+      ((this.props.hoisted.rootRef.current &&
+        this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement)) ||
         // when event coming from within the comboBox list menu
         (this._comboBoxMenu.current &&
           (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
@@ -1131,14 +1175,14 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _submitPendingValue(submitPendingValueEvent: React.SyntheticEvent<any>): void {
-    const { onChange, allowFreeform, autoComplete } = this.props;
     const {
-      currentPendingValue,
-      currentPendingValueValidIndex,
-      currentOptions,
-      currentPendingValueValidIndexOnHover,
-    } = this.state;
-    let { selectedIndices } = this.state;
+      onChange,
+      allowFreeform,
+      autoComplete,
+      hoisted: { currentOptions },
+    } = this.props;
+    const { currentPendingValue, currentPendingValueValidIndex, currentPendingValueValidIndexOnHover } = this.state;
+    let { selectedIndices } = this.props.hoisted;
 
     // Do not submit any pending value if we
     // have already initiated clearing the pending info
@@ -1214,10 +1258,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           }
           selectedIndices.push(newOptions.length - 1);
         }
-        this.setState({
-          currentOptions: newOptions,
-          selectedIndices: selectedIndices,
-        });
+        this.props.hoisted.setCurrentOptions(newOptions);
+        this.props.hoisted.setSelectedIndices(selectedIndices);
       }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
@@ -1480,10 +1522,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   }
 
   private _isOptionChecked(index: number | undefined): boolean {
-    if (this.props.multiSelect && index !== undefined && this.state.selectedIndices) {
+    if (this.props.multiSelect && index !== undefined && this.props.hoisted.selectedIndices) {
       let idxOfSelectedIndex = -1;
 
-      idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
+      idxOfSelectedIndex = this.props.hoisted.selectedIndices.indexOf(index);
       return idxOfSelectedIndex >= 0;
     }
     return false;
@@ -1594,7 +1636,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _onItemClick(item: IComboBoxOption): (ev: React.MouseEvent<any>) => void {
     const { onItemClick } = this.props;
     const { index } = item;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (ev: React.MouseEvent<any>): void => {
       onItemClick && onItemClick(ev, item, index);
@@ -1636,58 +1677,21 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   };
 
   /**
-   * Get the indices of the options that are marked as selected
-   * @param options - the comboBox options
-   * @param selectedKeys - the known selected keys to find
-   * @returns - an array of the indices of the selected options, empty array if nothing is selected
-   */
-  private _getSelectedIndices(
-    options: IComboBoxOption[] | undefined,
-    selectedKeys: (string | number | undefined)[],
-  ): number[] {
-    if (!options || !selectedKeys) {
-      return [];
-    }
-
-    const selectedIndices: { [key: number]: boolean } = {};
-    options.forEach((option: IComboBoxOption, index: number) => {
-      if (option.selected) {
-        selectedIndices[index] = true;
-      }
-    });
-
-    for (const selectedKey of selectedKeys) {
-      const index = findIndex(options, option => option.key === selectedKey);
-      if (index > -1) {
-        selectedIndices[index] = true;
-      }
-    }
-
-    return Object.keys(selectedIndices)
-      .map(Number)
-      .sort();
-  }
-
-  /**
    * Reset the selected index by clearing the
    * input (of any pending text), clearing the pending state,
    * and setting the suggested display value to the last
    * selected state text
    */
   private _resetSelectedIndex(): void {
-    const { currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
     this._clearPendingInfo();
 
     const selectedIndex: number = this._getFirstSelectedIndex();
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
-      this.setState({
-        suggestedDisplayValue: currentOptions[selectedIndex].text,
-      });
+      this.props.hoisted.setSuggestedDisplayValue(currentOptions[selectedIndex].text);
     } else if (this.props.text) {
       // If we had a value initially, restore it
-      this.setState({
-        suggestedDisplayValue: this.props.text,
-      });
+      this.props.hoisted.setSuggestedDisplayValue(this.props.text);
     }
   }
 
@@ -1697,11 +1701,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _clearPendingInfo(): void {
     this._processingClearPendingInfo = true;
 
+    this.props.hoisted.setSuggestedDisplayValue(undefined);
     this.setState(
       {
         currentPendingValue: undefined,
         currentPendingValueValidIndex: -1,
-        suggestedDisplayValue: undefined,
         currentPendingValueValidIndexOnHover: HoverStatus.default,
       },
       this._onAfterClearPendingInfo,
@@ -1727,10 +1731,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       return;
     }
 
+    this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: this._normalizeToString(currentPendingValue),
       currentPendingValueValidIndex: currentPendingValueValidIndex,
-      suggestedDisplayValue: suggestedDisplayValue,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1740,7 +1744,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set the pending info from
    */
   private _setPendingInfoFromIndex(index: number): void {
-    const { currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
 
     if (index >= 0 && index < currentOptions.length) {
       const option = currentOptions[index];
@@ -1756,7 +1760,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection): void {
-    const { currentOptions } = this.state;
+    const { currentOptions } = this.props.hoisted;
 
     // update index to allow content to wrap
     if (searchDirection === SearchDirection.forward && index >= currentOptions.length - 1) {
@@ -1794,12 +1798,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    const {
-      currentPendingValue,
-      currentOptions,
-      currentPendingValueValidIndex,
-      currentPendingValueValidIndexOnHover,
-    } = this.state;
+    const { currentOptions } = this.props.hoisted;
+    const { currentPendingValue, currentPendingValueValidIndex, currentPendingValueValidIndexOnHover } = this.state;
 
     let newPendingIndex: number | undefined = undefined;
     let newPendingValue: string | undefined = undefined;
@@ -1847,8 +1847,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @param ev - The keyboard event that was fired
    */
   private _onInputKeyDown = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform, autoComplete } = this.props;
-    const { isOpen, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
+    const {
+      disabled,
+      allowFreeform,
+      autoComplete,
+      hoisted: { currentOptions },
+    } = this.props;
+    const { isOpen, currentPendingValueValidIndexOnHover } = this.state;
 
     // Take note if we are processing an alt (option) or meta (command) keydown.
     // See comment in _onInputKeyUp for reasoning.
@@ -1928,7 +1933,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         // and has since mousedOut of the menu items),
         // go to the last index
         if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
-          index = this.state.currentOptions.length;
+          index = this.props.hoisted.currentOptions.length;
         }
 
         if (ev.altKey || ev.metaKey) {
@@ -2165,7 +2170,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    */
   private _onAutofillClick = (): void => {
     const { disabled, allowFreeform } = this.props;
-
     if (allowFreeform && !disabled) {
       this.focus(this.state.isOpen || this._processingTouch);
     } else {
@@ -2236,8 +2240,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    */
   private _getAriaActiveDescendantValue(): string | undefined {
     let descendantText =
-      this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length > 0
-        ? this._id + '-list' + this.state.selectedIndices[0]
+      this.state.isOpen && this.props.hoisted.selectedIndices && this.props.hoisted.selectedIndices.length > 0
+        ? this._id + '-list' + this.props.hoisted.selectedIndices[0]
         : undefined;
     if (this.state.isOpen && this._hasFocus() && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = this._id + '-list' + this.state.currentPendingValueValidIndex;
@@ -2259,35 +2263,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     return item && item.index === this.state.currentPendingValueValidIndex;
   }
 
-  /**
-   * Given default selected key(s) and selected key(s), return the selected keys(s).
-   * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
-   *
-   * @returns No matter what specific types the input parameters are, always return an array of
-   *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
-   */
-  private _buildDefaultSelectedKeys(
-    defaultSelectedKey: string | number | string[] | number[] | null | undefined,
-    selectedKey: string | number | string[] | number[] | null | undefined,
-  ): string[] | number[] {
-    const selectedKeys: string[] | number[] = this._buildSelectedKeys(defaultSelectedKey);
-    if (selectedKeys.length) {
-      return selectedKeys;
-    }
-    return this._buildSelectedKeys(selectedKey);
-  }
-
-  private _buildSelectedKeys(
-    selectedKey: string | number | string[] | number[] | null | undefined,
-  ): string[] | number[] {
-    if (selectedKey === undefined) {
-      return [];
-    }
-
-    // need to cast here so typescript does not complain
-    return (selectedKey instanceof Array ? selectedKey : [selectedKey]) as string[] | number[];
-  }
-
   // For scenarios where the option's text prop contains embedded styles, we use the option's
   // ariaLabel value as the text in the input and for autocomplete matching. We know to use this
   // when the useAriaLabelAsText prop is set to true
@@ -2305,4 +2280,64 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _hasFocus() {
     return this.state.focusState !== 'none';
   }
+}
+
+/**
+ * Get the indices of the options that are marked as selected
+ * @param options - the comboBox options
+ * @param selectedKeys - the known selected keys to find
+ * @returns - an array of the indices of the selected options, empty array if nothing is selected
+ */
+function getSelectedIndices(
+  options: IComboBoxOption[] | undefined,
+  selectedKeys: (string | number | undefined)[],
+): number[] {
+  if (!options || !selectedKeys) {
+    return [];
+  }
+
+  const selectedIndices: { [key: number]: boolean } = {};
+  options.forEach((option: IComboBoxOption, index: number) => {
+    if (option.selected) {
+      selectedIndices[index] = true;
+    }
+  });
+
+  for (const selectedKey of selectedKeys) {
+    const index = findIndex(options, option => option.key === selectedKey);
+    if (index > -1) {
+      selectedIndices[index] = true;
+    }
+  }
+
+  return Object.keys(selectedIndices)
+    .map(Number)
+    .sort();
+}
+
+/**
+ * Given default selected key(s) and selected key(s), return the selected keys(s).
+ * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
+ *
+ * @returns No matter what specific types the input parameters are, always return an array of
+ *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
+ */
+function buildDefaultSelectedKeys(
+  defaultSelectedKey: string | number | string[] | number[] | null | undefined,
+  selectedKey: string | number | string[] | number[] | null | undefined,
+): string[] | number[] {
+  const selectedKeys: string[] | number[] = buildSelectedKeys(defaultSelectedKey);
+  if (selectedKeys.length) {
+    return selectedKeys;
+  }
+  return buildSelectedKeys(selectedKey);
+}
+
+function buildSelectedKeys(selectedKey: string | number | string[] | number[] | null | undefined): string[] | number[] {
+  if (selectedKey === undefined) {
+    return [];
+  }
+
+  // need to cast here so typescript does not complain
+  return (selectedKey instanceof Array ? selectedKey : [selectedKey]) as string[] | number[];
 }
