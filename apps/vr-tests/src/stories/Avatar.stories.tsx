@@ -44,7 +44,9 @@ const AllAvatarSizes: React.FC<AvatarProps> = props => (
 storiesOf('Avatar', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
-      <div className="testWrapper">{story()}</div>
+      <div className="testWrapper" style={{ padding: '8px' }}>
+        {story()}
+      </div>
     </div>
   ))
   .addDecorator(story => (
@@ -56,39 +58,62 @@ storiesOf('Avatar', module)
   .addStory('name, badge', () => <AllAvatarSizes display="label" badge="success" />)
   .addStory('icon, badge, square', () => <AllAvatarSizes display="icon" badge="warning" square />)
   .addStory('image, badge', () => <AllAvatarSizes display="image" badge="error" />)
-  .addStory('active', () => <AllAvatarSizes active badge="success" />)
-  .addStory('active (shadow)', () => <AllAvatarSizes active activeDisplay="shadow" />)
-  .addStory('active (glow)', () => <AllAvatarSizes active activeDisplay="glow" />)
-  .addStory('active (ring-shadow)', () => <AllAvatarSizes active activeDisplay="ring-shadow" />)
-  .addStory('active (ring-glow), square', () => (
-    <AllAvatarSizes active activeDisplay="ring-glow" square />
+  .addStory('inactive', () => <AllAvatarSizes active={false} badge="info" />)
+  .addStory('active', () => <AllAvatarSizes active={true} badge="success" />)
+  .addStory('active (shadow)', () => <AllAvatarSizes active={true} activeDisplay="shadow" />)
+  .addStory('active (glow)', () => <AllAvatarSizes active={true} activeDisplay="glow" />)
+  .addStory('active (ring-shadow)', () => (
+    <AllAvatarSizes active={true} activeDisplay="ring-shadow" />
   ))
-  .addStory('inactive', () => <AllAvatarSizes active={false} />)
+  .addStory('active (ring-glow), square', () => (
+    <AllAvatarSizes active={true} activeDisplay="ring-glow" square />
+  ))
   .addStory('tokens', () => (
     <>
-      <div style={{ margin: '8px' }}>
-        <Avatar
-          size={64}
-          name="John Doe"
-          active
-          tokens={{
-            fontSize: '28px',
-            fontWeight: 'light',
-            background: 'orange',
-            borderRadius: '33%',
-          }}
-        />
-      </div>
-      <div style={{ margin: '8px' }}>
-        <Avatar
-          customSize={47}
-          icon={<ChatBotIcon />}
-          tokens={{
-            iconSize: '32px',
-            background: 'lightgreen',
-            clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
-          }}
-        />
-      </div>
+      <Avatar
+        size={40}
+        name="John Doe"
+        active
+        tokens={{ active: { ringColor: 'tomato' } }}
+        style={{ margin: '8px' }}
+      />
+      <Avatar
+        size={40}
+        name="John Doe"
+        active
+        activeDisplay="glow"
+        tokens={{ active: { glowColor: 'tomato' } }}
+        style={{ margin: '8px' }}
+      />
+      <Avatar
+        size={40}
+        name="John Doe"
+        active={false}
+        tokens={{ inactive: { opacity: '0.5', scaleFactor: '0.67' } }}
+        style={{ margin: '8px' }}
+      />
+      <Avatar
+        size={48}
+        name="John Doe"
+        active
+        tokens={{
+          fontSize: '25px',
+          fontFamily: '"Times New Roman", serif',
+          fontWeight: '900',
+          background: 'linear-gradient(to bottom right, lightsteelblue, steelblue)',
+          borderRadius: '0',
+        }}
+        style={{ margin: '8px' }}
+      />
+      <Avatar
+        customSize={57}
+        icon={<ChatBotIcon />}
+        tokens={{
+          iconSize: '36px',
+          background: '#BBD7EB',
+          clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
+        }}
+        style={{ margin: '8px' }}
+      />
     </>
   ));
