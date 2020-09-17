@@ -9,7 +9,7 @@ import './SRNC-Rules-Win_JAWS';
 import './SRNC-Rules-Win_JAWS';
 
 export class NarrationComputer {
-  private computedParts: Record<string, string> = {
+  computedParts: Record<string, string> = {
     value: '',
     name: '',
     description: '',
