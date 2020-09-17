@@ -60,7 +60,7 @@ const App = () => {
 
 ### Split menu buttons
 
-The `SplitButton` is now its own component, rather being baked into the button components. This helps overall reduce the default `Button` complexity, runtime overhead, and bundle size:
+The `SplitButton` is now its own component, instead of being baked into the `Button` component itself. This helps to overall reduce the default `Button` complexity, runtime overhead, and bundle size:
 
 Before:
 
