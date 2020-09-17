@@ -9,36 +9,37 @@ import {
   CalendarIcon,
   TelemarketerIcon,
   RoomIcon,
-  RobotIcon,
+  ChatBotIcon,
   SkypeClockIcon,
   SkypeCheckIcon,
   SkypeMinusIcon,
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 
+const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
 const examplePeople = [
-  { name: 'Ade Q', image: 'images/avatar/ade.png' },
-  { name: 'Christain W', image: 'images/avatar/christian.png' },
-  { name: 'Daniel E', image: 'images/avatar/daniel.png' },
-  { name: 'Elliot R', image: 'images/avatar/elliot.png' },
-  { name: 'Elyse T', image: 'images/avatar/elyse.png' },
-  { name: 'Helen Y', image: 'images/avatar/helen.png' },
-  { name: 'Jenny U', image: 'images/avatar/jenny.png' },
-  { name: 'Joe I', image: 'images/avatar/joe.png' },
-  { name: 'Justen O', image: 'images/avatar/justen.png' },
-  { name: 'Kristy P', image: 'images/avatar/kristy.png' },
-  { name: 'Laura A', image: 'images/avatar/laura.png' },
-  { name: 'Matt S', image: 'images/avatar/matt.png' },
-  { name: 'Matthew D', image: 'images/avatar/matthew.png' },
-  { name: 'Molly F', image: 'images/avatar/molly.png' },
-  { name: 'Nan G', image: 'images/avatar/nan.png' },
-  { name: 'Patrick H', image: 'images/avatar/patrick.png' },
-  { name: 'Rachel J', image: 'images/avatar/rachel.png' },
-  { name: 'Steve K', image: 'images/avatar/steve.png' },
-  { name: 'Stevie L', image: 'images/avatar/stevie.png' },
-  { name: 'Tom Z', image: 'images/avatar/tom.png' },
-  { name: 'Veronika X', image: 'images/avatar/veronika.png' },
-  { name: 'Zoe C', image: 'images/avatar/zoe.png' },
+  { name: 'Ade Q', image: imageRoot + '/ade.jpg' },
+  { name: 'Christain W', image: imageRoot + '/christian.jpg' },
+  { name: 'Daniel E', image: imageRoot + '/daniel.jpg' },
+  { name: 'Elliot R', image: imageRoot + '/elliot.jpg' },
+  { name: 'Elyse T', image: imageRoot + '/elyse.png' },
+  { name: 'Helen Y', image: imageRoot + '/helen.jpg' },
+  { name: 'Jenny U', image: imageRoot + '/jenny.jpg' },
+  { name: 'Joe I', image: imageRoot + '/joe.jpg' },
+  { name: 'Justen O', image: imageRoot + '/justen.jpg' },
+  { name: 'Kristy P', image: imageRoot + '/kristy.png' },
+  { name: 'Laura A', image: imageRoot + '/laura.jpg' },
+  { name: 'Matt S', image: imageRoot + '/matt.jpg' },
+  { name: 'Matthew D', image: imageRoot + '/matthew.png' },
+  { name: 'Molly F', image: imageRoot + '/molly.png' },
+  { name: 'Nan G', image: imageRoot + '/nan.jpg' },
+  { name: 'Patrick H', image: imageRoot + '/patrick.png' },
+  { name: 'Rachel J', image: imageRoot + '/rachel.png' },
+  { name: 'Steve K', image: imageRoot + '/steve.jpg' },
+  { name: 'Stevie L', image: imageRoot + '/stevie.jpg' },
+  { name: 'Tom Z', image: imageRoot + '/tom.jpg' },
+  { name: 'Veronika X', image: imageRoot + '/veronika.jpg' },
+  { name: 'Zoe C', image: imageRoot + '/zoe.jpg' },
 ] as const;
 
 /** Values used for the example avatars */
@@ -81,7 +82,7 @@ export const BasicExamples = () => {
         <Avatar />
         <Avatar name="Joe B" />
         <Avatar icon={<IDBadgeIcon />} />
-        <Avatar name="Joe B" image="images/avatar/joe.png" />
+        <Avatar name="Joe B" image={`${imageRoot}/joe.jpg`} />
       </StoryExample>
       <StoryExample title="Square">
         <Avatar square name="Group" />
@@ -92,22 +93,22 @@ export const BasicExamples = () => {
         <Avatar name="Matthew Doe" badge="success" />
         <Avatar
           name="Elyse T"
-          image="images/avatar/elyse.png"
+          image={`${imageRoot}/elyse.png`}
           badge={{ state: 'success', icon: { as: SkypeCheckIcon } }}
         />
       </StoryExample>
       <StoryExample title="Size">
-        <Avatar size={20} name="Tom Z" image="images/avatar/tom.png" badge="info" />
-        <Avatar size={48} name="Joe B" image="images/avatar/joe.png" badge="success" />
-        <Avatar size={96} name="Rachel J" image="images/avatar/rachel.png" badge="warning" />
+        <Avatar size={20} name="Tom Z" image={`${imageRoot}/tom.jpg`} badge="info" />
+        <Avatar size={48} name="Joe B" image={`${imageRoot}/joe.jpg`} badge="success" />
+        <Avatar size={96} name="Rachel J" image={`${imageRoot}/rachel.png`} badge="warning" />
       </StoryExample>
       <StoryExample title="Active/inactive">
         <Avatar name="Tom Z" active={true} />
-        <Avatar image="images/avatar/molly.png" active={true} activeDisplay="shadow" />
-        <Avatar image="images/avatar/nan.png" active={true} activeDisplay="glow" />
-        <Avatar image="images/avatar/patrick.png" active={true} activeDisplay="ring-shadow" />
-        <Avatar image="images/avatar/veronika.png" active={true} activeDisplay="ring-glow" />
-        <Avatar image="images/avatar/kristy.png" active={false} />
+        <Avatar image={`${imageRoot}/molly.png`} active={true} activeDisplay="shadow" />
+        <Avatar image={`${imageRoot}/nan.jpg`} active={true} activeDisplay="glow" />
+        <Avatar image={`${imageRoot}/patrick.png`} active={true} activeDisplay="ring-shadow" />
+        <Avatar image={`${imageRoot}/veronika.jpg`} active={true} activeDisplay="ring-glow" />
+        <Avatar image={`${imageRoot}/kristy.png`} active={false} />
       </StoryExample>
     </>
   );
@@ -155,9 +156,13 @@ export const CustomShape = () => {
     <>
       <StoryExample title="Custom shape">
         <AvatarExampleList
-          icon={<RobotIcon />}
+          icon={<ChatBotIcon />}
           display="icon"
-          tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
+          tokens={{
+            width: 'calc(var(--avatar-height) * 1.125)',
+            background: 'url("images/avatar/hexagon.svg") 0px/contain no-repeat',
+            borderRadius: '0',
+          }}
         />
       </StoryExample>
     </>
