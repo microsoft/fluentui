@@ -14,7 +14,7 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^0.4.5",
+    "@fluentui/react-avatar": "^0.5.1",
     "@fluentui/react-button": "^0.12.6",
     "@fluentui/react-icons": "^0.3.2",
     "@fluentui/react-next": "^8.0.0-alpha.108",

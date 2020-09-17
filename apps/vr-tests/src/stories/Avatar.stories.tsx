@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
-import { ChatBotIcon, GroupIcon, RobotIcon } from '@fluentui/react-icons';
+import { GroupIcon, ChatBotIcon } from '@fluentui/react-icons';
 
 const imageUrl = (size: number) => `http://placehold.it/${size}/FFC83D/000000?text=%5E_%5E`;
 
