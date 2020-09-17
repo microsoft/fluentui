@@ -1,4 +1,4 @@
-const SRNC: { [key: string]: any } = {
+export const SRNC: { [key: string]: any } = {
   PART_SEPARATOR: ' ',
   STATE_PART_SEPARATOR: ' ',
 
@@ -217,5 +217,3 @@ const SRNC: { [key: string]: any } = {
     'role=tab': ['aria-selected'],
   }, // End possibleStates
 };
-
-export default SRNC;

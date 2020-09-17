@@ -4,10 +4,11 @@
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
  * Should we also consider the "disabled" state?
  */
-import SRNC from './SRNC-Definitions';
+import { SRNC } from './SRNC-Definitions';
+import './SRNC-Rules-Win_JAWS';
 import './SRNC-Rules-Win_JAWS';
 
-export default class NarrationComputer {
+export class NarrationComputer {
   private computedParts: Record<string, string> = {
     value: '',
     name: '',
@@ -41,10 +42,10 @@ export default class NarrationComputer {
   // Returns the definition name based on the given element, platform and definition type.
   getDefinitionName(element: Element, platform: string, definitionType: string): string {
     // Determine the definitions source by the definition type
-    const definitionTypes = {
-        readingOrder: SRNC.readingOrder[platform],
-        stateRules: SRNC.stateRules[platform]
-    }
+    const definitionTypes: Record<string, any> = {
+      readingOrder: SRNC.readingOrder[platform],
+      stateRules: SRNC.stateRules[platform],
+    };
     const definitions = definitionTypes[definitionType];
 
     // Determine the definition name

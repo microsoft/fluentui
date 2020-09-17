@@ -1,4 +1,4 @@
-import SRNC from './SRNC-Definitions';
+import { SRNC } from './SRNC-Definitions';
 
 SRNC.stateRules['Win/JAWS'] = {
   button: [

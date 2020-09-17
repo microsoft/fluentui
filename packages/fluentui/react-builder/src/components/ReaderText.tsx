@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
-import NarrationComputer from './NarrationComputer';
+import { NarrationComputer } from './NarrationComputer';
 
 const nc: NarrationComputer = new NarrationComputer();
 
