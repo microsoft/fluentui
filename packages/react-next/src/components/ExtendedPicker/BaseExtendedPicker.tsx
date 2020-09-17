@@ -52,6 +52,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get items(): any {
     return this.state.selectedItems ?? this.selectedItemsList.current?.items ?? null;
   }
