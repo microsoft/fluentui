@@ -57,7 +57,7 @@ const calcStyleProps = (state: AvatarState): AvatarStyleProps => ({
   // Make sure the size prop has a valid size from AvatarSizeValues
   size: state.customSize ? calcSizeClass(state.customSize) : state.size || defaultAvatarSize,
   // If a custom size was specified, override the size token
-  tokens: state.customSize ? { size: `${state.customSize}px` } : undefined,
+  tokens: state.customSize ? { size: `${state.customSize}px`, ...state.tokens } : undefined,
   inactive: state.active === false,
   activeRing: state.active
     ? state.activeDisplay === 'ring' || state.activeDisplay === 'ring-shadow' || state.activeDisplay === 'ring-glow'

@@ -11,7 +11,7 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react-next": "^8.0.0-alpha.106",
-    "@uifabric/theme-samples": "^7.1.12",
+    "@fluentui/react-next": "^8.0.0-alpha.108",
+    "@uifabric/theme-samples": "^7.1.14",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"

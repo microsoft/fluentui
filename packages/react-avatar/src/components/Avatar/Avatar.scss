@@ -135,7 +135,11 @@
   --avatar-fontWeight: #{$fontWeight-subheadline};
 }
 ._size_64,
-._size_72,
+._size_72 {
+  --avatar-iconSize: #{$iconSize-large};
+  --avatar-fontSize: #{$fontSize-headline};
+  --avatar-fontWeight: #{$fontWeight-headline};
+}
 ._size_96 {
   --avatar-iconSize: #{$iconSize-larger};
   --avatar-fontSize: #{$fontSize-headline};
