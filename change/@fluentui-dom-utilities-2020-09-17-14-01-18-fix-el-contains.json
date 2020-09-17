@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix: elementContains should behave like .contains()",
+  "packageName": "@fluentui/dom-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-17T12:01:17.999Z"
+}

@@ -15,17 +15,21 @@ export function elementContains(
 
   if (parent && child) {
     if (allowVirtualParents) {
-      isContained = false;
+      if (parent === child) {
+        isContained = true;
+      } else {
+        isContained = false;
 
-      while (child) {
-        const nextParent: HTMLElement | null = getParent(child);
+        while (child) {
+          const nextParent: HTMLElement | null = getParent(child);
 
-        if (nextParent === parent) {
-          isContained = true;
-          break;
+          if (nextParent === parent) {
+            isContained = true;
+            break;
+          }
+
+          child = nextParent;
         }
-
-        child = nextParent;
       }
     } else if (parent.contains) {
       isContained = parent.contains(child);
