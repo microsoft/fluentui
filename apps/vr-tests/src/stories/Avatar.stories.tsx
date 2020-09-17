@@ -7,37 +7,37 @@ import { GroupIcon, ChatBotIcon } from '@fluentui/react-icons';
 
 const imageUrl = (size: number) => `http://placehold.it/${size}/FFC83D/000000?text=%5E_%5E`;
 
-const AllAvatarSizes: React.FC<AvatarProps> = props => (
-  <div style={{ display: 'flex', flexDirection: 'column', width: '720px' }}>
-    {/* Standard sizes */}
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {avatarSizeValues.map(size => (
-        <div style={{ margin: '24px' }} key={size}>
-          <Avatar
-            size={size}
-            name="John Doe"
-            image={imageUrl(size)}
-            icon={<GroupIcon />}
-            {...props}
-          />
-        </div>
-      ))}
-    </div>
+/** Renders an Avatar at every standard size */
+const AvatarList: React.FC<AvatarProps> = props => (
+  <div style={{ display: 'flex', flexWrap: 'wrap', width: '720px' }}>
+    {avatarSizeValues.map(size => (
+      <div style={{ margin: '24px' }} key={size}>
+        <Avatar
+          size={size}
+          name="John Doe"
+          image={imageUrl(size)}
+          icon={<GroupIcon />}
+          {...props}
+        />
+      </div>
+    ))}
+  </div>
+);
 
-    {/* Custom sizes */}
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {[13, 21, 34, 55, 89, 144].map(customSize => (
-        <div style={{ margin: '24px' }} key={customSize}>
-          <Avatar
-            customSize={customSize}
-            name="John Doe"
-            image={imageUrl(customSize)}
-            icon={<GroupIcon />}
-            {...props}
-          />
-        </div>
-      ))}
-    </div>
+/** Renders an Avatar at a few custom sizes */
+const AvatarCustomSizeList: React.FC<AvatarProps> = props => (
+  <div style={{ display: 'flex' }}>
+    {[13, 21, 34, 55, 89, 144].map(customSize => (
+      <div style={{ margin: '24px' }} key={customSize}>
+        <Avatar
+          customSize={customSize}
+          name="John Doe"
+          image={imageUrl(customSize)}
+          icon={<GroupIcon />}
+          {...props}
+        />
+      </div>
+    ))}
   </div>
 );
 
@@ -55,19 +55,21 @@ storiesOf('Avatar', module)
     </Screener>
   ))
   .addStory('default', () => <Avatar />)
-  .addStory('name, badge', () => <AllAvatarSizes display="label" badge="success" />)
-  .addStory('icon, badge, square', () => <AllAvatarSizes display="icon" badge="warning" square />)
-  .addStory('image, badge', () => <AllAvatarSizes display="image" badge="error" />)
-  .addStory('inactive', () => <AllAvatarSizes active={false} badge="info" />)
-  .addStory('active', () => <AllAvatarSizes active={true} badge="success" />)
-  .addStory('active (shadow)', () => <AllAvatarSizes active={true} activeDisplay="shadow" />)
-  .addStory('active (glow)', () => <AllAvatarSizes active={true} activeDisplay="glow" />)
-  .addStory('active (ring-shadow)', () => (
-    <AllAvatarSizes active={true} activeDisplay="ring-shadow" />
-  ))
+  .addStory('name, badge', () => <AvatarList display="label" badge="success" />)
+  .addStory('icon, badge, square', () => <AvatarList display="icon" badge="warning" square />)
+  .addStory('image, badge', () => <AvatarList display="image" badge="error" />)
+  .addStory('inactive', () => <AvatarList active={false} badge="info" />)
+  .addStory('active', () => <AvatarList active={true} badge="success" />)
+  .addStory('active (shadow)', () => <AvatarList active={true} activeDisplay="shadow" />)
+  .addStory('active (glow)', () => <AvatarList active={true} activeDisplay="glow" />)
+  .addStory('active (ring-shadow)', () => <AvatarList active={true} activeDisplay="ring-shadow" />)
   .addStory('active (ring-glow), square', () => (
-    <AllAvatarSizes active={true} activeDisplay="ring-glow" square />
+    <AvatarList active={true} activeDisplay="ring-glow" square />
   ))
+  .addStory('customSize, name, badge', () => (
+    <AvatarCustomSizeList display="label" badge="success" />
+  ))
+  .addStory('customSize, icon, active', () => <AvatarCustomSizeList display="icon" active={true} />)
   .addStory('tokens', () => (
     <>
       <Avatar
