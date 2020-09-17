@@ -41,14 +41,11 @@ export default class NarrationComputer {
   // Returns the definition name based on the given element, platform and definition type.
   getDefinitionName(element: Element, platform: string, definitionType: string): string {
     // Determine the definitions source by the definition type
-    let definitions;
-    if (definitionType === 'readingOrder') {
-      // Begin if 1
-      definitions = SRNC.readingOrder[platform];
-    } else if (definitionType === 'stateRules') {
-      // else if 1
-      definitions = SRNC.stateRules[platform];
-    } // End if 1
+    const definitionTypes = {
+        readingOrder: SRNC.readingOrder[platform],
+        stateRules: SRNC.stateRules[platform]
+    }
+    const definitions = definitionTypes[definitionType];
 
     // Determine the definition name
     let definitionName = '[default]';
