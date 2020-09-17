@@ -3,7 +3,7 @@ import { css } from '../../Utilities';
 import { ILayerHostProps } from './LayerHost.types';
 import { notifyHostChanged } from './Layer.notification';
 
-export const LayerHost = (props: ILayerHostProps) => {
+export const LayerHost: React.FunctionComponent<ILayerHostProps> = props => {
   const { id, className } = props;
 
   React.useEffect(() => {

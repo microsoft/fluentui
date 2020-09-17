@@ -10,19 +10,23 @@ export default {
 
 const lightTheme: PartialTheme = {
   tokens: {
-    body: {
-      background: 'white',
-      contentColor: 'black',
-      fontFamily: 'Segoe UI',
+    color: {
+      body: {
+        background: 'white',
+        contentColor: 'black',
+        fontFamily: 'Segoe UI',
+      },
     },
   },
 };
 
 const darkTheme: PartialTheme = {
   tokens: {
-    body: {
-      background: 'black',
-      contentColor: 'white',
+    color: {
+      body: {
+        background: 'black',
+        contentColor: 'white',
+      },
     },
   },
 };
@@ -40,7 +44,7 @@ export const NestedTheming = () => {
   const [isLight, setIsLight] = React.useState(true);
 
   return (
-    <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
+    <ThemeProvider className="root" applyTo="body" theme={isLight ? lightTheme : darkTheme}>
       <button onClick={() => setIsLight(l => !l)}>Toggle theme</button>
       <div>I am {isLight ? 'light theme' : 'dark theme'}</div>
       <ThemeProvider theme={isLight ? darkTheme : lightTheme}>

@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Moving Breadcrumb to react-next for future function component conversion.",
+  "comment": "Adding Calendar and DatePicker to react-next compat folder.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-15T00:40:31.083Z"
+  "date": "2020-09-16T20:50:03.559Z"
 }
