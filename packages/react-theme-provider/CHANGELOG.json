@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support applyTo prop and align styles with Fabric component.",
+            "author": "xgao@microsoft.com",
+            "commit": "730c61559ee97a7cfc2f84d40c96fab3077e5fb0",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-theme-provider_v0.12.1",
       "version": "0.12.1",
