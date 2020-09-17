@@ -1,4 +1,4 @@
-export const SRNC: { [key: string]: any } = {
+export const SRNC: Record<string, any> = {
   PART_SEPARATOR: ' ',
   STATE_PART_SEPARATOR: ' ',
 
