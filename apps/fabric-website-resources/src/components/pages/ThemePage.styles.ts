@@ -1,7 +1,12 @@
-import { IThemePageStyleProps, IThemePageStyles } from './ThemePage.types';
-import { getFocusStyle, getTheme } from '../../Styling';
+import { getFocusStyle, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
-export const getStyles = (props: IThemePageStyleProps): IThemePageStyles => {
+export interface IThemePageStyles {
+  colorSwatch: IStyle;
+  swatch: IStyle;
+  colorValue: IStyle;
+}
+
+export const getStyles = (): IThemePageStyles => {
   const theme = getTheme();
   return {
     colorSwatch: [
