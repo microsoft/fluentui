@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Reexport SpinButton from react-spinbutton",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-17T17:02:00.646Z"
+}
