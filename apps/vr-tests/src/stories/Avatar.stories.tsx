@@ -74,7 +74,7 @@ storiesOf('Avatar', module)
         size={40}
         name="John Doe"
         active
-        tokens={{ active: { ringColor: 'tomato' } }}
+        tokens={{ activeRingColor: 'tomato' }}
         style={{ margin: '8px' }}
       />
       <Avatar
@@ -82,14 +82,14 @@ storiesOf('Avatar', module)
         name="John Doe"
         active
         activeDisplay="glow"
-        tokens={{ active: { glowColor: 'tomato' } }}
+        tokens={{ activeGlowColor: 'tomato' }}
         style={{ margin: '8px' }}
       />
       <Avatar
         size={40}
         name="John Doe"
         active={false}
-        tokens={{ inactive: { opacity: '0.5', scaleFactor: '0.67' } }}
+        tokens={{ inactiveOpacity: '0.5', inactiveScaleFactor: '0.67' }}
         style={{ margin: '8px' }}
       />
       <Avatar
