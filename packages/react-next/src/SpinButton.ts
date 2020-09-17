@@ -1,1 +1,1 @@
-export * from './components/SpinButton/index';
+export * from '@fluentui/react-spinbutton/lib/index';

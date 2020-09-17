@@ -1,1 +1,1 @@
-import './version';
+export * from './SpinButton';
