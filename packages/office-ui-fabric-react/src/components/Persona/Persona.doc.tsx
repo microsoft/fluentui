@@ -10,14 +10,14 @@ import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRen
 import { UnknownPersonaExample } from './examples/Persona.UnknownPersona.Example';
 import { PersonaPresenceExample } from './examples/Persona.Presence.Example';
 
-const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
-const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
-const PersonaAlternateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Alternate.Example.tsx') as string;
-const PersonaColorsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Colors.Example.tsx') as string;
-const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomRender.Example.tsx') as string;
-const PersonaCustomCoinRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomCoinRender.Example.tsx') as string;
-const UnknownPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.UnknownPersona.Example.tsx') as string;
-const PersonaPresenceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Presence.Example.tsx') as string;
+const PersonaInitialsExampleCode = require('!raw-loader!./examples/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('!raw-loader!./examples/Persona.Basic.Example.tsx') as string;
+const PersonaAlternateExampleCode = require('!raw-loader!./examples/Persona.Alternate.Example.tsx') as string;
+const PersonaColorsExampleCode = require('!raw-loader!./examples/Persona.Colors.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('!raw-loader!./examples/Persona.CustomRender.Example.tsx') as string;
+const PersonaCustomCoinRenderExampleCode = require('!raw-loader!./examples/Persona.CustomCoinRender.Example.tsx') as string;
+const UnknownPersonaExampleCode = require('!raw-loader!./examples/Persona.UnknownPersona.Example.tsx') as string;
+const PersonaPresenceExampleCode = require('!raw-loader!./examples/Persona.Presence.Example.tsx') as string;
 
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
@@ -66,10 +66,10 @@ export const PersonaPageProps: IDocPageProps = {
       view: <PersonaPresenceExample />,
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaBestPractices.md'),
+  overview: require<string>('!raw-loader!./docs/PersonaOverview.md'),
+  bestPractices: '',
+  dos: require<string>('!raw-loader!./docs/PersonaDos.md'),
+  donts: require<string>('!raw-loader!./docs/PersonaDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
