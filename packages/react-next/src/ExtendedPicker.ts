@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ExtendedPicker';
+export * from './components/ExtendedPicker/index';

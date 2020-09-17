@@ -27,6 +27,11 @@ export function getTokens(theme: Theme): Tokens {
         body: {
           background: semanticColors?.bodyBackground,
           contentColor: semanticColors?.bodyText,
+          fontFamily: fonts?.medium.fontFamily,
+          fontWeight: fonts?.medium.fontWeight,
+          fontSize: fonts?.medium.fontSize,
+          mozOsxFontSmoothing: fonts?.medium.MozOsxFontSmoothing,
+          webkitFontSmoothing: fonts?.medium.WebkitFontSmoothing,
         },
 
         // accent is currently only mapped for primary button to use.
@@ -71,33 +76,28 @@ export function getTokens(theme: Theme): Tokens {
 
       // TODO: This will be moved out as a button variant.
       ghost: {
-        background: semanticColors?.bodyBackground,
-        borderColor: 'transparent',
         contentColor: palette?.neutralPrimary,
         iconColor: palette?.themeDarkAlt,
         menuIconColor: palette?.neutralSecondary,
         secondaryContentColor: palette?.neutralPrimary,
 
         checked: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
         },
 
         checkedHovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralQuaternaryAlt,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
         },
 
         disabled: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
           secondaryContentColor: palette?.neutralTertiary,
+          background: semanticColors?.disabledBackground,
         },
 
         expanded: {
@@ -105,24 +105,20 @@ export function getTokens(theme: Theme): Tokens {
         },
 
         focused: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
           secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLighter,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
           secondaryContentColor: palette?.themePrimary,
         },
 
         pressed: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
+          background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
           secondaryContentColor: palette?.black,

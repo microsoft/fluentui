@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-16T16:47:29.245Z"
-}
