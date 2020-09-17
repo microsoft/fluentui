@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix TextField best practices guidance for required fields",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-17T19:42:26.105Z"
+}
