@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { makeClasses } from '@fluentui/react-theme-provider';
 import { ButtonState } from './Button.types';
 
@@ -23,8 +24,8 @@ export const useButtonClasses = makeClasses<ButtonState>({
       textDecoration: 'none',
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
-      borderColor: 'var(--button-borderColor)',
 
+      borderColor: 'var(--button-borderColor)',
       borderTopLeftRadius: 'var(--button-borderTopLeftRadius, var(--button-borderRadius))',
       borderTopRightRadius: 'var(--button-borderTopRightRadius, var(--button-borderRadius))',
       borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
@@ -36,7 +37,8 @@ export const useButtonClasses = makeClasses<ButtonState>({
       boxShadow: 'var(--button-boxShadow)',
 
       width: 'var(--button-width)',
-      minWidth: 'var(--button-minWidth, 80)',
+      maxWidth: 'var(--button-maxWidth)',
+      minWidth: 'var(--button-minWidth)',
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
 
@@ -46,16 +48,15 @@ export const useButtonClasses = makeClasses<ButtonState>({
       paddingBottom: 'var(--button-paddingBottom)',
 
       transition: 'var(--button-transition)',
-      whiteSpace: 'var(--button-whiteSpace, nowrap)',
+      whiteSpace: 'var(--button-whiteSpace)',
 
       fontFamily: 'var(--button-fontFamily)',
       fontSize: 'var(--button-fontSize)',
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      fontWeight: 'var(--button-fontWeight)' as any,
+      fontWeight: 'var(--button-fontWeight)',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
 
       ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
-        //'&::after': {
         content: '""',
         position: 'absolute',
         left: -1,
@@ -70,6 +71,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
         borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
         borderBottomRightRadius: 'var(--button-borderBottomRightRadius, var(--button-borderRadius))',
         boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
+        zIndex: 1,
       },
 
       ['& > *:not(:first-child)']: {
@@ -163,6 +165,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _ghost: {
+    '--button-fontWeight': 'var(--ghost-fontWeight)',
     '--button-background': 'var(--ghost-background)',
     '--button-borderColor': 'var(--ghost-borderColor)',
     '--button-contentColor': 'var(--ghost-contentColor)',
@@ -190,6 +193,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _iconOnly: {
+    '--button-minHeight': 'var(--button-minHeight)',
     '--button-width': 'var(--button-height, var(--button-minHeight))',
     '--button-paddingTop': 0,
     '--button-paddingLeft': 0,
@@ -203,35 +207,36 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
   _fluid: {
     '--button-width': '100%',
+    '--button-maxWidth': '100%',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smallest: {
+    '--button-height': 'var(--button-size-smallest)',
     '--button-minHeight': 'var(--button-size-smallest)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smaller: {
+    '--button-height': 'var(--button-size-smaller)',
     '--button-minHeight': 'var(--button-size-smaller)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_small: {
+    '--button-height': 'var(--button-size-small)',
     '--button-minHeight': 'var(--button-size-small)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_large: {
+    '--button-height': 'var(--button-size-large)',
     '--button-minHeight': 'var(--button-size-large)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_larger: {
+    '--button-height': 'var(--button-size-larger)',
     '--button-minHeight': 'var(--button-size-larger)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_largest: {
+    '--button-height': 'var(--button-size-largest)',
     '--button-minHeight': 'var(--button-size-largest)',
   },
 });
