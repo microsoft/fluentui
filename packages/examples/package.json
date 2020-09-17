@@ -43,7 +43,6 @@
     "@uifabric/example-app-base": "^7.15.9",
     "@uifabric/example-data": "^7.1.3",
     "@uifabric/experiments": "^7.32.10",
-    "@uifabric/fabric-website-resources": "^7.8.9",
     "@uifabric/file-type-icons": "^7.6.2",
     "@uifabric/fluent-theme": "^7.3.8",
     "@uifabric/foundation": "^7.9.1",
