@@ -90,10 +90,10 @@ describe('ThemeProvider', () => {
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 
-  it('can apply body theme to root element', () => {
+  it('can apply body theme to none', () => {
     expect(document.body.className).toBe('');
     const component = renderer.create(
-      <ThemeProvider className="foo" theme={darkTheme} applyTo="element">
+      <ThemeProvider className="foo" theme={darkTheme} applyTo="none">
         app
       </ThemeProvider>,
     );
@@ -115,7 +115,10 @@ describe('ThemeProvider', () => {
     const wrapper = mount(TestComponent);
     expect(document.body.className).not.toBe('');
 
-    const bodyStyles = stylesheet.insertedRulesFromClassName(document.body.className);
+    const bodyStyles = document.body.className
+      .split(' ')
+      .map(bodyClass => stylesheet.insertedRulesFromClassName(bodyClass));
+
     expect(bodyStyles).toMatchSnapshot();
 
     wrapper.unmount();

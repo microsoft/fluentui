@@ -15,7 +15,7 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
       // The renderer default value is required to be defined, so if you're recomposing
       // this component, be sure to do so.
       renderer: mergeStylesRenderer,
-      applyTo: 'none',
+      applyTo: 'element',
     });
 
     // Register stylesheets as needed.

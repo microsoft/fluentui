@@ -30,9 +30,9 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
    * Setting to 'body' will apply body styles to document body.
    * Setting to 'none' will not apply body styles to either element or body.
    *
-   * @default 'none';
+   * @default 'element';
    */
-  applyTo?: 'none' | 'element' | 'body';
+  applyTo?: 'element' | 'body' | 'none';
 }
 
 /**
