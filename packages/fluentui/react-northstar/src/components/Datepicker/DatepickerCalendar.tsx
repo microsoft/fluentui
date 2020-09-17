@@ -358,18 +358,22 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             content: (
               <>
                 <thead>
-                  <tr key={0}>
-                    {_.times(DAYS_IN_WEEK, dayNumber =>
-                      createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
-                        defaultProps: () =>
-                          getA11yProps('calendarHeaderCell', {
-                            'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                            content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                            key: dayNumber,
+                  {createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
+                    defaultProps: () =>
+                      getA11yProps('calendarGridRow', {
+                        children: _.times(DAYS_IN_WEEK, dayNumber =>
+                          createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
+                            defaultProps: () =>
+                              getA11yProps('calendarHeaderCell', {
+                                'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                                content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                                key: dayNumber,
+                              }),
                           }),
+                        ),
+                        key: 0,
                       }),
-                    )}
-                  </tr>
+                  })}
                 </thead>
                 <tbody>
                   {_.map(visibleGrid, (week, idx) =>
