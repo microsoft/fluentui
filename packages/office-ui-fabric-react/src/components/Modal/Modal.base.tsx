@@ -159,17 +159,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     }
   }
 
-  private _registerInitialModalPosition = (): void => {
-    if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
-      const dialogMain = document.getElementsByClassName('ms-Dialog-main');
-      if (dialogMain.length > 0) {
-        const modalRectangle = dialogMain[0].getBoundingClientRect();
-        this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
-        this._maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
-      }
-    }
-  };
-
   public componentWillUnmount(): void {
     this._async.dispose();
     this._events.dispose();
@@ -324,9 +313,19 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     }
   }
 
+  private _registerInitialModalPosition = (): void => {
+    if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
+      const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+      if (dialogMain.length > 0) {
+        const modalRectangle = dialogMain[0].getBoundingClientRect();
+        this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
+        this._maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
+      }
+    }
+  };
+
   /**
    * Clamps the position coordinates to the maximum/minimum value specified in props
-   * @param position The position to be clamped
    */
   private _getClampedPosition(position: ICoordinates) {
     if (!this.props.dragOptions || !this.props.dragOptions.keepInBounds) {
