@@ -172,7 +172,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     weekNumberFormatString: props.weekNumberFormatString,
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
-    calendarCellFormatString: props.calendarCellFormatString,
     inputAriaLabel: props.inputAriaLabel,
     inputBoundedFormatString: props.inputBoundedFormatString,
     inputMinBoundedFormatString: props.inputMinBoundedFormatString,
@@ -435,7 +434,6 @@ Datepicker.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
-  calendarCellFormatString: PropTypes.string,
 
   inputAriaLabel: PropTypes.string,
   inputBoundedFormatString: PropTypes.string,
