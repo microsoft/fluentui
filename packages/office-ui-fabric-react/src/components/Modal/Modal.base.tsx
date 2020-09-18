@@ -316,7 +316,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
   private _registerInitialModalPosition = (): void => {
     if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
-      const dialogMain = document.querySelector(`[data-id=${this.state.id}`);
+      const dialogMain = document.querySelector(`[data-id=${this.state.id}]`);
       if (dialogMain) {
         const modalRectangle = dialogMain.getBoundingClientRect();
         this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
