@@ -5,7 +5,6 @@ import { merge } from '@uifabric/utilities';
  * Get tokens from theme object.
  */
 export function getTokens(theme: Theme): Tokens {
-  // TODO: ensure only used tokens are converted before shipping Fluent v8.
   const { tokens } = theme;
   const { fonts, effects, palette, semanticColors } = theme;
 
