@@ -163,10 +163,6 @@ TODO: Diff of OUFR vs date-time DatePicker
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
 - The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 
-### Slider
-
-- Deprecated prop `ariaLabel` (use `aria-label`)
-
 ### SpinButton
 
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.

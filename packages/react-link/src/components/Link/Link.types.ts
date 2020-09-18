@@ -74,7 +74,7 @@ export interface ILinkProps
   theme?: ITheme;
 
   /**
-   * A component that should be used as the root element of the link returned from the Link component.
+   * A component type or primitive that is rendered as the type of the root element.
    */
   as?: React.ElementType;
 
