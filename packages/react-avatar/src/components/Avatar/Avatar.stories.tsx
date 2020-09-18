@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from './Avatar';
-import { AvatarProps, CustomAvatarSize } from './Avatar.types';
+import { AvatarProps, avatarSizeValues } from './Avatar.types';
 import { StoryExample } from '../utils/StoryExample';
 import {
   GroupIcon,
@@ -9,7 +9,6 @@ import {
   CalendarIcon,
   TelemarketerIcon,
   RoomIcon,
-  RobotIcon,
   ChatBotIcon,
   SkypeClockIcon,
   SkypeCheckIcon,
@@ -17,97 +16,259 @@ import {
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 
-const imageUrl = 'http://www.fillmurray.com/192/192';
+const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
+const examplePeople = [
+  { name: 'Ade Q', image: imageRoot + '/ade.jpg' },
+  { name: 'Christain W', image: imageRoot + '/christian.jpg' },
+  { name: 'Daniel E', image: imageRoot + '/daniel.jpg' },
+  { name: 'Elliot R', image: imageRoot + '/elliot.jpg' },
+  { name: 'Elyse T', image: imageRoot + '/elyse.png' },
+  { name: 'Helen Y', image: imageRoot + '/helen.jpg' },
+  { name: 'Jenny U', image: imageRoot + '/jenny.jpg' },
+  { name: 'Joe I', image: imageRoot + '/joe.jpg' },
+  { name: 'Justen O', image: imageRoot + '/justen.jpg' },
+  { name: 'Kristy P', image: imageRoot + '/kristy.png' },
+  { name: 'Laura A', image: imageRoot + '/laura.jpg' },
+  { name: 'Matt S', image: imageRoot + '/matt.jpg' },
+  { name: 'Matthew D', image: imageRoot + '/matthew.png' },
+  { name: 'Molly F', image: imageRoot + '/molly.png' },
+  { name: 'Nan G', image: imageRoot + '/nan.jpg' },
+  { name: 'Patrick H', image: imageRoot + '/patrick.png' },
+  { name: 'Rachel J', image: imageRoot + '/rachel.png' },
+  { name: 'Steve K', image: imageRoot + '/steve.jpg' },
+  { name: 'Stevie L', image: imageRoot + '/stevie.jpg' },
+  { name: 'Tom Z', image: imageRoot + '/tom.jpg' },
+  { name: 'Veronika X', image: imageRoot + '/veronika.jpg' },
+  { name: 'Zoe C', image: imageRoot + '/zoe.jpg' },
+] as const;
 
-export const AvatarExamples = () => (
+/** Values used for the example avatars */
+const examples = {
+  names: examplePeople.map(p => p.name),
+  images: examplePeople.map(p => p.image),
+  icons: [
+    /* eslint-disable react/jsx-key */
+    <GroupIcon />,
+    <CatIcon />,
+    <CalendarIcon />,
+    <RoomIcon />,
+    <IDBadgeIcon />,
+    <TelemarketerIcon />,
+    /* eslint-enable react/jsx-key */
+  ],
+  badges: [
+    'success',
+    'warning',
+    'error',
+    'info',
+    { state: 'success', icon: { as: SkypeCheckIcon } },
+    { state: 'warning', icon: { as: SkypeClockIcon } },
+    { state: 'error', icon: { as: SkypeMinusIcon } },
+    { state: 'info', icon: { as: SkypeArrowIcon } },
+  ],
+  display: ['label', 'image', 'icon'],
+  activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
+  customSize: [19, 23, 28, 34, 41, 49, 58, 68, 79, 91, 104, 118, 133, 149, 166, 184],
+} as const;
+
+const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
+const badgeToString = (badge: typeof examples.badges[number] | undefined): string =>
+  typeof badge === 'object' ? `{ state: '${badge.state}', icon: { as: ${badge.icon.as.displayName} } }` : `${badge}`;
+
+export const BasicExamples = () => {
+  return (
+    <>
+      <StoryExample title="Simple examples">
+        <Avatar />
+        <Avatar name="Joe B" />
+        <Avatar icon={<IDBadgeIcon />} />
+        <Avatar name="Joe B" image={`${imageRoot}/joe.jpg`} />
+      </StoryExample>
+      <StoryExample title="Square">
+        <Avatar square name="Group" />
+        <Avatar square icon={<GroupIcon />} />
+      </StoryExample>
+      <StoryExample title="Badges">
+        <Avatar name="Matthew Doe" badge="warning" />
+        <Avatar name="Matthew Doe" badge="success" />
+        <Avatar
+          name="Elyse T"
+          image={`${imageRoot}/elyse.png`}
+          badge={{ state: 'success', icon: { as: SkypeCheckIcon } }}
+        />
+      </StoryExample>
+      <StoryExample title="Size">
+        <Avatar size={20} name="Tom Z" image={`${imageRoot}/tom.jpg`} badge="info" />
+        <Avatar size={48} name="Joe B" image={`${imageRoot}/joe.jpg`} badge="success" />
+        <Avatar size={96} name="Rachel J" image={`${imageRoot}/rachel.png`} badge="warning" />
+      </StoryExample>
+      <StoryExample title="Active/inactive">
+        <Avatar name="Tom Z" active={true} />
+        <Avatar image={`${imageRoot}/molly.png`} active={true} activeDisplay="shadow" />
+        <Avatar image={`${imageRoot}/nan.jpg`} active={true} activeDisplay="glow" />
+        <Avatar image={`${imageRoot}/patrick.png`} active={true} activeDisplay="ring-shadow" />
+        <Avatar image={`${imageRoot}/veronika.jpg`} active={true} activeDisplay="ring-glow" />
+        <Avatar image={`${imageRoot}/kristy.png`} active={false} />
+      </StoryExample>
+    </>
+  );
+};
+
+export const AllSizes = () => (
   <>
+    <StoryExample title="Image">
+      <AvatarExampleList display="image" />
+      <AvatarExampleList display="image" square exampleIndex={avatarSizeValues.length} />
+    </StoryExample>
+    <StoryExample title="Initials">
+      <AvatarExampleList display="label" />
+      <AvatarExampleList display="label" square exampleIndex={avatarSizeValues.length} />
+    </StoryExample>
     <StoryExample title="Icon">
-      <Avatar size={20} icon={<CatIcon />} badge="success" />
-      <Avatar size={24} icon={<CalendarIcon />} badge="warning" />
-      <Avatar size={28} icon={<RoomIcon />} badge="error" square />
-      <Avatar badge="success" />
-      <Avatar size={48} icon={<TelemarketerIcon />} name="(206) 555-0123" badge="info" />
-      <Avatar size={64} icon={<IDBadgeIcon />} badge="error" />
-      <Avatar size={96} icon={<GroupIcon />} badge="warning" square />
-      {/* display="icon" should override the initials and image even if available */}
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} display="icon" />
+      <AvatarExampleList display="icon" />
+      <AvatarExampleList display="icon" square exampleIndex={avatarSizeValues.length} />
     </StoryExample>
-    <StoryExample title="Badge icon">
-      <Avatar size={20} badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} />
-      <Avatar size={24} badge={{ state: 'warning', icon: { as: SkypeClockIcon } }} square />
-      <Avatar size={28} badge={{ state: 'error', icon: { as: SkypeMinusIcon } }} />
-      <Avatar badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} square />
-      <Avatar size={48} badge={{ state: 'info', icon: { as: SkypeArrowIcon } }} />
-      <Avatar size={64} badge={{ state: 'error', icon: { as: SkypeMinusIcon } }} square />
-      <Avatar size={96} badge={{ state: 'warning', icon: { as: SkypeClockIcon } }} />
-      <Avatar size={128} badge={{ state: 'success', icon: { as: SkypeCheckIcon } }} square />
+    <StoryExample title="Active">
+      <AvatarExampleList display="image" active={true} activeDisplay="ring" exampleIndex={39} />
+      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ring-shadow" exampleIndex={52} />
+      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={78} />
+      <AvatarExampleList display="image" active={true} activeDisplay="ring-glow" exampleIndex={91} />
     </StoryExample>
-    <StoryExample title="Initials (round)">
-      <Avatar size={20} name="John Doe" badge="success" />
-      <Avatar size={24} name="John Doe" badge="warning" />
-      <Avatar size={28} name="John Doe" badge="error" />
-      <Avatar name="John Doe" badge="success" />
-      <Avatar size={48} name="Jane Doe" badge="info" />
-      <Avatar size={64} name="Lorem Ipsum" badge="error" />
-      <Avatar size={96} name="Lorem Ipsum" badge="warning" />
-      {/* display="label" should override the image even if available */}
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} display="label" />
-    </StoryExample>
-    <StoryExample title="Initials (square)">
-      <Avatar square size={20} name="John Doe" badge="success" />
-      <Avatar square size={24} name="John Doe" badge="warning" />
-      <Avatar square size={28} name="John Doe" badge="error" />
-      <Avatar square name="John Doe" badge="success" />
-      <Avatar square size={48} name="Jane Doe" badge="info" />
-      <Avatar square size={64} name="Lorem Ipsum" badge="error" />
-      <Avatar square size={96} name="Lorem Ipsum" badge="warning" />
-      <Avatar square size={128} name="Lorem Ipsum" />
-    </StoryExample>
-    <StoryExample title="Image (round)">
-      <Avatar size={20} name="John Doe" badge="success" image={imageUrl} />
-      <Avatar size={24} name="John Doe" badge="warning" image={imageUrl} />
-      <Avatar size={28} name="John Doe" badge="error" image={imageUrl} />
-      <Avatar name="John Doe" badge="success" image={imageUrl} />
-      <Avatar size={48} name="Jane Doe" badge="info" image={imageUrl} />
-      <Avatar size={64} name="Lorem Ipsum" badge="error" image={imageUrl} />
-      <Avatar size={96} name="Lorem Ipsum" badge="warning" image={imageUrl} />
-      <Avatar size={128} name="Lorem Ipsum" image={imageUrl} />
-    </StoryExample>
-    <StoryExample title="Image (square)">
-      <Avatar square size={20} name="John Doe" image={imageUrl} badge="success" />
-      <Avatar square size={24} name="John Doe" image={imageUrl} badge="warning" />
-      <Avatar square size={28} name="John Doe" image={imageUrl} badge="error" />
-      <Avatar square name="John Doe" image={imageUrl} badge="success" />
-      <Avatar square size={48} name="Jane Doe" image={imageUrl} badge="info" />
-      <Avatar square size={64} name="Lorem Ipsum" image={imageUrl} badge="error" />
-      <Avatar square size={96} name="Lorem Ipsum" image={imageUrl} badge="warning" />
-      <Avatar square size={128} name="Lorem Ipsum" image={imageUrl} />
-    </StoryExample>
-    <StoryExample title="Custom Size">
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(17)} />
-      <Avatar name="Custom Size" badge="warning" size={CustomAvatarSize(42)} />
-      <Avatar name="Custom Size" badge="error" size={CustomAvatarSize(55)} />
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(100)} />
-      <Avatar name="Custom Size" badge="success" size={CustomAvatarSize(150)} />
-    </StoryExample>
-    <StoryExample title="Custom Shape">
-      <RobotAvatar size={20} name="Mr. Robot" />
-      <RobotAvatar size={24} name="Mr. Robot" />
-      <RobotAvatar size={28} name="Mr. Robot" />
-      <RobotAvatar size={32} name="Mr. Robot" />
-      <RobotAvatar size={48} name="Mr. Robot" />
-      <RobotAvatar size={64} name="Chat Bot" icon={<ChatBotIcon />} badge={{ tokens: { color: 'hotpink' } }} />
-      <RobotAvatar size={96} name="Mr. Robot" />
-      <RobotAvatar size={128} name="Mr. Robot" />
+    <StoryExample title="Inactive">
+      <AvatarExampleList display="image" active={false} exampleIndex={26} />
     </StoryExample>
   </>
 );
 
-const RobotAvatar = (props: AvatarProps) => (
-  <Avatar
-    icon={<RobotIcon />}
-    display="icon"
-    tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
-    {...props}
-  />
+export const CustomSizes = () => (
+  <StoryExample title="Custom Size">
+    <Avatar name="Custom Size" badge="success" customSize={17} />
+    <Avatar name="Custom Size" badge="warning" customSize={42} />
+    <Avatar name="Custom Size" badge="error" customSize={55} />
+    <Avatar name="Custom Size" badge="success" customSize={100} />
+    <Avatar name="Custom Size" badge="success" customSize={150} />
+  </StoryExample>
 );
+
+export const CustomShape = () => {
+  return (
+    <>
+      <StoryExample title="Custom shape">
+        <AvatarExampleList
+          icon={<ChatBotIcon />}
+          display="icon"
+          tokens={{
+            width: 'calc(var(--avatar-height) * 1.125)',
+            background: 'url("images/avatar/hexagon.svg") 0px/contain no-repeat',
+            borderRadius: '0',
+          }}
+        />
+      </StoryExample>
+    </>
+  );
+};
+
+export const AvatarPlayground = () => {
+  const propSelectors = [
+    useValueSelector('size', avatarSizeValues, 96),
+    useValueSelector('customSize', examples.customSize),
+    useValueSelector('square', [true, false]),
+    useValueSelector('badge', examples.badges, undefined, badgeToString),
+    useValueSelector('name', examples.names, examples.names[7]),
+    useValueSelector('image', examples.images, examples.images[7]),
+    useValueSelector('icon', examples.icons, undefined, iconToString),
+    useValueSelector('display', examples.display),
+    useValueSelector('active', [true, false]),
+    useValueSelector('activeDisplay', examples.activeDisplay),
+  ];
+
+  // Build an AvatarProps object with the selected property values
+  const propValues: AvatarProps = {};
+  propSelectors.forEach(({ assignValue }) => assignValue(propValues));
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <div style={{ width: '225px', height: '225px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Avatar {...propValues} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
+        {...propSelectors.map(p => p.renderSelector())}
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
+          {`<Avatar `}
+          {...propSelectors.map(p => p.renderValue())}
+          {`/>`}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Helpers
+ */
+
+/** Get an array index, wrapping around to the start of the array if the index is out of bounds */
+const wrapIndex = <T,>(array: readonly T[], i: number) => array[(i + array.length) % array.length];
+
+/**
+ * Generate a list of Avatars with sample properties
+ */
+const AvatarExampleList = (props: AvatarProps & { exampleIndex?: number }) => {
+  const { exampleIndex = 0 } = props;
+  const avatars = avatarSizeValues.map((size, i) => (
+    <div key={size} style={{ margin: `10px` }}>
+      <Avatar
+        size={size}
+        name={wrapIndex(examples.names, i + exampleIndex)}
+        image={wrapIndex(examples.images, i + exampleIndex)}
+        badge={wrapIndex(examples.badges, i + exampleIndex)}
+        icon={wrapIndex(examples.icons, i + exampleIndex)}
+        {...props}
+      />
+    </div>
+  ));
+
+  return (
+    <div style={{ display: 'flex', margin: '0', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex' }}>{avatars.slice(0, 9)}</div>
+      <div style={{ display: 'flex' }}>{avatars.slice(9)}</div>
+    </div>
+  );
+};
+
+/**
+ * Create a selector UI for a property value, allowing the user to toggle among the available property values
+ */
+const useValueSelector = <Prop extends keyof AvatarProps>(
+  name: Prop,
+  values: readonly AvatarProps[Prop][],
+  initialValue?: AvatarProps[Prop],
+  valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
+) => {
+  const [value, setValue] = React.useState(initialValue === undefined ? values[0] : initialValue);
+  const [enabled, setEnabled] = React.useState(initialValue !== undefined);
+  const next = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) + 1)), [values]);
+  const prev = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) - 1)), [values]);
+  const toggleEnabled = React.useCallback(() => setEnabled(e => !e), []);
+  return {
+    /** Assign this property's value to the given props object, if the property is set */
+    assignValue: (props: AvatarProps) => enabled && (props[name] = value),
+
+    /** Render the UI to select the property value */
+    renderSelector: () => (
+      <div style={{ opacity: !enabled ? '50%' : undefined }}>
+        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
+        <button onClick={enabled ? next : toggleEnabled}>&gt;</button>
+        <input id={`prop_${name}`} type="checkbox" onChange={toggleEnabled} checked={enabled} />
+        <label htmlFor={`prop_${name}`}>{`${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
+      </div>
+    ),
+
+    /** Render a span with propName="propValue" inside, if the property is set */
+    renderValue: () => {
+      const quotes = typeof value === 'string' ? '""' : '{}';
+      return enabled && <span>{`${name}=${quotes[0]}${valueToString(value)}${quotes[1]}`}</span>;
+    },
+  };
+};
