@@ -6,7 +6,8 @@
     "packages/react-icons",
     "packages/react-next",
     "packages/fluentui/react-bindings",
-    "packages/fluentui/react-northstar"
+    "packages/fluentui/react-northstar",
+    "packages/fluentui/react"
   ],
   "sandboxes": [
     "u0e3w",
