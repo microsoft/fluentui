@@ -30,7 +30,7 @@ describe('shouldPreventDefaultOnKeyDown', () => {
     expect(shouldPreventDefaultOnKeyDown(anchorEvent)).toBe(false);
   });
 
-  it('ignores for anchor targets when key == Space', () => {
+  it('ignores "Space" for anchor targets', () => {
     // 'Space' or 'Spacebar' doesn't work https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
     const anchorEvent = new KeyboardEvent('keydown', { key: ' ' });
     document.createElement('a').dispatchEvent(anchorEvent);
