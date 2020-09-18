@@ -13,14 +13,17 @@ describe('shouldPreventDefaultOnKeyDown', () => {
     const divEvent = new KeyboardEvent('keydown', { key: 'Enter' });
     const inputEvent = new KeyboardEvent('keydown', { key: 'Enter' });
     const textareaEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    const anchorEvent = new KeyboardEvent('keydown', { key: 'Enter' });
 
     document.createElement('div').dispatchEvent(divEvent);
     document.createElement('input').dispatchEvent(inputEvent);
     document.createElement('textarea').dispatchEvent(textareaEvent);
+    document.createElement('a').dispatchEvent(anchorEvent);
 
     expect(shouldPreventDefaultOnKeyDown(divEvent)).toBe(true);
     expect(shouldPreventDefaultOnKeyDown(inputEvent)).toBe(false);
     expect(shouldPreventDefaultOnKeyDown(textareaEvent)).toBe(false);
+    expect(shouldPreventDefaultOnKeyDown(anchorEvent)).toBe(false);
   });
 
   it('ignores for editable targets', () => {
