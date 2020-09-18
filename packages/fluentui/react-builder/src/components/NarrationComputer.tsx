@@ -210,8 +210,10 @@ export class NarrationComputer {
         this.computedParts.type = rule.elementType;
 
         // Compute and store the element's state
+        // But first, prepare some variables
         const computedStateArr = [];
         const stateStrings = SRNC.stateStrings[platform][definitionName];
+
         // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
         const order = rule.combination.length <= 1 && !rule.order ? rule.combination : rule.order;
 
