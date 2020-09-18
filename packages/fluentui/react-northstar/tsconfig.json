@@ -15,6 +15,9 @@
       "path": "../accessibility"
     },
     {
+      "path": "../accessibility-definitions"
+    },
+    {
       "path": "../styles"
     },
     {

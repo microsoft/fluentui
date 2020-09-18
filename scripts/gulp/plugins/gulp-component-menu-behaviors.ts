@@ -20,10 +20,20 @@ type BehaviorMenuItem = {
   };
 };
 
-async function importFile(pathDir, name) {
-  const pathToFile = path.join(pathDir, `${name}.ts`);
+async function importFile(baseDir, definitionFolderName, fileName) {
+  const a11yDefinitionPackagePath = 'accessibility-definitions/src/definitions/';
+  const pathToFile = path.join(baseDir, a11yDefinitionPackagePath, `${definitionFolderName}/`, `${fileName}.ts`);
   return await import(pathToFile);
 }
+
+const getPathDirByName = (filePath, nameOfDir: string) => {
+  const directoryPath = path.dirname(filePath);
+  const directoryName = path.basename(directoryPath);
+  if (directoryName === nameOfDir) {
+    return directoryPath;
+  }
+  return getPathDirByName(directoryPath, nameOfDir);
+};
 
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
   const resultToken = commentTokens.find(token => token.title === tokenTitle);
@@ -68,8 +78,9 @@ export default () => {
       if (!variation.description && !variation.specification) {
         const variationName = variation.name.replace('.ts', '');
         const behaviorDefinitionName = `${variationName}Definition`;
+        const fluentUiDir = getPathDirByName(file.path, 'fluentui');
 
-        importFile(dir, behaviorDefinitionName).then(file => {
+        importFile(fluentUiDir, behaviorName, behaviorDefinitionName).then(file => {
           const descriptionFromDefinition = file[behaviorDefinitionName].map(definition => {
             return definition.stringify();
           });

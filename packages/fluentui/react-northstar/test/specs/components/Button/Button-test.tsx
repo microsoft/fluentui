@@ -7,11 +7,9 @@ import {
   getRenderedAttribute,
 } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
-import {
-  toggleButtonBehavior,
-  buttonBehaviorDefinition,
-  toggleButtonBehaviorDefinition,
-} from '@fluentui/accessibility';
+import { toggleButtonBehavior } from '@fluentui/accessibility';
+
+import { buttonBehaviorDefinition, toggleButtonBehaviorDefinition } from '@fluentui/accessibility-definitions';
 
 import { Button } from 'src/components/Button/Button';
 import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
