@@ -554,13 +554,13 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Ghost', () => <Button ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
+  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
+  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
+  .addStory('Ghost', () => <Button ghost icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
   .addStory('Ghost Disabled', () => (
-    <Button disabled ghost icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <Button disabled ghost icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
