@@ -12,12 +12,16 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     GlobalClassNames.root,
     {
       '--button-height': 'auto',
+
       '--button-maxWidth': '280px',
       '--button-minWidth': '72px',
       '--button-paddingBottom': '16px',
       '--button-paddingLeft': '12px',
       '--button-paddingRight': '12px',
       '--button-paddingTop': '16px',
+      '--button-iconSize': '28px',
+
+      alignItems: 'flex-start',
 
       '&:hover': {
         '--button-secondaryContentColor': 'var(--button-hovered-secondaryContentColor)',
@@ -43,7 +47,12 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     {
       color: 'var(--button-secondaryContentColor)',
       fontSize: 'var(--button-secondaryContentFontSize)',
+      fontWeight: 'var(--button-secondaryContentFontWeight)',
       lineHeight: '100%',
+
+      '&:not(:first-child)': {
+        marginTop: 'var(--button-secondaryContentMarginTop)',
+      },
     },
   ],
 
@@ -69,5 +78,9 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
 
   _disabled: {
     '--button-secondaryContentColor': 'var(--button-disabled-secondaryContentColor)',
+  },
+
+  _fluid: {
+    '--button-maxWidth': '100%',
   },
 });
