@@ -109,7 +109,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return (
       <CartesianChart
         {...this.props}
-        points={this._points}
+        points={points}
         chartType={ChartTypes.LineChart}
         isXAxisDateType={isXAxisDateType}
         isMultiStackCallout
