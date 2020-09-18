@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 14 Sep 2020 12:22:12 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.1.0)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.0.3..@uifabric/charting_v4.1.0)
+
+### Minor changes
+
+- [VerticalStackedBarChart] Legend options and fixes ([PR #15050](https://github.com/microsoft/fluentui/pull/15050) by mibes@microsoft.com)
 
 ## [4.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.0.2)
 

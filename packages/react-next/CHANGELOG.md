@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 14 Sep 2020 12:22:12 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.111)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.109..@fluentui/react-next_v8.0.0-alpha.111)
+
+### Changes
+
+- Fix React StrictMode issues in ComboBox ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
+- Adding Calendar and DatePicker to react-next compat folder. ([PR #15079](https://github.com/microsoft/fluentui/pull/15079) by czearing@outlook.com)
+- Fix implicit merge conflict in ComboBox ([PR #15096](https://github.com/microsoft/fluentui/pull/15096) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.109)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.108..@fluentui/react-next_v8.0.0-alpha.109)
+
+### Changes
+
+- Floating/ExtendedPicker: added to react-next in prep for release ([PR #14908](https://github.com/microsoft/fluentui/pull/14908) by joschect@microsoft.com)
+- Moving Breadcrumb to react-next for future function component conversion. ([PR #15054](https://github.com/microsoft/fluentui/pull/15054) by czearing@outlook.com)
+
+## [8.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.108)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.106..@fluentui/react-next_v8.0.0-alpha.108)
+
+### Changes
+
+- Updating MessageBar to a function component inside React-Next. ([PR #14769](https://github.com/microsoft/fluentui/pull/14769) by czearing@outlook.com)
+- Add missing ref prop typing. ([PR #15027](https://github.com/microsoft/fluentui/pull/15027) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.106)
 
