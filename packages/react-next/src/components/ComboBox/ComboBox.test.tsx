@@ -72,6 +72,7 @@ describe('ComboBox', () => {
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
+    disabledTests: ['component-renders'],
   });
 
   it('Can flip between enabled and disabled.', () => {
