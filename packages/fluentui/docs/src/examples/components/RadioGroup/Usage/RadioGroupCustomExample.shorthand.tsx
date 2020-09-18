@@ -8,7 +8,7 @@ const RadioGroupCustomExample = props => {
     initialValue: false,
   });
 
-  const [selectedValue, setSelectedValue] = React.useState('');
+  const [checkedValue, setCheckedValue] = React.useState('');
 
   const items = [
     { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
