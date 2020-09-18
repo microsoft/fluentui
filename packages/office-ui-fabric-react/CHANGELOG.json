@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "office-ui-fabric-react_v7.138.0",
+      "version": "7.138.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website content for ComboBox, Dropdown, and TextField",
+            "author": "elcraig@microsoft.com",
+            "commit": "0b56e474a586e0cdac8db8c0d2207f128c4844dd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "office-ui-fabric-react_v7.137.3",
       "version": "7.137.3",

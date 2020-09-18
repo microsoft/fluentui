@@ -53,7 +53,6 @@ export const useSplitButton = (
         circular,
         disabled: disabledOrLoading,
         loading,
-        fluid,
         size,
         ...userProps,
       },

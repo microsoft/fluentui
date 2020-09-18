@@ -5,19 +5,19 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export function findNodes(wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> {
+export function findNodes(wrapper: ReactWrapper<any, any, unknown>, className: string): ReactWrapper<any, any> {
   return wrapper.find(className).filterWhere((node: ReactWrapper<any, any>) => typeof node.type() === 'string');
 }
 
-export function expectNodes(wrapper: ReactWrapper<any, any>, className: string, n: number): void {
+export function expectNodes(wrapper: ReactWrapper<any, any, unknown>, className: string, n: number): void {
   expect(findNodes(wrapper, className).length).toEqual(n);
 }
 
-export function expectOne(wrapper: ReactWrapper<any, any>, className: string): void {
+export function expectOne(wrapper: ReactWrapper<any, any, unknown>, className: string): void {
   expectNodes(wrapper, className, 1);
 }
 
-export function expectMissing(wrapper: ReactWrapper<any, any>, className: string): void {
+export function expectMissing(wrapper: ReactWrapper<any, any, unknown>, className: string): void {
   expectNodes(wrapper, className, 0);
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
