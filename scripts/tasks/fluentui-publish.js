@@ -18,6 +18,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
       '--preid experimental',
       '--registry',
       argv().registry,
+      'prepatch',
     ];
 
     logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
