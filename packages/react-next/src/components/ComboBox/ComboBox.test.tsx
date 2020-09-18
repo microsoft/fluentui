@@ -69,6 +69,12 @@ describe('ComboBox', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it(`renders`, () => {
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
+      expect(wrapper.root).toBeDefined();
+    });
+  });
+
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
