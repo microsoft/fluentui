@@ -211,16 +211,15 @@ export class NarrationComputer {
 
         // Compute and store the element's state
         // But first, prepare some variables
-        const computedStateArr = [];
+        const computedStateArr: string[] = [];
         const stateStrings = SRNC.stateStrings[platform][definitionName];
 
         // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
         const order = rule.combination.length <= 1 && !rule.order ? rule.combination : rule.order;
 
         // Determine the state narration for each state in the order list by looking if corresponding state and its value exist in the state strings definitions
-        for (let j = 0; j < order.length; j++) {
-          // Begin for 2
-          const stateName = order[j];
+        order.forEach((stateName: string) => {
+          // Begin forEach 1}
           let stateValue;
           if (stateName === 'checked') {
             // Begin if 2
@@ -238,7 +237,7 @@ export class NarrationComputer {
             // Begin if 2
             computedStateArr.push(partialState);
           } // End if 2
-        } // End for 2
+        }); // End forEach 1
         this.computedParts.state = computedStateArr.join(SRNC.STATE_PART_SEPARATOR);
         break;
       } // End for 1
