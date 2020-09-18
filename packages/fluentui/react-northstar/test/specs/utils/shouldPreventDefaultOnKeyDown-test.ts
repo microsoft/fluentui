@@ -26,6 +26,14 @@ describe('shouldPreventDefaultOnKeyDown', () => {
     expect(shouldPreventDefaultOnKeyDown(anchorEvent)).toBe(false);
   });
 
+  it('ignores for anchor targets', () => {
+    const anchorEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+
+    document.createElement('a').dispatchEvent(anchorEvent);
+
+    expect(shouldPreventDefaultOnKeyDown(anchorEvent)).toBe(false);
+  });
+
   it('ignores for editable targets', () => {
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     const element = document.createElement('div');
