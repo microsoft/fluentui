@@ -150,7 +150,7 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
-- Style props changes
+- `IPivotStyleProps` changes
   - Replaced `rootIsLarge` with `linkSize`.
   - Replaced `rootIsTabs` and `linkFormat`.
   - Removed deprecated prop `linkIsSelected`.
