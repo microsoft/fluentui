@@ -1,11 +1,13 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
-import AccordionTitle, { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
+import { keyboardKey } from '@fluentui/keyboard-key';
+import { AccordionTitle, accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
 describe('AccordionTitle', () => {
   isConformant(AccordionTitle, {
+    testPath: __filename,
+    constructorName: 'AccordionTitle',
     eventTargets: {
       onClick: `.${accordionTitleSlotClassNames.contentWrapper}`,
     },

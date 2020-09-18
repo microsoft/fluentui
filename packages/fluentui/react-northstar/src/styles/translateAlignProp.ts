@@ -18,7 +18,7 @@ export type TextAlignProperty =
   | 'right'
   | 'start';
 
-const translateAlignProp: (textAlignProp: AlignValue) => TextAlignProperty = textAlignProp => {
+export const translateAlignProp: (textAlignProp: AlignValue) => TextAlignProperty = textAlignProp => {
   // This assignment verifies that the copy of TextAlignProperty matches up with the real one.
   const alignProp: RealTextAlignProperty = textAlignProp;
   switch (alignProp) {
@@ -30,5 +30,3 @@ const translateAlignProp: (textAlignProp: AlignValue) => TextAlignProperty = tex
       return alignProp as TextAlignProperty;
   }
 };
-
-export default translateAlignProp;

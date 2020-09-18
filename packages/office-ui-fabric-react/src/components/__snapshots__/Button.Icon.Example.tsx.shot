@@ -68,7 +68,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -202,7 +201,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -349,22 +347,35 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       href="https://developer.microsoft.com/en-us/fluentui#/styles/icons"
       onClick={[Function]}

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const WordIcon = createSvgIcon({
+export const WordIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -25,5 +25,3 @@ const WordIcon = createSvgIcon({
   ),
   displayName: 'WordIcon',
 });
-
-export default WordIcon;

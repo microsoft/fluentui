@@ -1,10 +1,13 @@
 import * as React from 'react';
 
-import NestingContext from '../NestingContext';
+import { NestingContext } from '../NestingContext';
 import { NestingContextValue } from '../types';
 import { UseNestingHookResult } from './types';
 
-const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
+// These hooks are not used currently
+/* eslint-disable */
+
+export const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
   const nestingContext = React.useContext(NestingContext) as NestingContextValue;
   const childRef = React.useRef(null);
 
@@ -26,5 +29,3 @@ const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
     ref: childRef,
   };
 };
-
-export default useNestingChild;

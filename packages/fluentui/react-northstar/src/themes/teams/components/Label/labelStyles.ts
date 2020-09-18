@@ -4,7 +4,7 @@ import { LabelStylesProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
 import { getColorScheme } from '../../colors';
 
-const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
+export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme, p.color);
 
@@ -66,5 +66,3 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
     }),
   }),
 };
-
-export default labelStyles;

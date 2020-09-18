@@ -5,18 +5,103 @@
 ```ts
 
 // @public (undocumented)
-export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
+export const AmpersandKey: 55;
 
 // @public (undocumented)
-const keyboardKey: {
-    codes: {
-        [code: string]: string | string[];
-    };
-    getCode: (eventOrKey: string | Partial<Pick<KeyboardEvent, "key" | "keyCode" | "which" | "shiftKey">>) => number | undefined;
-    getKey: (eventOrCode: number | Partial<Pick<KeyboardEvent, "key" | "keyCode" | "which" | "shiftKey">>) => string | undefined;
-} & KeyNames;
+export const ArrowDownKey: 40;
 
-export default keyboardKey;
+// @public (undocumented)
+export const ArrowLeftKey: 37;
+
+// @public (undocumented)
+export const ArrowRightKey: 39;
+
+// @public (undocumented)
+export const ArrowUpKey: 38;
+
+// @public (undocumented)
+export const AtSignKey: 50;
+
+// @public (undocumented)
+export const BackSlashKey: 220;
+
+// @public (undocumented)
+export const CaretKey: 54;
+
+// @public (undocumented)
+export const ColonKey: 186;
+
+// @public (undocumented)
+export const CommaKey: 188;
+
+// @public (undocumented)
+export const DecimalKey: 190;
+
+// @public (undocumented)
+export const Digit0Key: 48;
+
+// @public (undocumented)
+export const Digit1Key: 49;
+
+// @public (undocumented)
+export const Digit2Key: 50;
+
+// @public (undocumented)
+export const Digit3Key: 51;
+
+// @public (undocumented)
+export const Digit4Key: 52;
+
+// @public (undocumented)
+export const Digit5Key: 53;
+
+// @public (undocumented)
+export const Digit6Key: 54;
+
+// @public (undocumented)
+export const Digit7Key: 55;
+
+// @public (undocumented)
+export const Digit8Key: 56;
+
+// @public (undocumented)
+export const Digit9Key: 57;
+
+// @public (undocumented)
+export const DivisionSignKey: 191;
+
+// @public (undocumented)
+export const DoubleQuoteKey: 222;
+
+// @public (undocumented)
+export const EndKey: 35;
+
+// @public (undocumented)
+export const EnterKey: 13;
+
+// @public (undocumented)
+export const EqualsSignKey: 187;
+
+// @public (undocumented)
+export const ExclamationPointKey: 49;
+
+// @public
+export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined;
+
+// @public
+export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string | undefined;
+
+// @public (undocumented)
+export const GraveAccentKey: 192;
+
+// @public (undocumented)
+export const HomeKey: 36;
+
+// @public (undocumented)
+export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
+
+// @public
+export const keyboardKey: KeyNames;
 
 // @public (undocumented)
 export interface KeyNames {
@@ -117,8 +202,6 @@ export interface KeyNames {
     // (undocumented)
     AltGraph: 225;
     // (undocumented)
-    Ampersand: 55;
-    // (undocumented)
     ArrowDown: 40;
     // (undocumented)
     ArrowLeft: 37;
@@ -127,15 +210,11 @@ export interface KeyNames {
     // (undocumented)
     ArrowUp: 38;
     // (undocumented)
-    AtSign: 50;
-    // (undocumented)
     Attn: 246;
     // (undocumented)
     B: 66;
     // (undocumented)
     b: 66;
-    // (undocumented)
-    BackSlash: 220;
     // (undocumented)
     Backspace: 8;
     // (undocumented)
@@ -147,13 +226,7 @@ export interface KeyNames {
     // (undocumented)
     CapsLock: 20;
     // (undocumented)
-    Caret: 54;
-    // (undocumented)
     Clear: 12;
-    // (undocumented)
-    Colon: 186;
-    // (undocumented)
-    Comma: 188;
     // (undocumented)
     ContextMenu: 93;
     // (undocumented)
@@ -167,33 +240,7 @@ export interface KeyNames {
     // (undocumented)
     d: 68;
     // (undocumented)
-    Decimal: 190;
-    // (undocumented)
     Delete: 46;
-    // (undocumented)
-    Digit0: 48;
-    // (undocumented)
-    Digit1: 49;
-    // (undocumented)
-    Digit2: 50;
-    // (undocumented)
-    Digit3: 51;
-    // (undocumented)
-    Digit4: 52;
-    // (undocumented)
-    Digit5: 53;
-    // (undocumented)
-    Digit6: 54;
-    // (undocumented)
-    Digit7: 55;
-    // (undocumented)
-    Digit8: 56;
-    // (undocumented)
-    Digit9: 57;
-    // (undocumented)
-    DivisionSign: 191;
-    // (undocumented)
-    DoubleQuote: 222;
     // (undocumented)
     E: 69;
     // (undocumented)
@@ -203,13 +250,9 @@ export interface KeyNames {
     // (undocumented)
     Enter: 13;
     // (undocumented)
-    EqualsSign: 187;
-    // (undocumented)
     EraseEof: 249;
     // (undocumented)
     Escape: 27;
-    // (undocumented)
-    ExclamationPoint: 49;
     // (undocumented)
     Execute: 43;
     // (undocumented)
@@ -271,8 +314,6 @@ export interface KeyNames {
     // (undocumented)
     g: 71;
     // (undocumented)
-    GraveAccent: 192;
-    // (undocumented)
     H: 72;
     // (undocumented)
     h: 72;
@@ -299,25 +340,13 @@ export interface KeyNames {
     // (undocumented)
     l: 76;
     // (undocumented)
-    LeftAngleBracket: 188;
-    // (undocumented)
-    LeftCurlyBrace: 219;
-    // (undocumented)
-    LeftParenthesis: 57;
-    // (undocumented)
-    LeftSquareBracket: 219;
-    // (undocumented)
     M: 77;
     // (undocumented)
     m: 77;
     // (undocumented)
     Meta: 224;
     // (undocumented)
-    MinusSign: 189;
-    // (undocumented)
     ModeChange: 31;
-    // (undocumented)
-    MultiplicationSign: 56;
     // (undocumented)
     N: 78;
     // (undocumented)
@@ -343,15 +372,7 @@ export interface KeyNames {
     // (undocumented)
     Pause: 19;
     // (undocumented)
-    PercentSign: 53;
-    // (undocumented)
-    Pipe: 220;
-    // (undocumented)
     Play: 250;
-    // (undocumented)
-    PlusSign: 187;
-    // (undocumented)
-    PoundSign: 51;
     // (undocumented)
     Print: 42;
     // (undocumented)
@@ -361,19 +382,9 @@ export interface KeyNames {
     // (undocumented)
     q: 81;
     // (undocumented)
-    QuestionMark: 191;
-    // (undocumented)
     R: 82;
     // (undocumented)
     r: 82;
-    // (undocumented)
-    RightAngleBracket: 190;
-    // (undocumented)
-    RightCurlyBrace: 221;
-    // (undocumented)
-    RightParenthesis: 48;
-    // (undocumented)
-    RightSquareBracket: 221;
     // (undocumented)
     S: 83;
     // (undocumented)
@@ -383,21 +394,13 @@ export interface KeyNames {
     // (undocumented)
     Select: 41;
     // (undocumented)
-    Semicolon: 186;
-    // (undocumented)
     Shift: 16;
-    // (undocumented)
-    SingleQuote: 222;
-    // (undocumented)
-    Spacebar: 32;
     // (undocumented)
     T: 84;
     // (undocumented)
     t: 84;
     // (undocumented)
     Tab: 9;
-    // (undocumented)
-    Tilde: 192;
     // (undocumented)
     U: 85;
     // (undocumented)
@@ -431,6 +434,72 @@ export interface KeyNames {
     // (undocumented)
     ZoomOut: 251;
 }
+
+// @public (undocumented)
+export const LeftAngleBracketKey: 188;
+
+// @public (undocumented)
+export const LeftCurlyBraceKey: 219;
+
+// @public (undocumented)
+export const LeftParenthesisKey: 57;
+
+// @public (undocumented)
+export const LeftSquareBracketKey: 219;
+
+// @public (undocumented)
+export const MinusSignKey: 189;
+
+// @public (undocumented)
+export const MultiplicationSignKey: 56;
+
+// @public (undocumented)
+export const PageDownKey: 34;
+
+// @public (undocumented)
+export const PageUpKey: 33;
+
+// @public (undocumented)
+export const PercentSignKey: 53;
+
+// @public (undocumented)
+export const PipeKey: 220;
+
+// @public (undocumented)
+export const PlusSignKey: 187;
+
+// @public (undocumented)
+export const PoundSignKey: 51;
+
+// @public (undocumented)
+export const QuestionMarkKey: 191;
+
+// @public (undocumented)
+export const RightAngleBracketKey: 190;
+
+// @public (undocumented)
+export const RightCurlyBraceKey: 221;
+
+// @public (undocumented)
+export const RightParenthesisKey: 48;
+
+// @public (undocumented)
+export const RightSquareBracketKey: 221;
+
+// @public (undocumented)
+export const SemicolonKey: 186;
+
+// @public (undocumented)
+export const SingleQuoteKey: 222;
+
+// @public (undocumented)
+export const SpacebarKey: 32;
+
+// @public (undocumented)
+export const TabKey: 9;
+
+// @public (undocumented)
+export const TildeKey: 192;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -15,8 +15,9 @@ import { FocusZoneTabbableElements, FocusZoneDirection } from '../../focusZone/t
  * Provides arrow key navigation in vertical direction.
  * Keyboard navigation is circular.
  * Focus is moved within the focusable children of the component using TAB key.
+ * Does not handle PageDown and PageUp.
  */
-const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
+export const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -28,6 +29,7 @@ const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
       handleTabKey: FocusZoneTabbableElements.all,
       isCircularNavigation: true,
       direction: FocusZoneDirection.vertical,
+      pagingSupportDisabled: true,
     },
   },
   keyActions: {
@@ -44,5 +46,3 @@ const chatMessageBehavior: Accessibility<ChatMessageBehaviorProps> = () => ({
 });
 
 export type ChatMessageBehaviorProps = never;
-
-export default chatMessageBehavior;

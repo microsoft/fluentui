@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.12",
+  "version": "7.1.4",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,9 +21,8 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.0"
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"

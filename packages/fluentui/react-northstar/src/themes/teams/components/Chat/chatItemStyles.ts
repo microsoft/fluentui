@@ -3,7 +3,7 @@ import { ChatItemVariables } from './chatItemVariables';
 import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
 import { pxToRem } from '../../../../utils';
 
-const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
+export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     ...((!p.attached || p.attached === 'top') && { paddingTop: pxToRem(16) }),
@@ -29,5 +29,3 @@ const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemV
     marginRight: v.messageMargin,
   }),
 };
-
-export default chatItemStyles;

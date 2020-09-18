@@ -24,7 +24,7 @@ const keytipConfig: IKeytipConfig = {
       content: '00',
       optionalProps: {
         onExecute: btnExecute,
-        offset: { x: 10, y: 10 },
+        offset: { left: 10, top: 10, x: 10, y: 10 },
       },
     },
     {
@@ -101,7 +101,7 @@ const keytipConfig: IKeytipConfig = {
           id: 'SubmenuKeytip1',
           content: 'M',
           optionalProps: {
-            offset: { x: 17, y: 19 },
+            offset: { left: 17, top: 19, x: 17, y: 19 },
             onExecute: btnExecute,
           },
         },
@@ -109,7 +109,7 @@ const keytipConfig: IKeytipConfig = {
           id: 'SubmenuKeytip2',
           content: 'P',
           optionalProps: {
-            offset: { x: 17, y: 19 },
+            offset: { left: 17, top: 19, x: 17, y: 19 },
             onExecute: btnExecute,
           },
           children: [
@@ -133,7 +133,7 @@ const keytipConfig: IKeytipConfig = {
           id: 'SubmenuKeytip5',
           content: 'R',
           optionalProps: {
-            offset: { x: 17, y: 19 },
+            offset: { left: 17, top: 19, x: 17, y: 19 },
             onExecute: btnExecute,
           },
         },

@@ -7,6 +7,6 @@ const onResolveSuggestions = (filterText: string): ITag[] => {
   return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
 };
 
-const scenario = <TagPicker onResolveSuggestions={onResolveSuggestions} />;
+const Scenario = () => <TagPicker onResolveSuggestions={onResolveSuggestions} />;
 
-export default scenario;
+export default Scenario;

@@ -164,7 +164,7 @@ describe('Callout', () => {
     let previousFocusElement;
     let isFocused;
     let restoreCalled = false;
-    const onRestoreFocus = (options: { originalElement: any; containsFocus: any }) => {
+    const onRestoreFocus = (options: { originalElement: any; containsFocus: any; documentContainsFocus: any }) => {
       previousFocusElement = options.originalElement;
       isFocused = options.containsFocus;
       restoreCalled = true;
@@ -175,7 +175,7 @@ describe('Callout', () => {
       ReactDOM.render<HTMLDivElement>(
         <div>
           <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
-target
+            target
           </button>
           <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge} onRestoreFocus={onRestoreFocus}>
             {/* must be a button to be focusable for the test*/}

@@ -64,10 +64,6 @@ export interface AlertVariables {
 
   dismissActionContentFontWeight: FontWeightProperty;
 
-  dismissActionColorActive: string;
-  dismissActionBackgroundColorActive: string;
-  dismissActionBorderColorActive: string;
-
   dismissActionBackgroundColorFocus: string;
   dismissActionBorderColorFocus: string;
   dismissActionColorFocus: string;
@@ -85,7 +81,7 @@ export interface AlertVariables {
   focusBorderZIndex: string;
 }
 
-export default (siteVars: SiteVariablesPrepared): AlertVariables => {
+export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
   const minHeight = pxToRem(28);
 
   return {
@@ -148,10 +144,6 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     dismissActionBorderColorHover: siteVars.colorScheme.default.borderHover,
 
     dismissActionContentFontWeight: siteVars.fontWeightSemibold,
-
-    dismissActionColorActive: siteVars.colorScheme.default.foregroundPressed,
-    dismissActionBackgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
-    dismissActionBorderColorActive: siteVars.colorScheme.default.borderPressed,
 
     dismissActionBackgroundColorFocus: undefined,
     dismissActionBorderColorFocus: undefined,

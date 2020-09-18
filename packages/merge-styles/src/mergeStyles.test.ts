@@ -30,6 +30,11 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{right:10px;}');
   });
 
+  it('can register a css variable', () => {
+    mergeStyles({ '--fooBar': 'baz' });
+    expect(_stylesheet.getRules()).toEqual('.css-0{--fooBar:baz;}');
+  });
+
   it('can re-register rules when rtl is flipped', () => {
     const result1 = mergeStyles({ left: 10 });
     expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');

@@ -1,7 +1,0 @@
-{
-  "extends": ["./eslint/index.js"],
-  "rules": {
-    "no-console": "off"
-  },
-  "root": true
-}

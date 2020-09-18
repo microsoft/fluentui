@@ -1,8 +1,117 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.18.0..@uifabric/merge-styles_v7.19.0)
+
+### Minor changes
+
+- Exporting additional typings, updated auto-unit generation to not prefix the default unit (px) on css custom properties. ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.18.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.17.0..@uifabric/merge-styles_v7.18.0)
+
+### Minor changes
+
+- Update IRawStyleBase tying to allow css variables (string) as acceptable values. ([PR #14773](https://github.com/microsoft/fluentui/pull/14773) by xgao@microsoft.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.17.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.16.1..@uifabric/merge-styles_v7.17.0)
+
+### Minor changes
+
+- Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
+
+## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.16.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.16.0..@uifabric/merge-styles_v7.16.1)
+
+### Patches
+
+- Replace tslint with eslint ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.16.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.15.1..@uifabric/merge-styles_v7.16.0)
+
+### Minor changes
+
+- Loosening typings in the `IStyle` interface. ([PR #13847](https://github.com/microsoft/fluentui/pull/13847) by dzearing@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.15.0)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.14.1..@uifabric/merge-styles_v7.15.0)
+
+### Minor changes
+
+- Loosening typings to allow for css variables. Removing kebab casing for css values which start with dashes. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.14.0)
+
+Fri, 15 May 2020 20:33:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.13.0..@uifabric/merge-styles_v7.14.0)
+
+### Minor changes
+
+- Addressing another typing issue found by TS 3.9.2 which is now catching scenarios which were shallow partials but should have been deep partials. ([PR #13185](https://github.com/microsoft/fluentui/pull/13185) by dzearing@microsoft.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.13.0)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.12.0..@uifabric/merge-styles_v7.13.0)
+
+### Minor changes
+
+- Relaxing the input arguments in merge-styles to keep things building with typescript 3.9. ([PR #13165](https://github.com/microsoft/fluentui/pull/13165) by dzearing@microsoft.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.12.0)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.4..@uifabric/merge-styles_v7.12.0)
+
+### Minor changes
+
+- Enable repeating selector in css rules for higher specificity ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+
+## [7.11.4](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.4)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.3..@uifabric/merge-styles_v7.11.4)
+
+### Patches
+
+- add forcedColorAdjust ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+- Prevent classname with empty style generation ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.2..@uifabric/merge-styles_v7.11.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.2)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.0..@uifabric/merge-styles_v7.11.2)
+
+### Patches
+
+- Fixing errors when building @fluentui/docs. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
 
 ## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.0)
 

@@ -1,33 +1,32 @@
-import { pxToRem } from '../../../../utils';
-import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ListItemStylesProps, listItemSlotClassNames } from '../../../../components/List/ListItem';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import { ListItemVariables } from './listItemVariables';
 
-const truncateStyle: ICSSInJSStyle = {
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-};
+import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
+import { ListItemStylesProps } from '../../../../components/List/ListItem';
+import { listItemContentClassName } from '../../../../components/List/ListItemContent';
+import { listItemContentMediaClassName } from '../../../../components/List/ListItemContentMedia';
+import { listItemEndMediaClassName } from '../../../../components/List/ListItemEndMedia';
+import { listItemHeaderClassName } from '../../../../components/List/ListItemHeader';
+import { listItemHeaderMediaClassName } from '../../../../components/List/ListItemHeaderMedia';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { ListItemVariables } from './listItemVariables';
 
 const selectableHoverStyle = (p: ListItemStylesProps, v): ICSSInJSStyle => ({
   background: v.selectableFocusHoverBackgroundColor,
   color: v.selectableFocusHoverColor,
   cursor: 'pointer',
 
-  [`& .${listItemSlotClassNames.header}`]: { color: 'inherit' },
-  [`& .${listItemSlotClassNames.content}`]: { color: 'inherit' },
+  [`& .${listItemHeaderClassName}`]: { color: 'inherit' },
+  [`& .${listItemContentClassName}`]: { color: 'inherit' },
 
   // hide the header media and content media on hover
-  [`& .${listItemSlotClassNames.headerMedia}`]: {
+  [`& .${listItemHeaderMediaClassName}`]: {
     ...screenReaderContainerStyles,
     color: 'inherit',
   },
-  [`& .${listItemSlotClassNames.contentMedia}`]: { display: 'none', color: 'inherit' },
+  [`& .${listItemContentMediaClassName}`]: { display: 'none', color: 'inherit' },
 
   // show the end media on hover
-  [`& .${listItemSlotClassNames.endMedia}`]: { display: 'block', color: 'inherit' },
+  [`& .${listItemEndMediaClassName}`]: { display: 'block', color: 'inherit' },
 });
 
 const selectedStyle = variables => ({
@@ -35,7 +34,7 @@ const selectedStyle = variables => ({
   color: variables.selectedColor,
 });
 
-const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
+export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -50,7 +49,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
         position: 'relative',
 
         // hide the end media by default
-        [`& .${listItemSlotClassNames.endMedia}`]: { display: 'none' },
+        [`& .${listItemEndMediaClassName}`]: { display: 'none' },
 
         '&:hover': selectableHoverStyle(p, v),
         ':focus': borderFocusStyles[':focus'],
@@ -62,65 +61,10 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
         ...(p.selected && selectedStyle(v)),
       }),
       ...(p.important && {
-        fontWeight: 'bold',
+        fontWeight: v.importantFontWeight,
       }),
     };
   },
-
-  media: ({ props: p }): ICSSInJSStyle => ({
-    ...(p.important && {
-      '::before': {
-        content: '""',
-        position: 'absolute',
-        left: pxToRem(8),
-        width: pxToRem(2),
-        height: pxToRem(2),
-        background: '#000',
-      },
-    }),
-    ...((p.hasHeader || p.hasContent) && {
-      marginRight: pxToRem(8),
-    }),
-  }),
-
-  header: ({ props: p, variables: v }) => ({
-    flexGrow: 1,
-    fontSize: v.headerFontSize,
-    lineHeight: v.headerLineHeight,
-
-    ...(p.truncateHeader && truncateStyle),
-    ...((!p.hasContent || p.hasHeaderMedia) && {
-      marginRight: pxToRem(8),
-    }),
-  }),
-
-  headerMedia: ({ variables: v }): ICSSInJSStyle => ({
-    alignSelf: 'flex-end',
-
-    fontSize: v.headerMediaFontSize,
-    lineHeight: v.headerMediaLineHeight,
-  }),
-
-  content: ({ props: p, variables: v }) => ({
-    flexGrow: 1,
-    fontSize: v.contentFontSize,
-    lineHeight: v.contentLineHeight,
-
-    ...(p.truncateContent && truncateStyle),
-    ...((!p.hasHeader || p.hasContentMedia) && {
-      marginRight: pxToRem(8),
-    }),
-  }),
-
-  contentMedia: ({ variables: v }) => ({
-    fontSize: v.contentMediaFontSize,
-    lineHeight: v.contentMediaLineHeight,
-  }),
-
-  endMedia: ({ props: p }) => ({
-    flexShrink: 0,
-    ...((p.selectable || p.navigable) && { display: 'none' }),
-  }),
 
   headerWrapper: () => ({
     display: 'flex',
@@ -137,5 +81,3 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
     minWidth: 0, // needed for the truncate styles to work
   }),
 };
-
-export default listItemStyles;

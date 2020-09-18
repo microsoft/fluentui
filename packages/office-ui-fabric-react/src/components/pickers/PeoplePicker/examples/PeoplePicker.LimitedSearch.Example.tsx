@@ -74,9 +74,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
   const returnMostRecentlyUsedWithLimit = (
     currentPersonas: IPersonaProps[],
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    setMostRecentlyUsed(mostRecentlyUsed.slice(0, 3));
-    return filterPromise(mostRecentlyUsed);
+    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas).slice(0, 3));
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {
@@ -111,6 +109,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
   return (
     <div>
       <CompactPeoplePicker
+        /* eslint-disable react/jsx-no-bind */
         onResolveSuggestions={onFilterChangedWithLimit}
         onEmptyInputFocus={returnMostRecentlyUsedWithLimit}
         getTextFromItem={getTextFromItem}
@@ -118,6 +117,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
         onGetMoreResults={onFilterChanged}
         pickerSuggestionsProps={limitedSearchSuggestionProps}
         onRemoveSuggestion={onRemoveSuggestion}
+        /* eslint-enable react/jsx-no-bind */
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
@@ -130,12 +130,14 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
       <Checkbox
         label="Disable People Picker"
         checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDisabledButtonClick}
         styles={checkboxStyles}
       />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />

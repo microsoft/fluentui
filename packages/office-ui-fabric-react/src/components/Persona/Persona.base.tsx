@@ -34,10 +34,10 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
 
   public render(): JSX.Element {
     // wrapping default render behavior based on various this.props properties
-    const _onRenderPrimaryText = this._onRenderText(this._getText()),
-      _onRenderSecondaryText = this._onRenderText(this.props.secondaryText),
-      _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText),
-      _onRenderOptionalText = this._onRenderText(this.props.optionalText);
+    const _onRenderPrimaryText = this._onRenderText(this._getText());
+    const _onRenderSecondaryText = this._onRenderText(this.props.secondaryText);
+    const _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText);
+    const _onRenderOptionalText = this._onRenderText(this.props.optionalText);
 
     const {
       hidePersonaDetails,
@@ -65,7 +65,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       initialsColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
@@ -125,13 +125,13 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
-        {// tslint:disable:deprecation
+        {/* eslint-disable deprecation/deprecation */
         (!hidePersonaDetails ||
           size === PersonaSize.size8 ||
           size === PersonaSize.size10 ||
           size === PersonaSize.tiny) &&
           personaDetails
-        // tslint:enable:deprecation
+        /* eslint-enable deprecation/deprecation */
         }
       </div>
     );
@@ -160,7 +160,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
    * Deprecation helper for getting text.
    */
   private _getText(): string {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     return this.props.text || this.props.primaryText || '';
   }
 

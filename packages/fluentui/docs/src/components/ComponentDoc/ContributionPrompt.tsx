@@ -1,9 +1,10 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Segment, Text, ICSSInJSStyle, constants } from '@fluentui/react-northstar';
+import { Segment, Text, ICSSInJSStyle } from '@fluentui/react-northstar';
 import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
 import MegaphoneIcon from './MegaphoneIcon';
+import config from '../../config';
 
 const wrapStyle: ICSSInJSStyle = { wordBreak: 'break-word' };
 
@@ -14,11 +15,11 @@ const ContributionPrompt: any = ({ children }) => (
       {children && <div>{children}</div>}
       <p>
         If there's no{' '}
-        <a href={`${constants.repoURL}/pulls`}>
+        <a href={`${config.repoURL}/pulls`}>
           pull request <OpenOutsideIcon size="small" />
         </a>{' '}
         open for this, you should{' '}
-        <a href={`${constants.repoURL}/blob/master/.github/CONTRIBUTING.md`}>
+        <a href={`${config.repoURL}/blob/master/.github/CONTRIBUTING.md`}>
           contribute <OpenOutsideIcon size="small" />
         </a>{' '}
         one!

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle } from '@uifabric/styling';
 import {
@@ -13,7 +14,7 @@ import { IRenderFunction, IRefObject } from '@uifabric/utilities';
  */
 export interface IBaseFloatingSuggestionsProps<T> {
   /**
-   * Component reference incase needed to focus FlaotingSuggestions
+   * Component reference in case needed to focus FloatingSuggestions
    */
   componentRef?: IRefObject<HTMLDivElement>;
   /**
@@ -117,6 +118,11 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * There should be no logic to handle this in Suggestion component as the focus is never on this component
    */
   selectedSuggestionIndex?: number;
+  /**
+   * If set, the picker will be this width. If not, picker will be as wide as necessary
+   * to fully display input values.
+   */
+  pickerWidth?: string;
   /**
    * Arrow key callback
    */

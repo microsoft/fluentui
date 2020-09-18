@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IUnifiedPeoplePickerProps } from './UnifiedPeoplePicker.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { FloatingPeopleSuggestions } from '../../FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { IFloatingPeopleSuggestionsProps } from '../../FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types';
 import {
   SelectedPeopleList,
   ISelectedPeopleListProps,
@@ -9,21 +10,29 @@ import {
 import { UnifiedPicker } from '../UnifiedPicker';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
-  // update the suggestion like componentWillReceiveProps
-  // React.useEffect(()=>{
+  const renderSelectedItems = React.useCallback(
+    (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
+      return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
+    },
+    // Intentional extra dependency to cause a new callback to be generated
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.selectedItemsListProps.selectedItems],
+  );
 
-  // }, [props.floatingSuggestionProps.suggestions]);
+  const renderFloatingPeopleSuggestions = React.useCallback(
+    (floatingPeoplePickerProps: IFloatingPeopleSuggestionsProps): JSX.Element => {
+      return <FloatingPeopleSuggestions {...floatingPeoplePickerProps} />;
+    },
+    // Intentional extra dependency to cause a new callback to be generated
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.floatingSuggestionProps.suggestions],
+  );
 
-  const renderSelectedItems = (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
-    return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
-  };
   return (
-    <>
-      <UnifiedPicker
-        {...props}
-        onRenderSelectedItems={renderSelectedItems}
-        onRederFloatingSuggestions={FloatingPeopleSuggestions}
-      />
-    </>
+    <UnifiedPicker
+      {...props}
+      onRenderSelectedItems={renderSelectedItems}
+      onRenderFloatingSuggestions={renderFloatingPeopleSuggestions}
+    />
   );
 };

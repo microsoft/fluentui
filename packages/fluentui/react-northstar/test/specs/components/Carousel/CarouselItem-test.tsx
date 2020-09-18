@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import CarouselItem, { CarouselItemProps, carouselItemSlotClassNames } from 'src/components/Carousel/CarouselItem';
+import { CarouselItem, CarouselItemProps, carouselItemSlotClassNames } from 'src/components/Carousel/CarouselItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
@@ -13,7 +13,7 @@ const getItemPositionContainer = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselItemSlotClassNames.itemPositionText}`);
 
 describe('CarouselItem', () => {
-  isConformant(CarouselItem);
+  isConformant(CarouselItem, { testPath: __filename, constructorName: 'CarouselItem' });
 
   it('itemPositionText is added inside the item along with the content', () => {
     const wrapper = renderCarouselItem({ itemPositionText: 'test-position' });

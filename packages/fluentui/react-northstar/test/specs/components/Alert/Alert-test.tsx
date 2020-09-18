@@ -7,14 +7,14 @@ import {
   htmlIsAccessibilityCompliant,
 } from 'test/specs/commonTests';
 
-import Alert, { alertSlotClassNames } from 'src/components/Alert/Alert';
-import Box from 'src/components/Box/Box';
-import AlertDismissAction from 'src/components/Alert/AlertDismissAction';
+import { Alert, alertSlotClassNames } from 'src/components/Alert/Alert';
+import { Box } from 'src/components/Box/Box';
+import { AlertDismissAction } from 'src/components/Alert/AlertDismissAction';
 
 const alertImplementsShorthandProp = implementsShorthandProp(Alert);
 
 describe('Alert', () => {
-  isConformant(Alert, { constructorName: 'Alert', autoControlledProps: ['visible'] });
+  isConformant(Alert, { testPath: __filename, constructorName: 'Alert', autoControlledProps: ['visible'] });
   handlesAccessibility(Alert, { defaultRootRole: undefined, requiredProps: { content: 'test' } });
   handlesAccessibility(Alert, {
     defaultRootRole: undefined,

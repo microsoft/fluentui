@@ -11,7 +11,7 @@ const classNames = mergeStyleSets({
 });
 
 export const ActivityItemBasicExample: React.FunctionComponent = () => {
-  // tslint:disable:jsx-no-lambda
+  /* eslint-disable react/jsx-no-bind */
   const activityItemExamples = [
     {
       key: 1,

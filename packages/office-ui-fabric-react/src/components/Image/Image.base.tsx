@@ -32,7 +32,6 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
@@ -165,8 +164,13 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       // Determine the desired ratio using the width and height props.
       // If those props aren't available, measure measure the frame.
       let desiredRatio;
-      if (!!width && !!height && imageFit !== ImageFit.centerContain && imageFit !== ImageFit.centerCover) {
-        desiredRatio = (width as number) / (height as number);
+      if (
+        typeof width === 'number' &&
+        typeof height === 'number' &&
+        imageFit !== ImageFit.centerContain &&
+        imageFit !== ImageFit.centerCover
+      ) {
+        desiredRatio = width / height;
       } else {
         desiredRatio = this._frameElement.current.clientWidth / this._frameElement.current.clientHeight;
       }

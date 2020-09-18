@@ -8,7 +8,7 @@ const iconsDir = 'src/components';
 describe('Icon components', () => {
   fs.readdirSync(iconsDir).forEach(file => {
     const componentName = path.basename(file, '.tsx');
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const IconComponent = (icons as any)[componentName];
 
     test(`${componentName} has 'Icon' suffix in the name`, () => {

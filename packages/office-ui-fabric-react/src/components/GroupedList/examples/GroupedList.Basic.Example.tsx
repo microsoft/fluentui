@@ -1,95 +1,71 @@
 import * as React from 'react';
-import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedList } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-
+import { useBoolean, useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
+const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
 const groupCount = 3;
 const groupDepth = 3;
+const items = createListItems(Math.pow(groupCount, groupDepth + 1));
+const columns = Object.keys(items[0])
+  .slice(0, 3)
+  .map(
+    (key: string): IColumn => ({
+      key: key,
+      name: key,
+      fieldName: key,
+      minWidth: 300,
+    }),
+  );
 
-const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
+const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
-export interface IGroupedListExampleState {
-  isCompactMode?: boolean;
-}
+export const GroupedListBasicExample: React.FunctionComponent = () => {
+  const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
+  const selection = useConst(() => {
+    const s = new Selection();
+    s.setItems(items, true);
+    return s;
+  });
 
-export class GroupedListBasicExample extends React.Component<{}, IGroupedListExampleState> {
-  private _items: IExampleItem[];
-  private _columns: IColumn[];
-  private _groups: IGroup[];
-  private _selection: Selection;
-
-  constructor(props: {}) {
-    super(props);
-
-    this._items = createListItems(Math.pow(groupCount, groupDepth + 1));
-    this._columns = Object.keys(this._items[0])
-      .slice(0, 3)
-      .map(
-        (key: string): IColumn => ({
-          key: key,
-          name: key,
-          fieldName: key,
-          minWidth: 300,
-        }),
-      );
-    this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
-
-    this._selection = new Selection();
-    this._selection.setItems(this._items);
-
-    this.state = {
-      isCompactMode: false,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { isCompactMode } = this.state;
-
-    return (
-      <div>
-        <Toggle
-          label="Enable compact mode"
-          checked={isCompactMode}
-          onChange={this._onChangeCompactMode}
-          onText="Compact"
-          offText="Normal"
-          styles={toggleStyles}
-        />
-        <FocusZone>
-          <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>
-            <GroupedList
-              items={this._items}
-              onRenderCell={this._onRenderCell}
-              selection={this._selection}
-              selectionMode={SelectionMode.multiple}
-              groups={this._groups}
-              compact={isCompactMode}
-            />
-          </SelectionZone>
-        </FocusZone>
-      </div>
-    );
-  }
-
-  private _onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
-    return (
+  const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+    return item && itemIndex ? (
       <DetailsRow
-        columns={this._columns}
+        columns={columns}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex}
-        selection={this._selection}
+        selection={selection}
         selectionMode={SelectionMode.multiple}
-        compact={this.state.isCompactMode}
+        compact={isCompactMode}
       />
-    );
+    ) : null;
   };
 
-  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
-    this.setState({ isCompactMode: checked });
-  };
-}
+  return (
+    <div>
+      <Toggle
+        label="Enable compact mode"
+        checked={isCompactMode}
+        onChange={toggleIsCompactMode}
+        onText="Compact"
+        offText="Normal"
+        styles={toggleStyles}
+      />
+      <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+        <GroupedList
+          items={items}
+          // eslint-disable-next-line react/jsx-no-bind
+          onRenderCell={onRenderCell}
+          selection={selection}
+          selectionMode={SelectionMode.multiple}
+          groups={groups}
+          compact={isCompactMode}
+        />
+      </SelectionZone>
+    </div>
+  );
+};

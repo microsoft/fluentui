@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   initializeComponentRef,
   EventGroup,
@@ -47,7 +46,7 @@ const NO_COLUMNS: IColumn[] = [];
 
 export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetailsRowState> {
   private _events: EventGroup;
-  private _root: HTMLElement | undefined;
+  private _root = React.createRef<HTMLElement>();
   private _cellMeasurer = React.createRef<HTMLSpanElement>();
   private _focusZone = React.createRef<IFocusZone>();
   private _droppingClassNames: string;
@@ -74,22 +73,24 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   }
 
   public componentDidMount(): void {
-    const { dragDropHelper } = this.props;
+    const { dragDropHelper, selection, item, onDidMount } = this.props;
 
-    if (dragDropHelper) {
+    if (dragDropHelper && this._root.current) {
       this._dragDropSubscription = dragDropHelper.subscribe(
-        this._root as HTMLElement,
+        this._root.current,
         this._events,
         this._getRowDragDropOptions(),
       );
     }
 
-    this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
+    if (selection) {
+      this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
+    }
 
-    if (this.props.onDidMount && this.props.item) {
+    if (onDidMount && item) {
       // If the item appears later, we should wait for it before calling this method.
       this._onDidMountCalled = true;
-      this.props.onDidMount(this);
+      onDidMount(this);
     }
   }
 
@@ -108,9 +109,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         delete this._dragDropSubscription;
       }
 
-      if (this.props.dragDropHelper) {
+      if (this.props.dragDropHelper && this._root.current) {
         this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-          this._root as HTMLElement,
+          this._root.current,
           this._events,
           this._getRowDragDropOptions(),
         );
@@ -149,7 +150,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events.dispose();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),
@@ -270,13 +270,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             }
           : {})}
         direction={FocusZoneDirection.horizontal}
-        ref={this._onRootRef}
+        elementRef={this._root}
         componentRef={this._focusZone}
         role="row"
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
+        data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
         data-automationid="DetailsRow"
@@ -360,7 +361,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone.current && this._focusZone.current.focus(forceIntoFirstElement);
+    return !!this._focusZone.current?.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
@@ -371,8 +372,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const { itemIndex, selection } = props;
 
     return {
-      isSelected: !!selection && selection.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection && !!selection.isModal && selection.isModal(),
+      isSelected: !!selection?.isIndexSelected(itemIndex),
+      isSelectionModal: !!selection?.isModal?.(),
     };
   }
 
@@ -383,16 +384,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       this.setState({
         selectionState: selectionState,
       });
-    }
-  };
-
-  private _onRootRef = (focusZone: FocusZone): void => {
-    if (focusZone) {
-      // Need to resolve the actual DOM node, not the component.
-      // The element itself will be used for drag/drop and focusing.
-      this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;
-    } else {
-      this._root = undefined;
     }
   };
 
@@ -408,6 +399,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
 
     return options;

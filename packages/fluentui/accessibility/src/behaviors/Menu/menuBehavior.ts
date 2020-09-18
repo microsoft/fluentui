@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import menuItemBehavior from './menuItemBehavior';
-import menuDividerBehavior from './menuDividerBehavior';
+import { menuItemBehavior } from './menuItemBehavior';
+import { menuDividerBehavior } from './menuDividerBehavior';
 
 /**
  * @description
@@ -14,7 +14,7 @@ import menuDividerBehavior from './menuDividerBehavior';
  * When 'vertical' prop is used, provides keyboard navigation in vertical direction.
  * Keyboard navigation is circular.
  */
-const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
+export const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'menu',
@@ -33,9 +33,7 @@ const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
   },
 });
 
-export default menuBehavior;
-
-type MenuBehaviorProps = {
+export type MenuBehaviorProps = {
   /** Indicates if menu has its items displayed vertically. */
   vertical?: boolean;
 };

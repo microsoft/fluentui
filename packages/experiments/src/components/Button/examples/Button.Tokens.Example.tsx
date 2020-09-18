@@ -22,7 +22,7 @@ const testTheme = createTheme({
   },
 });
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

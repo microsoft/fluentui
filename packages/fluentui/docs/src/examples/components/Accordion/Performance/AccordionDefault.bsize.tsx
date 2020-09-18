@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, themes, Accordion } from '@fluentui/react-northstar';
+import { Provider, Accordion, teamsTheme } from '@fluentui/react-northstar';
 
 const panels = [
   {
@@ -15,7 +15,7 @@ const panels = [
 ];
 
 const AccordionDefaultBsize = () => (
-  <Provider theme={themes.teams}>
+  <Provider theme={teamsTheme}>
     <Accordion defaultActiveIndex={[0]} panels={panels} />
   </Provider>
 );

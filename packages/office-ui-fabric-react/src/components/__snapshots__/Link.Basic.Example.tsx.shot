@@ -2,7 +2,20 @@
 
 exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
 <div>
-  <p>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
     When a link has an href,
      
     <a
@@ -26,30 +39,43 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
           }
-      href="http://dev.office.com/fabric/components/link"
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
+          }
+      href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link"
       onClick={[Function]}
     >
       it renders as an anchor tag.
     </a>
-     Without an href,
      
+    Without an href, 
     <button
       className=
           ms-Link
@@ -90,27 +116,37 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
+            color: LinkText;
           }
-          @media screen and (-ms-high-contrast: white-on-black){& {
-            color: #FFFF00;
-          }
-          @media screen and (-ms-high-contrast: black-on-white){& {
-            color: #00009F;
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active {
+            color: LinkText;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: active){&:active:hover {
+            color: LinkText;
+          }
           &:focus {
             color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            color: LinkText;
           }
       onClick={[Function]}
       type="button"
@@ -143,6 +179,7 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:link {
@@ -155,9 +192,22 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
     >
       disabled link.
     </a>
-  </p>
-  <p>
+  </span>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
     It's not recommended to use Links with imgs because Links are meant to render textual inline content. Buttons are inline-block or in the case of imgs, block. However, it is possible to create a linked image button by making a button with an unstyled variant and adding the img content and href source to that.
-  </p>
+  </span>
 </div>
 `;

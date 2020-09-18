@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key';
+import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import { Accessibility } from '../../types';
+import { Accessibility, AriaRole } from '../../types';
 
 /**
  * @description
@@ -15,30 +15,39 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-level=1' based on the property 'level' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Triggers 'performClick' action with 'Spacebar' on 'root'.
  */
-const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
-  attributes: {
-    root: {
-      ...(!props.hasSubtree && {
-        tabIndex: -1,
-        [IS_FOCUSABLE_ATTRIBUTE]: true,
-        role: 'treeitem',
-        'aria-setsize': props.treeSize,
-        'aria-posinset': props.index,
-        'aria-level': props.level,
-        'aria-selected': props.selectable ? props.selected || false : undefined,
-      }),
-    },
-  },
-  keyActions: {
-    root: {
-      performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
+  const definition = {
+    attributes: {
+      root: {
+        ...(!props.hasSubtree && {
+          tabIndex: -1,
+          [IS_FOCUSABLE_ATTRIBUTE]: true,
+          role: 'treeitem' as AriaRole,
+          'aria-setsize': props.treeSize,
+          'aria-posinset': props.index,
+          'aria-level': props.level,
+          ...(props.selectable && { 'aria-selected': props.selected }),
+        }),
       },
     },
-  },
-});
+    keyActions: {
+      root: {
+        performClick: {
+          keyCombinations: props.selectable
+            ? [{ keyCode: SpacebarKey }]
+            : [{ keyCode: SpacebarKey }, { keyCode: EnterKey }],
+        },
+      },
+    },
+  };
 
-export default treeTitleBehavior;
+  if (process.env.NODE_ENV !== 'production' && props.hasSubtree) {
+    // Override the default trigger's accessibility schema class.
+    definition.attributes.root['data-aa-class'] = 'ExpandableTreeTitle';
+  }
+
+  return definition;
+};
 
 export type TreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */

@@ -17,7 +17,7 @@ export interface IGroupSpacerProps {
    *
    * @deprecated unused, to be removed in 7.0
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
 
   /** Count of spacer(s) */

@@ -1,13 +1,10 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { MenuProps, MenuState } from '../../../../components/Menu/Menu';
+import { MenuStylesProps } from '../../../../components/Menu/Menu';
 import { MenuVariables } from './menuVariables';
-import { verticalPillsBottomMargin, horizontalPillsRightMargin, verticalPointingBottomMargin } from './menuItemStyles';
 import { getColorScheme } from '../../colors';
 
-type MenuPropsAndState = MenuProps & MenuState;
-
-export default {
+export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { iconOnly, fluid, pointing, pills, primary, underlined, vertical, submenu } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
@@ -28,7 +25,7 @@ export default {
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),
-        ...(!fluid && !submenu && { width: 'fit-content' }),
+        ...(!fluid && !submenu && { width: ['fit-content', 'auto'], display: 'inline-block' }),
         ...(iconOnly && {
           display: 'inline-block',
           width: 'auto',
@@ -47,15 +44,4 @@ export default {
       }),
     };
   },
-  divider: ({ props: { pointing, vertical, pills } }) => ({
-    ...(pointing &&
-      vertical && {
-        marginBottom: verticalPointingBottomMargin,
-      }),
-    ...(pills && {
-      ...(vertical
-        ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
-        : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
-    }),
-  }),
-} as ComponentSlotStylesPrepared<MenuPropsAndState, MenuVariables>;
+};

@@ -83,12 +83,14 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
     <div>
       <div>
         <NormalPeoplePicker
+          // eslint-disable-next-line react/jsx-no-bind
           onResolveSuggestions={onFilterChanged}
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={suggestionProps}
           className={'ms-PeoplePicker'}
           key={'controlled'}
           selectedItems={currentSelectedItems}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onItemsChange}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -103,7 +105,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           <div key={index}>
             <DefaultButton
               styles={defaultButtonStyles}
-              // tslint:disable-next-line:jsx-no-lambda
+              // eslint-disable-next-line react/jsx-no-bind
               onClick={() => setCurrentSelectedItems(currentSelectedItems.concat([item]))}
             >
               <Persona {...item} />
@@ -114,12 +116,14 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
       <Checkbox
         label="Disable People Picker"
         checked={isPickerDisabled}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDisabledButtonClick}
         styles={checkboxStyles}
       />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
         styles={checkboxStyles}
       />

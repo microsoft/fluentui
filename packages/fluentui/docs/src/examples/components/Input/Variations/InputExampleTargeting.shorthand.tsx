@@ -18,7 +18,15 @@ const propsTargettingInput = {
 };
 
 const InputExampleTargeting = () => (
-  <Grid columns="1fr 1fr" styles={{ justifyItems: 'start', alignItems: 'center', gap: '10px' }}>
+  <Grid
+    styles={{
+      gridTemplateColumns: '1fr 1fr',
+      msGridColumns: '1fr 1fr',
+      justifyItems: 'start',
+      alignItems: 'center',
+      gap: '10px',
+    }}
+  >
     <Text content="Input with props that will be applied to either the input or the wrapper:" />
     <Input id="input-targeting-1" {...propsForInput} {...propsForWrapper} />
 

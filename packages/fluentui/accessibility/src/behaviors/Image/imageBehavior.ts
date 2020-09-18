@@ -7,16 +7,13 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * @specification
  * Adds attribute 'aria-hidden=true', if there is no 'alt' property provided.
  */
-
-const imageBehavior: Accessibility<ImageBehaviorProps> = props => ({
+export const imageBehavior: Accessibility<ImageBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
     },
   },
 });
-
-export default imageBehavior;
 
 export type ImageBehaviorProps = {
   /** Alternative text. */

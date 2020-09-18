@@ -291,7 +291,7 @@ function _renderCell(
   item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
   property: 'name' | 'description' | 'defaultValue' | 'value',
 ) {
-  let text = (item as any)[property] || ''; // tslint:disable-line:no-any
+  let text = (item as any)[property] || ''; // eslint-disable-line @typescript-eslint/no-explicit-any
   // Format property names and defaults as code for easier reading
   if (property !== 'description' && text.indexOf('`') === -1) {
     text = '`' + text + '`';
@@ -326,7 +326,7 @@ function _referencesTableCell(
 function _renderDeprecatedMessage(deprecatedMessage?: string) {
   deprecatedMessage = (deprecatedMessage || '').trim();
   if (deprecatedMessage) {
-    // Ensure the messsage is formatted as a sentence
+    // Ensure the message is formatted as a sentence
     deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
     if (deprecatedMessage.slice(-1)[0] !== '.') {
       deprecatedMessage += '.';

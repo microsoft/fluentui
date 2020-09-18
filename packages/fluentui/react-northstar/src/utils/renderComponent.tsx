@@ -8,7 +8,9 @@ import {
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
+  ProviderContextPrepared,
 } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,
@@ -20,8 +22,8 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { Props, ProviderContextPrepared } from '../types';
-import logProviderMissingWarning from './providerMissingHandler';
+import { Props } from '../types';
+import { logProviderMissingWarning } from './providerMissingHandler';
 
 export interface RenderResultConfig<P> {
   ElementType: React.ElementType<P>;
@@ -45,9 +47,10 @@ export interface RenderConfig<P> {
   actionHandlers: AccessibilityActionHandlers;
   render: RenderComponentCallback<P>;
   saveDebug: (debug: DebugData | null) => void;
+  isFirstRenderRef: React.MutableRefObject<boolean>;
 }
 
-const renderComponent = <P extends {}>(
+export const renderComponent = <P extends {}>(
   config: RenderConfig<P>,
   context?: ProviderContextPrepared,
 ): React.ReactElement<P> => {
@@ -57,7 +60,7 @@ const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry);
+  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry, config.isFirstRenderRef);
   const rtl = context.rtl || false;
 
   setStart();
@@ -74,11 +77,13 @@ const renderComponent = <P extends {}>(
     actionHandlers,
   );
   const { classes, variables, styles, theme } = getStyles({
+    allDisplayNames: [displayName],
     className,
     disableAnimations: context.disableAnimations || false,
-    displayNames: [displayName],
-    props: stateAndProps,
-    renderer: context.renderer || { renderRule: () => '' },
+    primaryDisplayName: displayName,
+    componentProps: stateAndProps,
+    inlineStylesProps: stateAndProps,
+    renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,
@@ -88,6 +93,7 @@ const renderComponent = <P extends {}>(
       enableStylesCaching: false,
       enableBooleanVariablesCaching: false,
     },
+    telemetry: context.telemetry,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {
@@ -118,5 +124,3 @@ const renderComponent = <P extends {}>(
 
   return element;
 };
-
-export default renderComponent;

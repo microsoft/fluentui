@@ -1,17 +1,20 @@
 {
   "name": "@fluentui/react-component-nesting-registry",
   "description": "Registers a DOM nodes within a context.",
-  "version": "0.48.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
+    "@babel/runtime": "^7.10.4",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

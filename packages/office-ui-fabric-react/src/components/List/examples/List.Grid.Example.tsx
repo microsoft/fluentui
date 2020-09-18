@@ -4,24 +4,13 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-
-export interface IListGridExampleProps {
-  items?: IExampleItem[];
-}
-
-interface IListGridExampleClassObject {
-  listGridExample: string;
-  listGridExampleTile: string;
-  listGridExampleSizer: string;
-  listGridExamplePadder: string;
-  listGridExampleLabel: string;
-  listGridExampleImage: string;
-}
+import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
-
-const classNames: IListGridExampleClassObject = mergeStyleSets({
+const ROWS_PER_PAGE = 3;
+const MAX_ROW_HEIGHT = 250;
+const classNames = mergeStyleSets({
   listGridExample: {
     overflow: 'hidden',
     fontSize: 0,
@@ -75,56 +64,25 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
   },
 });
 
-const ROWS_PER_PAGE = 3;
-const MAX_ROW_HEIGHT = 250;
+export const ListGridExample: React.FunctionComponent = () => {
+  const columnCount = React.useRef(0);
+  const rowHeight = React.useRef(0);
 
-export class ListGridExample extends React.Component<IListGridExampleProps> {
-  private _columnCount: number;
-  private _columnWidth: number;
-  private _rowHeight: number;
-  private _items: IExampleItem[];
-
-  constructor(props: IListGridExampleProps) {
-    super(props);
-    this._items = props.items || createListItems(5000);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <FocusZone>
-        <List
-          className={classNames.listGridExample}
-          items={this._items}
-          getItemCountForPage={this._getItemCountForPage}
-          getPageHeight={this._getPageHeight}
-          renderedWindowsAhead={4}
-          onRenderCell={this._onRenderCell}
-        />
-      </FocusZone>
-    );
-  }
-
-  private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
+  const getItemCountForPage = React.useCallback((itemIndex: number, surfaceRect: IRectangle) => {
     if (itemIndex === 0) {
-      this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
-      this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
-      this._rowHeight = this._columnWidth;
+      columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
+      rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
     }
+    return columnCount.current * ROWS_PER_PAGE;
+  }, []);
 
-    return this._columnCount * ROWS_PER_PAGE;
-  };
-
-  private _getPageHeight = (): number => {
-    return this._rowHeight * ROWS_PER_PAGE;
-  };
-
-  private _onRenderCell = (item: any, index: number | undefined): JSX.Element => {
+  const onRenderCell = React.useCallback((item: IExampleItem, index: number | undefined) => {
     return (
       <div
         className={classNames.listGridExampleTile}
-        data-is-focusable={true}
+        data-is-focusable
         style={{
-          width: 100 / this._columnCount + '%',
+          width: 100 / columnCount.current + '%',
         }}
       >
         <div className={classNames.listGridExampleSizer}>
@@ -135,5 +93,24 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
         </div>
       </div>
     );
-  };
-}
+  }, []);
+
+  const getPageHeight = React.useCallback((): number => {
+    return rowHeight.current * ROWS_PER_PAGE;
+  }, []);
+
+  const items = useConst(() => createListItems(5000));
+
+  return (
+    <FocusZone>
+      <List
+        className={classNames.listGridExample}
+        items={items}
+        getItemCountForPage={getItemCountForPage}
+        getPageHeight={getPageHeight}
+        renderedWindowsAhead={4}
+        onRenderCell={onRenderCell}
+      />
+    </FocusZone>
+  );
+};

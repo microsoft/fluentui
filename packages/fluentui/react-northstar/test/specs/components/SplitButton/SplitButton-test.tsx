@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
-import SplitButton from 'src/components/SplitButton/SplitButton';
+import { SplitButton } from 'src/components/SplitButton/SplitButton';
 import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';
 import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -10,7 +10,7 @@ import { menuClassName } from 'src/components/Menu/Menu';
 import { menuItemClassName } from 'src/components/Menu/MenuItem';
 import { menuButtonClassName } from 'src/components/MenuButton/MenuButton';
 import { buttonClassName } from 'src/components/Button/Button';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
@@ -22,7 +22,7 @@ const getMenuItems = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElem
 const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${menuClassName}`);
 
 describe('SplitButton', () => {
-  isConformant(SplitButton, { constructorName: 'SplitButton', autoControlledProps: ['open'] });
+  isConformant(SplitButton, { testPath: __filename, constructorName: 'SplitButton', autoControlledProps: ['open'] });
   implementsPopperProps(SplitButton, { requiredProps: { open: true } });
 
   describe('open', () => {

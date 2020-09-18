@@ -1,4 +1,4 @@
-import { dest, lastRun, parallel, series, src, task, watch } from 'gulp';
+import { dest, lastRun, parallel, series, src, task, watch, TaskFunction } from 'gulp';
 import chalk from 'chalk';
 import cache from 'gulp-cache';
 import remember from 'gulp-remember';
@@ -6,6 +6,7 @@ import { log } from 'gulp-util';
 import fs from 'fs';
 import path from 'path';
 import del from 'del';
+import { Transform } from 'stream';
 import through2 from 'through2';
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
@@ -13,7 +14,6 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 import sh from '../sh';
 import config from '../../config';
-import gulpComponentMenu from '../plugins/gulp-component-menu';
 import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
 import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
@@ -22,7 +22,9 @@ import gulpReactDocgen from '../plugins/gulp-react-docgen';
 import { getRelativePathToSourceFile } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Server } from 'http';
+import { findGitRoot, getAllPackageInfo } from '../../monorepo';
 import serve, { forceClose } from '../serve';
+import { spawnSync } from 'child_process';
 
 const { paths } = config;
 
@@ -45,7 +47,6 @@ task('clean:docs', () =>
   del(
     [
       paths.packages('ability-attributes/src/schema.ts'),
-      paths.docsSrc('componentMenu.json'),
       paths.docsSrc('behaviorMenu.json'),
       paths.docsDist(),
       paths.docsSrc('exampleMenus'),
@@ -59,32 +60,15 @@ task('clean:docs', () =>
 // Build
 // ----------------------------------------
 
-const componentsSrc = [
-  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
-  `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
-  `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`,
-];
 const behaviorSrc = [`${paths.posix.packageSrc('accessibility')}/behaviors/*/[a-z]*Behavior.ts`];
 const examplesIndexSrc = `${paths.posix.docsSrc()}/examples/*/*/*/index.tsx`;
 const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).tsx`;
 const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
-task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
-    .pipe(
-      cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-        name: 'componentInfo-2',
-      }),
-    )
-    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
-);
-
-task('build:docs:component-menu', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-menu') })
-    .pipe(gulpComponentMenu(paths.docs('tsconfig.json')))
-    .pipe(dest(paths.docsSrc())),
-);
+/** Cache the task with gulp-cache except when running in CI */
+const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream | Transform = (task, options) =>
+  process.env.TF_BUILD ? task : cache(task, options);
 
 task('build:docs:component-menu-behaviors', () =>
   src(behaviorSrc, { since: lastRun('build:docs:component-menu-behaviors') })
@@ -103,7 +87,7 @@ task('build:docs:example-menu', () =>
 task('build:docs:example-sources', () =>
   src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
     .pipe(
-      cache(gulpExampleSource(), {
+      cacheNonCi(gulpExampleSource(), {
         name: 'exampleSources',
       }),
     )
@@ -112,12 +96,7 @@ task('build:docs:example-sources', () =>
 
 task(
   'build:docs:json',
-  parallel(
-    series('build:docs:component-info', 'build:docs:component-menu'),
-    'build:docs:component-menu-behaviors',
-    'build:docs:example-menu',
-    'build:docs:example-sources',
-  ),
+  parallel('build:docs:component-menu-behaviors', 'build:docs:example-menu', 'build:docs:example-sources'),
 );
 
 task('build:docs:html', () => src(paths.docsSrc('404.html')).pipe(dest(paths.docsDist())));
@@ -126,7 +105,7 @@ task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pip
 
 task('build:docs:toc', () =>
   src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
-    cache(gulpDoctoc(), {
+    cacheNonCi(gulpDoctoc(), {
       name: 'md-docs',
     }),
   ),
@@ -155,6 +134,23 @@ task(
   ),
 );
 
+task('build:docs:assets:component:info', cb => {
+  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const lernaArgs = ['lerna', 'run', 'build:info'];
+
+  const result = spawnSync('yarn', lernaArgs, {
+    cwd: fluentRoot,
+    shell: true,
+    stdio: 'inherit',
+  });
+
+  if (result.status) {
+    throw new Error(result.error.toString() || `lerna run failed with status ${result.status}`);
+  }
+
+  cb();
+});
+
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
 
 // ----------------------------------------
@@ -180,21 +176,25 @@ task('serve:docs:hot', async () => {
   const webpackConfig = require('../../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
-  server = await serve(paths.docsDist(), config.server_host, config.server_port, app =>
-    app
-      .use(
-        WebpackDevMiddleware(compiler, {
-          publicPath: webpackConfig.output.publicPath,
-          contentBase: paths.docsSrc(),
-          hot: true,
-          quiet: false,
-          noInfo: true, // must be quite for hot middleware to show overlay
-          lazy: false,
-          stats: config.compiler_stats,
-        } as WebpackDevMiddleware.Options),
-      )
-      .use(WebpackHotMiddleware(compiler)),
-  );
+  server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {
+    app.use(
+      WebpackDevMiddleware(compiler, {
+        publicPath: webpackConfig.output.publicPath,
+        contentBase: paths.docsSrc(),
+        hot: process.env.NODE_ENV !== 'production',
+        quiet: false,
+        noInfo: true, // must be quite for hot middleware to show overlay
+        lazy: false,
+        stats: config.compiler_stats,
+      } as WebpackDevMiddleware.Options),
+    );
+
+    if (process.env.NODE_ENV !== 'production') {
+      app.use(WebpackHotMiddleware(compiler));
+    }
+
+    return app;
+  });
 });
 
 task('serve:docs:stop', () => forceClose(server));
@@ -203,14 +203,29 @@ task('serve:docs:stop', () => forceClose(server));
 // Watch
 // ----------------------------------------
 
-task('watch:docs:component-info', cb => {
-  // rebuild component info
-  watch(componentsSrc, series('build:docs:component-info'))
-    .on('add', logWatchAdd)
-    .on('change', logWatchChange)
-    .on('unlink', logWatchUnlink);
+task('watch:docs:component-info', () => {
+  Object.values(getAllPackageInfo()).forEach(pkg => {
+    if (pkg.packageJson.gulp?.componentInfo) {
+      const internalTask: TaskFunction = () =>
+        src(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath })
+          .pipe(
+            cacheNonCi(
+              gulpReactDocgen({
+                ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
+                tsconfigPath: paths.docs('tsconfig.json'),
+              }),
+              { name: 'componentInfo-3' },
+            ),
+          )
+          .pipe(dest('componentInfo', { cwd: pkg.packagePath }));
+      internalTask.displayName = 'build:docs:component-info';
 
-  cb();
+      const watcher = watch(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath }, internalTask);
+
+      watcher.on('add', logWatchAdd);
+      watcher.on('change', logWatchChange);
+    }
+  });
 });
 
 task('watch:docs:component-menu-behaviors', cb => {
@@ -254,10 +269,10 @@ task('watch:docs:other', cb => {
   cb();
 });
 
-task('watch:docs', series('watch:docs:component-info', 'watch:docs:component-menu-behaviors', 'watch:docs:other'));
+task('watch:docs', series('watch:docs:component-menu-behaviors', 'watch:docs:other', 'watch:docs:component-info'));
 
 // ----------------------------------------
 // Default
 // ----------------------------------------
 
-task('docs', series('build:docs:assets', 'serve:docs:hot', 'watch:docs'));
+task('docs', series('build:docs:assets', 'build:docs:assets:component:info', 'serve:docs:hot', 'watch:docs'));

@@ -1,11 +1,22 @@
 import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
   const { theme, hasFocus } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: [
+      {
+        height: StyleConstants.inputControlHeight,
+        selectors: {
+          '::after': {
+            borderColor: semanticColors.primaryButtonBorder,
+          },
+        },
+      },
       hasFocus && {
         borderColor: semanticColors.focusBorder,
       },
@@ -37,7 +48,9 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
       color: semanticColors.inputText,
     },
     icon: {
-      color: semanticColors.focusBorder,
+      color: extendedSemanticColors.iconButtonFill,
+      width: '20px',
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

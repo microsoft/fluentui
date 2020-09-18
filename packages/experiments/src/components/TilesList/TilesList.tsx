@@ -21,7 +21,6 @@ import {
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
-// tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
@@ -112,7 +111,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
   private listRef: React.RefObject<List>;
 
-  // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
@@ -123,7 +121,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
@@ -132,7 +129,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
@@ -240,7 +236,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role="presentation"
         className={css(TilesListStyles.cell)}
-        // tslint:disable-next-line:jsx-ban-props
         style={
           item.grid.mode === TilesGridMode.fillHorizontal
             ? {
@@ -315,7 +310,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
   /**
    * Renders a single list page using a flexbox layout.
-   * By defualt, List provides no special formatting for a list page. For Tiles, the parent element
+   * By default, List provides no special formatting for a list page. For Tiles, the parent element
    * needs flexbox metadata and padding to support the alignment rules.
    */
   private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element | null => {
@@ -433,7 +428,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
                 [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow,
               })}
               data-automationid="ListCell"
-              // tslint:disable-next-line:jsx-ban-props
               style={{
                 ...this._onGetCellStyle(cell, currentRow),
               }}
@@ -474,7 +468,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           finalOnRenderRow({
             cellElements: currentRowCells,
             divProps: {
-              className: TilesListStyles.row,
+              className: css(TilesListStyles.row, {
+                [TilesListStyles.headerRow]: grid.mode === TilesGridMode.none,
+              }),
               role: 'presentation',
             },
           }),
@@ -489,7 +485,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none,
             [`${TilesListStyles.shimmeredList}`]: isPlaceholder,
           })}
-          // tslint:disable-next-line:jsx-ban-props
           style={{
             width: `${width}px`,
             margin: `${-margin}px`,

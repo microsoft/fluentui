@@ -1,8 +1,26 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.132](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.1.132)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/mdl2-theme_v0.1.110..@uifabric/mdl2-theme_v0.1.132)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.1.71](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.1.71)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/mdl2-theme_v0.1.54..@uifabric/mdl2-theme_v0.1.71)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [0.1.54](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.1.54)
 

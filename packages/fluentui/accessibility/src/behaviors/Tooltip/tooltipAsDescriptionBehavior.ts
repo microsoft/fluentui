@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
@@ -11,7 +11,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-describedby' based on the property 'contentId' to 'trigger' slot. This can be overriden by providing 'aria-describedby' property directly to the component.
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
-const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
+export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
 
   return {
@@ -34,8 +34,6 @@ const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props 
     },
   };
 };
-
-export default tooltipAsDescriptionBehavior;
 
 /**
  * Returns the element id of the tooltip, it is used when user does not provide aria-describedby as props.

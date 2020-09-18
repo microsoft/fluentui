@@ -1,9 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
 import { SplitButtonVariables } from './splitButtonVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import toggleIndicatorUrl from './toggleIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -15,7 +15,10 @@ const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSS
   };
 };
 
-const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStylesProps, SplitButtonVariables> = {
+export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
+  SplitButtonToggleStylesProps,
+  SplitButtonVariables
+> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -109,6 +112,11 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         ':focus-visible': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorFocus,
         },
+
+        ':hover': {
+          color: v.toggleButtonPrimaryHoverColor,
+          backgroundColor: v.toggleButtonPrimaryHoverBackgroundColor,
+        },
       }),
 
       // Overrides for "disabled" split button
@@ -136,5 +144,3 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
     };
   },
 };
-
-export default splitButtonToggleStyles;

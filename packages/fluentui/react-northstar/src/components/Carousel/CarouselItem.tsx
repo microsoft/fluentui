@@ -1,26 +1,38 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { carouselItemBehavior } from '@fluentui/accessibility';
+import { carouselItemBehavior, CarouselItemBehaviorProps, Accessibility } from '@fluentui/accessibility';
 
 import {
-  UIComponent,
   commonPropTypes,
   UIComponentProps,
-  ShorthandFactory,
-  applyAccessibilityKeyHandlers,
   childrenExist,
   createShorthandFactory,
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
+
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
+import {
+  ComponentWithAs,
+  useAccessibility,
+  useTelemetry,
+  useFluentContext,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface CarouselItemSlotClassNames {
   itemPositionText: string;
 }
 
 export interface CarouselItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<CarouselItemBehaviorProps>;
+
   /** Whether or not the item is in view or not. */
   active?: boolean;
 
@@ -34,57 +46,12 @@ export interface CarouselItemProps extends UIComponentProps, ChildrenComponentPr
   navigation?: boolean;
 }
 
+export type CarouselItemStylesProps = never;
+
 export const carouselItemClassName = 'ui-carousel__item';
 export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
   itemPositionText: `${carouselItemClassName}__itemPositionText`,
 };
-
-class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
-  static create: ShorthandFactory<CarouselItemProps>;
-
-  static displayName = 'CarouselItem';
-
-  static deprecated_className = carouselItemClassName;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    active: PropTypes.bool,
-    navigation: PropTypes.bool,
-    itemPositionText: PropTypes.string,
-  };
-
-  static defaultProps = {
-    accessibility: carouselItemBehavior,
-  };
-
-  actionHandlers = {
-    arrowKeysNavigationStopPropagation: e => {
-      // let event propagate, when it was invoke on the element where arrow keys should rotate carousel
-      if (e.currentTarget !== e.target) {
-        e.stopPropagation();
-      }
-    },
-  };
-
-  renderComponent({ ElementType, classes, styles, accessibility, unhandledProps }) {
-    const { children, content, itemPositionText } = this.props;
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : content}
-        <div className={carouselItemSlotClassNames.itemPositionText} style={screenReaderContainerStyles}>
-          {itemPositionText}
-        </div>
-      </ElementType>
-    );
-  }
-}
-
-CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedProp: 'content' });
 
 /**
  * A Carousel displays data organised as a gallery.
@@ -92,4 +59,84 @@ CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedPr
  * @accessibility
  * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
  */
-export default withSafeTypeForAs<typeof CarouselItem, CarouselItemProps, 'div'>(CarouselItem);
+export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
+  FluentComponentStaticProps<CarouselItemProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
+  setStart();
+  const unhandledProps = useUnhandledProps(CarouselItem.handledProps, props);
+  const {
+    accessibility,
+    navigation,
+    active,
+    children,
+    itemPositionText,
+    content,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
+  const ElementType = getElementType(props);
+  const getA11yProps = useAccessibility<CarouselItemBehaviorProps>(accessibility, {
+    debugName: CarouselItem.displayName,
+    actionHandlers: {
+      arrowKeysNavigationStopPropagation: e => {
+        // let event propagate, when it was invoke on the element where arrow keys should rotate carousel
+        if (e.currentTarget !== e.target) {
+          e.stopPropagation();
+        }
+      },
+    },
+    mapPropsToBehavior: () => ({
+      navigation,
+      active,
+    }),
+  });
+
+  const { classes } = useStyles<CarouselItemStylesProps>(CarouselItem.displayName, {
+    className: carouselItemClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : content}
+      <div className={carouselItemSlotClassNames.itemPositionText} style={screenReaderContainerStyles}>
+        {itemPositionText}
+      </div>
+    </ElementType>
+  );
+
+  setEnd();
+
+  return element;
+};
+
+CarouselItem.displayName = 'CarouselItem';
+
+CarouselItem.propTypes = {
+  ...commonPropTypes.createCommon(),
+  active: PropTypes.bool,
+  navigation: PropTypes.bool,
+  itemPositionText: PropTypes.string,
+};
+
+CarouselItem.defaultProps = {
+  accessibility: carouselItemBehavior,
+};
+
+CarouselItem.handledProps = Object.keys(CarouselItem.propTypes) as any;
+
+CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedProp: 'content' });

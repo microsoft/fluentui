@@ -77,8 +77,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -99,7 +105,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-1"
+        id="checkbox-0"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -118,7 +124,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -130,7 +135,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-1"
+        htmlFor="checkbox-0"
       >
         <div
           className=
@@ -151,6 +156,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -186,6 +197,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -241,8 +258,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -263,7 +286,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-2"
+          id="checkbox-1"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -282,7 +305,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -294,7 +316,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-2"
+          htmlFor="checkbox-1"
         >
           <div
             className=
@@ -315,6 +337,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -350,6 +378,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -405,8 +439,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -427,7 +467,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-3"
+            id="checkbox-2"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -446,7 +486,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -458,7 +497,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-3"
+            htmlFor="checkbox-2"
           >
             <div
               className=
@@ -479,6 +518,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -514,6 +559,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -572,8 +623,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -594,7 +651,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-4"
+        id="checkbox-3"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -613,7 +670,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -625,7 +681,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-4"
+        htmlFor="checkbox-3"
       >
         <div
           className=
@@ -646,6 +702,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -681,6 +743,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -736,8 +804,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -758,7 +832,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-5"
+          id="checkbox-4"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -777,7 +851,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -789,7 +862,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-5"
+          htmlFor="checkbox-4"
         >
           <div
             className=
@@ -810,6 +883,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -845,6 +924,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -900,8 +985,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -922,7 +1013,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-6"
+            id="checkbox-5"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -941,7 +1032,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
@@ -953,7 +1043,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-6"
+            htmlFor="checkbox-5"
           >
             <div
               className=
@@ -974,6 +1064,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -1009,6 +1105,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl
@@ -1072,8 +1174,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -1094,7 +1202,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-7"
+        id="checkbox-6"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1113,7 +1221,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -1125,7 +1232,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-7"
+        htmlFor="checkbox-6"
       >
         <div
           className=
@@ -1146,6 +1253,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -1181,6 +1294,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -1236,8 +1355,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -1258,7 +1383,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-8"
+          id="checkbox-7"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1277,7 +1402,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -1289,7 +1413,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-8"
+          htmlFor="checkbox-7"
         >
           <div
             className=
@@ -1310,6 +1434,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -1345,6 +1475,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -1400,8 +1536,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1422,7 +1564,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-9"
+            id="checkbox-8"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1441,7 +1583,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -1453,7 +1594,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-9"
+            htmlFor="checkbox-8"
           >
             <div
               className=
@@ -1474,6 +1615,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -1509,6 +1656,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -1567,8 +1720,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -1589,7 +1748,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-10"
+        id="checkbox-9"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1608,7 +1767,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -1620,7 +1778,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-10"
+        htmlFor="checkbox-9"
       >
         <div
           className=
@@ -1641,6 +1799,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -1676,6 +1840,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -1731,8 +1901,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -1753,7 +1929,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-11"
+          id="checkbox-10"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1772,7 +1948,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -1784,7 +1959,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-11"
+          htmlFor="checkbox-10"
         >
           <div
             className=
@@ -1805,6 +1980,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -1840,6 +2021,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -1895,8 +2082,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1917,7 +2110,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-12"
+            id="checkbox-11"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1936,7 +2129,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
@@ -1948,7 +2140,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-12"
+            htmlFor="checkbox-11"
           >
             <div
               className=
@@ -1969,6 +2161,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -2004,6 +2202,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl
@@ -2067,8 +2271,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -2089,7 +2299,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-13"
+        id="checkbox-12"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -2108,7 +2318,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -2120,7 +2329,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-13"
+        htmlFor="checkbox-12"
       >
         <div
           className=
@@ -2141,6 +2350,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -2176,6 +2391,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -2231,8 +2452,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -2253,7 +2480,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-14"
+          id="checkbox-13"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2272,7 +2499,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -2284,7 +2510,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-14"
+          htmlFor="checkbox-13"
         >
           <div
             className=
@@ -2305,6 +2531,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -2340,6 +2572,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -2395,8 +2633,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -2417,7 +2661,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-15"
+            id="checkbox-14"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2436,7 +2680,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -2448,7 +2691,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-15"
+            htmlFor="checkbox-14"
           >
             <div
               className=
@@ -2469,6 +2712,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -2504,6 +2753,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -2562,8 +2817,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -2584,7 +2845,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-16"
+        id="checkbox-15"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -2603,7 +2864,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -2615,7 +2875,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-16"
+        htmlFor="checkbox-15"
       >
         <div
           className=
@@ -2636,6 +2896,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -2671,6 +2937,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -2726,8 +2998,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -2748,7 +3026,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-17"
+          id="checkbox-16"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2767,7 +3045,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -2779,7 +3056,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-17"
+          htmlFor="checkbox-16"
         >
           <div
             className=
@@ -2800,6 +3077,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -2835,6 +3118,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -2890,8 +3179,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -2912,7 +3207,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            id="checkbox-18"
+            id="checkbox-17"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2931,7 +3226,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
@@ -2943,7 +3237,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   right: 0px;
                   top: 0px;
                 }
-            htmlFor="checkbox-18"
+            htmlFor="checkbox-17"
           >
             <div
               className=
@@ -2964,6 +3258,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               <i
@@ -2999,6 +3299,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl

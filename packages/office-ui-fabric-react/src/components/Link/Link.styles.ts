@@ -1,9 +1,4 @@
-import {
-  getGlobalClassNames,
-  HighContrastSelectorWhite,
-  HighContrastSelectorBlack,
-  HighContrastSelector,
-} from '../../Styling';
+import { getEdgeChromiumNoHighContrastAdjustSelector, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -67,11 +62,17 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         userSelect: 'text',
         borderBottom: '1px solid transparent', // For Firefox high contrast mode
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: '#FFFF00',
+          [HighContrastSelector]: {
+            color: 'LinkText',
           },
-          [HighContrastSelectorWhite]: {
-            color: '#00009F',
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
+      },
+      !isButton && {
+        selectors: {
+          [HighContrastSelector]: {
+            // This is mainly for MessageBar, which sets MsHighContrastAdjust: none by default
+            MsHighContrastAdjust: 'auto',
           },
         },
       },
@@ -95,9 +96,21 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           '&:active, &:hover, &:active:hover': {
             color: linkInteractedColor,
             textDecoration: 'underline',
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
           },
           '&:focus': {
             color: linkColor,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText',
+              },
+            },
           },
         },
       },

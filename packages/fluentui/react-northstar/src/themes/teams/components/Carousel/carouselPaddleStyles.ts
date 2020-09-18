@@ -1,14 +1,14 @@
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import {
   CarouselPaddleStylesProps,
   carouselPaddleSlotClassNames,
 } from '../../../../components/Carousel/CarouselPaddle';
 import { CarouselVariables } from './carouselVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import paddleIndicatorUrl from './paddleIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { paddleIndicatorUrl } from './paddleIndicatorUrl';
 import { pxToRem } from '../../../../utils';
+import { faster, ultraFast } from '../../animations/durations';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -19,7 +19,7 @@ const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJ
   };
 };
 
-const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProps, CarouselVariables> = {
+export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProps, CarouselVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -54,6 +54,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       borderStyle: 'solid',
       borderColor: v.paddleBorderColor,
       boxShadow: v.paddleBoxShadow,
+      transition: faster,
 
       ...(p.next && {
         height: pxToRem(v.paddleNextSize),
@@ -80,7 +81,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       },
 
       ':active': {
-        ...createAnimationStyles('scaleDownSoft', theme),
+        transition: ultraFast,
         color: v.paddleColorActive,
         backgroundColor: v.paddleBackgroundColorActive,
         borderColor: v.paddleBorderColorActive,
@@ -121,5 +122,3 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
     }),
   }),
 };
-
-export default carouselPaddleStyles;

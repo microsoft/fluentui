@@ -1,20 +1,31 @@
 import * as React from 'react';
 import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-interface IRootStyles {
-  height: string;
-  width: string;
+interface ILineChartMultipleExampleState {
+  width: number;
+  height: number;
 }
 
-export class LineChartMultipleExample extends React.Component<{}, {}> {
+export class LineChartMultipleExample extends React.Component<{}, ILineChartMultipleExampleState> {
   constructor(props: ILineChartProps) {
     super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
   }
 
   public render(): JSX.Element {
-    return <div>{this._styledExample()}</div>;
+    return (
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div>{this._styledExample()}</div>
+      </>
+    );
   }
 
   private _onLegendClickHandler = (selectedLegend: string | null): void => {
@@ -73,10 +84,137 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/04/10'), y: 32 },
           { x: new Date('2018/04/17'), y: 29 },
           { x: new Date('2018/05/10'), y: 43 },
-          { x: new Date('2018/06/01'), y: 45 },
+          { x: new Date('2018/06/01'), y: 123 },
         ],
         legend: 'Third',
         color: DefaultPalette.red,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 130 },
+          { x: new Date('2018/01/18'), y: 8 },
+          { x: new Date('2018/01/25'), y: 124 },
+          { x: new Date('2018/02/10'), y: 95 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 43 },
+          { x: new Date('2018/06/01'), y: 5 },
+        ],
+        legend: 'Fourth',
+        color: DefaultPalette.black,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 10 },
+          { x: new Date('2018/01/18'), y: 58 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 5 },
+          { x: new Date('2018/04/17'), y: 109 },
+          { x: new Date('2018/05/10'), y: 43 },
+          { x: new Date('2018/06/01'), y: 87 },
+        ],
+        legend: 'Fifth',
+        color: DefaultPalette.magentaDark,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 30 },
+          { x: new Date('2018/01/18'), y: 18 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 95 },
+          { x: new Date('2018/04/17'), y: 59 },
+          { x: new Date('2018/05/10'), y: 143 },
+          { x: new Date('2018/06/01'), y: 65 },
+        ],
+        legend: 'Sixth',
+        color: DefaultPalette.purple,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 80 },
+          { x: new Date('2018/01/18'), y: 58 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 65 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 43 },
+          { x: new Date('2018/06/01'), y: 165 },
+        ],
+        legend: 'Seventh',
+        color: DefaultPalette.yellow,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 130 },
+          { x: new Date('2018/01/18'), y: 48 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 95 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 1 },
+          { x: new Date('2018/06/01'), y: 5 },
+        ],
+        legend: 'Eight',
+        color: DefaultPalette.teal,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 10 },
+          { x: new Date('2018/01/18'), y: 88 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 5 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 43 },
+          { x: new Date('2018/06/01'), y: 145 },
+        ],
+        legend: 'Ninth',
+        color: DefaultPalette.neutralLight,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 130 },
+          { x: new Date('2018/01/18'), y: 78 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 55 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 163 },
+          { x: new Date('2018/06/01'), y: 4 },
+        ],
+        legend: 'Tenth',
+        color: DefaultPalette.orangeLighter,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 30 },
+          { x: new Date('2018/01/18'), y: 108 },
+          { x: new Date('2018/01/25'), y: 4 },
+          { x: new Date('2018/02/10'), y: 65 },
+          { x: new Date('2018/04/17'), y: 19 },
+          { x: new Date('2018/05/10'), y: 13 },
+          { x: new Date('2018/06/01'), y: 45 },
+          { x: new Date('2018/07/01'), y: 45 },
+        ],
+        legend: 'Eleventh',
+        color: DefaultPalette.neutralQuaternaryAlt,
+        onLegendClick: this._onLegendClickHandler,
+      },
+      {
+        data: [
+          { x: new Date('2018/01/06'), y: 70 },
+          { x: new Date('2018/01/18'), y: 78 },
+          { x: new Date('2018/01/25'), y: 94 },
+          { x: new Date('2018/02/10'), y: 65 },
+          { x: new Date('2018/04/17'), y: 9 },
+          { x: new Date('2018/05/10'), y: 5 },
+          { x: new Date('2018/06/01'), y: 65 },
+        ],
+        legend: 'Tweleth',
+        color: DefaultPalette.redDark,
         onLegendClick: this._onLegendClickHandler,
       },
     ];
@@ -85,7 +223,7 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
-    const rootStyle: IRootStyles = { width: '700px', height: '300px' };
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const timeFormat = '%m/%d';
     // Passing tick values is optional, for more control.
     // If you do not pass them the line chart will render them for you based on D3's standard.
@@ -96,17 +234,27 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
       new Date('04-01-2018'),
       new Date('05-01-2018'),
       new Date('06-01-2018'),
+      new Date('07-01-2018'),
     ];
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           strokeWidth={4}
           tickFormat={timeFormat}
           tickValues={tickValues}
-          enabledLegendsWrapLines={true}
+          height={this.state.height}
+          width={this.state.width}
+          legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
         />
       </div>
     );
   }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
 }

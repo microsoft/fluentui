@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { elementContains } from '@fluentui/dom-utilities';
 
 /**
  * Determines if a click's coordinates are within the bounds of a node.
@@ -8,12 +9,14 @@ import * as _ from 'lodash';
  * @param node - A DOM node.
  * @param e - A SyntheticEvent or DOM Event.
  * @param target - A target document.
+ * @param allowVirtualParents - A setting for `elementContains()`.
  */
-const doesNodeContainClick = (
+export const doesNodeContainClick = (
   node: HTMLElement,
   e: MouseEvent,
   // eslint-disable-next-line no-undef
   target: Document = document,
+  allowVirtualParents: boolean = true,
 ): boolean => {
   if (_.some([e, node], _.isNil)) return false;
 
@@ -23,7 +26,7 @@ const doesNodeContainClick = (
 
     if (target.querySelector('[data-suir-click-target=true]')) {
       _.invoke(e.target, 'removeAttribute', 'data-suir-click-target');
-      return node.contains(e.target as HTMLElement);
+      return elementContains(node, e.target as HTMLElement, allowVirtualParents);
     }
   }
 
@@ -51,5 +54,3 @@ const doesNodeContainClick = (
   // don't add an whole pixel (1) as the event/node values may be decimal sensitive
   return _.inRange(clientY, top, bottom + 0.001) && _.inRange(clientX, left, right + 0.001);
 };
-
-export default doesNodeContainClick;

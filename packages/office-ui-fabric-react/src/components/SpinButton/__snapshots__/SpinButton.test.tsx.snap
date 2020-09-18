@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinButton renders SpinButton correctly 1`] = `
+exports[`SpinButton renders correctly 1`] = `
 <div
   className=
 
@@ -196,7 +196,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -337,7 +336,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -438,7 +436,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 </div>
 `;
 
-exports[`SpinButton renders SpinButton correctly with values that the user passes in 1`] = `
+exports[`SpinButton renders correctly with user-provided values 1`] = `
 <div
   className=
 
@@ -636,7 +634,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -777,7 +774,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

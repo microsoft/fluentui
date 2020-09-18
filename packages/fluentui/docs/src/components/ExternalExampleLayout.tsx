@@ -1,16 +1,14 @@
-import { Provider, themes } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
-import SourceRender from 'react-source-render';
 import { KnobProvider } from '@fluentui/docs-components';
 
-import { ExampleSource } from '../types';
-import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
+import { examplesContext } from '../contexts/examplesContext';
 import PageNotFound from '../views/PageNotFound';
-import { babelConfig, importResolver } from './Playground/renderConfig';
+import { exampleKebabNameToFilename, parseExamplePath } from '../utils';
 
-const examplePaths = exampleSourcesContext.keys();
+const examplePaths = examplesContext.keys();
 
 type ExternalExampleLayoutProps = {
   match: match<{
@@ -19,10 +17,15 @@ type ExternalExampleLayoutProps = {
   }>;
 };
 
+const themes = {
+  teams: teamsTheme,
+  teamsHighContrast: teamsHighContrastTheme,
+  teamsDark: teamsDarkTheme,
+};
+
 const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   const { exampleName, rtl } = props.match.params;
 
-  const [error, setError] = React.useState<Error | null>(null);
   const [renderId, setRenderId] = React.useState<number>(0);
   const [themeName, setThemeName] = React.useState<string>();
 
@@ -31,26 +34,18 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
     window.switchTheme = setThemeName;
   }, []);
 
-  const exampleFilename = exampleKebabNameToSourceFilename(exampleName);
+  const exampleFilename = exampleKebabNameToFilename(exampleName);
   const examplePath = _.find(examplePaths, path => exampleFilename === parseExamplePath(path).exampleName);
 
   if (!examplePath) return <PageNotFound />;
 
-  const exampleSource: ExampleSource = exampleSourcesContext(examplePath);
+  const Example: React.ElementType = examplesContext(examplePath).default;
   const theme = (themeName && themes[themeName]) || {};
 
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
       <KnobProvider>
-        <SourceRender
-          babelConfig={babelConfig}
-          onRender={setError}
-          source={exampleSource.js}
-          resolver={importResolver}
-          hot
-        />
-        {/* This block allows to see issues with examples as visual regressions. */}
-        {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
+        <Example />
       </KnobProvider>
     </Provider>
   );

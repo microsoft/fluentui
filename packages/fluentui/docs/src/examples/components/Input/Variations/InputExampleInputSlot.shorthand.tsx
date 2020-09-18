@@ -3,7 +3,15 @@ import { Grid, Input, Text } from '@fluentui/react-northstar';
 
 const inputStyles = { color: 'blue', background: 'yellow' };
 const InputExampleInputSlot = () => (
-  <Grid columns="1fr 2fr" styles={{ justifyItems: 'start', alignItems: 'center', gap: '10px' }}>
+  <Grid
+    styles={{
+      gridTemplateColumns: '1fr 2fr',
+      msGridColumns: '1fr 2fr',
+      justifyItems: 'start',
+      alignItems: 'center',
+      gap: '10px',
+    }}
+  >
     <Text content="Input default:" />
     <Input placeholder="Search..." role="presentation" />
 

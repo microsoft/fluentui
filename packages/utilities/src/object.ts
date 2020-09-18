@@ -1,14 +1,9 @@
-import { Stylesheet } from '@uifabric/merge-styles';
-import { getId, resetIds } from './getId';
-
-export { getId, resetIds };
-
 /**
  * Compares a to b and b to a.
  *
  * @public
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean {
   for (let propName in a) {
     if (a.hasOwnProperty(propName)) {
@@ -37,7 +32,7 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function assign(target: any, ...args: any[]): any {
   return filteredAssign.apply(this, [null, target].concat(args));
 }
@@ -54,7 +49,7 @@ export function assign(target: any, ...args: any[]): any {
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any {
   target = target || {};
 
@@ -71,13 +66,6 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   return target;
 }
 
-// Configure ids to reset on stylesheet resets.
-const stylesheet = Stylesheet.getInstance();
-
-if (stylesheet && stylesheet.onReset) {
-  stylesheet.onReset(resetIds);
-}
-
 /**
  * Takes an enum and iterates over each value of the enum (as a string), running the callback on each,
  * returning a mapped array.
@@ -86,7 +74,7 @@ if (stylesheet && stylesheet.onReset) {
  * of that entry, which is the value you'd normally use when using the enum (usually a number).
  */
 export function mapEnumByName<T>(
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   theEnum: any,
   callback: (name?: string, value?: string | number) => T | undefined,
 ): (T | undefined)[] | undefined {
@@ -108,10 +96,37 @@ export function mapEnumByName<T>(
  *
  * @param obj - The dictionary to get values for
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function values<T>(obj: any): T[] {
   return Object.keys(obj).reduce((arr: T[], key: string): T[] => {
     arr.push(obj[key]);
     return arr;
   }, []);
+}
+
+/**
+ * Tiny helper to do the minimal amount of work in duplicating an object but omitting some
+ * props. This ends up faster than using object ...rest or reduce to filter.
+ *
+ * This behaves very much like filteredAssign, but does not merge many objects together,
+ * uses an exclusion object map, and avoids spreads all for optimal performance.
+ *
+ * See perf test for background:
+ * https://jsperf.com/omit-vs-rest-vs-reduce/1
+ *
+ * @param obj - The object to clone
+ * @param exclusions - The array of keys to exclude
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: Record<string, any> = {};
+
+  for (const key in obj) {
+    if (exclusions.indexOf(key) === -1 && obj.hasOwnProperty(key)) {
+      result[key] = obj[key];
+    }
+  }
+
+  return result as TObj;
 }

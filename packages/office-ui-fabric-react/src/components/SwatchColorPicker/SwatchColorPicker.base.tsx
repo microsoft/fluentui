@@ -13,7 +13,7 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from '../../utilities/grid/Grid';
+import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
@@ -86,7 +86,6 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
@@ -107,10 +106,10 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       ariaPosInSet = this.props.positionInSet,
       ariaSetSize = this.props.setSize,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
@@ -128,7 +127,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       return null;
     }
     return (
-      <Grid
+      <ButtonGrid
         {...this.props}
         id={this._id}
         items={this._getItemsWithIndex(colorCells)}
@@ -279,7 +278,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Callback to make sure we don't update the hovered element during mouse wheel
    */
   private _onWheel = (): void => {
-    this.setNavigationTimeout();
+    this._setNavigationTimeout();
   };
 
   /**
@@ -292,7 +291,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       ev.which === KeyCodes.left ||
       ev.which === KeyCodes.right
     ) {
-      this.setNavigationTimeout();
+      this._setNavigationTimeout();
     }
   };
 
@@ -300,7 +299,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Sets a timeout so we won't process any mouse "hover" events
    * while navigating (via mouseWheel or arrowKeys)
    */
-  private setNavigationTimeout = () => {
+  private _setNavigationTimeout = () => {
     if (!this.isNavigationIdle && this.navigationIdleTimeoutId !== undefined) {
       this.async.clearTimeout(this.navigationIdleTimeoutId);
       this.navigationIdleTimeoutId = undefined;

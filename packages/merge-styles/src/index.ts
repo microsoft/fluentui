@@ -1,6 +1,12 @@
-export { IRawStyle, IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+export { IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+
+export { IRawStyle } from './IRawStyle';
+
+export { IKeyframes } from './IKeyframes';
 
 export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
+
+export { DeepPartial } from './DeepPartial';
 
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
@@ -21,5 +27,7 @@ export { keyframes } from './keyframes';
 export * from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
+
+export { ObjectOnly } from './ObjectOnly';
 
 import './version';

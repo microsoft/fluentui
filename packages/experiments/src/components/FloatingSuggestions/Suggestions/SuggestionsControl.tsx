@@ -9,7 +9,6 @@ import {
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export enum SuggestionItemType {
@@ -78,7 +77,6 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     this.scrollSelected();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {
@@ -275,7 +273,6 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
   }
 
   private _renderSuggestions(): JSX.Element {
-    // tslint:disable-next-line:deprecation
     return <SuggestionsCore<T> ref={this._suggestions} {...this.props} suggestions={this.state.suggestions} />;
   }
 

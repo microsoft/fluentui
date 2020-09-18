@@ -2,7 +2,8 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
+import { ILegendsProps } from '../Legends/index';
 
 export { IDataPoint, IVerticalBarChartDataPoint } from '../../types/IDataPoint';
 
@@ -84,6 +85,23 @@ export interface IVerticalBarChartProps {
    * @defaultvalue false
    */
   hideLegend?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
+   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   */
+  parentRef?: HTMLElement | null;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IVerticalBarChartStyleProps {
@@ -100,12 +118,12 @@ export interface IVerticalBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of the chart.
    */
-  height: number;
+  height?: number;
 
   /**
    * color of the datapoint legend
@@ -121,6 +139,11 @@ export interface IVerticalBarChartStyleProps {
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IVerticalBarChartStyles {
@@ -128,11 +151,6 @@ export interface IVerticalBarChartStyles {
    *  Style for the root element.
    */
   root?: IStyle;
-
-  /**
-   * Style for the chart.
-   */
-  chart?: IStyle;
 
   /**
    * Style for the chart label.
@@ -178,26 +196,6 @@ export interface IVerticalBarChartStyles {
    * Style for the text labeling each tick along the y-axis.
    */
   yAxisText?: IStyle;
-
-  /**
-   * Style for the element containing all the bars in the chart.
-   */
-  bars?: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
-
-  /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

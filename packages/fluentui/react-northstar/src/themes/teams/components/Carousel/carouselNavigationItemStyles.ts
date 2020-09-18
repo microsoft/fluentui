@@ -1,15 +1,15 @@
 import { pxToRem } from '../../../../utils';
 import {
-  CarouselNavigationItemProps,
+  CarouselNavigationItemStylesProps,
   carouselNavigationItemSlotClassNames,
 } from '../../../../components/Carousel/CarouselNavigationItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { getColorScheme } from '../../colors';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 
-const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
-  CarouselNavigationItemProps,
+export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
+  CarouselNavigationItemStylesProps,
   CarouselNavigationVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -84,7 +84,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   },
 
   content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = p.indicator ? 26 : 0;
+    const widthAdjust = p.hasIndicator ? 26 : 0;
 
     return {
       whiteSpace: 'normal',
@@ -112,7 +112,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       background: v.indicatorActiveBackgroundColor,
     }),
 
-    ...(p.content && {
+    ...(p.hasContent && {
       marginRight: pxToRem(10),
     }),
 
@@ -124,5 +124,3 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
     }),
   }),
 };
-
-export default carouselNavigationItemStyles;

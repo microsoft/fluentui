@@ -17,7 +17,7 @@ describe('rtl', () => {
 });
 
 describe('getRTL', () => {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let RTL: any;
 
   beforeEach(() => {

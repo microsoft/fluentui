@@ -1,13 +1,11 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 
-import ToolbarRadioGroup from 'src/components/Toolbar/ToolbarRadioGroup';
+import { ToolbarRadioGroup } from 'src/components/Toolbar/ToolbarRadioGroup';
 import { mountWithProvider } from 'test/utils';
 import * as React from 'react';
 
 describe('ToolbarRadioGroup', () => {
-  isConformant(ToolbarRadioGroup, {
-    constructorName: 'ToolbarRadioGroup',
-  });
+  isConformant(ToolbarRadioGroup, { testPath: __filename, constructorName: 'ToolbarRadioGroup' });
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarRadioGroup, {

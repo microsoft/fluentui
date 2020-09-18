@@ -2,6 +2,308 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-focus_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-focus_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d1423ec6ee302d74966497ba4b8f6abb022aa884",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-focus_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix typo in docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/react-focus_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add temporary elementRef prop to FocusZone.",
+            "author": "czearing@outlook.com",
+            "commit": "05b9c8e6a0118a4073a8d308bd0583405762a4fd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/react-focus_v7.12.22",
+      "version": "7.12.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix memory leak in FocusZone",
+            "author": "mistastn@microsoft.com",
+            "commit": "042d257c2ebd8a9353a3c8fc9dfdf39084c498dc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-focus_v7.12.19",
+      "version": "7.12.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-focus_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Additional HTMLElement casts have been added in a few places for better typing. This should not impact the public API surface.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-focus_v7.12.12",
+      "version": "7.12.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-focus_v7.12.8",
+      "version": "7.12.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-focus_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "06d4f3a093cf6d531c8a9b40c596e4ff324b3090",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b9d1f305e0d7235fa0b635816bfb4bb3795ab0d8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/react-focus_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 May 2020 12:33:48 GMT",
+      "tag": "@fluentui/react-focus_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding `@fluentui/keyboard-key` as a dependency.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c6063b9e659c491e3d34b9ee12457013a23b9d35",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-focus_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "edc643b525f1ee1607cdcaca0f91ff4b6c4ef877",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding keyboard-key to FocusZone.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/react-focus_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pagingSupportDisabled handling in FocusZone",
+            "author": "jukapsia@microsoft.com",
+            "commit": "5628dcfce4afc45bd66137522fa9b0fc3f27f53e",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-focus_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Apr 2020 12:34:09 GMT",
       "tag": "@fluentui/react-focus_v7.7.0",
       "version": "7.7.0",

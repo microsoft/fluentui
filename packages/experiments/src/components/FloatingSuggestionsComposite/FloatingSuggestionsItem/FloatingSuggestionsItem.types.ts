@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '@uifabric/styling';
 
 export interface IFloatingSuggestionItemProps<T> {

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import MenuButton from 'src/components/MenuButton/MenuButton';
+import { MenuButton } from 'src/components/MenuButton/MenuButton';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from '../../../utils';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
 describe('MenuButton', () => {
-  isConformant(MenuButton, { autoControlledProps: ['open'] });
+  isConformant(MenuButton, { testPath: __filename, constructorName: 'MenuButton', autoControlledProps: ['open'] });
 
   describe('accessibility', () => {
     handlesAccessibility(MenuButton);

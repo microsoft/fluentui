@@ -34,6 +34,7 @@ const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
+const SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME = 'data-selection-touch-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
@@ -82,6 +83,13 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    * If true, modal selection is enabled on touch event.
    */
   enterModalOnTouch?: boolean;
+  /**
+   * Determines whether elements with the attribute `data-selection-touch-invoke` should be used as invocation targets
+   * for an item if the user is using touch.
+   *
+   * @defaultvalue false
+   */
+  enableTouchInvocationTarget?: boolean;
   /**
    * Determines if an item is selected on focus.
    *
@@ -334,6 +342,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { enableTouchInvocationTarget = false } = this.props;
+
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -359,7 +369,12 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
             }
           }
           break;
-        } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        } else if (
+          (this._isTouch &&
+            enableTouchInvocationTarget &&
+            this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
+        ) {
           // Items should be invokable even if selection is disabled.
           this._onInvokeClick(ev, index);
           break;
@@ -637,7 +652,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
    * so this is less likely to cause layout thrashing then doing it in mount.
    */
   private _findScrollParentAndTryClearOnEmptyClick(ev: MouseEvent) {
-    const scrollParent = findScrollableParent(this._root.current);
+    const scrollParent = findScrollableParent(this._root.current) as HTMLElement;
     // unbind this handler and replace binding with a binding on the actual scrollable parent
     this._events.off(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(scrollParent, 'click', this._tryClearOnEmptyClick);

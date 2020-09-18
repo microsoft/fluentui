@@ -1,14 +1,14 @@
 import * as _ from 'lodash';
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
 import { ButtonStylesProps } from '../../../../components/Button/Button';
 import { ButtonVariables } from './buttonVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import { faster, ultraFast } from '../../animations/durations';
 
-const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
+export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
@@ -35,6 +35,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       padding: v.padding,
       verticalAlign: 'middle',
       cursor: 'pointer',
+      transition: faster,
 
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
@@ -57,7 +58,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         },
 
         ':active': {
-          ...createAnimationStyles('scaleDownSoft', theme),
+          transition: ultraFast,
           color: v.colorActive,
           backgroundColor: v.backgroundColorActive,
           borderColor: v.borderColorActive,
@@ -129,7 +130,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: v.primaryBoxShadow,
 
           ':active': {
-            ...createAnimationStyles('scaleDownSoft', theme),
+            transition: ultraFast,
             backgroundColor: v.primaryBackgroundColorActive,
             boxShadow: 'none',
           },
@@ -152,7 +153,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         color: siteVariables.colorScheme.silver.foreground,
 
         ':active': {
-          ...createAnimationStyles('scaleDownSoft', theme),
+          transition: ultraFast,
           backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
           color: siteVariables.colorScheme.silver.foregroundHover,
         },
@@ -207,11 +208,13 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         minWidth: v.height,
         padding: 0,
 
-        ':hover': {
-          ...getIconFillOrOutlineStyles({ outline: false }),
-          color: v.textColorIconOnlyHover,
-          background: v.backgroundColorIconOnlyHover,
-        },
+        ...(!p.inverted && {
+          ':hover': {
+            ...getIconFillOrOutlineStyles({ outline: false }),
+            color: v.textColorIconOnlyHover,
+            background: v.backgroundColorIconOnlyHover,
+          },
+        }),
 
         ...(p.size === 'small' && {
           minWidth: v.sizeSmallHeight,
@@ -267,5 +270,3 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     }),
   }),
 };
-
-export default buttonStyles;

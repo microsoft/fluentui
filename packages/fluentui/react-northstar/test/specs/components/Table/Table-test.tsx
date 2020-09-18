@@ -1,12 +1,12 @@
 import * as React from 'react';
+
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
-import TableRow from 'src/components/Table/TableRow';
-
-import Table from 'src/components/Table/Table';
+import { TableRow } from 'src/components/Table/TableRow';
+import { Table } from 'src/components/Table/Table';
 
 describe('Table', () => {
-  isConformant(Table, { constructorName: 'Table' });
+  isConformant(Table, { testPath: __filename, constructorName: 'Table' });
 
   describe('accessiblity', () => {
     handlesAccessibility(Table, { defaultRootRole: 'table' });

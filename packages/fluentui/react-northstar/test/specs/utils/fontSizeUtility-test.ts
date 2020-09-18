@@ -1,6 +1,15 @@
-import { pxToRem } from 'src/utils';
+import { pxToRem, round } from 'src/utils/fontSizeUtility';
 
 describe('fontSizeUtility', () => {
+  describe('round', () => {
+    it('rounds values to 4 decimals', () => {
+      expect(round(3)).toBe(3);
+      expect(round(3.14)).toBe(3.14);
+      expect(round(3.14159265359)).toBe(3.1416);
+      expect(round(-3.14159265359)).toBe(-3.1416);
+    });
+  });
+
   describe('pxToRem', () => {
     it('returns 1rem for 16px with a default HTML font size of 16px.', () => {
       expect(pxToRem(16)).toEqual('1rem');

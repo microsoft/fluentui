@@ -1,3 +1,4 @@
+import { FontWeightProperty } from 'csstype';
 import { pxToRem } from '../../../../utils';
 
 export interface ListItemVariables {
@@ -6,12 +7,15 @@ export interface ListItemVariables {
 
   headerLineHeight: string;
   headerFontSize: string;
+  gap: string;
   zIndex: number;
 
   // Header Media
   headerMediaFontSize: string;
   // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
   headerMediaLineHeight: string;
+
+  importantFontWeight: FontWeightProperty;
 
   // Content
   contentFontSize: string;
@@ -28,10 +32,11 @@ export interface ListItemVariables {
   selectedBackgroundColor: string;
 }
 
-export default (siteVariables: any): ListItemVariables => {
+export const listItemVariables = (siteVariables: any): ListItemVariables => {
   return {
     minHeight: pxToRem(48),
     rootPadding: `0 ${pxToRem(18)} 0 ${pxToRem(20)}`,
+    gap: pxToRem(8),
     zIndex: siteVariables.zIndexes.foreground,
 
     // Header
@@ -44,6 +49,8 @@ export default (siteVariables: any): ListItemVariables => {
     // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
     headerMediaLineHeight: siteVariables.lineHeightSmall,
 
+    importantFontWeight: siteVariables.fontWeightBold,
+
     // Content
     contentFontSize: siteVariables.fontSizes.small,
     contentLineHeight: siteVariables.lineHeightSmall,
@@ -53,9 +60,11 @@ export default (siteVariables: any): ListItemVariables => {
     contentMediaLineHeight: siteVariables.lineHeightSmall,
 
     // Selectable
-    selectableFocusHoverColor: siteVariables.colors.white,
-    selectableFocusHoverBackgroundColor: siteVariables.colors.brand[500],
-    selectedColor: siteVariables.bodyColor,
-    selectedBackgroundColor: siteVariables.colors.grey[100],
+    selectableFocusHoverColor: siteVariables.colorScheme.default.foregroundHover,
+    selectableFocusHoverBackgroundColor: siteVariables.colorScheme.default.backgroundHover,
+
+    // Selected
+    selectedColor: siteVariables.colorScheme.default.foregroundPressed,
+    selectedBackgroundColor: siteVariables.colorScheme.default.backgroundActive1,
   };
 };

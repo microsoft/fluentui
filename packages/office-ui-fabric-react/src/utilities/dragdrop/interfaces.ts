@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { EventGroup } from '../../Utilities';
 
 /**
@@ -65,6 +64,10 @@ export interface IDragDropEvents {
    */
   onDragEnd?: (item?: any, event?: DragEvent) => void;
   /**
+   * On drag over event callback.
+   */
+  onDragOver?: (item?: any, event?: DragEvent) => void;
+  /**
    * Whether the whole group is draggable. This applies after canDrag returns true for the group.
    */
   canDragGroups?: boolean;
@@ -91,7 +94,7 @@ export interface IDragDropContext {
 }
 
 export interface IDragDropTarget {
-  root: React.ReactInstance;
+  root: HTMLElement;
   options: IDragDropOptions;
   key: string;
 }

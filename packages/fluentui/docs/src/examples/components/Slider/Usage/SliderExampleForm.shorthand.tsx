@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider, SliderProps, Flex, Form, Label } from '@fluentui/react-northstar';
+import { Slider, SliderProps, Flex, Form, Label, Input } from '@fluentui/react-northstar';
 
 const CustomSlider: React.FunctionComponent<SliderProps> = props => {
   const [value, setValue] = React.useState<string>('35');
@@ -20,6 +20,10 @@ const SliderExampleFormShorthand = () => (
         name: 'firstName',
         id: 'first-name-shorthand',
         key: 'first-name',
+        control: {
+          as: Input,
+          showSuccessIndicator: false,
+        },
         required: true,
       },
       {
@@ -27,6 +31,10 @@ const SliderExampleFormShorthand = () => (
         name: 'lastName',
         id: 'last-name-shorthand',
         key: 'last-name',
+        control: {
+          as: Input,
+          showSuccessIndicator: false,
+        },
         required: true,
       },
       {

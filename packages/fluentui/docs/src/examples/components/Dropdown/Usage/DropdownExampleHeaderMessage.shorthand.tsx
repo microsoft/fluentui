@@ -66,9 +66,25 @@ const DropdownExampleSearch = () => {
       }}
       noResultsMessage="We couldn't find any matches."
       headerMessage={externalSearch ? "We couldn't find any matches, but you can search externally!" : undefined}
-      getA11yStatusMessage={({ resultCount }) =>
-        externalSearch ? 'no results, but you can search externally' : `${resultCount} results available`
-      }
+      getA11yStatusMessage={({ resultCount, previousResultCount }) => {
+        if (loading) {
+          return 'loading results';
+        }
+
+        if (externalSearch) {
+          return 'no results, but you can search externally';
+        }
+
+        if (!resultCount) {
+          return 'No results are available.';
+        }
+        if (resultCount !== previousResultCount) {
+          return `${resultCount} result${
+            resultCount === 1 ? ' is' : 's are'
+          } available, use up and down arrow keys to navigate. Press Enter key to select.`;
+        }
+        return '';
+      }}
       getA11ySelectionMessage={{
         onAdd: item => (item === externalSearchItem ? 'loading external results' : `${item} has been selected.`),
       }}

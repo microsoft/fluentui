@@ -1,20 +1,27 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { tabListBehavior, Header, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
+import { tabListBehavior, Header, Dropdown, Text, Flex, Menu } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'
 // import ComponentDocSee from './ComponentDocSee'
-import { ComponentExamples } from './ComponentExamples';
 import ComponentProps from './ComponentProps';
 import { ComponentDocAccessibility } from './ComponentDocAccessibility';
 import { ThemeContext } from '../../context/ThemeContext';
 import ExampleContext from '../../context/ExampleContext';
-import ComponentPlayground from '../ComponentPlayground/ComponentPlayground';
 import { ComponentInfo } from '../../types';
-import ComponentBestPractices from './ComponentBestPractices';
 import * as _ from 'lodash';
+
+const ComponentExamples = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "examples-with-source" */ './ComponentExamples')).ComponentExamples,
+}));
+const ComponentPlayground = React.lazy(() =>
+  import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
+);
+const ComponentBestPractices = React.lazy(() =>
+  import(/* webpackChunkName: "best-practices" */ './ComponentBestPractices'),
+);
 
 const exampleEndStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -205,19 +212,17 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
                 key={info.displayName}
                 style={{ marginTop: '1rem' }}
               />
-              <Grid columns="auto 300px" styles={{ justifyContent: 'normal', justifyItems: 'stretch' }}>
-                <div>
-                  <ComponentBestPractices displayName={info.displayName} />
-                  <ExampleContext.Provider
-                    value={{
-                      activeAnchorName: activePath,
-                      onExamplePassed: this.handleExamplePassed,
-                    }}
-                  >
-                    <ComponentExamples displayName={info.displayName} />
-                  </ExampleContext.Provider>
-                </div>
-              </Grid>
+              <Flex column>
+                <ComponentBestPractices displayName={info.displayName} />
+                <ExampleContext.Provider
+                  value={{
+                    activeAnchorName: activePath,
+                    onExamplePassed: this.handleExamplePassed,
+                  }}
+                >
+                  <ComponentExamples displayName={info.displayName} />
+                </ExampleContext.Provider>
+              </Flex>
             </>
           )}
 

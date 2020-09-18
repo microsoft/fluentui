@@ -19,14 +19,10 @@ const menuProps: IContextualMenuProps = {
   directionalHintFixed: true,
 };
 
-const scenario = (
-  <IconButton
-    menuProps={menuProps}
-    iconProps={emojiIcon}
-    title="Emoji"
-    ariaLabel="Emoji"
-    styles={{ root: { background: 'red' } }}
-  />
+const styles = { root: { background: 'red' } };
+
+const Scenario = () => (
+  <IconButton menuProps={menuProps} iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" styles={styles} />
 );
 
-export default scenario;
+export default Scenario;

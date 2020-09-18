@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const CallControlShareIcon = createSvgIcon({
+export const CallControlShareIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="6 6 20 20" className={classes.svg}>
       <path
@@ -26,5 +26,3 @@ const CallControlShareIcon = createSvgIcon({
   ),
   displayName: 'CallControlShareIcon',
 });
-
-export default CallControlShareIcon;

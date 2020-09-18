@@ -11,6 +11,7 @@
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "build": "lerna run build --stream",
     "build:fluentui:docs": "gulp build:docs",
+    "build:min": "yarn buildto @fluentui/react-next @fluentui/react-northstar --min",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -24,87 +25,109 @@
     "clean": "lerna run clean --stream",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "code-style": "lerna run code-style --stream",
-    "create-component": "node scripts/create-component.js",
-    "create-package": "node scripts/create-package.js",
-    "create-page": "node scripts/create-page.js",
+    "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
     "change": "beachball change --scope \"!packages/fluentui/*\"",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
+    "lage": "lage",
     "lint": "lerna run lint --stream",
+    "lint:log": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
+    "prelint": "yarn satisfied && yarn syncpack:list-mismatches && node ./scripts/no-tslint.js",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
-    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "rebuild": "node ./scripts/invalidate-just-cache.js && npm run build",
     "release:fluentui:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
+    "runto": "node ./scripts/monorepo/runTo.js",
+    "run:published": "node ./scripts/monorepo/runPublished.js",
     "satisfied": "satisfied --skip-invalid",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
     "start": "node scripts/start.js",
+    "start:northstar": "yarn workspace @fluentui/docs start",
     "start-exp": "yarn workspace @uifabric/experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
+    "syncpack:list-mismatches": "syncpack list-mismatches",
+    "syncpack:fix": "syncpack fix-mismatches",
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
-    "test:fluentui:e2e": "gulp test:e2e",
-    "test:fluentui:visual": "gulp screener",
-    "test:fluentui:projects": "gulp test:projects",
+    "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
+    "test:fluentui:projects": "yarn workspace @fluentui/projects-test test",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "lerna run update-snapshots --stream",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.29.4",
-    "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5",
+    "beachball": "^1.36.0",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
+    "lerna": "^3.15.0",
+    "lage": "^0.19.0",
+    "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^4.5.4",
-    "tsconfig-paths": "^3.7.0"
+    "syncpack": "^5.6.7"
   },
   "license": "MIT",
-  "lint-staged": {
-    "linters": {
-      "*.{ts,tsx}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/tslint",
-        "git add"
-      ],
-      "*.{js,jsx,json,scss,css,html,htm,md,yml}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/auto-convert-change-files",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "common/scripts/*.js",
-      "packages/tslint-rules/tslint.json",
-      "**/CHANGELOG.*",
-      "**/*.api.md",
-      "**/_*.scss"
-    ]
-  },
   "workspaces": {
     "packages": [
       "apps/*",
       "packages/*",
       "scripts",
       "packages/fluentui/*"
+    ],
+    "nohoist": [
+      "packages/web-components/typescript",
+      "packages/web-components/typescript/**",
+      "packages/web-components/ts-loader",
+      "packages/web-components/ts-loader/**",
+      "packages/web-components/ts-node",
+      "packages/web-components/ts-node/**",
+      "packages/web-components/mocha",
+      "packages/web-components/mocha/**",
+      "packages/web-components/webpack",
+      "packages/web-components/webpack/**"
     ]
   },
   "resolutions": {
-    "webpack": "^4.35.0",
-    "autoprefixer": "7.2.6",
+    "eslint": "^7.1.0",
+    "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
+  },
+  "syncpack": {
+    "prod": true,
+    "dev": true,
+    "peer": false,
+    "source": [
+      "package.json",
+      "apps/*/package.json",
+      "packages/!(web-components)/package.json",
+      "packages/fluentui/*/package.json",
+      "scripts/package.json"
+    ],
+    "versionGroups": [
+      {
+        "packages": [
+          "@fluentui/web-components"
+        ],
+        "dependencies": [
+          "mocha",
+          "ts-loader",
+          "ts-node",
+          "tslib",
+          "typescript",
+          "webpack"
+        ]
+      }
+    ]
   }
 }

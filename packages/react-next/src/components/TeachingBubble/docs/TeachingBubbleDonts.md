@@ -1,0 +1,4 @@
+- Don't use TeachingBubbles when a Callout would be sufficient.
+- Don't use TeachingBubbles for user-invoked actions, such as clicking on a button or interacting with a UI element.
+- Don't continue to show a TeachingBubble once it's been show to the user, even if they have not completed the desired action.
+- Don't use TeachingBubbles for permanent parts of a UX.

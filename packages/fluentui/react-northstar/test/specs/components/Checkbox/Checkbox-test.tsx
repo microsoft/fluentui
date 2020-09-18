@@ -1,9 +1,10 @@
 import * as React from 'react';
-import Checkbox from 'src/components/Checkbox/Checkbox';
+import { Checkbox } from 'src/components/Checkbox/Checkbox';
 import { isConformant, handlesAccessibility, htmlIsAccessibilityCompliant } from 'test/specs/commonTests';
 
 describe('Checkbox', () => {
   isConformant(Checkbox, {
+    testPath: __filename,
     constructorName: 'Checkbox',
     autoControlledProps: ['checked'],
   });

@@ -35,6 +35,13 @@ export interface IHorizontalBarChartProps {
   hideRatio?: boolean[];
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * This property tells how to show data text on top right of bar chart.
    * @default 'default'
    */
@@ -108,21 +115,6 @@ export interface IHorizontalBarChartStyles {
    * Style for the chart data text denominator.
    */
   chartDataTextDenominator: IStyle;
-
-  /**
-   * styles for hover card root
-   */
-  hoverCardRoot?: IStyle;
-
-  /**
-   * styles for hover card text
-   */
-  hoverCardTextStyles?: IStyle;
-
-  /**
-   * styles for hover card data
-   */
-  hoverCardDataStyles?: IStyle;
 
   /**
    * Style for the benchmark triangle

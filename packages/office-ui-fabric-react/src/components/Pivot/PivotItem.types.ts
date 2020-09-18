@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IButtonProps } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 
 /**
  * {@docCategory Pivot}
@@ -26,7 +27,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Props for the header command button. This provides a way to pass in native props, such as data-* and aria-*,
    * for each pivot header/link element.
    */
-  headerButtonProps?: { [key: string]: string | number | boolean };
+  headerButtonProps?: IButtonProps | { [key: string]: string | number | boolean };
 
   /**
    * An required key to uniquely identify a pivot item.
@@ -55,12 +56,20 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   itemIcon?: string;
 
   /**
-   * Optional custom renderer for the pivot item link
+   * Optional custom renderer for the pivot item link.
    */
   onRenderItemLink?: IRenderFunction<IPivotItemProps>;
 
   /**
-   * Optional keytip for this PivotItem
+   * Optional keytip for this PivotItem.
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Defines whether to always render the pivot item (regardless of whether it is selected or not).
+   * Useful if you're rendering content that is expensive to mount.
+   *
+   * @defaultvalue false
+   */
+  alwaysRender?: boolean;
 }

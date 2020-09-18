@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { domEvent, nextFrame, mountWithProvider } from 'test/utils';
 
-import Portal from 'src/components/Portal/Portal';
-import PortalInner from 'src/components/Portal/PortalInner';
+import { Portal } from 'src/components/Portal/Portal';
+import { PortalInner } from 'src/components/Portal/PortalInner';
+import { act } from 'react-dom/test-utils';
 
 describe('Portal', () => {
   const testPortalInnerIsOpen = (rootWrapper, visible: boolean) => {
@@ -50,7 +51,9 @@ describe('Portal', () => {
 
       await nextFrame();
 
-      domEvent.click(document.body);
+      act(() => {
+        domEvent.click(document.body);
+      });
       wrapper.update();
       testPortalInnerIsOpen(wrapper, false);
     });
@@ -59,7 +62,9 @@ describe('Portal', () => {
       const wrapper = mountWithProvider(<Portal content={<p id="inner" />} defaultOpen />);
       testPortalInnerIsOpen(wrapper, true);
 
-      domEvent.click('#inner');
+      act(() => {
+        domEvent.click('#inner');
+      });
       wrapper.update();
       testPortalInnerIsOpen(wrapper, true);
     });

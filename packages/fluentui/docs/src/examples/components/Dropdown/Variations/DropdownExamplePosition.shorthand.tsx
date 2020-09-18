@@ -18,7 +18,7 @@ const DropdownExamplePosition = () => {
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
 
   return (
-    <Grid columns="1" variables={{ padding: '140px 0' }} styles={{ justifyItems: 'center' }}>
+    <Grid columns={1} variables={{ padding: '140px 0' }} styles={{ justifyItems: 'center' }}>
       <Dropdown
         open={open}
         items={inputItems}

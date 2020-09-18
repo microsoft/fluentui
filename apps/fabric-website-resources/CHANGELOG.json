@@ -2,6 +2,141 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.122",
+      "version": "7.6.122",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.117",
+      "version": "7.6.117",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.97",
+      "version": "7.6.97",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove tslint references",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.87",
+      "version": "7.6.87",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.82",
+      "version": "7.6.82",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up dependencies and clarify verison file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.68",
+      "version": "7.6.68",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.62",
+      "version": "7.6.62",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependenencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.61",
+      "version": "7.6.61",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing jest config from website resources. Adjusting typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f74c4188938a23df4b6edbf60f3bc89d15885142",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.54",
+      "version": "7.6.54",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.36",
       "version": "7.6.36",

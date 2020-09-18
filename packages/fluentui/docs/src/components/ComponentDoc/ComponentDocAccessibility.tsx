@@ -9,17 +9,17 @@ const InlineMarkdown = React.lazy(() => import('./InlineMarkdown'));
 
 const behaviorMenu = require('../../behaviorMenu');
 
-const knownIsusesId = 'known-issues';
+const knownIssuesId = 'known-issues';
 
 type ComponentDocAccessibility = {
   info: ComponentInfo;
 };
 
 export function containsAccessibility(info) {
-  const defaulBehaviorName = getDefaultBehaviorName(info);
+  const defaultBehaviorName = getDefaultBehaviorName(info);
   return (
     !!getDescription(info) ||
-    !!getBehaviorName(defaulBehaviorName) ||
+    !!getBehaviorName(defaultBehaviorName) ||
     (info.behaviors && info.behaviors.length > 0) ||
     !!getAccIssues(info)
   );
@@ -34,8 +34,8 @@ function getDefaultBehaviorName(info) {
   return defaultValue && defaultValue.split('.').pop();
 }
 
-function getBehaviorName(defaulBehaviorName) {
-  const filename = defaulBehaviorName && `${_.camelCase(defaulBehaviorName)}.ts`;
+function getBehaviorName(defaultBehaviorName) {
+  const filename = defaultBehaviorName && `${_.camelCase(defaultBehaviorName)}.ts`;
   for (const category of behaviorMenu) {
     const behavior = category.variations.find(variation => variation.name === filename);
     if (behavior) {
@@ -117,7 +117,7 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
                 })}
             </ul>
           </li>
-          {accIssues && <li>{link('Known issues', `#${knownIsusesId}`)} </li>}
+          {accIssues && <li>{link('Known issues', `#${knownIssuesId}`)} </li>}
         </ul>
       )}
 
@@ -146,7 +146,7 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
 
       {accIssues && (
         <>
-          <Header content="Known issues" id={knownIsusesId} as="h2" />
+          <Header content="Known issues" id={knownIssuesId} as="h2" />
           <Segment className="docs-example" styles={exampleStyle}>
             <Text style={{ whiteSpace: 'pre-line' }}>
               <InlineMarkdown value={accIssues} />

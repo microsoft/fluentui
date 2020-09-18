@@ -1,5 +1,5 @@
 import * as React from 'react';
-import DebugPanelData from './DebugPanelData';
+import { DebugPanelData } from './DebugPanelData';
 import { filter } from './utils';
 import { deepmerge } from '@fluentui/styles';
 
@@ -11,7 +11,7 @@ interface DebugPanelItemProps {
   commentKeyPredicate?: (val: any) => boolean;
 }
 
-const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
+export const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
   const [value, setValue] = React.useState('');
   const { data: propData, valueKey, commentKey, commentKeyPredicate, idKey } = props;
 
@@ -68,5 +68,3 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
     </>
   );
 };
-
-export default DebugPanelItem;

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
-import TableCell from 'src/components/Table/TableCell';
+import { TableCell } from 'src/components/Table/TableCell';
 
 describe('TableCell', () => {
-  isConformant(TableCell, { constructorName: 'TableCell' });
+  isConformant(TableCell, { testPath: __filename, constructorName: 'TableCell' });
 
   describe('accessiblity', () => {
     handlesAccessibility(TableCell, { defaultRootRole: 'cell' });

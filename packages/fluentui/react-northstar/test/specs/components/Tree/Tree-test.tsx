@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import Tree from 'src/components/Tree/Tree';
+import { Tree } from 'src/components/Tree/Tree';
 import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
 import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -71,7 +71,11 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 };
 
 describe('Tree', () => {
-  isConformant(Tree, { autoControlledProps: ['activeItemIds'] });
+  isConformant(Tree, {
+    testPath: __filename,
+    constructorName: 'Tree',
+    autoControlledProps: ['activeItemIds', 'selectedItemIds'],
+  });
 
   describe('activeItemIds', () => {
     it('should contain index of item open at click', () => {
@@ -182,6 +186,23 @@ describe('Tree', () => {
       const wrapper = mountWithProvider(<Tree items={itemsClone} activeItemIds={['2', '21']} />);
 
       checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
+    });
+
+    it('should propagate correct items through onActiveItemIdsChange', () => {
+      const itemsClone = JSON.parse(JSON.stringify(items));
+      const onActiveItemIdsChange = jest.fn();
+      const wrapper = mountWithProvider(
+        <Tree items={itemsClone} activeItemIds={['2', '21']} onActiveItemIdsChange={onActiveItemIdsChange} />,
+      );
+
+      getTitles(wrapper)
+        .at(0) // title 1
+        .simulate('click');
+
+      expect(onActiveItemIdsChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ activeItemIds: expect.arrayContaining(['2', '21', '1']) }),
+      );
     });
   });
 });

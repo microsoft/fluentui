@@ -253,10 +253,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vcf'],
   },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
+  classifier: {
+    extensions: ['classifier'],
+  },
   csv: {
     extensions: ['csv'],
   },
+  desktopfolder: {},
   docset: {},
+  documentfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -284,6 +289,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
+  officescript: {
+    extensions: ['osts'],
+  },
   splist: {
     extensions: ['listitem'],
   },
@@ -330,6 +338,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   onetoc: {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // this icon represents a complete, logical notebook.
   },
+  pbiapp: {},
   pdf: {
     extensions: ['pdf'],
   },
@@ -376,6 +385,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   photo360: {},
+  picturesfolder: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
@@ -399,7 +409,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   sponews: {},
   spreadsheet: {
-    extensions: ['odc', 'ods', 'gsheet', 'numbers'],
+    extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   stream: {},
   rtf: {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -50,10 +50,17 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
   }
 }
 
+export function getInitialResponsiveMode() {
+  return _defaultMode || _lastMode || ResponsiveMode.large;
+}
+
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
+    public static contextType = WindowContext;
+    public context: React.ContextType<typeof WindowContext>;
+
     private _events: EventGroup;
 
     constructor(props: TProps) {
@@ -62,12 +69,12 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
+        responsiveMode: getInitialResponsiveMode(),
       };
     }
 
     public componentDidMount(): void {
-      this._events.on(window, 'resize', this._onResize);
+      this._events.on(this.context.window, 'resize', this._onResize);
       this._onResize();
     }
 
@@ -88,9 +95,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
     }
 
     private _onResize = () => {
-      const element = findDOMNode(this) as Element;
-      const currentWindow = (element && getWindow(element)) || window;
-      const responsiveMode = getResponsiveMode(currentWindow);
+      const responsiveMode = getResponsiveMode(this.context.window);
 
       if (responsiveMode !== this.state.responsiveMode) {
         this.setState({
@@ -102,7 +107,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
-function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -112,7 +117,7 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
       }
     } catch (e) {
       // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-      responsiveMode = _defaultMode || _lastMode || ResponsiveMode.large;
+      responsiveMode = getInitialResponsiveMode();
     }
 
     // Tracking last mode just gives us a better default in future renders,

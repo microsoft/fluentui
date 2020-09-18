@@ -34,6 +34,12 @@ describe('concatStyleSets', () => {
     });
   });
 
+  it('can ignore falsey values in typings', () => {
+    const result = concatStyleSets({ a: { background: 'red' } }, null);
+
+    expect(result).toEqual({ a: { background: 'red' } });
+  });
+
   it('can concat mixed style sets with style functions on both ends', () => {
     const fn1 = jest.fn().mockReturnValue({
       root: { background: 'green', fontSize: 12 },

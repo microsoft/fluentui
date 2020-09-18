@@ -2,11 +2,11 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { TooltipContentStylesProps } from '../../../../components/Tooltip/TooltipContent';
 import { TooltipContentVariables } from './tooltipContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
-import pointerSvg from '../../pointerSvgUrl';
+import { pointerSvgUrl } from '../../pointerSvgUrl';
 
-const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
+export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'block',
+    display: 'none',
     position: 'absolute',
 
     maxWidth: v.maxWidth,
@@ -17,12 +17,12 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
 
       ...getContainerStyles({
         placement: p.basePlacement,
-        margin: v.pointerMargin,
+        padding: v.pointerMargin,
       }),
     }),
 
-    ...(!p.open && {
-      opacity: 0,
+    ...(p.open && {
+      display: 'block',
     }),
   }),
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => ({
@@ -36,12 +36,13 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       borderSize: v.borderSize,
       borderColor: 'transparent',
       gap: v.pointerGap,
+      padding: v.pointerMargin,
       height: v.pointerHeight,
       width: v.pointerWidth,
 
       placement: p.basePlacement,
       rtl,
-      svg: pointerSvg(v.backgroundColor),
+      svg: pointerSvgUrl(v.backgroundColor),
     }),
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -59,5 +60,3 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
     }),
   }),
 };
-
-export default tooltipContentStyles;

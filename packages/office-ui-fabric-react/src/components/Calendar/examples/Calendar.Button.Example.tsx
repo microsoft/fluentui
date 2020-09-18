@@ -32,12 +32,9 @@ const DayPickerStrings = {
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
   closeButtonAriaLabel: 'Close',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };
-
-export interface ICalendarButtonExampleState {
-  showCalendar: boolean;
-  selectedDate: Date | null;
-}
 
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
@@ -55,7 +52,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
   props: ICalendarButtonExampleProps,
 ) => {
   const [showCalendar, { toggle: toggleShowCalendar }] = useBoolean(false);
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const {
     showMonthPickerAsOverlay = false,
@@ -90,8 +87,9 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
           onDismiss={toggleShowCalendar}
           setInitialFocus
         >
-          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap={true}>
+          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
             <Calendar
+              // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               onDismiss={toggleShowCalendar}
               isMonthPickerVisible={isMonthPickerVisible}

@@ -13,7 +13,8 @@ export async function getMarkdownForEntry(entry: IChangelogEntry): Promise<strin
   const comments =
     (await _getChangeComments('Breaking changes', entry.comments.major)) +
     (await _getChangeComments('Minor changes', entry.comments.minor)) +
-    (await _getChangeComments('Patches', entry.comments.patch));
+    (await _getChangeComments('Patches', entry.comments.patch)) +
+    (await _getChangeComments('Prerelease changes', entry.comments.prerelease));
 
   return (comments || '*No change notes provided*') + EOL + EOL;
 }
@@ -25,14 +26,14 @@ export async function getMarkdownForEntry(entry: IChangelogEntry): Promise<strin
  */
 async function _getChangeComments(title: string, comments: ChangelogEntry[] | undefined): Promise<string> {
   if (comments) {
-    const lines = ['## ' + title, ''];
+    const lines = ['### ' + title, ''];
     for (const comment of comments) {
       let line = `- ${comment.comment} (`;
       if (comment.commit) {
         // Prefer linking to the PR if we can find it (this is generally more useful than the commit)
         const pr = await getPullRequest(comment);
         if (pr) {
-          line += `PR #${pr.number} by [${pr.author}](${pr.author.url})`;
+          line += `PR #${pr.number} by [${pr.author.username}](${pr.author.url})`;
         } else {
           line += `[commit](https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/${comment.commit})`;
         }

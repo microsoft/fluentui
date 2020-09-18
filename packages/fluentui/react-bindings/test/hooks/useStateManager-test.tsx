@@ -69,13 +69,15 @@ type ActionsComponentProps = {
 };
 
 const ActionsComponent: React.FunctionComponent<ActionsComponentProps> = props => {
+  const { onRender, onUpdate } = props;
+
   const { actions, state } = useStateManager(createTestManager);
   const handleClick = React.useCallback(() => actions.toggle(), [actions]);
 
-  props.onRender();
+  onRender();
   React.useEffect(() => {
-    props.onUpdate();
-  }, [actions]);
+    onUpdate();
+  }, [actions, onUpdate]);
 
   return <div data-open={state.open} onClick={handleClick} />;
 };

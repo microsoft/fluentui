@@ -28,7 +28,11 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
           required
           styles={dropdownStyles}
         />
-        <PrimaryButton text="Set focus" onClick={onSetFocus} />
+        <PrimaryButton
+          text="Set focus"
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onSetFocus}
+        />
       </Stack>
       <Dropdown
         placeholder="Required with no label"

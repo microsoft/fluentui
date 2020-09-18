@@ -9,7 +9,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-hidden=true', if there is no 'alt' property provided.
  * Adds attribute 'aria-hidden=true', if there is no 'aria-label' property provided.
  */
-const iconBehavior: Accessibility<IconBehaviorProps> = props => ({
+export const iconBehavior: Accessibility<IconBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'img',
@@ -17,8 +17,6 @@ const iconBehavior: Accessibility<IconBehaviorProps> = props => ({
     },
   },
 });
-
-export default iconBehavior;
 
 export type IconBehaviorProps = {
   /** Alternative text. */

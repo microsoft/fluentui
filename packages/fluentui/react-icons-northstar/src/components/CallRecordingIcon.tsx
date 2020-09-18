@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const CallRecordingIcon = createSvgIcon({
+export const CallRecordingIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <circle cx="16" cy="16" r="4.6" />
@@ -10,5 +10,3 @@ const CallRecordingIcon = createSvgIcon({
   ),
   displayName: 'CallRecordingIcon',
 });
-
-export default CallRecordingIcon;

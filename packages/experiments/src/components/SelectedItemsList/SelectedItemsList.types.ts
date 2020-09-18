@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
-
+import { IDragDropEvents, IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -35,6 +35,21 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
    * Override onItemChange to support replacing an item with multiple items.
    */
   onItemChange: (newItem: T | T[], index: number) => void;
+
+  /**
+   * Handling drag and drop events
+   */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /**
+   * A list of events to register
+   */
+  eventsToRegister?: { eventName: string; callback: (item?: any, index?: number, event?: any) => void }[];
 }
 
 export type BaseSelectedItem = {
@@ -43,7 +58,6 @@ export type BaseSelectedItem = {
 
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
 export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<ISelectedItemsList<T>>;
 
@@ -84,7 +98,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   removeButtonAriaLabel?: string;
 
   /**
-   * A callback when and item or items are removed
+   * A callback when an item or items are removed
    */
   onItemsRemoved?: (removedItems: T[]) => void;
 
@@ -92,4 +106,27 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * A callback on whether this item can be removed
    */
   canRemoveItem?: (item: T) => boolean;
+
+  /** Drag & drop event callback interface. */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /**
+   * Callback for when items need to be converted to a string for a drag action
+   */
+  serializeItemsForDrag?: (items: T[]) => string;
+
+  /**
+   * Callback for when a data transfer item (drag drop action) needs to be converted to an item or items
+   */
+  deserializeItemsFromDrop?: (input: string) => T[];
+
+  /**
+   * Callback for when an item or items needs to be inserted into the list
+   */
+  dropItemsAt?: (insertIndex: number, itemsToInsert: T[], indicesToRemove: number[]) => void;
 }

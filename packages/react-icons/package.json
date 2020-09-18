@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "0.1.7",
+  "version": "0.3.4",
   "description": "React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,29 +26,28 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
+    "@types/react-is": "^16.7.1",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "typescript-plugin-css-modules": "^2.2.0"
+    "react-is": "^16.6.3",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.11",
-    "@uifabric/styling": "^7.11.9",
-    "@uifabric/utilities": "^7.16.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/utilities": "^7.32.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

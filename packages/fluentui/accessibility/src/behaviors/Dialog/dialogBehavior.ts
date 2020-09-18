@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes } from '../../types';
-import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
+import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
 
 /**
  * @description
@@ -7,13 +7,12 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
  * Adds tabIndex='0' to 'trigger' slot, if it is not tabbable element and no tabIndex attribute provided.
  *
  * @specification
- * Adds attribute 'aria-disabled=true' to 'trigger' slot if 'disabled' property is true. Does not set the attribute otherwise.
  * Adds attribute 'aria-modal=true' to 'popup' slot.
  * Adds attribute 'role=dialog' to 'popup' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'popup' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'popup' slot.
  */
-const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
+export const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
   const behaviorData = popupBehavior(props);
 
   const defaultAriaLabelledBy = getDefaultAriaLabelledBy(props);
@@ -58,9 +57,7 @@ const getDefaultAriaDescribedBy = (props: DialogBehaviorProps) => {
   return props.contentId;
 };
 
-export default dialogBehavior;
-
-type DialogBehaviorProps = {
+export type DialogBehaviorProps = {
   headerId?: string;
   contentId?: string;
 } & PopupBehaviorProps &

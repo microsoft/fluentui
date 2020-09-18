@@ -17,6 +17,7 @@ module.exports = api => {
     [
       '@babel/preset-env',
       {
+        loose: true,
         modules: useESModules ? false : 'cjs',
         targets: isNode ? { node: '10' } : undefined,
         exclude: [
@@ -30,13 +31,24 @@ module.exports = api => {
     ['@babel/preset-typescript', { allowNamespaces: true }],
   ];
   const plugins = [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-nullish-coalescing-operator', { loose: true }],
     ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
-    '@babel/plugin-proposal-optional-chaining',
+    ['@babel/plugin-proposal-optional-chaining', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', { useESModules }],
 
+    useESModules && 'babel-plugin-iife-wrap-react-components',
+    useESModules && [
+      'babel-plugin-annotate-pure-imports',
+      {
+        imports: {
+          '@fluentui/react-bindings': 'compose',
+          '@fluentui/react-context-selector': 'createContext',
+          '../utils/createSvgIcon': ['createSvgIcon'],
+        },
+      },
+    ],
     isDistBundle && 'lodash',
   ].filter(Boolean);
 

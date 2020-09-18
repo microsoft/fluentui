@@ -1,31 +1,47 @@
 import { KnobInspector, KnobProvider } from '@fluentui/docs-components';
-import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react-northstar';
+import {
+  Divider,
+  Flex,
+  Header,
+  Provider,
+  RadioGroup,
+  Text,
+  teamsTheme,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+} from '@fluentui/react-northstar';
 // @ts-ignore
 import pkg from '@fluentui/react-northstar/package.json';
 import * as React from 'react';
 
-import KnobsSnippet from './KnobsSnippet';
-import knobComponents from './knobComponents';
+import { KnobsSnippet } from './KnobsSnippet';
+import { knobComponents } from './knobComponents';
 
 const items = [
   {
     key: 'light',
     label: 'Teams Light',
-    value: 'teams',
+    value: 'teamsTheme',
   },
   {
     key: 'dark',
     label: 'Teams Dark',
-    value: 'teamsDark',
+    value: 'teamsDarkTheme',
   },
   {
     key: 'hc',
     label: 'Teams High Contrast',
-    value: 'teamsHighContrast',
+    value: 'teamsHighContrastTheme',
   },
 ];
 
-const SandboxApp: React.FunctionComponent = props => {
+const themes = {
+  teamsTheme,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+};
+
+export const SandboxApp: React.FunctionComponent = props => {
   const { children } = props;
   const [theme, setTheme] = React.useState(items[0].value);
 
@@ -75,5 +91,3 @@ const SandboxApp: React.FunctionComponent = props => {
     </Provider>
   );
 };
-
-export default SandboxApp;

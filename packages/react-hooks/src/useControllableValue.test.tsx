@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { useControllableValue } from './useControllableValue';
+import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useControllableValue', () => {
   it('respects controlled value', () => {
@@ -56,4 +57,21 @@ describe('useControllableValue', () => {
     wrapper.setProps({ defaultValue: false });
     expect(resultValue!).toBe(true);
   });
+
+  validateHookValueNotChanged('returns the same setter callback', () => {
+    const [, setValue] = useControllableValue('hello', 'world');
+    return [setValue];
+  });
+
+  validateHookValueNotChanged(
+    'returns same setter callback even if param values change',
+    () => {
+      const [, setValue] = useControllableValue('a', 'b', () => undefined);
+      return [setValue];
+    },
+    () => {
+      const [, setValue] = useControllableValue('c', 'd', () => undefined);
+      return [setValue];
+    },
+  );
 });

@@ -3,13 +3,11 @@ import {
   Grid,
   Header,
   Segment,
-  ProviderContextPrepared,
+  useFluentContext,
   ThemeComponentVariablesPrepared,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import ComponentExampleVariable, { ComponentExampleVariableProps } from './ComponentExampleVariable';
 import { mergeThemeVariables } from '@fluentui/styles';
@@ -33,7 +31,7 @@ const getGroupName = (variableName: string): string => {
 const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariablesProps> = props => {
   const { onChange, overriddenVariables, usedVariables } = props;
 
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
+  const { theme } = useFluentContext();
   const [hideUnused] = React.useState(true);
 
   const componentVariables: ThemeComponentVariablesPrepared = _.pickBy(
@@ -90,7 +88,7 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
                 <Header as="h3" styles={{ marginTop: '4px', marginBottom: '4px' }}>
                   {groupName}
                 </Header>
-                <Grid columns="4">
+                <Grid columns={4}>
                   {_.map(variableNames, variableName => (
                     <ComponentExampleVariable
                       componentName={componentName}

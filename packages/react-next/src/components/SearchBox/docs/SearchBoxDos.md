@@ -1,0 +1,5 @@
+- Use placeholder text in the SearchBox to describe what users can search for.
+- Example: "Search"; "Search files"; "Search site"
+- Once the user has clicked into the SearchBox but hasn’t entered input yet, use "hint text" to communicate search scope.
+- Examples: "Try searching for a PDFs"; "Search contacts list"; "Type to find \<content type\>"
+- Use the Underlined SearchBox for CommandBars.

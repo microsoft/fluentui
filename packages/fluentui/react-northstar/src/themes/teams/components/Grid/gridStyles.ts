@@ -1,14 +1,12 @@
 import { GridVariables } from './gridVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { GridProps } from '../../../../components/Grid/Grid';
+import { GridStylesProps } from '../../../../components/Grid/Grid';
 
-const getCSSTemplateValue = (template: string | number): string => {
-  const templateAsNumber = Number(template);
-
-  return !isNaN(templateAsNumber) && templateAsNumber > 0 ? `repeat(${template}, 1fr)` : String(template);
+const getCSSTemplateValue = (template: number, gap: string = ''): string => {
+  return Array.from({ length: template }, () => '1fr').join(` ${gap} `);
 };
 
-const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
+export const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariables> = {
   root: ({ props, variables: { height, width, defaultColumnCount, gridGap, padding } }): ICSSInJSStyle => {
     const { rows, columns = !props.rows && defaultColumnCount } = props;
 
@@ -23,16 +21,14 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
         gridTemplateRows: getCSSTemplateValue(rows),
-        msGridRows: getCSSTemplateValue(rows),
+        msGridRows: getCSSTemplateValue(rows, gridGap),
       }),
       ...(columns && {
         gridTemplateColumns: getCSSTemplateValue(columns),
-        msGridColumns: getCSSTemplateValue(columns),
+        msGridColumns: getCSSTemplateValue(columns, gridGap),
       }),
 
       '& > *': { outlineOffset: '-3px' },
     };
   },
 };
-
-export default gridStyles;

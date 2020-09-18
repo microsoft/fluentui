@@ -1,25 +1,19 @@
 import { Accessibility, textAreaBehavior, TextAreaBehaviorProps } from '@fluentui/accessibility';
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
+  ComponentWithAs,
   useAutoControlled,
   getElementType,
   useTelemetry,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -52,12 +46,23 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
   fluid?: boolean;
 }
 
-export type TextAreStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
 
 export const textAreaClassName = 'ui-textarea';
 
-export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStaticProps<TextAreaProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A TextArea is a multi-line plan-text editing control.
+ *
+ * @accessibility
+ * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for textarea.
+ * When using maxlength attribute, provide the information about max length in label for screen reader.
+ * @accessibilityIssues
+ * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
+ * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
+ */
+export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
+  FluentComponentStaticProps<TextAreaProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
   setStart();
@@ -80,7 +85,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<TextAreStylesProps>(TextArea.displayName, {
+  const { classes } = useStyles<TextAreaStylesProps>(TextArea.displayName, {
     className: textAreaClassName,
     mapPropsToStyles: () => ({
       inverted,
@@ -131,6 +136,7 @@ TextArea.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  inverted: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
@@ -143,15 +149,3 @@ TextArea.handledProps = Object.keys(TextArea.propTypes) as any;
 TextArea.create = createShorthandFactory({
   Component: TextArea,
 });
-
-/**
- * A TextArea is a multi-line plan-text editing control.
- *
- * @accessibility
- * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for textarea.
- * When using maxlength attribute, provide the information about max length in label for screen reader.
- * @accessibilityIssues
- * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
- * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
- */
-export default withSafeTypeForAs<typeof TextArea, TextAreaProps, 'textarea'>(TextArea);

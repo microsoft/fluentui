@@ -47,7 +47,7 @@ const values = {
   compactRowVerticalPadding: 6,
 };
 
-export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
+export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const {
     theme,
     isSelected,

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ISearchBoxStyles, SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
@@ -9,11 +8,11 @@ import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
 
-  const onAbort = useConstCallback(() => {
+  const onAbort = React.useCallback(() => {
     setItems(menuItems);
-  });
+  }, []);
 
-  const onChange = useConstCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
+  const onChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = menuItems.filter(
       item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
     );
@@ -31,13 +30,13 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     }
 
     setItems(filteredItems);
-  });
+  }, []);
 
-  const renderMenuList = useConstCallback(
+  const renderMenuList = React.useCallback(
     (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
       return (
         <div>
-          <div style={wrapperStyle}>
+          <div style={{ borderBottom: '1px solid #ccc' }}>
             <SearchBox
               ariaLabel="Filter actions by text"
               placeholder="Filter actions"
@@ -50,6 +49,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
         </div>
       );
     },
+    [onAbort, onChange],
   );
 
   const menuProps = React.useMemo(
@@ -59,13 +59,12 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
       shouldFocusOnMount: true,
       items,
     }),
-    [items],
+    [items, renderMenuList],
   );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-const wrapperStyle: React.CSSProperties = { borderBottom: '1px solid #ccc' };
 const filteredItemsStyle: React.CSSProperties = {
   width: '100%',
   height: '100px',
@@ -78,37 +77,12 @@ const searchBoxStyles: ISearchBoxStyles = {
 };
 
 const menuItems: IContextualMenuItem[] = [
-  {
-    key: 'newItem',
-    text: 'New',
-    onClick: () => console.log('New clicked'),
-  },
-  {
-    key: 'rename',
-    text: 'Rename',
-    onClick: () => console.log('Rename clicked'),
-  },
-  {
-    key: 'edit',
-    text: 'Edit',
-    onClick: () => console.log('Edit clicked'),
-  },
-  {
-    key: 'properties',
-    text: 'Properties',
-    onClick: () => console.log('Properties clicked'),
-  },
-  {
-    key: 'linkNoTarget',
-    text: 'Link same window',
-    href: 'http://bing.com',
-  },
-  {
-    key: 'linkWithTarget',
-    text: 'Link new window',
-    href: 'http://bing.com',
-    target: '_blank',
-  },
+  { key: 'newItem', text: 'New', onClick: () => console.log('New clicked') },
+  { key: 'rename', text: 'Rename', onClick: () => console.log('Rename clicked') },
+  { key: 'edit', text: 'Edit', onClick: () => console.log('Edit clicked') },
+  { key: 'properties', text: 'Properties', onClick: () => console.log('Properties clicked') },
+  { key: 'linkNoTarget', text: 'Link same window', href: 'http://bing.com' },
+  { key: 'linkWithTarget', text: 'Link new window', href: 'http://bing.com', target: '_blank' },
   {
     key: 'linkWithOnClick',
     name: 'Link click',

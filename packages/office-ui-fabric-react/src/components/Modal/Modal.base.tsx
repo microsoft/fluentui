@@ -76,6 +76,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
+      // TODO: investigate removing
+      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
@@ -91,7 +93,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     this._allowTouchBodyScroll = allowTouchBodyScroll;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
@@ -178,10 +179,11 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       subtitleAriaId,
       theme,
       topOffsetFixed,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onLayerDidMount,
       isModeless,
       dragOptions,
+      enableAriaHiddenSiblings,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -224,6 +226,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
+        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
       >
         {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -267,7 +270,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
-            <div className={classNames.root}>
+            <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
@@ -398,9 +401,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       const delta = this._getMoveDelta(event);
 
       switch (event.keyCode) {
+        /* eslint-disable no-fallthrough */
         case KeyCodes.escape:
           this.setState({ x: this._lastSetX, y: this._lastSetY });
         case KeyCodes.enter: {
+          // TODO: determine if fallthrough was intentional
+          /* eslint-enable no-fallthrough */
           this._lastSetX = 0;
           this._lastSetY = 0;
           this.setState({ isInKeyboardMoveMode: false });

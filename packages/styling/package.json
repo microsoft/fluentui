@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.11.9",
+  "version": "7.16.5",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -9,7 +9,10 @@
   "license": "MIT",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": true,
+  "sideEffects": [
+    "lib/version.js",
+    "lib/index.js"
+  ],
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
@@ -24,18 +27,17 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.0",
-    "es6-map": "^0.1.5",
-    "es6-weak-map": "^2.0.2"
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/merge-styles": "^7.11.1",
-    "@uifabric/set-version": "^7.0.11",
-    "@uifabric/utilities": "^7.16.0",
+    "@fluentui/theme": "^0.3.2",
+    "@uifabric/merge-styles": "^7.19.1",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/utilities": "^7.32.2",
     "tslib": "^1.10.0"
   }
 }

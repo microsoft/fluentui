@@ -3,7 +3,14 @@ import DocPage from '../components/DocPage/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import ColorSchemes from '../components/ColorSchemes';
 
-import { Dropdown, themes, Flex, Provider } from '@fluentui/react-northstar';
+import {
+  Dropdown,
+  Flex,
+  Provider,
+  teamsTheme,
+  teamsHighContrastTheme,
+  teamsDarkTheme,
+} from '@fluentui/react-northstar';
 import { faderStyles } from '../components/Fader';
 import { colorVariantsStyles } from '../components/ColorVariants';
 import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
@@ -37,7 +44,7 @@ export default () => {
             onChange={(e, { value }) => setColor(value as string)}
           />
           <ColorSchemes
-            themes={[themes.teams, themes.teamsHighContrast, themes.teamsDark]}
+            themes={[teamsTheme, teamsHighContrastTheme, teamsDarkTheme]}
             headers={[
               {
                 as: 'h3',

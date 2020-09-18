@@ -1,12 +1,11 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import {
-  RadioGroupItemProps,
-  RadioGroupItemState,
+  RadioGroupItemStylesProps,
   radioGroupItemSlotClassNames,
 } from '../../../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,
@@ -20,7 +19,7 @@ const restHoverFocusTextColor = textColor => ({
   },
 });
 
-const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupItemState, RadioGroupItemVariables> = {
+export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioGroupItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     position: 'relative',
     alignItems: 'center',
@@ -64,25 +63,21 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupI
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     margin: `0 ${pxToRem(12)} 0 0`,
-    borderRadius: '50%',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: v.indicatorBorderColorDefault,
+    outline: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: pxToRem(12),
     height: pxToRem(12),
+    verticalAlign: 'midddle',
+    color: v.indicatorColorDefault,
 
     ...(p.checked && {
-      background: v.indicatorBackgroundColorChecked,
-      borderColor: 'transparent',
+      color: v.indicatorBackgroundColorChecked,
     }),
 
     ...(p.disabled && {
-      borderColor: v.colorDisabled,
-      ...(p.checked && {
-        background: v.colorDisabled,
-      }),
+      color: v.colorDisabled,
     }),
   }),
 };
-
-export default radioStyles;

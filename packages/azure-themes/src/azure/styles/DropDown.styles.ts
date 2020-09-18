@@ -1,5 +1,4 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { FontSizes } from '../AzureType';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 
@@ -18,7 +17,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
+          borderWidth: '0',
         },
       },
     },
@@ -27,30 +26,35 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       height: StyleConstants.inputControlHeightInner,
       lineHeight: StyleConstants.inputControlHeight,
     },
-    caretDown: {
-      color: semanticColors.inputText,
-    },
+    caretDown: [
+      {
+        color: semanticColors.inputText,
+      },
+      disabled && {
+        color: semanticColors.disabledBodyText,
+      },
+    ],
     dropdown: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.medium.fontSize,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
+
         selectors: {
+          ':focus::after, :focus': {
+            //borderColor: semanticColors.inputBorderHovered,
+          },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
+            borderColor: semanticColors.inputBorderHovered,
           },
         },
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.inputBorder,
-        borderStyle: 'solid',
-        borderWidth: '1px',
+        borderWidth: '0px',
       },
       !disabled && {
         selectors: {
@@ -79,13 +83,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     title: [
       {
         height: StyleConstants.inputControlHeight,
-        lineHeight: StyleConstants.inputControlHeight,
+        lineHeight: '21px',
         borderColor: semanticColors.inputBorder,
         selectors: {
           span: {
-            lineHeight: StyleConstants.inputControlHeightInner,
+            lineHeight: StyleConstants.inputControlHeight,
             position: 'absolute',
-            top: '1px',
           },
         },
       },
@@ -107,25 +110,24 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItem: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: theme.fonts.medium.fontSize,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
           borderColor: 'transparent',
-          color: semanticColors.bodyText,
+          color: semanticColors.buttonTextHovered,
         },
       },
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size12,
+      fontSize: theme.fonts.medium.fontSize,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size12,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
-      fontWeight: 'bold',
       selectors: {
         '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
@@ -135,11 +137,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     },
     dropdownItemHeader: {
-      color: semanticColors.focusBorder,
+      color: semanticColors.inputText,
+      fontWeight: '600',
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

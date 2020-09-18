@@ -1,6 +1,8 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { DialogVariables } from './dialogVariables';
+import { DialogFooterStylesProps } from '../../../../components/Dialog/DialogFooter';
 
-export default {
+export const dialogFooterStyles: ComponentSlotStylesPrepared<DialogFooterStylesProps, DialogVariables> = {
   root: (): ICSSInJSStyle => ({
     textAlign: 'right',
   }),

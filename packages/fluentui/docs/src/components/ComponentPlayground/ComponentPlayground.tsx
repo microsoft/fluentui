@@ -2,7 +2,7 @@ import { KnobProvider } from '@fluentui/docs-components';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { examplePlaygroundContext } from '../../utils';
+import { examplePlaygroundContext } from '../../contexts/examplePlaygroundContext';
 import ComponentPlaygroundTemplate from './ComponentPlaygroundTemplate';
 import usePlaygroundComponent from './usePlaygroundComponent';
 
@@ -20,7 +20,6 @@ const unsupportedComponents = [
   'Flex',
   'Form',
   'Grid',
-  'HierarchicalTree',
   'ItemLayout',
   'Layout',
   'List',
@@ -50,6 +49,8 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
     return <ComponentPlaygroundTemplate component={component} />;
   }
 
+  // This is intentional, `playgroundPath` will not change during execution
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [element, unsupportedProps] = usePlaygroundComponent(props.componentName);
 
   return (

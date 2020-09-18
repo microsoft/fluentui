@@ -1,19 +1,23 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
+import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { isIE11 } from 'office-ui-fabric-react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
-
-  const chartWidth = width! + 50;
-  const chartHeight = height! + 50;
-  const chartMargin = { left: 35, right: 0, top: 35, bottom: 0 };
+  const { className, theme, shouldHighlight, href, isRtl } = props;
 
   return {
     root: [
       theme.fonts.medium,
-      className,
       {
-        width: chartWidth,
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+        overflow: 'hidden',
       },
+      className,
     ],
 
     chartLabel: [
@@ -23,25 +27,18 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       },
     ],
 
-    chart: [
-      {
-        width: chartWidth,
-        height: chartHeight,
-      },
-    ],
-
     xAxis: [
       {
-        transform: `translate(${chartMargin.left}px, ${height - chartMargin.bottom + 10}px)`,
-      },
-      {
         selectors: {
-          text: {
-            ...theme.fonts.tiny,
-          },
           line: {
             opacity: 0.3,
             width: '1px',
+            stroke: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                stroke: 'rgb(179, 179, 179)',
+              },
+            },
           },
           path: {
             display: 'none',
@@ -52,50 +49,39 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
 
     yAxis: [
       {
-        transform: `translate(${chartMargin.left}px, 10px)`,
-      },
-      {
         selectors: {
-          text: {
-            ...theme.fonts.medium,
-            opacity: 1,
-          },
+          text: [
+            theme.fonts.tiny,
+            {
+              fontWeight: FontWeights.semibold,
+              fill: theme.semanticColors.bodyText,
+              selectors: {
+                [HighContrastSelectorBlack]: {
+                  fill: 'rgb(179, 179, 179)',
+                },
+              },
+            },
+          ],
           line: {
             opacity: 0.2,
             width: '1px',
+            stroke: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                stroke: 'rgb(179, 179, 179)',
+              },
+            },
           },
           path: {
             display: 'none',
           },
+          g: [
+            isRtl &&
+              !isIE11Var && {
+                textAnchor: 'end',
+              },
+          ],
         },
-      },
-    ],
-
-    bars: [
-      {
-        transform: `translate(${chartMargin.left}px, 10px)`,
-      },
-    ],
-
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
-
-    hoverCardTextStyles: [
-      theme.fonts.small,
-      {
-        lineHeight: '14px',
-      },
-    ],
-
-    hoverCardDataStyles: [
-      theme.fonts.xxLarge,
-      {
-        lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor,
       },
     ],
 
@@ -104,11 +90,24 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       cursor: href ? 'pointer' : 'default',
     },
 
-    legendContainer: {
-      marginTop: '8px',
-      marginLeft: '35px',
-    },
+    legendContainer: [
+      {
+        marginTop: '8px',
+        marginLeft: '20px',
+      },
+    ],
 
-    xAxisText: [],
+    xAxisText: [
+      theme.fonts.tiny,
+      {
+        fontWeight: FontWeights.semibold,
+        fill: theme.semanticColors.bodyText,
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            fill: 'rgb(179, 179, 179)',
+          },
+        },
+      },
+    ],
   };
 };

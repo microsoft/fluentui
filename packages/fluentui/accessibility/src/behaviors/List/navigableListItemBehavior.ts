@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -10,7 +10,7 @@ import { ListItemBehaviorProps } from './listItemBehavior';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
+export const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'menuitem',
@@ -20,10 +20,8 @@ const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props =>
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },
 });
-
-export default navigableListItemBehavior;

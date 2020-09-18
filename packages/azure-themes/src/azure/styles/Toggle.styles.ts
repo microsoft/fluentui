@@ -1,4 +1,3 @@
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { BaseColors } from '../AzureColors';
@@ -13,16 +12,42 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     pill: [
       {
         backgroundColor: semanticColors.bodyBackground,
+        selectors: {
+          '&:hover': {
+            backgroundColor: extendedSemanticColors.radioButtonPillUncheckedHover,
+          },
+        },
       },
       checked && {
         backgroundColor: extendedSemanticColors.controlAccent,
+        selectors: {
+          '&:hover': {
+            backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
+          },
+        },
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.controlOutlineDisabled,
+        backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
+        selectors: {
+          '&:hover': {
+            backgroundColor: `${extendedSemanticColors.radioButtonPillDisabled}`,
+          },
+        },
       },
+
       !checked &&
         disabled && {
-          backgroundColor: semanticColors.disabledBackground,
+          border: `1px solid ${extendedSemanticColors.radioButtonPillBorderDisabled} !important`,
+          backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
+        },
+      disabled &&
+        !checked && {
+          backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+            },
+          },
         },
     ],
     // toggle circle
@@ -31,16 +56,23 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBodyText,
+        backgroundColor: extendedSemanticColors.radioButtonThumbCheckedDisabled,
+      },
+      !checked && {
+        backgroundColor: extendedSemanticColors.radioButtonThumbUnchecked,
       },
       checked &&
         !disabled && {
           backgroundColor: BaseColors.WHITE,
         },
+      disabled &&
+        !checked && {
+          backgroundColor: extendedSemanticColors.radioButtonThumbUncheckedDisabled,
+        },
     ],
     root: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '.ms-Toggle-stateText': {
             color: semanticColors.bodyText,

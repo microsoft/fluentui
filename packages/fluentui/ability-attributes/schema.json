@@ -12,6 +12,22 @@
     "$existingIDs": {
       "js": "checkIdentifiers",
       "description": "Value must be space-separated list of existing element identifiers"
+    },
+    "$hasIdentifiedLabel": {
+      "xpath": ".//label[@id and boolean(normalize-space(.//text()) != '')] | .//button | .//*[@role='checkbox']",
+      "description": "Label should always have id and some text content"
+    },
+    "$hasIdentifiedInput": {
+      "xpath": ".//input[@aria-labelledby|@id] | .//button | .//*[@role='checkbox']",
+      "description": "Should have input containing either id or aria-labelledby"
+    },
+    "$hasIdentifiedMessage": {
+      "xpath": "boolean(.//*[@aria-invalid] and .//*[@role='alert' and @id] and .//*[@aria-labelledby]) or not(.//*[@aria-invalid])",
+      "description": "Message should have identifier, role='alert' and combined with a `aria-invalid` and `aria-labelledby` input"
+    },
+    "$isValidRadioGroup": {
+      "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby|@aria-label])",
+      "description": "RadioGroup inside form should have aria-labelledby attribute"
     }
   },
   "parameters": {
@@ -59,6 +75,48 @@
                   "ref": "$existingIDs"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    "$setsize": {
+      "name": "setsize",
+      "attributes": [
+        {
+          "name": "aria-setsize",
+          "constraints": [
+            {
+              "xpath": "number(@aria-setsize) = @aria-setsize",
+              "description": "aria-setsize attribute value should be a number"
+            }
+          ]
+        }
+      ]
+    },
+    "$posinset": {
+      "name": "posinset",
+      "attributes": [
+        {
+          "name": "aria-posinset",
+          "constraints": [
+            {
+              "xpath": "number(@aria-posinset) = @aria-posinset",
+              "description": "aria-posinset attribute value should be a number"
+            }
+          ]
+        }
+      ]
+    },
+    "$level": {
+      "name": "level",
+      "attributes": [
+        {
+          "name": "aria-level",
+          "constraints": [
+            {
+              "xpath": "number(@aria-level) = @aria-level",
+              "description": "aria-level attribute value should be a number"
             }
           ]
         }
@@ -190,6 +248,24 @@
             {
               "parameter": false,
               "attribute": [false, "false"]
+            }
+          ]
+        }
+      ]
+    },
+    "$isSelected": {
+      "name": "isSelected",
+      "attributes": [
+        {
+          "name": "aria-selected",
+          "value": [
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": true,
+              "attribute": "false"
             }
           ]
         }
@@ -333,6 +409,107 @@
             {
               "name": "aria-level",
               "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    "TreeItem": {
+      "constraints": [
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$title",
+          "optional": true
+        },
+        {
+          "rel": "@tabbable"
+        },
+        {
+          "ref": "$isExpanded"
+        },
+        {
+          "ref": "$isSelected",
+          "optional": true
+        },
+        {
+          "ref": "$setsize"
+        },
+        {
+          "ref": "$posinset"
+        },
+        {
+          "ref": "$level"
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "parameters": {
+            "@tabbable": {
+              "ref": "$tabbable",
+              "optional": true
+            }
+          },
+          "attributes": [
+            {
+              "name": "role",
+              "value": "treeitem",
+              "overridable": "role"
+            },
+            {
+              "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitle": {
+      "constraints": [
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$title",
+          "optional": true
+        },
+        {
+          "rel": "@tabbable"
+        },
+        {
+          "ref": "$isSelected",
+          "optional": true
+        },
+        {
+          "ref": "$setsize"
+        },
+        {
+          "ref": "$posinset"
+        },
+        {
+          "ref": "$level"
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "parameters": {
+            "@tabbable": {
+              "ref": "$tabbable",
+              "optional": true
+            }
+          },
+          "attributes": [
+            {
+              "name": "role",
+              "value": "treeitem",
+              "overridable": "role"
+            },
+            {
+              "ref": "$tabindex"
             }
           ]
         }
@@ -650,6 +827,79 @@
               "name": "role",
               "value": "radio",
               "overrides": "role"
+            }
+          ]
+        }
+      }
+    },
+    "FormField": {
+      "constraints": [
+        {
+          "ref": "$hasIdentifiedLabel"
+        },
+        {
+          "ref": "$hasIdentifiedInput"
+        },
+        {
+          "ref": "$hasIdentifiedMessage"
+        }
+      ],
+      "tags": {
+        "<div>, <span>": {}
+      }
+    },
+    "FormInput": {
+      "inherits": "FormField"
+    },
+    "FormRadioGroup": {
+      "constraints": [
+        {
+          "ref": "$isValidRadioGroup"
+        },
+        {
+          "ref": "$hasIdentifiedLabel"
+        },
+        {
+          "ref": "$hasIdentifiedMessage"
+        }
+      ],
+      "tags": {
+        "<div>": {}
+      }
+    },
+    "FormDropdown": {
+      "inherits": "FormField"
+    },
+    "FormMessage": {
+      "constraints": [
+        {
+          "ref": "$hasTitleOrText"
+        },
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "tags": {
+        "<span>, <div>": {}
+      }
+    },
+    "FormLabel": {
+      "constraints": [
+        {
+          "ref": "$hasTitleOrText"
+        },
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "tags": {
+        "<label>": {
+          "constraints": [
+            {
+              "ref": "$atomic"
+            },
+            {
+              "ref": "$hasIdentifiedLabel"
             }
           ]
         }

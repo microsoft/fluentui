@@ -1,6 +1,7 @@
 import { getGlobalClassNames } from './getGlobalClassNames';
 import { createTheme } from './theme';
 import { Stylesheet } from '@uifabric/merge-styles';
+import { ITheme } from '../interfaces/index';
 
 const styleSheet = Stylesheet.getInstance();
 
@@ -19,7 +20,9 @@ describe('getGlobalClassNames', () => {
   });
 
   describe('calls are memoized', () => {
-    let theme, globalClassnames;
+    let theme: ITheme;
+    let globalClassnames: { [key: string]: string };
+
     beforeAll(() => {
       theme = createTheme({ disableGlobalClassNames: true });
       globalClassnames = { root: 'ms-Memoized' };

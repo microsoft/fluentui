@@ -322,9 +322,7 @@ exports[`ColorPicker renders correctly 1`] = `
             Blue
           </td>
           <td
-            className=
-
-
+            className=""
           >
             Alpha
           </td>
@@ -371,9 +369,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -404,6 +400,9 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -450,6 +449,10 @@ exports[`ColorPicker renders correctly 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -458,6 +461,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -468,6 +474,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -476,6 +485,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField1"
                     onBlur={[Function]}
@@ -529,9 +541,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -562,6 +572,9 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -608,6 +621,10 @@ exports[`ColorPicker renders correctly 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -616,6 +633,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -626,6 +646,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -634,6 +657,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField4"
                     onBlur={[Function]}
@@ -687,9 +713,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -720,6 +744,9 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -766,6 +793,10 @@ exports[`ColorPicker renders correctly 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -774,6 +805,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -784,6 +818,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -792,6 +829,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField7"
                     onBlur={[Function]}
@@ -845,9 +885,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -878,6 +916,9 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -924,6 +965,10 @@ exports[`ColorPicker renders correctly 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -932,6 +977,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -942,6 +990,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -950,6 +1001,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField10"
                     onBlur={[Function]}
@@ -1003,9 +1057,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -1036,6 +1088,9 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -1082,6 +1137,10 @@ exports[`ColorPicker renders correctly 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1090,6 +1149,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -1100,6 +1162,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1108,6 +1173,9 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField13"
                     onBlur={[Function]}
@@ -1478,9 +1546,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
             Blue
           </td>
           <td
-            className=
-
-
+            className=""
           >
             Alpha
           </td>
@@ -1527,9 +1593,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -1560,6 +1624,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -1606,6 +1673,10 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1614,6 +1685,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -1624,6 +1698,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1632,6 +1709,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField17"
                     onBlur={[Function]}
@@ -1685,9 +1765,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -1718,6 +1796,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -1764,6 +1845,10 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1772,6 +1857,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -1782,6 +1870,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1790,6 +1881,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField20"
                     onBlur={[Function]}
@@ -1843,9 +1937,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -1876,6 +1968,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -1922,6 +2017,10 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1930,6 +2029,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -1940,6 +2042,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -1948,6 +2053,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField23"
                     onBlur={[Function]}
@@ -2001,9 +2109,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -2034,6 +2140,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2080,6 +2189,10 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2088,6 +2201,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2098,6 +2214,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2106,6 +2225,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField26"
                     onBlur={[Function]}
@@ -2159,9 +2281,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -2192,6 +2312,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2238,6 +2361,10 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2246,6 +2373,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2256,6 +2386,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2264,6 +2397,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField29"
                     onBlur={[Function]}
@@ -2658,9 +2794,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -2691,6 +2825,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2737,6 +2874,10 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2745,6 +2886,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2755,6 +2899,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2763,6 +2910,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField33"
                     onBlur={[Function]}
@@ -2816,9 +2966,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -2849,6 +2997,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2895,6 +3046,10 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2903,6 +3058,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2913,6 +3071,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2921,6 +3082,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField36"
                     onBlur={[Function]}
@@ -2974,9 +3138,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -3007,6 +3169,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -3053,6 +3218,10 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3061,6 +3230,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -3071,6 +3243,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3079,6 +3254,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField39"
                     onBlur={[Function]}
@@ -3132,9 +3310,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -3165,6 +3341,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -3211,6 +3390,10 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3219,6 +3402,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -3229,6 +3415,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3237,6 +3426,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField42"
                     onBlur={[Function]}
@@ -3290,9 +3482,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <div
                   className=
@@ -3323,6 +3513,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -3369,6 +3562,10 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3377,6 +3574,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -3387,6 +3587,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -3395,6 +3598,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField45"
                     onBlur={[Function]}

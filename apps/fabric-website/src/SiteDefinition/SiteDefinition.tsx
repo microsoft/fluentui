@@ -3,12 +3,11 @@ import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/li
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
-import { MessageBarType } from 'office-ui-fabric-react';
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
   siteLogoSource:
-    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftuifabric-logo-rgb_no-padding.svg',
+    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftfluentui-logo-rgb_no-padding.svg',
   platforms,
   pages: [
     {

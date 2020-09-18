@@ -9,7 +9,6 @@ const Content = () => (
   <ExampleSection title="Content">
     <ComponentExample
       title="Toolbar can contain a popup"
-      toolbarAriaLabel="Example Toolbar can contain a popup"
       description={
         <>
           Toolbar item can open a popup. See <Link to="/components/popup">Popup</Link> component for more details.
@@ -19,25 +18,21 @@ const Content = () => (
     />
     <ComponentExample
       title="Toolbar can contain a radio group"
-      toolbarAriaLabel="Example Toolbar can contain a radio group"
       description="Toolbar items can be grouped into radio group. Up/Down arrow keys can be used to cycle between radio items. Only one of the radio items can be selected at a time, should be implemented additionally."
       examplePath="components/Toolbar/Content/ToolbarExampleRadioGroup"
     />
     <ComponentExample
       title="Toolbar can contain a menu"
-      toolbarAriaLabel="Example Toolbar can contain a menu"
       description="Toolbar item can open a menu."
       examplePath="components/Toolbar/Content/ToolbarExampleMenu"
     />
     <ComponentExample
       title="Toolbar can contain toggle items in a menu"
-      toolbarAriaLabel="Example Toolbar can contain toggle items in a menu"
       description="Toolbar item can open a menu which can contain toggle items."
       examplePath="components/Toolbar/Content/ToolbarExampleMenuItemToggle"
     />
     <ComponentExample
       title="Toolbar can contain a radio group in a menu"
-      toolbarAriaLabel="Example Toolbar can contain a radio group in a menu"
       description="Toolbar item can open a menu which can contain radio groups."
       examplePath="components/Toolbar/Content/ToolbarExampleMenuRadioGroup"
     />
@@ -48,7 +43,6 @@ const Content = () => (
     />
     <ComponentExample
       title="Toolbar can contain custom content"
-      toolbarAriaLabel="Example Toolbar can contain custom content"
       description="Toolbar item can contain custom content."
       examplePath="components/Toolbar/Content/ToolbarExampleCustomContent"
     >
@@ -62,7 +56,6 @@ const Content = () => (
     </ComponentExample>
     <ComponentExample
       title="Toolbar overflow menu"
-      toolbarAriaLabel="Example Toolbar overflow menu"
       description="Toolbar can rearrange its items based on its wrapping container width."
       examplePath="components/Toolbar/Content/ToolbarExampleOverflow"
     />

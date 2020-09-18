@@ -2,6 +2,433 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/date-time_v7.17.8",
+      "version": "7.17.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@uifabric/date-time_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: Adding aria-current=date to present day.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cc1426d7243d09539f3abfccd073d21d9cef6fd3",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@uifabric/date-time_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add wrapper styling to datepicker",
+            "author": "kevin@infinite.red",
+            "commit": "0edae7de07888f5d4f7373264c8c19e676447baa",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/date-time_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future",
+            "author": "lorejoh12@gmail.com",
+            "commit": "16b89ba85706c711f61a685e06533796f5da4e31",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/date-time_v7.14.4",
+      "version": "7.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/date-time_v7.14.2",
+      "version": "7.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding fix for first day of week changing away from Sunday that I broke with previous PR",
+            "author": "lorejoh12@gmail.com",
+            "commit": "c5359a60c35654de2847bf32bcb58f989375df42",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@uifabric/date-time_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding dayGridProps to weeklyDayPicker so it can pass them through to the underlying day grid. Adding example of marking days to show usage",
+            "author": "lorejoh12@gmail.com",
+            "commit": "a20547d3dc9136acdb7ab32470728ea779d54fe6",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/date-time_v7.13.10",
+      "version": "7.13.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/date-time_v7.13.7",
+      "version": "7.13.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor DatePicker as a function component",
+            "author": "miclo@microsoft.com",
+            "commit": "655580570512c48006a04ea80fd66e6273e7fae8",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/date-time_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": " ",
+            "author": "lorejoh12@gmail.com",
+            "commit": "b0ad85aef3e82623a7146c33a696f215ccbd26ee",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@uifabric/date-time_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding ability to mark calendar days with a callback function",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/date-time_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix next and previous month/week aria labels in weekly day picker, export new default strings",
+            "author": "lorejoh12@gmail.com",
+            "commit": "44b99ab5e98f0c80e10b0d141a54903a328be450",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "2534fd78ec65b88a5049c7d2d9e54d1103159852",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/date-time_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/date-time_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors",
+            "author": "lorejoh12@gmail.com",
+            "commit": "30fc4c9ad3b2b9236027b477e27eb742f8419cca",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/date-time_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint; add missing explicit react-hooks dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "enable datepicker callout open ",
+            "author": "shrallap@microsoft.com",
+            "commit": "ec36a5c214cfc9a9262f8100013734f61952e95a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/date-time_v7.10.8",
+      "version": "7.10.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes",
+            "author": "lorejoh12@gmail.com",
+            "commit": "385517ff6b14786e1ea744f3de61d06a34be7822",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/date-time_v7.10.7",
+      "version": "7.10.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Migrate Calendar components to function components",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/date-time_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "High Contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/date-time_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CalendarDayGrid: migrate component to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "30df63d7bf33234647171b8fc5fb5122154674e1",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/date-time_v7.9.3",
+      "version": "7.9.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/date-time"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@uifabric/date-time_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract helper functions from date-time/Calendar",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@uifabric/date-time_v7.8.101",
+      "version": "7.8.101",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/date-time_v7.8.100",
+      "version": "7.8.100",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/date-time_v7.8.74",
+      "version": "7.8.74",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/date-time_v7.8.73",
+      "version": "7.8.73",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/date-time_v7.8.55",
       "version": "7.8.55",

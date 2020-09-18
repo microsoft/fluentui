@@ -22,7 +22,6 @@ export interface IBaseFloatingPicker {
   showPicker: (updateValue?: boolean) => void;
 
   /** Gets the suggestions */
-  // tslint:disable-next-line:no-any
   suggestions: any[];
 
   /** Gets the input text */
@@ -32,7 +31,6 @@ export interface IBaseFloatingPicker {
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBaseFloatingPicker>;
 

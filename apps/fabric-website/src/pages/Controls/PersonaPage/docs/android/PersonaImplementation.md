@@ -6,12 +6,12 @@
 
 ### Source code
 
-[PersonaView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/persona/PersonaView.kt)
+[PersonaView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/PersonaView.kt)
 
-[PersonaListView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/persona/PersonaListView.kt)
+[PersonaListView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/PersonaListView.kt)
 
 ### Sample code
 
-[PersonaView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaViewActivity.kt)
+[PersonaView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PersonaViewActivity.kt)
 
-[PersonaListView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaListViewActivity.kt)
+[PersonaListView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PersonaListViewActivity.kt)

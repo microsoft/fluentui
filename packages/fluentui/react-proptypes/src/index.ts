@@ -367,6 +367,14 @@ export const wrapperShorthand = PropTypes.oneOfType([
  */
 export const shorthandAllowingChildren = PropTypes.oneOfType([PropTypes.node, PropTypes.object, PropTypes.func]);
 
+export const shorthandObjectAllowingChildren = PropTypes.oneOfType([PropTypes.object, PropTypes.func]);
+
+/**
+ * ObjectItemShorthand is a description of a component that can be
+ * a props object or a render function.
+ */
+export const objectItemShorthand = every([disallow(['children']), shorthandAllowingChildren]);
+
 /**
  * Item shorthand is a description of a component that can be a literal,
  * a props object, an element or a render function.
@@ -388,6 +396,11 @@ export const itemShorthandWithoutJSX = every([
   disallow(['children']),
   PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.string, PropTypes.oneOf([false])]),
 ]);
+
+/**
+ * Collection shorthand ensures a prop is an array of item shorthand.
+ */
+export const collectionObjectShorthand = every([disallow(['children']), PropTypes.arrayOf(objectItemShorthand)]);
 
 /**
  * Collection shorthand ensures a prop is an array of item shorthand.

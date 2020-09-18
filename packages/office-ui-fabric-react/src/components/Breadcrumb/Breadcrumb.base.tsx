@@ -81,6 +81,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
 
     const {
       onReduceData = this._onReduceData,
+      onGrowData = this._onGrowData,
       overflowIndex,
       maxDisplayedItems,
       items,
@@ -101,22 +102,56 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       theme: theme!,
     });
 
-    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
+    return (
+      <ResizeGroup
+        onRenderData={this._onRenderBreadcrumb}
+        onReduceData={onReduceData}
+        onGrowData={onGrowData}
+        data={breadcrumbData}
+      />
+    );
   }
 
+  /**
+   * Remove the first rendered item past the overlow point and put it and the end the overflow set.
+   */
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
     const { overflowIndex } = data.props;
 
     const movedItem = renderedItems[overflowIndex!];
+
+    if (!movedItem) {
+      return undefined;
+    }
+
     renderedItems = [...renderedItems];
     renderedItems.splice(overflowIndex!, 1);
 
     renderedOverflowItems = [...renderedOverflowItems, movedItem];
 
-    if (movedItem !== undefined) {
-      return { ...data, renderedItems, renderedOverflowItems };
+    return { ...data, renderedItems, renderedOverflowItems };
+  };
+
+  /**
+   * Remove the last item of the overflow set and insert the item as the start of the rendered set past the overflow
+   * point.
+   */
+  private _onGrowData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+    let { renderedItems, renderedOverflowItems } = data;
+    const { overflowIndex, maxDisplayedItems } = data.props;
+
+    renderedOverflowItems = [...renderedOverflowItems];
+    const movedItem = renderedOverflowItems.pop();
+
+    if (!movedItem || renderedItems.length >= maxDisplayedItems!) {
+      return undefined;
     }
+
+    renderedItems = [...renderedItems];
+    renderedItems.splice(overflowIndex!, 0, movedItem);
+
+    return { ...data, renderedItems, renderedOverflowItems };
   };
 
   private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
@@ -218,6 +253,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>

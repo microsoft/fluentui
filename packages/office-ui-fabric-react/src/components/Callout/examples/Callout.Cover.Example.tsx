@@ -5,9 +5,9 @@ import {
   DirectionalHint,
   Dropdown,
   IDropdownOption,
-  getTheme,
   mergeStyleSets,
   FontWeights,
+  Text,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -28,7 +28,6 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -49,7 +48,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -64,7 +62,6 @@ const styles = mergeStyleSets({
 export const CalloutCoverExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
-
   const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     setDirectionalHint(option.key as DirectionalHint);
   };
@@ -76,6 +73,7 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
           label="Directional hint"
           selectedKey={directionalHint!}
           options={DIRECTION_OPTIONS}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={onDirectionalChanged}
         />
       </div>
@@ -94,7 +92,7 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
           setInitialFocus
         >
           <div className={styles.header}>
-            <p className={styles.title}>I'm covering the target!</p>
+            <Text className={styles.title}>I'm covering the target!</Text>
           </div>
           <div className={styles.inner}>
             <DefaultButton onClick={toggleIsCalloutVisible} text="Click to dismiss" />

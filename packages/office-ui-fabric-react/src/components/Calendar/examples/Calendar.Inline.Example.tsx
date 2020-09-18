@@ -3,6 +3,25 @@ import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/C
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
+export interface ICalendarInlineExampleProps {
+  isMonthPickerVisible?: boolean;
+  dateRangeType: DateRangeType;
+  autoNavigateOnSelection: boolean;
+  showGoToToday: boolean;
+  showNavigateButtons?: boolean;
+  highlightCurrentMonth?: boolean;
+  highlightSelectedMonth?: boolean;
+  isDayPickerVisible?: boolean;
+  showMonthPickerAsOverlay?: boolean;
+  showWeekNumbers?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  restrictedDates?: Date[];
+  showSixWeeksByDefault?: boolean;
+  workWeekDays?: DayOfWeek[];
+  firstDayOfWeek?: DayOfWeek;
+}
+
 const dayPickerStrings = {
   months: [
     'January',
@@ -30,47 +49,22 @@ const dayPickerStrings = {
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
   closeButtonAriaLabel: 'Close',
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };
-
-export interface ICalendarInlineExampleProps {
-  isMonthPickerVisible?: boolean;
-  dateRangeType: DateRangeType;
-  autoNavigateOnSelection: boolean;
-  showGoToToday: boolean;
-  showNavigateButtons?: boolean;
-  highlightCurrentMonth?: boolean;
-  highlightSelectedMonth?: boolean;
-  isDayPickerVisible?: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  showWeekNumbers?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
-  restrictedDates?: Date[];
-  showSixWeeksByDefault?: boolean;
-  workWeekDays?: DayOfWeek[];
-  firstDayOfWeek?: DayOfWeek;
-}
-
-export interface ICalendarInlineExampleState {
-  selectedDate?: Date | null;
-  selectedDateRange?: Date[] | null;
-}
-
 const divStyle: React.CSSProperties = {
   height: 'auto',
 };
-
 const buttonStyle: React.CSSProperties = {
   margin: '17px 10px 0 0',
 };
-
 let dateRangeString: string | null = null;
 
 export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExampleProps> = (
   props: ICalendarInlineExampleProps,
 ) => {
-  const [selectedDateRange, setSelectedDateRange] = React.useState();
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = (date: Date, dateRangeArray: Date[]): void => {
     setSelectedDate(date);
@@ -102,7 +96,7 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
     };
   };
 
-  const onDismiss = (): void => {
+  const onDismiss = () => {
     return selectedDate;
   };
 
@@ -145,7 +139,9 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
         </div>
       )}
       <Calendar
+        // eslint-disable-next-line react/jsx-no-bind
         onSelectDate={onSelectDate}
+        // eslint-disable-next-line react/jsx-no-bind
         onDismiss={onDismiss}
         isMonthPickerVisible={props.isMonthPickerVisible}
         dateRangeType={props.dateRangeType}
@@ -167,8 +163,18 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
       />
       {props.showNavigateButtons && (
         <div>
-          <DefaultButton style={buttonStyle} onClick={goPrevious} text="Previous" />
-          <DefaultButton style={buttonStyle} onClick={goNext} text="Next" />
+          <DefaultButton
+            style={buttonStyle}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={goPrevious}
+            text="Previous"
+          />
+          <DefaultButton
+            style={buttonStyle}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={goNext}
+            text="Next"
+          />
         </div>
       )}
     </div>

@@ -39,16 +39,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
     Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
   </span>
   <div
-    aria-live="polite"
-    className=
-
-
-    role="status"
-  />
-  <div
-    className=
-        ms-BasePicker
-
+    className="ms-BasePicker"
     onBlur={[Function]}
     onKeyDown={[Function]}
   >

@@ -6,6 +6,21 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Variations = () => (
   <ExampleSection title="Variations">
     <ComponentExample
+      title="Elevated"
+      description="Card can have elevation styles"
+      examplePath="components/Card/Variations/CardExampleElevated"
+    />
+    <ComponentExample
+      title="Inverted"
+      description="Card with styles for lighter background"
+      examplePath="components/Card/Variations/CardExampleInverted"
+    />
+    <ComponentExample
+      title="Quiet"
+      description="Card with quiet styles"
+      examplePath="components/Card/Variations/CardExampleQuiet"
+    />
+    <ComponentExample
       title="Centered"
       description="Centered card"
       examplePath="components/Card/Variations/CardExampleCentered"

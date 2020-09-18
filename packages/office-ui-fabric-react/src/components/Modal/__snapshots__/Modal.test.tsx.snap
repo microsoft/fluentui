@@ -125,6 +125,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
           }
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -151,6 +152,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
             Test Content
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -258,6 +260,7 @@ exports[`Modal renders Modal correctly 1`] = `
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=
@@ -304,6 +307,7 @@ exports[`Modal renders Modal correctly 1`] = `
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -330,6 +334,7 @@ exports[`Modal renders Modal correctly 1`] = `
             Test Content
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -462,6 +467,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -488,6 +494,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             Test Content
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={

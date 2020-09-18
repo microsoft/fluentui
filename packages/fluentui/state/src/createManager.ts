@@ -1,12 +1,12 @@
 import { AnyActions, EnhancedAction, Manager, ManagerConfig } from './types';
 
-const createManager = <State, Actions extends AnyActions>(
+export const createManager = <State, Actions extends AnyActions>(
   config: ManagerConfig<State, Actions>,
 ): Manager<State, Actions> => {
   const { actions, debug, middleware = [], sideEffects = [], state } = config;
-  const _state: State = Object.assign({}, state) as State;
+  const _state: State = { ...state } as State;
 
-  const getState = (): State => Object.assign({}, _state);
+  const getState = (): State => ({ ..._state });
   const setState = (partial: Partial<State>): State => Object.assign(_state, partial);
 
   const manager: Manager<State, Actions> = {
@@ -75,5 +75,3 @@ const createManager = <State, Actions extends AnyActions>(
 
   return manager;
 };
-
-export default createManager;

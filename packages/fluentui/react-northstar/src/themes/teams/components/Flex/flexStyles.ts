@@ -4,7 +4,7 @@ import { FlexStylesProps } from '../../../../components/Flex/Flex';
 import { toFlexAlignment } from './utils';
 import { FlexVariables } from './flexVariables';
 
-const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = {
+export const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = {
   root: ({ props: p, variables: v }) => ({
     display: 'flex',
     ...(p.debug && { border: '1px dotted grey', background: 'lightgrey' }),
@@ -36,5 +36,3 @@ const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = 
     }),
   }),
 };
-
-export default flexStyles;

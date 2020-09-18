@@ -8,7 +8,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IDialogStyleProps): IDialogStyles => {
   const {
     className,
-    containerClassName, // tslint:disable-line:deprecation
+    containerClassName, // eslint-disable-line deprecation/deprecation
     dialogDefaultMinWidth = '288px',
     dialogDefaultMaxWidth = '340px',
     hidden,

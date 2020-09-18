@@ -1,5 +1,467 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Nav render Nav with overrides correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone4"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <nav
+    className=
+        ms-Nav
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow-y: auto;
+          user-select: none;
+        }
+    role="navigation"
+  >
+    <div
+      className="ms-Nav-group is-expanded"
+    >
+      <div
+        data-test="header-override"
+      >
+        <button
+          aria-expanded={true}
+          className=
+              ms-Nav-chevronButton
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-bottom: 1px solid #edebe9;
+                border: none;
+                color: #323130;
+                cursor: pointer;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                height: 44px;
+                line-height: 44px;
+                margin-bottom: 5px;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 5px;
+                outline: transparent;
+                overflow: hidden;
+                padding-bottom: 0px,;
+                padding-left: 28px;
+                padding-right: 20px,;
+                padding-top: 0px,;
+                position: relative;
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:visited {
+                color: #323130;
+              }
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Nav-chevron
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 44px;
+                  left: 8px;
+                  line-height: 44px;
+                  position: absolute;
+                  speak: none;
+                  transform: rotate(-180deg);
+                  transition: transform .1s linear;
+                }
+            data-icon-name="ChevronDown"
+          >
+            
+          </i>
+          Group
+        </button>
+      </div>
+      <div
+        className=
+            ms-Nav-groupContent
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+              display: block;
+              margin-bottom: 40px;
+            }
+      >
+        <ul
+          className=
+              ms-Nav-navItems
+              {
+                list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
+          role="list"
+        >
+          <li
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            role="listitem"
+          >
+            <div
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    color: #323130;
+                    display: block;
+                    position: relative;
+                  }
+              name="Bing"
+            >
+              <div
+                data-test="button-override"
+              >
+                <a
+                  className=
+                      ms-Button
+                      ms-Button--action
+                      ms-Button--command
+                      ms-Nav-link
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: transparent;
+                        border-radius: 2px;
+                        border: 1px solid transparent;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 44px;
+                        line-height: 44px;
+                        outline: transparent;
+                        overflow: hidden;
+                        padding-bottom: 0;
+                        padding-left: 27px;
+                        padding-right: 20px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        text-overflow: ellipsis;
+                        user-select: none;
+                        white-space: nowrap;
+                        width: 100%;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      &:hover {
+                        color: #0078d4;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                        color: Highlight;
+                      }
+                      &:hover .ms-Button-icon {
+                        color: #0078d4;
+                      }
+                      &:active {
+                        color: #000000;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #004578;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border: 0px;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        border: 1px solid WindowText;
+                      }
+                      .ms-Nav-compositeLink:hover & {
+                        background-color: #f3f2f1;
+                      }
+                  data-is-focusable={true}
+                  href="http://localhost/#/testing1"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  title="Bing"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: flex-start;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <div
+                      data-test="link-override"
+                    >
+                      <div
+                        className=
+                            ms-Nav-linkText
+                            {
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              overflow: hidden;
+                              text-align: left;
+                              text-overflow: ellipsis;
+                              vertical-align: middle;
+                            }
+                      >
+                        Bing
+                      </div>
+                    </div>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            role="listitem"
+          >
+            <div
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    color: #323130;
+                    display: block;
+                    position: relative;
+                  }
+              name="OneDrive"
+            >
+              <div
+                data-test="button-override"
+              >
+                <a
+                  className=
+                      ms-Button
+                      ms-Button--action
+                      ms-Button--command
+                      ms-Nav-link
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: transparent;
+                        border-radius: 2px;
+                        border: 1px solid transparent;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 44px;
+                        line-height: 44px;
+                        outline: transparent;
+                        overflow: hidden;
+                        padding-bottom: 0;
+                        padding-left: 27px;
+                        padding-right: 20px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        text-overflow: ellipsis;
+                        user-select: none;
+                        white-space: nowrap;
+                        width: 100%;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      &:hover {
+                        color: #0078d4;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                        color: Highlight;
+                      }
+                      &:hover .ms-Button-icon {
+                        color: #0078d4;
+                      }
+                      &:active {
+                        color: #000000;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #004578;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border: 0px;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus {
+                        border: 1px solid WindowText;
+                      }
+                      .ms-Nav-compositeLink:hover & {
+                        background-color: #f3f2f1;
+                      }
+                  data-is-focusable={true}
+                  href="http://localhost/#/testing2"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  title="OneDrive"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: flex-start;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <div
+                      data-test="link-override"
+                    >
+                      <div
+                        className=
+                            ms-Nav-linkText
+                            {
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              overflow: hidden;
+                              text-align: left;
+                              text-overflow: ellipsis;
+                              vertical-align: middle;
+                            }
+                      >
+                        OneDrive
+                      </div>
+                    </div>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
+
 exports[`Nav renders Nav correctly 1`] = `
 <div
   className=
@@ -28,10 +490,7 @@ exports[`Nav renders Nav correctly 1`] = `
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <div
         className=
@@ -132,7 +591,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -161,10 +619,10 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;

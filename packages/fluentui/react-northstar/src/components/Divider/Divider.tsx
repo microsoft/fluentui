@@ -1,21 +1,30 @@
 import { Accessibility } from '@fluentui/accessibility';
+import {
+  useTelemetry,
+  useAccessibility,
+  getElementType,
+  useFluentContext,
+  useUnhandledProps,
+  useStyles,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ChildrenComponentProps,
   ColorComponentProps,
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory,
+  createShorthand,
 } from '../../utils';
 
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
+import { DividerContent } from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -25,7 +34,7 @@ export interface DividerProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** A divider can be fitted, without any space above or below it. */
   fitted?: boolean;
@@ -40,46 +49,95 @@ export interface DividerProps
   vertical?: boolean;
 }
 
-export const dividerClassName = 'ui-divider';
-
-class Divider extends UIComponent<WithAsProp<DividerProps>, any> {
-  static displayName = 'Divider';
-
-  static create: ShorthandFactory<DividerProps>;
-
-  static deprecated_className = dividerClassName;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({ color: true }),
-    fitted: PropTypes.bool,
-    size: PropTypes.number,
-    important: PropTypes.bool,
-    vertical: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    size: 0,
-  };
-
-  renderComponent({ accessibility, ElementType, classes, unhandledProps }) {
-    const { children, content } = this.props;
-
-    return (
-      <ElementType
-        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
+export type DividerStylesProps = Required<
+  Pick<DividerProps, 'color' | 'fitted' | 'size' | 'important' | 'vertical'> & {
+    hasContent: boolean;
   }
-}
+>;
 
-Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });
+export const dividerClassName = 'ui-divider';
 
 /**
  * A Divider visually segments content.
  */
-export default withSafeTypeForAs<typeof Divider, DividerProps>(Divider);
+export const Divider: ComponentWithAs<'div', DividerProps> &
+  FluentComponentStaticProps<DividerProps> & {
+    Content: typeof DividerContent;
+  } = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
+  setStart();
+  const {
+    children,
+    color,
+    fitted,
+    size,
+    important,
+    vertical,
+    className,
+    design,
+    styles,
+    variables,
+    accessibility,
+  } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Divider.handledProps, props);
+  const getA11yProps = useAccessibility<never>(accessibility, {
+    debugName: Divider.displayName,
+    rtl: context.rtl,
+  });
+  const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
+    className: dividerClassName,
+    mapPropsToStyles: () => ({
+      hasContent: childrenExist(children) || !!props.content,
+      color,
+      fitted,
+      size,
+      important,
+      vertical,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const content = createShorthand(DividerContent, props.content, {});
+
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
+
+Divider.displayName = 'Divider';
+
+Divider.propTypes = {
+  ...commonPropTypes.createCommon({ color: true }),
+  fitted: PropTypes.bool,
+  size: PropTypes.number,
+  important: PropTypes.bool,
+  vertical: PropTypes.bool,
+};
+
+Divider.defaultProps = {
+  size: 0,
+};
+
+Divider.Content = DividerContent;
+
+Divider.handledProps = Object.keys(Divider.propTypes) as any;
+
+Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });

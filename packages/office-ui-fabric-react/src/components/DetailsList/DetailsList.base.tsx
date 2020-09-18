@@ -21,7 +21,6 @@ import {
   IDetailsListProps,
   IDetailsListStyles,
   IDetailsListStyleProps,
-  IDetailsGroupRenderProps,
   ColumnDragEndLocation,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
@@ -35,7 +34,7 @@ import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
@@ -48,6 +47,7 @@ import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction } from '@uifabric/utilities';
+import { useConst } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -58,7 +58,6 @@ export interface IDetailsListState {
   adjustedColumns: IColumn[];
   isCollapsed?: boolean;
   isSizing?: boolean;
-  isDropping?: boolean;
   isSomeGroupExpanded?: boolean;
   /**
    * A unique object used to force-update the List when it changes.
@@ -70,6 +69,590 @@ const MIN_COLUMN_WIDTH = 100; // this is the global min width
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
+
+type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
+  IDetailsListState & {
+    selection: ISelection;
+    dragDropHelper: DragDropHelper | undefined;
+    rootRef: React.RefObject<HTMLDivElement>;
+    listRef: React.RefObject<List>;
+    groupedListRef: React.RefObject<IGroupedList>;
+    focusZoneRef: React.RefObject<IFocusZone>;
+    headerRef: React.RefObject<IDetailsHeader>;
+    selectionZoneRef: React.RefObject<SelectionZone>;
+    onGroupExpandStateChanged: (isSomeGroupExpanded: boolean) => void;
+    onColumnIsSizingChanged: (column: IColumn, isSizing: boolean) => void;
+    onRowDidMount: (row: DetailsRowBase) => void;
+    onRowWillUnmount: (row: DetailsRowBase) => void;
+    onColumnResized: (resizingColumn: IColumn, newWidth: number, resizingColumnIndex: number) => void;
+    onColumnAutoResized: (column: IColumn, columnIndex: number) => void;
+    onToggleCollapse: (collapsed: boolean) => void;
+    onActiveRowChanged: (el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
+    onBlur: (event: React.FocusEvent<HTMLElement>) => void;
+    onRenderDefaultRow: (detailsRowProps: IDetailsRowProps) => JSX.Element;
+  };
+
+/**
+ * Hooks-based implementation of DetailsList.
+ * Since many existing consumers of DetailsList expect `ref` to return a `DetailsList`,
+ * this inner component handles rendering while the outer maintains compatibility.
+ */
+const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
+  props: IDetailsListInnerProps,
+): JSX.Element | null => {
+  const { selection } = props;
+
+  const {
+    ariaLabelForListHeader,
+    ariaLabelForSelectAllCheckbox,
+    ariaLabelForSelectionColumn,
+    className,
+    checkboxVisibility,
+    compact,
+    constrainMode,
+    dragDropEvents,
+    groups,
+    groupProps,
+    indentWidth,
+    items,
+    isPlaceholderData,
+    isHeaderVisible,
+    layoutMode,
+    onItemInvoked,
+    onItemContextMenu,
+    onColumnHeaderClick,
+    onColumnHeaderContextMenu,
+    selectionMode = selection.mode,
+    selectionPreservedOnEmptyClick,
+    selectionZoneProps,
+    ariaLabel,
+    ariaLabelForGrid,
+    rowElementEventMap,
+    shouldApplyApplicationRole = false,
+    getKey,
+    listProps,
+    usePageCache,
+    onShouldVirtualize,
+    viewport,
+    minimumPixelsForDrag,
+    getGroupHeight,
+    styles,
+    theme,
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    onRenderCheckbox,
+    useFastIcons,
+    dragDropHelper,
+    adjustedColumns,
+    isCollapsed,
+    isSizing,
+    isSomeGroupExpanded,
+    version,
+    rootRef,
+    listRef,
+    focusZoneRef,
+    columnReorderOptions,
+    groupedListRef,
+    headerRef,
+    onGroupExpandStateChanged,
+    onColumnIsSizingChanged,
+    onRowDidMount,
+    onRowWillUnmount,
+    disableSelectionZone,
+    onColumnResized,
+    onColumnAutoResized,
+    onToggleCollapse,
+    onActiveRowChanged,
+    onBlur,
+    rowElementEventMap: eventsToRegister,
+    onRenderMissingItem,
+    onRenderItemColumn,
+    getCellValueKey,
+    getRowAriaLabel,
+    getRowAriaDescribedBy,
+    checkButtonAriaLabel,
+    checkboxCellClassName,
+    useReducedRowRenderer,
+    enableUpdateAnimations,
+    enterModalSelectionOnTouch,
+    onRenderDefaultRow,
+    selectionZoneRef,
+  } = props;
+
+  const groupNestingDepth = getGroupNestingDepth(groups);
+
+  const additionalListProps = React.useMemo((): IListProps => {
+    return {
+      renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
+      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
+      getKey,
+      version,
+      ...listProps,
+    };
+  }, [isSizing, getKey, version, listProps]);
+
+  let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+  if (selectionMode === SelectionMode.single) {
+    selectAllVisibility = SelectAllVisibility.hidden;
+  }
+  if (selectionMode === SelectionMode.multiple) {
+    // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+    let isCollapsedGroupSelectVisible =
+      groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+    if (isCollapsedGroupSelectVisible === undefined) {
+      isCollapsedGroupSelectVisible = true;
+    }
+    const isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
+    selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+  }
+
+  if (checkboxVisibility === CheckboxVisibility.hidden) {
+    selectAllVisibility = SelectAllVisibility.none;
+  }
+
+  const defaultOnRenderDetailsHeader = React.useCallback(
+    (detailsHeaderProps: IDetailsHeaderProps): JSX.Element | null => {
+      return <DetailsHeader {...detailsHeaderProps} />;
+    },
+    [],
+  );
+
+  const defaultOnRenderDetailsFooter = React.useCallback((): JSX.Element | null => {
+    return null;
+  }, []);
+
+  const propsOnRenderDetailsHeader = props.onRenderDetailsHeader;
+
+  const onRenderDetailsHeader = React.useMemo(() => {
+    return propsOnRenderDetailsHeader
+      ? composeRenderFunction(propsOnRenderDetailsHeader, defaultOnRenderDetailsHeader)
+      : defaultOnRenderDetailsHeader;
+  }, [propsOnRenderDetailsHeader, defaultOnRenderDetailsHeader]);
+
+  const propsOnRenderDetailsFooter = props.onRenderDetailsFooter;
+
+  const onRenderDetailsFooter = React.useMemo(() => {
+    return propsOnRenderDetailsFooter
+      ? composeRenderFunction(propsOnRenderDetailsFooter, defaultOnRenderDetailsFooter)
+      : defaultOnRenderDetailsFooter;
+  }, [propsOnRenderDetailsFooter, defaultOnRenderDetailsFooter]);
+
+  const detailsFooterProps = React.useMemo((): IDetailsFooterProps => {
+    return {
+      columns: adjustedColumns,
+      groupNestingDepth,
+      selection,
+      selectionMode,
+      viewport,
+      checkboxVisibility,
+      indentWidth,
+      cellStyleProps,
+    };
+  }, [
+    adjustedColumns,
+    groupNestingDepth,
+    selection,
+    selectionMode,
+    viewport,
+    checkboxVisibility,
+    indentWidth,
+    cellStyleProps,
+  ]);
+
+  const columnReorderOnDragEnd = columnReorderOptions && columnReorderOptions.onDragEnd;
+
+  const onColumnDragEnd = React.useCallback(
+    (
+      {
+        dropLocation,
+      }: {
+        dropLocation?: ColumnDragEndLocation;
+      },
+      event: MouseEvent,
+    ): void => {
+      let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
+      if (columnReorderOnDragEnd) {
+        if (dropLocation && dropLocation !== ColumnDragEndLocation.header) {
+          finalDropLocation = dropLocation;
+        } else if (rootRef.current) {
+          const clientRect = rootRef.current.getBoundingClientRect();
+          if (
+            event.clientX > clientRect.left &&
+            event.clientX < clientRect.right &&
+            event.clientY > clientRect.top &&
+            event.clientY < clientRect.bottom
+          ) {
+            finalDropLocation = ColumnDragEndLocation.surface;
+          }
+        }
+        columnReorderOnDragEnd(finalDropLocation);
+      }
+    },
+    [columnReorderOnDragEnd, rootRef],
+  );
+
+  const columnReorderProps = React.useMemo((): IColumnReorderHeaderProps | undefined => {
+    if (columnReorderOptions) {
+      return {
+        ...columnReorderOptions,
+        onColumnDragEnd,
+      };
+    }
+  }, [columnReorderOptions, onColumnDragEnd]);
+
+  const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+
+  const classNames = React.useMemo(() => {
+    return getClassNames(styles, {
+      theme: theme!,
+      compact,
+      isFixed: layoutMode === DetailsListLayoutMode.fixedColumns,
+      isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
+      className,
+    });
+  }, [styles, theme, compact, layoutMode, constrainMode, className]);
+
+  const onRenderDetailsGroupFooter = groupProps && groupProps.onRenderFooter;
+
+  const finalOnRenderDetailsGroupFooter = React.useMemo(() => {
+    return onRenderDetailsGroupFooter
+      ? (groupFooterProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupFooter(
+            {
+              ...groupFooterProps,
+              columns: adjustedColumns,
+              groupNestingDepth,
+              indentWidth,
+              selection,
+              selectionMode,
+              viewport,
+              checkboxVisibility,
+              cellStyleProps,
+            },
+            defaultRender,
+          );
+        }
+      : undefined;
+  }, [
+    onRenderDetailsGroupFooter,
+    adjustedColumns,
+    groupNestingDepth,
+    indentWidth,
+    selection,
+    selectionMode,
+    viewport,
+    checkboxVisibility,
+    cellStyleProps,
+  ]);
+
+  const onRenderDetailsGroupHeader = groupProps && groupProps.onRenderHeader;
+
+  const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
+    return onRenderDetailsGroupHeader
+      ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupHeader(
+            {
+              ...groupHeaderProps,
+              columns: adjustedColumns,
+              groupNestingDepth,
+              indentWidth,
+              selection,
+              selectionMode,
+              viewport,
+              checkboxVisibility,
+              cellStyleProps,
+            },
+            defaultRender,
+          );
+        }
+      : undefined;
+  }, [
+    onRenderDetailsGroupHeader,
+    adjustedColumns,
+    groupNestingDepth,
+    indentWidth,
+    selection,
+    selectionMode,
+    viewport,
+    checkboxVisibility,
+    cellStyleProps,
+  ]);
+
+  const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
+    if (groupProps) {
+      return {
+        ...groupProps,
+        onRenderFooter: finalOnRenderDetailsGroupFooter,
+        onRenderHeader: finalOnRenderDetailsGroupHeader,
+      };
+    }
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
+
+  const sumColumnWidths = useConst(() =>
+    memoizeFunction((columns: IColumn[]) => {
+      let totalWidth: number = 0;
+
+      columns.forEach((column: IColumn) => (totalWidth += column.calculatedWidth || column.minWidth));
+
+      return totalWidth;
+    }),
+  );
+
+  const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
+
+  const rowWidth = React.useMemo(() => {
+    return sumColumnWidths(adjustedColumns);
+  }, [adjustedColumns, sumColumnWidths]);
+
+  const onRenderCell = React.useCallback(
+    (nestingDepth: number, item: any, index: number): React.ReactNode => {
+      const finalOnRenderRow = props.onRenderRow
+        ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
+        : onRenderDefaultRow;
+
+      const rowProps: IDetailsRowProps = {
+        item: item,
+        itemIndex: index,
+        compact,
+        columns: adjustedColumns,
+        groupNestingDepth: nestingDepth,
+        selectionMode,
+        selection,
+        onDidMount: onRowDidMount,
+        onWillUnmount: onRowWillUnmount,
+        onRenderItemColumn,
+        getCellValueKey,
+        eventsToRegister,
+        dragDropEvents,
+        dragDropHelper,
+        viewport,
+        checkboxVisibility,
+        collapseAllVisibility,
+        getRowAriaLabel,
+        getRowAriaDescribedBy,
+        checkButtonAriaLabel,
+        checkboxCellClassName,
+        useReducedRowRenderer,
+        indentWidth,
+        cellStyleProps,
+        onRenderDetailsCheckbox: onRenderCheckbox,
+        enableUpdateAnimations,
+        rowWidth,
+        useFastIcons,
+      };
+
+      if (!item) {
+        if (onRenderMissingItem) {
+          return onRenderMissingItem(index, rowProps);
+        }
+
+        return null;
+      }
+
+      return finalOnRenderRow(rowProps);
+    },
+    [
+      compact,
+      adjustedColumns,
+      selectionMode,
+      selection,
+      onRowDidMount,
+      onRowWillUnmount,
+      onRenderItemColumn,
+      getCellValueKey,
+      eventsToRegister,
+      dragDropEvents,
+      dragDropHelper,
+      viewport,
+      checkboxVisibility,
+      collapseAllVisibility,
+      getRowAriaLabel,
+      getRowAriaDescribedBy,
+      checkButtonAriaLabel,
+      checkboxCellClassName,
+      useReducedRowRenderer,
+      indentWidth,
+      cellStyleProps,
+      onRenderCheckbox,
+      enableUpdateAnimations,
+      useFastIcons,
+      onRenderDefaultRow,
+      onRenderMissingItem,
+      props.onRenderRow,
+      rowWidth,
+    ],
+  );
+
+  const onRenderListCell = React.useCallback(
+    (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
+      return (item: any, itemIndex: number): React.ReactNode => {
+        return onRenderCell(nestingDepth, item, itemIndex);
+      };
+    },
+    [onRenderCell],
+  );
+
+  const isRightArrow = React.useCallback(
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      return event.which === getRTLSafeKeyCode(KeyCodes.right, theme);
+    },
+    [theme],
+  );
+
+  const focusZoneProps: IFocusZoneProps = {
+    componentRef: focusZoneRef,
+    className: classNames.focusZone,
+    direction: FocusZoneDirection.vertical,
+    shouldEnterInnerZone: isRightArrow,
+    onActiveElementChanged: onActiveRowChanged,
+    onBlur: onBlur,
+  };
+
+  const list = groups ? (
+    <GroupedList
+      focusZoneProps={focusZoneProps}
+      componentRef={groupedListRef}
+      groups={groups}
+      groupProps={finalGroupProps}
+      items={items}
+      onRenderCell={onRenderCell}
+      selection={selection}
+      selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
+      dragDropEvents={dragDropEvents}
+      dragDropHelper={dragDropHelper}
+      eventsToRegister={rowElementEventMap}
+      listProps={additionalListProps}
+      onGroupExpandStateChanged={onGroupExpandStateChanged}
+      usePageCache={usePageCache}
+      onShouldVirtualize={onShouldVirtualize}
+      getGroupHeight={getGroupHeight}
+      compact={compact}
+    />
+  ) : (
+    <FocusZone {...focusZoneProps}>
+      <List
+        ref={listRef}
+        role="presentation"
+        items={items}
+        onRenderCell={onRenderListCell(0)}
+        usePageCache={usePageCache}
+        onShouldVirtualize={onShouldVirtualize}
+        {...additionalListProps}
+      />
+    </FocusZone>
+  );
+
+  const onHeaderKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>): void => {
+      if (ev.which === KeyCodes.down) {
+        if (focusZoneRef.current && focusZoneRef.current.focus()) {
+          // select the first item in list after down arrow key event
+          // only if nothing was selected; otherwise start with the already-selected item
+          if (selection.getSelectedIndices().length === 0) {
+            selection.setIndexSelected(0, true, false);
+          }
+
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
+      }
+    },
+    [selection, focusZoneRef],
+  );
+
+  const onContentKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>): void => {
+      if (ev.which === KeyCodes.up && !ev.altKey) {
+        if (headerRef.current && headerRef.current.focus()) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
+      }
+    },
+    [headerRef],
+  );
+
+  return (
+    // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
+    // with JAWS.
+    <div
+      ref={rootRef}
+      className={classNames.root}
+      data-automationid="DetailsList"
+      data-is-scrollable="false"
+      aria-label={ariaLabel}
+      {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
+    >
+      <FocusRects />
+      <div
+        role="grid"
+        aria-label={ariaLabelForGrid}
+        aria-rowcount={isPlaceholderData ? -1 : rowCount}
+        aria-colcount={
+          (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+        }
+        aria-readonly="true"
+        aria-busy={isPlaceholderData}
+      >
+        <div onKeyDown={onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
+          {isHeaderVisible &&
+            onRenderDetailsHeader(
+              {
+                componentRef: headerRef,
+                selectionMode: selectionMode,
+                layoutMode: layoutMode!,
+                selection: selection,
+                columns: adjustedColumns,
+                onColumnClick: onColumnHeaderClick,
+                onColumnContextMenu: onColumnHeaderContextMenu,
+                onColumnResized: onColumnResized,
+                onColumnIsSizingChanged: onColumnIsSizingChanged,
+                onColumnAutoResized: onColumnAutoResized,
+                groupNestingDepth: groupNestingDepth,
+                isAllCollapsed: isCollapsed,
+                onToggleCollapseAll: onToggleCollapse,
+                ariaLabel: ariaLabelForListHeader,
+                ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+                ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+                selectAllVisibility: selectAllVisibility,
+                collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+                viewport: viewport,
+                columnReorderProps: columnReorderProps,
+                minimumPixelsForDrag: minimumPixelsForDrag,
+                cellStyleProps: cellStyleProps,
+                checkboxVisibility,
+                indentWidth,
+                onRenderDetailsCheckbox: onRenderCheckbox,
+                rowWidth: sumColumnWidths(adjustedColumns),
+                useFastIcons,
+              },
+              onRenderDetailsHeader,
+            )}
+        </div>
+        <div onKeyDown={onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
+          {!disableSelectionZone ? (
+            <SelectionZone
+              ref={selectionZoneRef}
+              selection={selection}
+              selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
+              selectionMode={selectionMode}
+              onItemInvoked={onItemInvoked}
+              onItemContextMenu={onItemContextMenu}
+              enterModalOnTouch={enterModalSelectionOnTouch}
+              {...(selectionZoneProps || {})}
+            >
+              {list}
+            </SelectionZone>
+          ) : (
+            list
+          )}
+        </div>
+        {onRenderDetailsFooter({
+          ...detailsFooterProps,
+        })}
+      </div>
+    </div>
+  );
+};
 
 @withViewport
 export class DetailsListBase extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -101,14 +684,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     [key: string]: IColumn;
   };
 
-  private _sumColumnWidths = memoizeFunction((columns: IColumn[]) => {
-    let totalWidth: number = 0;
-
-    columns.forEach((column: IColumn) => (totalWidth += column.calculatedWidth || column.minWidth));
-
-    return totalWidth;
-  });
-
   constructor(props: IDetailsListProps) {
     super(props);
 
@@ -123,7 +698,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
-      isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
       version: {},
@@ -229,7 +803,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void {
     const {
       checkboxVisibility,
@@ -308,216 +881,29 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   public render(): JSX.Element {
-    const {
-      ariaLabelForListHeader,
-      ariaLabelForSelectAllCheckbox,
-      ariaLabelForSelectionColumn,
-      className,
-      checkboxVisibility,
-      compact,
-      constrainMode,
-      dragDropEvents,
-      groups,
-      groupProps,
-      indentWidth,
-      items,
-      isPlaceholderData,
-      isHeaderVisible,
-      layoutMode,
-      onItemInvoked,
-      onItemContextMenu,
-      onColumnHeaderClick,
-      onColumnHeaderContextMenu,
-      selectionMode = this._selection.mode,
-      selectionPreservedOnEmptyClick,
-      selectionZoneProps,
-      ariaLabel,
-      ariaLabelForGrid,
-      rowElementEventMap,
-      shouldApplyApplicationRole = false,
-      getKey,
-      listProps,
-      usePageCache,
-      onShouldVirtualize,
-      viewport,
-      minimumPixelsForDrag,
-      getGroupHeight,
-      styles,
-      theme,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox,
-      useFastIcons,
-    } = this.props;
-    const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
-    const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
-    const groupNestingDepth = this._getGroupNestingDepth();
-    const additionalListProps: IListProps = {
-      renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
-      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
-      getKey,
-      version: this.state.version,
-      ...listProps,
-    };
-    let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
-    if (selectionMode === SelectionMode.single) {
-      selectAllVisibility = SelectAllVisibility.hidden;
-    }
-    if (selectionMode === SelectionMode.multiple) {
-      // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
-      let isCollapsedGroupSelectVisible =
-        groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
-      if (isCollapsedGroupSelectVisible === undefined) {
-        isCollapsedGroupSelectVisible = true;
-      }
-      const isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
-      selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
-    }
-
-    if (checkboxVisibility === CheckboxVisibility.hidden) {
-      selectAllVisibility = SelectAllVisibility.none;
-    }
-
-    const {
-      onRenderDetailsHeader = this._onRenderDetailsHeader,
-      onRenderDetailsFooter = this._onRenderDetailsFooter,
-    } = this.props;
-
-    const detailsFooterProps = this._getDetailsFooterProps();
-    const columnReorderProps = this._getColumnReorderProps();
-
-    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
-
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      compact,
-      isFixed: layoutMode === DetailsListLayoutMode.fixedColumns,
-      isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
-      className,
-    });
-
-    const list = groups ? (
-      <GroupedList
-        componentRef={this._groupedList}
-        groups={groups}
-        groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
-        items={items}
-        onRenderCell={this._onRenderCell}
-        selection={selection}
-        selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
-        dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper}
-        eventsToRegister={rowElementEventMap}
-        listProps={additionalListProps}
-        onGroupExpandStateChanged={this._onGroupExpandStateChanged}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        getGroupHeight={getGroupHeight}
-        compact={compact}
-      />
-    ) : (
-      <List
-        ref={this._list}
-        role="presentation"
-        items={items}
-        onRenderCell={this._onRenderListCell(0)}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        {...additionalListProps}
-      />
-    );
-
     return (
-      // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
-      // with JAWS.
-      <div
-        ref={this._root}
-        className={classNames.root}
-        data-automationid="DetailsList"
-        data-is-scrollable="false"
-        aria-label={ariaLabel}
-        {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
-      >
-        <FocusRects />
-        <div
-          role="grid"
-          aria-label={ariaLabelForGrid}
-          aria-rowcount={isPlaceholderData ? -1 : rowCount}
-          aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
-          }
-          aria-readonly="true"
-          aria-busy={isPlaceholderData}
-        >
-          <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
-            {isHeaderVisible &&
-              onRenderDetailsHeader(
-                {
-                  componentRef: this._header,
-                  selectionMode: selectionMode,
-                  layoutMode: layoutMode!,
-                  selection: selection,
-                  columns: adjustedColumns,
-                  onColumnClick: onColumnHeaderClick,
-                  onColumnContextMenu: onColumnHeaderContextMenu,
-                  onColumnResized: this._onColumnResized,
-                  onColumnIsSizingChanged: this._onColumnIsSizingChanged,
-                  onColumnAutoResized: this._onColumnAutoResized,
-                  groupNestingDepth: groupNestingDepth,
-                  isAllCollapsed: isCollapsed,
-                  onToggleCollapseAll: this._onToggleCollapse,
-                  ariaLabel: ariaLabelForListHeader,
-                  ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
-                  ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-                  selectAllVisibility: selectAllVisibility,
-                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                  viewport: viewport,
-                  columnReorderProps: columnReorderProps,
-                  minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: cellStyleProps,
-                  checkboxVisibility,
-                  indentWidth,
-                  onRenderDetailsCheckbox: onRenderCheckbox,
-                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns),
-                  useFastIcons,
-                },
-                this._onRenderDetailsHeader,
-              )}
-          </div>
-          <div onKeyDown={this._onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
-            <FocusZone
-              componentRef={this._focusZone}
-              className={classNames.focusZone}
-              direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={this.isRightArrow}
-              onActiveElementChanged={this._onActiveRowChanged}
-              onBlur={this._onBlur}
-            >
-              {!this.props.disableSelectionZone ? (
-                <SelectionZone
-                  ref={this._selectionZone}
-                  selection={selection}
-                  selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
-                  selectionMode={selectionMode}
-                  onItemInvoked={onItemInvoked}
-                  onItemContextMenu={onItemContextMenu}
-                  enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...(selectionZoneProps || {})}
-                >
-                  {list}
-                </SelectionZone>
-              ) : (
-                list
-              )}
-            </FocusZone>
-          </div>
-          {onRenderDetailsFooter(
-            {
-              ...detailsFooterProps,
-            },
-            this._onRenderDetailsFooter,
-          )}
-        </div>
-      </div>
+      <DetailsListInner
+        {...this.props}
+        {...this.state}
+        selection={this._selection}
+        dragDropHelper={this._dragDropHelper}
+        rootRef={this._root}
+        listRef={this._list}
+        groupedListRef={this._groupedList}
+        focusZoneRef={this._focusZone}
+        headerRef={this._header}
+        selectionZoneRef={this._selectionZone}
+        onGroupExpandStateChanged={this._onGroupExpandStateChanged}
+        onColumnIsSizingChanged={this._onColumnIsSizingChanged}
+        onRowDidMount={this._onRowDidMount}
+        onRowWillUnmount={this._onRowWillUnmount}
+        onColumnResized={this._onColumnResized}
+        onColumnAutoResized={this._onColumnAutoResized}
+        onToggleCollapse={this._onToggleCollapse}
+        onActiveRowChanged={this._onActiveRowChanged}
+        onBlur={this._onBlur}
+        onRenderDefaultRow={this._onRenderRow}
+      />
     );
   }
 
@@ -533,131 +919,12 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return <DetailsRow {...props} />;
   };
 
-  private _onRenderDetailsHeader = (
-    detailsHeaderProps: IDetailsHeaderProps,
-    defaultRender?: IRenderFunction<IDetailsHeaderProps>,
-  ): JSX.Element => {
-    return <DetailsHeader {...detailsHeaderProps} />;
-  };
-
-  private _onRenderDetailsFooter = (
-    detailsFooterProps: IDetailsFooterProps,
-    defaultRender?: IRenderFunction<IDetailsFooterProps>,
-  ): JSX.Element | null => {
-    return null;
-  };
-
-  private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
-    return (item: any, itemIndex: number): React.ReactNode => {
-      return this._onRenderCell(nestingDepth, item, itemIndex);
-    };
-  };
-
-  private _onRenderCell = (nestingDepth: number, item: any, index: number): React.ReactNode => {
-    const {
-      compact,
-      dragDropEvents,
-      rowElementEventMap: eventsToRegister,
-      onRenderMissingItem,
-      onRenderItemColumn,
-      getCellValueKey,
-      selectionMode = this._selection.mode,
-      viewport,
-      checkboxVisibility,
-      getRowAriaLabel,
-      getRowAriaDescribedBy,
-      checkButtonAriaLabel,
-      checkboxCellClassName,
-      groupProps,
-      useReducedRowRenderer,
-      indentWidth,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox,
-      enableUpdateAnimations,
-      useFastIcons,
-    } = this.props;
-
-    const onRenderRow = this.props.onRenderRow
-      ? composeRenderFunction(this.props.onRenderRow, this._onRenderRow)
-      : this._onRenderRow;
-
-    const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
-    const selection = this._selection;
-    const dragDropHelper = this._dragDropHelper;
-    const { adjustedColumns: columns } = this.state;
-
-    const rowProps: IDetailsRowProps = {
-      item: item,
-      itemIndex: index,
-      compact: compact,
-      columns: columns,
-      groupNestingDepth: nestingDepth,
-      selectionMode: selectionMode,
-      selection: selection,
-      onDidMount: this._onRowDidMount,
-      onWillUnmount: this._onRowWillUnmount,
-      onRenderItemColumn: onRenderItemColumn,
-      getCellValueKey: getCellValueKey,
-      eventsToRegister: eventsToRegister,
-      dragDropEvents: dragDropEvents,
-      dragDropHelper: dragDropHelper,
-      viewport: viewport,
-      checkboxVisibility: checkboxVisibility,
-      collapseAllVisibility: collapseAllVisibility,
-      getRowAriaLabel: getRowAriaLabel,
-      getRowAriaDescribedBy: getRowAriaDescribedBy,
-      checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName,
-      useReducedRowRenderer: useReducedRowRenderer,
-      indentWidth,
-      cellStyleProps: cellStyleProps,
-      onRenderDetailsCheckbox: onRenderCheckbox,
-      enableUpdateAnimations,
-      rowWidth: this._sumColumnWidths(columns),
-      useFastIcons,
-    };
-
-    if (!item) {
-      if (onRenderMissingItem) {
-        return onRenderMissingItem(index, rowProps);
-      }
-
-      return null;
-    }
-
-    return onRenderRow(rowProps);
-  };
-
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
     this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   };
 
   private _onColumnIsSizingChanged = (column: IColumn, isSizing: boolean): void => {
     this.setState({ isSizing: isSizing });
-  };
-
-  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.down) {
-      if (this._focusZone.current && this._focusZone.current.focus()) {
-        // select the first item in list after down arrow key event
-        // only if nothing was selected; otherwise start with the already-selected item
-        if (this._selection.getSelectedIndices().length === 0) {
-          this._selection.setIndexSelected(0, true, false);
-        }
-
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-    }
-  };
-
-  private _onContentKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.up && !ev.altKey) {
-      if (this._header.current && this._header.current.focus()) {
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-    }
   };
 
   private _getGroupNestingDepth(): number {
@@ -721,27 +988,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     });
     if (this._groupedList.current) {
       this._groupedList.current.toggleCollapseAll(collapsed);
-    }
-  };
-
-  private _onColumnDragEnd = (props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent): void => {
-    const { columnReorderOptions } = this.props;
-    let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
-    if (columnReorderOptions && columnReorderOptions.onDragEnd) {
-      if (props.dropLocation && props.dropLocation !== ColumnDragEndLocation.header) {
-        finalDropLocation = props.dropLocation;
-      } else if (this._root.current) {
-        const clientRect = this._root.current.getBoundingClientRect();
-        if (
-          event.clientX > clientRect.left &&
-          event.clientX < clientRect.right &&
-          event.clientY > clientRect.top &&
-          event.clientY < clientRect.bottom
-        ) {
-          finalDropLocation = ColumnDragEndLocation.surface;
-        }
-      }
-      columnReorderOptions.onDragEnd(finalDropLocation);
     }
   };
 
@@ -900,7 +1146,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
@@ -1044,103 +1290,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     return itemKey;
   }
-
-  private _getDetailsFooterProps(): IDetailsFooterProps {
-    const { adjustedColumns: columns } = this.state;
-
-    const {
-      viewport,
-      checkboxVisibility,
-      indentWidth,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      selectionMode = this._selection.mode,
-    } = this.props;
-
-    return {
-      columns: columns,
-      groupNestingDepth: this._getGroupNestingDepth(),
-      selection: this._selection,
-      selectionMode: selectionMode,
-      viewport: viewport,
-      checkboxVisibility,
-      indentWidth,
-      cellStyleProps,
-    };
-  }
-
-  private _getColumnReorderProps(): IColumnReorderHeaderProps | undefined {
-    const { columnReorderOptions } = this.props;
-    if (columnReorderOptions) {
-      return {
-        ...columnReorderOptions,
-        onColumnDragEnd: this._onColumnDragEnd,
-      };
-    }
-  }
-
-  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
-    const {
-      onRenderFooter: onRenderDetailsGroupFooter,
-      onRenderHeader: onRenderDetailsGroupHeader,
-    } = detailsGroupProps;
-    const { adjustedColumns: columns } = this.state;
-    const {
-      selectionMode = this._selection.mode,
-      viewport,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      checkboxVisibility,
-      indentWidth,
-    } = this.props;
-    const groupNestingDepth = this._getGroupNestingDepth();
-
-    const onRenderFooter = onRenderDetailsGroupFooter
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupFooter(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps,
-            },
-            defaultRender,
-          );
-        }
-      : undefined;
-
-    const onRenderHeader = onRenderDetailsGroupHeader
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupHeader(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps,
-            },
-            defaultRender,
-          );
-        }
-      : undefined;
-
-    return {
-      ...detailsGroupProps,
-      onRenderFooter,
-      onRenderHeader,
-    };
-  }
-
-  private isRightArrow = (event: React.KeyboardEvent<HTMLElement>) => {
-    return event.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
-  };
 }
 
 export function buildColumns(
@@ -1192,4 +1341,16 @@ function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListPr
     cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
   );
+}
+
+function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
+  let level = 0;
+  let groupsInLevel = groups;
+
+  while (groupsInLevel && groupsInLevel.length > 0) {
+    level++;
+    groupsInLevel = groupsInLevel[0].children;
+  }
+
+  return level;
 }

@@ -10,6 +10,8 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: colors.grey[300],
     foreground3: colors.white,
     foreground4: colors.white,
+    foreground5: colors.grey[450],
+    foreground6: colors.grey[550],
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -40,6 +42,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     foregroundPressed: colors.white,
     backgroundPressed: colors.grey[500],
+    backgroundPressed3: colors.grey[450],
     borderPressed: colors.grey[400],
 
     foregroundActive: colors.white,
@@ -69,8 +72,10 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundDisabled1: colors.grey[450],
     foregroundDisabled: colors.grey[450],
 
-    backgroundDisabled1: colors.grey[550],
     backgroundDisabled: colors.grey[550],
+    backgroundDisabled1: colors.grey[550],
+    backgroundDisabled2: colors.grey[650],
+    backgroundDisabled3: colors.grey[850],
 
     borderDisabled: colors.grey[550],
   }),
@@ -141,6 +146,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundDisabled1: colors.grey[550],
     backgroundDisabled: colors.grey[550],
+    backgroundDisabled2: colors.grey[650],
 
     borderDisabled: colors.grey[550],
   }),

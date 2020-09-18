@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { mountWithProvider as mount } from 'test/utils';
-import TextArea from 'src/components/TextArea/TextArea';
+import { TextArea } from 'src/components/TextArea/TextArea';
 import { isConformant } from 'test/specs/commonTests';
 import * as faker from 'faker';
 
 describe('TextArea', () => {
-  isConformant(TextArea, { constructorName: 'TextArea', autoControlledProps: ['value'] });
+  isConformant(TextArea, { testPath: __filename, constructorName: 'TextArea', autoControlledProps: ['value'] });
 
   describe('defaultValue', () => {
     test('sets "defaultValue" as initial "value"', () => {

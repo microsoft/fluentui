@@ -1,3 +1,1 @@
-import alertVariables from './alertVariables';
-
-export default alertVariables;
+export { alertVariables as alertDismissActionVariables } from './alertVariables';

@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { exampleBestPracticesContext } from '../../utils';
+import { exampleBestPracticesContext } from '../../contexts/exampleBestPracticesContext';
 import ExampleSection from '../ComponentDoc/ExampleSection';
 
 interface ComponentBestPracticesProps {
@@ -30,6 +30,6 @@ export default class ComponentBestPractices extends React.Component<ComponentBes
       return null;
     }
 
-    return <ExampleSection title="Best Practices">{bestPracticesElement}</ExampleSection>;
+    return <ExampleSection title="Best practices">{bestPracticesElement}</ExampleSection>;
   }
 }

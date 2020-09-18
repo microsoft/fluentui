@@ -85,7 +85,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <>
-        {searchablePageTitle && this._renderSearchBox(searchablePageTitle)}
+        {searchablePageTitle && pages && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
         <FocusZone>
           <nav className={styles.nav} role="navigation">
             {list}
@@ -128,7 +128,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
-    if (!!searchQuery) {
+    if (searchQuery) {
       const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
@@ -263,6 +263,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           onClick={this._onSearchBoxClick}
           underlined={true}
           styles={searchBoxStyles}
+          ariaLabel={`Search ${pageTitle}`}
         />
         <IconButton
           className={styles.filterButton}

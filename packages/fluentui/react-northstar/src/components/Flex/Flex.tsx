@@ -1,13 +1,17 @@
-import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import FlexItem from './FlexItem';
+import { FlexItem } from './FlexItem';
 
 export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
   /** Defines if container should be inline element. */
@@ -47,11 +51,14 @@ export type FlexStylesProps = Pick<
 >;
 export const flexClassName = 'ui-flex';
 
-const Flex: React.FC<WithAsProp<FlexProps>> & {
+/**
+ * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).
+ */
+export const Flex: ComponentWithAs<'div', FlexProps> & {
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
 
@@ -147,8 +154,3 @@ Flex.propTypes = {
 Flex.handledProps = Object.keys(Flex.propTypes) as any;
 
 Flex.Item = FlexItem;
-
-/**
- * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).
- */
-export default withSafeTypeForAs<typeof Flex, FlexProps>(Flex);

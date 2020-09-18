@@ -137,7 +137,7 @@ export { ISize as ITileSize };
 
 export interface ITilesListProps<TItem>
   extends IBaseProps,
-    React.Props<TilesList<TItem>>, // tslint:disable-line:deprecation
+    React.Props<TilesList<TItem>>, // eslint-disable-line deprecation/deprecation
     React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.

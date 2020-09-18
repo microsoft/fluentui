@@ -84,7 +84,7 @@ export const NavBasicExample: React.FunctionComponent = () => {
   );
 };
 
-function _onLinkClick(ev: React.MouseEvent<HTMLElement>, item?: INavLink) {
+function _onLinkClick(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) {
   if (item && item.name === 'News') {
     alert('News link clicked');
   }

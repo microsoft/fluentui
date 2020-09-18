@@ -28,7 +28,7 @@ const ToolbarExample = () => {
   });
 
   return (
-    <Toolbar aria-label="Text editor">
+    <Toolbar aria-label="Default">
       <Toolbar.Item
         accessibility={toggleButtonBehavior}
         active={state.bold}

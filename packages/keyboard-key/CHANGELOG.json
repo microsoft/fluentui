@@ -2,6 +2,125 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.12",
+      "version": "0.2.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Resolve side effects in keyboard-key/codes.ts",
+            "author": "connorjsmith101@gmail.com",
+            "commit": "6a33fd5c4919b378ce306c1877aa52d384a91019",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "docs: update README.md to show proper usage",
+            "author": "olfedias@microsoft.com",
+            "commit": "b72ef4c92db4c3f239d2ee35dee36234a9776bf3",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "czearing@outlook.com",
+            "commit": "630f25da48bc86270288fbc5ccd4703cf6ea4d46",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "keyboard-key: Reducing bundle size.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/keyboard-key_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@fluentui/keyboard-key_v0.1.4",
       "version": "0.1.4",

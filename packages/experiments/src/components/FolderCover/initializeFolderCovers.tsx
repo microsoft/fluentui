@@ -2,7 +2,7 @@ import * as React from 'react';
 import { registerIcons, IIconOptions } from '@uifabric/styling';
 
 const ASSET_CDN_BASE_URL =
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons';
+  'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200708.002/office-ui-fabric-react-assets/foldericons';
 
 export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, options?: Partial<IIconOptions>): void {
   registerIcons(
@@ -16,6 +16,8 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       icons: {
         folderCoverLargeDefaultFront: <img src={`${baseUrl}/lg-fg.svg`} />,
         folderCoverLargeDefaultBack: <img src={`${baseUrl}/lg-bg.svg`} />,
+        folderCoverLargeLinkedFront: <img src={`${baseUrl}/lg-fg-linked.svg`} />,
+        folderCoverLargeLinkedBack: <img src={`${baseUrl}/lg-bg.svg`} />,
         folderCoverLargeMediaFront: <img src={`${baseUrl}/lg-fg-media.svg`} />,
         folderCoverLargeMediaBack: <img src={`${baseUrl}/lg-bg.svg`} />,
       },
@@ -34,6 +36,8 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       icons: {
         folderCoverSmallDefaultFront: <img src={`${baseUrl}/sm-fg.svg`} />,
         folderCoverSmallDefaultBack: <img src={`${baseUrl}/sm-bg.svg`} />,
+        folderCoverSmallLinkedFront: <img src={`${baseUrl}/sm-fg-linked.svg`} />,
+        folderCoverSmallLinkedBack: <img src={`${baseUrl}/sm-bg.svg`} />,
         folderCoverSmallMediaFront: <img src={`${baseUrl}/sm-fg-media.svg`} />,
         folderCoverSmallMediaBack: <img src={`${baseUrl}/sm-bg.svg`} />,
       },

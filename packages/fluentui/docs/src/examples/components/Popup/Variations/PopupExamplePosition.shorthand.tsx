@@ -18,7 +18,7 @@ const PopupExamplePosition = () => {
   const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' };
 
   return (
-    <Grid columns="1" variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
+    <Grid columns={1} variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
       <Popup
         open={open || undefined}
         align={align}

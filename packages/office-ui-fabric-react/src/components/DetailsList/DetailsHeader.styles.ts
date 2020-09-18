@@ -8,7 +8,7 @@ import {
   hiddenContentStyle,
   ITheme,
 } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
@@ -259,7 +259,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
             },
           ]
         : {
-            transform: 'rotate(90deg)',
+            transform: getRTL(theme) ? 'rotate(-90deg)' : 'rotate(90deg)',
           },
     ],
 

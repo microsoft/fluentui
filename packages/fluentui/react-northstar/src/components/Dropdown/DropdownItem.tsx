@@ -3,23 +3,22 @@ import { indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import cx from 'classnames';
 
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import Image, { ImageProps } from '../Image/Image';
-import Box, { BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface DropdownItemSlotClassNames {
   content: string;
@@ -78,9 +77,13 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
   checkableIndicator: `${dropdownItemClassName}__checkable-indicator`,
 };
 
-const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> &
+/**
+ * A DropdownItem represents an option of Dropdown list.
+ * Displays an item with optional rich media metadata.
+ */
+export const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
   FluentComponentStaticProps<DropdownItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
 
   setStart();
@@ -205,9 +208,3 @@ DropdownItem.propTypes = {
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });
-
-/**
- * A DropdownItem represents an option of Dropdown list.
- * Displays an item with optional rich media metadata.
- */
-export default withSafeTypeForAs<typeof DropdownItem, DropdownItemProps>(DropdownItem);

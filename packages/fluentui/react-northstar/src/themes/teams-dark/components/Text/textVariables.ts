@@ -1,6 +1,6 @@
-import { TeamsTextVariables } from '../../../teams/components/Text/textVariables';
+import { TextVariables } from '../../../teams/components/Text/textVariables';
 
-export default (siteVariables): Partial<TeamsTextVariables> => ({
+export const textVariables = (siteVariables): Partial<TextVariables> => ({
   atMentionMeColor: siteVariables.colors.orange[300],
   atMentionOtherColor: siteVariables.colors.brand[400],
   disabledColor: siteVariables.colors.grey[450],
@@ -8,5 +8,4 @@ export default (siteVariables): Partial<TeamsTextVariables> => ({
   importantColor: siteVariables.colors.red[300],
   successColor: siteVariables.colors.green[200],
   timestampColor: siteVariables.colors.grey[400],
-  timestampHoverColor: siteVariables.colors.grey[250],
 });

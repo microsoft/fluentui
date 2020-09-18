@@ -6,7 +6,6 @@ import { FabricDecoratorTall } from '../utilities';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
-// tslint:disable:max-line-length
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (

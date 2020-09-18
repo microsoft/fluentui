@@ -59,7 +59,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * Classnames for different aspects of a menu item
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   classNames: IMenuItemClassNames;
 
   /**
@@ -243,4 +243,31 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
    * Styles for a menu item that is a link.
    */
   linkContentMenu: IStyle;
+}
+
+export interface IContextualMenuItemRenderFunctions {
+  /**
+   * Rendering function for check mark icon
+   */
+  renderCheckMarkIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for item icon
+   */
+  renderItemIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for item label
+   */
+  renderItemName: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for secondary text label
+   */
+  renderSecondaryText: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
+
+  /**
+   * Rendering function for submenu icon
+   */
+  renderSubMenuIcon: (props: IContextualMenuItemProps, customClassNames?: string[]) => React.ReactNode;
 }

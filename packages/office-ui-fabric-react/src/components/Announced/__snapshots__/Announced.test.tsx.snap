@@ -3,9 +3,7 @@
 exports[`Announced does not initially render message 1`] = `
 <div
   aria-live="polite"
-  className=
-
-
+  className=""
   role="status"
 />
 `;
@@ -13,9 +11,7 @@ exports[`Announced does not initially render message 1`] = `
 exports[`Announced renders message after delay 1`] = `
 <div
   aria-live="polite"
-  className=
-
-
+  className=""
   role="status"
 >
   <div

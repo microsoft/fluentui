@@ -33,7 +33,7 @@ export interface ChatMessageVariables {
   overlayZIndex: number;
 }
 
-export default (siteVars): ChatMessageVariables => ({
+export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   actionMenuBoxShadow: siteVars.shadowLevel1,
   actionMenuPositionRight: pxToRem(5),
   actionMenuPositionTop: pxToRem(-30),
@@ -44,8 +44,8 @@ export default (siteVars): ChatMessageVariables => ({
   offset: pxToRem(100),
   padding: pxToRem(16),
   authorMarginRight: pxToRem(12),
-  authorColor: siteVars.colors.grey[500],
-  authorFontWeight: siteVars.fontWeightRegular,
+  authorColor: siteVars.colorScheme.default.foreground,
+  authorFontWeight: siteVars.fontWeightSemibold,
   headerMarginBottom: pxToRem(2),
   contentColor: siteVars.colors.grey[750],
   linkColor: siteVars.colorScheme.brand.foreground1,
@@ -61,7 +61,7 @@ export default (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   reactionGroupBorderColor: 'transparent',
   showActionMenu: undefined,
-  timestampColorMine: siteVars.colors.grey[500],
+  timestampColorMine: siteVars.colorScheme.default.foreground1,
   zIndex: siteVars.zIndexes.foreground,
   overlayZIndex: siteVars.zIndexes.overlay,
 });

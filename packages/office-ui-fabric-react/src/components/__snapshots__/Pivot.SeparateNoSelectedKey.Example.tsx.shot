@@ -9,7 +9,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   }
 >
-  Current selectedKey: 
+  Current selectedKey:
   Settings
   <div
     style={
@@ -215,7 +215,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing1
                 </span>
               </span>
@@ -372,7 +372,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing2
                 </span>
               </span>
@@ -529,7 +529,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing3
                 </span>
               </span>

@@ -174,13 +174,6 @@ export const stylesPagesWeb: INavPage[] = [
       ),
   },
   {
-    title: 'Fluent UI 7 Updates',
-    url: '#/styles/web/fabric-7',
-    component: () => <LoadingComponent title="Fluent UI 7 Updates" />,
-    getComponent: cb =>
-      require.ensure([], require => cb(require<any>('../../../pages/Styles/Fabric7Page/Fabric7Page').Fabric7Page)),
-  },
-  {
     title: 'Theme Designer',
     url: 'https://aka.ms/themedesigner',
     isExternal: true,

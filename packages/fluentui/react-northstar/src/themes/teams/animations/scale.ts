@@ -1,261 +1,260 @@
-import { easeOut, easeIn, easeEasy } from './timingFunctions';
+import { decelerateMax, accelerateMax } from './timingFunctions';
+import { ultraFast, faster, fast, normal, slow, slower, ultraSlow } from './durations';
 
-const scaleAnimations = {
-  // Scale in w/ Fade -- Useful for opening modal dialogs
+export const scaleAnimations = {
+  // Scale in w/ fade- UltraFast
+  scaleEnterUltraFast: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+      '100%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: ultraFast,
+    timingFunction: decelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale in w/ fade- Faster
+  scaleEnterFaster: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+      '100%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: faster,
+    timingFunction: decelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale in w/ fade- Fast
   scaleEnterFast: {
-    keyframe: {
+    keyframe: ({ delta }) => ({
       '0%': {
-        transform: 'scale(.88)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
         opacity: 1,
       },
-    },
-    duration: '500ms',
-    timingFunction: easeOut,
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: fast,
+    timingFunction: decelerateMax,
     fillMode: 'forwards',
   },
-  scaleEnterMedium: {
-    keyframe: {
+  // Scale in  w/ fade- Normal
+  scaleEnterNormal: {
+    keyframe: ({ delta }) => ({
       '0%': {
-        transform: 'scale(.88)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
         opacity: 1,
       },
-    },
-    duration: '600ms',
-    timingFunction: easeOut,
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: normal,
+    timingFunction: decelerateMax,
     fillMode: 'forwards',
   },
+  // Scale in w/ fade - Slow
   scaleEnterSlow: {
-    keyframe: {
+    keyframe: ({ delta }) => ({
       '0%': {
-        transform: 'scale(.88)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
         opacity: 1,
       },
-    },
-    duration: '700ms',
-    timingFunction: easeOut,
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: slow,
+    timingFunction: decelerateMax,
     fillMode: 'forwards',
   },
-  // Scale Out w/ Fade --Useful for dismissing modal dialogs
+  // Scale in w/ fade - Slower
+  scaleEnterSlower: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+      '100%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: slower,
+    timingFunction: decelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale in w/ fade - UlrtaSlow
+  scaleEnterUltraSlow: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+      '100%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+    }),
+    keyframeParams: { delta: 0.88 },
+    duration: ultraSlow,
+    timingFunction: decelerateMax,
+    fillMode: 'forwards',
+  },
+
+  // Scale Out w/ Fade - UltraFast
+  scaleExitUltraFast: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: ultraFast,
+    timingFunction: accelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale Out w/ Fade - Faster
+  scaleExitFaster: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: faster,
+    timingFunction: accelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale Out w/ Fade - Fast
   scaleExitFast: {
-    keyframe: {
+    keyframe: ({ delta }) => ({
       '0%': {
         transform: 'scale(1)',
         opacity: 1,
       },
       '100%': {
-        transform: 'scale(.9)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
-    },
-    duration: '200ms',
-    timingFunction: easeIn,
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: fast,
+    timingFunction: accelerateMax,
     fillMode: 'forwards',
   },
-  scaleExitMedium: {
-    keyframe: {
+  // Scale Out w/ Fade - Normal
+  scaleExitNormal: {
+    keyframe: ({ delta }) => ({
       '0%': {
         transform: 'scale(1)',
         opacity: 1,
       },
       '100%': {
-        transform: 'scale(.9)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
-    },
-    duration: '275ms',
-    timingFunction: easeIn,
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: normal,
+    timingFunction: accelerateMax,
     fillMode: 'forwards',
   },
+  // Scale Out w/ Fade - Slow
   scaleExitSlow: {
-    keyframe: {
+    keyframe: ({ delta }) => ({
       '0%': {
         transform: 'scale(1)',
         opacity: 1,
       },
       '100%': {
-        transform: 'scale(.9)',
+        transform: `scale(${delta})`,
         opacity: 0,
       },
-    },
-    duration: '350ms',
-    timingFunction: easeIn,
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: slow,
+    timingFunction: accelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale Out w/ Fade - Slower
+  scaleExitSlower: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: slower,
+    timingFunction: accelerateMax,
+    fillMode: 'forwards',
+  },
+  // Scale Out w/ Fade - UltraSlow
+  scaleExitUltraSlow: {
+    keyframe: ({ delta }) => ({
+      '0%': {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: `scale(${delta})`,
+        opacity: 0,
+      },
+    }),
+    keyframeParams: { delta: 0.9 },
+    duration: ultraSlow,
+    timingFunction: accelerateMax,
     fillMode: 'forwards',
   },
   scaleDownSoft: {
-    keyframe: {
+    keyframe: ({ delta }) => ({
       '0%': {
         transform: 'scale(1)',
+        opacity: 1,
       },
       '100%': {
-        transform: 'scale(.96)',
+        transform: `scale(${delta})`,
+        opacity: 0,
       },
-    },
+    }),
+    keyframeParams: { delta: 0.9 },
     duration: '100ms',
     timingFunction: 'cubic-bezier(.78, 0, .22, 1)',
     fillMode: 'both',
   },
-
-  // Bounce in w/ fade --Useful for explicity grabbing the users attention.
-  bounceEnterFast: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(.92)',
-        opacity: 0,
-        animationTimingFunction: easeIn,
-      },
-      '50%': {
-        transform: 'scale(1.03)',
-        animationTimingFunction: easeOut,
-        opacity: 1,
-      },
-      '100%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeOut,
-      },
-    },
-    delay: '0ms',
-    duration: '450ms',
-    fillMode: 'forwards',
-  },
-  bounceEnterMedium: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(.92)',
-        opacity: 0,
-        animationTimingFunction: easeIn,
-      },
-      '50%': {
-        transform: 'scale(1.03)',
-        opacity: 1,
-        animationTimingFunction: easeOut,
-      },
-      '100%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeOut,
-      },
-    },
-    delay: '0ms',
-    duration: '550ms',
-    fillMode: 'forwards',
-  },
-  bounceEnterSlow: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(.92)',
-        opacity: 0,
-        animationTimingFunction: easeIn,
-      },
-      '50%': {
-        transform: 'scale(1.03)',
-        opacity: 1,
-        animationTimingFunction: easeIn,
-      },
-      '100%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeOut,
-      },
-    },
-    delay: '0ms',
-    duration: '600ms',
-    fillMode: 'forwards',
-  },
-  // Bounce exit w/ fade.
-  bounceExitFast: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeEasy,
-      },
-      '30%': {
-        transform: 'scale(1.03)',
-        opacity: 1,
-        animationTimingFunction: easeIn,
-      },
-      '100%': {
-        transform: 'scale(.96)',
-        opacity: 0,
-      },
-    },
-    delay: '0ms',
-    duration: '400ms',
-    fillMode: 'forwards',
-  },
-  bounceExitMedium: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(1)',
-
-        animationTimingFunction: easeEasy,
-      },
-      '30%': {
-        transform: 'scale(1.03)',
-        opacity: 1,
-        animationTimingFunction: easeIn,
-      },
-      '100%': {
-        transform: 'scale(.96)',
-        opacity: 0,
-      },
-    },
-    delay: '0ms',
-    duration: '500ms',
-    fillMode: 'forwards',
-  },
-  bounceExitSlow: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeEasy,
-      },
-      '30%': {
-        transform: 'scale(1.03)',
-        opacity: 1,
-        animationTimingFunction: easeIn,
-      },
-      '100%': {
-        transform: 'scale(.95)',
-        opacity: 0,
-      },
-    },
-    delay: '0ms',
-    duration: '600ms',
-    fillMode: 'forwards',
-  },
-  // Bounce in w/ fade --Useful for explicity grabbing the users attention.
-  bounceNotify: {
-    keyframe: {
-      '0%': {
-        transform: 'scale(1)',
-        animationTimingFunction: easeIn,
-      },
-      '30%': {
-        transform: 'scale(.92)',
-        animationTimingFunction: easeEasy,
-      },
-      '60%': {
-        transform: 'scale(1.05)',
-        animationTimingFunction: easeEasy,
-      },
-      '100%': {
-        transform: 'scale(1)',
-      },
-    },
-    delay: '0ms',
-    duration: '600ms',
-    fillMode: 'forwards',
-  },
 };
-
-export default scaleAnimations;

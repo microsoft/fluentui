@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Menu, MenuShorthandKinds } from '@fluentui/react-northstar';
+import { Menu } from '@fluentui/react-northstar';
 
 const items = [
   { key: 'editorials', content: 'Editorials' },
-  { key: 'divider-1', kind: 'divider' as MenuShorthandKinds },
+  { key: 'divider-1', kind: 'divider' as const },
   { key: 'review', content: 'Reviews' },
-  { key: 'divider-2', kind: 'divider' as MenuShorthandKinds, content: '...' },
+  { key: 'divider-2', kind: 'divider' as const, content: '...' },
   { key: 'events', content: 'Upcoming Events' },
 ];
 

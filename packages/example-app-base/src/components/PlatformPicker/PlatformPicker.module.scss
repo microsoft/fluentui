@@ -1,33 +1,36 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-$platform-button-margin: 4px;
 $icon-size: 16px;
 
 .platformPicker {
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 }
 
 .platformPickerList {
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin: -$platform-button-margin;
+  grid-gap: 12px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  -ms-grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .platformItem {
-  margin: $platform-button-margin;
-  width: calc(#{percentage(1/3)} - #{$platform-button-margin * 2});
+  display: block;
 }
 
 .button {
   width: 100%;
   min-width: 100%;
-  height: 30px;
+  height: 40px;
   padding: 8px;
   border: 1px solid $ms-color-neutralQuaternary;
   font-size: $ms-font-size-s;
   @include focus-border(-1px);
+
+  :global(.ms-Button-label) {
+    line-height: 1.25;
+  }
 
   &:not([disabled]) {
     color: $ms-color-neutralSecondary;
@@ -97,16 +100,5 @@ $icon-size: 16px;
         }
       }
     }
-  }
-}
-
-@media only screen and (max-width: $uhf-screen-max-lg) {
-  .platformPickerList {
-    margin: -$platform-button-margin -$platform-button-margin/2;
-  }
-
-  .platformItem {
-    margin: $platform-button-margin $platform-button-margin/2;
-    width: calc(#{percentage(1/3)} - #{$platform-button-margin});
   }
 }

@@ -111,7 +111,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -190,6 +189,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -221,7 +221,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             text-overflow: ellipsis;
           }
           & > *:not(:first-child) {
-            margin-top: 15px;
+            margin-top: 8px;
           }
           & > *:not(.ms-StackItem) {
             flex-shrink: 1;
@@ -280,7 +280,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
         >
           <button
             aria-checked={false}
-            aria-labelledby="Toggle3-label"
+            aria-labelledby="Toggle3-label Toggle3-stateText"
             checked={false}
             className=
                 ms-Toggle-background
@@ -344,7 +344,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     border-color: transparent;
                     border-radius: 50%;
                     border-style: solid;
-                    border-width: .28em;
+                    border-width: 6px;
                     box-sizing: border-box;
                     display: block;
                     height: 12px;
@@ -421,9 +421,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=
@@ -484,6 +482,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
+                }
           >
             <input
               aria-invalid={false}
@@ -528,6 +529,10 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -536,6 +541,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -546,6 +554,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -554,6 +565,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="TextField4"
               onBlur={[Function]}
@@ -588,22 +602,35 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               outline: 1px solid WindowText;
             }
             @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: auto;
               border-bottom: none;
             }
             &:active {
               color: #004578;
               text-decoration: underline;
             }
+            @media screen and (-ms-high-contrast: active){&:active {
+              color: LinkText;
+            }
             &:hover {
               color: #004578;
               text-decoration: underline;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              color: LinkText;
             }
             &:active:hover {
               color: #004578;
               text-decoration: underline;
             }
+            @media screen and (-ms-high-contrast: active){&:active:hover {
+              color: LinkText;
+            }
             &:focus {
               color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus {
+              color: LinkText;
             }
         href="https://bing.com"
         onClick={[Function]}
@@ -613,6 +640,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       </a>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

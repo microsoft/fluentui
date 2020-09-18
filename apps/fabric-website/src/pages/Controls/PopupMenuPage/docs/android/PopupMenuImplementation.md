@@ -4,8 +4,8 @@
 
 ### Source code
 
-[PopupMenu](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/popupmenu/PopupMenu.kt)
+[PopupMenu](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/popupmenu/PopupMenu.kt)
 
 ### Sample code
 
-[PopupMenu demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PopupMenuActivity.kt)
+[PopupMenu demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PopupMenuActivity.kt)

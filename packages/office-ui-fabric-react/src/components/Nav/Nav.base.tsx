@@ -4,7 +4,15 @@ import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
-import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
+import {
+  INav,
+  INavLink,
+  INavLinkGroup,
+  INavProps,
+  INavStyleProps,
+  INavStyles,
+  IRenderGroupHeaderProps,
+} from './Nav.types';
 import { composeComponentAs, composeRenderFunction } from '@uifabric/utilities';
 
 // The number pixels per indentation level for Nav links.
@@ -40,6 +48,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
+      // TODO: consider removing
+      // eslint-disable-next-line react/no-unused-state
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
@@ -116,6 +126,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? '#' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon }}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={
           link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)
         }
@@ -134,7 +145,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -205,56 +216,79 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderGroup = (group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> => {
     const { styles, groups, theme, onRenderGroupHeader = this._renderGroupHeader } = this.props;
+
+    const isExpanded = this._isGroupExpanded(group);
+
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
-      isExpanded: this._isGroupExpanded(group),
+      isExpanded,
       groups,
     });
 
+    const finalOnHeaderClick = (
+      ev?: React.MouseEvent<HTMLElement, MouseEvent> | undefined,
+      isCollapsing?: boolean | undefined,
+    ) => {
+      this._onGroupHeaderClicked(group, ev);
+    };
+
+    const groupProps: IRenderGroupHeaderProps = {
+      ...group,
+      isExpanded,
+      onHeaderClick: finalOnHeaderClick,
+    };
+
     return (
       <div key={groupIndex} className={classNames.group}>
-        {group.name ? onRenderGroupHeader(group, this._renderGroupHeader) : null}
-        <div className={classNames.groupContent}>{this._renderLinks(group.links, 0 /* nestingLevel */)}</div>
+        {groupProps.name ? onRenderGroupHeader(groupProps, this._renderGroupHeader) : null}
+        <div className={classNames.groupContent}>{this._renderLinks(groupProps.links, 0 /* nestingLevel */)}</div>
       </div>
     );
   };
 
-  private _renderGroupHeader = (group: INavLinkGroup): React.ReactElement<{}> => {
-    // tslint:disable-next-line:deprecation
+  private _renderGroupHeader = (group: IRenderGroupHeaderProps): React.ReactElement<{}> => {
+    // eslint-disable-next-line deprecation/deprecation
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
+
+    const { isExpanded } = group;
+
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
-      isExpanded: this._isGroupExpanded(group),
+      isExpanded,
       groups,
     });
 
-    const isExpanded = this._isGroupExpanded(group);
     const label = (isExpanded ? group.collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
 
+    const { onHeaderClick } = group;
+
+    const onClick = onHeaderClick
+      ? (ev?: React.MouseEvent<HTMLElement, MouseEvent> | undefined) => {
+          onHeaderClick(ev, isExpanded);
+        }
+      : undefined;
+
     return (
-      <button
-        className={classNames.chevronButton}
-        onClick={this._onGroupHeaderClicked.bind(this, group)}
-        aria-label={label}
-        aria-expanded={isExpanded}
-      >
+      <button className={classNames.chevronButton} onClick={onClick} aria-label={label} aria-expanded={isExpanded}>
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}
       </button>
     );
   };
 
-  private _onGroupHeaderClicked(group: INavLinkGroup, ev: React.MouseEvent<HTMLElement>): void {
+  private _onGroupHeaderClicked(group: INavLinkGroup, ev?: React.MouseEvent<HTMLElement>): void {
     if (group.onHeaderClick) {
       group.onHeaderClick(ev, this._isGroupExpanded(group));
     }
 
     this._toggleCollapsed(group);
 
-    ev.preventDefault();
-    ev.stopPropagation();
+    if (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 
   private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
@@ -266,6 +300,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     if (!ev.defaultPrevented) {
       link.isExpanded = !link.isExpanded;
+      // eslint-disable-next-line react/no-unused-state
       this.setState({ isLinkExpandStateChanged: true });
     }
 

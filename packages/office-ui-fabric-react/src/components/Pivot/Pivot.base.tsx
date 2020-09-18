@@ -66,7 +66,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     this._pivotId = getId(PivotName);
     const links: IPivotItemProps[] = this._getPivotLinks(props).links;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
 
     let selectedKey: string | undefined;
@@ -104,7 +104,12 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     return (
       <div role="toolbar" {...divProps}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
-        {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
+        {selectedKey &&
+          linkCollection.links.map(
+            link =>
+              (link.alwaysRender === true || selectedKey === link.itemKey) &&
+              this._renderPivotItem(linkCollection, link.itemKey, selectedKey === link.itemKey),
+          )}
       </div>
     );
   }
@@ -174,9 +179,11 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         id={tabId}
         key={itemKey}
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onLinkClick.bind(this, itemKey)}
-        onKeyPress={this._onKeyPress.bind(this, itemKey)}
-        ariaLabel={link.ariaLabel}
+        // eslint-disable-next-line react/jsx-no-bind
+        onKeyDown={this._onKeyDown.bind(this, itemKey)}
+        aria-label={link.ariaLabel}
         role="tab"
         aria-selected={isSelected}
         name={link.headerText}
@@ -206,9 +213,13 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   };
 
   /**
-   * Renders the current Pivot Item
+   * Renders a Pivot Item
    */
-  private _renderPivotItem(linkCollection: PivotLinkCollection, itemKey: string | undefined): JSX.Element | null {
+  private _renderPivotItem(
+    linkCollection: PivotLinkCollection,
+    itemKey: string | undefined,
+    isActive: boolean,
+  ): JSX.Element | null {
     if (this.props.headersOnly || !itemKey) {
       return null;
     }
@@ -217,7 +228,14 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const selectedTabId = linkCollection.keyToTabIdMapping[itemKey];
 
     return (
-      <div role="tabpanel" aria-labelledby={selectedTabId} className={this._classNames.itemContainer}>
+      <div
+        role="tabpanel"
+        hidden={!isActive}
+        key={itemKey}
+        aria-hidden={!isActive}
+        aria-labelledby={selectedTabId}
+        className={this._classNames.itemContainer}
+      >
         {React.Children.toArray(this.props.children)[index]}
       </div>
     );
@@ -283,9 +301,9 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
-   * Handle the onKeyPress event on the PivotLinks
+   * Handle the onKeyDown event on the PivotLinks
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._updateSelectedItem(itemKey);
@@ -335,6 +353,7 @@ function _isPivotItem(item: React.ReactNode): item is PivotItem {
     !!item &&
     typeof item === 'object' &&
     !!(item as React.ReactElement).type &&
-    ((item as React.ReactElement).type as React.ComponentType).name === PivotItem.name
+    // Casting as an any to avoid [ object Object ] errors.
+    ((item as React.ReactElement).type as any).name === (PivotItem as any).name
   );
 }

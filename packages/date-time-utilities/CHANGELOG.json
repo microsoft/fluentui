@@ -1,0 +1,230 @@
+{
+  "name": "@fluentui/date-time-utilities",
+  "entries": [
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add helper function to compute end of week date, give a current date and starting day of week",
+            "author": "pompomon@gmail.com",
+            "commit": "9d27071b647e74a737e3f2c449586c904c400715",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding more localization strings to fluentui/date-time-utilities package.",
+            "author": "karymes@microsoft.com",
+            "commit": "9cf5b1889882a2883b2909afa59b1b25fc1d037a",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing negative date navigation by changing the date clone method from using strings to using the date object itself",
+            "author": "lorejoh12@gmail.com",
+            "commit": "5fbb948524f5c80cf59378e57ac898fabd6f3273",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Aug 2020 12:34:55 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding datepicker input placeholder string.",
+            "author": "karymes@microsoft.com",
+            "commit": "d1c061ed9024da491ceb0f4efda5c751e89cb27f",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating localization defaults and changing type of formatting functions",
+            "author": "karymes@microsoft.com",
+            "commit": "e4e1b36c2724372d3ac6a3fe26c8a2cc1d038128",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "date time utilities unit tests were timezone dependent, because the start date was right on the border between two months and when getting run locally the dates convert to local time zone. changing initial date fixes it",
+            "author": "lorejoh12@gmail.com",
+            "commit": "81c58f809c023b81cd45cb211b0a88aa5c14d249",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose getDatePartHashValue utility",
+            "author": "miclo@microsoft.com",
+            "commit": "655580570512c48006a04ea80fd66e6273e7fae8",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding isMarked to API to mark days in grid",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extracting isContiguous days method into a separate file. Adding default localization strings.",
+            "author": "karymes@microsoft.com",
+            "commit": "581a489a857033dfa862e0ba782aba2006f607ac",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.1.2",
+      "version": "7.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Normalize dates in tests instead of setting timezone in the config",
+            "author": "pompomon@gmail.com",
+            "commit": "b4adf81c515bd8fcee8264da0dd93d23f881f3cd",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract helper functions from date-time/Calendar",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.0.1",
+      "version": "7.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    }
+  ]
+}

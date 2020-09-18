@@ -21,6 +21,18 @@ const customThemeForShimmer: ITheme = createTheme({
   },
 });
 
+const shimmerElements = [
+  { type: ShimmerElementType.circle, height: 24 },
+  { type: ShimmerElementType.gap, width: '2%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '5%' },
+  { type: ShimmerElementType.line, height: 16, width: '20%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16, width: '15%' },
+  { type: ShimmerElementType.gap, width: '10%' },
+  { type: ShimmerElementType.line, height: 16 },
+];
+
 const classNames = mergeStyleSets({
   wrapper: {
     selectors: {
@@ -62,115 +74,104 @@ const classNames = mergeStyleSets({
   },
 });
 
-export class ShimmerStylingExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <React.Fragment>
-        <div>
-          Style overrides of shimmering wave and space around in cases where Shimmer is placed on backgrounds different
-          than the main background of the app. There are several scenarios that can be considered bellow:
-        </div>
-        <div>
-          <b>1.</b> The recommended way by using the <b>shimmerColors</b> prop which in turn has 2 sub-scenarios:
-        </div>
-        <div className={classNames.indent}>
-          <b>a. </b>When using <b>shimmerElements</b> prop to build the placeholder you can pass all 3 possible colors
-          to <b>shimmerColors</b> prop.
-        </div>
-        <div className={classNames.themedBackgroundWrapper}>
-          <Shimmer
-            shimmerColors={{
-              shimmer: customThemeForShimmer.palette.themeTertiary,
-              shimmerWave: customThemeForShimmer.palette.themeSecondary,
-              background: customThemeForShimmer.palette.white, // to match the background color of the containing div
-            }}
-            shimmerElements={[
-              { type: ShimmerElementType.circle, height: 24 },
-              { type: ShimmerElementType.gap, width: '2%' },
-              { type: ShimmerElementType.line, height: 16, width: '20%' },
-              { type: ShimmerElementType.gap, width: '5%' },
-              { type: ShimmerElementType.line, height: 16, width: '20%' },
-              { type: ShimmerElementType.gap, width: '10%' },
-              { type: ShimmerElementType.line, height: 16, width: '15%' },
-              { type: ShimmerElementType.gap, width: '10%' },
-              { type: ShimmerElementType.line, height: 16 },
-            ]}
-          />
-        </div>
-        <div className={classNames.indent}>
-          <b>b. </b>When using <b>customElementsGroup</b> prop to build the placeholder:
-        </div>
-        <div className={classNames.themedBackgroundWrapper2}>
-          <Shimmer
-            customElementsGroup={this._getCustomElements(customThemeForShimmer.palette.white)}
-            width={300}
-            shimmerColors={{
-              shimmer: customThemeForShimmer.palette.themeTertiary,
-              shimmerWave: customThemeForShimmer.palette.themeSecondary,
-            }}
-          />
-        </div>
-        <div>
-          <b>2. </b>Another way of doing it by using <b>Customizer</b> component wrapper.
-        </div>
-        <Customizer settings={{ theme: { ...customThemeForShimmer } }}>
-          <div className={classNames.themedBackgroundWrapper2}>
-            <Shimmer customElementsGroup={this._getCustomElements()} width={300} />
-          </div>
-        </Customizer>
-        <div>
-          <b>3. </b>Style overrides of shimmering wave using <b>styles</b> prop.
-        </div>
-        <div className={classNames.wrapper}>
-          <Shimmer width="75%" styles={this._getShimmerStyles} />
-          <Shimmer width="75%" styles={this._getShimmerStyles} />
-          <Shimmer width="75%" styles={this._getShimmerStyles} />
-          <Shimmer width="75%" styles={this._getShimmerStyles} />
-          <Shimmer width="75%" styles={this._getShimmerStyles} />
-        </div>
-      </React.Fragment>
-    );
-  }
+// Passing a color to match the background color of the containing div.
+const getCustomElements = (backgroundColor?: string) => {
+  return (
+    <div style={{ display: 'flex' }}>
+      <ShimmerElementsGroup
+        backgroundColor={backgroundColor}
+        shimmerElements={[
+          { type: ShimmerElementType.circle, height: 40 },
+          { type: ShimmerElementType.gap, width: 16, height: 40 },
+        ]}
+      />
+      <ShimmerElementsGroup
+        backgroundColor={backgroundColor}
+        flexWrap
+        width="100%"
+        shimmerElements={[
+          { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+          { type: ShimmerElementType.line, width: '90%', height: 8 },
+          { type: ShimmerElementType.gap, width: '10%', height: 20 },
+        ]}
+      />
+    </div>
+  );
+};
 
-  // Passing a color to match the background color of the containing div.
-  private _getCustomElements = (backgroundColor?: string) => {
-    return (
-      <div style={{ display: 'flex' }}>
-        <ShimmerElementsGroup
-          backgroundColor={backgroundColor}
-          shimmerElements={[
-            { type: ShimmerElementType.circle, height: 40 },
-            { type: ShimmerElementType.gap, width: 16, height: 40 },
-          ]}
-        />
-        <ShimmerElementsGroup
-          backgroundColor={backgroundColor}
-          flexWrap={true}
-          width="100%"
-          shimmerElements={[
-            { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
-            { type: ShimmerElementType.line, width: '90%', height: 8 },
-            { type: ShimmerElementType.gap, width: '10%', height: 20 },
-          ]}
+const getShimmerStyles = (props: IShimmerStyleProps): IShimmerStyles => {
+  return {
+    shimmerWrapper: [
+      {
+        backgroundColor: '#deecf9',
+      },
+    ],
+    shimmerGradient: [
+      {
+        backgroundColor: '#deecf9',
+        backgroundImage:
+          'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%)',
+      },
+    ],
+  };
+};
+
+export const ShimmerStylingExample: React.FunctionComponent = () => {
+  return (
+    <>
+      <div>
+        Style overrides of shimmering wave and space around in cases where Shimmer is placed on backgrounds different
+        than the main background of the app. There are several scenarios that can be considered bellow:
+      </div>
+      <div>
+        <b>1.</b> The recommended way by using the <b>shimmerColors</b> prop which in turn has 2 sub-scenarios:
+      </div>
+      <div className={classNames.indent}>
+        <b>a. </b>When using
+        <b>shimmerElements</b> prop to build the placeholder you can pass all 3 possible colors to
+        <b>shimmerColors</b> prop.
+      </div>
+      <div className={classNames.themedBackgroundWrapper}>
+        <Shimmer
+          shimmerColors={{
+            shimmer: customThemeForShimmer.palette.themeTertiary,
+            shimmerWave: customThemeForShimmer.palette.themeSecondary,
+            background: customThemeForShimmer.palette.white,
+          }}
+          shimmerElements={shimmerElements}
         />
       </div>
-    );
-  };
-
-  private _getShimmerStyles = (props: IShimmerStyleProps): IShimmerStyles => {
-    return {
-      shimmerWrapper: [
-        {
-          backgroundColor: '#deecf9',
-        },
-      ],
-      shimmerGradient: [
-        {
-          backgroundColor: '#deecf9',
-          backgroundImage:
-            'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%)',
-        },
-      ],
-    };
-  };
-}
+      <div className={classNames.indent}>
+        <b>b. </b>When using <b>customElementsGroup</b> prop to build the placeholder:
+      </div>
+      <div className={classNames.themedBackgroundWrapper2}>
+        <Shimmer
+          customElementsGroup={getCustomElements(customThemeForShimmer.palette.white)}
+          width="300"
+          shimmerColors={{
+            shimmer: customThemeForShimmer.palette.themeTertiary,
+            shimmerWave: customThemeForShimmer.palette.themeSecondary,
+          }}
+        />
+      </div>
+      <div>
+        <b>2. </b>Another way of doing it by using <b>Customizer</b> component wrapper.
+      </div>
+      <Customizer settings={{ theme: { ...customThemeForShimmer } }}>
+        <div className={classNames.themedBackgroundWrapper2}>
+          <Shimmer customElementsGroup={getCustomElements()} width="300" />
+        </div>
+      </Customizer>
+      <div>
+        <b>3. </b>Style overrides of shimmering wave using <b>styles</b> prop.
+      </div>
+      <div className={classNames.wrapper}>
+        <Shimmer width="75%" styles={getShimmerStyles} />
+        <Shimmer width="75%" styles={getShimmerStyles} />
+        <Shimmer width="75%" styles={getShimmerStyles} />
+        <Shimmer width="75%" styles={getShimmerStyles} />
+        <Shimmer width="75%" styles={getShimmerStyles} />
+      </div>
+    </>
+  );
+};

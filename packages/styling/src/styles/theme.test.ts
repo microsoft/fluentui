@@ -1,5 +1,4 @@
 import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
-import { IPartialTheme } from '../interfaces/index';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
 
@@ -94,6 +93,17 @@ describe('loadTheme', () => {
 
       expect(newTheme.fonts.small.fontSize).toEqual('20px');
       expect(defaultFontStyles.small.fontSize).toEqual(DefaultFontStyles.small.fontSize);
+    });
+    it('does not overwrite customized semantic slots', () => {
+      const userTheme = {
+        semanticColors: {
+          cardShadowHovered: 'hello world',
+        },
+      };
+      loadTheme(userTheme);
+      const newTheme = getTheme();
+
+      expect(newTheme.semanticColors.cardShadowHovered).toEqual('hello world');
     });
   });
 });

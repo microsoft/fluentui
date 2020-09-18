@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 
-import Image from 'src/components/Image/Image';
+import { Image } from 'src/components/Image/Image';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Image', () => {
   isConformant(Image, {
+    testPath: __filename,
     constructorName: 'Image',
   });
 

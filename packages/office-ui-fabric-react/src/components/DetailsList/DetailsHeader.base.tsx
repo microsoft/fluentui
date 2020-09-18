@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
 import { IProcessedStyleSet } from '../../Styling';
 import {
   initializeComponentRef,
@@ -52,7 +51,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   };
 
   private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
-  private _rootElement: HTMLElement | undefined;
+  private _rootElement = React.createRef<HTMLElement>();
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();
   private _id: string;
@@ -102,25 +101,28 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
-    // We need to use native on this to prevent MarqueeSelection from handling the event before us.
-    this._events.on(this._rootElement!, 'mousedown', this._onRootMouseDown);
+    // this._rootElement.current will be null in tests using react-test-renderer
+    if (this._rootElement.current) {
+      // We need to use native on this to prevent MarqueeSelection from handling the event before us.
+      this._events.on(this._rootElement.current, 'mousedown', this._onRootMouseDown);
 
-    this._events.on(this._rootElement!, 'keydown', this._onRootKeyDown);
+      this._events.on(this._rootElement.current, 'keydown', this._onRootKeyDown);
 
-    if (this._getColumnReorderProps()) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(
-        this._rootElement!,
-        this._events,
-        this._getHeaderDragDropOptions(),
-      );
+      if (this._getColumnReorderProps()) {
+        this._subscriptionObject = this._dragDropHelper.subscribe(
+          this._rootElement.current,
+          this._events,
+          this._getHeaderDragDropOptions(),
+        );
+      }
     }
   }
 
   public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     if (this._getColumnReorderProps()) {
-      if (!this._subscriptionObject) {
+      if (!this._subscriptionObject && this._rootElement.current) {
         this._subscriptionObject = this._dragDropHelper.subscribe(
-          this._rootElement!,
+          this._rootElement.current,
           this._events,
           this._getHeaderDragDropOptions(),
         );
@@ -166,7 +168,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       selectAllVisibility,
       ariaLabelForSelectionColumn,
       indentWidth,
-      rowWidth = 0,
       onColumnClick,
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
@@ -215,10 +216,9 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         aria-label={ariaLabel}
         className={classNames.root}
         componentRef={this._rootComponent}
-        ref={this._onRootRef}
+        elementRef={this._rootElement}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
-        style={{ minWidth: rowWidth }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox
@@ -352,7 +352,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return Boolean(this._rootComponent.current && this._rootComponent.current.focus());
+    return !!this._rootComponent.current?.focus();
   }
 
   /**
@@ -419,10 +419,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             targetIndex: targetIndex,
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
-          // tslint:disable:deprecation
+          /* eslint-disable deprecation/deprecation */
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
-          // tslint:enable:deprecation
+          /* eslint-enable deprecation/deprecation */
         }
       }
     }
@@ -486,8 +486,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const frozenColumnCountFromEnd = columnReorderProps.frozenColumnCountFromEnd || 0;
 
     for (let i = frozenColumnCountFromStart; i < columns.length - frozenColumnCountFromEnd + 1; i++) {
-      if (this._rootElement) {
-        const dropHintElement = this._rootElement.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
+      if (this._rootElement.current) {
+        const dropHintElement = this._rootElement.current.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
         if (dropHintElement) {
           if (i === frozenColumnCountFromStart) {
             prevX = dropHintElement.offsetLeft;
@@ -523,8 +523,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
    */
   private _computeDropHintToBeShown = (clientX: number): void => {
     const isRtl = getRTL(this.props.theme);
-    if (this._rootElement) {
-      const clientRect = this._rootElement.getBoundingClientRect();
+    if (this._rootElement.current) {
+      const clientRect = this._rootElement.current.getBoundingClientRect();
       const headerOriginX = clientRect.left;
       const eventXRelativePosition = clientX - headerOriginX;
       const currentDropHintIndex = this._currentDropHintIndex;
@@ -612,8 +612,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   };
 
   private _isEventOnHeader(event: MouseEvent): ColumnDragEndLocation | undefined {
-    if (this._rootElement) {
-      const clientRect = this._rootElement.getBoundingClientRect();
+    if (this._rootElement.current) {
+      const clientRect = this._rootElement.current.getBoundingClientRect();
       if (
         event.clientX > clientRect.left &&
         event.clientX < clientRect.right &&
@@ -744,16 +744,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     }
   };
 
-  private _onRootRef = (focusZone: FocusZone): void => {
-    if (focusZone) {
-      // Need to resolve the actual DOM node, not the component.
-      // The element itself will be used for drag/drop and focusing.
-      this._rootElement = findDOMNode(focusZone) as HTMLElement;
-    } else {
-      this._rootElement = undefined;
-    }
-  };
-
   private _onRootKeyDown = (ev: KeyboardEvent): void => {
     const { columnResizeDetails, isSizing } = this.state;
     const { columns = NO_COLUMNS, onColumnResized } = this.props;
@@ -767,7 +757,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
@@ -782,7 +772,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     } else {
       let increment: number | undefined;
 
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: undefined,
@@ -790,10 +780,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
         ev.preventDefault();
         ev.stopPropagation();
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
       } else if (ev.which === KeyCodes.left) {
         increment = getRTL(this.props.theme) ? 1 : -1;
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
       } else if (ev.which === KeyCodes.right) {
         increment = getRTL(this.props.theme) ? -1 : 1;
       }

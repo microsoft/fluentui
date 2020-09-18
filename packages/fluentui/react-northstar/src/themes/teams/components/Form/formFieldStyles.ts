@@ -1,14 +1,16 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { FormFieldProps } from '../../../../components/Form/FormField';
+import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
+import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
+export const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
     return {
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
         display: 'block',
+        marginBottom: pxToRem(4),
       }),
       ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
       ...(required && {
@@ -18,7 +20,7 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
       }),
     };
   },
-  control: ({ props }): ICSSInJSStyle => {
+  control: ({ props, variables: v }): ICSSInJSStyle => {
     const { type } = props;
     return {
       ...(type &&
@@ -27,9 +29,12 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
         }),
     };
   },
-  message: (): ICSSInJSStyle => ({
+  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+    paddingLeft: v.messagePaddingLeft,
+  }),
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
-
-export default formFieldStyles;

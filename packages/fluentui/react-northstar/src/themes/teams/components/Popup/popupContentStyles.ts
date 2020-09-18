@@ -4,7 +4,7 @@ import { PopupContentStylesProps } from '../../../../components/Popup/PopupConte
 import { PopupContentVariables } from './popupContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 
-const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
+export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     zIndex: v.zIndex,
@@ -13,7 +13,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
       pointerEvents: 'none',
       ...getContainerStyles({
         placement: p.basePlacement,
-        margin: v.pointerMargin,
+        padding: v.pointerMargin,
       }),
     }),
   }),
@@ -24,6 +24,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
       borderColor: v.borderColor,
       borderSize: v.borderSize,
       gap: v.pointerGap,
+      padding: v.pointerMargin,
       height: v.pointerHeight,
       width: v.pointerWidth,
 
@@ -48,5 +49,3 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
     }),
   }),
 };
-
-export default popupContentStyles;

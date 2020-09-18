@@ -58,7 +58,7 @@ export interface IComponentPageProps {
 
   /**
    * Link to the BestPractices markdown file on GitHub.
-   * Enables the 'Edit Best Practices' button.
+   * Enables the 'Edit Best practices' button.
    * Overrides URL from componentUrl.
    */
   editBestPracticesUrl?: string;
@@ -112,11 +112,11 @@ export interface IComponentPageStyles {
   overviewText: IStyle;
   overviewHeading: IStyle;
   /**
-   * Used on the actual (rarely shown) "Best Practices" part of the best practices/dos/don'ts section.
+   * Used on the actual (rarely shown) "Best practices" part of the best practices/dos/don'ts section.
    * For the wrapper of both this section and the dos/don'ts, use `bestPracticesSection`.
    */
   usageSection: IStyle;
-  /** Used on the actual (rarely shown) "Best Practices" heading. */
+  /** Used on the actual (rarely shown) "Best practices" heading. */
   usageHeading: IStyle;
   variantsSection: IStyle;
   variantsTitle: IStyle;

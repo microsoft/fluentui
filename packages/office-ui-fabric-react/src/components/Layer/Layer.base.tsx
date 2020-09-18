@@ -112,7 +112,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
         layerElement,
       },
       () => {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         const { onLayerDidMount, onLayerMounted } = this.props;
         if (onLayerMounted) {
           onLayerMounted();
@@ -128,6 +128,10 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   private _removeLayerElement(): void {
     const { onLayerWillUnmount } = this.props;
     const { layerElement } = this.state;
+
+    if (layerElement) {
+      setVirtualParent(layerElement, null);
+    }
 
     if (onLayerWillUnmount) {
       onLayerWillUnmount();

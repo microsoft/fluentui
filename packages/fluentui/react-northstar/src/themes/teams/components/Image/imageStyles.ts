@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ImageStylesProps } from '../../../../components/Image/Image';
 import { ImageVariables } from './imageVariables';
 
-const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables> = {
+export const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -16,5 +16,3 @@ const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables>
     }),
   }),
 };
-
-export default imageStyles;

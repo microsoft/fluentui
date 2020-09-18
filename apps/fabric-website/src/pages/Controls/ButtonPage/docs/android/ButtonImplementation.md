@@ -1,13 +1,13 @@
 ### Style names
 
-`Widget.UIFabric.Button`
+`Widget.FluentUI.Button`
 
-`Widget.UIFabric.Button.Borderless`
+`Widget.FluentUI.Button.Borderless`
 
 ### Source code
 
-[Button styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles.xml)
+[Button styles](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/res/values/styles.xml)
 
 ### Sample code
 
-[Button demo XML](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_basic_inputs.xml)
+[Button demo XML](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/res/layout/activity_basic_inputs.xml)

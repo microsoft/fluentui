@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react';
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 
 const menuProps = {
@@ -20,6 +20,6 @@ const menuProps = {
   ],
 };
 
-const scenario = <DefaultButton split={true} text="I am a button" onClick={alertClicked} menuProps={menuProps} />;
+const Scenario = () => <DefaultButton split={true} text="I am a button" onClick={alertClicked} menuProps={menuProps} />;
 
-export default scenario;
+export default Scenario;

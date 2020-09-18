@@ -1,3 +1,5 @@
+import { codes } from './codes';
+
 export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
 
 export interface KeyNames {
@@ -165,254 +167,128 @@ export interface KeyNames {
   EraseEof: 249;
   Play: 250;
   ZoomOut: 251;
-  Spacebar: 32;
-  Digit0: 48;
-  Digit1: 49;
-  Digit2: 50;
-  Digit3: 51;
-  Digit4: 52;
-  Digit5: 53;
-  Digit6: 54;
-  Digit7: 55;
-  Digit8: 56;
-  Digit9: 57;
-  Tilde: 192;
-  GraveAccent: 192;
-  ExclamationPoint: 49;
-  AtSign: 50;
-  PoundSign: 51;
-  PercentSign: 53;
-  Caret: 54;
-  Ampersand: 55;
-  PlusSign: 187;
-  MinusSign: 189;
-  EqualsSign: 187;
-  DivisionSign: 191;
-  MultiplicationSign: 56;
-  Comma: 188;
-  Decimal: 190;
-  Colon: 186;
-  Semicolon: 186;
-  Pipe: 220;
-  BackSlash: 220;
-  QuestionMark: 191;
-  SingleQuote: 222;
-  DoubleQuote: 222;
-  LeftCurlyBrace: 219;
-  RightCurlyBrace: 221;
-  LeftParenthesis: 57;
-  RightParenthesis: 48;
-  LeftAngleBracket: 188;
-  RightAngleBracket: 190;
-  LeftSquareBracket: 219;
-  RightSquareBracket: 221;
 }
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isObject = (val: any): val is KeyboardEventLike => {
   return val !== null && !Array.isArray(val) && typeof val === 'object';
 };
 
-const codes: { [code: string]: string | string[] } = {
-  // ----------------------------------------
-  // By Code
-  // ----------------------------------------
-  3: 'Cancel',
-  6: 'Help',
-  8: 'Backspace',
-  9: 'Tab',
-  12: 'Clear',
-  13: 'Enter',
-  16: 'Shift',
-  17: 'Control',
-  18: 'Alt',
-  19: 'Pause',
-  20: 'CapsLock',
-  27: 'Escape',
-  28: 'Convert',
-  29: 'NonConvert',
-  30: 'Accept',
-  31: 'ModeChange',
-  32: ' ',
-  33: 'PageUp',
-  34: 'PageDown',
-  35: 'End',
-  36: 'Home',
-  37: 'ArrowLeft',
-  38: 'ArrowUp',
-  39: 'ArrowRight',
-  40: 'ArrowDown',
-  41: 'Select',
-  42: 'Print',
-  43: 'Execute',
-  44: 'PrintScreen',
-  45: 'Insert',
-  46: 'Delete',
-  48: ['0', ')'],
-  49: ['1', '!'],
-  50: ['2', '@'],
-  51: ['3', '#'],
-  52: ['4', '$'],
-  53: ['5', '%'],
-  54: ['6', '^'],
-  55: ['7', '&'],
-  56: ['8', '*'],
-  57: ['9', '('],
-  91: 'OS',
-  93: 'ContextMenu',
-  144: 'NumLock',
-  145: 'ScrollLock',
-  181: 'VolumeMute',
-  182: 'VolumeDown',
-  183: 'VolumeUp',
-  186: [';', ':'],
-  187: ['=', '+'],
-  188: [',', '<'],
-  189: ['-', '_'],
-  190: ['.', '>'],
-  191: ['/', '?'],
-  192: ['`', '~'],
-  219: ['[', '{'],
-  220: ['\\', '|'],
-  221: [']', '}'],
-  222: ["'", '"'],
-  224: 'Meta',
-  225: 'AltGraph',
-  246: 'Attn',
-  247: 'CrSel',
-  248: 'ExSel',
-  249: 'EraseEof',
-  250: 'Play',
-  251: 'ZoomOut',
-};
-
-// Function Keys (F1-24)
-for (let i = 0; i < 24; i += 1) {
-  codes[112 + i] = 'F' + (i + 1);
+/**
+ * Get the `keyCode` or `which` value from a keyboard event or `key` name.
+ * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
+ * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
+ * `key`, `keyCode`, or `which` must be defined.
+ */
+export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
+  if (isObject(eventOrKey)) {
+    // eslint-disable-next-line deprecation/deprecation, @typescript-eslint/no-explicit-any
+    return eventOrKey.keyCode || eventOrKey.which || (keyboardKey as any)[eventOrKey.key as string];
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (keyboardKey as any)[eventOrKey as string];
 }
 
-// Alphabet (a-Z)
-for (let j = 0; j < 26; j += 1) {
-  const n = j + 65;
+/**
+ * Get the key name from a keyboard event, `keyCode`, or `which` value.
+ * If an object is provided, the precedence of properties is `key`, `keyCode`, `which`.
+ * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
+ * `key`, `keyCode`, or `which` must be defined.
+ */
+export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string | undefined {
+  const isEvent = isObject(eventOrCode);
+  const event = eventOrCode as KeyboardEventLike;
 
-  codes[n] = [String.fromCharCode(n + 32), String.fromCharCode(n)];
+  // handle events with a `key` already defined
+  if (isEvent && event.key) {
+    return event.key;
+  }
+
+  // eslint-disable-next-line deprecation/deprecation
+  let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
+
+  if (Array.isArray(name)) {
+    if (isEvent) {
+      name = name[event.shiftKey ? 1 : 0];
+    } else {
+      name = name[0];
+    }
+  }
+
+  return name;
 }
 
-const keyboardKeyDefinition = {
-  /**
-   * Mapping from numeric key code to key name. If the value is an array, the first element is the
-   * primary key name, and the second element is the key name when shift is pressed.
-   */
-  codes: codes,
-
-  /**
-   * Get the `keyCode` or `which` value from a keyboard event or `key` name.
-   * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
-   * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
-   * `key`, `keyCode`, or `which` must be defined.
-   */
-  getCode: function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
-    if (isObject(eventOrKey)) {
-      // tslint:disable-next-line:deprecation
-      return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
-    }
-    // tslint:disable-next-line:no-any
-    return (this as any)[eventOrKey as string];
-  },
-
-  /**
-   * Get the key name from a keyboard event, `keyCode`, or `which` value.
-   * If an object is provided, the precedence of properties is `key`, `keyCode`, `which`.
-   * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
-   * `key`, `keyCode`, or `which` must be defined.
-   */
-  getKey: (eventOrCode: Partial<KeyboardEventLike> | number): string | undefined => {
-    const isEvent = isObject(eventOrCode);
-    const event = eventOrCode as KeyboardEventLike;
-
-    // handle events with a `key` already defined
-    if (isEvent && event.key) {
-      return event.key;
-    }
-
-    // tslint:disable-next-line: deprecation
-    let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
-
-    if (Array.isArray(name)) {
-      if (isEvent) {
-        name = name[event.shiftKey ? 1 : 0];
-      } else {
-        name = name[0];
-      }
-    }
-
-    return name;
-  },
-};
-
-const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
+/**
+ * Mapping of keyboard keys with aliases and codes.
+ */
+export const keyboardKey = {} as KeyNames;
 
 // Populate names on keyboardKey.
 for (const code in codes) {
   if (codes.hasOwnProperty(code)) {
     const value = codes[code];
     if (typeof value === 'string') {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (keyboardKey as any)[value] = Number(code);
     } else {
       // Array of valid values which map to the same code.
       for (let i = 0; i < value.length; i++) {
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (keyboardKey as any)[value[i]] = Number(code);
       }
     }
   }
 }
 
-// ----------------------------------------
-// By Alias
-// ----------------------------------------
-// provide dot-notation accessible keys for all key names
-keyboardKey.Spacebar = keyboardKey[' '];
-keyboardKey.Digit0 = keyboardKey['0'];
-keyboardKey.Digit1 = keyboardKey['1'];
-keyboardKey.Digit2 = keyboardKey['2'];
-keyboardKey.Digit3 = keyboardKey['3'];
-keyboardKey.Digit4 = keyboardKey['4'];
-keyboardKey.Digit5 = keyboardKey['5'];
-keyboardKey.Digit6 = keyboardKey['6'];
-keyboardKey.Digit7 = keyboardKey['7'];
-keyboardKey.Digit8 = keyboardKey['8'];
-keyboardKey.Digit9 = keyboardKey['9'];
-keyboardKey.Tilde = keyboardKey['~'];
-keyboardKey.GraveAccent = keyboardKey['`'];
-keyboardKey.ExclamationPoint = keyboardKey['!'];
-keyboardKey.AtSign = keyboardKey['@'];
-keyboardKey.PoundSign = keyboardKey['#'];
-keyboardKey.PercentSign = keyboardKey['%'];
-keyboardKey.Caret = keyboardKey['^'];
-keyboardKey.Ampersand = keyboardKey['&'];
-keyboardKey.PlusSign = keyboardKey['+'];
-keyboardKey.MinusSign = keyboardKey['-'];
-keyboardKey.EqualsSign = keyboardKey['='];
-keyboardKey.DivisionSign = keyboardKey['/'];
-keyboardKey.MultiplicationSign = keyboardKey['*'];
-keyboardKey.Comma = keyboardKey[','];
-keyboardKey.Decimal = keyboardKey['.'];
-keyboardKey.Colon = keyboardKey[':'];
-keyboardKey.Semicolon = keyboardKey[';'];
-keyboardKey.Pipe = keyboardKey['|'];
-keyboardKey.BackSlash = keyboardKey['\\'];
-keyboardKey.QuestionMark = keyboardKey['?'];
-keyboardKey.SingleQuote = keyboardKey["'"];
-keyboardKey.DoubleQuote = keyboardKey['"'];
-keyboardKey.LeftCurlyBrace = keyboardKey['{'];
-keyboardKey.RightCurlyBrace = keyboardKey['}'];
-keyboardKey.LeftParenthesis = keyboardKey['('];
-keyboardKey.RightParenthesis = keyboardKey[')'];
-keyboardKey.LeftAngleBracket = keyboardKey['<'];
-keyboardKey.RightAngleBracket = keyboardKey['>'];
-keyboardKey.LeftSquareBracket = keyboardKey['['];
-keyboardKey.RightSquareBracket = keyboardKey[']'];
-
-export default keyboardKey;
+// As single exports for keys that normally have special functionality attached to them.
+export const SpacebarKey = keyboardKey[' '];
+export const Digit0Key = keyboardKey['0'];
+export const Digit1Key = keyboardKey['1'];
+export const Digit2Key = keyboardKey['2'];
+export const Digit3Key = keyboardKey['3'];
+export const Digit4Key = keyboardKey['4'];
+export const Digit5Key = keyboardKey['5'];
+export const Digit6Key = keyboardKey['6'];
+export const Digit7Key = keyboardKey['7'];
+export const Digit8Key = keyboardKey['8'];
+export const Digit9Key = keyboardKey['9'];
+export const TildeKey = keyboardKey['~'];
+export const GraveAccentKey = keyboardKey['`'];
+export const ExclamationPointKey = keyboardKey['!'];
+export const AtSignKey = keyboardKey['@'];
+export const PoundSignKey = keyboardKey['#'];
+export const PercentSignKey = keyboardKey['%'];
+export const CaretKey = keyboardKey['^'];
+export const AmpersandKey = keyboardKey['&'];
+export const PlusSignKey = keyboardKey['+'];
+export const MinusSignKey = keyboardKey['-'];
+export const EqualsSignKey = keyboardKey['='];
+export const DivisionSignKey = keyboardKey['/'];
+export const MultiplicationSignKey = keyboardKey['*'];
+export const CommaKey = keyboardKey[','];
+export const DecimalKey = keyboardKey['.'];
+export const ColonKey = keyboardKey[':'];
+export const SemicolonKey = keyboardKey[';'];
+export const PipeKey = keyboardKey['|'];
+export const BackSlashKey = keyboardKey['\\'];
+export const QuestionMarkKey = keyboardKey['?'];
+export const SingleQuoteKey = keyboardKey["'"];
+export const DoubleQuoteKey = keyboardKey['"'];
+export const LeftCurlyBraceKey = keyboardKey['{'];
+export const RightCurlyBraceKey = keyboardKey['}'];
+export const LeftParenthesisKey = keyboardKey['('];
+export const RightParenthesisKey = keyboardKey[')'];
+export const LeftAngleBracketKey = keyboardKey['<'];
+export const RightAngleBracketKey = keyboardKey['>'];
+export const LeftSquareBracketKey = keyboardKey['['];
+export const RightSquareBracketKey = keyboardKey[']'];
+export const ArrowDownKey = keyboardKey.ArrowDown;
+export const ArrowLeftKey = keyboardKey.ArrowLeft;
+export const ArrowRightKey = keyboardKey.ArrowRight;
+export const ArrowUpKey = keyboardKey.ArrowUp;
+export const EndKey = keyboardKey.End;
+export const EnterKey = keyboardKey.Enter;
+export const HomeKey = keyboardKey.Home;
+export const PageDownKey = keyboardKey.PageDown;
+export const PageUpKey = keyboardKey.PageUp;
+export const TabKey = keyboardKey.Tab;

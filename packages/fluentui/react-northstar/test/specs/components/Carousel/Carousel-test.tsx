@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import Carousel, { CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
-import Button from 'src/components/Button/Button';
-import { carouselItemClassName } from 'src/components/Carousel/CarouselItem';
+import { Carousel, CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
+import { Button } from 'src/components/Button/Button';
 import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
-import Text from 'src/components/Text/Text';
+import { Text } from 'src/components/Text/Text';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
@@ -57,23 +56,16 @@ const getNavigationNavigationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselNavigationClassName}`);
 const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselNavigationItemClassName}`).at(index);
-const getItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${carouselItemClassName}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
 
 jest.useFakeTimers();
 
 describe('Carousel', () => {
-  isConformant(Carousel, { autoControlledProps: ['activeIndex'] });
-
-  it('id for items is generated if not passed as prop', () => {
-    const wrapper = renderCarousel();
-
-    expect(
-      getItemAtIndexWrapper(wrapper, 0)
-        .getDOMNode()
-        .getAttribute('id'),
-    ).toMatch(/carousel-item-(\d)+/);
+  isConformant(Carousel, {
+    testPath: __filename,
+    constructorName: 'Carousel',
+    autoControlledProps: ['activeIndex'],
+    disabledTests: ['kebab-aria-attributes'],
   });
 
   describe('activeIndex', () => {
@@ -262,8 +254,6 @@ describe('Carousel', () => {
 
       secondNavigationItemWrapper.simulate('click');
       jest.runAllTimers();
-
-      expect(wrapper.state('activeIndex')).toEqual(1);
       expect(document.activeElement.firstElementChild.innerHTML).toEqual('item2');
     });
 

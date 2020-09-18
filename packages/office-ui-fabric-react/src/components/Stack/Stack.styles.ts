@@ -27,12 +27,12 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  // tslint:disable:deprecation
+  /* eslint-disable deprecation/deprecation */
   const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : props.gap;
   const maxHeight = tokens && tokens.maxHeight ? tokens.maxHeight : props.maxHeight;
   const maxWidth = tokens && tokens.maxWidth ? tokens.maxWidth : props.maxWidth;
   const padding = tokens && tokens.padding ? tokens.padding : props.padding;
-  // tslint:enable:deprecation
+  /* eslint-enable deprecation/deprecation */
 
   const { rowGap, columnGap } = parseGap(childrenGap, theme);
 

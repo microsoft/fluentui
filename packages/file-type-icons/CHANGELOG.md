@@ -1,8 +1,117 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.1)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.15..@uifabric/file-type-icons_v7.6.1)
+
+### Patches
+
+- Adding .tsv as supported extension for spreadsheet filetype icon. ([PR #14742](https://github.com/microsoft/fluentui/pull/14742) by caperez@microsoft.com)
+
+## [7.4.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.15)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.2..@uifabric/file-type-icons_v7.4.15)
+
+### Patches
+
+- Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available. ([PR #14569](https://github.com/microsoft/fluentui/pull/14569) by caperez@microsoft.com)
+
+## [7.4.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.2)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.1..@uifabric/file-type-icons_v7.4.2)
+
+### Patches
+
+- Replace tslint with eslint; fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.1)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.0..@uifabric/file-type-icons_v7.4.1)
+
+### Patches
+
+- Adding file icon mapping support for `osts` extension. ([PR #13970](https://github.com/microsoft/fluentui/pull/13970) by caperez@microsoft.com)
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.9..@uifabric/file-type-icons_v7.4.0)
+
+### Minor changes
+
+- Add special folder icon support for LinkedFolder ([PR #13946](https://github.com/microsoft/fluentui/pull/13946) by hemanp@microsoft.com)
+- Introduce FolderCover for linked folders ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
+
+## [7.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.7)
+
+Wed, 24 Jun 2020 12:37:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.5..@uifabric/file-type-icons_v7.3.7)
+
+### Patches
+
+- revving CDN url and adding .classifier type to the filetype list for icons ([PR #13743](https://github.com/microsoft/fluentui/pull/13743) by caperez@microsoft.com)
+
+## [7.3.5](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.5)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.4..@uifabric/file-type-icons_v7.3.5)
+
+### Patches
+
+- Add special folder icon names to FileTypeIconMap. Fix icon name for special documents folder. ([PR #13625](https://github.com/microsoft/fluentui/pull/13625) by taenri@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.49..@uifabric/file-type-icons_v7.3.0)
+
+### Minor changes
+
+- Add special folder icon types for file-type-icons. ([PR #13347](https://github.com/microsoft/fluentui/pull/13347) by taenri@microsoft.com)
+
+## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.49)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.44..@uifabric/file-type-icons_v7.2.49)
+
+### Patches
+
+- Add empty alt text for filetype icon img ([PR #13194](https://github.com/microsoft/fluentui/pull/13194) by erabelle@microsoft.com)
+
+## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.44)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.40..@uifabric/file-type-icons_v7.2.44)
+
+### Patches
+
+- adding 'pbiapp' entry in file type icon mapping file ([PR #12865](https://github.com/microsoft/fluentui/pull/12865) by caperez@microsoft.com)
+
+## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.39..@uifabric/file-type-icons_v7.2.40)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.30..@uifabric/file-type-icons_v7.2.39)
+
+### Patches
+
+- Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons. ([PR #13008](https://github.com/microsoft/fluentui/pull/13008) by caperez@microsoft.com)
 
 ## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.30)
 

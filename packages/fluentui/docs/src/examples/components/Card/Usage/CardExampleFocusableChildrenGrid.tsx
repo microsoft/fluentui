@@ -122,7 +122,7 @@ const CardExampleFocusableGrid = () => {
       <div id={navigationMessageId} style={screenReaderContainerStyles}>
         {navigationMessage}
       </div>
-      <Grid accessibility={cardsContainerBehavior} columns="3" onFocus={handleGridFocus} onBlur={handleGridBlur}>
+      <Grid accessibility={cardsContainerBehavior} columns={3} onFocus={handleGridFocus} onBlur={handleGridBlur}>
         {_.times(cardsNumber, i => {
           const nonZeroIndex = i + 1;
           return (

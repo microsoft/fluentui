@@ -5,7 +5,15 @@ import {
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -13,14 +21,12 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   getScrollParent,
   Popper,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
   PopperModifiers,
 } from '../../utils/positioner';
 import {
@@ -31,24 +37,20 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  createShorthand,
 } from '../../utils';
-import {
-  WithAsProp,
-  ShorthandValue,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Label, { LabelProps } from '../Label/Label';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import { Label, LabelProps } from '../Label/Label';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
-import Text, { TextProps } from '../Text/Text';
-import Reaction, { ReactionProps } from '../Reaction/Reaction';
+import { Text, TextProps } from '../Text/Text';
+import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
+import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
+import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
+import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -78,8 +80,17 @@ export interface ChatMessageProps
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
 
+  /** A message cane have a custom header */
+  header?: ShorthandValue<ChatMessageHeaderProps>;
+
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
+
+  /** Message details info slot for the header. */
+  details?: ShorthandValue<ChatMessageDetailsProps>;
+
+  /** Message read status indicator */
+  readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -137,15 +148,18 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   reactionGroup: `${chatMessageClassName}__reactions`,
 };
 
-const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStaticProps<ChatMessageProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A ChatMessage represents a single message in chat.
+ */
+export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
     accessibility,
-    actionMenu,
     attached = parentAttached,
     author,
     badge,
@@ -161,8 +175,12 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     timestamp,
     styles,
     variables,
+    header,
+    details,
+    readStatus,
     unstable_overflow: overflow,
   } = props;
+  const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
 
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
@@ -188,6 +206,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
       },
     },
   });
+
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
     className: chatMessageClassName,
     mapPropsToStyles: () => ({
@@ -260,7 +279,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
-        {...getPopperPropsFromShorthand(actionMenu)}
+        {...positioningProps}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;
@@ -317,6 +336,25 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
+  const detailsElement = createShorthand(ChatMessageDetails, details, {
+    defaultProps: () => ({ mine }),
+  });
+
+  const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
+
+  const headerElement = createShorthand(ChatMessageHeader, header, {
+    overrideProps: () => ({
+      content: (
+        <>
+          {authorElement}
+          {timestampElement}
+          {detailsElement}
+          {reactionGroupPosition === 'start' && reactionGroupElement}
+        </>
+      ),
+    }),
+  });
+
   const element = (
     <Ref innerRef={setMessageNode}>
       {getA11Props.unstable_wrapWithFocusZone(
@@ -336,12 +374,11 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
             <>
               {actionMenuElement}
               {badgePosition === 'start' && badgeElement}
-              {authorElement}
-              {timestampElement}
-              {reactionGroupPosition === 'start' && reactionGroupElement}
+              {headerElement}
               {messageContent}
               {reactionGroupPosition === 'end' && reactionGroupElement}
               {badgePosition === 'end' && badgeElement}
+              {readStatusElement}
             </>
           )}
         </ElementType>,
@@ -358,16 +395,20 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
+  header: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };
+
 ChatMessage.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),
   actionMenu: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
+  details: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
+  header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,
   timestamp: customPropTypes.itemShorthand,
   onBlur: PropTypes.func,
@@ -377,12 +418,9 @@ ChatMessage.propTypes = {
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
+  readStatus: customPropTypes.itemShorthand,
 };
+
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-
-/**
- * A ChatMessage represents a single message in chat.
- */
-export default withSafeTypeForAs<typeof ChatMessage, ChatMessageProps>(ChatMessage);

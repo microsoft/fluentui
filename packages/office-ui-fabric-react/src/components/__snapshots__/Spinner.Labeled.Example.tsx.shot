@@ -80,6 +80,9 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       />
       <div
         className=
@@ -158,6 +161,9 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             }
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       />
       <div
@@ -238,6 +244,9 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       />
       <div
         className=
@@ -316,6 +325,9 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             }
             @media screen and (-ms-high-contrast: active){& {
               border-top-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       />
       <div

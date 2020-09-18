@@ -12,9 +12,13 @@ import * as renderer from 'react-test-renderer';
 export function safeCreate<TProps>(
   content: React.ReactElement<TProps>,
   callback: (wrapper: renderer.ReactTestRenderer) => void,
+  options?: renderer.TestRendererOptions,
 ): void {
-  const wrapper = renderer.create(content);
+  let wrapper: renderer.ReactTestRenderer;
+  renderer.act(() => {
+    wrapper = renderer.create(content, options);
+  });
 
-  callback(wrapper);
-  wrapper.unmount();
+  callback(wrapper!);
+  wrapper!.unmount();
 }

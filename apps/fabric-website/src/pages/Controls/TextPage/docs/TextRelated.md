@@ -1,3 +1,4 @@
 - [Web Text](#/controls/web/text)
 - [iOS Text](#/controls/ios/text)
 - [Android Text](#/controls/android/text)
+- [Cross-platform Text](#/controls/crossplatform/text)

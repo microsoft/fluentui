@@ -10,6 +10,7 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
   getKey?: (item: TItem, index?: number) => string | number;
   canSelectItem?: (item: TItem, index?: number) => boolean;
   selectionMode?: SelectionMode;
+  items?: TItem[];
 }
 
 /**
@@ -55,7 +56,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       ? [] | [ISelectionOptions<TItem>] // Then the arguments can be empty or have the options without `getKey`
       : [ISelectionOptionsWithRequiredGetKey<TItem>] // Otherwise, arguments require options with `getKey`.
   ) {
-    const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } =
+    const { onSelectionChanged, getKey, canSelectItem = () => true, items, selectionMode = SelectionMode.multiple } =
       options[0] || ({} as ISelectionOptions<TItem>);
 
     this.mode = selectionMode;
@@ -72,7 +73,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 
     this._isModal = false;
 
-    this.setItems([], true);
+    this.setItems(items || [], true);
 
     this.count = this.getSelectedCount();
   }
@@ -487,5 +488,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 }
 
 function defaultGetKey<TItem = IObjectWithKey>(item: TItem, index?: number): string | number {
-  return item && (item as IObjectWithKey).key ? (item as IObjectWithKey).key! : `${index}`;
+  // 0 may be used as a key
+  const { key = `${index}` } = (item || {}) as IObjectWithKey;
+  return key;
 }

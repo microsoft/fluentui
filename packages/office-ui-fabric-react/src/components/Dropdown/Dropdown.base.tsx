@@ -17,6 +17,7 @@ import {
   isMac,
   mergeAriaAttributeValues,
   safeRequestAnimationFrame,
+  warn,
   warnDeprecations,
   warnMutuallyExclusive,
 } from '../../Utilities';
@@ -92,6 +93,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     initializeComponentRef(this);
 
+    const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
+
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dropdown', props, {
         isDisabled: 'disabled',
@@ -104,9 +107,27 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
-        multiSelect: 'defaultSelectedKey',
-        selectedKey: 'multiSelect',
       });
+
+      if (multiSelect) {
+        const warnMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}' cannot be used when 'multiSelect' is true. Use '${prop}s' instead.`);
+        if (selectedKey !== undefined) {
+          warnMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKey !== undefined) {
+          warnMultiSelect('defaultSelectedKey');
+        }
+      } else {
+        const warnNotMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}s' cannot be used when 'multiSelect' is false/unset. Use '${prop}' instead.`);
+        if (selectedKeys !== undefined) {
+          warnNotMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKeys !== undefined) {
+          warnNotMultiSelect('defaultSelectedKey');
+        }
+      }
     }
 
     this._id = props.id || getId('Dropdown');
@@ -117,15 +138,19 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     let selectedIndices: number[];
 
-    if (this.props.multiSelect) {
-      const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+    if (multiSelect) {
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        defaultSelectedKeys !== undefined ? defaultSelectedKeys : selectedKeys,
+      );
     } else {
-      const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        (defaultSelectedKey !== undefined ? defaultSelectedKey : selectedKey)!,
+      );
     }
 
-    this._sizePosCache.updateOptions(props.options);
+    this._sizePosCache.updateOptions(options);
 
     this.state = {
       isOpen: false,
@@ -149,7 +174,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     clearTimeout(this._scrollIdleTimeoutId);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
@@ -180,12 +204,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       this.setState({
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp]),
       });
-    }
-
-    if (
-      newProps.options !== this.props.options // preexisting code assumes purity of the options...
-    ) {
-      this._sizePosCache.updateOptions(newProps.options);
     }
   }
 
@@ -222,8 +240,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderLabel = this._onRenderLabel,
     } = props;
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
+
+    // If our cached options are out of date update our cache
+    if (options !== this._sizePosCache.cachedOptions) {
+      this._sizePosCache.updateOptions(options);
+    }
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(props, divProperties);
@@ -245,6 +268,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         {
           role: 'listbox',
           childRole: 'option',
+          ariaRequired: required,
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
           ariaSelected: selectedIndices[0] === undefined ? undefined : true,
@@ -259,8 +283,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       required,
       disabled,
       isRenderingPlaceholder: !selectedOptions.length,
-      panelClassName: !!panelProps ? panelProps.className : undefined,
-      calloutClassName: !!calloutProps ? calloutProps.className : undefined,
+      panelClassName: panelProps?.className,
+      calloutClassName: calloutProps?.className,
       calloutRenderEdge: calloutRenderEdge,
     });
 
@@ -289,7 +313,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 hasErrorMessage ? this._id + '-errorMessage' : undefined,
               )}
               aria-activedescendant={ariaActiveDescendant}
-              aria-required={required}
+              aria-required={ariaAttrs.ariaRequired}
               aria-disabled={disabled}
               aria-owns={isOpen ? this._listId : undefined}
               {...divProps}
@@ -397,7 +421,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     checked?: boolean,
     multiSelect?: boolean,
   ) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -411,7 +435,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     return this.props.placeholder || this.props.placeHolder;
   }
 
@@ -699,8 +723,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         className={itemClassName}
         onClick={this._onItemClick(item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseLeave={this._onMouseItemLeave.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
@@ -720,16 +747,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
+          'aria-selected': isItemSelected,
           onMouseEnter: this._onItemMouseEnter.bind(this, item),
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
           onMouseMove: this._onItemMouseMove.bind(this, item),
+          role: 'option',
         }}
         label={item.text}
         title={title}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
-        role="option"
-        aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
@@ -889,11 +917,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
     return findIndex(options, option => {
-      // tslint:disable-next-line:triple-equals
+      // eslint-disable-next-line eqeqeq
       if (selectedKey != null) {
         return option.key === selectedKey;
       } else {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         return !!option.selected || !!option.isSelected;
       }
     });
@@ -1184,7 +1212,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0

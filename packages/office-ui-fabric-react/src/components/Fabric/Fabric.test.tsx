@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { Customizer, createTheme, Fabric, Checkbox } from 'office-ui-fabric-react';
 import { mount } from 'enzyme';
@@ -69,7 +70,12 @@ describe('Fabric', () => {
   });
 
   it('renders a Fabric component with applyThemeToBody correctly', () => {
-    const wrapper = mount(<Fabric applyThemeToBody>test</Fabric>);
-    expect(wrapper.getDOMNode().getElementsByClassName('bodyThemed')).toBeTruthy();
+    const ref = React.createRef<any>();
+    mount(
+      <Fabric ref={ref} applyThemeToBody>
+        test
+      </Fabric>,
+    );
+    expect((ReactDOM.findDOMNode(ref.current) as Element).getElementsByClassName('bodyThemed')).toBeTruthy();
   });
 });

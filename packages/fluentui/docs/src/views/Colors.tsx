@@ -8,7 +8,9 @@ import {
   Text,
   Alert,
   mergeThemes,
-  themes,
+  teamsTheme,
+  teamsHighContrastTheme,
+  teamsDarkTheme,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -222,11 +224,11 @@ const theme = {
 
 const ColorSchemeExample = () => (
   <React.Fragment>
-    <Provider theme={mergeThemes(themes.teams, theme)}>
-      <Box content="themes.teams" />
+    <Provider theme={mergeThemes(teamsTheme, theme)}>
+      <Box content="teamsTheme" />
     </Provider>
-    <Provider theme={mergeThemes(themes.teamsHighContrast, theme)}>
-      <Box content="themes.teamsHighContrast" />
+    <Provider theme={mergeThemes(teamsHighContrastTheme, theme)}>
+      <Box content="teamsHighContrastTheme" />
     </Provider>
   </React.Fragment>
 );
@@ -234,14 +236,14 @@ const ColorSchemeExample = () => (
 export default ColorSchemeExample;
         `}
             render={() => (
-              <React.Fragment>
-                <Provider theme={mergeThemes(themes.teams, theme)}>
-                  <Box content="themes.teams" />
+              <>
+                <Provider theme={mergeThemes(teamsTheme, theme)}>
+                  <Box content="teamsTheme" />
                 </Provider>
-                <Provider theme={mergeThemes(themes.teamsHighContrast, theme)}>
-                  <Box content="themes.teamsHighContrast" />
+                <Provider theme={mergeThemes(teamsHighContrastTheme, theme)}>
+                  <Box content="teamsHighContrastTheme" />
                 </Provider>
-              </React.Fragment>
+              </>
             )}
           />
 
@@ -269,7 +271,7 @@ export const colorScheme = {
 
           <Fader url={'color-schemes'}>
             <ColorSchemes
-              themes={[themes.teams, themes.teamsHighContrast, themes.teamsDark]}
+              themes={[teamsTheme, teamsHighContrastTheme, teamsDarkTheme]}
               headers={[
                 {
                   as: 'h3',

@@ -29,18 +29,15 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             sources={[
               require<
                 string
-                // tslint:disable-next-line: max-line-length
               >('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
             ]}
           />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>VerticalStackedBarChart description</p>
           </div>
         }
-        /* tslint:enable:max-line-length */
         bestPractices={<div />}
         dos={
           <div>

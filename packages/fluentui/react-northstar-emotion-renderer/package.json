@@ -1,0 +1,51 @@
+{
+  "name": "@fluentui/react-northstar-emotion-renderer",
+  "description": "A CSS-in-JS renderer based on Emotion for FluentUI React Northstar.",
+  "version": "0.51.0",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
+  "dependencies": {
+    "@babel/runtime": "^7.10.4",
+    "@emotion/cache": "^10.0.29",
+    "@emotion/serialize": "^0.11.16",
+    "@emotion/sheet": "^0.9.4",
+    "@emotion/utils": "^0.11.3",
+    "@fluentui/react-northstar-styles-renderer": "^0.51.0",
+    "@fluentui/styles": "^0.51.0",
+    "@quid/stylis-plugin-focus-visible": "^4.0.0",
+    "stylis-plugin-rtl": "^1.0.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@types/react": "16.8.25",
+    "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6",
+    "typescript": "3.7.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-emotion-renderer",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "microsoft/fluentui.git",
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts"
+}

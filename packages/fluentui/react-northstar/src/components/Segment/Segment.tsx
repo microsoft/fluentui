@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
-  UIComponent,
   childrenExist,
   UIComponentProps,
   ContentComponentProps,
@@ -9,11 +8,21 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ColorComponentProps,
+  createShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useAccessibility,
+  useFluentContext,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface SegmentProps
   extends UIComponentProps<SegmentProps>,
@@ -23,7 +32,7 @@ export interface SegmentProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** An segment can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -32,44 +41,70 @@ export interface SegmentProps
   inverted?: boolean;
 }
 
+export type SegmentStylesProps = Required<Pick<SegmentProps, 'color' | 'inverted' | 'disabled'>>;
+
 export const segmentClassName = 'ui-segment';
-
-class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
-  static deprecated_className = segmentClassName;
-
-  static displayName = 'Segment';
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: 'shorthand',
-      color: true,
-    }),
-    disabled: PropTypes.bool,
-    inverted: PropTypes.bool,
-    rtlAttributes: PropTypes.func,
-  };
-
-  static defaultProps = {
-    as: 'div',
-  };
-
-  renderComponent({ accessibility, ElementType, classes, unhandledProps }) {
-    const { children, content } = this.props;
-
-    return (
-      <ElementType
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : Box.create(content)}
-      </ElementType>
-    );
-  }
-}
 
 /**
  * A Segment visually groups related content.
  */
-export default withSafeTypeForAs<typeof Segment, SegmentProps>(Segment);
+export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
+  setStart();
+  const { children, content, color, inverted, disabled, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Segment.handledProps, props);
+
+  const getA11yProps = useAccessibility<never>(props.accessibility, {
+    debugName: Segment.displayName,
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<SegmentStylesProps>(Segment.displayName, {
+    className: segmentClassName,
+    mapPropsToStyles: () => ({
+      color,
+      inverted,
+      disabled,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : Box.create(content)}
+    </ElementType>,
+  );
+
+  setEnd();
+  return element;
+};
+
+Segment.displayName = 'Segment';
+
+Segment.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+    color: true,
+  }),
+  disabled: PropTypes.bool,
+  inverted: PropTypes.bool,
+};
+Segment.handledProps = Object.keys(Segment.propTypes) as any;
+
+Segment.create = createShorthandFactory({
+  Component: Segment,
+});

@@ -1,13 +1,16 @@
 import { pxToRem } from '../../../../utils';
 
-export default () => {
-  const vars: any = {};
+export interface ItemLayoutVariables {
+  paddingLeft: string;
+  paddingRight: string;
+  columnGap: string;
 
-  vars.paddingLeft = pxToRem(20);
-  vars.paddingRight = pxToRem(18);
-  vars.columnGap = pxToRem(8);
+  height: string;
+}
 
-  vars.height = pxToRem(48);
-
-  return vars;
-};
+export const itemLayoutVariables = (): ItemLayoutVariables => ({
+  paddingLeft: pxToRem(20),
+  paddingRight: pxToRem(18),
+  columnGap: pxToRem(8),
+  height: pxToRem(48),
+});

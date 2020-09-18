@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.3.32",
+  "version": "7.5.5",
   "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,12 +24,12 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.0"
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.11",
-    "@uifabric/styling": "^7.11.9",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/styling": "^7.16.5",
     "tslib": "^1.10.0"
   }
 }

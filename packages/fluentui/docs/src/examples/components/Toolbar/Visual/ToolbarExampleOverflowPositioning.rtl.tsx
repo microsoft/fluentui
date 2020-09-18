@@ -7,7 +7,7 @@ import {
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
   ToolbarMenuItemShorthandKinds,
-  themes,
+  teamsTheme,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -27,8 +27,8 @@ import {
   UnderlineIcon,
 } from '@fluentui/react-icons-northstar';
 
-type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
-type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
+type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
+type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
 const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
   children: (externalDocument: Document) => React.ReactElement;
@@ -149,7 +149,7 @@ const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
         dir="rtl" /* we need to force this as global Provider is already in RTL */
         styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
         target={externalDocument}
-        theme={themes.teams}
+        theme={teamsTheme}
       >
         <EditorToolbar />
       </Provider>

@@ -1,3 +1,12 @@
+import {
+  getElementType,
+  useAutoControlled,
+  useStyles,
+  useUnhandledProps,
+  ComponentWithAs,
+  useFluentContext,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { indicatorBehavior } from '@fluentui/accessibility';
@@ -5,17 +14,10 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import computeScrollIntoView from 'compute-scroll-into-view';
 
-import {
-  DebounceResultFn,
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs,
-} from '../../types';
-import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/styles';
+import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
@@ -27,28 +29,26 @@ import Downshift, {
   GetItemPropsOptions,
 } from 'downshift';
 import {
-  AutoControlledComponent,
-  RenderResultConfig,
   commonPropTypes,
   UIComponentProps,
-  isFromKeyboard,
+  isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
 } from '../../utils';
-import List, { ListProps } from '../List/List';
-import DropdownItem, { DropdownItemProps } from './DropdownItem';
-import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelectedItem';
-import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
-import Button, { ButtonProps } from '../Button/Button';
+import { List, ListProps } from '../List/List';
+import { DropdownItem, DropdownItemProps } from './DropdownItem';
+import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
+import { DropdownSearchInput, DropdownSearchInputProps } from './DropdownSearchInput';
+import { Button, ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import Box, { BoxProps } from '../Box/Box';
-import Portal from '../Portal/Portal';
+import { Box, BoxProps } from '../Box/Box';
+import { Portal } from '../Portal/Portal';
 import {
   ALIGNMENTS,
   POSITIONS,
   Popper,
   PositioningProps,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
@@ -65,7 +65,7 @@ export interface DropdownSlotClassNames {
   triggerButton: string;
 }
 
-export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownState>, PositioningProps {
+export interface DropdownProps extends UIComponentProps<DropdownProps>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
 
@@ -115,6 +115,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
   };
+
+  /** A label for selected items listbox. */
+  a11ySelectedItemsMessage?: string;
 
   /**
    * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
@@ -204,6 +207,12 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    */
   onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
+  /**
+   * Called when the focus moves out from dropdown.
+   * @param event - React's original SyntheticEvent.
+   */
+  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+
   /** A dropdown's open state can be controlled. */
   open?: boolean;
 
@@ -247,22 +256,29 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
 
   /** Sets the dropdown's currently selected value(s) in controlled mode. */
   value?: ShorthandValue<DropdownItemProps> | ShorthandCollection<DropdownItemProps>;
+
+  /** Dropdown can have errors status  */
+  error?: boolean;
 }
 
-export interface DropdownState {
-  a11ySelectionStatus: string;
-  activeSelectedIndex: number;
-  filteredItems: ShorthandCollection<DropdownItemProps>;
-  filteredItemStrings: string[];
+export type DropdownStylesProps = Required<
+  Pick<DropdownProps, 'disabled' | 'error' | 'fluid' | 'inline' | 'inverted' | 'multiple' | 'position' | 'open'>
+> & {
   focused: boolean;
-  startingString: string;
-  open: boolean;
-  searchQuery: string;
-  highlightedIndex: number;
-  value: ShorthandCollection<DropdownItemProps>;
-  itemIsFromKeyboard: boolean;
+  isEmptyClearIndicator: boolean;
+  hasToggleIndicator: boolean;
   isFromKeyboard: boolean;
-}
+  search: boolean;
+};
+
+type DropdownStateForInvoke = {
+  activeSelectedIndex?: number | null;
+  highlightedIndex?: number | null;
+  itemIsFromKeyboard?: boolean;
+  open?: boolean;
+  searchQuery?: string;
+  value?: ShorthandCollection<DropdownItemProps>;
+};
 
 export const dropdownClassName = 'ui-dropdown';
 export const dropdownSlotClassNames: DropdownSlotClassNames = {
@@ -277,328 +293,251 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   triggerButton: `${dropdownClassName}__trigger-button`,
 };
 
-class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
-  buttonRef = React.createRef<HTMLElement>();
-  inputRef = React.createRef<HTMLInputElement>();
-  listRef = React.createRef<HTMLElement>();
-  selectedItemsRef = React.createRef<HTMLDivElement>();
-  containerRef = React.createRef<HTMLDivElement>();
+const a11yStatusCleanupTime = 500;
+const charKeyPressedCleanupTime = 500;
 
-  static displayName = 'Dropdown';
+/** `normalizedValue` should be normalized always as it can be received from props */
+function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
+  const normalizedValue = Array.isArray(rawValue) ? rawValue : [rawValue];
 
-  static deprecated_className = dropdownClassName;
+  return multiple ? normalizedValue : normalizedValue.slice(0, 1);
+}
 
-  static a11yStatusCleanupTime = 500;
-  static charKeyPressedCleanupTime = 500;
+/**
+ * Used to compute the filtered items (by value and search query) and, if needed,
+ * their string equivalents, in order to be used throughout the component.
+ */
+function getFilteredValues(
+  options: Required<
+    Pick<DropdownProps, 'multiple' | 'items' | 'itemToValue' | 'itemToString' | 'search' | 'searchQuery'>
+  > & {
+    value: ShorthandCollection<DropdownItemProps>;
+  },
+) {
+  const { items, itemToString, itemToValue, multiple, search, searchQuery, value } = options;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      accessibility: false,
-      children: false,
-      content: false,
-    }),
-    activeSelectedIndex: PropTypes.number,
-    align: PropTypes.oneOf(ALIGNMENTS),
-    checkable: PropTypes.bool,
-    checkableIndicator: customPropTypes.shorthandAllowingChildren,
-    clearable: PropTypes.bool,
-    clearIndicator: customPropTypes.shorthandAllowingChildren,
-    defaultActiveSelectedIndex: PropTypes.number,
-    defaultOpen: PropTypes.bool,
-    defaultHighlightedIndex: PropTypes.number,
-    defaultSearchQuery: PropTypes.string,
-    defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
-    disabled: PropTypes.bool,
-    fluid: PropTypes.bool,
-    getA11ySelectionMessage: PropTypes.object,
-    getA11yStatusMessage: PropTypes.func,
-    highlightFirstItemOnOpen: PropTypes.bool,
-    highlightedIndex: PropTypes.number,
-    inline: PropTypes.bool,
-    inverted: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
-    itemToString: PropTypes.func,
-    itemToValue: PropTypes.func,
-    headerMessage: customPropTypes.itemShorthand,
-    list: customPropTypes.itemShorthand,
-    loading: PropTypes.bool,
-    loadingMessage: customPropTypes.itemShorthand,
-    moveFocusOnTab: PropTypes.bool,
-    multiple: PropTypes.bool,
-    noResultsMessage: customPropTypes.itemShorthand,
-    offset: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
-    ]),
-    onOpenChange: PropTypes.func,
-    onSearchQueryChange: PropTypes.func,
-    onChange: PropTypes.func,
-    onActiveSelectedIndexChange: PropTypes.func,
-    onHighlightedIndexChange: PropTypes.func,
-    open: PropTypes.bool,
-    placeholder: PropTypes.string,
-    position: PropTypes.oneOf(POSITIONS),
-    renderItem: PropTypes.func,
-    renderSelectedItem: PropTypes.func,
-    search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-    searchQuery: PropTypes.string,
-    searchInput: customPropTypes.itemShorthand,
-    toggleIndicator: customPropTypes.shorthandAllowingChildren,
-    triggerButton: customPropTypes.itemShorthand,
-    unstable_pinned: PropTypes.bool,
-    value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
-  };
+  const filteredItemsByValue = multiple ? _.differenceBy(items, value, itemToValue) : items;
+  const filteredItemStrings = _.map(filteredItemsByValue, filteredItem => itemToString(filteredItem).toLowerCase());
 
-  static defaultProps = {
-    align: 'start',
-    as: 'div',
-    clearIndicator: {},
-    itemToString: item => {
-      if (!item || React.isValidElement(item)) {
-        return '';
-      }
-
-      // targets DropdownItem shorthand objects
-      return (item as any).header || String(item);
-    },
-    itemToValue: item => {
-      if (!item || React.isValidElement(item)) {
-        return '';
-      }
-
-      // targets DropdownItem shorthand objects
-      return (item as any).header || String(item);
-    },
-    list: {},
-    position: 'below',
-    toggleIndicator: {},
-    triggerButton: {},
-  };
-
-  static autoControlledProps = ['activeSelectedIndex', 'highlightedIndex', 'open', 'searchQuery', 'value'];
-
-  static Item = DropdownItem;
-  static SearchInput = DropdownSearchInput;
-  static SelectedItem = DropdownSelectedItem;
-
-  componentWillUnmount() {
-    this.clearStartingString.cancel();
-    this.clearA11ySelectionMessage.cancel();
-  }
-
-  getInitialAutoControlledState({ multiple, search }: DropdownProps): DropdownState {
-    return {
-      a11ySelectionStatus: '',
-      activeSelectedIndex: multiple ? null : undefined,
-      filteredItems: undefined,
-      filteredItemStrings: undefined,
-      focused: false,
-      startingString: search ? undefined : '',
-      open: false,
-      highlightedIndex: this.props.highlightFirstItemOnOpen ? 0 : null,
-      searchQuery: search ? '' : undefined,
-      value: [],
-      itemIsFromKeyboard: false,
-      isFromKeyboard: false,
-    };
-  }
-
-  defaultTriggerButtonId = _.uniqueId('dropdown-trigger-button-');
-
-  /**
-   * Used to compute the filtered items (by value and search query) and, if needed,
-   * their string equivalents, in order to be used throughout the component.
-   */
-  static getAutoControlledStateFromProps(props: DropdownProps, state: DropdownState) {
-    const { items, itemToString, itemToValue, multiple, search } = props;
-    const { searchQuery, value: rawValue } = state;
-
-    // `normalizedValue` should be normilized always as it can be received from props
-    const normalizedValue = _.isArray(rawValue) ? rawValue : [rawValue];
-    const value = multiple ? normalizedValue : normalizedValue.slice(0, 1);
-
-    const filteredItemsByValue = multiple ? _.differenceBy(items, value, itemToValue) : items;
-    const filteredItemStrings = _.map(filteredItemsByValue, filteredItem => itemToString(filteredItem).toLowerCase());
-
-    const modifiedState: Partial<DropdownState> = {
-      filteredItems: filteredItemsByValue,
-      filteredItemStrings,
-      value,
-    };
-
-    if (search) {
-      if (_.isFunction(search)) {
-        modifiedState.filteredItems = search(filteredItemsByValue, searchQuery);
-      } else {
-        modifiedState.filteredItems = filteredItemsByValue.filter(
-          item =>
-            itemToString(item)
-              .toLowerCase()
-              .indexOf(searchQuery.toLowerCase()) !== -1,
-        );
-      }
+  if (search) {
+    if (_.isFunction(search)) {
+      return {
+        filteredItems: search(filteredItemsByValue, searchQuery),
+        filteredItemStrings,
+      };
     }
 
-    return modifiedState;
+    return {
+      filteredItems: filteredItemsByValue.filter(
+        item =>
+          itemToString(item)
+            .toLowerCase()
+            .indexOf(searchQuery.toLowerCase()) !== -1,
+      ),
+      filteredItemStrings,
+    };
   }
 
-  handleChange = (e: React.SyntheticEvent) => {
+  return {
+    filteredItems: filteredItemsByValue,
+    filteredItemStrings,
+  };
+}
+
+const isEmpty = prop => {
+  return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
+};
+
+/**
+ * A Dropdown allows user to select one or more values from a list of options.
+ * Can be created with search and multi-selection capabilities.
+ *
+ * @accessibility
+ * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
+ * @accessibilityIssues
+ * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ */
+export const Dropdown: ComponentWithAs<'div', DropdownProps> &
+  FluentComponentStaticProps<DropdownProps> & {
+    Item: typeof DropdownItem;
+    SearchInput: typeof DropdownSearchInput;
+    SelectedItem: typeof DropdownSelectedItem;
+  } = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
+
+  setStart();
+
+  const {
+    align,
+    'aria-labelledby': ariaLabelledby,
+    clearable,
+    clearIndicator,
+    checkable,
+    checkableIndicator,
+    className,
+    design,
+    disabled,
+    error,
+    fluid,
+    getA11ySelectionMessage,
+    a11ySelectedItemsMessage,
+    getA11yStatusMessage,
+    inline,
+    inverted,
+    itemToString,
+    itemToValue,
+    items,
+    highlightFirstItemOnOpen,
+    multiple,
+    headerMessage,
+    moveFocusOnTab,
+    noResultsMessage,
+    loading,
+    loadingMessage,
+    placeholder,
+    position,
+    offset,
+    renderItem,
+    renderSelectedItem,
+    search,
+    searchInput,
+    styles,
+    toggleIndicator,
+    triggerButton,
+    unstable_pinned,
+    variables,
+  } = props;
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
+
+  const buttonRef = React.useRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
+  const listRef = React.useRef<HTMLElement>();
+  const selectedItemsRef = React.useRef<HTMLDivElement>();
+  const containerRef = React.useRef<HTMLDivElement>();
+
+  const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
+
+  const [activeSelectedIndex, setActiveSelectedIndex] = useAutoControlled<number | null | undefined>({
+    defaultValue: props.defaultActiveSelectedIndex,
+    initialValue: multiple ? null : undefined,
+    value: props.activeSelectedIndex,
+  });
+  const [highlightedIndex, setHighlightedIndex] = useAutoControlled<number | null>({
+    defaultValue: props.defaultHighlightedIndex,
+    initialValue: highlightFirstItemOnOpen ? 0 : null,
+    value: props.highlightedIndex,
+  });
+  const [open, setOpen] = useAutoControlled({
+    defaultValue: props.defaultOpen,
+    initialValue: false,
+    value: props.open,
+  });
+  const [searchQuery, setSearchQuery] = useAutoControlled<string | undefined>({
+    defaultValue: props.defaultSearchQuery,
+    initialValue: search ? '' : undefined,
+    value: props.searchQuery,
+  });
+  const [rawValue, setValue] = useAutoControlled({
+    defaultValue: props.defaultValue,
+    initialValue: [],
+    value: props.value,
+  });
+  const value = normalizeValue(multiple, rawValue);
+
+  const [a11ySelectionStatus, setA11ySelectionStatus] = React.useState('');
+  const [focused, setFocused] = React.useState(false);
+  const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
+  const [itemIsFromKeyboard, setItemIsFromKeyboard] = React.useState(false);
+  const [startingString, setStartingString] = React.useState<string | undefined>(search ? undefined : '');
+
+  const { filteredItems, filteredItemStrings } = getFilteredValues({
+    itemToString,
+    itemToValue,
+    items,
+    multiple,
+    search,
+    searchQuery,
+    value,
+  });
+
+  const { classes, styles: resolvedStyles } = useStyles<DropdownStylesProps>(Dropdown.displayName, {
+    className: dropdownClassName,
+    mapPropsToStyles: () => ({
+      disabled,
+      error,
+      fluid,
+      focused,
+      isEmptyClearIndicator: isEmpty(clearIndicator),
+      hasToggleIndicator: !!toggleIndicator,
+      inline,
+      inverted,
+      isFromKeyboard,
+      multiple,
+      open,
+      position,
+      search: !!search,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const clearA11ySelectionMessage = React.useMemo(
+    () =>
+      _.debounce(() => {
+        setA11ySelectionStatus('');
+      }, a11yStatusCleanupTime),
+    [],
+  );
+  const clearStartingString = React.useMemo(
+    () =>
+      _.debounce(() => {
+        setStartingString('');
+      }, charKeyPressedCleanupTime),
+    [],
+  );
+
+  const handleChange = (e: React.SyntheticEvent) => {
     // Dropdown component doesn't present any `input` component in markup, however all of our
     // components should handle events transparently.
-    _.invoke(this.props, 'onChange', e, { ...this.props, value: this.state.value });
+    _.invoke(props, 'onChange', e, { ...props, value });
   };
 
-  renderComponent({ ElementType, classes, styles, variables, unhandledProps, rtl }: RenderResultConfig<DropdownProps>) {
-    const {
-      clearable,
-      clearIndicator,
-      disabled,
-      search,
-      multiple,
-      getA11yStatusMessage,
-      itemToString,
-      toggleIndicator,
-    } = this.props;
-    const { highlightedIndex, open, searchQuery, value } = this.state;
+  const handleOnBlur = (e: React.SyntheticEvent) => {
+    // Dropdown component doesn't present any `input` component in markup, however all of our
+    // components should handle events transparently.
+    if (e.target !== buttonRef.current) {
+      _.invoke(props, 'onBlur', e, props);
+    }
+  };
 
-    return (
-      <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
-        <Downshift
-          isOpen={open}
-          inputValue={search ? searchQuery : null}
-          stateReducer={this.downshiftStateReducer}
-          itemToString={itemToString}
-          // downshift does not work with arrays as selectedItem.
-          selectedItem={multiple || !value.length ? null : value[0]}
-          getA11yStatusMessage={getA11yStatusMessage}
-          highlightedIndex={highlightedIndex}
-          onStateChange={this.handleStateChange}
-          labelId={this.props['aria-labelledby']}
-          environment={this.context.target?.defaultView}
-          inputId={this.props.searchInput && this.props.searchInput['id'] ? this.props.searchInput['id'] : undefined}
-        >
-          {({
-            getInputProps,
-            getItemProps,
-            getMenuProps,
-            getRootProps,
-            getToggleButtonProps,
-            toggleMenu,
-            highlightedIndex,
-            selectItemAtIndex,
-          }) => {
-            const { innerRef, ...accessibilityRootPropsRest } = getRootProps(
-              { refKey: 'innerRef' },
-              { suppressRefError: true },
-            );
-            const showClearIndicator = clearable && value.length > 0;
-
-            return (
-              <Ref innerRef={innerRef}>
-                <div
-                  ref={this.containerRef}
-                  className={cx(dropdownSlotClassNames.container, classes.container)}
-                  onClick={search && !open ? this.handleContainerClick : undefined}
-                >
-                  <div
-                    ref={this.selectedItemsRef}
-                    className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}
-                  >
-                    {multiple && this.renderSelectedItems(variables, rtl)}
-                    {search
-                      ? this.renderSearchInput(
-                          accessibilityRootPropsRest,
-                          rtl,
-                          highlightedIndex,
-                          getInputProps,
-                          selectItemAtIndex,
-                          toggleMenu,
-                          variables,
-                        )
-                      : this.renderTriggerButton(styles, rtl, getToggleButtonProps)}
-                  </div>
-                  {showClearIndicator
-                    ? Box.create(clearIndicator, {
-                        defaultProps: () => ({
-                          className: dropdownSlotClassNames.clearIndicator,
-                          styles: styles.clearIndicator,
-                          accessibility: indicatorBehavior,
-                          ...(!search && { tabIndex: 0, role: 'button' }),
-                        }),
-                        overrideProps: (predefinedProps: BoxProps) => ({
-                          onClick: (e: React.SyntheticEvent<HTMLElement>) => {
-                            _.invoke(predefinedProps, 'onClick', e);
-                            this.handleClear(e);
-                          },
-                        }),
-                      })
-                    : Box.create(toggleIndicator, {
-                        defaultProps: () => ({
-                          className: dropdownSlotClassNames.toggleIndicator,
-                          styles: styles.toggleIndicator,
-                          accessibility: indicatorBehavior,
-                        }),
-                        overrideProps: (predefinedProps: BoxProps) => ({
-                          onClick: e => {
-                            if (!disabled) {
-                              getToggleButtonProps({ disabled }).onClick(e);
-                            }
-
-                            _.invoke(predefinedProps, 'onClick', e);
-                          },
-                        }),
-                      })}
-                  {this.renderItemsList(
-                    styles,
-                    variables,
-                    highlightedIndex,
-                    toggleMenu,
-                    selectItemAtIndex,
-                    getMenuProps,
-                    getItemProps,
-                    getInputProps,
-                    rtl,
-                  )}
-                </div>
-              </Ref>
-            );
-          }}
-        </Downshift>
-        <Portal open={!!this.props.getA11ySelectionMessage}>
-          <div role="status" aria-live="polite" aria-relevant="additions text" style={screenReaderContainerStyles}>
-            {this.state.a11ySelectionStatus}
-          </div>
-        </Portal>
-      </ElementType>
-    );
-  }
-
-  renderTriggerButton(
-    styles: ComponentSlotStylesInput,
-    rtl: boolean,
-    getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any,
-  ): JSX.Element {
-    const { triggerButton, disabled } = this.props;
-    const { value } = this.state;
-
-    const content = this.getSelectedItemAsString(value[0]);
-    const triggerButtonId = triggerButton['id'] || this.defaultTriggerButtonId;
+  const renderTriggerButton = (getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any): JSX.Element => {
+    const content = getSelectedItemAsString(value[0]);
+    const triggerButtonId = triggerButton['id'] || defaultTriggerButtonId;
 
     const triggerButtonProps = getToggleButtonProps({
       disabled,
-      onFocus: this.handleTriggerButtonOrListFocus,
-      onBlur: this.handleTriggerButtonBlur,
+      onFocus: handleTriggerButtonOrListFocus,
+      onBlur: handleTriggerButtonBlur,
       onKeyDown: e => {
-        this.handleTriggerButtonKeyDown(e, rtl);
+        handleTriggerButtonKeyDown(e);
       },
       'aria-label': undefined,
-      'aria-labelledby': [this.props['aria-labelledby'], triggerButtonId].filter(l => !!l).join(' '),
+      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
 
     return (
-      <Ref innerRef={this.buttonRef}>
+      <Ref innerRef={buttonRef}>
         {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
@@ -606,7 +545,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             disabled,
             id: triggerButtonId,
             fluid: true,
-            styles: styles.triggerButton,
+            styles: resolvedStyles.triggerButton,
             ...restTriggerButtonProps,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
@@ -636,20 +575,16 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         })}
       </Ref>
     );
-  }
+  };
 
-  renderSearchInput(
+  const renderSearchInput = (
     accessibilityComboboxProps: Object,
-    rtl: boolean,
     highlightedIndex: number,
     getInputProps: (options?: GetInputPropsOptions) => any,
     selectItemAtIndex: (index: number, otherStateToSet?: Partial<StateChangeOptions<any>>, cb?: () => void) => void,
     toggleMenu: () => void,
     variables,
-  ): JSX.Element {
-    const { inline, searchInput, multiple, placeholder, disabled } = this.props;
-    const { searchQuery, value } = this.state;
-
+  ): JSX.Element => {
     const noPlaceholder = searchQuery.length > 0 || (multiple && value.length > 0);
 
     return DropdownSearchInput.create(searchInput || {}, {
@@ -658,34 +593,27 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         placeholder: noPlaceholder ? '' : placeholder,
         inline,
         variables,
-        inputRef: this.inputRef,
         disabled,
       }),
-      overrideProps: this.handleSearchInputOverrides(
+      overrideProps: handleSearchInputOverrides(
         highlightedIndex,
-        rtl,
         selectItemAtIndex,
         toggleMenu,
         accessibilityComboboxProps,
         getInputProps,
       ),
     });
-  }
+  };
 
-  renderItemsList(
-    styles: ComponentSlotStylesInput,
-    variables: ComponentVariablesInput,
+  const renderItemsList = (
     highlightedIndex: number,
     toggleMenu: () => void,
     selectItemAtIndex: (index: number) => void,
     getMenuProps: (options?: GetMenuPropsOptions, otherOptions?: GetPropsCommonOptions) => any,
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
     getInputProps: (options?: GetInputPropsOptions) => any,
-    rtl: boolean,
-  ) {
-    const { align, offset, position, search, unstable_pinned, list } = this.props;
-    const { open } = this.state;
-    const items = open ? this.renderItems(styles, variables, getItemProps, highlightedIndex) : [];
+  ) => {
+    const items = open ? renderItems(getItemProps) : [];
     const { innerRef, ...accessibilityMenuProps } = getMenuProps({ refKey: 'innerRef' }, { suppressRefError: true });
 
     // If it's just a selection, some attributes and listeners from Downshift input need to go on the menu list.
@@ -694,20 +622,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
       accessibilityMenuProps['aria-activedescendant'] = accessibilityInputProps['aria-activedescendant'];
       accessibilityMenuProps['onKeyDown'] = e => {
-        this.handleListKeyDown(
-          e,
-          highlightedIndex,
-          accessibilityInputProps['onKeyDown'],
-          toggleMenu,
-          selectItemAtIndex,
-        );
+        handleListKeyDown(e, highlightedIndex, accessibilityInputProps['onKeyDown'], toggleMenu, selectItemAtIndex);
       };
     }
 
     return (
       <Ref
         innerRef={(listElement: HTMLElement) => {
-          handleRef(this.listRef, listElement);
+          handleRef(listRef, listElement);
           handleRef(innerRef, listElement);
         }}
       >
@@ -715,18 +637,18 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           align={align}
           position={position}
           offset={offset}
-          rtl={rtl}
+          rtl={context.rtl}
           enabled={open}
-          targetRef={this.containerRef}
+          targetRef={containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
-          {...getPopperPropsFromShorthand(list)}
+          {...positioningProps}
         >
           {List.create(list, {
             defaultProps: () => ({
               className: dropdownSlotClassNames.itemsList,
               ...accessibilityMenuProps,
-              styles: styles.list,
+              styles: resolvedStyles.list,
               items,
               tabIndex: search ? undefined : -1, // needs to be focused when trigger button is activated.
               'aria-hidden': !open,
@@ -734,11 +656,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
             overrideProps: (predefinedProps: ListProps) => ({
               onFocus: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
-                this.handleTriggerButtonOrListFocus();
+                handleTriggerButtonOrListFocus();
                 _.invoke(predefinedProps, 'onClick', e, listProps);
               },
               onBlur: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
-                this.handleListBlur(e);
+                handleListBlur(e);
                 _.invoke(predefinedProps, 'onBlur', e, listProps);
               },
             }),
@@ -746,18 +668,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         </Popper>
       </Ref>
     );
-  }
+  };
 
-  renderItems(
-    styles: ComponentSlotStylesInput,
-    variables: ComponentVariablesInput,
-    getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
-    highlightedIndex: number,
-  ) {
-    const { renderItem, checkable, checkableIndicator } = this.props;
-    const { filteredItems, value } = this.state;
-    const footerItem = this.renderItemsListFooter(styles);
-    const headerItem = this.renderItemsListHeader(styles);
+  const renderItems = (getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any) => {
+    const footerItem = renderItemsListFooter();
+    const headerItem = renderItemsListHeader();
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -770,14 +685,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             selected,
             checkable,
             checkableIndicator,
-            isFromKeyboard: this.state.itemIsFromKeyboard,
+            isFromKeyboard: itemIsFromKeyboard,
             variables,
             ...(typeof item === 'object' &&
               !item.hasOwnProperty('key') && {
                 key: (item as any).header,
               }),
           }),
-          overrideProps: this.handleItemOverrides(item, index, getItemProps, selected),
+          overrideProps: handleItemOverrides(item, index, getItemProps, selected),
           render: renderItem,
         });
       },
@@ -788,105 +703,102 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
 
     return headerItem ? [headerItem, ...items] : items;
-  }
+  };
 
-  renderItemsListHeader(styles: ComponentSlotStylesInput) {
-    const { headerMessage } = this.props;
-
+  const renderItemsListHeader = () => {
     if (headerMessage) {
       return {
         children: () =>
           DropdownItem.create(headerMessage, {
             defaultProps: () => ({
               key: 'items-list-footer-message',
-              styles: styles.headerMessage,
+              styles: resolvedStyles.headerMessage,
             }),
           }),
       };
     }
 
     return null;
-  }
+  };
 
-  renderItemsListFooter(styles: ComponentSlotStylesInput) {
-    const { loading, loadingMessage, noResultsMessage, items } = this.props;
-
+  const renderItemsListFooter = () => {
     if (loading) {
       return {
         children: () =>
           DropdownItem.create(loadingMessage, {
             defaultProps: () => ({
               key: 'loading-message',
-              styles: styles.loadingMessage,
+              styles: resolvedStyles.loadingMessage,
             }),
           }),
       };
     }
 
-    if (items && items.length === 0) {
+    if (filteredItems && filteredItems.length === 0) {
       return {
         children: () =>
           DropdownItem.create(noResultsMessage, {
             defaultProps: () => ({
               key: 'no-results-message',
-              styles: styles.noResultsMessage,
+              styles: resolvedStyles.noResultsMessage,
             }),
           }),
       };
     }
 
     return null;
-  }
+  };
 
-  renderSelectedItems(variables, rtl: boolean) {
-    const { renderSelectedItem } = this.props;
-    const { value } = this.state;
-
+  const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
     }
 
-    return value.map((item: DropdownItemProps, index) =>
+    const selectedItems = value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
           className: dropdownSlotClassNames.selectedItem,
-          active: this.isSelectedItemActive(index),
+          active: isSelectedItemActive(index),
           variables,
           ...(typeof item === 'object' &&
             !item.hasOwnProperty('key') && {
               key: (item as any).header,
             }),
         }),
-        overrideProps: this.handleSelectedItemOverrides(item, rtl),
+        overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
       }),
     );
-  }
+    return (
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+        {selectedItems}
+      </div>
+    );
+  };
 
-  downshiftStateReducer = (
+  const downshiftStateReducer = (
     state: DownshiftState<ShorthandValue<DropdownItemProps>>,
     changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
   ) => {
-    const activeElement: Element = this.context.target.activeElement;
+    const activeElement: Element = context.target.activeElement;
 
     switch (changes.type) {
       case Downshift.stateChangeTypes.blurButton:
         // Downshift closes the list by default on trigger blur. It does not support the case when dropdown is
         // single selection and focuses list on trigger click/up/down/space/enter. Treating that here.
-        if (state.isOpen && activeElement === this.listRef.current) {
+        if (state.isOpen && activeElement === listRef.current) {
           return {}; // won't change state in this case.
         }
+        _.invoke(props, 'onBlur', null);
       default:
         return changes;
     }
   };
 
-  handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    const { search, multiple, highlightFirstItemOnOpen, items, getA11ySelectionMessage } = this.props;
-    const { value, open } = this.state;
+  const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
     const { type } = changes;
-    const newState = {} as DropdownState;
+    const newState = {} as DropdownStateForInvoke;
 
     switch (type) {
       case Downshift.stateChangeTypes.changeInput: {
@@ -917,7 +829,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         const isSameItemSelected = changes.selectedItem === undefined;
         const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
-        newState.searchQuery = this.getSelectedItemAsString(newValue);
+        newState.searchQuery = getSelectedItemAsString(newValue);
         newState.open = false;
         newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
@@ -925,15 +837,15 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
 
           if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-            this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+            setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
           }
         }
 
         if (multiple) {
-          setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
+          setTimeout(() => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight), 0);
         }
 
-        this.tryFocusTriggerButton();
+        tryFocusTriggerButton();
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
@@ -954,14 +866,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           newState.highlightedIndex = changes.highlightedIndex;
 
           if (changes.isOpen) {
-            const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+            const highlightedIndexOnArrowKeyOpen = getHighlightedIndexOnArrowKeyOpen(changes);
 
             if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
               newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
             }
 
             if (!search) {
-              this.listRef.current.focus();
+              listRef.current.focus();
             }
           } else {
             newState.highlightedIndex = null;
@@ -987,14 +899,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         newState.open = changes.isOpen;
 
         if (changes.isOpen) {
-          const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+          const highlightedIndexOnArrowKeyOpen = getHighlightedIndexOnArrowKeyOpen(changes);
 
           if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
             newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
           }
 
           if (!search) {
-            this.listRef.current.focus();
+            listRef.current.focus();
           }
         } else {
           newState.highlightedIndex = null;
@@ -1011,7 +923,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           newState.open = false;
           newState.highlightedIndex = changes.highlightedIndex;
 
-          this.tryFocusTriggerButton();
+          tryFocusTriggerButton();
         } else {
           newState.open = changes.isOpen;
         }
@@ -1024,20 +936,20 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
 
     const handlers: (keyof DropdownProps)[] = [
-      newState.value !== undefined && 'onChange',
       newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
       newState.open !== undefined && 'onOpenChange',
       newState.searchQuery !== undefined && 'onSearchQueryChange',
+      newState.value !== undefined && 'onChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
-    this.setStateAndInvokeHandler(handlers, null, newState);
+    setStateAndInvokeHandler(handlers, null, newState);
   };
 
-  isSelectedItemActive = (index: number): boolean => {
-    return index === this.state.activeSelectedIndex;
+  const isSelectedItemActive = (index: number): boolean => {
+    return index === activeSelectedIndex;
   };
 
-  handleItemOverrides = (
+  const handleItemOverrides = (
     item: ShorthandValue<DropdownItemProps>,
     index: number,
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
@@ -1055,33 +967,32 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         },
       }),
       // for single selection the selected item should have aria-selected, instead of the highlighted
-      ...(!this.props.multiple && {
+      ...(!multiple && {
         'aria-selected': selected,
       }),
     },
   });
 
-  handleSelectedItemOverrides = (item: ShorthandValue<DropdownItemProps>, rtl: boolean) => (
+  const handleSelectedItemOverrides = (item: ShorthandValue<DropdownItemProps>) => (
     predefinedProps: DropdownSelectedItemProps,
   ) => ({
     onRemove: (e: React.SyntheticEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
-      this.handleSelectedItemRemove(e, item, predefinedProps, dropdownSelectedItemProps);
+      handleSelectedItemRemove(e, item, predefinedProps, dropdownSelectedItemProps);
     },
     onClick: (e: React.SyntheticEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
-      this.setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
-        activeSelectedIndex: this.state.value.indexOf(item),
+      setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+        activeSelectedIndex: value.indexOf(item),
       });
       e.stopPropagation();
       _.invoke(predefinedProps, 'onClick', e, dropdownSelectedItemProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
-      this.handleSelectedItemKeyDown(e, item, predefinedProps, dropdownSelectedItemProps, rtl);
+    onKeyDown: (e: React.KeyboardEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
+      handleSelectedItemKeyDown(e, item, predefinedProps, dropdownSelectedItemProps);
     },
   });
 
-  handleSearchInputOverrides = (
+  const handleSearchInputOverrides = (
     highlightedIndex: number,
-    rtl: boolean,
     selectItemAtIndex: (index: number, otherStateToSet?: Partial<StateChangeOptions<any>>, cb?: () => void) => void,
     toggleMenu: () => void,
     accessibilityComboboxProps: Object,
@@ -1089,34 +1000,55 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   ) => (predefinedProps: DropdownSearchInputProps) => {
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
       if (!disabled) {
-        this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+        setFocused(false);
+        setIsFromKeyboard(detectIsFromKeyboard());
 
         e.nativeEvent['preventDownshiftDefault'] = true;
       }
 
       _.invoke(predefinedProps, 'onInputBlur', e, searchInputProps);
     };
-    const { disabled } = this.props;
 
-    const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+    const handleInputKeyDown = (
+      e: React.KeyboardEvent<HTMLInputElement>,
+      searchInputProps: DropdownSearchInputProps,
+    ) => {
       if (!disabled) {
-        switch (keyboardKey.getCode(e)) {
+        switch (getCode(e)) {
+          // https://github.com/downshift-js/downshift/issues/1097
+          // Downshift skips Home/End if Deopdown is opened
+          case keyboardKey.Home:
+            e.nativeEvent['preventDownshiftDefault'] = filteredItems.length === 0;
+            break;
+          case keyboardKey.End:
+            e.nativeEvent['preventDownshiftDefault'] = filteredItems.length === 0;
+            break;
           case keyboardKey.Tab:
-            this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
+            e.stopPropagation();
+            handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
             break;
           case keyboardKey.ArrowLeft:
-            if (!rtl) {
-              this.trySetLastSelectedItemAsActive();
+            e.stopPropagation();
+            if (!context.rtl) {
+              trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
-            if (rtl) {
-              this.trySetLastSelectedItemAsActive();
+            e.stopPropagation();
+            if (context.rtl) {
+              trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.Backspace:
-            this.tryRemoveItemFromValue();
+            e.stopPropagation();
+            tryRemoveItemFromValue();
             break;
+          case keyboardKey.Escape:
+            // If dropdown list is open ESC should close it and not propagate to the parent
+            // otherwise event should propagate
+            if (open) {
+              e.stopPropagation();
+            }
           default:
             break;
         }
@@ -1141,26 +1073,37 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
           },
-          onChange: e => {
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
             // we prevent the onChange input event to bubble up to our Dropdown handler,
             // since in Dropdown it gets handled as onSearchQueryChange.
             e.stopPropagation();
+
+            // A state modification should be triggered there otherwise it will go to an another frame and will break
+            // cursor position:
+            // https://github.com/facebook/react/issues/955#issuecomment-469352730
+            setSearchQuery(e.target.value);
           },
         }),
       },
       // same story as above for getRootProps.
       accessibilityComboboxProps,
-      onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+
+      inputRef: (node: HTMLInputElement) => {
+        handleRef(predefinedProps.inputRef, node);
+        inputRef.current = node;
+      },
+      onFocus: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         if (!disabled) {
-          this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
+          setFocused(true);
+          setIsFromKeyboard(detectIsFromKeyboard());
         }
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
       },
-      onInputBlur: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onInputBlur: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         handleInputBlur(e, searchInputProps);
       },
-      onInputKeyDown: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement>, searchInputProps: DropdownSearchInputProps) => {
         handleInputKeyDown(e, searchInputProps);
       },
     };
@@ -1170,15 +1113,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * Custom Tab selection logic, at least until Downshift will implement selection on blur.
    * Also keeps focus on multiple selection dropdown when selecting by Tab.
    */
-  handleTabSelection = (
+  const handleTabSelection = (
     e: React.SyntheticEvent,
     highlightedIndex: number,
     selectItemAtIndex: (highlightedIndex: number) => void,
     toggleMenu: () => void,
   ): void => {
-    const { open, filteredItems } = this.state;
-    const { moveFocusOnTab, multiple, items } = this.props;
-
     if (open) {
       if (!_.isNil(highlightedIndex) && filteredItems.length && !items[highlightedIndex]['disabled']) {
         selectItemAtIndex(highlightedIndex);
@@ -1192,75 +1132,62 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  trySetLastSelectedItemAsActive = () => {
-    const { multiple } = this.props;
-    const { value } = this.state;
-
-    if (!multiple || (this.inputRef.current && this.inputRef.current.selectionStart !== 0)) {
+  const trySetLastSelectedItemAsActive = () => {
+    if (!multiple || (inputRef.current && inputRef.current.selectionStart !== 0)) {
       return;
     }
 
     if (value.length > 0) {
       // If last element was already active, perform a 'reset' of activeSelectedIndex.
-      if (this.state.activeSelectedIndex === value.length - 1) {
-        this.setState({ activeSelectedIndex: null }, () => {
-          this.setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
-            activeSelectedIndex: value.length - 1,
-          });
+      if (activeSelectedIndex === value.length - 1) {
+        setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+          activeSelectedIndex: value.length - 1,
         });
       } else {
-        this.setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+        setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
           activeSelectedIndex: value.length - 1,
         });
       }
     }
   };
 
-  tryRemoveItemFromValue = () => {
-    const { multiple } = this.props;
-    const { searchQuery, value } = this.state;
-    const inputElement = this.inputRef.current;
-
+  const tryRemoveItemFromValue = () => {
     if (
       multiple &&
-      (searchQuery === '' || (inputElement.selectionStart === 0 && inputElement.selectionEnd === 0)) &&
+      (searchQuery === '' || (inputRef.current.selectionStart === 0 && inputRef.current.selectionEnd === 0)) &&
       value.length > 0
     ) {
-      this.removeItemFromValue();
+      removeItemFromValue();
     }
   };
 
-  handleClear = (e: React.SyntheticEvent<HTMLElement>) => {
-    const { activeSelectedIndex, highlightedIndex, open, searchQuery, value } = this.getInitialAutoControlledState(
-      this.props,
-    );
-
-    this.setStateAndInvokeHandler(['onChange', 'onActiveSelectedIndexChange', 'onHighlightedIndexChange'], e, {
-      activeSelectedIndex,
-      highlightedIndex,
-      open,
-      searchQuery,
-      value,
+  const handleClear = (e: React.SyntheticEvent<HTMLElement>) => {
+    setStateAndInvokeHandler(['onChange', 'onActiveSelectedIndexChange', 'onHighlightedIndexChange'], e, {
+      activeSelectedIndex: multiple ? null : undefined,
+      highlightedIndex: highlightFirstItemOnOpen ? 0 : null,
+      open: false,
+      searchQuery: search ? '' : undefined,
+      value: [],
     });
 
-    this.tryFocusSearchInput();
-    this.tryFocusTriggerButton();
+    tryFocusSearchInput();
+    tryFocusTriggerButton();
   };
 
-  handleContainerClick = () => {
-    this.tryFocusSearchInput();
+  const handleContainerClick = () => {
+    tryFocusSearchInput();
   };
 
-  handleTriggerButtonKeyDown = (e: React.SyntheticEvent, rtl: boolean) => {
-    switch (keyboardKey.getCode(e)) {
+  const handleTriggerButtonKeyDown = (e: React.KeyboardEvent) => {
+    switch (getCode(e)) {
       case keyboardKey.ArrowLeft:
-        if (!rtl) {
-          this.trySetLastSelectedItemAsActive();
+        if (!context.rtl) {
+          trySetLastSelectedItemAsActive();
         }
         return;
       case keyboardKey.ArrowRight:
-        if (rtl) {
-          this.trySetLastSelectedItemAsActive();
+        if (context.rtl) {
+          trySetLastSelectedItemAsActive();
         }
         return;
       default:
@@ -1268,53 +1195,50 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  handleListKeyDown = (
-    e: React.SyntheticEvent,
+  const handleListKeyDown = (
+    e: React.KeyboardEvent,
     highlightedIndex: number,
     accessibilityInputPropsKeyDown: (e) => any,
     toggleMenu: () => void,
     selectItemAtIndex: (index: number) => void,
   ) => {
-    const keyCode = keyboardKey.getCode(e);
+    const keyCode = getCode(e);
     switch (keyCode) {
       case keyboardKey.Tab:
-        this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
+        handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
         return;
       case keyboardKey.Escape:
         accessibilityInputPropsKeyDown(e);
-        this.tryFocusTriggerButton();
+        tryFocusTriggerButton();
         e.stopPropagation();
         return;
       default:
         const keyString = String.fromCharCode(keyCode);
         if (/[a-zA-Z0-9]/.test(keyString)) {
-          this.setHighlightedIndexOnCharKeyDown(keyString);
+          setHighlightedIndexOnCharKeyDown(keyString);
         }
         accessibilityInputPropsKeyDown(e);
         return;
     }
   };
 
-  handleSelectedItemKeyDown(
-    e: React.SyntheticEvent,
+  const handleSelectedItemKeyDown = (
+    e: React.KeyboardEvent,
     item: ShorthandValue<DropdownItemProps>,
     predefinedProps: DropdownSelectedItemProps,
     dropdownSelectedItemProps: DropdownSelectedItemProps,
-    rtl: boolean,
-  ) {
-    const { activeSelectedIndex, value } = this.state;
+  ) => {
+    const previousKey = context.rtl ? keyboardKey.ArrowRight : keyboardKey.ArrowLeft;
+    const nextKey = context.rtl ? keyboardKey.ArrowLeft : keyboardKey.ArrowRight;
 
-    const previousKey = rtl ? keyboardKey.ArrowRight : keyboardKey.ArrowLeft;
-    const nextKey = rtl ? keyboardKey.ArrowLeft : keyboardKey.ArrowRight;
-
-    switch (keyboardKey.getCode(e)) {
+    switch (getCode(e)) {
       case keyboardKey.Delete:
       case keyboardKey.Backspace:
-        this.handleSelectedItemRemove(e, item, predefinedProps, dropdownSelectedItemProps);
+        handleSelectedItemRemove(e, item, predefinedProps, dropdownSelectedItemProps);
         break;
       case previousKey:
         if (value.length > 0 && !_.isNil(activeSelectedIndex) && activeSelectedIndex > 0) {
-          this.setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+          setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
             activeSelectedIndex: activeSelectedIndex - 1,
           });
         }
@@ -1322,14 +1246,19 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       case nextKey:
         if (value.length > 0 && !_.isNil(activeSelectedIndex)) {
           if (activeSelectedIndex < value.length - 1) {
-            this.setState({ activeSelectedIndex: activeSelectedIndex + 1 });
+            setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+              activeSelectedIndex: activeSelectedIndex + 1,
+            });
           } else {
-            this.setState({ activeSelectedIndex: null });
-            if (this.props.search) {
+            setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+              activeSelectedIndex: null,
+            });
+
+            if (search) {
               e.preventDefault(); // prevents caret to forward one position in input.
-              this.inputRef.current.focus();
+              inputRef.current.focus();
             } else {
-              this.buttonRef.current.focus();
+              buttonRef.current.focus();
             }
           }
         }
@@ -1338,21 +1267,24 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         break;
     }
     _.invoke(predefinedProps, 'onKeyDown', e, dropdownSelectedItemProps);
-  }
-
-  handleTriggerButtonOrListFocus = () => {
-    this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
   };
 
-  handleTriggerButtonBlur = e => {
-    if (this.listRef.current !== e.relatedTarget) {
-      this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+  const handleTriggerButtonOrListFocus = () => {
+    setFocused(true);
+    setIsFromKeyboard(detectIsFromKeyboard());
+  };
+
+  const handleTriggerButtonBlur = e => {
+    if (listRef.current !== e.relatedTarget) {
+      setFocused(false);
+      setIsFromKeyboard(detectIsFromKeyboard());
     }
   };
 
-  handleListBlur = e => {
-    if (this.buttonRef.current !== e.relatedTarget) {
-      this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+  const handleListBlur = e => {
+    if (buttonRef.current !== e.relatedTarget) {
+      setFocused(false);
+      setIsFromKeyboard(detectIsFromKeyboard());
     }
   };
 
@@ -1362,12 +1294,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    *
    * @param keystring - The string the item needs to start with. It is composed by typing keys in fast succession.
    */
-  setHighlightedIndexOnCharKeyDown = (keyString: string): void => {
-    const { highlightedIndex, filteredItemStrings, startingString } = this.state;
+  const setHighlightedIndexOnCharKeyDown = (keyString: string): void => {
     const newStartingString = `${startingString}${keyString.toLowerCase()}`;
     let newHighlightedIndex = -1;
 
-    this.setStartingString(newStartingString);
+    setStartingString(newStartingString);
+    clearStartingString();
 
     if (_.isNumber(highlightedIndex)) {
       newHighlightedIndex = _.findIndex(
@@ -1382,75 +1314,92 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
 
     if (newHighlightedIndex >= 0) {
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
+      setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
         highlightedIndex: newHighlightedIndex,
       });
     }
   };
 
-  handleSelectedItemRemove(
+  const handleSelectedItemRemove = (
     e: React.SyntheticEvent,
     item: ShorthandValue<DropdownItemProps>,
     predefinedProps: DropdownSelectedItemProps,
     dropdownSelectedItemProps: DropdownSelectedItemProps,
-  ) {
-    this.setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
+  ) => {
+    setStateAndInvokeHandler(['onActiveSelectedIndexChange'], null, {
       activeSelectedIndex: null,
     });
-    this.removeItemFromValue(item);
-    this.tryFocusSearchInput();
-    this.tryFocusTriggerButton();
+    removeItemFromValue(item);
+    tryFocusSearchInput();
+    tryFocusTriggerButton();
     _.invoke(predefinedProps, 'onRemove', e, dropdownSelectedItemProps);
-  }
+  };
 
-  removeItemFromValue(item?: ShorthandValue<DropdownItemProps>) {
-    const { getA11ySelectionMessage } = this.props;
-    let { value } = this.state;
+  const removeItemFromValue = (item?: ShorthandValue<DropdownItemProps>) => {
     let poppedItem = item;
+    let newValue = [...value];
 
     if (poppedItem) {
-      value = value.filter(currentElement => currentElement !== item);
+      newValue = newValue.filter(currentElement => currentElement !== item);
     } else {
-      poppedItem = value.pop();
+      poppedItem = newValue.pop();
     }
 
     if (getA11ySelectionMessage && getA11ySelectionMessage.onRemove) {
-      this.setA11ySelectionMessage(getA11ySelectionMessage.onRemove(poppedItem));
+      setA11ySelectionMessage(getA11ySelectionMessage.onRemove(poppedItem));
     }
 
-    this.setStateAndInvokeHandler(['onChange'], null, { value });
-  }
+    setStateAndInvokeHandler(['onChange'], null, { value: newValue });
+  };
 
   /**
    * Calls setState and invokes event handler exposed to user.
    * We don't have the event object for most events coming from Downshift se we send an empty event
    * because we want to keep the event handling interface
    */
-  setStateAndInvokeHandler = (
+  const setStateAndInvokeHandler = (
     handlerNames: (keyof DropdownProps)[],
     event: React.SyntheticEvent<HTMLElement>,
-    newState: Partial<DropdownState>,
+    newState: DropdownStateForInvoke,
   ) => {
-    const proposedValue = _.isNil(newState.value) ? this.state.value : newState.value;
+    const proposedValue = _.isNil(newState.value) ? value : newState.value;
     // `proposedValue` should be normalized for single/multiple variations, `null` condition is
     // required as first item can be undefined
-    const newValue = this.props.multiple ? proposedValue : proposedValue[0] || null;
+    const newValue = multiple ? proposedValue : proposedValue[0] || null;
 
-    this.setState(newState as DropdownState);
+    if (newState.hasOwnProperty('activeSelectedIndex')) {
+      setActiveSelectedIndex(newState.activeSelectedIndex);
+    }
+    if (newState.hasOwnProperty('highlightedIndex')) {
+      setHighlightedIndex(newState.highlightedIndex);
+    }
+    if (newState.hasOwnProperty('itemIsFromKeyboard')) {
+      setItemIsFromKeyboard(newState.itemIsFromKeyboard);
+    }
+    if (newState.hasOwnProperty('open')) {
+      setOpen(newState.open);
+    }
+    if (newState.hasOwnProperty('searchQuery')) {
+      setSearchQuery(newState.searchQuery);
+    }
+    if (newState.hasOwnProperty('value')) {
+      setValue(newState.value);
+    }
+
     handlerNames.forEach(handlerName => {
-      _.invoke(this.props, handlerName, event, { ...this.props, ...newState, value: newValue });
+      _.invoke(props, handlerName, event, { ...props, ...newState, value: newValue });
     });
   };
 
-  tryFocusTriggerButton = () => {
-    if (!this.props.search && this.buttonRef.current) {
-      this.buttonRef.current.focus();
+  const tryFocusTriggerButton = () => {
+    if (!search && buttonRef.current) {
+      buttonRef.current.focus();
     }
   };
 
-  tryFocusSearchInput = () => {
-    if (this.props.search && this.inputRef.current) {
-      this.inputRef.current.focus();
+  const tryFocusSearchInput = () => {
+    if (search && inputRef.current) {
+      inputRef.current.focus();
     }
   };
 
@@ -1459,9 +1408,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * otherwise, for single selection we convert the value with itemToString
    * and for multiple selection we return empty string, the values are rendered by renderSelectedItems
    */
-  getSelectedItemAsString = (value: ShorthandValue<DropdownItemProps>): string => {
-    const { itemToString, multiple, placeholder, search } = this.props;
-
+  const getSelectedItemAsString = (value: ShorthandValue<DropdownItemProps>): string => {
     if (!value) {
       return search ? '' : placeholder;
     }
@@ -1473,9 +1420,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     return itemToString(value);
   };
 
-  getHighlightedIndexOnArrowKeyOpen = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>): number => {
-    const { filteredItems, highlightedIndex, value } = this.state;
-    const { highlightFirstItemOnOpen, items, multiple, search } = this.props;
+  const getHighlightedIndexOnArrowKeyOpen = (
+    changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
+  ): number => {
     const isArrowUp = changes.type === Downshift.stateChangeTypes.keyDownArrowUp;
     const isArrowDown = changes.type === Downshift.stateChangeTypes.keyDownArrowDown;
     const itemsLength = filteredItems.length;
@@ -1516,32 +1463,247 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * Function that sets and cleans the selection message after it has been set,
    * so it is not read anymore via virtual cursor.
    */
-  setA11ySelectionMessage = (a11ySelectionStatus: string): void => {
-    this.setState({ a11ySelectionStatus });
-    this.clearA11ySelectionMessage();
+  const setA11ySelectionMessage = (a11ySelectionStatus: string): void => {
+    setA11ySelectionStatus(a11ySelectionStatus);
+    clearA11ySelectionMessage();
   };
 
-  setStartingString = (startingString: string): void => {
-    this.setState({ startingString });
-    this.clearStartingString();
-  };
+  React.useEffect(() => {
+    return () => {
+      clearStartingString.cancel();
+      clearA11ySelectionMessage.cancel();
+    };
+  }, [clearA11ySelectionMessage, clearStartingString]);
 
-  clearA11ySelectionMessage: DebounceResultFn<() => void> = _.debounce(() => {
-    this.setState({ a11ySelectionStatus: '' });
-  }, Dropdown.a11yStatusCleanupTime);
+  const element = (
+    <ElementType
+      className={classes.root}
+      onBlur={handleOnBlur}
+      onChange={handleChange}
+      {...unhandledProps}
+      {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
+    >
+      <Downshift
+        isOpen={open}
+        inputValue={search ? searchQuery : null}
+        stateReducer={downshiftStateReducer}
+        itemToString={itemToString}
+        // downshift does not work with arrays as selectedItem.
+        selectedItem={multiple || !value.length ? null : value[0]}
+        scrollIntoView={(node: HTMLElement, menu: HTMLElement) => {
+          if (node) {
+            const { children } = menu;
+            let nodeToScroll = node;
+            /**
+             * If it's loading downshift doesn't take the last node with loadingMessage
+             * in consideration to scrolld so we need to check if the current is the
+             * antepenultimate and is so scroll the loading into view, same for headerMessage
+             */
+            if (loading && children[children.length - 2] === node) {
+              nodeToScroll = children[children.length - 1] as HTMLElement;
+            } else if (headerMessage && children[1] === node) {
+              nodeToScroll = children[0] as HTMLElement;
+            }
 
-  clearStartingString: DebounceResultFn<() => void> = _.debounce(() => {
-    this.setState({ startingString: '' });
-  }, Dropdown.charKeyPressedCleanupTime);
-}
+            // Replicating same config that Downshift uses
+            const actions = computeScrollIntoView(nodeToScroll, {
+              scrollMode: 'if-needed',
+              block: 'nearest',
+              inline: 'nearest',
+            });
+            actions.forEach(({ el, top, left }) => {
+              el.scrollTop = top;
+              el.scrollLeft = left;
+            });
+          }
+        }}
+        getA11yStatusMessage={getA11yStatusMessage}
+        highlightedIndex={highlightedIndex}
+        onStateChange={handleStateChange}
+        labelId={ariaLabelledby}
+        environment={context.target?.defaultView}
+        inputId={searchInput && searchInput['id'] ? searchInput['id'] : undefined}
+      >
+        {({
+          getInputProps,
+          getItemProps,
+          getMenuProps,
+          getRootProps,
+          getToggleButtonProps,
+          toggleMenu,
+          highlightedIndex,
+          selectItemAtIndex,
+        }) => {
+          const { innerRef, ...accessibilityRootPropsRest } = getRootProps(
+            { refKey: 'innerRef' },
+            { suppressRefError: true },
+          );
+          const showClearIndicator = clearable && value.length > 0;
 
-/**
- * A Dropdown allows user to select one or more values from a list of options.
- * Can be created with search and multi-selection capabilities.
- *
- * @accessibility
- * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
- * @accessibilityIssues
- * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
- */
-export default withSafeTypeForAs<typeof Dropdown, DropdownProps>(Dropdown);
+          return (
+            <Ref innerRef={innerRef}>
+              <div
+                ref={containerRef}
+                className={cx(dropdownSlotClassNames.container, classes.container)}
+                onClick={search && !open ? handleContainerClick : undefined}
+              >
+                <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
+                  {multiple && renderSelectedItems()}
+                  {search
+                    ? renderSearchInput(
+                        accessibilityRootPropsRest,
+                        highlightedIndex,
+                        getInputProps,
+                        selectItemAtIndex,
+                        toggleMenu,
+                        variables,
+                      )
+                    : renderTriggerButton(getToggleButtonProps)}
+                </div>
+                {showClearIndicator
+                  ? Box.create(clearIndicator, {
+                      defaultProps: () => ({
+                        className: dropdownSlotClassNames.clearIndicator,
+                        styles: resolvedStyles.clearIndicator,
+                        accessibility: indicatorBehavior,
+                        ...(!search && { tabIndex: 0, role: 'button' }),
+                      }),
+                      overrideProps: (predefinedProps: BoxProps) => ({
+                        onClick: (e: React.SyntheticEvent<HTMLElement>) => {
+                          _.invoke(predefinedProps, 'onClick', e);
+                          handleClear(e);
+                        },
+                      }),
+                    })
+                  : Box.create(toggleIndicator, {
+                      defaultProps: () => ({
+                        className: dropdownSlotClassNames.toggleIndicator,
+                        styles: resolvedStyles.toggleIndicator,
+                        accessibility: indicatorBehavior,
+                      }),
+                      overrideProps: (predefinedProps: BoxProps) => ({
+                        onClick: e => {
+                          if (!disabled) {
+                            getToggleButtonProps({ disabled }).onClick(e);
+                          }
+
+                          _.invoke(predefinedProps, 'onClick', e);
+                        },
+                      }),
+                    })}
+                {renderItemsList(
+                  highlightedIndex,
+                  toggleMenu,
+                  selectItemAtIndex,
+                  getMenuProps,
+                  getItemProps,
+                  getInputProps,
+                )}
+              </div>
+            </Ref>
+          );
+        }}
+      </Downshift>
+      <Portal open={!!getA11ySelectionMessage}>
+        <div role="status" aria-live="polite" aria-relevant="additions text" style={screenReaderContainerStyles}>
+          {a11ySelectionStatus}
+        </div>
+      </Portal>
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+Dropdown.displayName = 'Dropdown';
+
+Dropdown.propTypes = {
+  ...commonPropTypes.createCommon({
+    accessibility: false,
+    children: false,
+    content: false,
+  }),
+  activeSelectedIndex: PropTypes.number,
+  align: PropTypes.oneOf(ALIGNMENTS),
+  checkable: PropTypes.bool,
+  checkableIndicator: customPropTypes.shorthandAllowingChildren,
+  clearable: PropTypes.bool,
+  clearIndicator: customPropTypes.shorthandAllowingChildren,
+  defaultActiveSelectedIndex: PropTypes.number,
+  defaultOpen: PropTypes.bool,
+  defaultHighlightedIndex: PropTypes.number,
+  defaultSearchQuery: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+  fluid: PropTypes.bool,
+  getA11ySelectionMessage: PropTypes.object,
+  getA11yStatusMessage: PropTypes.func,
+  highlightFirstItemOnOpen: PropTypes.bool,
+  highlightedIndex: PropTypes.number,
+  inline: PropTypes.bool,
+  inverted: PropTypes.bool,
+  items: customPropTypes.collectionShorthand,
+  itemToString: PropTypes.func,
+  itemToValue: PropTypes.func,
+  headerMessage: customPropTypes.itemShorthand,
+  list: customPropTypes.itemShorthand,
+  loading: PropTypes.bool,
+  loadingMessage: customPropTypes.itemShorthand,
+  moveFocusOnTab: PropTypes.bool,
+  multiple: PropTypes.bool,
+  noResultsMessage: customPropTypes.itemShorthand,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  onOpenChange: PropTypes.func,
+  onSearchQueryChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onActiveSelectedIndexChange: PropTypes.func,
+  onHighlightedIndexChange: PropTypes.func,
+  open: PropTypes.bool,
+  placeholder: PropTypes.string,
+  position: PropTypes.oneOf(POSITIONS),
+  renderItem: PropTypes.func,
+  renderSelectedItem: PropTypes.func,
+  search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  searchQuery: PropTypes.string,
+  searchInput: customPropTypes.itemShorthand,
+  toggleIndicator: customPropTypes.shorthandAllowingChildren,
+  triggerButton: customPropTypes.itemShorthand,
+  unstable_pinned: PropTypes.bool,
+  value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+};
+Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
+
+Dropdown.defaultProps = {
+  align: 'start',
+  clearIndicator: {},
+  itemToString: item => {
+    if (!item || React.isValidElement(item)) {
+      return '';
+    }
+
+    // targets DropdownItem shorthand objects
+    return (item as any).header || String(item);
+  },
+  itemToValue: item => {
+    if (!item || React.isValidElement(item)) {
+      return '';
+    }
+
+    // targets DropdownItem shorthand objects
+    return (item as any).header || String(item);
+  },
+  list: {},
+  position: 'below',
+  toggleIndicator: {},
+  triggerButton: {},
+};
+
+Dropdown.Item = DropdownItem;
+Dropdown.SearchInput = DropdownSearchInput;
+Dropdown.SelectedItem = DropdownSelectedItem;

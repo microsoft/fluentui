@@ -1,13 +1,13 @@
-import scaleAnimations from './scale';
-import fadeAnimations from './fade';
-import slideAnimations from './slide';
+import { scaleAnimations } from './scale';
+import { fadeInOutAnimations as fadeAnimations } from './fade';
+import { slideAnimations } from './slide';
 
-export default {
+export const animations = {
   ...fadeAnimations,
   ...scaleAnimations,
   ...slideAnimations,
-  'carousel-slide-to-next-enter': slideAnimations.slideLeftEnterMedium,
-  'carousel-slide-to-next-exit': slideAnimations.slideLeftExitMedium,
-  'carousel-slide-to-previous-enter': slideAnimations.slideRightEnterMedium,
-  'carousel-slide-to-previous-exit': slideAnimations.slideRightExitMedium,
+  'carousel-slide-to-next-enter': slideAnimations.slideLeftEnterNormal,
+  'carousel-slide-to-previous-enter': slideAnimations.slideRightEnterNormal,
+  'popup-show': fadeAnimations.fadeEnterUltraFast,
+  'popup-hide': fadeAnimations.fadeExitUltraFast,
 };

@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
@@ -17,7 +17,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
+export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',
@@ -38,15 +38,13 @@ const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },
 });
 
-export default tabBehavior;
-
-type TabBehaviorProps = {
+export type TabBehaviorProps = {
   /** Indicates if tab is selected. */
   active?: boolean;
   /** Indicates if tab is disabled. */

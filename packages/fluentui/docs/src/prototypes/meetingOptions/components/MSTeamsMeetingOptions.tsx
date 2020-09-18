@@ -18,7 +18,7 @@ export default () => {
         <TransparentDivider size={40} />
         <Header as="h3" content="Meeting Options" />
         <TransparentDivider />
-        <Grid columns="1fr 1fr">
+        <Grid columns={2}>
           <Text content="Who can byppass the lobby?" weight="semibold" style={{ lineHeight: '40px' }} />
           <Input placeholder="People in my organization" fluid />
         </Grid>

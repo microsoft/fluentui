@@ -1,8 +1,276 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.0)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.31.0..@uifabric/utilities_v7.32.0)
+
+### Minor changes
+
+- Consume virtual DOM functions from new location ([PR #15039](https://github.com/microsoft/fluentui/pull/15039) by tmichon@microsoft.com)
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.28.0..@uifabric/utilities_v7.30.0)
+
+### Minor changes
+
+- Added document type to element parameter within on.ts utility. ([PR #14238](https://github.com/microsoft/fluentui/pull/14238) by czearing@outlook.com)
+
+### Patches
+
+- Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function ([PR #14204](https://github.com/microsoft/fluentui/pull/14204) by sllynn8907@gmail.com)
+
+## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.28.0)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.27.0..@uifabric/utilities_v7.28.0)
+
+### Minor changes
+
+- Adding `createMergedRef` utility for merging refs in a class component. ([PR #14517](https://github.com/microsoft/fluentui/pull/14517) by dzearing@hotmail.com)
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.27.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.1..@uifabric/utilities_v7.27.0)
+
+### Minor changes
+
+- Updating getNativeProps default attribute set to include "ref" as a safe prop. ([PR #14274](https://github.com/microsoft/fluentui/pull/14274) by dzearing@microsoft.com)
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.26.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.1)
+
+Fri, 07 Aug 2020 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.0..@uifabric/utilities_v7.26.1)
+
+### Patches
+
+- useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled ([PR #14393](https://github.com/microsoft/fluentui/pull/14393) by xgao@microsoft.com)
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.1..@uifabric/utilities_v7.26.0)
+
+### Minor changes
+
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.1)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.0..@uifabric/utilities_v7.25.1)
+
+### Patches
+
+- omit: changed to for in for more perf improvement. ([PR #14313](https://github.com/microsoft/fluentui/pull/14313) by dzearing@microsoft.com)
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.0)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.6..@uifabric/utilities_v7.25.0)
+
+### Minor changes
+
+- Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce. ([PR #14281](https://github.com/microsoft/fluentui/pull/14281) by dzearing@microsoft.com)
+
+## [7.24.6](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.6)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.5..@uifabric/utilities_v7.24.6)
+
+### Patches
+
+- useCustomizationSettings: get settings from CustomizerContext if exists. ([PR #14145](https://github.com/microsoft/fluentui/pull/14145) by xgao@microsoft.com)
+
+## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.4..@uifabric/utilities_v7.24.5)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14099](https://github.com/microsoft/fluentui/pull/14099) by elcraig@microsoft.com)
+
+## [7.24.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.3)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.2..@uifabric/utilities_v7.24.3)
+
+### Patches
+
+- fix: useFocusRects should resolve window inside useEffect ([PR #14063](https://github.com/microsoft/fluentui/pull/14063) by olfedias@microsoft.com)
+
+## [7.24.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.0..@uifabric/utilities_v7.24.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.23.0..@uifabric/utilities_v7.24.0)
+
+### Minor changes
+
+- findScrollableParent: Adding missing `Window` and `undefined` return types. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.23.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.23.0)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.22.0..@uifabric/utilities_v7.23.0)
+
+### Minor changes
+
+- Refactor styled to return a functional component (with optional ref attribute) ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
+
+## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.22.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.4..@uifabric/utilities_v7.22.0)
+
+### Minor changes
+
+- getNativeProps: changed to object lookups rather than array searching to determine native props. ([PR #13842](https://github.com/microsoft/fluentui/pull/13842) by dzearing@microsoft.com)
+
+## [7.21.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.4)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.3..@uifabric/utilities_v7.21.4)
+
+### Patches
+
+- Fix scroll position math for overscrolling (#13555) ([PR #13622](https://github.com/microsoft/fluentui/pull/13622) by kai@substantial.com)
+
+## [7.21.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.1)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.0..@uifabric/utilities_v7.21.1)
+
+### Patches
+
+- add test util for react-test-renderer create with act wrapped ([PR #13713](https://github.com/microsoft/fluentui/pull/13713) by xgao@microsoft.com)
+
+## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.0)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.3..@uifabric/utilities_v7.21.0)
+
+### Minor changes
+
+- add new Modalization utility ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.20.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.3)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.2..@uifabric/utilities_v7.20.3)
+
+### Patches
+
+- Removing side effect code that was breaking webpack treeshaking. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
+- Removing side-effect code which was causing webpack to bail out of optimizations. ([PR #13415](https://github.com/microsoft/fluentui/pull/13415) by dzearing@microsoft.com)
+- Fixed prototype pollution vulnerability. ([PR #13427](https://github.com/microsoft/fluentui/pull/13427) by esteban.230@hotmail.com)
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.2)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.1..@uifabric/utilities_v7.20.2)
+
+### Patches
+
+- Add autoCapitalize property ([PR #13335](https://github.com/microsoft/fluentui/pull/13335) by suprememilanfan@gmail.com)
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.1)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.0..@uifabric/utilities_v7.20.1)
+
+### Patches
+
+- Selection: respect 0 as selected key ([PR #13331](https://github.com/microsoft/fluentui/pull/13331) by elcraig@microsoft.com)
+
+## [7.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.0)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.19.0..@uifabric/utilities_v7.20.0)
+
+### Minor changes
+
+- findIndex: add fromIndex parameter ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.19.0)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.18.0..@uifabric/utilities_v7.19.0)
+
+### Minor changes
+
+- Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props. ([PR #13272](https://github.com/microsoft/fluentui/pull/13272) by dzearing@microsoft.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.18.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.2..@uifabric/utilities_v7.18.0)
+
+### Minor changes
+
+- Add useCustomizationSettings hook ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
+
+## [7.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.2)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.0..@uifabric/utilities_v7.17.2)
+
+### Patches
+
+- Selection added `items` to prop constructor options ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.0)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.4..@uifabric/utilities_v7.17.0)
+
+### Minor changes
+
+- Add utility to apply default props for function components ([PR #13152](https://github.com/microsoft/fluentui/pull/13152) by miclo@microsoft.com)
+
+## [7.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.4)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.2..@uifabric/utilities_v7.16.4)
+
+### Patches
+
+- Update styled and classNamesFunction to support scss base styles ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+
+## [7.16.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.2)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.1..@uifabric/utilities_v7.16.2)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.1)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.0..@uifabric/utilities_v7.16.1)
+
+### Patches
+
+- Fixing errors when building @fluentui/docs. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
 
 ## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.0)
 

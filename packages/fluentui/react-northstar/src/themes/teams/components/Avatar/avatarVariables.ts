@@ -10,7 +10,7 @@ export interface AvatarVariables {
   iconBackgroundColor: string;
 }
 
-export default (siteVariables): AvatarVariables => ({
+export const avatarVariables = (siteVariables): AvatarVariables => ({
   avatarBorderColor: '',
   avatarBorderWidth: '0',
   squareAvatarBorderRadius: pxToRem(3),

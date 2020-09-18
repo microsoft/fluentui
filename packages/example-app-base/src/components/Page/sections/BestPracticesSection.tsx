@@ -46,7 +46,7 @@ export const BestPracticesSection: React.FunctionComponent<IBestPracticesSection
             {readableSectionName}
           </h2>
           {!!(bestPractices && bestPracticesUrl) && (
-            <EditSection className={styles.edit} title={title} section="Best Practices" url={bestPracticesUrl} />
+            <EditSection className={styles.edit} title={title} section="Best practices" url={bestPracticesUrl} />
           )}
         </div>
         {bestPractices && (

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { VerticalStackedBarChart } from '@uifabric/charting/lib/VerticalStackedBarChart';
-import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
-import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { ChartHoverCard, VerticalStackedBarChart } from '@uifabric/charting';
+import { IVerticalStackedBarChartProps, IVerticalStackedChartProps, IVSChartDataPoint } from '@uifabric/charting';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DefaultFontStyles, DefaultPalette, IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -35,13 +36,13 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
       { chartData: firstChartPoints, xAxisPoint: 'September' },
     ];
 
-    const textStyle = {
+    const textStyle: IStyle = {
       fill: DefaultPalette.black,
       fontSize: '10px',
       lineHeight: '14px',
     };
 
-    const customStyles = () => {
+    const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
       return {
         chart: {
           paddingBottom: '45px',
@@ -55,15 +56,46 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
         },
       };
     };
-
+    const rootStyle = mergeStyles({ width: '600px', height: '350px' });
     return (
-      <VerticalStackedBarChart
-        data={data}
-        yAxisTickCount={10}
-        href={'www.google.com'}
-        styles={customStyles}
-        chartLabel="Card title"
-      />
+      <div className={rootStyle}>
+        <VerticalStackedBarChart
+          data={data}
+          height={350}
+          width={600}
+          yAxisTickCount={10}
+          href={'www.google.com'}
+          // eslint-disable-next-line react/jsx-no-bind
+          styles={customStyles}
+          chartLabel="Card title"
+          yMaxValue={120}
+          // eslint-disable-next-line react/jsx-no-bind
+          yAxisTickFormat={x => `${x} h`}
+          margins={{ left: 50 }}
+          legendProps={{
+            allowFocusOnLegends: true,
+            styles: {
+              rect: {
+                borderRadius: '3px',
+              },
+            },
+          }}
+          calloutProps={{
+            directionalHint: DirectionalHint.rightTopEdge,
+          }}
+          // eslint-disable-next-line react/jsx-no-bind
+          onRenderCalloutPerDataPoint={props =>
+            props ? (
+              <ChartHoverCard
+                XValue={props.xAxisCalloutData}
+                Legend={props.legend}
+                YValue={`${props.yAxisCalloutData} h`}
+                color={props.color}
+              />
+            ) : null
+          }
+        />
+      </div>
     );
   }
 }

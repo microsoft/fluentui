@@ -11,9 +11,9 @@ import {
   mergeStyleSets,
   FontWeights,
   Link,
-  getId,
+  Text,
 } from 'office-ui-fabric-react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
@@ -57,7 +57,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -68,7 +67,6 @@ const styles = mergeStyleSets({
     padding: '0 24px 20px',
   },
   subtext: [
-    theme.fonts.small,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -88,24 +86,22 @@ const styles = mergeStyleSets({
   },
 });
 
-const labelId: string = getId('callout-label');
-const descriptionId: string = getId('callout-description');
-
 export const CalloutDirectionalExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(true);
-  const [gapSpace, setGapSpace] = React.useState();
-  const [beakWidth, setBeakWidth] = React.useState();
+  const [gapSpace, setGapSpace] = React.useState<number>();
+  const [beakWidth, setBeakWidth] = React.useState<number>();
+  const labelId: string = useId('callout-label');
+  const descriptionId: string = useId('callout-description');
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
-
   const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     setDirectionalHint(option.key as DirectionalHint);
   };
 
-  const onGapSlider = (value: number): void => {
+  const onGapSliderChange = (value: number): void => {
     setGapSpace(value);
   };
-  const onBeakWidthSlider = (value: number): void => {
+  const onBeakWidthSliderChange = (value: number): void => {
     setBeakWidth(value);
   };
 
@@ -117,11 +113,12 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
   return (
     <>
       <div className={styles.configArea}>
+        {/* eslint-disable react/jsx-no-bind */}
         <Checkbox styles={checkBoxStyles} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
 
-        <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={onGapSlider} />
+        <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={onGapSliderChange} />
         {isBeakVisible && (
-          <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={onBeakWidthSlider} />
+          <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={onBeakWidthSliderChange} />
         )}
         <Dropdown
           label="Directional hint"
@@ -129,6 +126,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           options={DIRECTION_OPTIONS}
           onChange={onDirectionalChanged}
         />
+        {/* eslint-enable react/jsx-no-bind */}
       </div>
       <div className={styles.buttonArea}>
         <DefaultButton
@@ -151,15 +149,15 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           setInitialFocus
         >
           <div className={styles.header}>
-            <p className={styles.title} id={labelId}>
+            <Text className={styles.title} id={labelId}>
               All of your favorite people
-            </p>
+            </Text>
           </div>
           <div className={styles.inner}>
-            <p className={styles.subtext} id={descriptionId}>
+            <Text className={styles.subtext} id={descriptionId}>
               Message body is optional. If help documentation is available, consider adding a link to learn more at the
               bottom.
-            </p>
+            </Text>
             <div className={styles.actions}>
               <Link className={styles.link} href="http://microsoft.com" target="_blank">
                 Go to Microsoft

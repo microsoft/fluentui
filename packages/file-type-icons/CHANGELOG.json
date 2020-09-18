@@ -2,6 +2,222 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding .tsv as supported extension for spreadsheet filetype icon.",
+            "author": "caperez@microsoft.com",
+            "commit": "215a18cf8e08a18585b40f587dc8d164eb864809",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/file-type-icons_v7.4.15",
+      "version": "7.4.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available.",
+            "author": "caperez@microsoft.com",
+            "commit": "419049fdb8b6acd4f9525a3c7cf2da1c41569612",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/file-type-icons_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint; fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/file-type-icons_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding file icon mapping support for `osts` extension.",
+            "author": "caperez@microsoft.com",
+            "commit": "001de9e8c5294858c069f95e832f391532d414c6",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add special folder icon support for LinkedFolder",
+            "author": "hemanp@microsoft.com",
+            "commit": "d44b274e00c19a9514579586f37050079762dc2e",
+            "package": "@uifabric/file-type-icons"
+          },
+          {
+            "comment": "Introduce FolderCover for linked folders",
+            "author": "hemanp@microsoft.com",
+            "commit": "e89e47f56fe69600efd52e0f9398a8e2679e7a19",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.9",
+      "version": "7.3.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.7",
+      "version": "7.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "revving CDN url and adding .classifier type to the filetype list for icons",
+            "author": "caperez@microsoft.com",
+            "commit": "785bb938355c341229996fcd3c6e51445de5d336",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.5",
+      "version": "7.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add special folder icon names to FileTypeIconMap. Fix icon name for special documents folder.",
+            "author": "taenri@microsoft.com",
+            "commit": "f764406bbbf389aaaaf1edff36e84fc6f3fcbc4c",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.4",
+      "version": "7.3.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add special folder icon types for file-type-icons.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.49",
+      "version": "7.2.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add empty alt text for filetype icon img",
+            "author": "erabelle@microsoft.com",
+            "commit": "eb1750d8c3f1f0e5a6c1506b5b16261454f7b451",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.44",
+      "version": "7.2.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding 'pbiapp' entry in file type icon mapping file",
+            "author": "caperez@microsoft.com",
+            "commit": "e3b694db919a39d5369381d43f601eeedf06fbef",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.40",
+      "version": "7.2.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.39",
+      "version": "7.2.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "8c8c394e5097b81602df3d40c6fc19cf387fc451",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/file-type-icons_v7.2.30",
       "version": "7.2.30",

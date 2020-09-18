@@ -11,6 +11,22 @@ export const removeItemAtIndex = (items: any[], itemIndex: number): any[] => {
   return [...items.slice(0, itemIndex), ...items.slice(itemIndex + 1)];
 };
 
+export const getAllSelectableChildrenId = (items: TreeItemProps[]): string[] => {
+  return items.reduce<string[]>((acc, item) => {
+    if (item.items) {
+      return [...acc, ...getAllSelectableChildrenId(item.items as TreeItemProps[])];
+    }
+
+    return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
+  }, []);
+};
+
+export const isAllGroupChecked = (items: TreeItemProps[], selectedItemIds: string[]) => {
+  const selectableItemIds = getAllSelectableChildrenId(items);
+
+  return selectableItemIds.every(id => selectedItemIds.indexOf(id) > -1);
+};
+
 /**
  * Looks for the item inside the nested items array and returns its siblings.
  * @param {any[]} items The nested items array.
@@ -39,6 +55,48 @@ export const getSiblings = (items: any[], itemId: string): any[] => {
   }
 
   return getSiblingsFn(items);
+};
+
+export const processItemsForSelection = (treeItemProps: TreeItemProps, selectedItemIds: string[]) => {
+  const treeItemHasSubtree = hasSubtree(treeItemProps);
+  const isSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent;
+
+  let nextSelectedItemIds = selectedItemIds;
+
+  // push all tree items under particular parent into selection array
+  // not parent itself, therefore not procced with selection
+
+  if (isSelectableParent) {
+    if (isAllGroupChecked(treeItemProps.items as TreeItemProps[], selectedItemIds)) {
+      const selectedItems = getAllSelectableChildrenId(treeItemProps.items as TreeItemProps[]);
+      nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
+    } else {
+      const selectItems = items => {
+        items.forEach(item => {
+          const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+          if (selectedItemIds.indexOf(item.id) === -1) {
+            if (item.items) {
+              selectItems(item.items);
+            } else if (selectble) {
+              nextSelectedItemIds.push(item.id);
+            }
+          }
+        });
+      };
+      selectItems(treeItemProps.items);
+    }
+
+    return [...nextSelectedItemIds];
+  }
+
+  // push/remove single tree item into selection array
+  if (selectedItemIds.indexOf(treeItemProps.id) === -1) {
+    nextSelectedItemIds = [...selectedItemIds, treeItemProps.id];
+  } else {
+    nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== treeItemProps.id);
+  }
+
+  return nextSelectedItemIds;
 };
 
 export interface TreeRenderContextValue {

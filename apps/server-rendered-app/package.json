@@ -17,22 +17,20 @@
     "start": "node ./server/index.js"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/tslint-rules": "^7.2.0",
     "express": "^4.15.4",
     "compression": "^1.7.2",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/icons": "^7.3.32",
-    "@uifabric/merge-styles": "^7.11.1",
-    "@uifabric/set-version": "^7.0.11",
-    "es6-promise": "^4.1.0",
-    "office-ui-fabric-react": "^7.108.0",
+    "@uifabric/icons": "^7.5.5",
+    "@uifabric/merge-styles": "^7.19.1",
+    "@uifabric/set-version": "^7.0.23",
+    "office-ui-fabric-react": "^7.138.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

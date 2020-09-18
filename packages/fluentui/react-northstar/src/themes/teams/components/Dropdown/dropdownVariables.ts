@@ -8,6 +8,7 @@ export interface DropdownVariables {
   borderColor: string;
   borderColorHover: string;
   borderColorFocus: string;
+  borderError: string;
   borderWidth: string;
   openBorderColorHover: string;
   containerBorderRadius: string;
@@ -65,7 +66,7 @@ export interface DropdownVariables {
 
 const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
 
-export default (siteVars): DropdownVariables => ({
+export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
   invertedBackgroundColor: siteVars.colorScheme.default.background,
@@ -73,6 +74,7 @@ export default (siteVars): DropdownVariables => ({
   borderColor: 'transparent',
   borderColorHover: 'transparent',
   borderColorFocus: siteVars.colorScheme.brand.borderFocus1,
+  borderError: siteVars.colorScheme.red.background,
   borderWidth: '0px',
   openBorderColorHover: undefined,
   containerBorderRadius: `${cornerRadius}`,
@@ -129,6 +131,6 @@ export default (siteVars): DropdownVariables => ({
   listItemContentFontSize: siteVars.fontSizes.small,
   listItemContentColor: siteVars.colorScheme.default.foreground2,
   headerMessageBackgroundColor: siteVars.colors.white,
-  noResultsMessageBackgroundColor: siteVars.colors.white,
-  loadingMessageBackgroundColor: siteVars.colors.white,
+  noResultsMessageBackgroundColor: 'transparent',
+  loadingMessageBackgroundColor: 'transparent',
 });

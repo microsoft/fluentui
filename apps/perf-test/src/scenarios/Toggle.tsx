@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react';
 
-const scenario = <Toggle checked />;
+const Scenario = () => <Toggle checked />;
 
-export default scenario;
+export default Scenario;

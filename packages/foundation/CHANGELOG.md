@@ -1,8 +1,35 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.8.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.38..@uifabric/foundation_v7.8.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.7.38](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.38)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.35..@uifabric/foundation_v7.7.38)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
+
+## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.10)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.0..@uifabric/foundation_v7.7.10)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.0)
 

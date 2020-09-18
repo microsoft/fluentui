@@ -32,8 +32,6 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked2',
-    // tslint:disable-next-line:deprecation
-    [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed',
   };
@@ -46,6 +44,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     initializeComponentRef(this);
     this.state = {
       labelId: getId('MessageBar'),
+      // eslint-disable-next-line react/no-unused-state
       showContent: false,
       expandSingleLine: false,
     };
@@ -75,6 +74,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
           className={this._classNames.dismissal}
           onClick={onDismiss}
           iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+          title={this.props.dismissButtonAriaLabel}
           ariaLabel={this.props.dismissButtonAriaLabel}
         />
       );
@@ -121,34 +121,27 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
-
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root} {...this._getRegionProps()}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getDismissDiv()}
-          </div>
-          {this._getActionsDiv()}
+      <div className={this._classNames.root} {...this._getRegionProps()}>
+        <div className={this._classNames.content}>
+          {this._getIconSpan()}
+          {this._renderInnerText()}
+          {this._getDismissDiv()}
         </div>
+        {this._getActionsDiv()}
       </div>
     );
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root} {...this._getRegionProps()}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getExpandSingleLine()}
-            {this._getActionsDiv()}
-            {this._getDismissSingleLine()}
-          </div>
+      <div className={this._classNames.root} {...this._getRegionProps()}>
+        <div className={this._classNames.content}>
+          {this._getIconSpan()}
+          {this._renderInnerText()}
+          {this._getExpandSingleLine()}
+          {this._getActionsDiv()}
+          {this._getDismissSingleLine()}
         </div>
       </div>
     );

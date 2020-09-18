@@ -3,8 +3,7 @@ import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -660,13 +659,12 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <div id="b" data-is-sub-focuszone={true} {...isFocusableProperty}>
             <button id="bsub">bsub</button>
@@ -744,13 +742,12 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <FocusZone direction={FocusZoneDirection.horizontal} id="b" {...isFocusableProperty}>
             <button id="bsub">bsub</button>
@@ -1090,7 +1087,7 @@ describe('FocusZone', () => {
     ReactTestUtils.Simulate.keyDown(focusZone, { which: keyboardKey.Tab });
     expect(tabDownListener.mock.calls.length).toBe(1);
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
-    expect(keyboardKey.getCode(onKeyDownEvent)).toBe(keyboardKey.Tab);
+    expect(getCode(onKeyDownEvent)).toBe(keyboardKey.Tab);
   });
 
   it('should stay in input box with arrow keys and exit with tab', () => {
@@ -1205,13 +1202,12 @@ describe('FocusZone', () => {
   });
 
   it('should force focus to first focusable element when FocusZone container receives focus and shouldFocusInnerElementWhenReceivedFocus is set to "true"', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <FocusZone
             direction={FocusZoneDirection.horizontal}
@@ -1512,7 +1508,7 @@ describe('FocusZone', () => {
   });
 
   it('only adds outerzones to be updated for tab changes', () => {
-    const activeZones = FocusZone.getOuterZones();
+    const activeZones = FocusZone.outerZones.getOutZone(window)?.size || 0;
 
     host = document.createElement('div');
 
@@ -1526,11 +1522,11 @@ describe('FocusZone', () => {
       host,
     );
 
-    expect(FocusZone.getOuterZones()).toEqual(activeZones + 1);
+    expect(FocusZone.outerZones.getOutZone(window)?.size).toEqual(activeZones + 1);
 
     ReactDOM.unmountComponentAtNode(host);
 
-    expect(FocusZone.getOuterZones()).toEqual(activeZones);
+    expect(FocusZone.outerZones.getOutZone(window)?.size).toEqual(activeZones);
   });
 
   describe('restores focus', () => {
@@ -1649,7 +1645,7 @@ describe('FocusZone', () => {
       ReactDOM.render(
         <div>
           <button key="z" id="z" />
-          <FocusZone id="fz" restoreFocusFromRoot={true}>
+          <FocusZone id="fz">
             <button key="a" id="a" data-is-visible="true">
               button a
             </button>

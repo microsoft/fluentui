@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key';
-import { Accessibility } from '../../types';
+import { keyboardKey, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import treeTitleBehavior from './treeTitleBehavior';
+import { treeTitleBehavior } from './treeTitleBehavior';
 
 /**
  * @description
@@ -22,64 +22,73 @@ import treeTitleBehavior from './treeTitleBehavior';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusFirstChild' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
-  attributes: {
-    root: {
-      role: 'none',
-      ...(props.hasSubtree && {
-        'aria-expanded': props.expanded,
-        'aria-selected': props.selectable ? props.selected || false : undefined,
-        tabIndex: -1,
-        [IS_FOCUSABLE_ATTRIBUTE]: true,
-        role: 'treeitem',
-        'aria-setsize': props.treeSize,
-        'aria-posinset': props.index,
-        'aria-level': props.level,
-      }),
-    },
-  },
-  keyActions: {
-    root: {
-      performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
+  const definition = {
+    attributes: {
+      root: {
+        role: 'none',
+        ...(props.hasSubtree && {
+          'aria-expanded': props.expanded,
+          tabIndex: -1,
+          [IS_FOCUSABLE_ATTRIBUTE]: true,
+          role: 'treeitem' as AriaRole,
+          'aria-setsize': props.treeSize,
+          'aria-posinset': props.index,
+          'aria-level': props.level,
+          ...(props.selectable && { 'aria-selected': props.selected }),
+        }),
       },
-      ...(isSubtreeExpanded(props) && {
-        collapse: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+    },
+    keyActions: {
+      root: {
+        performClick: {
+          keyCombinations: [{ keyCode: EnterKey }, { keyCode: SpacebarKey }],
         },
-        focusFirstChild: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
-        },
-        focusParent: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-        },
-      }),
-      ...(!isSubtreeExpanded(props) &&
-        props.hasSubtree && {
-          expand: {
+        ...(isSubtreeExpanded(props) && {
+          collapse: {
+            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+          },
+          focusFirstChild: {
             keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
           },
           focusParent: {
             keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
           },
         }),
-      expandSiblings: {
-        keyCombinations: [{ keyCode: keyboardKey['*'] }],
+        ...(!isSubtreeExpanded(props) &&
+          props.hasSubtree && {
+            expand: {
+              keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+            },
+            focusParent: {
+              keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+            },
+          }),
+        expandSiblings: {
+          keyCombinations: [{ keyCode: keyboardKey['*'] }],
+        },
+        ...(props.selectable && {
+          performClick: {
+            keyCombinations: props.hasSubtree ? [{ keyCode: keyboardKey.Enter }] : [{ keyCode: SpacebarKey }],
+          },
+          performSelection: {
+            keyCombinations: [{ keyCode: SpacebarKey }],
+          },
+        }),
       },
-      ...(props.selectable && {
-        performClick: {
-          keyCombinations: props.hasSubtree ? [{ keyCode: keyboardKey.Enter }] : [{ keyCode: keyboardKey.Spacebar }],
-        },
-        performSelection: {
-          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
-        },
-      }),
     },
-  },
-  childBehaviors: {
-    title: treeTitleBehavior,
-  },
-});
+    childBehaviors: {
+      title: treeTitleBehavior,
+    },
+  };
+
+  if (process.env.NODE_ENV !== 'production' && !props.hasSubtree) {
+    // Override the default trigger's accessibility schema class.
+    definition.attributes.root['data-aa-class'] = 'SingleTreeItem';
+  }
+
+  return definition;
+};
 
 export type TreeItemBehaviorProps = {
   /** If item is a subtree, it indicates if it's expanded. */
@@ -97,5 +106,3 @@ const isSubtreeExpanded = (props: TreeItemBehaviorProps): boolean => {
   const { hasSubtree, expanded } = props;
   return !!(hasSubtree && expanded);
 };
-
-export default treeItemBehavior;

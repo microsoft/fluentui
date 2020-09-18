@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, FontWeights } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -21,6 +21,7 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   usageIcon: 'ms-HomePage-usageIcon',
   sectionContent: 'ms-HomePage-sectionContent',
   oneHalf: 'ms-HomePage-oneHalf',
+  oneThird: 'ms-HomePage-oneThird',
   oneFourth: 'ms-HomePage-oneFourth',
   inner: 'ms-HomePage-inner',
   card: 'ms-HomePage-card',
@@ -41,17 +42,12 @@ export const monoFont =
   '"DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,' +
   'monospace';
 
-const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link';
+const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link, &:visited';
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
-  const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
+  const { theme, className, isMountedOffset, isInverted } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const beforeColorObj = beforeColor && getColorFromString(beforeColor);
-  const beforeAlt = beforeColorObj && getShade(beforeColorObj, Shade.Shade6).str;
-  const afterColorObj = afterColor && getColorFromString(afterColor);
-  const afterAlt = afterColorObj && getShade(afterColorObj, Shade.Shade6).str;
 
   const sectionAnimation: IStyle = [
     {
@@ -143,6 +139,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           p: {
+            fontWeight: FontWeights.semibold,
             color: isInverted ? palette.black : palette.white,
           },
         },
@@ -154,18 +151,33 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionStyles,
       {
         transitionDelay: '0.1s',
-        paddingTop: 132,
-        paddingBottom: 132,
+        paddingTop: 32,
+        paddingBottom: 32,
+        selectors: {
+          [mediaQuery.minMobile]: {
+            paddingTop: 132,
+            paddingBottom: 132,
+          },
+        },
       },
     ],
 
     heroTitle: [
       classNames.heroTitle,
       {
-        fontSize: FontSizes.size68, // @TODO: Mock uses 64
-        color: '#cf8fff', // @TODO: Fluent color palette?
+        fontSize: 128, // @TODO: Mock uses 64
+        color: palette.white, // @TODO: Fluent color palette?
         lineHeight: '1.1',
         margin: 0,
+        whiteSpace: 'nowrap',
+        selectors: {
+          [mediaQuery.maxLarge]: {
+            fontSize: 96,
+          },
+          [mediaQuery.maxMobile]: {
+            fontSize: FontSizes.size68,
+          },
+        },
       },
     ],
 
@@ -174,29 +186,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         transitionDelay: '0.2s',
         position: 'relative',
-
-        selectors: {
-          '&:before, &:after': {
-            content: '""',
-            width: '50vw',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            zIndex: 1,
-          },
-
-          '&:before': {
-            left: 0,
-            // background: beforeColor // Adjust saturation
-            background: beforeAlt,
-          },
-
-          '&:after': {
-            right: 0,
-            // background: afterColor // Adjust saturation
-            background: afterAlt,
-          },
-        },
       },
       ...sectionAnimation,
     ],
@@ -206,16 +195,15 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionStyles,
       {
         transitionDelay: '0.2s',
-        paddingBottom: 160,
-        background: '#50e3c2', // @TODO: Fluent color palette?
+        background: '#CF8FFF',
         color: palette.black,
-
         selectors: {
-          [mediaQuery.maxLarge]: {
-            paddingTop: appPadding.medium,
+          [mediaQuery.minMobile]: {
+            paddingBottom: appPadding.small,
           },
-          [mediaQuery.maxMobile]: {
-            paddingTop: appPadding.large,
+          [mediaQuery.minLarge]: {
+            minHeight: 384,
+            paddingBottom: appPadding.large,
           },
         },
       },
@@ -240,7 +228,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     resourcesTitle: [
       ...sectionTitleStyles,
       {
-        color: '#4A90E2',
+        color: palette.white,
       },
     ],
 
@@ -295,6 +283,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...columnStyles,
     ],
 
+    oneThird: [
+      classNames.oneThird,
+      {
+        flex: '0 0 33%',
+      },
+      ...columnStyles,
+    ],
+
     oneFourth: [
       classNames.oneFourth,
       {
@@ -330,6 +326,9 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         minWidth: 300,
 
         selectors: {
+          [mediaQuery.minMobile]: {
+            minHeight: 384,
+          },
           [mediaQuery.maxLarge]: {
             flex: '1 0 25%',
           },
@@ -341,7 +340,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       classNames.cardTitle,
       ...sectionTitleStyles,
       {
-        color: palette.black,
+        color: palette.white,
         marginBottom: '1em',
       },
     ],
@@ -349,7 +348,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     versionSwitcher: [
       classNames.versionSwitcher,
       {
-        marginBottom: sectionTitleSize,
         height: '1em',
       },
     ],
@@ -370,7 +368,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         alignItems: 'center',
         flexWrap: 'wrap',
         lineHeight: '1.6',
-        marginBottom: 12,
+        marginBottom: 22,
       },
     ],
 
@@ -379,25 +377,20 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         fontSize: FontSizes.size68,
         color: palette.black,
-        marginBottom: '1em',
-
-        selectors: {
-          [mediaQuery.maxMobile]: {
-            marginBottom: '.25em',
-          },
-        },
       },
     ],
 
     link: [
       classNames.link,
       {
-        fontFamily: monoFont,
         display: 'flex',
         alignItems: 'center',
         color: theme.palette.white,
 
         selectors: {
+          span: {
+            fontWeight: 600,
+          },
           // Override default link styles and UHF styles
           // (due to UHF styles, we have to use a specific color rather than 'inherit')
           [allLinkStatesSelector]: {
@@ -417,10 +410,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     linkDark: [
       classNames.linkDark,
       {
-        color: theme.palette.black,
+        color: theme.palette.white,
         selectors: {
           [allLinkStatesSelector]: {
-            color: theme.palette.black,
+            color: theme.palette.white,
           },
         },
       },

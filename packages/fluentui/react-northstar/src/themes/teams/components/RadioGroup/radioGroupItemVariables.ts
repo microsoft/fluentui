@@ -9,7 +9,7 @@ export type RadioGroupItemVariables = {
   textColorDefaultHoverFocus: string;
   textColorChecked: string;
 
-  indicatorBorderColorDefault: string;
+  indicatorColorDefault: string;
   indicatorBorderColorDefaultHover: string;
   indicatorBorderColorChecked: string;
 
@@ -18,7 +18,7 @@ export type RadioGroupItemVariables = {
   padding: string;
 };
 
-export default (siteVars: any): RadioGroupItemVariables => ({
+export const radioGroupItemVariables = (siteVars: any): RadioGroupItemVariables => ({
   colorDisabled: siteVars.colors.grey[250],
 
   textFontSize: siteVars.fontSizes.medium,
@@ -27,7 +27,7 @@ export default (siteVars: any): RadioGroupItemVariables => ({
   textColorDefaultHoverFocus: siteVars.colors.grey[750],
   textColorChecked: siteVars.colors.grey[750],
 
-  indicatorBorderColorDefault: siteVars.colors.grey[500],
+  indicatorColorDefault: siteVars.colors.grey[500],
   indicatorBorderColorDefaultHover: siteVars.colors.grey[750],
   indicatorBorderColorChecked: siteVars.colors.brand[600],
 

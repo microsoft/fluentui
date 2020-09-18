@@ -10,6 +10,7 @@ const doList = [
     Do attach label to each input element - by using {code('Form.Field')} component or property on the input. See{' '}
     {link('label element documentation', 'https://www.w3schools.com/tags/tag_label.asp')} for details.
   </Text>,
+  'Do use `aria-labelledby="labelID messageID"` in the input when using chidlren api',
 ];
 
 const DropdownBestPractices = () => {

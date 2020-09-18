@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-import Menu from 'src/components/Menu/Menu';
+import { Menu } from 'src/components/Menu/Menu';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
-import MenuItem from 'src/components/Menu/MenuItem';
+import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
+import { MenuItem, MenuItemProps } from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, { testPath: __filename, constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [
@@ -54,6 +54,29 @@ describe('Menu', () => {
       expect(items[0].onClick).toHaveBeenCalled();
     });
 
+    it('should open on hover and keep open on click', () => {
+      const items: MenuItemProps[] = getNestedItems();
+      items[1].on = 'hover';
+      const menu = mountWithProvider(<Menu items={items} />);
+
+      expect(menu.find('MenuItem').length).toBe(2);
+
+      menu
+        .find('MenuItem')
+        .at(1)
+        .simulate('click');
+
+      expect(menu.find('MenuItem').length).toBe(4);
+
+      menu
+        .find('MenuItem')
+        .at(1)
+        .simulate('mouseenter')
+        .simulate('click');
+
+      expect(menu.find('MenuItem').length).toBe(4);
+    });
+
     it('does not call onClick handler for disabled item', () => {
       const items = getItems();
       items[0]['disabled'] = true; // mark the first item as disabled
@@ -82,39 +105,34 @@ describe('Menu', () => {
         .at(1)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey.Spacebar });
+        .simulate('keydown', { keyCode: SpacebarKey });
+
+      expect(
+        menuItems
+          .at(1)
+          .at(0)
+          .find('a')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('true');
+
       menuItems
         .at(1)
         .at(0)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey.Spacebar });
+        .simulate('keydown', { keyCode: SpacebarKey });
 
-      expect(menuItems.at(1).state('menuOpen')).toBe(false);
-    });
-
-    describe('activeIndex', () => {
-      it('should not be set by default', () => {
-        const menuItems = mountWithProvider(<Menu items={getItems()} />).find('MenuItem');
-
-        expect(menuItems.everyWhere(item => !item.is('[active="true"]'))).toBe(true);
-      });
-
-      it('should be set when item is clicked', () => {
-        const wrapper = mountWithProvider(<Menu items={getItems()} />);
-        const menuItems = wrapper.find('MenuItem');
-
+      expect(
         menuItems
           .at(1)
+          .at(0)
           .find('a')
           .first()
-          .simulate('click');
-
-        const updatedItems = wrapper.find('MenuItem');
-
-        expect(updatedItems.at(0).props()).toHaveProperty('active', false);
-        expect(updatedItems.at(1).props()).toHaveProperty('active', true);
-      });
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('false');
     });
 
     describe('itemsCount and itemPosition', () => {
@@ -257,6 +275,35 @@ describe('Menu', () => {
           expect(getRenderedAttribute(menuItemComponents.at(0), 'role', 'a')).toBe('tab');
           expect(getRenderedAttribute(menuItemComponents.at(1), 'role', 'a')).toBe('tab');
         });
+      });
+    });
+
+    describe('children', () => {
+      it('should should select items', () => {
+        const onActiveIndexChange = jest.fn();
+        const wrapper = mountWithProvider(
+          <Menu defaultActiveIndex={0} onActiveIndexChange={onActiveIndexChange}>
+            <Menu.Item index={0}>
+              <Menu.ItemContent>Editorials</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={1}>
+              <Menu.ItemContent>Reviews</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={2}>
+              <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
+            </Menu.Item>
+          </Menu>,
+        );
+
+        wrapper
+          .find('MenuItem')
+          .at(1)
+          .simulate('click');
+
+        expect(onActiveIndexChange).toHaveBeenCalledWith(
+          expect.objectContaining({ type: 'click' }),
+          expect.objectContaining({ activeIndex: 1 }),
+        );
       });
     });
   });

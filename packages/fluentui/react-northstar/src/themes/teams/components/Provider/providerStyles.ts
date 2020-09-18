@@ -1,8 +1,8 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ProviderVariables } from './providerVariables';
 
-export default {
-  root: ({ variables: v }: ComponentStyleFunctionParam<never, ProviderVariables>): ICSSInJSStyle => ({
+export const providerStyles: ComponentSlotStylesPrepared<never, ProviderVariables> = {
+  root: ({ variables: v }): ICSSInJSStyle => ({
     background: v.background,
     color: v.color,
     textAlign: 'left',

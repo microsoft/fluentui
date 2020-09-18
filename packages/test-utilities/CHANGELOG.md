@@ -1,8 +1,71 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.2.2..@uifabric/test-utilities_v7.3.0)
+
+### Minor changes
+
+- Add the ability to specify reder options to safeCreate ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
+
+## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.2.2)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.1.0..@uifabric/test-utilities_v7.2.2)
+
+### Patches
+
+- Delete API report which isn't being updated ([PR #15058](https://github.com/microsoft/fluentui/pull/15058) by elcraig@microsoft.com)
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.1.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.37..@uifabric/test-utilities_v7.1.0)
+
+### Minor changes
+
+- Making safeMount take the callback as optional. ([PR #14599](https://github.com/microsoft/fluentui/pull/14599) by dzearing@hotmail.com)
+
+## [7.0.32](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.32)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.31..@uifabric/test-utilities_v7.0.32)
+
+### Patches
+
+- Fix for the test-utility safeMount to check if wrapper should unmount. ([PR #13973](https://github.com/microsoft/fluentui/pull/13973) by czearing@outlook.com)
+
+## [7.0.31](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.31)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.29..@uifabric/test-utilities_v7.0.31)
+
+### Patches
+
+- Wrap renderer.create() in renderer.act() to trigger React hooks ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
+
+## [7.0.27](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.27)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.21..@uifabric/test-utilities_v7.0.27)
+
+### Patches
+
+- Adding missing peerDependencies ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.0.21](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.17..@uifabric/test-utilities_v7.0.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.0.17](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.17)
 

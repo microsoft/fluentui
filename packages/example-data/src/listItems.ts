@@ -21,7 +21,7 @@ export interface IExampleItem {
 
 /** @internal */
 export function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
-  return Array.apply(null, Array(count)).map((item: number, index: number) => {
+  return [...Array(count)].map((item: number, index: number) => {
     const size = 150 + Math.round(Math.random() * 100);
 
     return {
@@ -68,7 +68,7 @@ export function createGroups(
     key = key + '-';
   }
   const count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
+  return [...Array(groupCount)].map((value: number, index: number) => {
     return {
       count: count,
       key: 'group' + key + index,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import Tooltip from 'src/components/Tooltip/Tooltip';
+import { Tooltip } from 'src/components/Tooltip/Tooltip';
 import { tooltipContentClassName } from 'src/components/Tooltip/TooltipContent';
-import Button, { buttonClassName } from 'src/components/Button/Button';
+import { Button, buttonClassName } from 'src/components/Button/Button';
 
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Tooltip', () => {
   implementsPopperProps(Tooltip, {
