@@ -43,7 +43,7 @@ const RadioGroupCustomExample = props => {
 
   return (
     <div>
-      The selected value is: {selectedValue}
+      The selected value is: {checkedValue}
       <Divider />
       <RadioGroup
         checkedValue={checkedValue}
