@@ -1,5 +1,5 @@
 import { IFontWeight, IRawStyle } from '@uifabric/merge-styles';
-import { IFontStyles } from '../types';
+import { IFontStyles } from '../types/IFontStyles';
 import { FontSizes, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './FluentFonts';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
