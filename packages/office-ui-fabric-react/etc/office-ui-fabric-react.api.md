@@ -9388,6 +9388,9 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 // @public
 export function sequencesToID(keySequences: string[]): string;
 
+// @public (undocumented)
+export function setAttribute(element: HTMLElement | null, attributeName: string, attributeValue: string | undefined, append?: boolean): void;
+
 // @public
 export enum Shade {
     // (undocumented)
