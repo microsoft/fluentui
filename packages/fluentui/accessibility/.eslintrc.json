@@ -3,7 +3,7 @@
   "root": true,
   "overrides": [
     {
-      "files": ["src/**/**/*Definition.js, src/**/**/*Definition.ts"],
+      "files": ["src/**/**/*Definition.ts"],
       "rules": {
         "import/no-extraneous-dependencies": ["off"]
       }
