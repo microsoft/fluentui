@@ -50,7 +50,7 @@ const RadioGroupCustomExample = props => {
       The selected value is: {selectedValue}
       <Divider />
       <RadioGroup
-        checkedValue={selectedValue}
+        checkedValue={checkedValue}
         defaultCheckedValue="capricciosa"
         items={items}
         vertical={vertical}
