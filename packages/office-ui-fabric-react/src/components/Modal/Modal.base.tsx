@@ -223,6 +223,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     };
     const modalContent = (
       <FocusTrapZone
+        data-id={this.state.id}
         componentRef={this._focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -315,9 +316,9 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
   private _registerInitialModalPosition = (): void => {
     if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
-      const dialogMain = document.getElementsByClassName('ms-Dialog-main');
-      if (dialogMain.length > 0) {
-        const modalRectangle = dialogMain[0].getBoundingClientRect();
+      const dialogMain = document.querySelector(`[data-id=${this.state.id}`);
+      if (dialogMain) {
+        const modalRectangle = dialogMain.getBoundingClientRect();
         this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
         this._maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
       }
