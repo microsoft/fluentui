@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Divider, RadioGroup } from '@fluentui/react-northstar';
+import { Divider, RadioGroup, Input } from '@fluentui/react-northstar';
 
-class RadioGroupVerticalExample extends React.Component {
+class RadioGroupCustomVerticalExample extends React.Component {
   state = { selectedValue: '', inputTabIndex: '-1' };
 
   render() {
@@ -41,6 +41,33 @@ class RadioGroupVerticalExample extends React.Component {
         label: 'Pepperoni',
         value: 'pepperoni',
       },
+      {
+        name: 'pizza',
+        key: 'Custom',
+        label: 'Choose your own',
+        children: (Component, { key, ...props }) => {
+          return (
+            <div
+              key={key}
+              style={{
+                display: 'inline-flex',
+              }}
+            >
+              <Component {...props} />
+              <Input
+                onFocus={() => {
+                  this.setState({ selectedValue: 'custom' });
+                }}
+                input={{ tabIndex: this.state.inputTabIndex }}
+                inline
+                placeholder="flavour"
+              />
+            </div>
+          );
+        },
+        value: 'custom',
+        'aria-label': 'Press Tab to change flavour',
+      },
     ];
   }
 
@@ -48,4 +75,4 @@ class RadioGroupVerticalExample extends React.Component {
     this.setState({ selectedValue: props.value, inputTabIndex: props.value === 'custom' ? '0' : '-1' });
 }
 
-export default RadioGroupVerticalExample;
+export default RadioGroupCustomVerticalExample;
