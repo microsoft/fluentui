@@ -211,7 +211,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
 
   const calendarOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
+    selectedDate,
     navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
     firstDayOfWeek: props.firstDayOfWeek,
     firstWeekOfYear: props.firstWeekOfYear,

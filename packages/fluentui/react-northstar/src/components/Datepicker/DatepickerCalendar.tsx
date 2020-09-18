@@ -243,7 +243,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   });
 
   const dayGridOptions = {
-    selectedDate: getRidOfSecondsMinutesHours(selectedDate || today || new Date()),
+    selectedDate,
     navigatedDate: normalizedGridDate,
     weeksToShow: props.weeksToShow,
     firstDayOfWeek: props.firstDayOfWeek,
