@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.138.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.138.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.3..office-ui-fabric-react_v7.138.0)
+
+### Patches
+
+- Update website content for ComboBox, Dropdown, and TextField ([PR #15100](https://github.com/microsoft/fluentui/pull/15100) by elcraig@microsoft.com)
 
 ## [7.137.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.3)
 

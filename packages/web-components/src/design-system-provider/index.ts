@@ -71,7 +71,7 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
     default: DesignSystemDefaults.backgroundColor,
   })
   public backgroundColor: string;
-  private backgroundColorChanged() {
+  protected backgroundColorChanged(): void {
     // If background changes or is removed, we need to
     // re-evaluate whether we should have paint styles applied
     this.noPaintChanged();

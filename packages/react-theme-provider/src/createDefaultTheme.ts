@@ -12,9 +12,19 @@ export const createDefaultTheme = (): Theme => {
   return defaultTheme;
 };
 
+// TODO: use default fonts from `theme` package.
+const defaultFonts = {
+  // eslint-disable-next-line @fluentui/max-len
+  fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
+  fontSize: '14px',
+  fontWeight: 400,
+  mozOsxFontSmoothing: 'grayscale',
+  webkitFontSmoothing: 'antialiased',
+};
+
 export const defaultTokens: Tokens = {
   color: {
-    body: { background: '#ffffff', contentColor: '#323130' },
+    body: { background: '#ffffff', contentColor: '#323130', ...defaultFonts },
 
     brand: {
       background: '#0078d4',
@@ -65,7 +75,8 @@ export const defaultTokens: Tokens = {
 
   // TODO: this should be a variant.
   ghost: {
-    background: 'var(--color-body-background)',
+    fontWeight: 'normal',
+    background: 'transparent',
     borderColor: 'transparent',
     contentColor: '#323130',
     iconColor: '#106ebe',
@@ -73,19 +84,19 @@ export const defaultTokens: Tokens = {
     secondaryContentColor: 'var(--ghost-contentColor)',
 
     checked: {
-      background: 'var(--ghost-background)',
+      background: '#edebe9',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#000000',
       iconColor: '#004578',
     },
     checkedHovered: {
-      background: 'var(--ghost-background)',
+      background: '#e1dfdd',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: 'var(--ghost-hovered-contentColor)',
       iconColor: 'var(--ghost-hovered-iconColor)',
     },
     disabled: {
-      background: 'var(--ghost-background)',
+      background: '#f3f2f1',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#a19f9d',
       iconColor: 'inherit',
@@ -102,14 +113,14 @@ export const defaultTokens: Tokens = {
       secondaryContentColor: 'var(--ghost-focused-contentColor)',
     },
     hovered: {
-      background: 'var(--ghost-background)',
+      background: '#f3f2f1',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#0078d4',
       iconColor: '#0078d4',
       secondaryContentColor: 'var(--ghost-hovered-contentColor)',
     },
     pressed: {
-      background: 'var(--ghost-background)',
+      background: '#edebe9',
       borderColor: 'var(--ghost-borderColor)',
       contentColor: '#000000',
       iconColor: '#004578',
@@ -129,20 +140,17 @@ export const defaultTokens: Tokens = {
       larger: '48px',
       largest: '64px',
     },
+    ...defaultFonts,
     paddingLeft: '20px',
     paddingRight: '20px',
     paddingTop: '0',
     paddingBottom: '0',
-    minWiedth: '80px',
+    height: 'var(--button-size-regular)',
     minHeight: 'var(--button-size-regular)',
-    contentGap: '10px',
+    contentGap: '8px',
     iconSize: '16px',
     borderRadius: '2px',
     borderWidth: '1px',
-    // eslint-disable-next-line @fluentui/max-len
-    fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
-    fontSize: '14px',
-    fontWeight: 400,
     focusColor: '#605e5c',
     focusInnerColor: '#ffffff',
     focusWidth: '2px',
@@ -152,11 +160,13 @@ export const defaultTokens: Tokens = {
     contentColor: '#323130',
     iconColor: 'inherit',
     menuIconColor: 'inherit',
+    menuIconSize: '12px',
     dividerColor: 'rgba(0, 0, 0, 0.1)',
-    dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
     secondaryContentColor: '#605e5c',
     secondaryContentFontSize: '12px',
+    secondaryContentFontWeight: 'normal',
+    secondaryContentMarginTop: '5px',
 
     disabled: {
       background: '#f3f2f1',

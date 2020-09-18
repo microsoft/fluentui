@@ -13,6 +13,7 @@ describe('Link', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('renders disabled Link correctly', () => {
     const component = create(
       <Link href="#" disabled={true}>
@@ -22,6 +23,7 @@ describe('Link', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('renders Link with no href as a button', () => {
     const component = create(<Link>I'm a link as a button</Link>);
     const tree = component.toJSON();
@@ -40,6 +42,7 @@ describe('Link', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('renders Link with a custom class name', () => {
     const component = create(
       <Link href="#" className="customClassName">
@@ -69,6 +72,7 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
+    disabledTests: [`as-renders-fc`, `as-passes-as-value`],
   });
 
   it('renders Link with "as=Route" a Route element', () => {
