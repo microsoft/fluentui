@@ -36,8 +36,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "office-ui-fabric-react": "^7.138.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.1",
+    "@uifabric/react-hooks": "^7.13.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
