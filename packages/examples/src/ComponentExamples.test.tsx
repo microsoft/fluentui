@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
-import { resetIds } from '../Utilities';
+import { resetIds } from 'office-ui-fabric-react/lib/Utilities';
 
 import * as DataUtil from '@uifabric/example-data';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
@@ -94,6 +94,9 @@ function setCacheFullWarning(enabled: boolean) {
   };
 }
 
+/** Run tests on these packages' examples */
+const includedPackages = ['office-ui-fabric-react', 'react-cards', 'react-focus'];
+
 declare const global: any;
 
 /**
@@ -120,8 +123,11 @@ describe('Component Examples', () => {
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
-  const examplePaths: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
+  const examplePaths: string[] = glob.sync(
+    path.resolve(process.cwd(), `src/{${includedPackages.join(',')}}/*/examples/*Example*.tsx`),
+  );
   const createPortal = ReactDOM.createPortal;
+  console.log(examplePaths);
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
