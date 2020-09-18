@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 12:25:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.109)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.108..@fluentui/react-next_v8.0.0-alpha.109)
+
+### Changes
+
+- Floating/ExtendedPicker: added to react-next in prep for release ([PR #14908](https://github.com/microsoft/fluentui/pull/14908) by joschect@microsoft.com)
+- Moving Breadcrumb to react-next for future function component conversion. ([PR #15054](https://github.com/microsoft/fluentui/pull/15054) by czearing@outlook.com)
 
 ## [8.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.108)
 

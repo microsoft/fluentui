@@ -25,6 +25,7 @@ import {
   rtlTextContainer,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { getCode, SpacebarKey } from '@fluentui/keyboard-key';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -120,7 +121,9 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (getCode(e) === SpacebarKey) {
+          e.preventDefault();
+        }
         e.stopPropagation();
         handleClick(e);
       },
