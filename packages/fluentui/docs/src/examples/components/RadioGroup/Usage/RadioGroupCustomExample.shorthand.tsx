@@ -47,7 +47,6 @@ const RadioGroupCustomExample = props => {
       <Divider />
       <RadioGroup
         checkedValue={checkedValue}
-        defaultCheckedValue="capricciosa"
         items={items}
         vertical={vertical}
         onCheckedValueChange={(e, data)=> setCheckedValue(data.value)}
