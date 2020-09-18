@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { ILinkProps } from './Link.types';
+import { ILinkProps } from '../components/Link/Link.types';
 import { useLink } from '../components/Link/useLink';
 
-export const LinkBase: React.FunctionComponent<ILinkProps> = compose<'a', ILinkProps, ILinkProps, {}, {}>(
+export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
     const { slots, slotProps } = state;

@@ -2,8 +2,7 @@ import * as React from 'react';
 import { getGlobalClassNames, ITheme } from '@uifabric/styling';
 import { css, memoizeFunction, styled } from '@uifabric/utilities';
 import { LinkBase } from './LinkBase';
-import { ILinkStyleProps, ILinkStyles } from '../Link';
-import { ILinkProps } from './Link.types';
+import { ILinkProps, ILinkStyleProps, ILinkStyles } from '../Link';
 import * as classes from './Link.scss';
 
 const GlobalClassNames = {

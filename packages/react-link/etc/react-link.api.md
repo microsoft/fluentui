@@ -58,7 +58,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 
 // @public (undocumented)
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
-    as?: string | React.ComponentClass | React.FunctionComponent;
+    as?: React.ElementType;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     // @deprecated
