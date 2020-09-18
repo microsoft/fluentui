@@ -123,7 +123,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const [bodyFocused, setBodyFocused] = React.useState(false);
   const handleFocus = (ev: FocusEvent) => {
-    const isFocusOnBody = ev.target && (ev.target as any).getAttribute('data-builder-id') === null;
+    const isFocusOnBody = ev.target && (ev.target as any).getAttribute('id') === 'builder-provider';
     if (isFocusOnBody && !bodyFocused) {
       setHeaderMessage('Warning: Focus on body.');
       setBodyFocused(true);
@@ -325,7 +325,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             )}
             <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
-              <Provider theme={themeOverrides} target={document} tabIndex={0} style={{ outline: 'none' }}>
+              <Provider
+                theme={themeOverrides}
+                target={document}
+                tabIndex={0}
+                id="builder-provider"
+                style={{ outline: 'none' }}
+              >
                 {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
                 {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
                 {draggingElement && (
