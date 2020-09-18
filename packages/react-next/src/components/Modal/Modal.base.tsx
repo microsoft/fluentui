@@ -9,7 +9,7 @@ import {
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
 import { animationDuration } from './Modal.styles';
-import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
+import { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { Overlay } from '@fluentui/react-next/lib/Overlay';
 import { ILayerProps, Layer } from '@fluentui/react-next/lib/Layer';
 import { Popup } from '@fluentui/react-next/lib/Popup';
@@ -18,7 +18,7 @@ import { DirectionalHint } from '@fluentui/react-next';
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
-import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout } from '@uifabric/react-hooks';
+import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useTarget } from '@uifabric/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -26,7 +26,9 @@ const DefaultLayerProps: ILayerProps = {
   eventBubblingEnabled: false,
 };
 
-export interface IModalInternalState {
+const COMPONENT_NAME = 'Modal';
+
+interface IModalInternalState {
   onModalCloseTimer: number;
   allowTouchBodyScroll: boolean;
   hasRegisteredKeyUp: boolean;
@@ -38,14 +40,26 @@ export interface IModalInternalState {
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
 
-const COMPONENT_NAME = 'Modal';
+const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFocusTrapZone>) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      focus() {
+        if (focusTrapZone.current) {
+          focusTrapZone.current.focus();
+        }
+      },
+    }),
+    [focusTrapZone],
+  );
+};
 
-export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<HTMLElement, IModalProps>(
+export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<HTMLDivElement, IModalProps>(
   (props, ref) => {
-    const rootRef = React.useRef<HTMLElement>(null);
+    const rootRef = React.useRef<HTMLDivElement>(null);
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
-    const ModalResponsiveMode = useResponsiveMode(rootRef);
+    const modalResponsiveMode = useResponsiveMode(rootRef);
     const [xCoordinate, setXCoordinate] = React.useState<number>(0);
     const [yCoordinate, setYCoordinate] = React.useState<number>(0);
     const [modalPosition, setModalPosition] = React.useState<number | undefined>();
@@ -91,18 +105,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       events: new EventGroup({}),
     }));
 
-    const [isModalOpen, { toggle: toggleModalOpen, setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(
-      !!isOpen,
-    );
+    const [isModalOpen, { setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(!!isOpen);
 
-    const [
-      isModalMenuOpen,
-      { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose, setTrue: setModalMenuOpen },
-    ] = useBoolean(false);
+    const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
 
     const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(!!isOpen);
 
-    const [hasOpened, { setFalse: setHasOpenedFalse, setTrue: setHasOpenedTrue }] = useBoolean(!!isOpen);
+    const [hasOpened, { setTrue: setHasOpenedTrue }] = useBoolean(!!isOpen);
 
     const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
       !!isOpen,
@@ -379,6 +388,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
           if (topOffsetFixed) {
             const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+
             if (dialogMain.length > 0) {
               const modalRectangle = dialogMain[0].getBoundingClientRect();
               setModalPosition(modalRectangle.top);
@@ -394,9 +404,10 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         }
 
         // Cleanup events after unmount
-        // return () => {
-        //   internalState.events.dispose();
-        // };
+        return () => {
+          console.log('events disposed');
+          internalState.events.dispose();
+        };
       }
     }, [
       clearTimeout,
@@ -414,24 +425,21 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       topOffsetFixed,
     ]);
 
-    // React.useEffect(() => {
-    //   if (!isOpen && !isVisible) {
-    //     setIsVisibleTrue;
-    //   }
-    // }, [isOpen, isVisible, setIsVisibleTrue]);
+    React.useEffect(() => {
+      if (!isOpen && !isVisible) {
+        setIsVisibleTrue;
+      }
+    }, [isOpen, isVisible, setIsVisibleTrue]);
 
-    // React.useEffect(() => {
-    //   if (isOpen && isVisible) {
-    //     registerForKeyUp();
-    //   }
-    // }, [isOpen, isVisible, registerForKeyUp]);
+    if (isOpen && isVisible) {
+      registerForKeyUp();
+    }
 
+    useComponentRef(props, focusTrapZone);
     useDebugWarnings(props);
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
-    if (ModalResponsiveMode! >= ResponsiveMode.small) {
-      console.log(ModalResponsiveMode);
-
+    if (modalResponsiveMode! >= ResponsiveMode.small) {
       return (
         <Layer {...mergedLayerProps} ref={mergedRef}>
           <Popup
