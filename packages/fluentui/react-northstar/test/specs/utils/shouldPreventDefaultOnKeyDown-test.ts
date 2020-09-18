@@ -23,7 +23,7 @@ describe('shouldPreventDefaultOnKeyDown', () => {
     expect(shouldPreventDefaultOnKeyDown(textareaEvent)).toBe(false);
   });
 
-  it('ignores for anchor targets', () => {
+  it('handles "Enter" for anchor targets', () => {
     const anchorEvent = new KeyboardEvent('keydown', { key: 'Enter' });
     document.createElement('a').dispatchEvent(anchorEvent);
 
