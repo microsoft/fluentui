@@ -10,14 +10,15 @@ describe('CalendarDayGrid', () => {
     formatYear: (date: Date) => 'y',
   };
 
+  console.log(new Date('2020-09-18T21:06:52.856Z'));
   isConformant({
     Component: CalendarDayGrid,
     displayName: 'CalendarDayGrid',
     requiredProps: {
       strings: defaultDayPickerStrings,
-      selectedDate: new Date(),
-      navigatedDate: new Date(),
-      navigatedMonthDate: new Date(),
+      selectedDate: new Date('2020-09-18T21:06:52.856Z'),
+      navigatedDate: new Date('2020-09-18T21:06:52.856Z'),
+      navigatedMonthDate: new Date('2020-09-18T21:06:52.856Z'),
       dateRangeType: DateRangeType.Day,
       firstDayOfWeek: DayOfWeek.Sunday,
       firstWeekOfYear: FirstWeekOfYear.FirstFullWeek,

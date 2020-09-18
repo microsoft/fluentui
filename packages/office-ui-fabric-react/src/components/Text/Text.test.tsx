@@ -21,7 +21,7 @@ describe('Text', () => {
   isConformant({
     Component: Text,
     displayName: 'Text',
+    requiredProps: { children: 'content' },
     componentPath: path.join(__dirname, 'Text.ts'),
-    disabledTests: [`as-renders-fc`, `as-renders-react-class`, `as-passes-as-value`, 'as-renders-html'],
   });
 });
