@@ -165,3 +165,4 @@ packages/react-next/src/components/Toggle/ @xugao
 packages/react-toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto
+packages/react-spinbutton/ @dzearing @ecraig12345
