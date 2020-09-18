@@ -231,7 +231,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
 
     return (
-      <div className={this._classNames.title} role="gridcell" aria-colcount={ariaColSpan}>
+      <div className={this._classNames.title} role="gridcell" aria-colspan={ariaColSpan}>
         <span>{group.name}</span>
         {
           // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular

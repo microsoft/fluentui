@@ -320,21 +320,21 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupFooter = React.useMemo(() => {
     return onRenderDetailsGroupFooter
       ? (groupFooterProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-        return onRenderDetailsGroupFooter(
-          {
-            ...groupFooterProps,
-            columns: adjustedColumns,
-            groupNestingDepth,
-            indentWidth,
-            selection,
-            selectionMode,
-            viewport,
-            checkboxVisibility,
-            cellStyleProps,
-          },
-          defaultRender,
-        );
-      }
+          return onRenderDetailsGroupFooter(
+            {
+              ...groupFooterProps,
+              columns: adjustedColumns,
+              groupNestingDepth,
+              indentWidth,
+              selection,
+              selectionMode,
+              viewport,
+              checkboxVisibility,
+              cellStyleProps,
+            },
+            defaultRender,
+          );
+        }
       : undefined;
   }, [
     onRenderDetailsGroupFooter,
@@ -353,28 +353,28 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-        return onRenderDetailsGroupHeader(
-          {
-            ...groupHeaderProps,
-            columns: adjustedColumns,
-            groupNestingDepth,
-            indentWidth,
-            selection,
-            selectionMode,
-            viewport,
-            checkboxVisibility,
-            cellStyleProps,
-            ariaColSpan: adjustedColumns.length
-          },
-          defaultRender,
-        );
-      }
+          return onRenderDetailsGroupHeader(
+            {
+              ...groupHeaderProps,
+              columns: adjustedColumns,
+              groupNestingDepth,
+              indentWidth,
+              selection,
+              selectionMode,
+              viewport,
+              checkboxVisibility,
+              cellStyleProps,
+              ariaColSpan: adjustedColumns.length,
+            },
+            defaultRender,
+          );
+        }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-        return defaultRender({
-          ...groupHeaderProps,
-          ariaColSpan: adjustedColumns.length,
-        });
-      };
+          return defaultRender({
+            ...groupHeaderProps,
+            ariaColSpan: adjustedColumns.length,
+          });
+        };
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
@@ -388,13 +388,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   ]);
 
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
-    if (groupProps) {
-      return {
-        ...groupProps,
-        onRenderFooter: finalOnRenderDetailsGroupFooter,
-        onRenderHeader: finalOnRenderDetailsGroupHeader,
-      };
-    }
+    return {
+      ...groupProps,
+      onRenderFooter: finalOnRenderDetailsGroupFooter,
+      onRenderHeader: finalOnRenderDetailsGroupHeader,
+    };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
 
   const sumColumnWidths = useConst(() =>
@@ -539,18 +537,18 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-      <FocusZone {...focusZoneProps}>
-        <List
-          ref={listRef}
-          role="presentation"
-          items={items}
-          onRenderCell={onRenderListCell(0)}
-          usePageCache={usePageCache}
-          onShouldVirtualize={onShouldVirtualize}
-          {...additionalListProps}
-        />
-      </FocusZone>
-    );
+    <FocusZone {...focusZoneProps}>
+      <List
+        ref={listRef}
+        role="presentation"
+        items={items}
+        onRenderCell={onRenderListCell(0)}
+        usePageCache={usePageCache}
+        onShouldVirtualize={onShouldVirtualize}
+        {...additionalListProps}
+      />
+    </FocusZone>
+  );
 
   const onHeaderKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
@@ -652,8 +650,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               {list}
             </SelectionZone>
           ) : (
-              list
-            )}
+            list
+          )}
         </div>
         {onRenderDetailsFooter({
           ...detailsFooterProps,
@@ -726,9 +724,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-        selection: this._selection,
-        minimumPixelsForDrag: props.minimumPixelsForDrag,
-      })
+          selection: this._selection,
+          minimumPixelsForDrag: props.minimumPixelsForDrag,
+        })
       : undefined;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -875,9 +873,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this._dragDropHelper && this._dragDropHelper.dispose();
       this._dragDropHelper = newProps.dragDropEvents
         ? new DragDropHelper({
-          selection: this._selection,
-          minimumPixelsForDrag: newProps.minimumPixelsForDrag,
-        })
+            selection: this._selection,
+            minimumPixelsForDrag: newProps.minimumPixelsForDrag,
+          })
         : undefined;
       shouldForceUpdates = true;
     }
