@@ -28,9 +28,7 @@ const RadioGroupCustomExample = props => {
           <Flex key={key} inline>
             <Component {...props} />
             <Input
-              onFocus={() => {
-                setSelectedValue('custom');
-              }}
+              onFocus={() => setCheckedValue('custom')}
               input={{ tabIndex: props.value === 'custom' ? '0' : '-1' }}
               inline
               placeholder="flavour"
