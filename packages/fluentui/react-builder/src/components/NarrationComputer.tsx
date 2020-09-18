@@ -1,11 +1,10 @@
 /*
- TODO:
+TODO:
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
- * Should we also consider the "disabled" state?
- */
+* Should we also consider the "disabled" state?
+*/
 import { SRNC } from './SRNC-Definitions';
-import './SRNC-Rules-Win_JAWS';
 import './SRNC-Rules-Win_JAWS';
 
 export class NarrationComputer {
@@ -171,20 +170,20 @@ export class NarrationComputer {
     this.computedParts.type = `[${node.role}]`;
     this.computedParts.state = '';
 
-    // Find the rule which matches the states that are present on the element
+    // Find the rule with the state combination that matches the states present on the element
     const rules = SRNC.stateRules[platform][definitionName];
     if (rules) {
       // Begin if 1
-      rulesLoop: for (let i = 0; i < rules.length; i++) {
+      for (let i = 0; i < rules.length; i++) {
         // Begin for 1
         const rule = rules[i];
         const possibleStates = SRNC.possibleStates[definitionName];
-        for (let j = 0; j < possibleStates.length; j++) {
-          // Begin for 2
-          const possibleState = possibleStates[j];
+        const skipRule = possibleStates.some((possibleState: string) => {
+          // Begin some 1
+          //const possibleState = possibleStates[j];
           const stateValue = element.getAttribute(possibleState);
 
-          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around
+          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around so that there is not too much negations
           const elementHasState =
             stateValue !== null && (stateValue !== 'false' || !SRNC.falseMeansOmitted.includes(possibleState));
 
@@ -198,9 +197,14 @@ export class NarrationComputer {
           // Check if the presence of the state on the element matches its presence in the combination list. If not, continue with the next rule
           if (elementHasStateOrCheckedProp !== combinationHasState) {
             // Begin if 2
-            continue rulesLoop;
+            return true;
           } //End if 2
-        } // End for 2
+          return false;
+        }); // End some 1
+
+        if (skipRule) {
+          continue;
+        }
 
         // We have found the matching rule, retrieve and store the element's type
         this.computedParts.type = rule.elementType;
