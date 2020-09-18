@@ -72,7 +72,7 @@ storiesOf('ToggleButton Next', module)
     </ToggleButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
 storiesOf('ToggleButton Next - Teams Theme', module)
