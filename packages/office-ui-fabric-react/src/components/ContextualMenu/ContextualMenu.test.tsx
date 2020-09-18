@@ -634,6 +634,7 @@ describe('ContextualMenu', () => {
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
           key: 'Section1',
+          title: 'TestTitle',
           topDivider: true,
           bottomDivider: true,
           items: [
@@ -654,6 +655,7 @@ describe('ContextualMenu', () => {
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
           key: 'Section1',
+          title: { key: 'title1', text: 'TestTitle' },
           items: [
             {
               text: 'TestText 5',
@@ -671,7 +673,7 @@ describe('ContextualMenu', () => {
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
 
     const menuItems = document.querySelectorAll('li');
-    expect(menuItems.length).toEqual(8);
+    expect(menuItems.length).toEqual(10);
   });
 
   describe('with links', () => {
