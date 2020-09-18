@@ -50,7 +50,7 @@ export class NarrationComputer {
     // Determine the definition name
     let definitionName = '[default]';
     const role = element.getAttribute('role');
-    let testName = 'role=' + role;
+    let testName = `role=${role}`;
     let definition = definitions[testName];
     if (role && definition) {
       // Begin if 1
@@ -72,7 +72,7 @@ export class NarrationComputer {
       // In the case of the <input> element, the definition name is further determined by the element's "type" attribute
       if (testName === 'input') {
         // Begin if 2
-        testName += ':' + element.getAttribute('type');
+        testName += `:${element.getAttribute('type')}`;
       } // End if 2
       definition = definitions[testName];
       if (definition) {
@@ -101,7 +101,7 @@ export class NarrationComputer {
       this.computedParts.usage = usages['[default]'] || '';
 
       // Find the usage which matches the element's state
-      for (let usageName in usages) {
+      for (const usageName in usages) {
         // Begin for 1
         const [stateName, stateValue] = usageName.split('=');
         const stateNameAndValueMatch = element.getAttribute(stateName) === stateValue;
@@ -145,17 +145,17 @@ export class NarrationComputer {
     this.computedParts.name = node.name;
 
     // If the title attribute is present, set its value as the description part of the narration if it was not computed as accessible name and if no accessible description was computed before
-    let title = element.getAttribute('title');
+    const title = element.getAttribute('title');
     if (title && this.computedParts.name !== title && !this.computedParts.description) {
       // Begin if 1
       this.computedParts.description = title;
     } // End if 1
-  } //End computeNameAndTitle
+  } // End computeNameAndTitle
 
   // Computes the value part of the narration using the given computed node.
   computeValue(node: any) {
     this.computedParts.value = node.valueText;
-  } //End computeValue
+  } // End computeValue
 
   // Computes the position part of the narration for the given definitionName.
   computePosition(definitionName: string) {
@@ -180,7 +180,6 @@ export class NarrationComputer {
         const possibleStates = SRNC.possibleStates[definitionName];
         const skipRule = possibleStates.some((possibleState: string) => {
           // Begin some 1
-          //const possibleState = possibleStates[j];
           const stateValue = element.getAttribute(possibleState);
 
           // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around so that there is not too much negations
@@ -198,7 +197,7 @@ export class NarrationComputer {
           if (elementHasStateOrCheckedProp !== combinationHasState) {
             // Begin if 2
             return true;
-          } //End if 2
+          } // End if 2
           return false;
         }); // End some 1
 
@@ -232,7 +231,7 @@ export class NarrationComputer {
           } // End if 2
 
           // Determine the state string by using "<stateName>=<stateValue>" as the definition key. If such key does not exist, try using "<stateName>=" as the key. Therefore, "<stateName>=" key will match the given stateName and any not defined stateValue
-          const partialState = stateStrings[stateName + '=' + stateValue] || stateStrings[stateName + '='];
+          const partialState = stateStrings[`${stateName}=${stateValue}`] || stateStrings[`${stateName}=`];
           if (partialState) {
             // Begin if 2
             computedStateArr.push(partialState);
