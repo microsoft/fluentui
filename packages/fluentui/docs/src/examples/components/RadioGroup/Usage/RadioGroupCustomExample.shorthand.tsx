@@ -8,22 +8,7 @@ const RadioGroupCustomExample = props => {
     initialValue: false,
   });
 
-  const [state, dispatch] = React.useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case 'UPDATE':
-          return { ...state, ...action.payload };
-        case 'UPDATE_VALUE':
-          return { ...state, selectedValue: action.selectedValue };
-        default:
-          return state;
-      }
-    },
-    {
-      selectedValue: 'capricciosa',
-      inputTabIndex: '-1',
-    },
-  );
+  const [selectedValue, setSelectedValue] = React.useState('');
 
   const items = [
     { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -44,9 +29,9 @@ const RadioGroupCustomExample = props => {
             <Component {...props} />
             <Input
               onFocus={() => {
-                dispatch({ type: 'UPDATE_VALUE', selectedValue: 'custom' });
+                setSelectedValue('custom');
               }}
-              input={{ tabIndex: state.inputTabIndex }}
+              input={{ tabIndex: props.value === 'custom' ? '0' : '-1' }}
               inline
               placeholder="flavour"
             />
@@ -58,18 +43,14 @@ const RadioGroupCustomExample = props => {
     },
   ];
 
-  const handleChange = (e, props) =>
-    dispatch({
-      type: 'UPDATE',
-      payload: { selectedValue: props.value, inputTabIndex: props.value === 'custom' ? '0' : '-1' },
-    });
+  const handleChange = (e, props) => setSelectedValue(props.value);
 
   return (
     <div>
-      The selected value is: {state.selectedValue}
+      The selected value is: {selectedValue}
       <Divider />
       <RadioGroup
-        checkedValue={state.selectedValue}
+        checkedValue={selectedValue}
         defaultCheckedValue="capricciosa"
         items={items}
         vertical={vertical}
