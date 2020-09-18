@@ -1,8 +1,36 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 31 Aug 2020 12:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.10)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.9..@uifabric/experiments_v7.32.10)
+
+### Patches
+
+- allow consumers of the UPP to use the onClick input property ([PR #15005](https://github.com/microsoft/fluentui/pull/15005) by elvonspa@microsoft.com)
+- Drag and drop fixes ([PR #15022](https://github.com/microsoft/fluentui/pull/15022) by elvonspa@microsoft.com)
+
+## [7.32.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.9)
+
+Mon, 14 Sep 2020 12:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.4..@uifabric/experiments_v7.32.9)
+
+### Patches
+
+- allow FloatingPeopleSuggestions onRenderSuggestions property to be used ([PR #14983](https://github.com/microsoft/fluentui/pull/14983) by elvonspa@microsoft.com)
+
+## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.1..@uifabric/experiments_v7.32.4)
+
+### Patches
+
+- Fix bug where drop insert function can be called twice ([PR #14865](https://github.com/microsoft/fluentui/pull/14865) by elvonspa@microsoft.com)
 
 ## [7.32.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.1)
 

@@ -16,7 +16,7 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { useWarnings } from '@uifabric/react-hooks';
+import { useWarnings, useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -41,11 +41,13 @@ function useDebugWarnings(props: IPersonaProps) {
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaBase = React.forwardRef(
-  (propsWithoutDefaults: IPersonaProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forwardRef<HTMLDivElement, IPersonaProps>(
+  (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     useDebugWarnings(props);
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
     /**
      * Deprecation helper for getting text.
@@ -189,6 +191,7 @@ export const PersonaBase = React.forwardRef(
     return (
       <div
         {...divProps}
+        ref={mergedRootRef}
         className={classNames.root}
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >

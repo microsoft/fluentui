@@ -398,6 +398,7 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [headerMessage, setHeaderMessage] = React.useState('');
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -775,6 +776,7 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
+                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{headerMessage}</Text>}</div>,
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
@@ -839,6 +841,8 @@ export const Designer: React.FunctionComponent = () => {
                   onGoToParentComponent={handleGoToParentComponent}
                   themeOverrides={themeOverrides}
                   role="main"
+                  inUseMode={mode === 'use'}
+                  setHeaderMessage={setHeaderMessage}
                 />
               </ErrorBoundary>
             </BrowserWindow>

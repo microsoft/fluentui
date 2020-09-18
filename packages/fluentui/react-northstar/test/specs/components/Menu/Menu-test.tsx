@@ -12,7 +12,7 @@ import { SpacebarKey } from '@fluentui/keyboard-key';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, { testPath: __filename, constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [
@@ -275,6 +275,35 @@ describe('Menu', () => {
           expect(getRenderedAttribute(menuItemComponents.at(0), 'role', 'a')).toBe('tab');
           expect(getRenderedAttribute(menuItemComponents.at(1), 'role', 'a')).toBe('tab');
         });
+      });
+    });
+
+    describe('children', () => {
+      it('should should select items', () => {
+        const onActiveIndexChange = jest.fn();
+        const wrapper = mountWithProvider(
+          <Menu defaultActiveIndex={0} onActiveIndexChange={onActiveIndexChange}>
+            <Menu.Item index={0}>
+              <Menu.ItemContent>Editorials</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={1}>
+              <Menu.ItemContent>Reviews</Menu.ItemContent>
+            </Menu.Item>
+            <Menu.Item index={2}>
+              <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
+            </Menu.Item>
+          </Menu>,
+        );
+
+        wrapper
+          .find('MenuItem')
+          .at(1)
+          .simulate('click');
+
+        expect(onActiveIndexChange).toHaveBeenCalledWith(
+          expect.objectContaining({ type: 'click' }),
+          expect.objectContaining({ activeIndex: 1 }),
+        );
       });
     });
   });

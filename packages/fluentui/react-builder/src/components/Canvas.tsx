@@ -30,6 +30,8 @@ export type CanvasProps = {
   style?: React.CSSProperties;
   themeOverrides?: any;
   role?: string;
+  inUseMode?: boolean;
+  setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -51,6 +53,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   style,
   themeOverrides,
   role,
+  inUseMode,
+  setHeaderMessage,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -116,6 +120,19 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     },
     [iframeCoordinatesToWindowCoordinates, onMoveComponent],
   );
+
+  const [bodyFocused, setBodyFocused] = React.useState(false);
+  const handleFocus = (ev: FocusEvent) => {
+    const isFocusOnBody = ev.target && (ev.target as any).getAttribute('data-builder-id') === null;
+    if (isFocusOnBody && !bodyFocused) {
+      setHeaderMessage('Warning: Focus on body.');
+      setBodyFocused(true);
+    }
+    if (!isFocusOnBody && bodyFocused) {
+      setHeaderMessage('');
+      setBodyFocused(false);
+    }
+  };
 
   const debugSize = '8px';
 
@@ -200,6 +217,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             .join('\n');
 
       style.innerHTML = [
+        bodyFocused &&
+          inUseMode &&
+          `
+          body {
+            border: 3px solid red;
+          }
+          `,
         isSelecting &&
           `
           [data-builder-id="builder-root"] {
@@ -229,7 +253,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, role]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused, inUseMode]);
 
   return (
     <Frame
@@ -301,7 +325,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             )}
             <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
-              <Provider theme={themeOverrides} target={document}>
+              <Provider theme={themeOverrides} target={document} tabIndex={0} style={{ outline: 'none' }}>
                 {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
                 {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
                 {draggingElement && (
@@ -311,6 +335,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                     target={document}
                   />
                 )}
+                {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
                 {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
                 {showNarration && selectedComponent && (
                   <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />

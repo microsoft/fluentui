@@ -1,8 +1,98 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.111)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.109..@fluentui/react-next_v8.0.0-alpha.111)
+
+### Changes
+
+- Fix React StrictMode issues in ComboBox ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
+- Adding Calendar and DatePicker to react-next compat folder. ([PR #15079](https://github.com/microsoft/fluentui/pull/15079) by czearing@outlook.com)
+- Fix implicit merge conflict in ComboBox ([PR #15096](https://github.com/microsoft/fluentui/pull/15096) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.109)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.108..@fluentui/react-next_v8.0.0-alpha.109)
+
+### Changes
+
+- Floating/ExtendedPicker: added to react-next in prep for release ([PR #14908](https://github.com/microsoft/fluentui/pull/14908) by joschect@microsoft.com)
+- Moving Breadcrumb to react-next for future function component conversion. ([PR #15054](https://github.com/microsoft/fluentui/pull/15054) by czearing@outlook.com)
+
+## [8.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.108)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.106..@fluentui/react-next_v8.0.0-alpha.108)
+
+### Changes
+
+- Updating MessageBar to a function component inside React-Next. ([PR #14769](https://github.com/microsoft/fluentui/pull/14769) by czearing@outlook.com)
+- Add missing ref prop typing. ([PR #15027](https://github.com/microsoft/fluentui/pull/15027) by xgao@microsoft.com)
+
+## [8.0.0-alpha.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.106)
+
+Mon, 14 Sep 2020 12:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.105..@fluentui/react-next_v8.0.0-alpha.106)
+
+### Changes
+
+- Make Dropdown React.StrictMode compliant ([PR #14529](https://github.com/microsoft/fluentui/pull/14529) by miclo@microsoft.com)
+
+## [8.0.0-alpha.105](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.105)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.103..@fluentui/react-next_v8.0.0-alpha.105)
+
+### Changes
+
+- Copy ContextualMenu to react-next ([PR #14391](https://github.com/microsoft/fluentui/pull/14391) by miclo@microsoft.com)
+- ContextualMenu: port missing changes to react-next and clean up examples ([PR #14989](https://github.com/microsoft/fluentui/pull/14989) by elcraig@microsoft.com)
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.103)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.102..@fluentui/react-next_v8.0.0-alpha.103)
+
+### Changes
+
+- Fix snapshot tests ([PR #14962](https://github.com/microsoft/fluentui/pull/14962) by miclo@microsoft.com)
+
+## [8.0.0-alpha.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.102)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.101..@fluentui/react-next_v8.0.0-alpha.102)
+
+### Changes
+
+- Updating Rating to a function component inside React-Next. ([PR #14703](https://github.com/microsoft/fluentui/pull/14703) by czearing@outlook.com)
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
+
+## [8.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.101)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.100..@fluentui/react-next_v8.0.0-alpha.101)
+
+### Changes
+
+- Updating MaskedTextField to a function component. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Renaming Grid utility to ButtonGrid. ([PR #14854](https://github.com/microsoft/fluentui/pull/14854) by czearing@outlook.com)
+
+## [8.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.100)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.98..@fluentui/react-next_v8.0.0-alpha.100)
+
+### Changes
+
+- Add ComponentConformance and ComponentExamples tests to react-next ([PR #14886](https://github.com/microsoft/fluentui/pull/14886) by elcraig@microsoft.com)
+- undefined ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
 
 ## [8.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.98)
 

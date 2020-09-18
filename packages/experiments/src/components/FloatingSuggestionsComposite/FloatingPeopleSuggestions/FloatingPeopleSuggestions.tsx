@@ -15,7 +15,10 @@ export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps
 
   return (
     <>
-      <BaseFloatingSuggestions {...props} onRenderSuggestion={renderSuggestionItem} />
+      <BaseFloatingSuggestions
+        {...props}
+        onRenderSuggestion={props.onRenderSuggestion ? props.onRenderSuggestion : renderSuggestionItem}
+      />
     </>
   );
 };

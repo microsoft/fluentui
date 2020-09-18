@@ -34,7 +34,7 @@ steps:
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload docs site
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'

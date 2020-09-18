@@ -60,9 +60,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
-packages/lists/ @dzearing @aditima
 packages/merge-styles/ @dzearing
-packages/migration/ @ecraig12345
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
@@ -167,3 +165,4 @@ packages/react-next/src/components/Toggle/ @xugao
 packages/react-toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto
+packages/react-spinbutton/ @dzearing @ecraig12345

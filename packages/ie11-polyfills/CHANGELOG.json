@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/ie11-polyfills",
+  "entries": [
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/ie11-polyfills_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update package to use external polyfill as devDependency",
+            "author": "ololubek@microsoft.com",
+            "commit": "bcf5ac28bfb4809a9097a8bec9bb26cba8d04ef6",
+            "package": "@fluentui/ie11-polyfills"
+          }
+        ]
+      }
+    }
+  ]
+}
