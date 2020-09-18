@@ -43,8 +43,6 @@ const RadioGroupCustomExample = props => {
     },
   ];
 
-  const handleChange = (e, props) => setSelectedValue(props.value);
-
   return (
     <div>
       The selected value is: {selectedValue}
