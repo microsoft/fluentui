@@ -23,9 +23,9 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
+  shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { getCode, SpacebarKey } from '@fluentui/keyboard-key';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -121,7 +121,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
-        if (getCode(e) === SpacebarKey) {
+        if (shouldPreventDefaultOnKeyDown(e)) {
           e.preventDefault();
         }
         e.stopPropagation();

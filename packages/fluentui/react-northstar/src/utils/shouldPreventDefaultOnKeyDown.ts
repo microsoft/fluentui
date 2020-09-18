@@ -10,7 +10,10 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardE
 
   const matchesByKey = code === SpacebarKey || code === EnterKey;
   const ignoredByTag =
-    target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable === true;
+    target?.tagName === 'INPUT' ||
+    target?.tagName === 'TEXTAREA' ||
+    target?.isContentEditable === true ||
+    (target?.tagName === 'A' && code !== SpacebarKey);
 
   return matchesByKey && !ignoredByTag;
 }
