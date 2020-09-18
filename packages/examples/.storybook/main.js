@@ -1,12 +1,12 @@
 // @ts-check
-import * as custom from '@uifabric/build/storybook/webpack.config';
+import custom from '@uifabric/build/storybook/webpack.config';
 import * as path from 'path';
 import * as webpack from 'webpack';
 
 export default {
-  addons: ['@storybook/addon-a11y/register'],
+  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register'],
   webpackFinal: (/** @type {webpack.Configuration} */ config) => {
-    config = custom(config);
+    config = custom(config, path.dirname(__dirname));
 
     config.module.rules.push({
       // Special loader that only includes stories from the current package

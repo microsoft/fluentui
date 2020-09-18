@@ -5,6 +5,7 @@ const config = createConfig({
   setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
 
   moduleNameMapper: {
+    '@fluentui/react-avatar/lib/(.*)$': '@fluentui/react-avatar/lib-commonjs/$1',
     '@fluentui/react-button/lib/(.*)$': '@fluentui/react-button/lib-commonjs/$1',
     '@fluentui/react-checkbox/lib/(.*)$': '@fluentui/react-checkbox/lib-commonjs/$1',
     '@fluentui/react-focus/lib/(.*)$': '@fluentui/react-focus/lib-commonjs/$1',

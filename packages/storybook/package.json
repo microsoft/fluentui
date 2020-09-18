@@ -25,13 +25,15 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
+    "@fluentui/react-next": "^8.0.0-alpha.107",
     "@fluentui/react-theme-provider": "^0.12.0",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.5.9",
     "@uifabric/mdl2-theme": "^0.3.8",
-    "@uifabric/theme-samples": "^7.1.13"
+    "@uifabric/theme-samples": "^7.1.13",
+    "office-ui-fabric-react": "^7.137.2",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

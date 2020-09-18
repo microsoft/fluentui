@@ -50,7 +50,6 @@
     "@uifabric/jest-serializer-merge-styles": "^7.2.1",
     "@uifabric/test-utilities": "^7.2.1",
     "@fluentui/react-conformance": "^0.1.1",
-    "@fluentui/storybook": "^0.4.12",
     "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",

@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/storybook": "^0.4.12",
     "@types/chalk": "^2.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,15 +43,19 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-avatar": "^0.5.0",
     "@fluentui/react-button": "^0.12.5",
     "@fluentui/react-checkbox": "^0.2.12",
     "@fluentui/react-focus": "^7.16.1",
+    "@fluentui/react-icons": "^0.3.4",
     "@fluentui/react-image": "^0.6.0",
     "@fluentui/react-link": "^0.2.12",
     "@fluentui/react-next": "^8.0.0-alpha.106",
     "@fluentui/react-slider": "^0.2.12",
     "@fluentui/react-tabs": "^0.5.12",
+    "@fluentui/react-theme-provider": "^0.13.3",
     "@fluentui/react-toggle": "^0.2.12",
+    "@fluentui/theme": "^0.3.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.9",
     "@uifabric/azure-themes": "^7.5.9",

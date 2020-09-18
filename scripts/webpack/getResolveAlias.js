@@ -8,9 +8,13 @@ function getOutputPath(entryPoint) {
   return entryPoint && entryPoint.includes('dist/es') ? 'dist/es' : 'lib';
 }
 
-function getResolveAlias() {
+/**
+ * @param {string} [cwd] optional different cwd
+ */
+function getResolveAlias(cwd) {
+  cwd = cwd || process.cwd();
   const gitRoot = findGitRoot();
-  const deps = findRepoDeps();
+  const deps = findRepoDeps(cwd);
 
   const alias = {};
   const excludedPackages = [
@@ -21,7 +25,6 @@ function getResolveAlias() {
     '@uifabric/jest-serializer-merge-styles',
   ];
 
-  let cwd = process.cwd();
   const packageJson = readConfig(path.join(cwd, 'package.json'));
 
   deps.forEach(({ packageJson: depPackageJson, packagePath: depPackagePath }) => {
