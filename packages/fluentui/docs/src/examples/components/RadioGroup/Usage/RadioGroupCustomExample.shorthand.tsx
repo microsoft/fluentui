@@ -49,7 +49,7 @@ const RadioGroupCustomExample = props => {
         checkedValue={checkedValue}
         items={items}
         vertical={vertical}
-        onCheckedValueChange={(e, data)=> setCheckedValue(data.value)}
+        onCheckedValueChange={(e, data) => setCheckedValue(data.value.toString())}
       />
     </div>
   );
