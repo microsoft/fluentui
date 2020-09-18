@@ -11,18 +11,22 @@ import { Stylesheet } from '@uifabric/merge-styles';
 const lightTheme = mergeThemes({
   stylesheets: [],
   tokens: {
-    body: {
-      background: 'white',
-      contentColor: 'black',
+    color: {
+      body: {
+        background: 'white',
+        contentColor: 'black',
+      },
     },
   },
 });
 
 const darkTheme = mergeThemes({
   tokens: {
-    body: {
-      background: 'black',
-      contentColor: 'white',
+    color: {
+      body: {
+        background: 'black',
+        contentColor: 'white',
+      },
     },
   },
 });
@@ -113,13 +117,8 @@ describe('ThemeProvider', () => {
     );
 
     const wrapper = mount(TestComponent);
-    expect(document.body.className).not.toBe('');
 
-    const bodyStyles = document.body.className
-      .split(' ')
-      .map(bodyClass => stylesheet.insertedRulesFromClassName(bodyClass));
-
-    expect(bodyStyles).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     wrapper.unmount();
 
