@@ -217,7 +217,7 @@ TODO: Diff of OUFR vs date-time DatePicker
 
 ## New features
 
-- Pivot overflow (TODO: Add more detailed documentation)
+- Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
 
 ## Other notable changes
 
