@@ -72,6 +72,7 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
+    // Temporarily disabled due to function component's cannot be given ref error.
     disabledTests: [`as-renders-fc`, `as-passes-as-value`],
   });
 

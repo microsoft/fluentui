@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
-
 import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
@@ -78,6 +77,7 @@ describe('ComboBox', () => {
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
+    // Disabled due to being required to mount by safeCreate. A test called "renders" was added here as a replacement.
     disabledTests: ['component-renders'],
   });
 
@@ -245,10 +245,14 @@ describe('ComboBox', () => {
     renderIntoDocument(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
 
     const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-    ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(secondItemElement);
+    });
 
     const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('2');
@@ -259,10 +263,14 @@ describe('ComboBox', () => {
     renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />);
 
     const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-    ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(secondItemElement);
+    });
 
     const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
     expect(inputElement.value).toEqual('1');
@@ -273,10 +281,14 @@ describe('ComboBox', () => {
     renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect ref={ref} />);
 
     const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(buttonElement);
+    });
 
     const buttons = ref.current?.querySelectorAll('.ms-ComboBox-option > input');
-    ReactTestUtils.Simulate.change(buttons![1]);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.change(buttons![1]);
+    });
 
     expect(!!DEFAULT_OPTIONS[1].selected).toEqual(false);
   });
