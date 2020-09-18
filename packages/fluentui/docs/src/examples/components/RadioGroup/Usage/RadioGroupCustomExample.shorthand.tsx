@@ -8,7 +8,7 @@ const RadioGroupCustomExample = props => {
     initialValue: false,
   });
 
-  const [checkedValue, setCheckedValue] = React.useState('capricciosa');
+  const [checkedValue, setCheckedValue] = React.useState<string | number>('capricciosa');
 
   const items = [
     { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -49,7 +49,7 @@ const RadioGroupCustomExample = props => {
         checkedValue={checkedValue}
         items={items}
         vertical={vertical}
-        onCheckedValueChange={(e, data) => setCheckedValue(data.value.toString())}
+        onCheckedValueChange={(e, data) => setCheckedValue(data.value)}
       />
     </div>
   );
