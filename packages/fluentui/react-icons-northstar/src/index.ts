@@ -49,6 +49,7 @@ export { CallMissedLineIcon } from './components/CallMissedLineIcon';
 export { CallParkingIcon } from './components/CallParkingIcon';
 export { CastingIcon } from './components/CastingIcon';
 export { ChatIcon } from './components/ChatIcon';
+export { CheckmarkCircleIcon } from './components/CheckmarkCircleIcon';
 export { ChevronDownIcon } from './components/ChevronDownIcon';
 export { ChevronDownMediumIcon } from './components/ChevronDownMediumIcon';
 export { ChevronEndIcon } from './components/ChevronEndIcon';

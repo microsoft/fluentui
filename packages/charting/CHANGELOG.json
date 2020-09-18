@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@uifabric/charting_v4.1.1",
+      "version": "4.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Running prettier in VerticalBarChart and Legends.",
+            "author": "czearing@outlook.com",
+            "commit": "a206613fdde9717a5c1f77a57368d83916a608d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/charting_v4.1.0",
       "version": "4.1.0",

@@ -136,7 +136,7 @@ steps:
       yarn workspace @uifabric/build just generate-package-manifest
     displayName: 'Generates a package manifest'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
@@ -144,3 +144,4 @@ steps:
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'
+      Gzip: false
