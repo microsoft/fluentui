@@ -38,6 +38,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `treeTitleBehavior` to trigger `performClick` on `Enter` key @layershifter ([#14900](https://github.com/microsoft/fluentui/pull/14900))
 - Fix `dropdown` avoid switch into screen reader virtual cursor mode when navigate through selected items @kolaps33 ([#14864](https://github.com/microsoft/fluentui/pull/14864))
 - Allows set `popper` props to `menu` in `ToolbarOverflowItem` @assuncaocharles ([#14951](https://github.com/microsoft/fluentui/pull/14951))
+- Remove `aria-selected` attribute from `TreeItem` when `Tree` is not selectable @assuncaocharles ([#15115](https://github.com/microsoft/fluentui/pull/15115))
+- Add `shouldPreventDefault` on `keyDown` event for `TreeTitle` to allow enter trigger when `TreeTitle` is rendered as an `anchor` @assuncaocharles ([#15095](https://github.com/microsoft/fluentui/pull/15095))
+- Fix screen reader experience in multiple `dropdown` @kolaps33 ([#15066](https://github.com/microsoft/fluentui/pull/15066))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -58,6 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `Breadcrumb` component @assuncaocharles ([#14922](https://github.com/microsoft/fluentui/pull/14922))
 - Added `BreadcrumbItem` and `BreadcrumbDivider` components @yuanboxue-amber ([#14926](https://github.com/microsoft/fluentui/pull/14926))
 - Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
+- Added `CheckmarkCircleIcon`. Updated `ShareLocationIcon` @TanelVari ([#15119](https://github.com/microsoft/fluentui/pull/15119))
 
 ### Documentation
 - Fixed icon margins after code change in UI builder @vyhnalekl ([#14859](https://github.com/microsoft/fluentui/pull/14859))
