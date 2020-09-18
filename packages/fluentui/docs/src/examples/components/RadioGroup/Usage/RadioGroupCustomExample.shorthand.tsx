@@ -29,7 +29,7 @@ const RadioGroupCustomExample = props => {
             <Component {...props} />
             <Input
               onFocus={() => setCheckedValue('custom')}
-              input={{ tabIndex: props.value === 'custom' ? '0' : '-1' }}
+              input={{ tabIndex: checkedValue === 'custom' ? '0' : '-1' }}
               inline
               placeholder="flavour"
             />
