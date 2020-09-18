@@ -24,8 +24,8 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.13.2",
-    "@fluentui/react-next": "^8.0.0-alpha.111",
+    "@fluentui/react-button": "^0.13.3",
+    "@fluentui/react-next": "^8.0.0-alpha.112",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/example-app-base": "^7.15.13",
     "@uifabric/experiments": "^7.32.14",
