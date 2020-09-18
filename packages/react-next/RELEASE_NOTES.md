@@ -153,7 +153,10 @@ TODO: Diff of OUFR vs date-time DatePicker
   - Removed deprecated styles prop `linkIsSelected?: boolean;`.
   - Removed styles prop `rootIsLarge` and added `linkSize` instead.
   - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
-  - TODO: enumerate all removed props
+- Style props changes
+  - Replaced `rootIsLarge` with `linkSize`.
+  - Replaced `linkSize` and `linkFormat`.
+  - Removed deprecated prop `linkIsSelected`.
 
 ### Rating
 
@@ -214,6 +217,10 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+## New features
+
+- Pivot overflow (TODO: Add more detailed documentation)
 
 ## Other notable changes
 
