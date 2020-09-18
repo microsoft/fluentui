@@ -129,7 +129,7 @@ $default-inactiveScaleFactor: 0.8;
 }
 ._size_28 {
   --avatar-iconSize: #{$iconSize-medium};
-  --avatar-fontSize: #{$fontSize-legal};
+  --avatar-fontSize: #{$fontSize-caption};
   --avatar-fontWeight: #{$fontWeight-semibold};
 }
 // default size:
@@ -190,13 +190,10 @@ $default-inactiveScaleFactor: 0.8;
 
 // ActiveDisplay modifiers
 ._activeRing {
-  &._size_20,
-  &._size_24,
-  &._size_28 {
-    --avatar-activeRingMargin: -2px;
-    --avatar-activeRingWidth: #{$stroke-thin};
-  }
   // default size:
+  // &._size_20,
+  // &._size_24,
+  // &._size_28,
   // &._size_32,
   // &._size_36,
   // &._size_40 {
