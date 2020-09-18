@@ -34,6 +34,8 @@ import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
+import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
@@ -137,6 +139,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
     CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
     CalendarCell: typeof DatepickerCalendarCell;
+    CalendarGrid: typeof DatepickerCalendarGrid;
+    CalendarGridRow: typeof DatepickerCalendarGridRow;
     Input: typeof Input;
   } = props => {
   const context = useFluentContext();
@@ -470,4 +474,6 @@ Datepicker.CalendarHeader = DatepickerCalendarHeader;
 Datepicker.CalendarHeaderAction = DatepickerCalendarHeaderAction;
 Datepicker.CalendarHeaderCell = DatepickerCalendarHeaderCell;
 Datepicker.CalendarCell = DatepickerCalendarCell;
+Datepicker.CalendarGrid = DatepickerCalendarGrid;
+Datepicker.CalendarGridRow = DatepickerCalendarGridRow;
 Datepicker.Input = Input;
