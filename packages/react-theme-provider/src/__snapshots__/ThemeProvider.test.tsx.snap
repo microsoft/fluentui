@@ -23,8 +23,7 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -178,8 +177,7 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -326,8 +324,7 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -474,8 +471,7 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -632,8 +628,7 @@ exports[`ThemeProvider renders a div 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -789,8 +784,7 @@ exports[`ThemeProvider renders a div with styling 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -946,8 +940,7 @@ exports[`ThemeProvider renders nested themes 1`] = `
         --button-disabled-background: #f3f2f1;
         --button-disabled-borderColor: #f3f2f1;
         --button-disabled-contentColor: #a19f9d;
-        --button-disabled-dividerColor: #c8c6c4;
-        --button-disabled-iconColor: #a19f9d;
+        --button-disabled-iconColor: var(--button-disabled-contentColor);
         --button-disabled-secondaryContentColor: #a19f9d;
         --button-dividerColor: #c8c6c4;
         --button-dividerThickness: var(--button-borderWidth);
@@ -1101,8 +1094,7 @@ exports[`ThemeProvider renders nested themes 1`] = `
           --button-disabled-background: #f3f2f1;
           --button-disabled-borderColor: #f3f2f1;
           --button-disabled-contentColor: #a19f9d;
-          --button-disabled-dividerColor: #c8c6c4;
-          --button-disabled-iconColor: #a19f9d;
+          --button-disabled-iconColor: var(--button-disabled-contentColor);
           --button-disabled-secondaryContentColor: #a19f9d;
           --button-dividerColor: #c8c6c4;
           --button-dividerThickness: var(--button-borderWidth);

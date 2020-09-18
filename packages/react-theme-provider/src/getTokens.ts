@@ -228,7 +228,6 @@ export function getTokens(theme: Theme): Tokens {
           contentColor: semanticColors.buttonTextDisabled,
           secondaryContentColor: semanticColors.buttonTextDisabled,
           iconColor: 'var(--button-disabled-contentColor)',
-          dividerColor: '#c8c6c4',
         },
       },
     },
