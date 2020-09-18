@@ -1,14 +1,14 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.47.9",
+  "version": "0.47.10-experimental.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.47.9",
-    "@fluentui/state": "^0.47.9",
-    "@fluentui/styles": "^0.47.9",
+    "@fluentui/accessibility": "^0.47.10-experimental.0",
+    "@fluentui/state": "^0.47.10-experimental.0",
+    "@fluentui/styles": "^0.47.10-experimental.0",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"

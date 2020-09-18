@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/perf-test",
   "description": "Perf tests for fluentui.",
-  "version": "0.47.9",
+  "version": "0.47.10-experimental.0",
   "private": true,
   "dependencies": {
     "office-ui-fabric-react": "^7.105.1"
@@ -14,7 +14,7 @@
     "perf:test:base": "just-scripts perf-test --base"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.47.9",
+    "@fluentui/digest": "^0.47.10-experimental.0",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",

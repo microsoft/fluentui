@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/react-telemetry",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.47.9",
+  "version": "0.47.10-experimental.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/react-bindings": "^0.47.9",
-    "@fluentui/react-component-event-listener": "^0.47.9",
+    "@fluentui/react-bindings": "^0.47.10-experimental.0",
+    "@fluentui/react-component-event-listener": "^0.47.10-experimental.0",
     "lodash": "^4.17.15",
     "react-fela": "^10.6.1",
     "react-table": "^7.1.0"
