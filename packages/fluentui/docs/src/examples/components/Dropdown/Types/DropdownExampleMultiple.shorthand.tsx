@@ -20,7 +20,7 @@ const DropdownExampleMultiple = () => (
     placeholder="Select your heroes"
     getA11ySelectionMessage={getA11ySelectionMessage}
     noResultsMessage="We couldn't find any matches."
-    a11ySelectedItemsMessage="Press Delete or Backspace to remove the user from selection"
+    a11ySelectedItemsMessage="Press Delete or Backspace to remove"
   />
 );
 
