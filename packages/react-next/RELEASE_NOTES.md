@@ -165,7 +165,7 @@ TODO: Diff of OUFR vs date-time DatePicker
 
 ### Slider
 
-TODO: document any API or functionality changes
+- Deprecated prop `ariaLabel` (use `aria-label`)
 
 ### SpinButton
 
