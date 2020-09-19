@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Removing unused eslint-disable rules from Picker files.",
-  "packageName": "@fluentui/react-next",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-17T01:20:55.364Z"
-}
