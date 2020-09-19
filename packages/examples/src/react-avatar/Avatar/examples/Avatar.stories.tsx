@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, CustomAvatarSize } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import {
   GroupIcon,
   CatIcon,
