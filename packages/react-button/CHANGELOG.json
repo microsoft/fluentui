@@ -2,6 +2,51 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 15:52:49 GMT",
+      "tag": "@fluentui/react-button_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix button styles to match v7 buttons.",
+            "author": "xgao@microsoft.com",
+            "commit": "70025f8282c9ba918580a1679ef3ae2ee217ecc9",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-button_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-button_v0.12.6",
+      "version": "0.12.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Sep 2020 12:26:06 GMT",
       "tag": "@fluentui/react-button_v0.12.5",
       "version": "0.12.5",

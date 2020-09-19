@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/theme_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Aug 2020 12:35:38 GMT",
       "tag": "@fluentui/theme_v0.1.2",
       "version": "0.1.2",

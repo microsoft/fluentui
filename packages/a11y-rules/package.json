@@ -1,0 +1,27 @@
+{
+  "name": "@fluentui/a11y-rules",
+  "version": "0.1.0",
+  "description": "Fluent UI rules for a11y testing a generating doc for behaviors files.",
+  "private": true,
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@uifabric/build": "^7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

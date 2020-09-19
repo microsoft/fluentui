@@ -18,12 +18,12 @@ export const useToggleButtonClasses = makeClasses({
   },
 
   _primary: {
-    '--button-checked-background': 'var(--accent-checked-background)',
-    '--button-checked-contentColor': 'var(--accent-checked-contentColor)',
-    '--button-checkedHovered-background': 'var(--accent-checkedHovered-background)',
-    '--button-checkedHovered-contentColor': 'var(--accent-checkedHovered-contentColor)',
-    '--button-checkedPressed-background': 'var(--accent-checkedPressed-background)',
-    '--button-checkedPressed-contentColor': 'var(--accent-checkedPressed-contentColor)',
+    '--button-checked-background': 'var(--color-brand-checked-background)',
+    '--button-checked-contentColor': 'var(--color-brand-checked-contentColor)',
+    '--button-checkedHovered-background': 'var(--color-brand-checkedHovered-background)',
+    '--button-checkedHovered-contentColor': 'var(--color-brand-checkedHovered-contentColor)',
+    '--button-checkedPressed-background': 'var(--color-brand-checkedPressed-background)',
+    '--button-checkedPressed-contentColor': 'var(--color-brand-checkedPressed-contentColor)',
   },
 
   _ghost: {

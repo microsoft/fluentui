@@ -94,7 +94,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         ...fonts.small,
         lineHeight: '16px',
         padding: '8px',
-      }
+      },
     ],
     hoverCardRoot: {
       padding: '8px',
