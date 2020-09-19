@@ -40,7 +40,7 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@fluentui/examples": "^0.3.17",
+    "@fluentui/examples": "^0.3.18",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.9",
     "@uifabric/example-app-base": "^7.15.13",

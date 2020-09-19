@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
@@ -15,57 +14,55 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/areachart',
         },
         {
-          component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
+          component: require<any>('../LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
           name: 'LineChart',
           url: '#/examples/linechart',
         },
         {
-          component: require<any>('../components/VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
+          component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
           key: 'VerticalBarChart',
           name: 'VerticalBarChart',
           url: '#/examples/verticalbarchart',
         },
         {
-          component: require<any>('../components/VerticalStackedBarChart/VerticalStackedBarChartPage')
-            .VerticalBarChartPage,
+          component: require<any>('../VerticalStackedBarChart/VerticalStackedBarChartPage').VerticalBarChartPage,
           key: 'VerticalStackedBarChart',
           name: 'VerticalStackedBarChart',
           url: '#/examples/VerticalStackedBarChart',
         },
         {
-          component: require<any>('../components/HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
+          component: require<any>('../HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
           url: '#/examples/horizontalbarchart',
         },
         {
-          component: require<any>('../components/PieChart/PieChartPage').PieChartPage,
+          component: require<any>('../PieChart/PieChartPage').PieChartPage,
           key: 'PieChart',
           name: 'PieChart',
           url: '#/examples/piechart',
         },
         {
-          component: require<any>('../components/DonutChart/DonutChartPage').DonutChartPage,
+          component: require<any>('../DonutChart/DonutChartPage').DonutChartPage,
           key: 'DonutChart',
           name: 'DonutChart',
           url: '#/examples/Donutchart',
         },
         {
-          component: require<any>('../components/Legends/LegendsPage').LegendsPage,
+          component: require<any>('../Legends/LegendsPage').LegendsPage,
           key: 'Legends',
           name: 'Legends',
           url: '#/examples/Legends',
         },
         {
-          component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
+          component: require<any>('../StackedBarChart/StackedBarChartPage').StackedBarChartPage,
           key: 'StackedBarChart',
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart',
         },
         {
-          component: require<any>('../components/GroupedVerticalBarChart/GroupedVerticalBarChartPage')
-            .GroupedVerticalBarChart,
+          component: require<any>('../GroupedVerticalBarChart/GroupedVerticalBarChartPage').GroupedVerticalBarChart,
           key: 'GroupedVerticalBarChart',
           name: 'GroupedVerticalBarChart',
           url: '#/examples/GroupedVerticalBarChart',

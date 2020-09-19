@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IFacepilePersona } from 'office-ui-fabric-react/lib/Facepile';
 import { PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { TestImages } from '@uifabric/example-data';
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */

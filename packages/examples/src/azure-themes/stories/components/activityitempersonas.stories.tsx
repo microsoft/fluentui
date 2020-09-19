@@ -20,6 +20,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -41,6 +42,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -51,6 +53,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={3}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -61,6 +64,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={5}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A document was clicked.');
           }}
         >
@@ -77,6 +81,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -87,6 +92,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={3}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -108,6 +114,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -118,6 +125,7 @@ export const ActivityItemPersonaExample: React.FunctionComponent = () => {
           key={3}
           className={classNames.nameText}
           onClick={() => {
+            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >

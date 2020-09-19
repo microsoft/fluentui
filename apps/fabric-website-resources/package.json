@@ -36,7 +36,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/examples": "^0.3.14",
+    "@fluentui/examples": "^0.3.18",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.9",
     "@uifabric/azure-themes": "^7.5.13",
