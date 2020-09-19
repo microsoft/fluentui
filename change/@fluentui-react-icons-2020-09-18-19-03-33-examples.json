@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Moving examples to @fluentui/examples package.",
+  "comment": "Adjusting storybook config so that it works with new changes.",
   "packageName": "@fluentui/react-icons",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
