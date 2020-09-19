@@ -114,6 +114,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     selected,
     selectable,
     selectableParent,
+    expanded,
     indeterminate,
     showIndicator,
   } = props;
@@ -193,7 +194,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     >
       {childrenExist(children) ? children : content}
 
-      {selectable && showIndicator && selectIndicator}
+      {((selectable && showIndicator) || (selectableParent && expanded)) && selectIndicator}
     </ElementType>
   );
   setEnd();
