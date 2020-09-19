@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { DefaultPalette } from 'office-ui-fabric-react';
-import { Flex } from '../Flex';
-import { FlexItem } from '../../FlexItem/FlexItem';
-import { FlexTokens } from '../Flex.types';
+import { Flex, FlexItem, FlexTokens } from '@fluentui/react-flex';
 
 // Styles definition
 const flexStyle = {

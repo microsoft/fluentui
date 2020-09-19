@@ -46,6 +46,7 @@
     "@fluentui/react-avatar": "^0.5.0",
     "@fluentui/react-button": "^0.13.3",
     "@fluentui/react-checkbox": "^0.3.4",
+    "@fluentui/react-flex": "^0.1.0",
     "@fluentui/react-focus": "^7.16.5",
     "@fluentui/react-icons": "^0.3.4",
     "@fluentui/react-image": "^0.6.0",
