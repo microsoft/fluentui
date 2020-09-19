@@ -18,29 +18,29 @@ import {
   AzureCustomizationsDark,
   AzureCustomizationsHighContrastLight,
   AzureCustomizationsHighContrastDark,
-} from '../../index';
-import { ButtonCommandBarExample } from '../components/commandBarButton';
-import { ButtonSplitExample } from '../components/splitButton';
-import { ButtonIconExample } from '../components/iconButton';
-import { ButtonIconWithTooltipExample } from '../components/iconTooltip';
-import { ButtonContextualMenuExample } from '../components/contextualMenu';
-import { ButtonActionExample } from '../components/actionButton';
-import { ButtonToggleExample } from '../components/buttonToggle';
-import { CalloutBasicExample } from '../components/callout';
-import { ActivityItemBasicExample } from '../components/activityitem';
-import { ChoiceGroupBasicExample } from '../components/choicegroup';
-import { ToggleBasicExample } from '../components/toggle';
-import { ColorPickerBasicExample } from '../components/colorpicker';
-import { ComboBoxBasicExample } from '../components/comboBox';
-import { ContextualMenuDefaultExample } from '../components/ContextMenu';
-import { DropdownBasicExample } from '../components/dropdown';
-import { CommandBarBasicExample } from '../components/commandBar';
-import { TagPickerBasicExample } from '../components/tags';
-import { DetailsListCompactExample } from '../components/detailsList';
-import { DatePickerBoundedExample } from '../components/dateBoundary';
-import { PivotBasicExample } from '../components/Pivots';
-import { TeachingBubbleBasicExample } from '../components/TeachingBubble';
-import { MessageBarBasicExample } from '../components/messageBar';
+} from '@uifabric/azure-themes';
+import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
+import { ButtonSplitExample } from '../components/splitButton.stories';
+import { ButtonIconExample } from '../components/iconButton.stories';
+import { ButtonIconWithTooltipExample } from '../components/iconTooltip.stories';
+import { ButtonContextualMenuExample } from '../components/contextualMenu.stories';
+import { ButtonActionExample } from '../components/actionButton.stories';
+import { ButtonToggleExample } from '../components/buttonToggle.stories';
+import { CalloutBasicExample } from '../components/callout.stories';
+import { ActivityItemBasicExample } from '../components/activityitem.stories';
+import { ChoiceGroupBasicExample } from '../components/choicegroup.stories';
+import { ToggleBasicExample } from '../components/toggle.stories';
+import { ColorPickerBasicExample } from '../components/colorpicker.stories';
+import { ComboBoxBasicExample } from '../components/comboBox.stories';
+import { ContextualMenuDefaultExample } from '../components/ContextMenu.stories';
+import { DropdownBasicExample } from '../components/dropdown.stories';
+import { CommandBarBasicExample } from '../components/commandBar.stories';
+import { TagPickerBasicExample } from '../components/tags.stories';
+import { DetailsListCompactExample } from '../components/detailsList.stories';
+import { DatePickerBoundedExample } from '../components/dateBoundary.stories';
+import { PivotBasicExample } from '../components/Pivots.stories';
+import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
+import { MessageBarBasicExample } from '../components/messageBar.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
