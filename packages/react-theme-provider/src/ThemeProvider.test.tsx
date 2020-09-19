@@ -6,27 +6,38 @@ import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from '@fluentui/theme';
 import { createDefaultTheme } from './createDefaultTheme';
+import { Stylesheet } from '@uifabric/merge-styles';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
   tokens: {
-    body: {
-      background: 'white',
-      contentColor: 'black',
+    color: {
+      body: {
+        background: 'white',
+        contentColor: 'black',
+      },
     },
   },
 });
 
 const darkTheme = mergeThemes({
   tokens: {
-    body: {
-      background: 'black',
-      contentColor: 'white',
+    color: {
+      body: {
+        background: 'black',
+        contentColor: 'white',
+      },
     },
   },
 });
 
 describe('ThemeProvider', () => {
+  const stylesheet: Stylesheet = Stylesheet.getInstance();
+
+  beforeEach(() => {
+    stylesheet.reset();
+  });
+
   it('renders a div', () => {
     const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
     const tree = component.toJSON();
@@ -81,5 +92,40 @@ describe('ThemeProvider', () => {
 
     const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
     expect(resolvedTheme).toEqual(expectedTheme);
+  });
+
+  it('can apply body theme to none', () => {
+    expect(document.body.className).toBe('');
+    const component = renderer.create(
+      <ThemeProvider className="foo" theme={darkTheme} applyTo="none">
+        app
+      </ThemeProvider>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    expect(document.body.className).toBe('');
+  });
+
+  it('can apply body theme to body', () => {
+    expect(document.body.className).toBe('');
+    const testClass = 'foo';
+    const TestComponent = (
+      <ThemeProvider className={testClass} theme={darkTheme} applyTo="body">
+        app
+      </ThemeProvider>
+    );
+
+    const wrapper = mount(TestComponent);
+
+    expect(document.body).toMatchSnapshot();
+
+    wrapper.unmount();
+
+    expect(document.body.className).toBe('');
+
+    const component = renderer.create(TestComponent);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
