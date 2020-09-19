@@ -5,8 +5,6 @@ const webpack = resources.webpack;
 const PACKAGE_NAME = require('./package.json').name;
 
 module.exports = resources.createServeConfig({
-  entry: './src/demo/index.tsx',
-
   output: {
     filename: 'demo-app.js',
   },
