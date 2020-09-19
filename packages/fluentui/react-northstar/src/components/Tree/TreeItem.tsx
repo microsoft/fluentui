@@ -140,6 +140,8 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const hasSubtreeItem = hasSubtree(props);
 
+  const [showIndicator, setShowIndicator] = React.useState(false);
+
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -200,6 +202,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     }),
     rtl: context.rtl,
   });
+
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
     className: treeItemClassName,
     mapPropsToStyles: () => ({
@@ -222,10 +225,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onFocusFirstChild', e, props);
     onFocusFirstChild(props.id);
   };
+
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
+    setShowIndicator(true);
     onFocusParent(props.parent);
   };
+
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
     onSiblingsExpand(e, props);
@@ -237,6 +243,26 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     },
   });
 
+  const onMouseEnter = e => {
+    _.invoke(props, 'onMouseEnter', e, props);
+    setShowIndicator(true);
+  };
+
+  const onFocus = e => {
+    _.invoke(props, 'onFocus', e, props);
+    setShowIndicator(true);
+  };
+
+  const onMouseOut = e => {
+    _.invoke(props, 'onMouseOut', e, props);
+    setShowIndicator(false);
+  };
+
+  const onBlur = e => {
+    _.invoke(props, 'onBlur', e, props);
+    setShowIndicator(false);
+  };
+
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
   const element = (
@@ -245,6 +271,10 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         className: classes.root,
         id,
         selected,
+        onMouseEnter,
+        onMouseOut,
+        onFocus,
+        onBlur,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -266,6 +296,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
                 ...(selectableParent && { indeterminate }),
                 selectableParent,
                 selectionIndicator,
+                showIndicator,
               }),
             render: renderItemTitle,
             overrideProps: handleTitleOverrides,
@@ -305,9 +336,11 @@ TreeItem.propTypes = {
   selectableParent: PropTypes.bool,
   indeterminate: PropTypes.bool,
 };
+
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
 };
+
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
 
 TreeItem.create = createShorthandFactory({

@@ -74,6 +74,8 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** For selectable parents define if all nested children are checked */
   indeterminate?: boolean;
+
+  showIndicator?: boolean;
 }
 
 export type TreeTitleStylesProps = Pick<
@@ -112,8 +114,8 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     selected,
     selectable,
     selectableParent,
-    expanded,
     indeterminate,
+    showIndicator,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -169,10 +171,9 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     defaultProps: () => ({
       as: 'span',
       selected,
-      ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
+        ...(((selectable && !hasSubtree) || selectableParent) &&
           _.isEmpty(selectionIndicator) && {
             styles: resolvedStyles.selectionIndicator,
           }),
@@ -192,7 +193,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     >
       {childrenExist(children) ? children : content}
 
-      {selectable && selectIndicator}
+      {selectable && showIndicator && selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -215,6 +216,7 @@ TreeTitle.propTypes = {
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,
+  showIndicator: PropTypes.bool,
 };
 TreeTitle.defaultProps = {
   as: 'a',
