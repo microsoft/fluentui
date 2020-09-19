@@ -22,6 +22,7 @@ import {
 import { Accessibility } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
+import { BreadcrumbLink } from './BreadcrumbLink';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
@@ -94,6 +95,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
   Item: typeof BreadcrumbItem;
   Divider: typeof BreadcrumbDivider;
+  Link: typeof BreadcrumbLink;
 };
 
 Breadcrumb.defaultProps = {
@@ -104,6 +106,7 @@ Breadcrumb.propTypes = commonPropTypes.createCommon();
 
 Breadcrumb.Item = BreadcrumbItem;
 Breadcrumb.Divider = BreadcrumbDivider;
+Breadcrumb.Link = BreadcrumbLink;
 
 Breadcrumb.create = createShorthandFactory({
   Component: Breadcrumb,
