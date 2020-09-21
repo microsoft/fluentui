@@ -19,7 +19,7 @@ import {
   createShimmerGroups,
   onRenderTilesListExampleRoot,
   onRenderTilesListExampleRow,
-} from './ExampleHelpers';
+} from '@fluentui/examples/lib/experiments/TilesList/examples/ExampleHelpers';
 import { ShimmerElementType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;

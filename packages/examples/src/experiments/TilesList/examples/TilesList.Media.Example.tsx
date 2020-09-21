@@ -18,7 +18,7 @@ import {
   getExampleTilesListCells,
   onRenderTilesListExampleRoot,
   onRenderTilesListExampleRow,
-} from './ExampleHelpers';
+} from '@fluentui/examples/lib/experiments/TilesList/examples/ExampleHelpers';
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
 import { lorem } from '@uifabric/example-data';
 import { SignalField, SharedSignal, CommentsSignal } from '@uifabric/experiments/lib/Signals';
