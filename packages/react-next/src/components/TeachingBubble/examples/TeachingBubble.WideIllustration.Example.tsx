@@ -22,7 +22,7 @@ export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = ()
     }),
     [toggleTeachingBubbleVisible],
   );
-
+  //
   return (
     <div>
       <DefaultButton
