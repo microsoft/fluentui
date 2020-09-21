@@ -21,13 +21,16 @@ export const useAutoControlled = <Value>(
 
   const state = isUndefined(value) ? _state : value;
 
-  const setState = (newState: Value) => {
-    if (typeof newState === 'function') {
-      _setState(newState(state));
-    } else {
-      _setState(newState);
-    }
-  };
+  const setState = React.useCallback(
+    (newState: Value) => {
+      if (typeof newState === 'function') {
+        _setState(newState(state));
+      } else {
+        _setState(newState);
+      }
+    },
+    [state],
+  );
 
   return [state, setState];
 };
