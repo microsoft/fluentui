@@ -462,6 +462,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
   },
 ];
 
+/* eslint-disable deprecation/deprecation */
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const mru: IExtendedPersonaProps[] = people.slice(0, 5);
 
@@ -470,3 +471,4 @@ export const groupOne: IExtendedPersonaProps[] = people.slice(6, 10);
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const groupTwo: IExtendedPersonaProps[] = people.slice(11, 16);
+/* eslint-enable deprecation/deprecation */
