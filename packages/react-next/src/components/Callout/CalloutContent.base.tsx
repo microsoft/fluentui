@@ -362,7 +362,7 @@ function useDismissHandlers(
           on(targetWindow, 'resize', dismissOnResize, true),
           on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
           on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
-          on(this._targetWindow, 'blur', dismissOnTargetWindowBlur, true),
+          on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
         ];
 
         return () => {

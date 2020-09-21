@@ -55,7 +55,7 @@ function defaultFocusRestorer(options: {
 }) {
   const { originalElement, containsFocus } = options;
 
-  if (originalElement && containsFocus && originalElement !== window) {
+  if (originalElement && containsFocus && originalElement !== getWindow()) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
