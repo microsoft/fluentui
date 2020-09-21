@@ -4,7 +4,6 @@ import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
-
 import * as MUI from '@material-ui/core';
 
 import { JSONTreeElement } from './components/types';

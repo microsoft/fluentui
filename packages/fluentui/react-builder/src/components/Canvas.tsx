@@ -2,7 +2,8 @@ import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { create } from 'jss';
-import { jssPreset, createMuiTheme, ThemeProvider, StylesProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core';
+import { jssPreset, ThemeProvider, StylesProvider } from '@material-ui/styles';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';

@@ -5,22 +5,22 @@
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
+    "@fluentui/code-sandbox": "^0.51.0",
     "@fluentui/docs-components": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/styles": "^4.10.0",
-    "@fluentui/code-sandbox": "^0.51.0",
     "immer": "^7.0.5",
+    "jss": "^10.4.0",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
-    "use-immer": "^0.4.1",
-    "jss": "^0.0"
+    "use-immer": "^0.4.1"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
