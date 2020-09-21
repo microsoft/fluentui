@@ -177,6 +177,13 @@ task('serve:docs:hot', async () => {
   const compiler = webpack(webpackConfig);
 
   server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {
+    app.get('/public/*', (req, res) => {
+      res.status(404);
+      res.send(
+        'Assets from "/public" should be served from CDN, please check "packages/fluentui/docs/README.md" to check how you can upload images.',
+      );
+    });
+
     app.use(
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
