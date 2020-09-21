@@ -2,9 +2,9 @@ import { Customizations, getWindow } from '@uifabric/utilities';
 import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
-import { createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme/lib/createTheme';
 
-export { createTheme } from '@fluentui/theme';
+export { createTheme } from '@fluentui/theme/lib/createTheme';
 
 let _theme: ITheme = createTheme({});
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];

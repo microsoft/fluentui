@@ -7,7 +7,7 @@
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { createFontStyles } from '@fluentui/theme/lib/fonts';
-import { createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme/lib/createTheme';
 import { DefaultEffects } from '@fluentui/theme/lib/effects/DefaultEffects';
 import { DefaultFontStyles } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
 import { DefaultPalette } from '@fluentui/theme/lib/colors/DefaultPalette';
