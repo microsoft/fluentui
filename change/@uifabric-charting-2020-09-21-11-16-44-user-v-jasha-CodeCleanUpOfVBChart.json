@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Vertical bar chart code re factor.",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-09-21T05:46:44.027Z"
+}
