@@ -6,7 +6,12 @@ const CardExample = () => (
   <Card fluid aria-roledescription="card with avatar, image and action buttons">
     <Card.Header>
       <Flex gap="gap.small">
-        <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />
+        <Avatar
+          image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+          label="Copy bandwidth"
+          name="Evie yundt"
+          status="unknown"
+        />
         <Flex column>
           <Text content="Fluid card" weight="bold" />
           <Text content="Secondary line" size="small" />

@@ -6,7 +6,10 @@ export type LogoProps = ImageProps & {
 };
 
 const Logo: React.SFC<LogoProps> = ({ flavor, ...props }) => (
-  <Image {...props} src={`public/images/fluent-ui-logo${flavor ? `-${flavor}` : ''}.png`} />
+  <Image
+    {...props}
+    src={`https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo${flavor ? `-${flavor}` : ''}.png`}
+  />
 );
 
 export default Logo;
