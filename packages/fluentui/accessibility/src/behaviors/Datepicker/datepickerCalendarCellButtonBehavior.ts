@@ -6,7 +6,7 @@ import { Accessibility } from '../../types';
  * The aria roles need to be explicitly added so that VPC mode is turned off when navigating the grid.
  * Thus the keyboard navigation works properly.
  * @specification
- * Adds attribute 'aria-selected' based on the property 'selected' to 'button' slot.
+ * Adds attribute 'aria-selected' based on the property 'selected'.
  * Adds role='gridcell'.
  */
 export const datepickerCalendarCellButtonBehavior: Accessibility<DatepickerCalendarCellButtonBehaviorProps> = props => ({
