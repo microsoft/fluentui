@@ -386,11 +386,11 @@ export default () => (
     <Header as="h3" content="Useful examples of labelling" />
     <Header as="h4" content="Aria-labelledby refers to itself " />
     <p>
-      There are cases, when you need to add names of other elements in the accessible name of an element. In the example
-      below, the button has accessible name composed of its own name (delete) and header name (Active members). Solution
-      is to refer to the element itself by its {code('id')} in the {code('aria-labelledby')} attribute. Screen reader
-      computes the accessible name in the order which is provided in {code('aria-labelledby')}. The strategy was taken
-      from the
+      There are cases, when you need to add names of other elements in the accessible name of an current element. In the
+      example below, the button has accessible name composed of its own name (delete) and header name (Active members).
+      Solution is to refer to the element itself by its {code('id')} in the {code('aria-labelledby')} attribute. Screen
+      reader computes the accessible name in the order which is provided in {code('aria-labelledby')}. The strategy was
+      taken from the
       {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/#terminology')} page.
     </p>
     <CodeSnippet
