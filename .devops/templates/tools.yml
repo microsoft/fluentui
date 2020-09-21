@@ -1,7 +1,9 @@
-variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
-
 # Install versions of Node and Yarn required by build pipelines.
+
+variables:
+  - name: YARN_CACHE_FOLDER
+    value: $(Pipeline.Workspace)/.yarn
+
 steps:
   - task: NodeTool@0
     inputs:
