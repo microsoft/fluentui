@@ -18,19 +18,17 @@ export const useAutoControlled = <Value>(
 ): [Value, React.Dispatch<React.SetStateAction<Value>>] => {
   const { defaultValue, initialValue = undefined, value } = options;
   const [_state, _setState] = React.useState<Value>(isUndefined(defaultValue) ? (initialValue as Value) : defaultValue);
-
   const state = isUndefined(value) ? _state : value;
+  const stateRef = React.useRef(state);
 
-  const setState = React.useCallback(
-    (newState: Value) => {
-      if (typeof newState === 'function') {
-        _setState(newState(state));
-      } else {
-        _setState(newState);
-      }
-    },
-    [state],
-  );
+  const setState = React.useCallback((newState: Value) => {
+    if (typeof newState === 'function') {
+      stateRef.current = newState(stateRef.current);
+    } else {
+      stateRef.current = newState;
+    }
+    _setState(stateRef.current);
+  }, []);
 
   return [state, setState];
 };
