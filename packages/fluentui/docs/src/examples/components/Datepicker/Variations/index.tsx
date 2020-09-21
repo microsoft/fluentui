@@ -13,7 +13,7 @@ const Variations = () => (
           <code>Button</code>. The way to achieve this is through <code>buttonOnly</code> prop.
         </>
       }
-      examplePath="components/Datepicker/Variants/DatepickerExampleStandaloneCalendarButton"
+      examplePath="components/Datepicker/Variations/DatepickerExampleStandaloneCalendarButton"
     />
     <ComponentExample
       title="Standalone DatepickerCalendar with Input"
@@ -23,7 +23,7 @@ const Variations = () => (
           this is through <code>inputOnly</code> prop.
         </>
       }
-      examplePath="components/Datepicker/Variants/DatepickerExampleStandaloneCalendarInput"
+      examplePath="components/Datepicker/Variations/DatepickerExampleStandaloneCalendarInput"
     />
   </ExampleSection>
 );

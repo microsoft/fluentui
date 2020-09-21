@@ -62,7 +62,9 @@ describe('Portal', () => {
       const wrapper = mountWithProvider(<Portal content={<p id="inner" />} defaultOpen />);
       testPortalInnerIsOpen(wrapper, true);
 
-      domEvent.click('#inner');
+      act(() => {
+        domEvent.click('#inner');
+      });
       wrapper.update();
       testPortalInnerIsOpen(wrapper, true);
     });
