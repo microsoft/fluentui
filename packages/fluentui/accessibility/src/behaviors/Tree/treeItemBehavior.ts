@@ -36,7 +36,7 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
           'aria-posinset': props.index,
           'aria-level': props.level,
           ...(props.selectable && {
-            'aria-checked': props.indeterminate ? ('mixed' as const) : props.selected,
+            'aria-checked': props.indeterminate ? ('mixed' as const) : !!props.selected,
           }),
         }),
       },
