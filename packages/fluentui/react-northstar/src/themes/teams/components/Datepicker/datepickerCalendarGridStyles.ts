@@ -6,7 +6,7 @@ export const datepickerCalendarGridStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarGridStylesProps,
   DatepickerVariables
 > = {
-  root: ({ variables: v }): ICSSInJSStyle => {
-    return { tableLayout: 'fixed', width: v.calendarGridWidth };
+  root: (): ICSSInJSStyle => {
+    return { tableLayout: 'fixed' };
   },
 };
