@@ -69,7 +69,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/persona',
         },
         {
-          component: require<any>('../signals/SignalsPage').SignalsPage,
+          component: require<any>('../Signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals',
@@ -87,7 +87,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/slider',
         },
         {
-          component: require<any>('../slots/SlotsPage').SlotsPage,
+          component: require<any>('../Slots/SlotsPage').SlotsPage,
           key: 'Slots',
           name: 'Slots',
           url: '#/examples/slots',
