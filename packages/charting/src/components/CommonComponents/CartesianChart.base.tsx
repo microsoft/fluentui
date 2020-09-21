@@ -203,9 +203,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {children}
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {this.props.legendBars}
-        </div>
+        {!this.props.hideLegend && (
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+            {this.props.legendBars}
+          </div>
+        )}
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
           <Callout {...calloutProps}>
             {/** Given custom callout, then it will render */}
@@ -336,14 +338,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
-
     this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
+      let legendContainerHeight;
+      if (this.props.hideLegend) {
+        legendContainerHeight = 32;
+      } else {
+        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        legendContainerHeight =
+          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+          parseFloat(legendContainerComputedStyles.marginTop || '0') +
+          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+      }
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
       const currentContainerWidth = container.getBoundingClientRect().width;
       const currentContainerHeight =

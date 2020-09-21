@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
+import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '@uifabric/charting';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { getStyles } from './VerticalBarChart.styles';
 
