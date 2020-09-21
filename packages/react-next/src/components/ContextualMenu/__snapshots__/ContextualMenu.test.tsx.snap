@@ -146,9 +146,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
               font-weight: 400;
               visibility: visible;
             }
-            & button {
-              font-family: inherit;
-            }
             & input {
               font-family: inherit;
             }
