@@ -47,7 +47,7 @@
     "@uifabric/theme-samples": "^7.1.17",
     "@uifabric/tsx-editor": "^0.13.13",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.138.0",
+    "office-ui-fabric-react": "^7.139.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

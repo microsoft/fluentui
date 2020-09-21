@@ -1384,6 +1384,21 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/react-avatar@^0.5.0":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-avatar/-/react-avatar-0.5.5.tgz#4ff64aa3871ee9946338b55e022e483f7546712c"
+  integrity sha512-8e//ouURsaS8uKiCcTw9bbTDRc+Tw8nSZfk3D+v3Qnp+2hY9iJjDorGG7J8Afqcg3Aopc3e+DwKq6syRYKpZ0Q==
+  dependencies:
+    "@fluentui/accessibility" "^0.51.0"
+    "@fluentui/react-compose" "^0.19.3"
+    "@fluentui/react-icons" "^0.3.4"
+    "@fluentui/react-stylesheets" "^0.2.2"
+    "@fluentui/react-theme-provider" "^0.13.3"
+    "@uifabric/react-hooks" "^7.13.4"
+    "@uifabric/set-version" "^7.0.23"
+    "@uifabric/utilities" "^7.32.2"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

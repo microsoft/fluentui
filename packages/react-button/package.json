@@ -57,7 +57,7 @@
     "@uifabric/react-hooks": "^7.13.4",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.2",
-    "office-ui-fabric-react": "^7.138.0",
+    "office-ui-fabric-react": ">=7.139.0 <8.0.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
