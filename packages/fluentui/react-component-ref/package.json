@@ -16,7 +16,9 @@
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
