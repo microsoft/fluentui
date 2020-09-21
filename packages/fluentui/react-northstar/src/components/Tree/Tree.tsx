@@ -209,6 +209,9 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
+    mapPropsToBehavior: () => ({
+      selectable,
+    }),
   });
 
   const { classes } = useStyles<TreeStylesProps>(Tree.displayName, {

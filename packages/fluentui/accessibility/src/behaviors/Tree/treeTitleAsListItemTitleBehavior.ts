@@ -5,7 +5,10 @@ import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
  * @description
- * Adds role 'treeitem' if the title is a leaf node inside the tree.
+ * For title that is a non-leaf item:
+ * - Adds role 'option' when it is selectable
+ * - Adds role 'listitem' when it is none-selectable
+ * Adds role 'none' to a leaf item.
  */
 export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
@@ -14,7 +17,7 @@ export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorPr
     attributes: {
       root: {
         ...(!props.hasSubtree && {
-          role: 'listitem',
+          role: props.selectable ? 'option' : 'listitem',
         }),
       },
     },

@@ -7,6 +7,11 @@ describe('TreeTitleBehavior', () => {
       expect(expectedResult.attributes.root.role).toEqual('listitem');
     });
 
+    test(`is added with 'option' value to a title with hasSubtree prop false and selectable true`, () => {
+      const expectedResult = treeTitleAsListItemTitleBehavior({ hasSubtree: false, selectable: true });
+      expect(expectedResult.attributes.root.role).toEqual('option');
+    });
+
     test(`is not added to a title with hasSubtree prop true`, () => {
       const expectedResult = treeTitleAsListItemTitleBehavior({ hasSubtree: true });
       expect(expectedResult.attributes.root.role).toBeUndefined();
