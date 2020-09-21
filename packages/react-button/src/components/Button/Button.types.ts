@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet, RecursivePartial } from '@fluentui/theme';
+import { ColorTokens, RecursivePartial } from '@fluentui/theme';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -55,6 +55,9 @@ export type ButtonProps = ComponentProps &
     /** A button that inherits its background and has a subtle appearance. */
     inverted?: boolean;
 
+    /** Opt in to a named variant which can be supplied by a theme. */
+    variant?: string;
+
     /** A button can show a loading indicator. */
     loading?: boolean;
 
@@ -88,62 +91,62 @@ export type ButtonProps = ComponentProps &
     /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
     // text?: boolean;
 
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: RecursivePartial<ButtonTokens>;
   };
 
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export type ButtonTokenSet = ColorTokenSet & {
+export type ButtonTokens = ColorTokens & {
   /* sizing */
-  paddingLeft: string;
-  paddingRight: string;
-  paddingTop: string;
-  paddingBottom: string;
-  margin: string;
-  height: string;
-  minWidth: string;
-  maxWidth: string;
-  minHeight: string;
-  contentGap: string;
-  iconSize: string;
-  borderRadius: string;
-  borderTopLeftRadius: string;
-  borderTopRightRadius: string;
-  borderBottomLeftRadius: string;
-  borderBottomRightRadius: string;
-  borderWidth: string;
-  boxShadow: string;
-  width: string;
+  paddingLeft?: string;
+  paddingRight?: string;
+  paddingTop?: string;
+  paddingBottom?: string;
+  margin?: string;
+  height?: string;
+  minWidth?: string;
+  maxWidth?: string;
+  minHeight?: string;
+  contentGap?: string;
+  iconSize?: string;
+  borderRadius?: string;
+  borderTopLeftRadius?: string;
+  borderTopRightRadius?: string;
+  borderBottomLeftRadius?: string;
+  borderBottomRightRadius?: string;
+  borderWidth?: string;
+  boxShadow?: string;
+  width?: string;
 
-  transform: string;
-  transition: string;
+  transform?: string;
+  transition?: string;
 
-  fontFamily: string;
-  fontSize: string;
-  fontWeight: string;
+  fontFamily?: string;
+  fontSize?: string;
+  fontWeight?: string;
 
-  size: {
-    smallest: string;
-    smaller: string;
-    small: string;
-    regular: string;
-    large: string;
-    larger: string;
-    largest: string;
+  size?: {
+    smallest?: string;
+    smaller?: string;
+    small?: string;
+    regular?: string;
+    large?: string;
+    larger?: string;
+    largest?: string;
   };
 
-  pressed: {
-    transform: string;
-    transition: string;
+  pressed?: {
+    transform?: string;
+    transition?: string;
   };
 };
 
 export type ButtonVariants = {
-  base?: RecursivePartial<ButtonTokenSet>;
-  primary?: RecursivePartial<ButtonTokenSet>;
-  iconOnly?: RecursivePartial<ButtonTokenSet>;
-  circular?: RecursivePartial<ButtonTokenSet>;
-  fluid?: RecursivePartial<ButtonTokenSet>;
+  base?: RecursivePartial<ButtonTokens>;
+  primary?: RecursivePartial<ButtonTokens>;
+  iconOnly?: RecursivePartial<ButtonTokens>;
+  circular?: RecursivePartial<ButtonTokens>;
+  fluid?: RecursivePartial<ButtonTokens>;
 };

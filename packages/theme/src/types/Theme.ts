@@ -4,18 +4,18 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 /**
  * A baseline set of color plates.
  */
-export type ColorTokens = Partial<{
-  background: string;
-  contentColor: string;
-  secondaryContentColor: string;
-  linkColor: string;
-  iconColor: string;
-  borderColor: string;
-  dividerColor: string;
-  focusColor: string;
-  focusInnerColor: string;
-  opacity: string;
-}>;
+export type ColorTokenSet = {
+  background?: string;
+  contentColor?: string;
+  secondaryContentColor?: string;
+  linkColor?: string;
+  iconColor?: string;
+  borderColor?: string;
+  dividerColor?: string;
+  focusColor?: string;
+  focusInnerColor?: string;
+  opacity?: string;
+};
 
 /**
  * A set of states for each color plate to use.
@@ -37,16 +37,14 @@ export type ColorTokens = Partial<{
  * compatible with other platforms reusing token names, we have decided to snap
  * to "pressed".
  */
-export type ColorTokenStates = Partial<{
-  hovered: ColorTokens;
-  pressed: ColorTokens;
-  disabled: ColorTokens;
-  checked: ColorTokens;
-  checkedHovered: ColorTokens;
-  checkedPressed: ColorTokens;
-}>;
-
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+  hovered?: ColorTokens;
+  pressed?: ColorTokens;
+  disabled?: ColorTokens;
+  checked?: ColorTokens;
+  checkedHovered?: ColorTokens;
+  checkedPressed?: ColorTokens;
+};
 
 export type FontTokens = Partial<{
   fontFamily: string;

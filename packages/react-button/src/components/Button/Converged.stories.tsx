@@ -5,11 +5,7 @@ import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
-const paletteAccent = 'var(--palette-accent)';
-const paletteSoftest = 'var(--palette-softest)';
-const paletteStrongest = 'var(--palette-strongest)';
-
-const getThemes = (accent: string) => {
+const getThemes = (brand: string) => {
   const lightTheme = mergeThemes({
     tokens: {
       color: {
@@ -19,16 +15,16 @@ const getThemes = (accent: string) => {
         },
 
         brand: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
+          background: brand,
+          contentColor: 'var(--color-body-contentColor)',
 
           hovered: {
-            background: paletteAccent,
-            contentColor: paletteSoftest,
+            background: brand,
+            contentColor: 'var(--color-body-contentColor)',
           },
           pressed: {
-            background: paletteAccent,
-            contentColor: paletteSoftest,
+            background: brand,
+            contentColor: 'var(--color-body-contentColor)',
           },
         },
 
@@ -45,26 +41,22 @@ const getThemes = (accent: string) => {
       color: {
         body: {
           background: '#333',
-          contentColor: paletteStrongest,
+          contentColor: 'white',
         },
 
         button: {
           background: 'transparent',
-          contentColor: paletteStrongest,
 
           hovered: {
             background: '#555',
-            contentColor: paletteStrongest,
           },
         },
 
-        accent: {
-          background: 'blue',
-          contentColor: paletteStrongest,
+        brand: {
+          background: brand,
 
           hovered: {
             background: '#555',
-            contentColor: paletteStrongest,
           },
         },
       },
@@ -96,7 +88,7 @@ export const ThemeExample = () => {
 
   return (
     <Stack gap={16}>
-      <Text variant="xLarge">Accent color</Text>
+      <Text variant="xLarge">brand color</Text>
       <ColorPicker color={color} onChange={onColorChange} />
 
       <ExampleBox title="Light" theme={lightTheme} />

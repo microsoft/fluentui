@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ColorTokenSet } from '@fluentui/theme';
+import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
@@ -26,12 +26,13 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
+    variant?: string;
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
     ghost?: boolean;
     size?: SizeValue;
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: RecursivePartial<ButtonTokens>;
 };
 
 // @public
@@ -44,53 +45,53 @@ export interface ButtonState extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ButtonTokenSet = ColorTokenSet & {
-    paddingLeft: string;
-    paddingRight: string;
-    paddingTop: string;
-    paddingBottom: string;
-    margin: string;
-    height: string;
-    minWidth: string;
-    maxWidth: string;
-    minHeight: string;
-    contentGap: string;
-    iconSize: string;
-    borderRadius: string;
-    borderTopLeftRadius: string;
-    borderTopRightRadius: string;
-    borderBottomLeftRadius: string;
-    borderBottomRightRadius: string;
-    borderWidth: string;
-    boxShadow: string;
-    width: string;
-    transform: string;
-    transition: string;
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    size: {
-        smallest: string;
-        smaller: string;
-        small: string;
-        regular: string;
-        large: string;
-        larger: string;
-        largest: string;
+export type ButtonTokens = ColorTokens & {
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    margin?: string;
+    height?: string;
+    minWidth?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    contentGap?: string;
+    iconSize?: string;
+    borderRadius?: string;
+    borderTopLeftRadius?: string;
+    borderTopRightRadius?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
+    borderWidth?: string;
+    boxShadow?: string;
+    width?: string;
+    transform?: string;
+    transition?: string;
+    fontFamily?: string;
+    fontSize?: string;
+    fontWeight?: string;
+    size?: {
+        smallest?: string;
+        smaller?: string;
+        small?: string;
+        regular?: string;
+        large?: string;
+        larger?: string;
+        largest?: string;
     };
-    pressed: {
-        transform: string;
-        transition: string;
+    pressed?: {
+        transform?: string;
+        transition?: string;
     };
 };
 
 // @public (undocumented)
 export type ButtonVariants = {
-    base?: RecursivePartial<ButtonTokenSet>;
-    primary?: RecursivePartial<ButtonTokenSet>;
-    iconOnly?: RecursivePartial<ButtonTokenSet>;
-    circular?: RecursivePartial<ButtonTokenSet>;
-    fluid?: RecursivePartial<ButtonTokenSet>;
+    base?: RecursivePartial<ButtonTokens>;
+    primary?: RecursivePartial<ButtonTokens>;
+    iconOnly?: RecursivePartial<ButtonTokens>;
+    circular?: RecursivePartial<ButtonTokens>;
+    fluid?: RecursivePartial<ButtonTokens>;
 };
 
 // @public (undocumented)
@@ -163,7 +164,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 }
 
 // @public (undocumented)
-export type MenuButtonTokens = ButtonTokenSet;
+export type MenuButtonTokens = ButtonTokens;
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';

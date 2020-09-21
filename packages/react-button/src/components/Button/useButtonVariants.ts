@@ -80,6 +80,15 @@ export const useButtonVariants = makeVariants<ButtonVariants>('Button', '--butto
       },
     },
 
+    circular: {
+      borderRadius: '50000px',
+    },
+
+    fluid: {
+      width: '100%',
+      maxWidth: '100%',
+    },
+
     iconOnly: {
       minWidth: 'var(--button-height)',
       width: 'var(--button-height, var(--button-minHeight))',

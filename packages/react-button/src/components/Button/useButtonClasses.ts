@@ -137,15 +137,6 @@ export const useButtonClasses = makeClasses<ButtonState>({
     lineHeight: '1',
   },
 
-  _circular: {
-    '--button-borderRadius': '50000px',
-  },
-
-  _fluid: {
-    '--button-width': '100%',
-    '--button-maxWidth': '100%',
-  },
-
   _size_smallest: {
     '--button-height': 'var(--button-size-smallest)',
     '--button-minHeight': 'var(--button-size-smallest)',

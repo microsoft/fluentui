@@ -145,7 +145,7 @@ export interface IButtonProps
   menuProps?: IContextualMenuProps;
 
   /**
-   * Callback that runs after Button's contextualmenu was closed (removed from the DOM)
+   * Callback that runs after Button's contextual menu was closed (removed from the DOM)
    */
   onAfterMenuDismiss?: () => void;
 
