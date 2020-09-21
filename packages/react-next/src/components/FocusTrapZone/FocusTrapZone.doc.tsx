@@ -3,28 +3,27 @@ import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 import { FocusTrapZoneBoxExample } from './examples/FocusTrapZone.Box.Example';
-const FocusTrapZoneBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
+const FocusTrapZoneBoxExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
 
 import { FocusTrapZoneBoxCustomElementExample } from './examples/FocusTrapZone.Box.FocusOnCustomElement.Example';
-const FocusTrapZoneBoxCustomElementExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
+const FocusTrapZoneBoxCustomElementExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
 
 import { FocusTrapZoneBoxClickExample } from './examples/FocusTrapZone.Box.Click.Example';
-const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Click.Example.tsx') as string;
+const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
 import { FocusTrapZoneNestedExample } from './examples/FocusTrapZone.Nested.Example';
-const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
+const FocusTrapZoneNestedExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
 import { FocusTrapZoneFocusZoneExample } from './examples/FocusTrapZone.FocusZone.Example';
-const FocusTrapZoneFocusZoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.FocusZone.Example.tsx') as string;
+const FocusTrapZoneFocusZoneExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.FocusZone.Example.tsx') as string;
 
 import { FocusTrapZoneDialogInPanelExample } from './examples/FocusTrapZone.DialogInPanel.Example';
-const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.DialogInPanel.Example.tsx') as string;
+const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/examples/FocusTrapZone.DialogInPanel.Example.tsx') as string;
 
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
   componentName: 'FocusTrapZone',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/FocusTrapZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/FocusTrapZone',
   examples: [
     {
       title: 'Simple box',
@@ -59,8 +58,10 @@ export const FocusTrapZonePageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
-  bestPractices: '',
+  >('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/react-next/src/components/FocusTrapZone/docs/FocusTrapZoneBestPractices.md'),
   dos: '',
   donts: '',
   isHeaderVisible: true,
