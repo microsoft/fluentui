@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Adding Calendar and DatePicker to react-next compat folder.",
+  "comment": "Updating Coachmark.Basic.Example.tsx to a function component.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-16T20:50:03.559Z"
+  "date": "2020-09-17T21:14:00.714Z"
 }

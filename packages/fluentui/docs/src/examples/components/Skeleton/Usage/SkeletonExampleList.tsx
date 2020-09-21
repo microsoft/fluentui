@@ -23,7 +23,7 @@ const SkeletonExampleList = () => {
                 <Skeleton.Shape round width="32px" height="32px" />
               </Skeleton>
             ) : (
-              <Image src="public/images/avatar/small/matt.jpg" avatar />
+              <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg" avatar />
             )
           }
           header={

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 17 Sep 2020 12:25:04 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Sep 2020 12:22:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.113)
+
+Mon, 21 Sep 2020 12:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.112..@fluentui/react-next_v8.0.0-alpha.113)
+
+### Changes
+
+- Updating Layer to a function component. ([PR #14698](https://github.com/microsoft/fluentui/pull/14698) by czearing@outlook.com)
+
+## [8.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.111)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.109..@fluentui/react-next_v8.0.0-alpha.111)
+
+### Changes
+
+- Fix React StrictMode issues in ComboBox ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
+- Adding Calendar and DatePicker to react-next compat folder. ([PR #15079](https://github.com/microsoft/fluentui/pull/15079) by czearing@outlook.com)
+- Fix implicit merge conflict in ComboBox ([PR #15096](https://github.com/microsoft/fluentui/pull/15096) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.109)
 
