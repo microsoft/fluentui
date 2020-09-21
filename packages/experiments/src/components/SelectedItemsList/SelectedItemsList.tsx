@@ -6,7 +6,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems } = props;
+  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, onItemEdited } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 
   const renderedItems = React.useMemo(() => items, [items]);
@@ -42,10 +42,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
         setItems(newItems);
-        props.onItemEdited?.(newItem, index);
+        onItemEdited?.(newItem, index);
       }
     },
-    [items],
+    [items, onItemEdited],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
