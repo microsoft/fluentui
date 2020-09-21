@@ -4,5 +4,10 @@
     "composite": true,
     "outDir": "dist/dts"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../react-northstar"
+    }
+  ]
 }

@@ -6,6 +6,7 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
+    "@fluentui/react-northstar": "^0.51.0",
     "copy-to-clipboard": "^3.2.0",
     "lodash": "^4.17.15",
     "object.values": "^1.1.0",
