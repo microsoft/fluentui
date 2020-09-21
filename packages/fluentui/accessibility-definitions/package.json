@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/accessibility-definitions",
-  "description": "A set of acc.... ",
+  "description": "Definitions for particular behaviors.",
   "version": "0.51.0",
   "private": true,
   "dependencies": {
