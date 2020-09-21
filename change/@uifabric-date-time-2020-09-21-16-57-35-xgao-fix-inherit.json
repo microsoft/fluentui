@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Set font-family:inherit on button.",
+  "packageName": "@uifabric/date-time",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-21T23:56:54.004Z"
+}
