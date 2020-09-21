@@ -21,7 +21,7 @@ import {
 } from 'office-ui-fabric-react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
 
-import { CollapsibleSectionRecursiveExample } from '@fluentui/examples/lib/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from '../../CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider } from '@uifabric/foundation';
 

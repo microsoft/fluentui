@@ -14,13 +14,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/calendar',
         },
         {
-          component: require('../components/DatePicker/DatePickerPage').DatePickerPage,
+          component: require('../DatePicker/DatePickerPage').DatePickerPage,
           key: 'DatePicker',
           name: 'DatePicker',
           url: '#/examples/datepicker',
         },
         {
-          component: require('../components/WeeklyDayPicker/WeeklyDayPickerPage').WeeklyDayPickerPage,
+          component: require('../WeeklyDayPicker/WeeklyDayPickerPage').WeeklyDayPickerPage,
           key: 'WeeklyDayPicker',
           name: 'WeeklyDayPicker',
           url: '#/examples/weeklydaypicker',

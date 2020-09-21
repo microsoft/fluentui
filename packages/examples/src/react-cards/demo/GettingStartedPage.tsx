@@ -10,7 +10,7 @@ const rootClass = mergeStyles({
 export const GettingStartedPage: React.FunctionComponent = () => {
   return (
     <div className={rootClass}>
-      <Markdown>{require<string>('!raw-loader!../../README.md')}</Markdown>
+      <Markdown>{require<string>('!raw-loader!../../../../react-cards/README.md')}</Markdown>
     </div>
   );
 };

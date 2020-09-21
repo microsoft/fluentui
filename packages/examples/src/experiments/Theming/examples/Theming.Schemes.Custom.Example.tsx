@@ -22,7 +22,7 @@ import {
   Text,
 } from 'office-ui-fabric-react';
 
-import { CollapsibleSectionRecursiveExample } from '@fluentui/examples/lib/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from '../../CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider } from '@uifabric/foundation';
 
