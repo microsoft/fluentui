@@ -90,6 +90,7 @@ import {
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
+  datepickerCalendarGridRowBehavior,
   datepickerCalendarCellBehavior,
   skeletonBehavior,
   breadcrumbItemBehavior,
@@ -188,6 +189,7 @@ testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
+testHelper.addBehavior('datepickerCalendarGridRowBehavior', datepickerCalendarGridRowBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
 testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
 testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);

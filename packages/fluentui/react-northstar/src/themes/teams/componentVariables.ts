@@ -155,3 +155,5 @@ export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './com
 export { datepickerCalendarVariables as DatepickerCalendar } from './components/Datepicker/datepickerCalendarVariables';
 export { datepickerCalendarHeaderVariables as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderVariables';
 export { datepickerCalendarHeaderCellVariables as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellVariables';
+export { datepickerCalendarGridVariables as DatepickerCalendarGrid } from './components/Datepicker/datepickerCalendarGridVariables';
+export { datepickerCalendarGridRowVariables as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowVariables';

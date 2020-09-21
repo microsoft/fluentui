@@ -2,12 +2,12 @@ import { pxToRem } from '../../../../utils';
 import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
 
 export interface DatepickerVariables {
-  calendarGridWidth: string;
-
   calendarCellBorder: string;
   calendarCellHeight: string;
   calendarCellWidth: string;
   calendarCellBorderRadius: string;
+  calendarCellPadding: string;
+  calendarCellMargin: string;
   calendarCellBackgroundColor: string;
   calendarCellColor: string;
   calendarCellQuietColor: string;
@@ -24,6 +24,10 @@ export interface DatepickerVariables {
   calendarHeaderCellFontWeight: number;
   calendarHeaderCellHeight: string;
   calendarHeaderCellWidth: string;
+  calendarHeaderCellPaddingTop: string;
+  calendarHeaderCellPaddingBottom: string;
+  calendarHeaderCellPaddingLeft: string;
+  calendarHeaderCellPaddingRight: string;
 
   calendarHeaderPaddingTop: string;
   calendarHeaderPaddingBottom: string;
@@ -34,12 +38,12 @@ export interface DatepickerVariables {
 }
 
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
-  calendarGridWidth: pxToRem(DAYS_IN_WEEK * 30),
-
   calendarCellBorder: 'none',
-  calendarCellHeight: pxToRem(30),
-  calendarCellWidth: '100%',
+  calendarCellHeight: pxToRem(32),
+  calendarCellWidth: pxToRem(32),
   calendarCellBorderRadius: pxToRem(2),
+  calendarCellPadding: pxToRem(0),
+  calendarCellMargin: pxToRem(0),
   calendarCellBackgroundColor: siteVars.colorScheme.default.background,
   calendarCellColor: 'inherit',
   calendarCellQuietColor: siteVars.colorScheme.brand.foregroundDisabled,
@@ -54,7 +58,11 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
 
   calendarHeaderCellFontWeight: siteVars.fontWeightRegular,
-  calendarHeaderCellHeight: pxToRem(30),
+  calendarHeaderCellHeight: pxToRem(32),
+  calendarHeaderCellPaddingTop: pxToRem(2),
+  calendarHeaderCellPaddingBottom: pxToRem(2),
+  calendarHeaderCellPaddingLeft: pxToRem(0),
+  calendarHeaderCellPaddingRight: pxToRem(0),
   calendarHeaderCellWidth: `calc(100%/${DAYS_IN_WEEK})`,
 
   calendarHeaderPaddingTop: pxToRem(5),
@@ -62,5 +70,5 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarHeaderLabelPaddingLeft: pxToRem(10),
   calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
 
-  calendarMinHeight: pxToRem(266),
+  calendarMinHeight: pxToRem(282),
 });

@@ -3,9 +3,12 @@ import { Accessibility } from '../../types';
 /**
  * @description
  * Behavior for a datepicker calendar grid.
+ * The aria roles need to be explicitly added so that VPC mode is turned off when navigating the grid.
+ * Thus the keyboard navigation works properly.
  * @specification
- * Adds attribute 'aria-selected' based on the property 'selected' to 'root' slot.
- * Adds role='gridcell'.
+ * Adds attribute 'aria-selected' based on the property 'selected' to 'button' slot.
+ * Adds role 'gridcell' to 'button' slot.
+ * Adds role 'none' to 'tableCell' slot.
  */
 export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {

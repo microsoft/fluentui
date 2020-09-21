@@ -16,6 +16,11 @@ export const datepickerCalendarHeaderCellStyles: ComponentSlotStylesPrepared<
       height: v.calendarHeaderCellHeight,
       width: v.calendarHeaderCellWidth,
 
+      paddingTop: v.calendarHeaderCellPaddingTop,
+      paddingBottom: v.calendarHeaderCellPaddingBottom,
+      paddingLeft: v.calendarHeaderCellPaddingLeft,
+      paddingRight: v.calendarHeaderCellPaddingRight,
+
       display: 'table-cell',
     };
   },

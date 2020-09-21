@@ -123,4 +123,5 @@ export * from './Datepicker/datepickerBehavior';
 export * from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarHeaderBehavior';
 export * from './Datepicker/datepickerCalendarGridBehavior';
+export * from './Datepicker/datepickerCalendarGridRowBehavior';
 export * from './Datepicker/datepickerCalendarCellBehavior';
