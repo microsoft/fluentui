@@ -5,3 +5,5 @@ export * from './effects/index';
 export * from './spacing/index';
 export * from './motions/index';
 export * from './fonts/index';
+export * from './createTheme';
+export * from './globalTheme';

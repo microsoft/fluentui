@@ -66,6 +66,9 @@ export interface ComponentStyles {
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
+// @public
+export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+
 // @public (undocumented)
 export const DefaultEffects: IEffects;
 
@@ -155,6 +158,9 @@ export namespace FontWeights {
     bold: IFontWeight;
 }
 
+// @public
+export function getTheme(depComments?: boolean): ITheme;
+
 // @public (undocumented)
 export namespace IconFontSizes {
     const // (undocumented)
@@ -207,6 +213,9 @@ export interface IFontStyles {
     // @deprecated (undocumented)
     xxLargePlus: IRawStyle;
 }
+
+// @public (undocumented)
+export function initializeThemeInCustomizations(): void;
 
 // @public
 export interface IPalette {
@@ -443,6 +452,9 @@ export interface ITheme extends IScheme {
     };
 }
 
+// @public
+export function loadTheme(partialTheme: IPartialTheme, depComments?: boolean): ITheme;
+
 // @public (undocumented)
 export namespace LocalizedFontFamilies {
     const // (undocumented)
@@ -630,6 +642,12 @@ export type RecursivePartial<T> = {
 // @public (undocumented)
 export function registerDefaultFontFaces(baseUrl: string): void;
 
+// @public
+export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+
+// @public
+export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+
 // @public (undocumented)
 export namespace SharedColors {
     const // (undocumented)
@@ -714,6 +732,9 @@ export interface Theme extends ITheme {
     // (undocumented)
     tokens?: Tokens;
 }
+
+// @public (undocumented)
+export const ThemeSettingName = "theme";
 
 // @public (undocumented)
 export interface Tokens {

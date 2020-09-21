@@ -7,12 +7,14 @@
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { createFontStyles } from '@fluentui/theme/lib/fonts';
+import { createTheme } from '@fluentui/theme';
 import { DefaultEffects } from '@fluentui/theme/lib/effects/DefaultEffects';
 import { DefaultFontStyles } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
 import { DefaultPalette } from '@fluentui/theme/lib/colors/DefaultPalette';
 import { fontFace } from '@uifabric/merge-styles';
 import { FontSizes } from '@fluentui/theme/lib/fonts';
 import { FontWeights } from '@fluentui/theme/lib/fonts';
+import { getTheme } from '@fluentui/theme';
 import { IconFontSizes } from '@fluentui/theme/lib/fonts';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
@@ -35,10 +37,14 @@ import { IStyleSet } from '@uifabric/merge-styles';
 import { IStyleSheetConfig } from '@uifabric/merge-styles';
 import { ITheme } from '@fluentui/theme/lib/types/ITheme';
 import { keyframes } from '@uifabric/merge-styles';
+import { loadTheme } from '@fluentui/theme';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+import { registerOnThemeChangeCallback } from '@fluentui/theme';
+import { removeOnThemeChangeCallback } from '@fluentui/theme';
 import { Stylesheet } from '@uifabric/merge-styles';
+import { ThemeSettingName } from '@fluentui/theme';
 
 // @public (undocumented)
 export const AnimationClassNames: {
@@ -67,8 +73,7 @@ export { concatStyleSetsWithProps }
 
 export { createFontStyles }
 
-// @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export { createTheme }
 
 export { DefaultEffects }
 
@@ -128,8 +133,7 @@ export function getPlaceholderStyles(styles: IStyle): IStyle;
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
-// @public
-export function getTheme(depComments?: boolean): ITheme;
+export { getTheme }
 
 // Warning: (ae-internal-missing-underscore) The name "getThemedContext" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -335,8 +339,7 @@ export { ITheme }
 
 export { keyframes }
 
-// @public
-export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export { loadTheme }
 
 export { mergeStyles }
 
@@ -363,11 +366,9 @@ export function registerIconAlias(iconName: string, mappedToName: string): void;
 // @public
 export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void;
 
-// @public
-export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+export { registerOnThemeChangeCallback }
 
-// @public
-export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+export { removeOnThemeChangeCallback }
 
 // @public (undocumented)
 export const ScreenWidthMaxLarge: number;
@@ -410,8 +411,7 @@ export function setIconOptions(options: Partial<IIconOptions>): void;
 
 export { Stylesheet }
 
-// @public (undocumented)
-export const ThemeSettingName = "theme";
+export { ThemeSettingName }
 
 // @public
 export function unregisterIcons(iconNames: string[]): void;
