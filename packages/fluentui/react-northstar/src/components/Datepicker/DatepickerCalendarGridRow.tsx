@@ -6,7 +6,7 @@ export type DatepickerCalendarGridRowProps = {};
 
 export type DatepickerCalendarGridRowStylesProps = {};
 
-export const DatepickerCalendarGridRowClassName = 'ui-datepicker__calendargridrow';
+export const datepickerCalendarGridRowClassName = 'ui-datepicker__calendargridrow';
 /**
  * A DatepickerCalendarGridRow is used to display the whole calendar grid.
  * This component is currently UNSTABLE!
@@ -18,7 +18,7 @@ export const DatepickerCalendarGridRow = compose<
   BoxProps,
   {}
 >(Box, {
-  className: DatepickerCalendarGridRowClassName,
+  className: datepickerCalendarGridRowClassName,
   displayName: 'DatepickerCalendarGridRow',
   overrideStyles: true,
   shorthandConfig: {
