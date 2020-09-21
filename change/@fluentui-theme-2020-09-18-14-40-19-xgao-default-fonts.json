@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add default fonts from styling package. ",
+  "comment": "Add default fonts from styling package.",
   "packageName": "@fluentui/theme",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

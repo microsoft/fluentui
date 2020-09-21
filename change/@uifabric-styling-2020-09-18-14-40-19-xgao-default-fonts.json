@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Move default fonts to theme package. ",
+  "comment": "Move default fonts to theme package.",
   "packageName": "@uifabric/styling",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
