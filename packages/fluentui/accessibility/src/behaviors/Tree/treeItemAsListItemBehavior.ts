@@ -12,7 +12,6 @@ import { treeTitleAsListItemTitleBehavior } from './treeTitleAsListItemTitleBeha
  */
 export const treeItemAsListItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const behavior = treeItemBehavior(props);
-  delete behavior.attributes.root['aria-checked'];
 
   const definition = _.merge(behavior, {
     attributes: {
