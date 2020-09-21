@@ -215,9 +215,6 @@ export const useButtonClasses: (state: ButtonState, theme?: import("@fluentui/re
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
 
-// @public (undocumented)
-export const useButtonVariants: (state: Record<string, any>) => void;
-
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
 
