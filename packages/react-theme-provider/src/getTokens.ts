@@ -17,7 +17,7 @@ export function getTokens(theme: Theme): Tokens {
     stylesheets,
     ...passThroughTokens
   } = theme;
-  const { fonts, effects, palette, semanticColors } = theme;
+  const { fonts, palette, semanticColors } = theme;
 
   const preparedTokens: Tokens = merge(
     {},
@@ -73,108 +73,8 @@ export function getTokens(theme: Theme): Tokens {
           },
         },
       },
-
-      // TODO: This will be moved out as a button variant.
-      ghost: {
-        contentColor: palette?.neutralPrimary,
-        iconColor: palette?.themeDarkAlt,
-        menuIconColor: palette?.neutralSecondary,
-        secondaryContentColor: palette?.neutralPrimary,
-
-        checked: {
-          background: palette?.neutralLight,
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-        },
-
-        checkedHovered: {
-          background: palette?.neutralQuaternaryAlt,
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-        },
-
-        disabled: {
-          contentColor: palette?.neutralTertiary,
-          iconColor: 'inherit',
-          secondaryContentColor: palette?.neutralTertiary,
-          background: semanticColors?.disabledBackground,
-        },
-
-        expanded: {
-          contentColor: palette?.themePrimary,
-        },
-
-        focused: {
-          contentColor: palette?.neutralPrimary,
-          iconColor: palette?.themeDarkAlt,
-          secondaryContentColor: palette?.neutralPrimary,
-        },
-
-        hovered: {
-          background: palette?.neutralLighter,
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-          secondaryContentColor: palette?.themePrimary,
-        },
-
-        pressed: {
-          background: palette?.neutralLight,
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-          secondaryContentColor: palette?.black,
-        },
-      },
-
-      // TODO: This will be moved out as a button variant.
-      button: {
-        fontWeight: '600',
-        fontSize: fonts?.medium?.fontSize,
-        fontFamily: fonts?.medium?.fontFamily,
-        iconSize: fonts?.mediumPlus?.fontSize,
-        borderRadius: effects?.roundedCorner2,
-        focusColor: palette?.black,
-        focusInnerColor: palette?.white,
-
-        background: semanticColors?.buttonBackground,
-        borderColor: semanticColors?.buttonBorder,
-        contentColor: semanticColors?.buttonText,
-        dividerColor: palette?.neutralTertiaryAlt,
-
-        secondaryContentColor: palette?.neutralSecondary,
-        secondaryContentFontSize: fonts?.small.fontSize,
-
-        hovered: {
-          background: semanticColors?.buttonBackgroundHovered,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextHovered,
-          secondaryContentColor: palette?.neutralDark,
-        },
-
-        pressed: {
-          background: semanticColors?.buttonBackgroundPressed,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextPressed,
-          secondaryContentColor: semanticColors?.buttonTextPressed,
-        },
-
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-
-        disabled: {
-          background: semanticColors?.buttonBackgroundDisabled,
-          borderColor: semanticColors?.buttonBorderDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
-        },
-      },
     },
+
     tokens,
   );
 

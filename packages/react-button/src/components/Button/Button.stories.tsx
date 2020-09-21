@@ -23,10 +23,10 @@ const ButtonVariants = (props: ButtonProps) => (
     <Button {...props} icon="O">
       Hello, world
     </Button>
-    <Button {...props} primary icon="X">
+    <Button {...props} disabled icon="X">
       Hello, world
     </Button>
-    <Button {...props} disabled icon="X">
+    <Button {...props} primary icon="X">
       Hello, world
     </Button>
     <Button {...props} primary disabled icon="X">

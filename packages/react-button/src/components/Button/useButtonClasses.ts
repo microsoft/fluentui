@@ -22,7 +22,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
       boxSizing: 'border-box',
       verticalAlign: 'middle',
       textDecoration: 'none',
-      background: 'var(--button-background, white)',
+      background: 'var(--button-background)',
       color: 'var(--button-contentColor)',
 
       borderColor: 'var(--button-borderColor)',
@@ -135,70 +135,6 @@ export const useButtonClasses = makeClasses<ButtonState>({
 
   content: {
     lineHeight: '1',
-  },
-
-  _primary: {
-    '--button-background': 'var(--color-brand-background)',
-    '--button-borderColor': 'var(--color-brand-borderColor)',
-    '--button-contentColor': 'var(--color-brand-contentColor)',
-    '--button-iconColor': 'var(--color-brand-iconColor)',
-
-    '--button-hovered-background': 'var(--color-brand-hovered-background)',
-    '--button-hovered-borderColor': 'var(--color-brand-hovered-borderColor)',
-    '--button-hovered-contentColor': 'var(--color-brand-hovered-contentColor)',
-    '--button-hovered-iconColor': 'var(--color-brand-hovered-iconColor)',
-
-    '--button-focused-background': 'var(--color-brand-focused-background)',
-    '--button-focused-borderColor': 'var(--color-brand-focused-borderColor)',
-    '--button-focused-contentColor': 'var(--color-brand-focused-contentColor)',
-    '--button-focused-iconColor': 'var(--color-brand-focused-iconColor)',
-
-    '--button-pressed-background': 'var(--color-brand-pressed-background)',
-    '--button-pressed-borderColor': 'var(--color-brand-pressed-borderColor)',
-    '--button-pressed-contentColor': 'var(--color-brand-pressed-contentColor)',
-    '--button-pressed-iconColor': 'var(--color-brand-pressed-iconColor)',
-
-    '--button-disabled-background': 'var(--color-brand-disabled-background)',
-    '--button-disabled-borderColor': 'var(--color-brand-disabled-borderColor)',
-    '--button-disabled-contentColor': 'var(--color-brand-disabled-contentColor)',
-    '--button-disabled-iconColor': 'var(--color-brand-disabled-iconColor)',
-  },
-
-  _ghost: {
-    '--button-fontWeight': 'var(--ghost-fontWeight)',
-    '--button-background': 'var(--ghost-background)',
-    '--button-borderColor': 'var(--ghost-borderColor)',
-    '--button-contentColor': 'var(--ghost-contentColor)',
-    '--button-iconColor': 'var(--ghost-iconColor)',
-
-    '--button-disabled-background': 'var(--ghost-disabled-background)',
-    '--button-disabled-borderColor': 'var(--ghost-disabled-borderColor)',
-    '--button-disabled-contentColor': 'var(--ghost-disabled-contentColor)',
-    '--button-disabled-iconColor': 'var(--ghost-disabled-iconColor)',
-
-    '--button-focused-background': 'var(--ghost-focused-background)',
-    '--button-focused-borderColor': 'var(--ghost-focused-borderColor)',
-    '--button-focused-contentColor': 'var(--ghost-focused-contentColor)',
-    '--button-focused-iconColor': 'var(--ghost-focused-iconColor)',
-
-    '--button-hovered-background': 'var(--ghost-hovered-background)',
-    '--button-hovered-borderColor': 'var(--ghost-hovered-borderColor)',
-    '--button-hovered-contentColor': 'var(--ghost-hovered-contentColor)',
-    '--button-hovered-iconColor': 'var(--ghost-hovered-iconColor)',
-
-    '--button-pressed-background': 'var(--ghost-pressed-background)',
-    '--button-pressed-borderColor': 'var(--ghost-pressed-borderColor)',
-    '--button-pressed-contentColor': 'var(--ghost-pressed-contentColor)',
-    '--button-pressed-iconColor': 'var(--ghost-pressed-iconColor',
-  },
-
-  _iconOnly: {
-    '--button-minHeight': 'var(--button-minHeight)',
-    '--button-width': 'var(--button-height, var(--button-minHeight))',
-    '--button-paddingTop': 0,
-    '--button-paddingLeft': 0,
-    '--button-paddingBottom': 0,
-    '--button-paddingRight': 0,
   },
 
   _circular: {

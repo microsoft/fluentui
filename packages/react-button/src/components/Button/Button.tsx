@@ -2,11 +2,9 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
 import { useFocusRects } from '@uifabric/utilities';
-import { buttonVariants } from './Button.variants';
-import { makeVariants, useInlineTokens } from '@fluentui/react-theme-provider';
+import { useButtonVariants } from './useButtonVariants';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useButtonClasses } from './useButtonClasses';
-
-export const useButtonVariants = makeVariants('Button', '--button', buttonVariants);
 
 /**
  * Define a styled Button, using the `useButton` hook.

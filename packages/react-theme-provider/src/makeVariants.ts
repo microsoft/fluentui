@@ -1,11 +1,15 @@
 import { useTheme } from './useTheme';
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { TokenSetType, Variants } from '@fluentui/theme';
+import { TokenSetType, Variants, Theme } from '@fluentui/theme';
 import { mergeStyles, IStyle } from '@uifabric/merge-styles';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
+/**
+ * Parses a given set of variants, and updates keys/objects with matches that should
+ * be provided.
+ */
 const parseVariants = (
   variants: Variants | undefined,
   state: GenericDictionary,
@@ -22,10 +26,15 @@ const parseVariants = (
   }
 };
 
+/**
+ * Hook factory for creating a `use*Variants` helper. Variants represent a configuration of
+ * token values mapped to modifiers on the component. A variant can also be referenced using
+ * a variant string. Variants can be overridden through the theme of the component.
+ */
 export const makeVariants = <TTokenSetType extends TokenSetType>(
   componentName: string,
   prefix: string,
-  defaultVariants: Variants,
+  variants: Variants | ((theme: Theme) => Variants),
 ) => {
   // Guarantee uniqueness of class name map.
   // const id = getId('variant_' + componentName);
@@ -37,6 +46,7 @@ export const makeVariants = <TTokenSetType extends TokenSetType>(
     const variantKeys: string[] = [];
     const variantObjects: TokenSetType[] = [];
     const themeVariants = theme?.variants?.[componentName];
+    const defaultVariants = typeof variants === 'function' ? variants(theme) : variants;
 
     parseVariants(defaultVariants, state, variantKeys, variantObjects);
     parseVariants(themeVariants, state, variantKeys, variantObjects);
