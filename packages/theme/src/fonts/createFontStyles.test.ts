@@ -1,6 +1,6 @@
-import { createFontStyles } from './fonts';
+import { createFontStyles } from './createFontStyles';
 
-describe('fonts tests', () => {
+describe('createFontStyles tests', () => {
   it('creates the correct font styles for en', () => {
     expect(createFontStyles('en')).toMatchSnapshot();
   });
