@@ -250,6 +250,8 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
         return nextSelectedItemIds;
       });
+
+      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
@@ -300,17 +302,18 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
       const treeItemHasSubtree = hasSubtree(treeItemProps);
+
       if (!treeItemProps) {
         return;
       }
 
-      if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
+      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
         expandItems(e, treeItemProps);
       }
 
       if (treeItemProps.selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !treeItemProps.selectableParent) {
+        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
           return;
         }
 
