@@ -1,9 +1,4 @@
 # Install versions of Node and Yarn required by build pipelines.
-
-variables:
-  - name: YARN_CACHE_FOLDER
-    value: $(Pipeline.Workspace)/.yarn
-
 steps:
   - task: NodeTool@0
     inputs:
@@ -23,8 +18,10 @@ steps:
       restoreKeys: |
         yarn | $(Agent.OS)
         yarn
-      path: $(YARN_CACHE_FOLDER)
+      path: $(Pipeline.Workspace)/.yarn
     displayName: Cache Yarn packages
 
   - script: yarn --frozen-lockfile
     displayName: Yarn
+    env:
+      YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
