@@ -59,14 +59,14 @@ export const getSiblings = (items: any[], itemId: string): any[] => {
 
 export const processItemsForSelection = (treeItemProps: TreeItemProps, selectedItemIds: string[]) => {
   const treeItemHasSubtree = hasSubtree(treeItemProps);
-  const isSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent;
+  const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent && treeItemProps.expanded;
 
   let nextSelectedItemIds = selectedItemIds;
 
   // push all tree items under particular parent into selection array
   // not parent itself, therefore not procced with selection
 
-  if (isSelectableParent) {
+  if (isExpandedSelectableParent) {
     if (isAllGroupChecked(treeItemProps.items as TreeItemProps[], selectedItemIds)) {
       const selectedItems = getAllSelectableChildrenId(treeItemProps.items as TreeItemProps[]);
       nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);

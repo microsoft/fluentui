@@ -16,7 +16,7 @@
   "dependencies": {
     "@fluentui/react-button": "^0.13.3",
     "@fluentui/react-icons": "^0.3.4",
-    "@fluentui/react-next": "^8.0.0-alpha.112",
+    "@fluentui/react-next": "^8.0.0-alpha.113",
     "@fluentui/react-theme-provider": "^0.13.3",
     "@fluentui/storybook": "^0.4.17",
     "@uifabric/example-data": "^7.1.4",
@@ -24,7 +24,7 @@
     "@uifabric/react-cards": "^0.112.13",
     "@uifabric/react-hooks": "^7.13.4",
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.138.0",
+    "office-ui-fabric-react": "^7.139.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
