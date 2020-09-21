@@ -166,7 +166,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._refArray.push({ index: legendTitle, refElement: element });
   };
 
-  private _onBarHover(point: IVerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+  private _onBarHover(
+    point: IVerticalBarChartDataPoint,
+    color: string,
+    mouseEvent: React.MouseEvent<SVGPathElement>,
+  ): void {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
@@ -177,7 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         isCalloutVisible: true,
         dataForHoverCard: point.y,
         selectedLegendTitle: point.legend!,
-        color: point.color,
+        color: point.color || color,
         // To display callout value,If no callout value given, taking given point.x value as a string.
         xCalloutValue: point.xAxisCalloutData || point.x.toString(),
         yCalloutValue: point.yAxisCalloutData!,
@@ -192,7 +196,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   };
 
-  private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number): void => {
+  private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void => {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
@@ -204,7 +208,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             isCalloutVisible: true,
             selectedLegendTitle: point.legend!,
             dataForHoverCard: point.y,
-            color: point.color,
+            color: point.color || color,
             xCalloutValue: point.xAxisCalloutData || point.x.toString(),
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
@@ -250,10 +254,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
-          onMouseOver={this._onBarHover.bind(this, point)}
+          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point, index)}
+          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
           fill={point.color ? point.color : colorScale(point.y)}
         />
@@ -284,11 +288,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           height={Math.max(yBarScale(point.y), 0)}
           aria-labelledby={this._calloutId}
-          onMouseOver={this._onBarHover.bind(this, point)}
+          ref={(e: SVGRectElement) => {
+            this._refCallback(e, point.legend!);
+          }}
+          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
           data-is-focusable={true}
-          onFocus={this._onBarFocus.bind(this, point, index)}
+          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
         />
       );
