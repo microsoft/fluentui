@@ -12,12 +12,14 @@ import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
  */
 export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
+  delete behavior.attributes.root['aria-checked'];
 
   const definition = _.merge(behavior, {
     attributes: {
       root: {
         ...(!props.hasSubtree && {
           role: props.selectable ? 'option' : 'listitem',
+          ...(props.selectable && { 'aria-selected': !!props.selected }),
         }),
       },
     },
