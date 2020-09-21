@@ -265,8 +265,8 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="ToggleBase3"
-          id="ToggleBase3-label"
+          htmlFor="ToggleBase4"
+          id="ToggleBase4-label"
         >
           Use trap zone
         </label>
@@ -280,7 +280,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
         >
           <button
             aria-checked={false}
-            aria-labelledby="ToggleBase3-label ToggleBase3-stateText"
+            aria-labelledby="ToggleBase4-label ToggleBase4-stateText"
             checked={false}
             className=
                 ms-Toggle-background
@@ -331,7 +331,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
                 }
             data-is-focusable={true}
             data-ktp-target={true}
-            id="ToggleBase3"
+            id="ToggleBase4"
             onChange={[Function]}
             onClick={[Function]}
             role="switch"
@@ -391,8 +391,8 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
                   padding-top: 0;
                   user-select: none;
                 }
-            htmlFor="ToggleBase3"
-            id="ToggleBase3-stateText"
+            htmlFor="ToggleBase4"
+            id="ToggleBase4-stateText"
           >
             Off
           </label>
@@ -448,8 +448,8 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-            htmlFor="TextField4"
-            id="TextFieldLabel6"
+            htmlFor="TextField5"
+            id="TextFieldLabel7"
           >
             Input inside trap zone
           </label>
@@ -489,7 +489,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
           >
             <input
               aria-invalid={false}
-              aria-labelledby="TextFieldLabel6"
+              aria-labelledby="TextFieldLabel7"
               className=
                   ms-TextField-field
                   {
@@ -570,7 +570,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
                   @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
-              id="TextField4"
+              id="TextField5"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
