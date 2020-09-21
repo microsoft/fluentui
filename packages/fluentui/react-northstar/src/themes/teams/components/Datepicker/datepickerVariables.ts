@@ -40,7 +40,7 @@ export interface DatepickerVariables {
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellBorder: 'none',
   calendarCellHeight: pxToRem(32),
-  calendarCellWidth: '100%',
+  calendarCellWidth: pxToRem(32),
   calendarCellBorderRadius: pxToRem(2),
   calendarCellPadding: pxToRem(0),
   calendarCellMargin: pxToRem(0),
@@ -58,7 +58,7 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
 
   calendarHeaderCellFontWeight: siteVars.fontWeightRegular,
-  calendarHeaderCellHeight: pxToRem(28),
+  calendarHeaderCellHeight: pxToRem(32),
   calendarHeaderCellPaddingTop: pxToRem(2),
   calendarHeaderCellPaddingBottom: pxToRem(2),
   calendarHeaderCellPaddingLeft: pxToRem(0),
@@ -70,5 +70,5 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarHeaderLabelPaddingLeft: pxToRem(10),
   calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
 
-  calendarMinHeight: pxToRem(278),
+  calendarMinHeight: pxToRem(282),
 });

@@ -124,10 +124,10 @@ export const DatepickerCalendarCell = compose<
     };
 
     const element = (
-      <td {...getA11yProps('tableCell', {})}>
+      <td {...getA11yProps('tableCell', { className: classes.tableCell })}>
         <ElementType
           {...getA11yProps('button', {
-            className: classes.root,
+            className: classes.button,
             onClick: handleClick,
             ref,
             disabled,
