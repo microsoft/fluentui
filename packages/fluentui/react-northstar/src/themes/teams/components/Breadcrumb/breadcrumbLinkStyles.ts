@@ -9,6 +9,9 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
     });
     return {
       position: 'relative',
+      ':visited': {
+        color: 'inherit',
+      },
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         ...borderFocusStyles[':focus-visible'],

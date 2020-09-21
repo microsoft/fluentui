@@ -18,6 +18,7 @@ import {
   ChildrenComponentProps,
   ShorthandFactory,
   createShorthandFactory,
+  SizeValue,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
@@ -30,9 +31,12 @@ export interface BreadcrumbProps
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
+
+  /** Breadcrumb can be sized */
+  size?: SizeValue;
 }
 
-export type BreadcrumbStylesProps = never;
+export type BreadcrumbStylesProps = Required<Pick<BreadcrumbProps, 'size'>>;
 
 export const breadcrumbClassName = 'ui-breadcrumb';
 
@@ -45,7 +49,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
-    const { accessibility, children, content, className, design, styles, variables } = props;
+    const { accessibility, children, content, className, design, styles, variables, size } = props;
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -60,6 +64,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
         design,
         styles,
         variables,
+        size,
       }),
       rtl: context.rtl,
       unstable_props: props,
@@ -88,6 +93,9 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     className: breadcrumbClassName,
     displayName: 'Breadcrumb',
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
+    mapPropsToStylesProps: ({ size }) => ({
+      size,
+    }),
   },
 ) as ComponentWithAs<'nav', BreadcrumbProps> & {
   create: ShorthandFactory<BreadcrumbProps>;
@@ -100,6 +108,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
 Breadcrumb.defaultProps = {
   as: 'nav',
+  size: 'medium',
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();
