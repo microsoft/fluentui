@@ -14,14 +14,12 @@ steps:
 
   - task: Cache@2
     inputs:
-      key: 'yarn | "$(Agent.OS)" | yarn.lock'
+      key: 'node_modules | $(Agent.OS) | yarn.lock'
       restoreKeys: |
-        yarn | $(Agent.OS)
-        yarn
-      path: $(Pipeline.Workspace)/.yarn
-    displayName: Cache Yarn packages
+        node_modules | $(Agent.OS)
+        node_modules
+      path: node_modules
+    displayName: Cache node_modules
 
   - script: yarn --frozen-lockfile
     displayName: Yarn
-    env:
-      YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
