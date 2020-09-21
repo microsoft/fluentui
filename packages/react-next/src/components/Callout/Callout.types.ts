@@ -255,7 +255,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * contains focus. If this is provided, focus will not be restored automatically,
    * you'll need to call originalElement.focus()
    */
-  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }
 
 /**

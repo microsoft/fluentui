@@ -59,9 +59,7 @@ function defaultFocusRestorer(options: {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-    if (originalElement.focus) {
-      originalElement.focus();
-    }
+    originalElement.focus?.();
   }
 }
 
