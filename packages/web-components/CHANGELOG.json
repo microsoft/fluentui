@@ -2,6 +2,93 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@fluentui/web-components_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix design system properties inheritance",
+            "author": "jes@microsoft.com",
+            "commit": "82d4558d358448584949314d32a9fb26e4d78c86",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/web-components_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Feat: convert card to be design system provider",
+            "author": "jes@microsoft.com",
+            "commit": "7ea84b6f135e4193b28495ef120f289016e392e4",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@fluentui/web-components_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update fast packages and add font-family inherit to controls of button and accordion-item",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "3c24d28536c0c370e001922f031718bdbab069c5",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/web-components_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: apply badge appearance styling to control not host element",
+            "author": "chhol@microsoft.com",
+            "commit": "5cceb3c4292381b9d68acc33de82c3a936d53a6d",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update fast element version to leverage latest changes",
+            "author": "chhol@microsoft.com",
+            "commit": "298f84c36dc52c4cf0220d48a7b398ecc6f9408a",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/web-components_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: add full width to text-area and text-field controls to expand properly with component",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "b9a825d40f0e6549802284afc3ba4d06778f5e01",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Aug 2020 18:34:18 GMT",
       "tag": "@fluentui/web-components_v0.1.4",
       "version": "0.1.4",

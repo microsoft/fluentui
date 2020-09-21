@@ -1,4 +1,5 @@
 import { sliderSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerStep, ScreenerSteps } from '@uifabric/build/screener';
 
 const selectors = {
   input: `.${sliderSlotClassNames.input}`,

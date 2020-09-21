@@ -1,22 +1,20 @@
-import { CodeMod } from '../codeMods/types';
+import { CodeMod, CodeModResult } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
+import { Err } from '../helpers/result';
+import { Logger } from './logger';
 
-// TODO ensure that async for all these utilities works
 export function runMods<T>(
   codeMods: CodeMod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: CodeMod<T>; file: T; error?: Error }) => void,
+  loggingCallback: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    // Run every mod on each file?
-    // I like that
     for (const mod of codeMods) {
       try {
-        mod.run(file);
-        loggingCallback({ mod, file });
+        loggingCallback({ mod, file, result: mod.run(file) });
       } catch (e) {
-        loggingCallback({ mod, file, error: e });
+        loggingCallback({ mod, file, result: Err({ reason: e }) });
       }
     }
   }
@@ -71,12 +69,12 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
   return Nothing();
 }
 
-export function getEnabledMods(getPaths = getModsPaths, loadM = loadMod) {
+export function getEnabledMods(logger: Logger, getPaths = getModsPaths, loadM = loadMod) {
   return getPaths()
     .map(pth => {
-      console.log('fetching codeMod at ', pth);
+      logger.log('fetching codeMod at ', pth);
       return loadM(pth, e => {
-        console.error(e);
+        logger.error(e);
       });
     })
     .filter(modEnabled)

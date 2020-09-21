@@ -8,6 +8,9 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
+export * from './Breadcrumb/breadcrumbItemBehavior';
+export * from './Breadcrumb/breadcrumbDividerBehavior';
+
 export * from './Dropdown/dropdownSelectedItemBehavior';
 export * from './Dropdown/dropdownSelectedItemBehavior';
 
@@ -57,11 +60,6 @@ export * from './Form/formFieldBehavior';
 
 export * from './Grid/gridBehavior';
 export { gridHorizontalBehavior } from './Grid/gridHorizontalBehavior';
-
-export * from './HierarchicalTree/hierarchicalTreeBehavior';
-export * from './HierarchicalTree/hierarchicalTreeItemBehavior';
-export * from './HierarchicalTree/hierarchicalTreeTitleBehavior';
-export { hierarchicalSubtreeBehavior } from './HierarchicalTree/hierarchicalSubtreeBehavior';
 
 export * from './Dialog/dialogBehavior';
 
@@ -121,6 +119,7 @@ export * from './Video/videoBehavior';
 
 export { hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
 
+export * from './Datepicker/datepickerBehavior';
 export * from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarHeaderBehavior';
 export * from './Datepicker/datepickerCalendarGridBehavior';

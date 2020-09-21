@@ -22,3 +22,6 @@ export { CopyToClipboard, useCopyToClipboard } from './CopyToClipboard';
 export { renderElementToJSX } from './renderElementToJSX';
 
 export * from './Editor/Editor';
+
+export * from './CodeSandboxExporter';
+export * from './CodeSandboxExporter/types';

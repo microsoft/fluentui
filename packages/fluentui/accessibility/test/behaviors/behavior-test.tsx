@@ -34,10 +34,6 @@ import {
   toggleButtonBehavior,
   menuAsToolbarBehavior,
   menuItemAsToolbarButtonBehavior,
-  hierarchicalTreeBehavior,
-  hierarchicalTreeTitleBehavior,
-  hierarchicalTreeItemBehavior,
-  hierarchicalSubtreeBehavior,
   gridBehavior,
   gridHorizontalBehavior,
   statusBehavior,
@@ -90,11 +86,14 @@ import {
   hiddenComponentBehavior,
   cardSelectableBehavior,
   dropdownSelectedItemBehavior,
+  datepickerBehavior,
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
   datepickerCalendarCellBehavior,
   skeletonBehavior,
+  breadcrumbItemBehavior,
+  breadcrumbDividerBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -134,10 +133,6 @@ testHelper.addBehavior('tabListBehavior', tabListBehavior);
 testHelper.addBehavior('menuAsToolbarBehavior', menuAsToolbarBehavior);
 testHelper.addBehavior('toggleButtonBehavior', toggleButtonBehavior);
 testHelper.addBehavior('menuItemAsToolbarButtonBehavior', menuItemAsToolbarButtonBehavior);
-testHelper.addBehavior('hierarchicalTreeTitleBehavior', hierarchicalTreeTitleBehavior);
-testHelper.addBehavior('hierarchicalTreeBehavior', hierarchicalTreeBehavior);
-testHelper.addBehavior('hierarchicalTreeItemBehavior', hierarchicalTreeItemBehavior);
-testHelper.addBehavior('hierarchicalSubtreeBehavior', hierarchicalSubtreeBehavior);
 testHelper.addBehavior('gridBehavior', gridBehavior);
 testHelper.addBehavior('gridHorizontalBehavior', gridHorizontalBehavior);
 testHelper.addBehavior('dialogBehavior', dialogBehavior);
@@ -189,10 +184,13 @@ testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
 testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
+testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
 testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
+testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
+testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
 
 testHelper.run(behaviorMenuItems);

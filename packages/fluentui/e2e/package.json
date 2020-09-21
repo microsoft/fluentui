@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@types/node": "^10.3.2",
@@ -16,18 +16,21 @@
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
+    "office-ui-fabric-react": "^7.138.0",
     "puppeteer": "^1.13.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
     "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "test": "gulp test",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }

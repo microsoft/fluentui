@@ -20,18 +20,18 @@ export const BadgeStyles = css`
     padding: calc(var(--design-unit) * 0.5px) calc(var(--design-unit) * 1px);
   }
 
-  :host(.lightweight) {
+  :host(.lightweight) .control {
     background: transparent;
     color: ${neutralForegroundRestBehavior.var};
     font-weight: 600;
   }
 
-  :host(.accent) {
+  :host(.accent) .control {
     background: ${accentFillRestBehavior.var};
     color: ${accentForegroundCutRestBehavior.var};
   }
 
-  :host(.neutral) {
+  :host(.neutral) .control {
     background: ${neutralFillRestBehavior.var};
     color: ${neutralForegroundRestBehavior.var};
   }

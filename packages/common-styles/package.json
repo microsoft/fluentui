@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/common-styles",
-  "version": "0.2.2",
+  "version": "0.2.6",
   "description": "Common style definitions for Fluent UI React components",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@uifabric/build": "^7.0.0",
     "office-ui-fabric-core": "^11.0.0"
   }

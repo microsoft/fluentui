@@ -2,6 +2,36 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding .tsv as supported extension for spreadsheet filetype icon.",
+            "author": "caperez@microsoft.com",
+            "commit": "215a18cf8e08a18585b40f587dc8d164eb864809",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/file-type-icons_v7.4.15",
+      "version": "7.4.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available.",
+            "author": "caperez@microsoft.com",
+            "commit": "419049fdb8b6acd4f9525a3c7cf2da1c41569612",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/file-type-icons_v7.4.2",
       "version": "7.4.2",

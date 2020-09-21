@@ -44,7 +44,7 @@ export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   },
 });
 
-type TabBehaviorProps = {
+export type TabBehaviorProps = {
   /** Indicates if tab is selected. */
   active?: boolean;
   /** Indicates if tab is disabled. */

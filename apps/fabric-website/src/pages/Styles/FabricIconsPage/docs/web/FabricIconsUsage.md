@@ -24,7 +24,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Icon } from '@fluentui/react/lib/Icon';
 
-const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
+const MyIcon = () => <Icon iconName="CompassNW" />;
 
 ReactDOM.render(<MyIcon />, document.body.firstChild);
 ```

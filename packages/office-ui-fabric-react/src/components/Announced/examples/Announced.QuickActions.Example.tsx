@@ -11,7 +11,7 @@ import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { useConst, useConstCallback } from '@uifabric/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 
@@ -34,26 +34,37 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
   const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
 
-  const deleteItem = useConstCallback((index: number): void => {
+  const deleteItem = React.useCallback((index: number): void => {
     setItems(prevItems => prevItems.filter((item, i) => i !== index));
     setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
-  });
+  }, []);
 
-  const renameItem = useConstCallback((item: IExampleItem, index: number): void => {
+  const renameItem = React.useCallback((item: IExampleItem, index: number): void => {
+    const updateItemName = () => {
+      if (textField && textField.current) {
+        setItems(prevItems => {
+          const renamedItems = [...prevItems];
+          renamedItems[index] = { ...prevItems[index], name: textField.current?.value || renamedItems[index].name };
+          return renamedItems;
+        });
+        setDialogContent(undefined);
+        setAnnounced(<Announced message="Item renamed" aria-live="assertive" />);
+      }
+    };
+
     setDialogContent(
       <>
         <TextField componentRef={textField} label="Rename" defaultValue={item.name} />
         <DialogFooter>
           <PrimaryButton
             // eslint-disable-next-line react/jsx-no-bind
-            onClick={() => updateItemName(index)}
+            onClick={updateItemName}
             text="Save"
           />
         </DialogFooter>
       </>,
     );
-    return;
-  });
+  }, []);
 
   const columns = useConst((): IColumn[] => [
     {
@@ -91,21 +102,9 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     },
   ]);
 
-  const updateItemName = useConstCallback((index: number) => {
-    if (textField && textField.current) {
-      setItems(prevItems => {
-        const renamedItems = [...prevItems];
-        renamedItems[index] = { ...prevItems[index], name: textField.current?.value || renamedItems[index].name };
-        return renamedItems;
-      });
-      setDialogContent(undefined);
-      setAnnounced(<Announced message="Item renamed" aria-live="assertive" />);
-    }
-  });
-
-  const closeRenameDialog = useConstCallback((): void => {
+  const closeRenameDialog = React.useCallback((): void => {
     setDialogContent(undefined);
-  });
+  }, []);
 
   return (
     <>

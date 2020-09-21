@@ -24,13 +24,18 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={350}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
       width={600}
     >
       <g
@@ -93,7 +98,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         id="barGElement"
       >
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -111,7 +116,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           y={-35}
         />
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -144,6 +149,10 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
 
           {
             align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
             white-space: nowrap;
             width: 100%;
           }
@@ -178,11 +187,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -190,10 +199,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     {
                       display: inherit;
                       flex-shrink: 0;
-                      margin-bottom: 16px;
                     }
               >
                 <button
+                  aria-posinset={1}
+                  aria-selected={false}
+                  aria-setsize={2}
                   className=
 
                       {
@@ -202,15 +213,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                         border: none;
                         cursor: pointer;
                         display: flex;
-                        margin-bottom: ;
-                        margin-left: ;
-                        margin-right: ;
-                        margin-top: ;
                         outline: transparent;
-                        padding-bottom: 0px;
-                        padding-left: 0px;
-                        padding-right: 0px;
-                        padding-top: 0px;
+                        padding-bottom: 8px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-top: 8px;
                         position: relative;
                       }
                       &::-moz-focus-inner {
@@ -230,12 +237,13 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
-                  data-is-focusable={false}
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -264,7 +272,6 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           font-size: 12px;
                           font-weight: 400;
                           line-height: 16px;
-                          margin-right: 16px;
                           opacity: ;
                         }
                   />
@@ -276,10 +283,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     {
                       display: inherit;
                       flex-shrink: 0;
-                      margin-bottom: 16px;
                     }
               >
                 <button
+                  aria-posinset={2}
+                  aria-selected={false}
+                  aria-setsize={2}
                   className=
 
                       {
@@ -288,15 +297,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                         border: none;
                         cursor: pointer;
                         display: flex;
-                        margin-bottom: ;
-                        margin-left: ;
-                        margin-right: ;
-                        margin-top: ;
                         outline: transparent;
-                        padding-bottom: 0px;
-                        padding-left: 0px;
-                        padding-right: 0px;
-                        padding-top: 0px;
+                        padding-bottom: 8px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-top: 8px;
                         position: relative;
                       }
                       &::-moz-focus-inner {
@@ -316,12 +321,13 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
-                  data-is-focusable={false}
+                  data-is-focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -350,7 +356,6 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           font-size: 12px;
                           font-weight: 400;
                           line-height: 16px;
-                          margin-right: 16px;
                           opacity: ;
                         }
                   />

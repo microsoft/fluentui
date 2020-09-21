@@ -15,9 +15,7 @@ import {
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
 
-const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>({
-  useStaticStyles: true,
-});
+const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
 const COMPONENT_NAME = 'Pivot';
 
@@ -66,8 +64,8 @@ const isPivotItem = (item: React.ReactNode): item is PivotItem => {
   return ((item as React.ReactElement)?.type as React.ComponentType)?.name === PivotItem.name;
 };
 
-export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
-  (props: IPivotProps, ref: React.Ref<HTMLDivElement>) => {
+export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
+  (props, ref) => {
     const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
     const pivotId: string = useId('Pivot');
     let linkCollection = getLinkItems(props, pivotId);

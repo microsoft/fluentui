@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/MessageBar';
+import './version';
+export * from './components/MessageBar/index';

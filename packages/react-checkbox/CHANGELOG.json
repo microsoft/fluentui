@@ -1,0 +1,58 @@
+{
+  "name": "@fluentui/react-checkbox",
+  "entries": [
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-checkbox_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add missing ref prop typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "a17c428e073721e981aaa402339d37b87fd8d385",
+            "package": "@fluentui/react-checkbox"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@fluentui/react-checkbox_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove usage of compose and scss from Checkbox; Move latest code to next folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "ce86950845e03bc4baf63b301e85a41c47a8c1bd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Aug 2020 12:36:50 GMT",
+      "tag": "@fluentui/react-checkbox_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Checkbox from react-next to react-checkbox.",
+            "author": "xgao@microsoft.com",
+            "commit": "aa0811b0a7717043e011214fb7c81138f96dc15f",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    }
+  ]
+}

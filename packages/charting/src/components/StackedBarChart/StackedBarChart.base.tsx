@@ -264,7 +264,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={true}
-          focusable={'true'}
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,
@@ -310,6 +309,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return [

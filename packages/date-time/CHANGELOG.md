@@ -1,8 +1,62 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.6)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.1..@uifabric/date-time_v7.17.6)
+
+### Patches
+
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
+
+## [7.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.0..@uifabric/date-time_v7.17.1)
+
+### Patches
+
+- Calendar: Adding aria-current=date to present day. ([PR #14806](https://github.com/microsoft/fluentui/pull/14806) by humbertomakotomorimoto@gmail.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.0)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.16.0..@uifabric/date-time_v7.17.0)
+
+### Minor changes
+
+- add wrapper styling to datepicker ([PR #13477](https://github.com/microsoft/fluentui/pull/13477) by kevin@infinite.red)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.16.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.4..@uifabric/date-time_v7.16.0)
+
+### Patches
+
+- adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future ([PR #14764](https://github.com/microsoft/fluentui/pull/14764) by lorejoh12@gmail.com)
+
+## [7.14.4](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.4)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.2..@uifabric/date-time_v7.14.4)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.2)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.0..@uifabric/date-time_v7.14.2)
+
+### Patches
+
+- adding fix for first day of week changing away from Sunday that I broke with previous PR ([PR #14475](https://github.com/microsoft/fluentui/pull/14475) by lorejoh12@gmail.com)
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.0)
 

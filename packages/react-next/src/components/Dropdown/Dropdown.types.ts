@@ -6,9 +6,9 @@ import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilit
 import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from '../Checkbox/Checkbox.types';
-import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/src/components/Label/Label.types';
-import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/src/components/Panel/Panel.types';
+import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
@@ -29,7 +29,9 @@ export interface IDropdown {
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps
+  extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`

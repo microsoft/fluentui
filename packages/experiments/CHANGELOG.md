@@ -1,8 +1,104 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.10)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.9..@uifabric/experiments_v7.32.10)
+
+### Patches
+
+- allow consumers of the UPP to use the onClick input property ([PR #15005](https://github.com/microsoft/fluentui/pull/15005) by elvonspa@microsoft.com)
+- Drag and drop fixes ([PR #15022](https://github.com/microsoft/fluentui/pull/15022) by elvonspa@microsoft.com)
+
+## [7.32.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.9)
+
+Mon, 14 Sep 2020 12:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.4..@uifabric/experiments_v7.32.9)
+
+### Patches
+
+- allow FloatingPeopleSuggestions onRenderSuggestions property to be used ([PR #14983](https://github.com/microsoft/fluentui/pull/14983) by elvonspa@microsoft.com)
+
+## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.1..@uifabric/experiments_v7.32.4)
+
+### Patches
+
+- Fix bug where drop insert function can be called twice ([PR #14865](https://github.com/microsoft/fluentui/pull/14865) by elvonspa@microsoft.com)
+
+## [7.32.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.1)
+
+Mon, 31 Aug 2020 12:25:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.0..@uifabric/experiments_v7.32.1)
+
+### Patches
+
+- add forwardRef to UnifiedPicker ([PR #14787](https://github.com/microsoft/fluentui/pull/14787) by elvonspa@microsoft.com)
+- Merge branch 'master' of https://github.com/RajeshGoriga/office-ui-fabric-react into multiselectlgendsFeature ([PR #14758](https://github.com/microsoft/fluentui/pull/14758) by v-gorraj@microsoft.com)
+
+## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.31.0..@uifabric/experiments_v7.32.0)
+
+### Minor changes
+
+- Make the floating sugggestions picker have an optional fixed width ([PR #14598](https://github.com/microsoft/fluentui/pull/14598) by sadelson@microsoft.com)
+
+## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
+
+### Minor changes
+
+- Drag drop between SelectedItemLists ([PR #14572](https://github.com/microsoft/fluentui/pull/14572) by elvonspa@microsoft.com)
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.29.1..@uifabric/experiments_v7.30.0)
+
+### Minor changes
+
+- update SelectedItemsList and UnifiedPicker to use Clipboard API for copy ([PR #14724](https://github.com/microsoft/fluentui/pull/14724) by elvonspa@microsoft.com)
+
+### Patches
+
+- Fixing drag drop infinite loop ([PR #14637](https://github.com/microsoft/fluentui/pull/14637) by nebhatna@microsoft.com)
+
+## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.3..@uifabric/experiments_v7.29.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.2..@uifabric/experiments_v7.28.3)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.28.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.2)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.0..@uifabric/experiments_v7.28.2)
+
+### Patches
+
+- Add two well example and fix Remove ctx menu example ([PR #14490](https://github.com/microsoft/fluentui/pull/14490) by sadelson@microsoft.com)
 
 ## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.0)
 

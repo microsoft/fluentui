@@ -6,7 +6,7 @@ import {
   IGroupHeaderProps,
   IGroupRenderProps,
 } from 'office-ui-fabric-react/lib/GroupedList';
-import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn, IObjectWithKey, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -17,15 +17,17 @@ const groupCount = 3;
 const groupDepth = 1;
 
 const groupProps: IGroupRenderProps = {
-  onRenderHeader: (props: IGroupHeaderProps): JSX.Element => (
+  onRenderHeader: (props?: IGroupHeaderProps): JSX.Element => (
     <GroupHeader onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox} {...props} />
   ),
 };
 
-const onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps) => <Toggle checked={props.checked} />;
+const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => (
+  <Toggle checked={props ? props.checked : undefined} />
+);
 
 export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
-  const items = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
+  const items: IObjectWithKey[] = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
   const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
   const columns = useConst(() =>
     Object.keys(items[0])
@@ -42,12 +44,12 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
   const selection = useConst(() => new Selection({ items }));
 
   const onRenderCell = React.useCallback(
-    (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => (
+    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
       <DetailsRow
         columns={columns}
         groupNestingDepth={nestingDepth}
         item={item}
-        itemIndex={itemIndex}
+        itemIndex={itemIndex!}
         selection={selection}
         selectionMode={SelectionMode.multiple}
       />

@@ -38,6 +38,12 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   /** A cell can show that it is currently selected or not. */
   selected?: boolean;
 
+  /** Denotes that the cell marks today's date. */
+  today?: boolean;
+
+  /** A cell can show that it currently has dimmed styles. */
+  quiet?: boolean;
+
   /**
    * Called on selected item key down.
    *
@@ -47,7 +53,10 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   onKeyDown?: ComponentKeyboardEventHandler<DatepickerCalendarCellProps>;
 }
 
-export type DatepickerCalendarCellStylesProps = Pick<DatepickerCalendarCellProps, 'disabled' | 'selected'>;
+export type DatepickerCalendarCellStylesProps = Pick<
+  DatepickerCalendarCellProps,
+  'disabled' | 'selected' | 'quiet' | 'today'
+>;
 
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
 /**
@@ -66,7 +75,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { className, design, styles, variables, disabled, selected, content } = props;
+    const { className, design, styles, variables, disabled, selected, quiet, today, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -81,6 +90,8 @@ export const DatepickerCalendarCell = compose<
       mapPropsToBehavior: () => ({
         selected,
         disabled,
+        quiet,
+        today,
       }),
       rtl: context.rtl,
     });
@@ -90,6 +101,8 @@ export const DatepickerCalendarCell = compose<
       mapPropsToStyles: () => ({
         disabled,
         selected,
+        quiet,
+        today,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -101,7 +114,6 @@ export const DatepickerCalendarCell = compose<
       composeOptions,
       unstable_props: props,
     });
-
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (disabled) {
         e.preventDefault();
@@ -117,6 +129,7 @@ export const DatepickerCalendarCell = compose<
           className: classes.root,
           onClick: handleClick,
           ref,
+          disabled,
           ...unhandledProps,
         })}
       >
@@ -141,6 +154,8 @@ export const DatepickerCalendarCell = compose<
       'selected',
       'styles',
       'variables',
+      'quiet',
+      'today',
     ],
   },
 );
@@ -150,6 +165,8 @@ DatepickerCalendarCell.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
+  quiet: PropTypes.bool,
+  today: PropTypes.bool,
 };
 
 DatepickerCalendarCell.defaultProps = {
