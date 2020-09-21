@@ -152,6 +152,7 @@ export { cardExpandableBoxVariables as CardExpandableBox } from './components/Ca
 
 export { datepickerVariables as Datepicker } from './components/Datepicker/datepickerVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
+export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonVariables';
 export { datepickerCalendarVariables as DatepickerCalendar } from './components/Datepicker/datepickerCalendarVariables';
 export { datepickerCalendarHeaderVariables as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderVariables';
 export { datepickerCalendarHeaderCellVariables as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellVariables';
