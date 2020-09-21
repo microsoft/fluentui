@@ -174,10 +174,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           true,
         );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToEndOfWeek: e => {
         e.preventDefault();
@@ -190,10 +187,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           true,
         );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToStartOfColumn: e => {
         e.preventDefault();
@@ -208,10 +202,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           true,
         );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToEndOfColumn: e => {
         e.preventDefault();
@@ -229,10 +220,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           true,
         );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
     },
     rtl: context.rtl,
