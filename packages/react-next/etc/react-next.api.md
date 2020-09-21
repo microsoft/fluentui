@@ -455,8 +455,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)

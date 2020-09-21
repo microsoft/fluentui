@@ -14,7 +14,6 @@ const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
-  suggestionItems: T[] | null;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
@@ -35,9 +34,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     this.state = {
       queryString: '',
-      // TODO: determine whether this can be removed
-      // eslint-disable-next-line react/no-unused-state
-      suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
     };
   }
 
