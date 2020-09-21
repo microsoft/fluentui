@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "Vertical bar chart code re factor.",
+  "comment": "Vertical bar chart code refactor and cartesian implemented in vertical chart base file.",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-09-21T05:46:44.027Z"
 }
