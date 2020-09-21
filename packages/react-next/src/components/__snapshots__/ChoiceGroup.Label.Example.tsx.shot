@@ -73,19 +73,20 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
     </div>
   </label>
   <div
-    className=
-        ms-ChoiceFieldGroup
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+    className=""
   >
     <div
       aria-labelledby="labelElement0"
+      className=
+          ms-ChoiceFieldGroup
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+          }
       role="radiogroup"
     >
       <div
