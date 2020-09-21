@@ -38,6 +38,13 @@ export const breadcrumbClassName = 'ui-breadcrumb';
 /**
  * Breadcrumb is a a component that indicates the path of the current page
  * This component is currently UNSTABLE!
+ *
+ * @accessibility
+ * Implements [ARIA Breadcrumb](https://www.w3.org/TR/wai-aria-practices-1.1/#breadcrumb) design pattern.
+ * Refers to [this ARIA discussion](https://github.com/w3c/aria-practices/issues/635), and uses arrow key to navigate between each breadcrumb item.
+ *
+ * @accessibilityIssues
+ * [Under NVDA Browse mode - Breadcrumb is not navigable](https://github.com/w3c/aria-practices/issues/635 )
  */
 export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
