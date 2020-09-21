@@ -5,7 +5,7 @@ import { Accessibility, AriaRole } from '../../types';
 
 /**
  * @description
- *  Adds attribute 'aria-selected=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
+ *  Adds attribute 'aria-checked=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
  *  Triggers 'performClick' action with 'Spacebar' on 'root', when tree title is selectable.
  *  @specification
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is false or undefined. Does not set the attribute if true.
