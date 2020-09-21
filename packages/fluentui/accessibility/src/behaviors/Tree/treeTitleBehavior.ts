@@ -26,7 +26,7 @@ export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props =>
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
-          ...(props.selectable && { 'aria-selected': props.selected }),
+          ...(props.selectable && { 'aria-checked': props.selected }),
         }),
       },
     },
