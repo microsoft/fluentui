@@ -23,7 +23,7 @@
     "@fluentui/styles": "^0.51.0",
     "@mdx-js/react": "^1.5.5",
     "classnames": "^2.2.6",
-    "color": "^3.1.0",
+    "color": "^3.1.2",
     "copy-to-clipboard": "^3.2.0",
     "csstype": "^2.6.7",
     "faker": "^4.1.0",
