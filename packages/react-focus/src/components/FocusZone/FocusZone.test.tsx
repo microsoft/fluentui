@@ -78,7 +78,12 @@ describe('FocusZone', () => {
   isConformant({
     Component: FocusZone,
     displayName: 'FocusZone',
-    disabledTests: ['as-renders-fc', 'as-renders-react-class', 'as-passes-as-value', 'has-top-level-file'],
+    disabledTests: [
+      // Requires a forwardRef in defaultTests myComponent when testing renders or root.current will be undefined.
+      'as-renders-react-class',
+      // Their is no existing top level FocusZone.ts file.
+      'has-top-level-file',
+    ],
   });
 
   it('can use arrows vertically', () => {

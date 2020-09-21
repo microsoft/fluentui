@@ -157,7 +157,7 @@ export const defaultTests: TestObject = {
     if (componentInfo.props.as) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
         const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
-        const MyComponent = () => null;
+        const MyComponent = React.forwardRef((props, ref) => null);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
@@ -214,7 +214,7 @@ export const defaultTests: TestObject = {
 
           expect(el.prop('data-extra-prop')).toBe('foo');
         } else {
-          const MyComponent = () => null;
+          const MyComponent = React.forwardRef((props, ref) => null);
           const el = customMount(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
