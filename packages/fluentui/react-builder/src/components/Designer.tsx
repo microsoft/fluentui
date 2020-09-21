@@ -25,6 +25,7 @@ import {
   getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
+  JSONTreeToJSXCode,
 } from '../config';
 import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 
@@ -576,7 +577,7 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
+  const codeSandboxData = getCodeSandboxInfo(jsonTree, JSONTreeToJSXCode(jsonTree));
 
   return (
     <div

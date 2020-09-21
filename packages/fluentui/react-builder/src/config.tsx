@@ -60,7 +60,7 @@ export const COMPONENT_GROUP = {
     'Fluent.Tree',
     'Fluent.HierarchicalTree',
   ],
-  MaterialActionable: ['Material.Button', 'Material.ButtonGroup', 'Material.Checkbox'],
+  MaterialActionable: ['Material.Button', 'Material.Checkbox'],
 };
 
 export const DRAGGING_ELEMENTS = {
@@ -70,13 +70,7 @@ export const DRAGGING_ELEMENTS = {
       Hello World
     </MUI.Button>
   ),
-  'Material.ButtonGroup': (
-    <MUI.ButtonGroup color="primary" aria-label="outlined primary button group">
-      <MUI.Button>One</MUI.Button>
-      <MUI.Button>Two</MUI.Button>
-      <MUI.Button>Three</MUI.Button>
-    </MUI.ButtonGroup>
-  ),
+
   'Material.Checkbox': <MUI.FormControlLabel control={<MUI.Checkbox name="checkedA" />} label="Secondary" />,
 
   // HTML ELEMENTS
@@ -592,66 +586,73 @@ export const renderJSONTreeToJSXElement = (
   });
 };
 
-const packageImportList: Record<string, CodeSandboxImport> = {
-  '@fluentui/react-icons-northstar': {
-    version: projectPackageJson.version,
-    required: false,
-  },
-  '@fluentui/react-northstar': {
-    version: projectPackageJson.version,
-    required: false,
-  },
-  '@materialui/core': {
-    version: projectPackageJson.version,
-    required: false,
-  },
-};
-
-export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
-  if (tree.props?.icon) {
-    const iconModule =
-      tree.moduleName === '@fluentui/react-northstar' ? '@fluentui/react-icons-northstar' : 'ErrorNoPackage';
-    if (imports.hasOwnProperty(iconModule)) {
-      if (!imports[iconModule].includes(tree.props?.icon.type)) {
-        imports[iconModule].push(tree.props?.icon.type);
-      }
-    } else {
-      imports[iconModule] = [tree.props?.icon.type];
-    }
-  }
-  if (tree.moduleName && tree.props?.trigger) {
-    if (tree.props?.trigger.$$typeof === 'Symbol(react.element)') {
-      if (imports.hasOwnProperty(tree.moduleName)) {
-        if (!imports[tree.moduleName].includes(tree.props?.trigger.type.split('.')[1])) {
-          imports[tree.moduleName].push(tree.props?.trigger.type.split('.')[1]);
-        }
+export const JSONTreeToJSXCode = (tree, tab = '', moduleName = '') => {
+  tab += '\t';
+  let code = '';
+  if (tree.uuid !== 'builder-root' && !tree.$$typeof && Array.isArray(tree)) {
+    tree.forEach(entry => {
+      if (_.isPlainObject(entry)) {
+        code += `${tab}${JSONTreeToJSXCode(entry, tab)},\n`;
       } else {
-        imports[tree.moduleName] = [tree.props?.trigger.type.split('.')[1]];
-      }
-    }
-  }
-  if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
-    if (imports.hasOwnProperty(tree.moduleName)) {
-      if (!imports[tree.moduleName].includes(tree.displayName.split('.')[1])) {
-        imports[tree.moduleName].push(tree.displayName.split('.')[1]);
-      }
-    } else {
-      imports[tree.moduleName] = [tree.displayName.split('.')[1]];
-    }
-  }
-
-  Array.isArray(tree.props?.children) &&
-    tree.props?.children?.forEach(item => {
-      if (typeof item !== 'string') {
-        imports = JSONTreeToImports(item, imports);
+        code += `"${entry}",`;
       }
     });
-  return imports;
+    return code;
+  }
+  if (tree.uuid !== 'builder-root' && !tree.$$typeof && _.isPlainObject(tree)) {
+    return `{\n ${Object.entries(tree)
+      .map(entry => {
+        if (_.isPlainObject(entry[1])) {
+          return `${tab}${entry[0]}: ${JSONTreeToJSXCode(entry[1], tab)}`;
+        }
+        return `${tab}${entry[0]}:"${entry[1]}"`;
+      })
+      .join(',\n')} \n${tab.replace('\t', '')}}`;
+  }
+
+  const component = tree.displayName || tree.type;
+  if (!component) {
+    return '';
+  }
+  let propsString = `${tab}data-builder-id="${tree.uuid}"\n`;
+  tree.props &&
+    Object.entries(tree.props).forEach(entry => {
+      if (!(entry[0] === 'children' || typeof entry[1] === 'function')) {
+        if (Array.isArray(entry[1])) {
+          propsString += `${tab}${entry[0]}={[
+            ${JSONTreeToJSXCode(entry[1], tab)}
+          ]}\n`;
+        } else if (_.isPlainObject(entry[1])) {
+          propsString += `${tab}${entry[0]}={${JSONTreeToJSXCode(entry[1], tab)} ${tab}}\n`;
+        } else {
+          propsString += `${tab}${entry[0]}="${entry[1]}"\n`;
+        }
+      }
+    });
+  code += `<${component} \n ${propsString}`;
+  if (tree.props && tree.props.children) {
+    if (Array.isArray(tree.props.children)) {
+      code += `${tab}>\n`;
+      tree.props.children.forEach(item => {
+        if (typeof item !== 'string') {
+          code += `${tab}${JSONTreeToJSXCode(item, tab)}\n`;
+        }
+      });
+      code += `${tab.replace('\t', '')}</${component}>`;
+    } else {
+      code += `children="${tree.props.children}" \n ${tab.replace('\t', '')}/>\n`;
+    }
+  } else {
+    code += `${tab.replace('\t', '')}/>\n`;
+  }
+  return code;
 };
 
 export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
-  const imports: Record<string, string[]> = JSONTreeToImports(tree);
-  let codeSandboxExport = 'import * as React from "react";\n';
+  let codeSandboxExport = `import * as React from "react";
+    import * as Material from "@material-ui/core";
+    import * as Fluent from "@fluentui/react-northstar";
+    import * from "@fluentui/react-icons-northstar";`;
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
@@ -669,17 +670,20 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
       version: docsComponentsPackageJson.peerDependencies['prettier'],
       required: true,
     },
+    '@fluentui/react-icons-northstar': {
+      version: projectPackageJson.version,
+      required: false,
+    },
+    '@fluentui/react-northstar': {
+      version: projectPackageJson.version,
+      required: false,
+    },
+    '@material-ui/core': {
+      version: '^4.11.0',
+      required: false,
+    },
   };
-  for (const [module, components] of Object.entries(imports)) {
-    codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    if (packageImportList[module]) {
-      packageImports[module] = packageImportList[module];
-    } else {
-      console.error(
-        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
-      );
-    }
-  }
+
   codeSandboxExport += `\n export default function Example() { \n return (\n
   ${code} \n);}`;
 
