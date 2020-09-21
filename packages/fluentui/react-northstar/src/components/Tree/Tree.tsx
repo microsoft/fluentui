@@ -242,16 +242,12 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
       setSelectedItemIdsState(prevSelectedItemIds => {
         const nextSelectedItemIds = updateSelectedItemIds(prevSelectedItemIds);
-
         _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
           ...stableProps.current,
           selectedItemIds: nextSelectedItemIds,
         });
-
         return nextSelectedItemIds;
       });
-
-      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
