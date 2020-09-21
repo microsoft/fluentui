@@ -1,7 +1,7 @@
 import { getGlobalClassNames } from '../../Styling';
 import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
-const inheritFont = { fontFamily: 'inherit' };
+// const inheritFont = { fontFamily: 'inherit' };
 
 const GlobalClassNames = {
   root: 'ms-Fabric',
@@ -22,11 +22,11 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
-        selectors: {
-          '& button': inheritFont,
-          '& input': inheritFont,
-          '& textarea': inheritFont,
-        },
+        // selectors: {
+        //   '& button': inheritFont,
+        //   '& input': inheritFont,
+        //   '& textarea': inheritFont,
+        // },
       },
       // apply theme to only if applyTheme is true
       applyTheme && {
