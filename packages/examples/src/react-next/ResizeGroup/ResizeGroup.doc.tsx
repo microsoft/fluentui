@@ -37,7 +37,6 @@ export const ResizeGroupPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/docs/ResizeGroupOverview.md'),
-  bestPractices: '',
   dos: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/docs/ResizeGroupDos.md'),
   donts: require<
     string

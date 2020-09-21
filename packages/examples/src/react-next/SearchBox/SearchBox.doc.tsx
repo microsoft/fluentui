@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
