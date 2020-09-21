@@ -286,6 +286,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
+  listitem: {},
   officescript: {
     extensions: ['osts'],
   },
