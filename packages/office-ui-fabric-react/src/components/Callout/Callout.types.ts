@@ -102,6 +102,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   preventDismissOnLostFocus?: boolean;
 
   /**
+   * If true then the callout will dismiss when the target element is clicked
+   * @defaultvalue false
+   */
+  dismissOnTargetClick?: boolean;
+
+  /**
    *If defined, then takes priority over preventDismissOnLostFocus, preventDismissOnResize,
    * and preventDismissOnScroll.
    * If it returns true, then callout will not dismiss for this event.
