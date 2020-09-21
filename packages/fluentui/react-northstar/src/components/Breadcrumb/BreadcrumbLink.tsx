@@ -1,25 +1,98 @@
-import { compose } from '@fluentui/react-bindings';
-import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
+import * as React from 'react';
+import {
+  compose,
+  useFluentContext,
+  useTelemetry,
+  useAccessibility,
+  useStyles,
+  useUnhandledProps,
+  getElementType,
+  childrenExist,
+} from '@fluentui/react-bindings';
+import {
+  commonPropTypes,
+  UIComponentProps,
+  ContentComponentProps,
+  ChildrenComponentProps,
+  SizeValue,
+} from '../../utils';
+import { useBreadcrumbContext } from './breadcrumbContext';
+import { Accessibility } from '@fluentui/accessibility';
 
-export interface BreadcrumbLinkOwnProps {}
-export interface BreadcrumbLinkProps extends BreadcrumbLinkOwnProps, BoxProps {}
+export interface BreadcrumbLinkProps
+  extends UIComponentProps<BreadcrumbLinkProps>,
+    ContentComponentProps,
+    ChildrenComponentProps {
+  /** Accessibility behavior if overridden by the user. */
+  accessibility?: Accessibility<never>;
 
-export type BreadcrumbLinkStylesProps = never;
+  /** The Breadcrumb Link can be disabled */
+  disabled?: boolean;
+}
+
+export type BreadcrumbLinkStylesProps = Required<Pick<BreadcrumbLinkProps, 'disabled'>> & { size: SizeValue };
+
 export const breadcrumbLinkClassName = 'ui-breadcrumb__link';
 
 /**
  * An BreadcrumbLink represents a anchor to be used inside the Breadcrumb
+ * This component is currently UNSTABLE!
  */
-export const BreadcrumbLink = compose<'a', BreadcrumbLinkOwnProps, BreadcrumbLinkStylesProps, BoxProps, BoxStylesProps>(
-  Box,
+export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+    const { accessibility, children, content, className, design, styles, variables, disabled } = props;
+    const { size } = useBreadcrumbContext();
+
+    const getA11yProps = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
+      rtl: context.rtl,
+    });
+
+    const { classes } = useStyles<BreadcrumbLinkStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToStyles: () => ({ size, disabled }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+    const ElementType = getElementType(props);
+
+    const result = (
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ref,
+          ...unhandledProps,
+        })}
+      >
+        {childrenExist(children) ? children : content}
+      </ElementType>
+    );
+
+    setEnd();
+
+    return result;
+  },
   {
     className: breadcrumbLinkClassName,
     displayName: 'BreadcrumbLink',
-    overrideStyles: true,
-    shorthandConfig: {},
+    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
 
 BreadcrumbLink.defaultProps = {
   as: 'a',
 };
+
+BreadcrumbLink.propTypes = commonPropTypes.createCommon();

@@ -24,6 +24,7 @@ import { Accessibility } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 import { BreadcrumbLink } from './BreadcrumbLink';
+import { BreadcrumbContext } from './breadcrumbContext';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
@@ -81,7 +82,9 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <div role="list">{childrenExist(children) ? children : content}</div>
+        <BreadcrumbContext.Provider value={{ size }}>
+          <div role="list">{childrenExist(children) ? children : content}</div>
+        </BreadcrumbContext.Provider>
       </ElementType>
     );
 

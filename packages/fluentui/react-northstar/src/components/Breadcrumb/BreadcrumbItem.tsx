@@ -9,8 +9,15 @@ import {
   getElementType,
   childrenExist,
 } from '@fluentui/react-bindings';
-import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import {
+  commonPropTypes,
+  UIComponentProps,
+  ContentComponentProps,
+  ChildrenComponentProps,
+  SizeValue,
+} from '../../utils';
 import { Accessibility, breadcrumbItemBehavior, BreadcrumbItemBehaviorProps } from '@fluentui/accessibility';
+import { useBreadcrumbContext } from './breadcrumbContext';
 
 export interface BreadcrumbItemProps
   extends UIComponentProps<BreadcrumbItemProps>,
@@ -18,9 +25,12 @@ export interface BreadcrumbItemProps
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<BreadcrumbItemBehaviorProps>;
+
+  /** Indicates if the item is the last item of the breadccrumb indicatiing the current page */
+  current?: boolean;
 }
 
-export type BreadcrumbItemStylesProps = never;
+export type BreadcrumbItemStylesProps = Required<Pick<BreadcrumbItemProps, 'current'>> & { size: SizeValue };
 
 export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 
@@ -33,16 +43,24 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
-    const { accessibility, children, content, className, design, styles, variables } = props;
+    const { accessibility, children, content, className, design, styles, variables, current } = props;
+    const { size } = useBreadcrumbContext();
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
+      mapPropsToBehavior: () => ({
+        current,
+      }),
       rtl: context.rtl,
     });
 
     const { classes } = useStyles<BreadcrumbItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
+      mapPropsToStyles: () => ({
+        current,
+        size,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -75,7 +93,17 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
   {
     className: breadcrumbItemClassName,
     displayName: 'BreadcrumbItem',
-    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'styles',
+      'variables',
+      'current',
+    ],
   },
 );
 

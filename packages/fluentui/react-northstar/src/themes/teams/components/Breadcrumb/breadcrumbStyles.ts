@@ -19,8 +19,5 @@ export const breadcrumbStyles: ComponentSlotStylesPrepared<BreadcrumbStylesProps
     ...(p.size === 'large' && {
       fontSize: v.fontSizeLarge,
     }),
-    ...(p.size === 'larger' && {
-      fontSize: v.fontSizeLarger,
-    }),
   }),
 };
