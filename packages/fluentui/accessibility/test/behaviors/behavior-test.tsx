@@ -192,7 +192,7 @@ testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHea
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
 testHelper.addBehavior('datepickerCalendarGridRowBehavior', datepickerCalendarGridRowBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
-testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalendarCellBehavior);
+testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalendarCellButtonBehavior);
 testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
 testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
 testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
