@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 21 Sep 2020 12:22:29 GMT",
+      "tag": "office-ui-fabric-react_v7.139.0",
+      "version": "7.139.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Implement dialog boundary clamping",
+            "author": "dahajek@microsoft.com",
+            "commit": "3512fb0e2f445a2795b5a707de587908a78bdaf0",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update README.md to better explain the 3 libraries that live in Fluent UI Repo",
+            "author": "jslone@microsoft.com",
+            "commit": "ce158e9d1c1525b8af11a89043f5c7b3823da882",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Running prettier on DropdownOverview.md",
+            "author": "czearing@outlook.com",
+            "commit": "b4aa409a1f1857932e7338bf612e9409600dd2b0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 23:15:07 GMT",
       "tag": "office-ui-fabric-react_v7.138.0",
       "version": "7.138.0",

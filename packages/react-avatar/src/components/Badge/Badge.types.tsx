@@ -31,9 +31,12 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
  */
 export type BadgeTokenSet = {
   size?: string;
-  borderColor?: string;
-  borderWidth?: string;
+  glowColor?: string;
+  glowWidth?: string;
   borderRadius?: string;
+  borderWidth?: string;
+  borderStyle?: string;
+  borderColor?: string;
   color?: string;
   iconColor?: string;
 };

@@ -8,8 +8,8 @@ import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPick
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
-/* eslint-disable */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -52,6 +52,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get items(): any {
     return this.state.selectedItems ?? this.selectedItemsList.current?.items ?? null;
   }
@@ -261,7 +262,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
       const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-        ? (this.props.onItemSelected as any)(item)
+        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (this.props.onItemSelected as any)(item)
         : item;
 
       if (processedItem === null) {

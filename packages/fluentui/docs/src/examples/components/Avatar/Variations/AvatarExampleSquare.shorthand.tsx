@@ -5,7 +5,7 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 const AvatarExampleSquare = () => (
   <div>
     <Avatar
-      image="public/images/avatar/small/matt.jpg"
+      image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
       square
       status={{ color: 'green', icon: <AcceptIcon />, title: 'Available' }}
     />

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react-next": "^8.0.0-alpha.111",
+    "@fluentui/react-next": "^8.0.0-alpha.113",
     "@uifabric/theme-samples": "^7.1.17",
     "react": "16.8.6",
     "react-dom": "16.8.6",
