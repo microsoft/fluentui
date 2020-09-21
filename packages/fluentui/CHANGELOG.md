@@ -60,6 +60,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `checkedIndicator` prop to `RadioGroupItem` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Added `Breadcrumb` component @assuncaocharles ([#14922](https://github.com/microsoft/fluentui/pull/14922))
 - Added `BreadcrumbItem` and `BreadcrumbDivider` components @yuanboxue-amber ([#14926](https://github.com/microsoft/fluentui/pull/14926))
+- Add arrow navigation for `Breadcrumb` a11y behavior @yuanboxue-amber ([#15087](https://github.com/microsoft/fluentui/pull/15087))
 - Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
 - Added `CheckmarkCircleIcon`. Updated `ShareLocationIcon` @TanelVari ([#15119](https://github.com/microsoft/fluentui/pull/15119))
 
