@@ -1,1 +1,1 @@
-A SpinButton allows the user to incrementaly adjust a value in small steps. It is mainly used for numeric values, but other values are supported too.
+A spin button (`SpinButton`) allows someone to incrementally adjust a value in small steps. It’s mainly used for numeric values, but other values are supported too.
