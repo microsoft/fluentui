@@ -8,7 +8,8 @@ import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-/* eslint-disable */
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
@@ -49,6 +50,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     return this.state.queryString;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get suggestions(): any[] {
     return this.suggestionStore.suggestions;
   }

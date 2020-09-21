@@ -2,6 +2,7 @@
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "isolatedModules": false,
     "module": "esnext",
     "types": ["node", "jest", "webpack-env"],
     "skipLibCheck": true

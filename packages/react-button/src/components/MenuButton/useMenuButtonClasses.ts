@@ -35,6 +35,7 @@ export const useMenuButtonClasses = makeClasses({
     GlobalClassNames.menuIcon,
     {
       color: 'var(--button-menuIconColor)',
+      fontSize: 'var(--button-menuIconSize)',
 
       [`.${GlobalClassNames._disabled} &`]: {
         color: 'var(--button-disabled-menuIconColor)',

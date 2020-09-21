@@ -28,7 +28,6 @@ import { IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
 import { ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
@@ -289,27 +288,7 @@ export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellPr
 export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IComboBoxProps;
-    dismissMenu: () => void;
-    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
-    // (undocumented)
-    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
-}
+export const ComboBox: React.FunctionComponent<IComboBoxProps>;
 
 // @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
@@ -944,7 +923,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
@@ -984,14 +963,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
-    currentOptions: IComboBoxOption[];
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
     focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
-    selectedIndices?: number[];
-    suggestedDisplayValue?: string;
 }
 
 // @public (undocumented)
@@ -1546,6 +1522,48 @@ export interface IImageStyleProps {
 export interface IImageStyles {
     image: IStyle;
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface ILayer {
+}
+
+// @public (undocumented)
+export interface ILayerHost {
+}
+
+// @public (undocumented)
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<ILayer>;
+    eventBubblingEnabled?: boolean;
+    hostId?: string;
+    insertFirst?: boolean;
+    onLayerDidMount?: () => void;
+    // @deprecated
+    onLayerMounted?: () => void;
+    onLayerWillUnmount?: () => void;
+    styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILayerStyleProps {
+    className?: string;
+    isNotHost?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ILayerStyles {
+    content?: IStyle;
+    root?: IStyle;
 }
 
 // @public
@@ -2615,6 +2633,15 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const Layer: React.FunctionComponent<ILayerProps>;
+
+// @public (undocumented)
+export const LayerBase: React.FunctionComponent<ILayerProps>;
+
+// @public (undocumented)
+export const LayerHost: React.FunctionComponent<ILayerHostProps>;
+
+// @public (undocumented)
 export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -3175,7 +3202,6 @@ export * from "office-ui-fabric-react/lib/Keytip";
 export * from "office-ui-fabric-react/lib/KeytipData";
 export * from "office-ui-fabric-react/lib/KeytipLayer";
 export * from "office-ui-fabric-react/lib/Label";
-export * from "office-ui-fabric-react/lib/Layer";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/Nav";

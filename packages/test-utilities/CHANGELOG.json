@@ -2,6 +2,21 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add the ability to specify reder options to safeCreate",
+            "author": "miclo@microsoft.com",
+            "commit": "2a65fb9d5df81f57e7289ebbcdfb8f52553402b3",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/test-utilities_v7.2.2",
       "version": "7.2.2",

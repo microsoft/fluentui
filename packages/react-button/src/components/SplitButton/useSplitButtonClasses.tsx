@@ -1,57 +1,61 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-// eslint-disable @typescript-eslint/naming-convention
 import { makeClasses } from '@fluentui/react-theme-provider';
+
+const GlobalClassNames = {
+  button: 'ms-SplitButton-button',
+  menuButton: 'ms-SplitButton-menuButton',
+};
+
+const menuButtonWidth = '32px';
 
 export const useSplitButtonClasses = makeClasses({
   root: {
     display: 'inline-flex',
     justifyContent: 'stretch',
+    position: 'relative',
+
+    [`.${GlobalClassNames.menuButton}`]: {
+      '--button-width': menuButtonWidth,
+    },
   },
 
-  button: {
-    '--button-borderRightWidth': 0,
-    '--button-borderTopRightRadius': 0,
-    '--button-borderBottomRightRadius': 0,
-  },
+  button: [
+    GlobalClassNames.button,
+    {
+      '--button-borderRightWidth': 0,
+      '--button-borderTopRightRadius': 0,
+      '--button-borderBottomRightRadius': 0,
+    },
+  ],
 
-  menuButton: {
-    '--button-borderLeftWidth': 0,
-    '--button-borderTopLeftRadius': 0,
-    '--button-borderBottomLeftRadius': 0,
-  },
+  menuButton: [
+    GlobalClassNames.menuButton,
+    {
+      '--button-borderLeftWidth': 0,
+      '--button-borderTopLeftRadius': 0,
+      '--button-borderBottomLeftRadius': 0,
+      '--button-iconSize': 'var(--button-menuIconSize)',
+    },
+  ],
 
   divider: {
-    display: 'inline-block',
-    borderLeft: 'var(--button-dividerThickness) solid var(--button-dividerColor)',
-    width: '0px',
+    width: 'var(--button-dividerThickness)',
+    backgroundColor: 'var(--button-dividerColor)',
+    position: 'absolute',
+    right: menuButtonWidth,
+    top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+    bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
   },
 
   _fluid: {
     width: '100%',
     maxWidth: '100%',
-  },
 
-  _size_smallest: {
-    '--button-minHeight': 'var(--button-size-smallest)',
-  },
+    [`.${GlobalClassNames.button}`]: {
+      flexGrow: 1,
+    },
 
-  _size_smaller: {
-    '--button-minHeight': 'var(--button-size-smaller)',
-  },
-
-  _size_small: {
-    '--button-minHeight': 'var(--button-size-small)',
-  },
-
-  _size_large: {
-    '--button-minHeight': 'var(--button-size-large)',
-  },
-
-  _size_larger: {
-    '--button-minHeight': 'var(--button-size-larger)',
-  },
-
-  _size_largest: {
-    '--button-minHeight': 'var(--button-size-largest)',
+    [`.${GlobalClassNames.menuButton}`]: {
+      width: menuButtonWidth,
+    },
   },
 });
