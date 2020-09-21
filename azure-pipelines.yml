@@ -16,11 +16,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
       - template: .devops/templates/pr-target-branch.yml
 
       - script: |
@@ -57,11 +52,6 @@ jobs:
       - template: .devops/templates/variables.yml
     steps:
       - template: .devops/templates/tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
       - template: .devops/templates/pr-target-branch.yml
 
       ## only do scoped bundle with PRs
@@ -120,9 +110,6 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: yarn
-        displayName: yarn
-
       - script: yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
 
@@ -146,11 +133,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
       - template: .devops/templates/pr-target-branch.yml
 
       - script: |

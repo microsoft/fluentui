@@ -1,3 +1,6 @@
+variables:
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+
 # Install versions of Node and Yarn required by build pipelines.
 steps:
   - task: NodeTool@0
@@ -11,3 +14,15 @@ steps:
       versionSpec: 1.19.x
       checkLatest: true
       includePrerelease: false
+
+  - task: Cache@2
+    inputs:
+      key: 'yarn | "$(Agent.OS)" | yarn.lock'
+      restoreKeys: |
+        yarn | $(Agent.OS)
+        yarn
+      path: $(YARN_CACHE_FOLDER)
+    displayName: Cache Yarn packages
+
+  - script: yarn --frozen-lockfile
+    displayName: Yarn
