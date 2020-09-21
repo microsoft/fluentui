@@ -129,4 +129,9 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Callback for when an item or items needs to be inserted into the list
    */
   dropItemsAt?: (insertIndex: number, itemsToInsert: T[], indicesToRemove: number[]) => void;
+
+  /**
+   * Callback for when an item has been edited
+   */
+  onItemEdited?: (newItem: T | T[], index: number) => void;
 }

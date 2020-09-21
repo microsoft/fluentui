@@ -42,6 +42,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
         setItems(newItems);
+        props.onItemEdited?.(newItem, index);
       }
     },
     [items],
