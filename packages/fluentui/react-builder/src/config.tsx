@@ -20,47 +20,64 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Surfaces: ['Fluent.Popup', 'Fluent.Dialog'],
   Content: [
-    'Text',
-    'Image',
-    'Avatar',
-    'Header',
-    'Divider',
-    'Embed',
-    'Alert',
-    'Attachment',
-    'Datepicker',
-    'Label',
-    'Loader',
-    'Reaction',
-    'Chat',
-    'SvgIcon',
-    'Status',
-    'Tooltip',
-    'Video',
+    'Fluent.Text',
+    'Fluent.Image',
+    'Fluent.Avatar',
+    'Fluent.Header',
+    'Fluent.Divider',
+    'Fluent.Embed',
+    'Fluent.Alert',
+    'Fluent.Attachment',
+    'Fluent.Datepicker',
+    'Fluent.Label',
+    'Fluent.Loader',
+    'Fluent.Reaction',
+    'Fluent.Chat',
+    'Fluent.SvgIcon',
+    'Fluent.Status',
+    'Fluent.Tooltip',
+    'Fluent.Video',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
-  Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Layouts: ['Fluent.Box', 'Fluent.Flex', 'Fluent.Grid', 'Fluent.Layout', 'Fluent.Table', 'Fluent.ItemLayout'],
+  Forms: [
+    'Fluent.Input',
+    'Fluent.Dropdown',
+    'Fluent.Form',
+    'Fluent.Checkbox',
+    'Fluent.RadioGroup',
+    'Fluent.Slider',
+    'Fluent.TextArea',
+  ],
+  Actionable: ['Fluent.Button', 'Fluent.MenuButton', 'Fluent.SplitButton', 'Fluent.Menu', 'Fluent.Toolbar'],
+  Containers: [
+    'Fluent.Card',
+    'Fluent.Carousel',
+    'Fluent.Accordion',
+    'Fluent.Segment',
+    'Fluent.List',
+    'Fluent.Tree',
+    'Fluent.HierarchicalTree',
+  ],
+  MaterialActionable: ['Material.Button', 'Material.ButtonGroup', 'Material.Checkbox'],
 };
 
 export const DRAGGING_ELEMENTS = {
   // MATERIAL Elements
-  MaterialButton: (
+  'Material.Button': (
     <MUI.Button variant="contained" color="primary">
       Hello World
     </MUI.Button>
   ),
-  MaterialButtonGroup: (
+  'Material.ButtonGroup': (
     <MUI.ButtonGroup color="primary" aria-label="outlined primary button group">
       <MUI.Button>One</MUI.Button>
       <MUI.Button>Two</MUI.Button>
       <MUI.Button>Three</MUI.Button>
     </MUI.ButtonGroup>
   ),
-  MaterialCheckbox: <MUI.FormControlLabel control={<MUI.Checkbox name="checkedA" />} label="Secondary" />,
+  'Material.Checkbox': <MUI.FormControlLabel control={<MUI.Checkbox name="checkedA" />} label="Secondary" />,
 
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -69,7 +86,7 @@ export const DRAGGING_ELEMENTS = {
 
   // TODO: sort
 
-  ButtonGroup: (
+  'Fluent.ButtonGroup': (
     <FUI.ButtonGroup
       buttons={[
         {
@@ -102,19 +119,19 @@ export const DRAGGING_ELEMENTS = {
   // CardTopControls: <FUI.CardTopControls />,
 
   // FLUENT v0 COMPONENTS
-  Accordion: {
+  'Fluent.Accordion': {
     props: {
       panels: [{ title: 'Accordion title', content: 'Accordion content' }],
     } as FUI.AccordionProps,
   },
 
-  Alert: {
+  'Fluent.Alert': {
     props: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
   },
 
   // Animation: { props: { name: 'fade' } as FUI.AnimationProps },
 
-  Attachment: {
+  'Fluent.Attachment': {
     props: {
       icon: <FUIIcons.WordIcon />,
       header: 'A file attachment',
@@ -122,7 +139,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.AttachmentProps,
   },
 
-  Avatar: {
+  'Fluent.Avatar': {
     props: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
   },
 
@@ -131,9 +148,9 @@ export const DRAGGING_ELEMENTS = {
   // },
 
   // this can be ReactElement directly 👍
-  Button: <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
+  'Fluent.Button': <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
 
-  Carousel: {
+  'Fluent.Carousel': {
     props: {
       getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
       items: [
@@ -151,7 +168,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.CarouselProps,
   },
 
-  Chat: {
+  'Fluent.Chat': {
     props: {
       items: [
         {
@@ -175,7 +192,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ChatProps,
   },
 
-  Checkbox: {
+  'Fluent.Checkbox': {
     props: { label: 'Checkbox' } as FUI.CheckboxProps,
   },
 
@@ -183,7 +200,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Design: { props: { config: {} } as FUI.DesignProps },
 
-  Dialog: {
+  'Fluent.Dialog': {
     props: {
       trigger: <FUI.Button>Open Dialog</FUI.Button>,
       header: 'Header',
@@ -196,11 +213,11 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.DialogProps,
   },
 
-  Divider: {
+  'Fluent.Divider': {
     props: { content: 'Divider' } as FUI.DividerProps,
   },
 
-  Dropdown: {
+  'Fluent.Dropdown': {
     props: {
       placeholder: 'Dropdown',
       items: ['Item 1', 'Item 2', 'Item 3'],
@@ -209,13 +226,13 @@ export const DRAGGING_ELEMENTS = {
 
   // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
-  Flex: {
+  'Fluent.Flex': {
     props: {} as FUI.FlexProps,
   },
 
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
-  Form: {
+  'Fluent.Form': {
     props: {
       fields: [
         {
@@ -249,27 +266,27 @@ export const DRAGGING_ELEMENTS = {
 
   // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
-  Header: {
+  'Fluent.Header': {
     props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
   },
 
   // Icon: { props: { name: 'like' } as FUI.IconProps },
 
-  Image: {
+  'Fluent.Image': {
     props: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
   },
 
-  Input: {
+  'Fluent.Input': {
     props: { placeholder: 'Type...' } as FUI.InputProps,
   },
 
   // ItemLayout: { props: { content: 'ItemLayout' } as FUI.ItemLayoutProps },
 
-  Label: {
+  'Fluent.Label': {
     props: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
   },
 
-  Layout: {
+  'Fluent.Layout': {
     props: {
       debug: true,
       start: 'Start content.',
@@ -278,7 +295,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.LayoutProps,
   },
 
-  List: {
+  'Fluent.List': {
     props: {
       items: [
         {
@@ -306,19 +323,19 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ListProps,
   },
 
-  Loader: {
+  'Fluent.Loader': {
     props: {
       label: 'Loading...',
     } as FUI.LoaderProps,
   },
 
-  Menu: {
+  'Fluent.Menu': {
     props: {
       items: ['Item 1', 'Item 2', 'Item 3'],
     } as FUI.MenuProps,
   },
 
-  MenuButton: {
+  'Fluent.MenuButton': {
     props: {
       trigger: <FUI.Button>MenuButton</FUI.Button>,
       menu: [
@@ -333,7 +350,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.MenuButtonProps,
   },
 
-  Popup: {
+  'Fluent.Popup': {
     props: {
       trigger: <FUI.Button>Show Popup</FUI.Button>,
       content: 'Hello from popup!',
@@ -344,7 +361,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Provider: { props: { content: 'Provider' } as FUI.ProviderProps},
 
-  RadioGroup: {
+  'Fluent.RadioGroup': {
     props: {
       items: [
         { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -354,31 +371,31 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.RadioGroupProps,
   },
 
-  Reaction: {
+  'Fluent.Reaction': {
     props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
-  Segment: {
+  'Fluent.Segment': {
     props: { content: 'Segment' } as FUI.SegmentProps,
   },
 
-  Slider: {
+  'Fluent.Slider': {
     props: {} as FUI.SliderProps,
   },
 
   // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
 
-  Status: {
+  'Fluent.Status': {
     props: { state: 'success' } as FUI.StatusProps,
   },
 
   // Table: { props: { content: 'Table' } as FUI.TableProps },
 
-  Text: {
+  'Fluent.Text': {
     props: { content: 'Text' } as FUI.TextProps,
   },
 
-  TextArea: {
+  'Fluent.TextArea': {
     props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
   },
 
@@ -386,7 +403,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
 
-  Tree: {
+  'Fluent.Tree': {
     props: {
       items: [
         {
@@ -584,6 +601,10 @@ const packageImportList: Record<string, CodeSandboxImport> = {
     version: projectPackageJson.version,
     required: false,
   },
+  '@materialui/core': {
+    version: projectPackageJson.version,
+    required: false,
+  },
 };
 
 export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
@@ -601,29 +622,30 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
   if (tree.moduleName && tree.props?.trigger) {
     if (tree.props?.trigger.$$typeof === 'Symbol(react.element)') {
       if (imports.hasOwnProperty(tree.moduleName)) {
-        if (!imports[tree.moduleName].includes(tree.props?.trigger.type)) {
-          imports[tree.moduleName].push(tree.props?.trigger.type);
+        if (!imports[tree.moduleName].includes(tree.props?.trigger.type.split('.')[1])) {
+          imports[tree.moduleName].push(tree.props?.trigger.type.split('.')[1]);
         }
       } else {
-        imports[tree.moduleName] = [tree.props?.trigger.type];
+        imports[tree.moduleName] = [tree.props?.trigger.type.split('.')[1]];
       }
     }
   }
   if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
     if (imports.hasOwnProperty(tree.moduleName)) {
-      if (!imports[tree.moduleName].includes(tree.displayName)) {
-        imports[tree.moduleName].push(tree.displayName);
+      if (!imports[tree.moduleName].includes(tree.displayName.split('.')[1])) {
+        imports[tree.moduleName].push(tree.displayName.split('.')[1]);
       }
     } else {
-      imports[tree.moduleName] = [tree.displayName];
+      imports[tree.moduleName] = [tree.displayName.split('.')[1]];
     }
   }
 
-  tree.props?.children?.forEach(item => {
-    if (typeof item !== 'string') {
-      imports = JSONTreeToImports(item, imports);
-    }
-  });
+  Array.isArray(tree.props?.children) &&
+    tree.props?.children?.forEach(item => {
+      if (typeof item !== 'string') {
+        imports = JSONTreeToImports(item, imports);
+      }
+    });
   return imports;
 };
 

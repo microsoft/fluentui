@@ -32,11 +32,15 @@ export const componentInfoContext: {
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
   next.moduleName = '@fluentui/react-northstar';
+  next.displayName = `Fluent.${next.displayName}`;
+  next.parentDisplayName = `Fluent.${next.parentDisplayName}`;
   acc[next.displayName] = next;
   return acc;
 }, {});
 
 materialComponentsInfo.forEach(item => {
+  item.moduleName = '@material-ui/core';
+  item.displayName = `Material.${item.displayName}`;
   componentInfoContext.byDisplayName[item.displayName] = item;
 });
 

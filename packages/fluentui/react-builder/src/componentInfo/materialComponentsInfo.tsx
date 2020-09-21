@@ -5,7 +5,7 @@ export const materialComponentsInfo: ComponentInfo[] = [
     constructorName: 'MaterialButton',
     componentClassName: 'MaterialButton',
     implementsCreateShorthand: false,
-    displayName: 'MaterialButton',
+    displayName: 'Button',
     filename: 'N/A',
     filenameWithoutExt: 'N/A',
     docblock: {
@@ -72,7 +72,7 @@ export const materialComponentsInfo: ComponentInfo[] = [
     constructorName: 'MaterialButtonGroup',
     componentClassName: 'MaterialButtonGroup',
     implementsCreateShorthand: false,
-    displayName: 'MaterialButtonGroup',
+    displayName: 'ButtonGroup',
     filename: 'N/A',
     filenameWithoutExt: 'N/A',
     docblock: {
@@ -145,7 +145,7 @@ export const materialComponentsInfo: ComponentInfo[] = [
   },
   {
     constructorName: 'MaterialCheckbox',
-    componentClassName: 'MaterialCheckbox',
+    componentClassName: 'Checkbox',
     implementsCreateShorthand: false,
     displayName: 'MaterialCheckbox',
     filename: 'N/A',
