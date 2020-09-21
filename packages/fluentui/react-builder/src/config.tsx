@@ -647,11 +647,32 @@ export const JSONTreeToJSXCode = (tree, tab = '', moduleName = '') => {
   return code;
 };
 
+export const getImportIcons = (tree: JSONTreeElement, imports = []) => {
+  if (tree.props?.icon) {
+    const iconModule =
+      tree.moduleName === '@fluentui/react-northstar' ? '@fluentui/react-icons-northstar' : 'ErrorNoPackage';
+    if (imports.hasOwnProperty(iconModule)) {
+      if (!imports.includes(tree.props?.icon.type)) {
+        imports.push(tree.props?.icon.type);
+      }
+    } else {
+      imports = [tree.props?.icon.type];
+    }
+  }
+  Array.isArray(tree.props?.children) &&
+    tree.props?.children?.forEach(item => {
+      if (typeof item !== 'string') {
+        imports = getImportIcons(item, imports);
+      }
+    });
+  return imports;
+};
+
 export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   let codeSandboxExport = `import * as React from "react";
     import * as Material from "@material-ui/core";
     import * as Fluent from "@fluentui/react-northstar";
-    import * from "@fluentui/react-icons-northstar";`;
+    import {${getImportIcons(tree).join(',')}} from "@fluentui/react-icons-northstar";`;
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
