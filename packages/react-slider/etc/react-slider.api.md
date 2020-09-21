@@ -20,8 +20,6 @@ export interface ISlider {
 
 // @public (undocumented)
 export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
-    'aria-label'?: string;
-    // @deprecated
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;

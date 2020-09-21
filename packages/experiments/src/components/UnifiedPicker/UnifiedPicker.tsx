@@ -109,6 +109,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
     }
     dropItemsAt(insertIndex, newItems, indicesToRemove);
+    unselectAll();
   };
 
   const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
@@ -156,7 +157,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
     if (event) {
-      if (event.dataTransfer?.dropEffect === 'move') {
+      // If we have a move event, and we still have selected items (indicating that we
+      // haven't already moved items within the well) we should remove the item(s)
+      if (event.dataTransfer?.dropEffect === 'move' && focusedItemIndices.length > 0) {
         const itemsToRemove = focusedItemIndices.includes(draggedIndex)
           ? (getSelectedItems() as T[])
           : [selectedItems[draggedIndex]];

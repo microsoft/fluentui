@@ -4,7 +4,7 @@ import { StoryExample } from '../utils/StoryExample';
 import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons';
 
 export const BadgeExamples = () => (
-  <>
+  <div style={{ background: 'rgb(232, 232, 232)' }}>
     <StoryExample title="Badge">
       <Badge size="smallest" state="error" />
       <Badge size="smaller" state="warning" />
@@ -36,6 +36,8 @@ export const BadgeExamples = () => (
           color: 'mistyrose',
           iconColor: 'hotpink',
           borderColor: 'hotpink',
+          borderWidth: '2px',
+          borderStyle: 'solid',
         }}
       />
       <Badge
@@ -46,5 +48,5 @@ export const BadgeExamples = () => (
         }}
       />
     </StoryExample>
-  </>
+  </div>
 );

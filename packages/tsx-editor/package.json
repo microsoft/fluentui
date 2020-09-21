@@ -41,7 +41,7 @@
     "@uifabric/example-data": "^7.1.4",
     "@uifabric/monaco-editor": "^0.5.18",
     "@uifabric/react-hooks": "^7.13.4",
-    "office-ui-fabric-react": "^7.138.0",
+    "office-ui-fabric-react": "^7.139.0",
     "raw-loader": "^0.5.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0",

@@ -3279,7 +3279,7 @@ export interface IContextualMenuRenderItem {
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
-    title?: string | IContextualMenuItem;
+    title?: string;
     topDivider?: boolean;
 }
 
@@ -4528,6 +4528,7 @@ export interface IDragDropTarget {
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
+    keepInBounds?: boolean;
     keyboardMoveIconProps?: IIconProps;
     menu: React.FunctionComponent<IContextualMenuProps>;
     moveMenuItemText: string;
