@@ -1,4 +1,4 @@
-import { attr, Observable } from '@microsoft/fast-element';
+import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
 import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
@@ -81,7 +81,9 @@ export class FluentCard extends FluentDesignSystemProvider
 
   connectedCallback(): void {
     super.connectedCallback();
-    Observable.getNotifier(this.provider?.designSystem).subscribe(this, 'backgroundColor');
+    const desinSystemNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
+    desinSystemNotifier.subscribe(this, 'backgroundColor');
+    desinSystemNotifier.subscribe(this, 'neutralPalette');
     this.handleChange(this.provider?.designSystem as DesignSystem, 'backgroundColor');
   }
 }
