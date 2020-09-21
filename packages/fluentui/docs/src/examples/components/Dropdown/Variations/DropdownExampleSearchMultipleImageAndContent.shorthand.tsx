@@ -57,11 +57,12 @@ const DropdownExampleSearchMultipleImageAndContent = () => (
     placeholder="Start typing a name"
     getA11ySelectionMessage={getA11ySelectionMessage}
     noResultsMessage="We couldn't find any matches."
+    a11ySelectedItemsMessage="Press Delete or Backspace to remove"
   />
 );
 
 const getA11ySelectionMessage = {
-  onAdd: item => `${item.header} has been selected.`,
+  onAdd: item => `${item.header} selected. Press left or right arrow keys to navigate selected items.`,
   onRemove: item => `${item.header} has been removed.`,
 };
 
