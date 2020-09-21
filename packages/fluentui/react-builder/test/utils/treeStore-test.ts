@@ -51,7 +51,7 @@ describe('treeStore', () => {
   };
 
   it('writes tree to URL and reads it', () => {
-    const url = writeTreeToURL(tree, 'http://localhost:8080/builder#rtl=true');
+    const url = writeTreeToURL(tree, {}, 'http://localhost:8080/builder#rtl=true');
     const readTree = readTreeFromURL(url);
     expect(readTree).toMatchObject(tree);
   });
