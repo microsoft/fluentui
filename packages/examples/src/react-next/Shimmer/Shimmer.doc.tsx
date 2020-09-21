@@ -19,8 +19,7 @@ const ShimmerApplicationExampleCode = require('!raw-loader!@fluentui/examples/sr
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
   componentName: 'ShimmerExample',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Shimmer',
   examples: [
     {
       title: 'Shimmer with basic elements using the ~shimmerElements~ prop',

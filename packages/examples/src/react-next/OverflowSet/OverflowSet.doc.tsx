@@ -14,8 +14,7 @@ const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/examp
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
   componentName: 'OverflowSet',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/OverflowSet',
   examples: [
     {
       title: 'OverflowSet Basic Example',
@@ -38,7 +37,8 @@ export const OverflowSetPageProps: IDocPageProps = {
       view: <OverflowSetBasicReversedExample />,
     },
   ],
-  overview: require<
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/OverflowSet/docs/OverflowSetOverview.md'),
+  bestPractices: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/docs/OverflowSetOverview.md'),
   bestPractices: '',

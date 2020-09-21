@@ -24,8 +24,7 @@ const TextFieldMaskedExampleCode = require('!raw-loader!@fluentui/examples/src/r
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-next/src/components/TextField',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/TextField',
   examples: [
     {
       title: 'Basic TextFields',

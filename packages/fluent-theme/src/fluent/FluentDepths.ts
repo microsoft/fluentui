@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/constants/FluentDepths';
+export * from '@fluentui/theme/lib/effects/FluentDepths';

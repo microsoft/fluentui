@@ -13,8 +13,7 @@ const LayerNestedLayersExampleCode = require('!raw-loader!@fluentui/examples/src
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',
   componentName: 'Layer',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Layer',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Layer',
   examples: [
     {
       title: 'Basic layered content',

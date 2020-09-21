@@ -21,8 +21,7 @@ const ImageMaximizeFrameExampleCode = require('!raw-loader!@fluentui/examples/sr
 export const ImagePageProps: IDocPageProps = {
   title: 'Image',
   componentName: 'Image',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Image',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Image',
   examples: [
     {
       title: 'ImageFit: Not specified',

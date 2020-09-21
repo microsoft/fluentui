@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '../../common/DocPage.types';
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
@@ -16,8 +16,7 @@ const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/examples/src/of
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SearchBox',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/SearchBox',
   examples: [
     {
       title: 'Default SearchBox',
