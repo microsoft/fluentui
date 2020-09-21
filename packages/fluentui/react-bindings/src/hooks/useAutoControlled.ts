@@ -16,19 +16,25 @@ const isUndefined = (value: any) => typeof value === 'undefined';
 export const useAutoControlled = <Value>(
   options: UseAutoControlledOptions<Value>,
 ): [Value, React.Dispatch<React.SetStateAction<Value>>] => {
-  const { defaultValue, initialValue = undefined, value } = options;
-  const [_state, _setState] = React.useState<Value>(isUndefined(defaultValue) ? (initialValue as Value) : defaultValue);
-  const state = isUndefined(value) ? _state : value;
-  const stateRef = React.useRef(state);
+  const [stateValue, setStateValue] = React.useState<Value>(
+    isUndefined(options.defaultValue) ? (options.initialValue as Value) : options.defaultValue,
+  );
 
-  const setState = React.useCallback((newState: Value) => {
+  const value = isUndefined(options.value) ? stateValue : options.value;
+  // Used to avoid dependencies in "setValue"
+  const valueRef = React.useRef(value);
+
+  const setValue = React.useCallback((newState: Value) => {
     if (typeof newState === 'function') {
-      stateRef.current = newState(stateRef.current);
+      // Handles functional updates
+      // https://reactjs.org/docs/hooks-reference.html#functional-updates
+      valueRef.current = newState(valueRef.current);
     } else {
-      stateRef.current = newState;
+      valueRef.current = newState;
     }
-    _setState(stateRef.current);
+
+    setStateValue(valueRef.current);
   }, []);
 
-  return [state, setState];
+  return [value, setValue];
 };
