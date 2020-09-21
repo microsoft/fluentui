@@ -35,7 +35,7 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
-          ...(props.selectable && { 'aria-checked': props.selected }),
+          ...(props.selectable && { 'aria-checked': props.selected ? true : props.indeterminate ? 'mixed' : false }),
         }),
       },
     },
@@ -99,6 +99,7 @@ export type TreeItemBehaviorProps = {
   treeSize?: number;
   selectable?: boolean;
   selected?: boolean;
+  indeterminate?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is expanded */
