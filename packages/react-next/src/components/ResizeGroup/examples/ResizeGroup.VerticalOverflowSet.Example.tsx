@@ -1,15 +1,11 @@
 import * as React from 'react';
-import {
-  mergeStyles,
-  IContextualMenuItem,
-  ResizeGroupDirection,
-  CommandBarButton,
-  ResizeGroup,
-  OverflowSet,
-  IButtonStyles,
-  DirectionalHint,
-  createArray,
-} from 'office-ui-fabric-react';
+import { createArray } from '@fluentui/react-next/lib/Utilities';
+import { OverflowSet } from '@fluentui/react-next/lib/OverflowSet';
+import { mergeStyles } from '@fluentui/react-next/lib/Styling';
+import { IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
+import { ResizeGroupDirection, ResizeGroup } from '@fluentui/react-next/lib/ResizeGroup';
+import { DirectionalHint } from '@fluentui/react-next';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
