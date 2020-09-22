@@ -74,7 +74,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = (
+    const result = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
@@ -83,7 +83,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
         })}
       >
         <div role="list">{childrenExist(children) ? children : content}</div>
-      </ElementType>
+      </ElementType>,
     );
 
     setEnd();
