@@ -1,8 +1,8 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "set theme package version to be 1.0.0.",
   "packageName": "@uifabric/fluent-theme",
   "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
+  "dependentChangeType": "patch",
   "date": "2020-09-22T19:42:14.903Z"
 }
