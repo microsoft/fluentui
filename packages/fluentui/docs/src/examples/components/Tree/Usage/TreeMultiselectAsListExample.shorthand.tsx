@@ -127,7 +127,7 @@ const TreeMultiselectAsListExample = () => (
   <Tree
     defaultSelectedItemIds={['tree-item-122', 'tree-item-123']}
     selectable
-    aria-label="default"
+    aria-label="Multi Select Tree as list"
     items={items}
     accessibility={treeAsListBehavior}
   />
