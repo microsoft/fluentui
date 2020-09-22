@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@fluentui/web-components_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix design system properties inheritance",
+            "author": "jes@microsoft.com",
+            "commit": "82d4558d358448584949314d32a9fb26e4d78c86",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 12:25:04 GMT",
       "tag": "@fluentui/web-components_v0.2.0",
       "version": "0.2.0",

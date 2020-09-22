@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-
 import { ProgressIndicator } from './ProgressIndicator';
+import { isConformant } from '../../common/isConformant';
 
 describe('ProgressIndicator', () => {
   it('renders ProgressIndicator correctly', () => {
@@ -32,5 +32,10 @@ describe('ProgressIndicator', () => {
     const component = renderer.create(<ProgressIndicator label={<span>Test</span>} description={<span>Test</span>} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: ProgressIndicator,
+    displayName: 'ProgressIndicator',
   });
 });

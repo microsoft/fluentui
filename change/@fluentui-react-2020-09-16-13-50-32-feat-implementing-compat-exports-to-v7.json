@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding a compat folder and introducing compat component exports.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-16T20:50:32.453Z"
-}

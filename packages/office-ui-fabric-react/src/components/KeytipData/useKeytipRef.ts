@@ -29,7 +29,7 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(
   return contentRef;
 }
 
-function setAttribute(
+export function setAttribute(
   element: HTMLElement | null,
   attributeName: string,
   attributeValue: string | undefined,
@@ -39,7 +39,7 @@ function setAttribute(
     let value = attributeValue;
     if (append) {
       const currentValue = element.getAttribute(attributeName);
-      if (currentValue && currentValue.indexOf(attributeName) === -1) {
+      if (currentValue && currentValue.indexOf(attributeValue) === -1) {
         value = `${currentValue} ${attributeValue}`;
       }
     }

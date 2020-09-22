@@ -1,8 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.139.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.1)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.0..office-ui-fabric-react_v7.139.1)
+
+### Patches
+
+- Add control to the set of keys which dismiss the tooltip ([PR #15000](https://github.com/microsoft/fluentui/pull/15000) by artber@microsoft.com)
+- Fix bug in useKeytipRef function ([PR #15113](https://github.com/microsoft/fluentui/pull/15113) by kinhln@microsoft.com)
+
+## [7.139.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.0)
+
+Mon, 21 Sep 2020 12:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.138.0..office-ui-fabric-react_v7.139.0)
+
+### Minor changes
+
+- Implement dialog boundary clamping ([PR #15056](https://github.com/microsoft/fluentui/pull/15056) by dahajek@microsoft.com)
+
+## [7.138.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.138.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.3..office-ui-fabric-react_v7.138.0)
+
+### Patches
+
+- Update website content for ComboBox, Dropdown, and TextField ([PR #15100](https://github.com/microsoft/fluentui/pull/15100) by elcraig@microsoft.com)
 
 ## [7.137.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.3)
 
