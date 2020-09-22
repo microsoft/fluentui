@@ -9,6 +9,7 @@ import { PersonaSize } from '../../Persona';
 import { Persona } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { findNodes, expectOne, expectMissing } from '../../common/testUtilities';
+import { isConformant } from '../../common/isConformant';
 
 const facepilePersonas: IFacepilePersona[] = [
   {
@@ -38,6 +39,11 @@ describe('Facepile', () => {
     const component = renderer.create(<Facepile personas={facepilePersonas} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Facepile,
+    displayName: 'Facepile',
   });
 
   it('renders with only add button if no personas found and addButtonProps are not null', () => {

@@ -1,23 +1,22 @@
 import * as React from 'react';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '../../common/DocPage.types';
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 
-const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
-const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
-const SearchBoxCustomIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
-const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxUnderlinedExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
+const SearchBoxDisabledExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
+const SearchBoxCustomIconExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
+const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SearchBox',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/SearchBox',
   examples: [
     {
       title: 'Default SearchBox',
@@ -45,12 +44,10 @@ export const SearchBoxPageProps: IDocPageProps = {
       view: <SearchBoxSmallExample />,
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/SearchBox/docs/SearchBoxOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
+  >('!raw-loader!@fluentui/react-next/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
