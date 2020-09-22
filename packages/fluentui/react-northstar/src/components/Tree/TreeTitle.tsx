@@ -180,7 +180,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         ...(_.isEmpty(selectionIndicator) && {
           styles: resolvedStyles.selectionIndicator,
         }),
-        // ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
       }),
     }),
   });
