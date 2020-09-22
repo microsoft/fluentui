@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.15)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.10..@uifabric/experiments_v7.32.15)
+
+### Patches
+
+- Don't remove dropped items if they've already been moved within the same well ([PR #15098](https://github.com/microsoft/fluentui/pull/15098) by elvonspa@microsoft.com)
 
 ## [7.32.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.10)
 

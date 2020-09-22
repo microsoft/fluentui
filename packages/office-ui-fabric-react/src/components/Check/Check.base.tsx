@@ -19,3 +19,4 @@ export const CheckBase: React.FunctionComponent<ICheckProps> = props => {
     </div>
   );
 };
+CheckBase.displayName = 'CheckBase';
