@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding Card tokens to theme.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-25T01:12:07.950Z"
+}
