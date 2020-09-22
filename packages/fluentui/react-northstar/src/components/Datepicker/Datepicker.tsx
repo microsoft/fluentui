@@ -355,7 +355,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             disableFirstFocus: true,
           },
           trigger: triggerButtonElement,
-          target: !props.buttonOnly ? inputRef.current : null,
+          target: props.buttonOnly ? null : inputRef.current,
           position: 'below' as const,
           align: 'start' as const,
         }),
