@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fix as typing and remove un-used typings.",
-  "packageName": "@fluentui/react-link",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-18T18:09:57.293Z"
-}

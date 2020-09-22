@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Sep 2020 12:22:29 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.139.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.1)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.0..office-ui-fabric-react_v7.139.1)
+
+### Patches
+
+- Add control to the set of keys which dismiss the tooltip ([PR #15000](https://github.com/microsoft/fluentui/pull/15000) by artber@microsoft.com)
+- Fix bug in useKeytipRef function ([PR #15113](https://github.com/microsoft/fluentui/pull/15113) by kinhln@microsoft.com)
 
 ## [7.139.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.0)
 
