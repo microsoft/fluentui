@@ -24,4 +24,6 @@ module.exports = {
 
   'packages/!(examples)/!(fluentui)/**/(docs|examples)/*': 'node ./scripts/lint-staged/no-old-example-paths',
   'packages/!(examples)/!(fluentui)/**/*.doc.ts*': 'node ./scripts/lint-staged/no-old-example-paths',
+  'packages/{office-ui-fabric-react,react-cards,react-focus,react-next}/src/components/__snapshots__/*':
+    'node ./scripts/lint-staged/no-old-snapshot-paths',
 };
