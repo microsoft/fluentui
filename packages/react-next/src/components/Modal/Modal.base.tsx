@@ -59,11 +59,10 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const rootRef = React.useRef<HTMLDivElement>(null);
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
-    const modalResponsiveMode = useResponsiveMode(rootRef);
+    const modalResponsiveMode = useResponsiveMode(mergedRef);
     const [xCoordinate, setXCoordinate] = React.useState<number>(0);
     const [yCoordinate, setYCoordinate] = React.useState<number>(0);
     const [modalPosition, setModalPosition] = React.useState<number | undefined>();
-
     const { setTimeout, clearTimeout } = useSetTimeout();
 
     const {
@@ -104,13 +103,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       events: new EventGroup({}),
     }));
 
-    const [isModalOpen, { setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(!!isOpen);
+    const [isModalOpen, { setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(isOpen);
 
     const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
 
-    const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(!!isOpen);
+    const [hasBeenOpened, { setTrue: setHasOpenedTrue }] = useBoolean(isOpen);
 
-    const [hasOpened, { setTrue: setHasOpenedTrue }] = useBoolean(!!isOpen);
+    const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(isOpen);
 
     const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
       !!isOpen,
@@ -125,7 +124,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       scrollableContentClassName,
       isOpen,
       isVisible,
-      hasBeenOpened: hasOpened,
+      hasBeenOpened,
       modalRectangleTop: modalPosition,
       topOffsetFixed,
       isModeless,
@@ -373,61 +372,42 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     React.useEffect(() => {
       clearTimeout(internalState.onModalCloseTimer);
-
       // Opening the dialog
       if (isOpen) {
-        if (!isModalOpen) {
-          setModalOpen();
-          if (dragOptions) {
-            registerForKeyUp();
-          }
-        } else {
-          setHasOpenedTrue();
-          setIsVisibleTrue();
-
-          if (topOffsetFixed) {
-            const dialogMain = document.getElementsByClassName('ms-Dialog-main');
-
-            if (dialogMain.length > 0) {
-              const modalRectangle = dialogMain[0].getBoundingClientRect();
-              setModalPosition(modalRectangle.top);
-            }
-          }
+        // Add a keyUp handler for all key up events when the dialog is open
+        if (dragOptions) {
+          registerForKeyUp();
         }
 
-        // Closing the dialog
-        if (!isOpen && isModalOpen) {
-          // Set a timeout for the animationDuration delay.
-          internalState.onModalCloseTimer = setTimeout(handleModalClose, parseFloat(animationDuration) * 1000);
-          setIsVisibleFalse();
-        }
+        setModalOpen();
+        setHasOpenedTrue();
+        setIsVisibleTrue();
 
-        // Cleanup events after unmount
-        return () => {
-          internalState.events.dispose();
-        };
+        if (topOffsetFixed) {
+          const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+          let modalRectangle;
+          if (dialogMain.length > 0) {
+            modalRectangle = dialogMain[0].getBoundingClientRect();
+            setModalPosition(modalRectangle.top);
+          }
+        }
       }
-    }, [
-      clearTimeout,
-      dragOptions,
-      handleModalClose,
-      internalState,
-      isModalOpen,
-      isOpen,
-      registerForKeyUp,
-      setHasOpenedTrue,
-      setIsVisibleFalse,
-      setIsVisibleTrue,
-      setModalOpen,
-      setTimeout,
-      topOffsetFixed,
-    ]);
+      // Closing the dialog
+      if (!isOpen && isModalOpen) {
+        internalState.onModalCloseTimer = setTimeout(handleModalClose, parseFloat(animationDuration) * 1000);
+        setIsVisibleFalse();
+      }
+      return () => {
+        internalState.events.dispose();
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isModalOpen or isOpen mutates.
+    }, [dragOptions, handleModalClose, isModalOpen, isOpen, registerForKeyUp, topOffsetFixed]);
 
     React.useEffect(() => {
       if (!isOpen && !isVisible) {
         setIsVisibleTrue;
       }
-    }, [isOpen, isVisible, setIsVisibleTrue]);
+    }, [isOpen, isVisible, registerForKeyUp, setIsVisibleTrue]);
 
     if (isOpen && isVisible) {
       registerForKeyUp();
@@ -436,9 +416,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     useComponentRef(props, focusTrapZone);
     useDebugWarnings(props);
 
-    // @temp tuatology - Will adjust this to be a panel at certain breakpoints
-    if (modalResponsiveMode! >= ResponsiveMode.small) {
-      return (
+    return (
+      (isModalOpen && modalResponsiveMode! >= ResponsiveMode.small && (
         <Layer {...mergedLayerProps} ref={mergedRef}>
           <Popup
             role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
@@ -475,10 +454,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             </div>
           </Popup>
         </Layer>
-      );
-    } else {
-      return null;
-    }
+      )) ||
+      null
+    );
   },
 );
 ModalBase.displayName = COMPONENT_NAME;
