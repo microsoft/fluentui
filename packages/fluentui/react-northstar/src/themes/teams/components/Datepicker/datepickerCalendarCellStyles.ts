@@ -12,6 +12,11 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
       width: v.calendarCellWidth,
       padding: v.calendarCellPadding,
 
+      ':hover': {
+        backgroundColor: v.calendarCellHoverBackgroundColor,
+        color: v.calendarCellHoverColor,
+      },
+
       ...(p.quiet && {
         color: v.calendarCellQuietColor,
       }),
@@ -21,17 +26,11 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
         backgroundColor: v.calendarCellSelectedBackgroundColor,
       }),
 
-      ...(!p.disabled && {
-        ':hover': {
-          backgroundColor: v.calendarCellHoverBackgroundColor,
-          color: v.calendarCellHoverColor,
-        },
-      }),
-
       ...(p.disabled && {
         color: v.calendarCellDisabledColor,
         cursor: 'default',
         backgroundColor: v.calendarCellDisabledBackgroundColor,
+        ':hover': {},
       }),
     };
   },

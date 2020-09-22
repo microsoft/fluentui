@@ -38,6 +38,11 @@ export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
       backgroundColor: v.calendarCellBackgroundColor,
       color: v.calendarCellColor,
 
+      ':hover': {
+        backgroundColor: v.calendarCellHoverBackgroundColor,
+        color: v.calendarCellHoverColor,
+      },
+
       ...(p.quiet && {
         color: v.calendarCellQuietColor,
       }),
@@ -47,17 +52,11 @@ export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
         backgroundColor: v.calendarCellSelectedBackgroundColor,
       }),
 
-      ...(!p.disabled && {
-        ':hover': {
-          backgroundColor: v.calendarCellHoverBackgroundColor,
-          color: v.calendarCellHoverColor,
-        },
-      }),
-
       ...(p.disabled && {
         color: v.calendarCellDisabledColor,
         cursor: 'default',
         backgroundColor: v.calendarCellDisabledBackgroundColor,
+        ':hover': {},
       }),
       // Today's date only stays here because today's date is rendered circular.
       // The other properties would be rendered rectangular around it.
