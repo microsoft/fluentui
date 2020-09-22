@@ -156,8 +156,15 @@ export const defaultTests: TestObject = {
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
-        const MyComponent = React.forwardRef((props, ref) => null);
+        const {
+          requiredProps,
+          Component,
+          customMount = mount,
+          wrapperComponent,
+          helperComponents = [],
+          asPropHandlesRef,
+        } = testInfo;
+        const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
@@ -179,7 +186,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    if (componentInfo.props.as && !testInfo.asPropHandlesRef) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
         const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
 
@@ -207,19 +214,18 @@ export const defaultTests: TestObject = {
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`passes extra props to the component it is renders as`, () => {
-        const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo } = testInfo;
+        const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo, asPropHandlesRef } = testInfo;
 
         if (passesUnhandledPropsTo) {
           const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
 
           expect(el.prop('data-extra-prop')).toBe('foo');
         } else {
-          const MyComponent = React.forwardRef((props, ref) => null);
+          const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
           const el = customMount(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
           ).find(MyComponent);
-
           expect(el.prop('data-extra-prop')).toBe('foo');
         }
       });

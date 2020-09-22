@@ -79,11 +79,10 @@ describe('FocusZone', () => {
     Component: FocusZone,
     displayName: 'FocusZone',
     disabledTests: [
-      // Requires a forwardRef in defaultTests myComponent when testing renders or root.current will be undefined.
-      'as-renders-react-class',
       // Their is no existing top level FocusZone.ts file.
       'has-top-level-file',
     ],
+    asPropHandlesRef: true,
   });
 
   it('can use arrows vertically', () => {
