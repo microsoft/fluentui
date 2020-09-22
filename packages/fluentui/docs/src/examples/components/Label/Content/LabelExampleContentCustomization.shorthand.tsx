@@ -19,7 +19,10 @@ class LabelExampleContentCustomizationShorthand extends React.Component {
       <Label
         content="You can remove me!"
         circular
-        image={{ src: 'public/images/avatar/small/matt.jpg', avatar: true }}
+        image={{
+          src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+          avatar: true,
+        }}
         icon={<CloseIcon {...{ onClick: this.hide }} />}
       />
     );

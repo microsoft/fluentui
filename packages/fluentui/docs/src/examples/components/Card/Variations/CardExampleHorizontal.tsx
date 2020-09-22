@@ -5,7 +5,10 @@ import { DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 const CardExampleHorizontal = () => (
   <Card compact horizontal aria-roledescription="card with a preview image, text and action buttons">
     <Card.Preview horizontal>
-      <Image style={{ height: '115px', width: '115px' }} src="public/images/wireframe/square-image.png" />
+      <Image
+        style={{ height: '115px', width: '115px' }}
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png"
+      />
     </Card.Preview>
     <Card.Column>
       <Card.Header>

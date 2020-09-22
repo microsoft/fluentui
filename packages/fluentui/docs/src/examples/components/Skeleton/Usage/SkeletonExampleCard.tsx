@@ -25,7 +25,7 @@ const SkeletonExampleCard = () => {
         ) : (
           <Flex gap="gap.small">
             <Avatar
-              image="public/images/avatar/small/matt.jpg"
+              image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
               label="Copy bandwidth"
               name="Evie yundt"
               status="unknown"
@@ -50,7 +50,7 @@ const SkeletonExampleCard = () => {
           </Skeleton>
         ) : (
           <Flex column gap="gap.small">
-            <Image src="public/images/wireframe/square-image.png" />
+            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
             <Text content="Citizens of distant epochs muse about at the edge of forever hearts of the..." />
           </Flex>
         )}

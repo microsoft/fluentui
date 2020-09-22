@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import { isConformant } from '../../common/isConformant';
 
 import { Spinner, SpinnerBase, SpinnerSize } from './index';
 
@@ -9,6 +10,11 @@ describe('Spinner', () => {
     const component = renderer.create(<Spinner label="Standard spinner" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Spinner,
+    displayName: 'Spinner',
   });
 
   it('uses default documented properties', () => {

@@ -4,12 +4,25 @@
 
 ```ts
 
-import { Autofill } from 'office-ui-fabric-react/lib/Autofill';
 import { BaseButton } from 'office-ui-fabric-react/lib/Button';
+import { BasePeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { BasePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { BasePickerListBelow } from 'office-ui-fabric-react/lib/Pickers';
 import { Button } from 'office-ui-fabric-react/lib/Button';
+import { CompactPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { CompactPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
+import { createGenericItem } from 'office-ui-fabric-react/lib/Pickers';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
+import { Autofill as FabricAutofill } from 'office-ui-fabric-react/lib/Pickers';
+import { IAutofillProps as FabricAutofillProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IAutofillProps as IAutofillProps_2 } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
+import { IBasePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerState } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
@@ -22,7 +35,10 @@ import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/pos
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IAutofill as IFabricAutofill } from 'office-ui-fabric-react/lib/Pickers';
+import { IAutofillState as IFabricAutofillState } from 'office-ui-fabric-react/lib/Pickers';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IGenericItem } from 'office-ui-fabric-react/lib/Pickers';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -32,6 +48,17 @@ import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
 import { IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
+import { IPeoplePickerItemSelectedProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSelectedStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSelectedSubComponentStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSharedProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IPickerAriaIds } from 'office-ui-fabric-react/lib/Pickers';
+import { IPickerItem } from 'office-ui-fabric-react/lib/Pickers';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IRawStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -44,11 +71,38 @@ import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestions } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsItem } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsItemStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsItemStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsState } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsSubComponentStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ITag } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { ListPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { ListPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
+import { MemberListPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { NormalPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
+import { PeoplePickerItem } from 'office-ui-fabric-react/lib/Pickers';
+import { PeoplePickerItemBase } from 'office-ui-fabric-react/lib/Pickers';
+import { PeoplePickerItemSuggestion } from 'office-ui-fabric-react/lib/Pickers';
+import { PeoplePickerItemSuggestionBase } from 'office-ui-fabric-react/lib/Pickers';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
@@ -56,8 +110,51 @@ import { ReactNode } from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { SuggestionActionType } from 'office-ui-fabric-react/lib/Pickers';
+import { Suggestions } from 'office-ui-fabric-react/lib/Pickers';
+import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { SuggestionsItem } from 'office-ui-fabric-react/lib/Pickers';
+import { TagItem } from 'office-ui-fabric-react/lib/Pickers';
+import { TagItemBase } from 'office-ui-fabric-react/lib/Pickers';
+import { TagItemSuggestion } from 'office-ui-fabric-react/lib/Pickers';
+import { TagItemSuggestionBase } from 'office-ui-fabric-react/lib/Pickers';
+import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
+import { TagPickerBase } from 'office-ui-fabric-react/lib/Pickers';
 import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+
+// @public (undocumented)
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
+    constructor(props: IAutofillProps);
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    readonly cursorLocation: number | null;
+    // (undocumented)
+    static defaultProps: {
+        enableAutofillOnKeyPress: number[];
+    };
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    readonly inputElement: HTMLInputElement | null;
+    // (undocumented)
+    readonly isValueSelected: boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    readonly selectionEnd: number | null;
+    // (undocumented)
+    readonly selectionStart: number | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
+    // (undocumented)
+    readonly value: string;
+    }
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -193,9 +290,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     protected updateValue(updatedValue: string): void;
 }
 
+export { BasePeoplePicker }
+
 // @public (undocumented)
 export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
 }
+
+export { BasePicker }
+
+export { BasePickerListBelow }
 
 // @public (undocumented)
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
@@ -290,6 +393,10 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
 // @public (undocumented)
 export const ComboBox: React.FunctionComponent<IComboBoxProps>;
 
+export { CompactPeoplePicker }
+
+export { CompactPeoplePickerBase }
+
 // @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
@@ -327,6 +434,8 @@ export enum ContextualMenuItemType {
     Section = 3
 }
 
+export { createGenericItem }
+
 // @public (undocumented)
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
 
@@ -358,6 +467,10 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 
 // @public (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
+
+export { FabricAutofill }
+
+export { FabricAutofillProps }
 
 // @public (undocumented)
 export const FabricBase: React.FunctionComponent<IFabricProps>;
@@ -418,6 +531,37 @@ export interface IAccessiblePopupProps {
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
+export interface IAutofill {
+    clear(): void;
+    cursorLocation: number | null;
+    focus(): void;
+    inputElement: HTMLInputElement | null;
+    isValueSelected: boolean;
+    selectionEnd: number | null;
+    selectionStart: number | null;
+    value: string;
+}
+
+// @public (undocumented)
+export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
+    componentRef?: IRefObject<IAutofill>;
+    defaultVisibleValue?: string;
+    enableAutofillOnKeyPress?: KeyCodes[];
+    onInputChange?: (value: string, composing: boolean) => string;
+    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
+    preventValueSelection?: boolean;
+    shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
+    suggestedDisplayValue?: string;
+    updateValueInWillReceiveProps?: () => string | null;
+}
+
+// @public (undocumented)
+export interface IAutofillState {
+    // (undocumented)
+    displayValue?: string;
 }
 
 // @public (undocumented)
@@ -515,6 +659,18 @@ export interface IBaseFloatingPickerState {
 
 // @public
 export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<any>, 'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'>;
+
+export { IBasePicker }
+
+export { IBasePickerProps }
+
+export { IBasePickerState }
+
+export { IBasePickerStyleProps }
+
+export { IBasePickerStyles }
+
+export { IBasePickerSuggestionsProps }
 
 // @public (undocumented)
 export interface IBaseSelectedItemsList<T> {
@@ -927,7 +1083,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
-    autofill?: IAutofillProps;
+    autofill?: IAutofillProps_2;
     buttonIconProps?: IIconProps;
     caretDownButtonStyles?: Partial<IButtonStyles>;
     comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
@@ -1387,6 +1543,10 @@ export interface IExtendedPersonaProps extends IPersonaProps {
     shouldBlockSelection?: boolean;
 }
 
+export { IFabricAutofill }
+
+export { IFabricAutofillState }
+
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     applyTheme?: boolean;
@@ -1442,6 +1602,8 @@ export interface IGap extends IShimmerElement {
     height?: number;
     width?: number | string;
 }
+
+export { IGenericItem }
 
 // @public (undocumented)
 export interface IImage {
@@ -1499,6 +1661,8 @@ export interface IImageStyles {
     image: IStyle;
     root: IStyle;
 }
+
+export { IInputProps }
 
 // @public (undocumented)
 export interface ILayer {
@@ -1765,11 +1929,29 @@ export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPe
 export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
+export { IPeoplePickerItemSelectedProps }
+
+export { IPeoplePickerItemSelectedStyleProps }
+
+export { IPeoplePickerItemSelectedStyles }
+
+export { IPeoplePickerItemSelectedSubComponentStyles }
+
+export { IPeoplePickerItemSharedProps }
+
 // @public (undocumented)
 export interface IPeoplePickerItemState {
     // (undocumented)
     contextualMenuVisible: boolean;
 }
+
+export { IPeoplePickerItemSuggestionProps }
+
+export { IPeoplePickerItemSuggestionStyleProps }
+
+export { IPeoplePickerItemSuggestionStyles }
+
+export { IPeoplePickerProps }
 
 // @public (undocumented)
 export interface IPersona {
@@ -1904,6 +2086,12 @@ export interface IPersonaStyles {
     // (undocumented)
     textContent: IStyle;
 }
+
+export { IPickerAriaIds }
+
+export { IPickerItem }
+
+export { IPickerItemProps }
 
 // @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
@@ -2391,6 +2579,12 @@ export interface ISpinButtonStyles {
     spinButtonWrapper: IStyle;
 }
 
+export { ISuggestionItemProps }
+
+export { ISuggestionModel }
+
+export { ISuggestions }
+
 // @public (undocumented)
 export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
     className?: string;
@@ -2457,6 +2651,22 @@ export interface ISuggestionsHeaderFooterProps {
     shouldShow: () => boolean;
 }
 
+export { ISuggestionsItem }
+
+export { ISuggestionsItemStyleProps }
+
+export { ISuggestionsItemStyles }
+
+export { ISuggestionsProps }
+
+export { ISuggestionsState }
+
+export { ISuggestionsStyleProps }
+
+export { ISuggestionsStyles }
+
+export { ISuggestionsSubComponentStyles }
+
 // @public (undocumented)
 export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
@@ -2502,6 +2712,22 @@ export interface ISwatchColorPickerStyles {
     root: IStyle;
     tableCell: IStyle;
 }
+
+export { ITag }
+
+export { ITagItemProps }
+
+export { ITagItemStyleProps }
+
+export { ITagItemStyles }
+
+export { ITagItemSuggestionProps }
+
+export { ITagItemSuggestionStyleProps }
+
+export { ITagItemSuggestionStyles }
+
+export { ITagPickerProps }
 
 // @public (undocumented)
 export interface ITextField {
@@ -2617,6 +2843,10 @@ export const LayerBase: React.FunctionComponent<ILayerProps>;
 // @public (undocumented)
 export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
+export { ListPeoplePicker }
+
+export { ListPeoplePickerBase }
+
 // @public (undocumented)
 export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
@@ -2624,6 +2854,8 @@ export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldPr
 export const MeasuredContext: React.Context<{
     isMeasured: boolean;
 }>;
+
+export { MemberListPeoplePicker }
 
 // @public (undocumented)
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
@@ -2647,11 +2879,23 @@ export const Modal: React.FunctionComponent<IModalProps>;
 // @public (undocumented)
 export const ModalBase: React.FunctionComponent<IModalProps>;
 
+export { NormalPeoplePicker }
+
+export { NormalPeoplePickerBase }
+
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
 export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
+
+export { PeoplePickerItem }
+
+export { PeoplePickerItemBase }
+
+export { PeoplePickerItemSuggestion }
+
+export { PeoplePickerItemSuggestionBase }
 
 // @public
 export const Persona: React.FunctionComponent<IPersonaProps>;
@@ -2944,6 +3188,8 @@ export const sizeToPixels: {
 // @public
 export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
+export { SuggestionActionType }
+
 // @public (undocumented)
 export enum SuggestionItemType {
     // (undocumented)
@@ -2953,6 +3199,8 @@ export enum SuggestionItemType {
     // (undocumented)
     suggestion = 1
 }
+
+export { Suggestions }
 
 // @public
 export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
@@ -3005,6 +3253,8 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
 }
 
+export { SuggestionsController }
+
 // @public
 export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
@@ -3045,6 +3295,8 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
     render(): JSX.Element;
 }
 
+export { SuggestionsItem }
+
 // @public (undocumented)
 export class SuggestionsStore<T> {
     constructor(options?: SuggestionsStoreOptions<T>);
@@ -3072,6 +3324,18 @@ export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>
 
 // @public (undocumented)
 export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps>;
+
+export { TagItem }
+
+export { TagItemBase }
+
+export { TagItemSuggestion }
+
+export { TagItemSuggestionBase }
+
+export { TagPicker }
+
+export { TagPickerBase }
 
 export { Target }
 
@@ -3110,6 +3374,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 // @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
 
+export { ValidationState }
+
 // @public (undocumented)
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
     constructor(props: IComboBoxProps);
@@ -3141,7 +3407,6 @@ export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
-export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
@@ -3167,7 +3432,6 @@ export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
-export * from "office-ui-fabric-react/lib/Pickers";
 export * from "office-ui-fabric-react/lib/Positioning";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/ScrollablePane";

@@ -4,6 +4,7 @@ import { TestImages } from '@uifabric/example-data';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
 import { IPersonaSharedProps } from '../../Persona';
+import { isConformant } from '../../common/isConformant';
 
 const defaultProps = {
   key: 1,
@@ -83,5 +84,10 @@ describe('ActivityItem', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: ActivityItem,
+    displayName: 'ActivityItem',
   });
 });

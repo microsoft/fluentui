@@ -36,12 +36,12 @@
   },
   "dependencies": {
     "@fluentui/react-bindings": "^0.51.0",
-    "@fluentui/react-button": "^0.13.3",
-    "@fluentui/react-compose": "^0.19.3",
-    "@fluentui/react-theme-provider": "^0.13.3",
-    "@fluentui/theme": "^0.3.2",
+    "@fluentui/react-button": "^0.13.4",
+    "@fluentui/react-compose": "^0.19.4",
+    "@fluentui/react-theme-provider": "^0.13.4",
+    "@fluentui/theme": "^0.4.0",
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.138.0",
+    "office-ui-fabric-react": "^7.139.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
