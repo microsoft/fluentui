@@ -3,30 +3,6 @@ import { DatepickerVariables } from './datepickerVariables';
 import { DatepickerCalendarCellButtonStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCellButton';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const cellStyles = (p: DatepickerCalendarCellButtonStylesProps, v: DatepickerVariables) => ({
-  ...(p.quiet && {
-    color: v.calendarCellQuietColor,
-  }),
-
-  ...(p.selected && {
-    color: v.calendarCellSelectedColor,
-    backgroundColor: v.calendarCellSelectedBackgroundColor,
-  }),
-
-  ...(!p.disabled && {
-    ':hover': {
-      backgroundColor: v.calendarCellHoverBackgroundColor,
-      color: v.calendarCellHoverColor,
-    },
-  }),
-
-  ...(p.disabled && {
-    color: v.calendarCellDisabledColor,
-    cursor: 'default',
-    backgroundColor: v.calendarCellDisabledBackgroundColor,
-  }),
-});
-
 export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellButtonStylesProps,
   DatepickerVariables
@@ -62,8 +38,27 @@ export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
       backgroundColor: v.calendarCellBackgroundColor,
       color: v.calendarCellColor,
 
-      ...cellStyles(p, v),
+      ...(p.quiet && {
+        color: v.calendarCellQuietColor,
+      }),
 
+      ...(p.selected && {
+        color: v.calendarCellSelectedColor,
+        backgroundColor: v.calendarCellSelectedBackgroundColor,
+      }),
+
+      ...(!p.disabled && {
+        ':hover': {
+          backgroundColor: v.calendarCellHoverBackgroundColor,
+          color: v.calendarCellHoverColor,
+        },
+      }),
+
+      ...(p.disabled && {
+        color: v.calendarCellDisabledColor,
+        cursor: 'default',
+        backgroundColor: v.calendarCellDisabledBackgroundColor,
+      }),
       // Today's date only stays here because today's date is rendered circular.
       // The other properties would be rendered rectangular around it.
       ...(p.today && {

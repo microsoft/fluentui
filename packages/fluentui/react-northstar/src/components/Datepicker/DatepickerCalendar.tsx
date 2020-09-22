@@ -387,12 +387,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                   })}
                 </thead>
                 <tbody>
-                  {_.map(visibleGrid, (week, idx) =>
+                  {_.map(visibleGrid, week =>
                     createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
                           children: renderWeekRow(week),
-                          key: idx + 1,
+                          key: week,
                         }),
                     }),
                   )}
