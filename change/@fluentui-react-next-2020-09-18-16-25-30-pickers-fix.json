@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Floating Pickers: Make compliant",
+  "comment": "Floating Pickers: Make strict mode compliant",
   "packageName": "@fluentui/react-next",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
