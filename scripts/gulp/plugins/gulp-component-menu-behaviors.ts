@@ -1,3 +1,4 @@
+import * as behaviorDefinitions from '@fluentui/accessibility-definitions';
 import gutil from 'gulp-util';
 import path from 'path';
 import through2 from 'through2';
@@ -19,12 +20,6 @@ type BehaviorMenuItem = {
     specification: string;
   };
 };
-
-async function importFile(baseDir, definitionFolderName, fileName) {
-  const a11yDefinitionPackagePath = 'accessibility-definitions/src/';
-  const pathToFile = path.join(baseDir, a11yDefinitionPackagePath, `${definitionFolderName}/`, `${fileName}.ts`);
-  return await import(pathToFile);
-}
 
 const getPathDirByName = (filePath, nameOfDir: string) => {
   const directoryPath = path.dirname(filePath);
@@ -77,21 +72,20 @@ export default () => {
       // generate behavior description from 'behavior definition' file if no was found in behavior file
       if (!variation.description && !variation.specification) {
         const variationName = variation.name.replace('.ts', '');
-        const behaviorDefinitionName = `${variationName}Definition`;
-        const fluentUiDir = getPathDirByName(file.path, 'fluentui');
+        const definitionName = `${variationName}Definition`;
 
-        importFile(fluentUiDir, behaviorName, behaviorDefinitionName).then(file => {
-          const descriptionFromDefinition = file[behaviorDefinitionName].map(definition => {
-            return definition.stringify();
-          });
-          variation.description = descriptionFromDefinition.join('\r\n');
-          result.push({
-            displayName: behaviorName,
-            type: componentType,
-            variations: variation,
-          });
-          cb();
+        const definition = behaviorDefinitions[definitionName];
+        const descriptionFromDefinition = definition.map(definition => {
+          return definition.stringify();
         });
+
+        variation.description = descriptionFromDefinition.join('\r\n');
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
       } else {
         result.push({
           displayName: behaviorName,
