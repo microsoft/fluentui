@@ -186,7 +186,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as && !componentInfo.props.asHandlesRef) {
+    if (componentInfo.props.as && !testInfo.asPropHandlesRef) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
         const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
 
@@ -226,9 +226,6 @@ export const defaultTests: TestObject = {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
           ).find(MyComponent);
-          console.log(MyComponent);
-          console.log(el);
-          console.log(el.prop('data-extra-prop'));
           expect(el.prop('data-extra-prop')).toBe('foo');
         }
       });
