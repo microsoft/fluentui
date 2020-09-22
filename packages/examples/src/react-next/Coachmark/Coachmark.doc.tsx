@@ -2,13 +2,14 @@ import * as React from 'react';
 
 import { CoachmarkBasicExample } from './examples/Coachmark.Basic.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-const CoachmarkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
+
+const CoachmarkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
+
 export const CoachmarkPageProps: IDocPageProps = {
   title: 'Coachmark',
   componentName: 'Coachmark',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Coachmark',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Coachmark',
   examples: [
     {
       title: 'Coachmark Basic',
@@ -17,12 +18,8 @@ export const CoachmarkPageProps: IDocPageProps = {
       isScrollable: false,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Coachmark/docs/CoachmarkOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Coachmark/docs/CoachmarkDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Coachmark/docs/CoachmarkDonts.md'),
+  overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/Coachmark/docs/CoachmarkOverview.md'),
+  bestPractices: require<string>('!raw-loader!@fluentui/examples/src/react-next/Coachmark/docs/BestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

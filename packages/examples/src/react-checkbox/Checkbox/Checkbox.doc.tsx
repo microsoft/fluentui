@@ -32,9 +32,9 @@ export const CheckboxPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-checkbox/Checkbox/docs/CheckboxOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-checkbox/Checkbox/docs/CheckboxDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/react-checkbox/Checkbox/docs/CheckboxDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/examples/src/react-checkbox/Checkbox/docs/CheckboxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

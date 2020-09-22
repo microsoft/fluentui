@@ -63,8 +63,6 @@ export const FocusTrapZonePageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/FocusTrapZone/docs/FocusTrapZoneBestPractices.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

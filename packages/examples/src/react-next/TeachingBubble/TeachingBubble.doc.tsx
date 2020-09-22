@@ -1,26 +1,26 @@
 import * as React from 'react';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleWideExample } from './examples/TeachingBubble.Wide.Example';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 import { TeachingBubbleWideIllustrationExample } from './examples/TeachingBubble.WideIllustration.Example';
 import { TeachingBubbleSmallHeadlineExample } from './examples/TeachingBubble.SmallHeadline.Example';
 import { TeachingBubbleMultiStepExample } from './examples/TeachingBubble.MultiStep.Example';
 
-const TeachingBubbleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
-const TeachingBubbleWideExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Wide.Example.tsx') as string;
-const TeachingBubbleCondensedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
-const TeachingBubbleIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Illustration.Example.tsx') as string;
-const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
-const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
-const TeachingBubbleMultiStepExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.MultiStep.Example.tsx') as string;
+const TeachingBubbleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleWideExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.Wide.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.Illustration.Example.tsx') as string;
+const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
+const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
+const TeachingBubbleMultiStepExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/examples/TeachingBubble.MultiStep.Example.tsx') as string;
 
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
   componentName: 'TeachingBubble',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
+    'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-next/src/components/TeachingBubble',
   examples: [
     {
       title: 'TeachingBubble Basic',
@@ -60,7 +60,10 @@ export const TeachingBubblePageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  >('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/examples/src/react-next/TeachingBubble/docs/TeachingBubbleBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

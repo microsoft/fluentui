@@ -58,15 +58,9 @@ export class DatePickerPage extends React.Component<{}, {}> {
             {require<string>('!raw-loader!@fluentui/examples/src/date-time/DatePicker/docs/DatePickerOverview.md')}
           </Markdown>
         }
-        bestPractices={<div />}
-        dos={
+        bestPractices={
           <Markdown>
-            {require<string>('!raw-loader!@fluentui/examples/src/date-time/DatePicker/docs/DatePickerDos.md')}
-          </Markdown>
-        }
-        donts={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/examples/src/date-time/DatePicker/docs/DatePickerDonts.md')}
+            {require<string>('!raw-loader!@fluentui/examples/src/date-time/DatePicker/docs/DatePickerBestPractices.md')}
           </Markdown>
         }
       />

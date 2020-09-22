@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-next/lib/SearchBox';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from '@fluentui/react-next/lib/Stack';
 
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 

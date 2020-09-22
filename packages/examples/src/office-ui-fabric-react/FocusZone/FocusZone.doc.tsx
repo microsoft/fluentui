@@ -49,11 +49,6 @@ export const FocusZonePageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/FocusZone/docs/FocusZoneOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/FocusZone/docs/FocusZoneBestPractices.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

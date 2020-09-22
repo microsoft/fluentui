@@ -6,7 +6,7 @@ import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Exam
 import { ComboBoxErrorHandlingExample } from './examples/ComboBox.ErrorHandling.Example';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 

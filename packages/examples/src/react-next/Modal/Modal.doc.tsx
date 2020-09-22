@@ -2,16 +2,15 @@ import * as React from 'react';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { ModalModelessExample } from './examples/Modal.Modeless.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const ModalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/examples/Modal.Basic.Example.tsx') as string;
-const ModalModelessExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/examples/Modal.Modeless.Example.tsx') as string;
+const ModalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Modal/examples/Modal.Basic.Example.tsx') as string;
+const ModalModelessExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Modal/examples/Modal.Modeless.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
   componentName: 'Modal',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Modal',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-next/src/components/Modal',
   examples: [
     {
       title: 'Modal',
@@ -24,11 +23,8 @@ export const ModalPageProps: IDocPageProps = {
       view: <ModalModelessExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/docs/ModalOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/docs/ModalDos.md'),
-  accessibility: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/docs/ModalA11y.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/docs/ModalDonts.md'),
+  overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/Modal/docs/ModalOverview.md'),
+  bestPractices: require<string>('!raw-loader!@fluentui/examples/src/react-next/Modal/docs/ModalBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

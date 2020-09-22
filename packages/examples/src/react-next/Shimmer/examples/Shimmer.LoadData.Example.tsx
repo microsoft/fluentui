@@ -60,7 +60,7 @@ export const ShimmerLoadDataExample: React.FunctionComponent = () => {
       !isDataLoadedTwo
         ? {
             imageUrl:
-              'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
+              'https://static2.sharepointonline.com/files/fabric/@fluentui/react-next-assets/persona-female.png',
             imageInitials: 'AL',
             primaryText: 'Annie Lindqvist',
             secondaryText: 'Software Engineer',

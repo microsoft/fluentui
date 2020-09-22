@@ -31,9 +31,6 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
     >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
   ],
   overview: '',
-  bestPractices: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/docs/SelectedPeopleListBestPractices.md'),
   dos: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/docs/SelectedPeopleListDos.md'),

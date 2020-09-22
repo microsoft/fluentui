@@ -37,8 +37,6 @@ export const GroupedListPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/docs/GroupedListBestPractices.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

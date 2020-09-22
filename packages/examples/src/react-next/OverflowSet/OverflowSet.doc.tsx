@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Example';
 import { OverflowSetBasicReversedExample } from './examples/OverflowSet.BasicReversed.Example';
 
-const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
-const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
-const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
-const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/examples/OverflowSet.BasicReversed.Example.tsx') as string;
+const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
+const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
+const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.BasicReversed.Example.tsx') as string;
 
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
@@ -38,11 +38,6 @@ export const OverflowSetPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/react-next/src/components/OverflowSet/docs/OverflowSetOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/docs/OverflowSetOverview.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

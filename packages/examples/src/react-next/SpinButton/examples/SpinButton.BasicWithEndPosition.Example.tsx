@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SpinButton } from '@fluentui/react-next/lib/SpinButton';
-import { Position } from 'office-ui-fabric-react/lib/Positioning';
+import { Position } from '@fluentui/react-next/lib/Positioning';
 
 export const SpinButtonBasicWithEndPositionExample: React.FC = () => (
   <div style={{ width: '400px' }}>

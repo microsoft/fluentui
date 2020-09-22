@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
@@ -73,9 +73,9 @@ export const TextFieldPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/TextField/docs/TextFieldOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/TextField/docs/TextFieldDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/react-next/TextField/docs/TextFieldDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/examples/src/react-next/TextField/docs/TextFieldBestPractices.md'),
   isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {
   Coachmark,
-  DefaultButton,
   DirectionalHint,
   Dropdown,
-  IButtonProps,
   IDropdownOption,
   TeachingBubbleContent,
   mergeStyleSets,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react-next';
+import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({

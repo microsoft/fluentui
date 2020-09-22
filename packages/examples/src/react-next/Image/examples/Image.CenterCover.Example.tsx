@@ -1,5 +1,5 @@
-import { IImageProps, Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { IImageProps, Image, ImageFit } from '@fluentui/react-next/lib/Image';
+import { Label } from '@fluentui/react-next/lib/Label';
 import * as React from 'react';
 
 export const ImageCenterCoverExample = () => {

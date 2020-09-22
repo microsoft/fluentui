@@ -4,7 +4,7 @@ import { ResizeGroup } from '@fluentui/react-next/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetStyles } from '@fluentui/react-next/lib/OverflowSet';
 import { IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from '@fluentui/react-next/lib/Dropdown';
-import { mergeStyleSets } from 'office-ui-fabric-react';
+import { mergeStyleSets } from '@fluentui/react-next';
 import { useBoolean } from '@uifabric/react-hooks';
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
 

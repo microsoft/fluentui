@@ -60,6 +60,9 @@ export const TeachingBubblePageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/docs/TeachingBubbleBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

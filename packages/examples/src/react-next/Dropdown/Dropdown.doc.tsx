@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownControlledExample } from './examples/Dropdown.Controlled.Example';
@@ -57,9 +57,9 @@ export const DropdownPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/Dropdown/docs/DropdownOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/Dropdown/docs/DropdownDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/react-next/Dropdown/docs/DropdownDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/examples/src/react-next/Dropdown/docs/DropdownBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

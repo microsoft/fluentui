@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupControlledExample } from './examples/ChoiceGroup.Controlled.Example';

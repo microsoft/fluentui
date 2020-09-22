@@ -117,15 +117,9 @@ export class CalendarPage extends React.Component<{}, {}> {
             {require<string>('!raw-loader!@fluentui/examples/src/date-time/Calendar/docs/CalendarOverview.md')}
           </Markdown>
         }
-        bestPractices={<div />}
-        dos={
+        bestPractices={
           <Markdown>
-            {require<string>('!raw-loader!@fluentui/examples/src/date-time/Calendar/docs/CalendarDos.md')}
-          </Markdown>
-        }
-        donts={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/examples/src/date-time/Calendar/docs/CalendarDonts.md')}
+            {require<string>('!raw-loader!@fluentui/examples/src/date-time/Calendar/docs/CalendarBestPractices.md')}
           </Markdown>
         }
       />

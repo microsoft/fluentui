@@ -24,9 +24,7 @@ export const SliderPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-slider/Slider/docs/SliderOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-slider/Slider/docs/SliderDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/react-slider/Slider/docs/SliderDonts.md'),
+  bestPractices: require<string>('!raw-loader!@fluentui/examples/src/react-slider/Slider/docs/SliderBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

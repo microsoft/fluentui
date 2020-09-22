@@ -41,11 +41,6 @@ export const OverflowSetPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/docs/OverflowSetOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/OverflowSet/docs/OverflowSetBestPractices.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

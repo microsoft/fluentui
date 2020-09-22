@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { StatusCalloutExample } from './examples/Callout.Status.Example';
@@ -47,9 +47,7 @@ export const CalloutPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/Callout/docs/CalloutOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/Callout/docs/CalloutDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/react-next/Callout/docs/CalloutDonts.md'),
+  bestPractices: require<string>('!raw-loader!@fluentui/examples/src/react-next/Callout/docs/CalloutBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

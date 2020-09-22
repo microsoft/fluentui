@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 import { ResizeGroupVerticalOverflowSetExample } from './examples/ResizeGroup.VerticalOverflowSet.Example';
 
-const ResizeGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
+const ResizeGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
-const ResizeGroupVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/examples/ResizeGroup.VerticalOverflowSet.Example.tsx') as string;
+const ResizeGroupVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/examples/ResizeGroup.VerticalOverflowSet.Example.tsx') as string;
 
-const ResizeGroupFlexBoxExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
+const ResizeGroupFlexBoxExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
 
 export const ResizeGroupPageProps: IDocPageProps = {
   title: 'ResizeGroup',
@@ -36,11 +36,9 @@ export const ResizeGroupPageProps: IDocPageProps = {
   overview: require<string>('!raw-loader!@fluentui/react-next/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/docs/ResizeGroupOverview.md'),
-  dos: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/docs/ResizeGroupDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ResizeGroup/docs/ResizeGroupDonts.md'),
+  >('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/docs/ResizeGroupOverview.md'),
+  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/docs/ResizeGroupDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/examples/src/react-next/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

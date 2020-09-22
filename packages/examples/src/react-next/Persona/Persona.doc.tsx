@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaColorsExample } from './examples/Persona.Colors.Example';
@@ -66,9 +66,9 @@ export const PersonaPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/react-next/src/components/Persona/docs/PersonaOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/react-next/src/components/Persona/docs/PersonaDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-next/src/components/Persona/docs/PersonaDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/react-next/src/components/Persona/docs/PersonaBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
@@ -17,12 +17,10 @@ export const MessageBarPageProps: IDocPageProps = {
       view: <MessageBarBasicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MessageBar/docs/MessageBarOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/MessageBar/docs/MessageBarOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MessageBar/docs/MessageBarBestPractices.md'),
+  >('!raw-loader!@fluentui/examples/src/react-next/MessageBar/docs/MessageBarBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

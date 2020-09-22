@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basic.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 const SwatchColorPickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
@@ -20,11 +20,9 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/docs/SwatchColorPickerDos.md'),
-  donts: require<
+  bestPractices: require<
     string
-  >('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/docs/SwatchColorPickerDonts.md'),
+  >('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/docs/SwatchColorPickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

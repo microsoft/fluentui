@@ -4,17 +4,17 @@ import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const ShimmerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
+const ShimmerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 
-const ShimmerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
+const ShimmerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
 
-const ShimmerStylingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
+const ShimmerStylingExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
 
-const ShimmerLoadDataExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
+const ShimmerLoadDataExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
-const ShimmerApplicationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerApplicationExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
@@ -47,11 +47,9 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerStylingExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/docs/ShimmerOverview.md'),
-  dos: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/docs/ShimmerDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/docs/ShimmerDonts.md'),
+  overview: require<string>('!raw-loader!@fluentui/examples/src/react-next/Shimmer/docs/ShimmerOverview.md'),
+  dos: require<string>('!raw-loader!@fluentui/examples/src/react-next/Shimmer/docs/ShimmerDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/examples/src/react-next/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
