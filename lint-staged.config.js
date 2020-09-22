@@ -21,4 +21,7 @@ module.exports = {
   '**/tslint.json': 'node ./scripts/lint-staged/no-tslint-json',
 
   '**/package.json': 'node ./scripts/lint-staged/no-tslint-deps',
+
+  'packages/!(examples)/!(fluentui)/**/(docs|examples)/*': 'node ./scripts/lint-staged/no-old-example-paths',
+  'packages/!(examples)/!(fluentui)/**/*.doc.ts*': 'node ./scripts/lint-staged/no-old-example-paths',
 };

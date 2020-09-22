@@ -1,14 +1,11 @@
 // @ts-check
 
-const { getAllPackageInfo } = require('./monorepo/index');
+const { getAllPackageInfo } = require('../monorepo/index');
 const { spawnSync } = require('child_process');
-
-// @ts-ignore
-const isRunningScript = require.main === module;
 
 /**
  * Check for references to tslint-related packages.
- * @param {import("./monorepo/index.d").PackageInfo[]} packageInfos
+ * @param {import("../monorepo/index.d").PackageInfo[]} packageInfos
  */
 function checkPackageJsons(packageInfos) {
   let hasError = false;
@@ -37,9 +34,10 @@ function checkPackageJsons(packageInfos) {
   return hasError;
 }
 
-module.exports = { checkPackageJsons };
-
-if (isRunningScript) {
+/**
+ * @returns {boolean} true if there are issues
+ */
+function lintFiles() {
   const hasTslintDep = checkPackageJsons(Object.values(getAllPackageInfo()));
 
   const tslintLsResult = spawnSync('git', ['ls-files', 'tslint.json', "'**/tslint.json'"])
@@ -53,7 +51,7 @@ if (isRunningScript) {
     }
   }
 
-  if (hasTslintDep || tslintLsResult.length) {
-    process.exit(1);
-  }
+  return !!(hasTslintDep || tslintLsResult.length);
 }
+
+module.exports = { checkPackageJsons, lintFiles };

@@ -30,7 +30,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
-        displayName: do syncpack and no-tslint checks
+        displayName: do syncpack and lint-files checks
 
       ## only do scoped builds with PRs
       - script: |
