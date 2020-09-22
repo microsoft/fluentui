@@ -177,10 +177,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       selected,
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
-          _.isEmpty(selectionIndicator) && {
-            styles: resolvedStyles.selectionIndicator,
-          }),
+        ...(_.isEmpty(selectionIndicator) && {
+          styles: resolvedStyles.selectionIndicator,
+        }),
+        // ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
       }),
     }),
   });
