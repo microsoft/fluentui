@@ -109,7 +109,6 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
   };
 
   private _onItemInvoked(item: IDetailsListCompactExampleItem): void {
-    // eslint-disable-next-line no-alert
     alert(`Item invoked: ${item.name}`);
   }
 }

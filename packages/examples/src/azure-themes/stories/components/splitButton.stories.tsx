@@ -111,6 +111,5 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
 };
 
 function _alertClicked() {
-  // eslint-disable-next-line no-alert
   alert('Clicked');
 }

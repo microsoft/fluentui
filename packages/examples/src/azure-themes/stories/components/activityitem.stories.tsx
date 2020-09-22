@@ -19,7 +19,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -34,7 +33,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={2}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('An @mentioned name was clicked.');
           }}
         >
@@ -51,7 +49,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -72,7 +69,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={1}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('A name was clicked.');
           }}
         >
@@ -83,7 +79,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={3}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('A document was clicked.');
           }}
         >
@@ -94,7 +89,6 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           key={5}
           className={classNames.nameText}
           onClick={() => {
-            // eslint-disable-next-line no-alert
             alert('A folder was clicked.');
           }}
         >

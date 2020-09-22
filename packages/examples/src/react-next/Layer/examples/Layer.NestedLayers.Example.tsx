@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react-next/lib/compat/Button';
 import { Dialog, DialogFooter, DialogType, IDialogContentProps } from '@fluentui/react-next/lib/Dialog';
 import { Panel, PanelType } from '@fluentui/react-next/lib/Panel';
-import { IModalProps } from '@fluentui/react-next/lib/Modal';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const LayerNestedLayersExample: React.FunctionComponent = () => {
@@ -43,7 +42,7 @@ const dialogContentProps: IDialogContentProps = {
     'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
   subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
 };
-const modalProps: IModalProps = {
+const modalProps = {
   isBlocking: false,
   styles: { main: { maxWidth: 450 } },
 };

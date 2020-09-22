@@ -91,6 +91,5 @@ export const HorizontalFlexBasicExample: React.FunctionComponent = () => {
 };
 
 function _onClick(): void {
-  // eslint-disable-next-line no-alert
   alert('Clicked Flex');
 }

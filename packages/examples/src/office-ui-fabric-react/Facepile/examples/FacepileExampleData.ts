@@ -19,7 +19,6 @@ export const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Alex Lundberg',
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
@@ -39,7 +38,6 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
@@ -61,7 +59,6 @@ export const facepilePersonas: IFacepilePersona[] = [
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      // eslint-disable-next-line no-alert
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
   {
