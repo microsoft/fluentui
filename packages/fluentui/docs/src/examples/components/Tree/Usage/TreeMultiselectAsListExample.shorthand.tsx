@@ -5,6 +5,7 @@ const items = [
   {
     id: 'tree-item-1',
     title: 'House Lannister',
+    selectable: false,
     items: [
       {
         id: 'tree-item-11',
@@ -14,6 +15,7 @@ const items = [
           {
             id: '1',
             title: 'Jaime',
+            selectable: false,
             items: [
               {
                 id: '2',
@@ -53,6 +55,7 @@ const items = [
       {
         id: 'tree-item-12',
         title: 'Kevan',
+        selectable: false,
         items: [
           {
             id: 'tree-item-121',
@@ -83,6 +86,7 @@ const items = [
       {
         id: 'tree-item-21',
         title: 'Aerys',
+        selectable: false,
         items: [
           {
             id: 'tree-item-211',
