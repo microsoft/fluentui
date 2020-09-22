@@ -309,7 +309,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
       if (treeItemProps.selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        if (treeItemHasSubtree && !treeItemProps.selectableParent) {
           return;
         }
 

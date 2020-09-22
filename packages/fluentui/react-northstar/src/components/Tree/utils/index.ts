@@ -59,7 +59,7 @@ export const getSiblings = (items: any[], itemId: string): any[] => {
 
 export const processItemsForSelection = (treeItemProps: TreeItemProps, selectedItemIds: string[]) => {
   const treeItemHasSubtree = hasSubtree(treeItemProps);
-  const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent && treeItemProps.expanded;
+  const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent;
 
   let nextSelectedItemIds = selectedItemIds;
 
