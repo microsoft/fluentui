@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
+import { IButtonStyles } from '../../compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';

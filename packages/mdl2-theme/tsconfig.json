@@ -16,11 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
-    "paths": {
-      "@uifabric/mdl2-theme/lib/*": ["./src/*"],
-      "@uifabric/mdl2-theme": ["./src"]
-    }
+    "lib": ["es5", "dom"]
   },
   "include": ["src"]
 }
