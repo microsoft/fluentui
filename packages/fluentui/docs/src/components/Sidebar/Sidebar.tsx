@@ -520,7 +520,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
           <Box>
             GitHub
-            <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
+            <Image
+              src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+              width="20px"
+              height="20px"
+              styles={{ float: 'right' }}
+            />
           </Box>
         </a>
         <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>

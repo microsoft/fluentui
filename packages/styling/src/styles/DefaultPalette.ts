@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/constants/DefaultPalette';
+export * from '@fluentui/theme/lib/colors/DefaultPalette';

@@ -5,15 +5,14 @@ import { BreadcrumbCollapsingExample } from './examples/Breadcrumb.Collapsing.Ex
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbCollapsingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Collapsing.Example.tsx') as string;
-const BreadcrumbStaticExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbCollapsingExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/examples/Breadcrumb.Collapsing.Example.tsx') as string;
+const BreadcrumbStaticExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
 
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
   componentName: 'Breadcrumb',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Breadcrumb',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Breadcrumb',
   examples: [
     {
       title: 'Breadcrumb rendering options',
@@ -31,12 +30,12 @@ export const BreadcrumbPageProps: IDocPageProps = {
       view: <BreadcrumbStaticExample />,
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDonts.md'),
+  >('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/docs/BreadcrumbBestPractices.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/docs/BreadcrumbDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-next/src/components/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
