@@ -7,7 +7,7 @@ import {
   TeachingBubbleContent,
   mergeStyleSets,
 } from '@fluentui/react-next';
-import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat';
+import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat/index';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({
