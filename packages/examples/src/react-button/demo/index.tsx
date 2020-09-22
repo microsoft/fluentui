@@ -21,7 +21,7 @@ createApp(
   // Intro page
   () => (
     <div style={{ marginTop: -20, padding: 40 }}>
-      <Markdown>{require<string>('!raw-loader!../../README.md')}</Markdown>
+      <Markdown>{require<string>('!raw-loader!@fluentui/react-button/README.md')}</Markdown>
     </div>
   ),
   'React Button Examples',
