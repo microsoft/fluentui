@@ -1,5 +1,5 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
 module.exports = resources.createServeConfig({
   output: {
@@ -12,12 +12,6 @@ module.exports = resources.createServeConfig({
   },
 
   resolve: {
-    alias: {
-      '@uifabric/date-time/src': path.join(__dirname, 'src'),
-      '@uifabric/date-time/lib': path.join(__dirname, 'lib'),
-      '@uifabric/date-time': path.join(__dirname, 'src'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example',
-    },
+    alias: getResolveAlias(),
   },
 });

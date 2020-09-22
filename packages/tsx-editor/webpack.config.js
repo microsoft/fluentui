@@ -1,6 +1,7 @@
 // @ts-check
 const path = require('path');
-const resources = require('@uifabric/build/webpack/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'tsx-editor';
@@ -23,10 +24,8 @@ module.exports = resources.createConfig(
 
     resolve: {
       alias: {
-        '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
-        '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
+        ...getResolveAlias(),
         '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
-        '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
       },
     },
   }),
