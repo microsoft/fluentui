@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { addMonths, addYears } from '@fluentui/date-time-utilities';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const today: Date = new Date(Date.now());

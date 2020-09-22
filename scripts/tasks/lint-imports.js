@@ -45,15 +45,11 @@ function lintImports() {
     '@fluentui/examples/lib/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
     '@fluentui/examples/lib/office-ui-fabric-react/Keytip/examples/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
-    '@uifabric/date-time/lib/utilities/dateMath/DateMath',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@uifabric/foundation/lib/next/composed',
-    'office-ui-fabric-react/lib/utilities/dateMath/DateMath',
-    'office-ui-fabric-react/lib/utilities/keytips/index',
-    'office-ui-fabric-react/lib/utilities/positioning',
     // Imported by theming examples. Need to find a different approach.
   ];
   const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];

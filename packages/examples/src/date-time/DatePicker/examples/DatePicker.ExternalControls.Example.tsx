@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { addDays } from '@fluentui/date-time-utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyleSets } from '@uifabric/styling';
 

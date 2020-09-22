@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { addMonths, addYears, addDays } from '@fluentui/date-time-utilities';
 import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
