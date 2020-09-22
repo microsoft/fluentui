@@ -59,7 +59,7 @@ function loadStories() {
 }
 
 /**
- * @param {{ key: string, stories: Map, req: (key: string) => any }} options stuff
+ * @param {{ key: string, stories: Map, req: (key: string) => any }} options
  */
 function generateStoriesFromExamples({ key, stories, req }) {
   const nameMatcher = /\.\/([^/]+)\//;
@@ -88,7 +88,7 @@ function generateStoriesFromExamples({ key, stories, req }) {
 
   for (let moduleExport of Object.keys(exampleModule)) {
     const ExampleComponent = exampleModule[moduleExport];
-    const subStoryName = moduleExport ? moduleExport : storyName;
+    const subStoryName = moduleExport || storyName;
 
     if (typeof ExampleComponent === 'function') {
       if (ExampleComponent.prototype.render) {

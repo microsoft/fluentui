@@ -13,9 +13,6 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@fluentui/examples$': path.join(__dirname, '../../packages/examples/src'),
-      '@fluentui/examples/lib': path.join(__dirname, '../../packages/examples/src'),
-      '@fluentui/examples/src': path.join(__dirname, '../../packages/examples/src'),
       '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
       '@uifabric/experiments/src': path.join(__dirname, 'src'),
       '@uifabric/experiments/lib': path.join(__dirname, 'src'),

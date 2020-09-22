@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeytipLayer } from '@fluentui/react-next';
+import { KeytipLayer } from '@fluentui/react-next/lib/Keytips';
 
 export const KeytipLayerWrapper: React.FunctionComponent<{}> = props => {
   return (
