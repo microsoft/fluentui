@@ -126,20 +126,23 @@ storiesOf('Avatar', module)
       />
       <Avatar
         icon={<ChatBotIcon />}
+        size={32}
         tokens={{
           iconSize: '24px',
-          borderRadius: '0',
-          width: 'calc(var(--avatar-height) * 1.125)',
+          height: '32px',
+          width: '36px',
           background: `url('${svgHexagonDataUrl}') 0px/contain no-repeat`,
+          borderRadius: '0',
         }}
       />
     </>
   ));
 
 // The hexagon background for the robot example
-const svgHexagonDataUrl = `data:image/svg+xml;utf8,\
-<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">\
-<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472L7.91541 1.46793\
-C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793L35.5921 14.472\
-C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321C27.5592 31.4421 26.6056 32 25.5755 32H10.4245\
-C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/></svg>`;
+const svgHexagonDataUrl =
+  'data:image/svg+xml;utf8,' +
+  '<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+  '<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472' +
+  'L7.91541 1.46793C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793' +
+  'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321C27.5592 31.4421 26.6056 32 25.5755 32' +
+  'H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/></svg>';
