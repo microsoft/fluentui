@@ -188,6 +188,9 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             bottom: 0,
             content: '""',
             height: 'auto',
+            [HighContrastSelector]: {
+              height: 0,
+            },
           },
           ':hover': {
             backgroundColor: semanticColors.primaryButtonBackgroundHovered,
