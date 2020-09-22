@@ -10,3 +10,4 @@ export const Dialog: React.FunctionComponent<IDialogProps> = styled<IDialogProps
   undefined,
   { scope: 'Dialog' },
 );
+Dialog.displayName = 'Dialog';
