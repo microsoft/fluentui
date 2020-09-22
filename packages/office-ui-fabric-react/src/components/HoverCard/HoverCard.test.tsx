@@ -7,9 +7,12 @@ import { PlainCardBase } from './PlainCard/PlainCard.base';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import { IExpandingCardProps } from './ExpandingCard.types';
+import { HoverCard } from './HoverCard';
 import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
@@ -70,6 +73,12 @@ describe('HoverCard', () => {
     expect(tree).toMatchSnapshot();
 
     ReactDOM.createPortal = createPortal;
+  });
+
+  isConformant({
+    Component: HoverCard,
+    displayName: 'HoverCard',
+    componentPath: path.join(__dirname, 'HoverCard.ts'),
   });
 
   it('uses default documented properties', () => {

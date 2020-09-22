@@ -2,6 +2,53 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.114",
+      "version": "8.0.0-alpha.114",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating Coachmark.Basic.Example.tsx to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "d204e565f6a2b3b736b1282579c2c702b2e35118",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating react-next component documentation to the newest versions found in office-ui-fabric-react.",
+            "author": "czearing@outlook.com",
+            "commit": "3a3e42bb10ca4bf70dac2ad5b2e7799df7f27372",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Autofill: Add to react-next",
+            "author": "joschect@microsoft.com",
+            "commit": "82c3d92a24340243035809050a90f0b52e5730c2",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating react-next example imports.",
+            "author": "czearing@outlook.com",
+            "commit": "ce3298f52386b71d7f793cc72aa5f2664d2d442a",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update release notes for Pivot and Slider.",
+            "author": "xgao@microsoft.com",
+            "commit": "1cff4ccd5d4c73ec0e1a9ae18dcb2beee28cb6e9",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Sep 2020 12:22:29 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.113",
       "version": "8.0.0-alpha.113",

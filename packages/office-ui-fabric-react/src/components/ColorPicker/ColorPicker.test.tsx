@@ -11,6 +11,7 @@ import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mockEvent } from '../../common/testUtilities';
 import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
 import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
+import { isConformant } from '../../common/isConformant';
 
 const noOp = () => undefined;
 const abcdef = getColorFromString('#abcdef')!;
@@ -90,6 +91,11 @@ describe('ColorPicker', () => {
     const component = renderer.create(<ColorPicker color="#abcdef" alphaType="transparency" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: ColorPicker,
+    displayName: 'ColorPicker',
   });
 
   it('uses provided color string', () => {
