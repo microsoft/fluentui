@@ -257,7 +257,7 @@ const TableExampleStaticShorthand = () => (
     <Table
       styles={{
         '& .ui-table__row:nth-child(even)': { background: 'aliceblue' },
-        '& .ui-table__row :nth-child(6)': { borderLeft: '1px dashed grey' },
+        '& .ui-table__row:nth-child(6)': { borderLeft: '1px dashed grey' },
       }}
       header={header}
       rows={rows}
