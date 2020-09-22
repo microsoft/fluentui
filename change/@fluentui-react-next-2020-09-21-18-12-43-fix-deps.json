@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating deps to range.",
+  "packageName": "@fluentui/react-next",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-22T01:12:37.743Z"
+}

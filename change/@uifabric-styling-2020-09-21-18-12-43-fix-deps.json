@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating deps to range.",
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-22T01:12:43.296Z"
+}
