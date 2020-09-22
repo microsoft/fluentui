@@ -1,5 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Avatar displays a badge 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+  <span
+    className=""
+  />
+</span>
+`;
+
+exports[`Avatar displays custom initials via getInitials 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    IA
+  </span>
+</span>
+`;
+
+exports[`Avatar handles customSize 1`] = `
+<span
+  className=""
+  name="First Last"
+  style={
+    Object {
+      "--avatar-height": "33px",
+      "--avatar-width": "33px",
+    }
+  }
+>
+  <span>
+    FL
+  </span>
+</span>
+`;
+
+exports[`Avatar prioritizes image over icon 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+</span>
+`;
+
+exports[`Avatar prioritizes image over initials 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+  <img
+    src="i.png"
+  />
+</span>
+`;
+
+exports[`Avatar prioritizes image over initials and icon 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+  <img
+    src="i.png"
+  />
+</span>
+`;
+
+exports[`Avatar prioritizes initials over icon 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+</span>
+`;
+
+exports[`Avatar renders 1 initial with a 1-word name 1`] = `
+<span
+  className=""
+  name="First"
+>
+  <span>
+    F
+  </span>
+</span>
+`;
+
+exports[`Avatar renders 2 initials with a 2-word name 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+</span>
+`;
+
+exports[`Avatar renders 2 initials with a 3-word name 1`] = `
+<span
+  className=""
+  name="First M. Last"
+>
+  <span>
+    FL
+  </span>
+</span>
+`;
+
 exports[`Avatar renders a default state 1`] = `
 <span
   className=""
@@ -20,6 +145,115 @@ exports[`Avatar renders a default state 1`] = `
         />
       </svg>
     </span>
+  </span>
+</span>
+`;
+
+exports[`Avatar renders an icon 1`] = `
+<span
+  className=""
+>
+  <span>
+    <span
+      aria-hidden={true}
+      className=""
+      role="presentation"
+      style={Object {}}
+    >
+      <svg
+        viewBox="0 0 2048 2048"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+        />
+      </svg>
+    </span>
+  </span>
+</span>
+`;
+
+exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
+<span
+  className=""
+  name="(111)-555-1234"
+>
+  <span>
+    <span
+      aria-hidden={true}
+      className=""
+      role="presentation"
+      style={Object {}}
+    >
+      <svg
+        viewBox="0 0 2048 2048"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1330 1203q136 47 245 131t186 196 118 243 41 275h-128q0-164-58-304t-162-244-243-161-305-59q-107 0-206 27t-184 76-155 119-119 155-77 185-27 206H128q0-144 42-275t119-242 186-194 245-133q-78-42-140-102T475 969t-67-157-24-172q0-133 50-249t137-204T774 50t250-50q133 0 249 50t204 137 137 203 50 250q0 88-23 171t-67 156-105 133-139 103zM512 640q0 106 40 199t110 162 163 110 199 41q106 0 199-40t162-110 110-163 41-199q0-106-40-199t-110-162-163-110-199-41q-106 0-199 40T663 278 553 441t-41 199z"
+        />
+      </svg>
+    </span>
+  </span>
+</span>
+`;
+
+exports[`Avatar renders an image 1`] = `
+<span
+  className=""
+>
+  <img
+    src="i.png"
+  />
+</span>
+`;
+
+exports[`Avatar respects display="icon" 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    <span
+      aria-hidden={true}
+      className=""
+      role="presentation"
+      style={Object {}}
+    >
+      <svg
+        viewBox="0 0 2048 2048"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1850 688q45 25 82 61t62 80 40 93 14 102h-128q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 91-41 173t-115 136q65 33 117 81t90 108 57 128 20 142h-128q0-79-30-149t-83-122-122-82-149-31q-79 0-149 30t-122 83-82 122-31 149H512q0-73 20-141t57-128 89-108 118-82q-73-54-114-136t-42-173q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99H0q0-52 14-101t39-93 63-80 82-62q-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81q82 45 134 124 54-80 138-126t182-46q97 0 181 46t139 126q52-79 134-124-33-35-51-81t-19-95q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99q0 49-18 95t-52 81zM256 512q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50zm768 768q52 0 99-20t81-55 55-81 21-100q0-52-20-99t-55-81-82-55-99-21q-53 0-99 20t-81 55-55 82-21 99q0 53 20 99t55 81 81 55 100 21zm512-768q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+        />
+      </svg>
+    </span>
+  </span>
+</span>
+`;
+
+exports[`Avatar respects display="image" 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
+  </span>
+  <img
+    src="i.png"
+  />
+</span>
+`;
+
+exports[`Avatar respects display="label" 1`] = `
+<span
+  className=""
+  name="First Last"
+>
+  <span>
+    FL
   </span>
 </span>
 `;
