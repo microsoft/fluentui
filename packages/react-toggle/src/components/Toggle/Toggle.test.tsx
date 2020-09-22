@@ -21,12 +21,6 @@ describe('Toggle', () => {
     ).toEqual('Label');
   });
 
-  isConformant({
-    Component: Toggle,
-    displayName: 'Toggle',
-    disabledTests: ['as-passes-as-value'],
-  });
-
   it('renders toggle correctly', () => {
     const component = create(<Toggle label="Label" />);
     const tree = component.toJSON();
@@ -55,6 +49,19 @@ describe('Toggle', () => {
     const component = create(<Toggle hidden />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders hidden toggle correctly', () => {
+    const component = mount(<Toggle data-extra-prop="foo" />).find('div');
+    const tree = component;
+
+    console.log(tree);
+  });
+
+  isConformant({
+    Component: Toggle,
+    displayName: 'Toggle',
+    passesUnhandledPropsTo: Toggle,
   });
 
   it('renders aria-label', () => {
