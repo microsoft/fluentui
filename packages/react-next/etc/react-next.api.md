@@ -88,7 +88,6 @@ import { ITagItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
@@ -372,6 +371,15 @@ export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+// @public (undocumented)
+export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
+
+// @public (undocumented)
+export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps>;
+
+// @public (undocumented)
+export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
 
 // @public (undocumented)
 export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
@@ -904,6 +912,119 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroup {
+    checkedOption: IChoiceGroupOption | undefined;
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaLabel?: string;
+    // @deprecated
+    checked?: boolean;
+    disabled?: boolean;
+    iconProps?: IIconProps;
+    id?: string;
+    imageAlt?: string;
+    imageSize?: {
+        width: number;
+        height: number;
+    };
+    imageSrc?: string;
+    key?: string;
+    labelId?: string;
+    onRenderField?: IRenderFunction<IChoiceGroupOption>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+    selectedImageSrc?: string;
+    styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+    componentRef?: IRefObject<IChoiceGroupOption>;
+    focused?: boolean;
+    // (undocumented)
+    itemKey?: string;
+    name?: string;
+    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+    required?: boolean;
+    theme?: ITheme;
+}
+
+// @public
+export interface IChoiceGroupOptionStyleProps {
+    checked?: boolean;
+    disabled?: boolean;
+    focused?: boolean;
+    hasIcon?: boolean;
+    hasImage?: boolean;
+    imageIsLarge?: boolean;
+    imageSize?: {
+        height: number;
+        width: number;
+    };
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionStyles {
+    // (undocumented)
+    choiceFieldWrapper?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    iconWrapper?: IStyle;
+    // (undocumented)
+    imageWrapper?: IStyle;
+    // (undocumented)
+    innerField?: IStyle;
+    // (undocumented)
+    input?: IStyle;
+    // (undocumented)
+    labelWrapper?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    selectedImageWrapper?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IChoiceGroup>;
+    defaultSelectedKey?: string | number;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
+    options?: IChoiceGroupOption[];
+    selectedKey?: string | number;
+    styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    optionsContainIconOrImage?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyles {
+    // (undocumented)
+    flexContainer?: IStyle;
+    // (undocumented)
+    label?: IStyle;
+    // (undocumented)
+    root?: IStyle;
 }
 
 // @public
@@ -2748,6 +2869,81 @@ export { ITagItemSuggestionStyles }
 export { ITagPickerProps }
 
 // @public (undocumented)
+export interface ITeachingBubble {
+    focus(): void;
+}
+
+// @public
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+    ariaDescribedBy?: string;
+    ariaLabelledBy?: string;
+    calloutProps?: ICalloutProps;
+    componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
+    footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
+    hasCloseIcon?: boolean;
+    hasCondensedHeadline?: boolean;
+    hasSmallHeadline?: boolean;
+    headline?: string;
+    illustrationImage?: IImageProps;
+    isWide?: boolean;
+    onDismiss?: (ev?: any) => void;
+    primaryButtonProps?: IButtonProps;
+    secondaryButtonProps?: IButtonProps;
+    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
+    targetElement?: HTMLElement;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
+    calloutProps?: ICalloutContentStyleProps;
+    primaryButtonClassName?: string;
+    secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
+    hasHeadline?: boolean;
+};
+
+// @public (undocumented)
+export interface ITeachingBubbleStyles {
+    // (undocumented)
+    body: IStyle;
+    // (undocumented)
+    bodyContent: IStyle;
+    // (undocumented)
+    closeButton: IStyle;
+    // (undocumented)
+    content: IStyle;
+    // (undocumented)
+    footer: IStyle;
+    // (undocumented)
+    header: IStyle;
+    // (undocumented)
+    headline: IStyle;
+    // (undocumented)
+    imageContent: IStyle;
+    // (undocumented)
+    primaryButton: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    secondaryButton: IStyle;
+    // (undocumented)
+    subComponentStyles?: ITeachingBubbleSubComponentStyles;
+    // (undocumented)
+    subText: IStyle;
+}
+
+// @public (undocumented)
+export interface ITeachingBubbleSubComponentStyles {
+    callout: IStyleFunctionOrObject<any, any>;
+}
+
+// @public (undocumented)
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -2916,6 +3112,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 export { NormalPeoplePicker }
 
 export { NormalPeoplePickerBase }
+
+// @public @deprecated (undocumented)
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
+
+// @public @deprecated (undocumented)
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
@@ -3372,6 +3574,18 @@ export { TagPickerBase }
 export { Target }
 
 // @public (undocumented)
+export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
@@ -3440,7 +3654,6 @@ export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Check";
-export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/CommandBar";
@@ -3475,7 +3688,6 @@ export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
 export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";

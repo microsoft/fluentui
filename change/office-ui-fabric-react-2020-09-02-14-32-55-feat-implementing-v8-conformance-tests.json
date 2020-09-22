@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Removing unused eslint rule from sharedIsConformant.ts",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-02T21:30:05.037Z"
+}

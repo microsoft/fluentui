@@ -11,3 +11,4 @@ export const Dropdown: React.FunctionComponent<IDropdownProps> = styled<
 >(DropdownBase, getStyles, undefined, {
   scope: 'Dropdown',
 });
+Dropdown.displayName = 'Dropdown';
