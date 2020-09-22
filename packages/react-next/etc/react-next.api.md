@@ -172,7 +172,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -212,11 +212,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -279,8 +277,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
-    // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void;
@@ -308,7 +304,13 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -340,11 +342,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    protected readonly selection: Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -601,10 +599,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)
@@ -3248,7 +3242,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -3289,9 +3283,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 export { SuggestionsController }
 
