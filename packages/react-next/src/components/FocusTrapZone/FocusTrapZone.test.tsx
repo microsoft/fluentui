@@ -25,7 +25,7 @@ class FocusTrapZoneTestComponent extends React.Component<
     isShowingFirst: boolean;
     isShowingSecond: boolean;
     isShowingThird: boolean;
-    isShowingForth: boolean;
+    isShowingFourth: boolean;
   }
 > {
   constructor(props: {}) {
@@ -34,7 +34,7 @@ class FocusTrapZoneTestComponent extends React.Component<
       isShowingFirst: false,
       isShowingSecond: false,
       isShowingThird: false,
-      isShowingForth: false,
+      isShowingFourth: false,
     };
   }
 
@@ -51,7 +51,7 @@ class FocusTrapZoneTestComponent extends React.Component<
           <button className="c" onClick={this._toggleThird}>
             c
           </button>
-          <button className="d" onClick={this._toggleForth}>
+          <button className="d" onClick={this._toggleFourth}>
             d
           </button>
         </FocusTrapZone>
@@ -71,9 +71,9 @@ class FocusTrapZoneTestComponent extends React.Component<
             <FocusZone data-is-visible={true}>Third</FocusZone>
           </FocusTrapZone>
         )}
-        {this.state.isShowingForth && (
+        {this.state.isShowingFourth && (
           <FocusTrapZone id="fz5" forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false} disabled={true}>
-            <FocusZone data-is-visible={true}>Forth</FocusZone>
+            <FocusZone data-is-visible={true}>Fourth</FocusZone>
           </FocusTrapZone>
         )}
       </div>
@@ -92,8 +92,8 @@ class FocusTrapZoneTestComponent extends React.Component<
     this.setState({ isShowingThird: !this.state.isShowingThird });
   };
 
-  private _toggleForth = () => {
-    this.setState({ isShowingForth: !this.state.isShowingForth });
+  private _toggleFourth = () => {
+    this.setState({ isShowingFourth: !this.state.isShowingFourth });
   };
 }
 
