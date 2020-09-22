@@ -21,7 +21,7 @@ type BehaviorMenuItem = {
 };
 
 async function importFile(baseDir, definitionFolderName, fileName) {
-  const a11yDefinitionPackagePath = 'accessibility-definitions/src/definitions/';
+  const a11yDefinitionPackagePath = 'accessibility-definitions/src/';
   const pathToFile = path.join(baseDir, a11yDefinitionPackagePath, `${definitionFolderName}/`, `${fileName}.ts`);
   return await import(pathToFile);
 }
