@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fonts tests creates the correct font styles for ar 1`] = `
+exports[`createFontStyles tests creates the correct font styles for ar 1`] = `
 Object {
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
@@ -96,7 +96,7 @@ Object {
 }
 `;
 
-exports[`fonts tests creates the correct font styles for en 1`] = `
+exports[`createFontStyles tests creates the correct font styles for en 1`] = `
 Object {
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
@@ -192,7 +192,7 @@ Object {
 }
 `;
 
-exports[`fonts tests creates the correct font styles for ja 1`] = `
+exports[`createFontStyles tests creates the correct font styles for ja 1`] = `
 Object {
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
