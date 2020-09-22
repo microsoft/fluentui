@@ -36,13 +36,13 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/examples": "^0.3.18",
+    "@fluentui/examples": "^0.3.19",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/api-docs": "^7.5.9",
+    "@uifabric/api-docs": "^7.5.13",
     "@uifabric/azure-themes": "^7.5.13",
     "@uifabric/example-app-base": "^7.15.13",
     "@uifabric/icons": "^7.5.5",
-    "@uifabric/mdl2-theme": "^0.3.8",
+    "@uifabric/mdl2-theme": "^0.3.12",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/theme-samples": "^7.1.17",
     "@uifabric/tsx-editor": "^0.13.13",
