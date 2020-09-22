@@ -131,7 +131,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   dropItemsAt?: (insertIndex: number, itemsToInsert: T[], indicesToRemove: number[]) => void;
 
   /**
-   * Callback for when an item has been edited
+   * Callback for when an item needs to be replaced with another item or items
    */
-  onItemEdited?: (newItem: T | T[], index: number) => void;
+  replaceItem?: (newItem: T | T[], index: number) => void;
 }

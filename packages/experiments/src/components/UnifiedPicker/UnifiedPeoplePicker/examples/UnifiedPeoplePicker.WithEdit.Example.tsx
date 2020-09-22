@@ -190,7 +190,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     setPeopleSelectedItems(updatedItems);
   };
 
-  const _onItemEdited = (newItem: IPersonaProps | IPersona[], index: number): void => {
+  const _replaceItem = (newItem: IPersonaProps | IPersona[], index: number): void => {
     const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
     if (index >= 0) {
@@ -243,7 +243,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     getItemCopyText: _getItemsCopyText,
     dropItemsAt: _dropItemsAt,
     onRenderItem: SelectedItem,
-    onItemEdited: _onItemEdited,
+    replaceItem: _replaceItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
