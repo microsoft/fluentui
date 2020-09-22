@@ -21,6 +21,11 @@ const Usage = () => (
       examplePath="components/Tree/Usage/TreeAsListExample"
     />
     <ComponentExample
+      title="Basic Multi Select"
+      description="A basic multiselect Tree."
+      examplePath="components/Tree/Usage/TreeMultiselectBasicExample"
+    />
+    <ComponentExample
       title="Multi select"
       description="A multiselect Tree."
       examplePath="components/Tree/Usage/TreeMultiselectExample"
