@@ -383,7 +383,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                               }),
                           }),
                         ),
-                        key: 0,
                       }),
                   })}
                 </thead>
