@@ -18,7 +18,7 @@ import { DirectionalHint } from '@fluentui/react-next';
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
-import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useTarget } from '@uifabric/react-hooks';
+import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout } from '@uifabric/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -81,7 +81,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       onDismiss,
       layerProps,
       overlay,
-      responsiveMode,
       isOpen = false,
       titleAriaId,
       styles,
@@ -405,7 +404,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
         // Cleanup events after unmount
         return () => {
-          console.log('events disposed');
           internalState.events.dispose();
         };
       }
@@ -478,8 +476,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           </Popup>
         </Layer>
       );
+    } else {
+      return null;
     }
-    return null;
   },
 );
 ModalBase.displayName = COMPONENT_NAME;
