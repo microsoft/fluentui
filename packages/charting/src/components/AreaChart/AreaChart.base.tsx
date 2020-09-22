@@ -5,18 +5,20 @@ import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
 import {
+  CartesianChart,
   IAreaChartProps,
   IChildProps,
   IRefArrayData,
   IBasestate,
   ILineChartDataPoint,
   ILineChartPoints,
-} from '../AreaChart/index';
+} from '@uifabric/charting';
+import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
+import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { calloutData, getXAxisType, ChartTypes } from '../../utilities/index';
-import { CartesianChart } from '../CommonComponents/CartesianChart';
 
+const COMPONENT_NAME = 'AREA CHART';
 export interface IAreaChartAreaPoint {
   xVal: string | number;
   values: IAreaChartDataSetPoint;
@@ -73,6 +75,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       activeCircleId: '',
       isCircleClicked: false,
     };
+    warnDeprecations(COMPONENT_NAME, props, {
+      showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
+    });
     this._refArray = [];
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqueIdForGraph = getId('areaChart_');
@@ -96,13 +101,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    // eslint-disable-next-line deprecation/deprecation
-    if (this.props.showYAxisGridLines !== undefined) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Warning: the prop showYAxisGridLines is deprecated, please do not use it, now lines are shown by default',
-      );
-    }
     const isXAxisDateType = getXAxisType(this._points);
     this._keys = this._createKeys();
     this._colors = this._getColors();
@@ -125,6 +123,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       gapSpace: 15,
       isBeakVisible: false,
       setInitialFocus: true,
+      ...this.props.calloutProps,
     };
     return (
       <CartesianChart
@@ -133,8 +132,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
-        isMultiStackCallout
-        isXAxisDateType={isXAxisDateType}
+        isCalloutForStack
+        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         tickParams={tickParams}
         maxOfYVal={stackedInfo.maxOfYVal}
         getGraphData={this._getGraphData}

@@ -18,7 +18,7 @@ export interface IPivot {
  * {@docCategory Pivot}
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -44,8 +44,6 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Default selected key for the pivot. Only provide this if the pivot is an uncontrolled component;
    * otherwise, use the `selectedKey` property.
-   *
-   * This property is also mutually exclusive with `defaultSelectedIndex`.
    */
   defaultSelectedKey?: string;
 

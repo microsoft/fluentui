@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Port over virtual DOM utilities and tests",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-31T00:26:12.760Z"
-}

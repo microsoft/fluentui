@@ -14,7 +14,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -24,13 +24,13 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.12.5",
-    "@fluentui/react-next": "^8.0.0-alpha.107",
-    "@uifabric/set-version": "^7.0.22",
-    "@uifabric/example-app-base": "^7.15.9",
-    "@uifabric/experiments": "^7.32.10",
+    "@fluentui/react-button": "^0.13.3",
+    "@fluentui/react-next": "^8.0.0-alpha.113",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/example-app-base": "^7.15.13",
+    "@uifabric/experiments": "^7.32.14",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.137.2",
+    "office-ui-fabric-react": "^7.139.0",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
