@@ -29,26 +29,6 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
             sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]}
           />
         }
-        overview={
-          <div>
-            <p>DonutChart description</p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

@@ -38,26 +38,6 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
             ]}
           />
         }
-        overview={
-          <div>
-            <p>Grouped Vertical bar chart description</p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

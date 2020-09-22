@@ -29,26 +29,6 @@ export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
             sources={[require<string>('!raw-loader!@uifabric/charting/src/components/PieChart/PieChart.types.ts')]}
           />
         }
-        overview={
-          <div>
-            <p>PieChart description</p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

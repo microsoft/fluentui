@@ -34,26 +34,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             ]}
           />
         }
-        overview={
-          <div>
-            <p>HorizontalBarChart description</p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

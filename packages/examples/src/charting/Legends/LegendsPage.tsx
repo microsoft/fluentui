@@ -47,21 +47,6 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
       />
     );
   }

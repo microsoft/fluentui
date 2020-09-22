@@ -38,26 +38,6 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             ]}
           />
         }
-        overview={
-          <div>
-            <p>VerticalBarChart description</p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );
