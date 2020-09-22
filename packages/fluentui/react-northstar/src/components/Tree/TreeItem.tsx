@@ -253,8 +253,8 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     setShowIndicator(true);
   };
 
-  const onMouseOut = e => {
-    _.invoke(props, 'onMouseOut', e, props);
+  const onMouseLeave = e => {
+    _.invoke(props, 'onMouseLeave', e, props);
     setShowIndicator(false);
   };
 
@@ -272,7 +272,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         id,
         selected,
         onMouseEnter,
-        onMouseOut,
+        onMouseLeave,
         onFocus,
         onBlur,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
