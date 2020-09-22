@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update Pivot.scss in react-tabs package",
+  "packageName": "@fluentui/react-tabs",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-22T18:36:27.092Z"
+}
