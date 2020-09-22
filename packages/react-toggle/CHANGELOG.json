@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toggle",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-toggle_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove un-used typings.",
+            "author": "xgao@microsoft.com",
+            "commit": "1cff4ccd5d4c73ec0e1a9ae18dcb2beee28cb6e9",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-toggle_v0.3.0",
       "version": "0.3.0",

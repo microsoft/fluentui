@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Updating Coachmark.Basic.Example.tsx to a function component.",
+  "comment": "Fixing issues revealed by conformance tests: add missing exports and displayNames.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-17T21:14:00.714Z"
+  "date": "2020-09-02T21:32:09.008Z"
 }

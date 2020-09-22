@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
 
 ### Fixes
+- Fix `Tree` to have un-selectable `treeItem` with `selectable` prop false @yuanboxue-amber ([#15170](https://github.com/microsoft/fluentui/pull/15170))
 - Fix `MenuItem` and `CarouselNavigationItem` to correctly map `active` prop to behavior @yuanboxue-amber ([#14970](https://github.com/microsoft/fluentui/pull/14970))
 - Fix default focused outline in Safari @yuanboxue-amber ([#14917](https://github.com/microsoft/fluentui/pull/14917))
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
@@ -89,6 +90,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Jaws bug - aria-selected and aria-checked are not output correctly for `Tree` @kolaps33 ([#14846](https://github.com/microsoft/fluentui/pull/14846))
 - Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
+- Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)

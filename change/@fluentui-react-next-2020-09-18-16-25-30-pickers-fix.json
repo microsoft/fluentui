@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Autofill: Add to react-next",
+  "comment": "Floating Pickers: Make strict mode compliant",
   "packageName": "@fluentui/react-next",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-21T16:43:24.601Z"
+  "date": "2020-09-18T23:25:30.987Z"
 }

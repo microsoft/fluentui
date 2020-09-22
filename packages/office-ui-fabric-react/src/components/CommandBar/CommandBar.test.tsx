@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../../ContextualMenu';
+import { isConformant } from '../../common/isConformant';
 
 describe('CommandBar', () => {
   afterEach(() => {
@@ -45,6 +46,11 @@ describe('CommandBar', () => {
         )
         .toJSON(),
     ).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: CommandBar,
+    displayName: 'CommandBar',
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {

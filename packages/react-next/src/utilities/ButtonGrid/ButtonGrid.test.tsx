@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ButtonGridBase } from './ButtonGrid.base';
+import { ButtonGrid } from './ButtonGrid';
 import { getStyles } from './ButtonGrid.styles';
-import { DefaultButton } from '../../compat/Button';
-import { shallow } from 'enzyme';
+import { isConformant } from '../../common/isConformant';
+import { safeMount } from '@uifabric/test-utilities';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DEFAULT_ITEMS: any[] = [
@@ -17,59 +17,79 @@ const DEFAULT_ITEMS: any[] = [
 ];
 
 describe('ButtonGrid', () => {
+  isConformant({
+    Component: ButtonGrid,
+    displayName: 'ButtonGrid',
+    requiredProps: {
+      items: DEFAULT_ITEMS,
+      columnCount: 4,
+      styles: getStyles,
+      onRenderItem: () => {
+        return;
+      },
+    },
+    disabledTests: ['has-top-level-file'],
+  });
+
   it('Can render a ButtonGrid with width of four', () => {
-    const wrapper = shallow(
-      <ButtonGridBase
+    safeMount(
+      <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={4}
         styles={getStyles}
         onRenderItem={(item, index: number) => {
-          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+          return <button role="gridcell">item.text</button>;
         }}
       />,
+      wrapper => {
+        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
+        expect(wrapper.find('tr[role="row"]').length).toEqual(2);
+        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
+        expect(wrapper.find('[aria-posinset]').length).toEqual(0);
+        expect(wrapper.find('[aria-setsize]').length).toEqual(0);
+      },
     );
-    expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-    expect(wrapper.find('tr[role="row"]').length).toEqual(2);
-    expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-    expect(wrapper.find('[aria-posinset]').length).toEqual(0);
-    expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a ButtonGrid with width of 2', () => {
-    const wrapper = shallow(
-      <ButtonGridBase
+    safeMount(
+      <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
         onRenderItem={(item, index: number) => {
-          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+          return <button role="gridcell">item.text</button>;
         }}
       />,
+      wrapper => {
+        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
+        expect(wrapper.find('tr[role="row"]').length).toEqual(4);
+        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
+        expect(wrapper.find('[aria-posinset]').length).toEqual(0);
+        expect(wrapper.find('[aria-setsize]').length).toEqual(0);
+      },
     );
-    expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-    expect(wrapper.find('tr[role="row"]').length).toEqual(4);
-    expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-    expect(wrapper.find('[aria-posinset]').length).toEqual(0);
-    expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a ButtonGrid with posInSet and setSize', () => {
-    const wrapper = shallow(
-      <ButtonGridBase
+    safeMount(
+      <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
         onRenderItem={(item, index: number) => {
-          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+          return <button role="gridcell">item.text</button>;
         }}
         positionInSet={1}
         setSize={2}
       />,
+      wrapper => {
+        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
+        expect(wrapper.find('tr[role="row"]').length).toEqual(4);
+        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
+        expect(wrapper.find('[aria-posinset]').length).toEqual(1);
+        expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-posinset="1"'));
+        expect(wrapper.find('[aria-setsize]').length).toEqual(1);
+        expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-setsize="2"'));
+      },
     );
-    expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-    expect(wrapper.find('tr[role="row"]').length).toEqual(4);
-    expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-    expect(wrapper.find('[aria-posinset]').length).toEqual(1);
-    expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-posinset="1"'));
-    expect(wrapper.find('[aria-setsize]').length).toEqual(1);
-    expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-setsize="2"'));
   });
 });
