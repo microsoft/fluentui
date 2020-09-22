@@ -3,7 +3,7 @@ import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
+import { CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -213,7 +213,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
     case 'SHOW_CODE':
       try {
         draftState.showCode = action.show;
-        draftState.code = action.show ? renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree)) : null;
+        draftState.code = action.show ? JSONTreeToJSXCode(draftState.jsonTree) : null;
       } catch (e) {
         console.error('Failed to convert tree to code.', e.toString());
       }
@@ -294,7 +294,7 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
   }
 
   if (treeChanged && draftState.showCode) {
-    draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
+    draftState.code = JSONTreeToJSXCode(draftState.jsonTree);
     draftState.codeError = null;
   }
 };

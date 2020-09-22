@@ -445,7 +445,15 @@ export const DRAGGING_ELEMENTS = {
   // Video: { props: { content: 'Video' } as FUI.VideoProps },
 };
 
-export const resolveComponent = (displayName): React.ElementType => {
+const resolveModule = {
+  '@fluentui/react-northstar': FUI,
+  '@material-ui/core': MUI,
+};
+
+export const resolveComponent = (displayName, moduleName): React.ElementType => {
+  if (moduleName) {
+    return resolveModule[moduleName][displayName.split('.')[1]] || resolveModule[moduleName][displayName] || 'div';
+  }
   return (
     FUI[displayName] ||
     FUIIcons[displayName] ||
@@ -491,6 +499,9 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
   const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
+  if (module === '@material-ui/core') {
+    jsonTreeElement.type = displayName;
+  }
   return {
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
@@ -578,7 +589,7 @@ export const renderJSONTreeToJSXElement = (
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
 
-  return React.createElement(resolveComponent(modifiedTree.type), {
+  return React.createElement(resolveComponent(modifiedTree.type, modifiedTree.moduleName), {
     ...modifiedTree.props,
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
@@ -639,7 +650,7 @@ export const JSONTreeToJSXCode = (tree, tab = '', moduleName = '') => {
       });
       code += `${tab.replace('\t', '')}</${component}>`;
     } else {
-      code += `children="${tree.props.children}" \n ${tab.replace('\t', '')}/>\n`;
+      code += `${tab}children="${tree.props.children}" \n ${tab.replace('\t', '')}/>\n`;
     }
   } else {
     code += `${tab.replace('\t', '')}/>\n`;
@@ -704,7 +715,7 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     },
   };
 
-  codeSandboxExport += `\n export default function Example() { \n return (\n
+  codeSandboxExport += `\n export default function Example() { \n return (
   ${code} \n);}`;
 
   return { code: codeSandboxExport, imports: packageImports };

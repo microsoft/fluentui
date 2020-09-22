@@ -1,6 +1,7 @@
 import { transform } from '@babel/standalone';
 import { getUUID } from './getUUID';
 import { JSONTreeElement } from '../components/types';
+import { componentInfoContext } from '../componentInfo/componentInfoContext';
 
 const prefixElementNamesPlugin = ({ types }) => {
   const hackElementName = elementNode => {
@@ -47,14 +48,26 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
+    // eslint-disable-next-line
+    const isElement = 'A' <= name[0] && name[0] <= 'Z';
+    const isComponent = isElement && (!props || (props && props['data-builder-id'] !== 'undefined'));
+    let componentName = name;
+    if (isComponent && !name.includes('.')) {
+      componentName = `Fluent.${name}`;
+    }
+
     const uuid = props && props.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
     delete props?.['data-builder-id'];
 
     return {
       type: name,
-      displayName: name,
+      displayName: componentName,
+      ...(isComponent &&
+        componentInfoContext.byDisplayName[componentName] && {
+          moduleName: componentInfoContext.byDisplayName[componentName].moduleName,
+        }),
       uuid,
-      ...(name.match(/^[A-Za-z]/) && { $$typeof: 'Symbol(react.element)' }),
+      ...(isElement && { $$typeof: 'Symbol(react.element)' }),
       props: { ...props, ...(children.length > 0 && { children }) },
     };
   };
