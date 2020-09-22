@@ -34,11 +34,13 @@ let globalSnapshotState: ISnapshotState;
 jestSnapshot.addSerializer(mergeStylesSerializer);
 
 expect.extend({
-  toMatchSpecificSnapshot(received, snapshotFile) {
+  toMatchSpecificSnapshot(received, examplePath) {
     globalSnapshotState = (this as any).snapshotState;
 
+    const [examplePackage, exampleFile] = getPackageAndExampleName(examplePath);
+
     // Append .shot to prevent jest failure when it finds .snaps without associated tests.
-    const absoluteSnapshotFile = process.cwd() + '/src/components/__snapshots__/' + snapshotFile + '.shot';
+    const absoluteSnapshotFile = `${process.cwd()}/src/${examplePackage}/__snapshots__/${exampleFile}.shot`;
 
     // let's try to retrieve the state from the map - maybe there was already a test that created it
     let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
@@ -69,10 +71,9 @@ const excludedExampleFiles: string[] = [
   //  but are excluded for now to get base test coverage up immediately.
 
   'Calendar.Inline.Example.tsx', // date mocking appears to trigger infinite loop
-  'ExampleHelper.tsx', // Helper file with no actual component
+  'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
-  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/microsoft/fluentui/issues/6681
   'List.Basic.Example.tsx',
   'List.Ghosting.Example.tsx',
   'List.Grid.Example.tsx',
@@ -83,9 +84,27 @@ const excludedExampleFiles: string[] = [
   'ScrollablePane.DetailsList.Example.tsx',
   'SelectedPeopleList.Basic.Example.tsx',
 ];
+// Snapshots of these examples are worthless since the component isn't open by default
+const excludedComponents = [
+  'Callout',
+  'Coachmark',
+  'ContextualMenu',
+  'HoverCard',
+  'MarqueeSelection',
+  'Modal',
+  'Overlay',
+  'Panel',
+  'Selection',
+  'TeachingBubble',
+  'Tooltip',
+];
 const excludedExampleFileRegexes: RegExp[] = [
-  // Snapshots of these examples are worthless since the component isn't open by default
-  /^Panel\./,
+  new RegExp(`^(${excludedComponents.join('|')})\\.`),
+  // Too many unrelated components, and covered by other examples
+  /^Stack\.(Horizontal|Vertical)\.(Configure|WrapAdvanced)\./,
+  // For some reason these are failing with "Styles are being recalculated too frequently"
+  // TODO: investigate and re-enable
+  /^TextField\.(Styled|PrefixAndSuffix|Multiline)\./,
 ];
 
 function setCacheFullWarning(enabled: boolean) {
@@ -94,8 +113,12 @@ function setCacheFullWarning(enabled: boolean) {
   };
 }
 
+function getPackageAndExampleName(examplePath: string): [string, string] {
+  return [examplePath.replace(/\\/g, '/').match(/\/src\/([^/]+)/)![1], path.basename(examplePath)];
+}
+
 /** Run tests on these packages' examples */
-const includedPackages = ['office-ui-fabric-react', 'react-cards', 'react-focus'];
+const includedPackages = ['office-ui-fabric-react', 'react-cards', 'react-focus', 'react-next'];
 
 declare const global: any;
 
@@ -124,10 +147,9 @@ describe('Component Examples', () => {
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
   const examplePaths: string[] = glob.sync(
-    path.resolve(process.cwd(), `src/{${includedPackages.join(',')}}/*/examples/*Example*.tsx`),
+    path.resolve(process.cwd(), `src/{${includedPackages.join(',')}}/**/*.Example.tsx`),
   );
   const createPortal = ReactDOM.createPortal;
-  console.log(examplePaths);
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
@@ -198,16 +220,18 @@ describe('Component Examples', () => {
     setCacheFullWarning(false);
   });
 
+  beforeEach(() => {
+    // Resetting ids for each example creates predictability in generated ids.
+    resetIds();
+  });
+
   for (const examplePath of examplePaths) {
-    const exampleFile = path.basename(examplePath);
+    const [, exampleFile] = getPackageAndExampleName(examplePath);
     if (excludedExampleFiles.includes(exampleFile) || excludedExampleFileRegexes.some(r => r.test(exampleFile))) {
       continue;
     }
 
     it(`renders ${exampleFile} correctly`, () => {
-      // Resetting ids for each example creates predictability in generated ids.
-      resetIds();
-
       const exampleModule = require(examplePath);
 
       const exampleExportNames = Object.keys(exampleModule);
@@ -236,7 +260,7 @@ describe('Component Examples', () => {
       }
 
       const tree = component!.toJSON();
-      (expect(tree) as any).toMatchSpecificSnapshot(exampleFile);
+      (expect(tree) as any).toMatchSpecificSnapshot(examplePath);
     });
   }
 });
