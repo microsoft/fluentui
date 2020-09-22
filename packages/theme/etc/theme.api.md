@@ -703,6 +703,9 @@ export namespace SharedColors {
 }
 
 // @public
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+// @public
 export interface Theme extends ITheme {
     // (undocumented)
     components?: ComponentStyles;
