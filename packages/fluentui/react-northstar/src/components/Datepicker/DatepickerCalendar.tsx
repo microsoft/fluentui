@@ -326,9 +326,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           quiet: !day.isInMonth,
           today: compareDates(day.originalDate, props.today ?? new Date()),
           ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
-          onFocus: () => setGridNavigatedDate(day.originalDate),
         }),
       overrideProps: (predefinedProps: DatepickerCalendarCellButtonProps): DatepickerCalendarCellButtonProps => ({
+        onFocus: e => {
+          setGridNavigatedDate(day.originalDate);
+          _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
+        },
         onClick: e => {
           _.invoke(props, 'onDateChange', e, { ...props, value: day });
           _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
@@ -392,7 +395,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
                           children: renderWeekRow(week),
-                          key: week,
+                          key: week[0].key,
                         }),
                     }),
                   )}

@@ -21,6 +21,7 @@ import {
 } from '@fluentui/react-bindings';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { handleRef } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -319,6 +320,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
     },
+
+    inputRef: (node: HTMLInputElement) => {
+      handleRef(predefinedProps.inputRef, node);
+      inputRef.current = node;
+    },
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
@@ -342,7 +348,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               value: formattedDate,
               readOnly: !allowManualInput,
               required: props.required,
-              ref: inputRef,
               'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
             }),
           overrideProps: overrideInputProps,
@@ -350,16 +355,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       {createShorthand(Popup, popup, {
         defaultProps: () => ({
           open: openState && !props.disabled,
-          content: calendarElement,
           trapFocus: {
             disableFirstFocus: true,
           },
-          trigger: triggerButtonElement,
-          target: props.buttonOnly ? null : inputRef.current,
           position: 'below' as const,
           align: 'start' as const,
         }),
         overrideProps: (predefinedProps: PopupProps): PopupProps => ({
+          trigger: triggerButtonElement,
+          target: props.buttonOnly ? null : inputRef.current,
+          content: calendarElement,
           onOpenChange: (e, { open }) => {
             // In case the event is a click on input, we ignore such events as it should be directly handled by input.
             if (!(e.type === 'click' && e.target === inputRef?.current)) {

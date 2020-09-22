@@ -32,6 +32,14 @@ export interface DatepickerCalendarCellButtonProps extends UIComponentProps, Con
    */
   onClick?: ComponentEventHandler<DatepickerCalendarCellButtonProps>;
 
+  /**
+   * Called on focus.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onFocus?: ComponentEventHandler<DatepickerCalendarCellButtonProps>;
+
   /** A cell can show that it cannot be interacted with. */
   disabled?: boolean;
 
