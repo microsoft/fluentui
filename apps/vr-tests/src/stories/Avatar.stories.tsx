@@ -120,6 +120,7 @@ storiesOf('Avatar', module)
           fontFamily: '"Times New Roman", serif',
           fontSize: '19px',
           fontWeight: '900',
+          color: 'darkred',
           background: 'tomato',
           activeRingColor: 'tomato',
         }}

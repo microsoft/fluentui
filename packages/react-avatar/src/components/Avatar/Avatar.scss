@@ -9,8 +9,7 @@ $default-fontFamily: $fontFamily-base;
 $default-fontSize: $fontSize-body;
 $default-fontWeight: $fontWeight-semibold;
 $default-background: $color-default-neutralBackgroundSextenary;
-$default-textColor: $color-default-neutralForegroundTertiary;
-$default-iconColor: $color-default-neutralForegroundTertiary;
+$default-color: $color-default-neutralForegroundTertiary;
 
 $default-activeRingColor: $color-default-brand;
 $default-activeGlowColor: rgba($color-default-brand, 0.3);
@@ -30,7 +29,6 @@ $default-inactiveScaleFactor: 0.8;
   font-family: var(--avatar-fontFamily, $default-fontFamily);
   font-size: var(--avatar-fontSize, $default-fontSize);
   font-weight: var(--avatar-fontWeight, $default-fontWeight);
-  color: var(--avatar-textColor, $default-textColor);
 }
 
 // Image slot
@@ -57,6 +55,7 @@ $default-inactiveScaleFactor: 0.8;
   text-align: center;
   padding: 0px;
   border-radius: var(--avatar-borderRadius, $default-borderRadius);
+  color: var(--avatar-color, $default-color);
 }
 
 // Badge slot
@@ -293,5 +292,4 @@ $default-inactiveScaleFactor: 0.8;
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
   font-size: var(--avatar-iconSize, $default-iconSize);
   font-weight: initial;
-  color: var(--avatar-iconColor, $default-iconColor);
 }
