@@ -19,6 +19,9 @@ export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
         role: 'tree',
         'aria-labelledby': props['aria-labelledby'],
         tabIndex: -1,
+        ...(props.selectable && {
+          'aria-multiselectable': true,
+        }),
       },
     },
     keyActions: {
