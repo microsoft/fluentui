@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@uifabric/react-hooks": "^7.13.4",
-    "@fluentui/react-compose": "^0.19.3",
+    "@fluentui/react-compose": ">=0.19.3 <1.0.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.5",
     "@uifabric/utilities": "^7.32.2",

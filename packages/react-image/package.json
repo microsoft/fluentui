@@ -47,8 +47,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.3",
-    "@fluentui/react-theme-provider": "^0.13.3",
+    "@fluentui/react-compose": ">=0.19.3 <1.0.0",
+    "@fluentui/react-theme-provider": ">=0.13.3 <1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/react-hooks": "^7.13.4",
     "@uifabric/set-version": "^7.0.23",
