@@ -132,12 +132,19 @@ $stroke-thicker: 3px;
 $stroke-thickest: 4px;
 
 // TODO figure out palette colors
+$color-grey38: #616161;
+$color-grey90: #E5E5E5;
+$color-white: #FFFFFF;
+$color-default-neutralBackgroundSextenary: $color-grey90;
+$color-default-neutralForegroundTertiary: $color-grey38;
+$color-default-neutralForegroundInverted: $color-white;
 $color-default-shadowAmbient: rgba(0, 0, 0, 0.12);
 $color-default-shadowKey: rgba(0, 0, 0, 0.14);
 $color-default-shadowAmbientLighter: rgba(0, 0, 0, 0.06);
 $color-default-shadowKeyLighter: rgba(0, 0, 0, 0.07);
 $color-default-shadowAmbientDarker: rgba(0, 0, 0, 0.20);
 $color-default-shadowKeyDarker: rgba(0, 0, 0, 0.24);
+$color-default-brand: #0078D4;
 
 $shadow-2: 0px 0px 2px $color-default-shadowAmbient, 0px 1px 2px $color-default-shadowKey;
 $shadow-4: 0px 0px 2px $color-default-shadowAmbient, 0px 2px 4px $color-default-shadowKey;

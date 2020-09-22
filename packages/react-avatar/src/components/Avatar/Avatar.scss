@@ -8,10 +8,12 @@ $default-borderRadius: $borderRadius-circle;
 $default-fontFamily: $fontFamily-base;
 $default-fontSize: $fontSize-body;
 $default-fontWeight: $fontWeight-semibold;
-$default-background: rgb(232, 232, 232);
+$default-background: $color-default-neutralBackgroundSextenary;
+$default-textColor: $color-default-neutralForegroundTertiary;
+$default-iconColor: $color-default-neutralForegroundTertiary;
 
-$default-activeRingColor: #0078d4; // TODO: brand colors
-$default-activeGlowColor: rgba(0, 120, 212, 0.3); // TODO: brand colors
+$default-activeRingColor: $color-default-brand;
+$default-activeGlowColor: rgba($color-default-brand, 0.3);
 
 $default-inactiveOpacity: 0.8;
 $default-inactiveScaleFactor: 0.8;
@@ -28,6 +30,7 @@ $default-inactiveScaleFactor: 0.8;
   font-family: var(--avatar-fontFamily, $default-fontFamily);
   font-size: var(--avatar-fontSize, $default-fontSize);
   font-weight: var(--avatar-fontWeight, $default-fontWeight);
+  color: var(--avatar-textColor, $default-textColor);
 }
 
 // Image slot
@@ -290,4 +293,5 @@ $default-inactiveScaleFactor: 0.8;
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
   font-size: var(--avatar-iconSize, $default-iconSize);
   font-weight: initial;
+  color: var(--avatar-iconColor, $default-iconColor);
 }
