@@ -1,4 +1,4 @@
-import { calcAvatarStyleProps } from './calcAvatarStyleProps';
+import { AvatarStyleProps, calcAvatarStyleProps } from './calcAvatarStyleProps';
 import { avatarSizeValues } from './index';
 
 describe('calcAvatarStyleProps', () => {
@@ -27,55 +27,44 @@ describe('calcAvatarStyleProps', () => {
   });
 
   it('sets inactive when active={false}', () => {
-    const styleProps = calcAvatarStyleProps({ active: false });
-    expect(styleProps.inactive).toBe(true);
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: false }));
+    expect(activeProps).toEqual({ inactive: true });
   });
 
   it('sets default activeDisplay props when active={true}', () => {
-    const styleProps = calcAvatarStyleProps({ active: true });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBe(true);
-    expect(styleProps.activeShadow).toBeFalsy();
-    expect(styleProps.activeGlow).toBeFalsy();
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: true }));
+    expect(activeProps).toEqual({ activeRing: true });
   });
 
   it('sets ring/shadow/glow props when activeDisplay="shadow"', () => {
-    const styleProps = calcAvatarStyleProps({ active: true, activeDisplay: 'shadow' });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBeFalsy();
-    expect(styleProps.activeShadow).toBe(true);
-    expect(styleProps.activeGlow).toBeFalsy();
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: true, activeDisplay: 'shadow' }));
+    expect(activeProps).toEqual({ activeShadow: true });
   });
 
   it('sets ring/shadow/glow props when activeDisplay="glow"', () => {
-    const styleProps = calcAvatarStyleProps({ active: true, activeDisplay: 'glow' });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBeFalsy();
-    expect(styleProps.activeShadow).toBeFalsy();
-    expect(styleProps.activeGlow).toBe(true);
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: true, activeDisplay: 'glow' }));
+    expect(activeProps).toEqual({ activeGlow: true });
   });
 
   it('sets ring/shadow/glow props when activeDisplay="ring-shadow"', () => {
-    const styleProps = calcAvatarStyleProps({ active: true, activeDisplay: 'ring-shadow' });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBe(true);
-    expect(styleProps.activeShadow).toBe(true);
-    expect(styleProps.activeGlow).toBeFalsy();
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: true, activeDisplay: 'ring-shadow' }));
+    expect(activeProps).toEqual({ activeRing: true, activeShadow: true });
   });
 
   it('sets ring/shadow/glow props when activeDisplay="ring-glow"', () => {
-    const styleProps = calcAvatarStyleProps({ active: true, activeDisplay: 'ring-glow' });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBe(true);
-    expect(styleProps.activeShadow).toBeFalsy();
-    expect(styleProps.activeGlow).toBe(true);
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ active: true, activeDisplay: 'ring-glow' }));
+    expect(activeProps).toEqual({ activeRing: true, activeGlow: true });
   });
 
   it('does not set any activity props when active is not set', () => {
-    const styleProps = calcAvatarStyleProps({ activeDisplay: 'ring-glow' });
-    expect(styleProps.inactive).toBeFalsy();
-    expect(styleProps.activeRing).toBeFalsy();
-    expect(styleProps.activeShadow).toBeFalsy();
-    expect(styleProps.activeGlow).toBeFalsy();
+    const activeProps = filterActiveProps(calcAvatarStyleProps({ activeDisplay: 'ring-glow' }));
+    expect(activeProps).toEqual({});
   });
+});
+
+const filterActiveProps = (styleProps: AvatarStyleProps) => ({
+  inactive: styleProps.inactive,
+  activeRing: styleProps.activeRing,
+  activeGlow: styleProps.activeGlow,
+  activeShadow: styleProps.activeShadow,
 });
