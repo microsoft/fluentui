@@ -4,18 +4,18 @@ import { Accessibility } from '../../types';
 import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
- * @description
- * Adds role 'listitem' if the title is a leaf node inside the tree.
+ * @specification
+ * Adds role='option'.
+ * Adds attribute 'aria-selected=true' based on the property 'selected' if the component has 'selectable' property to 'root' slot.
  */
-export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
+export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
 
   const definition = _.merge(behavior, {
     attributes: {
       root: {
-        ...(!props.hasSubtree && {
-          role: 'listitem',
-        }),
+        role: 'option',
+        ...(props.selectable && { 'aria-selected': !!props.selected }),
       },
     },
   });

@@ -1,25 +1,25 @@
 import * as _ from 'lodash';
 import { Accessibility } from '../../types';
 import { treeItemBehavior, TreeItemBehaviorProps } from './treeItemBehavior';
-import { treeTitleAsListItemTitleBehavior } from './treeTitleAsListItemTitleBehavior';
+import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
 
 /**
- * @description
- * Adds role 'listitem' to a non-leaf item and 'none' to a leaf item.
+ * @specification
+ * Adds role='option'.
+ * Adds attribute 'aria-selected=true' based on the property 'selected' if the component has 'selectable' property to 'root' slot.
  */
-export const treeItemAsListItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
+export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const behavior = treeItemBehavior(props);
 
   const definition = _.merge(behavior, {
     attributes: {
       root: {
-        ...(props.hasSubtree && {
-          role: 'listitem',
-        }),
+        role: 'option',
+        ...(props.selectable && { 'aria-selected': !!props.selected }),
       },
     },
     childBehaviors: {
-      title: treeTitleAsListItemTitleBehavior,
+      title: treeTitleAsOptionBehavior,
     },
   });
 

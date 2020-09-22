@@ -64,6 +64,9 @@ import {
   treeAsListBehavior,
   treeItemAsListItemBehavior,
   treeTitleAsListItemTitleBehavior,
+  treeAsListboxBehavior,
+  treeItemAsOptionBehavior,
+  treeTitleAsOptionBehavior,
   carouselItemBehavior,
   carouselBehavior,
   tableBehavior,
@@ -163,6 +166,9 @@ testHelper.addBehavior('textAreaBehavior', textAreaBehavior);
 testHelper.addBehavior('treeAsListBehavior', treeAsListBehavior);
 testHelper.addBehavior('treeItemAsListItemBehavior', treeItemAsListItemBehavior);
 testHelper.addBehavior('treeTitleAsListItemTitleBehavior', treeTitleAsListItemTitleBehavior);
+testHelper.addBehavior('treeAsListboxBehavior', treeAsListboxBehavior);
+testHelper.addBehavior('treeItemAsOptionBehavior', treeItemAsOptionBehavior);
+testHelper.addBehavior('treeTitleAsOptionBehavior', treeTitleAsOptionBehavior);
 testHelper.addBehavior('carouselItemBehavior', carouselItemBehavior);
 testHelper.addBehavior('carouselBehavior', carouselBehavior);
 testHelper.addBehavior('tableBehavior', tableBehavior);

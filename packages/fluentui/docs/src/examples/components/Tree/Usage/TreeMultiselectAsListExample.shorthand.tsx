@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, Text, treeAsListBehavior } from '@fluentui/react-northstar';
+import { Tree, Text, treeAsListboxBehavior } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -129,7 +129,7 @@ const TreeMultiselectAsListExample = () => (
     selectable
     aria-label="Multi Select Tree as list"
     items={items}
-    accessibility={treeAsListBehavior}
+    accessibility={treeAsListboxBehavior}
   />
 );
 

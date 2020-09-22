@@ -3,7 +3,7 @@ import * as React from 'react';
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 
 const doList = [
-  'Use `treeAsListBehavior` when `Tree` component is displayed for macOS.',
+  'Use `treeAsListBehavior` for `Tree` component, and `treeAsListboxBehavior` for Multi-select `Tree` component, when `Tree` is displayed for macOS.',
   'Provide label to the `Tree` component using `aria-label` or `aria-labelledby` prop.',
 ];
 
