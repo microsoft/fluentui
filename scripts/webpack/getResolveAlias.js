@@ -45,6 +45,9 @@ function getResolveAlias(cwd) {
       const outputPath = getOutputPath(entryPoint);
       alias[`${depName}/${outputPath}`] = path.join(gitRoot, depPackagePath, 'src');
 
+      // This is just needed for a couple things in the examples package that load package readmes
+      alias[`${depName}/README.md`] = path.join(gitRoot, depPackagePath, 'README.md');
+
       if (/\/index\b/.test(entryPoint)) {
         // Standard index entry point
         alias[`${depName}$`] = path.join(gitRoot, depPackagePath, 'src');
