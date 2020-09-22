@@ -24,10 +24,7 @@ export interface DatepickerVariables {
   calendarHeaderCellFontWeight: number;
   calendarHeaderCellHeight: string;
   calendarHeaderCellWidth: string;
-  calendarHeaderCellPaddingTop: string;
-  calendarHeaderCellPaddingBottom: string;
-  calendarHeaderCellPaddingLeft: string;
-  calendarHeaderCellPaddingRight: string;
+  calendarHeaderCellPadding: string;
 
   calendarHeaderPaddingTop: string;
   calendarHeaderPaddingBottom: string;
@@ -59,10 +56,7 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
 
   calendarHeaderCellFontWeight: siteVars.fontWeightRegular,
   calendarHeaderCellHeight: pxToRem(32),
-  calendarHeaderCellPaddingTop: pxToRem(2),
-  calendarHeaderCellPaddingBottom: pxToRem(2),
-  calendarHeaderCellPaddingLeft: pxToRem(0),
-  calendarHeaderCellPaddingRight: pxToRem(0),
+  calendarHeaderCellPadding: `${pxToRem(2)} ${pxToRem(0)} ${pxToRem(2)} ${pxToRem(0)}`,
   calendarHeaderCellWidth: `calc(100%/${DAYS_IN_WEEK})`,
 
   calendarHeaderPaddingTop: pxToRem(5),

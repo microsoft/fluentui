@@ -335,14 +335,19 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           disabled: !day.isInBounds,
           quiet: !day.isInMonth,
           today: compareDates(day.originalDate, props.today ?? new Date()),
-          ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
-          onFocus: () => setGridNavigatedDate(day.originalDate),
         }),
-      overrideProps: (predefinedProps: DatepickerCalendarCellButtonProps): DatepickerCalendarCellButtonProps => ({
+      overrideProps: (
+        predefinedProps: DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> },
+      ): DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> } => ({
+        onFocus: e => {
+          setGridNavigatedDate(day.originalDate);
+          _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
+        },
         onClick: e => {
           _.invoke(props, 'onDateChange', e, { ...props, value: day });
-          _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
+          _.invoke(predefinedProps, 'onClick', e, predefinedProps);
         },
+        ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
       }),
     });
   const renderWeekRow = (week: IDay[]) => _.map(week, (day: IDay) => renderCell(day, renderCellButton(day)));
@@ -393,17 +398,16 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                               }),
                           }),
                         ),
-                        key: 0,
                       }),
                   })}
                 </thead>
                 <tbody>
-                  {_.map(visibleGrid, (week, idx) =>
+                  {_.map(visibleGrid, week =>
                     createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
                           children: renderWeekRow(week),
-                          key: idx + 1,
+                          key: week[0].key,
                         }),
                     }),
                   )}
