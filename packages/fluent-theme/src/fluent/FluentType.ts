@@ -1,1 +1,1 @@
-export { FontSizes } from '@fluentui/theme/lib/constants/FluentFonts';
+export { FontSizes } from '@fluentui/theme/lib/fonts/FluentFonts';

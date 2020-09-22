@@ -17,8 +17,6 @@ export interface ILink {
  * {@docCategory Link}
  */
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-  as?: React.ElementType;
-
   // Shared
   type?: string;
 
@@ -76,6 +74,11 @@ export interface ILinkProps
   theme?: ITheme;
 
   /**
+   * A component type or primitive that is rendered as the type of the root element.
+   */
+  as?: React.ElementType;
+
+  /**
    * Optional keytip.
    *
    * @deprecated This no longer works. Use `useKeytipData` hook instead.
@@ -99,20 +102,3 @@ export interface ILinkStyleProps {
 export interface ILinkStyles {
   root: IStyle;
 }
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkSlots {}
-
-/**
- * {@docCategory Link}
- */
-export type LinkSlotProps = {
-  [key in keyof ILinkSlots]: ILinkProps[key];
-};
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkOptions {}
