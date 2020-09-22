@@ -330,11 +330,11 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       overrideProps: (predefinedProps: DatepickerCalendarCellButtonProps): DatepickerCalendarCellButtonProps => ({
         onFocus: e => {
           setGridNavigatedDate(day.originalDate);
-          _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
+          _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
         },
         onClick: e => {
           _.invoke(props, 'onDateChange', e, { ...props, value: day });
-          _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
+          _.invoke(predefinedProps, 'onClick', e, predefinedProps);
         },
       }),
     });
