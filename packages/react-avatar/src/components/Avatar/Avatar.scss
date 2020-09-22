@@ -132,12 +132,13 @@ $default-inactiveScaleFactor: 0.8;
   --avatar-fontSize: #{$fontSize-caption};
   --avatar-fontWeight: #{$fontWeight-semibold};
 }
-// default size:
-// ._size_32,
-// ._size_36,
-// ._size_40 {
-// defaults are in var() fallbacks
-// }
+._size_32,
+._size_36,
+._size_40 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-body};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
 ._size_48,
 ._size_56 {
   --avatar-iconSize: #{$iconSize-large};
