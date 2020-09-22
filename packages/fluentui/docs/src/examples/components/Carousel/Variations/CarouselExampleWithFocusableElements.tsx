@@ -60,7 +60,12 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+            fluid
+            alt={imageAltTags.ade}
+          />
           {carouselTextContent}
         </Flex>
         <Button content="Open" styles={buttonStyles} />
@@ -74,7 +79,12 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+            fluid
+            alt={imageAltTags.elliot}
+          />
           {carouselTextContent}
         </Flex>
         {carouselToolbarContent}
@@ -88,7 +98,12 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/kristy.png" fluid alt={imageAltTags.kristy} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/kristy.png"
+            fluid
+            alt={imageAltTags.kristy}
+          />
           {carouselTextContent}
         </Flex>
         <Flex gap="gap.medium" styles={buttonStyles}>
