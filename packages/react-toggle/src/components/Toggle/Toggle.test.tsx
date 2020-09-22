@@ -51,13 +51,6 @@ describe('Toggle', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hidden toggle correctly', () => {
-    const component = mount(<Toggle data-extra-prop="foo" />).find('div');
-    const tree = component;
-
-    console.log(tree);
-  });
-
   isConformant({
     Component: Toggle,
     displayName: 'Toggle',
