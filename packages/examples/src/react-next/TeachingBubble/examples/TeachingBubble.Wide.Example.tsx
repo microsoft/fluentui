@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { TeachingBubble } from '@fluentui/react-next/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react-next';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const TeachingBubbleWideExample: React.FunctionComponent = () => {
