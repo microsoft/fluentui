@@ -46,7 +46,7 @@
   "dependencies": {
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-stylesheets": "^0.2.2",
-    "@fluentui/theme": "^0.4.0",
+    "@fluentui/theme": "^1.0.0",
     "@fluentui/react-window-provider": "^0.3.3",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/merge-styles": "^7.19.1",
