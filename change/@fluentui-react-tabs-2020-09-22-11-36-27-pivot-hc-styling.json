@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update Pivot.scss in react-tabs package",
+  "comment": "Fix HC styling for pivot tabs to show text when selected",
   "packageName": "@fluentui/react-tabs",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
