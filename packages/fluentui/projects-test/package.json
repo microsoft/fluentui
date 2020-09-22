@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.51.0"
+    "@fluentui/react-northstar": ">=0.51.0 <1.0.0"
   },
   "devDependencies": {
     "@lerna/project": "^3.15.0",

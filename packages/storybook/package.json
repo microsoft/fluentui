@@ -17,7 +17,7 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "@fluentui/react-theme-provider": "^0.13.4",
+    "@fluentui/react-theme-provider": ">=0.13.4 <1.0.0",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.5.14",
-    "@uifabric/mdl2-theme": "^0.3.13",
+    "@uifabric/mdl2-theme": ">=0.3.13 <1.0.0",
     "@uifabric/theme-samples": "^7.1.17"
   },
   "peerDependencies": {

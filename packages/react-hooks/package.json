@@ -25,7 +25,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -40,7 +40,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-window-provider": "^0.3.3",
+    "@fluentui/react-window-provider": ">=0.3.3 <1.0.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"

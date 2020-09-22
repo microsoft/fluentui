@@ -27,9 +27,9 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/storybook": "^0.4.18",
-    "@fluentui/react-conformance": "^0.1.3",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
+    "@fluentui/storybook": ">=0.4.18 <1.0.0",
+    "@fluentui/react-conformance": ">=0.1.3 <1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@uifabric/react-hooks": "^7.13.5",
-    "@fluentui/react-compose": "^0.19.4",
+    "@fluentui/react-compose": ">=0.19.4 <1.0.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.6",
     "@uifabric/utilities": "^7.32.3",

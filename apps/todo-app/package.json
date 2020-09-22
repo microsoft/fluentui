@@ -12,7 +12,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",

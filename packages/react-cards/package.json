@@ -27,8 +27,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^0.2.6",
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/common-styles": ">=0.2.6 <1.0.0",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -49,10 +49,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react-compose": "^0.19.4",
-    "@fluentui/react-theme-provider": "^0.13.4",
-    "@fluentui/theme": "^0.4.0",
+    "@fluentui/keyboard-key": ">=0.2.12 <1.0.0",
+    "@fluentui/react-compose": ">=0.19.4 <1.0.0",
+    "@fluentui/react-theme-provider": ">=0.13.4 <1.0.0",
+    "@fluentui/theme": ">=0.4.0 <1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.4",
     "@uifabric/file-type-icons": "^7.6.7",

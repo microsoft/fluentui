@@ -23,7 +23,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@uifabric/build": "^7.0.0",
     "@uifabric/example-data": "^7.1.4",
     "@uifabric/react-hooks": "^7.13.5",

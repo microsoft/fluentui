@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@uifabric/test-utilities": "^7.3.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",

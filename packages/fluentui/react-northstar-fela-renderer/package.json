@@ -5,8 +5,8 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/react-northstar-styles-renderer": "^0.51.0",
-    "@fluentui/styles": "^0.51.0",
+    "@fluentui/react-northstar-styles-renderer": ">=0.51.0 <1.0.0",
+    "@fluentui/styles": ">=0.51.0 <1.0.0",
     "css-in-js-utils": "^3.0.0",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",
@@ -20,7 +20,7 @@
     "stylis": "^3.5.4"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",

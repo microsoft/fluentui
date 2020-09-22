@@ -21,7 +21,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -29,9 +29,9 @@
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react-button": "^0.13.4",
-    "@fluentui/react-compose": "^0.19.4",
+    "@fluentui/keyboard-key": ">=0.2.12 <1.0.0",
+    "@fluentui/react-button": ">=0.13.4 <1.0.0",
+    "@fluentui/react-compose": ">=0.19.4 <1.0.0",
     "@fluentui/react-next": "^8.0.0-alpha.114",
     "@uifabric/experiments": "^7.32.15",
     "@uifabric/set-version": "^7.0.23",

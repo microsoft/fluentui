@@ -10,7 +10,7 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.51.0"
+    "@fluentui/react-northstar": ">=0.51.0 <1.0.0"
   },
   "devDependencies": {
     "@types/react": "16.8.25",

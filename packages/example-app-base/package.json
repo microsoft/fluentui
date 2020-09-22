@@ -21,7 +21,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/color-check": "0.0.0",
     "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.11.0",
@@ -46,7 +46,7 @@
     "@uifabric/fluent-theme": "^7.3.13",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/tsx-editor": "^0.13.14",
+    "@uifabric/tsx-editor": ">=0.13.14 <1.0.0",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",

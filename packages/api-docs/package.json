@@ -18,12 +18,12 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
     "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/react-cards": "^0.112.14",
+    "@uifabric/react-cards": ">=0.112.14 <1.0.0",
     "@uifabric/styling": "^7.16.6",
     "@uifabric/utilities": "^7.32.3",
     "office-ui-fabric-react": "^7.139.1"

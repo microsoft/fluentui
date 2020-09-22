@@ -9,7 +9,7 @@
     "react-is": "^16.6.3"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-is": "^16.7.1",

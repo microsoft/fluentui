@@ -6,13 +6,13 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/react-bindings": "^0.51.0",
-    "@fluentui/react-component-event-listener": "^0.51.0",
+    "@fluentui/react-bindings": ">=0.51.0 <1.0.0",
+    "@fluentui/react-component-event-listener": ">=0.51.0 <1.0.0",
     "lodash": "^4.17.15",
     "react-table": "^7.1.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-table": "^7.0.19",

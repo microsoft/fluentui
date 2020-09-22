@@ -14,7 +14,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -24,7 +24,7 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.13.4",
+    "@fluentui/react-button": ">=0.13.4 <1.0.0",
     "@fluentui/react-next": "^8.0.0-alpha.114",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/example-app-base": "^7.15.14",

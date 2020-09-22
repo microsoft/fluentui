@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,10 +44,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.4",
-    "@fluentui/react-stylesheets": "^0.2.2",
-    "@fluentui/theme": "^0.4.0",
-    "@fluentui/react-window-provider": "^0.3.3",
+    "@fluentui/react-compose": ">=0.19.4 <1.0.0",
+    "@fluentui/react-stylesheets": ">=0.2.2 <1.0.0",
+    "@fluentui/theme": ">=0.4.0 <1.0.0",
+    "@fluentui/react-window-provider": ">=0.3.3 <1.0.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/styling": "^7.16.6",

@@ -14,8 +14,8 @@
     "perf:test:base": "just-scripts perf-test --base"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.51.0",
-    "@fluentui/react-northstar": "^0.51.0",
+    "@fluentui/digest": ">=0.51.0 <1.0.0",
+    "@fluentui/react-northstar": ">=0.51.0 <1.0.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",

@@ -23,7 +23,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.8.25",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.4",
-    "@uifabric/monaco-editor": "^0.5.18",
+    "@uifabric/monaco-editor": ">=0.5.18 <1.0.0",
     "@uifabric/react-hooks": "^7.13.5",
     "office-ui-fabric-react": "^7.139.1",
     "raw-loader": "^0.5.1",

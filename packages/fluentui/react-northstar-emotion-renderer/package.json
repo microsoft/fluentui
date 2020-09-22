@@ -9,13 +9,13 @@
     "@emotion/serialize": "^0.11.16",
     "@emotion/sheet": "^0.9.4",
     "@emotion/utils": "^0.11.3",
-    "@fluentui/react-northstar-styles-renderer": "^0.51.0",
-    "@fluentui/styles": "^0.51.0",
+    "@fluentui/react-northstar-styles-renderer": ">=0.51.0 <1.0.0",
+    "@fluentui/styles": ">=0.51.0 <1.0.0",
     "@quid/stylis-plugin-focus-visible": "^4.0.0",
     "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": ">=0.54.1 <1.0.0",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
