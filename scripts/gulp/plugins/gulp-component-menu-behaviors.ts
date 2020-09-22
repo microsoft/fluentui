@@ -21,15 +21,6 @@ type BehaviorMenuItem = {
   };
 };
 
-const getPathDirByName = (filePath, nameOfDir: string) => {
-  const directoryPath = path.dirname(filePath);
-  const directoryName = path.basename(directoryPath);
-  if (directoryName === nameOfDir) {
-    return directoryPath;
-  }
-  return getPathDirByName(directoryPath, nameOfDir);
-};
-
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
   const resultToken = commentTokens.find(token => token.title === tokenTitle);
   return resultToken ? resultToken.description : '';
