@@ -248,8 +248,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         });
         return nextSelectedItemIds;
       });
-
-      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
