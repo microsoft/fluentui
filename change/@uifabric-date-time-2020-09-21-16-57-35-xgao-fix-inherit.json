@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Set font-family:inherit on button.",
+  "comment": "Set font-family inherit on button element.",
   "packageName": "@uifabric/date-time",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

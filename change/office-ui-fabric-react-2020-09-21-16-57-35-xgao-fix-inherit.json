@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Set font-familiy:inherit on button and input where they are missing.",
+  "comment": "Set font-family inherit on button and input elements.",
   "packageName": "office-ui-fabric-react",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

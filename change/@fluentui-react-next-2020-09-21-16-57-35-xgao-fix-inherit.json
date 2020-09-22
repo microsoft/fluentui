@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Set font-familiy:inherit on button and input where they are missing.",
+  "comment": "Set font-family inherit on button and input elements.",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
