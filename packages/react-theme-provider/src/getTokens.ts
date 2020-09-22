@@ -5,7 +5,7 @@ import { merge } from '@uifabric/utilities';
  * Get tokens from theme object.
  */
 export function getTokens(theme: Theme): Tokens {
-  const { tokens } = theme;
+  const { tokens, fonts } = theme;
   const { palette, semanticColors } = theme;
 
   const preparedTokens: Tokens = merge(
@@ -67,6 +67,14 @@ export function getTokens(theme: Theme): Tokens {
             contentColor: semanticColors.primaryButtonTextPressed,
           },
         },
+      },
+
+      body: {
+        fontFamily: fonts.medium.fontFamily,
+        fontWeight: fonts.medium.fontWeight,
+        fontSize: fonts.medium.fontSize,
+        mozOsxFontSmoothing: fonts.medium.MozOsxFontSmoothing,
+        webkitFontSmoothing: fonts.medium.WebkitFontSmoothing,
       },
     },
 

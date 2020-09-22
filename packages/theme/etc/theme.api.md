@@ -9,31 +9,28 @@ import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 // @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    secondaryContentColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-    opacity: string;
-}>;
-
-// @public (undocumented)
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+    hovered?: ColorTokens;
+    pressed?: ColorTokens;
+    disabled?: ColorTokens;
+    checked?: ColorTokens;
+    checkedHovered?: ColorTokens;
+    checkedPressed?: ColorTokens;
+};
 
 // @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export type ColorTokenSet = {
+    background?: string;
+    contentColor?: string;
+    secondaryContentColor?: string;
+    linkColor?: string;
+    iconColor?: string;
+    borderColor?: string;
+    dividerColor?: string;
+    focusColor?: string;
+    focusInnerColor?: string;
+    opacity?: string;
+};
 
 // @public (undocumented)
 export namespace CommunicationColors {
@@ -620,6 +617,8 @@ export interface PartialTheme extends IPartialTheme {
     stylesheets?: string[];
     // (undocumented)
     tokens?: RecursivePartial<Tokens>;
+    // (undocumented)
+    variants?: RecursivePartial<Variants>;
 }
 
 // @public
@@ -710,6 +709,8 @@ export interface Theme extends ITheme {
     stylesheets?: string[];
     // (undocumented)
     tokens?: Tokens;
+    // (undocumented)
+    variants?: Variants;
 }
 
 // @public (undocumented)
@@ -728,6 +729,9 @@ export interface Tokens {
 export type TokenSetType = {
     [key: string]: TokenSetType | string | number | undefined;
 };
+
+// @public (undocumented)
+export type Variants = Record<string, any>;
 
 
 // Warnings were encountered during analysis:
