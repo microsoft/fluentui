@@ -4,9 +4,8 @@ import { treeItemBehavior, TreeItemBehaviorProps } from './treeItemBehavior';
 import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
 
 /**
- * @specification
- * Adds role='option'.
- * Adds attribute 'aria-selected=true' based on the property 'selected' if the component has 'selectable' property to 'root' slot.
+ * @description
+ * Adds role 'option' to a non-leaf and selectable item.
  */
 export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const behavior = treeItemBehavior(props);
@@ -14,8 +13,11 @@ export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = pr
   const definition = _.merge(behavior, {
     attributes: {
       root: {
-        role: 'option',
-        ...(props.selectable && { 'aria-selected': !!props.selected }),
+        ...(props.hasSubtree &&
+          props.selectable && {
+            role: 'option',
+            'aria-selected': !!props.selected,
+          }),
       },
     },
     childBehaviors: {

@@ -2,14 +2,14 @@ import { treeTitleAsOptionBehavior } from '@fluentui/accessibility';
 
 describe('TreeTitleBehavior', () => {
   describe('role', () => {
-    test(`is added with 'option' value`, () => {
-      const expectedResult = treeTitleAsOptionBehavior({});
+    test(`is 'option' when item does not hasSubtree and is selectable`, () => {
+      const expectedResult = treeTitleAsOptionBehavior({ selectable: true });
       expect(expectedResult.attributes.root.role).toEqual('option');
     });
   });
 
   describe('aria-selected', () => {
-    test(`is added with 'selected' prop value to a title when tree title is 'selectable'`, () => {
+    test(`is added with 'selected' prop value to a title when tree title does not hasSubtree, and is 'selectable'`, () => {
       const expectedResultWhenSelected = treeTitleAsOptionBehavior({
         selectable: true,
         selected: true,
