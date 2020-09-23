@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Feat: adds automatic card background color calculation",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-18T19:06:28.570Z"
+}
