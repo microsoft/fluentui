@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
 - Fix of handling refs in `Ref` component for `react-test-render` @layershifter ([#15144](https://github.com/microsoft/fluentui/pull/15144))
 - Fix `MenuItem` and `CarouselNavigationItem` to correctly map `active` prop to behavior @yuanboxue-amber ([#14970](https://github.com/microsoft/fluentui/pull/14970))
+- Make `Popup` & `Tooltip` visible on disabled elements @layershifter ([#14756](https://github.com/microsoft/fluentui/pull/14756))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
