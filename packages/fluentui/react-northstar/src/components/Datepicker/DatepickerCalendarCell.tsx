@@ -43,7 +43,6 @@ export type DatepickerCalendarCellStylesProps = Pick<
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
 /**
  * A Datepicker cell is used to display calendar grid cells.
- * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarCell = compose<
   'td',

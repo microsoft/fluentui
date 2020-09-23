@@ -68,8 +68,7 @@ export type DatepickerCalendarCellButtonStylesProps = Pick<
 
 export const datepickerCalendarCellButtonClassName = 'ui-datepicker__calendarcellbutton';
 /**
- * A Datepicker cell is used to display calendar grid cells.
- * This component is currently UNSTABLE!
+ * A Datepicker cell is used to display calendar grid cell button.
  */
 export const DatepickerCalendarCellButton = compose<
   'button',

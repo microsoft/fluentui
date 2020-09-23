@@ -19,7 +19,6 @@ export const datepickerCalendarHeaderActionClassName = 'ui-datepicker__calendarh
 
 /**
  * A DatepickerCalendarHeaderAction is used to display action button for DatepickerCalendarHeader.
- * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarHeaderAction = compose<
   'button',
