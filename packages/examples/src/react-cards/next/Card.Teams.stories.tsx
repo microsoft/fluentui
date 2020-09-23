@@ -10,10 +10,9 @@ import {
   Stack,
   Text,
 } from 'office-ui-fabric-react';
-import { Card, CardBody, CardFooter, CardHeader } from '@uifabric/react-cards/lib/next';
+import { Card, CardBody, CardFooter, CardHeader } from '@uifabric/react-cards/lib/next/index';
 
 function onClick() {
-  // eslint-disable-next-line no-alert
   alert('Card was clicked');
 }
 
