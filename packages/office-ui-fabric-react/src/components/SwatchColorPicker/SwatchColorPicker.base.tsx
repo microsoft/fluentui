@@ -13,7 +13,7 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from '../../utilities/grid/Grid';
+import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
@@ -127,7 +127,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       return null;
     }
     return (
-      <Grid
+      <ButtonGrid
         {...this.props}
         id={this._id}
         items={this._getItemsWithIndex(colorCells)}
@@ -148,9 +148,9 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     );
   }
 
-  private _onRenderItem = (item: IColorCellProps): JSX.Element | null => {
+  private _onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
     const { onRenderColorCell = this._renderOption } = this.props;
-    return onRenderColorCell(item, this._renderOption);
+    return onRenderColorCell(item, this._renderOption) as JSX.Element;
   };
 
   /**

@@ -6,6 +6,7 @@ import {
   useAutoControlled,
   useTelemetry,
   useFluentContext,
+  useTriggerElement,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -18,7 +19,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
-  childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -130,7 +130,6 @@ export const Popup: React.FC<PopupProps> &
     align,
     autoFocus,
     inline,
-    children,
     contentRef,
     flipBoundary,
     on,
@@ -508,7 +507,7 @@ export const Popup: React.FC<PopupProps> &
     }
   });
 
-  const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
+  const triggerNode = useTriggerElement(props);
   const triggerProps = getTriggerProps(triggerNode);
 
   const contentElement = (

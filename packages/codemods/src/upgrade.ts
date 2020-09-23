@@ -16,13 +16,15 @@ export function upgrade(options: CommandParserResult) {
     let error = false;
     try {
       const files = project.getSourceFiles();
-      runMods(mods, files, result => {
-        if (result.error) {
-          logger.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
-          error = true;
-        } else {
-          logger.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`);
-        }
+      runMods(mods, files, logValue => {
+        logValue.result.resolve(
+          v => {
+            logger.log(`Upgraded file ${logValue.file.getBaseName()} with mod ${logValue.mod.name}`, v.logs);
+          },
+          e => {
+            logger.warn(`Mod ${logValue.mod.name} did not run on file ${logValue.file.getBaseName()} for: `, e.reason);
+          },
+        );
       });
     } catch (e) {
       logger.error(e);
