@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,7 +36,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -45,7 +45,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.22",
+    "@uifabric/set-version": "^7.0.23",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

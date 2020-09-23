@@ -40,15 +40,8 @@ const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
-  projectRepo: 'microsoft/fluentui/fluentui',
-
   apiKey: process.env.SCREENER_API_KEY,
-
-  tunnel: {
-    host: `${config.server_host}:${config.server_port}`,
-    gzip: true, // gzip compress all content being served from tunnel host
-    cache: true, // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
-  },
+  projectRepo: 'microsoft/fluentui/fluentui',
 
   diffOptions: {
     structure: true,
@@ -64,21 +57,9 @@ module.exports = {
   // screenshot every example in maximized mode
   states: require('./screener.states').default,
 
-  // CircleCI config
-  // ...(process.env.CI && {
-  //   baseBranch: 'master',
-  //   // Disable exit code to fail in Github Actions
-  //   // failureExitCode: 0,
-  //   // GITHUB_REF can be:
-  //   // - refs/heads/feature-branch-1 for "push"
-  //   // - refs/pull/2040/merge for "pull_request"
-  //   branch: process.env.GITHUB_REF.split('/')[2],
-  //   commit: process.env.GITHUB_SHA
-  // })
-
   alwaysAcceptBaseBranch: true,
-
   baseBranch,
+  failureExitCode: 0,
 
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
     ? {

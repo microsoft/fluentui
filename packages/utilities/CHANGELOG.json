@@ -2,6 +2,74 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/utilities_v7.32.3",
+      "version": "7.32.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for Styled pure functions to have a displayName.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/utilities_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Consume virtual DOM functions from new location",
+            "author": "tmichon@microsoft.com",
+            "commit": "0903cff93e15f9865634c79a42fb2fbc14e7964e",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "createMergedRef: fix internal typings",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/utilities_v7.30.0",
       "version": "7.30.0",

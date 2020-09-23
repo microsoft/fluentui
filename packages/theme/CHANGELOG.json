@@ -2,6 +2,59 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/theme_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moving SizeValue const from react-button to theme package.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@fluentui/theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump theme package version to be 1.0.0 since it's used by other major packages.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/theme_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add default fonts from styling package.",
+            "author": "xgao@microsoft.com",
+            "commit": "ef5e6c6d69af679f732abb9f13cf7fad2902fdb8",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/theme_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Aug 2020 12:35:38 GMT",
       "tag": "@fluentui/theme_v0.1.2",
       "version": "0.1.2",

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "7.5.2",
+  "version": "7.5.15",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -18,15 +18,15 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/merge-styles": "^7.18.0",
-    "@uifabric/react-cards": "^0.112.2",
-    "@uifabric/styling": "^7.16.0",
-    "@uifabric/utilities": "^7.31.0",
-    "office-ui-fabric-react": "^7.134.0"
+    "@uifabric/merge-styles": "^7.19.1",
+    "@uifabric/react-cards": "^0.113.0",
+    "@uifabric/styling": "^7.16.7",
+    "@uifabric/utilities": "^7.32.3",
+    "office-ui-fabric-react": "^7.139.2"
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.7.1",

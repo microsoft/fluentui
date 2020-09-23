@@ -17,6 +17,7 @@ import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { elementContains, setVirtualParent } from '@fluentui/dom-utilities';
 
 import {
   ChildrenComponentProps,
@@ -194,7 +195,6 @@ export const Popup: React.FC<PopupProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      disabled: false, // definition has this prop, but `Popup` doesn't support it
       isOpenedByRightClick,
       on,
       trapFocus,
@@ -369,12 +369,13 @@ export const Popup: React.FC<PopupProps> &
     return contentHandlerProps;
   };
 
-  const shouldBlurClose = e => {
-    return (
-      !e.currentTarget ||
-      !popupContentRef.current ||
-      (!e.currentTarget.contains(e.relatedTarget) && !popupContentRef.current.contains(e.relatedTarget))
-    );
+  const shouldBlurClose = (e: React.FocusEvent) => {
+    const relatedTarget = e.relatedTarget as Node;
+    const isInsideContent = elementContains(popupContentRef.current, relatedTarget as HTMLElement);
+    const isInsideTarget = elementContains(e.currentTarget as HTMLElement, relatedTarget as HTMLElement);
+    // When clicking in the popup content that has no tabIndex focus goes to body
+    // We shouldn't close the popup in this case
+    return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
@@ -473,7 +474,7 @@ export const Popup: React.FC<PopupProps> &
     const activeElement = activeDocument.activeElement;
 
     triggerFocusableRef.current =
-      triggerRef.current && triggerRef.current.contains(activeElement)
+      triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
         ? (activeElement as HTMLElement)
         : triggerRef.current;
   };
@@ -509,6 +510,18 @@ export const Popup: React.FC<PopupProps> &
 
   const triggerNode = useTriggerElement(props);
   const triggerProps = getTriggerProps(triggerNode);
+
+  React.useEffect(() => {
+    if (open) {
+      setVirtualParent(popupContentRef.current, triggerRef.current);
+    }
+
+    return () => {
+      if (open && popupContentRef.current) {
+        setVirtualParent(popupContentRef.current, null);
+      }
+    };
+  }, [open]);
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>

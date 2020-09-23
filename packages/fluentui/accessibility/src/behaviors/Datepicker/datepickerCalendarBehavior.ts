@@ -1,5 +1,6 @@
 import { Accessibility } from '../../types';
 import { datepickerCalendarGridBehavior } from './datepickerCalendarGridBehavior';
+import { datepickerCalendarGridRowBehavior } from './datepickerCalendarGridRowBehavior';
 import { keyboardKey } from '@fluentui/keyboard-key';
 /**
  * @description
@@ -10,6 +11,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
 export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
   childBehaviors: {
     calendarGrid: datepickerCalendarGridBehavior,
+    calendarGridRow: datepickerCalendarGridRowBehavior,
   },
   keyActions: {
     calendarCell: {
@@ -24,6 +26,18 @@ export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehavio
       },
       subtractDay: {
         keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+      },
+      moveToStartOfWeek: {
+        keyCombinations: [{ keyCode: keyboardKey.Home, ctrlKey: false }],
+      },
+      moveToEndOfWeek: {
+        keyCombinations: [{ keyCode: keyboardKey.End, ctrlKey: false }],
+      },
+      moveToStartOfColumn: {
+        keyCombinations: [{ keyCode: keyboardKey.PageUp }],
+      },
+      moveToEndOfColumn: {
+        keyCombinations: [{ keyCode: keyboardKey.PageDown }],
       },
     },
   },

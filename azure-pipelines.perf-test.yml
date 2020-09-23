@@ -10,7 +10,7 @@ variables:
 pool: 'Self Host Ubuntu'
 
 steps:
-  - template: azure-pipelines.tools.yml
+  - template: .devops/templates/tools.yml
 
   - script: |
       yarn
@@ -45,7 +45,7 @@ steps:
     workingDirectory: apps/perf-test
     displayName: Perf Test
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site (Fluent)
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
@@ -54,7 +54,7 @@ steps:
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test/fluentui'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
     inputs:
       SourcePath: 'apps/perf-test/dist'
