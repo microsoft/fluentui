@@ -7,12 +7,12 @@ import {
   elementContains,
   EventGroup,
 } from '../../Utilities';
-import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { Overlay } from '../../Overlay';
-import { ILayerProps, Layer } from '../Layer';
-import { Popup } from '../Popup';
+import { ILayerProps, Layer } from '../../Layer';
+import { Popup } from '../../Popup';
 import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
