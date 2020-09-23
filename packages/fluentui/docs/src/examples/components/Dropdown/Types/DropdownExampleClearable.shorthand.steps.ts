@@ -1,4 +1,5 @@
 import { dropdownSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 
 const selectors = {
   clearIndicator: `.${dropdownSlotClassNames.clearIndicator}`,

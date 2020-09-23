@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
+<div>
+  <div
+    className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 20px;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          ms-Toggle-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 16px;
+            margin-right: 0px;
+            margin-top: 0px;
+            order: 1;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-break: break-all;
+            word-wrap: break-word;
+          }
+      htmlFor="ToggleBase1"
+      id="ToggleBase1-label"
+    >
+      Is draggable
+    </label>
+    <div
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
+    >
+      <button
+        aria-checked={false}
+        aria-labelledby="ToggleBase1-label"
+        checked={false}
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 20px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 3px;
+              padding-right: 3px;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+        data-is-focusable={true}
+        data-ktp-target={true}
+        id="ToggleBase1"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="switch"
+        type="button"
+      >
+        <span
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #605e5c;
+                border-color: transparent;
+                border-radius: 50%;
+                border-style: solid;
+                border-width: 6px;
+                box-sizing: border-box;
+                display: block;
+                height: 12px;
+                transition: all 0.1s ease;
+                width: 12px;
+              }
+        />
+      </button>
+    </div>
+  </div>
+  <button
+    className=
+        ms-Button
+        ms-Button--default
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
+          box-sizing: border-box;
+          color: #323130;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 32px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #f3f2f1;
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #edebe9;
+          color: #201f1e;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
+      data-automationid="splitbuttonprimary"
+    >
+      <span
+        className=
+            ms-Button-textContainer
+            {
+              display: block;
+              flex-grow: 1;
+            }
+      >
+        <span
+          className=
+              ms-Button-label
+              {
+                display: block;
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
+          id="id__2"
+        >
+          Open Modal
+        </span>
+      </span>
+    </span>
+  </button>
+</div>
+`;

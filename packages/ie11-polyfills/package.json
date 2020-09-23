@@ -1,0 +1,16 @@
+{
+  "name": "@fluentui/ie11-polyfills",
+  "version": "0.1.2",
+  "description": "Package to hold current and future ie11 polyfills",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "devDependencies": {
+    "@uifabric/build": "^7.0.0",
+    "ie11-custom-properties": "4.1.0"
+  },
+  "license": "MIT"
+}

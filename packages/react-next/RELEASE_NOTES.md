@@ -2,6 +2,118 @@
 
 ## Breaking changes
 
+### Button
+
+The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance hits for the most common cases.
+
+As a result, please see the table below on the replacements:
+
+### Component renames
+
+Common buttons now all map to `Button`:
+
+| Old                                              | New                                                          |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                              |
+| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`                      |
+| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button iconOnly ghost icon={ <Icon iconName="Add" /> } />` |
+
+### Toggle buttons
+
+The `ToggleButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `ToggleButton` respects a `checked` or `defaultChecked` flag.
+
+```jsx
+const App = () => {
+  const [isChecked, setChecked] = React.useState(false);
+
+  return (
+    <ToggleButton checked={checked} onClick={() => setChecked(!isChecked)}>
+      {checked ? 'Pause' : 'Play'}
+    </ToggleButton>
+  );
+};
+```
+
+### Menu buttons
+
+The `MenuButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `MenuButton` takes in a `menu` prop to provide the menu:
+
+```jsx
+const App = () => {
+  const [ isChecked, setChecked ] = React.useState(false);
+
+  return (
+    <MenuButton
+      iconOnly
+      circular
+      ghost
+      icon={ <EllipsisIcon /> }
+      menu={
+        items: [
+          { key: 'a', ... }
+        ]
+      }
+   />
+  );
+}
+```
+
+### Split menu buttons
+
+The `SplitButton` is now its own component, instead of being baked into the `Button` component itself. This helps to overall reduce the default `Button` complexity, runtime overhead, and bundle size:
+
+Before:
+
+```jsx
+<PrimaryButton split onClick={ () => alert('action')} menuProps={{ items: [ ... ] }} text="Hello, world" />
+```
+
+After:
+
+```jsx
+<SplitButton primary onClick={ () => alert('action')} menu={{ items: [ ... ] }} />
+```
+
+Additional changes:
+
+- Now 2 tab targets rather than 1: The action part of the button and the menu part are now separate focus targets. This helps with predictability for users who want to either execute the action or expand the menu. It also helps with accessibility, as we can keep the action with a normal `button` role, and the menu with an `aria-haspopup` attribute, making it more clear for screen readers to differentiate from a typical menu button.
+
+### Button: slots support
+
+Buttons now support slots. Slot support replaces `onRender*` and `*Props` props. The `iconProps` is an example of this. Before, you would provide the props directly. Now you can provide JSX, which lets the implementation own prop typing:
+
+Before:
+
+```jsx
+<DefaultButton iconProps={{ iconName: 'Add' }}> />
+```
+
+After:
+
+```jsx
+<Button icon={<Icon iconName="Add" />} />
+```
+
+This ensures that `Button` components work not just with Fluent UI icons, but with any other icon set.
+
+### Additional button modifiers and enums
+
+These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
+| Modifier | Description |
+| ---------- | --------------------------------------------------------------------------------------- |
+| `circular` | Make the button rounded on the edges (pill button.) |
+| `fluid` | Stretches the button to the container width. |
+| `iconOnly` | Makes the width match the height. Can be combined with circular to make circle buttons. |
+| `ghost` | Makes the button inherit the background color. |
+| `primary` | Uses the brand color to indicate the button is a primary action. |
+| `size` | Controls the size of the button, based on an enum value: `smallest`, `smaller`, `small`, `regular`, `large`, `larger`, `largest`. Defaults to `regular`. |
+
+### Button styling changes
+
+- `vertical-align` is now set to `middle` to ensure they align correctly. See https://codesandbox.io/s/align-buttons-middle-6u5nu for an example of why this is important.
+- Focus rectangles have been adjusted to be more visible and consistent with our new focus styling approach (note that not everything has been updated to the 2px black border 1px inverted inner.)
+- Gaps between elements within the button were changed to margins rather than combo of padding/margin.
+
 ### Calendar
 
 TODO: Diff of OUFR vs date-time Calendar
@@ -38,14 +150,18 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
-  - Removed deprecated styles prop `linkIsSelected?: boolean;`.
-  - Removed styles prop `rootIsLarge` and added `linkSize` instead.
-  - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
-  - TODO: enumerate all removed props
+- `IPivotStyleProps` changes
+  - Replaced `rootIsLarge` with `linkSize`.
+  - Replaced `rootIsTabs` and `linkFormat`.
+  - Removed deprecated prop `linkIsSelected`.
 
-### Slider
+### Rating
 
-TODO: document any API or functionality changes
+- Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
+- `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
+- Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
+- Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 
 ### SpinButton
 
@@ -55,6 +171,13 @@ TODO: document any API or functionality changes
 ### Shimmer
 
 - Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+
+### SwatchColorPicker
+
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ### TeachingBubble
 
@@ -80,12 +203,17 @@ TODO: document any API or functionality changes
 - `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
+- `WindowProvider` is required for child windows/embeds.
 
 ## Minor changes
 
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+## New features
+
+- Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
 
 ## Other notable changes
 

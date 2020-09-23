@@ -2,11 +2,11 @@ import * as React from 'react';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins, ILineChartPoints } from '../../types/index';
-import { ChartTypes } from '../../utilities/index';
+import { IMargins } from '../../types/index';
+import { ChartTypes, XAxisTypes } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -126,17 +126,21 @@ export interface ICartesianChartStyles {
 
 export interface ICartesianChartProps {
   /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
+   * Below height used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
    */
   height?: number;
 
   /**
-   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   * Below width used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
+   */
+  width?: number;
+
+  /**
+   * this prop takes its parent as a HTML element to define the width and height of the chart
    */
   parentRef?: HTMLElement | null;
 
@@ -167,7 +171,7 @@ export interface ICartesianChartProps {
   hideTooltip?: boolean;
 
   /**
-   * this prop takes values that you want the line chart to render on x-axis
+   * this prop takes values that you want the chart to render on x-axis
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
@@ -222,6 +226,7 @@ export interface ICartesianChartProps {
 
   /**
    * Label to apply to the whole chart.
+   * @deprecated - Use your chart label for the chart.
    */
   chartLabel?: string;
 
@@ -271,12 +276,18 @@ export interface ICartesianChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+
+  /**
+   * Callout customization props
+   */
+  calloutProps?: ICalloutProps;
 }
 
 export interface IYValueHover {
   legend?: string;
   y?: number;
   color?: string;
+  data?: string | number;
 }
 
 export interface IChildProps {
@@ -290,21 +301,34 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Only used for Area chart
+   * Value used to draw y axis of that chart.
+   */
   maxOfYVal?: number;
-  points: ILineChartPoints[];
-  chartType: ChartTypes;
-  getmargins: (margins: IMargins) => void;
+
+  /**
+   * Data of the chart
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getGraphData?: any;
+  points: any;
+
+  /**
+   * Define type of the chart
+   */
+  chartType: ChartTypes;
+
+  /** X axis type */
+  xAxisType: XAxisTypes;
+
+  /**
+   * Legeds of the chart.
+   */
   legendBars: JSX.Element;
-  barwidth?: number;
-  isXAxisDateType: boolean;
-  tickParams?: {
-    tickValues?: number[] | Date[];
-    tickFormat?: string;
-  };
-  children(props: IChildProps): React.ReactNode;
-  isMultiStackCallout: boolean;
+
+  /**
+   * Callout props
+   */
   calloutProps: Partial<ICalloutProps> & {
     isCalloutVisible: boolean;
     id: string;
@@ -315,4 +339,51 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     YValue?: string | number;
     XValue?: string;
   };
+
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  getmargins?: (margins: IMargins) => void;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getGraphData?: any;
+
+  /**
+   * Used for bar chart graphs.
+   * To define width of the bar
+   */
+  barwidth?: number;
+
+  /**
+   * Used for tick styles of the x axis of the chart
+   */
+  tickParams?: {
+    tickValues?: number[] | Date[];
+    tickFormat?: string;
+  };
+
+  children(props: IChildProps): React.ReactNode;
+
+  /**
+   * To enable callout for bar. Using for only Vertical stacked bar chart.
+   * @default false
+   * @type {boolean}
+   */
+  isCalloutForStack?: boolean;
+
+  /** dataset values to find out domain of the String axis
+   * Present using for only vertical stacked bar chart and grouped vertical bar chart
+   */
+  datasetForXAxisDomain?: string[];
+
+  /** Own callout design */
+  // need to add type here
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customizedCallout?: any;
+
+  /**
+   * Focus zone direction to the chart
+   * @default FocusZoneDirection.horizontal
+   */
+  focusZoneDirection?: FocusZoneDirection;
 }

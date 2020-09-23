@@ -5,6 +5,9 @@ import { mount } from 'enzyme';
 import { Panel } from './Panel';
 import { PanelBase } from './Panel.base';
 import { IPanel } from './Panel.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
+
 let div: HTMLElement;
 
 const ReactDOM = require('react-dom');
@@ -145,6 +148,38 @@ describe('Panel', () => {
 
       expect(onDismissed).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it('allows the consumer to pass through popup props', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const originalCreatePortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
+      <Panel
+        isOpen={true}
+        headerText="Test Panel"
+        headerTextProps={{
+          className: 'panel_class',
+          'aria-level': 3,
+        }}
+        popupProps={{ ariaLabel: 'I am an aria label', ariaLabelledBy: '' }}
+      >
+        <span>Content goes here</span>
+      </Panel>,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    ReactDOM.createPortal = originalCreatePortal;
+  });
+
+  isConformant({
+    Component: Panel,
+    displayName: 'Panel',
+    componentPath: path.join(__dirname, 'Panel.ts'),
   });
 
   describe('onClose', () => {

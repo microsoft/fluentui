@@ -253,9 +253,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vcf'],
   },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
-  classifier: {
-    extensions: ['classifier'],
-  },
   csv: {
     extensions: ['csv'],
   },
@@ -289,6 +286,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
+  listitem: {},
   officescript: {
     extensions: ['osts'],
   },
@@ -405,7 +403,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['pub'],
   },
   spo: {
-    extensions: ['aspx'],
+    extensions: ['aspx', 'classifier'],
   },
   sponews: {},
   spreadsheet: {

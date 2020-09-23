@@ -23,7 +23,9 @@ export interface IChoiceGroup {
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps
+  extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

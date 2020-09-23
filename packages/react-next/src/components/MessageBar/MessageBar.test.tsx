@@ -3,6 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
+import { isConformant } from '../../common/isConformant';
 
 describe('MessageBar', () => {
   const noop = () => {
@@ -13,6 +14,97 @@ describe('MessageBar', () => {
     const component = renderer.create(<MessageBar>Message</MessageBar>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a info MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar messageBarType={MessageBarType.info}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a warning MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar messageBarType={MessageBarType.warning}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a error MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar messageBarType={MessageBarType.error}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a severeWarning MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar messageBarType={MessageBarType.severeWarning}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a success MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar messageBarType={MessageBarType.success}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar isMultiline={true}>Message</MessageBar>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline info MessageBar correctly', () => {
+    const component = renderer.create(
+      <MessageBar messageBarType={MessageBarType.info} isMultiline={true}>
+        Message
+      </MessageBar>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline warning MessageBar correctly', () => {
+    const component = renderer.create(
+      <MessageBar messageBarType={MessageBarType.warning} isMultiline={true}>
+        Message
+      </MessageBar>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline error MessageBar correctly', () => {
+    const component = renderer.create(
+      <MessageBar messageBarType={MessageBarType.error} isMultiline={true}>
+        Message
+      </MessageBar>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline severeWarning MessageBar correctly', () => {
+    const component = renderer.create(
+      <MessageBar messageBarType={MessageBarType.severeWarning} isMultiline={true}>
+        Message
+      </MessageBar>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a multiline success MessageBar correctly', () => {
+    const component = renderer.create(
+      <MessageBar messageBarType={MessageBarType.success} isMultiline={true}>
+        Message
+      </MessageBar>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: MessageBar,
+    displayName: 'MessageBar',
   });
 
   it('renders custom message bar icon correctly', () => {

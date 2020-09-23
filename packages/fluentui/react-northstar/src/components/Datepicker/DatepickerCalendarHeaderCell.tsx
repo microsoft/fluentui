@@ -12,7 +12,7 @@ export const datepickerCalendarHeaderCellClassName = 'ui-datepicker__calendarhea
  * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarHeaderCell = compose<
-  'span',
+  'th',
   DatepickerCalendarHeaderCellProps,
   DatepickerCalendarHeaderCellStylesProps,
   BoxProps,
@@ -27,7 +27,7 @@ export const DatepickerCalendarHeaderCell = compose<
 });
 
 DatepickerCalendarHeaderCell.defaultProps = {
-  as: 'span',
+  as: 'th',
 };
 
 DatepickerCalendarHeaderCell.propTypes = commonPropTypes.createCommon();

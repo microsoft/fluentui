@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/FloatingPicker';
+import './version';
+export * from './components/FloatingPicker/index';

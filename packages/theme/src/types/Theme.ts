@@ -2,12 +2,17 @@ import { IPartialTheme, ITheme } from './ITheme';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
+ * A ramp of size values.
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+/**
  * A baseline set of color plates.
  */
 export type ColorTokens = Partial<{
   background: string;
   contentColor: string;
-  subTextColor: string;
+  secondaryContentColor: string;
   linkColor: string;
   iconColor: string;
   borderColor: string;
@@ -67,7 +72,12 @@ export type RecursivePartial<T> = {
 };
 
 export interface Tokens {
-  body: ColorTokenSet & TokenSetType;
+  color: {
+    body: ColorTokenSet & TokenSetType;
+    brand: ColorTokenSet & TokenSetType;
+    [key: string]: TokenSetType;
+  };
+
   [key: string]: TokenSetType;
 }
 

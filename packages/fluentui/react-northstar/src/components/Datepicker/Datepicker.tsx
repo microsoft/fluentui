@@ -19,9 +19,9 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { handleRef } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -32,10 +32,14 @@ import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
+import { DatepickerCalendarCellButton } from './DatepickerCalendarCellButton';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
+import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
+import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -89,15 +93,46 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Controls the calendar's 'selectedDate'. */
   selectedDate?: Date;
+
+  /** Marks that the datepicker should only render the input field and not the trigger button with an icon. */
+  inputOnly?: boolean;
+
+  /** Marks that the datepicker should only render the trigger button with an icon and not the input field. */
+  buttonOnly?: boolean;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
+const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
+  let formattedString = '';
+  if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
+    formattedString = format(
+      localizationStrings.inputBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
+    );
+  } else if (!!restrictedOptions.minDate) {
+    formattedString = format(
+      localizationStrings.inputMinBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.minDate, localizationStrings),
+    );
+  } else if (!!restrictedOptions.maxDate) {
+    formattedString = format(
+      localizationStrings.inputMaxBoundedFormatString,
+      localizationStrings.formatMonthDayYear(restrictedOptions.maxDate, localizationStrings),
+    );
+  } else {
+    formattedString = localizationStrings.inputAriaLabel;
+  }
+
+  return formattedString;
+};
+
 /**
  * A Datepicker is used to display dates.
- * This component is currently UNSTABLE!
+ * This component is currently unstable!
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
@@ -106,12 +141,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
     CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
     CalendarCell: typeof DatepickerCalendarCell;
+    CalendarCellButton: typeof DatepickerCalendarCellButton;
+    CalendarGrid: typeof DatepickerCalendarGrid;
+    CalendarGridRow: typeof DatepickerCalendarGridRow;
     Input: typeof Input;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
-  const datepickerRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLElement>();
 
   const dateFormatting: ICalendarStrings = {
@@ -142,6 +179,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     weekNumberFormatString: props.weekNumberFormatString,
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
+    inputAriaLabel: props.inputAriaLabel,
+    inputBoundedFormatString: props.inputBoundedFormatString,
+    inputMinBoundedFormatString: props.inputMinBoundedFormatString,
+    inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
@@ -173,7 +214,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
 
   const calendarOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
+    selectedDate,
     navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
     firstDayOfWeek: props.firstDayOfWeek,
     firstWeekOfYear: props.firstWeekOfYear,
@@ -191,10 +232,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     debugName: Datepicker.displayName,
     actionHandlers: {
       open: e => {
-        if (!allowManualInput) {
-          e.preventDefault();
+        if (allowManualInput) {
+          setOpenState(!openState);
+        } else {
+          // Keep popup open in case we can only enter the date through calendar.
           setOpenState(true);
         }
+
+        e.preventDefault();
       },
     },
     rtl: context.rtl,
@@ -275,52 +320,61 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
     },
+
+    inputRef: (node: HTMLInputElement) => {
+      handleRef(predefinedProps.inputRef, node);
+      inputRef.current = node;
+    },
   });
 
-  const element = (
-    <Ref innerRef={datepickerRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
-        <ElementType
-          {...getA11yProps('root', {
-            className: classes.root,
-            ...unhandledProps,
-          })}
-        >
-          {createShorthand(Input, input, {
-            defaultProps: () =>
-              getA11yProps('input', {
-                placeholder: props.inputPlaceholder,
-                disabled: props.disabled,
-                error: !!error,
-                value: formattedDate,
-                readOnly: !allowManualInput,
-                required: props.required,
-                ref: inputRef,
-              }),
-            overrideProps: overrideInputProps,
-          })}
-          {createShorthand(Popup, popup, {
-            defaultProps: () => ({
-              open: openState && !props.disabled,
-              content: calendarElement,
-              trapFocus: {
-                disableFirstFocus: true,
-              },
-              trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly disabled={props.disabled} />,
+  const triggerButtonElement = props.inputOnly ? null : (
+    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
+  );
+
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {!props.buttonOnly &&
+        createShorthand(Input, input, {
+          defaultProps: () =>
+            getA11yProps('input', {
+              placeholder: props.inputPlaceholder,
+              disabled: props.disabled,
+              error: !!error,
+              value: formattedDate,
+              readOnly: !allowManualInput,
+              required: props.required,
+              'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
             }),
-            overrideProps: (predefinedProps: PopupProps): PopupProps => ({
-              onOpenChange: (e, { open }) => {
-                // In case the event is a click on input, we ignore such events as it should be directly handled by input.
-                if (!(e.type === 'click' && e.target === inputRef?.current)) {
-                  setOpenState(open);
-                  _.invoke(predefinedProps, 'onOpenChange', e, { open });
-                }
-              },
-            }),
-          })}
-        </ElementType>,
-      )}
-    </Ref>
+          overrideProps: overrideInputProps,
+        })}
+      {createShorthand(Popup, popup, {
+        defaultProps: () => ({
+          open: openState && !props.disabled,
+          trapFocus: {
+            disableFirstFocus: true,
+          },
+          position: 'below' as const,
+          align: 'start' as const,
+        }),
+        overrideProps: (predefinedProps: PopupProps): PopupProps => ({
+          trigger: predefinedProps.trigger ?? triggerButtonElement,
+          target: props.buttonOnly ? null : inputRef.current,
+          content: calendarElement,
+          onOpenChange: (e, { open }) => {
+            // In case the event is a click on input, we ignore such events as it should be directly handled by input.
+            if (!(e.type === 'click' && e.target === inputRef?.current)) {
+              setOpenState(open);
+              _.invoke(predefinedProps, 'onOpenChange', e, { open });
+            }
+          },
+        }),
+      })}
+    </ElementType>,
   );
   setEnd();
   return element;
@@ -345,6 +399,9 @@ Datepicker.propTypes = {
 
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),
+
+  inputOnly: PropTypes.bool,
+  buttonOnly: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -388,11 +445,18 @@ Datepicker.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
+
+  inputAriaLabel: PropTypes.string,
+  inputBoundedFormatString: PropTypes.string,
+  inputMinBoundedFormatString: PropTypes.string,
+  inputMaxBoundedFormatString: PropTypes.string,
 };
 
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
+  inputOnly: false,
+  buttonOnly: false,
   calendar: {},
   popup: {},
   input: {},
@@ -417,4 +481,7 @@ Datepicker.CalendarHeader = DatepickerCalendarHeader;
 Datepicker.CalendarHeaderAction = DatepickerCalendarHeaderAction;
 Datepicker.CalendarHeaderCell = DatepickerCalendarHeaderCell;
 Datepicker.CalendarCell = DatepickerCalendarCell;
+Datepicker.CalendarCellButton = DatepickerCalendarCellButton;
+Datepicker.CalendarGrid = DatepickerCalendarGrid;
+Datepicker.CalendarGridRow = DatepickerCalendarGridRow;
 Datepicker.Input = Input;

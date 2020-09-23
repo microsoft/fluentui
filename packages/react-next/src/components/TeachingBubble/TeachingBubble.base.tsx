@@ -35,53 +35,54 @@ const useComponentRef = (
   );
 };
 
-export const TeachingBubbleBase = React.forwardRef(
-  (props: ITeachingBubbleProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const rootElementRef = React.useRef<HTMLDivElement>(null);
-    const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
-    const {
-      calloutProps: setCalloutProps,
-      // eslint-disable-next-line deprecation/deprecation
-      targetElement,
-      onDismiss,
-      // eslint-disable-next-line deprecation/deprecation
-      hasCloseButton = props.hasCloseIcon,
-      isWide,
-      styles,
-      theme,
-      target,
-    } = props;
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef<
+  HTMLDivElement,
+  ITeachingBubbleProps
+>((props, forwardedRef) => {
+  const rootElementRef = React.useRef<HTMLDivElement>(null);
+  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
+  const {
+    calloutProps: setCalloutProps,
+    // eslint-disable-next-line deprecation/deprecation
+    targetElement,
+    onDismiss,
+    // eslint-disable-next-line deprecation/deprecation
+    hasCloseButton = props.hasCloseIcon,
+    isWide,
+    styles,
+    theme,
+    target,
+  } = props;
 
-    const calloutProps = { ...defaultCalloutProps, ...setCalloutProps };
+  const calloutProps = { ...defaultCalloutProps, ...setCalloutProps };
 
-    const stylesProps: ITeachingBubbleStyleProps = {
-      theme: theme!,
-      isWide,
-      calloutProps: { ...calloutProps, theme: calloutProps.theme! },
-      hasCloseButton,
-    };
+  const stylesProps: ITeachingBubbleStyleProps = {
+    theme: theme!,
+    isWide,
+    calloutProps: { ...calloutProps, theme: calloutProps.theme! },
+    hasCloseButton,
+  };
 
-    const classNames = getClassNames(styles, stylesProps);
-    const calloutStyles = classNames.subComponentStyles
-      ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
-      : undefined;
+  const classNames = getClassNames(styles, stylesProps);
+  const calloutStyles = classNames.subComponentStyles
+    ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
+    : undefined;
 
-    useComponentRef(props.componentRef, rootElementRef);
+  useComponentRef(props.componentRef, rootElementRef);
 
-    return (
-      <Callout
-        target={target || targetElement}
-        onDismiss={onDismiss}
-        {...calloutProps}
-        className={classNames.root}
-        styles={calloutStyles}
-        hideOverflow
-      >
-        <div ref={mergedRootRef}>
-          <TeachingBubbleContent {...props} />
-        </div>
-      </Callout>
-    );
-  },
-);
+  return (
+    <Callout
+      target={target || targetElement}
+      onDismiss={onDismiss}
+      {...calloutProps}
+      className={classNames.root}
+      styles={calloutStyles}
+      hideOverflow
+    >
+      <div ref={mergedRootRef}>
+        <TeachingBubbleContent {...props} />
+      </div>
+    </Callout>
+  );
+});
 TeachingBubbleBase.displayName = COMPONENT_NAME;

@@ -464,7 +464,10 @@ function useDebugWarnings(props: IResizeGroupProps) {
   }
 }
 
-export const ResizeGroupBase = React.forwardRef((props: IResizeGroupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React.forwardRef<
+  HTMLDivElement,
+  IResizeGroupProps
+>((props, forwardedRef) => {
   const rootRef = React.useRef<HTMLDivElement | null>(null);
   // The root div which is the container inside of which we are trying to fit content.
   const mergedRootRef = useMergedRefs(rootRef, forwardedRef);

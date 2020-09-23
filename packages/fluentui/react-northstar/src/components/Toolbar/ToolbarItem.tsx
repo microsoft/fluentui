@@ -208,7 +208,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
 
     const handleWrapperClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (menu) {
-        if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target)) {
+        if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target, false)) {
           trySetMenuOpen(false, e);
         }
       }
