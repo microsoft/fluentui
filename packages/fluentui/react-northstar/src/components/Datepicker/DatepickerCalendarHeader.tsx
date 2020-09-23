@@ -120,12 +120,15 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
           getA11yProps('previousButton', {
             title: props.prevMonthAriaLabel,
             direction: 'previous',
-            disabled: props.disabledPreviousButton,
+            'aria-disabled': props.disabledPreviousButton,
+            disabledNavigatableButton: props.disabledPreviousButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
-            onPreviousClick(e, data);
-            _.invoke(predefinedProps, 'onClick', e, data);
+            if (!props.disabledPreviousButton) {
+              onPreviousClick(e, data);
+              _.invoke(predefinedProps, 'onClick', e, data);
+            }
           },
         }),
       })}
@@ -134,12 +137,15 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
           getA11yProps('nextButton', {
             title: props.nextMonthAriaLabel,
             direction: 'next',
-            disabled: props.disabledNextButton,
+            'aria-disabled': props.disabledNextButton,
+            disabledNavigatableButton: props.disabledNextButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
-            onNextClick(e, data);
-            _.invoke(predefinedProps, 'onClick', e, data);
+            if (!props.disabledNextButton) {
+              onNextClick(e, data);
+              _.invoke(predefinedProps, 'onClick', e, data);
+            }
           },
         }),
       })}
