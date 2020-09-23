@@ -83,20 +83,31 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * If true then the callout will not dismiss on scroll
    * @defaultvalue false
+   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnScroll?: boolean;
 
   /**
    * If true then the callout will not dismiss on resize
    * @defaultvalue false
+   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnResize?: boolean;
 
   /**
    * If true then the callout will not dismiss when it loses focus
    * @defaultvalue false
+   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnLostFocus?: boolean;
+
+  /**
+   *If defined, then takes priority over preventDismissOnLostFocus, preventDismissOnResize,
+   * and preventDismissOnScroll.
+   * If it returns true, then callout will not dismiss for this event.
+   * If not defined or returns false, callout can dismiss for this event.
+   */
+  preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
