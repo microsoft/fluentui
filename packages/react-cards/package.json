@@ -52,7 +52,7 @@
     "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-theme-provider": "^0.13.4",
-    "@fluentui/theme": "^0.4.0",
+    "@fluentui/theme": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.4",
     "@uifabric/file-type-icons": "^7.6.7",
