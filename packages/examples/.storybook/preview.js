@@ -51,7 +51,7 @@ function loadStories() {
   const req = require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/);
 
   req.keys().forEach(key => {
-    generateStoriesFromExamples({ key, req, stories });
+    generateStoriesFromExamples({ key, stories, req });
   });
 
   // convert stories Set to array

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 import { Stack, Text } from 'office-ui-fabric-react';
-import * as classes from '../../utils/Button.stories.scss';
+import * as classes from '../utils/Button.stories.scss';
 
 const ToggleButtonVariants = (props: ToggleButtonProps) => (
   <div className={classes.hStack}>
