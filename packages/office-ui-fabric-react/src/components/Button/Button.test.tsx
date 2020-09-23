@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { create } from '@uifabric/utilities/lib/test';
+import { safeMount } from '@uifabric/test-utilities';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
@@ -120,6 +121,13 @@ describe('Button', () => {
         </DefaultButton>,
       );
       expect(button.tagName).toEqual('A');
+    });
+
+    it('can handle elementRef', () => {
+      const ref = React.createRef<HTMLElement>();
+      safeMount(<DefaultButton elementRef={ref}>Content</DefaultButton>, button => {
+        expect(button.find('elementRef.current')).toBeTruthy();
+      });
     });
 
     describe('aria attributes', () => {
