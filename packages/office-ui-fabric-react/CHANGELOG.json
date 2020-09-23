@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "office-ui-fabric-react_v7.139.2",
+      "version": "7.139.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing unused eslint rule from sharedIsConformant.ts",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "office-ui-fabric-react_v7.139.1",
       "version": "7.139.1",
