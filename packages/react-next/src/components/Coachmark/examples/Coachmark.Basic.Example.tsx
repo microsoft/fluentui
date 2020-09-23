@@ -1,155 +1,105 @@
 import * as React from 'react';
-import {
-  classNamesFunction,
-  Coachmark,
-  DirectionalHint,
-  Dropdown,
-  IDropdownOption,
-  IStyle,
-  TeachingBubbleContent,
-} from '@fluentui/react-next';
+import { DirectionalHint } from '@fluentui/react-next';
+import { TeachingBubbleContent } from '@fluentui/react-next/lib/TeachingBubble';
+import { Dropdown, IDropdownOption } from '@fluentui/react-next/lib/Dropdown';
+import { Coachmark } from '@fluentui/react-next/lib/Coachmark';
 import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat/Button';
+import { mergeStyleSets } from '@fluentui/react-next/lib/Styling';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ICoachmarkBasicExampleState {
-  isCoachmarkVisible?: boolean;
-  coachmarkPosition: DirectionalHint;
-  dropdownSelectedOptionKey: string | number;
-}
+const classNames = mergeStyleSets({
+  dropdownContainer: {
+    maxWidth: '400px',
+  },
+  buttonContainer: {
+    marginTop: '30px',
+    display: 'inline-block',
+  },
+});
 
-export interface ICoachmarkBasicExampleStyles {
-  /**
-   * Style for the root element in the default enabled/unchecked state.
-   */
-  root?: IStyle;
+const buttonProps: IButtonProps = {
+  text: 'Try it',
+};
 
-  /**
-   * The example button container
-   */
-  buttonContainer: IStyle;
+const buttonProps2: IButtonProps = {
+  text: 'Try it again',
+};
 
-  /**
-   * The dropdown component container
-   */
-  dropdownContainer: IStyle;
-}
+const dropdownOptions: IDropdownOption[] = [
+  { key: 'A', text: 'Top left edge', data: DirectionalHint.topLeftEdge },
+  { key: 'B', text: 'Top center', data: DirectionalHint.topCenter },
+  { key: 'C', text: 'Top right edge', data: DirectionalHint.topRightEdge },
+  { key: 'D', text: 'Top auto edge', data: DirectionalHint.topAutoEdge },
+  { key: 'E', text: 'Bottom left edge', data: DirectionalHint.bottomLeftEdge },
+  { key: 'F', text: 'Bottom center', data: DirectionalHint.bottomCenter },
+  { key: 'G', text: 'Bottom right edge', data: DirectionalHint.bottomRightEdge },
+  { key: 'H', text: 'Bottom auto edge', data: DirectionalHint.bottomAutoEdge },
+  { key: 'I', text: 'Left top edge', data: DirectionalHint.leftTopEdge },
+  { key: 'J', text: 'Left center', data: DirectionalHint.leftCenter },
+  { key: 'K', text: 'Left bottom edge', data: DirectionalHint.leftBottomEdge },
+  { key: 'L', text: 'Right top edge', data: DirectionalHint.rightTopEdge },
+  { key: 'M', text: 'Right center', data: DirectionalHint.rightCenter },
+  { key: 'N', text: 'Right bottom edge', data: DirectionalHint.rightBottomEdge },
+];
 
-export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
-  private _targetButton = React.createRef<HTMLDivElement>();
+export const CoachmarkBasicExample: React.FunctionComponent = () => {
+  const targetButton = React.useRef<HTMLDivElement>(null);
+  const [isCoachmarkVisible, { setFalse: hideCoachmark, setTrue: showCoachmark }] = useBoolean(false);
+  const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);
+  const onDropdownChange = React.useCallback(
+    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+      setCoachmarkPosition(option.data);
+    },
+    [],
+  );
 
-  public constructor(props: {}) {
-    super(props);
+  const positioningContainerProps = React.useMemo(
+    () => ({
+      directionalHint: coachmarkPosition,
+      doNotLayer: false,
+    }),
+    [coachmarkPosition],
+  );
 
-    this.state = {
-      isCoachmarkVisible: false,
-      coachmarkPosition: DirectionalHint.bottomAutoEdge,
-      dropdownSelectedOptionKey: 'H',
-    };
-  }
-
-  public render(): JSX.Element {
-    const { isCoachmarkVisible, dropdownSelectedOptionKey } = this.state;
-
-    const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
-    const classNames = getClassNames(() => {
-      return {
-        dropdownContainer: {
-          maxWidth: '400px',
-        },
-        buttonContainer: {
-          marginTop: '30px',
-          display: 'inline-block',
-        },
-      };
-    }, {});
-
-    const buttonProps: IButtonProps = {
-      text: 'Try it',
-    };
-
-    const buttonProps2: IButtonProps = {
-      text: 'Try it again',
-    };
-
-    return (
-      <div className={classNames.root}>
-        <div className={classNames.dropdownContainer}>
-          <Dropdown
-            label="Coachmark position"
-            selectedKey={dropdownSelectedOptionKey}
-            onFocus={this._onDismiss}
-            options={[
-              { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
-              { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
-              { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
-              { key: 'D', text: 'Top Auto Edge', data: DirectionalHint.topAutoEdge },
-              { key: 'E', text: 'Bottom Left Edge', data: DirectionalHint.bottomLeftEdge },
-              { key: 'F', text: 'Bottom Center', data: DirectionalHint.bottomCenter },
-              { key: 'G', text: 'Bottom Right Edge', data: DirectionalHint.bottomRightEdge },
-              { key: 'H', text: 'Bottom Auto Edge', data: DirectionalHint.bottomAutoEdge },
-              { key: 'I', text: 'Left Top Edge', data: DirectionalHint.leftTopEdge },
-              { key: 'J', text: 'Left Center', data: DirectionalHint.leftCenter },
-              { key: 'K', text: 'Left Bottom Edge', data: DirectionalHint.leftBottomEdge },
-              { key: 'L', text: 'Right Top Edge', data: DirectionalHint.rightTopEdge },
-              { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
-              { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge },
-            ]}
-            onChange={this._onDropdownChange}
-          />
-        </div>
-
-        <div className={classNames.buttonContainer} ref={this._targetButton}>
-          <DefaultButton
-            onClick={this._onShowMenuClicked}
-            text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'}
-          />
-        </div>
-        {isCoachmarkVisible && (
-          <Coachmark
-            target={this._targetButton.current}
-            positioningContainerProps={{
-              directionalHint: this.state.coachmarkPosition,
-              doNotLayer: false,
-            }}
-            ariaAlertText="A Coachmark has appeared"
-            ariaDescribedBy={'coachmark-desc1'}
-            ariaLabelledBy={'coachmark-label1'}
-            ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
-            ariaLabelledByText={'Coachmark notification'}
-          >
-            <TeachingBubbleContent
-              headline="Example Title"
-              hasCloseButton={true}
-              closeButtonAriaLabel="Close"
-              primaryButtonProps={buttonProps}
-              secondaryButtonProps={buttonProps2}
-              onDismiss={this._onDismiss}
-              ariaDescribedBy={'example-description1'}
-              ariaLabelledBy={'example-label1'}
-            >
-              Welcome to the land of Coachmarks!
-            </TeachingBubbleContent>
-          </Coachmark>
-        )}
+  return (
+    <>
+      <div className={classNames.dropdownContainer}>
+        <Dropdown
+          label="Coachmark position"
+          defaultSelectedKey="H"
+          onFocus={hideCoachmark}
+          options={dropdownOptions}
+          onChange={onDropdownChange}
+        />
       </div>
-    );
-  }
 
-  private _onDismiss = (): void => {
-    this.setState({
-      isCoachmarkVisible: false,
-    });
-  };
-
-  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({
-      coachmarkPosition: option.data,
-      dropdownSelectedOptionKey: option.key,
-    });
-  };
-
-  private _onShowMenuClicked = (): void => {
-    this.setState({
-      isCoachmarkVisible: !this.state.isCoachmarkVisible,
-    });
-  };
-}
+      <div className={classNames.buttonContainer} ref={targetButton}>
+        <DefaultButton onClick={showCoachmark} text={isCoachmarkVisible ? 'Hide coachmark' : 'Show coachmark'} />
+      </div>
+      {isCoachmarkVisible && (
+        <Coachmark
+          target={targetButton.current}
+          positioningContainerProps={positioningContainerProps}
+          ariaAlertText="A coachmark has appeared"
+          ariaDescribedBy="coachmark-desc1"
+          ariaLabelledBy="coachmark-label1"
+          ariaDescribedByText="Press enter or alt + C to open the coachmark notification"
+          ariaLabelledByText="Coachmark notification"
+        >
+          <TeachingBubbleContent
+            headline="Example title"
+            hasCloseButton
+            closeButtonAriaLabel="Close"
+            primaryButtonProps={buttonProps}
+            secondaryButtonProps={buttonProps2}
+            onDismiss={hideCoachmark}
+            ariaDescribedBy="example-description1"
+            ariaLabelledBy="example-label1"
+          >
+            Welcome to the land of coachmarks!
+          </TeachingBubbleContent>
+        </Coachmark>
+      )}
+    </>
+  );
+};

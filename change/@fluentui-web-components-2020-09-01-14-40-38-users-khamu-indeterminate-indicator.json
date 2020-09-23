@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update sizing on indeterminate indicator",
+  "packageName": "@fluentui/web-components",
+  "email": "37851220+khamudom@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-01T21:40:38.506Z"
+}

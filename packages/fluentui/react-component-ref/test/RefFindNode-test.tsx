@@ -1,6 +1,7 @@
 import { RefFindNode } from '@fluentui/react-component-ref';
 import { mount } from 'enzyme';
 import * as React from 'react';
+import { create } from 'react-test-renderer';
 
 import { CompositeClass, CompositeFunction, DOMClass, DOMFunction } from './fixtures';
 
@@ -96,6 +97,20 @@ describe('RefFindNode', () => {
 
       expect(initialRef).not.toHaveBeenCalled();
       expect(updatedRef).toHaveBeenCalled();
+    });
+
+    it('always returns "null" for react-test-renderer', () => {
+      const innerRef = jest.fn();
+      const ref = jest.fn();
+
+      create(
+        <RefFindNode innerRef={innerRef}>
+          <div ref={ref} />
+        </RefFindNode>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(null);
+      expect(ref).toHaveBeenCalledWith(null);
     });
   });
 });
