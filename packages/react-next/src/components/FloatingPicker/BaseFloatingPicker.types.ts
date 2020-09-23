@@ -137,7 +137,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   onSuggestionsShown?: () => void;
 
   /**
-   * The callback that should be called when the suggestions are hiden
+   * The callback that should be called when the suggestions are hidden
    */
   onSuggestionsHidden?: () => void;
 

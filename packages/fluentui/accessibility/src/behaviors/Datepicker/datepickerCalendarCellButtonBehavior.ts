@@ -13,7 +13,7 @@ export const datepickerCalendarCellButtonBehavior: Accessibility<DatepickerCalen
   attributes: {
     root: {
       role: 'gridcell',
-      'aria-selected': props.selected || false,
+      ...(props.selected && { 'aria-selected': true }),
       ...(props.disabled && { 'aria-disabled': true }),
       ...(props.today && { 'aria-current': 'date' }),
     },

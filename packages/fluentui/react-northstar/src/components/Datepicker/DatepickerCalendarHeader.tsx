@@ -64,7 +64,6 @@ export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader'
 
 /**
  * A DatepickerCalendarHeader is used to display header block above calendar grid.
- * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendarHeaderProps> &
   FluentComponentStaticProps<DatepickerCalendarHeaderProps> = props => {
