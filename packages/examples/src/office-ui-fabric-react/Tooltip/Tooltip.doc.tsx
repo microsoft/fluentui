@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
+import { TooltipCustomExample } from './Tooltip.Custom.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
-import { TooltipDisplayExample } from './examples/Tooltip.Display.Example';
-import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Example';
-import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
-import { TooltipAbsolutePositionExample } from './examples/Tooltip.AbsolutePosition.Example';
+import { TooltipBasicExample } from './Tooltip.Basic.Example';
+import { TooltipDisplayExample } from './Tooltip.Display.Example';
+import { TooltipInteractiveExample } from './Tooltip.Interactive.Example';
+import { TooltipOverflowExample } from './Tooltip.Overflow.Example';
+import { TooltipAbsolutePositionExample } from './Tooltip.AbsolutePosition.Example';
 
-const TooltipBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
-const TooltipDisplayExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.Display.Example.tsx') as string;
-const TooltipCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
-const TooltipInteractiveExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
-const TooltipOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
-const TooltipAbsolutePositionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/examples/Tooltip.AbsolutePosition.Example.tsx') as string;
+const TooltipBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.Basic.Example.tsx') as string;
+const TooltipDisplayExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.Display.Example.tsx') as string;
+const TooltipCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.Custom.Example.tsx') as string;
+const TooltipInteractiveExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.Interactive.Example.tsx') as string;
+const TooltipOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.Overflow.Example.tsx') as string;
+const TooltipAbsolutePositionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Tooltip/Tooltip.AbsolutePosition.Example.tsx') as string;
 
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',

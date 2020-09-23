@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
+import { DocumentCardBasicExample } from './DocumentCard.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
-import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
-import { DocumentCardImageExample } from './examples/DocumentCard.Image.Example';
-import { DocumentCardConversationExample } from './examples/DocumentCard.Conversation.Example';
+import { DocumentCardCompactExample } from './DocumentCard.Compact.Example';
+import { DocumentCardCompleteExample } from './DocumentCard.Complete.Example';
+import { DocumentCardImageExample } from './DocumentCard.Image.Example';
+import { DocumentCardConversationExample } from './DocumentCard.Conversation.Example';
 
-const DocumentCardBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardImageExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
-const DocumentCardConversationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
+const DocumentCardBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardImageExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardConversationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DocumentCard/DocumentCard.Conversation.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { LinkBasicExample } from './examples/Link.Basic.Example';
+import { LinkBasicExample } from './Link.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const LinkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Link/examples/Link.Basic.Example.tsx') as string;
+const LinkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Link/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',

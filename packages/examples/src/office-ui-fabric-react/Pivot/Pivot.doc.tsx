@@ -1,25 +1,25 @@
 import * as React from 'react';
-import { PivotBasicExample } from './examples/Pivot.Basic.Example';
+import { PivotBasicExample } from './Pivot.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
-import { PivotLargeExample } from './examples/Pivot.Large.Example';
-import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
-import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
-import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
-import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
-import { PivotOverrideExample } from './examples/Pivot.Override.Example';
-import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
+import { PivotIconCountExample } from './Pivot.IconCount.Example';
+import { PivotLargeExample } from './Pivot.Large.Example';
+import { PivotTabsExample } from './Pivot.Tabs.Example';
+import { PivotTabsLargeExample } from './Pivot.TabsLarge.Example';
+import { PivotOnChangeExample } from './Pivot.OnChange.Example';
+import { PivotRemoveExample } from './Pivot.Remove.Example';
+import { PivotOverrideExample } from './Pivot.Override.Example';
+import { PivotSeparateExample } from './Pivot.Separate.Example';
 
-const PivotRemoveExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Remove.Example.tsx') as string;
-const PivotBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Basic.Example.tsx') as string;
-const PivotLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Large.Example.tsx') as string;
-const PivotTabsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Tabs.Example.tsx') as string;
-const PivotTabsLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
-const PivotOnChangeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
-const PivotIconCountExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
-const PivotOverrideExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Override.Example.tsx') as string;
-const PivotSeparateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/examples/Pivot.Separate.Example.tsx') as string;
+const PivotRemoveExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Remove.Example.tsx') as string;
+const PivotBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Basic.Example.tsx') as string;
+const PivotLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Large.Example.tsx') as string;
+const PivotTabsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Tabs.Example.tsx') as string;
+const PivotTabsLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.TabsLarge.Example.tsx') as string;
+const PivotOnChangeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.OnChange.Example.tsx') as string;
+const PivotIconCountExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.IconCount.Example.tsx') as string;
+const PivotOverrideExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Override.Example.tsx') as string;
+const PivotSeparateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Pivot/Pivot.Separate.Example.tsx') as string;
 
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',

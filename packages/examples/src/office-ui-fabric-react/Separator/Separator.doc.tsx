@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { SeparatorBasicExample } from './examples/Separator.Basic.Example';
-import { SeparatorThemingExample } from './examples/Separator.Theming.Example';
-import { SeparatorIconExample } from './examples/Separator.Icon.Example';
+import { SeparatorBasicExample } from './Separator.Basic.Example';
+import { SeparatorThemingExample } from './Separator.Theming.Example';
+import { SeparatorIconExample } from './Separator.Icon.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const SeparatorBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/examples/Separator.Basic.Example.tsx') as string;
+const SeparatorBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/Separator.Basic.Example.tsx') as string;
 
-const SeparatorThemingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/examples/Separator.Theming.Example.tsx') as string;
+const SeparatorThemingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/Separator.Theming.Example.tsx') as string;
 
-const SeparatorIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/examples/Separator.Icon.Example.tsx') as string;
+const SeparatorIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Separator/Separator.Icon.Example.tsx') as string;
 
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',

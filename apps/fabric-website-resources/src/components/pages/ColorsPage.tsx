@@ -22,10 +22,10 @@ import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { TeachingBubbleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TextField/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { TeachingBubbleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TeachingBubble/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/TextField/TextField.Basic.Example';
+import { ToggleBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/Toggle/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/ProgressIndicator/ProgressIndicator.Basic.Example';
 
 export interface IColorsPageState {
   themeRules: IThemeRules;

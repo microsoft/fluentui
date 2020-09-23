@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { LabelBasicExample } from './examples/Label.Basic.Example';
+import { LabelBasicExample } from './Label.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const LabelBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Label/examples/Label.Basic.Example.tsx') as string;
+const LabelBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Label/Label.Basic.Example.tsx') as string;
 
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',

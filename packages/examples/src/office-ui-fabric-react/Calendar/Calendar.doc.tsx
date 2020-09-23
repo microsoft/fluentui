@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { CalendarButtonExample } from './examples/Calendar.Button.Example';
-import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
+import { CalendarButtonExample } from './Calendar.Button.Example';
+import { CalendarInlineExample } from './Calendar.Inline.Example';
 import { addMonths, addYears, addWeeks, addDays } from '@fluentui/date-time-utilities';
 
-const CalendarButtonExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarInlineExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Calendar/examples/Calendar.Inline.Example.tsx') as string;
+const CalendarButtonExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Calendar/Calendar.Button.Example.tsx') as string;
+const CalendarInlineExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Calendar/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 

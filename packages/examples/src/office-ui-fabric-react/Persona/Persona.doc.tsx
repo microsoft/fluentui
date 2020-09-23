@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
+import { PersonaInitialsExample } from './Persona.Initials.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { PersonaBasicExample } from './examples/Persona.Basic.Example';
-import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
-import { PersonaColorsExample } from './examples/Persona.Colors.Example';
-import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
-import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRender.Example';
-import { UnknownPersonaExample } from './examples/Persona.UnknownPersona.Example';
-import { PersonaPresenceExample } from './examples/Persona.Presence.Example';
+import { PersonaBasicExample } from './Persona.Basic.Example';
+import { PersonaAlternateExample } from './Persona.Alternate.Example';
+import { PersonaColorsExample } from './Persona.Colors.Example';
+import { PersonaCustomRenderExample } from './Persona.CustomRender.Example';
+import { PersonaCustomCoinRenderExample } from './Persona.CustomCoinRender.Example';
+import { UnknownPersonaExample } from './Persona.UnknownPersona.Example';
+import { PersonaPresenceExample } from './Persona.Presence.Example';
 
-const PersonaInitialsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.Initials.Example.tsx') as string;
-const PersonaBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.Basic.Example.tsx') as string;
-const PersonaAlternateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.Alternate.Example.tsx') as string;
-const PersonaColorsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.Colors.Example.tsx') as string;
-const PersonaCustomRenderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.CustomRender.Example.tsx') as string;
-const PersonaCustomCoinRenderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.CustomCoinRender.Example.tsx') as string;
-const UnknownPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.UnknownPersona.Example.tsx') as string;
-const PersonaPresenceExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/examples/Persona.Presence.Example.tsx') as string;
+const PersonaInitialsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.Basic.Example.tsx') as string;
+const PersonaAlternateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.Alternate.Example.tsx') as string;
+const PersonaColorsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.Colors.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.CustomRender.Example.tsx') as string;
+const PersonaCustomCoinRenderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.CustomCoinRender.Example.tsx') as string;
+const UnknownPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.UnknownPersona.Example.tsx') as string;
+const PersonaPresenceExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Persona/Persona.Presence.Example.tsx') as string;
 
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',

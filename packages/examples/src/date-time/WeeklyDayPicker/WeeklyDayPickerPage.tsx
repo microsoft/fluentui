@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { WeeklyDayPickerInlineExample } from './examples/WeeklyDayPicker.Inline.Example';
-import { WeeklyDayPickerInlineExpandableExample } from './examples/WeeklyDayPicker.Inline.Expandable.Example';
+import { WeeklyDayPickerInlineExample } from './WeeklyDayPicker.Inline.Example';
+import { WeeklyDayPickerInlineExpandableExample } from './WeeklyDayPicker.Inline.Expandable.Example';
 
-const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
-const WeeklyDayPickerInlineExpandableExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Expandable.Example.tsx') as string;
+const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/WeeklyDayPicker/WeeklyDayPicker.Inline.Example.tsx') as string;
+const WeeklyDayPickerInlineExpandableExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/WeeklyDayPicker/WeeklyDayPicker.Inline.Expandable.Example.tsx') as string;
 
 export class WeeklyDayPickerPage extends React.Component<{}, {}> {
   public render(): JSX.Element {

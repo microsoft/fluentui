@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 
-import { ThemingSchemesVariantExample } from './examples/Theming.Schemes.Variant.Example';
-import { ThemingSchemesCustomExample } from './examples/Theming.Schemes.Custom.Example';
+import { ThemingSchemesVariantExample } from './Theming.Schemes.Variant.Example';
+import { ThemingSchemesCustomExample } from './Theming.Schemes.Custom.Example';
 
-const ThemingSchemesVariantExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Theming/examples/Theming.Schemes.Variant.Example.tsx') as string;
-const ThemingSchemesCustomExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Theming/examples/Theming.Schemes.Custom.Example.tsx') as string;
+const ThemingSchemesVariantExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Theming/Theming.Schemes.Variant.Example.tsx') as string;
+const ThemingSchemesCustomExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Theming/Theming.Schemes.Custom.Example.tsx') as string;
 
 export class ThemingPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

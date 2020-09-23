@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { ChicletBasicExample } from './examples/Chiclet.Basic.Example';
-const ChicletBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Basic.Example.tsx') as string;
-import { ChicletBreadcrumbExample } from './examples/Chiclet.Breadcrumb.Example';
-const ChicletBreadcrumbExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Breadcrumb.Example.tsx') as string;
-import { ChicletFooterExample } from './examples/Chiclet.Footer.Example';
-const ChicletFooterExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Footer.Example.tsx') as string;
-import { ChicletPreviewExample } from './examples/Chiclet.Preview.Example';
-const ChicletPreviewExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Preview.Example.tsx') as string;
-import { ChicletXsmallExample } from './examples/Chiclet.Xsmall.Example';
-const ChicletXsmallExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Xsmall.Example.tsx') as string;
-import { ChicletXsmallFooterExample } from './examples/Chiclet.Xsmall.Footer.Example';
-const ChicletXsmallFooterExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/examples/Chiclet.Xsmall.Footer.Example.tsx') as string;
+import { ChicletBasicExample } from './Chiclet.Basic.Example';
+const ChicletBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Basic.Example.tsx') as string;
+import { ChicletBreadcrumbExample } from './Chiclet.Breadcrumb.Example';
+const ChicletBreadcrumbExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Breadcrumb.Example.tsx') as string;
+import { ChicletFooterExample } from './Chiclet.Footer.Example';
+const ChicletFooterExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Footer.Example.tsx') as string;
+import { ChicletPreviewExample } from './Chiclet.Preview.Example';
+const ChicletPreviewExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Preview.Example.tsx') as string;
+import { ChicletXsmallExample } from './Chiclet.Xsmall.Example';
+const ChicletXsmallExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Xsmall.Example.tsx') as string;
+import { ChicletXsmallFooterExample } from './Chiclet.Xsmall.Footer.Example';
+const ChicletXsmallFooterExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Chiclet/Chiclet.Xsmall.Footer.Example.tsx') as string;
 
 export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

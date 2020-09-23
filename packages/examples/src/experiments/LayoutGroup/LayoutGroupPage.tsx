@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { LayoutGroupBasicExample } from './examples/LayoutGroup.Basic.Example';
-const LayoutGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/LayoutGroup/examples/LayoutGroup.Basic.Example.tsx') as string;
+import { LayoutGroupBasicExample } from './LayoutGroup.Basic.Example';
+const LayoutGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/LayoutGroup/LayoutGroup.Basic.Example.tsx') as string;
 
 export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

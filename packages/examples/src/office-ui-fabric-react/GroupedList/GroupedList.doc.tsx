@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
+import { GroupedListBasicExample } from './GroupedList.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
-import { GroupedListCustomCheckboxExample } from './examples/GroupedList.CustomCheckbox.Example';
+import { GroupedListCustomExample } from './GroupedList.Custom.Example';
+import { GroupedListCustomCheckboxExample } from './GroupedList.CustomCheckbox.Example';
 
-const GroupedListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
-const GroupedListCustomCheckboxExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/examples/GroupedList.CustomCheckbox.Example.tsx') as string;
+const GroupedListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/GroupedList.Custom.Example.tsx') as string;
+const GroupedListCustomCheckboxExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/GroupedList/GroupedList.CustomCheckbox.Example.tsx') as string;
 
 export const GroupedListPageProps: IDocPageProps = {
   title: 'GroupedList',

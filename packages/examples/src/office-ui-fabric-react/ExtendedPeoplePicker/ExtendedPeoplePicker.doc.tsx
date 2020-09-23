@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ExtendedPeoplePickerBasicExample } from './examples/ExtendedPeoplePicker.Basic.Example';
-import { ExtendedPeoplePickerControlledExample } from './examples/ExtendedPeoplePicker.Controlled.Example';
+import { ExtendedPeoplePickerBasicExample } from './ExtendedPeoplePicker.Basic.Example';
+import { ExtendedPeoplePickerControlledExample } from './ExtendedPeoplePicker.Controlled.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ExtendedPeoplePicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
-const ExtendedPeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ExtendedPeoplePicker/examples/ExtendedPeoplePicker.Controlled.Example.tsx') as string;
+const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ExtendedPeoplePicker/ExtendedPeoplePicker.Basic.Example.tsx') as string;
+const ExtendedPeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ExtendedPeoplePicker/ExtendedPeoplePicker.Controlled.Example.tsx') as string;
 
 export const ExtendedPeoplePickerPageProps: IDocPageProps = {
   title: 'ExtendedPeoplePicker',

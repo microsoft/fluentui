@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
-import { ChoiceGroupControlledExample } from './examples/ChoiceGroup.Controlled.Example';
-import { ChoiceGroupLabelExample } from './examples/ChoiceGroup.Label.Example';
-import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
-import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
-import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
+import { ChoiceGroupBasicExample } from './ChoiceGroup.Basic.Example';
+import { ChoiceGroupControlledExample } from './ChoiceGroup.Controlled.Example';
+import { ChoiceGroupLabelExample } from './ChoiceGroup.Label.Example';
+import { ChoiceGroupCustomExample } from './ChoiceGroup.Custom.Example';
+import { ChoiceGroupImageExample } from './ChoiceGroup.Image.Example';
+import { ChoiceGroupIconExample } from './ChoiceGroup.Icon.Example';
 
-const ChoiceGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
-const ChoiceGroupControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Controlled.Example.tsx') as string;
-const ChoiceGroupLabelExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Label.Example.tsx') as string;
-const ChoiceGroupCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
-const ChoiceGroupImageExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
-const ChoiceGroupIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
+const ChoiceGroupBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Basic.Example.tsx') as string;
+const ChoiceGroupControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Controlled.Example.tsx') as string;
+const ChoiceGroupLabelExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Label.Example.tsx') as string;
+const ChoiceGroupCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Custom.Example.tsx') as string;
+const ChoiceGroupImageExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Image.Example.tsx') as string;
+const ChoiceGroupIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ChoiceGroup/ChoiceGroup.Icon.Example.tsx') as string;
 
 export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',

@@ -16,10 +16,10 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { TeachingBubbleBasicExample } from '../TeachingBubble/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from '../Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { TeachingBubbleBasicExample } from '../TeachingBubble/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '../TextField/TextField.Basic.Example';
+import { ToggleBasicExample } from '../Toggle/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '../ProgressIndicator/ProgressIndicator.Basic.Example';
 import { Async } from '@uifabric/utilities';
 
 export interface IThemeGeneratorPageState {

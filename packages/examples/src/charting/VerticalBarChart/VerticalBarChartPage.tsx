@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { VerticalBarChartBasicExample } from './examples/VerticalBarChart.Basic.Example';
-import { VerticalBarChartStyledExample } from './examples/VerticalBarChart.Styled.Example';
-import { VerticalBarChartDynamicExample } from './examples/VerticalBarChart.Dynamic.Example';
+import { VerticalBarChartBasicExample } from './VerticalBarChart.Basic.Example';
+import { VerticalBarChartStyledExample } from './VerticalBarChart.Styled.Example';
+import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Example';
 
-const VerticalBarChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/examples/VerticalBarChart.Basic.Example.tsx') as string;
-const VerticalBarChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/examples/VerticalBarChart.Styled.Example.tsx') as string;
-const VerticalBarChartDynamicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/examples/VerticalBarChart.Dynamic.Example.tsx') as string;
+const VerticalBarChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
+const VerticalBarChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/VerticalBarChart.Styled.Example.tsx') as string;
+const VerticalBarChartDynamicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/VerticalBarChart/VerticalBarChart.Dynamic.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

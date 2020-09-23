@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { TileFolderExample } from './examples/Tile.Folder.Example';
-const TileFolderExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/examples/Tile.Folder.Example.tsx') as string;
+import { TileFolderExample } from './Tile.Folder.Example';
+const TileFolderExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/Tile.Folder.Example.tsx') as string;
 
-import { TileMediaExample } from './examples/Tile.Media.Example';
-const TileMediaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/examples/Tile.Media.Example.tsx') as string;
+import { TileMediaExample } from './Tile.Media.Example';
+const TileMediaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/Tile.Media.Example.tsx') as string;
 
-import { TileDocumentExample } from './examples/Tile.Document.Example';
-const TileDocumentExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/examples/Tile.Document.Example.tsx') as string;
+import { TileDocumentExample } from './Tile.Document.Example';
+const TileDocumentExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Tile/Tile.Document.Example.tsx') as string;
 
 export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -6,11 +6,11 @@ import {
   PropertiesTableSet,
   IExampleCardStyles,
 } from '@uifabric/example-app-base';
-import { SidebarBasicExample } from './examples/Sidebar.Basic.Example';
-import { SidebarCollapsibleExample } from './examples/Sidebar.Collapsed.Example';
+import { SidebarBasicExample } from './Sidebar.Basic.Example';
+import { SidebarCollapsibleExample } from './Sidebar.Collapsed.Example';
 
-const SidebarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Sidebar/examples/Sidebar.Basic.Example.tsx') as string;
-const SidebarCollpasibleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Sidebar/examples/Sidebar.Collapsed.Example.tsx') as string;
+const SidebarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Sidebar/Sidebar.Basic.Example.tsx') as string;
+const SidebarCollpasibleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Sidebar/Sidebar.Collapsed.Example.tsx') as string;
 
 const exampleStyles: Partial<IExampleCardStyles> = {
   example: {

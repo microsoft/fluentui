@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { PersonaExample } from './examples/Persona.Example';
-import { VerticalPersonaExample } from './examples/VerticalPersona.Example';
+import { PersonaExample } from './Persona.Example';
+import { VerticalPersonaExample } from './VerticalPersona.Example';
 
-const PersonaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Persona/examples/Persona.Example.tsx') as string;
-const VerticalPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Persona/examples/VerticalPersona.Example.tsx') as string;
+const PersonaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Persona/Persona.Example.tsx') as string;
+const VerticalPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Persona/VerticalPersona.Example.tsx') as string;
 
 export const PersonaPage = (props: IComponentDemoPageProps) => {
   return (

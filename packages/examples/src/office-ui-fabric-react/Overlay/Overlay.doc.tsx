@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
+import { OverlayDarkExample } from './Overlay.Dark.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { OverlayLightExample } from './examples/Overlay.Light.Example';
+import { OverlayLightExample } from './Overlay.Light.Example';
 
-const OverlayLightExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Overlay/examples/Overlay.Light.Example.tsx') as string;
-const OverlayDarkExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Overlay/examples/Overlay.Dark.Example.tsx') as string;
+const OverlayLightExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Overlay/Overlay.Light.Example.tsx') as string;
+const OverlayDarkExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Overlay/Overlay.Dark.Example.tsx') as string;
 
 export const OverlayPageProps: IDocPageProps = {
   title: 'Overlay',

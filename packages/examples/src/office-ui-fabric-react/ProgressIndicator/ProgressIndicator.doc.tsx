@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+import { ProgressIndicatorBasicExample } from './ProgressIndicator.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { ProgressIndicatorIndeterminateExample } from './examples/ProgressIndicator.Indeterminate.Example';
+import { ProgressIndicatorIndeterminateExample } from './ProgressIndicator.Indeterminate.Example';
 
-const ProgressIndicatorBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
-const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
+const ProgressIndicatorBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ProgressIndicator/ProgressIndicator.Basic.Example.tsx') as string;
+const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ProgressIndicator/ProgressIndicator.Indeterminate.Example.tsx') as string;
 
 export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',

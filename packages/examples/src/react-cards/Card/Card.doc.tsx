@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { CardVerticalExample } from './examples/Card.Vertical.Example';
-import { CardHorizontalExample } from './examples/Card.Horizontal.Example';
-import { CardConfigureExample } from './examples/Card.Configure.Example';
+import { CardVerticalExample } from './Card.Vertical.Example';
+import { CardHorizontalExample } from './Card.Horizontal.Example';
+import { CardConfigureExample } from './Card.Configure.Example';
 
-const CardVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Vertical.Example.tsx') as string;
-const CardHorizontalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Horizontal.Example.tsx') as string;
-const CardConfigureExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Configure.Example.tsx') as string;
+const CardVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Vertical.Example.tsx') as string;
+const CardHorizontalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Horizontal.Example.tsx') as string;
+const CardConfigureExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Configure.Example.tsx') as string;
 
 export const CardPageProps: IDocPageProps = {
   title: 'Card',

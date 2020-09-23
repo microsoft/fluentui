@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
-import { ToggleCustomLabelExample } from './examples/Toggle.CustomLabel.Example';
+import { ToggleBasicExample } from './Toggle.Basic.Example';
+import { ToggleCustomLabelExample } from './Toggle.CustomLabel.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const ToggleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-toggle/Toggle/examples/Toggle.Basic.Example.tsx') as string;
-const ToggleCustomLabelExampleCode = require('!raw-loader!@fluentui/examples/src/react-toggle/Toggle/examples/Toggle.CustomLabel.Example.tsx') as string;
+const ToggleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-toggle/Toggle/Toggle.Basic.Example.tsx') as string;
+const ToggleCustomLabelExampleCode = require('!raw-loader!@fluentui/examples/src/react-toggle/Toggle/Toggle.CustomLabel.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',

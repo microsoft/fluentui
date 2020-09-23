@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { AreaChartBasicExample } from './examples/AreaChart.Basic.Example';
-import { AreaChartMultipleExample } from './examples/AreaChart.Multiple.Example';
-import { AreaChartStyledExample } from './examples/AreaChart.Styled.Example';
+import { AreaChartBasicExample } from './AreaChart.Basic.Example';
+import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
+import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 
-const AreaChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/examples/AreaChart.Basic.Example.tsx') as string;
-const AreaChartMultipleExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/examples/AreaChart.Multiple.Example.tsx') as string;
-const AreaChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/examples/AreaChart.Styled.Example.tsx') as string;
+const AreaChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
+const AreaChartMultipleExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/AreaChart.Multiple.Example.tsx') as string;
+const AreaChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/AreaChart/AreaChart.Styled.Example.tsx') as string;
 
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

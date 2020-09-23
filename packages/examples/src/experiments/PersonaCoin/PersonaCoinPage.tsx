@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { PersonaCoinExample } from './examples/PersonaCoin.Example';
-import { PersonaCoinSizeAndColorExample } from './examples/PersonaCoinSizeAndColor.Example';
+import { PersonaCoinExample } from './PersonaCoin.Example';
+import { PersonaCoinSizeAndColorExample } from './PersonaCoinSizeAndColor.Example';
 
-const PersonaCoinExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/PersonaCoin/examples/PersonaCoin.Example.tsx') as string;
-const PersonaCoinSizeAndColorExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/PersonaCoin/examples/PersonaCoinSizeAndColor.Example.tsx') as string;
+const PersonaCoinExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/PersonaCoin/PersonaCoin.Example.tsx') as string;
+const PersonaCoinSizeAndColorExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/PersonaCoin/PersonaCoinSizeAndColor.Example.tsx') as string;
 
 export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
   return (

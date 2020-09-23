@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
+import { MessageBarBasicExample } from './MessageBar.Basic.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/MessageBar/MessageBar.Basic.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',

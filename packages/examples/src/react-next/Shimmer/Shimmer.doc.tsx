@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
-import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.Example';
-import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
-import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
+import { ShimmerBasicExample } from './Shimmer.Basic.Example';
+import { ShimmerCustomElementsExample } from './Shimmer.CustomElements.Example';
+import { ShimmerLoadDataExample } from './Shimmer.LoadData.Example';
+import { ShimmerApplicationExample } from './Shimmer.Application.Example';
+import { ShimmerStylingExample } from './Shimmer.Styling.Example';
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const ShimmerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
+const ShimmerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/Shimmer.Basic.Example.tsx') as string;
 
-const ShimmerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
+const ShimmerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/Shimmer.CustomElements.Example.tsx') as string;
 
-const ShimmerStylingExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
+const ShimmerStylingExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/Shimmer.Styling.Example.tsx') as string;
 
-const ShimmerLoadDataExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
+const ShimmerLoadDataExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/Shimmer.LoadData.Example.tsx') as string;
 
-const ShimmerApplicationExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerApplicationExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Shimmer/Shimmer.Application.Example.tsx') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',

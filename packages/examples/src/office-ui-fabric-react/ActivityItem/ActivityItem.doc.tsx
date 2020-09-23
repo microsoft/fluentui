@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
-import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
-import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
+import { ActivityItemBasicExample } from './ActivityItem.Basic.Example';
+import { ActivityItemPersonaExample } from './ActivityItem.Persona.Example';
+import { ActivityItemCompactExample } from './ActivityItem.Compact.Example';
 
-const ActivityItemBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/examples/ActivityItem.Basic.Example.tsx') as string;
-const ActivityItemPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/examples/ActivityItem.Persona.Example.tsx') as string;
-const ActivityItemCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/examples/ActivityItem.Compact.Example.tsx') as string;
+const ActivityItemBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/ActivityItem.Basic.Example.tsx') as string;
+const ActivityItemPersonaExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/ActivityItem.Persona.Example.tsx') as string;
+const ActivityItemCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ActivityItem/ActivityItem.Compact.Example.tsx') as string;
 
 export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',

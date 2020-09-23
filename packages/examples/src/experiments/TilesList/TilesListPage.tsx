@@ -3,15 +3,15 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
-const TilesListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/examples/TilesList.Basic.Example.tsx') as string;
+import { TilesListBasicExample } from './TilesList.Basic.Example';
+const TilesListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/TilesList.Basic.Example.tsx') as string;
 
-import { TilesListDocumentExample } from './examples/TilesList.Document.Example';
-const TilesListDocumentExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/examples/TilesList.Document.Example.tsx') as string;
+import { TilesListDocumentExample } from './TilesList.Document.Example';
+const TilesListDocumentExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/TilesList.Document.Example.tsx') as string;
 
-import { TilesListMediaExample } from './examples/TilesList.Media.Example';
+import { TilesListMediaExample } from './TilesList.Media.Example';
 
-const TilesListMediaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/examples/TilesList.Media.Example.tsx') as string;
+const TilesListMediaExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/TilesList/TilesList.Media.Example.tsx') as string;
 
 export interface ITilesListPageState {
   size: 'small' | 'large';

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
+import { ScrollablePaneDefaultExample } from './ScrollablePane.Default.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
+import { ScrollablePaneDetailsListExample } from './ScrollablePane.DetailsList.Example';
 
-const ScrollablePaneDefaultExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
-const ScrollablePaneDetailsListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
+const ScrollablePaneDefaultExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ScrollablePane/ScrollablePane.Default.Example.tsx') as string;
+const ScrollablePaneDetailsListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ScrollablePane/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',

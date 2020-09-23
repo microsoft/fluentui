@@ -8,25 +8,25 @@ import {
 } from '@uifabric/example-app-base';
 import { KeytipLayer } from 'office-ui-fabric-react';
 
-import { ButtonExample } from './examples/Button.Example';
-import { MenuButtonExample } from './MenuButton/examples/MenuButton.Example';
-import { SplitButtonExample } from './SplitButton/examples/SplitButton.Example';
-import { ButtonKeytipsExample } from './examples/Button.Keytips.Example';
-import { ButtonSlotsExample } from './examples/Button.Slots.Example';
-import { ButtonStylesExample } from './examples/Button.Styles.Example';
-import { ButtonToggleExample } from './examples/Button.Toggle.Example';
-import { ButtonTokensExample } from './examples/Button.Tokens.Example';
-import { ButtonVariantsExample } from './examples/Button.Variants.Example';
+import { ButtonExample } from './Button.Example';
+import { MenuButtonExample } from './MenuButton/MenuButton.Example';
+import { SplitButtonExample } from './SplitButton/SplitButton.Example';
+import { ButtonKeytipsExample } from './Button.Keytips.Example';
+import { ButtonSlotsExample } from './Button.Slots.Example';
+import { ButtonStylesExample } from './Button.Styles.Example';
+import { ButtonToggleExample } from './Button.Toggle.Example';
+import { ButtonTokensExample } from './Button.Tokens.Example';
+import { ButtonVariantsExample } from './Button.Variants.Example';
 
-const ButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Example.tsx') as string;
-const MenuButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/MenuButton/examples/MenuButton.Example.tsx') as string;
-const SplitButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/SplitButton/examples/SplitButton.Example.tsx') as string;
-const ButtonKeytipsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Keytips.Example.tsx') as string;
-const ButtonSlotsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Slots.Example.tsx') as string;
-const ButtonStylesExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Styles.Example.tsx') as string;
-const ButtonToggleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Toggle.Example.tsx') as string;
-const ButtonTokensExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Tokens.Example.tsx') as string;
-const ButtonVariantsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/examples/Button.Variants.Example.tsx') as string;
+const ButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Example.tsx') as string;
+const MenuButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/MenuButton/MenuButton.Example.tsx') as string;
+const SplitButtonExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/SplitButton/SplitButton.Example.tsx') as string;
+const ButtonKeytipsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Keytips.Example.tsx') as string;
+const ButtonSlotsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Slots.Example.tsx') as string;
+const ButtonStylesExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Styles.Example.tsx') as string;
+const ButtonToggleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Toggle.Example.tsx') as string;
+const ButtonTokensExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Tokens.Example.tsx') as string;
+const ButtonVariantsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Button/Button.Variants.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

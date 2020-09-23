@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
-import { DoubleUnifiedPeoplePickerExample } from './examples/DoubleUnifiedPeoplePicker.Example';
+import { UnifiedPeoplePickerExample } from './UnifiedPeoplePicker.Example';
+import { DoubleUnifiedPeoplePickerExample } from './DoubleUnifiedPeoplePicker.Example';
 
-const UnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.Example') as string;
-const DoubleUnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/DoubleUnifiedPeoplePicker.Example') as string;
+const UnifiedPeoplePickerExampleCode = require('!raw-loader!./UnifiedPeoplePicker.Example') as string;
+const DoubleUnifiedPeoplePickerExampleCode = require('!raw-loader!./DoubleUnifiedPeoplePicker.Example') as string;
 
 export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

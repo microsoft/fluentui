@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { LineChartBasicExample } from './examples/LineChart.Basic.Example';
-import { LineChartStyledExample } from './examples/LineChart.Styled.Example';
-import { LineChartMultipleExample } from './examples/LineChart.Multiple.Example';
-import { LineChartEventsExample } from './examples/LineChart.Events.Example';
+import { LineChartBasicExample } from './LineChart.Basic.Example';
+import { LineChartStyledExample } from './LineChart.Styled.Example';
+import { LineChartMultipleExample } from './LineChart.Multiple.Example';
+import { LineChartEventsExample } from './LineChart.Events.Example';
 
-const LineChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/examples/LineChart.Basic.Example.tsx') as string;
-const LineChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/examples/LineChart.Styled.Example.tsx') as string;
-const MultipleLineChartExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/examples/LineChart.Multiple.Example.tsx') as string;
-const LineChartEventsExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/examples/LineChart.Events.Example.tsx') as string;
+const LineChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/LineChart.Basic.Example.tsx') as string;
+const LineChartStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const MultipleLineChartExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/LineChart.Multiple.Example.tsx') as string;
+const LineChartEventsExampleCode = require('!raw-loader!@fluentui/examples/src/charting/LineChart/LineChart.Events.Example.tsx') as string;
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

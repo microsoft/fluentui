@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
+import { MarqueeSelectionBasicExample } from './MarqueeSelection.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const MarqueeSelectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MarqueeSelection/examples/MarqueeSelection.Basic.Example.tsx') as string;
+const MarqueeSelectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MarqueeSelection/MarqueeSelection.Basic.Example.tsx') as string;
 export const MarqueeSelectionPageProps: IDocPageProps = {
   title: 'MarqueeSelection',
   componentName: 'MarqueeSelection',

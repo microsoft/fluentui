@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { SelectedPeopleListBasicExample } from './examples/SelectedPeopleList.Basic.Example';
-import { SelectedPeopleListControlledExample } from './examples/SelectedPeopleList.Controlled.Example';
+import { SelectedPeopleListBasicExample } from './SelectedPeopleList.Basic.Example';
+import { SelectedPeopleListControlledExample } from './SelectedPeopleList.Controlled.Example';
 
-const SelectedPeopleListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
-const SelectedPeopleListControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/examples/SelectedPeopleList.Controlled.Example.tsx') as string;
+const SelectedPeopleListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/SelectedPeopleList.Basic.Example.tsx') as string;
+const SelectedPeopleListControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/SelectedPeopleList/SelectedPeopleList.Controlled.Example.tsx') as string;
 
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',

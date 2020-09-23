@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
-import { HoverCardPlainCardExample } from './examples/HoverCard.PlainCard.Example';
-import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
-import { HoverCardInstantDismissExample } from './examples/HoverCard.InstantDismiss.Example';
-import { HoverCardEventListenerTargetExample } from './examples/HoverCard.EventListenerTarget.Example';
+import { HoverCardBasicExample } from './HoverCard.Basic.Example';
+import { HoverCardPlainCardExample } from './HoverCard.PlainCard.Example';
+import { HoverCardTargetExample } from './HoverCard.Target.Example';
+import { HoverCardInstantDismissExample } from './HoverCard.InstantDismiss.Example';
+import { HoverCardEventListenerTargetExample } from './HoverCard.EventListenerTarget.Example';
 
-const HoverCardBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
-const HoverCardTargetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
-const HoverCardPlainCardExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
-const HoverCardInstantDismissExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/examples/HoverCard.InstantDismiss.Example.tsx') as string;
-const HoverCardEventListenerTargetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/examples/HoverCard.EventListenerTarget.Example.tsx') as string;
+const HoverCardBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/HoverCard.Basic.Example.tsx') as string;
+const HoverCardTargetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/HoverCard.Target.Example.tsx') as string;
+const HoverCardPlainCardExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/HoverCard.PlainCard.Example.tsx') as string;
+const HoverCardInstantDismissExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/HoverCard.InstantDismiss.Example.tsx') as string;
+const HoverCardEventListenerTargetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/HoverCard/HoverCard.EventListenerTarget.Example.tsx') as string;
 
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',

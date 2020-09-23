@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
+import { FacepileAddFaceExample } from './Facepile.AddFace.Example';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
-import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
+import { FacepileBasicExample } from './Facepile.Basic.Example';
+import { FacepileOverflowExample } from './Facepile.Overflow.Example';
 
-const FacepileAddFaceExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
-const FacepileBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/examples/Facepile.Basic.Example.tsx') as string;
-const FacepileOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/examples/Facepile.Overflow.Example.tsx') as string;
+const FacepileAddFaceExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/Facepile.AddFace.Example.tsx') as string;
+const FacepileBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/Facepile.Basic.Example.tsx') as string;
+const FacepileOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Facepile/Facepile.Overflow.Example.tsx') as string;
 
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',

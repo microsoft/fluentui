@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { LegendOverflowExample } from './examples/Legends.Overflow.Example';
-import { LegendBasicExample } from './examples/Legends.Basic.Example';
-import { LegendWrapLinesExample } from './examples/Legends.WrapLines.Example';
+import { LegendOverflowExample } from './Legends.Overflow.Example';
+import { LegendBasicExample } from './Legends.Basic.Example';
+import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
 
-const LegendsOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/examples/Legends.Overflow.Example.tsx') as string;
-const LegendsWrapLinesExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/examples/Legends.WrapLines.Example.tsx') as string;
-const LegendsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/examples/Legends.Basic.Example.tsx') as string;
+const LegendsOverflowExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/Legends.Overflow.Example.tsx') as string;
+const LegendsWrapLinesExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/Legends.WrapLines.Example.tsx') as string;
+const LegendsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/Legends/Legends.Basic.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

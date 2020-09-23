@@ -42,7 +42,7 @@ function lintImports() {
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
     '@fluentui/examples/lib/experiments/TilesList/examples/ExampleHelpers',
-    '@fluentui/examples/lib/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
+    '@fluentui/examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/examples/lib/office-ui-fabric-react/Keytip/examples/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',

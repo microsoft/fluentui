@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { PeoplePickerNormalExample } from './examples/PeoplePicker.Normal.Example';
-import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Example';
-import { PeoplePickerListExample } from './examples/PeoplePicker.List.Example';
-import { PeoplePickerPreselectedItemsExample } from './examples/PeoplePicker.PreselectedItems.Example';
-import { PeoplePickerLimitedSearchExample } from './examples/PeoplePicker.LimitedSearch.Example';
-import { PeoplePickerProcessSelectionExample } from './examples/PeoplePicker.ProcessSelection.Example';
-import { PeoplePickerControlledExample } from './examples/PeoplePicker.Controlled.Example';
+import { PeoplePickerNormalExample } from './PeoplePicker.Normal.Example';
+import { PeoplePickerCompactExample } from './PeoplePicker.Compact.Example';
+import { PeoplePickerListExample } from './PeoplePicker.List.Example';
+import { PeoplePickerPreselectedItemsExample } from './PeoplePicker.PreselectedItems.Example';
+import { PeoplePickerLimitedSearchExample } from './PeoplePicker.LimitedSearch.Example';
+import { PeoplePickerProcessSelectionExample } from './PeoplePicker.ProcessSelection.Example';
+import { PeoplePickerControlledExample } from './PeoplePicker.Controlled.Example';
 
-const PeoplePickerNormalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.Normal.Example.tsx') as string;
-const PeoplePickerCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.Compact.Example.tsx') as string;
-const PeoplePickerListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.List.Example.tsx') as string;
-const PeoplePickerPreselectedItemsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.PreselectedItems.Example.tsx') as string;
-const PeoplePickerLimitedSearchExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.LimitedSearch.Example.tsx') as string;
-const PeoplePickerProcessSelectionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.ProcessSelection.Example.tsx') as string;
-const PeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/examples/PeoplePicker.Controlled.Example.tsx') as string;
+const PeoplePickerNormalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Normal.Example.tsx') as string;
+const PeoplePickerCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Compact.Example.tsx') as string;
+const PeoplePickerListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.List.Example.tsx') as string;
+const PeoplePickerPreselectedItemsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.PreselectedItems.Example.tsx') as string;
+const PeoplePickerLimitedSearchExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.LimitedSearch.Example.tsx') as string;
+const PeoplePickerProcessSelectionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.ProcessSelection.Example.tsx') as string;
+const PeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Controlled.Example.tsx') as string;
 
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',

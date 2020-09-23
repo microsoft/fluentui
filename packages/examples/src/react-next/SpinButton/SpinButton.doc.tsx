@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
+import { SpinButtonBasicExample } from './SpinButton.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
-import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
-import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
-import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
-import { SpinButtonBasicWithIconDisabledExample } from './examples/SpinButton.BasicWithIconDisabled.Example';
-import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
-import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
+import { SpinButtonBasicDisabledExample } from './SpinButton.BasicDisabled.Example';
+import { SpinButtonStatefulExample } from './SpinButton.Stateful.Example';
+import { SpinButtonBasicWithIconExample } from './SpinButton.BasicWithIcon.Example';
+import { SpinButtonBasicWithIconDisabledExample } from './SpinButton.BasicWithIconDisabled.Example';
+import { SpinButtonBasicWithEndPositionExample } from './SpinButton.BasicWithEndPosition.Example';
+import { SpinButtonCustomStyledExample } from './SpinButton.CustomStyled.Example';
 
-const SpinButtonBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
-const SpinButtonBasicDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
-const SpinButtonStatefulExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
-const SpinButtonBasicWithIconExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
-const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
-const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
-const SpinButtonCustomStyledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
+const SpinButtonBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonBasicDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.BasicDisabled.Example.tsx') as string;
+const SpinButtonStatefulExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.Stateful.Example.tsx') as string;
+const SpinButtonBasicWithIconExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.BasicWithIcon.Example.tsx') as string;
+const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
+const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.BasicWithEndPosition.Example.tsx') as string;
+const SpinButtonCustomStyledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SpinButton/SpinButton.CustomStyled.Example.tsx') as string;
 
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',

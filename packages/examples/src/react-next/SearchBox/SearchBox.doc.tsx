@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
+import { SearchBoxFullSizeExample } from './SearchBox.FullSize.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
-import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
-import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
-import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
-import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
+import { SearchBoxUnderlinedExample } from './SearchBox.Underlined.Example';
+import { SearchBoxDisabledExample } from './SearchBox.Disabled.Example';
+import { SearchBoxCustomIconExample } from './SearchBox.CustomIcon.Example';
+import { SearchBoxSmallExample } from './SearchBox.Small.Example';
 
-const SearchBoxFullSizeExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxUnderlinedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
-const SearchBoxDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
-const SearchBoxCustomIconExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
-const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxUnderlinedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/SearchBox.Underlined.Example.tsx') as string;
+const SearchBoxDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/SearchBox.Disabled.Example.tsx') as string;
+const SearchBoxCustomIconExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/SearchBox.CustomIcon.Example.tsx') as string;
+const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SearchBox/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',

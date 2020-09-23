@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
-import { SpinnerLabeledExample } from './examples/Spinner.Labeled.Example';
+import { SpinnerBasicExample } from './Spinner.Basic.Example';
+import { SpinnerLabeledExample } from './Spinner.Labeled.Example';
 
-const SpinnerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Spinner/examples/Spinner.Basic.Example.tsx') as string;
-const SpinnerLabeledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Spinner/examples/Spinner.Labeled.Example.tsx') as string;
+const SpinnerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Spinner/Spinner.Basic.Example.tsx') as string;
+const SpinnerLabeledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Spinner/Spinner.Labeled.Example.tsx') as string;
 
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',

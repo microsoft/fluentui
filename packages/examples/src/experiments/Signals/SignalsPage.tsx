@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
-const SignalFieldBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Signals/examples/SignalField.Basic.Example.tsx') as string;
+import { SignalFieldBasicExample } from './SignalField.Basic.Example';
+const SignalFieldBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Signals/SignalField.Basic.Example.tsx') as string;
 
-import { SignalsBasicExample } from './examples/Signals.Basic.Example';
-const SignalsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Signals/examples/Signals.Basic.Example.tsx') as string;
+import { SignalsBasicExample } from './Signals.Basic.Example';
+const SignalsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Signals/Signals.Basic.Example.tsx') as string;
 
 export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { SelectionBasicExample } from './examples/Selection.Basic.Example';
+import { SelectionBasicExample } from './Selection.Basic.Example';
 
-const SelectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Selection/examples/Selection.Basic.Example.tsx') as string;
+const SelectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Selection/Selection.Basic.Example.tsx') as string;
 
 export const SelectionPageProps: IDocPageProps = {
   title: 'Selection',

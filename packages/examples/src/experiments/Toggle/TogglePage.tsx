@@ -7,14 +7,14 @@ import {
   PropertiesTableSet,
 } from '@uifabric/example-app-base';
 
-import { ToggleExample } from './examples/Toggle.Example';
-const ToggleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/examples/Toggle.Example.tsx') as string;
+import { ToggleExample } from './Toggle.Example';
+const ToggleExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/Toggle.Example.tsx') as string;
 
-import { ToggleTokensObjectExample } from './examples/Toggle.Tokens.Object.Example';
-const ToggleTokensObjectExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/examples/Toggle.Tokens.Object.Example.tsx') as string;
+import { ToggleTokensObjectExample } from './Toggle.Tokens.Object.Example';
+const ToggleTokensObjectExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/Toggle.Tokens.Object.Example.tsx') as string;
 
-import { ToggleTokensFunctionExample } from './examples/Toggle.Tokens.Function.Example';
-const ToggleTokensFunctionExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/examples/Toggle.Tokens.Function.Example.tsx') as string;
+import { ToggleTokensFunctionExample } from './Toggle.Tokens.Function.Example';
+const ToggleTokensFunctionExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Toggle/Toggle.Tokens.Function.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

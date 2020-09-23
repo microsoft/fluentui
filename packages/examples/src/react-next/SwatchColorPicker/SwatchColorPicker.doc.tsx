@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basic.Example';
+import { SwatchColorPickerBasicExample } from './SwatchColorPicker.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const SwatchColorPickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
+const SwatchColorPickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/SwatchColorPicker/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',

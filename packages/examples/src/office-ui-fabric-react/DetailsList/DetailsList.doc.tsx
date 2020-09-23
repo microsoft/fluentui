@@ -2,47 +2,47 @@ import * as React from 'react';
 
 import { IDocPageProps, IExample } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
+import { DetailsListBasicExample } from './DetailsList.Basic.Example';
+const DetailsListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Basic.Example.tsx') as string;
 
-import { DetailsListAnimationExample } from './examples/DetailsList.Animation.Example';
-const DetailsListAnimationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
+import { DetailsListAnimationExample } from './DetailsList.Animation.Example';
+const DetailsListAnimationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Animation.Example.tsx') as string;
 
-import { DetailsListCompactExample } from './examples/DetailsList.Compact.Example';
-const DetailsListCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
+import { DetailsListCompactExample } from './DetailsList.Compact.Example';
+const DetailsListCompactExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Compact.Example.tsx') as string;
 
-import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
+import { DetailsListCustomColumnsExample } from './DetailsList.CustomColumns.Example';
+const DetailsListCustomColumnsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomColumns.Example.tsx') as string;
 
-import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
+import { DetailsListCustomRowsExample } from './DetailsList.CustomRows.Example';
+const DetailsListCustomRowsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomRows.Example.tsx') as string;
 
-import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
+import { DetailsListCustomGroupHeadersExample } from './DetailsList.CustomGroupHeaders.Example';
+const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
-import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
+import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
+const DetailsListAdvancedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
-import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
+import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
+const DetailsListGroupedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
 
-import { DetailsListGroupedLargeExample } from './examples/DetailsList.Grouped.Large.Example';
-const DetailsListGroupedLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
+import { DetailsListGroupedLargeExample } from './DetailsList.Grouped.Large.Example';
+const DetailsListGroupedLargeExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Grouped.Large.Example.tsx') as string;
 
-import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
-const DetailsListDragDropExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
+import { DetailsListDragDropExample } from './DetailsList.DragDrop.Example';
+const DetailsListDragDropExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.DragDrop.Example.tsx') as string;
 
-import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
-const DetailsListDocumentsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+import { DetailsListDocumentsExample } from './DetailsList.Documents.Example';
+const DetailsListDocumentsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.Documents.Example.tsx') as string;
 
-import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
-const DetailsListNavigatingFocusExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+import { DetailsListNavigatingFocusExample } from './DetailsList.NavigatingFocus.Example';
+const DetailsListNavigatingFocusExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.NavigatingFocus.Example.tsx') as string;
 
-import { ShimmerApplicationExample as DetailsListShimmerExample } from '../Shimmer/examples/Shimmer.Application.Example';
-const DetailsListShimmerExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+import { ShimmerApplicationExample as DetailsListShimmerExample } from '../Shimmer/Shimmer.Application.Example';
+const DetailsListShimmerExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Shimmer/Shimmer.Application.Example.tsx') as string;
 
-import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
-const DetailsListCustomFooterExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
+import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Example';
+const DetailsListCustomFooterExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',

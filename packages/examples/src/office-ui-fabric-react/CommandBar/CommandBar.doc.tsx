@@ -1,21 +1,21 @@
 import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
-import { CommandBarButtonAsExample } from './examples/CommandBar.ButtonAs.Example';
-import { IndividualCommandBarButtonAsExampleWrapper } from './examples/CommandBar.CommandBarButtonAs.Example';
-import { CommandBarSplitDisabledExample } from './examples/CommandBar.SplitDisabled.Example';
-import { CommandBarLazyExample } from './examples/CommandBar.Lazy.Example';
+import { CommandBarBasicExample } from './CommandBar.Basic.Example';
+import { CommandBarButtonAsExample } from './CommandBar.ButtonAs.Example';
+import { IndividualCommandBarButtonAsExampleWrapper } from './CommandBar.CommandBarButtonAs.Example';
+import { CommandBarSplitDisabledExample } from './CommandBar.SplitDisabled.Example';
+import { CommandBarLazyExample } from './CommandBar.Lazy.Example';
 
-const CommandBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
+const CommandBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/CommandBar.Basic.Example.tsx') as string;
 
-const CommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/examples/CommandBar.ButtonAs.Example.tsx') as string;
+const CommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/CommandBar.ButtonAs.Example.tsx') as string;
 
-const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/examples/CommandBar.CommandBarButtonAs.Example.tsx') as string;
+const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/CommandBar.CommandBarButtonAs.Example.tsx') as string;
 
-const CommandBarSplitDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/examples/CommandBar.SplitDisabled.Example.tsx') as string;
+const CommandBarSplitDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/CommandBar.SplitDisabled.Example.tsx') as string;
 
-const CommandBarLazyExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/examples/CommandBar.Lazy.Example.tsx') as string;
+const CommandBarLazyExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/CommandBar/CommandBar.Lazy.Example.tsx') as string;
 
 export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',

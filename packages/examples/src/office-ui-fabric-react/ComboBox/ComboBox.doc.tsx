@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
-import { ComboBoxTogglesExample } from './examples/ComboBox.Toggles.Example';
-import { ComboBoxControlledExample } from './examples/ComboBox.Controlled.Example';
-import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Example';
-import { ComboBoxErrorHandlingExample } from './examples/ComboBox.ErrorHandling.Example';
-import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
+import { ComboBoxBasicExample } from './ComboBox.Basic.Example';
+import { ComboBoxTogglesExample } from './ComboBox.Toggles.Example';
+import { ComboBoxControlledExample } from './ComboBox.Controlled.Example';
+import { ComboBoxVirtualizedExample } from './ComboBox.Virtualized.Example';
+import { ComboBoxErrorHandlingExample } from './ComboBox.ErrorHandling.Example';
+import { ComboBoxCustomStyledExample } from './ComboBox.CustomStyled.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const ComboBoxBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.Basic.Example.tsx') as string;
 
-const ComboBoxTogglesExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.Toggles.Example.tsx') as string;
+const ComboBoxTogglesExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.Toggles.Example.tsx') as string;
 
-const ComboBoxControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.Controlled.Example.tsx') as string;
+const ComboBoxControlledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.Controlled.Example.tsx') as string;
 
-const ComboBoxVirtualizedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.Virtualized.Example.tsx') as string;
+const ComboBoxVirtualizedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.Virtualized.Example.tsx') as string;
 
-const ComboBoxErrorHandlingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.ErrorHandling.Example.tsx') as string;
+const ComboBoxErrorHandlingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.ErrorHandling.Example.tsx') as string;
 
-const ComboBoxCustomStyledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
+const ComboBoxCustomStyledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ComboBox/ComboBox.CustomStyled.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',

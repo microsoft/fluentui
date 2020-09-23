@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { FolderCoverBasicExample } from './examples/FolderCover.Basic.Example';
-const FolderCoverBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/FolderCover/examples/FolderCover.Basic.Example.tsx') as string;
+import { FolderCoverBasicExample } from './FolderCover.Basic.Example';
+const FolderCoverBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/FolderCover/FolderCover.Basic.Example.tsx') as string;
 
 export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

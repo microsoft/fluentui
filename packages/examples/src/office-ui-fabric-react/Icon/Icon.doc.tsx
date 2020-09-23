@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { IconBasicExample } from './examples/Icon.Basic.Example';
+import { IconBasicExample } from './Icon.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { IconSvgExample } from './examples/Icon.Svg.Example';
-import { IconColorExample } from './examples/Icon.Color.Example';
-import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
-import { IconSvgFactoryExample } from './examples/Icon.SvgFactory.Example';
+import { IconSvgExample } from './Icon.Svg.Example';
+import { IconColorExample } from './Icon.Color.Example';
+import { IconImageSheetExample } from './Icon.ImageSheet.Example';
+import { IconSvgFactoryExample } from './Icon.SvgFactory.Example';
 
-const IconBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/examples/Icon.Basic.Example.tsx') as string;
-const IconSvgExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/examples/Icon.Svg.Example.tsx') as string;
-const IconColorExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/examples/Icon.Color.Example.tsx') as string;
-const IconImageSheetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
-const IconSvgFactoryExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/examples/Icon.SvgFactory.Example.tsx') as string;
+const IconBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/Icon.Basic.Example.tsx') as string;
+const IconSvgExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/Icon.Svg.Example.tsx') as string;
+const IconColorExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/Icon.Color.Example.tsx') as string;
+const IconImageSheetExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/Icon.ImageSheet.Example.tsx') as string;
+const IconSvgFactoryExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Icon/Icon.SvgFactory.Example.tsx') as string;
 
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',

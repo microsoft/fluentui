@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { PieChartBasicExample } from './examples/PieChart.Basic.Example';
-import { PieChartDynamicExample } from './examples/PieChart.Dynamic.Example';
+import { PieChartBasicExample } from './PieChart.Basic.Example';
+import { PieChartDynamicExample } from './PieChart.Dynamic.Example';
 
-const PieChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/PieChart/examples/PieChart.Basic.Example.tsx') as string;
-const PieChartDynamicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/PieChart/examples/PieChart.Dynamic.Example.tsx') as string;
+const PieChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/PieChart/PieChart.Basic.Example.tsx') as string;
+const PieChartDynamicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/PieChart/PieChart.Dynamic.Example.tsx') as string;
 
 export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

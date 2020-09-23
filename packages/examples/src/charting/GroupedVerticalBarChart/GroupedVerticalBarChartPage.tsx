@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { GroupedVerticalBarChartBasicExample } from './examples/GroupedVerticalBarChart.Basic.Example';
-import { GroupedVerticalBarChartBasic2Example } from './examples/GroupedVerticalBarChart.Basic2.Example';
-import { GroupedVerticalBarChartStyledExample } from './examples/GroupedVerticalBarChart.Styled.Example';
+import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.Basic.Example';
+import { GroupedVerticalBarChartBasic2Example } from './GroupedVerticalBarChart.Basic2.Example';
+import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 
-const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic.Example.tsx') as string;
-const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Styled.Example.tsx') as string;
-const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/examples/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
+const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
+const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
+const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@fluentui/examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

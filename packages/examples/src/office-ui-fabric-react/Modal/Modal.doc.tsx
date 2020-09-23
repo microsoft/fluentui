@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ModalBasicExample } from './examples/Modal.Basic.Example';
-import { ModalModelessExample } from './examples/Modal.Modeless.Example';
+import { ModalBasicExample } from './Modal.Basic.Example';
+import { ModalModelessExample } from './Modal.Modeless.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const ModalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/examples/Modal.Basic.Example.tsx') as string;
-const ModalModelessExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/examples/Modal.Modeless.Example.tsx') as string;
+const ModalBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/Modal.Basic.Example.tsx') as string;
+const ModalModelessExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Modal/Modal.Modeless.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 
-import { FluentThemeBasicExample } from './examples/FluentTheme.Basic.Example';
+import { FluentThemeBasicExample } from './FluentTheme.Basic.Example';
 
-const FluentThemeBasicExampleCode = require('!raw-loader!./examples/FluentTheme.Basic.Example.tsx') as string;
+const FluentThemeBasicExampleCode = require('!raw-loader!./FluentTheme.Basic.Example.tsx') as string;
 
 export class FluentThemePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

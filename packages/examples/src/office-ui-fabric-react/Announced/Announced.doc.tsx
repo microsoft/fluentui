@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { AnnouncedSearchResultsExample } from './examples/Announced.SearchResults.Example';
-const AnnouncedSearchResultsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/examples/Announced.SearchResults.Example.tsx') as string;
+import { AnnouncedSearchResultsExample } from './Announced.SearchResults.Example';
+const AnnouncedSearchResultsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/Announced.SearchResults.Example.tsx') as string;
 
-import { AnnouncedLazyLoadingExample } from './examples/Announced.LazyLoading.Example';
-const AnnouncedLazyLoadingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
+import { AnnouncedLazyLoadingExample } from './Announced.LazyLoading.Example';
+const AnnouncedLazyLoadingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/Announced.LazyLoading.Example.tsx') as string;
 
-import { AnnouncedBulkOperationsExample } from './examples/Announced.BulkOperations.Example';
-const AnnouncedBulkOperationsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
+import { AnnouncedBulkOperationsExample } from './Announced.BulkOperations.Example';
+const AnnouncedBulkOperationsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/Announced.BulkOperations.Example.tsx') as string;
 
-import { AnnouncedQuickActionsExample } from './examples/Announced.QuickActions.Example';
-const AnnouncedQuickActionsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+import { AnnouncedQuickActionsExample } from './Announced.QuickActions.Example';
+const AnnouncedQuickActionsExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Announced/Announced.QuickActions.Example.tsx') as string;
 
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',

@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
+import { MessageBarBasicExample } from './MessageBar.Basic.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/MessageBar/MessageBar.Basic.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',

@@ -7,14 +7,14 @@ import {
   PropertiesTableSet,
 } from '@uifabric/example-app-base';
 
-import { CardVerticalExample } from './examples/Card.Vertical.Example';
-const CardVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Vertical.Example.tsx') as string;
+import { CardVerticalExample } from './Card.Vertical.Example';
+const CardVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Vertical.Example.tsx') as string;
 
-import { CardHorizontalExample } from './examples/Card.Horizontal.Example';
-const CardHorizontalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Horizontal.Example.tsx') as string;
+import { CardHorizontalExample } from './Card.Horizontal.Example';
+const CardHorizontalExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Horizontal.Example.tsx') as string;
 
-import { CardConfigureExample } from './examples/Card.Configure.Example';
-const CardConfigureExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/examples/Card.Configure.Example.tsx') as string;
+import { CardConfigureExample } from './Card.Configure.Example';
+const CardConfigureExampleCode = require('!raw-loader!@fluentui/examples/src/react-cards/Card/Card.Configure.Example.tsx') as string;
 
 export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

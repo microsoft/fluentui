@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { NavBasicExample } from './examples/Nav.Basic.Example';
+import { NavBasicExample } from './Nav.Basic.Example';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
-import { NavNestedExample } from './examples/Nav.Nested.Example';
-import { NavCustomGroupHeadersExample } from './examples/Nav.CustomGroupHeaders.Example';
+import { NavFabricDemoAppExample } from './Nav.FabricDemoApp.Example';
+import { NavNestedExample } from './Nav.Nested.Example';
+import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
 
-const NavBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/examples/Nav.Basic.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/examples/Nav.Nested.Example.tsx') as string;
-const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/examples/Nav.CustomGroupHeaders.Example.tsx') as string;
+const NavBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/Nav.Nested.Example.tsx') as string;
+const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',

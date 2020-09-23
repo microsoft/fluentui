@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { BreadcrumbCollapsingExample } from './examples/Breadcrumb.Collapsing.Example';
-import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
+import { BreadcrumbBasicExample } from './Breadcrumb.Basic.Example';
+import { BreadcrumbCollapsingExample } from './Breadcrumb.Collapsing.Example';
+import { BreadcrumbStaticExample } from './Breadcrumb.Static.Example';
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbCollapsingExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/examples/Breadcrumb.Collapsing.Example.tsx') as string;
-const BreadcrumbStaticExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbCollapsingExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/Breadcrumb.Collapsing.Example.tsx') as string;
+const BreadcrumbStaticExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Breadcrumb/Breadcrumb.Static.Example.tsx') as string;
 
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { PaginationButtonsBasicExample } from './examples/Pagination.Buttons.Basic.Example';
-import { PaginationButtonsCustomizationExample } from './examples/Pagination.Buttons.Customization.Example';
-import { PaginationButtonsCustomizationRoundExample } from './examples/Pagination.Buttons.Customization.Round.Example';
-import { PaginationComboBoxExample } from './examples/Pagination.ComboBox.Example';
-const PaginationButtonsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/examples/Pagination.Buttons.Basic.Example.tsx') as string;
-const PaginationButtonsCustomizationExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/examples/Pagination.Buttons.Customization.Example.tsx') as string;
-const PaginationButtonsCustomizationRoundExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/examples/Pagination.Buttons.Customization.Round.Example.tsx') as string;
-const PaginationComboBoxExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/examples/Pagination.ComboBox.Example.tsx') as string;
+import { PaginationButtonsBasicExample } from './Pagination.Buttons.Basic.Example';
+import { PaginationButtonsCustomizationExample } from './Pagination.Buttons.Customization.Example';
+import { PaginationButtonsCustomizationRoundExample } from './Pagination.Buttons.Customization.Round.Example';
+import { PaginationComboBoxExample } from './Pagination.ComboBox.Example';
+const PaginationButtonsBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/Pagination.Buttons.Basic.Example.tsx') as string;
+const PaginationButtonsCustomizationExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/Pagination.Buttons.Customization.Example.tsx') as string;
+const PaginationButtonsCustomizationRoundExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/Pagination.Buttons.Customization.Round.Example.tsx') as string;
+const PaginationComboBoxExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Pagination/Pagination.ComboBox.Example.tsx') as string;
 
 export class PaginationPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

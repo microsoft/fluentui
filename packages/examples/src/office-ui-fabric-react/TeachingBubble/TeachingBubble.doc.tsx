@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
-import { TeachingBubbleWideExample } from './examples/TeachingBubble.Wide.Example';
+import { TeachingBubbleBasicExample } from './TeachingBubble.Basic.Example';
+import { TeachingBubbleWideExample } from './TeachingBubble.Wide.Example';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
-import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
-import { TeachingBubbleWideIllustrationExample } from './examples/TeachingBubble.WideIllustration.Example';
-import { TeachingBubbleSmallHeadlineExample } from './examples/TeachingBubble.SmallHeadline.Example';
-import { TeachingBubbleMultiStepExample } from './examples/TeachingBubble.MultiStep.Example';
+import { TeachingBubbleCondensedExample } from './TeachingBubble.Condensed.Example';
+import { TeachingBubbleIllustrationExample } from './TeachingBubble.Illustration.Example';
+import { TeachingBubbleWideIllustrationExample } from './TeachingBubble.WideIllustration.Example';
+import { TeachingBubbleSmallHeadlineExample } from './TeachingBubble.SmallHeadline.Example';
+import { TeachingBubbleMultiStepExample } from './TeachingBubble.MultiStep.Example';
 
-const TeachingBubbleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
-const TeachingBubbleWideExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Wide.Example.tsx') as string;
-const TeachingBubbleCondensedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
-const TeachingBubbleIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.Illustration.Example.tsx') as string;
-const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
-const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
-const TeachingBubbleMultiStepExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/examples/TeachingBubble.MultiStep.Example.tsx') as string;
+const TeachingBubbleBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleWideExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.Wide.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.Illustration.Example.tsx') as string;
+const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.WideIllustration.Example.tsx') as string;
+const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.SmallHeadline.Example.tsx') as string;
+const TeachingBubbleMultiStepExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/TeachingBubble/TeachingBubble.MultiStep.Example.tsx') as string;
 
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',

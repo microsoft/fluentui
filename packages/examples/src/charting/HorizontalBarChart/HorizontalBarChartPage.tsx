@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { HorizontalBarChartBasicExample } from './examples/HorizontalBarChart.Basic.Example';
-import { HorizontalBarChartBenchmarkExample } from './examples/HorizontalBarChart.Benchmark.Example';
+import { HorizontalBarChartBasicExample } from './HorizontalBarChart.Basic.Example';
+import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 
-const HorizontalBarChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/HorizontalBarChart/examples/HorizontalBarChart.Basic.Example.tsx') as string;
+const HorizontalBarChartBasicExampleCode = require('!raw-loader!@fluentui/examples/src/charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
 
-const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/examples/src/charting/HorizontalBarChart/examples/HorizontalBarChart.Benchmark.Example.tsx') as string;
+const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/examples/src/charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

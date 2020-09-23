@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
+import { OverflowSetCustomExample } from './OverflowSet.Custom.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
-import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
-import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Example';
-import { OverflowSetBasicReversedExample } from './examples/OverflowSet.BasicReversed.Example';
+import { OverflowSetBasicExample } from './OverflowSet.Basic.Example';
+import { OverflowSetVerticalExample } from './OverflowSet.Vertical.Example';
+import { OverflowSetBasicReversedExample } from './OverflowSet.BasicReversed.Example';
 
-const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
-const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
-const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
-const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/examples/OverflowSet.BasicReversed.Example.tsx') as string;
+const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/OverflowSet.Custom.Example.tsx') as string;
+const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/OverflowSet.Vertical.Example.tsx') as string;
+const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/OverflowSet/OverflowSet.BasicReversed.Example.tsx') as string;
 
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',

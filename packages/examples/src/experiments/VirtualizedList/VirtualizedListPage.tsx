@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
-import { VirtualizedListBasicExample } from './examples/VirtualizedList.Basic.Example';
-import { VirtualizedListBasicExample2 } from './examples/VirtualizedList.Basic2.Example';
+import { VirtualizedListBasicExample } from './VirtualizedList.Basic.Example';
+import { VirtualizedListBasicExample2 } from './VirtualizedList.Basic2.Example';
 
-const VirtualizedListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/VirtualizedList/examples/VirtualizedList.Basic.Example.tsx') as string;
-const VirtualizedListBasicExample2Code = require('!raw-loader!@fluentui/examples/src/experiments/VirtualizedList/examples/VirtualizedList.Basic2.Example.tsx') as string;
+const VirtualizedListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/VirtualizedList/VirtualizedList.Basic.Example.tsx') as string;
+const VirtualizedListBasicExample2Code = require('!raw-loader!@fluentui/examples/src/experiments/VirtualizedList/VirtualizedList.Basic2.Example.tsx') as string;
 
 export class VirtualizedListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

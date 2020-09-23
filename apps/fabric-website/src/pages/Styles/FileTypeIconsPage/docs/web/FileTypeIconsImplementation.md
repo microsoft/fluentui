@@ -19,7 +19,7 @@ When specifying `size`, stick to these default sizes so the images appear as int
 
 #### References
 
-Here's a [simple demo](https://github.com/microsoft/fluentui/blob/master/packages/examples/src/experiments/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx) of how to use the [`@uifabric/file-type-icons` package](https://github.com/microsoft/fluentui/tree/master/packages/file-type-icons).  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are kept up-to-date on Fluent UI's CDN, so we recommend not copying or referencing these assets directly.
+Here's a [simple demo](https://github.com/microsoft/fluentui/blob/master/packages/examples/src/experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx) of how to use the [`@uifabric/file-type-icons` package](https://github.com/microsoft/fluentui/tree/master/packages/file-type-icons).  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are kept up-to-date on Fluent UI's CDN, so we recommend not copying or referencing these assets directly.
 
 #### Map icons to extensions - [TypeScript mapping file](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/FileTypeIconMap.ts)
 

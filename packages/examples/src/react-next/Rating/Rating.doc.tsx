@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { RatingBasicExample } from './examples/Rating.Basic.Example';
+import { RatingBasicExample } from './Rating.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
-import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
+import { RatingButtonControlledExample } from './Rating.ButtonControlled.Example';
 
-const RatingBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Rating/examples/Rating.Basic.Example.tsx') as string;
-const RatingButtonControlledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
+const RatingBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Rating/Rating.Basic.Example.tsx') as string;
+const RatingButtonControlledExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Rating/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',

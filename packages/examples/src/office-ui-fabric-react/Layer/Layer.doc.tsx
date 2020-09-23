@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { LayerBasicExample } from './examples/Layer.Basic.Example';
+import { LayerBasicExample } from './Layer.Basic.Example';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { LayerHostedExample } from './examples/Layer.Hosted.Example';
-import { LayerCustomizedExample } from './examples/Layer.Customized.Example';
-import { LayerNestedLayersExample } from './examples/Layer.NestedLayers.Example';
+import { LayerHostedExample } from './Layer.Hosted.Example';
+import { LayerCustomizedExample } from './Layer.Customized.Example';
+import { LayerNestedLayersExample } from './Layer.NestedLayers.Example';
 
-const LayerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/examples/Layer.Basic.Example.tsx') as string;
-const LayerHostedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/examples/Layer.Hosted.Example.tsx') as string;
-const LayerCustomizedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/examples/Layer.Customized.Example.tsx') as string;
-const LayerNestedLayersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
+const LayerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/Layer.Basic.Example.tsx') as string;
+const LayerHostedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/Layer.Hosted.Example.tsx') as string;
+const LayerCustomizedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/Layer.Customized.Example.tsx') as string;
+const LayerNestedLayersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Layer/Layer.NestedLayers.Example.tsx') as string;
 
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',

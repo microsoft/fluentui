@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { MicroFeedbackExample } from './examples/MicroFeedback.Example';
-import { MicroFeedbackCalloutExample } from './examples/MicroFeedbackCallout.Example';
-import { MicroFeedbackStackExample } from './examples/MicroFeedbackStack.Example';
+import { MicroFeedbackExample } from './MicroFeedback.Example';
+import { MicroFeedbackCalloutExample } from './MicroFeedbackCallout.Example';
+import { MicroFeedbackStackExample } from './MicroFeedbackStack.Example';
 
-const MicroFeedbackExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/examples/MicroFeedback.Example.tsx') as string;
-const MicroFeedbackCalloutExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/examples/MicroFeedbackCallout.Example.tsx') as string;
-const MicroFeedbackStackExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/examples/MicroFeedbackStack.Example.tsx') as string;
+const MicroFeedbackExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/MicroFeedback.Example.tsx') as string;
+const MicroFeedbackCalloutExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/MicroFeedbackCallout.Example.tsx') as string;
+const MicroFeedbackStackExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/MicroFeedback/MicroFeedbackStack.Example.tsx') as string;
 
 export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

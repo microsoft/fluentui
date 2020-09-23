@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { VerticalDividerBasicExample } from './examples/VerticalDivider.Basic.Example';
+import { VerticalDividerBasicExample } from './VerticalDivider.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { VerticalDividerCustomExample } from './examples/VerticalDivider.Custom.Example';
+import { VerticalDividerCustomExample } from './VerticalDivider.Custom.Example';
 
-const VerticalDividerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Divider/examples/VerticalDivider.Basic.Example.tsx') as string;
+const VerticalDividerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Divider/VerticalDivider.Basic.Example.tsx') as string;
 
-const VerticalDividerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
+const VerticalDividerCustomExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Divider/VerticalDivider.Custom.Example.tsx') as string;
 
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',

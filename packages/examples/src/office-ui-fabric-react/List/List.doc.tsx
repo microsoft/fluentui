@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { ListBasicExample } from './examples/List.Basic.Example';
-import { ListGridExample } from './examples/List.Grid.Example';
-import { ListScrollingExample } from './examples/List.Scrolling.Example';
-import { ListGhostingExample } from './examples/List.Ghosting.Example';
+import { ListBasicExample } from './List.Basic.Example';
+import { ListGridExample } from './List.Grid.Example';
+import { ListScrollingExample } from './List.Scrolling.Example';
+import { ListGhostingExample } from './List.Ghosting.Example';
 
-const ListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/examples/List.Basic.Example.tsx') as string;
-const ListGridExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/examples/List.Grid.Example.tsx') as string;
-const ListScrollingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/examples/List.Scrolling.Example.tsx') as string;
-const ListGhostingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/examples/List.Ghosting.Example.tsx') as string;
+const ListBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/List.Basic.Example.tsx') as string;
+const ListGridExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/List.Scrolling.Example.tsx') as string;
+const ListGhostingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/List/List.Ghosting.Example.tsx') as string;
 
 export const ListPageProps: IDocPageProps = {
   title: 'List',

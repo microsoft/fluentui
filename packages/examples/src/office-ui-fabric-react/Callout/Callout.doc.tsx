@@ -2,17 +2,17 @@ import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { CalloutBasicExample } from './examples/Callout.Basic.Example';
-import { StatusCalloutExample } from './examples/Callout.Status.Example';
-import { CalloutFocusTrapExample } from './examples/Callout.FocusTrap.Example';
-import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
-import { CalloutCoverExample } from './examples/Callout.Cover.Example';
+import { CalloutBasicExample } from './Callout.Basic.Example';
+import { StatusCalloutExample } from './Callout.Status.Example';
+import { CalloutFocusTrapExample } from './Callout.FocusTrap.Example';
+import { CalloutDirectionalExample } from './Callout.Directional.Example';
+import { CalloutCoverExample } from './Callout.Cover.Example';
 
-const CalloutBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/examples/Callout.Basic.Example.tsx') as string;
-const StatusCalloutExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/examples/Callout.Status.Example.tsx') as string;
-const CalloutFocusTrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/examples/Callout.FocusTrap.Example.tsx') as string;
-const CalloutDirectionalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/examples/Callout.Directional.Example.tsx') as string;
-const CalloutCoverExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/examples/Callout.Cover.Example.tsx') as string;
+const CalloutBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/Callout.Basic.Example.tsx') as string;
+const StatusCalloutExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/Callout.Status.Example.tsx') as string;
+const CalloutFocusTrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/Callout.FocusTrap.Example.tsx') as string;
+const CalloutDirectionalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/Callout.Directional.Example.tsx') as string;
+const CalloutCoverExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Callout/Callout.Cover.Example.tsx') as string;
 
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',

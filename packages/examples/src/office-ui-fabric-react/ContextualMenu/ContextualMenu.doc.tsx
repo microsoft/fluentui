@@ -2,37 +2,37 @@ import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
-import { ContextualMenuDefaultExample } from './examples/ContextualMenu.Default.Example';
-import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
-import { ContextualMenuIconSecondaryTextExample } from './examples/ContextualMenu.Icon.SecondaryText.Example';
-import { ContextualMenuSubmenuExample } from './examples/ContextualMenu.Submenu.Example';
-import { ContextualMenuSectionExample } from './examples/ContextualMenu.Section.Example';
-import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
-import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
-import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
-import { ContextualMenuCustomizationWithNoWrapExample } from './examples/ContextualMenu.CustomizationWithNoWrap.Example';
-import { ContextualMenuWithScrollBarExample } from './examples/ContextualMenu.ScrollBar.Example';
-import { ContextualMenuWithCustomMenuItemExample } from './examples/ContextualMenu.CustomMenuItem.Example';
-import { ContextualMenuWithCustomMenuListExample } from './examples/ContextualMenu.CustomMenuList.Example';
-import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
-import { ContextualMenuPersistedExample } from './examples/ContextualMenu.Persisted.Example';
+import { ContextualMenuBasicExample } from './ContextualMenu.Basic.Example';
+import { ContextualMenuDefaultExample } from './ContextualMenu.Default.Example';
+import { ContextualMenuIconExample } from './ContextualMenu.Icon.Example';
+import { ContextualMenuIconSecondaryTextExample } from './ContextualMenu.Icon.SecondaryText.Example';
+import { ContextualMenuSubmenuExample } from './ContextualMenu.Submenu.Example';
+import { ContextualMenuSectionExample } from './ContextualMenu.Section.Example';
+import { ContextualMenuCheckmarksExample } from './ContextualMenu.Checkmarks.Example';
+import { ContextualMenuDirectionalExample } from './ContextualMenu.Directional.Example';
+import { ContextualMenuCustomizationExample } from './ContextualMenu.Customization.Example';
+import { ContextualMenuCustomizationWithNoWrapExample } from './ContextualMenu.CustomizationWithNoWrap.Example';
+import { ContextualMenuWithScrollBarExample } from './ContextualMenu.ScrollBar.Example';
+import { ContextualMenuWithCustomMenuItemExample } from './ContextualMenu.CustomMenuItem.Example';
+import { ContextualMenuWithCustomMenuListExample } from './ContextualMenu.CustomMenuList.Example';
+import { ContextualMenuHeaderExample } from './ContextualMenu.Header.Example';
+import { ContextualMenuPersistedExample } from './ContextualMenu.Persisted.Example';
 
-const ContextualMenuBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
-const ContextualMenuDefaultExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Default.Example.tsx') as string;
-const ContextualMenuPersistedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Persisted.Example.tsx') as string;
-const ContextualMenuIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
-const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
-const ContextualMenuSubmenuExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Submenu.Example.tsx') as string;
-const ContextualMenuSectionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
-const ContextualMenuCheckmarksExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
-const ContextualMenuDirectionalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
-const ContextualMenuCustomizationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
-const ContextualMenuCustomizationWithNoWrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.CustomizationWithNoWrap.Example.tsx') as string;
-const ContextualMenuWithScrollBarExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.ScrollBar.Example.tsx') as string;
-const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.CustomMenuItem.Example.tsx') as string;
-const ContextualMenuCustomMenuListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.CustomMenuList.Example.tsx') as string;
-const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/examples/ContextualMenu.Header.Example.tsx') as string;
+const ContextualMenuBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuDefaultExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Default.Example.tsx') as string;
+const ContextualMenuPersistedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Persisted.Example.tsx') as string;
+const ContextualMenuIconExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Icon.Example.tsx') as string;
+const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
+const ContextualMenuSubmenuExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Submenu.Example.tsx') as string;
+const ContextualMenuSectionExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Section.Example.tsx') as string;
+const ContextualMenuCheckmarksExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Checkmarks.Example.tsx') as string;
+const ContextualMenuDirectionalExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Directional.Example.tsx') as string;
+const ContextualMenuCustomizationExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuCustomizationWithNoWrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.CustomizationWithNoWrap.Example.tsx') as string;
+const ContextualMenuWithScrollBarExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.ScrollBar.Example.tsx') as string;
+const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.CustomMenuItem.Example.tsx') as string;
+const ContextualMenuCustomMenuListExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.CustomMenuList.Example.tsx') as string;
+const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
 
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',

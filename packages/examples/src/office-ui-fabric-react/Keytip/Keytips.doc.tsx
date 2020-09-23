@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { KeytipsBasicExample } from './examples/Keytips.Basic.Example';
-import { KeytipsButtonExample } from './examples/Keytips.Button.Example';
-import { KeytipsCommandBarExample } from './examples/Keytips.CommandBar.Example';
-import { KeytipsOverflowExample } from './examples/Keytips.Overflow.Example';
-import { KeytipsDynamicExample } from './examples/Keytips.Dynamic.Example';
+import { KeytipsBasicExample } from './Keytips.Basic.Example';
+import { KeytipsButtonExample } from './Keytips.Button.Example';
+import { KeytipsCommandBarExample } from './Keytips.CommandBar.Example';
+import { KeytipsOverflowExample } from './Keytips.Overflow.Example';
+import { KeytipsDynamicExample } from './Keytips.Dynamic.Example';
 
-const KeytipsBasicCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/examples/Keytips.Basic.Example.tsx') as string;
-const KeytipsButtonCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/examples/Keytips.Button.Example.tsx') as string;
-const KeytipsCommandBarCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/examples/Keytips.CommandBar.Example.tsx') as string;
-const KeytipsOverflowCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/examples/Keytips.Overflow.Example.tsx') as string;
-const KeytipsDynamicCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/examples/Keytips.Dynamic.Example.tsx') as string;
+const KeytipsBasicCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/Keytips.Basic.Example.tsx') as string;
+const KeytipsButtonCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/Keytips.Button.Example.tsx') as string;
+const KeytipsCommandBarCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/Keytips.CommandBar.Example.tsx') as string;
+const KeytipsOverflowCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/Keytips.Overflow.Example.tsx') as string;
+const KeytipsDynamicCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Keytip/Keytips.Dynamic.Example.tsx') as string;
 
 export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',

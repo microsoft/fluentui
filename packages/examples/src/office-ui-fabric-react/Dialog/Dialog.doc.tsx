@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { DialogBasicExample } from './examples/Dialog.Basic.Example';
+import { DialogBasicExample } from './Dialog.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
-import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
-import { DialogTopOffsetFixedExample } from './examples/Dialog.TopOffsetFixed.Example';
-import { DialogModelessExample } from './examples/Dialog.Modeless.Example';
+import { DialogLargeHeaderExample } from './Dialog.LargeHeader.Example';
+import { DialogBlockingExample } from './Dialog.Blocking.Example';
+import { DialogTopOffsetFixedExample } from './Dialog.TopOffsetFixed.Example';
+import { DialogModelessExample } from './Dialog.Modeless.Example';
 
-const DialogBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/examples/Dialog.Basic.Example.tsx') as string;
-const DialogLargeHeaderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
-const DialogBlockingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
-const DialogTopOffsetFixedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
-const DialogModelessExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
+const DialogBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/Dialog.LargeHeader.Example.tsx') as string;
+const DialogBlockingExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/Dialog.Blocking.Example.tsx') as string;
+const DialogTopOffsetFixedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/Dialog.TopOffsetFixed.Example.tsx') as string;
+const DialogModelessExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Dialog/Dialog.Modeless.Example.tsx') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',

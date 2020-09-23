@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { TextRampExample } from './examples/Text.Ramp.Example';
-import { TextWrapExample } from './examples/Text.Wrap.Example';
-import { TextBlockExample } from './examples/Text.Block.Example';
+import { TextRampExample } from './Text.Ramp.Example';
+import { TextWrapExample } from './Text.Wrap.Example';
+import { TextBlockExample } from './Text.Block.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const TextRampExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/examples/Text.Ramp.Example.tsx') as string;
+const TextRampExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/Text.Ramp.Example.tsx') as string;
 
-const TextWrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/examples/Text.Wrap.Example.tsx') as string;
+const TextWrapExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/Text.Wrap.Example.tsx') as string;
 
-const TextBlockExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/examples/Text.Block.Example.tsx') as string;
+const TextBlockExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/Text/Text.Block.Example.tsx') as string;
 
 export const TextPageProps: IDocPageProps = {
   title: 'Text',

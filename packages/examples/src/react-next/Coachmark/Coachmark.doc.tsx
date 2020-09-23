@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { CoachmarkBasicExample } from './examples/Coachmark.Basic.Example';
+import { CoachmarkBasicExample } from './Coachmark.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
-const CoachmarkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
+const CoachmarkBasicExampleCode = require('!raw-loader!@fluentui/examples/src/react-next/Coachmark/Coachmark.Basic.Example.tsx') as string;
 
 export const CoachmarkPageProps: IDocPageProps = {
   title: 'Coachmark',

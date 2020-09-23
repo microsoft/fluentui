@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { CollapsibleSectionAccordionExample } from './examples/CollapsibleSection.Accordion.Example';
-const CollapsibleSectioAccordionExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Accordion.Example.tsx') as string;
+import { CollapsibleSectionAccordionExample } from './CollapsibleSection.Accordion.Example';
+const CollapsibleSectioAccordionExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Accordion.Example.tsx') as string;
 
-import { CollapsibleSectionBasicExample } from './examples/CollapsibleSection.Basic.Example';
-const CollapsibleSectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Basic.Example.tsx') as string;
+import { CollapsibleSectionBasicExample } from './CollapsibleSection.Basic.Example';
+const CollapsibleSectionBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Basic.Example.tsx') as string;
 
-import { CollapsibleSectionSlotsExample } from './examples/CollapsibleSection.Slots.Example';
-const CollapsibleSectionSlotsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Slots.Example.tsx') as string;
+import { CollapsibleSectionSlotsExample } from './CollapsibleSection.Slots.Example';
+const CollapsibleSectionSlotsExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Slots.Example.tsx') as string;
 
-import { CollapsibleSectionControlledExample } from './examples/CollapsibleSection.Controlled.Example';
-const CollapsibleSectionControlledExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Controlled.Example.tsx') as string;
+import { CollapsibleSectionControlledExample } from './CollapsibleSection.Controlled.Example';
+const CollapsibleSectionControlledExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Controlled.Example.tsx') as string;
 
-import { CollapsibleSectionRecursiveExample } from './examples/CollapsibleSection.Recursive.Example';
-const CollapsibleSectionRecursiveExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Recursive.Example.tsx') as string;
+import { CollapsibleSectionRecursiveExample } from './CollapsibleSection.Recursive.Example';
+const CollapsibleSectionRecursiveExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example.tsx') as string;
 
-import { CollapsibleSectionStyledExample } from './examples/CollapsibleSection.Styled.Example';
-const CollapsibleSectionStyledExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/examples/CollapsibleSection.Styled.Example.tsx') as string;
+import { CollapsibleSectionStyledExample } from './CollapsibleSection.Styled.Example';
+const CollapsibleSectionStyledExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/CollapsibleSection/CollapsibleSection.Styled.Example.tsx') as string;
 
 export class CollapsibleSectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

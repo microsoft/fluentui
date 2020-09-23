@@ -7,11 +7,11 @@ import {
   PropertiesTableSet,
 } from '@uifabric/example-app-base';
 
-import { SliderExample } from './examples/Slider.Example';
-const SliderExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Slider/examples/Slider.Example.tsx') as string;
+import { SliderExample } from './Slider.Example';
+const SliderExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Slider/Slider.Example.tsx') as string;
 
-import { SliderVerticalExample } from './examples/Slider.Vertical.Example';
-const SliderVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Slider/examples/Slider.Vertical.Example.tsx') as string;
+import { SliderVerticalExample } from './Slider.Vertical.Example';
+const SliderVerticalExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/Slider/Slider.Vertical.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

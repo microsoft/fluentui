@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
 
-import { FileTypeIconBasicExample } from './examples/FileTypeIcon.Basic.Example';
-const FileTypeIconBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx') as string;
+import { FileTypeIconBasicExample } from './FileTypeIcon.Basic.Example';
+const FileTypeIconBasicExampleCode = require('!raw-loader!@fluentui/examples/src/experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx') as string;
 
 export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FloatingPeoplePickerTypesExample } from './examples/FloatingPeoplePicker.Basic.Example';
+import { FloatingPeoplePickerTypesExample } from './FloatingPeoplePicker.Basic.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/FloatingPeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/FloatingPeoplePicker/FloatingPeoplePicker.Basic.Example.tsx') as string;
 
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',

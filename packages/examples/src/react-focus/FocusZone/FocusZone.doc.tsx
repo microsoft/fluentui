@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
+import { FocusZonePhotosExample } from './FocusZone.Photos.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { FocusZoneListExample } from './examples/FocusZone.List.Example';
-import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
-import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example';
-import { FocusZoneHorizontalMenuExample } from './examples/FocusZone.HorizontalMenu.Example';
+import { FocusZoneListExample } from './FocusZone.List.Example';
+import { FocusZoneDisabledExample } from './FocusZone.Disabled.Example';
+import { FocusZoneTabbableExample } from './FocusZone.Tabbable.Example';
+import { FocusZoneHorizontalMenuExample } from './FocusZone.HorizontalMenu.Example';
 
-const FocusZonePhotosExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZoneListExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneTabbableCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
+const FocusZonePhotosExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/FocusZone.Photos.Example.tsx') as string;
+const FocusZoneListExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/FocusZone.List.Example.tsx') as string;
+const FocusZoneDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/FocusZone.Disabled.Example.tsx') as string;
+const FocusZoneTabbableCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/FocusZone.Tabbable.Example.tsx') as string;
 
-const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/examples/FocusZone.HorizontalMenu.Example.tsx') as string;
+const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!@fluentui/examples/src/react-focus/FocusZone/FocusZone.HorizontalMenu.Example.tsx') as string;
 
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',

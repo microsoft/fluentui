@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
-import { DatePickerDisabledExample } from './examples/DatePicker.Disabled.Example';
+import { DatePickerBasicExample } from './DatePicker.Basic.Example';
+import { DatePickerDisabledExample } from './DatePicker.Disabled.Example';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.Example';
-import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
-import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
-import { DatePickerFormatExample } from './examples/DatePicker.Format.Example';
-import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example';
+import { DatePickerWeekNumbersExample } from './DatePicker.WeekNumbers.Example';
+import { DatePickerRequiredExample } from './DatePicker.Required.Example';
+import { DatePickerInputExample } from './DatePicker.Input.Example';
+import { DatePickerFormatExample } from './DatePicker.Format.Example';
+import { DatePickerBoundedExample } from './DatePicker.Bounded.Example';
 
-const DatePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
-const DatePickerDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerWeekNumbersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
-const DatePickerRequiredExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
-const DatePickerInputExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
-const DatePickerFormatExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
-const DatePickerBoundedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
+const DatePickerBasicExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Basic.Example.tsx') as string;
+const DatePickerDisabledExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Disabled.Example.tsx') as string;
+const DatePickerWeekNumbersExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.WeekNumbers.Example.tsx') as string;
+const DatePickerRequiredExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Required.Example.tsx') as string;
+const DatePickerInputExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Input.Example.tsx') as string;
+const DatePickerFormatExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Format.Example.tsx') as string;
+const DatePickerBoundedExampleCode = require('!raw-loader!@fluentui/examples/src/office-ui-fabric-react/DatePicker/DatePicker.Bounded.Example.tsx') as string;
 
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
