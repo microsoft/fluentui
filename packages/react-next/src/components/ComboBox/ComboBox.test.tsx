@@ -68,17 +68,29 @@ describe('ComboBox', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  // TODO: Find a way to implement a reliable custom mount function in in isConformant. This will allow this
+  // test to be removed and enabled in isConformant.
   it(`renders`, () => {
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
       expect(wrapper.root).toBeDefined();
     });
   });
 
+  // TODO: Find a way to implement a reliable custom mount function in in isConformant. This will allow this
+  // test to be removed and enabled in isConformant.
+  it(`handles className`, () => {
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} className="test-className" />, wrapper => {
+      expect(wrapper.root.props.className).toEqual('test-className');
+    });
+  });
+
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
-    // Disabled due to being required to mount by safeCreate. A test called "renders" was added here as a replacement.
-    disabledTests: ['component-renders'],
+    requiredProps: { options: [{ key: '1', text: 'One' }] },
+    // Disabled due to being required to mount through create/safeCreat. A test called "renders" and 'handles className'
+    // were added here as a replacement.
+    disabledTests: ['component-renders', 'component-contains-classname'],
   });
 
   it('Can flip between enabled and disabled.', () => {

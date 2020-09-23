@@ -66,6 +66,36 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component file handles classname prop */
+  'component-contains-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`has a className prop`, () => {
+      const {
+        Component,
+        wrapperComponent,
+        helperComponents = [],
+        requiredProps,
+        customMount = mount,
+        passesUnhandledPropsTo,
+      } = testInfo;
+      const mergedProps: Partial<{}> = {
+        ...requiredProps,
+        className: 'testComponentClassName',
+      };
+
+      if (passesUnhandledPropsTo) {
+        const el = customMount(<Component {...mergedProps} />).find(passesUnhandledPropsTo);
+        const component = getComponent(el, helperComponents, wrapperComponent);
+
+        expect(component.find('[testComponentClassName]'));
+      } else {
+        const wrapper = customMount(<Component {...mergedProps} />);
+        const component = getComponent(wrapper, helperComponents, wrapperComponent);
+
+        expect(component.find('[testComponentClassName]'));
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {

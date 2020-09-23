@@ -56,6 +56,8 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
+    // Dialog doesn't use a className and refers to modalProps.className instead.
+    disabledTests: ['component-contains-classname'],
   });
 
   it('Fires dismissed after closing', () => {

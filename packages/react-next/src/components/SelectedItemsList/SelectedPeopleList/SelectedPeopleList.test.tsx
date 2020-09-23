@@ -10,7 +10,8 @@ describe('SelectedPeopleList', () => {
     isConformant({
       Component: SelectedPeopleList,
       displayName: 'SelectedPeopleList',
-      disabledTests: [`has-top-level-file`],
+      // Doesn't have a top level SelectedPeopleList.ts file and doesn't apply className prop to the component.
+      disabledTests: [`has-top-level-file`, `component-contains-classname`],
     });
 
     it('renders keyed personas when there is no context menu', () => {
@@ -54,6 +55,7 @@ describe('SelectedPeopleList', () => {
       ]);
 
       const result = picker.render();
+
       expect(result).toBeInstanceOf(Array);
       expect(result[0].key).toBe('person-A');
       expect(result[1].key).toBe('person-B');
@@ -63,7 +65,7 @@ describe('SelectedPeopleList', () => {
       const getEditingItemText = (i: IExtendedPersonaProps) => i.text || 'lmao oops';
       const ref = React.createRef<SelectedPeopleList>();
 
-      // editingitem has unlisted constraints on being mounted on an actual DOM.
+      // EditingItem has unlisted constraints on being mounted on an actual DOM.
       // so we can't render it with `renderer` and expect the internal state of the EditingItem to be
       // initialized
       const root = document.createElement('div');
