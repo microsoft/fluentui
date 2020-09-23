@@ -131,7 +131,7 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 };
 
 /**
- * A Datepicker is used to display dates.
+ * A Datepicker is a control which is used to display dates grid and allow user to select them.
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
