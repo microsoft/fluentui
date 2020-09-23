@@ -8,7 +8,7 @@ import { safeCreate } from '@uifabric/test-utilities';
 const ReactDOM = require('react-dom');
 
 const testEvents: string[] = (
-  'click contextmenu doubleclick drag dragend dragenter dragleave dragover dragstart drop ' +
+  'click contextmenu double click drag dragend dragenter dragleave dragover dragstart drop ' +
   'mousedown mousemove mouseout mouseup keydown keypress keyup focus blur change input submit'
 ).split(' ');
 

@@ -98,8 +98,8 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 
 /**
  * Internal component that is used to wrap all ComboBox options.
- * This is used to customize when we want to rerender components,
- * so we don't rerender every option every time render is executed.
+ * This is used to customize when we want to re-render components,
+ * so we don't re-render every option every time render is executed.
  */
 const ComboBoxOptionWrapper = React.memo(
   ({ render }: IComboBoxOptionWrapperProps) => render(),
@@ -1772,7 +1772,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // get the next "valid" index
     const indexUpdate = this._getNextSelectableIndex(index, searchDirection);
 
-    // if the two indicies are equal we didn't move and
+    // if the two indices are equal we didn't move and
     // we should attempt to get  get the first/last "valid" index to use
     // (Note, this takes care of the potential cases where the first/last
     // item is not focusable), otherwise use the updated index
@@ -1911,7 +1911,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
         }
 
-        // Allow TAB to propigate
+        // Allow TAB to propagate
         return;
 
       case KeyCodes.escape:
@@ -2130,7 +2130,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null): void {
     // If we are disabled, close the menu (if needed)
-    // and eat all keystokes other than TAB or ESC
+    // and eat all keystrokes other than TAB or ESC
     if (this.props.disabled) {
       if (this.state.isOpen) {
         this.setState({ isOpen: false });
@@ -2193,7 +2193,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   private _handleTouchAndPointerEvent() {
-    // If we already have an existing timeeout from a previous touch and pointer event
+    // If we already have an existing timeout from a previous touch and pointer event
     // cancel that timeout so we can set a nwe one.
     if (this._lastTouchTimeoutId !== undefined) {
       this._async.clearTimeout(this._lastTouchTimeoutId);
@@ -2234,7 +2234,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Get the aria-activedescendant value for the comboxbox.
+   * Get the aria-activedescendant value for the comboBox.
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
    * null otherwise
    */
@@ -2320,7 +2320,7 @@ function getSelectedIndices(
  * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
  *
  * @returns No matter what specific types the input parameters are, always return an array of
- *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
+ *  either strings or numbers instead of primitive type.  This normalization makes caller's logic easier.
  */
 function buildDefaultSelectedKeys(
   defaultSelectedKey: string | number | string[] | number[] | null | undefined,

@@ -324,7 +324,7 @@ describe('Dropdown', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div
+      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
       // being focused. Utilize JSDOM instead.
       ReactDOM.render(
         <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,

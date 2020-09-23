@@ -35,7 +35,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
    */
   suggestionsContainerAriaLabel?: string;
   /**
-   * the classname of the suggestionitem.
+   * the classname of the suggestionItem.
    */
   suggestionsItemClassName?: string;
   /**

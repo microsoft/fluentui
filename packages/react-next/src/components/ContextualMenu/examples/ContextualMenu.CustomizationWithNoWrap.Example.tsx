@@ -26,7 +26,7 @@ export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionCompone
             checkForNoWrap: true,
           },
           items: [
-            { key: 'bulb', text: 'Lightbulb', onRender: renderCharmMenuItem, className: classNames.item },
+            { key: 'bulb', text: 'LightBulb', onRender: renderCharmMenuItem, className: classNames.item },
             { key: 'run', text: 'Running', onRender: renderCharmMenuItem, className: classNames.item },
             { key: 'plane', text: 'Airplane', onRender: renderCharmMenuItem, className: classNames.item },
             { key: 'page', text: 'Page', onRender: renderCharmMenuItem, className: classNames.item },
