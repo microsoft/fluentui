@@ -77,22 +77,19 @@ export const defaultTests: TestObject = {
         customMount = mount,
         passesUnhandledPropsTo,
       } = testInfo;
+
       const mergedProps: Partial<{}> = {
         ...requiredProps,
         className: 'testComponentClassName',
       };
 
-      if (passesUnhandledPropsTo) {
-        const el = customMount(<Component {...mergedProps} />).find(passesUnhandledPropsTo);
-        const component = getComponent(el, helperComponents, wrapperComponent);
+      const el = passesUnhandledPropsTo
+        ? customMount(<Component {...mergedProps} />).find(passesUnhandledPropsTo)
+        : customMount(<Component {...mergedProps} />);
 
-        expect(component.find('[testComponentClassName]'));
-      } else {
-        const wrapper = customMount(<Component {...mergedProps} />);
-        const component = getComponent(wrapper, helperComponents, wrapperComponent);
+      const component = getComponent(el, helperComponents, wrapperComponent);
 
-        expect(component.find('[testComponentClassName]'));
-      }
+      expect(component.find('[testComponentClassName]'));
     });
   },
 
