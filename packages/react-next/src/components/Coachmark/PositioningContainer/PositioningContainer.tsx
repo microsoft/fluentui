@@ -30,7 +30,7 @@ import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
 // In order for some of the max height logic to work properly we need to set the border.
-// The value is abitrary.
+// The value is arbitrary.
 const BORDER_WIDTH = 1;
 const SLIDE_ANIMATIONS = {
   [RectangleEdge.top]: 'slideUpIn20',
@@ -81,7 +81,7 @@ function usePositionState(
 ) {
   const async = useAsync();
   /**
-   * Current set of calcualted positions for the outermost parent container.
+   * Current set of calculated positions for the outermost parent container.
    */
   const [positions, setPositions] = React.useState<IPositionedData>();
   const positionAttempts = React.useRef(0);
