@@ -1,8 +1,26 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v0.4.0)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v0.3.0..@fluentui/theme_v0.4.0)
+
+### Minor changes
+
+- Add default fonts from styling package. ([PR #15129](https://github.com/microsoft/fluentui/pull/15129) by xgao@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v0.3.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v0.1.2..@fluentui/theme_v0.3.0)
+
+### Minor changes
+
+- Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`. ([PR #15070](https://github.com/microsoft/fluentui/pull/15070) by dzearing@hotmail.com)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v0.1.2)
 

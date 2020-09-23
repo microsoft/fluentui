@@ -9,6 +9,7 @@ import * as renderer from 'react-test-renderer';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
@@ -42,6 +43,11 @@ describe('Dropdown', () => {
     }
 
     document.body.innerHTML = '';
+  });
+
+  isConformant({
+    Component: Dropdown,
+    displayName: 'Dropdown',
   });
 
   describe('single-select', () => {
@@ -337,10 +343,16 @@ describe('Dropdown', () => {
 
       const container = document.createElement('div');
       document.body.appendChild(container);
-      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      });
 
       expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
-      dropdown.current!.focus(true);
+
+      ReactTestUtils.act(() => {
+        dropdown.current!.focus(true);
+      });
       const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
       expect(firstDropdownItem).not.toBeNull();
       expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');

@@ -12,6 +12,7 @@ import { TextField } from 'office-ui-fabric-react';
 import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';
 import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
+import { isConformant } from '../../common/isConformant';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -29,6 +30,11 @@ describe('DatePicker', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: DatePicker,
+    displayName: 'DatePicker',
   });
 
   it('can add an id to the container', () => {

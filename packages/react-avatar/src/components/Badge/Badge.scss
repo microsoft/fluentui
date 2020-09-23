@@ -11,7 +11,7 @@
   --badge-borderRadius: 9999px;
 
   // TODO this should match the parent's background color
-  --badge-borderColor: var(--siteVariables-colors-white, white);
+  --badge-glowColor: var(--siteVariables-colors-white, white);
 
   --badge-color: var(--siteVariables-colors-grey-350, rgb(151, 149, 147));
   --badge-iconColor: var(--siteVariables-colors-white, white);
@@ -31,7 +31,10 @@
   justify-content: center;
   vertical-align: middle;
   border-radius: var(--badge-borderRadius);
-  box-shadow: 0 0 0 var(--badge-borderWidth, calc(var(--badge-size) / 8)) var(--badge-borderColor);
+  border-width: var(--badge-borderWidth, calc(var(--badge-size) / 8));
+  border-style: var(--badge-borderStyle);
+  border-color: var(--badge-borderColor);
+  box-shadow: 0 0 0 var(--badge-glowWidth, calc(var(--badge-size) / 8)) var(--badge-glowColor);
   background-color: var(--badge-color);
   color: var(--badge-iconColor);
   width: var(--badge-size);

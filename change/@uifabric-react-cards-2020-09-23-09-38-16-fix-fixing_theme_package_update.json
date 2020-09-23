@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "set theme package version to be 1.0.0.",
+  "packageName": "@uifabric/react-cards",
+  "email": "karymes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-23T07:38:16.169Z"
+}

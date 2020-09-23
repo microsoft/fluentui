@@ -8,12 +8,12 @@ import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownRequiredExample } from './examples/Dropdown.Required.Example';
 
-const DropdownBasicExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
-const DropdownControlledExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
-const DropdownControlledMultiExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
-const DropdownCustomExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
-const DropdownErrorExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
-const DropdownRequiredExampleCode = require('!raw-loader!react-next/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
+const DropdownBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownControlledExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
+const DropdownControlledMultiExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
+const DropdownCustomExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
+const DropdownErrorExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
+const DropdownRequiredExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
@@ -56,10 +56,10 @@ export const DropdownPageProps: IDocPageProps = {
       ),
     },
   ],
-  overview: require<string>('!raw-loader!react-next/src/components/Dropdown/docs/DropdownOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/Dropdown/docs/DropdownOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!react-next/src/components/Dropdown/docs/DropdownDos.md'),
-  donts: require<string>('!raw-loader!react-next/src/components/Dropdown/docs/DropdownDonts.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-next/src/components/Dropdown/docs/DropdownDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-next/src/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

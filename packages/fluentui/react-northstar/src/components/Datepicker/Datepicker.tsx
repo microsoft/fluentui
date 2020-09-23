@@ -132,7 +132,7 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 
 /**
  * A Datepicker is used to display dates.
- * This component is currently UNSTABLE!
+ * This component is currently unstable!
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
@@ -328,7 +328,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
-    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} />
+    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
   );
 
   const element = getA11yProps.unstable_wrapWithFocusZone(
@@ -362,7 +362,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           align: 'start' as const,
         }),
         overrideProps: (predefinedProps: PopupProps): PopupProps => ({
-          trigger: triggerButtonElement,
+          trigger: predefinedProps.trigger ?? triggerButtonElement,
           target: props.buttonOnly ? null : inputRef.current,
           content: calendarElement,
           onOpenChange: (e, { open }) => {

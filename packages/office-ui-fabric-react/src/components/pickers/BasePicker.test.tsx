@@ -7,6 +7,7 @@ import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.typ
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -58,6 +59,7 @@ describe('BasePicker', () => {
     ReactDOM.unmountComponentAtNode(root);
     document.body.textContent = '';
   });
+
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
     ISimple,
     IBasePickerProps<ISimple>
@@ -93,6 +95,12 @@ describe('BasePicker', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: BasePicker,
+    displayName: 'BasePicker',
+    disabledTests: ['has-top-level-file'],
   });
 
   it('can provide custom renderers', () => {

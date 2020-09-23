@@ -1,1 +1,1 @@
-export * from './components/Dropdown';
+export * from './components/Dropdown/index';
