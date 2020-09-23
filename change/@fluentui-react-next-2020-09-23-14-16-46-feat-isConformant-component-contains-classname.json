@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Removing repetitive tests within ComponentConformance.test.tsx",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-23T21:16:46.942Z"
+}
