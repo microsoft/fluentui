@@ -118,8 +118,8 @@ export class NarrationComputer {
         element
           .getAttribute('aria-describedby')
           ?.split(/\s+/)
-          .map(x => {
-            return element.ownerDocument?.getElementById(x)?.textContent || null;
+          .map((id: string) => {
+            return element.ownerDocument?.getElementById(id)?.textContent || null;
           })
           .filter(x => x !== null)
           .join('') || '';
