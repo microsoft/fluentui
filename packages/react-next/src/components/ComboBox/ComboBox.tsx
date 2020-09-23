@@ -563,10 +563,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     const { isOpen } = this.state;
 
-    // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
+    // If the combo box has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
     // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
-    // should be removed and the multiselect combobox should behave like a picker.
+    // should be removed and the multiselect combo box should behave like a picker.
     const placeholder =
       this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
         ? multiselectAccessibleText
@@ -739,7 +739,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   /**
    * Returns a string that concatenates all of the selected values
-   * for multiselect combobox.
+   * for multiselect combo box.
    */
   private _getMultiselectDisplayString(
     selectedIndices: number[] | undefined,
@@ -1034,7 +1034,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         return;
       }
       if (this.props.multiSelect) {
-        // Setting the initial state of option.selected in Multi-select combobox by checking the
+        // Setting the initial state of option.selected in Multi-select combo box by checking the
         // selectedIndices array and overriding the undefined issue
         option.selected = option.selected !== undefined ? !option.selected : selectedIndices.indexOf(index) < 0;
         if (option.selected && selectedIndices.indexOf(index) < 0) {
@@ -1048,9 +1048,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       submitPendingValueEvent.persist();
 
-      // Only setstate if combobox is uncontrolled.
+      // Only setState if combo box is uncontrolled.
       if (this.props.selectedKey || this.props.selectedKey === null) {
-        // If ComboBox value is changed, revert preview first
+        // If combo box value is changed, revert preview first
         if (this._hasPendingValue && onPendingValueChanged) {
           onPendingValueChanged();
           this._hasPendingValue = false;
