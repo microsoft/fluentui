@@ -14,10 +14,12 @@ import {
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
+  createStringYAxis,
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
   XAxisTypes,
+  YAxisType,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -81,7 +83,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -100,6 +102,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
+      xAxisCount: this.props.xAxisTickCount,
+      xAxistickSize: this.props.xAxistickSize,
+      tickPadding: this.props.tickPadding,
     };
 
     const YAxisParams = {
@@ -144,7 +149,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      * 2. To draw the graph.
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
-    const yScale = createYAxis(YAxisParams, this._isRtl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let yScale: any;
+    if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
+      yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
+    } else {
+      yScale = createYAxis(YAxisParams, this._isRtl);
+    }
 
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
@@ -180,7 +191,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <FocusZone direction={focusDirection}>
+        <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(e: SVGElement | null) => {
@@ -219,6 +230,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 Legend={calloutProps.legend!}
                 YValue={calloutProps.YValue!}
                 color={calloutProps.color!}
+                {...chartHoverProps}
               />
             )}
           </Callout>

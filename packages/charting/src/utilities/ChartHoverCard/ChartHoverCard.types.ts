@@ -20,9 +20,19 @@ export interface IChartHoverCardProps {
    */
   color?: string;
   /**
+   * ratio to show
+   * first number is numerator
+   * and second number is denominator
+   */
+  ratio?: [number, number];
+  /**
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+  /**
+   * description message in the callout
+   */
+  descriptionMessage?: string;
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
@@ -63,6 +73,22 @@ export interface IChartHoverCardStyles {
    * styles for callout y-content
    */
   calloutContentY?: IStyle;
+  /**
+   * styles for denomination
+   */
+  ratio?: IStyle;
+  /**
+   * styles for numerator
+   */
+  numerator?: IStyle;
+  /**
+   * styles for denominator
+   */
+  denominator?: IStyle;
+  /**
+   * styles for the description
+   */
+  descriptionMessage?: IStyle;
 }
 
 export interface IChartHoverCardStyleProps {
@@ -80,4 +106,8 @@ export interface IChartHoverCardStyleProps {
    * X  value for hover card
    */
   XValue?: string;
+  /**
+   * indicate if denomination is present
+   */
+  isRatioPresent?: boolean;
 }

@@ -70,6 +70,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'GroupedVerticalBarChart',
           url: '#/examples/GroupedVerticalBarChart',
         },
+        {
+          component: require<any>('../components/HeatMapChart/HeatMapChartPage').HeatMapChart,
+          key: 'HeatMapChart',
+          name: 'HeatMapChart',
+          url: '#/examples/HeatMapChart',
+        },
       ],
     },
   ],

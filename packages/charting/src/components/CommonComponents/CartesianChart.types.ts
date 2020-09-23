@@ -6,7 +6,8 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IMargins } from '../../types/index';
-import { ChartTypes, XAxisTypes } from '../../utilities/index';
+import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/index';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -220,6 +221,23 @@ export interface ICartesianChartProps {
   yAxisTickCount?: number;
 
   /**
+   * defines the number of ticks on the x-axis
+   * @default 10
+   */
+  xAxisTickCount?: number;
+
+  /**
+   * define the size of the tick on the x-axis
+   * @default 10
+   */
+  xAxistickSize?: number;
+
+  /**
+   * define the space between the tick and the data point
+   * @default 10
+   */
+  tickPadding?: number;
+  /**
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
@@ -321,6 +339,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /** X axis type */
   xAxisType: XAxisTypes;
 
+  /** Y axis type */
+  yAxisType?: YAxisType;
+
   /**
    * Legeds of the chart.
    */
@@ -376,6 +397,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   datasetForXAxisDomain?: string[];
 
+  /**
+   * if the data points for the y-axis is of type string, then we need to give this
+   * prop to construct the y-axis
+   */
+  stringDatasetForYAxisDomain?: string[];
   /** Own callout design */
   // need to add type here
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -386,4 +412,14 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * @default FocusZoneDirection.horizontal
    */
   focusZoneDirection?: FocusZoneDirection;
+
+  /**
+   * props to send into the chart hover card
+   */
+  chartHoverProps?: IChartHoverCardProps;
+
+  /**
+   * props to send to the focuszone
+   */
+  svgFocusZoneProps?: IFocusZoneProps;
 }

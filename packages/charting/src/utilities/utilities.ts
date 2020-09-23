@@ -16,9 +16,16 @@ export enum ChartTypes {
   VerticalBarChart,
   VerticalStackedBarChart,
   GroupedVerticalBarChart,
+  HeatMapChart,
 }
 
 export enum XAxisTypes {
+  NumericAxis,
+  DateAxis,
+  StringAxis,
+}
+
+export enum YAxisType {
   NumericAxis,
   DateAxis,
   StringAxis,
@@ -62,7 +69,7 @@ export interface IXAxisParams {
   xAxisElement?: SVGElement | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
-  tickSize?: number;
+  xAxistickSize?: number;
   tickPadding?: number;
 }
 export interface ITickParams {
@@ -117,7 +124,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
-    tickSize = 10,
+    xAxistickSize = 10,
     tickPadding = 10,
     xAxisCount = 10,
     xAxisElement,
@@ -128,7 +135,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(tickSize)
+    .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(xAxisCount)
     .tickSizeOuter(0);
@@ -176,14 +183,15 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @returns
  */
 export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
-  const { domainNRangeValues } = xAxisParams;
+  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .padding(0.1);
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxisParams.tickSize || 10)
-    .tickPadding(xAxisParams.tickPadding || 10)
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(xAxisCount)
     .tickFormat((x: string, index: number) => dataset[index] as string);
 
   if (xAxisParams.xAxisElement) {
@@ -247,6 +255,27 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     : '';
   return yAxisScale;
 }
+
+export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const yAxisScale = d3ScaleBand()
+    .domain(dataPoints)
+    .range([containerHeight - margins.bottom!, margins.top!]);
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(dataPoints)
+    .tickSize(0);
+  if (yAxisTickFormat) {
+    yAxis.tickFormat(yAxisTickFormat);
+  }
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+    : '';
+  return yAxisScale;
+};
 
 export function calloutData(values: ILineChartPoints[]) {
   let combinedResult: {
@@ -528,6 +557,22 @@ export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL:
 }
 
 /**
+ * it calculates the range and domain values for the HeatMap
+ * @param margins
+ * @param width
+ * @param isRTL
+ * @returns {IDomainNRange}
+ */
+
+export function getDomainAndRangeForStringAxisForHeatMap(margins: IMargins, width: number, isRTL: boolean) {
+  const rMin = margins.left!;
+  const rMax = width - margins.right!;
+  return isRTL
+    ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
+    : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
+}
+
+/**
  * Calculate domain and range values to the Vertical stacked bar chart - For Numeric axis
  *
  * @export
@@ -592,6 +637,9 @@ export function getDomainNRangeValues(
       case ChartTypes.VerticalStackedBarChart:
         domainNRangeValue = domainRangeOfStrForVSBC(margins, width, isRTL);
         break;
+      case ChartTypes.HeatMapChart:
+        domainNRangeValue = getDomainAndRangeForStringAxisForHeatMap(margins, width, isRTL);
+        break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -645,3 +693,31 @@ export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startVal
 
   return minMaxValues;
 }
+
+/**
+ * @param p string or number or Date
+ *
+ * This function takes the single data point of the x-aixs
+ * and decides what is the x-axis
+ */
+export const getTypeOfAxis = (p: string | number | Date, isXAsix: boolean): XAxisTypes | YAxisType => {
+  if (isXAsix) {
+    switch (typeof p) {
+      case 'string':
+        return XAxisTypes.StringAxis;
+      case 'number':
+        return XAxisTypes.NumericAxis;
+      default:
+        return XAxisTypes.DateAxis;
+    }
+  } else {
+    switch (typeof p) {
+      case 'string':
+        return YAxisType.StringAxis;
+      case 'number':
+        return YAxisType.NumericAxis;
+      default:
+        return YAxisType.DateAxis;
+    }
+  }
+};
