@@ -401,7 +401,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         internalState.events.dispose();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isModalOpen or isOpen mutates.
-    }, [dragOptions, handleModalClose, isModalOpen, isOpen, registerForKeyUp, topOffsetFixed]);
+    }, [isModalOpen, isOpen]);
 
     React.useEffect(() => {
       if (!isOpen && !isVisible) {
