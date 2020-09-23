@@ -78,6 +78,13 @@ export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: st
     },
   });
 };
+export const isSomething = <T>(val: Maybe<T>): val is Something<T> => {
+  return val.something;
+};
+
+export const isNothing = <T>(val: Maybe<T>): val is Nothing<T> => {
+  return !val.something;
+};
 
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {
   return value !== undefined && value !== null ? Something(value!) : Nothing();

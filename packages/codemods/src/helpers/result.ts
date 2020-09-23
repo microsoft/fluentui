@@ -143,13 +143,10 @@ export const Err = <R, E>(value: E): Err<R, E> => {
  */
 export type Result<R, E> = Err<R, E> | Ok<R, E>;
 
-const _isOk = <R, E>(r: Result<R, E>): r is Ok<R, E> => {
+export const isOk = <R, E>(r: Result<R, E>): r is Ok<R, E> => {
   return r.ok;
 };
-const _isErr = <R, E>(r: Result<R, E>): r is Err<R, E> => {
+
+export const isErr = <R, E>(r: Result<R, E>): r is Err<R, E> => {
   return !r.ok;
-};
-export const Result = {
-  isOk: _isOk,
-  isErr: _isErr,
 };

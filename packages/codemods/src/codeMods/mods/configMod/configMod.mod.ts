@@ -11,16 +11,14 @@ import {
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
 import { Ok, Err, Result } from '../../../helpers/result';
-import { MaybeDictionary } from '../../../helpers/maybe';
+import { MaybeDictionary, isSomething } from '../../../helpers/maybe';
 
 import jsonObj from '../upgrades.json';
 
 /* Creates and returns an array of CodeMod objects from a JSON file. Optionally takes in
    an array of functions from user to turn into codemods as well. */
 export function createCodeModsFromJson(userMods?: CodeMod[]): CodeMod[] | undefined {
-  const funcs = getCodeModsFromJson()
-    .filter(Result.isOk)
-    .map(v => v.value);
+  const funcs = getCodeModsFromJson();
   /* If the user wants to supply any codemods (as a void function that takes in a sourcefile),
      add those offerings right now! */
   if (userMods) {
@@ -32,26 +30,21 @@ export function createCodeModsFromJson(userMods?: CodeMod[]): CodeMod[] | undefi
 /* Helper function that parses a json object for details about individual
    codemods and formats each into a function. These functions are stored in
    an array that is returned to the user. */
-export function getCodeModsFromJson(): Result<CodeMod, Error>[] {
-  return jsonObj.upgrades.map(modDetail =>
-    codeModMap[modDetail.type]
-      .then(v => v(modDetail))
-      .then<Result<CodeMod, Error>>(v => {
-        const options: ModOptions = {
-          name: modDetail.name,
-          version: modDetail.version ? modDetail.version! : '100000',
-        };
-        return Ok<CodeMod, Error>(createCodeMod(options, v));
-      })
-      .orElse(
-        Err<CodeMod, Error>(
-          new Error(
-            `ModConfiguration error: ${modDetail.name} is an invalid mod mapping.
-            Check to make sure there is a valid mapping in the upgrades.json file `,
-          ),
-        ),
-      ),
-  );
+export function getCodeModsFromJson(): CodeMod[] {
+  return jsonObj.upgrades
+    .map(modDetail =>
+      codeModMap[modDetail.type]
+        .then(v => v(modDetail))
+        .then(v => {
+          const options: ModOptions = {
+            name: modDetail.name,
+            version: modDetail.version ? modDetail.version! : '100000',
+          };
+          return createCodeMod(options, v);
+        }),
+    )
+    .filter(isSomething)
+    .map(v => v.value);
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
@@ -124,9 +117,7 @@ let __configs: CodeMod[] | undefined = undefined;
 const configMod: CodeMod = {
   run: (file: SourceFile) => {
     if (!__configs) {
-      __configs = getCodeModsFromJson()
-        .filter(Result.isOk)
-        .map(v => v.value);
+      __configs = getCodeModsFromJson();
       if (__configs === undefined || __configs.length === 0) {
         return Err({ reason: `failed to get any mods from json. Perhaps the file is missing or malformed?` });
       }
