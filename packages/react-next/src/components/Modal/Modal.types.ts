@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
@@ -52,7 +51,6 @@ export interface IModal {
 export interface IModalProps
   extends React.HTMLAttributes<HTMLElement>,
     React.RefAttributes<HTMLDivElement>,
-    IWithResponsiveModeState,
     IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing

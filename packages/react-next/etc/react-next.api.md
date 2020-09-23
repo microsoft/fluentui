@@ -1940,7 +1940,7 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IModal>;
