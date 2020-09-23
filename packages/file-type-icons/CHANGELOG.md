@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 01 Sep 2020 12:27:02 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.8)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.1..@uifabric/file-type-icons_v7.6.8)
+
+### Patches
+
+- updating filetype mapping to support classifier, list and listitem ([PR #15103](https://github.com/microsoft/fluentui/pull/15103) by caperez@microsoft.com)
 
 ## [7.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.1)
 

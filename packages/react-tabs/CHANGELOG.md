@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.5)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v0.6.0..@fluentui/react-tabs_v0.6.5)
+
+### Patches
+
+- Clean up comments for defaultSelectedKey. ([PR #15122](https://github.com/microsoft/fluentui/pull/15122) by xgao@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.0)
 

@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 import { expectNodes, findNodes } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
@@ -30,6 +31,12 @@ describe('SwatchColorPicker', () => {
     const component = create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: SwatchColorPicker,
+    displayName: 'SwatchColorPicker',
+    requiredProps: { colorCells: DEFAULT_OPTIONS, columnCount: 4 },
   });
 
   it('Can render in full without being parented to a button', () => {

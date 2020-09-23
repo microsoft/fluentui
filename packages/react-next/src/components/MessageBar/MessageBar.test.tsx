@@ -3,6 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
+import { isConformant } from '../../common/isConformant';
 
 describe('MessageBar', () => {
   const noop = () => {
@@ -99,6 +100,11 @@ describe('MessageBar', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: MessageBar,
+    displayName: 'MessageBar',
   });
 
   it('renders custom message bar icon correctly', () => {

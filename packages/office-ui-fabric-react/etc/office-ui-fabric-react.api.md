@@ -2222,8 +2222,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
         documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
+    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
+    // @deprecated
     preventDismissOnLostFocus?: boolean;
+    // @deprecated
     preventDismissOnResize?: boolean;
+    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
@@ -4528,6 +4532,7 @@ export interface IDragDropTarget {
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
+    keepInBounds?: boolean;
     keyboardMoveIconProps?: IIconProps;
     menu: React.FunctionComponent<IContextualMenuProps>;
     moveMenuItemText: string;

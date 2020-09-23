@@ -18,10 +18,6 @@ export interface IToggle {
     focus: () => void;
 }
 
-// @public (undocumented)
-export interface IToggleOptions {
-}
-
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
@@ -46,15 +42,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export type IToggleSlotProps = {
-    [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-// @public (undocumented)
-export interface IToggleSlots {
 }
 
 // @public
