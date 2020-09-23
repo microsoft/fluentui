@@ -147,9 +147,9 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       />
     );
   }
-  private _onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
+  private _onRenderItem = (item: IColorCellProps, index: number): JSX.Element | null => {
     const { onRenderColorCell = this._renderOption } = this.props;
-    return onRenderColorCell(item, this._renderOption) as JSX.Element;
+    return onRenderColorCell(item, this._renderOption);
   };
   /**
    * When the whole swatchColorPicker is blurred,

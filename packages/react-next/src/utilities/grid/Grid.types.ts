@@ -25,7 +25,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
    * Custom renderer for the individual items
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onRenderItem: (item: any, index: number) => JSX.Element;
+  onRenderItem: (item: any, index: number) => JSX.Element | null;
 
   /**
    * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).
