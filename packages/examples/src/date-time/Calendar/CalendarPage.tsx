@@ -9,7 +9,7 @@ import { CalendarInlineMonthOnlyExample } from './Calendar.Inline.MonthOnly.Exam
 import { CalendarInlineMultidayDayViewExample } from './Calendar.Inline.MultidayDayView.Example';
 import { CalendarInlineNonContiguousWorkWeekDaysExample } from './Calendar.Inline.NonContiguousWorkWeekDays.Example';
 import { CalendarInlineOverlayedMonthExample } from './Calendar.Inline.OverlayedMonthPicker.Example';
-import { CalendarInlineSixWeeksExample } from './examples/Calendar.Inline.SixWeeks';
+import { CalendarInlineSixWeeksExample } from './Calendar.Inline.SixWeeks';
 import { CalendarInlineWeekNumbersExample } from './Calendar.Inline.WeekNumbers.Example';
 import { CalendarInlineWeekSelectionExample } from './Calendar.Inline.WeekSelection.Example';
 import { CalendarInlineMonthSelectionExample } from './Calendar.Inline.MonthSelection.Example';
@@ -23,7 +23,7 @@ const CalendarInlineMonthOnlyExampleCode = require('!raw-loader!@fluentui/exampl
 const CalendarInlineMultidayDayViewExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.MultidayDayView.Example') as string;
 const CalendarInlineNonContiguousWorkWeekDaysExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.NonContiguousWorkWeekDays.Example') as string;
 const CalendarInlineOverlayedMonthExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.OverlayedMonthPicker.Example') as string;
-const CalendarInlineSixWeeksExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/examples/Calendar.Inline.SixWeeks') as string;
+const CalendarInlineSixWeeksExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.SixWeeks') as string;
 const CalendarInlineWeekNumbersExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.WeekNumbers.Example') as string;
 const CalendarInlineWeekSelectionExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.WeekSelection.Example') as string;
 const CalendarInlineMonthSelectionExampleCode = require('!raw-loader!@fluentui/examples/src/date-time/Calendar/Calendar.Inline.MonthSelection.Example') as string;
