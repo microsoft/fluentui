@@ -135,3 +135,99 @@ const Foo = props => {
   return <div className={classes.root} />;
 };
 ```
+
+## How does this change other existing ways of theming Fluent UI components?
+
+### Customizer
+
+`Customizer` is now deprecated and you should replace it with `ThemeProvider`.
+`CustomizerContext` is now deprecated and you should replace it with `ThemeContext` or `useTheme` hook.
+
+Deprecations remain to be functional as is but they will be removed in Fluent UI v9 release.
+
+#### Replace settings prop
+
+Before:
+
+```
+<Customizer settings={{ theme }} />
+```
+
+After:
+
+```
+<ThemeProvider theme={theme} />
+```
+
+#### Replace scopedSettings prop
+
+Before:
+
+```
+<Customizer
+  scopedSettings={{
+    Checkbox: {
+      styles: CheckboxStyles
+    },
+  }}
+/>
+```
+
+After:
+
+```
+<ThemeProvider
+  theme={{
+    components: { Checkbox: { styles: CheckboxStyles } },
+  }}
+/>
+```
+
+#### Replace CustomizerContext
+
+Before:
+
+```
+  <CustomizerContext.Consumer>
+    {(parentContext: ICustomizerContext) => {
+      const theme = parentContext.customizations.settings;
+      ...
+    }
+  </CustomizerContext.Consumer>
+```
+
+After:
+See options in `Accessing theme` section above.
+
+### loadTheme
+
+`loadTheme` remains to work as is. However, you are recommended to replace `loadTheme` with `ThemeProvider`. That way, your application consistently has one way of providing theme.
+
+To do that, instead of calling `loadTheme(your_theme)`, you will simply wrap the root component of your React application once with `ThemeProvider`:
+
+```
+<ThemeProvider theme={your_theme}>
+  <App />
+</ThemeProvider>
+```
+
+One caveat here is that if you app has styles which relies on `@microsoft/load-themed-styles`, `ThemeProvider` won't be able to replace `loadTheme` in this case.
+
+### Fabric
+
+Instead of using `Fabric`, you can now replace it fully with `ThemeProvider`. Here is how to replace each prop usage:
+
+| Fabric             | ThemeProvider                                                                                                                                                                                       |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `componentRef`     | `ref`                                                                                                                                                                                               |
+| `as`               | `as`                                                                                                                                                                                                |
+| `theme`            | `theme`                                                                                                                                                                                             |
+| `styles`           | Not longer support `styles` prop. If you need to style the root element, you can do that using (inline) style or className prop. Setting arbitrary styles for document body is no longer supported. |
+| `applyTheme`       | This is now applied by default, or by setting `applyTo="element"`. If you don't want any body styles to be applied on root element, you can set `applyTo="none"`.                                   |
+| `applyThemeToBody` | `applyTo="body"`                                                                                                                                                                                    |
+| `dir`              | set `rtl` in `theme` prop                                                                                                                                                                           |
+
+#### Other call-outs
+
+- `ThemeProvider` by default sets `background-color` for the root element using `theme.semanticColors.bodyBackground`. If you find the background color being incorrect after switching to `ThemeProvider`, the right fix is likely that you need to update your theme definition to have the correct `bodyBackground`. Or, if you don't want any default stylings applied to the root element, you can set `applyTo` prop to `"none"`.
+- `ThemeProvider` does not set `font-family: inherit` on all native `button`, `input`, `textArea` elements. If you find any Fluent UI component having incorrect fonts after switching to `ThemeProvider`, please [report an issue](https://github.com/microsoft/fluentui/issues/new?template=bug_report.md).
