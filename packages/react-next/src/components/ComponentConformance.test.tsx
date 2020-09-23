@@ -12,7 +12,7 @@ const componentPackageMap: { [componentName: string]: string } = {
 };
 
 /**
- * Automatically consume and test component to ensure that they import the correct version file.
+ * Automatically consume and test components to ensure that they import the correct version file.
  */
 describe('Top Level Component File Conformance', () => {
   const privateComponents = new Set<string>();
@@ -45,7 +45,7 @@ describe('Top Level Component File Conformance', () => {
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
-    const packageName = componentPackageMap[componentName] || 'office-ui-fabric-react';
+    const packageName = componentPackageMap[componentName] || '@fluentui/react-next';
 
     it(`${componentName} imports the ${packageName} version file`, () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

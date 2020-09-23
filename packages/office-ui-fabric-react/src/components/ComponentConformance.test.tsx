@@ -8,7 +8,7 @@ const componentPackageMap: { [componentName: string]: string } = {
 };
 
 /**
- * Automatically consume and test component to ensure that they import the correct version file.
+ * Automatically consume and test components to ensure that they import the correct version file.
  */
 describe('Top Level Component File Conformance', () => {
   const privateComponents = new Set<string>();
