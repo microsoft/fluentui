@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 /**
  * @description
- * Behavior for a datepicker calendar grid row.
+ * Behavior for datepicker calendar grid row.
  * @specification
  * Adds role 'row' to 'root' slot.
  */
