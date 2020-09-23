@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-link_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding isConformant file.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@fluentui/react-link_v0.4.0",
       "version": "0.4.0",

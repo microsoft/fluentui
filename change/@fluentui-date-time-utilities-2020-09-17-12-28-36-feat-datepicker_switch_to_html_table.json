@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Removing calendarCellFormatString from date-time-utilities.",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "karymes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-17T10:28:36.339Z"
+}

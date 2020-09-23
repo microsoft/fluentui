@@ -12,10 +12,8 @@ import {
   useUnhandledProps,
   compose,
 } from '@fluentui/react-bindings';
-import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, ComponentKeyboardEventHandler } from '../../types';
 import { commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 
 export interface DatepickerCalendarCellProps extends UIComponentProps, ContentComponentProps {
@@ -23,14 +21,6 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<DatepickerCalendarCellBehaviorProps>;
-
-  /**
-   * Called on click.
-   *
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props.
-   */
-  onClick?: ComponentEventHandler<DatepickerCalendarCellProps>;
 
   /** A cell can show that it cannot be interacted with. */
   disabled?: boolean;
@@ -43,14 +33,6 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
 
   /** A cell can show that it currently has dimmed styles. */
   quiet?: boolean;
-
-  /**
-   * Called on selected item key down.
-   *
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props and proposed value.
-   */
-  onKeyDown?: ComponentKeyboardEventHandler<DatepickerCalendarCellProps>;
 }
 
 export type DatepickerCalendarCellStylesProps = Pick<
@@ -64,7 +46,7 @@ export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
  * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarCell = compose<
-  'button',
+  'td',
   DatepickerCalendarCellProps,
   DatepickerCalendarCellStylesProps,
   {},
@@ -80,13 +62,7 @@ export const DatepickerCalendarCell = compose<
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
-      actionHandlers: {
-        performClick: e => {
-          // prevent Spacebar from scrolling
-          e.preventDefault();
-          handleClick(e);
-        },
-      },
+      actionHandlers: {},
       mapPropsToBehavior: () => ({
         selected,
         disabled,
@@ -114,22 +90,12 @@ export const DatepickerCalendarCell = compose<
       composeOptions,
       unstable_props: props,
     });
-    const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-      if (disabled) {
-        e.preventDefault();
-        return;
-      }
-
-      _.invoke(props, 'onClick', e, props);
-    };
 
     const element = (
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          onClick: handleClick,
           ref,
-          disabled,
           ...unhandledProps,
         })}
       >
@@ -150,7 +116,6 @@ export const DatepickerCalendarCell = compose<
       'content',
       'design',
       'disabled',
-      'onClick',
       'selected',
       'styles',
       'variables',
@@ -162,7 +127,6 @@ export const DatepickerCalendarCell = compose<
 
 DatepickerCalendarCell.propTypes = {
   ...commonPropTypes.createCommon({ children: false }),
-  onClick: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   quiet: PropTypes.bool,
@@ -171,5 +135,5 @@ DatepickerCalendarCell.propTypes = {
 
 DatepickerCalendarCell.defaultProps = {
   accessibility: datepickerCalendarCellBehavior,
-  as: 'button',
+  as: 'td',
 };
