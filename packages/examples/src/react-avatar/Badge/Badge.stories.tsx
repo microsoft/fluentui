@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-avatar';
 import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons';
-import { StoryExample } from '../../utils/StoryExample';
+import { StoryExample } from '../utils/StoryExample';
 
 export const BadgeExamples = () => (
   <div style={{ background: 'rgb(232, 232, 232)' }}>

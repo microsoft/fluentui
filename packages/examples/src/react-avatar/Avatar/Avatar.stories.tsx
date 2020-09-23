@@ -13,7 +13,7 @@ import {
   SkypeMinusIcon,
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
-import { StoryExample } from '../../utils/StoryExample';
+import { StoryExample } from '../utils/StoryExample';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
 const examplePeople = [
