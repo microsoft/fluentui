@@ -6,8 +6,11 @@ import { ChevronEndIcon, ChevronStartIcon } from '@fluentui/react-icons-northsta
 import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 export type DatepickerCalendarHeaderActionProps = ButtonProps & {
-  /** What direction the action button should be pointing */
+  /** What direction the action button should be pointing. */
   direction?: 'previous' | 'next';
+
+  /** Button is disabled for action but still enabled for navigation. */
+  disabledNavigatableButton?: boolean;
 };
 
 export type DatepickerCalendarHeaderActionStylesProps = ButtonStylesProps;
@@ -27,10 +30,11 @@ export const DatepickerCalendarHeaderAction = compose<
 >(Button, {
   className: datepickerCalendarHeaderActionClassName,
   displayName: 'DatepickerCalendarHeaderAction',
-  handledProps: ['direction'],
-  mapPropsToStylesProps: () => ({
+  handledProps: ['direction', 'disabledNavigatableButton'],
+  mapPropsToStylesProps: p => ({
     iconOnly: true,
     text: true,
+    disabled: p.disabledNavigatableButton,
   }),
   slotProps: props => ({
     icon: {
