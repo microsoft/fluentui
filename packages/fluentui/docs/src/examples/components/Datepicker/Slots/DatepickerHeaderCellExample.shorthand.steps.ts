@@ -9,7 +9,7 @@ const config: ScreenerTestsConfig = {
       builder
         .click(`.${inputClassName}`)
         .snapshot('Shows datepicker popup.')
-        .hover(datepickerCalendarCellSelector(1))
+        .hover(datepickerCalendarCellSelector(8))
         .snapshot("Shows tooltip on today's date."),
   ],
 };
