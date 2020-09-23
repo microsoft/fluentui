@@ -223,6 +223,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
+      // eslint-disable-next-line deprecation/deprecation
       ref: this._mergedRef(this.props.elementRef, this._buttonElement),
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
       onKeyDown: this._onKeyDown,
