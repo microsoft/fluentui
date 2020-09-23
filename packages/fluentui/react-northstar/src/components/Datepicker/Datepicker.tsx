@@ -132,7 +132,6 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 
 /**
  * A Datepicker is used to display dates.
- * This component is currently unstable!
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {

@@ -9,7 +9,6 @@ export type DatepickerCalendarGridRowStylesProps = {};
 export const datepickerCalendarGridRowClassName = 'ui-datepicker__calendargridrow';
 /**
  * A DatepickerCalendarGridRow is used to display the whole calendar grid.
- * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarGridRow = compose<
   'tr',
