@@ -48,13 +48,9 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
-    // eslint-disable-next-line
-    const isElement = 'A' <= name[0] && name[0] <= 'Z';
+    const isElement = /^[A-Z]./.test(name);
     const isComponent = isElement && (!props || (props && props['data-builder-id'] !== 'undefined'));
-    let componentName = name;
-    if (isComponent && !name.includes('.')) {
-      componentName = `Fluent.${name}`;
-    }
+    const componentName = isComponent && !name.includes('.') ? `Fluent.${name}` : name;
 
     const uuid = props && props.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
     delete props?.['data-builder-id'];

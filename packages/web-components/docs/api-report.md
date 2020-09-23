@@ -10,6 +10,7 @@ import { Anchor } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
+import { Card } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
@@ -188,14 +189,7 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends FluentDesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
-    backgroundColor: string;
-    // (undocumented)
-    protected backgroundColorChanged(): void;
-    // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    neutralPalette: string[];
+export class FluentCard extends Card {
 }
 
 // @public
@@ -227,8 +221,6 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     // (undocumented)
     accentPalette: string[];
     backgroundColor: string;
-    // (undocumented)
-    protected backgroundColorChanged(): void;
     // (undocumented)
     baseHeightMultiplier: number;
     // (undocumented)
