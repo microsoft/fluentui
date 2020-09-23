@@ -9,6 +9,7 @@ import * as renderer from 'react-test-renderer';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
@@ -42,6 +43,11 @@ describe('Dropdown', () => {
     }
 
     document.body.innerHTML = '';
+  });
+
+  isConformant({
+    Component: Dropdown,
+    displayName: 'Dropdown',
   });
 
   describe('single-select', () => {

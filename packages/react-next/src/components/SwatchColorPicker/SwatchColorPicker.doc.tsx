@@ -3,7 +3,7 @@ import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basi
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
-const SwatchColorPickerBasicExampleCode = require('!raw-loader!react-next/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
+const SwatchColorPickerBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',
@@ -19,10 +19,10 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerDos.md'),
-  donts: require<string>('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerDonts.md'),
+  >('!raw-loader!@fluentui/react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!@fluentui/react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

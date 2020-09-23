@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.13",
+      "version": "7.3.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update import paths from theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "ef5e6c6d69af679f732abb9f13cf7fad2902fdb8",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@uifabric/fluent-theme_v7.2.5",
       "version": "7.2.5",

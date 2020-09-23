@@ -5,16 +5,15 @@ import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 import { LayerCustomizedExample } from './examples/Layer.Customized.Example';
 import { LayerNestedLayersExample } from './examples/Layer.NestedLayers.Example';
 
-const LayerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
-const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
-const LayerCustomizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
-const LayerNestedLayersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
+const LayerBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
+const LayerHostedExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
+const LayerCustomizedExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
+const LayerNestedLayersExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
 
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',
   componentName: 'Layer',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Layer',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Layer',
   examples: [
     {
       title: 'Basic layered content',
@@ -37,10 +36,10 @@ export const LayerPageProps: IDocPageProps = {
       view: <LayerNestedLayersExample />,
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
-  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/Layer/docs/LayerOverview.md'),
+  bestPractices: require<string>('!raw-loader!@fluentui/react-next/src/components/Layer/docs/LayerBestPractices.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-next/src/components/Layer/docs/LayerDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-next/src/components/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

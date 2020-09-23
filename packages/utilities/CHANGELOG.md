@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.3)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.0..@uifabric/utilities_v7.32.3)
+
+### Patches
+
+- Fix for Styled pure functions to have a displayName. ([PR #14940](https://github.com/microsoft/fluentui/pull/14940) by czearing@outlook.com)
 
 ## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.0)
 
