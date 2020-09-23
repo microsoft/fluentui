@@ -224,7 +224,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: calc(100vh - 1.5rem);
+            min-height: 'calc(100vh - 1.5rem)';
           }
           `,
         isExpanding &&
