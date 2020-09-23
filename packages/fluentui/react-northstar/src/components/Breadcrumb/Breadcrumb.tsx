@@ -22,6 +22,7 @@ import {
 import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
+import { Ref } from '@fluentui/react-component-ref';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
@@ -74,21 +75,21 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = (
+    const result = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          ref,
           ...unhandledProps,
         })}
       >
-        {getA11yProps.unstable_wrapWithFocusZone(<div role="list">{childrenExist(children) ? children : content}</div>)}
-      </ElementType>
+        <div role="list">{childrenExist(children) ? children : content}</div>
+      </ElementType>,
     );
+    const wrappedElement = ref ? <Ref innerRef={ref}>{result}</Ref> : result;
 
     setEnd();
 
-    return result;
+    return wrappedElement;
   },
   {
     className: breadcrumbClassName,
