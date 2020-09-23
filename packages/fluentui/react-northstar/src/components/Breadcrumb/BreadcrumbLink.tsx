@@ -17,14 +17,14 @@ import {
   SizeValue,
 } from '../../utils';
 import { useBreadcrumbContext } from './breadcrumbContext';
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, BreadcrumbLinkBehaviorProps, breadcrumbLinkBehavior } from '@fluentui/accessibility';
 
 export interface BreadcrumbLinkProps
   extends UIComponentProps<BreadcrumbLinkProps>,
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbLinkBehaviorProps>;
 
   /** The Breadcrumb Link can be disabled */
   disabled?: boolean;
@@ -47,6 +47,9 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
     const { size } = useBreadcrumbContext();
 
     const getA11yProps = useAccessibility(accessibility, {
+      mapPropsToBehavior: () => ({
+        disabled,
+      }),
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
@@ -92,6 +95,7 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
 );
 
 BreadcrumbLink.defaultProps = {
+  accessibility: breadcrumbLinkBehavior,
   as: 'a',
 };
 

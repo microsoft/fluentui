@@ -94,6 +94,7 @@ import {
   skeletonBehavior,
   breadcrumbItemBehavior,
   breadcrumbDividerBehavior,
+  breadcrumbLinkBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -192,5 +193,6 @@ testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellB
 testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
 testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
 testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
+testHelper.addBehavior('breadcrumbLinkBehavior', breadcrumbLinkBehavior);
 
 testHelper.run(behaviorMenuItems);
