@@ -9,7 +9,7 @@ const options: IChoiceGroupOption[] = [
 ];
 
 export const ChoiceGroupControlledExample: React.FunctionComponent = () => {
-  const [selectedKey, setSelectedKey] = React.useState<string>('B');
+  const [selectedKey, setSelectedKey] = React.useState<string | undefined>('B');
 
   const onChange = React.useCallback((ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) => {
     setSelectedKey(option.key);

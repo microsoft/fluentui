@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.13](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.13)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.2.5..@uifabric/fluent-theme_v7.3.13)
+
+### Patches
+
+- Update import paths from theme package. ([PR #15129](https://github.com/microsoft/fluentui/pull/15129) by xgao@microsoft.com)
 
 ## [7.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.5)
 

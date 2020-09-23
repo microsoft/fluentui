@@ -68,10 +68,11 @@ export const CheckboxStyles = css`
         border-radius: calc(var(--corner-radius) * 1px);
         background: ${neutralForegroundRestBehavior.var};
         position: absolute;
-        top: 25%;
-        right: 25%;
-        bottom: 25%;
-        left: 25%;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        height: 50%;
+        transform: translate(-50%, -50%);
         opacity: 0;
     }
 
