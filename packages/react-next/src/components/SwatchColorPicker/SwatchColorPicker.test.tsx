@@ -76,7 +76,7 @@ describe('SwatchColorPicker', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
+  it('Can fire the hover event on a cell in non-collapsible swatch color picker ', () => {
     const onHover = jest.fn();
     const wrapper = mount(
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
@@ -89,7 +89,7 @@ describe('SwatchColorPicker', () => {
     expect(onHover).toHaveBeenCalledTimes(1);
   });
 
-  it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
+  it('Can fire the focus event on a cell in non-collapsible swatch color picker ', () => {
     const onFocus = jest.fn();
     const wrapper = mount(
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
