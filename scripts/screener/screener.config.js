@@ -35,7 +35,9 @@ require('tsconfig-paths').register({
   paths: compilerOptions.paths,
 });
 
-const baseBranch = 'master';
+const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+  ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
+  : 'master';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner
