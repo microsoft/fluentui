@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.2..@uifabric/styling_v7.16.6)
+
+### Patches
+
+- Move default fonts to theme package. ([PR #15129](https://github.com/microsoft/fluentui/pull/15129) by xgao@microsoft.com)
 
 ## [7.15.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.15.2)
 

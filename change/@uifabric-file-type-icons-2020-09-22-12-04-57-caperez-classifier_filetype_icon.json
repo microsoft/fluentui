@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updating filetype mapping to support classifier, list and listitem",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-22T19:04:57.501Z"
+}

@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@fluentui/web-components_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix design system properties inheritance",
+            "author": "jes@microsoft.com",
+            "commit": "82d4558d358448584949314d32a9fb26e4d78c86",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/web-components_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Feat: convert card to be design system provider",
+            "author": "jes@microsoft.com",
+            "commit": "7ea84b6f135e4193b28495ef120f289016e392e4",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Sep 2020 12:27:02 GMT",
       "tag": "@fluentui/web-components_v0.1.8",
       "version": "0.1.8",

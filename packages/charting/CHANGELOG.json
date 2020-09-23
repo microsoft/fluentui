@@ -2,6 +2,44 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 21 Sep 2020 12:22:29 GMT",
+      "tag": "@uifabric/charting_v4.2.0",
+      "version": "4.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Vertical stacked bar chart code refactored - Cartesinan chart impletemented in base file.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f986d68c3fad2ff4034ebb86fd4618df11d81221",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "To redraw the line chart after single legend selected, need to send updated points data to cartesian chart. Now updated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "1bfa9ea1c106d8b26f67e3a8bf474bfd3cdaeab8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@uifabric/charting_v4.1.1",
+      "version": "4.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Running prettier in VerticalBarChart and Legends.",
+            "author": "czearing@outlook.com",
+            "commit": "a206613fdde9717a5c1f77a57368d83916a608d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/charting_v4.1.0",
       "version": "4.1.0",

@@ -3,7 +3,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 import { MentionIcon, RedbangIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const janeAvatar = {
-  image: 'public/images/avatar/small/ade.jpg',
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 

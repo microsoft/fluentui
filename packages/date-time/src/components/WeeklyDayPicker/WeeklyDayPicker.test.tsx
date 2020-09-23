@@ -4,6 +4,7 @@ import { resetIds } from '@uifabric/utilities';
 import { safeCreate } from '@uifabric/test-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { WeeklyDayPickerStrings } from './defaults';
+import { isConformant } from '../../common/isConformant';
 
 describe('WeeklyDayPicker', () => {
   beforeEach(() => {
@@ -34,5 +35,10 @@ describe('WeeklyDayPicker', () => {
         expect(tree).toMatchSnapshot();
       },
     );
+  });
+
+  isConformant({
+    Component: WeeklyDayPicker,
+    displayName: 'WeeklyDayPicker',
   });
 });

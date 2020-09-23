@@ -187,20 +187,3 @@ export interface IToggleStyles {
    */
   text: IStyle;
 }
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleSlots {}
-
-/**
- * {@docCategory Toggle}
- */
-export type IToggleSlotProps = {
-  [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleOptions {}
