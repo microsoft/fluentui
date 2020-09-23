@@ -1858,6 +1858,7 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
