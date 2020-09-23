@@ -141,18 +141,21 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     };
 
     // Allow the user to scroll within the modal but not on the body
-    const allowScrollOnModal = (elt: HTMLDivElement | null): void => {
-      if (elt) {
-        if (internalState.allowTouchBodyScroll) {
-          allowOverscrollOnElement(elt, internalState.events);
+    const allowScrollOnModal = React.useCallback(
+      (elt: HTMLDivElement | null): void => {
+        if (elt) {
+          if (internalState.allowTouchBodyScroll) {
+            allowOverscrollOnElement(elt, internalState.events);
+          } else {
+            allowScrollOnElement(elt, internalState.events);
+          }
         } else {
-          allowScrollOnElement(elt, internalState.events);
+          internalState.events.off(internalState.scrollableContent);
         }
-      } else {
-        internalState.events.off(internalState.scrollableContent);
-      }
-      internalState.scrollableContent = elt;
-    };
+        internalState.scrollableContent = elt;
+      },
+      [internalState],
+    );
 
     const handleKeyUp = React.useCallback(
       (ev: React.KeyboardEvent<HTMLElement>): void => {
@@ -310,7 +313,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       internalState.lastSetXCoordinate = xCoordinate;
       internalState.lastSetYCoordinate = yCoordinate;
       setKeyboardMoveModeTrue();
-      setModalMenuClose;
+      setModalMenuClose();
       internalState.events.on(window, 'keydown', handleKeyDown, true /* useCapture */);
     };
 

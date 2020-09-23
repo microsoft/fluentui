@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Modal } from '@fluentui/react-next';
 
-storiesOf('Modal', module)
+storiesOf('Modal Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
