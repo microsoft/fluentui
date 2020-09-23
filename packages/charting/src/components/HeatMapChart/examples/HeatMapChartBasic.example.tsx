@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { HeatMapChart } from '../HeatMapChart';
-import { IHeatMapChartProps } from '../HeatMapChart.types';
+import { HeatMapChart, IHeatMapChartProps } from '@uifabric/charting';
 
 interface IHeatMapChartBasicExampleState {
   width: number;
