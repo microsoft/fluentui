@@ -20,6 +20,9 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
       ':focus-visible': {
         ...borderFocusStyles[':focus-visible'],
       },
+      ...(p.current && {
+        fontWeight: v.currentItemFontWeight,
+      }),
       ...(p.size === 'smaller' && {
         paddingLeft: v.linkPaddingLeftSmaller,
         paddingRight: v.linkPaddingLeftSmaller,

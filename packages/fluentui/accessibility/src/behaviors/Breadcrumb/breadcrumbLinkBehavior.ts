@@ -8,10 +8,12 @@ export const breadcrumbLinkBehavior: Accessibility<BreadcrumbLinkBehaviorProps> 
   attributes: {
     root: {
       'aria-disabled': !!props.disabled,
+      ...(props.current && { 'aria-current': 'page' }),
     },
   },
 });
 
 export type BreadcrumbLinkBehaviorProps = {
   disabled?: boolean;
+  current?: boolean;
 };

@@ -25,12 +25,9 @@ export interface BreadcrumbItemProps
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<BreadcrumbItemBehaviorProps>;
-
-  /** Indicates if the item is the last item of the breadccrumb indicatiing the current page */
-  current?: boolean;
 }
 
-export type BreadcrumbItemStylesProps = Required<Pick<BreadcrumbItemProps, 'current'>> & { size: SizeValue };
+export type BreadcrumbItemStylesProps = { size: SizeValue };
 
 export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 
@@ -43,14 +40,11 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
-    const { accessibility, children, content, className, design, styles, variables, current } = props;
+    const { accessibility, children, content, className, design, styles, variables } = props;
     const { size } = useBreadcrumbContext();
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        current,
-      }),
       rtl: context.rtl,
     });
 
@@ -58,7 +52,6 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        current,
         size,
       }),
       mapPropsToInlineStyles: () => ({
@@ -93,17 +86,7 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
   {
     className: breadcrumbItemClassName,
     displayName: 'BreadcrumbItem',
-    handledProps: [
-      'accessibility',
-      'as',
-      'children',
-      'className',
-      'content',
-      'design',
-      'styles',
-      'variables',
-      'current',
-    ],
+    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
 

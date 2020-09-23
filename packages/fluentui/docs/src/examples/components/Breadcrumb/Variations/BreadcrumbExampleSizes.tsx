@@ -19,7 +19,9 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="smaller" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item current>T-shirt</Breadcrumb.Item>
+      <Breadcrumb.Item>
+        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
+      </Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="small">
       <Breadcrumb.Item>
@@ -37,7 +39,9 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="small" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item current>T-shirt</Breadcrumb.Item>
+      <Breadcrumb.Item>
+        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
+      </Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="medium">
       <Breadcrumb.Item>
@@ -55,7 +59,9 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="medium" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item current>T-shirt</Breadcrumb.Item>
+      <Breadcrumb.Item>
+        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
+      </Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="large">
       <Breadcrumb.Item>
@@ -73,7 +79,9 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="large" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item current>T-shirt</Breadcrumb.Item>
+      <Breadcrumb.Item>
+        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
+      </Breadcrumb.Item>
     </Breadcrumb>
   </Flex>
 );

@@ -8,11 +8,8 @@ export const breadcrumbItemBehavior: Accessibility<BreadcrumbItemBehaviorProps> 
   attributes: {
     root: {
       role: 'listitem',
-      ...(props.current && { 'aria-current': 'page' }),
     },
   },
 });
 
-export type BreadcrumbItemBehaviorProps = {
-  current?: boolean;
-};
+export type BreadcrumbItemBehaviorProps = never;
