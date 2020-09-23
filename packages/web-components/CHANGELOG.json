@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/web-components_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update sizing on indeterminate indicator",
+            "author": "37851220+khamudom@users.noreply.github.com",
+            "commit": "4c228610494394bb291deec6a220c8659be4e98c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 23:15:07 GMT",
       "tag": "@fluentui/web-components_v0.3.0",
       "version": "0.3.0",

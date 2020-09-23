@@ -166,7 +166,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles for the up arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -174,7 +174,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles for the down arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;

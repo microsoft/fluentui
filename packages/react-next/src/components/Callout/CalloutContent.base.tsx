@@ -105,7 +105,7 @@ function useMaxHeight(
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
 
-  // Updating targetRef won't rerender the component, but it's recalcuated (if needed) with every render
+  // Updating targetRef won't re-render the component, but it's recalculated (if needed) with every render
   // If it mutates, we want to re-run the effect
   const currentTarget = targetRef.current;
 

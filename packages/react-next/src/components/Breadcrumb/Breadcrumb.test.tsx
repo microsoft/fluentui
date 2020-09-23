@@ -163,9 +163,9 @@ describe('Breadcrumb', () => {
     // without hostNodes it returns the same element x4
     overflowButton.hostNodes().simulate('click');
 
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
-    expect(overfowItems).toHaveLength(2);
-    expect(overfowItems[0].textContent).toEqual('TestText1');
-    expect(overfowItems[1].textContent).toEqual('TestText2');
+    const overflowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    expect(overflowItems).toHaveLength(2);
+    expect(overflowItems[0].textContent).toEqual('TestText1');
+    expect(overflowItems[1].textContent).toEqual('TestText2');
   });
 });
