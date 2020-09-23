@@ -5231,6 +5231,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             </button>
                           </div>
                           <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -5856,6 +5857,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             </button>
                           </div>
                           <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {

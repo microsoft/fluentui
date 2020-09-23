@@ -1593,7 +1593,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               </button>
                             </div>
                             <div
-                              aria-colcount={2}
+                              aria-colspan={2}
                               className=
                                   ms-GroupHeader-title
                                   {
@@ -2983,7 +2983,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               </button>
                             </div>
                             <div
-                              aria-colcount={2}
+                              aria-colspan={2}
                               className=
                                   ms-GroupHeader-title
                                   {
@@ -3403,7 +3403,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               </button>
                             </div>
                             <div
-                              aria-colcount={2}
+                              aria-colspan={2}
                               className=
                                   ms-GroupHeader-title
                                   {

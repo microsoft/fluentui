@@ -352,7 +352,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           </label>
           <div
             aria-expanded={true}
-            aria-label="Toggle selection"
+            aria-label="Expand collapse groups"
             className=
                 ms-DetailsHeader-cell
                 {
@@ -1250,6 +1250,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             </button>
                           </div>
                           <div
+                            aria-colspan={2}
                             className=
                                 ms-GroupHeader-title
                                 {
