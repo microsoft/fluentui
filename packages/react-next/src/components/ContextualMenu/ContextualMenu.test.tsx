@@ -11,6 +11,7 @@ import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps }
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DefaultButton, IButton } from '../../compat/Button';
 import { IRenderFunction, resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -25,6 +26,11 @@ describe('ContextualMenu', () => {
       jest.restoreAllMocks();
     });
     resetIds();
+  });
+
+  isConformant({
+    Component: ContextualMenu,
+    displayName: 'ContextualMenu',
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {

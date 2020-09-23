@@ -4,7 +4,10 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const defaultAvatar = (
   <Avatar
-    image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
+    image={{
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+      alt: 'Profile picture of Matt',
+    }}
     status={{
       color: 'green',
       icon: <AcceptIcon />,
@@ -27,7 +30,10 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Text content="Status can receive variables." />
     {defaultAvatar}
     <Avatar
-      image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
+      image={{
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        alt: 'Profile picture of Matt',
+      }}
       status={{
         color: 'green',
         icon: <AcceptIcon />,
@@ -38,7 +44,10 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Text content="Avatar and its status are proportionate (share the same size value) by default." />
     {defaultAvatar}
     <Avatar
-      image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
+      image={{
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        alt: 'Profile picture of Matt',
+      }}
       size="larger"
       status={{
         color: 'green',
@@ -49,7 +58,10 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Text content="Status can have different size for the same avatar size." />
     {defaultAvatar}
     <Avatar
-      image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
+      image={{
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        alt: 'Profile picture of Matt',
+      }}
       status={{
         color: 'green',
         icon: <AcceptIcon />,
@@ -60,7 +72,10 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Text content="Status can have same size for different avatar sizes." />
     {defaultAvatar}
     <Avatar
-      image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
+      image={{
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        alt: 'Profile picture of Matt',
+      }}
       size="larger"
       status={{
         color: 'green',
