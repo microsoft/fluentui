@@ -66,15 +66,15 @@ const menuItems: IContextualMenuItem[] = [
     key: 'share',
     subMenuProps: {
       items: [
-        { key: 'shareToTwitter', text: 'Share to Twitter' },
-        { key: 'shareToFacebook', text: 'Share to Facebook' },
+        { key: 'sharetotwitter', text: 'Share to Twitter' },
+        { key: 'sharetofacebook', text: 'Share to Facebook' },
         {
-          key: 'shareToEmail',
+          key: 'sharetoemail',
           text: 'Share to Email',
           subMenuProps: {
             items: [
-              { key: 'shareToOutlook_1', text: 'Share to Outlook', title: 'Share to Outlook' },
-              { key: 'shareToGmail_1', text: 'Share to Gmail', title: 'Share to Gmail' },
+              { key: 'sharetooutlook_1', text: 'Share to Outlook', title: 'Share to Outlook' },
+              { key: 'sharetogmail_1', text: 'Share to Gmail', title: 'Share to Gmail' },
             ],
           },
         },
@@ -89,15 +89,15 @@ const menuItems: IContextualMenuItem[] = [
     'aria-roledescription': 'split button',
     subMenuProps: {
       items: [
-        { key: 'shareToTwitterSplit', text: 'Share to Twitter' },
-        { key: 'shareToFacebookSplit', text: 'Share to Facebook' },
+        { key: 'sharetotwittersplit', text: 'Share to Twitter' },
+        { key: 'sharetofacebooksplit', text: 'Share to Facebook' },
         {
-          key: 'shareToEmailSplit',
+          key: 'sharetoemailsplit',
           text: 'Share to Email',
           subMenuProps: {
             items: [
-              { key: 'shareToOutlookSplit_1', text: 'Share to Outlook', title: 'Share to Outlook' },
-              { key: 'shareToGmailSplit_1', text: 'Share to Gmail', title: 'Share to Gmail' },
+              { key: 'sharetooutlooksplit_1', text: 'Share to Outlook', title: 'Share to Outlook' },
+              { key: 'sharetogmailsplit_1', text: 'Share to Gmail', title: 'Share to Gmail' },
             ],
           },
         },

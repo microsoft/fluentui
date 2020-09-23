@@ -24,8 +24,8 @@ export interface IComboBox {
   dismissMenu: () => void;
 
   /**
-   * Sets focus to the input in the ComboBox
-   * @param shouldOpenOnFocus - Determines if we should open the ComboBox menu when the input gets focus
+   * Sets focus to the input in the combo box
+   * @param shouldOpenOnFocus - Determines if we should open the combo box menu when the input gets focus
    * @param useFocusAsync - Determines if we should focus the input asynchronously
    * @returns True if focus could be set, false if no operation was taken.
    */
@@ -37,9 +37,9 @@ export interface IComboBox {
  */
 export interface IComboBoxOption extends ISelectableOption {
   /**
-   * Specific styles for each ComboBox option. If you intend to give
-   * common styles to all ComboBox option please use
-   * the prop ComboBoxOptionStyles
+   * Specific styles for each combo box option. If you intend to give
+   * common styles to all combo box option please use
+   * the prop comboBoxOptionStyles
    */
   styles?: Partial<IComboBoxOptionStyles>;
 
@@ -64,12 +64,12 @@ export interface IComboBoxProps
   componentRef?: IRefObject<IComboBox>;
 
   /**
-   * Collection of options for this ComboBox
+   * Collection of options for this combo box
    */
   options: IComboBoxOption[];
 
   /**
-   * Callback issued when a ComboBox item is clicked.
+   * Callback issued when a combo box item is clicked.
    */
   onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
 
@@ -130,24 +130,24 @@ export interface IComboBoxProps
   autoComplete?: 'on' | 'off';
 
   /**
-   * Value to show in the input, does not have to map to a comboBox option
+   * Value to show in the input, does not have to map to a combo box option
    */
   text?: string;
 
   /**
-   * When multiple items are selected, this will be used to separate values in the comboBox input.
+   * When multiple items are selected, this will be used to separate values in the combo box input.
    *
    * @defaultvalue ", "
    */
   multiSelectDelimiter?: string;
 
   /**
-   * The IconProps to use for the button aspect of the comboBox
+   * The IconProps to use for the button aspect of the combo box
    */
   buttonIconProps?: IIconProps;
 
   /**
-   * The AutofillProps to be passed into the Autofill component inside comboBox
+   * The AutofillProps to be passed into the Autofill component inside combo box
    */
   autofill?: IAutofillProps;
 

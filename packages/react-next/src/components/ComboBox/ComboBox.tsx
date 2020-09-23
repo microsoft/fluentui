@@ -40,7 +40,7 @@ export interface IComboBoxState {
   /** The open state */
   isOpen?: boolean;
 
-  /** The focused state of the comboBox */
+  /** The focused state of the combo box */
   focusState?: 'none' | 'focused' | 'focusing';
 
   /**
@@ -205,7 +205,7 @@ interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
 
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> {
-  /** The input aspect of the comboBox */
+  /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
 
   /** The wrapping div of the input and button */
@@ -495,7 +495,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       }
     }
 
-    // Programatically setting focus means that there is nothing else that needs to be done
+    // Programmatically setting focus means that there is nothing else that needs to be done
     // Focus is now contained
     if (!this._hasFocus()) {
       this.setState({ focusState: 'focused' });
@@ -512,7 +512,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   /**
    * componentWillReceiveProps handler for the auto fill component
-   * Checks/updates the iput value to set, if needed
+   * Checks/updates the input value to set, if needed
    * @param defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
    * @returns - the updated value to set, if needed
@@ -788,7 +788,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   /**
-   * Process the new input's new value when the comboBox
+   * Process the new input's new value when the combo box
    * allows freeform entry
    * @param updatedValue - the input's newly changed value
    */
@@ -878,7 +878,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Process the new input's new value when the comboBox
+   * Process the new input's new value when the combo box
    * does not allow freeform entry
    * @param updatedValue - the input's newly changed value
    */
@@ -888,15 +888,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on while allow freeform is off,
-      // we will remember the keypresses and build up a string to attempt to match
+      // we will remember the key press and build up a string to attempt to match
       // as long as characters are typed within a the timeout span of each other,
       // otherwise we will clear the string and start building a new one on the next keypress.
       // Also, only do this processing if we have a non-empty value
       if (updatedValue !== '') {
         // If we have a pending autocomplete clearing task,
-        // we know that the user is typing with keypresses happening
+        // we know that the user is typing with key press happening
         // within the timeout of each other so remove the clearing task
-        // and continue building the pending value with the udpated value
+        // and continue building the pending value with the updated value
         if (this._lastReadOnlyAutoCompleteChangeTimeoutId !== undefined) {
           this._async.clearTimeout(this._lastReadOnlyAutoCompleteChangeTimeoutId);
           this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined;
@@ -918,7 +918,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           )
           .filter(option => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
-        // If we found a match, udpdate the state
+        // If we found a match, update the state
         if (items.length > 0) {
           this._setPendingInfo(originalUpdatedValue, items[0].index, this._getPreviewText(items[0]));
         }
@@ -1135,7 +1135,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
-    // it we are not really bluring from the whole comboBox
+    // it we are not really blurring from the whole comboBox
     let relatedTarget = event.relatedTarget;
     if (event.relatedTarget === null) {
       // In IE11, due to lack of support, event.relatedTarget is always
@@ -1755,7 +1755,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Sets the pending info for the comboBox
+   * Sets the pending info for the combo box
    * @param index - the index to search from
    * @param searchDirection - the direction to search
    */
@@ -1906,7 +1906,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         }
 
         // If we are not allowing freeform
-        // or the comboBox is open, flip the open state
+        // or the combo box is open, flip the open state
         if (isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
         }
@@ -1953,7 +1953,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         break;
 
       case KeyCodes.down:
-        // Expand the comboBox on ALT + DownArrow
+        // Expand the combo box on ALT + DownArrow
         if (ev.altKey || ev.metaKey) {
           this._setOpenStateAndFocusOnClose(true /* isOpen */, true /* focusInputAfterClose */);
         } else {
@@ -2060,7 +2060,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     switch (ev.which) {
       case KeyCodes.space:
         // If we are not allowing freeform and are not autoComplete
-        // make space expand/collapse the comboBox
+        // make space expand/collapse the combo box
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
@@ -2151,9 +2151,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Click handler for the button of the comboBox
+   * Click handler for the button of the combo box
    * and the input when not allowing freeform. This
-   * toggles the expand/collapse state of the comboBox (if enbled)
+   * toggles the expand/collapse state of the combo box (if enabled)
    */
   private _onComboBoxClick = (): void => {
     const { disabled } = this.props;
@@ -2234,7 +2234,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Get the aria-activedescendant value for the comboBox.
+   * Get the aria-activedescendant value for the combo box.
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
    * null otherwise
    */
@@ -2250,7 +2250,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Get the aria autocomplete value for the Combobox
+   * Get the aria autocomplete value for the combo box
    * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from
    * and can dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
    */
@@ -2284,7 +2284,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
 /**
  * Get the indices of the options that are marked as selected
- * @param options - the comboBox options
+ * @param options - the combo box options
  * @param selectedKeys - the known selected keys to find
  * @returns - an array of the indices of the selected options, empty array if nothing is selected
  */
