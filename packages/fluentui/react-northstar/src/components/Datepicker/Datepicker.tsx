@@ -362,7 +362,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           align: 'start' as const,
         }),
         overrideProps: (predefinedProps: PopupProps): PopupProps => ({
-          trigger: triggerButtonElement,
+          trigger: predefinedProps.trigger ?? triggerButtonElement,
           target: props.buttonOnly ? null : inputRef.current,
           content: calendarElement,
           onOpenChange: (e, { open }) => {
