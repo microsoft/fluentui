@@ -1,7 +1,7 @@
 import {
   Accessibility,
-  datepickerCalendarCellBehavior,
-  DatepickerCalendarCellBehaviorProps,
+  datepickerCalendarCellButtonBehavior,
+  DatepickerCalendarCellButtonBehaviorProps,
 } from '@fluentui/accessibility';
 import {
   getElementType,
@@ -12,15 +12,33 @@ import {
   useUnhandledProps,
   compose,
 } from '@fluentui/react-bindings';
+import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { ComponentEventHandler, ComponentKeyboardEventHandler } from '../../types';
 import { commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 
-export interface DatepickerCalendarCellProps extends UIComponentProps, ContentComponentProps {
+export interface DatepickerCalendarCellButtonProps extends UIComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<DatepickerCalendarCellBehaviorProps>;
+  accessibility?: Accessibility<DatepickerCalendarCellButtonBehaviorProps>;
+
+  /**
+   * Called on click.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onClick?: ComponentEventHandler<DatepickerCalendarCellButtonProps>;
+
+  /**
+   * Called on focus.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onFocus?: ComponentEventHandler<DatepickerCalendarCellButtonProps>;
 
   /** A cell can show that it cannot be interacted with. */
   disabled?: boolean;
@@ -33,22 +51,30 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
 
   /** A cell can show that it currently has dimmed styles. */
   quiet?: boolean;
+
+  /**
+   * Called on selected item key down.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onKeyDown?: ComponentKeyboardEventHandler<DatepickerCalendarCellButtonProps>;
 }
 
-export type DatepickerCalendarCellStylesProps = Pick<
-  DatepickerCalendarCellProps,
+export type DatepickerCalendarCellButtonStylesProps = Pick<
+  DatepickerCalendarCellButtonProps,
   'disabled' | 'selected' | 'quiet' | 'today'
 >;
 
-export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
+export const datepickerCalendarCellButtonClassName = 'ui-datepicker__calendarcellbutton';
 /**
  * A Datepicker cell is used to display calendar grid cells.
  * This component is currently UNSTABLE!
  */
-export const DatepickerCalendarCell = compose<
-  'td',
-  DatepickerCalendarCellProps,
-  DatepickerCalendarCellStylesProps,
+export const DatepickerCalendarCellButton = compose<
+  'button',
+  DatepickerCalendarCellButtonProps,
+  DatepickerCalendarCellButtonStylesProps,
   {},
   {}
 >(
@@ -62,7 +88,13 @@ export const DatepickerCalendarCell = compose<
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
-      actionHandlers: {},
+      actionHandlers: {
+        performClick: e => {
+          // prevent Spacebar from scrolling
+          e.preventDefault();
+          handleClick(e);
+        },
+      },
       mapPropsToBehavior: () => ({
         selected,
         disabled,
@@ -72,7 +104,7 @@ export const DatepickerCalendarCell = compose<
       rtl: context.rtl,
     });
 
-    const { classes } = useStyles<DatepickerCalendarCellStylesProps>(DatepickerCalendarCell.displayName, {
+    const { classes } = useStyles<DatepickerCalendarCellButtonStylesProps>(DatepickerCalendarCellButton.displayName, {
       className: composeOptions.className,
       mapPropsToStyles: () => ({
         disabled,
@@ -90,12 +122,22 @@ export const DatepickerCalendarCell = compose<
       composeOptions,
       unstable_props: props,
     });
+    const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      _.invoke(props, 'onClick', e, props);
+    };
 
     const element = (
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
+          onClick: handleClick,
           ref,
+          disabled,
           ...unhandledProps,
         })}
       >
@@ -106,8 +148,8 @@ export const DatepickerCalendarCell = compose<
     return element;
   },
   {
-    className: datepickerCalendarCellClassName,
-    displayName: 'DatepickerCalendarCell',
+    className: datepickerCalendarCellButtonClassName,
+    displayName: 'DatepickerCalendarCellButton',
 
     handledProps: [
       'accessibility',
@@ -116,6 +158,7 @@ export const DatepickerCalendarCell = compose<
       'content',
       'design',
       'disabled',
+      'onClick',
       'selected',
       'styles',
       'variables',
@@ -125,15 +168,16 @@ export const DatepickerCalendarCell = compose<
   },
 );
 
-DatepickerCalendarCell.propTypes = {
+DatepickerCalendarCellButton.propTypes = {
   ...commonPropTypes.createCommon({ children: false }),
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   quiet: PropTypes.bool,
   today: PropTypes.bool,
 };
 
-DatepickerCalendarCell.defaultProps = {
-  accessibility: datepickerCalendarCellBehavior,
-  as: 'td',
+DatepickerCalendarCellButton.defaultProps = {
+  accessibility: datepickerCalendarCellButtonBehavior,
+  as: 'button',
 };
