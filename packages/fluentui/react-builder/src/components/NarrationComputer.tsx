@@ -55,15 +55,8 @@ export class NarrationComputer {
     if (role && definition) {
       // Begin if 1
       // The definition name is determined by the "role" attribute and the definition exists
-      if (typeof definition === 'string') {
-        // Begin if 2
-        // The definition is a reference to another definition
-        definitionName = definition;
-      } else {
-        // else if 2
-        // The definition is a regular definition (not a reference to another definition)
-        definitionName = testName;
-      } // End if 2
+      // The definition is a reference to another definition
+      definitionName = typeof definition === 'string' ? definition : testName;
     } else {
       // Else if 1
       // The definition name is determined by the element's tag name
