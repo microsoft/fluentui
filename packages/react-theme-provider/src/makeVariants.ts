@@ -46,7 +46,7 @@ export const makeVariants = <TTokenSetType extends TokenSetType>(
   return (state: GenericDictionary) => {
     // Grab the theme.
     const renderer = useStyleRenderer();
-    const theme = useTheme();
+    const theme = useTheme() || {};
     const win = useWindow();
     const variantKeys: string[] = [];
     const variantObjects: TokenSetType[] = [];
@@ -70,7 +70,7 @@ export const makeVariants = <TTokenSetType extends TokenSetType>(
 
       className = variantToClassName[key] = renderer.renderStyles(
         { root: tokens },
-        { targetWindow: win, rtl: !!theme.rtl },
+        { targetWindow: win, rtl: theme.rtl },
       ).root;
     }
 

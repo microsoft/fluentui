@@ -5,6 +5,11 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
   class=
 
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: black;
         --color-body-contentColor: white;
         --color-brand-background: #0078d4;
@@ -55,6 +60,11 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
   className=
       foo
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: black;
         --color-body-contentColor: white;
         --color-brand-background: #0078d4;
@@ -98,6 +108,11 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
   className=
       foo
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: black;
         --color-body-contentColor: white;
         --color-brand-background: #0078d4;
@@ -141,6 +156,11 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
   className=
 
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: #ffffff;
         --color-body-contentColor: #323130;
         --color-brand-background: #0078d4;
@@ -194,6 +214,11 @@ exports[`ThemeProvider renders a div 1`] = `
   className=
 
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: #ffffff;
         --color-body-contentColor: #323130;
         --color-brand-background: #0078d4;
@@ -246,6 +271,11 @@ exports[`ThemeProvider renders a div with styling 1`] = `
   className=
 
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: white;
         --color-body-contentColor: black;
         --color-brand-background: #0078d4;
@@ -298,6 +328,11 @@ exports[`ThemeProvider renders nested themes 1`] = `
   className=
 
       {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
         --color-body-background: white;
         --color-body-contentColor: black;
         --color-brand-background: #0078d4;
@@ -348,6 +383,11 @@ exports[`ThemeProvider renders nested themes 1`] = `
     className=
 
         {
+          --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --body-fontSize: 14px;
+          --body-fontWeight: 400;
+          --body-mozOsxFontSmoothing: grayscale;
+          --body-webkitFontSmoothing: antialiased;
           --color-body-background: black;
           --color-body-contentColor: white;
           --color-brand-background: #0078d4;

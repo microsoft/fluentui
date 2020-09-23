@@ -2,6 +2,8 @@ import * as React from 'react';
 import { makeVariants } from './makeVariants';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { mount, ReactWrapper } from 'enzyme';
+import { ThemeProvider } from './ThemeProvider';
+import { safeMount } from '@uifabric/test-utilities';
 
 describe('makeVariants', () => {
   const _stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -40,17 +42,27 @@ describe('makeVariants', () => {
   };
 
   it('can render default base variant', () => {
-    wrapper = mount(<Foo />);
-
-    expect(wrapper.getDOMNode().classList.contains('Button-base-0')).toBeTruthy();
-    expect(_stylesheet.getRules()).toEqual('.Button-base-0{--button-background:red;}');
+    safeMount(
+      <ThemeProvider>
+        <Foo />
+      </ThemeProvider>,
+      (wrapper: ReactWrapper) => {
+        expect(
+          wrapper
+            .first()
+            .getDOMNode()
+            .getAttribute('class'),
+        ).toEqual('Button-0');
+        expect(_stylesheet.getRules()).toEqual('.Button-0{--button-background:red;}');
+      },
+    );
   });
 
   it('can render primary variant', () => {
     wrapper = mount(<Foo primary />);
 
-    expect(wrapper.getDOMNode().getAttribute('class')).toEqual(' Button-base-primary-0');
-    expect(_stylesheet.getRules()).toEqual('.Button-base-primary-0{--button-background:green;}');
+    expect(wrapper.getDOMNode().getAttribute('class')).toEqual(' Button-primary-0');
+    expect(_stylesheet.getRules()).toEqual('.Button-primary-0{--button-background:green;}');
   });
 
   it('can respect themed variant overrides', () => {
