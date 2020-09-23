@@ -252,5 +252,348 @@ exports[`Component Examples renders Modal.Modeless.Example.tsx correctly 1`] = `
       </span>
     </span>
   </button>
+  <span
+    className="ms-layer"
+  >
+    <div
+      className=
+          ms-Fabric
+          ms-Layer-content
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
+          }
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onDrag={[Function]}
+      onDragEnd={[Function]}
+      onDragEnter={[Function]}
+      onDragExit={[Function]}
+      onDragLeave={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      onSubmit={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <div
+        aria-labelledby="title0"
+        aria-modal={false}
+        onKeyDown={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "outline": "none",
+            "overflowY": undefined,
+          }
+        }
+      >
+        <div
+          className=
+              ms-Modal
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                background-color: transparent;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 100%;
+                justify-content: center;
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                transition: opacity 0.267s;
+                width: 100%;
+              }
+        >
+          <div
+            className=
+                ms-Dialog-main
+                {
+                  align-items: stretch;
+                  background-color: #ffffff;
+                  border-radius: 2px;
+                  box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                  box-sizing: border-box;
+                  display: flex;
+                  flex-flow: column nowrap;
+                  max-height: calc(100% - 32px);
+                  max-width: calc(100% - 32px);
+                  min-height: 176px;
+                  min-width: 288px;
+                  outline: 3px solid transparent;
+                  overflow-y: auto;
+                  position: relative;
+                  text-align: left;
+                  z-index: 1000000;
+                }
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onFocusCapture={[Function]}
+          >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
+            <div
+              className=
+                  ms-Modal-scrollableContent
+                  {
+                    flex-grow: 1;
+                    max-height: 100vh;
+                    overflow-y: auto;
+                  }
+                  @supports (-webkit-overflow-scrolling: touch){& {
+                    max-height: 768px;
+                  }
+              data-is-scrollable={true}
+            >
+              <div
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      border-top: 4px solid #0078d4;
+                      color: #323130;
+                      display: flex;
+                      flex: 1 1 auto;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 24px;
+                      font-weight: 600;
+                      padding-bottom: 14px;
+                      padding-left: 24px;
+                      padding-right: 12px;
+                      padding-top: 12px;
+                    }
+              >
+                <span
+                  id="title0"
+                >
+                  Lorem Ipsum
+                </span>
+                <button
+                  aria-label="Close popup modal"
+                  className=
+                      ms-Button
+                      ms-Button--icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: transparent;
+                        border-radius: 2px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 32px;
+                        margin-left: auto;
+                        margin-right: 2px;
+                        margin-top: 4px;
+                        outline: transparent;
+                        padding-bottom: 0;
+                        padding-left: 4px;
+                        padding-right: 4px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
+                        width: 32px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 2px;
+                        content: "";
+                        left: 2px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 2px;
+                        top: 2px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                        color: Highlight;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #005a9e;
+                      }
+                  data-is-focusable={true}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  type="button"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons";
+                            font-style: normal;
+                            font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 16px;
+                            height: 16px;
+                            line-height: 16px;
+                            margin-bottom: 0;
+                            margin-left: 4px;
+                            margin-right: 4px;
+                            margin-top: 0;
+                            text-align: center;
+                          }
+                      data-icon-name="Cancel"
+                      role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
+                    >
+                      
+                    </i>
+                  </span>
+                </button>
+              </div>
+              <div
+                className=
+
+                    {
+                      flex: 4 4 auto;
+                      overflow-y: hidden;
+                      padding-bottom: 24px;
+                      padding-left: 24px;
+                      padding-right: 24px;
+                      padding-top: 0;
+                    }
+                    & p {
+                      margin-bottom: 14px;
+                      margin-left: 0;
+                      margin-right: 0;
+                      margin-top: 14px;
+                    }
+                    & p:first-child {
+                      margin-top: 0px;
+                    }
+                    & p:last-child {
+                      margin-bottom: 0px;
+                    }
+              >
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum vestibulum non. Proin dolor elit, aliquam eget tincidunt non, vestibulum ut turpis. In hac habitasse platea dictumst. In a odio eget enim porttitor maximus. Aliquam nulla nibh, ullamcorper aliquam placerat eu, viverra et dui. Phasellus ex lectus, maximus in mollis ac, luctus vel eros. Vivamus ultrices, turpis sed malesuada gravida, eros ipsum venenatis elit, et volutpat eros dui et ante. Quisque ultricies mi nec leo ultricies mollis. Vivamus egestas volutpat lacinia. Quisque pharetra eleifend efficitur.
+                   
+                </p>
+              </div>
+            </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
 </div>
 `;

@@ -11,7 +11,7 @@ import { IOverlayProps } from '../../Overlay';
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initiated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 

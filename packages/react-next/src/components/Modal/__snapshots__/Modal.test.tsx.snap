@@ -138,6 +138,40 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
           />
           <div
             className=
+
+                {
+                  display: flex;
+                  justify-content: center;
+                  padding-bottom: 3px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 3px;
+                  position: absolute;
+                  width: 100%;
+                }
+          >
+            <i
+              aria-hidden={true}
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons-1";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
+                    width: 24px;
+                  }
+              data-icon-name="move"
+            >
+              
+            </i>
+          </div>
+          <div
+            className=
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
@@ -260,6 +294,7 @@ exports[`Modal renders Modal correctly 1`] = `
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=

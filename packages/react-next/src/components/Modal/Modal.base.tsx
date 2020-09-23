@@ -62,7 +62,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const modalResponsiveMode = useResponsiveMode(mergedRef);
     const [xCoordinate, setXCoordinate] = React.useState<number>(0);
     const [yCoordinate, setYCoordinate] = React.useState<number>(0);
-    const [modalPosition, setModalPosition] = React.useState<number | undefined>();
+    const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
     const { setTimeout, clearTimeout } = useSetTimeout();
 
     const {
@@ -112,7 +112,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(isOpen);
 
     const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
-      !!isOpen,
+      isOpen,
     );
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
@@ -125,7 +125,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isOpen,
       isVisible,
       hasBeenOpened,
-      modalRectangleTop: modalPosition,
+      modalRectangleTop,
       topOffsetFixed,
       isModeless,
       layerClassName,
@@ -356,7 +356,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
                 { key: 'move', text: dragOptions.moveMenuItemText, onClick: handleEnterKeyboardMoveMode },
                 { key: 'close', text: dragOptions.closeMenuItemText, onClick: handleModalClose },
               ]}
-              onDismiss={setModalMenuClose}
+              onDismiss={toggleModalMenuOpen}
               alignTargetEdge
               coverTarget
               directionalHint={DirectionalHint.topLeftEdge}
@@ -388,7 +388,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           let modalRectangle;
           if (dialogMain.length > 0) {
             modalRectangle = dialogMain[0].getBoundingClientRect();
-            setModalPosition(modalRectangle.top);
+            setModalRectangleTop(modalRectangle.top);
           }
         }
       }
@@ -417,8 +417,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     useDebugWarnings(props);
 
     return (
-      (isModalOpen && modalResponsiveMode! >= ResponsiveMode.small && (
-        <Layer {...mergedLayerProps} ref={mergedRef}>
+      (modalResponsiveMode! >= ResponsiveMode.small && (
+        <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
             role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
             aria-modal={!isModeless}
@@ -427,12 +427,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
-            <div className={classNames.root}>
+            <div role={!isModeless ? 'document' : undefined} className={classNames.root}>
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  onClick={isBlocking ? undefined : (onDismiss as any)}
+                  onClick={isBlocking ? undefined : onDismiss}
                   allowTouchBodyScroll={internalState.allowTouchBodyScroll}
                   {...overlay}
                 />
