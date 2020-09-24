@@ -7,6 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import * as Utilities from '../../Utilities';
 import * as positioning from 'office-ui-fabric-react/lib/utilities/positioning';
 import { safeCreate } from '@uifabric/test-utilities';
+import { isConformant } from '../../common/isConformant';
 
 describe('Callout', () => {
   let realDom: HTMLDivElement;
@@ -44,6 +45,11 @@ describe('Callout', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: Callout,
+    displayName: 'Callout',
   });
 
   it('target id strings does not throw exception', () => {

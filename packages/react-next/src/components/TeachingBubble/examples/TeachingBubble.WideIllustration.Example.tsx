@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IImageProps } from '@fluentui/react-next/lib/Image';
 import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 import { TeachingBubble } from '@fluentui/react-next/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react-next';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const examplePrimaryButtonProps: IButtonProps = {

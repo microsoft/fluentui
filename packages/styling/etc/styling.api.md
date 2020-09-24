@@ -6,9 +6,15 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
-import { DefaultEffects } from '@fluentui/theme/lib/constants/DefaultEffects';
-import { DefaultPalette } from '@fluentui/theme/lib/constants/DefaultPalette';
+import { createFontStyles } from '@fluentui/theme/lib/fonts';
+import { createTheme } from '@fluentui/theme/lib/createTheme';
+import { DefaultEffects } from '@fluentui/theme/lib/effects/DefaultEffects';
+import { DefaultFontStyles } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+import { DefaultPalette } from '@fluentui/theme/lib/colors/DefaultPalette';
 import { fontFace } from '@uifabric/merge-styles';
+import { FontSizes } from '@fluentui/theme/lib/fonts';
+import { FontWeights } from '@fluentui/theme/lib/fonts';
+import { IconFontSizes } from '@fluentui/theme/lib/fonts';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
 import { IEffects } from '@fluentui/theme/lib/types/IEffects';
@@ -32,6 +38,7 @@ import { ITheme } from '@fluentui/theme/lib/types/ITheme';
 import { keyframes } from '@uifabric/merge-styles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
+import { registerDefaultFontFaces } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
 import { Stylesheet } from '@uifabric/merge-styles';
 
 // @public (undocumented)
@@ -59,16 +66,13 @@ export { concatStyleSets }
 
 export { concatStyleSetsWithProps }
 
-// @public (undocumented)
-export function createFontStyles(localeCode: string | null): IFontStyles;
+export { createFontStyles }
 
-// @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export { createTheme }
 
 export { DefaultEffects }
 
-// @public (undocumented)
-export const DefaultFontStyles: IFontStyles;
+export { DefaultFontStyles }
 
 export { DefaultPalette }
 
@@ -85,51 +89,9 @@ export const FontClassNames: {
 
 export { fontFace }
 
-// @public (undocumented)
-export namespace FontSizes {
-    const // (undocumented)
-    mini: string;
-    const // (undocumented)
-    xSmall: string;
-    const // (undocumented)
-    small: string;
-    const // (undocumented)
-    smallPlus: string;
-    const // (undocumented)
-    medium: string;
-    const // (undocumented)
-    mediumPlus: string;
-    const // (undocumented)
-    icon: string;
-    const // (undocumented)
-    large: string;
-    const // (undocumented)
-    xLarge: string;
-    const // (undocumented)
-    xLargePlus: string;
-    const // (undocumented)
-    xxLarge: string;
-    const // (undocumented)
-    xxLargePlus: string;
-    const // (undocumented)
-    superLarge: string;
-    const // (undocumented)
-    mega: string;
-}
+export { FontSizes }
 
-// @public (undocumented)
-export namespace FontWeights {
-    const // (undocumented)
-    light: IFontWeight;
-    const // (undocumented)
-    semilight: IFontWeight;
-    const // (undocumented)
-    regular: IFontWeight;
-    const // (undocumented)
-    semibold: IFontWeight;
-    const // (undocumented)
-    bold: IFontWeight;
-}
+export { FontWeights }
 
 // @public
 export function getEdgeChromiumNoHighContrastAdjustSelector(): {
@@ -285,17 +247,7 @@ export interface IAnimationVariables {
     easeFunction2: string;
 }
 
-// @public (undocumented)
-export namespace IconFontSizes {
-    const // (undocumented)
-    xSmall: string;
-    const // (undocumented)
-    small: string;
-    const // (undocumented)
-    medium: string;
-    const // (undocumented)
-    large: string;
-}
+export { IconFontSizes }
 
 export { ICSPSettings }
 
@@ -403,8 +355,7 @@ export const PulsingBeaconAnimationStyles: {
     createDefaultAnimation: typeof _createDefaultAnimation;
 };
 
-// @public (undocumented)
-export function registerDefaultFontFaces(baseUrl: string): void;
+export { registerDefaultFontFaces }
 
 // @public
 export function registerIconAlias(iconName: string, mappedToName: string): void;

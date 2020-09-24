@@ -15,7 +15,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
   const [needsVerticalScrollBarState, setNeedsVerticalScrollBar] = React.useState(false);
   React.useEffect(() => {
     async.requestAnimationFrame(() => {
-      // If overflowY is overriden, don't waste time calculating whether the scrollbar is necessary.
+      // If overflowY is overridden, don't waste time calculating whether the scrollbar is necessary.
       if (props.style && props.style.overflowY) {
         return;
       }
@@ -110,7 +110,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
        * If the relatedTarget is within the popup, that means the popup still has focus
        * and focused moved from one element to another within the popup.
        * If relatedTarget is undefined or null that usually means that a
-       * keyboard event occured and focus didn't change
+       * keyboard event occurred and focus didn't change
        */
       if (root.current && ev.relatedTarget && !root.current.contains(ev.relatedTarget as HTMLElement)) {
         containsFocus.current = false;

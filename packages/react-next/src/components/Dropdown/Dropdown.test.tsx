@@ -9,6 +9,7 @@ import * as renderer from 'react-test-renderer';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
@@ -42,6 +43,11 @@ describe('Dropdown', () => {
     }
 
     document.body.innerHTML = '';
+  });
+
+  isConformant({
+    Component: Dropdown,
+    displayName: 'Dropdown',
   });
 
   describe('single-select', () => {
@@ -318,7 +324,7 @@ describe('Dropdown', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div
+      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
       // being focused. Utilize JSDOM instead.
       ReactDOM.render(
         <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
