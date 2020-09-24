@@ -3,6 +3,7 @@ import { pxToRem } from '../../../../utils';
 export interface TreeTitleVariables {
   color: string;
   indicatorColor: string;
+  paddingRight: string;
 
   padding: string;
   selectionIndicatorMargin: string;
@@ -11,6 +12,7 @@ export interface TreeTitleVariables {
   borderRadius: string;
   borderWidth: string;
   background: string;
+  hoverBackground: string;
 
   checkedBackground: string;
   checkedBorderColor: string;
@@ -27,6 +29,7 @@ export const treeTitleVariables = (siteVars: any): TreeTitleVariables => {
     color: siteVars.colorScheme.default.foreground,
     padding: `${pxToRem(1)} 0`,
 
+    paddingRight: pxToRem(20),
     borderColor: siteVars.colorScheme.default.foreground1,
     borderStyle: 'solid',
     borderRadius: pxToRem(3),
@@ -34,6 +37,7 @@ export const treeTitleVariables = (siteVars: any): TreeTitleVariables => {
     indicatorColor: 'transparent',
     selectionIndicatorMargin: `0 0 0 0`,
     background: 'transparent',
+    hoverBackground: siteVars.colorScheme.default.background1,
 
     checkedBackground: siteVars.colorScheme.brand.backgroundActive1,
     checkedBorderColor: siteVars.colorScheme.brand.backgroundActive1,

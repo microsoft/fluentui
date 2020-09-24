@@ -129,7 +129,7 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
               background-color: transparent;
               bottom: 0px;
               content: "";
-              height: auto;
+              height: 0px;
               left: 0px;
               position: absolute;
               right: 0px;
