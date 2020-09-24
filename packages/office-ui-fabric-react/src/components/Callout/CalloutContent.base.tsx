@@ -358,7 +358,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _dismissOnTargetWindowBlur = (ev: FocusEvent) => {
     // eslint-disable-next-line deprecation/deprecation
-    const { preventDismissOnEvent, preventDismissOnLostFocus } = this.props;
+    const { preventDismissOnEvent, preventDismissOnLostFocus, shouldDismissOnWindowFocus } = this.props;
+
+    // Do nothing
+    if (!shouldDismissOnWindowFocus) {
+      return;
+    }
+
     if (
       ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
         (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
