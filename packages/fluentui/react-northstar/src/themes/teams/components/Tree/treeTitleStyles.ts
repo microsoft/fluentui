@@ -13,6 +13,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
+    paddingLeft: v.paddingLeft,
     paddingRight: v.paddingRight,
     ...(p.selectable && {
       display: 'flex',
