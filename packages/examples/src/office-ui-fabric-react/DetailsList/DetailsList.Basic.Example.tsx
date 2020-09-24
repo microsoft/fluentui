@@ -5,6 +5,7 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-u
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
@@ -63,6 +64,10 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     return (
       <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
+        <Text>
+          Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this
+          example will show an alert.
+        </Text>
         <Announced message={selectionDetails} />
         <TextField
           className={exampleChildClass}
