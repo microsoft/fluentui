@@ -143,6 +143,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
+    /* eslint-disable-next-line eqeqeq */
     const draggedItemIndex = itemIndex != null ? itemIndex! : -1;
     setDraggedIndex(draggedItemIndex);
     if (event) {
