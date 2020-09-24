@@ -1,1 +1,0 @@
-The calendar component allows a user to browse through a calendar and pick a date value.

@@ -19,16 +19,17 @@ import {
   ShorthandFactory,
   createShorthandFactory,
 } from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
+import { Ref } from '@fluentui/react-component-ref';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 }
 
 export type BreadcrumbStylesProps = never;
@@ -38,6 +39,13 @@ export const breadcrumbClassName = 'ui-breadcrumb';
 /**
  * Breadcrumb is a a component that indicates the path of the current page
  * This component is currently UNSTABLE!
+ *
+ * @accessibility
+ * Implements [ARIA Breadcrumb](https://www.w3.org/TR/wai-aria-practices-1.1/#breadcrumb) design pattern.
+ * Refers to [this ARIA discussion](https://github.com/w3c/aria-practices/issues/635), and uses arrow key to navigate between each breadcrumb item.
+ *
+ * @accessibilityIssues
+ * [Under NVDA Browse mode - Breadcrumb is not navigable](https://github.com/w3c/aria-practices/issues/635 )
  */
 export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
@@ -67,21 +75,21 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = (
+    const result = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          ref,
           ...unhandledProps,
         })}
       >
         <div role="list">{childrenExist(children) ? children : content}</div>
-      </ElementType>
+      </ElementType>,
     );
+    const wrappedElement = ref ? <Ref innerRef={ref}>{result}</Ref> : result;
 
     setEnd();
 
-    return result;
+    return wrappedElement;
   },
   {
     className: breadcrumbClassName,
@@ -98,6 +106,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
 
 Breadcrumb.defaultProps = {
   as: 'nav',
+  accessibility: breadcrumbBehavior,
 };
 
 Breadcrumb.propTypes = commonPropTypes.createCommon();

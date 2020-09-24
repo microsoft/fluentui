@@ -6,7 +6,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems } = props;
+  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, replaceItem } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 
   const renderedItems = React.useMemo(() => items, [items]);
@@ -34,7 +34,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     props.onItemsRemoved?.(itemsToRemove);
   };
 
-  const replaceItem = React.useCallback(
+  const _replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
       const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
@@ -42,9 +42,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
         setItems(newItems);
+        replaceItem?.(newItem, index);
       }
     },
-    [items],
+    [items, replaceItem],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -74,7 +75,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
                 selected={props.focusedItemIndices?.includes(index)}
                 removeButtonAriaLabel={props.removeButtonAriaLabel}
                 onRemoveItem={onRemoveItemCallbacks[index]}
-                onItemChange={replaceItem}
+                onItemChange={_replaceItem}
                 dragDropEvents={dragDropEvents}
                 dragDropHelper={dragDropHelper}
               />

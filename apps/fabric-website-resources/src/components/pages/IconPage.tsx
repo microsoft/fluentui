@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { IconPageProps } from 'office-ui-fabric-react/lib/components/Icon/Icon.doc';
+import { IconPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Icon/Icon.doc';
 
 export const IconPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

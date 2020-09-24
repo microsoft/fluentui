@@ -128,7 +128,7 @@ export const transparentColors: TeamsTransparentColors = {
     200: 'rgba(255,255,255,0.75)',
     300: 'rgba(255,255,255,0.65)',
     400: 'rgba(255,255,255,0.5)',
-    500: undefined,
+    500: 'rgba(255,255,255,0.4)',
     600: 'rgba(255,255,255,0.3)',
     700: 'rgba(255,255,255,0.2)',
     800: 'rgba(255,255,255,0.1)',
