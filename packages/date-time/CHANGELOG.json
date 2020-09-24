@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@uifabric/date-time_v7.17.14",
+      "version": "7.17.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set font-family inherit on button element.",
+            "author": "xgao@microsoft.com",
+            "commit": "fc211d8c6104f6f10948e6654513a6606bc35429",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@uifabric/date-time_v7.17.13",
       "version": "7.17.13",
