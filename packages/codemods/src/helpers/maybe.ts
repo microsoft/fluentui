@@ -65,6 +65,27 @@ export const Something = <T>(value: NonNullable<T>): Something<T> => {
   });
 };
 
+export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
+  return new Proxy<{ [key: string]: Maybe<T> }>((dictionary as unknown) as { [key: string]: Maybe<T> }, {
+    get: (target: { [key: string]: Maybe<T> | T }, name: string): Maybe<T> => {
+      const value = target[name];
+      if (!value || !('__isMaybe' in value)) {
+        const mb = Maybe(value);
+        target[name] = mb;
+        return mb;
+      }
+      return value;
+    },
+  });
+};
+export const isSomething = <T>(val: Maybe<T>): val is Something<T> => {
+  return val.something;
+};
+
+export const isNothing = <T>(val: Maybe<T>): val is Nothing<T> => {
+  return !val.something;
+};
+
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {
   return value !== undefined && value !== null ? Something(value!) : Nothing();
 };

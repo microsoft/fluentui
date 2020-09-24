@@ -150,11 +150,6 @@ export interface ICalendarStrings extends IDateFormatting {
   todayDateFormatString?: string;
 
   /**
-   * Aria-label format string for calendar cell. Should have 2 string params, 0 is date and 1 is dayOfWeek"
-   */
-  calendarCellFormatString?: string;
-
-  /**
    * Aria-label for input."
    */
   inputAriaLabel?: string;

@@ -53,10 +53,10 @@ If you would like to continue using the previous button components for now, upda
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
-  - Removed deprecated styles prop `linkIsSelected?: boolean;`.
-  - Removed styles prop `rootIsLarge` and added `linkSize` instead.
-  - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
-  - TODO: enumerate all removed props
+- `IPivotStyleProps` changes
+  - Replaced `rootIsLarge` with `linkSize`.
+  - Replaced `rootIsTabs` and `linkFormat`.
+  - Removed deprecated prop `linkIsSelected`.
 
 ### Rating
 
@@ -65,10 +65,6 @@ If you would like to continue using the previous button components for now, upda
 - Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
 - The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
-
-### Slider
-
-TODO: document any API or functionality changes
 
 ### SpinButton
 
@@ -117,6 +113,10 @@ TODO: document any API or functionality changes
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+## New features
+
+- Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
 
 ## Other notable changes
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-conformance",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Customizable conformance testing utility for Fluent UI React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",

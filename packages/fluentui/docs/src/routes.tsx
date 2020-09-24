@@ -34,6 +34,7 @@ import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
+import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import MenuList from './prototypes/menuList/';
 import TextAreaAutoSize from './prototypes/TextAreaAutoSize';
@@ -154,15 +155,11 @@ const Routes = () => (
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />
-                <Route
-                  exact
-                  path="/unstable-datepicker"
-                  render={() => <Redirect to={`/components/datepicker/definition`} />}
-                />
 
                 <Route exact path="/faq" component={FAQ} />
                 <Route exact path="/accessibility" component={Accessibility} />
                 <Route exact path="/accessibility-behaviors" component={AccessibilityBehaviors} />
+                <Route exact path="/button-name-computation" component={ButtonNameComputation} />
                 <Route exact path="/focus-zone" component={FocusZone} />
                 <Route exact path="/focus-trap-zone" component={FocusTrapZone} />
                 <Route exact path="/auto-focus-zone" component={AutoFocusZone} />
