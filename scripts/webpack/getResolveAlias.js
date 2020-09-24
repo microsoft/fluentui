@@ -20,7 +20,6 @@ function getResolveAlias(useLib) {
   const alias = {};
   const excludedPackages = [
     '@fluentui/eslint-plugin',
-    '@fluentui/storybook',
     '@uifabric/api-docs',
     '@uifabric/build',
     '@uifabric/webpack-utils',

@@ -41,10 +41,14 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
     quiet = options.quiet || quiet;
     ci = options.ci || ci;
 
+    const localConfigDir = path.join(process.cwd(), '.storybook');
+
     await storybook({
       mode: 'static',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: path.join(process.cwd(), '.storybook'),
+      configDir: fs.existsSync(localConfigDir)
+        ? localConfigDir
+        : path.resolve(__dirname, '../../packages/examples/.storybook'),
       outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,

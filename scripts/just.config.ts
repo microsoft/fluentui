@@ -44,6 +44,20 @@ function basicPreset() {
   option('push', { default: true });
 }
 
+/** Resolve whereas a storybook config + stories exist for a given path */
+function checkForStorybookExistence() {
+  const dir = process.cwd().replace(/\\/g, '/');
+  const packageName = dir.substring(dir.lastIndexOf('/') + 1);
+
+  // Returns true if the current package has a storybook config or the examples package has a storybook config and
+  // contains a folder with the current package's name.
+  return (
+    !!resolveCwd('./.storybook/main.js') ||
+    (!!resolveCwd('../examples/.storybook/main.js') &&
+      fs.existsSync(path.join(process.cwd(), `../examples/${packageName}`)))
+  );
+}
+
 module.exports = function preset() {
   basicPreset();
 
@@ -119,7 +133,7 @@ module.exports = function preset() {
     'bundle',
     parallel(
       condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
+      condition('storybook:build', () => checkForStorybookExistence()),
     ),
   );
 };

@@ -74,7 +74,12 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.extensions.push('.ts', '.tsx');
 
-  config.resolve.alias = getResolveAlias();
+  config.resolve.alias = {
+    ...getResolveAlias(),
+    '@fluentui/examples$': path.join(__dirname, '../../packages/examples/src'),
+    '@fluentui/examples/lib': path.join(__dirname, '../../packages/examples/src'),
+    '@fluentui/examples/src': path.join(__dirname, '../../packages/examples/src'),
+  };
 
   config.plugins.push(
     new HardSourceWebpackPlugin(),
