@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.115",
+  "version": "8.0.0-alpha.116",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -63,24 +63,24 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.14.0",
-    "@fluentui/react-checkbox": "^0.3.6",
+    "@fluentui/react-button": "^0.14.1",
+    "@fluentui/react-checkbox": "^0.3.7",
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-focus": "^7.16.7",
-    "@fluentui/react-link": "^0.4.1",
+    "@fluentui/react-link": "^0.4.2",
     "@fluentui/react-icons": "^0.3.5",
-    "@fluentui/react-slider": "^0.3.6",
-    "@fluentui/react-toggle": "^0.4.1",
-    "@fluentui/react-tabs": "^0.6.6",
+    "@fluentui/react-slider": "^0.3.7",
+    "@fluentui/react-toggle": "^0.4.2",
+    "@fluentui/react-tabs": "^0.6.7",
     "@fluentui/react-theme-provider": "^0.14.0",
     "@fluentui/react-window-provider": "^0.3.3",
-    "@uifabric/date-time": "^7.17.13",
+    "@uifabric/date-time": "^7.17.14",
     "@uifabric/icons": "^7.5.7",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",
-    "office-ui-fabric-react": "^7.139.2",
+    "office-ui-fabric-react": "^7.140.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
