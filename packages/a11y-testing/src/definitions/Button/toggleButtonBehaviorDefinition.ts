@@ -1,4 +1,5 @@
-import { Rule, BehaviorRule } from '@fluentui/a11y-rules';
+import { Rule } from './../../types';
+import { BehaviorRule } from './../../rules/rules';
 
 export const toggleButtonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()

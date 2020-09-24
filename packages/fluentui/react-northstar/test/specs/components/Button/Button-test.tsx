@@ -9,10 +9,13 @@ import {
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
-import { buttonBehaviorDefinition, toggleButtonBehaviorDefinition } from '@fluentui/accessibility-definitions';
-
 import { Button } from 'src/components/Button/Button';
-import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  buttonBehaviorDefinition,
+  toggleButtonBehaviorDefinition,
+} from '@fluentui/a11y-testing';
 
 describe('Button', () => {
   isConformant(Button, {

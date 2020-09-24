@@ -3,8 +3,7 @@ import { ButtonGroup } from 'src/components/Button/ButtonGroup';
 import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
 import { Button } from 'src/components/Button/Button';
 
-import { buttonGroupBehaviorDefinition } from '@fluentui/accessibility-definitions';
-import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+import { validateBehavior, ComponentTestFacade, buttonGroupBehaviorDefinition } from '@fluentui/a11y-testing';
 
 const buttonGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(ButtonGroup);
 const buttons = [

@@ -1,4 +1,4 @@
-import * as behaviorDefinitions from '@fluentui/accessibility-definitions';
+import * as behaviorDefinitions from '@fluentui/a11y-testing';
 import gutil from 'gulp-util';
 import path from 'path';
 import through2 from 'through2';
