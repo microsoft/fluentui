@@ -66,12 +66,15 @@ const isPivotItem = (item: React.ReactNode): item is PivotItem => {
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
   (props, ref) => {
     const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
+    const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
+
     const pivotId: string = useId('Pivot');
     let linkCollection = getLinkItems(props, pivotId);
+
     const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
     const focusZoneRef = React.useRef<IFocusZone>(null);
+
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
-    const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
     let classNames: { [key in keyof IPivotStyles]: string };
 
     React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({
@@ -252,7 +255,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
             <CommandButton
               className={classNames.overflowMenuButton}
               elementRef={overflowMenuButtonRef}
-              componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
+              componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
             />
