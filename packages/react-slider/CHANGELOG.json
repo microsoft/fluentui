@@ -2,6 +2,36 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-slider_v0.3.6",
+      "version": "0.3.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding conformant tests to v8 component test files.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-slider_v0.3.5",
+      "version": "0.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert ariaLabel prop deprecation.",
+            "author": "xgao@microsoft.com",
+            "commit": "1cff4ccd5d4c73ec0e1a9ae18dcb2beee28cb6e9",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-slider_v0.3.0",
       "version": "0.3.0",

@@ -7,8 +7,8 @@ import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.types';
-import { addDays, compareDates } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { resetIds } from 'office-ui-fabric-react/lib/Utilities';
+import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
+import { resetIds } from '../../Utilities';
 
 describe('Calendar', () => {
   const dayPickerStrings = {

@@ -1,4 +1,4 @@
-import { ICalendarStrings } from '@uifabric/date-time';
+import { ICalendarStrings } from './Calendar.types';
 
 export const DayPickerStrings: ICalendarStrings = {
   months: [

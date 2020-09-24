@@ -9,6 +9,7 @@ const apiDocs = require('../lib/index');
 module.exports = {
   apiJsonPaths: [
     path.resolve(__dirname, '../../styling/dist/styling.api.json'),
+    path.resolve(__dirname, '../../theme/dist/theme.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
     path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
     path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),

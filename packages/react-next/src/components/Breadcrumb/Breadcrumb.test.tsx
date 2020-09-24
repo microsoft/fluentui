@@ -2,6 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
+import { isConformant } from '../../common/isConformant';
 import { Icon } from '../../Icon';
 
 describe('Breadcrumb', () => {
@@ -89,6 +90,11 @@ describe('Breadcrumb', () => {
     });
   });
 
+  isConformant({
+    Component: Breadcrumb,
+    displayName: 'Breadcrumb',
+  });
+
   it('renders items with expected element type', () => {
     const items2: IBreadcrumbItem[] = [
       { text: 'Test1', key: 'Test1', href: 'http://bing.com', onClick: () => undefined },
@@ -157,9 +163,9 @@ describe('Breadcrumb', () => {
     // without hostNodes it returns the same element x4
     overflowButton.hostNodes().simulate('click');
 
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
-    expect(overfowItems).toHaveLength(2);
-    expect(overfowItems[0].textContent).toEqual('TestText1');
-    expect(overfowItems[1].textContent).toEqual('TestText2');
+    const overflowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    expect(overflowItems).toHaveLength(2);
+    expect(overflowItems[0].textContent).toEqual('TestText1');
+    expect(overflowItems[1].textContent).toEqual('TestText2');
   });
 });

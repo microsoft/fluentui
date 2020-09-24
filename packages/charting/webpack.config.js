@@ -1,5 +1,5 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
 const BUNDLE_NAME = 'charting';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -18,11 +18,7 @@ module.exports = [
     externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
 
     resolve: {
-      alias: {
-        '@uifabric/charting/src': path.join(__dirname, 'src'),
-        '@uifabric/charting/lib': path.join(__dirname, 'lib'),
-        '@uifabric/charting': path.join(__dirname, 'lib'),
-      },
+      alias: getResolveAlias(true /*useLib*/),
     },
   }),
   require('./webpack.serve.config'),

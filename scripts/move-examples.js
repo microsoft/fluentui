@@ -25,7 +25,7 @@ function moveDocFiles() {
     const demoAppPath = path.join(packagePath, 'src/demo');
 
     // exclude certain packages
-    if (['example-app-base', 'tsx-editor'].includes(packageName)) {
+    if (['examples', 'example-app-base', 'tsx-editor'].includes(packageName)) {
       continue;
     }
 
@@ -59,20 +59,20 @@ function fixDocPageTypesPaths() {
   // @ts-ignore types are wrong--they declare a default export, but the js assigns to module.exports
   replaceInFile.sync({
     files: path.posix.join(examplesSrc, '**/*'),
-    from: /(..\/)+common\/DocPage\.types/,
+    from: /(\.\.\/)+common\/DocPage\.types/,
     to: 'office-ui-fabric-react/lib/common/DocPage.types',
   });
 }
 
 /** Update all references in examples, website, and resources */
 function fixDocFilePaths() {
-  // \b(?:@[\w-]+\/)?               optional scope
+  // (?:@)?\b(?:[\w-]+\/)?               optional scope
   // ([\w-]+)\/                     package name (1)
   // (lib|src)\/                    source type (2)
   // ([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)  (3)
   //   [\w\/]+\/                   the rest of the path
   //   (?:examples|docs|\w+\.doc|\w+Page)\b doc path parts
-  const docRegex = /\b(?:@[\w-]+\/)?([\w-]+)\/(lib|src)\/([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)/g;
+  const docRegex = /(?:@)?\b(?:[\w-]+\/)?([\w-]+)\/(lib|src)\/([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)/g;
   // @ts-ignore
   replaceInFile.sync({
     files: [
@@ -82,7 +82,7 @@ function fixDocFilePaths() {
     from: docRegex,
     to: substr => {
       docRegex.lastIndex = 0;
-      if (substr.includes('DocPage.types')) {
+      if (/\bDocPage|fabric-website/.test(substr)) {
         return substr;
       }
       const match = docRegex.exec(substr);
@@ -100,7 +100,7 @@ function fixDemoAppPaths() {
     files: path.posix.join(examplesSrc, '*/demo/AppDefinition.tsx'),
     // remove "components" or other extra segments which don't exist in the new layout
     from: /'\.\.\/(\w+)/,
-    to: '..',
+    to: "'..",
   });
 }
 

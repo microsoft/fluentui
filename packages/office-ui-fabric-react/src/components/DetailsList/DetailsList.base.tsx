@@ -63,6 +63,7 @@ export interface IDetailsListState {
    * A unique object used to force-update the List when it changes.
    */
   version: {};
+  getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -685,6 +686,13 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     [key: string]: IColumn;
   };
 
+  public static getDerivedStateFromProps(
+    nextProps: IDetailsListProps,
+    previousState: IDetailsListState,
+  ): IDetailsListState {
+    return previousState.getDerivedStateFromProps(nextProps, previousState);
+  }
+
   constructor(props: IDetailsListProps) {
     super(props);
 
@@ -697,11 +705,12 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this.state = {
       focusedItemIndex: -1,
       lastWidth: 0,
-      adjustedColumns: this._getAdjustedColumns(props),
+      adjustedColumns: this._getAdjustedColumns(props, undefined),
       isSizing: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
       version: {},
+      getDerivedStateFromProps: this._getDerivedStateFromProps,
     };
 
     this._selection =
@@ -766,6 +775,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
+    this._notifyColumnsResized();
+
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -801,83 +812,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
-    }
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const {
-      checkboxVisibility,
-      items,
-      setKey,
-      selectionMode = this._selection.mode,
-      columns,
-      viewport,
-      compact,
-      dragDropEvents,
-    } = this.props;
-    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
-    const newViewportWidth = (newProps.viewport && newProps.viewport.width) || 0;
-    const oldViewportWidth = (viewport && viewport.width) || 0;
-    const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
-    let shouldForceUpdates = false;
-
-    if (newProps.layoutMode !== this.props.layoutMode) {
-      shouldForceUpdates = true;
-    }
-
-    if (shouldResetSelection) {
-      this._initialFocusedIndex = newProps.initialFocusedIndex;
-      // reset focusedItemIndex when setKey changes
-      this.setState({
-        focusedItemIndex: this._initialFocusedIndex !== undefined ? this._initialFocusedIndex : -1,
-      });
-    }
-
-    if (!this.props.disableSelectionZone && newProps.items !== items) {
-      this._selection.setItems(newProps.items, shouldResetSelection);
-    }
-
-    if (
-      newProps.checkboxVisibility !== checkboxVisibility ||
-      newProps.columns !== columns ||
-      newViewportWidth !== oldViewportWidth ||
-      newProps.compact !== compact
-    ) {
-      shouldForceUpdates = true;
-    }
-
-    this._adjustColumns(newProps, true);
-
-    if (newProps.selectionMode !== selectionMode) {
-      shouldForceUpdates = true;
-    }
-
-    if (
-      isAllGroupsCollapsed === undefined &&
-      newProps.groupProps &&
-      newProps.groupProps.isAllGroupsCollapsed !== undefined
-    ) {
-      this.setState({
-        isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
-        isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed,
-      });
-    }
-
-    if (newProps.dragDropEvents !== dragDropEvents) {
-      this._dragDropHelper && this._dragDropHelper.dispose();
-      this._dragDropHelper = newProps.dragDropEvents
-        ? new DragDropHelper({
-            selection: this._selection,
-            minimumPixelsForDrag: newProps.minimumPixelsForDrag,
-          })
-        : undefined;
-      shouldForceUpdates = true;
-    }
-
-    if (shouldForceUpdates) {
-      this.setState({
-        version: {},
-      });
     }
   }
 
@@ -918,6 +852,97 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     defaultRender?: IRenderFunction<IDetailsRowProps>,
   ): JSX.Element => {
     return <DetailsRow {...props} />;
+  };
+
+  private _getDerivedStateFromProps = (
+    nextProps: IDetailsListProps,
+    previousState: IDetailsListState,
+  ): IDetailsListState => {
+    const {
+      checkboxVisibility,
+      items,
+      setKey,
+      selectionMode = this._selection.mode,
+      columns,
+      viewport,
+      compact,
+      dragDropEvents,
+    } = this.props;
+
+    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
+    const newViewportWidth = (nextProps.viewport && nextProps.viewport.width) || 0;
+    const oldViewportWidth = (viewport && viewport.width) || 0;
+    const shouldResetSelection = nextProps.setKey !== setKey || nextProps.setKey === undefined;
+    let shouldForceUpdates = false;
+
+    if (nextProps.layoutMode !== this.props.layoutMode) {
+      shouldForceUpdates = true;
+    }
+
+    let nextState = previousState;
+
+    if (shouldResetSelection) {
+      this._initialFocusedIndex = nextProps.initialFocusedIndex;
+      // reset focusedItemIndex when setKey changes
+      nextState = {
+        ...nextState,
+        focusedItemIndex: this._initialFocusedIndex !== undefined ? this._initialFocusedIndex : -1,
+      };
+    }
+
+    if (!this.props.disableSelectionZone && nextProps.items !== items) {
+      this._selection.setItems(nextProps.items, shouldResetSelection);
+    }
+
+    if (
+      nextProps.checkboxVisibility !== checkboxVisibility ||
+      nextProps.columns !== columns ||
+      newViewportWidth !== oldViewportWidth ||
+      nextProps.compact !== compact
+    ) {
+      shouldForceUpdates = true;
+    }
+
+    nextState = {
+      ...nextState,
+      ...this._adjustColumns(nextProps, nextState, true),
+    };
+
+    if (nextProps.selectionMode !== selectionMode) {
+      shouldForceUpdates = true;
+    }
+
+    if (
+      isAllGroupsCollapsed === undefined &&
+      nextProps.groupProps &&
+      nextProps.groupProps.isAllGroupsCollapsed !== undefined
+    ) {
+      nextState = {
+        ...nextState,
+        isCollapsed: nextProps.groupProps.isAllGroupsCollapsed,
+        isSomeGroupExpanded: !nextProps.groupProps.isAllGroupsCollapsed,
+      };
+    }
+
+    if (nextProps.dragDropEvents !== dragDropEvents) {
+      this._dragDropHelper && this._dragDropHelper.dispose();
+      this._dragDropHelper = nextProps.dragDropEvents
+        ? new DragDropHelper({
+            selection: this._selection,
+            minimumPixelsForDrag: nextProps.minimumPixelsForDrag,
+          })
+        : undefined;
+      shouldForceUpdates = true;
+    }
+
+    if (shouldForceUpdates) {
+      nextState = {
+        ...nextState,
+        version: {},
+      };
+    }
+
+    return nextState;
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
@@ -1009,25 +1034,27 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     });
   }
 
-  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
-    const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
+  private _adjustColumns(
+    newProps: IDetailsListProps,
+    previousState: IDetailsListState,
+    forceUpdate?: boolean,
+    resizingColumnIndex?: number,
+  ): IDetailsListState {
+    const adjustedColumns = this._getAdjustedColumns(newProps, previousState, forceUpdate, resizingColumnIndex);
     const { viewport } = this.props;
     const viewportWidth = viewport && viewport.width ? viewport.width : 0;
 
-    if (adjustedColumns) {
-      this.setState(
-        {
-          adjustedColumns: adjustedColumns,
-          lastWidth: viewportWidth,
-        },
-        this._notifyColumnsResized,
-      );
-    }
+    return {
+      ...previousState,
+      adjustedColumns: adjustedColumns,
+      lastWidth: viewportWidth,
+    };
   }
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(
     newProps: IDetailsListProps,
+    previousState: IDetailsListState | undefined,
     forceUpdate?: boolean,
     resizingColumnIndex?: number,
   ): IColumn[] {
@@ -1036,8 +1063,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     let { columns: newColumns } = newProps;
 
     const columns = this.props ? this.props.columns : [];
-    const lastWidth = this.state ? this.state.lastWidth : -1;
-    const lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
+    const lastWidth = previousState ? previousState.lastWidth : -1;
+    const lastSelectionMode = previousState ? previousState.lastSelectionMode : undefined;
 
     if (
       !forceUpdate &&
@@ -1045,7 +1072,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       lastSelectionMode === selectionMode &&
       (!columns || newColumns === columns)
     ) {
-      return [];
+      return newColumns || [];
     }
 
     newColumns = newColumns || buildColumns(newItems, true);
@@ -1193,9 +1220,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
 
-    this._adjustColumns(this.props, true, resizingColumnIndex);
-
     this.setState({
+      ...this._adjustColumns(this.props, this.state, true, resizingColumnIndex),
       version: {},
     });
   };
