@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "removing change file related to the eslint",
+  "comment": "removing overrides from eslintrc.json file",
   "packageName": "@fluentui/eslint-plugin",
   "email": "email not defined",
   "dependentChangeType": "none",
