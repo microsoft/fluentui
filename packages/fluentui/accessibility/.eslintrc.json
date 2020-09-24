@@ -1,12 +1,4 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
-  "root": true,
-  "overrides": [
-    {
-      "files": ["src/**/**/*Definition.ts"],
-      "rules": {
-        "import/no-extraneous-dependencies": ["off"]
-      }
-    }
-  ]
+  "root": true
 }
