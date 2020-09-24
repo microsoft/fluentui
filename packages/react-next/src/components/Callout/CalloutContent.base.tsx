@@ -284,7 +284,18 @@ function useAutoFocus(
  * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
-  { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
+  {
+    hidden,
+    onDismiss,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnScroll,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnResize,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnLostFocus,
+    shouldDismissOnWindowFocus,
+    preventDismissOnEvent,
+  }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -346,7 +357,17 @@ function useDismissHandlers(
     };
 
     const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
-      if (!preventDismissOnLostFocus && !targetWindow?.document.hasFocus() && ev.relatedTarget === null) {
+      // Do nothing
+      if (!shouldDismissOnWindowFocus) {
+        return;
+      }
+
+      if (
+        ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+          (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
+        !targetWindow?.document.hasFocus() &&
+        ev.relatedTarget === null
+      ) {
         onDismiss?.(ev);
       }
     };
@@ -377,10 +398,12 @@ function useDismissHandlers(
     targetRef,
     targetWindow,
     onDismiss,
+    shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
     preventDismissOnScroll,
     positionsExists,
+    preventDismissOnEvent,
   ]);
 
   return mouseDownHandlers;
