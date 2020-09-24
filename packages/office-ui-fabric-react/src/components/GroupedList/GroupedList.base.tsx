@@ -123,7 +123,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       role = 'treegrid',
       styles,
       compact,
-      listProps = {},
       focusZoneProps = {},
     } = this.props;
     const { groups, version } = this.state;
