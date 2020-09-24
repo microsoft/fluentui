@@ -70,7 +70,7 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
         {imageSrc && (
           <div className={classNames.innerField}>
             <div className={classNames.imageWrapper}>
-              <Image src={selectedImageSrc} alt={imageAlt} {...imageSize} />
+              <Image src={imageSrc} alt={imageAlt} {...imageSize} />
             </div>
             <div className={classNames.selectedImageWrapper}>
               <Image src={selectedImageSrc} alt={imageAlt} {...imageSize} />

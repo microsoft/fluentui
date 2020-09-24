@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update import paths from theme package.",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-18T21:39:37.112Z"
-}

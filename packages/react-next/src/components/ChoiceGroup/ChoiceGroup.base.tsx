@@ -46,18 +46,7 @@ const useComponentRef = (
   );
 };
 
-function useDebugWarnings(props: IChoiceGroupProps) {
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
-    useWarnings({
-      name: 'Checkbox',
-      props,
-      mutuallyExclusive: {
-        selectedKey: 'defaultSelectedKey',
-      },
-    });
-  }
-}
+const COMPONENT_NAME = 'ChoiceGroupBase';
 
 /**
  * {@docCategory ChoiceGroup}
@@ -157,3 +146,17 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
     </div>
   );
 });
+ChoiceGroupBase.displayName = COMPONENT_NAME;
+
+function useDebugWarnings(props: IChoiceGroupProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME.replace('Base', ''),
+      props,
+      mutuallyExclusive: {
+        selectedKey: 'defaultSelectedKey',
+      },
+    });
+  }
+}

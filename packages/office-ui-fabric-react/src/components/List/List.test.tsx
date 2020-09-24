@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 
 import { List } from './List';
 import { IPage, IListProps } from './List.types';
+import { isConformant } from '../../common/isConformant';
 
 type IMockItem = { key: number; name: string; value: number };
 
@@ -33,6 +34,11 @@ describe('List', () => {
     const tree = component.toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: List,
+    displayName: 'List',
   });
 
   it('can complete rendering', done => {

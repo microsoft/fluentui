@@ -2,6 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { MarqueeSelection } from './MarqueeSelection';
 import { Selection } from '../../utilities/selection/index';
+import { isConformant } from '../../common/isConformant';
 
 describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {
@@ -18,6 +19,11 @@ describe('MarqueeSelection', () => {
 
     // Run snapshot test.
     expect(component.getDOMNode()).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: MarqueeSelection,
+    displayName: 'MarqueeSelection',
   });
 
   it('updates the selection when an item is selected', () => {

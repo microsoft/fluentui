@@ -4,6 +4,7 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
+import { isConformant } from '../../common/isConformant';
 import { IRefObject, resetIds } from '@uifabric/utilities';
 import { ICheckbox } from './Checkbox.types';
 
@@ -60,6 +61,11 @@ describe('Checkbox', () => {
     renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Checkbox,
+    displayName: 'Checkbox',
   });
 
   it('respects id prop', () => {

@@ -2,8 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as path from 'path';
-
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
@@ -26,10 +24,8 @@ describe('Slider', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {

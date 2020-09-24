@@ -7,6 +7,7 @@ import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { renderIntoDocument } from '../../common/testUtilities';
+import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
@@ -65,6 +66,19 @@ describe('ComboBox', () => {
     });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it(`renders`, () => {
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
+      expect(wrapper.root).toBeDefined();
+    });
+  });
+
+  isConformant({
+    Component: ComboBox,
+    displayName: 'ComboBox',
+    // Disabled due to being required to mount by safeCreate. A test called "renders" was added here as a replacement.
+    disabledTests: ['component-renders'],
   });
 
   it('Can flip between enabled and disabled.', () => {
