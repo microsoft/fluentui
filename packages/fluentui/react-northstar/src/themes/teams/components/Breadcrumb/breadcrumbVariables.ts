@@ -12,6 +12,8 @@ export interface BreadcrumbVariables {
   currentItemFontWeight?: FontWeightProperty;
 
   // Breadcrumb Link
+  linkPaddingTop: string;
+  linkPaddingBottom: string;
   linkPaddingLeftSmaller?: string;
   linkPaddingRightSmaller?: string;
   linkPaddingLeftSmall?: string;
@@ -38,6 +40,8 @@ export const breadcrumbVariables = (siteVars): BreadcrumbVariables => ({
   currentItemFontWeight: siteVars.fontWeightBold,
 
   // Breadcrumb Link
+  linkPaddingTop: pxToRem(6),
+  linkPaddingBottom: pxToRem(6),
   linkPaddingLeftSmaller: pxToRem(4),
   linkPaddingRightSmaller: pxToRem(4),
   linkPaddingLeftSmall: pxToRem(8),

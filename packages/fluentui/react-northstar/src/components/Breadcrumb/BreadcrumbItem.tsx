@@ -25,9 +25,17 @@ export interface BreadcrumbItemProps
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<BreadcrumbItemBehaviorProps>;
+
+  /** The Breadcrumb Link can be disabled */
+  disabled?: boolean;
+
+  /** Indicates if the link is the active */
+  active?: boolean;
 }
 
-export type BreadcrumbItemStylesProps = { size: SizeValue };
+export type BreadcrumbItemStylesProps = Required<Pick<BreadcrumbItemProps, 'active' | 'disabled'>> & {
+  size: SizeValue;
+};
 
 export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 
@@ -40,7 +48,7 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
-    const { accessibility, children, content, className, design, styles, variables } = props;
+    const { accessibility, children, content, className, design, styles, variables, active, disabled } = props;
     const { size } = useBreadcrumbContext();
 
     const getA11yProps = useAccessibility(accessibility, {
@@ -53,6 +61,8 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
       composeOptions,
       mapPropsToStyles: () => ({
         size,
+        active,
+        disabled,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -86,7 +96,17 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
   {
     className: breadcrumbItemClassName,
     displayName: 'BreadcrumbItem',
-    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'styles',
+      'variables',
+      'active',
+    ],
   },
 );
 

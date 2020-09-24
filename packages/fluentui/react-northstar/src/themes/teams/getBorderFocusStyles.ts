@@ -21,20 +21,29 @@ type BorderFocusStyles = CSSBorderStyles & {
 
 const defaultColor = 'transparent';
 
-const getPseudoElementStyles = (borderEdgeValue: string, styles: ICSSInJSStyle): ICSSInJSStyle => {
+const getPseudoElementStyles = (borderEdgeValue: BorderEdgeValue, styles: ICSSInJSStyle): ICSSInJSStyle => {
   return {
     content: '""',
     position: 'absolute',
     borderStyle: 'solid',
     pointerEvents: 'none',
 
-    top: borderEdgeValue,
-    right: borderEdgeValue,
-    bottom: borderEdgeValue,
-    left: borderEdgeValue,
+    top: borderEdgeValue.top,
+    right: borderEdgeValue.right,
+    bottom: borderEdgeValue.bottom,
+    left: borderEdgeValue.left,
 
     ...styles,
   };
+};
+type BorderEdgeValue = {
+  top: string;
+  right: string;
+  bottom: string;
+  left: string;
+};
+const getBoderEdgeValues = (top: string, right: string, bottom: string, left: string) => {
+  return { top, right, bottom, left };
 };
 
 /**
@@ -52,9 +61,24 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
     borderPadding,
   } = args;
 
+  const borderPaddingValues = borderPadding?.toString().split(' ');
+  const [top = borderPadding, right = borderPadding, bottom = borderPadding, left = borderPadding] = [
+    ...borderPaddingValues,
+  ];
   const afterBorderEdgeValue =
-    borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`;
-  const beforeBorderEdgeValue = borderPadding == null ? '0' : `-${borderPadding}`;
+    borderPadding == null
+      ? getBoderEdgeValues(`-${borderWidth}`, `-${borderWidth}`, `-${borderWidth}`, `-${borderWidth}`)
+      : getBoderEdgeValues(
+          `calc(0px - ${top} - ${borderWidth})`,
+          `calc(0px - ${right} - ${borderWidth})`,
+          `calc(0px - ${bottom} - ${borderWidth})`,
+          `calc(0px - ${left} - ${borderWidth})`,
+        );
+
+  const beforeBorderEdgeValue =
+    borderPadding == null
+      ? getBoderEdgeValues('0', '0', '0', '0')
+      : getBoderEdgeValues(`-${top}`, `-${right}`, `-${bottom}`, `-${left}`);
 
   return {
     ':focus': {

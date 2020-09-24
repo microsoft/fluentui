@@ -16,26 +16,19 @@ import {
   ChildrenComponentProps,
   SizeValue,
 } from '../../utils';
+
+import { Accessibility } from '@fluentui/accessibility';
 import { useBreadcrumbContext } from './breadcrumbContext';
-import { Accessibility, BreadcrumbLinkBehaviorProps, breadcrumbLinkBehavior } from '@fluentui/accessibility';
 
 export interface BreadcrumbLinkProps
   extends UIComponentProps<BreadcrumbLinkProps>,
     ContentComponentProps,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<BreadcrumbLinkBehaviorProps>;
-
-  /** The Breadcrumb Link can be disabled */
-  disabled?: boolean;
-
-  /** Indicates if the link is the last item of the breadccrumb indicatiing the current page */
-  current?: boolean;
+  accessibility?: Accessibility<never>;
 }
 
-export type BreadcrumbLinkStylesProps = Required<Pick<BreadcrumbLinkProps, 'disabled' | 'current'>> & {
-  size: SizeValue;
-};
+export type BreadcrumbLinkStylesProps = { size: SizeValue };
 
 export const breadcrumbLinkClassName = 'ui-breadcrumb__link';
 
@@ -48,14 +41,10 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
-    const { accessibility, children, content, className, design, styles, variables, disabled, current } = props;
+    const { accessibility, children, content, className, design, styles, variables } = props;
     const { size } = useBreadcrumbContext();
 
     const getA11yProps = useAccessibility(accessibility, {
-      mapPropsToBehavior: () => ({
-        disabled,
-        current,
-      }),
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
@@ -63,7 +52,9 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
     const { classes } = useStyles<BreadcrumbLinkStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
-      mapPropsToStyles: () => ({ size, disabled, current }),
+      mapPropsToStyles: () => ({
+        size,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -96,22 +87,11 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
   {
     className: breadcrumbLinkClassName,
     displayName: 'BreadcrumbLink',
-    handledProps: [
-      'accessibility',
-      'as',
-      'children',
-      'className',
-      'content',
-      'design',
-      'styles',
-      'variables',
-      'current',
-    ],
+    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
 
 BreadcrumbLink.defaultProps = {
-  accessibility: breadcrumbLinkBehavior,
   as: 'a',
 };
 

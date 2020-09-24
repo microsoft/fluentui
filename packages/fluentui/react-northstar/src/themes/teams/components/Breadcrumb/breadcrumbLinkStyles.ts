@@ -7,6 +7,18 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
+      ...(p.size === 'smaller' && {
+        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightSmaller} ${v.linkPaddingBottom} ${v.linkPaddingLeftSmaller}`,
+      }),
+      ...(p.size === 'small' && {
+        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightSmall} ${v.linkPaddingBottom} ${v.linkPaddingLeftSmall}`,
+      }),
+      ...(p.size === 'medium' && {
+        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightMedium} ${v.linkPaddingBottom} ${v.linkPaddingLeftMedium}`,
+      }),
+      ...(p.size === 'large' && {
+        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightLarge} ${v.linkPaddingBottom} ${v.linkPaddingLeftLarge}`,
+      }),
     });
 
     return {
@@ -20,32 +32,18 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
       ':focus-visible': {
         ...borderFocusStyles[':focus-visible'],
       },
-      ...(p.current && {
-        fontWeight: v.currentItemFontWeight,
-      }),
+
       ...(p.size === 'smaller' && {
-        paddingLeft: v.linkPaddingLeftSmaller,
-        paddingRight: v.linkPaddingLeftSmaller,
         gap: v.linkSmallerGap,
       }),
       ...(p.size === 'small' && {
-        paddingLeft: v.linkPaddingLeftSmall,
-        paddingRight: v.linkPaddingLeftSmall,
         gap: v.linkSmallGap,
       }),
       ...(p.size === 'medium' && {
-        paddingLeft: v.linkPaddingLeftMedium,
-        paddingRight: v.linkPaddingLeftMedium,
         gap: v.linkMediumGap,
       }),
       ...(p.size === 'large' && {
-        paddingLeft: v.linkPaddingLeftLarge,
-        paddingRight: v.linkPaddingRightLarge,
         gap: v.linkLargeGap,
-      }),
-      ...(p.disabled && {
-        color: v.disabledColor,
-        pointerEvents: 'none',
       }),
     };
   },

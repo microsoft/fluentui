@@ -13,15 +13,11 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="smaller" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link disabled>Store</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item disabled>Store</Breadcrumb.Item>
       <Breadcrumb.Divider>
         <ChevronEndIcon size="smaller" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item active>T-shirt</Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="small">
       <Breadcrumb.Item>
@@ -33,15 +29,11 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="small" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link disabled>Store</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item disabled>Store</Breadcrumb.Item>
       <Breadcrumb.Divider>
         <ChevronEndIcon size="small" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item active>T-shirt</Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="medium">
       <Breadcrumb.Item>
@@ -53,15 +45,11 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="medium" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link disabled>Store</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item disabled>Store</Breadcrumb.Item>
       <Breadcrumb.Divider>
         <ChevronEndIcon size="medium" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item active>T-shirt</Breadcrumb.Item>
     </Breadcrumb>
     <Breadcrumb aria-label="breadcrumb" size="large">
       <Breadcrumb.Item>
@@ -73,15 +61,11 @@ const BreadcrumbExampleSizes = props => (
       <Breadcrumb.Divider>
         <ChevronEndIcon size="large" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link disabled>Store</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item disabled>Store</Breadcrumb.Item>
       <Breadcrumb.Divider>
         <ChevronEndIcon size="large" />
       </Breadcrumb.Divider>
-      <Breadcrumb.Item>
-        <Breadcrumb.Link current>T-shirt</Breadcrumb.Link>
-      </Breadcrumb.Item>
+      <Breadcrumb.Item active>T-shirt</Breadcrumb.Item>
     </Breadcrumb>
   </Flex>
 );
