@@ -16,11 +16,7 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"],
-    "paths": {
-      "@fluentui/dom-utilities/lib/*": ["./src/*"],
-      "@fluentui/dom-utilities": ["./src"]
-    }
+    "types": ["jest", "webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

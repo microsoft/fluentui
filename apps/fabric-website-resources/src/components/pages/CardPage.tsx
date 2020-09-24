@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CardPageProps } from '@uifabric/react-cards/lib/components/Card/Card.doc';
+import { CardPageProps } from '@fluentui/examples/lib/react-cards/Card/Card.doc';
 import { DemoPage } from '../DemoPage';
 
 export const CardPage = (props: { isHeaderVisible: boolean }) => (

@@ -8,20 +8,25 @@ function getOutputPath(entryPoint) {
   return entryPoint && entryPoint.includes('dist/es') ? 'dist/es' : 'lib';
 }
 
-function getResolveAlias() {
+/**
+ * @param {boolean} [useLib] whether to use `lib` instead of `src` for other packages
+ */
+function getResolveAlias(useLib) {
+  const cwd = process.cwd();
   const gitRoot = findGitRoot();
-  const deps = findRepoDeps();
+  const deps = findRepoDeps(cwd);
 
+  /** @type {{ [key: string]: string }} */
   const alias = {};
   const excludedPackages = [
-    '@fluentui/eslint-rules',
+    '@fluentui/eslint-plugin',
+    '@fluentui/storybook',
     '@uifabric/api-docs',
     '@uifabric/build',
     '@uifabric/webpack-utils',
     '@uifabric/jest-serializer-merge-styles',
   ];
 
-  let cwd = process.cwd();
   const packageJson = readConfig(path.join(cwd, 'package.json'));
 
   deps.forEach(({ packageJson: depPackageJson, packagePath: depPackagePath }) => {
@@ -39,15 +44,18 @@ function getResolveAlias() {
       // Standard package
       alias[`${depName}/src`] = path.join(gitRoot, depPackagePath, 'src');
 
-      const outputPath = getOutputPath(entryPoint);
-      alias[`${depName}/${outputPath}`] = path.join(gitRoot, depPackagePath, 'src');
+      if (!useLib) {
+        const outputPath = getOutputPath(entryPoint);
 
-      if (/\/index\b/.test(entryPoint)) {
-        // Standard index entry point
-        alias[`${depName}$`] = path.join(gitRoot, depPackagePath, 'src');
-      } else {
-        // Non-standard entry point name
-        alias[`${depName}$`] = path.join(gitRoot, depPackagePath, entryPoint.replace(`\\/${outputPath}\\/`, '/src/'));
+        alias[`${depName}/${outputPath}`] = path.join(gitRoot, depPackagePath, 'src');
+
+        if (/\/index\b/.test(entryPoint)) {
+          // Standard index entry point
+          alias[`${depName}$`] = path.join(gitRoot, depPackagePath, 'src');
+        } else {
+          // Non-standard entry point name
+          alias[`${depName}$`] = path.join(gitRoot, depPackagePath, entryPoint.replace(`\\/${outputPath}\\/`, '/src/'));
+        }
       }
     } else {
       // Non-standard package such as ie11-custom-properties
@@ -56,12 +64,18 @@ function getResolveAlias() {
     }
   });
 
-  alias[`${packageJson.name}$`] = path.join(cwd, 'src');
-  alias[`${packageJson.name}/src`] = path.join(cwd, 'src');
-
   const outputPath = getOutputPath(packageJson.module || packageJson.main);
 
-  alias[`${packageJson.name}/${outputPath}`] = path.join(cwd, 'src');
+  alias[`${packageJson.name}/src`] = path.join(cwd, 'src');
+
+  alias[`${packageJson.name}/${outputPath}`] = path.join(cwd, useLib ? outputPath : 'src');
+
+  // This is just needed for demo apps that load package readmes
+  alias[`${packageJson.name}/README.md`] = path.join(cwd, 'README.md');
+
+  alias[`${packageJson.name}`] = path.join(cwd, useLib ? outputPath : 'src');
+
+  console.dir(alias);
 
   return alias;
 }
