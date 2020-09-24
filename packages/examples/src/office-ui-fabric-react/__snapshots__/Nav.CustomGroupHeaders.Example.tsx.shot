@@ -40,7 +40,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;
@@ -379,7 +379,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;
