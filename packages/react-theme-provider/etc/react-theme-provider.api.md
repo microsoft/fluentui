@@ -96,7 +96,7 @@ export const StyleRendererContext: React.Context<StyleRenderer>;
 
 // @public (undocumented)
 export type StyleRendererOptions = {
-    rtl: boolean;
+    rtl?: boolean;
     targetWindow: Window | undefined;
 };
 
@@ -150,6 +150,9 @@ export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;
+
+// @public (undocumented)
+export const withThemeProvider: <TProps>(Component: React.FunctionComponent<TProps>) => React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps> & React.RefAttributes<HTMLButtonElement>>;
 
 
 // (No @packageDocumentation comment for this package)

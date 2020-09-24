@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "office-ui-fabric-react_v7.139.2",
+      "version": "7.139.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing unused eslint rule from sharedIsConformant.ts",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "office-ui-fabric-react_v7.139.1",
+      "version": "7.139.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Implementing conformance tests to v7 components.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add control to the set of keys which dismiss the tooltip",
+            "author": "artber@microsoft.com",
+            "commit": "5653fcfb21c83b5f78d102fa16df777c1629717f",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix bug in useKeytipRef function",
+            "author": "kinhln@microsoft.com",
+            "commit": "ca8863d643abdeb4e12c8d75131bfbfb1a9a900e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Sep 2020 12:22:29 GMT",
       "tag": "office-ui-fabric-react_v7.139.0",
       "version": "7.139.0",

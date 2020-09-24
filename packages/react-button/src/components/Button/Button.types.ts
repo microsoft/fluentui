@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokens, RecursivePartial } from '@fluentui/theme';
-
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+import { ColorTokens, RecursivePartial, SizeValue } from '@fluentui/theme';
 
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {

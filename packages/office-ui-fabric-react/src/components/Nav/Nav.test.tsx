@@ -7,6 +7,7 @@ import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
 import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
 import { IRenderFunction, IComponentAsProps } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 
 const linkOne: INavLink = {
   key: 'Bing',
@@ -38,6 +39,11 @@ describe('Nav', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Nav,
+    displayName: 'Nav',
   });
 
   it('render Nav with overrides correctly', () => {

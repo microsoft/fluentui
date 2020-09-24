@@ -1,18 +1,18 @@
 import * as React from 'react';
-import * as path from 'path';
-import { isConformant } from '@fluentui/react-conformance';
-import { Button as ButtonComponent } from './Button';
+import { Button as BaseButton } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import { MergeStylesProvider } from '@fluentui/react-theme-provider';
-import { ButtonProps } from './Button.types';
+import { isConformant } from '../../common/isConformant';
+import { withThemeProvider } from '@fluentui/react-theme-provider';
 
-/** Use merge-styles provider to ensure styles show up in snapshots. */
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
-  <MergeStylesProvider>
-    <ButtonComponent {...props} ref={ref} />
-  </MergeStylesProvider>
-));
+/** Use a ThemeProvider wrapper around the component to ensure styles show up in snapshots. */
+const Button = withThemeProvider(BaseButton);
+
+describe('Button (isConformant)', () =>
+  isConformant({
+    Component: BaseButton,
+    displayName: 'Button',
+  }));
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -22,13 +22,6 @@ describe('Button', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-  });
-
-  isConformant({
-    componentPath: path.join(__dirname, 'Button.tsx'),
-    Component: ButtonComponent,
-    displayName: 'Button',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
   });
 
   /**

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "7.139.0",
+  "version": "7.139.2",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.139.0",
+    "office-ui-fabric-react": "^7.139.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

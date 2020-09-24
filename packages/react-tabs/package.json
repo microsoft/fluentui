@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "0.6.4",
+  "version": "0.6.6",
   "description": "Fluent UI React Tabs component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,6 +29,7 @@
   "devDependencies": {
     "@fluentui/common-styles": "^0.2.6",
     "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react-conformance": "^0.1.4",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,7 +37,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/storybook": "^0.4.17",
+    "@fluentui/storybook": "^0.4.19",
     "@uifabric/build": "^7.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
@@ -44,13 +45,13 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^0.3.4",
-    "@fluentui/react-theme-provider": "^0.13.3",
-    "@uifabric/react-hooks": "^7.13.4",
+    "@fluentui/react-icons": "^0.3.5",
+    "@fluentui/react-theme-provider": "^0.14.0",
+    "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.5",
-    "@uifabric/utilities": "^7.32.2",
-    "office-ui-fabric-react": "^7.139.0",
+    "@uifabric/styling": "^7.16.7",
+    "@uifabric/utilities": "^7.32.3",
+    "office-ui-fabric-react": "^7.139.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

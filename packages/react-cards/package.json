@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.112.13",
+  "version": "0.113.0",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/common-styles": "^0.2.6",
     "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -35,11 +36,11 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/azure-themes": "^7.5.13",
+    "@uifabric/azure-themes": "^7.5.15",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.15.13",
+    "@uifabric/example-app-base": "^7.15.15",
     "@uifabric/jest-serializer-merge-styles": "^7.2.2",
-    "@uifabric/theme-samples": "^7.1.17",
+    "@uifabric/theme-samples": "^7.1.18",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -48,11 +49,20 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/keyboard-key": "^0.2.12",
+    "@fluentui/react-compose": "^0.19.4",
+    "@fluentui/react-theme-provider": "^0.14.0",
+    "@fluentui/theme": "^1.1.0",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/file-type-icons": "^7.6.6",
-    "@uifabric/foundation": "^7.9.5",
+    "@uifabric/example-data": "^7.1.4",
+    "@uifabric/file-type-icons": "^7.6.8",
+    "@uifabric/foundation": "^7.9.7",
+    "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.139.0",
+    "@uifabric/styling": "^7.16.7",
+    "@uifabric/theme-samples": "^7.1.18",
+    "@uifabric/utilities": "^7.32.3",
+    "office-ui-fabric-react": "^7.139.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

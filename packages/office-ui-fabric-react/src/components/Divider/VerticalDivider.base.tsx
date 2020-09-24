@@ -13,3 +13,4 @@ export const VerticalDividerBase = (props: IVerticalDividerProps) => {
     </span>
   );
 };
+VerticalDividerBase.displayName = 'VerticalDividerBase';

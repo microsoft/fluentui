@@ -2,6 +2,11 @@ import { IPartialTheme, ITheme } from './ITheme';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
+ * A ramp of size values.
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+/**
  * A baseline set of color plates.
  */
 export type ColorTokenSet = {

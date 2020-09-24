@@ -227,6 +227,9 @@ export * from './components/Datepicker/DatepickerCalendarHeader';
 export * from './components/Datepicker/DatepickerCalendarHeaderAction';
 export * from './components/Datepicker/DatepickerCalendarHeaderCell';
 export * from './components/Datepicker/DatepickerCalendarCell';
+export * from './components/Datepicker/DatepickerCalendarCellButton';
+export * from './components/Datepicker/DatepickerCalendarGrid';
+export * from './components/Datepicker/DatepickerCalendarGridRow';
 
 //
 // Utilities

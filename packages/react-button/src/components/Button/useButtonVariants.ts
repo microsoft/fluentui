@@ -122,6 +122,8 @@ export const useButtonVariants = makeVariants<ButtonVariants>('Button', '--butto
       background: 'transparent',
       borderColor: 'transparent',
       contentColor: palette?.neutralPrimary,
+      fontWeight: 'normal',
+      iconColor: palette?.themeDarkAlt,
       menuIconColor: palette?.neutralSecondary,
       secondaryContentColor: palette?.neutralPrimary,
 
@@ -138,10 +140,10 @@ export const useButtonVariants = makeVariants<ButtonVariants>('Button', '--butto
       },
 
       disabled: {
+        background: semanticColors?.disabledBackground,
         contentColor: palette?.neutralTertiary,
         iconColor: 'inherit',
         secondaryContentColor: palette?.neutralTertiary,
-        background: semanticColors?.disabledBackground,
       },
 
       expanded: {
@@ -149,22 +151,19 @@ export const useButtonVariants = makeVariants<ButtonVariants>('Button', '--butto
       },
 
       focused: {
-        borderColor: 'transparent',
         contentColor: palette?.neutralPrimary,
         iconColor: palette?.themeDarkAlt,
         secondaryContentColor: palette?.neutralPrimary,
       },
 
       hovered: {
-        borderColor: 'transparent',
         background: palette?.neutralLighter,
-        contentColor: palette?.neutralPrimary,
-        menuIconColor: palette?.neutralSecondary,
+        contentColor: palette?.themePrimary,
+        iconColor: palette?.themePrimary,
         secondaryContentColor: palette?.neutralPrimary,
       },
 
       pressed: {
-        borderColor: 'transparent',
         background: palette?.neutralLight,
         contentColor: palette?.black,
         iconColor: palette?.themeDarker,
