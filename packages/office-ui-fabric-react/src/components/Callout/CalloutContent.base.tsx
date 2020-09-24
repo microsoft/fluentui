@@ -350,6 +350,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         isEventTargetOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
           !this._target ||
+          this.props.dismissOnTargetClick ||
           (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.dismiss(ev);
@@ -358,7 +359,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _dismissOnTargetWindowBlur = (ev: FocusEvent) => {
     // eslint-disable-next-line deprecation/deprecation
-    const { preventDismissOnEvent, preventDismissOnLostFocus } = this.props;
+    const { preventDismissOnEvent, preventDismissOnLostFocus, shouldDismissOnWindowFocus } = this.props;
+
+    // Do nothing
+    if (!shouldDismissOnWindowFocus) {
+      return;
+    }
+
     if (
       ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
         (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&

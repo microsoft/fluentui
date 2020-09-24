@@ -68,8 +68,8 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 
   /**
    * When the user uses left arrow, right arrow, clicks, or deletes text autofill is disabled
-   * Since the user has taken control. It is automatically reenabled when the user enters text and the
-   * cursor is at the end of the text in the input box. This specifies other key presses that will reenabled
+   * Since the user has taken control. It is automatically re-enabled when the user enters text and the
+   * cursor is at the end of the text in the input box. This specifies other key presses that will re-enabled.
    * autofill.
    * @defaultvalue [KeyCodes.down, KeyCodes.up]
    */
