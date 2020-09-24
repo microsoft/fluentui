@@ -96,7 +96,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 
   /**
    * Handler for checking if the full value of the input should
-   * be seleced in componentDidUpdate
+   * be selected in componentDidUpdate
    *
    * @returns - should the full value of the input be selected?
    */
