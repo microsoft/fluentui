@@ -66,6 +66,9 @@ export interface ComponentStyles {
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
+// @public
+export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+
 // @public (undocumented)
 export const DefaultEffects: IEffects;
 
