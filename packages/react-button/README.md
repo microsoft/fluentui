@@ -118,7 +118,7 @@ These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
 | `primary` | Uses the brand color to indicate the button is a primary action. |
 | `size` | Controls the size of the button, based on an enum value: `smallest`, `smaller`, `small`, `regular`, `large`, `larger`, `largest`. Defaults to `regular`. |
 
-### Button styling changes
+### Styling changes
 
 - `vertical-align` is now set to `middle` to ensure they align correctly. See https://codesandbox.io/s/align-buttons-middle-6u5nu for an example of why this is important.
 - Focus rectangles have been adjusted to be more visible and consistent with our new focus styling approach (note that not everything has been updated to the 2px black border 1px inverted inner.)
