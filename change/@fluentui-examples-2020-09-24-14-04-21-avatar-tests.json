@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update version of @fluentui/react-avatar",
+  "packageName": "@fluentui/examples",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-24T21:04:21.507Z"
+}
