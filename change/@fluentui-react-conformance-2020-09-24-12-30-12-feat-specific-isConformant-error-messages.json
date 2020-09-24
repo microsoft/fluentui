@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding a describe wrapper within isConformant to help specify location of error messages.",
+  "packageName": "@fluentui/react-conformance",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-24T19:30:12.449Z"
+}
