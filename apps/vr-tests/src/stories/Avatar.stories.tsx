@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+// import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import { ChatBotIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons';
@@ -62,11 +62,14 @@ storiesOf('Avatar', module)
       </Stack>
     </div>
   ))
+  // Screener snapshots are disabled for now, until Avatar visuals have been finalized
+  /*
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
   ))
+  */
   .addStory('basic', () => (
     <>
       <Avatar />
