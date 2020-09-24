@@ -9,6 +9,7 @@ import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
  */
 export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
+  delete behavior.attributes.root.role;
 
   const definition = _.merge(behavior, {
     attributes: {
