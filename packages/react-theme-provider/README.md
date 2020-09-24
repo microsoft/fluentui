@@ -197,7 +197,7 @@ Before:
 ```
 
 After:
-See options in `Accessing theme` section above.
+See options in [Accessing theme](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md#accessing-theme).
 
 ### loadTheme
 
