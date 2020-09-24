@@ -504,6 +504,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     direction: FocusZoneDirection.vertical,
     shouldEnterInnerZone: isRightArrow,
     onActiveElementChanged: onActiveRowChanged,
+    shouldRaiseClicks: false,
     onBlur: onBlur,
   };
 
@@ -528,15 +529,17 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-    <List
-      ref={listRef}
-      role="presentation"
-      items={items}
-      onRenderCell={onRenderListCell(0)}
-      usePageCache={usePageCache}
-      onShouldVirtualize={onShouldVirtualize}
-      {...additionalListProps}
-    />
+    <FocusZone {...focusZoneProps}>
+      <List
+        ref={listRef}
+        role="presentation"
+        items={items}
+        onRenderCell={onRenderListCell(0)}
+        usePageCache={usePageCache}
+        onShouldVirtualize={onShouldVirtualize}
+        {...additionalListProps}
+      />
+    </FocusZone>
   );
 
   const onHeaderKeyDown = React.useCallback(
@@ -627,24 +630,22 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             )}
         </div>
         <div onKeyDown={onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
-          <FocusZone {...focusZoneProps}>
-            {!disableSelectionZone ? (
-              <SelectionZone
-                ref={selectionZoneRef}
-                selection={selection}
-                selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
-                selectionMode={selectionMode}
-                onItemInvoked={onItemInvoked}
-                onItemContextMenu={onItemContextMenu}
-                enterModalOnTouch={enterModalSelectionOnTouch}
-                {...(selectionZoneProps || {})}
-              >
-                {list}
-              </SelectionZone>
-            ) : (
-              list
-            )}
-          </FocusZone>
+          {!disableSelectionZone ? (
+            <SelectionZone
+              ref={selectionZoneRef}
+              selection={selection}
+              selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
+              selectionMode={selectionMode}
+              onItemInvoked={onItemInvoked}
+              onItemContextMenu={onItemContextMenu}
+              enterModalOnTouch={enterModalSelectionOnTouch}
+              {...(selectionZoneProps || {})}
+            >
+              {list}
+            </SelectionZone>
+          ) : (
+            list
+          )}
         </div>
         {onRenderDetailsFooter({
           ...detailsFooterProps,
