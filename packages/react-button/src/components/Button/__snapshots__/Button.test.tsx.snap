@@ -104,7 +104,7 @@ exports[`Button renders a default state 1`] = `
           border-style: solid;
           border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
           border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-          border-width: var(--button-focusWidth, 1.6px);
+          border-width: var(--button-focusWidth, 2px);
           bottom: -1px;
           box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
           content: "";
@@ -171,7 +171,6 @@ exports[`Button renders a default state 1`] = `
           --button-fontSize: 14px;
           --button-fontWeight: 600;
           --button-hovered-background: #f3f2f1;
-          --button-hovered-borderColor: #8a8886;
           --button-hovered-contentColor: #201f1e;
           --button-hovered-secondaryContentColor: #201f1e;
           --button-iconColor: inherit;
@@ -185,7 +184,6 @@ exports[`Button renders a default state 1`] = `
           --button-paddingRight: 20px;
           --button-paddingTop: 0;
           --button-pressed-background: #edebe9;
-          --button-pressed-borderColor: #8a8886;
           --button-pressed-contentColor: #201f1e;
           --button-pressed-secondaryContentColor: #201f1e;
           --button-secondaryContentColor: #605e5c;
@@ -317,7 +315,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           border-style: solid;
           border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
           border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-          border-width: var(--button-focusWidth, 1.6px);
+          border-width: var(--button-focusWidth, 2px);
           bottom: -1px;
           box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
           content: "";
@@ -384,7 +382,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-fontSize: 14px;
           --button-fontWeight: 600;
           --button-hovered-background: #f3f2f1;
-          --button-hovered-borderColor: #8a8886;
           --button-hovered-contentColor: #201f1e;
           --button-hovered-secondaryContentColor: #201f1e;
           --button-iconColor: inherit;
@@ -398,7 +395,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-paddingRight: 20px;
           --button-paddingTop: 0;
           --button-pressed-background: #edebe9;
-          --button-pressed-borderColor: #8a8886;
           --button-pressed-contentColor: #201f1e;
           --button-pressed-secondaryContentColor: #201f1e;
           --button-secondaryContentColor: #605e5c;

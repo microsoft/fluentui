@@ -63,7 +63,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
         right: -1,
         top: -1,
         bottom: -1,
-        borderWidth: 'var(--button-focusWidth, 1.6px)',
+        borderWidth: 'var(--button-focusWidth, 2px)',
         borderStyle: 'solid',
         borderColor: 'var(--button-focusColor, black)',
         borderTopLeftRadius: 'var(--button-borderTopLeftRadius, var(--button-borderRadius))',

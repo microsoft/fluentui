@@ -50,14 +50,12 @@ export const useButtonVariants = makeVariants<ButtonVariants>('Button', '--butto
 
       hovered: {
         background: semanticColors?.buttonBackgroundHovered,
-        borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonTextHovered,
         secondaryContentColor: palette?.neutralDark,
       },
 
       pressed: {
         background: semanticColors?.buttonBackgroundPressed,
-        borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonTextPressed,
         secondaryContentColor: semanticColors?.buttonTextPressed,
       },
