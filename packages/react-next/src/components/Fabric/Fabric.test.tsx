@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
-import { Customizer, createTheme, Checkbox, Fabric } from '@fluentui/react-next';
+import { Customizer } from '@uifabric/utilities';
+import { Fabric } from './Fabric';
+import { Checkbox } from '../../Checkbox';
+import { createTheme } from '../../Styling';
 import { mount } from 'enzyme';
 
 const rtlTheme = createTheme({ rtl: true });

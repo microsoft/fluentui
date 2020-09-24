@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: Moving custom onFocus call at the end of private onFocus logic.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-17T23:37:34.848Z"
-}
