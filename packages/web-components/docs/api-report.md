@@ -192,8 +192,16 @@ export class FluentCard extends FluentDesignSystemProvider implements Pick<Desig
     backgroundColor: string;
     // (undocumented)
     protected backgroundColorChanged(): void;
+<<<<<<< HEAD
     // (undocumented)
     connectedCallback(): void;
+=======
+    cardBackgroundColor: string;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(source: DesignSystem, name: string): void;
+>>>>>>> f84dca676e2ff473f0caefcca78ecca97daf8e60
     // @internal
     neutralPalette: string[];
 }

@@ -14,7 +14,7 @@ export interface IButtonGridCellProps<T> {
   id: string;
 
   /**
-   * Optional, if the this option should be diabled
+   * Optional, if the this option should be disabled
    */
   disabled?: boolean;
 
