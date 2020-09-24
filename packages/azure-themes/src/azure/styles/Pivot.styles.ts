@@ -1,10 +1,11 @@
 import { IPivotStyleProps, IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
   const { theme, rootIsTabs, rootIsLarge } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: [
@@ -12,6 +13,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         borderBottomColor: semanticColors.inputBorder,
         borderBottomStyle: StyleConstants.borderSolid,
         borderBottomWidth: StyleConstants.borderWidth,
+        borderBottom: 0,
       },
       !rootIsTabs && {
         selectors: {
@@ -41,14 +43,15 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     link: [
       {
         color: semanticColors.buttonText,
+        height: 36,
       },
       !rootIsLarge && {
-        fontSize: FontSizes.size14,
+        fontSize: theme.fonts.medium.fontSize,
       },
       !rootIsTabs && {
         selectors: {
           ':hover': {
-            backgroundColor: semanticColors.listItemBackgroundHovered,
+            backgroundColor: extendedSemanticColors.tabHover,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
             transition: 'background-color .2s ease-out',
@@ -83,13 +86,16 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     ],
     linkIsSelected: [
       !rootIsLarge && {
-        fontSize: FontSizes.size14,
+        fontSize: theme.fonts.medium.fontSize,
+        height: 36,
       },
       !rootIsTabs && {
         color: semanticColors.bodyText,
         paddingBottom: '1px',
         selectors: {
           ':hover': {
+            backgroundColor: extendedSemanticColors.tabHover,
+            color: extendedSemanticColors.bodyTextHovered,
             border: StyleConstants.borderNone,
           },
           ':active': {

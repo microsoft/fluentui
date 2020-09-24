@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
+import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
-  onExpandLayoutChange: (isExpanding: boolean) => void;
+  canRedo: boolean;
+  canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
+  onUndo: () => void;
+  onRedo: () => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  onSelectingChange: (isSelecting: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
@@ -21,12 +23,14 @@ export type ToolbarProps = {
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isExpanding,
   isSelecting,
-  onExpandLayoutChange,
+  canRedo,
+  canUndo,
   onModeChange,
   onReset,
+  onUndo,
+  onRedo,
   onShowCodeChange,
   onShowJSONTreeChange,
-  onSelectingChange,
   mode,
   showCode,
   showJSONTree,
@@ -41,7 +45,10 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       ...style,
     }}
   >
-    <Image styles={{ height: '1.5rem', marginRight: '0.25rem' }} src={`public/images/fluent-ui-logo.png`} />
+    <Image
+      styles={{ height: '1.5rem', marginRight: '0.25rem' }}
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png"
+    />
     <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
       FluentUI
       <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
@@ -83,23 +90,9 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
       }}
     />
+    <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
+    <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-      {/*
-      <Checkbox
-        toggle
-        label="Expand Layout"
-        checked={!!isExpanding}
-        onChange={(e, data) => onExpandLayoutChange(data.checked)}
-      />
-      &emsp;
-      <Checkbox
-        toggle
-        label="Select Components"
-        checked={!!isSelecting}
-        onChange={(e, data) => onSelectingChange(data.checked)}
-      />
-      &emsp;
-      */}
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
       <Checkbox

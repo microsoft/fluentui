@@ -6,6 +6,7 @@ import {
   useAutoControlled,
   useTelemetry,
   useFluentContext,
+  useTriggerElement,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -16,9 +17,9 @@ import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { elementContains, setVirtualParent } from '@fluentui/dom-utilities';
 
 import {
-  childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -86,6 +87,7 @@ export interface PopupProps
 
   /**
    * Function to render popup content.
+   * @deprecated Please use `popperRef` to get an imperative handle to Popper's APIs.
    * @param updatePosition - function to request popup position update.
    */
   renderContent?: (updatePosition: Function) => ShorthandValue<PopupContentProps>;
@@ -129,7 +131,6 @@ export const Popup: React.FC<PopupProps> &
     align,
     autoFocus,
     inline,
-    children,
     contentRef,
     flipBoundary,
     on,
@@ -138,6 +139,7 @@ export const Popup: React.FC<PopupProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     renderContent,
@@ -193,7 +195,6 @@ export const Popup: React.FC<PopupProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      disabled: false, // definition has this prop, but `Popup` doesn't support it
       isOpenedByRightClick,
       on,
       trapFocus,
@@ -352,7 +353,7 @@ export const Popup: React.FC<PopupProps> &
     }
 
     /**
-     * The hover is adding the mouseEnter, mouseLeave and click event (always opening on click)
+     * The hover is adding the mouseEnter, mouseLeave
      */
     if (_.includes(normalizedOn, 'hover')) {
       contentHandlerProps.onMouseEnter = (e, contentProps) => {
@@ -363,21 +364,18 @@ export const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         predefinedProps && _.invoke(predefinedProps, 'onMouseLeave', e, contentProps);
       };
-      contentHandlerProps.onClick = (e, contentProps) => {
-        setPopupOpen(true, e);
-        predefinedProps && _.invoke(predefinedProps, 'onClick', e, contentProps);
-      };
     }
 
     return contentHandlerProps;
   };
 
-  const shouldBlurClose = e => {
-    return (
-      !e.currentTarget ||
-      !popupContentRef.current ||
-      (!e.currentTarget.contains(e.relatedTarget) && !popupContentRef.current.contains(e.relatedTarget))
-    );
+  const shouldBlurClose = (e: React.FocusEvent) => {
+    const relatedTarget = e.relatedTarget as Node;
+    const isInsideContent = elementContains(popupContentRef.current, relatedTarget as HTMLElement);
+    const isInsideTarget = elementContains(e.currentTarget as HTMLElement, relatedTarget as HTMLElement);
+    // When clicking in the popup content that has no tabIndex focus goes to body
+    // We shouldn't close the popup in this case
+    return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
@@ -476,7 +474,7 @@ export const Popup: React.FC<PopupProps> &
     const activeElement = activeDocument.activeElement;
 
     triggerFocusableRef.current =
-      triggerRef.current && triggerRef.current.contains(activeElement)
+      triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
         ? (activeElement as HTMLElement)
         : triggerRef.current;
   };
@@ -510,8 +508,20 @@ export const Popup: React.FC<PopupProps> &
     }
   });
 
-  const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
+  const triggerNode = useTriggerElement(props);
   const triggerProps = getTriggerProps(triggerNode);
+
+  React.useEffect(() => {
+    if (open) {
+      setVirtualParent(popupContentRef.current, triggerRef.current);
+    }
+
+    return () => {
+      if (open && popupContentRef.current) {
+        setVirtualParent(popupContentRef.current, null);
+      }
+    };
+  }, [open]);
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
@@ -520,6 +530,7 @@ export const Popup: React.FC<PopupProps> &
           pointerTargetRef={pointerTargetRef}
           align={align}
           flipBoundary={flipBoundary}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           offset={offset}
@@ -527,8 +538,9 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
-          children={renderPopperChildren(classes)}
-        />
+        >
+          {renderPopperChildren(classes)}
+        </Popper>
       )}
     </Animation>
   );
@@ -565,6 +577,7 @@ Popup.propTypes = {
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
   ]),
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,

@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/ContextualMenu';
+import './version';
+export * from './components/ContextualMenu';

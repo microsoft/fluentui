@@ -20,6 +20,7 @@ import {
   jumpToAnchor,
   removeAnchorLink,
   SiteMessageBar,
+  getQueryParam,
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
@@ -56,11 +57,14 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
   private _async: Async;
   private _jumpInterval: number | undefined;
+  private _isStrict: boolean;
 
   constructor(props: ISiteProps<TPlatforms>) {
     super(props);
 
     this._async = new Async();
+
+    this._isStrict = getQueryParam('strict') === 'all';
 
     let activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = {};
 
@@ -170,7 +174,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       </div>
     );
 
-    return (
+    const app = (
       <PlatformContext.Provider value={platform}>
         <AppCustomizationsContext.Provider value={AppCustomizations}>
           {customizations ? (
@@ -183,6 +187,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<
         </AppCustomizationsContext.Provider>
       </PlatformContext.Provider>
     );
+
+    return this._isStrict ? <React.StrictMode>{app}</React.StrictMode> : app;
   }
 
   private _getNavData(activePlatforms?: ISiteState<TPlatforms>['activePlatforms']): Partial<ISiteState<TPlatforms>> {

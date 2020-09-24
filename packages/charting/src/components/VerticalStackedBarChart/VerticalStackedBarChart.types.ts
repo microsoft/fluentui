@@ -1,24 +1,19 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IVerticalStackedChartProps } from '../../types/index';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  ICartesianChartProps,
+  ICartesianChartStyleProps,
+  ICartesianChartStyles,
+  IVerticalStackedChartProps,
+  IVSChartDataPoint,
+} from '@uifabric/charting';
 
-export interface IVerticalStackedBarChartProps {
+export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
   data: IVerticalStackedChartProps[];
-
-  /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
 
   /**
    * Width of each bar in the chart.
@@ -26,39 +21,16 @@ export interface IVerticalStackedBarChartProps {
   barWidth?: number;
 
   /**
-   * Number of ticks on the y-axis.
-   */
-  yAxisTickCount?: number;
-
-  /**
    * Colors from which to select the color of each bar.
+   * @deprecated Not using this prop. DIrectly taking color from given data.
    */
   colors?: string[];
 
   /**
-   * Label to apply to the whole chart.
+   * To display multi stack callout or single callout
+   * @default flase
    */
-  chartLabel?: string;
-
-  /**
-   * Additional CSS class(es) to apply to the VerticalStackedBarChart.
-   */
-  className?: string;
-
-  /**
-   * this prop takes its parent as a HTML element to define the width and height of the line chart
-   */
-  parentRef?: HTMLElement | null;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
-   * Url that the data-viz needs to redirect to upon clicking on it
-   */
-  href?: string;
+  isCalloutForStack?: boolean;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -66,128 +38,68 @@ export interface IVerticalStackedBarChartProps {
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
 
   /**
-   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   * Define a custom callout renderer for a stack; default is to render per data point
    */
-  enabledLegendsWrapLines?: boolean;
+  onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
 
   /**
-   * overflow props for the legends
+   * Define a custom callout renderer for a data point
    */
-  legendsOverflowProps?: Partial<IOverflowSetProps>;
+  onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
 
   /**
-   * focus zone props in hover card for legends
+   * props for the callout in the chart
    */
-  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
-
-  /**
-   * Do not show tooltips in chart
-   *
-   * @default false
-   */
-  hideTooltip?: boolean;
+  calloutProps?: Partial<ICalloutProps>;
 }
 
-export interface IVerticalStackedBarChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
+export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
 
+export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   /**
-   * Additional CSS class(es) to apply to the StackedBarChart.
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
-  className?: string;
-
-  /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
-   * color of the datapoint legend
-   */
-  legendColor?: string;
-
-  /**
-   * Link to redirect if click action for graph
-   */
-  href?: string;
-
-  /**
-   * prop to check if the chart is selcted or hovered upon to determine opacity
-   */
-  shouldHighlight?: boolean;
-}
-
-export interface IVerticalStackedBarChartStyles {
-  /**
-   *  Style for the root element.
-   */
-  root?: IStyle;
+  opacityChangeOnHover?: IStyle;
 
   /**
    * Style for the chart.
+   * @deprecated use root instead.
    */
   chart?: IStyle;
 
   /**
-   * Style for the chart label.
-   */
-  chartLabel?: IStyle;
-
-  /**
-   * Style for the element containing the x-axis.
-   */
-  xAxis?: IStyle;
-
-  /**
    * Style for the line representing the domain of the x-axis.
+   * @deprecated - use xAxis instead.
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
+   * @deprecated - use xAxis instead.
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
+   * @deprecated - use xAxis instead.
    */
   xAxisText?: IStyle;
 
   /**
-   * Style for the element containing the y-axis.
-   */
-  yAxis?: IStyle;
-
-  /**
    * Style for the line representing the domain of the y-axis.
+   * @deprecated - use xAxis instead.
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
+   * @deprecated - use xAxis instead.
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
+   * @deprecated - use xAxis instead.
    */
   yAxisText?: IStyle;
-
-  /**
-   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
-   */
-  opacityChangeOnHover: IStyle;
-
-  /**
-   * Style for the legends container
-   */
-  legendContainer?: IStyle;
 }

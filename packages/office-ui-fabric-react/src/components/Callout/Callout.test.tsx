@@ -149,6 +149,107 @@ describe('Callout', () => {
     expect(gotEvent).toEqual(true);
   });
 
+  it('does not dismiss when window loses focus', () => {
+    jest.useFakeTimers();
+    let threwException = false;
+    let gotEvent = false;
+    // Callout will only call the dismiss event if hasFocus returns false
+    // so this needs to be mocked
+    const b = jest.spyOn(window.document, 'hasFocus');
+    b.mockReturnValue(false);
+    const onDismiss = (ev?: any) => {
+      if (ev) {
+        gotEvent = true;
+      }
+    };
+
+    // In order to have eventlisteners that have been added to the window to be called the JSX needs
+    // to be rendered into the real dom rather than the testutil simulated dom.
+
+    try {
+      ReactDOM.render<HTMLDivElement>(
+        <div>
+          <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
+            {' '}
+            target{' '}
+          </button>
+          <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge} onDismiss={onDismiss}>
+            <div>Content</div>
+            <button title="foo" id="blurtarget">
+              text
+            </button>
+          </Callout>
+        </div>,
+        realDom,
+      );
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+
+    const blurtarget = document.getElementById('blurtarget') as HTMLElement;
+
+    // Move focus
+    jest.runAllTimers();
+    // Since this is a native event handler, rather than a react one, the event
+    // must be triggered like this.
+    blurtarget.dispatchEvent(new FocusEvent('blur', { relatedTarget: null }));
+    expect(gotEvent).toEqual(false);
+  });
+
+  it('does dismiss focus when window loses focus when shouldDismissOnWindowFocus is true', () => {
+    jest.useFakeTimers();
+    let threwException = false;
+    let gotEvent = false;
+    // Callout will only call the dismiss event if hasFocus returns false
+    // so this needs to be mocked.
+    const b = jest.spyOn(window.document, 'hasFocus');
+    b.mockReturnValue(false);
+    const onDismiss = (ev?: any) => {
+      if (ev) {
+        gotEvent = true;
+      }
+    };
+
+    // In order to have eventlisteners that have been added to the window to be called the JSX needs
+    // to be rendered into the real dom rather than the testutil simulated dom.
+
+    try {
+      ReactDOM.render<HTMLDivElement>(
+        <div>
+          <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
+            {' '}
+            target{' '}
+          </button>
+          <Callout
+            target="#target"
+            shouldDismissOnWindowFocus={true}
+            directionalHint={DirectionalHint.topLeftEdge}
+            onDismiss={onDismiss}
+          >
+            <div>Content</div>
+            <button title="foo" id="blurtarget">
+              text
+            </button>
+          </Callout>
+        </div>,
+        realDom,
+      );
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+
+    const blurtarget = document.getElementById('blurtarget') as HTMLElement;
+
+    // Move focus
+    jest.runAllTimers();
+    // Since this is a native event handler, rather than a react one, the event
+    // must be triggered like this.
+    blurtarget.dispatchEvent(new FocusEvent('blur', { relatedTarget: null }));
+    expect(gotEvent).toEqual(true);
+  });
+
   it('It will correctly return focus to element that spawned it', () => {
     jest.useFakeTimers();
 
@@ -164,7 +265,7 @@ describe('Callout', () => {
     let previousFocusElement;
     let isFocused;
     let restoreCalled = false;
-    const onRestoreFocus = (options: { originalElement: any; containsFocus: any }) => {
+    const onRestoreFocus = (options: { originalElement: any; containsFocus: any; documentContainsFocus: any }) => {
       previousFocusElement = options.originalElement;
       isFocused = options.containsFocus;
       restoreCalled = true;

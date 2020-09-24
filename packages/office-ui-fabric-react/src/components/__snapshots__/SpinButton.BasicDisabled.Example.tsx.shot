@@ -117,6 +117,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               cursor: default;
               display: block;
               flex: 1;
+              font-family: inherit;
               font-size: 14px;
               height: 100%;
               margin-bottom: 0px;
@@ -223,7 +224,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -248,7 +248,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -303,6 +302,9 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: GrayText;
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
@@ -367,7 +369,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -392,7 +393,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -447,6 +447,9 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: GrayText;
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"

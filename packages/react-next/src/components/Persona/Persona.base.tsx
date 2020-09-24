@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import {
+  classNamesFunction,
+  divProperties,
+  getNativeProps,
+  IRenderFunction,
+  getPropsWithDefaults,
+} from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -10,7 +16,7 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { getPropsWithDefaults } from '../../Utilities';
+import { useWarnings, useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -20,23 +26,28 @@ const DEFAULT_PROPS = {
   imageAlt: '',
 };
 
-function useWarnDeprecations(props: IPersonaProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Persona', props, { primaryText: 'text' });
-    }
-  }, []);
+function useDebugWarnings(props: IPersonaProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Persona',
+      props,
+      deprecations: { primaryText: 'text' },
+    });
+  }
 }
 
 /**
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaBase = React.forwardRef(
-  (propsWithoutDefaults: IPersonaProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forwardRef<HTMLDivElement, IPersonaProps>(
+  (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    useWarnDeprecations(props);
+    useDebugWarnings(props);
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
     /**
      * Deprecation helper for getting text.
@@ -71,10 +82,10 @@ export const PersonaBase = React.forwardRef(
      * @param text - text to render
      */
     const onRenderText = (text: string | undefined): IRenderFunction<IPersonaProps> | undefined => {
-      // return default render behaviour for valid text or undefined
+      // return default render behavior for valid text or undefined
       return text
         ? (): JSX.Element => {
-            // default onRender behaviour
+            // default onRender behavior
             return (
               <TooltipHost
                 content={text}
@@ -180,6 +191,7 @@ export const PersonaBase = React.forwardRef(
     return (
       <div
         {...divProps}
+        ref={mergedRootRef}
         className={classNames.root}
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >

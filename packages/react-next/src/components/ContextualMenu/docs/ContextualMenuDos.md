@@ -1,0 +1,4 @@
+- Use to display commands.
+- Divide groups of commands with rules.
+- Use selection checks without icons.
+- Provide submenus for sets of related commands that aren’t as critical as others.

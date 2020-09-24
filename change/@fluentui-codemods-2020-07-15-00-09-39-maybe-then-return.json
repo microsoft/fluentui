@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix maybe to correctly wrap return value from then",
-  "packageName": "@fluentui/codemods",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-15T07:09:39.235Z"
-}

@@ -28,7 +28,7 @@ import {
   childrenExist,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
-import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
+import { partitionPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
 import { Popup, PopupProps } from '../Popup/Popup';
@@ -126,12 +126,12 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       children,
       disabled,
       popup,
-      menu,
       menuOpen,
       wrapper,
       styles,
       variables,
     } = props;
+    const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
@@ -208,7 +208,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
 
     const handleWrapperClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (menu) {
-        if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target)) {
+        if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target, false)) {
           trySetMenuOpen(false, e);
         }
       }
@@ -282,26 +282,28 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
 
     const submenuElement = menuOpen ? (
       <Unstable_NestingAuto>
-        {(getRefs, nestingRef) => (
-          <>
-            <Ref
-              innerRef={(node: HTMLElement) => {
-                nestingRef.current = node;
-                menuRef.current = node;
-              }}
-            >
-              <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
-                <ToolbarVariablesProvider value={mergedVariables}>
-                  {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
-                    defaultProps: () => slotProps.menu,
-                    overrideProps: handleMenuOverrides(getRefs),
-                  })}
-                </ToolbarVariablesProvider>
-              </Popper>
-            </Ref>
-            <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
-          </>
-        )}
+        {(getRefs, nestingRef) => {
+          return (
+            <>
+              <Ref
+                innerRef={(node: HTMLElement) => {
+                  nestingRef.current = node;
+                  menuRef.current = node;
+                }}
+              >
+                <Popper align="start" position="above" targetRef={itemRef} {...positioningProps}>
+                  <ToolbarVariablesProvider value={mergedVariables}>
+                    {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
+                      defaultProps: () => slotProps.menu,
+                      overrideProps: handleMenuOverrides(getRefs),
+                    })}
+                  </ToolbarVariablesProvider>
+                </Popper>
+              </Ref>
+              <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
+            </>
+          );
+        }}
       </Unstable_NestingAuto>
     ) : null;
 

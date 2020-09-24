@@ -43,7 +43,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * Object that contains extra tests to run in case the component needs extra tests.
    */
-  extraTests?: TestObject;
+  extraTests?: TestObject<TProps>;
   /**
    * If the component has required props, they can be added in this object and will be applied when mounting/rendering.
    */
@@ -62,14 +62,23 @@ export interface IsConformantOptions<TProps = {}> {
    */
   wrapperComponent?: React.ElementType;
   /**
-   * Child component that will receive unhandledProps
+   * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  passesUnhandledPropsTo?: ComponentType<any>;
+  helperComponents?: React.ElementType[];
+
+  /**
+   * If the component's 'as' property requires a ref, this will attach a forwardRef to the test component passed to 'as'
+   * and disable the as-renders-react-class test.
+   */
+  asPropHandlesRef?: boolean;
+  /**
+   * Child component that will receive unhandledProps.
+   */
+  passesUnhandledPropsTo?: ComponentType<TProps>;
 }
 
-export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;
+export type ConformanceTest<TProps = {}> = (componentInfo: ComponentDoc, testInfo: IsConformantOptions<TProps>) => void;
 
-export interface TestObject {
-  [key: string]: ConformanceTest;
+export interface TestObject<TProps = {}> {
+  [key: string]: ConformanceTest<TProps>;
 }

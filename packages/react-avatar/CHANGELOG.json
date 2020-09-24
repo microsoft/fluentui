@@ -1,0 +1,92 @@
+{
+  "name": "@fluentui/react-avatar",
+  "entries": [
+    {
+      "date": "Mon, 21 Sep 2020 12:22:29 GMT",
+      "tag": "@fluentui/react-avatar_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Avatar for visual spec. Add support for active ring/shadow/glow.",
+            "author": "behowell@microsoft.com",
+            "commit": "baa5199bdf54765e517e63233f6173b1d4eba002",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@fluentui/react-avatar_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating state to use makeProps (mergeProps with explicit deep cloning, rather than implicit.)",
+            "author": "dzearing@hotmail.com",
+            "commit": "1838dcc8b214345f6cc8f9c0904a2cc66cc39f71",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-avatar_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Avatar with improved slots support, tokens support, and visual alignment with the design spec.",
+            "author": "behowell@microsoft.com",
+            "commit": "a6337607bf1742ce64f73eb6ddb420960919bdb9",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 12:25:46 GMT",
+      "tag": "@fluentui/react-avatar_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing explicit references to React",
+            "author": "elcraig@microsoft.com",
+            "commit": "2f79f1d332b447d38c382f67fd14af4b7d67bd29",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-avatar_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Seeding initial package.",
+            "author": "dzearing@hotmail.com",
+            "commit": "b483aa1280a38bafcb1e166148513964d5b545e8",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Fixing lint error that's breaking master build due to mismatched package versions.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f550420c490b22b50b543204447efa7802b37b60",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    }
+  ]
+}

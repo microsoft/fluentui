@@ -53,6 +53,7 @@ const DEFAULT_STRINGS = {
   weekNumberFormatString: 'Week number {0}',
   prevWeekAriaLabel: 'Go to previous week',
   nextWeekAriaLabel: 'Go to next week',
+  dayMarkedAriaLabel: 'marked',
 };
 
 export const defaultIconStrings: ICalendarIconStrings = {
@@ -165,6 +166,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       className,
       showFullMonth,
       weeksToShow,
+      ...calendarDayGridProps
     } = this.props;
 
     const classNames = getClassNames(styles, {
@@ -200,6 +202,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
           today={today}
           lightenDaysOutsideNavigatedMonth={showFullMonth}
           animationDirection={this.state.animationDirection}
+          {...calendarDayGridProps}
         />
         {this._renderNextWeekNavigationButton(classNames)}
       </div>
@@ -243,7 +246,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   private _renderPreviousWeekNavigationButton = (
     classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>,
   ): JSX.Element => {
-    const { minDate, firstDayOfWeek, strings, navigationIcons } = this.props;
+    const { minDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const leftNavigationIcon = navigationIcons!.leftNavigation;
 
@@ -261,11 +264,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         aria-disabled={!prevWeekInBounds}
         onClick={prevWeekInBounds ? this._onSelectPrevDateRange : undefined}
         onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevDateRange) : undefined}
-        title={
-          strings.prevWeekAriaLabel
-            ? strings.prevWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()]
-            : undefined
-        }
+        title={this._createPreviousWeekAriaLabel()}
         type="button"
       >
         <Icon iconName={leftNavigationIcon} />
@@ -274,7 +273,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   };
 
   private _renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
-    const { maxDate, firstDayOfWeek, strings, navigationIcons } = this.props;
+    const { maxDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const rightNavigationIcon = navigationIcons!.rightNavigation;
 
@@ -292,11 +291,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         aria-disabled={!nextWeekInBounds}
         onClick={nextWeekInBounds ? this._onSelectNextDateRange : undefined}
         onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextDateRange) : undefined}
-        title={
-          strings.nextWeekAriaLabel
-            ? strings.nextWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()]
-            : undefined
-        }
+        title={this._createNextWeekAriaLabel()}
         type="button"
       >
         <Icon iconName={rightNavigationIcon} />
@@ -374,5 +369,44 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       }
       this._initialTouchX = undefined;
     }
+  };
+
+  private _createPreviousWeekAriaLabel = () => {
+    const { strings, showFullMonth, firstDayOfWeek } = this.props;
+    const { navigatedDate } = this.state;
+
+    let ariaLabel = undefined;
+    if (showFullMonth && strings.prevMonthAriaLabel) {
+      ariaLabel = strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate!, -1).getMonth()];
+    } else if (!showFullMonth && strings.prevWeekAriaLabel) {
+      const firstDayOfPreviousWeek = getStartDateOfWeek(addDays(navigatedDate!, -7), firstDayOfWeek!);
+      const lastDayOfPreviousWeek = addDays(firstDayOfPreviousWeek, 6);
+      ariaLabel =
+        strings.prevWeekAriaLabel + ' ' + this._formatDateRange(firstDayOfPreviousWeek, lastDayOfPreviousWeek);
+    }
+    return ariaLabel;
+  };
+
+  private _createNextWeekAriaLabel = () => {
+    const { strings, showFullMonth, firstDayOfWeek } = this.props;
+    const { navigatedDate } = this.state;
+
+    let ariaLabel = undefined;
+    if (showFullMonth && strings.nextMonthAriaLabel) {
+      ariaLabel = strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate!, 1).getMonth()];
+    } else if (!showFullMonth && strings.nextWeekAriaLabel) {
+      const firstDayOfNextWeek = getStartDateOfWeek(addDays(navigatedDate!, 7), firstDayOfWeek!);
+      const lastDayOfNextWeek = addDays(firstDayOfNextWeek, 6);
+      ariaLabel = strings.nextWeekAriaLabel + ' ' + this._formatDateRange(firstDayOfNextWeek, lastDayOfNextWeek);
+    }
+    return ariaLabel;
+  };
+
+  private _formatDateRange = (startDate: Date, endDate: Date) => {
+    const { dateTimeFormatter, strings } = this.props;
+    return `${dateTimeFormatter?.formatMonthDayYear(startDate, strings)} - ${dateTimeFormatter?.formatMonthDayYear(
+      endDate,
+      strings,
+    )}`;
   };
 }

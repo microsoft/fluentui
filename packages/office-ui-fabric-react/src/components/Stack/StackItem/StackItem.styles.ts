@@ -21,6 +21,7 @@ export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tok
       classNames.root,
       {
         margin: tokens.margin,
+        padding: tokens.padding,
         height: verticalFill ? '100%' : 'auto',
         width: 'auto',
       },

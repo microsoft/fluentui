@@ -8,7 +8,114 @@ import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
-import { PopperModifiers, PopperProps } from './types';
+import { PopperModifiers, PopperProps, PopperPositionFix, PopperJsInstance } from './types';
+
+let reactInstanceKey: string;
+
+const getReactInstanceKey = (elm: Node): string => {
+  if (!reactInstanceKey) {
+    for (const k in elm) {
+      if (k.indexOf('__reactInternalInstance$') === 0) {
+        reactInstanceKey = k;
+        break;
+      }
+    }
+  }
+
+  return reactInstanceKey;
+};
+
+const hasAutofocusProp = (node: Node): boolean | undefined => {
+  // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
+  return (
+    (node.nodeName === 'BUTTON' ||
+      node.nodeName === 'INPUT' ||
+      node.nodeName === 'SELECT' ||
+      node.nodeName === 'TEXTAREA') &&
+    node[getReactInstanceKey(node)].pendingProps.autoFocus
+  );
+};
+
+function hasAutofocusFilter(node: Node) {
+  return hasAutofocusProp(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+}
+
+// We are setting the position to `fixed` in the first effect
+// To prevent scroll jumps in case of the content with managed focus
+// Modifier sets the position to `fixed` before all other modifier effects
+// Patch updates `forceUpdate` Popper function
+// which restores the original position before the first forceUpdate call
+const usePopperInitialPositionFix = (contentRef: React.MutableRefObject<HTMLElement>): PopperPositionFix => {
+  const originalStateRef = React.useRef<string>('absolute');
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (contentRef.current) {
+        const contentNode = contentRef.current;
+        const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
+          acceptNode: hasAutofocusFilter,
+        });
+
+        while (treeWalker.nextNode()) {
+          const node = treeWalker.currentNode;
+          // eslint-disable-next-line no-console
+          console.warn('<Popper>:', node);
+          // eslint-disable-next-line no-console
+          console.warn(
+            [
+              '<Popper>: ^ this node contains "autoFocus" prop on a React element. This can break the initial',
+              'positioning of an element and cause a window jump effect. This issue occurs because React polyfills',
+              '"autoFocus" behavior to solve inconsistencies between different browsers:',
+              'https://github.com/facebook/react/issues/11851#issuecomment-351787078',
+              '\n',
+              'However, ".focus()" in this case occurs before any other React effects will be executed',
+              '(React.useEffect(), componentDidMount(), etc.) and we can not prevent this behavior. If you really',
+              'want to use "autoFocus" please add "position: fixed" to styles of the element that is wrapped by',
+              '"Popper".',
+              `In general, it's not recommended to use "autoFocus" as it may break accessibility aspects:`,
+              'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-autofocus.md',
+              '\n',
+              'We suggest to use the "trapFocus" prop on Fluent components or a catch "ref" and then use',
+              '"ref.current.focus" in React.useEffect():',
+              'https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element',
+            ].join(' '),
+          );
+        }
+      }
+      // We run this check once, no need to add deps here
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
+  return React.useMemo(
+    () => ({
+      patch: (popperInstance: PopperJsInstance) => {
+        const originalForceUpdate = popperInstance.forceUpdate;
+        popperInstance.isFirstRun = true;
+        popperInstance.forceUpdate = () => {
+          if (popperInstance.isFirstRun) {
+            popperInstance.state.elements.popper.style['position'] = originalStateRef.current;
+            popperInstance.isFirstRun = false;
+          }
+          originalForceUpdate();
+        };
+      },
+      modifier: {
+        name: 'positionStyleFix',
+        enabled: true,
+        phase: 'afterWrite' as PopperJs.ModifierPhases,
+        effect: ({ state }: { state: Partial<PopperJs.State> }) => {
+          originalStateRef.current = state.elements.popper.style['position'];
+          state.elements.popper.style['position'] = 'fixed';
+          return () => {};
+        },
+        requires: [],
+      },
+    }),
+    [],
+  );
+};
 
 /**
  * Memoize a result using deep equality. This hook has two advantages over
@@ -65,6 +172,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     offset,
     overflowBoundary,
     pointerTargetRef,
+    popperRef,
     position,
     positionFixed,
     positioningDependencies = [],
@@ -75,8 +183,9 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
 
   const proposedPlacement = getPlacement({ align, position, rtl });
 
-  const popperRef = React.useRef<PopperJs.Instance>();
+  const popperInstanceRef = React.useRef<PopperJsInstance>();
   const contentRef = React.useRef<HTMLElement>(null);
+  const popperInitialPositionFix = usePopperInitialPositionFix(contentRef);
 
   const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
   const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
@@ -181,11 +290,13 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'afterWrite' as PopperJs.ModifierPhases,
           fn: handleUpdate,
         },
+        popperInitialPositionFix.modifier,
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };
 
-    popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
+    popperInstanceRef.current = PopperJs.createPopper(reference, contentRef.current, options);
+    popperInitialPositionFix.patch(popperInstanceRef.current);
   }, [
     contentRef,
     computedModifiers,
@@ -197,20 +308,29 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     proposedPlacement,
     targetRef,
     unstable_pinned,
+    popperInitialPositionFix,
   ]);
 
   const destroyInstance = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.destroy();
-      popperRef.current = null;
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.destroy();
+      popperInstanceRef.current = null;
     }
   }, []);
 
   const scheduleUpdate = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.update();
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.update();
     }
   }, []);
+
+  React.useImperativeHandle(
+    popperRef,
+    () => ({
+      updatePosition: scheduleUpdate,
+    }),
+    [scheduleUpdate],
+  );
 
   useIsomorphicLayoutEffect(() => {
     createInstance();

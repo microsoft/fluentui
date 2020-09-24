@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps -- will come back and fix separately */
 import * as React from 'react';
 import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
@@ -16,9 +17,9 @@ import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
-import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
-interface ISpinButtonState {
+interface ISpinButtonInternalState {
   inputId: string;
   labelId: string;
   lastValidValue: string;
@@ -93,6 +94,15 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     props.defaultValue !== undefined ? props.defaultValue : String(min || '0'),
   );
 
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      mutuallyExclusive: { value: 'defaultValue' },
+    });
+  }
+
   useComponentRef(props, input, value);
   const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
     const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
@@ -104,7 +114,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const { current: internalState } = React.useRef<ISpinButtonState>({
+  const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     inputId: getId('input'),
     labelId: getId('Label'),
     lastValidValue: initialValue,

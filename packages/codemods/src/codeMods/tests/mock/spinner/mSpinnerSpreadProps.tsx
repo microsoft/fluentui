@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable prefer-const */
 /* eslint-disable deprecation/deprecation */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { Spinner, SpinnerType, ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
 export const RenderSpinner = (props: any) => {
   const propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
@@ -17,40 +16,13 @@ export const RenderSpinner = (props: any) => {
     </div>
   );
 };
-
+/* Render an component awkwardly. */
 export const RenderLetSpinner = (props: any) => {
   let propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
-  return (
-    <div>
-      <Spinner {...propsTest} id="l">
-        Yoo hoo!
-      </Spinner>
-      {/* include self closing spinner check */}
-      <Spinner {...propsTest} />
-    </div>
-  );
+  const someThing = true;
+  return <div>{someThing ? <Spinner {...propsTest} /> : <div />}</div>;
 };
 
-export const RenderSpinnerProps = (props: ISpinnerProps) => {
-  return (
-    <div>
-      <Spinner {...props} id="pl">
-        Spinner
-      </Spinner>
-      {/* include self closing Spinner check */}
-      <Spinner {...props} />
-    </div>
-  );
-};
+const propsForArrow = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
 
-export function RenderSpinnerPropsFunc(props: ISpinnerProps) {
-  return (
-    <div>
-      <Spinner {...props} id="pf">
-        Spinner
-      </Spinner>
-      {/* include self closing Spinner check */}
-      <Spinner {...props} />
-    </div>
-  );
-}
+export const RenderSpinnerPropsArrow = (props: any): any => <Spinner {...propsForArrow} />;

@@ -111,6 +111,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
+      'aria-hidden': true,
       style: {
         pointerEvents: 'none',
         position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them

@@ -3,6 +3,7 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
+export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -44,10 +45,16 @@ export * from './components/Button/Button';
 export * from './components/Button/ButtonGroup';
 export * from './components/Button/ButtonContent';
 
+export * from './components/Breadcrumb/Breadcrumb';
+export * from './components/Breadcrumb/BreadcrumbItem';
+export * from './components/Breadcrumb/BreadcrumbDivider';
+
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export * from './components/Chat/ChatMessageDetails';
+export * from './components/Chat/ChatMessageHeader';
+export * from './components/Chat/ChatMessageReadStatus';
 
 export * from './components/Checkbox/Checkbox';
 
@@ -85,6 +92,7 @@ export * from './components/Form/FormLabel';
 export * from './components/Form/FormMessage';
 export * from './components/Form/FormButton';
 export * from './components/Form/FormDropdown';
+export * from './components/Form/FormDatepicker';
 export * from './components/Form/FormRadioGroup';
 export * from './components/Form/FormSlider';
 export * from './components/Form/FormCheckbox';
@@ -116,6 +124,12 @@ export * from './components/Layout/Layout';
 
 export * from './components/List/List';
 export * from './components/List/ListItem';
+export * from './components/List/ListItemContent';
+export * from './components/List/ListItemContentMedia';
+export * from './components/List/ListItemEndMedia';
+export * from './components/List/ListItemHeader';
+export * from './components/List/ListItemHeaderMedia';
+export * from './components/List/ListItemMedia';
 
 export * from './components/Menu/Menu';
 export * from './components/Menu/MenuItem';
@@ -137,6 +151,14 @@ export * from './components/RadioGroup/RadioGroup';
 export * from './components/RadioGroup/RadioGroupItem';
 
 export * from './components/Segment/Segment';
+
+export * from './components/Skeleton/Skeleton';
+export * from './components/Skeleton/SkeletonLine';
+export * from './components/Skeleton/SkeletonShape';
+export * from './components/Skeleton/SkeletonButton';
+export * from './components/Skeleton/SkeletonText';
+export * from './components/Skeleton/SkeletonInput';
+export * from './components/Skeleton/SkeletonAvatar';
 
 export * from './components/Slider/Slider';
 
@@ -164,10 +186,6 @@ export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
 export * from './components/Toolbar/ToolbarRadioGroup';
-
-export * from './components/HierarchicalTree/HierarchicalTree';
-export * from './components/HierarchicalTree/HierarchicalTreeItem';
-export * from './components/HierarchicalTree/HierarchicalTreeTitle';
 
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
@@ -205,6 +223,13 @@ export * from './components/Card/CardExpandableBox';
 
 export * from './components/Datepicker/Datepicker';
 export * from './components/Datepicker/DatepickerCalendar';
+export * from './components/Datepicker/DatepickerCalendarHeader';
+export * from './components/Datepicker/DatepickerCalendarHeaderAction';
+export * from './components/Datepicker/DatepickerCalendarHeaderCell';
+export * from './components/Datepicker/DatepickerCalendarCell';
+export * from './components/Datepicker/DatepickerCalendarCellButton';
+export * from './components/Datepicker/DatepickerCalendarGrid';
+export * from './components/Datepicker/DatepickerCalendarGridRow';
 
 //
 // Utilities

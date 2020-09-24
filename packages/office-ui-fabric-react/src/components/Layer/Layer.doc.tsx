@@ -39,7 +39,7 @@ export const LayerPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true,

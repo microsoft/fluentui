@@ -5,7 +5,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useConst } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({
   compactCard: {
@@ -26,16 +26,16 @@ const classNames = mergeStyleSets({
     },
   },
 });
+
 const log = (text: string): (() => void) => {
   return (): void => {
     console.log(text);
   };
 };
+
 const items: IExampleItem[] = createListItems(10);
-const buildColumn = (): IColumn[] => {
-  return buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
-};
-const columns: IColumn[] = buildColumn();
+const columns: IColumn[] = buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
+
 const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
   return (
     <div className={classNames.compactCard}>
@@ -45,6 +45,7 @@ const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
     </div>
   );
 };
+
 const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
   return (
     <div className={classNames.expandedCard}>
@@ -53,10 +54,15 @@ const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
     </div>
   );
 };
-const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+
+/**
+ * Used for the hoverable "key" cell. In this case, the implementation uses hooks to control
+ * open/closed state, so it must be a function component (not just code within a render callback).
+ */
+const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({ item }) => {
   const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
   const targetElementRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
-  const expandingCardProps: IExpandingCardProps = {
+  const expandingCardProps: IExpandingCardProps = useConst({
     onRenderCompactCard,
     onRenderExpandedCard,
     renderData: item,
@@ -65,28 +71,32 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
     calloutProps: {
       isBeakVisible: true,
     },
-  };
-  React.useEffect(toggleContentRendered, []);
+  });
+  React.useEffect(toggleContentRendered, [toggleContentRendered]);
 
-  if (column.key === 'key') {
-    return (
-      <div className={classNames.item}>
-        <div ref={targetElementRef} data-is-focusable>
-          {item.key}
-          {contentRendered && (
-            <HoverCard
-              expandingCardProps={expandingCardProps}
-              target={targetElementRef.current}
-              cardDismissDelay={300}
-              onCardVisible={log('onCardVisible')}
-              onCardHide={log('onCardHide')}
-              trapFocus
-              openHotKey={KeyCodes.enter}
-            />
-          )}
-        </div>
+  return (
+    <div className={classNames.item}>
+      <div ref={targetElementRef} data-is-focusable>
+        {item.key}
+        {contentRendered && (
+          <HoverCard
+            expandingCardProps={expandingCardProps}
+            target={targetElementRef.current}
+            cardDismissDelay={300}
+            onCardVisible={log('onCardVisible')}
+            onCardHide={log('onCardHide')}
+            trapFocus
+            openHotKey={KeyCodes.enter}
+          />
+        )}
       </div>
-    );
+    </div>
+  );
+};
+
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+  if (column.key === 'key') {
+    return <KeyCellWithHoverCard item={item} />;
   }
   return item[column.key as keyof IExampleItem];
 };
@@ -95,13 +105,13 @@ export const HoverCardTargetExample: React.FunctionComponent = () => {
   return (
     <Fabric>
       <p>
-        Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it by tabbing to
-        a row and hitting the right arrow key.
+        Hover over the <strong>key</strong> cell of a row item to see the card or use the keyboard to navigate to it by
+        tabbing to a row and hitting the right arrow key.
       </p>
       <p>
-        When using the keyboard to navigate, open the card with the hotKey and it will automatically focus the first
-        focusable element in the card allowing further navigation inside the card. The hotKey is defined by the hotKey
-        prop and is defined as 'enter' in the following example.
+        When using the keyboard to navigate, open the card with the hotkey and it will automatically focus the first
+        focusable element in the card allowing further navigation inside the card. The hotkey is defined by the{' '}
+        <code>openHotKey</code> prop and is defined as 'enter' in the following example.
       </p>
       <DetailsList
         setKey="hoverSet"

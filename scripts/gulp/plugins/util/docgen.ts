@@ -712,7 +712,7 @@ function isInterfaceOrTypeAliasDeclaration(node: ts.Node): node is ts.InterfaceD
   return node.kind === ts.SyntaxKind.InterfaceDeclaration || node.kind === ts.SyntaxKind.TypeAliasDeclaration;
 }
 
-function parseWithProgramProvider(
+export function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,

@@ -137,7 +137,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
                 checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: this._getOptionId(option),
-                labelId: `${this._labelId}-${option.key}`,
+                labelId: this._getOptionLabelId(option),
                 name: name || this._id,
                 required,
               };
@@ -234,7 +234,11 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
   }
 
   private _getOptionId(option: IChoiceGroupOption): string {
-    return `${this._id}-${option.key}`;
+    return option.id || `${this._id}-${option.key}`;
+  }
+
+  private _getOptionLabelId(option: IChoiceGroupOption): string {
+    return option.labelId || `${this._labelId}-${option.key}`;
   }
 }
 

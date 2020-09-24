@@ -9,7 +9,6 @@ import {
   Customizer,
   useFocusRects,
 } from '../../Utilities';
-import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
@@ -33,21 +32,23 @@ const getDir = ({ theme, dir }: IFabricProps) => {
   };
 };
 
-export const FabricBase = React.forwardRef((props: IFabricProps, ref: React.Ref<HTMLDivElement>) => {
-  const { className, theme, applyTheme, applyThemeToBody } = props;
+export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRef<HTMLDivElement, IFabricProps>(
+  (props, ref) => {
+    const { className, theme, applyTheme, applyThemeToBody, styles } = props;
 
-  const classNames = getClassNames(getStyles, {
-    theme: theme!,
-    applyTheme: applyTheme,
-    className,
-  });
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      applyTheme: applyTheme,
+      className,
+    });
 
-  const rootElement = React.useRef<HTMLDivElement | null>(null);
-  useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
-  useFocusRects(rootElement);
+    const rootElement = React.useRef<HTMLDivElement | null>(null);
+    useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
+    useFocusRects(rootElement);
 
-  return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
-});
+    return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
+  },
+);
 FabricBase.displayName = 'FabricBase';
 
 function useRenderedContent(
@@ -67,9 +68,7 @@ function useRenderedContent(
   if (needsTheme) {
     // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
-      <Customizer disableThemeProvider settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>
-        {renderedContent}
-      </Customizer>
+      <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }
 
@@ -91,7 +90,7 @@ function useApplyThemeToBody(
         };
       }
     }
-  }, [bodyThemed]);
+  }, [bodyThemed, applyThemeToBody, rootElement]);
 
   return rootElement;
 }

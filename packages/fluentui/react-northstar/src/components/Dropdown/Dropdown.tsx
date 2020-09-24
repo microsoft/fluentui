@@ -48,7 +48,7 @@ import {
   Popper,
   PositioningProps,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
@@ -115,6 +115,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
   };
+
+  /** A label for selected items listbox. */
+  a11ySelectedItemsMessage?: string;
 
   /**
    * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
@@ -378,6 +381,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     error,
     fluid,
     getA11ySelectionMessage,
+    a11ySelectedItemsMessage,
     getA11yStatusMessage,
     inline,
     inverted,
@@ -389,7 +393,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     headerMessage,
     moveFocusOnTab,
     noResultsMessage,
-    list,
     loading,
     loadingMessage,
     placeholder,
@@ -405,6 +408,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     unstable_pinned,
     variables,
   } = props;
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -638,7 +642,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           targetRef={containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
-          {...getPopperPropsFromShorthand(list)}
+          {...positioningProps}
         >
           {List.create(list, {
             defaultProps: () => ({
@@ -750,7 +754,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       return null;
     }
 
-    return value.map((item: DropdownItemProps, index) =>
+    const selectedItems = value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
@@ -765,6 +769,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
       }),
+    );
+    return (
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+        {selectedItems}
+      </div>
     );
   };
 
@@ -1035,7 +1044,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             tryRemoveItemFromValue();
             break;
           case keyboardKey.Escape:
-            e.stopPropagation();
+            // If dropdown list is open ESC should close it and not propagate to the parent
+            // otherwise event should propagate
+            if (open) {
+              e.stopPropagation();
+            }
           default:
             break;
         }

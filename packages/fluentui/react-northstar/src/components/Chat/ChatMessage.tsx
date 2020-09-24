@@ -26,7 +26,7 @@ import {
   getScrollParent,
   Popper,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
   PopperModifiers,
 } from '../../utils/positioner';
 import {
@@ -50,6 +50,7 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
+import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -87,6 +88,9 @@ export interface ChatMessageProps
 
   /** Message details info slot for the header. */
   details?: ShorthandValue<ChatMessageDetailsProps>;
+
+  /** Message read status indicator */
+  readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -156,7 +160,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
     accessibility,
-    actionMenu,
     attached = parentAttached,
     author,
     badge,
@@ -174,8 +177,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     variables,
     header,
     details,
+    readStatus,
     unstable_overflow: overflow,
   } = props;
+  const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
 
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
@@ -201,6 +206,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       },
     },
   });
+
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
     className: chatMessageClassName,
     mapPropsToStyles: () => ({
@@ -273,7 +279,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
-        {...getPopperPropsFromShorthand(actionMenu)}
+        {...positioningProps}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;
@@ -334,6 +340,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     defaultProps: () => ({ mine }),
   });
 
+  const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
+
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
       content: (
@@ -370,6 +378,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
               {messageContent}
               {reactionGroupPosition === 'end' && reactionGroupElement}
               {badgePosition === 'end' && badgeElement}
+              {readStatusElement}
             </>
           )}
         </ElementType>,
@@ -409,6 +418,7 @@ ChatMessage.propTypes = {
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
+  readStatus: customPropTypes.itemShorthand,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;

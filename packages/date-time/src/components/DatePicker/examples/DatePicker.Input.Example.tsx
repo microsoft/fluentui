@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings, IDatePicker } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
 
 export interface IDatePickerInputExampleState {
@@ -9,6 +9,8 @@ export interface IDatePickerInputExampleState {
 }
 
 export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
+  private datePicker = React.createRef<IDatePicker>();
+
   constructor(props: {}) {
     super(props);
 
@@ -36,6 +38,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
           strings={defaultDayPickerStrings}
           value={value!}
           onSelectDate={this._onSelectDate}
+          componentRef={this.datePicker}
         />
         <DefaultButton onClick={this._onClick} text="Clear" />
       </div>
@@ -47,6 +50,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
   };
 
   private _onClick = (): void => {
+    this.datePicker.current?.reset();
     this.setState({ value: null });
   };
 }

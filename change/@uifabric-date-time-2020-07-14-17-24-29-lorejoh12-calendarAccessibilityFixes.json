@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-15T00:24:29.858Z"
-}

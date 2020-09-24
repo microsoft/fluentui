@@ -2,14 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as path from 'path';
-
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { isConformant } from '@fluentui/react-conformance';
+import { isConformant } from '../../common/isConformant';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
@@ -26,10 +24,8 @@ describe('Slider', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {

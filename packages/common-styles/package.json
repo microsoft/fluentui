@@ -1,0 +1,21 @@
+{
+  "name": "@fluentui/common-styles",
+  "version": "0.2.6",
+  "description": "Common style definitions for Fluent UI React components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@uifabric/build": "^7.0.0",
+    "office-ui-fabric-core": "^11.0.0"
+  }
+}

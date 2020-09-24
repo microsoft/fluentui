@@ -1,28 +1,37 @@
-import { useImperativeHandle, useRef } from 'react';
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { ButtonProps, ButtonState } from './Button.types';
+import * as React from 'react';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ButtonProps } from './Button.types';
+import { useButtonState } from './useButtonState';
+import { renderButton } from './renderButton';
 
 /**
- * The useButton hook processes the Button component props and returns state.
- * @param props - Button props to derive state from.
+ * Consts listing which props are shorthand props.
  */
-export const useButton = (
-  props: ButtonProps,
-  ref: React.Ref<HTMLElement>,
-  options: ComposePreparedOptions,
-): ButtonState => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+export const buttonShorthandProps = ['icon', 'loader', 'content'];
 
-  useImperativeHandle(props.componentRef, () => ({
-    focus: () => buttonRef.current?.focus(),
-  }));
-  useFocusRects(ref as React.RefObject<HTMLElement>);
+const mergeProps = makeMergeProps({ deepMerge: buttonShorthandProps });
 
-  return {
-    ...props,
-    buttonRef,
-    style: getStyleFromPropsAndOptions(props, options, '--button'),
-  };
+/**
+ * Given user props, returns state and render function for a Button.
+ */
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps) => {
+  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
+  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const resolvedRef = ref || React.useRef();
+  const state = mergeProps(
+    {
+      ref: resolvedRef,
+      as: props.href ? 'a' : 'button',
+      icon: { as: 'span' },
+      content: { as: 'span', children: props.children },
+      loader: { as: 'span' },
+    },
+    defaultProps,
+    resolveShorthandProps(props, buttonShorthandProps),
+  );
+
+  useButtonState(state);
+
+  return { state, render: renderButton };
 };

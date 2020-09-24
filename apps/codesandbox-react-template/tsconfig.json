@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
     "baseUrl": ".",
     "target": "es5",
-    "noEmit": true, // build output of this project doesn't matter
+    "declaration": true,
+    "sourceMap": true,
     "module": "commonjs",
     "jsx": "react",
     "experimentalDecorators": true,

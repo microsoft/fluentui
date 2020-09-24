@@ -1,20 +1,24 @@
 import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 export const ContextualMenuBasicExample: React.FunctionComponent = () => {
   const linkRef = React.useRef(null);
   const [showContextualMenu, setShowContextualMenu] = React.useState(false);
-  const onShowContextualMenu = useConstCallback(() => setShowContextualMenu(true));
-  const onHideContextualMenu = useConstCallback(() => setShowContextualMenu(false));
+  const onShowContextualMenu = React.useCallback((ev: React.MouseEvent<HTMLElement>) => {
+    ev.preventDefault(); // don't navigate
+    setShowContextualMenu(true);
+  }, []);
+  const onHideContextualMenu = React.useCallback(() => setShowContextualMenu(false), []);
 
   return (
     <div>
-      This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining
-      examples use ContextualMenu through Fluent UI Button components.
+      <p>
+        This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining
+        examples use ContextualMenu through Fluent UI Button components.
+      </p>
       <p>
         <b>
-          <a ref={linkRef} onClick={onShowContextualMenu}>
+          <a ref={linkRef} onClick={onShowContextualMenu} href="#">
             Click for ContextualMenu
           </a>
         </b>

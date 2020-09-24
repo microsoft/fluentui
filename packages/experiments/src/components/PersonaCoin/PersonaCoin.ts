@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createComponent } from '../../Foundation';
 import { usePersonaCoinState } from './PersonaCoin.state';
 import { PersonaCoinStyles } from './PersonaCoin.styles';

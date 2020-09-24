@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Modal';
+import './version';
+export * from './components/Modal/index';

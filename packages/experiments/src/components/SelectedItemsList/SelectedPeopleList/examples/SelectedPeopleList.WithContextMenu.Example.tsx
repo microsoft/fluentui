@@ -5,11 +5,9 @@ import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList,
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
-  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
@@ -20,25 +18,25 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
   {},
   IPeopleSelectedItemsListExampleState
 > {
-  private _selectionList: ISelectedPeopleList;
-
   /**
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of editing
    */
-  private SelectedItem = ItemWithContextMenu({
+  private SelectedItem = ItemWithContextMenu<IPersona>({
     menuItems: item => [
       {
         key: 'remove',
         text: 'Remove',
         onClick: () => {
-          this._selectionList.removeItems([item]);
+          this._onItemsRemoved([item]);
         },
       },
       {
         key: 'copy',
         text: 'Copy',
-        onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+        onClick: () => {
+          this._copyToClipboard(this._getCopyItemsText([item]));
+        },
       },
     ],
     itemComponent: TriggerOnContextMenu(SelectedPersona),
@@ -88,6 +86,18 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
     });
+  };
+
+  private _copyToClipboard = (copyString: string): void => {
+    navigator.clipboard.writeText(copyString).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+        throw new Error();
+      },
+    );
   };
 
   private _getCopyItemsText(items: IPersonaProps[]): string {

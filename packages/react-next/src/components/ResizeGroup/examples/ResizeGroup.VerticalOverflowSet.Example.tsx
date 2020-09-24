@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {
-  mergeStyles,
-  IContextualMenuItem,
-  ResizeGroupDirection,
-  CommandBarButton,
-  ResizeGroup,
-  OverflowSet,
-  IButtonStyles,
-  DirectionalHint,
-} from 'office-ui-fabric-react';
+import { createArray } from '@fluentui/react-next/lib/Utilities';
+import { OverflowSet } from '@fluentui/react-next/lib/OverflowSet';
+import { mergeStyles } from '@fluentui/react-next/lib/Styling';
+import { IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
+import { ResizeGroupDirection, ResizeGroup } from '@fluentui/react-next/lib/ResizeGroup';
+import { DirectionalHint } from '@fluentui/react-next';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
@@ -16,35 +13,29 @@ export interface IOverflowData {
   cacheKey?: string;
 }
 
-function generateData(count: number, cachingEnabled: boolean, checked: boolean): IOverflowData {
+const generateData = (count: number, cachingEnabled: boolean, checked: boolean): IOverflowData => {
   const icons = ['Add', 'Share', 'Upload'];
-  const dataItems = [];
   let cacheKey = '';
-  for (let index = 0; index < count; index++) {
-    const item = {
+  const dataItems = createArray(count, index => {
+    cacheKey = cacheKey + `item${index}`;
+    return {
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
       checked: checked,
     };
-
-    cacheKey = cacheKey + item.key;
-    dataItems.push(item);
-  }
-
+  });
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    overflow: [] as any[],
   };
-
   if (cachingEnabled) {
     result = { ...result, cacheKey };
   }
-
   return result;
-}
+};
 
-// Styles for the vertical buttons
 const buttonStyles: IButtonStyles = {
   root: {
     paddingBottom: 10,
@@ -53,70 +44,62 @@ const buttonStyles: IButtonStyles = {
   },
 };
 
-// Styles for the container of the ResizeGroup
-// This is only for the example to be constrained to a certain height to demonstrate the resizing
 const exampleHeight = '40vh';
 const resizeRootClassName = mergeStyles({ height: exampleHeight });
+const dataToRender = generateData(20, false, false);
 
-export class ResizeGroupVerticalOverflowSetExample extends React.Component {
-  public render(): JSX.Element {
-    const dataToRender = generateData(20, false, false);
-    return (
-      <ResizeGroup
-        className={resizeRootClassName}
-        role="tabpanel"
-        aria-label="Vertical Resize Group with an Overflow Set"
-        direction={ResizeGroupDirection.vertical}
-        data={dataToRender}
-        onReduceData={this._onReduceData}
-        // eslint-disable-next-line react/jsx-no-bind
-        onRenderData={data => {
-          return (
-            <OverflowSet
-              role="menubar"
-              vertical={true}
-              items={data.primary}
-              overflowItems={data.overflow.length ? data.overflow : null}
-              // eslint-disable-next-line react/jsx-no-bind
-              onRenderItem={item => {
-                return (
-                  <CommandBarButton
-                    role="menuitem"
-                    text={item.name}
-                    iconProps={{ iconName: item.icon }}
-                    onClick={item.onClick}
-                    checked={item.checked}
-                    styles={buttonStyles}
-                  />
-                );
-              }}
-              // eslint-disable-next-line react/jsx-no-bind
-              onRenderOverflowButton={overflowItems => {
-                return (
-                  <CommandBarButton
-                    role="menuitem"
-                    styles={buttonStyles}
-                    menuIconProps={{ iconName: 'ChevronRight' }}
-                    menuProps={{ items: overflowItems!, directionalHint: DirectionalHint.rightCenter }}
-                  />
-                );
-              }}
-            />
-          );
-        }}
-      />
-    );
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onRenderItem = (item: any) => (
+  <CommandBarButton
+    role="menuitem"
+    text={item.name}
+    iconProps={{ iconName: item.icon }}
+    onClick={item.onClick}
+    checked={item.checked}
+    styles={buttonStyles}
+  />
+);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onRenderOverflowButton = (overflowItems: any) => (
+  <CommandBarButton
+    role="menuitem"
+    styles={buttonStyles}
+    menuIconProps={{ iconName: 'ChevronRight' }}
+    menuProps={{ items: overflowItems!, directionalHint: DirectionalHint.rightCenter }}
+  />
+);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onRenderData = (data: any) => (
+  <OverflowSet
+    role="menubar"
+    vertical
+    items={data.primary}
+    overflowItems={data.overflow.length ? data.overflow : null}
+    onRenderItem={onRenderItem}
+    onRenderOverflowButton={onRenderOverflowButton}
+  />
+);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onReduceData = (currentData: any): any => {
+  if (currentData.primary.length === 0) {
+    return undefined;
   }
+  const overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
+  const primary = currentData.primary.slice(0, -1);
+  return { primary, overflow };
+};
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onReduceData = (currentData: any): any => {
-    if (currentData.primary.length === 0) {
-      return undefined;
-    }
-
-    const overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
-    const primary = currentData.primary.slice(0, -1);
-
-    return { primary, overflow };
-  };
-}
+export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent = () => (
+  <ResizeGroup
+    className={resizeRootClassName}
+    role="tabpanel"
+    aria-label="Vertical Resize Group with an Overflow Set"
+    direction={ResizeGroupDirection.vertical}
+    data={dataToRender}
+    onReduceData={onReduceData}
+    onRenderData={onRenderData}
+  />
+);

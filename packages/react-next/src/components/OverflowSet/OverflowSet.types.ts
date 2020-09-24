@@ -1,10 +1,7 @@
 import * as React from 'react';
-
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { OverflowSetBase } from './OverflowSet.base';
 
 /**
  * {@docCategory OverflowSet}
@@ -31,7 +28,7 @@ export interface IOverflowSet {
 /**
  * {@docCategory OverflowSet}
  */
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
@@ -56,7 +53,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
 
   /**
    * Controls wether or not the overflow button is placed at the start or end of the items.
-   * This gives a reveresed visual behavior but maintains correct keyboard navigation.
+   * This gives a reversed visual behavior but maintains correct keyboard navigation.
    * @defaultValue 'end'
    */
   overflowSide?: 'start' | 'end';
@@ -78,23 +75,6 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderOverflowButton: IRenderFunction<any[]>;
-
-  /**
-   * Custom properties for OverflowSet's FocusZone.
-   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
-   * Use one or the other.
-   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
-   */
-  focusZoneProps?: IFocusZoneProps;
-
-  /**
-   * If true do not contain the OverflowSet inside of a FocusZone,
-   * otherwise the OverflowSet will contain a FocusZone.
-   * If this is set to true focusZoneProps will be ignored.
-   * Use one or the other.
-   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
-   */
-  doNotContainWithinFocusZone?: boolean;
 
   /**
    * The role for the OverflowSet.

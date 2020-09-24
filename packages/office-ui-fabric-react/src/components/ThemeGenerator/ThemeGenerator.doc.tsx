@@ -308,7 +308,6 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         key={slotRule.name}
         className="ms-themer-swatch"
         style={{ backgroundColor: slotRule.color!.str }}
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onSwatchClick.bind(this, slotRule)}
       />
     );

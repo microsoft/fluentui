@@ -5,6 +5,7 @@ export interface IUseSelectedItemsResponse<T> {
   selectedItems: T[];
   setSelectedItems: (items: T[]) => void;
   addItems: (items: T[]) => void;
+  dropItemsAt: (insertIndex: number, itemsToAdd: T[], indicesToRemove: number[]) => void;
   removeItemAt: (index: number) => void;
   removeItem: (item: T) => void;
   replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
@@ -29,6 +30,27 @@ export const useSelectedItems = <T extends {}>(
     const newItems: T[] = items.concat(itemsToAdd);
     setSelectedItems(newItems);
     selection.setItems(newItems);
+  };
+
+  const dropItemsAt = (insertIndex: number, itemsToAdd: T[], indicesToRemove: number[]): void => {
+    const currentItems: T[] = [...items];
+    const updatedItems: T[] = [];
+
+    for (let i = 0; i < currentItems.length; i++) {
+      const item = currentItems[i];
+      // If this is the insert before index, insert the dragged items, then the current item
+      if (i === insertIndex) {
+        itemsToAdd.forEach(draggedItem => {
+          updatedItems.push(draggedItem);
+        });
+        updatedItems.push(item);
+      } else if (!indicesToRemove.includes(i)) {
+        // only insert items into the new list that are not being dragged
+        updatedItems.push(item);
+      }
+    }
+    setSelectedItems(updatedItems);
+    selection.setItems(updatedItems);
   };
 
   const removeItemAt = (index: number): void => {
@@ -101,6 +123,7 @@ export const useSelectedItems = <T extends {}>(
     selectedItems: items,
     setSelectedItems: setSelectedItems,
     addItems: addItems,
+    dropItemsAt: dropItemsAt,
     removeItemAt: removeItemAt,
     removeItem: removeItem,
     replaceItem: replaceItem,

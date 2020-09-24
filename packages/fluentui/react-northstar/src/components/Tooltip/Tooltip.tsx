@@ -1,5 +1,11 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
-import { useAccessibility, useAutoControlled, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
+import {
+  useAccessibility,
+  useAutoControlled,
+  useTelemetry,
+  useFluentContext,
+  useTriggerElement,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -7,7 +13,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
-  childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -96,7 +101,6 @@ export const Tooltip: React.FC<TooltipProps> &
   const {
     accessibility,
     align,
-    children,
     content,
     flipBoundary,
     mountNode,
@@ -104,6 +108,7 @@ export const Tooltip: React.FC<TooltipProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     target,
@@ -117,6 +122,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
     initialValue: false,
   });
+  const triggerElement = useTriggerElement(props);
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -194,9 +200,6 @@ export const Tooltip: React.FC<TooltipProps> &
     }
   };
 
-  const triggerNode: React.ReactElement | undefined = childrenExist(children) ? children : trigger;
-  const triggerElement = triggerNode && React.Children.only(triggerNode);
-
   const triggerProps: React.HTMLAttributes<HTMLElement> = {
     onFocus: (e, ...args) => {
       if (isFromKeyboard()) {
@@ -233,6 +236,7 @@ export const Tooltip: React.FC<TooltipProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           enabled={open}
@@ -281,6 +285,7 @@ Tooltip.propTypes = {
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,

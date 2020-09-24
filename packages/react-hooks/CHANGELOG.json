@@ -2,6 +2,223 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/react-hooks_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/react-hooks_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/react-hooks_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Create useTarget hook for common Callout logic reuse",
+            "author": "miclo@microsoft.com",
+            "commit": "0837e44efb2a1e85ff8ee3260ab5faffc48fe139",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Deprecate useConstCallback",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/react-hooks_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "useMergedRefs now properly returns a more usable React.RefObject type.",
+            "author": "dzearing@microsoft.com",
+            "commit": "1992572e12879ee948dc79c040c620a84191b582",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/react-hooks_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix useControllableValue onChange event typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "71fd5336204098136a9f8a0342970634252222b6",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/react-hooks_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding Document type to useOnEvent element parameter.",
+            "author": "czearing@outlook.com",
+            "commit": "89eca359d7534b9bb6d7476cdf92781ea82c3dea",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/react-hooks_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "useMergedRefs - adjusting typing to allow undefined refs.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/react-hooks_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useWarnings hook; update useControllableValue to accept updater function and return a callback with constant identity",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.2",
+      "version": "7.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix rules of hooks issues, make useForceUpdate always return the same value, and update docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "7bea3a43f5f01a3aef8a36813b8d88484aa021bc",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useRefEffect hook to the react-hooks package.",
+            "author": "behowell@microsoft.com",
+            "commit": "0894e3feb752839bc00231bac7965df6125ea5f1",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Resolving a typo for useSetTimeout within react-hooks's README.md.",
+            "author": "czearing@outlook.com",
+            "commit": "d1212a3808f0ba186dab8d5f714d35958cdc759a",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding useSetTimeOut hook.",
+            "author": "czearing@outlook.com",
+            "commit": "bca273168c554d5a4fee1f7a809316b7dabe7007",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: now mutates the resulting ref if the merged refs mutate.",
+            "author": "dzearing@hotmail.com",
+            "commit": "8247d915e42b98aceeeaaf0061c1ce3773bd17fb",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/react-hooks_v7.5.1",
       "version": "7.5.1",

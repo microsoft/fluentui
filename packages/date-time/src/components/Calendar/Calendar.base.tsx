@@ -142,13 +142,13 @@ function useFocusLogic({ componentRef }: ICalendarProps, isDayPickerVisible: boo
   const monthPicker = React.useRef<ICalendarMonth>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = () => {
+  const focus = React.useCallback(() => {
     if (isDayPickerVisible && dayPicker.current) {
       focusAsync(dayPicker.current);
     } else if (isMonthPickerVisible && monthPicker.current) {
       focusAsync(monthPicker.current);
     }
-  };
+  }, [isDayPickerVisible, isMonthPickerVisible]);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -345,7 +345,6 @@ export const CalendarBase = React.forwardRef(
         ref={forwardedRef}
         aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
-        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as path from 'path';
 import { mount } from 'enzyme';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { isConformant } from '@fluentui/react-conformance';
+import { isConformant } from '../../common/isConformant';
 import { Stack } from './Stack';
 
 const sampleClass = mergeStyles({
@@ -14,10 +13,8 @@ const sampleClass = mergeStyles({
 describe('Stack', () => {
   isConformant({
     Component: Stack,
-    componentPath: path.join(__dirname, 'Stack.tsx'),
     displayName: 'Stack',
     useDefaultExport: true,
-    disabledTests: ['has-docblock'],
   });
 
   it('can handle having no children in vertical Stack', () => {

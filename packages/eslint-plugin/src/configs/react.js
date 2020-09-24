@@ -47,6 +47,7 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
+    '@fluentui/no-global-react': 'error',
     '@fluentui/max-len': [
       'error',
       {
@@ -87,6 +88,13 @@ const config = {
     'no-empty': 'error',
     'no-eval': 'error',
     'no-new-wrappers': 'error',
+    'no-restricted-globals': [
+      'error',
+      ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map(name => ({
+        name,
+        message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
+      })),
+    ],
     'no-restricted-properties': [
       'error',
       { object: 'describe', property: 'only', message: 'describe.only should only be used during test development' },
@@ -104,10 +112,14 @@ const config = {
         allowArrowFunctions: false, // tslint: jsx-no-lambda
         allowFunctions: false,
         allowBind: false,
+        ignoreDOMComponents: true,
+        ignoreRefs: true,
       },
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
@@ -193,9 +205,6 @@ const config = {
     'react/static-property-placement': 'off',
     'spaced-comment': 'off',
 
-    // Enable ASAP (not done in this PR to make resulting changes reviewable)
-    'react-hooks/exhaustive-deps': 'off',
-    'react-hooks/rules-of-hooks': 'off',
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
     // but this is a very powerful rule we may want to use in other ways
     'no-restricted-syntax': 'off',
@@ -203,7 +212,6 @@ const config = {
     // permanently disable because we disagree with these rules
     'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
-    'no-restricted-globals': 'off', // airbnb bans isNaN in favor of Number.isNaN which is unavailable in IE 11
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
 

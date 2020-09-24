@@ -39,7 +39,7 @@ import {
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import {
   ContextualMenuSplitButton,
@@ -49,6 +49,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
+import { Target } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -361,7 +362,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            // eslint-disable-next-line react/jsx-no-bind
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
             className={this._classNames.container}
@@ -424,8 +424,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     // Popup uses to determine if focus is contained when dismissal occurs
     this._tryFocusPreviousActiveElement({
       containsFocus: this._focusingPreviousElement,
+      documentContainsFocus: this._targetWindow.document.hasFocus(),
       originalElement: this._previousActiveElement,
     });
+
     this._focusingPreviousElement = false;
 
     if (this.props.onMenuDismissed) {
@@ -446,14 +448,19 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
-    if (options && options.containsFocus && this._previousActiveElement) {
-      // Make sure that the focus method actually exists
-      // In some cases the object might exist but not be a real element.
-      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      if (this._previousActiveElement.focus) {
-        this._previousActiveElement.focus();
+    if (this.props.onRestoreFocus) {
+      this.props.onRestoreFocus(options);
+    } else {
+      if (options && options.containsFocus && this._previousActiveElement) {
+        // Make sure that the focus method actually exists
+        // In some cases the object might exist but not be a real element.
+        // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+        if (this._previousActiveElement.focus) {
+          this._previousActiveElement.focus();
+        }
       }
     }
   };

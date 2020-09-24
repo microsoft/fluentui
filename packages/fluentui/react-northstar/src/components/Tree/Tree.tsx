@@ -165,6 +165,7 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  * @accessibilityIssues
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
+ * [Aria-selected and aria-checked are not output correctly for trees #432](https://github.com/FreedomScientific/VFO-standards-support/issues/432)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
  */
 export const Tree: ComponentWithAs<'div', TreeProps> &
@@ -239,23 +240,28 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setSelectedItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
-        ...stableProps.current,
-        selectedItemIds: updateSelectedItemIds,
+      setSelectedItemIdsState(prevSelectedItemIds => {
+        const nextSelectedItemIds = updateSelectedItemIds(prevSelectedItemIds);
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+        return nextSelectedItemIds;
       });
-
-      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: updateActiveItemIds,
+      setActiveItemIdsState(prevActiveItemIds => {
+        const nextActiveItemIds = updateActiveItemIds(prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
   );
@@ -423,6 +429,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
               expanded: isSubtreeExpanded,
               selected: isSelectedItem(item),
               selectable,
+              ...(isSubtree && !item.selectableParent && { selectable: false }),
               renderItemTitle,
               id,
               key: id,

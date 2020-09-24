@@ -1,8 +1,53 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.14](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.14)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.3.13..@uifabric/fluent-theme_v7.3.14)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
+
+## [7.3.13](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.13)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.2.5..@uifabric/fluent-theme_v7.3.13)
+
+### Patches
+
+- Update import paths from theme package. ([PR #15129](https://github.com/microsoft/fluentui/pull/15129) by xgao@microsoft.com)
+
+## [7.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.5)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.2.3..@uifabric/fluent-theme_v7.2.5)
+
+### Patches
+
+- Fix undefined FluentTheme due to circular dep ([PR #14768](https://github.com/microsoft/fluentui/pull/14768) by xgao@microsoft.com)
+
+## [7.2.3](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.2.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.132..@uifabric/fluent-theme_v7.2.3)
+
+### Patches
+
+- Move Fluent theme constants to @fluentui/theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
+
+## [7.1.132](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.132)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.109..@uifabric/fluent-theme_v7.1.132)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.1.109](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.109)
 

@@ -103,6 +103,7 @@ exports[`SpinButton renders correctly 1`] = `
             cursor: text;
             display: block;
             flex: 1;
+            font-family: inherit;
             font-size: 14px;
             height: 100%;
             margin-bottom: 0px;
@@ -196,7 +197,6 @@ exports[`SpinButton renders correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -337,7 +337,6 @@ exports[`SpinButton renders correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -543,6 +542,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             cursor: text;
             display: block;
             flex: 1;
+            font-family: inherit;
             font-size: 14px;
             height: 100%;
             margin-bottom: 0px;
@@ -636,7 +636,6 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -777,7 +776,6 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

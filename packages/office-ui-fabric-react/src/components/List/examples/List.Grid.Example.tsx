@@ -76,40 +76,37 @@ export const ListGridExample: React.FunctionComponent = () => {
     return columnCount.current * ROWS_PER_PAGE;
   }, []);
 
-  const onRenderCell = React.useCallback(
-    (item: IExampleItem, index: number | undefined) => {
-      return (
-        <div
-          className={classNames.listGridExampleTile}
-          data-is-focusable
-          style={{
-            width: 100 / columnCount.current + '%',
-          }}
-        >
-          <div className={classNames.listGridExampleSizer}>
-            <div className={classNames.listGridExamplePadder}>
-              <img src={item.thumbnail} className={classNames.listGridExampleImage} />
-              <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
-            </div>
+  const onRenderCell = React.useCallback((item: IExampleItem, index: number | undefined) => {
+    return (
+      <div
+        className={classNames.listGridExampleTile}
+        data-is-focusable
+        style={{
+          width: 100 / columnCount.current + '%',
+        }}
+      >
+        <div className={classNames.listGridExampleSizer}>
+          <div className={classNames.listGridExamplePadder}>
+            <img src={item.thumbnail} className={classNames.listGridExampleImage} />
+            <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
           </div>
         </div>
-      );
-    },
-    [columnCount.current],
-  );
+      </div>
+    );
+  }, []);
 
-  const getPageHeight = (): number => {
+  const getPageHeight = React.useCallback((): number => {
     return rowHeight.current * ROWS_PER_PAGE;
-  };
+  }, []);
 
   const items = useConst(() => createListItems(5000));
+
   return (
     <FocusZone>
       <List
         className={classNames.listGridExample}
         items={items}
         getItemCountForPage={getItemCountForPage}
-        // eslint-disable-next-line react/jsx-no-bind
         getPageHeight={getPageHeight}
         renderedWindowsAhead={4}
         onRenderCell={onRenderCell}

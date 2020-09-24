@@ -50,6 +50,7 @@ const ChatExampleInScrollableShorthand = () => {
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton
+          align="bottom"
           key="more"
           menu={[
             { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
@@ -57,7 +58,7 @@ const ChatExampleInScrollableShorthand = () => {
             { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
             { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
           ]}
-          position="above"
+          position="after"
           trigger={<Component {...props} />}
           {...(overflow && {
             flipBoundary: 'window',
@@ -104,7 +105,7 @@ const ChatExampleInScrollableShorthand = () => {
       ),
     },
     {
-      gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
+      gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg" />,
       message: (
         <Chat.Message
           actionMenu={actionMenu}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding useSetTimeOut hook.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-18T19:27:30.967Z"
-}

@@ -8,11 +8,17 @@ import {
   Fabric,
   CompoundButton,
   Checkbox,
-  DatePicker,
   SearchBox,
   Link,
+  Label,
+  Text,
 } from 'office-ui-fabric-react';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
+import {
+  AzureCustomizationsLight,
+  AzureCustomizationsDark,
+  AzureCustomizationsHighContrastLight,
+  AzureCustomizationsHighContrastDark,
+} from '../../index';
 import { ButtonCommandBarExample } from '../components/commandBarButton';
 import { ButtonSplitExample } from '../components/splitButton';
 import { ButtonIconExample } from '../components/iconButton';
@@ -29,56 +35,110 @@ import { ComboBoxBasicExample } from '../components/comboBox';
 import { ContextualMenuDefaultExample } from '../components/ContextMenu';
 import { DropdownBasicExample } from '../components/dropdown';
 import { CommandBarBasicExample } from '../components/commandBar';
+import { TagPickerBasicExample } from '../components/tags';
+import { DetailsListCompactExample } from '../components/detailsList';
+import { DatePickerBoundedExample } from '../components/dateBoundary';
+import { PivotBasicExample } from '../components/Pivots';
+import { TeachingBubbleBasicExample } from '../components/TeachingBubble';
+import { MessageBarBasicExample } from '../components/messageBar';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
-    <CommandBarBasicExample />
-    <DefaultButton text="DefaultButton" />
-    <PrimaryButton text="PrimaryButton" />
-    <CompoundButton primary text="CompoundButton" />
-    <CompoundButton secondaryText="secondary text." text="CompoundButton" />
-    <ButtonIconExample checked={false} />
-    <ButtonCommandBarExample />
-    <ButtonIconWithTooltipExample />
-    <ButtonContextualMenuExample />
-    <ButtonActionExample />
-    <ButtonToggleExample />
-    <ButtonSplitExample checked={false} />
-    <CalloutBasicExample />
-    <Checkbox label="Unchecked checkbox (uncontrolled)" />
-    <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
-    <Checkbox label="Disabled checkbox" disabled />
-    <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
-    <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
-    <Checkbox
-      label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
-      defaultIndeterminate
-      defaultChecked={true}
-    />
-    <Link>Hello I am a link, hover underline</Link>
-    <ComboBoxBasicExample />
-    <DropdownBasicExample />
-    <SearchBox />
-    <TextField placeholder="Hello" />
-    <ActivityItemBasicExample />
-    <ChoiceGroupBasicExample />
-    <ToggleBasicExample />
-    <ColorPickerBasicExample />
+    <Stack gap={8} horizontalAlign="center">
+      <Text>13px body text</Text>
+      <Label>MessageBar / InfoBox</Label>
+      <MessageBarBasicExample />
+      <Label>TeachingBubble</Label>
+      <TeachingBubbleBasicExample />
+      <Label>Pivots</Label>
+      <PivotBasicExample />
+      <Label>Buttons</Label>
+      <DefaultButton text="DefaultButton" />
+      <PrimaryButton text="PrimaryButton" />
+      <CompoundButton primary text="CompoundButton" />
+      <CompoundButton secondaryText="secondary text." text="CompoundButton" />
+      <DefaultButton primary={true} text="Default button as primary" />
+      <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <Label>Disabled Buttons</Label>
+      <DefaultButton disabled text="DefaultButton disabled" />
+      <PrimaryButton disabled text="PrimaryButton disabled" />
+      <PrimaryButton disabled text="PrimaryButton disabled" />
+      <CompoundButton disabled primary text="CompoundButton primary disabled" />
+      <Label disabled>I am a disabled label</Label>
+      <Label>Icon Buttons</Label>
+      <ButtonIconExample checked={false} />
+      <ButtonCommandBarExample />
+      <ButtonIconWithTooltipExample />
+      <ButtonContextualMenuExample />
+      <ButtonActionExample />
 
-    <ContextualMenuDefaultExample />
+      <Label>Toggle button</Label>
+      <ButtonToggleExample />
+      <ButtonSplitExample checked={false} />
+      <CalloutBasicExample />
+      <DefaultButton text="WIP: default button > primary" primary />
+      <DefaultButton text="WIP: Primary button" primary />
+    </Stack>
 
-    <DatePicker />
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>DetailsList / Grid</Label>
+      <DetailsListCompactExample />
+    </Stack>
 
-    <p>Checked components are not supported in the portal, listed below</p>
-    <CompoundButton checked={true} primary text="CompoundButton" />
-    <CompoundButton checked={true} secondaryText="This is the secondary text." text="CompoundButton" />
-    <DefaultButton checked={true} disabled text="Default disabled" />
-    <PrimaryButton checked={true} disabled text="Primary disabled" />
-    <ButtonIconExample checked={true} />
-    <ButtonSplitExample checked={true} />
-    <PrimaryButton checked={true} text="PrimaryButton checked" />
-    <DefaultButton checked={true} text="DefaultButton checked" />
-    <p>end checked components</p>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label className="section">DatePicker</Label>
+      <DatePickerBoundedExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Picker</Label>
+      <TagPickerBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>CommandBar</Label>
+      <CommandBarBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Checkboxes</Label>
+      <Checkbox label="Unchecked checkbox (uncontrolled)" />
+      <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
+      <Checkbox label="Disabled checkbox" disabled />
+      <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Links</Label>
+      <Link>Hello I am a link, hover underline</Link>
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>ComboBox</Label>
+      <ComboBoxBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Dropdowns</Label>
+      <DropdownBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Search / input fields</Label>
+      <SearchBox />
+      <TextField disabled placeholder="disabled placeholder" />
+      <TextField disabled value="disabled text" />
+      <TextField placeholder="Hello" />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Misc</Label>
+      <ActivityItemBasicExample />
+      <ChoiceGroupBasicExample />
+      <ToggleBasicExample />
+      <ColorPickerBasicExample />
+      <ContextualMenuDefaultExample />
+    </Stack>
   </Stack>
 );
 
@@ -92,6 +152,22 @@ export const Light = () => (
 
 export const Dark = () => (
   <Customizer {...AzureCustomizationsDark}>
+    <Fabric applyThemeToBody>
+      <Example />
+    </Fabric>
+  </Customizer>
+);
+
+export const HighContrastLight = () => (
+  <Customizer {...AzureCustomizationsHighContrastLight}>
+    <Fabric applyThemeToBody>
+      <Example />
+    </Fabric>
+  </Customizer>
+);
+
+export const HighContrastDark = () => (
+  <Customizer {...AzureCustomizationsHighContrastDark}>
     <Fabric applyThemeToBody>
       <Example />
     </Fabric>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConstCallback } from './useConstCallback';
+import { useConst } from './useConst';
 
 /** Updater callbacks returned by `useBoolean`. */
 export interface IUseBooleanCallbacks {
@@ -24,15 +24,15 @@ export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallback
   // constant identity, which overall is probably better for consumers' perf.
   const valueRef = React.useRef(value);
 
-  const setTrue = useConstCallback(() => {
+  const setTrue = useConst(() => () => {
     setValue(true);
     valueRef.current = true;
   });
-  const setFalse = useConstCallback(() => {
+  const setFalse = useConst(() => () => {
     setValue(false);
     valueRef.current = false;
   });
-  const toggle = useConstCallback(() => (valueRef.current ? setFalse() : setTrue()));
+  const toggle = useConst(() => () => (valueRef.current ? setFalse() : setTrue()));
 
   return [value, { setTrue, setFalse, toggle }];
 }

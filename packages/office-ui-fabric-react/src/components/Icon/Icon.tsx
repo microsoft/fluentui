@@ -18,3 +18,4 @@ export const Icon: React.FunctionComponent<IIconProps> = styled<IIconProps, IIco
   },
   true,
 );
+Icon.displayName = 'Icon';

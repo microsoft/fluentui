@@ -132,6 +132,7 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
               cursor: text;
               display: block;
               flex: 1;
+              font-family: inherit;
               font-size: 14px;
               height: 100%;
               margin-bottom: 0px;
@@ -226,7 +227,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -368,7 +368,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;

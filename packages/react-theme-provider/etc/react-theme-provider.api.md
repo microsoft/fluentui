@@ -4,55 +4,61 @@
 
 ```ts
 
+import { ColorTokenSet } from '@fluentui/theme';
+import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { IFontFace } from '@uifabric/merge-styles';
+import { IKeyframes } from '@uifabric/merge-styles';
+import { IRawFontStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
+import { Theme } from '@fluentui/theme';
+import { TokenSetType } from '@fluentui/theme';
+
+// @public
+export const createDefaultTheme: () => Theme;
 
 // @public (undocumented)
-export type ColorPlateSet = ColorTokens & ColorTokenStates;
-
-// @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    subTextColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-}>;
-
-// @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export const FluentTheme: Theme;
 
 // @public (undocumented)
-export type FontTokens = Partial<{
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-}>;
+export type FontFace = IFontFace;
 
 // @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorPlateSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
+
+export { IRawFontStyle }
+
+export { IRawStyle }
+
+export { IStyle }
+
+export { IStyleFunctionOrObject }
+
+// @public (undocumented)
+export type KeyFrames = IKeyframes;
 
 // @public
-export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
-export interface PartialTheme extends RecursivePartial<Theme> {
-}
-
-// @public
-export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
+    [key in keyof TStyleSet]: string;
 };
+
+// @public (undocumented)
+export const MergeStylesProvider: ({ children }: {
+    children?: React.ReactNode;
+}) => JSX.Element;
+
+// @public (undocumented)
+export const mergeStylesRenderer: StyleRenderer;
+
+export { PartialTheme }
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {
@@ -61,48 +67,83 @@ export interface StyleOptions<TProps> {
 }
 
 // @public
-export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     style?: React.CSSProperties;
     // (undocumented)
     tokens?: TTokens;
 }
 
-// @public
-export interface Theme {
-    // (undocumented)
-    stylesheets: string[];
-    // (undocumented)
-    tokens: {
-        body: ColorPlateSet & TokenSetType;
-        [key: string]: TokenSetType;
+// @public (undocumented)
+export interface StyleRenderer {
+    getId: () => number;
+    renderFontFace: (fontFace: FontFace, options: StyleRendererOptions) => void;
+    renderKeyframes: (keyframes: KeyFrames, options: StyleRendererOptions) => string;
+    renderStyles: <TRuleSet>(ruleSet: TRuleSet, options: StyleRendererOptions) => {
+        [key in keyof TRuleSet]: string;
     };
+    reset: () => void;
 }
 
-// @public
-export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
+// @public (undocumented)
+export const StyleRendererContext: React.Context<StyleRenderer>;
+
+// @public (undocumented)
+export type StyleRendererOptions = {
+    rtl: boolean;
+    targetWindow: Window | undefined;
+};
+
+// @public (undocumented)
+export const TeamsTheme: PartialTheme;
+
+export { Theme }
+
+// @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderProps, string | number> & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+    applyTo?: 'element' | 'body' | 'none';
+    ref?: React.Ref<HTMLElement>;
+    renderer?: StyleRenderer;
     theme?: PartialTheme | Theme;
 }
 
 // @public
-export type TokenSetType = string | {
-    [key: string]: TokenSetType | undefined;
+export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
+    theme: Theme;
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: {
-    [key: string]: string | {
-        [key: string]: string | any | undefined;
-    } | undefined;
-} | undefined, prefix?: string | undefined, style?: {
-    [key: string]: string | number | undefined;
-}) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
+
+// @public
+export const useInlineTokens: (draftState: {
+    style?: React.CSSProperties | undefined;
+    tokens?: TokenSetType | undefined;
+}, prefix: string) => void;
+
+// @public (undocumented)
+export const useStyleRenderer: () => StyleRenderer;
 
 // @public
 export const useTheme: () => Theme;
+
+// @public
+export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLElement>, defaultProps: ThemeProviderProps) => {
+    state: ThemeProviderState;
+    render: (state: ThemeProviderState) => JSX.Element;
+};
+
+// @public (undocumented)
+export function useThemeProviderClasses(state: ThemeProviderState): void;
+
+// @public (undocumented)
+export const useThemeProviderState: (draftState: ThemeProviderState) => void;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,0 +1,292 @@
+@import 'tokens';
+
+// Define default variable values
+$default-width: 32px;
+$default-height: 32px;
+$default-iconSize: $iconSize-medium;
+$default-borderRadius: $borderRadius-circle;
+$default-fontFamily: $fontFamily-base;
+$default-fontSize: $fontSize-body;
+$default-fontWeight: $fontWeight-semibold;
+$default-background: rgb(232, 232, 232);
+
+$default-activeRingColor: #0078d4; // TODO: brand colors
+$default-activeGlowColor: rgba(0, 120, 212, 0.3); // TODO: brand colors
+
+$default-inactiveOpacity: 0.8;
+$default-inactiveScaleFactor: 0.8;
+
+// Root slot
+.root {
+  position: relative;
+  background-color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  width: var(--avatar-width, $default-width);
+  height: var(--avatar-height, $default-height);
+  font-family: var(--avatar-fontFamily, $default-fontFamily);
+  font-size: var(--avatar-fontSize, $default-fontSize);
+  font-weight: var(--avatar-fontWeight, $default-fontWeight);
+}
+
+// Image slot
+.image {
+  position: absolute;
+  border-radius: var(--avatar-borderRadius, $default-borderRadius);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+// Label slot
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--avatar-background, $default-background);
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  text-align: center;
+  padding: 0px;
+  border-radius: var(--avatar-borderRadius, $default-borderRadius);
+}
+
+// Badge slot
+.badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-height, $default-height) / 4);
+}
+
+// Modifiers
+._size_20 {
+  --avatar-width: 20px;
+  --avatar-height: 20px;
+}
+._size_24 {
+  --avatar-width: 24px;
+  --avatar-height: 24px;
+}
+._size_28 {
+  --avatar-width: 28px;
+  --avatar-height: 28px;
+}
+._size_32 {
+  --avatar-width: 32px;
+  --avatar-height: 32px;
+}
+._size_36 {
+  --avatar-width: 36px;
+  --avatar-height: 36px;
+}
+._size_40 {
+  --avatar-width: 40px;
+  --avatar-height: 40px;
+}
+._size_48 {
+  --avatar-width: 48px;
+  --avatar-height: 48px;
+}
+._size_56 {
+  --avatar-width: 56px;
+  --avatar-height: 56px;
+}
+._size_64 {
+  --avatar-width: 64px;
+  --avatar-height: 64px;
+}
+._size_72 {
+  --avatar-width: 72px;
+  --avatar-height: 72px;
+}
+._size_96 {
+  --avatar-width: 96px;
+  --avatar-height: 96px;
+}
+._size_120 {
+  --avatar-width: 120px;
+  --avatar-height: 120px;
+}
+._size_128 {
+  --avatar-width: 128px;
+  --avatar-height: 128px;
+}
+
+// Icon and text sizes
+._size_20,
+._size_24 {
+  --avatar-iconSize: #{$iconSize-small};
+  --avatar-fontSize: #{$fontSize-legal};
+  --avatar-fontWeight: #{$fontWeight-legal};
+}
+._size_28 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-caption};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
+// default size:
+// ._size_32,
+// ._size_36,
+// ._size_40 {
+// defaults are in var() fallbacks
+// }
+._size_48,
+._size_56 {
+  --avatar-iconSize: #{$iconSize-large};
+  --avatar-fontSize: #{$fontSize-subheadline};
+  --avatar-fontWeight: #{$fontWeight-subheadline};
+}
+._size_64,
+._size_72 {
+  --avatar-iconSize: #{$iconSize-large};
+  --avatar-fontSize: #{$fontSize-headline};
+  --avatar-fontWeight: #{$fontWeight-headline};
+}
+._size_96 {
+  --avatar-iconSize: #{$iconSize-larger};
+  --avatar-fontSize: #{$fontSize-headline};
+  --avatar-fontWeight: #{$fontWeight-headline};
+}
+._size_120,
+._size_128 {
+  --avatar-iconSize: #{$iconSize-largest};
+  --avatar-fontSize: #{$fontSize-title3};
+  --avatar-fontWeight: #{$fontWeight-title3};
+}
+
+// Square modifier
+._square {
+  &._size_20,
+  &._size_24 {
+    --avatar-borderRadius: #{$borderRadius-small};
+  }
+  // default size:
+  // &._size_28,
+  // &._size_32,
+  // &._size_36,
+  // &._size_40,
+  // &._size_48 {
+  --avatar-borderRadius: #{$borderRadius-medium};
+  // }
+  &._size_56,
+  &._size_64,
+  &._size_72 {
+    --avatar-borderRadius: #{$borderRadius-large};
+  }
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-borderRadius: #{$borderRadius-xlarge};
+  }
+}
+
+// ActiveDisplay modifiers
+._activeRing {
+  // default size:
+  // &._size_20,
+  // &._size_24,
+  // &._size_28,
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-activeRingMargin: -2px;
+  --avatar-activeRingWidth: #{$stroke-thin};
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-activeRingMargin: -4px;
+    --avatar-activeRingWidth: #{$stroke-thick};
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-activeRingMargin: -8px;
+    --avatar-activeRingWidth: #{$stroke-thickest};
+  }
+}
+._activeShadow {
+  &._size_20,
+  &._size_24,
+  &._size_28 {
+    --avatar-activeShadow: #{$shadow-4-darker};
+  }
+  // default size:
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-activeShadow: #{$shadow-8-darker};
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-activeShadow: #{$shadow-16-darker};
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-activeShadow: #{$shadow-28};
+  }
+}
+._activeGlow {
+  &._size_20,
+  &._size_24,
+  &._size_28 {
+    --avatar-activeShadow: #{$shadow-4-darker}, 0 0 4px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
+  }
+  // default size:
+  // &._size_32,
+  // &._size_36,
+  // &._size_40 {
+  --avatar-activeShadow: #{$shadow-8-darker}, 0 0 8px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
+  // }
+  &._size_48,
+  &._size_56,
+  &._size_64 {
+    --avatar-activeShadow: #{$shadow-16-darker}, 0 0 8px 2px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
+  }
+  &._size_72,
+  &._size_96,
+  &._size_120,
+  &._size_128 {
+    --avatar-activeShadow: #{$shadow-28}, 0 0 28px 4px var(--avatar-activeGlowColor, #{$default-activeGlowColor});
+  }
+}
+
+// Activity modifiers
+._active {
+  &:before {
+    content: '';
+    position: absolute;
+    top: var(--avatar-activeRingMargin, 0);
+    left: var(--avatar-activeRingMargin, 0);
+    bottom: var(--avatar-activeRingMargin, 0);
+    right: var(--avatar-activeRingMargin, 0);
+    border-radius: var(--avatar-borderRadius, $default-borderRadius);
+    border-style: solid;
+    border-color: var(--avatar-activeRingColor, $default-activeRingColor);
+    border-width: var(--avatar-activeRingWidth, 0);
+    box-shadow: var(--avatar-activeShadow);
+  }
+}
+._inactive {
+  opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
+  transform: scale(var(--avatar-inactiveScaleFactor, $default-inactiveScaleFactor));
+}
+
+// Display modifiers
+._display_icon {
+  // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
+  font-size: var(--avatar-iconSize, $default-iconSize);
+  font-weight: initial;
+}

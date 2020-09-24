@@ -121,9 +121,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
             id={starIds[i - 1]}
             key={i}
             {...(i === Math.ceil(rating) ? { 'data-is-current': true } : {})}
-            // eslint-disable-next-line react/jsx-no-bind
             onFocus={this._onFocus.bind(this, i)}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this._onFocus.bind(this, i)} // For Safari & Firefox on OSX
             disabled={disabled || readOnly ? true : false}
             role="presentation"

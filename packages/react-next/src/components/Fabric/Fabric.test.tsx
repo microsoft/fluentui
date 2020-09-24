@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
-import { Customizer, createTheme, Checkbox, Fabric } from '@fluentui/react-next';
+import { Customizer } from '@uifabric/utilities';
+import { Fabric } from './Fabric';
+import { Checkbox } from '../../Checkbox';
+import { createTheme } from '../../Styling';
 import { mount } from 'enzyme';
 
 const rtlTheme = createTheme({ rtl: true });
@@ -49,17 +52,9 @@ describe('Fabric', () => {
     // Render with no theme context
     const component = create(content);
     // Render in RTL context
-    const rtlComponent = create(
-      <Customizer disableThemeProvider settings={{ theme: rtlTheme }}>
-        {content}
-      </Customizer>,
-    );
+    const rtlComponent = create(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
     // Render in LTR Context
-    const ltrComponent = create(
-      <Customizer disableThemeProvider settings={{ theme: ltrTheme }}>
-        {content}
-      </Customizer>,
-    );
+    const ltrComponent = create(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
 
     const tree = component.toJSON();
     const rtlTree = rtlComponent.toJSON();

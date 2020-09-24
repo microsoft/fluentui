@@ -1,18 +1,19 @@
 {
   "name": "@fluentui/code-sandbox",
   "description": "Fluent UI tools for CodeSandbox.",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.50.0",
+    "@fluentui/docs-components": "^0.51.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.0",
-    "@fluentui/react-northstar": "^0.50.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react-northstar": "^0.51.0",
     "@uifabric/build": "^7.0.0",
-    "react": "16.8.6"
+    "react": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
@@ -23,7 +24,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react-northstar": "0.50.0",
+    "@fluentui/react-northstar": "0.51.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

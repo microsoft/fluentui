@@ -11,6 +11,7 @@ const dragOptions = {
   moveMenuItemText: 'Move',
   closeMenuItemText: 'Close',
   menu: ContextualMenu,
+  keepInBounds: true,
 };
 const screenReaderOnly = mergeStyles(hiddenContentStyle);
 const dialogContentProps = {
@@ -34,7 +35,7 @@ export const DialogBasicExample: React.FunctionComponent = () => {
       styles: dialogStyles,
       dragOptions: isDraggable ? dragOptions : undefined,
     }),
-    [isDraggable],
+    [isDraggable, labelId, subTextId],
   );
 
   return (

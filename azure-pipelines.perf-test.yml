@@ -1,46 +1,51 @@
-pr: none
+pr:
+  - master
+  - website-content
 
 trigger: none
 
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 18.04'
+pool: 'Self Host Ubuntu'
 
 steps:
-  # No need for checkout since we're using build artifacts.
-  - checkout: none
+  - template: .devops/templates/tools.yml
 
-  - template: azure-pipelines.artifacts.yml
-    parameters:
-      artifact: $(artifact)
-      buildId: $(buildId)
-      # $BUILD_REASON for this pipeline will always be Manual. buildReason must be passed in
-      # from triggered pipeline so that this pipeline knows the originating build reason.
-      buildReason: $(buildReason)
+  - script: |
+      yarn
+    displayName: yarn
 
-  - template: azure-pipelines.tools.yml
+  # @fluentui/perf-test needs build and bundle steps
+  - script: |
+      yarn lage build --scope @fluentui/perf-test --scope perf-test --no-deps --verbose --no-cache --grouped
+    displayName: build  @fluentui v0
+    env:
+      BACKFILL_CACHE_PROVIDER: 'azure-blob'
+      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
+  # @fluentui/perf-test Baseline
   - script: |
       yarn perf:test:base
-    condition: ne(variables.buildReason, 'PullRequest')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test Base (Fluent)
 
+  # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: eq(variables.buildReason, 'PullRequest')
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
+  # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
     displayName: Perf Test
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site (Fluent)
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
@@ -49,7 +54,7 @@ steps:
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test/fluentui'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
     inputs:
       SourcePath: 'apps/perf-test/dist'
@@ -78,18 +83,18 @@ steps:
 
   - script: |
       yarn stats:build
-    condition: ne(variables.buildReason, 'PullRequest')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
     displayName: Bundle Statistics (master only)
 
   - script: |
       yarn perf
-    condition: ne(variables.buildReason, 'PullRequest')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
     displayName: Performance Tests (master only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: ne(variables.buildReason, 'PullRequest')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
     displayName: Save Statistics to DB (master only)
     env:
       STATS_URI: $(STATS_URI)
