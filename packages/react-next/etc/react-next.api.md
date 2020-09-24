@@ -27,10 +27,8 @@ import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
-import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -88,7 +86,6 @@ import { ITagItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
 import { ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
@@ -172,7 +169,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -212,11 +209,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -279,8 +274,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
-    // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void;
@@ -308,7 +301,13 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -340,11 +339,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    protected readonly selection: Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -374,6 +369,15 @@ export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+// @public (undocumented)
+export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
+
+// @public (undocumented)
+export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps>;
+
+// @public (undocumented)
+export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
 
 // @public (undocumented)
 export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
@@ -589,10 +593,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)
@@ -898,6 +898,119 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroup {
+    checkedOption: IChoiceGroupOption | undefined;
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaLabel?: string;
+    // @deprecated
+    checked?: boolean;
+    disabled?: boolean;
+    iconProps?: IIconProps;
+    id?: string;
+    imageAlt?: string;
+    imageSize?: {
+        width: number;
+        height: number;
+    };
+    imageSrc?: string;
+    key?: string;
+    labelId?: string;
+    onRenderField?: IRenderFunction<IChoiceGroupOption>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+    selectedImageSrc?: string;
+    styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+    componentRef?: IRefObject<IChoiceGroupOption>;
+    focused?: boolean;
+    // (undocumented)
+    itemKey?: string;
+    name?: string;
+    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+    required?: boolean;
+    theme?: ITheme;
+}
+
+// @public
+export interface IChoiceGroupOptionStyleProps {
+    checked?: boolean;
+    disabled?: boolean;
+    focused?: boolean;
+    hasIcon?: boolean;
+    hasImage?: boolean;
+    imageIsLarge?: boolean;
+    imageSize?: {
+        height: number;
+        width: number;
+    };
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupOptionStyles {
+    // (undocumented)
+    choiceFieldWrapper?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    iconWrapper?: IStyle;
+    // (undocumented)
+    imageWrapper?: IStyle;
+    // (undocumented)
+    innerField?: IStyle;
+    // (undocumented)
+    input?: IStyle;
+    // (undocumented)
+    labelWrapper?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    selectedImageWrapper?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IChoiceGroup>;
+    defaultSelectedKey?: string | number;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
+    options?: IChoiceGroupOption[];
+    selectedKey?: string | number;
+    styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    optionsContainIconOrImage?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IChoiceGroupStyles {
+    // (undocumented)
+    flexContainer?: IStyle;
+    // (undocumented)
+    label?: IStyle;
+    // (undocumented)
+    root?: IStyle;
 }
 
 // @public
@@ -2273,7 +2386,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
-    clearButtonProps?: IButtonProps_2;
+    clearButtonProps?: IButtonProps;
     componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
@@ -2539,8 +2652,8 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     decrementButtonIcon?: IIconProps;
     defaultValue?: string;
     disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles_2>;
-    iconButtonProps?: IButtonProps_3;
+    downArrowButtonStyles?: Partial<IButtonStyles>;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -2551,16 +2664,16 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string) => string | void;
+    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string) => string | void;
+    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
     styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles_2>;
+    upArrowButtonStyles?: Partial<IButtonStyles>;
     value?: string;
 }
 
@@ -2742,6 +2855,81 @@ export { ITagItemSuggestionStyles }
 export { ITagPickerProps }
 
 // @public (undocumented)
+export interface ITeachingBubble {
+    focus(): void;
+}
+
+// @public
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+    ariaDescribedBy?: string;
+    ariaLabelledBy?: string;
+    calloutProps?: ICalloutProps;
+    componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
+    footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
+    hasCloseIcon?: boolean;
+    hasCondensedHeadline?: boolean;
+    hasSmallHeadline?: boolean;
+    headline?: string;
+    illustrationImage?: IImageProps;
+    isWide?: boolean;
+    onDismiss?: (ev?: any) => void;
+    primaryButtonProps?: IButtonProps;
+    secondaryButtonProps?: IButtonProps;
+    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
+    targetElement?: HTMLElement;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
+    calloutProps?: ICalloutContentStyleProps;
+    primaryButtonClassName?: string;
+    secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
+    hasHeadline?: boolean;
+};
+
+// @public (undocumented)
+export interface ITeachingBubbleStyles {
+    // (undocumented)
+    body: IStyle;
+    // (undocumented)
+    bodyContent: IStyle;
+    // (undocumented)
+    closeButton: IStyle;
+    // (undocumented)
+    content: IStyle;
+    // (undocumented)
+    footer: IStyle;
+    // (undocumented)
+    header: IStyle;
+    // (undocumented)
+    headline: IStyle;
+    // (undocumented)
+    imageContent: IStyle;
+    // (undocumented)
+    primaryButton: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    secondaryButton: IStyle;
+    // (undocumented)
+    subComponentStyles?: ITeachingBubbleSubComponentStyles;
+    // (undocumented)
+    subText: IStyle;
+}
+
+// @public (undocumented)
+export interface ITeachingBubbleSubComponentStyles {
+    callout: IStyleFunctionOrObject<any, any>;
+}
+
+// @public (undocumented)
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -2910,6 +3098,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 export { NormalPeoplePicker }
 
 export { NormalPeoplePickerBase }
+
+// @public @deprecated (undocumented)
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
+
+// @public @deprecated (undocumented)
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
@@ -3236,7 +3430,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -3277,9 +3471,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 export { SuggestionsController }
 
@@ -3368,6 +3560,18 @@ export { TagPickerBase }
 export { Target }
 
 // @public (undocumented)
+export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
+
+// @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
@@ -3436,7 +3640,6 @@ export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Check";
-export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/CommandBar";
@@ -3471,7 +3674,6 @@ export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
 export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";

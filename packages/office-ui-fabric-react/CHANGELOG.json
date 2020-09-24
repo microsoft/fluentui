@@ -2,6 +2,56 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "office-ui-fabric-react_v7.140.0",
+      "version": "7.140.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added a prop preventDismissOnEvent in Callout, and in favor of this deprecated the 3 existing props preventDismissOnScroll, preventDismissOnResize, and preventDismissOnLostFocus in Callout Component",
+            "author": "lagoe@microsoft.com",
+            "commit": "4ceebf9f8e383ed062183ffe611d7a89b24ecdb2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Callouts: Fix a breaking change where new functionality would cause dismissal on giving focus to an iframe",
+            "author": "joschect@microsoft.com",
+            "commit": "3c0e35136610ea62dc8f164f39547793bf4029d0",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Set font-family inherit on button and input elements.",
+            "author": "xgao@microsoft.com",
+            "commit": "fc211d8c6104f6f10948e6654513a6606bc35429",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pivot: Fix HC styling for pivot tabs to show text when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "7b57bf749e164deabebe3ed9fe61804a6eeb0f4e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "office-ui-fabric-react_v7.139.2",
+      "version": "7.139.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing unused eslint rule from sharedIsConformant.ts",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "office-ui-fabric-react_v7.139.1",
       "version": "7.139.1",

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.116)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.115..@fluentui/react-next_v8.0.0-alpha.116)
+
+### Changes
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+
+## [8.0.0-alpha.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.115)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.114..@fluentui/react-next_v8.0.0-alpha.115)
+
+### Changes
+
+- Fixing issues revealed by conformance tests: add missing exports and displayNames. ([PR #14871](https://github.com/microsoft/fluentui/pull/14871) by czearing@outlook.com)
+- Floating Pickers: Make strict mode compliant ([PR #15131](https://github.com/microsoft/fluentui/pull/15131) by joschect@microsoft.com)
 
 ## [8.0.0-alpha.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.114)
 

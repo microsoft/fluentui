@@ -53,6 +53,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         ...headerAnimationStyle,
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
+        fontFamily: 'inherit',
         textAlign: 'left',
         backgroundColor: 'transparent',
         flexGrow: 1,
@@ -78,6 +79,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     navigationButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
+        fontFamily: 'inherit',
         width: 28,
         minWidth: 28,
         height: 28,
@@ -124,6 +126,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         minHeight: 40,
         lineHeight: 40,
         fontSize: FontSizes.small,
+        fontFamily: 'inherit',
         padding: 0,
         margin: '0 12px 0 0',
         color: palette.neutralPrimary,

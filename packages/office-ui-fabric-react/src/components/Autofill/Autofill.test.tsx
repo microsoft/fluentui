@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { IRefObject, KeyCodes } from '../../Utilities';
 import { Autofill, IAutofillState, IAutofill, IAutofillProps } from './index';
 import { ReactWrapper, mount } from 'enzyme';
-import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
+import { mockEvent } from '../../common/testUtilities';
 
 describe('Autofill', () => {
   let autofill: Autofill;
