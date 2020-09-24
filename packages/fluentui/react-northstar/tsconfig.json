@@ -15,7 +15,7 @@
       "path": "../accessibility"
     },
     {
-      "path": "../accessibility-definitions"
+      "path": "../../a11y-testing"
     },
     {
       "path": "../styles"
