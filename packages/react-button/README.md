@@ -88,7 +88,7 @@ Additional changes:
 
 - Now 2 tab targets rather than 1: The action part of the button and the menu part are now separate focus targets. This helps with predictability for users who want to either execute the action or expand the menu. It also helps with accessibility, as we can keep the action with a normal `button` role, and the menu with an `aria-haspopup` attribute, making it more clear for screen readers to differentiate from a typical menu button.
 
-### Button: slots support
+### Slots support
 
 Buttons now support slots. Slot support replaces `onRender*` and `*Props` props. The `iconProps` is an example of this. Before, you would provide the props directly. Now you can provide JSX, which lets the implementation own prop typing:
 
