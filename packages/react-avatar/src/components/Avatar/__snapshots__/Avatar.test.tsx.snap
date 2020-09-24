@@ -45,11 +45,10 @@ exports[`Avatar handles customSize 1`] = `
 exports[`Avatar prioritizes image over icon 1`] = `
 <span
   className=""
-  name="First Last"
 >
-  <span>
-    FL
-  </span>
+  <img
+    src="i.png"
+  />
 </span>
 `;
 

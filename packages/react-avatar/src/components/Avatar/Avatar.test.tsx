@@ -89,7 +89,7 @@ describe('Avatar', () => {
   });
 
   it('prioritizes image over icon', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} />);
+    const component = renderer.create(<Avatar icon={<GroupIcon />} image="i.png" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
