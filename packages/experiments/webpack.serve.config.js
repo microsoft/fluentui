@@ -1,3 +1,4 @@
+const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
@@ -12,6 +13,11 @@ module.exports = resources.createServeConfig({
   },
 
   resolve: {
-    alias: getResolveAlias(),
+    alias: {
+      ...getResolveAlias(),
+      '@fluentui/examples$': path.join(__dirname, '../../packages/examples/src'),
+      '@fluentui/examples/lib': path.join(__dirname, '../../packages/examples/src'),
+      '@fluentui/examples/src': path.join(__dirname, '../../packages/examples/src'),
+    },
   },
 });
