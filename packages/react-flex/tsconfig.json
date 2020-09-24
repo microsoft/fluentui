@@ -16,11 +16,7 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"],
-    "paths": {
-      "@fluentui/react-flex/lib/*": ["./src/*"],
-      "@fluentui/react-flex": ["./src"]
-    }
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

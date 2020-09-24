@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove same-package path aliases",
+  "packageName": "@fluentui/dom-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-22T22:12:09.889Z"
+}

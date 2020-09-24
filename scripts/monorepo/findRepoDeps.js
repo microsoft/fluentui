@@ -20,10 +20,11 @@ let cwdForRepoDeps;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
+ * @param {string} [cwd] optional different cwd
  * @returns {import('./index').PackageInfo[]}
  */
-function findRepoDeps() {
-  const cwd = process.cwd();
+function findRepoDeps(cwd) {
+  cwd = cwd || process.cwd();
   if (repoDeps && cwdForRepoDeps === cwd) {
     return repoDeps;
   }

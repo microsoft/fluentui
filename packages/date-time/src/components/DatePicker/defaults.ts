@@ -1,5 +1,5 @@
-import { IDatePickerStrings } from '@uifabric/date-time';
-import { defaultDayPickerStrings } from '@uifabric/date-time';
+import { IDatePickerStrings } from './DatePicker.types';
+import { defaultDayPickerStrings } from '../../Calendar';
 
 export const DayPickerStrings: IDatePickerStrings = {
   ...defaultDayPickerStrings,
