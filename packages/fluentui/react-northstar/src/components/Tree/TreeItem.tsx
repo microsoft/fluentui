@@ -131,12 +131,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     variables,
     treeSize,
     selectionIndicator,
-    selectableParent,
     selected,
     selectable,
     indeterminate,
     id,
   } = props;
+
+  const selectableParent = hasSubtree && selectable;
 
   const hasSubtreeItem = hasSubtree(props);
 
@@ -292,9 +293,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
                 index,
                 selected,
                 selectable,
-                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
                 ...(selectableParent && { indeterminate }),
-                selectableParent,
                 selectionIndicator,
                 showIndicator,
               }),

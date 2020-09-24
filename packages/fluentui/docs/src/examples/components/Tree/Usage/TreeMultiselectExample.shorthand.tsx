@@ -5,17 +5,14 @@ const items = [
   {
     id: 'tree-item-1',
     title: 'House Lannister',
-    selectableParent: true,
     items: [
       {
         id: 'tree-item-11',
         title: 'Tywin',
-        selectableParent: true,
         items: [
           {
             id: '1',
             title: 'Jaime',
-            selectableParent: true,
             items: [
               {
                 id: '2',
@@ -55,7 +52,6 @@ const items = [
       {
         id: 'tree-item-12',
         title: 'Kevan',
-        selectableParent: true,
         items: [
           {
             id: 'tree-item-121',
@@ -81,12 +77,10 @@ const items = [
         return <Text {...props} content={selected ? 'unselect all' : 'select all'} />;
       },
     },
-    selectableParent: true,
     items: [
       {
         id: 'tree-item-21',
         title: 'Aerys',
-        selectableParent: true,
         items: [
           {
             id: 'tree-item-211',
@@ -108,7 +102,6 @@ const items = [
   {
     id: '100',
     title: 'House Skywalker',
-    selectableParent: true,
     items: [
       {
         id: '102',
