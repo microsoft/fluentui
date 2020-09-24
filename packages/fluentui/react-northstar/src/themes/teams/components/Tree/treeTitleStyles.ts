@@ -13,7 +13,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
-    marginLeft: pxToRem(1 + (p.level - 1) * 20),
+    marginLeft: pxToRem(1 + (p.level - 1) * 10),
     paddingRight: v.paddingRight,
     paddingLeft: v.paddingLeft,
     ...(p.selectable && {
