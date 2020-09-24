@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/motions/AnimationStyles';
+export * from '@fluentui/theme/lib/motion/AnimationStyles';

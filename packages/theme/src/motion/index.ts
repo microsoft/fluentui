@@ -1,2 +1,2 @@
-export * from './FluentMotions';
+export * from './FluentMotion';
 export * from './AnimationStyles';

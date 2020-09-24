@@ -4,8 +4,8 @@
 
 ```ts
 
-import { AnimationStyles } from '@fluentui/theme/lib/motions/AnimationStyles';
-import { AnimationVariables } from '@fluentui/theme/lib/motions/AnimationStyles';
+import { AnimationStyles } from '@fluentui/theme/lib/motion/AnimationStyles';
+import { AnimationVariables } from '@fluentui/theme/lib/motion/AnimationStyles';
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { createFontStyles } from '@fluentui/theme/lib/fonts';
