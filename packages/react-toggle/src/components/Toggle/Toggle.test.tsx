@@ -4,6 +4,7 @@ import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
 import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
+import { isConformant } from '../../common/isConformant';
 
 describe('Toggle', () => {
   beforeEach(() => {
@@ -48,6 +49,12 @@ describe('Toggle', () => {
     const component = create(<Toggle hidden />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Toggle,
+    displayName: 'Toggle',
+    passesUnhandledPropsTo: Toggle,
   });
 
   it('renders aria-label', () => {

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,7 +47,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/utilities": "^7.32.1",
+    "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

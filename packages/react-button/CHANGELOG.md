@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 17 Sep 2020 15:52:49 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.13.1..@fluentui/react-button_v0.14.0)
+
+### Minor changes
+
+- Moving SizeValue const from react-button to theme package. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.13.1)
 

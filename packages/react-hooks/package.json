@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-hooks",
-  "version": "7.13.3",
+  "version": "7.13.5",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,16 +33,16 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/test-utilities": "^7.2.2",
+    "@uifabric/test-utilities": "^7.3.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-window-provider": "^0.3.2",
+    "@fluentui/react-window-provider": "^0.3.3",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/utilities": "^7.32.1",
+    "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

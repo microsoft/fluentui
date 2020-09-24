@@ -5,6 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -59,6 +60,12 @@ describe('Pickers', () => {
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      Component: BaseFloatingPicker,
+      displayName: 'BaseFloatingPicker',
+      disabledTests: ['has-top-level-file'],
     });
 
     it('shows zero query options on empty input', () => {

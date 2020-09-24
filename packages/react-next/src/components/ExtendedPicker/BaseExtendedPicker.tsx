@@ -8,14 +8,12 @@ import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPick
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
-/* eslint-disable */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
-  selectedItems: T[] | null;
-  suggestionItems: T[] | null;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
@@ -27,8 +25,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<Autofill>();
   protected selection: Selection;
-  protected floatingPickerProps: IBaseFloatingPickerProps<T>;
-  protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -38,40 +34,16 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     this.state = {
       queryString: '',
-      // TODO: determine whether this can be removed
-      // eslint-disable-next-line react/no-unused-state
-      suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
-      selectedItems: this.props.defaultSelectedItems
-        ? (this.props.defaultSelectedItems as T[])
-        : this.props.selectedItems
-        ? (this.props.selectedItems as T[])
-        : null,
     };
-
-    this.floatingPickerProps = this.props.floatingPickerProps;
-    this.selectedItemsListProps = this.props.selectedItemsListProps;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get items(): any {
-    return this.state.selectedItems ?? this.selectedItemsList.current?.items ?? null;
+    return this.props.selectedItems ?? this.selectedItemsList.current?.items ?? this.props.defaultSelectedItems ?? null;
   }
 
   public componentDidMount(): void {
     this.forceUpdate();
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: P): void {
-    if (newProps.floatingPickerProps) {
-      this.floatingPickerProps = newProps.floatingPickerProps;
-    }
-
-    if (newProps.selectedItemsListProps) {
-      this.selectedItemsListProps = newProps.selectedItemsListProps;
-    }
-
-    if (newProps.selectedItems) {
-      this.setState({ selectedItems: newProps.selectedItems });
-    }
   }
 
   public focus(): void {
@@ -137,6 +109,13 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         {this.renderFloatingPicker()}
       </div>
     );
+  }
+  protected get floatingPickerProps(): IBaseFloatingPickerProps<T> {
+    return this.props.floatingPickerProps;
+  }
+
+  protected get selectedItemsListProps(): IBaseSelectedItemsListProps<T> {
+    return this.props.selectedItemsListProps;
   }
 
   protected onSelectionChange = (): void => {
@@ -261,7 +240,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
       const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-        ? (this.props.onItemSelected as any)(item)
+        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (this.props.onItemSelected as any)(item)
         : item;
 
       if (processedItem === null) {

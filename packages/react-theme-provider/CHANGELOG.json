@@ -2,6 +2,44 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding Card tokens to theme.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Sep 2020 12:23:24 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.3",
+      "version": "0.13.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Code cleanup: remove defaultTokens and aggregate everything in getTokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "9cf9695e4f49212b40215dd862627f626f74537e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 15:52:49 GMT",
       "tag": "@fluentui/react-theme-provider_v0.13.1",
       "version": "0.13.1",

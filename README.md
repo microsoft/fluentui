@@ -1,140 +1,26 @@
-:tada: The **Office UI Fabric React** project has evolved to **Fluent UI**. :tada:
+# Fluent UI Web
 
-The `office-ui-fabric-react` repo has moved! This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location.
+[![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/84/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master) ![GitHub contributors](https://img.shields.io/github/contributors/microsoft/fluentui?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/microsoft/fluentui?style=flat-square) [![Twitter Follow](https://img.shields.io/twitter/follow/fluentui?logo=twitter&style=flat-square)](https://twitter.com/FluentUI?ref_src=twsrc%5Etfw)
 
-We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
+Fluent UI web represents a collection of utilities, React components, and web components for building web applications.
 
-# [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
+The Fluent UI web repository is home to 3 main projects today, the following table will help navigate them and understand their differences.
 
-**The React-based front-end framework for building web experiences.**
+<!-- prettier-ignore-start -->
+|   | React | React Northstar | Web Components |
+|---| ----- | --------------- | -------------- |
+| **Overview**    | Mature, refreshing with new concepts from react-northstar. | Newer, has concepts we're iterating on. | Web Component implementation of Fluent UI. |
+| **Used By**     | Office| Teams | Edge |
+| **Read Me**     | [README.md](/packages/office-ui-fabric-react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
+| **Repo**        | [./packages/react](/packages/react) [./packages/office-ui-fabric-react](/packages/office-ui-fabric-react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
+| **Quick Start** | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [Quick Start](https://fluentsite.z22.web.core.windows.net/quick-start) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
+| **Docs**        | aka.ms/fluentui-react | aka.ms/fluentui-react-northstar | aka.ms/fluentui-web-components |
+| **NPM**         | `@fluentui/react` | `@fluentui/react-northstar` | `@fluentui/web-components` |
+| **Version**     | [![npm version](https://img.shields.io/npm/v/@fluentui/react?style=flat-square)](https://www.npmjs.com/package/@fluentui/react) | [![npm version](https://img.shields.io/npm/v/@fluentui/react-northstar?style=flat-square)](https://www.npmjs.com/package/@fluentui/react-northstar) | [![npm version](https://img.shields.io/npm/v/@fluentui/web-components?style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components) |
+| **Issues**      | [![Fluent UI React GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react%22) | [![Fluent UI React Northstar GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react-northstar?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react-northstar%22) | [![Fluent UI Web Components GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/web-components?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22web-components%22) |
+<!-- prettier-ignore-end -->
 
-[![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://dev.azure.com/uifabric/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master)
-
-Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
-
-## Learn about Fluent UI
-
-[Fluent UI React current release documentation](https://developer.microsoft.com/en-us/fluentui)
-
-[Fluent UI Northstar documentation for Teams developers](https://aka.ms/fluent-ui)
-
-## Who uses Fluent UI React?
-
-![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)
-
-\+ 45 additional Microsoft sites and products
-
-## For more information...
-
-Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
-
-## Contents
-
-- [Using Fluent UI React](#using-fluent-ui-react)
-  - [Integrating in your project](#integrating-in-your-project)
-  - [Version policy](#version-policy)
-  - [Browser support](#browser-support)
-  - [Right-to-left support](#right-to-left-support)
-  - [Server-side rendering](#server-side-rendering)
-  - [Advanced usage](#advanced-usage)
-- [Contribute to Fluent UI React](#contribute-to-fluent-ui-react)
-- [Building the repo](#building-the-repo)
-  - [Testing](#testing)
-  - [Advanced building tips](#advanced-building-tips)
-- [Licenses](#licenses)
-- [Changelog](#changelog)
-
-## Using Fluent UI React
-
-### Creating a new app
-
-To create a simple React app using [Create React App](https://create-react-app.dev), [install Node.js](https://nodejs.org), then run:
-
-```sh
-npx create-react-app my-app
-cd my-app
-npm install @fluentui/react
-npm start
-```
-
-See the next section for some starter code using Fluent UI React controls.
-
-### Integrating in your project
-
-```sh
-npm i @fluentui/react
-
-# Or, use yarn
-yarn add @fluentui/react
-```
-
-This will add the package as a dependency in your `package.json` file and download it under `node_modules/@fluentui/react`.
-
-The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs). To use a control, import it and then use it in your render method:
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-
-ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.getElementById('root'));
-```
-
-### Version policy
-
-Fluent UI React adheres to [semantic versioning](http://www.semver.org/). However, we only consider constructs directly importable at the package level or from files at the root (e.g. `@fluentui/react/lib/Utilities` or `@fluentui/react/lib-amd/Styling`) to be part of our API surface. Everything else is considered package-internal and may be subject to changes, moves, renames, etc.
-
-### Browser support
-
-Fluent UI React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/microsoft/fluentui/wiki/Browser-Support) for more information.
-
-### Right-to-left support
-
-All components can render in LTR or RTL, depending on the `dir` attribute set on the `html` element (`dir="rtl"` will flip the direction of everything). You can also use the `setRTL` API if you don't have control over the `html` element's rendering. Example:
-
-```tsx
-import { setRTL } from '@fluentui/react/lib/Utilities';
-
-setRTL(true);
-```
-
-### Server-side rendering
-
-Fluent UI React components can be rendered in a server-side Node environment (or used in tests which run in an SSR-like environment), but it requires customizing how styles and SCSS files are loaded. See the [server-side rendering documentation](https://github.com/microsoft/fluentui/wiki/Server-side-rendering-and-browserless-testing) for examples of how to handle this.
-
-### Advanced usage
-
-For info about advanced usage including module- vs. path-based imports, using an AMD bundler like RequireJS, and deployment features, see our [advanced documentation](https://github.com/microsoft/fluentui/wiki/Advanced-Usage).
-
-## Contribute to Fluent UI React
-
-Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) for more info. Also read [Contribute bug fixes](https://github.com/microsoft/fluentui/wiki/Bug-Fixes) and [Contribute new component](https://github.com/microsoft/fluentui/wiki/New-Components).
-
-## Building the repo
-
-Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/microsoft/fluentui/wiki/Setup)**
-
-To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
-
-1. `git clone https://github.com/microsoft/fluentui.git`
-2. `cd fluentui`
-3. `yarn`
-4. `yarn builddemo`
-5. `yarn start`
-
-This will start a demo page from the `office-ui-fabric-react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
-
-To build and run tests for all packages in the repo, run `yarn build` from the root.
-
-To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn buildto` script to build to the specific package you want.
-
-#### Advanced build commands
-
-There are more advanced build commands listed in the [Build Commands](https://github.com/microsoft/fluentui/wiki/Build-Commands) wiki page.
-
-### Testing
-
-For info about testing, see our [testing documentation](https://github.com/microsoft/fluentui/wiki/Testing).
+> The goal of these projects is to dedupe functionality and increase interoperability over time. Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI)
 
 ## Licenses
 
@@ -145,6 +31,14 @@ Usage of the fonts and icons referenced in Fluent UI React is subject to the ter
 ## Changelog
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/microsoft/fluentui/releases) page.
+
+## Looking for Office UI Fabric React?
+
+The **Office UI Fabric React** project has evolved to **Fluent UI**.
+
+The `office-ui-fabric-react` repo is now this repo (`fluentui` in the Microsoft organization)! The name change should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location. The library formerly known as `office-ui-fabric-react` is now available as `@fluentui/react` (see above table for more information).
+
+We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 
 ---
 

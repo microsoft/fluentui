@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v0.4.0)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v0.3.0..@fluentui/react-link_v0.4.0)
+
+### Minor changes
+
+- Fix as typing and remove un-used typings. ([PR #15122](https://github.com/microsoft/fluentui/pull/15122) by xgao@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v0.3.0)
 

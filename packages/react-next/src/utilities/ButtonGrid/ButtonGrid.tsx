@@ -10,3 +10,4 @@ export const ButtonGrid: React.FunctionComponent<IButtonGridProps> = styled<
   IButtonGridStyles,
   HTMLElement
 >(ButtonGridBase, getStyles);
+ButtonGrid.displayName = 'ButtonGrid';

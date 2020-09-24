@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
+import { IButtonStyles } from '../../compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
@@ -135,15 +135,25 @@ export interface ISpinButtonProps
 
   /**
    * Callback for when the increment button or up arrow key is pressed.
+   * @param value - The current value to be incremented
+   * @param event - The event that triggered this increment
    * @returns If a string is returned, it will be used as the new value
    */
-  onIncrement?: (value: string) => string | void;
+  onIncrement?: (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => string | void;
 
   /**
    * Callback for when the decrement button or down arrow key is pressed.
+   * @param value - The current value to be decremented
+   * @param event - The event that triggered this decrement
    * @returns If a string is returned, it will be used as the new value
    */
-  onDecrement?: (value: string) => string | void;
+  onDecrement?: (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => string | void;
 
   /**
    * Callback for when the user focuses the control.
@@ -173,7 +183,7 @@ export interface ISpinButtonProps
   /**
    * Custom styles for the up arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -181,7 +191,7 @@ export interface ISpinButtonProps
   /**
    * Custom styles for the down arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;

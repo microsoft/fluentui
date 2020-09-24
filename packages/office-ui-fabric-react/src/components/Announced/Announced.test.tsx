@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 import { Announced } from './Announced';
 
@@ -32,6 +34,12 @@ describe('Announced', () => {
     jest.runAllTimers();
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Announced,
+    displayName: 'Announced',
+    componentPath: path.join(__dirname, 'Announced.ts'),
   });
 
   it('renders with default settings', () => {

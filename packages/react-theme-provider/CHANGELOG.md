@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Thu, 17 Sep 2020 15:52:49 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.13.3..@fluentui/react-theme-provider_v0.14.0)
+
+### Minor changes
+
+- Adding Card tokens to theme. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
+
+## [0.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.3)
+
+Fri, 18 Sep 2020 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.13.1..@fluentui/react-theme-provider_v0.13.3)
+
+### Patches
+
+- Code cleanup: remove defaultTokens and aggregate everything in getTokens. ([PR #15110](https://github.com/microsoft/fluentui/pull/15110) by xgao@microsoft.com)
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.1)
 

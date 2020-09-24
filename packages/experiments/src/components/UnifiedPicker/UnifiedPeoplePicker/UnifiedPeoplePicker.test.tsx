@@ -3,12 +3,9 @@ import { mount, ReactWrapper } from 'enzyme';
 import { create } from 'react-test-renderer';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
-import {
-  IFloatingSuggestionItem,
-  IFloatingPeopleSuggestionsProps,
-} from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
+import { IFloatingSuggestionItem, IFloatingPeopleSuggestionsProps } from '../../../FloatingPeopleSuggestionsComposite';
 import { people, mru } from '@uifabric/example-data';
+import { ISelectedPeopleListProps } from '../../../SelectedItemsList';
 
 type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
 
