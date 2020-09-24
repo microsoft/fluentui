@@ -34,11 +34,11 @@ function getAvatar(id) {
 
 const participants = [
   {
-    id: 1,
+    id: '1',
     title: (
       <Participant
         name="Irving Kuhic"
-        role="Software Engineer"
+        position="Software Engineer"
         isMuted
         image={getAvatar(0)}
         status={{
@@ -50,11 +50,11 @@ const participants = [
     ),
   },
   {
-    id: 2,
+    id: '2',
     title: (
       <Participant
         name="Skyler Parks"
-        role="Product Manager"
+        position="Product Manager"
         image={getAvatar(1)}
         status={{
           color: 'red',
@@ -64,11 +64,11 @@ const participants = [
     ),
   },
   {
-    id: 3,
+    id: '3',
     title: (
       <Participant
         name="Adam Parks"
-        role="Manager"
+        position="Manager"
         isMuted
         image={getAvatar(2)}
         status={{
@@ -79,24 +79,24 @@ const participants = [
     ),
   },
   {
-    id: 4,
+    id: '4',
     title: (
       <Participant
         isTalking
         name="Dante Schneider"
         image={getAvatar(3)}
-        role="Guest"
+        position="Guest"
         status={{ color: 'gray', title: 'unknown' }}
       />
     ),
   },
   {
-    id: 5,
+    id: '5',
     title: (
       <Participant
         isMuted
         name="John Doe"
-        role="Guest"
+        position="Guest"
         image={getAvatar(4)}
         status={{
           color: 'red',
@@ -106,12 +106,12 @@ const participants = [
     ),
   },
   {
-    id: 6,
+    id: '6',
     title: (
       <Participant
         isTalking
         name="Talking Jim"
-        role="Guest"
+        position="Guest"
         image={getAvatar(5)}
         status={{
           color: 'green',
@@ -121,11 +121,11 @@ const participants = [
     ),
   },
   {
-    id: 7,
+    id: '7',
     title: (
       <Participant
         name="Tiana kohler"
-        role="Software Engineer"
+        position="Software Engineer"
         isMuted
         image={getAvatar(6)}
         status={{
@@ -136,11 +136,11 @@ const participants = [
     ),
   },
   {
-    id: 8,
+    id: '8',
     title: (
       <Participant
         name="Vernie haley"
-        role="Product Manager"
+        position="Product Manager"
         isMuted
         image={getAvatar(7)}
         status={{
@@ -151,11 +151,11 @@ const participants = [
     ),
   },
   {
-    id: 9,
+    id: '9',
     title: (
       <Participant
         name="Cecile johns"
-        role="Software Engineer"
+        position="Software Engineer"
         isMuted
         image={getAvatar(8)}
         status={{
@@ -166,13 +166,13 @@ const participants = [
     ),
   },
   {
-    id: 10,
+    id: '10',
     title: (
       <Participant
         isTalking
         name="Sigmund terry"
         image={getAvatar(9)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -181,12 +181,12 @@ const participants = [
     ),
   },
   {
-    id: 11,
+    id: '11',
     title: (
       <Participant
         isMuted
         name="Aurore von"
-        role="Guest"
+        position="Guest"
         image={getAvatar(10)}
         status={{
           color: 'red',
@@ -196,12 +196,12 @@ const participants = [
     ),
   },
   {
-    id: 12,
+    id: '12',
     title: (
       <Participant
         isTalking
         name="Rocky walsh"
-        role="Guest"
+        position="Guest"
         image={getAvatar(11)}
         status={{
           color: 'green',
@@ -211,11 +211,11 @@ const participants = [
     ),
   },
   {
-    id: 13,
+    id: '13',
     title: (
       <Participant
         name="Cecile johns"
-        role="Software Engineer"
+        position="Software Engineer"
         isTalking
         image={getAvatar(12)}
         status={{
@@ -226,13 +226,13 @@ const participants = [
     ),
   },
   {
-    id: 14,
+    id: '14',
     title: (
       <Participant
         isTalking
         name="Clementina predovic"
         image={getAvatar(13)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -241,12 +241,12 @@ const participants = [
     ),
   },
   {
-    id: 15,
+    id: '15',
     title: (
       <Participant
         isMuted
         name="Robin huel"
-        role="Guest"
+        position="Guest"
         image={getAvatar(14)}
         status={{
           color: 'green',
@@ -256,12 +256,12 @@ const participants = [
     ),
   },
   {
-    id: 16,
+    id: '16',
     title: (
       <Participant
         isTalking
         name="Rocky walsh"
-        role="Guest"
+        position="Guest"
         image={getAvatar(15)}
         status={{
           color: 'green',
@@ -271,11 +271,11 @@ const participants = [
     ),
   },
   {
-    id: 17,
+    id: '17',
     title: (
       <Participant
         name="Dena langosh"
-        role="Product Manager"
+        position="Product Manager"
         isMuted
         image={getAvatar(16)}
         status={{
@@ -286,11 +286,11 @@ const participants = [
     ),
   },
   {
-    id: 18,
+    id: '18',
     title: (
       <Participant
         name="Felicity littel"
-        role="Software Engineer"
+        position="Software Engineer"
         isMuted
         image={getAvatar(17)}
         status={{
@@ -301,13 +301,13 @@ const participants = [
     ),
   },
   {
-    id: 19,
+    id: '19',
     title: (
       <Participant
         isMuted
         name="Bobby metz"
         image={getAvatar(18)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -316,12 +316,12 @@ const participants = [
     ),
   },
   {
-    id: 20,
+    id: '20',
     title: (
       <Participant
         isMuted
         name="Aurore von"
-        role="Guest"
+        position="Guest"
         image={getAvatar(19)}
         status={{
           color: 'red',
@@ -331,12 +331,12 @@ const participants = [
     ),
   },
   {
-    id: 21,
+    id: '21',
     title: (
       <Participant
         isMuted
         name="Baby runolfsson"
-        role="Guest"
+        position="Guest"
         image={getAvatar(20)}
         status={{
           color: 'green',
@@ -346,11 +346,11 @@ const participants = [
     ),
   },
   {
-    id: 22,
+    id: '22',
     title: (
       <Participant
         name="Lucienne fisher"
-        role="Software Engineer"
+        position="Software Engineer"
         image={getAvatar(21)}
         status={{
           color: 'green',
@@ -360,13 +360,13 @@ const participants = [
     ),
   },
   {
-    id: 23,
+    id: '23',
     title: (
       <Participant
         isMuted
         name="Jaydon dibbert"
         image={getAvatar(22)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -375,12 +375,12 @@ const participants = [
     ),
   },
   {
-    id: 24,
+    id: '24',
     title: (
       <Participant
         isMuted
         name="Amya o'conner"
-        role="Guest"
+        position="Guest"
         image={getAvatar(23)}
         status={{
           color: 'red',
@@ -390,12 +390,12 @@ const participants = [
     ),
   },
   {
-    id: 25,
+    id: '25',
     title: (
       <Participant
         isMuted
         name="Henriette von"
-        role="Guest"
+        position="Guest"
         image={getAvatar(24)}
         status={{
           color: 'green',
@@ -405,12 +405,12 @@ const participants = [
     ),
   },
   {
-    id: 26,
+    id: '26',
     title: (
       <Participant
         isMuted
         name="Corene macejkovic"
-        role="Guest"
+        position="Guest"
         image={getAvatar(25)}
         status={{
           color: 'red',
@@ -420,12 +420,12 @@ const participants = [
     ),
   },
   {
-    id: 27,
+    id: '27',
     title: (
       <Participant
         isMuted
         name="Mireya heathcote"
-        role="Guest"
+        position="Guest"
         image={getAvatar(26)}
         status={{
           color: 'green',
@@ -435,12 +435,12 @@ const participants = [
     ),
   },
   {
-    id: 28,
+    id: '28',
     title: (
       <Participant
         name="Danyka ferry"
         isTalking
-        role="Software Engineer"
+        position="Software Engineer"
         image={getAvatar(27)}
         status={{
           color: 'green',
@@ -450,13 +450,13 @@ const participants = [
     ),
   },
   {
-    id: 29,
+    id: '29',
     title: (
       <Participant
         isMuted
         name="Lea bogisich"
         image={getAvatar(28)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -465,12 +465,12 @@ const participants = [
     ),
   },
   {
-    id: 30,
+    id: '30',
     title: (
       <Participant
         isMuted
         name="Alvah kuhic"
-        role="Guest"
+        position="Guest"
         image={getAvatar(29)}
         status={{
           color: 'red',
@@ -480,12 +480,12 @@ const participants = [
     ),
   },
   {
-    id: 31,
+    id: '31',
     title: (
       <Participant
         isMuted
         name="Julius weber"
-        role="Guest"
+        position="Guest"
         image={getAvatar(30)}
         status={{
           color: 'green',
@@ -495,11 +495,11 @@ const participants = [
     ),
   },
   {
-    id: 32,
+    id: '32',
     title: (
       <Participant
         name="Lisandro wunsch"
-        role="Software Engineer"
+        position="Software Engineer"
         isMuted
         image={getAvatar(31)}
         status={{
@@ -510,13 +510,13 @@ const participants = [
     ),
   },
   {
-    id: 33,
+    id: '33',
     title: (
       <Participant
         isMuted
         name="Rogelio runolfsson"
         image={getAvatar(32)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -525,12 +525,12 @@ const participants = [
     ),
   },
   {
-    id: 34,
+    id: '34',
     title: (
       <Participant
         isMuted
         name="Rebecca yundt"
-        role="Guest"
+        position="Guest"
         image={getAvatar(33)}
         status={{
           color: 'red',
@@ -540,12 +540,12 @@ const participants = [
     ),
   },
   {
-    id: 35,
+    id: '35',
     title: (
       <Participant
         isMuted
         name="Clair lang"
-        role="Guest"
+        position="Guest"
         image={getAvatar(34)}
         status={{
           color: 'green',
@@ -555,11 +555,11 @@ const participants = [
     ),
   },
   {
-    id: 36,
+    id: '36',
     title: (
       <Participant
         name="Aubree rodriguez"
-        role="Software Engineer"
+        position="Software Engineer"
         image={getAvatar(35)}
         status={{
           color: 'green',
@@ -569,13 +569,13 @@ const participants = [
     ),
   },
   {
-    id: 37,
+    id: '37',
     title: (
       <Participant
         isMuted
         name="Jaydon dibbert"
         image={getAvatar(36)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -584,13 +584,13 @@ const participants = [
     ),
   },
   {
-    id: 38,
+    id: '38',
     title: (
       <Participant
         isMuted
         name="Sonia funk"
         image={getAvatar(37)}
-        role="Manager"
+        position="Manager"
         status={{
           color: 'green',
           title: 'Available',
@@ -599,12 +599,12 @@ const participants = [
     ),
   },
   {
-    id: 39,
+    id: '39',
     title: (
       <Participant
         isMuted
         name="Marjolaine cummerata"
-        role="Guest"
+        position="Guest"
         image={getAvatar(38)}
         status={{
           color: 'red',

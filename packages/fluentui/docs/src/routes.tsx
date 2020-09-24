@@ -3,7 +3,6 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import PerfExampleLayout from './components/PerfExampleLayout';
-import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
 import DocsBehaviorRoot from './components/DocsBehaviorRoot';
