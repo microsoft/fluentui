@@ -77,6 +77,28 @@ const rendererConfig = {
   ],
 };
 
-export const createRenderer = (): Renderer => createFelaRenderer(rendererConfig) as Renderer;
+export const createRenderer = (): Renderer => {
+  let usedRenderers = 0;
+  const renderer = (createFelaRenderer(rendererConfig) as unknown) as Renderer & {
+    listeners: [];
+    nodes: Record<string, HTMLElement>;
+    updateSubscription: Function | undefined;
+  };
+
+  renderer.registerUsage = () => {
+    usedRenderers += 1;
+  };
+  renderer.unregisterUsage = () => {
+    usedRenderers -= 1;
+
+    if (usedRenderers === 0) {
+      renderer.listeners = [];
+      renderer.nodes = {};
+      renderer.updateSubscription = undefined;
+    }
+  };
+
+  return renderer;
+};
 
 export const felaRenderer = createRenderer();
