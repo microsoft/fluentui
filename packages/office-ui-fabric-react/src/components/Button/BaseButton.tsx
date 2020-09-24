@@ -19,6 +19,7 @@ import {
   Async,
   FocusRects,
 } from '../../Utilities';
+import { createMergedRef } from '@uifabric/utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -64,6 +65,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _events: EventGroup;
   private _buttonElement = React.createRef<HTMLElement>();
   private _splitButtonContainer = React.createRef<HTMLDivElement>();
+  private _mergedRef = createMergedRef<HTMLElement>();
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -131,7 +133,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     const { menuHidden } = this.state;
 
-    // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
+    // Button is disabled if the whole button (in case of splitButton is disabled) or if the primary action is disabled
     const isPrimaryButtonDisabled = disabled || primaryDisabled;
 
     this._classNames = getClassNames
@@ -221,7 +223,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
-      ref: this._buttonElement,
+      // eslint-disable-next-line deprecation/deprecation
+      ref: this._mergedRef(this.props.elementRef, this._buttonElement),
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
       onKeyDown: this._onKeyDown,
       onKeyPress: this._onKeyPress,
@@ -861,7 +864,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   }
 
   private _handleTouchAndPointerEvent() {
-    // If we already have an existing timeeout from a previous touch and pointer event
+    // If we already have an existing timeout from a previous touch and pointer event
     // cancel that timeout so we can set a new one.
     if (this._lastTouchTimeoutId !== undefined) {
       this._async.clearTimeout(this._lastTouchTimeoutId);
