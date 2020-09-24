@@ -65,15 +65,14 @@ const isPivotItem = (item: React.ReactNode): item is PivotItem => {
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
   (props, ref) => {
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
-    const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
-
-    const pivotId: string = useId('Pivot');
-    let linkCollection = getLinkItems(props, pivotId);
-
     const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
     const focusZoneRef = React.useRef<IFocusZone>(null);
 
+    const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
+    const pivotId: string = useId('Pivot');
+    let linkCollection = getLinkItems(props, pivotId);
+
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
     let classNames: { [key in keyof IPivotStyles]: string };
 
