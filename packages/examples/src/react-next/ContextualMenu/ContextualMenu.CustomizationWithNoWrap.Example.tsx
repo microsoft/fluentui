@@ -76,7 +76,6 @@ export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionCompone
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
   return (
     <IconButton
@@ -90,7 +89,6 @@ function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderCategoriesList(item: any): JSX.Element {
   return (
     <ul className={classNames.categoriesList}>

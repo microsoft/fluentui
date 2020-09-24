@@ -52,7 +52,7 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
   }
   let result: IOverflowData = {
     primary: dataItems,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     overflow: [] as any[],
   };
   if (cachingEnabled) {
@@ -65,7 +65,6 @@ const computeCacheKey = (primaryControls: IContextualMenuItem[]): string => {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderItem = (item: any) => (
   <CommandBarButton
     role="menuitem"
@@ -83,7 +82,6 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
   const [onGrowDataEnabled, { toggle: toggleOnGrowDataEnabled }] = useBoolean(false);
   const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onReduceData = (currentData: any) => {
     if (currentData.primary.length === 0) {
       return undefined;
@@ -97,7 +95,6 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
     return { primary, overflow, cacheKey };
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onGrowData = (currentData: any) => {
     if (currentData.overflow.length === 0) {
       return undefined;
@@ -111,12 +108,10 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
     return { primary, overflow, cacheKey };
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onRenderOverflowButton = (overflowItems: any) => (
     <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onRenderData = (data: any) => {
     return (
       <OverflowSet

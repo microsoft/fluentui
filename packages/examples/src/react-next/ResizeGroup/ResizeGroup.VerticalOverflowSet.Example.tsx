@@ -27,7 +27,6 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
   });
   let result: IOverflowData = {
     primary: dataItems,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     overflow: [] as any[],
   };
   if (cachingEnabled) {
@@ -48,7 +47,6 @@ const exampleHeight = '40vh';
 const resizeRootClassName = mergeStyles({ height: exampleHeight });
 const dataToRender = generateData(20, false, false);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderItem = (item: any) => (
   <CommandBarButton
     role="menuitem"
@@ -60,7 +58,6 @@ const onRenderItem = (item: any) => (
   />
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderOverflowButton = (overflowItems: any) => (
   <CommandBarButton
     role="menuitem"
@@ -70,7 +67,6 @@ const onRenderOverflowButton = (overflowItems: any) => (
   />
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderData = (data: any) => (
   <OverflowSet
     role="menubar"
@@ -82,7 +78,6 @@ const onRenderData = (data: any) => (
   />
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onReduceData = (currentData: any): any => {
   if (currentData.primary.length === 0) {
     return undefined;

@@ -55,7 +55,6 @@ export const FloatingPeoplePickerTypesExample: React.FunctionComponent = () => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onRemoveSuggestion = (item: any): void => {
     const itemIndex = peopleList.indexOf(item);
     if (itemIndex >= 0) {
