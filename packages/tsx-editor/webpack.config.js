@@ -24,7 +24,7 @@ module.exports = resources.createConfig(
 
     resolve: {
       alias: {
-        ...getResolveAlias(),
+        ...getResolveAlias(true),
         '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
       },
     },
