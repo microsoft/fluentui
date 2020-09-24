@@ -132,6 +132,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               cursor: text;
               display: block;
               flex: 1;
+              font-family: inherit;
               font-size: 14px;
               height: 100%;
               margin-bottom: 0px;

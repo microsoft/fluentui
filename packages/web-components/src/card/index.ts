@@ -1,6 +1,7 @@
+import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
 import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
-import { createColorPalette, DesignSystem } from '@microsoft/fast-components-styles-msft';
+import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
 import { FluentDesignSystemProvider } from '../design-system-provider';
 import { CardStyles as styles } from './card.styles';
 
@@ -37,6 +38,22 @@ export class FluentCard extends FluentDesignSystemProvider
   }
 
   /**
+   * Background color for the banner component. Sets context for the design system.
+   * @public
+   * @remarks
+   * HTML Attribute: background-color
+   */
+  @attr({
+    attribute: 'card-background-color',
+  })
+  public cardBackgroundColor: string;
+  private cardBackgroundColorChanged(): void {
+    const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
+    this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
+    this.backgroundColor = this.cardBackgroundColor;
+  }
+
+  /**
    * Neutral pallette for the the design system provider.
    * @internal
    */
@@ -47,12 +64,27 @@ export class FluentCard extends FluentDesignSystemProvider
   })
   public neutralPalette: string[];
 
+  /**
+   * @internal
+   */
+  public handleChange(source: DesignSystem, name: string): void {
+    if (!this.cardBackgroundColor) {
+      const parsedColor = parseColorHexRGB(source[name]);
+      this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
+      const designSystem: DesignSystem = Object.assign({}, this.designSystem, {
+        backgroundColor: source[name],
+        neutralPallette: this.neutralPalette,
+      } as any);
+      this.backgroundColor = neutralFillCard(designSystem);
+    }
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
-
-    if (this.backgroundColor === undefined) {
-      this.setAttribute('use-defaults', '');
-    }
+    const desinSystemNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
+    desinSystemNotifier.subscribe(this, 'backgroundColor');
+    desinSystemNotifier.subscribe(this, 'neutralPalette');
+    this.handleChange(this.provider?.designSystem as DesignSystem, 'backgroundColor');
   }
 }
 
