@@ -6,10 +6,10 @@ const Participant: React.FC<{
   image?: string;
   name: string;
   status: object;
-  role: string;
+  position: string;
   isTalking?: boolean;
   isMuted?: boolean;
-}> = ({ image, name, status, role, isTalking, isMuted }) => {
+}> = ({ image, name, status, position, isTalking, isMuted }) => {
   const [muted, setMuted] = React.useState(isMuted);
   const [talking, setTalking] = React.useState(isTalking);
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -39,8 +39,8 @@ const Participant: React.FC<{
       )}
 
       <Flex column>
-        <Text weight={talking && 'bold'} content={name} variables={{ isNameText: true }} />
-        <Text variables={{ isRoleText: true }} content={role} />
+        <Text weight={(talking && 'bold') || 'regular'} content={name} variables={{ isNameText: true }} />
+        <Text variables={{ isRoleText: true }} content={position} />
       </Flex>
 
       {muted ? (
