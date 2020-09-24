@@ -15,14 +15,12 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
     position: 'relative',
     paddingRight: v.paddingRight,
     ...(p.selectable && {
-      ':hover': {
-        background: v.hoverBackground,
-      },
-    }),
-    ...(p.selectable && {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      ':hover': {
+        background: v.hoverBackground,
+      },
     }),
     ...getBorderFocusStyles({ variables: siteVariables }),
   }),
