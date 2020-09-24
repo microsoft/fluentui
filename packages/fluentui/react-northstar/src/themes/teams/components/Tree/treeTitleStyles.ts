@@ -13,6 +13,12 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
+    paddingRight: v.paddingRight,
+    ...(p.selectable && {
+      ':hover': {
+        background: v.hoverBackground,
+      },
+    }),
     ...(p.selectable && {
       display: 'flex',
       justifyContent: 'space-between',
@@ -28,7 +34,6 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
     boxShadow: 'unset',
     width: pxToRem(16),
     height: pxToRem(16),
-
     borderColor: v.borderColor,
     borderStyle: v.borderStyle,
     borderRadius: v.borderRadius,
