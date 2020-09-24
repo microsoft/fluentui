@@ -8,16 +8,36 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
       ...(p.size === 'smaller' && {
-        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightSmaller} ${v.linkPaddingBottom} ${v.linkPaddingLeftSmaller}`,
+        borderPadding: {
+          top: v.linkPaddingTop,
+          right: v.linkPaddingRightSmaller,
+          bottom: v.linkPaddingBottom,
+          left: v.linkPaddingLeftSmaller,
+        },
       }),
       ...(p.size === 'small' && {
-        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightSmall} ${v.linkPaddingBottom} ${v.linkPaddingLeftSmall}`,
+        borderPadding: {
+          top: v.linkPaddingTop,
+          right: v.linkPaddingRightSmall,
+          bottom: v.linkPaddingBottom,
+          left: v.linkPaddingLeftSmall,
+        },
       }),
       ...(p.size === 'medium' && {
-        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightMedium} ${v.linkPaddingBottom} ${v.linkPaddingLeftMedium}`,
+        borderPadding: {
+          top: v.linkPaddingTop,
+          right: v.linkPaddingRightMedium,
+          bottom: v.linkPaddingBottom,
+          left: v.linkPaddingLeftMedium,
+        },
       }),
       ...(p.size === 'large' && {
-        borderPadding: `${v.linkPaddingTop} ${v.linkPaddingRightLarge} ${v.linkPaddingBottom} ${v.linkPaddingLeftLarge}`,
+        borderPadding: {
+          top: v.linkPaddingTop,
+          right: v.linkPaddingRightLarge,
+          bottom: v.linkPaddingBottom,
+          left: v.linkPaddingLeftLarge,
+        },
       }),
     });
 
