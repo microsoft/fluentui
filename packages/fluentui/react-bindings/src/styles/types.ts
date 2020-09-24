@@ -62,6 +62,9 @@ export type RendererParam = {
 export type RendererRenderRule = (rule: () => ICSSInJSStyle, param: RendererParam) => string;
 export type Renderer = Omit<FelaRenderer, 'renderRule'> & {
   renderRule: RendererRenderRule;
+
+  registerUsage: () => void;
+  unregisterUsage: () => void;
 };
 
 export interface StylesContextPerformance {
