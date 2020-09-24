@@ -48,7 +48,7 @@ export interface IAutofill {
  */
 export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
   /**
-   * Gets the compoonent ref.
+   * Gets the components ref.
    */
   componentRef?: IRefObject<IAutofill>;
 
