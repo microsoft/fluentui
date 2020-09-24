@@ -11,7 +11,7 @@ module.exports = [
     },
     externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
     resolve: {
-      alias: getResolveAlias(),
+      alias: getResolveAlias(true),
     },
     output: {
       libraryTarget: 'var',
