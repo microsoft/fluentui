@@ -2,6 +2,51 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@uifabric/date-time_v7.17.14",
+      "version": "7.17.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set font-family inherit on button element.",
+            "author": "xgao@microsoft.com",
+            "commit": "fc211d8c6104f6f10948e6654513a6606bc35429",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/date-time_v7.17.13",
+      "version": "7.17.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating isConformant version.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/date-time_v7.17.12",
+      "version": "7.17.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding isConformant file and implementing conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/date-time_v7.17.8",
       "version": "7.17.8",

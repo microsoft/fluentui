@@ -79,7 +79,7 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
 export type TreeTitleStylesProps = Pick<
   TreeTitleProps,
-  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate'
+  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate' | 'level'
 >;
 
 export const treeTitleClassName = 'ui-tree__title';
@@ -152,6 +152,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       disabled,
       selectable,
       indeterminate,
+      level,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -175,7 +176,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && !hasSubtree) || selectableParent) &&
+        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
           _.isEmpty(selectionIndicator) && {
             styles: resolvedStyles.selectionIndicator,
           }),

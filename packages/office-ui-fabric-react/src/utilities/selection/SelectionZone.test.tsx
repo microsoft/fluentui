@@ -1,11 +1,11 @@
 import * as React from 'react';
-
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
 import { SelectionMode, IObjectWithKey } from './interfaces';
+import { isConformant } from '../../common/isConformant';
 
 import { KeyCodes, EventGroup } from '../../Utilities';
 
@@ -105,6 +105,13 @@ function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTou
 
 describe('SelectionZone - disabled touch targets', () => {
   beforeEach(() => _initializeSelection());
+
+  isConformant({
+    Component: SelectionZone,
+    displayName: 'SelectionZone',
+    requiredProps: { selection: new Selection() },
+    disabledTests: [`has-top-level-file`],
+  });
 
   it('toggles an item on click of toggle element', () => {
     _simulateClick(_toggle0);

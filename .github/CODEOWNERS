@@ -131,9 +131,9 @@ packages/office-ui-fabric-react/src/components/Modal/ @joschect
 packages/office-ui-fabric-react/src/components/Nav/ @ecraig12345
 packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
 packages/react-next/src/components/OverflowSet/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Overlay/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Overlay/ @xugao
 packages/office-ui-fabric-react/src/components/Pagination/ @caradong
-packages/office-ui-fabric-react/src/components/Panel/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Panel/ @xugao
 packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
@@ -143,7 +143,7 @@ packages/react-next/src/components/Pivot/ @behowell
 packages/react-tabs/ @behowell
 packages/office-ui-fabric-react/src/components/Popup/ @joschect
 packages/react-next/src/components/Popup/ @joschect
-packages/office-ui-fabric-react/src/components/ProgressIndicator/ @aneeshack4
+packages/office-ui-fabric-react/src/components/ProgressIndicator/ @xugao
 packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
 packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
 packages/react-next/src/components/ResizeGroup/ @micahgodbolt
@@ -157,7 +157,7 @@ packages/react-next/src/components/Slider/ @joschect
 packages/react-slider/ @joschect
 packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
 packages/react-next/src/components/SpinButton/ @khmakoto
-packages/office-ui-fabric-react/src/components/Spinner/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Spinner/ @xugao
 packages/office-ui-fabric-react/src/components/Stack/  @khmakoto
 packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/TeachingBubble/ @micahgodbolt

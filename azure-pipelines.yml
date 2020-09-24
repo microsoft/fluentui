@@ -17,8 +17,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -58,8 +57,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -120,7 +118,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - script: yarn workspace @fluentui/docs vr:build
@@ -147,8 +145,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
