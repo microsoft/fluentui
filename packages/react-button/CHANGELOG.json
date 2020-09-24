@@ -2,6 +2,37 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-button_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moving SizeValue const from react-button to theme package.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding conformant tests to v8 component test files.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 15:52:49 GMT",
       "tag": "@fluentui/react-button_v0.13.1",
       "version": "0.13.1",

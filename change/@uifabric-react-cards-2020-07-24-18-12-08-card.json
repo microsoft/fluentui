@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Card: Adding initial implementation based on latest technology stack - compose, scss, tokens.",
-  "packageName": "@uifabric/react-cards",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-25T01:11:58.698Z"
-}
