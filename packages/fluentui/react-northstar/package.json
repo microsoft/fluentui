@@ -32,7 +32,7 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "@fluentui/a11y-testing": "0.1.0",
+    "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/eslint-plugin": "^0.54.1",
     "@fluentui/react-conformance": "^0.1.4",
     "@testing-library/jest-dom": "^5.1.1",
