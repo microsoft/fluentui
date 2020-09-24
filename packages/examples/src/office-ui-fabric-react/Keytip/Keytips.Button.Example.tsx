@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, CompoundButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { keytipMap } from '@fluentui/examples/lib/office-ui-fabric-react/Keytip/examples/KeytipSetup';
+import { keytipMap } from '@fluentui/examples/lib/office-ui-fabric-react/Keytip/KeytipSetup';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CommandBar } from '@fluentui/react-next/lib/CommandBar';
-import { keytipMap } from '@fluentui/examples/lib/office-ui-fabric-react/Keytip/examples/KeytipSetup';
+import { keytipMap } from '@fluentui/examples/lib/office-ui-fabric-react/Keytip/KeytipSetup';
 import { Modal } from '@fluentui/react-next/lib/Modal';
 import { MessageBar, MessageBarType } from '@fluentui/react-next/lib/MessageBar';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
