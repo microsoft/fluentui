@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 import { PersonaCoinBase } from './PersonaCoin.base';
-import { wrapPersona } from 'office-ui-fabric-react/lib/components/Persona/Persona.test';
+import { wrapPersona } from '../Persona.test';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

@@ -513,6 +513,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     direction: FocusZoneDirection.vertical,
     shouldEnterInnerZone: isRightArrow,
     onActiveElementChanged: onActiveRowChanged,
+    shouldRaiseClicks: false,
     onBlur: onBlur,
   };
 

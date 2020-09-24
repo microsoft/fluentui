@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { ThemePageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Theme/Theme.doc';
+import { ThemePageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/Theme/Theme.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ThemesPage/docs/ThemesRelated.md') as string;
 
