@@ -1,7 +1,5 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
-const isProduction = process.argv.indexOf('--production') > -1;
-const PACKAGE_NAME = 'theming-designer';
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
 module.exports = resources.createServeConfig({
   entry: './src/index.tsx',
@@ -15,10 +13,6 @@ module.exports = resources.createServeConfig({
   },
 
   resolve: {
-    alias: {
-      'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-    },
+    alias: getResolveAlias(),
   },
 });

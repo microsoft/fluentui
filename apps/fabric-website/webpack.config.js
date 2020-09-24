@@ -1,8 +1,8 @@
 // @ts-check
 
 module.exports = function(env, argv) {
-  const path = require('path');
-  const resources = require('@uifabric/build/webpack/webpack-resources');
+  const resources = require('../../scripts/webpack/webpack-resources');
+  const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
   const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
   // @ts-ignore
   const version = require('./package.json').version;
@@ -42,14 +42,7 @@ module.exports = function(env, argv) {
       // to ensure we get a consistent version.
 
       resolve: {
-        alias: {
-          '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-          '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-          'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-          'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.resolve(__dirname, '../../packages/api-docs/lib'),
-        },
+        alias: getResolveAlias(true /*useLib*/),
       },
     }),
     // always build the dev bundle too

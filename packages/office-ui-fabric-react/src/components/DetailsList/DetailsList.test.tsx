@@ -7,7 +7,7 @@ import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 
 import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';

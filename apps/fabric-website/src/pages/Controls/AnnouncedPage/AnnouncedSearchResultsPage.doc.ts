@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { AnnouncedSearchResultsPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Announced/Announced.doc';
+import { AnnouncedSearchResultsPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/Announced/Announced.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AnnouncedPage/docs/AnnouncedRelated.md') as string;
 
