@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.8",
+      "version": "7.6.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating filetype mapping to support classifier, list and listitem",
+            "author": "caperez@microsoft.com",
+            "commit": "23d39c092e5afd5249966c107ac366b10fe84691",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Sep 2020 12:27:02 GMT",
       "tag": "@uifabric/file-type-icons_v7.6.1",
       "version": "7.6.1",

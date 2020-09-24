@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.7](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.7)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.6..@uifabric/styling_v7.16.7)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
 
 ## [7.16.6](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.6)
 

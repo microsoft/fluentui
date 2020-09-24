@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Set font-family inherit on button and input elements.",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-21T23:57:22.238Z"
+}

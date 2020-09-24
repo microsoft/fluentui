@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toggle",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Fluent UI React Toggle component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/storybook": "^0.4.18",
+    "@fluentui/storybook": "^0.4.19",
+    "@fluentui/react-conformance": "^0.1.4",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -46,9 +47,9 @@
     "@uifabric/react-hooks": "^7.13.5",
     "@fluentui/react-compose": "^0.19.4",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.6",
+    "@uifabric/styling": "^7.16.7",
     "@uifabric/utilities": "^7.32.3",
-    "office-ui-fabric-react": "^7.139.1",
+    "office-ui-fabric-react": "^7.139.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

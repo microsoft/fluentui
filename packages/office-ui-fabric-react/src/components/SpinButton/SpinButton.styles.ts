@@ -234,6 +234,7 @@ export const getStyles = memoizeFunction(
         flex: 1,
         margin: 0,
         fontSize: fonts.medium.fontSize,
+        fontFamily: 'inherit',
         color: SpinButtonInputTextColor,
         backgroundColor: SpinButtonRootBackgroundColor,
         height: '100%',

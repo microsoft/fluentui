@@ -1,5 +1,6 @@
 import { ScreenerTestsConfig } from '@uifabric/build/screener';
-import { inputClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
+import { inputClassName } from '@fluentui/react-northstar';
+import { datepickerCalendarCellSelector } from '../datepickerCalendarCellSelector';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -8,7 +9,7 @@ const config: ScreenerTestsConfig = {
       builder
         .click(`.${inputClassName}`)
         .snapshot('Shows datepicker popup')
-        .click(`.${datepickerCalendarCellClassName}:nth-child(20)`)
+        .click(datepickerCalendarCellSelector(20))
         .snapshot('Shows selected date'),
   ],
 };
