@@ -18,7 +18,7 @@ import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 
 // @public
-export const createDefaultTheme: () => Theme;
+export const createTheme: (partialTheme?: PartialTheme) => Theme;
 
 // @public (undocumented)
 export const FluentTheme: Theme;

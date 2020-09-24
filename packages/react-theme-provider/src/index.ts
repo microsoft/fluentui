@@ -12,7 +12,7 @@ export * from './types';
 export * from './getStyleFromPropsAndOptions';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';
-export { createDefaultTheme } from './createDefaultTheme';
+export { createTheme } from './createTheme';
 export * from './themes';
 export * from './makeStyles';
 export * from './makeClasses';

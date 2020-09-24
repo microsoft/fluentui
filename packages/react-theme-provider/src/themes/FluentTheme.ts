@@ -1,4 +1,5 @@
 import { Theme } from '../types';
-import { createDefaultTheme } from '../createDefaultTheme';
+import { createTheme } from '../createTheme';
 
-export const FluentTheme: Theme = createDefaultTheme();
+// TODO: move this to `@fluentui/theme` package.
+export const FluentTheme: Theme = createTheme();

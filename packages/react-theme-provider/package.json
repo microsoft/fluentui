@@ -36,6 +36,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
+    "@uifabric/styling": "^7.16.7",
     "@uifabric/test-utilities": "^7.3.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",

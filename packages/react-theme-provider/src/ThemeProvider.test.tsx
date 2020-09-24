@@ -5,7 +5,7 @@ import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from '@fluentui/theme';
-import { createDefaultTheme } from './createDefaultTheme';
+import { createTheme } from './createTheme';
 import { Stylesheet } from '@uifabric/merge-styles';
 
 const lightTheme = mergeThemes({
@@ -90,7 +90,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    const expectedTheme = mergeThemes(createTheme(), lightTheme);
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 
