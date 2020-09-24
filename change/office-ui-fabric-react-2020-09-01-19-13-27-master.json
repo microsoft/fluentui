@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Return JSX element or null",
-  "packageName": "office-ui-fabric-react",
-  "email": "email not defined",
-  "dependentChangeType": "patch",
-  "date": "2020-09-01T13:43:27.751Z"
-}

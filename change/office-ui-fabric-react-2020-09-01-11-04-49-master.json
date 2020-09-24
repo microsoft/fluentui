@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Expose onRenderColorItem and override",
+  "comment": "SwatchColorPicker: Expose onRenderColorItem and override",
   "packageName": "office-ui-fabric-react",
   "email": "email not defined",
   "dependentChangeType": "patch",
