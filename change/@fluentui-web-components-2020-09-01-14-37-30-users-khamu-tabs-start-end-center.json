@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "center align the start and end slot on tabs",
-  "packageName": "@fluentui/web-components",
-  "email": "37851220+khamudom@users.noreply.github.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-01T21:37:30.875Z"
-}
