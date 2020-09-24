@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "0.47.9",
+  "version": "0.47.10",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "2.8.0",
     "@typescript-eslint/experimental-utils": "2.8.0"

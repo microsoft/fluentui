@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/state",
   "description": "A set of utils to create framework agnostic and reusable state managers",
-  "version": "0.47.9",
+  "version": "0.47.10",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {

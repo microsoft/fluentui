@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/ability-attributes",
   "description": "Accessibility attributes schema for Fluent UI",
-  "version": "0.47.9",
+  "version": "0.47.10",
   "author": "Marat Abdullin <marata@microsoft.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
