@@ -85,6 +85,12 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
+const normalizeDateInGrid = (date: Date): Date => {
+  const result = new Date(date.getTime());
+  result.setDate(1);
+  return result;
+};
+
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
@@ -126,76 +132,77 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
 
+  const updateNavigatedDate = (date: Date) => {
+    if (!!date) {
+      if (!shouldFocusInDayGrid) {
+        setShouldFocusInDayGrid(true);
+      }
+      setGridNavigatedDate(date);
+    }
+  };
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: DatepickerCalendar.displayName,
     actionHandlers: {
       addWeek: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', 1, restrictedDatesOptions);
-
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', 1, restrictedDatesOptions, true);
+        updateNavigatedDate(newNavigatedDate);
       },
       subtractWeek: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', -1, restrictedDatesOptions);
-
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', -1, restrictedDatesOptions, true);
+        updateNavigatedDate(newNavigatedDate);
       },
       addDay: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', 1, restrictedDatesOptions);
-
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', 1, restrictedDatesOptions, true);
+        updateNavigatedDate(newNavigatedDate);
       },
       subtractDay: e => {
         e.preventDefault();
-        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions);
-
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions, true);
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToStartOfWeek: e => {
         e.preventDefault();
         const targetDate = getStartDateOfWeek(gridNavigatedDate, firstDayOfWeek);
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          true,
+        );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToEndOfWeek: e => {
         e.preventDefault();
         const targetDate = getEndDateOfWeek(gridNavigatedDate, firstDayOfWeek);
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          true,
+        );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToStartOfColumn: e => {
         e.preventDefault();
         const targetDayOfWeek = gridNavigatedDate.getDay();
         const targetDate = _.find(visibleGrid[0], day => day.originalDate.getDay() === targetDayOfWeek)?.originalDate;
 
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          true,
+        );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
       moveToEndOfColumn: e => {
         e.preventDefault();
@@ -205,12 +212,15 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           day => day.originalDate.getDay() === targetDayOfWeek,
         )?.originalDate;
 
-        const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, targetDate, -1, restrictedDatesOptions);
+        const newNavigatedDate = contstraintNavigatedDate(
+          gridNavigatedDate,
+          targetDate,
+          -1,
+          restrictedDatesOptions,
+          true,
+        );
 
-        if (!!newNavigatedDate) {
-          setShouldFocusInDayGrid(true);
-          setGridNavigatedDate(newNavigatedDate);
-        }
+        updateNavigatedDate(newNavigatedDate);
       },
     },
     rtl: context.rtl,
@@ -219,13 +229,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(
     () => new Date((navigatedDate || today || new Date()).getTime()),
   );
-
-  const normalizeDateInGrid = (date: Date): Date => {
-    const result = new Date(date.getTime());
-    result.setDate(1);
-    return result;
-  };
-
   const [normalizedGridDate, setNormalizedGridDate] = React.useState<Date>(() =>
     normalizeDateInGrid(gridNavigatedDate),
   );
@@ -243,24 +246,25 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
-  const dayGridOptions = {
-    selectedDate,
-    navigatedDate: normalizedGridDate,
-    weeksToShow: props.weeksToShow,
-    firstDayOfWeek: props.firstDayOfWeek,
-    firstWeekOfYear: props.firstWeekOfYear,
-    dateRangeType: props.dateRangeType,
-    daysToSelectInDayView: props.daysToSelectInDayView,
-    today: props.today,
-    showWeekNumbers: props.showWeekNumbers,
-    workWeekDays: props.workWeekDays,
-    ...restrictedDatesOptions,
-  };
-
   const visibleGrid = React.useMemo<IDay[][]>(() => {
+    const dayGridOptions: IDayGridOptions = {
+      selectedDate,
+      navigatedDate: normalizedGridDate,
+      weeksToShow: props.weeksToShow,
+      firstDayOfWeek: props.firstDayOfWeek,
+      firstWeekOfYear: props.firstWeekOfYear,
+      dateRangeType: props.dateRangeType,
+      daysToSelectInDayView: props.daysToSelectInDayView,
+      today: props.today,
+      showWeekNumbers: props.showWeekNumbers,
+      workWeekDays: props.workWeekDays,
+      minDate: props.minDate,
+      maxDate: props.maxDate,
+      restrictedDates: props.restrictedDates,
+    };
     const grid = getDayGrid(dayGridOptions);
     return grid.slice(1, grid.length - 1); // slicing off first and last weeks, cause we don't use them for transitions
-  }, [dayGridOptions]);
+  }, [selectedDate, normalizedGridDate, props]);
 
   React.useEffect(() => {
     const newNormalizedDate = normalizeDateInGrid(gridNavigatedDate);
@@ -286,7 +290,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const focusDateRef = React.useRef(null);
 
   const changeMonth = (nextMonth: boolean) => {
-    const newNavigatedDate = navigateToNewDate(normalizedGridDate, 'Month', nextMonth ? 1 : -1, restrictedDatesOptions);
+    const newNavigatedDate = navigateToNewDate(
+      normalizedGridDate,
+      'Month',
+      nextMonth ? 1 : -1,
+      restrictedDatesOptions,
+      true,
+    );
     if (!!newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);
       setShouldFocusInDayGrid(false);
@@ -300,7 +310,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     if (shouldFocusInDayGrid) {
       focusDateRef.current?.focus();
     }
-  }, [visibleGrid, shouldFocusInDayGrid]);
+  }, [gridNavigatedDate, normalizedGridDate, shouldFocusInDayGrid]);
 
   const renderCell = (day: IDay, content) =>
     createShorthand(DatepickerCalendarCell, calendarCell, {
