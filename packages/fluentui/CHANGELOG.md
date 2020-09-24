@@ -62,6 +62,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `CheckmarkCircleIcon`. Updated `ShareLocationIcon` @TanelVari ([#15119](https://github.com/microsoft/fluentui/pull/15119))
 
 ### Documentation
+- Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))
 - Fixed icon margins after code change in UI builder @vyhnalekl ([#14859](https://github.com/microsoft/fluentui/pull/14859))
 - Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))
 - Added copy paste keyboard shortcuts to UI builder @vyhnalekl ([#14631](https://github.com/microsoft/fluentui/pull/14631))
