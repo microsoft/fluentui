@@ -528,17 +528,15 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-    <FocusZone {...focusZoneProps}>
-      <List
-        ref={listRef}
-        role="presentation"
-        items={items}
-        onRenderCell={onRenderListCell(0)}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        {...additionalListProps}
-      />
-    </FocusZone>
+    <List
+      ref={listRef}
+      role="presentation"
+      items={items}
+      onRenderCell={onRenderListCell(0)}
+      usePageCache={usePageCache}
+      onShouldVirtualize={onShouldVirtualize}
+      {...additionalListProps}
+    />
   );
 
   const onHeaderKeyDown = React.useCallback(
@@ -629,22 +627,24 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             )}
         </div>
         <div onKeyDown={onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
-          {!disableSelectionZone ? (
-            <SelectionZone
-              ref={selectionZoneRef}
-              selection={selection}
-              selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
-              selectionMode={selectionMode}
-              onItemInvoked={onItemInvoked}
-              onItemContextMenu={onItemContextMenu}
-              enterModalOnTouch={enterModalSelectionOnTouch}
-              {...(selectionZoneProps || {})}
-            >
-              {list}
-            </SelectionZone>
-          ) : (
-            list
-          )}
+          <FocusZone {...focusZoneProps}>
+            {!disableSelectionZone ? (
+              <SelectionZone
+                ref={selectionZoneRef}
+                selection={selection}
+                selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
+                selectionMode={selectionMode}
+                onItemInvoked={onItemInvoked}
+                onItemContextMenu={onItemContextMenu}
+                enterModalOnTouch={enterModalSelectionOnTouch}
+                {...(selectionZoneProps || {})}
+              >
+                {list}
+              </SelectionZone>
+            ) : (
+              list
+            )}
+          </FocusZone>
         </div>
         {onRenderDetailsFooter({
           ...detailsFooterProps,

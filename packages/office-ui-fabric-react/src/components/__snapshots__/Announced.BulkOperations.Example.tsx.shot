@@ -693,33 +693,33 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
           role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone5"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-                  {
-                    display: inline-block;
-                    min-height: 1px;
-                    min-width: 100%;
-                  }
-              data-focuszone-id="FocusZone5"
-              onBlur={[Function]}
-              onFocus={[Function]}
+              className="ms-SelectionZone"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDoubleClick={[Function]}
+              onFocusCapture={[Function]}
               onKeyDown={[Function]}
+              onKeyDownCapture={[Function]}
+              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
+              role="presentation"
             >
               <div
                 className="ms-List"
