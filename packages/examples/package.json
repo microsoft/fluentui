@@ -46,7 +46,7 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^7.9.0",
     "@fluentui/ie11-polyfills": "^0.1.2",
-    "@fluentui/react-avatar": "^0.6.3",
+    "@fluentui/react-avatar": "^0.6.0",
     "@fluentui/react-button": "^0.14.1",
     "@fluentui/react-checkbox": "^0.3.7",
     "@fluentui/react-flex": "^0.1.0",
