@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { useControllableValue, useId } from '@uifabric/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
 import {
@@ -69,6 +68,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
     const pivotId: string = useId('Pivot');
     let linkCollection = getLinkItems(props, pivotId);
+    const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
     const focusZoneRef = React.useRef<IFocusZone>(null);
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
@@ -239,15 +239,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       pinnedIndex: renderedSelectedIndex,
     });
 
-    const overflowMenuButtonComponentRef = React.useRef<IButton>();
-    const setOverflowMenuButtonRef = React.useCallback(
-      (button: React.Component | null) => {
-        const node = ReactDOM.findDOMNode(button);
-        overflowMenuButtonRef(node instanceof HTMLElement ? node : null);
-      },
-      [overflowMenuButtonRef],
-    );
-
     return (
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
@@ -260,7 +251,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {overflowBehavior === 'menu' && (
             <CommandButton
               className={classNames.overflowMenuButton}
-              ref={setOverflowMenuButtonRef}
+              elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
