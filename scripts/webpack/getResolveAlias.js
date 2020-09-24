@@ -19,7 +19,7 @@ function getResolveAlias(useLib) {
   /** @type {{ [key: string]: string }} */
   const alias = {};
   const excludedPackages = [
-    '@fluentui/eslint-rules',
+    '@fluentui/eslint-plugin',
     '@fluentui/storybook',
     '@uifabric/api-docs',
     '@uifabric/build',
@@ -66,13 +66,16 @@ function getResolveAlias(useLib) {
 
   const outputPath = getOutputPath(packageJson.module || packageJson.main);
 
-  alias[`${packageJson.name}$`] = path.join(cwd, useLib ? outputPath : 'src');
   alias[`${packageJson.name}/src`] = path.join(cwd, 'src');
+
+  alias[`${packageJson.name}/${outputPath}`] = path.join(cwd, useLib ? outputPath : 'src');
 
   // This is just needed for demo apps that load package readmes
   alias[`${packageJson.name}/README.md`] = path.join(cwd, 'README.md');
 
-  alias[`${packageJson.name}/${outputPath}`] = path.join(cwd, useLib ? outputPath : 'src');
+  alias[`${packageJson.name}`] = path.join(cwd, useLib ? outputPath : 'src');
+
+  console.dir(alias);
 
   return alias;
 }
