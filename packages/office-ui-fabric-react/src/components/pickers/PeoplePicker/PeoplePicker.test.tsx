@@ -8,6 +8,7 @@ import { resetIds } from '@uifabric/utilities';
 import { people } from '@uifabric/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../../Persona/Persona.types';
+import { isConformant } from '../../../common/isConformant';
 
 function onResolveSuggestions(text: string): IPersonaProps[] {
   return people.filter((person: IPersonaProps) => person.text!.toLowerCase().indexOf(text.toLowerCase()) === 0);
@@ -96,5 +97,11 @@ describe('PeoplePicker', () => {
     expect(currentPickerAfterClick).toHaveLength(1);
 
     ReactDOM.unmountComponentAtNode(root);
+  });
+
+  isConformant({
+    Component: NormalPeoplePicker,
+    displayName: 'NormalPeoplePicker',
+    disabledTests: ['has-top-level-file', 'name-matches-filename'],
   });
 });

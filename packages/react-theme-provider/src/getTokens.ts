@@ -229,6 +229,132 @@ export function getTokens(theme: Theme): Tokens {
           iconColor: 'var(--button-disabled-contentColor)',
         },
       },
+
+      // TODO: This will be moved out as a card variant.
+      card: {
+        size: {
+          smallest: {
+            borderRadius: '4px',
+            height: 'auto',
+            margin: 0,
+            padding: '8px',
+            width: 'auto',
+          },
+          smaller: {
+            borderRadius: '4px',
+            height: 'auto',
+            margin: 0,
+            padding: '8px',
+            width: 'auto',
+          },
+          small: {
+            borderRadius: '4px',
+            height: 'auto',
+            margin: 0,
+            padding: '8px',
+            width: 'auto',
+          },
+          medium: {
+            borderRadius: '4px',
+            height: 'auto',
+            margin: 0,
+            padding: '16px',
+            width: 'auto',
+          },
+          large: {
+            borderRadius: '6px',
+            height: 'auto',
+            margin: 0,
+            padding: '16px',
+            width: 'auto',
+          },
+          larger: {
+            borderRadius: '6px',
+            height: 'auto',
+            margin: 0,
+            padding: '16px',
+            width: 'auto',
+          },
+          largest: {
+            borderRadius: '6px',
+            height: 'auto',
+            margin: 0,
+            padding: '16px',
+            width: 'auto',
+          },
+        },
+
+        backgroundColor: '#ffffff',
+        borderColor: 'transparent',
+        borderWidth: '1px',
+        boxShadow: '0 1.6px 3.6px 0 rgba(0, 0, 0, 0.1)',
+        minHeight: '32px',
+        minWidth: '100px',
+
+        borderRadius: 'var(--card-size-medium-borderRadius)',
+        height: 'var(--card-size-medium-height)',
+        margin: 'var(--card-size-medium-margin)',
+        padding: 'var(--card-size-medium-padding)',
+        width: 'var(--card-size-medium-width)',
+
+        hovered: {
+          backgroundColor: 'var(--card-backgroundColor)',
+          borderColor: 'var(--card-borderColor)',
+          borderWidth: 'var(--card-borderWidth)',
+          boxShadow: 'var(--card-boxShadow)',
+        },
+
+        pressed: {
+          backgroundColor: 'var(--card-backgroundColor)',
+          borderColor: 'var(--card-borderColor)',
+          borderWidth: 'var(--card-borderWidth)',
+          boxShadow: 'var(--card-boxShadow)',
+        },
+
+        selected: {
+          backgroundColor: '#fafafa',
+          borderColor: 'var(--card-borderColor)',
+          borderWidth: 'var(--card-borderWidth)',
+          boxShadow: 'var(--card-boxShadow)',
+        },
+
+        disabled: {
+          backgroundColor: '#f0f0f0',
+          borderColor: 'var(--card-borderColor)',
+          borderWidth: 'var(--card-borderWidth)',
+          boxShadow: '0 0.8px 1.8px 0 rgba(0, 0, 0, 0.1)',
+        },
+
+        clickable: {
+          backgroundColor: '#ffffff',
+          borderColor: 'transparent',
+          borderWidth: '1px',
+          boxShadow: '0 1.6px 3.6px 0 rgba(0, 0, 0, 0.1)',
+
+          hovered: {
+            backgroundColor: '#fafafa',
+            borderColor: 'var(--card-clickable-borderColor)',
+            borderWidth: 'var(--card-clickable-borderWidth)',
+            boxShadow: '0 3.2px 7.2px 0 rgba(0, 0, 0, 0.1)',
+          },
+
+          pressed: {
+            backgroundColor: '#f5f5f5',
+            borderColor: 'var(--card-clickable-borderColor)',
+            borderWidth: '2px',
+            boxShadow: 'var(--card-clickable-boxShadow)',
+          },
+        },
+
+        compact: {
+          padding: 0,
+        },
+
+        fluid: {
+          height: '100%',
+          width: '100%',
+        },
+      },
     },
     tokens,
   );

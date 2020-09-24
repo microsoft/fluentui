@@ -190,3 +190,4 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     );
   },
 );
+RatingBase.displayName = 'RatingBase';
