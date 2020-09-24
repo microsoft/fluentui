@@ -53,7 +53,7 @@ export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
 
   /**
    * Controls wether or not the overflow button is placed at the start or end of the items.
-   * This gives a reveresed visual behavior but maintains correct keyboard navigation.
+   * This gives a reversed visual behavior but maintains correct keyboard navigation.
    * @defaultValue 'end'
    */
   overflowSide?: 'start' | 'end';

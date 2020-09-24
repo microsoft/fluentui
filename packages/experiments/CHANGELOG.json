@@ -2,6 +2,57 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/experiments_v7.32.15",
+      "version": "7.32.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't remove dropped items if they've already been moved within the same well",
+            "author": "elvonspa@microsoft.com",
+            "commit": "fb53af98c50a7469639557367d3104535d28143a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@uifabric/experiments_v7.32.10",
+      "version": "7.32.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "allow consumers of the UPP to use the onClick input property",
+            "author": "elvonspa@microsoft.com",
+            "commit": "f199d137f3aa5cb03989937e6db547463c009d71",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Drag and drop fixes",
+            "author": "elvonspa@microsoft.com",
+            "commit": "3b0fa2777526fda0845d6b9d5b6c18de621e9e3d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/experiments_v7.32.9",
+      "version": "7.32.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "allow FloatingPeopleSuggestions onRenderSuggestions property to be used",
+            "author": "elvonspa@microsoft.com",
+            "commit": "708946f8a09e5a24278f130f061cdb804295215b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Sep 2020 12:28:23 GMT",
       "tag": "@uifabric/experiments_v7.32.4",
       "version": "7.32.4",

@@ -13,3 +13,4 @@ export const Image: React.FunctionComponent<IImageProps> = styled<IImageProps, I
   },
   true,
 );
+Image.displayName = 'Image';

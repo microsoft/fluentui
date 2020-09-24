@@ -4,7 +4,7 @@
   "version": "0.51.0",
   "private": true,
   "dependencies": {
-    "office-ui-fabric-react": "^7.134.3"
+    "office-ui-fabric-react": "^7.140.0"
   },
   "scripts": {
     "build": "just-scripts build",
@@ -22,8 +22,8 @@
     "@types/webpack-env": "1.15.1",
     "flamegrill": "0.2.0",
     "ignore-not-found-export-webpack-plugin": "^1.0.1",
-    "just-scripts": "0.43.1",
-    "node-fetch": "^2.6.0",
+    "just-scripts": "0.44.5",
+    "node-fetch": "^2.6.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "typescript": "3.7.2"

@@ -131,12 +131,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
             justifyContent: this.props.centerLegends ? 'center' : 'unset',
             flexWrap: 'wrap',
           },
-          item: {
-            marginBottom: '16px',
-          },
-          overflowButton: {
-            marginBottom: '16px',
-          },
         }}
       />
     );
@@ -214,8 +208,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
-    const { allowFocusOnLegends = true } = this.props;
+    const { allowFocusOnLegends = true, className, styles, theme } = this.props;
     const overflowHoverCardLegends: JSX.Element[] = [];
+    const classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+    });
     expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
       const hoverCardElement = this._renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
@@ -225,7 +223,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(allowFocusOnLegends && { role: 'listbox' })}
         direction={FocusZoneDirection.vertical}
         {...this.props.focusZonePropsInHoverCard}
-        className="hoverCardRoot"
+        className={classNames.hoverCardRoot}
       >
         {overflowHoverCardLegends}
       </FocusZone>
@@ -248,7 +246,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      gapSpace: 8,
     };
 
     const overflowString = overflowText ? overflowText : 'more';

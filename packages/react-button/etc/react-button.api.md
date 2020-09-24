@@ -10,6 +10,7 @@ import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { SizeValue } from '@fluentui/theme';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public
@@ -113,6 +114,33 @@ export interface CheckedState {
     role?: string;
 }
 
+// @public
+export const CompoundButton: React.ForwardRefExoticComponent<Pick<CompoundButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonProps extends ButtonProps {
+    contentContainer?: ShorthandProps;
+    secondaryContent?: ShorthandProps;
+}
+
+// @public
+export const compoundButtonShorthandProps: string[];
+
+// @public (undocumented)
+export type CompoundButtonSlotProps = SlotProps<CompoundButtonSlots, CompoundButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonSlots extends ButtonSlots {
+    // (undocumented)
+    contentContainer?: React.ElementType;
+    // (undocumented)
+    secondaryContent?: React.ElementType;
+}
+
+// @public (undocumented)
+export interface CompoundButtonState extends CompoundButtonProps {
+}
+
 // @public (undocumented)
 export type ExpandedState = {
     ref?: React.Ref<unknown>;
@@ -152,9 +180,6 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokenSet;
-
-// @public (undocumented)
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -205,13 +230,22 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: ButtonState) => void;
+export const useButtonClasses: (state: ButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useCompoundButtonClasses: (state: CompoundButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
@@ -223,6 +257,9 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
+export const useMenuButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
+// @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
@@ -232,10 +269,16 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
+export const useSplitButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
+// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
+
+// @public (undocumented)
+export const useToggleButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)

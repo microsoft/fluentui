@@ -9,7 +9,6 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
       ms-Button
       ms-Button--default
       ms-Button--hasMenu
-      ContextualMenuButton3
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

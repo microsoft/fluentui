@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
@@ -28,6 +28,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
+import { Target } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -277,22 +278,31 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnScroll = (ev: Event) => {
-    const { preventDismissOnScroll } = this.props;
-    if (this.state.positions && !preventDismissOnScroll) {
+    // eslint-disable-next-line deprecation/deprecation
+    const { preventDismissOnEvent, preventDismissOnScroll } = this.props;
+    if (
+      this.state.positions &&
+      ((preventDismissOnEvent && !preventDismissOnEvent(ev)) || (!preventDismissOnEvent && !preventDismissOnScroll))
+    ) {
       this._dismissOnClickOrScroll(ev);
     }
   };
 
   protected _dismissOnResize = (ev: Event) => {
-    const { preventDismissOnResize } = this.props;
-    if (!preventDismissOnResize) {
+    // eslint-disable-next-line deprecation/deprecation
+    const { preventDismissOnEvent, preventDismissOnResize } = this.props;
+    if ((preventDismissOnEvent && !preventDismissOnEvent(ev)) || (!preventDismissOnEvent && !preventDismissOnResize)) {
       this.dismiss(ev);
     }
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
-    const { preventDismissOnLostFocus } = this.props;
-    if (!preventDismissOnLostFocus) {
+    // eslint-disable-next-line deprecation/deprecation
+    const { preventDismissOnEvent, preventDismissOnLostFocus } = this.props;
+    if (
+      (preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+      (!preventDismissOnEvent && !preventDismissOnLostFocus)
+    ) {
       this._dismissOnClickOrScroll(ev);
     }
   };
@@ -340,6 +350,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         isEventTargetOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
           !this._target ||
+          this.props.dismissOnTargetClick ||
           (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.dismiss(ev);
@@ -347,8 +358,20 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _dismissOnTargetWindowBlur = (ev: FocusEvent) => {
-    const { preventDismissOnLostFocus } = this.props;
-    if (!preventDismissOnLostFocus && !this._targetWindow.document.hasFocus() && ev.relatedTarget === null) {
+    // eslint-disable-next-line deprecation/deprecation
+    const { preventDismissOnEvent, preventDismissOnLostFocus, shouldDismissOnWindowFocus } = this.props;
+
+    // Do nothing
+    if (!shouldDismissOnWindowFocus) {
+      return;
+    }
+
+    if (
+      ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+        (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
+      !this._targetWindow.document.hasFocus() &&
+      ev.relatedTarget === null
+    ) {
       this.dismiss(ev);
     }
   };

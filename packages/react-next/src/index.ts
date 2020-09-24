@@ -1,3 +1,5 @@
+import './version';
+
 export * from './ActivityItem';
 export * from './Autofill';
 export * from './Announced';
@@ -20,6 +22,7 @@ export * from './DetailsList';
 export * from './Dialog';
 export * from './Divider';
 export * from './DocumentCard';
+export * from './DragDrop';
 export * from './Dropdown';
 export * from './ExtendedPicker';
 export * from './Fabric';
@@ -33,6 +36,7 @@ export * from './HoverCard';
 export * from './Icon';
 export * from './Icons';
 export * from './Image';
+export * from './Keytips';
 export * from './Keytip';
 export * from './KeytipData';
 export * from './KeytipLayer';
@@ -54,6 +58,7 @@ export * from './PersonaCoin';
 export * from './Pickers';
 export * from './Pivot';
 export * from './Popup';
+export * from './Positioning';
 export * from './PositioningContainer';
 export * from './ProgressIndicator';
 export * from './Rating';
@@ -82,5 +87,3 @@ export * from './Toggle';
 export * from './ToggleButton';
 export * from './Tooltip';
 export * from './Utilities';
-
-import './version';

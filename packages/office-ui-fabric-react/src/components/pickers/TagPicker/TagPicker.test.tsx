@@ -7,6 +7,7 @@ import { TagPicker } from './TagPicker';
 import { ITag } from './TagPicker.types';
 import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../../common/isConformant';
 
 function onResolveSuggestions(text: string): ITag[] {
   return [
@@ -49,6 +50,12 @@ describe('TagPicker', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: TagPicker,
+    displayName: 'TagPicker',
+    disabledTests: ['has-top-level-file'],
   });
 
   it('can search for and select tags', () => {

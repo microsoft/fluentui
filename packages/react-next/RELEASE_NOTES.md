@@ -2,9 +2,24 @@
 
 ## Breaking changes
 
+### Button
+
+The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons now have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance hits for the most common cases in the past.
+
+Please see the [`@fluentui/react-button` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-button/README.md) for details about improvements and a migration guide.
+
+If you would like to continue using the previous button components for now, update your imports to reference `@fluentui/react/lib/compat/Button`.
+
 ### Calendar
 
-TODO: Diff of OUFR vs date-time Calendar
+`Calendar` has been replaced with the version from the `@uifabric/date-time` package. This should be almost identical in visuals and functionality
+
+- Converted styling from legacy SCSS to CSS-in-JS. Styling can now be customized using `ICalendarProps.styles`.
+- Removed the following props (TODO: suggest alternatives)
+  - `autoNavigateOnSelection`
+  - `selectDateOnClick`
+  - `shouldFocusOnMount`
+  - `yearPickerHidden`
 
 ### Checkbox
 
@@ -28,7 +43,7 @@ TODO: Diff of OUFR vs date-time Calendar
 
 ### DatePicker
 
-TODO: Diff of OUFR vs date-time DatePicker
+`DatePicker` has been replaced with the version from the `@uifabric/date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
 
 ### OverflowSet
 
@@ -38,14 +53,18 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
-  - Removed deprecated styles prop `linkIsSelected?: boolean;`.
-  - Removed styles prop `rootIsLarge` and added `linkSize` instead.
-  - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
-  - TODO: enumerate all removed props
+- `IPivotStyleProps` changes
+  - Replaced `rootIsLarge` with `linkSize`.
+  - Replaced `rootIsTabs` and `linkFormat`.
+  - Removed deprecated prop `linkIsSelected`.
 
-### Slider
+### Rating
 
-TODO: document any API or functionality changes
+- Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
+- `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
+- Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
+- Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 
 ### SpinButton
 
@@ -55,6 +74,13 @@ TODO: document any API or functionality changes
 ### Shimmer
 
 - Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+
+### SwatchColorPicker
+
+- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
+- Added an `onChange` prop and deprecated `onColorChanged`.
+- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
+- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
 
 ### TeachingBubble
 
@@ -80,6 +106,7 @@ TODO: document any API or functionality changes
 - `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
+- `WindowProvider` is required for child windows/embeds.
 
 ## Minor changes
 
@@ -87,12 +114,9 @@ TODO: document any API or functionality changes
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
 
-### SwatchColorPicker
+## New features
 
-- Removed deprecated props `positionInSet` (use `ariaPosInSet`) and `setSize` (use `ariaSetSize`).
-- Added an `onChange` prop and deprecated `onColorChanged`.
-- Deprecated `isControlled`. Provide `selectedId` for controlled behavior and `defaultSelectedId` for uncontrolled behavior.
-- Selection state is now tracked internally based on `IColorCellProps.id`, not item index. Ensure that all color cells have a unique `id` property.
+- Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
 
 ## Other notable changes
 

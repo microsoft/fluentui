@@ -2,6 +2,44 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/react-cards_v0.113.0",
+      "version": "0.113.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Adding initial implementation based on latest technology stack - compose, scss, tokens.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@uifabric/react-cards"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "karymes@microsoft.com",
+            "commit": "4e8ff6d2e4342bfa3f05860afb70d779f2d20e91",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/react-cards_v0.112.10",
+      "version": "0.112.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2020 12:34:55 GMT",
       "tag": "@uifabric/react-cards_v0.111.2",
       "version": "0.111.2",

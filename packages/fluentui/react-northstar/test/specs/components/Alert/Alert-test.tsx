@@ -14,7 +14,7 @@ import { AlertDismissAction } from 'src/components/Alert/AlertDismissAction';
 const alertImplementsShorthandProp = implementsShorthandProp(Alert);
 
 describe('Alert', () => {
-  isConformant(Alert, { constructorName: 'Alert', autoControlledProps: ['visible'] });
+  isConformant(Alert, { testPath: __filename, constructorName: 'Alert', autoControlledProps: ['visible'] });
   handlesAccessibility(Alert, { defaultRootRole: undefined, requiredProps: { content: 'test' } });
   handlesAccessibility(Alert, {
     defaultRootRole: undefined,

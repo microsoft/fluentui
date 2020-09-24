@@ -1,8 +1,103 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.140.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.140.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.2..office-ui-fabric-react_v7.140.0)
+
+### Minor changes
+
+- Added a prop preventDismissOnEvent in Callout, and in favor of this deprecated the 3 existing props preventDismissOnScroll, preventDismissOnResize, and preventDismissOnLostFocus in Callout Component ([PR #14842](https://github.com/microsoft/fluentui/pull/14842) by lagoe@microsoft.com)
+- Callouts: Fix a breaking change where new functionality would cause dismissal on giving focus to an iframe ([PR #15192](https://github.com/microsoft/fluentui/pull/15192) by joschect@microsoft.com)
+
+### Patches
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+- Pivot: Fix HC styling for pivot tabs to show text when selected ([PR #15166](https://github.com/microsoft/fluentui/pull/15166) by ololubek@microsoft.com)
+
+## [7.139.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.1)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.0..office-ui-fabric-react_v7.139.1)
+
+### Patches
+
+- Add control to the set of keys which dismiss the tooltip ([PR #15000](https://github.com/microsoft/fluentui/pull/15000) by artber@microsoft.com)
+- Fix bug in useKeytipRef function ([PR #15113](https://github.com/microsoft/fluentui/pull/15113) by kinhln@microsoft.com)
+
+## [7.139.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.0)
+
+Mon, 21 Sep 2020 12:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.138.0..office-ui-fabric-react_v7.139.0)
+
+### Minor changes
+
+- Implement dialog boundary clamping ([PR #15056](https://github.com/microsoft/fluentui/pull/15056) by dahajek@microsoft.com)
+
+## [7.138.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.138.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.3..office-ui-fabric-react_v7.138.0)
+
+### Patches
+
+- Update website content for ComboBox, Dropdown, and TextField ([PR #15100](https://github.com/microsoft/fluentui/pull/15100) by elcraig@microsoft.com)
+
+## [7.137.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.3)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.1..office-ui-fabric-react_v7.137.3)
+
+### Patches
+
+- Unset virtual parent when closing popups ([PR #15039](https://github.com/microsoft/fluentui/pull/15039) by tmichon@microsoft.com)
+
+## [7.137.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.1)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.137.0..office-ui-fabric-react_v7.137.1)
+
+### Patches
+
+- Migrate Target type to @uifabric/react-hooks ([PR #14513](https://github.com/microsoft/fluentui/pull/14513) by miclo@microsoft.com)
+- ContextualMenu: clean up examples ([PR #14989](https://github.com/microsoft/fluentui/pull/14989) by elcraig@microsoft.com)
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
+
+## [7.137.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.137.0)
+
+Thu, 10 Sep 2020 01:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.136.0..office-ui-fabric-react_v7.137.0)
+
+### Minor changes
+
+- Export getMenuItemStyles from ContextualMenu ([PR #14963](https://github.com/microsoft/fluentui/pull/14963) by anpablo@microsoft.com)
+
+## [7.136.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.136.0)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.135.0..office-ui-fabric-react_v7.136.0)
+
+### Minor changes
+
+- Exporting some of the interfaces that are being deep imported in product code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
+
+## [7.135.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.135.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.134.3..office-ui-fabric-react_v7.135.0)
+
+### Minor changes
+
+- Adding an IMaskTextFieldProps interface and deprecating mask, maskChar, and maskFormat from ITextFieldProps. ([PR #14829](https://github.com/microsoft/fluentui/pull/14829) by czearing@outlook.com)
+- Expose popupProps on Panel ([PR #14868](https://github.com/microsoft/fluentui/pull/14868) by matejera@microsoft.com)
+
+### Patches
+
+- Callout: Dismiss when blurring to a new window. ([PR #14363](https://github.com/microsoft/fluentui/pull/14363) by jokonuko@microsoft.com)
 
 ## [7.134.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.134.3)
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { makeClasses } from '@fluentui/react-theme-provider';
 import { ButtonState } from './Button.types';
 
@@ -20,11 +21,11 @@ export const useButtonClasses = makeClasses<ButtonState>({
       userSelect: 'none',
       boxSizing: 'border-box',
       verticalAlign: 'middle',
-
+      textDecoration: 'none',
       background: 'var(--button-background, white)',
       color: 'var(--button-contentColor)',
-      borderColor: 'var(--button-borderColor)',
 
+      borderColor: 'var(--button-borderColor)',
       borderTopLeftRadius: 'var(--button-borderTopLeftRadius, var(--button-borderRadius))',
       borderTopRightRadius: 'var(--button-borderTopRightRadius, var(--button-borderRadius))',
       borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
@@ -36,7 +37,8 @@ export const useButtonClasses = makeClasses<ButtonState>({
       boxShadow: 'var(--button-boxShadow)',
 
       width: 'var(--button-width)',
-      minWidth: 'var(--button-minWidth, 80)',
+      maxWidth: 'var(--button-maxWidth)',
+      minWidth: 'var(--button-minWidth)',
       height: 'var(--button-height)',
       minHeight: 'var(--button-minHeight)',
 
@@ -46,16 +48,15 @@ export const useButtonClasses = makeClasses<ButtonState>({
       paddingBottom: 'var(--button-paddingBottom)',
 
       transition: 'var(--button-transition)',
-      whiteSpace: 'var(--button-whiteSpace, nowrap)',
+      whiteSpace: 'var(--button-whiteSpace)',
 
       fontFamily: 'var(--button-fontFamily)',
       fontSize: 'var(--button-fontSize)',
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      fontWeight: 'var(--button-fontWeight)' as any,
+      fontWeight: 'var(--button-fontWeight)',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
 
       ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
-        //'&::after': {
         content: '""',
         position: 'absolute',
         left: -1,
@@ -70,6 +71,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
         borderBottomLeftRadius: 'var(--button-borderBottomLeftRadius, var(--button-borderRadius))',
         borderBottomRightRadius: 'var(--button-borderBottomRightRadius, var(--button-borderRadius))',
         boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
+        zIndex: 1,
       },
 
       ['& > *:not(:first-child)']: {
@@ -136,33 +138,34 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _primary: {
-    '--button-background': 'var(--accent-background)',
-    '--button-borderColor': 'var(--accent-borderColor)',
-    '--button-contentColor': 'var(--accent-contentColor)',
-    '--button-iconColor': 'var(--accent-iconColor)',
+    '--button-background': 'var(--color-brand-background)',
+    '--button-borderColor': 'var(--color-brand-borderColor)',
+    '--button-contentColor': 'var(--color-brand-contentColor)',
+    '--button-iconColor': 'var(--color-brand-iconColor)',
 
-    '--button-hovered-background': 'var(--accent-hovered-background)',
-    '--button-hovered-borderColor': 'var(--accent-hovered-borderColor)',
-    '--button-hovered-contentColor': 'var(--accent-hovered-contentColor)',
-    '--button-hovered-iconColor': 'var(--accent-hovered-iconColor)',
+    '--button-hovered-background': 'var(--color-brand-hovered-background)',
+    '--button-hovered-borderColor': 'var(--color-brand-hovered-borderColor)',
+    '--button-hovered-contentColor': 'var(--color-brand-hovered-contentColor)',
+    '--button-hovered-iconColor': 'var(--color-brand-hovered-iconColor)',
 
-    '--button-focused-background': 'var(--accent-focused-background)',
-    '--button-focused-borderColor': 'var(--accent-focused-borderColor)',
-    '--button-focused-contentColor': 'var(--accent-focused-contentColor)',
-    '--button-focused-iconColor': 'var(--accent-focused-iconColor)',
+    '--button-focused-background': 'var(--color-brand-focused-background)',
+    '--button-focused-borderColor': 'var(--color-brand-focused-borderColor)',
+    '--button-focused-contentColor': 'var(--color-brand-focused-contentColor)',
+    '--button-focused-iconColor': 'var(--color-brand-focused-iconColor)',
 
-    '--button-pressed-background': 'var(--accent-pressed-background)',
-    '--button-pressed-borderColor': 'var(--accent-pressed-borderColor)',
-    '--button-pressed-contentColor': 'var(--accent-pressed-contentColor)',
-    '--button-pressed-iconColor': 'var(--accent-pressed-iconColor)',
+    '--button-pressed-background': 'var(--color-brand-pressed-background)',
+    '--button-pressed-borderColor': 'var(--color-brand-pressed-borderColor)',
+    '--button-pressed-contentColor': 'var(--color-brand-pressed-contentColor)',
+    '--button-pressed-iconColor': 'var(--color-brand-pressed-iconColor)',
 
-    '--button-disabled-background': 'var(--accent-disabled-background)',
-    '--button-disabled-borderColor': 'var(--accent-disabled-borderColor)',
-    '--button-disabled-contentColor': 'var(--accent-disabled-contentColor)',
-    '--button-disabled-iconColor': 'var(--accent-disabled-iconColor)',
+    '--button-disabled-background': 'var(--color-brand-disabled-background)',
+    '--button-disabled-borderColor': 'var(--color-brand-disabled-borderColor)',
+    '--button-disabled-contentColor': 'var(--color-brand-disabled-contentColor)',
+    '--button-disabled-iconColor': 'var(--color-brand-disabled-iconColor)',
   },
 
   _ghost: {
+    '--button-fontWeight': 'var(--ghost-fontWeight)',
     '--button-background': 'var(--ghost-background)',
     '--button-borderColor': 'var(--ghost-borderColor)',
     '--button-contentColor': 'var(--ghost-contentColor)',
@@ -190,6 +193,7 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _iconOnly: {
+    '--button-minHeight': 'var(--button-minHeight)',
     '--button-width': 'var(--button-height, var(--button-minHeight))',
     '--button-paddingTop': 0,
     '--button-paddingLeft': 0,
@@ -198,41 +202,41 @@ export const useButtonClasses = makeClasses<ButtonState>({
   },
 
   _circular: {
-    '--button-borderRadius': 50000,
+    '--button-borderRadius': '50000px',
   },
 
   _fluid: {
-    width: '100%',
-    maxWidth: '100%',
+    '--button-width': '100%',
+    '--button-maxWidth': '100%',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smallest: {
+    '--button-height': 'var(--button-size-smallest)',
     '--button-minHeight': 'var(--button-size-smallest)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_smaller: {
+    '--button-height': 'var(--button-size-smaller)',
     '--button-minHeight': 'var(--button-size-smaller)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_small: {
+    '--button-height': 'var(--button-size-small)',
     '--button-minHeight': 'var(--button-size-small)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_large: {
+    '--button-height': 'var(--button-size-large)',
     '--button-minHeight': 'var(--button-size-large)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_larger: {
+    '--button-height': 'var(--button-size-larger)',
     '--button-minHeight': 'var(--button-size-larger)',
   },
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   _size_largest: {
+    '--button-height': 'var(--button-size-largest)',
     '--button-minHeight': 'var(--button-size-largest)',
   },
 });
