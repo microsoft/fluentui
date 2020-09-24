@@ -1,8 +1,11 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
+
+const gitRoot = findGitRoot();
 
 module.exports = (/** @type {webpack.Configuration} */ config) => {
   config.resolveLoader = {
@@ -76,9 +79,9 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.alias = {
     ...getResolveAlias(),
-    '@fluentui/examples$': path.join(__dirname, '../../packages/examples/src'),
-    '@fluentui/examples/lib': path.join(__dirname, '../../packages/examples/src'),
-    '@fluentui/examples/src': path.join(__dirname, '../../packages/examples/src'),
+    '@fluentui/examples$': path.join(gitRoot, 'packages/examples/src'),
+    '@fluentui/examples/lib': path.join(gitRoot, 'packages/examples/src'),
+    '@fluentui/examples/src': path.join(gitRoot, 'packages/examples/src'),
   };
 
   config.plugins.push(

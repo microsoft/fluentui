@@ -4,6 +4,7 @@ const { task, series, parallel, condition, option, argv, addResolvePath, resolve
 
 const path = require('path');
 const fs = require('fs');
+const findGitRoot = require('./monorepo/findGitRoot');
 
 const { clean } = require('./tasks/clean');
 const { copy } = require('./tasks/copy');
@@ -46,15 +47,14 @@ function basicPreset() {
 
 /** Resolve whereas a storybook config + stories exist for a given path */
 function checkForStorybookExistence() {
-  const dir = process.cwd().replace(/\\/g, '/');
-  const packageName = dir.substring(dir.lastIndexOf('/') + 1);
+  const packageName = path.basename(process.cwd());
 
   // Returns true if the current package has a storybook config or the examples package has a storybook config and
   // contains a folder with the current package's name.
   return (
     !!resolveCwd('./.storybook/main.js') ||
     (!!resolveCwd('../examples/.storybook/main.js') &&
-      fs.existsSync(path.join(process.cwd(), `../examples/${packageName}`)))
+      fs.existsSync(path.join(findGitRoot(), `packages/examples/src/${packageName}`)))
   );
 }
 
