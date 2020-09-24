@@ -1,8 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.140.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.140.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.2..office-ui-fabric-react_v7.140.0)
+
+### Minor changes
+
+- Added a prop preventDismissOnEvent in Callout, and in favor of this deprecated the 3 existing props preventDismissOnScroll, preventDismissOnResize, and preventDismissOnLostFocus in Callout Component ([PR #14842](https://github.com/microsoft/fluentui/pull/14842) by lagoe@microsoft.com)
+- Callouts: Fix a breaking change where new functionality would cause dismissal on giving focus to an iframe ([PR #15192](https://github.com/microsoft/fluentui/pull/15192) by joschect@microsoft.com)
+
+### Patches
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+- Pivot: Fix HC styling for pivot tabs to show text when selected ([PR #15166](https://github.com/microsoft/fluentui/pull/15166) by ololubek@microsoft.com)
 
 ## [7.139.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.1)
 
