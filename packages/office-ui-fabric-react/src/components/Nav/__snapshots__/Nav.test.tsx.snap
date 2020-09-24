@@ -139,6 +139,12 @@ exports[`Nav renders Nav correctly 1`] = `
                       background-color: #f8f8f8;
                       color: #333333;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border: 1px solid WindowText;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
