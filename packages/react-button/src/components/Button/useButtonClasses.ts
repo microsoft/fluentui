@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeClasses } from '@fluentui/react-theme-provider';
 import { ButtonState } from './Button.types';
+import { useButtonVariants } from './useButtonVariants';
 
 const GlobalClassNames = {
   root: 'ms-Button',
   icon: 'ms-Button-icon',
 };
 
-export const useButtonClasses = makeClasses<ButtonState>({
+const useClasses = makeClasses<ButtonState>({
   root: [
     GlobalClassNames.root,
     {
@@ -167,3 +168,8 @@ export const useButtonClasses = makeClasses<ButtonState>({
     '--button-minHeight': 'var(--button-size-largest)',
   },
 });
+
+export const useButtonClasses = (state: ButtonState) => {
+  useClasses(state);
+  useButtonVariants(state);
+};

@@ -27,7 +27,7 @@ const ToggleButtonVariants = (props: ToggleButtonProps) => (
   </div>
 );
 
-export const ToggleButtonCss = () => (
+export const ToggleButtons = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <ToggleButtonVariants />

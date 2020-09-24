@@ -40,7 +40,7 @@ const SplitButtonVariants = (props: SplitButtonProps) => (
   </div>
 );
 
-export const SplitButtonCss = () => (
+export const SplitButtons = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A split button comes in default and `primary` variant.</Text>
     <SplitButtonVariants />

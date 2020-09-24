@@ -42,30 +42,7 @@ const ButtonExamples = (props: ButtonProps) => (
   </Stack>
 );
 
-export const ButtonFocus = () => {
-  const buttonRef = React.useRef<HTMLElement | null>(null);
-  return (
-    <Stack>
-      <Button
-        onClick={() => {
-          buttonRef.current?.focus();
-        }}
-      >
-        Focus the other button
-      </Button>
-      <Button ref={buttonRef}>I get focused</Button>
-    </Stack>
-  );
-};
-
-export const ButtonCircular = () => (
-  <Stack>
-    <Text>A button can be both `circular` and `iconOnly`.</Text>
-    <ButtonExamples circular iconOnly />
-  </Stack>
-);
-
-export const ButtonCss = () => (
+export const Buttons = () => (
   <Stack>
     <Text>A button comes in default and `primary` flavors.</Text>
     <ButtonExamples />

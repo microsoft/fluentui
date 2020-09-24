@@ -41,7 +41,7 @@ const CompoundButtonVariants = (props: CompoundButtonProps) => (
   </Stack>
 );
 
-export const CompoundButtonCss = () => (
+export const CompoundButtons = () => (
   <Stack>
     <Text>A CompoundButton comes in default and `primary` flavors.</Text>
     <CompoundButtonVariants />

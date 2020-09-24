@@ -40,7 +40,7 @@ const MenuButtonVariants = (props: MenuButtonProps) => (
   </div>
 );
 
-export const MenuButtonCss = () => (
+export const MenuButtons = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <MenuButtonVariants />
