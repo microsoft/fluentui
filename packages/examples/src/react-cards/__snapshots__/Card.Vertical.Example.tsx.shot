@@ -1,0 +1,1430 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Card.Vertical.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 30px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    aria-label="Basic vertical card"
+    className=
+        ms-Stack
+        ms-Card
+        {
+          align-items: stretch;
+          border-radius: 2px;
+          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+          box-sizing: border-box;
+          cursor: default;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: inherit;
+          justify-content: flex-start;
+          max-width: 286px;
+          min-width: 212px;
+          outline: none;
+          transition: box-shadow 0.5s ease;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+        }
+    onKeyDown={[Function]}
+    role="presentation"
+    tabIndex={-1}
+  >
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Basic vertical card
+      </span>
+    </div>
+  </div>
+  <div
+    aria-label="Clickable vertical card with image bleeding at the center of the card"
+    className=
+        ms-Stack
+        ms-Card
+        {
+          align-items: stretch;
+          border-radius: 2px;
+          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+          box-sizing: border-box;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: inherit;
+          justify-content: flex-start;
+          max-width: 286px;
+          min-width: 212px;
+          outline: none;
+          transition: box-shadow 0.5s ease;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+        &:focus {
+          border: 1px solid black;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        &:hover {
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          box-shadow: 0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+        }
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 12px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <div
+        className=
+            ms-Persona
+            ms-Persona--size48
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 48px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 48px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            & .contextualHost {
+              display: none;
+            }
+      >
+        <div
+          className=
+              ms-Persona-coin
+              ms-Persona--size48
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 48px;
+                  position: relative;
+                  text-align: center;
+                  width: 48px;
+                }
+            role="presentation"
+          >
+            <div
+              aria-hidden="true"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #498205;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 16px;
+                    font-weight: 600;
+                    height: 48px;
+                    line-height: 46px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
+                  }
+            >
+              <span>
+                KJ
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-details
+              {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-align: left;
+                width: 100%;
+              }
+        >
+          <div
+            className=
+                ms-Persona-primaryText
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                &:hover {
+                  color: #201f1e;
+                }
+            dir="auto"
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              Kevin Jameson
+            </div>
+          </div>
+          <div
+            className=
+                ms-Persona-secondaryText
+                {
+                  color: #605e5c;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            dir="auto"
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              Feb 2, 2019
+            </div>
+          </div>
+          <div
+            className=
+                ms-Persona-tertiaryText
+                {
+                  color: #605e5c;
+                  display: none;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            dir="auto"
+          />
+          <div
+            className=
+                ms-Persona-optionalText
+                {
+                  color: #605e5c;
+                  display: none;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            dir="auto"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <div
+        className=
+            ms-Image
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              overflow: hidden;
+            }
+        style={
+          Object {
+            "height": undefined,
+            "width": "100%",
+          }
+        }
+      >
+        <img
+          alt="Placeholder image."
+          className=
+              ms-Image-image
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                opacity: 0;
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          src="https://placehold.it/256x144"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #025F52;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Contoso
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Contoso Denver expansion design marketing hero guidelines
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Is this recommendation helpful?
+      </span>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            border-top: 1px solid #F3F2F1;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 12px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 12px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-1";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="RedEye"
+      >
+        
+      </i>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-7";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="SingleBookmark"
+      >
+        
+      </i>
+      <div
+        className=
+            ms-StackItem
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              flex-grow: 1;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              width: auto;
+            }
+      >
+        <span />
+      </div>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="MoreVertical"
+      >
+        
+      </i>
+    </div>
+  </div>
+  <div
+    aria-label="Clickable vertical card with image bleeding at the top of the card"
+    className=
+        ms-Stack
+        ms-Card
+        {
+          align-items: stretch;
+          border-radius: 2px;
+          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+          box-sizing: border-box;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: inherit;
+          justify-content: flex-start;
+          max-width: 286px;
+          min-width: 212px;
+          outline: none;
+          transition: box-shadow 0.5s ease;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+        &:focus {
+          border: 1px solid black;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        &:hover {
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          box-shadow: 0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+        }
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-image: url(https;
+            background-position: center center;
+            background-size: cover;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: 144px;
+            justify-content: flex-end;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 12px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #505050;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        NOVEMBER
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #505050;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 42px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        26
+      </span>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Category
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Contoso marketing customer visit and survey results
+      </span>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Tuesday 2:00-4:30 pm
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Conf Room 34/1301
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-grow: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <span />
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 6px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <button
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              min-height: 0px;
+              min-width: 0px;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:active {
+              color: #000000;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Button-textContainer
+                {
+                  display: block;
+                  flex-grow: 0;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+          >
+            <span
+              className=
+                  ms-Button-label
+                  {
+                    display: block;
+                    line-height: 100%;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                  }
+              id="id__2"
+            >
+              12 Attendees
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              min-height: 0px;
+              min-width: 0px;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:active {
+              color: #000000;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Button-textContainer
+                {
+                  display: block;
+                  flex-grow: 0;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+          >
+            <span
+              className=
+                  ms-Button-label
+                  {
+                    display: block;
+                    line-height: 100%;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                  }
+              id="id__5"
+            >
+              4 Accepted
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              min-height: 0px;
+              min-width: 0px;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:active {
+              color: #000000;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Button-textContainer
+                {
+                  display: block;
+                  flex-grow: 0;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+          >
+            <span
+              className=
+                  ms-Button-label
+                  {
+                    display: block;
+                    line-height: 100%;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                  }
+              id="id__8"
+            >
+              3 Declined
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            border-top: 1px solid #F3F2F1;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 12px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 12px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-1";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="RedEye"
+      >
+        
+      </i>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-7";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="SingleBookmark"
+      >
+        
+      </i>
+      <div
+        className=
+            ms-StackItem
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              flex-grow: 1;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              width: auto;
+            }
+      >
+        <span />
+      </div>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="MoreVertical"
+      >
+        
+      </i>
+    </div>
+  </div>
+</div>
+`;

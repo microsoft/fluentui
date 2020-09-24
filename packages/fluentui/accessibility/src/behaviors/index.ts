@@ -8,6 +8,7 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
+export * from './Breadcrumb/breadcrumbBehavior';
 export * from './Breadcrumb/breadcrumbItemBehavior';
 export * from './Breadcrumb/breadcrumbDividerBehavior';
 

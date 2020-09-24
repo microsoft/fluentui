@@ -4,6 +4,9 @@ trigger: none
 
 pool: 'Self Host Ubuntu'
 
+workspace:
+  clean: all
+
 steps:
   - template: .devops/templates/tools.yml
 
@@ -42,3 +45,7 @@ steps:
     inputs:
       PathtoPublish: 'packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz'
       ArtifactName: oufr
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

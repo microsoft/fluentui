@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { DropdownPageProps } from 'office-ui-fabric-react/lib/components/Dropdown/Dropdown.doc';
+import { DropdownPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Dropdown/Dropdown.doc';
 
 export const DropdownPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

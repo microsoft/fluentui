@@ -1,8 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { Customizer, createTheme, Fabric, Checkbox } from 'office-ui-fabric-react';
 import { mount } from 'enzyme';
+import { Fabric } from './Fabric';
+import { Checkbox } from '../../Checkbox';
+import { Customizer } from '../../Utilities';
+import { createTheme } from '../../Styling';
 
 const rtlTheme = createTheme({ rtl: true });
 const ltrTheme = createTheme({ rtl: false });

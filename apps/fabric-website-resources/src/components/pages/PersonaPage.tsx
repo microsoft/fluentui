@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { PersonaPageProps } from 'office-ui-fabric-react/lib/components/Persona/Persona.doc';
+import { PersonaPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Persona/Persona.doc';
 
 export const PersonaPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

@@ -145,3 +145,7 @@ steps:
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'
       Gzip: false
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false
