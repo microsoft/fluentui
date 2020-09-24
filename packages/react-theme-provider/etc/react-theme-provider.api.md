@@ -21,9 +21,6 @@ import { TokenSetType } from '@fluentui/theme';
 export const createTheme: (partialTheme?: PartialTheme) => Theme;
 
 // @public (undocumented)
-export const FluentTheme: Theme;
-
-// @public (undocumented)
 export type FontFace = IFontFace;
 
 // @public (undocumented)
@@ -93,9 +90,6 @@ export type StyleRendererOptions = {
     rtl: boolean;
     targetWindow: Window | undefined;
 };
-
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
 
 export { Theme }
 
