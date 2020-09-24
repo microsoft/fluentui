@@ -1,6 +1,5 @@
 import { IRenderer } from 'fela';
 import { RULE_TYPE } from 'fela-utils';
-import * as _ from 'lodash';
 
 type Renderer = IRenderer & {
   cache: Record<string, RendererChange>;
@@ -22,33 +21,20 @@ type RendererChange = {
  * selector. Modifies generated selectors:
  * `.a:focus-visible {}` => `html[data-whatinput="keyboard"] a:focus`.
  */
-const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
-  ...renderer,
-  _emitChange: (change: RendererChange) => {
+const felaFocusVisibleEnhancer = (renderer: Renderer) => {
+  const existingEmitChange = renderer._emitChange.bind(renderer);
+
+  renderer._emitChange = (change: RendererChange) => {
     if (change.type === RULE_TYPE && change.selector.indexOf(':focus-visible') !== -1) {
-      const pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : undefined;
-      const selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
-
-      const declarationReference = _.findKey(renderer.cache, change);
-      const enhancedChange = {
-        ...change,
-        pseudo,
-        selector,
-      };
-
-      // Fela has two types for rendering:
-      // - DOM via subscriptions that's why `_emitChange()` is replaced, it will notify all
-      //   subscriptions
-      // - static rendering, it directly accesses `.cache` via `clusterCache()` and generates
-      //   stylesheets from changes
-      renderer.cache[declarationReference] = enhancedChange;
-      renderer._emitChange(enhancedChange);
-
-      return;
+      // Fela uses objects by references, it's safe to override properties
+      change.pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : '';
+      change.selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
     }
 
-    renderer._emitChange(change);
-  },
-});
+    existingEmitChange(change);
+  };
+
+  return renderer;
+};
 
 export default felaFocusVisibleEnhancer;
