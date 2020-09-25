@@ -28,6 +28,8 @@ import { BreadcrumbLink } from './BreadcrumbLink';
 import { BreadcrumbContext } from './breadcrumbContext';
 import { Ref } from '@fluentui/react-component-ref';
 
+export type BreadcrumbSizeValues = Exclude<SizeValue, 'larger' | 'largest'>;
+
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
     ContentComponentProps,
@@ -36,7 +38,7 @@ export interface BreadcrumbProps
   accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 
   /** Breadcrumb can be sized */
-  size?: Exclude<SizeValue, 'larger' | 'largest'>;
+  size?: BreadcrumbSizeValues;
 }
 
 export type BreadcrumbStylesProps = Required<Pick<BreadcrumbProps, 'size'>>;
