@@ -332,6 +332,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return value;
     }
 
+    // eslint-disable-next-line no-console
+    console.warn(`props.value of Autofill is not a string, it is ${value}`);
+
     return value.toString();
   }
 }
