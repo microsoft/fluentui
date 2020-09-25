@@ -103,13 +103,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       events: new EventGroup({}),
     }));
 
-    const [isModalOpen, { setFalse: setModalClose, setTrue: setModalOpen }] = useBoolean(isOpen);
+    const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
 
     const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
 
-    const [hasBeenOpened, { setTrue: setHasOpenedTrue }] = useBoolean(isOpen);
+    const [hasBeenOpened, setHasBeenOpened] = React.useState(isOpen);
 
-    const [isVisible, { setFalse: setIsVisibleFalse, setTrue: setIsVisibleTrue }] = useBoolean(isOpen);
+    const [isVisible, setIsVisible] = React.useState(isOpen);
 
     const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
       isOpen,
@@ -183,7 +183,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       setXCoordinate(0);
       setYCoordinate(0);
       setModalMenuClose();
-      setModalClose();
+      setIsModalOpen(false);
       setKeyboardMoveModeFalse();
 
       if (dragOptions && internalState.hasRegisteredKeyUp) {
@@ -191,15 +191,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       }
 
       onDismissed?.();
-    }, [
-      dragOptions,
-      handleKeyUp,
-      internalState,
-      onDismissed,
-      setKeyboardMoveModeFalse,
-      setModalClose,
-      setModalMenuClose,
-    ]);
+    }, [dragOptions, handleKeyUp, internalState, onDismissed, setKeyboardMoveModeFalse, setModalMenuClose]);
 
     const handleDragStart = React.useCallback((): void => {
       setModalMenuClose();
@@ -382,9 +374,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           registerForKeyUp();
         }
 
-        setModalOpen();
-        setHasOpenedTrue();
-        setIsVisibleTrue();
+        setIsModalOpen(true);
+        setHasBeenOpened(true);
+        setIsVisible(true);
 
         if (topOffsetFixed) {
           const dialogMain = document.getElementsByClassName('ms-Dialog-main');
@@ -398,19 +390,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       // Closing the dialog
       if (!isOpen && isModalOpen) {
         internalState.onModalCloseTimer = setTimeout(handleModalClose, parseFloat(animationDuration) * 1000);
-        setIsVisibleFalse();
+        setIsVisible(false);
       }
       return () => {
         internalState.events.dispose();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isModalOpen or isOpen mutates.
     }, [isModalOpen, isOpen]);
-
-    React.useEffect(() => {
-      if (!isOpen && !isVisible) {
-        setIsVisibleTrue;
-      }
-    }, [isOpen, isVisible, registerForKeyUp, setIsVisibleTrue]);
 
     if (isOpen && isVisible) {
       registerForKeyUp();
