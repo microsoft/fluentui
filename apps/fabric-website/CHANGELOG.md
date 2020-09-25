@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.17](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.14.1..@uifabric/fabric-website_v7.15.17)
+
+### Patches
+
+- Fixing imports so that they correctly point to moved @fluentui/examples examples. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [7.14.1](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.14.1)
 

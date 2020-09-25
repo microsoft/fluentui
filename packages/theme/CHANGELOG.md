@@ -1,8 +1,18 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.1.0..@fluentui/theme_v1.2.0)
+
+### Minor changes
+
+- Move AnimationStyles code from styling package to theme package. ([PR #15162](https://github.com/microsoft/fluentui/pull/15162) by xgao@microsoft.com)
+- Move createTheme from styling to theme package. ([PR #15163](https://github.com/microsoft/fluentui/pull/15163) by xgao@microsoft.com)
 
 ## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.1.0)
 

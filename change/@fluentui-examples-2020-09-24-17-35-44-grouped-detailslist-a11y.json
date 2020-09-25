@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating examples for GroupedList.",
-  "packageName": "@fluentui/examples",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T00:35:44.682Z"
-}
