@@ -40,8 +40,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _isSomeGroupExpanded: boolean;
 
-  private _groupRefs: Record<string, GroupedListSection | null> = {};
-
   public static getDerivedStateFromProps(
     nextProps: IGroupedListProps,
     previousState: IGroupedListState,
@@ -224,7 +222,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     return (
       <GroupedListSection
-        ref={ref => (this._groupRefs['group_' + groupIndex] = ref)}
         key={this._getGroupKey(group, groupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}
@@ -333,25 +330,9 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _forceListUpdates(groups?: IGroup[]): void {
-    groups = groups || this.state.groups;
-
-    const groupCount = groups ? groups.length : 1;
-
-    if (this._list.current) {
-      this._list.current.forceUpdate();
-
-      for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.pageRefs['group_' + String(i)] as GroupedListSection;
-        if (group) {
-          group.forceListUpdate();
-        }
-      }
-    } else {
-      const group = this._groupRefs['group_' + String(0)];
-      if (group) {
-        group.forceListUpdate();
-      }
-    }
+    this.setState({
+      version: {},
+    });
   }
 
   private _onToggleSummarize = (group: IGroup): void => {

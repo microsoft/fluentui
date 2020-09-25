@@ -32,7 +32,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
   });
 
   const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
-    return item && itemIndex ? (
+    return item && typeof itemIndex === 'number' && itemIndex > -1 ? (
       <DetailsRow
         columns={columns}
         groupNestingDepth={nestingDepth}
