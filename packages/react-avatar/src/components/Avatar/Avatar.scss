@@ -269,6 +269,8 @@ $default-inactiveScaleFactor: 0.8;
 // Activity modifiers
 ._active,
 ._inactive {
+  // Work-around pixel snapping jankiness at the end of the animation if the scale factor is 1.0
+  transform: scale(0.9999);
   transition: transform $anim-ultraSlow $anim-fastEase, opacity $anim-faster $anim-nullEasing;
 
   &:before {
