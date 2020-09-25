@@ -46,7 +46,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
   const borderPaddingRight = (borderPadding as BorderPadding)?.right || borderPadding;
   return {
     ':focus': {
-      outline: 0,
+      outline: 'none',
     },
     ':focus-visible': {
       borderColor: 'transparent',

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SizeValue } from '../../utils';
+import { BreadcrumbSizeValues } from './Breadcrumb';
 
 export type BreadcrumbContextValue = {
-  size: SizeValue;
+  size: BreadcrumbSizeValues;
 };
 
 export const BreadcrumbContext = React.createContext<BreadcrumbContextValue>({

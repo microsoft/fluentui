@@ -9,16 +9,11 @@ import {
   getElementType,
   childrenExist,
 } from '@fluentui/react-bindings';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  SizeValue,
-} from '../../utils';
+import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
 
 import { Accessibility } from '@fluentui/accessibility';
 import { useBreadcrumbContext } from './breadcrumbContext';
+import { BreadcrumbSizeValues } from './Breadcrumb';
 
 export interface BreadcrumbLinkProps
   extends UIComponentProps<BreadcrumbLinkProps>,
@@ -28,7 +23,7 @@ export interface BreadcrumbLinkProps
   accessibility?: Accessibility<never>;
 }
 
-export type BreadcrumbLinkStylesProps = { size: SizeValue };
+export type BreadcrumbLinkStylesProps = { size: BreadcrumbSizeValues };
 
 export const breadcrumbLinkClassName = 'ui-breadcrumb__link';
 
