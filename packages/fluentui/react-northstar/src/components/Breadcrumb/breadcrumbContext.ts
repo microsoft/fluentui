@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { BreadcrumbSizeValues } from './Breadcrumb';
+import { SizeValue } from '../../utils';
+
+export type BreadcrumbSizeValues = Exclude<SizeValue, 'larger' | 'largest'>;
 
 export type BreadcrumbContextValue = {
   size: BreadcrumbSizeValues;

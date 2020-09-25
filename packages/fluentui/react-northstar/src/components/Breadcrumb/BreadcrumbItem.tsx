@@ -11,8 +11,7 @@ import {
 } from '@fluentui/react-bindings';
 import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
 import { Accessibility, breadcrumbItemBehavior, BreadcrumbItemBehaviorProps } from '@fluentui/accessibility';
-import { useBreadcrumbContext } from './breadcrumbContext';
-import { BreadcrumbSizeValues } from './Breadcrumb';
+import { useBreadcrumbContext, BreadcrumbSizeValues } from './breadcrumbContext';
 
 export interface BreadcrumbItemProps
   extends UIComponentProps<BreadcrumbItemProps>,

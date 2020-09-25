@@ -12,8 +12,7 @@ import {
 import { commonPropTypes, UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
 
 import { Accessibility } from '@fluentui/accessibility';
-import { useBreadcrumbContext } from './breadcrumbContext';
-import { BreadcrumbSizeValues } from './Breadcrumb';
+import { useBreadcrumbContext, BreadcrumbSizeValues } from './breadcrumbContext';
 
 export interface BreadcrumbLinkProps
   extends UIComponentProps<BreadcrumbLinkProps>,

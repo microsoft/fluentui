@@ -19,16 +19,13 @@ import {
   ChildrenComponentProps,
   ShorthandFactory,
   createShorthandFactory,
-  SizeValue,
 } from '../../utils';
 import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 import { BreadcrumbLink } from './BreadcrumbLink';
-import { BreadcrumbContext } from './breadcrumbContext';
+import { BreadcrumbContext, BreadcrumbSizeValues } from './breadcrumbContext';
 import { Ref } from '@fluentui/react-component-ref';
-
-export type BreadcrumbSizeValues = Exclude<SizeValue, 'larger' | 'largest'>;
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,
