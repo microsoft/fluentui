@@ -39,7 +39,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `shouldPreventDefault` on `keyDown` event for `TreeTitle` to allow enter trigger when `TreeTitle` is rendered as an `anchor` @assuncaocharles ([#15095](https://github.com/microsoft/fluentui/pull/15095))
 - Fix screen reader experience in multiple `dropdown` @kolaps33 ([#15066](https://github.com/microsoft/fluentui/pull/15066))
 - Fix `useAutoControlled` hook to suport functions updates @assuncaocharles ([#15137](https://github.com/microsoft/fluentui/pull/15137))
-- Add cleanup to Fela renderer to avoid memory leaks @layershifter @miroslavstastny ([#15211](https://github.com/microsoft/fluentui/pull/15211))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -91,6 +90,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
+
+<!--------------------------------[ v0.51.2 ]------------------------------- -->
+## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
+[Compare changes](https://github.com/microsoft/fluentui/compare/'@fluentui/react-northstar_v'0.51.1..'@fluentui/react-northstar_v'0.51.2)
+
+### Fixes
+- Add cleanup to Fela renderer to avoid memory leaks @layershifter @miroslavstastny ([#15211](https://github.com/microsoft/fluentui/pull/15211))
 
 <!--------------------------------[ v0.51.1 ]------------------------------- -->
 ## [v0.51.1](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.1) (2020-09-23)
