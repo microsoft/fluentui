@@ -101,6 +101,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+    this.dataSet = this._createDataSet();
+    this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
     const isXAxisDateType = getXAxisType(this._points);
     this._keys = this._createKeys();
     this._colors = this._getColors();
