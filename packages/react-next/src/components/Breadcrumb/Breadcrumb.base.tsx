@@ -114,7 +114,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   }
 
   /**
-   * Remove the first rendered item past the overlow point and put it and the end the overflow set.
+   * Remove the first rendered item past the overflow point and put it and the end the overflow set.
    */
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;

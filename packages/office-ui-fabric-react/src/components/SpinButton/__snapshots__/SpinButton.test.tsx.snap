@@ -103,6 +103,7 @@ exports[`SpinButton renders correctly 1`] = `
             cursor: text;
             display: block;
             flex: 1;
+            font-family: inherit;
             font-size: 14px;
             height: 100%;
             margin-bottom: 0px;
@@ -541,6 +542,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             cursor: text;
             display: block;
             flex: 1;
+            font-family: inherit;
             font-size: 14px;
             height: 100%;
             margin-bottom: 0px;
