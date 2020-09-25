@@ -7,8 +7,10 @@ const packageName = path.basename(process.cwd());
 const demoAppPath = path.join('./src', packageName, 'demo/index.tsx');
 
 if (packageName === 'office-ui-fabric-react') {
+  // Avoid circular dependency
   module.exports = require('@uifabric/fabric-website-resources/webpack.serve.config');
 } else if (!fs.existsSync(demoAppPath)) {
+  // eslint-disable-next-line no-console
   console.error(`Package ${packageName} does not have a legacy demo app!`);
   process.exit(1);
 }

@@ -1,5 +1,3 @@
-// @ts-check
-
 // Simple script to prevent checkin of new tslint files
 // (called from lint-staged, only for tslint.json files--so any file passed in is an error)
 

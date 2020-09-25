@@ -16,13 +16,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: '**/*.Example.tsx',
-      rules: {
-        // Our examples depend on @uifabric/example-data which is intentionally not in dependencies
-        'import/no-extraneous-dependencies': 'off',
-      },
-    },
-  ],
 };

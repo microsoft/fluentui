@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add Callout prop allowDismissOnTargetClick boolean.",
+  "packageName": "office-ui-fabric-react",
+  "email": "taenri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-16T20:20:34.386Z"
+}

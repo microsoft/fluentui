@@ -79,7 +79,12 @@ const rendererConfig = {
 };
 
 export const createFelaRenderer: CreateRenderer = target => {
-  const felaRenderer = createRenderer(rendererConfig);
+  const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
+    listeners: [];
+    nodes: Record<string, HTMLStyleElement>;
+    updateSubscription: Function | undefined;
+  };
+  let usedRenderers: number = 0;
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
@@ -90,6 +95,19 @@ export const createFelaRenderer: CreateRenderer = target => {
   );
 
   return {
+    registerUsage: () => {
+      usedRenderers += 1;
+    },
+    unregisterUsage: () => {
+      usedRenderers -= 1;
+
+      if (usedRenderers === 0) {
+        felaRenderer.listeners = [];
+        felaRenderer.nodes = {};
+        felaRenderer.updateSubscription = undefined;
+      }
+    },
+
     renderFont: font => {
       felaRenderer.renderFont(font.name, font.paths, font.props);
     },
