@@ -55,7 +55,7 @@ steps:
       azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
       storage: fabricweb
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test/fluentui'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
