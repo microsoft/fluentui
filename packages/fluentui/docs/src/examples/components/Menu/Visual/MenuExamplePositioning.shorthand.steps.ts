@@ -4,6 +4,8 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
+        .click('#set-open')
+        .snapshot('Default positioning')
         .click('#above')
         .snapshot('Sets positions to above')
         .click('#before')
