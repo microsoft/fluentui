@@ -4948,6 +4948,7 @@ export interface IGroup {
 
 // @public (undocumented)
 export interface IGroupDividerProps {
+    ariaColSpan?: number;
     className?: string;
     compact?: boolean;
     // (undocumented)
@@ -5003,6 +5004,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
     onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
     selection?: ISelection;
     selectionMode?: SelectionMode;
     styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
@@ -5175,6 +5177,7 @@ export interface IGroupShowAllStyles {
 export interface IGroupSpacerProps {
     count: number;
     indentWidth?: number;
+    role?: string;
     // @deprecated
     styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
     // @deprecated
@@ -7867,6 +7870,7 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;

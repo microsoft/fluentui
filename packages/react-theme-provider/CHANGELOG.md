@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.1)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.0..@fluentui/react-theme-provider_v0.14.1)
+
+### Patches
+
+- Adjusting storybook config so that it works with new changes. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.0)
 

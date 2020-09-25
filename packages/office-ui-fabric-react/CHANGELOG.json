@@ -2,6 +2,67 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "office-ui-fabric-react_v7.141.0",
+      "version": "7.141.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update GroupList and Grouped DetailsList semantics to work with screen readers",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "452a387dd9353763c6c2adc8946a9378fd654994",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Support StrictMode in DetailsList hierarchy",
+            "author": "tmichon@microsoft.com",
+            "commit": "9ae733146fa3d9d71cf70cec6f7130e9de6e6466",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add Callout prop allowDismissOnTargetClick boolean.",
+            "author": "taenri@microsoft.com",
+            "commit": "b9e8c208d1d7139cccb58b17f323b696e4fb362a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Adding an elementRef to BaseButton.tsx to allow access to the root DOM element.",
+            "author": "czearing@outlook.com",
+            "commit": "ec1e6f7166c7d8d3044e6ed7d0fe77b613fb5a5d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: reordering FocusZone and SelectionZone to resolve onItemInvoked not being called on pressing enter on an item.",
+            "author": "dzearing@hotmail.com",
+            "commit": "a39779555a6fe5a8c0a33856190564a42f760fe2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix GroupedList expand/collapse behavior",
+            "author": "tmichon@microsoft.com",
+            "commit": "242e7b237a025a7f534148d76f7822fb469f130d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Removing an unused eslint-disable rule from Modal.base.tsx",
+            "author": "czearing@outlook.com",
+            "commit": "4c2969ca2fb4443534831ad2d615b714e42beec5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2020 00:46:56 GMT",
       "tag": "office-ui-fabric-react_v7.140.0",
       "version": "7.140.0",

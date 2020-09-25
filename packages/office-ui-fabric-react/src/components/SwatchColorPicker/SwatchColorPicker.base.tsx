@@ -132,7 +132,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         id={this._id}
         items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
-        onRenderItem={this._renderOption}
+        onRenderItem={this._onRenderItem}
         ariaPosInSet={ariaPosInSet}
         ariaSetSize={ariaSetSize}
         shouldFocusCircularNavigate={shouldFocusCircularNavigate}
@@ -147,6 +147,11 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       />
     );
   }
+
+  private _onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
+    const { onRenderColorCell = this._renderOption } = this.props;
+    return onRenderColorCell(item, this._renderOption) as JSX.Element;
+  };
 
   /**
    * When the whole swatchColorPicker is blurred,

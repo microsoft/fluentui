@@ -34,7 +34,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={3}
+      aria-colcount={4}
       aria-readonly="true"
       aria-rowcount={1011}
       role="grid"
@@ -352,7 +352,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           </label>
           <div
             aria-expanded={true}
-            aria-label="Toggle selection"
+            aria-label="Expand collapse groups"
             className=
                 ms-DetailsHeader-cell
                 {
@@ -403,7 +403,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                 }
             data-is-focusable={true}
             onClick={[Function]}
-            role="button"
+            role="columnheader"
           >
             <i
               aria-hidden={true}
@@ -951,6 +951,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         data-is-focusable={true}
                         onClick={[Function]}
                         onKeyUp={[Function]}
+                        role="row"
                         style={Object {}}
                       >
                         <div
@@ -961,179 +962,184 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 display: flex;
                                 height: 48px;
                               }
+                          role="presentation"
                         >
-                          <button
-                            aria-checked={false}
-                            className=
-                                ms-GroupHeader-check
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  cursor: default;
-                                  display: flex;
-                                  height: 48px;
-                                  justify-content: center;
-                                  margin-top: -1px;
-                                  opacity: 0;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 1px;
-                                  position: relative;
-                                  width: 48px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  opacity: 1;
-                                }
-                            data-is-focusable={false}
-                            data-selection-toggle={true}
-                            onClick={[Function]}
-                            role="checkbox"
-                            type="button"
+                          <div
+                            role="gridcell"
                           >
-                            <div
+                            <button
+                              aria-checked={false}
                               className=
-                                  ms-Check
+                                  ms-GroupHeader-check
                                   {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 14px;
-                                    font-weight: 400;
-                                    height: 18px;
-                                    line-height: 1;
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    cursor: default;
+                                    display: flex;
+                                    height: 48px;
+                                    justify-content: center;
+                                    margin-top: -1px;
+                                    opacity: 0;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 1px;
                                     position: relative;
-                                    user-select: none;
-                                    vertical-align: top;
-                                    width: 18px;
+                                    width: 48px;
                                   }
-                                  &:before {
-                                    background: #ffffff;
-                                    border-radius: 50%;
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    opacity: 1;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
+                                    z-index: 1;
                                   }
-                                  .ms-Check-checkHost:hover & {
+                                  .ms-Fabric--isFocusVisible &:focus {
                                     opacity: 1;
                                   }
-                                  .ms-Check-checkHost:focus & {
-                                    opacity: 1;
-                                  }
-                                  &:hover {
-                                    opacity: 1;
-                                  }
-                                  &:focus {
-                                    opacity: 1;
-                                  }
+                              data-is-focusable={false}
+                              data-selection-toggle={true}
+                              onClick={[Function]}
+                              role="checkbox"
+                              type="button"
                             >
-                              <i
-                                aria-hidden={true}
+                              <div
                                 className=
-                                    ms-Icon
-                                    ms-Check-circle
-                                    {
-                                      display: inline-block;
-                                    }
+                                    ms-Check
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 18px;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 18px;
-                                      left: 0px;
-                                      position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
+                                      line-height: 1;
+                                      position: relative;
+                                      user-select: none;
+                                      vertical-align: top;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      color: WindowText;
-                                    }
-                                data-icon-name="CircleRing"
-                                role="presentation"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
-                              >
-                                
-                              </i>
-                              <i
-                                aria-hidden={true}
-                                className=
-                                    ms-Icon
-                                    ms-Check-check
-                                    {
-                                      display: inline-block;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 16px;
-                                      height: 18px;
-                                      left: .5px;
-                                      opacity: 0;
+                                    &:before {
+                                      background: #ffffff;
+                                      border-radius: 50%;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      opacity: 1;
                                       position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
-                                      width: 18px;
+                                      right: 1px;
+                                      top: 1px;
+                                    }
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
                                     }
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      -ms-high-contrast-adjust: none;
+                                    &:focus {
+                                      opacity: 1;
                                     }
-                                data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
                               >
-                                
-                              </i>
-                            </div>
-                          </button>
+                                <i
+                                  aria-hidden={true}
+                                  className=
+                                      ms-Icon
+                                      ms-Check-circle
+                                      {
+                                        display: inline-block;
+                                      }
+                                      {
+                                        -moz-osx-font-smoothing: grayscale;
+                                        -webkit-font-smoothing: antialiased;
+                                        font-family: "FabricMDL2Icons";
+                                        font-style: normal;
+                                        font-weight: normal;
+                                        speak: none;
+                                      }
+                                      {
+                                        color: #605e5c;
+                                        font-size: 18px;
+                                        height: 18px;
+                                        left: 0px;
+                                        position: absolute;
+                                        text-align: center;
+                                        top: 0px;
+                                        vertical-align: middle;
+                                        width: 18px;
+                                      }
+                                      @media screen and (-ms-high-contrast: active){& {
+                                        color: WindowText;
+                                      }
+                                  data-icon-name="CircleRing"
+                                  role="presentation"
+                                  style={
+                                    Object {
+                                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                                    }
+                                  }
+                                >
+                                  
+                                </i>
+                                <i
+                                  aria-hidden={true}
+                                  className=
+                                      ms-Icon
+                                      ms-Check-check
+                                      {
+                                        display: inline-block;
+                                      }
+                                      {
+                                        -moz-osx-font-smoothing: grayscale;
+                                        -webkit-font-smoothing: antialiased;
+                                        font-family: "FabricMDL2Icons";
+                                        font-style: normal;
+                                        font-weight: normal;
+                                        speak: none;
+                                      }
+                                      {
+                                        color: #605e5c;
+                                        font-size: 16px;
+                                        height: 18px;
+                                        left: .5px;
+                                        opacity: 0;
+                                        position: absolute;
+                                        text-align: center;
+                                        top: 0px;
+                                        vertical-align: middle;
+                                        width: 18px;
+                                      }
+                                      &:hover {
+                                        opacity: 1;
+                                      }
+                                      @media screen and (-ms-high-contrast: active){& {
+                                        -ms-high-contrast-adjust: none;
+                                      }
+                                  data-icon-name="StatusCircleCheckmark"
+                                  role="presentation"
+                                  style={
+                                    Object {
+                                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                                    }
+                                  }
+                                >
+                                  
+                                </i>
+                              </div>
+                            </button>
+                          </div>
                           <div
                             className=
                                 ms-GroupHeader-dropIcon
@@ -1150,6 +1156,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 .ms-Icon--Tag {
                                   position: absolute;
                                 }
+                            role="presentation"
                           >
                             <i
                               aria-hidden={true}
@@ -1169,77 +1176,81 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               
                             </i>
                           </div>
-                          <button
-                            aria-controls="GroupedListSection3"
-                            aria-expanded={true}
-                            aria-label="expand collapse group"
-                            className=
-                                ms-GroupHeader-expand
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  color: #605e5c;
-                                  cursor: default;
-                                  display: flex;
-                                  font-size: 12px;
-                                  height: 48px;
-                                  justify-content: center;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  width: 36px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                &:hover {
-                                  background-color: #edebe9;
-                                }
-                                &:active {
-                                  background-color: #e1dfdd;
-                                }
-                            data-is-focusable={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons-3";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                    transform-origin: 50% 50%;
-                                    transform: rotate(90deg);
-                                    transition: transform .1s linear;
-                                  }
-                              data-icon-name="ChevronRightMed"
-                            >
-                              
-                            </i>
-                          </button>
                           <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={2}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -1251,6 +1262,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            role="gridcell"
                           >
                             <span>
                               0
@@ -1275,7 +1287,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                       <div
                         className="ms-List"
                         id="GroupedListSection3"
-                        role="grid"
+                        role="presentation"
                       >
                         <div
                           className="ms-List-surface"
@@ -1293,6 +1305,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={1}
                                 aria-selected={false}
                                 className=
@@ -1608,6 +1621,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -1626,7 +1640,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -1683,7 +1697,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 0
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -1764,6 +1778,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={2}
                                 aria-selected={false}
                                 className=
@@ -2079,6 +2094,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -2097,7 +2113,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2154,7 +2170,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 1
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2235,6 +2251,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
                                 className=
@@ -2550,6 +2567,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -2568,7 +2586,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2625,7 +2643,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 2
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2706,6 +2724,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
                                 className=
@@ -3021,6 +3040,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -3039,7 +3059,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3096,7 +3116,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 3
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3177,6 +3197,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={5}
                                 aria-selected={false}
                                 className=
@@ -3492,6 +3513,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -3510,7 +3532,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3567,7 +3589,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 4
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3648,6 +3670,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={6}
                                 aria-selected={false}
                                 className=
@@ -3963,6 +3986,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -3981,7 +4005,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4038,7 +4062,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 5
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4119,6 +4143,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={7}
                                 aria-selected={false}
                                 className=
@@ -4434,6 +4459,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -4452,7 +4478,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4509,7 +4535,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 6
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4590,6 +4616,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={8}
                                 aria-selected={false}
                                 className=
@@ -4905,6 +4932,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -4923,7 +4951,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4980,7 +5008,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 7
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5061,6 +5089,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={9}
                                 aria-selected={false}
                                 className=
@@ -5376,6 +5405,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5394,7 +5424,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5451,7 +5481,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 8
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5532,6 +5562,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={10}
                                 aria-selected={false}
                                 className=
@@ -5847,6 +5878,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5865,7 +5897,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
+                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5922,7 +5954,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     Item 9
                                   </div>
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell

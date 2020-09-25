@@ -299,7 +299,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             data-is-focusable={true}
             aria-label={ariaLabelForToggleAllGroupsButton}
             aria-expanded={!isAllCollapsed}
-            role={ariaLabelForToggleAllGroupsButton ? 'button' : undefined}
+            role="columnheader"
           >
             <IconComponent
               className={classNames.collapseButton}
@@ -307,7 +307,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             />
           </div>
         ) : null}
-        <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
+        <GroupSpacer indentWidth={indentWidth} role="gridcell" count={groupNestingDepth! - 1} />
         {columns.map((column: IColumn, columnIndex: number) => {
           const _isDraggable = columnReorderProps
             ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd

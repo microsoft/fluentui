@@ -254,7 +254,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
-        columnStartIndex={showCheckbox ? 1 : 0}
+        columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
@@ -283,6 +283,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
+        aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
@@ -307,6 +308,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
         <GroupSpacer
           indentWidth={indentWidth}
+          role="gridcell"
           count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
         />
 
@@ -322,7 +324,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
-              columnStartIndex={(showCheckbox ? 1 : 0) + columns.length}
+              columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0) + columns.length}
               onRenderItemColumn={onRenderItemColumn}
               getCellValueKey={getCellValueKey}
             />
