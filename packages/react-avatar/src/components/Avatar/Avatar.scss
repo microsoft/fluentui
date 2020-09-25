@@ -267,7 +267,10 @@ $default-inactiveScaleFactor: 0.8;
 }
 
 // Activity modifiers
-._active {
+._active,
+._inactive {
+  transition: transform $anim-ultraSlow $anim-fastEase, opacity $anim-faster $anim-nullEasing;
+
   &:before {
     content: '';
     position: absolute;
@@ -280,11 +283,23 @@ $default-inactiveScaleFactor: 0.8;
     border-color: var(--avatar-activeRingColor, $default-activeRingColor);
     border-width: var(--avatar-activeRingWidth, 0);
     box-shadow: var(--avatar-activeShadow);
+    transition: all $anim-ultraSlow $anim-fastEase, opacity $anim-slower $anim-nullEasing;
   }
 }
+
 ._inactive {
   opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
   transform: scale(var(--avatar-inactiveScaleFactor, $default-inactiveScaleFactor));
+  transition: transform $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-faster $anim-nullEasing;
+
+  &:before {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: all $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-slower $anim-nullEasing;
+  }
 }
 
 // Display modifiers

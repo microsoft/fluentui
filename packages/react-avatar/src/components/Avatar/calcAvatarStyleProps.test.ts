@@ -26,9 +26,9 @@ describe('calcAvatarStyleProps', () => {
     });
   });
 
-  it('sets inactive when active={false}', () => {
+  it('sets inactive and ring/shadow/glow props when active={false}', () => {
     const activeProps = filterActiveProps(calcAvatarStyleProps({ active: false }));
-    expect(activeProps).toEqual({ inactive: true });
+    expect(activeProps).toEqual({ inactive: true, activeRing: true });
   });
 
   it('sets default activeDisplay props when active={true}', () => {
