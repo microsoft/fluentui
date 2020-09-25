@@ -137,12 +137,6 @@ export const AppDefinition: IAppDefinition = {
           category: 'Data Collections',
         },
         {
-          component: require<any>('../Fluent/FluentThemePage').FluentThemePage,
-          key: 'FluentColorTheme',
-          name: 'Fluent Color Theme',
-          url: '#/examples/fluent-color-theme',
-        },
-        {
           component: require<any>('../Theming/ThemingPage').ThemingPage,
           key: 'ThemingPage',
           name: 'Theming',
