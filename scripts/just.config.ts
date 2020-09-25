@@ -54,7 +54,7 @@ function checkForStorybookExistence() {
   return (
     !!resolveCwd('./.storybook/main.js') ||
     (!!resolveCwd('../examples/.storybook/main.js') &&
-      fs.existsSync(path.join(findGitRoot(), `packages/examples/src/${packageName}`)))
+      fs.existsSync(path.join(findGitRoot(), `packages/react-examples/src/${packageName}`)))
   );
 }
 

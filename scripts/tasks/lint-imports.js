@@ -36,9 +36,9 @@ function lintImports() {
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    '@fluentui/examples/lib/experiments/TilesList/ExampleHelpers',
-    '@fluentui/examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
-    '@fluentui/examples/lib/office-ui-fabric-react/Keytip/KeytipSetup',
+    '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
+    '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
+    '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
