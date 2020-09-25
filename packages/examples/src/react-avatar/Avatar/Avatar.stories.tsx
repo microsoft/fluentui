@@ -291,17 +291,6 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
       </div>
     ),
 
-    /** Render the UI to select the property value */
-    renderSelector2: () => (
-      <div style={{ opacity: !enabled ? '50%' : undefined }}>
-        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
-        <button onClick={enabled ? next : toggleEnabled} id={`prop2_${name}`}>
-          &gt;
-        </button>
-        <label htmlFor={`prop2_${name}`}>{` ${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
-      </div>
-    ),
-
     /** Render a span with propName="propValue" inside, if the property is set */
     renderValue: () => {
       const quotes = typeof value === 'string' ? '""' : '{}';
