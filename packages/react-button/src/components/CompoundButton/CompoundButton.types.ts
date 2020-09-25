@@ -1,5 +1,5 @@
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps } from '../Button/Button.types';
+import { ButtonProps, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
 export interface CompoundButtonProps extends ButtonProps {
   /**
@@ -14,3 +14,12 @@ export interface CompoundButtonProps extends ButtonProps {
 }
 
 export interface CompoundButtonState extends CompoundButtonProps {}
+
+export type CompoundButtonTokens = ButtonTokens & {
+  secondaryContentColor: string;
+  secondaryContentFontSize: string;
+  secondaryContentFontWeight: string;
+  secondaryContentMarginTop: string;
+};
+
+export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;

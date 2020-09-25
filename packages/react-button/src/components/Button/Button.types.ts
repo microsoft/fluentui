@@ -141,10 +141,10 @@ export type ButtonTokens = ColorTokens & {
   };
 };
 
-export type ButtonVariants = {
-  base?: RecursivePartial<ButtonTokens>;
-  primary?: RecursivePartial<ButtonTokens>;
-  iconOnly?: RecursivePartial<ButtonTokens>;
-  circular?: RecursivePartial<ButtonTokens>;
-  fluid?: RecursivePartial<ButtonTokens>;
+export type ButtonVariants<TTokens = ButtonTokens> = {
+  base?: RecursivePartial<TTokens>;
+  primary?: RecursivePartial<TTokens>;
+  iconOnly?: RecursivePartial<TTokens>;
+  circular?: RecursivePartial<TTokens>;
+  fluid?: RecursivePartial<TTokens>;
 };

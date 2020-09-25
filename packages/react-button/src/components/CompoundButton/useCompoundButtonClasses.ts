@@ -1,5 +1,6 @@
-import { makeClasses } from '@fluentui/react-theme-provider';
-import { CompoundButtonState } from './CompoundButton.types';
+import { makeClasses, makeVariants } from '@fluentui/react-theme-provider';
+import { CompoundButtonState, CompoundButtonVariants } from './CompoundButton.types';
+import { useButtonClasses } from '../Button/useButtonClasses';
 
 const GlobalClassNames = {
   root: 'ms-Button',
@@ -7,29 +8,11 @@ const GlobalClassNames = {
   secondaryContent: 'ms-Button-secondaryContent',
 };
 
-export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
+export const useClasses = makeClasses<CompoundButtonState>({
   root: [
     GlobalClassNames.root,
     {
-      '--button-height': 'auto',
-
-      '--button-maxWidth': '280px',
-      '--button-minWidth': '72px',
-      '--button-paddingBottom': '16px',
-      '--button-paddingLeft': '12px',
-      '--button-paddingRight': '12px',
-      '--button-paddingTop': '16px',
-      '--button-iconSize': '28px',
-
       alignItems: 'flex-start',
-
-      '&:hover': {
-        '--button-secondaryContentColor': 'var(--button-hovered-secondaryContentColor)',
-      },
-
-      '&:active': {
-        '--button-secondaryContentColor': 'var(--button-pressed-secondaryContentColor)',
-      },
     },
   ],
 
@@ -45,42 +28,90 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
   secondaryContent: [
     GlobalClassNames.secondaryContent,
     {
-      color: 'var(--button-secondaryContentColor)',
+      color: 'var(--button-secondaryContentColor, var(--button-contentColor))',
       fontSize: 'var(--button-secondaryContentFontSize)',
       fontWeight: 'var(--button-secondaryContentFontWeight)',
       lineHeight: '100%',
+
+      [`${GlobalClassNames.root}:hover &`]: {
+        color: 'var(--button-hovered-secondaryContentColor, var(--button-secondaryContentColor))',
+      },
+
+      [`${GlobalClassNames.root}:active &`]: {
+        color:
+          'var(--button-pressed-secondaryContentColor, ' +
+          'var(--button-hovered-secondaryContentColor, ' +
+          'var(--button-secondaryContentColor)))',
+      },
+
+      [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
+        color: 'var(--button-disabled-secondaryContentColor, var(--button-disabled-contentColor))',
+      },
 
       '&:not(:first-child)': {
         marginTop: 'var(--button-secondaryContentMarginTop)',
       },
     },
   ],
+});
 
-  _iconOnly: {
-    '--button-minHeight': 'var(--button-size-regular)',
-    '--button-padding': 0,
-    '--button-width': 'var(--button-minHeight)',
+const useVariants = makeVariants<CompoundButtonVariants>('CompoundButton', '--button', {
+  base: {
+    height: 'auto',
+    maxWidth: '280px',
+    minWidth: '72px',
+    paddingBottom: '16px',
+    paddingLeft: '12px',
+    paddingRight: '12px',
+    paddingTop: '16px',
+    iconSize: '28px',
+
+    disabled: {
+      secondaryContentColor: 'var(--button-disabled-contentColor)',
+    },
   },
 
-  _ghost: {
-    '--button-secondaryContentColor': 'var(--ghost-secondaryContentColor)',
-    '--button-focused-secondaryContentColor': 'var(--ghost-focused-secondaryContentColor)',
-    '--button-hovered-secondaryContentColor': 'var(--ghost-hovered-secondaryContentColor)',
-    '--button-pressed-secondaryContentColor': 'var(--ghost-pressed-secondaryContentColor)',
+  iconOnly: {
+    minHeight: 'var(--button-size-regular)',
+    width: 'var(--button-minHeight)',
+    paddingBottom: 0,
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 
-  _primary: {
-    '--button-secondaryContentColor': 'var(--color-brand-secondaryContentColor)',
-    '--button-focused-secondaryContentColor': 'var(--color-brand-focused-secondaryContentColor)',
-    '--button-hovered-secondaryContentColor': 'var(--color-brand-hovered-secondaryContentColor)',
-    '--button-pressed-secondaryContentColor': 'var(--color-brand-pressed-secondaryContentColor)',
+  ghost: {
+    secondaryContentColor: 'var(--ghost-secondaryContentColor)',
+    focused: {
+      secondaryContentColor: 'var(--ghost-focused-secondaryContentColor)',
+    },
+    hovered: {
+      secondaryContentColor: 'var(--ghost-hovered-secondaryContentColor)',
+    },
+    pressed: {
+      secondaryContentColor: 'var(--ghost-pressed-secondaryContentColor)',
+    },
   },
 
-  _disabled: {
-    '--button-secondaryContentColor': 'var(--button-disabled-secondaryContentColor)',
-  },
+  primary: {
+    secondaryContentColor: 'var(--color-brand-secondaryContentColor)',
 
-  _fluid: {
-    '--button-maxWidth': '100%',
+    focused: {
+      secondaryContentColor: 'var(--color-brand-focused-secondaryContentColor)',
+    },
+
+    hovered: {
+      secondaryContentColor: 'var(--color-brand-hovered-secondaryContentColor)',
+    },
+
+    pressed: {
+      secondaryContentColor: 'var(--color-brand-pressed-secondaryContentColor)',
+    },
   },
 });
+
+export const useCompoundButtonClasses = (state: CompoundButtonState) => {
+  useButtonClasses(state);
+  useClasses(state);
+  useVariants(state);
+};
