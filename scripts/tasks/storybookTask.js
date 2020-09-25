@@ -1,6 +1,7 @@
 const { argv } = require('just-scripts');
 const fs = require('fs');
 const path = require('path');
+const findGitRoot = require('../monorepo/findGitRoot');
 
 const storybook = require('@storybook/react/standalone');
 
@@ -24,7 +25,7 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
       staticDir: [path.join(process.cwd(), 'static')],
       configDir: fs.existsSync(localConfigDir)
         ? localConfigDir
-        : path.resolve(__dirname, '../../packages/examples/.storybook'),
+        : path.join(findGitRoot(), 'packages/examples/.storybook'),
       port: port || 3000,
       quiet,
       ci,
@@ -41,10 +42,14 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
     quiet = options.quiet || quiet;
     ci = options.ci || ci;
 
+    const localConfigDir = path.join(process.cwd(), '.storybook');
+
     await storybook({
       mode: 'static',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: path.join(process.cwd(), '.storybook'),
+      configDir: fs.existsSync(localConfigDir)
+        ? localConfigDir
+        : path.join(findGitRoot(), 'packages/examples/.storybook'),
       outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,

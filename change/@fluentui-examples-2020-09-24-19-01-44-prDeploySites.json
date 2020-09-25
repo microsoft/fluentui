@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Moving examples from all other package into this package.",
+  "comment": "Removing unused parameter in storybook config.",
   "packageName": "@fluentui/examples",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-19T01:59:39.620Z"
+  "date": "2020-09-25T02:01:44.337Z"
 }

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Moving examples to @fluentui/examples package.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-19T02:01:23.666Z"
-}

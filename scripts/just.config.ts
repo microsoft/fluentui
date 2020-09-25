@@ -4,6 +4,7 @@ const { task, series, parallel, condition, option, argv, addResolvePath, resolve
 
 const path = require('path');
 const fs = require('fs');
+const findGitRoot = require('./monorepo/findGitRoot');
 
 const { clean } = require('./tasks/clean');
 const { copy } = require('./tasks/copy');
@@ -42,6 +43,19 @@ function basicPreset() {
   option('registry', { default: 'https://registry.npmjs.org' });
 
   option('push', { default: true });
+}
+
+/** Resolve whereas a storybook config + stories exist for a given path */
+function checkForStorybookExistence() {
+  const packageName = path.basename(process.cwd());
+
+  // Returns true if the current package has a storybook config or the examples package has a storybook config and
+  // contains a folder with the current package's name.
+  return (
+    !!resolveCwd('./.storybook/main.js') ||
+    (!!resolveCwd('../examples/.storybook/main.js') &&
+      fs.existsSync(path.join(findGitRoot(), `packages/examples/src/${packageName}`)))
+  );
 }
 
 module.exports = function preset() {
@@ -119,7 +133,7 @@ module.exports = function preset() {
     'bundle',
     parallel(
       condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
+      condition('storybook:build', () => checkForStorybookExistence()),
     ),
   );
 };

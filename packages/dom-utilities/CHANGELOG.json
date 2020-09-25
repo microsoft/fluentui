@@ -2,6 +2,21 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/dom-utilities_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/dom-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Sep 2020 15:52:49 GMT",
       "tag": "@fluentui/dom-utilities_v1.1.1",
       "version": "1.1.1",

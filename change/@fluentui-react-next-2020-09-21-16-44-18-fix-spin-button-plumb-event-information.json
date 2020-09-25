@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Porting a patch to allow SpinButton to pass event information.",
-  "packageName": "@fluentui/react-next",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-21T23:44:18.242Z"
-}

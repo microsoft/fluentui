@@ -4646,7 +4646,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={1}
+      aria-colcount={2}
       aria-readonly="true"
       aria-rowcount={8}
       role="grid"
@@ -4750,6 +4750,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 }
             data-is-focusable={true}
             onClick={[Function]}
+            role="columnheader"
           >
             <i
               aria-hidden={true}
@@ -5107,6 +5108,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         data-is-focusable={true}
                         onClick={[Function]}
                         onKeyUp={[Function]}
+                        role="row"
                         style={Object {}}
                       >
                         <div
@@ -5117,6 +5119,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 display: flex;
                                 height: 48px;
                               }
+                          role="presentation"
                         >
                           <div
                             className=
@@ -5134,6 +5137,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 .ms-Icon--Tag {
                                   position: absolute;
                                 }
+                            role="presentation"
                           >
                             <i
                               aria-hidden={true}
@@ -5153,77 +5157,81 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               
                             </i>
                           </div>
-                          <button
-                            aria-controls="GroupedListSection18"
-                            aria-expanded={true}
-                            aria-label="expand collapse group"
-                            className=
-                                ms-GroupHeader-expand
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  color: #605e5c;
-                                  cursor: default;
-                                  display: flex;
-                                  font-size: 12px;
-                                  height: 48px;
-                                  justify-content: center;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  width: 36px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                &:hover {
-                                  background-color: #edebe9;
-                                }
-                                &:active {
-                                  background-color: #e1dfdd;
-                                }
-                            data-is-focusable={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons-3";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                    transform-origin: 50% 50%;
-                                    transform: rotate(90deg);
-                                    transition: transform .1s linear;
-                                  }
-                              data-icon-name="ChevronRightMed"
-                            >
-                              
-                            </i>
-                          </button>
                           <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -5235,6 +5243,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            role="gridcell"
                           >
                             <span>
                               Group 0
@@ -5259,7 +5268,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection18"
-                        role="grid"
+                        role="presentation"
                       >
                         <div
                           className="ms-List-surface"
@@ -5277,6 +5286,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={1}
                                 aria-selected={false}
                                 className=
@@ -5363,6 +5373,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5381,7 +5392,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5462,6 +5473,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={2}
                                 aria-selected={false}
                                 className=
@@ -5548,6 +5560,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5566,7 +5579,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5721,6 +5734,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         data-is-focusable={true}
                         onClick={[Function]}
                         onKeyUp={[Function]}
+                        role="row"
                         style={Object {}}
                       >
                         <div
@@ -5731,6 +5745,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 display: flex;
                                 height: 48px;
                               }
+                          role="presentation"
                         >
                           <div
                             className=
@@ -5748,6 +5763,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 .ms-Icon--Tag {
                                   position: absolute;
                                 }
+                            role="presentation"
                           >
                             <i
                               aria-hidden={true}
@@ -5767,77 +5783,81 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               
                             </i>
                           </div>
-                          <button
-                            aria-controls="GroupedListSection19"
-                            aria-expanded={true}
-                            aria-label="expand collapse group"
-                            className=
-                                ms-GroupHeader-expand
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  color: #605e5c;
-                                  cursor: default;
-                                  display: flex;
-                                  font-size: 12px;
-                                  height: 48px;
-                                  justify-content: center;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  width: 36px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                &:hover {
-                                  background-color: #edebe9;
-                                }
-                                &:active {
-                                  background-color: #e1dfdd;
-                                }
-                            data-is-focusable={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons-3";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                    transform-origin: 50% 50%;
-                                    transform: rotate(90deg);
-                                    transition: transform .1s linear;
-                                  }
-                              data-icon-name="ChevronRightMed"
-                            >
-                              
-                            </i>
-                          </button>
                           <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -5849,6 +5869,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            role="gridcell"
                           >
                             <span>
                               Group 1
@@ -5873,7 +5894,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection19"
-                        role="grid"
+                        role="presentation"
                       >
                         <div
                           className="ms-List-surface"
@@ -5891,6 +5912,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
                                 className=
@@ -5977,6 +5999,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5995,7 +6018,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -6076,6 +6099,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
                                 className=
@@ -6162,6 +6186,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -6180,7 +6205,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -6261,6 +6286,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={5}
                                 aria-selected={false}
                                 className=
@@ -6347,6 +6373,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -6365,7 +6392,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell

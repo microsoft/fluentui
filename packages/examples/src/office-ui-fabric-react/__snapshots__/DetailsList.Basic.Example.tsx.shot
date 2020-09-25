@@ -32,6 +32,22 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
   >
     No items selected
   </div>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this example will show an alert.
+  </span>
   <div
     aria-live="polite"
     className=""
