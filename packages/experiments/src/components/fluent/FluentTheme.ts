@@ -1,1 +1,1 @@
-export * from '@uifabric/fluent-theme/lib/fluent/FluentTheme';
+export * from '@fluentui/theme/lib/FluentTheme';
