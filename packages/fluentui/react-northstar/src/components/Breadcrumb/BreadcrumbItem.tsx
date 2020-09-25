@@ -26,7 +26,7 @@ export interface BreadcrumbItemProps
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<BreadcrumbItemBehaviorProps>;
 
-  /** The Breadcrumb Link can be disabled */
+  /** The Breadcrumb Link can be disabled. */
   disabled?: boolean;
 
   /** Indicates if the link is the active */
