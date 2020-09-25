@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add migration guide to readme",
+  "packageName": "@fluentui/react-button",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-18T18:35:06.816Z"
+}

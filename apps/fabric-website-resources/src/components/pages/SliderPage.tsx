@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { SliderPageProps } from 'office-ui-fabric-react/lib/components/Slider/Slider.doc';
+import { SliderPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Slider/Slider.doc';
 
 export const SliderPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

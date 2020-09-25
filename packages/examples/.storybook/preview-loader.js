@@ -19,5 +19,5 @@ export default function loader(source) {
     return;
   }
 
-  return source.replace('PACKAGE_NAME', packageName);
+  return source.replace(/PACKAGE_NAME/g, packageName);
 }

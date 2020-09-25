@@ -15,9 +15,10 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
+    "skipLibCheck": true,
+    "lib": ["es5", "dom", "es2015.promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"],
+    "types": ["jest", "webpack-env", "custom-global", "node"],
     "paths": {
       "@fluentui/examples/lib/*": ["./src/*"],
       "@fluentui/examples": ["./src"]
