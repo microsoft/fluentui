@@ -1,3 +1,1 @@
-import { createTheme, Theme } from '@fluentui/react-theme-provider';
-
-export const FluentTheme: Theme = createTheme();
+export { FluentTheme } from '@fluentui/theme';
