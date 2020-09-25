@@ -140,6 +140,33 @@ export const AllSizes = () => (
   </>
 );
 
+export const ActiveAnimation = () => {
+  const [tick, setTick] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 2000);
+    return () => clearInterval(id);
+  }, []);
+
+  const active = !(tick % 2);
+  const { images } = examples;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <span style={{ marginTop: '16px' }}>ring</span>
+      <Avatar style={{ margin: '8px' }} size={48} image={images[7]} active={active} activeDisplay="ring" />
+      <span style={{ marginTop: '16px' }}>ring-shadow</span>
+      <Avatar style={{ margin: '8px' }} size={48} image={images[8]} active={active} activeDisplay="ring-shadow" />
+      <span style={{ marginTop: '16px' }}>ring-glow</span>
+      <Avatar style={{ margin: '8px' }} size={48} image={images[9]} active={active} activeDisplay="ring-glow" />
+      <span style={{ marginTop: '16px' }}>shadow</span>
+      <Avatar style={{ margin: '8px' }} size={48} image={images[2]} active={active} activeDisplay="shadow" />
+      <span style={{ marginTop: '16px' }}>glow</span>
+      <Avatar style={{ margin: '8px' }} size={48} image={images[3]} active={active} activeDisplay="glow" />
+    </div>
+  );
+};
+
 export const CustomSizes = () => (
   <StoryExample title="Custom Size">
     <Avatar name="Custom Size" badge="success" customSize={17} />
@@ -261,6 +288,17 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
         <button onClick={enabled ? next : toggleEnabled}>&gt;</button>
         <input id={`prop_${name}`} type="checkbox" onChange={toggleEnabled} checked={enabled} />
         <label htmlFor={`prop_${name}`}>{`${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
+      </div>
+    ),
+
+    /** Render the UI to select the property value */
+    renderSelector2: () => (
+      <div style={{ opacity: !enabled ? '50%' : undefined }}>
+        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
+        <button onClick={enabled ? next : toggleEnabled} id={`prop2_${name}`}>
+          &gt;
+        </button>
+        <label htmlFor={`prop2_${name}`}>{` ${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
       </div>
     ),
 
