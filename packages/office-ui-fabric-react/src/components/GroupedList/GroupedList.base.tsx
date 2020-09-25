@@ -113,8 +113,18 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, theme, styles, compact, focusZoneProps = {} } = this.props;
+    const {
+      className,
+      usePageCache,
+      onShouldVirtualize,
+      theme,
+      role = 'treegrid',
+      styles,
+      compact,
+      focusZoneProps = {},
+    } = this.props;
     const { groups, version } = this.state;
+
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
@@ -138,7 +148,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         ) : (
           <List
             ref={this._list}
-            role="presentation"
+            role={role}
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}

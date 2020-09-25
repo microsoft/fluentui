@@ -301,6 +301,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [columnReorderOptions, onColumnDragEnd]);
 
   const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+  const colCount =
+    (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
+    (adjustedColumns ? adjustedColumns.length : 0) +
+    (groups ? 1 : 0);
 
   const classNames = React.useMemo(() => {
     return getClassNames(styles, {
@@ -361,11 +365,17 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               viewport,
               checkboxVisibility,
               cellStyleProps,
+              ariaColSpan: adjustedColumns.length,
             },
             defaultRender,
           );
         }
-      : undefined;
+      : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
+          return defaultRender({
+            ...groupHeaderProps,
+            ariaColSpan: adjustedColumns.length,
+          });
+        };
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
@@ -379,13 +389,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   ]);
 
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
-    if (groupProps) {
-      return {
-        ...groupProps,
-        onRenderFooter: finalOnRenderDetailsGroupFooter,
-        onRenderHeader: finalOnRenderDetailsGroupHeader,
-      };
-    }
+    return {
+      ...groupProps,
+      onRenderFooter: finalOnRenderDetailsGroupFooter,
+      onRenderHeader: finalOnRenderDetailsGroupHeader,
+    };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
 
   const sumColumnWidths = useConst(() =>
@@ -517,6 +525,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       groupProps={finalGroupProps}
       items={items}
       onRenderCell={onRenderCell}
+      role="presentation"
       selection={selection}
       selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
       dragDropEvents={dragDropEvents}
@@ -589,9 +598,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         role="grid"
         aria-label={ariaLabelForGrid}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
-        aria-colcount={
-          (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
-        }
+        aria-colcount={colCount}
         aria-readonly="true"
         aria-busy={isPlaceholderData}
       >
