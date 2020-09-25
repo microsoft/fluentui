@@ -41,7 +41,7 @@ const MenuExamplePositioningUpdateShorthand = () => {
 
       <hr style={{ margin: 100 }} />
       <div style={{ float: 'right' }}>
-        <button id="open" onClick={() => setMenuOpen(true)}>
+        <button id="set-open" onClick={() => setMenuOpen(true)}>
           Set open
         </button>
         <button id="set-height" onClick={() => setHeight(300)}>

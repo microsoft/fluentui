@@ -49,7 +49,7 @@ const MenuExamplePositioningShorthand = () => {
 
       <hr style={{ margin: 50 }} />
 
-      <button id="open" onClick={() => setMenuOpen(true)}>
+      <button id="set-open" onClick={() => setMenuOpen(true)}>
         Set open
       </button>
       <button id="above" onClick={() => setPosition('above')}>
