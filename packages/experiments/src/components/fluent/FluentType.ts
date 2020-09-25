@@ -1,1 +1,1 @@
-export * from '@uifabric/fluent-theme/lib/fluent/FluentType';
+export { FontSizes } from '@fluentui/theme/lib/fonts/FluentFonts';

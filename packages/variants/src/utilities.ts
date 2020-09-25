@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react';
+import { ITheme } from '@fluentui/theme';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from './variants';
 
 /**
