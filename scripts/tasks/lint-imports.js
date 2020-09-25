@@ -16,11 +16,6 @@
  *   exportMulti: ImportErrorGroup;
  *   exportDefault: ImportErrorGroup;
  * }} ImportErrors
- *
- * @typedef {{
- *   totalImportKeywords: number;
- *   totalImportStatements: number;
- * }} ImportStats
  */
 
 const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
@@ -82,28 +77,13 @@ function lintImports() {
       exportMulti: { count: 0, matches: {} },
       exportDefault: { count: 0, matches: {} },
     };
-    /** @type {ImportStats} */
-    const importStats = {
-      totalImportKeywords: 0,
-      totalImportStatements: 0,
-    };
 
     for (const file of files) {
       const isExample = file.includes('.Example.') && !file.includes('.scss');
 
       if (!file.includes('.test.ts')) {
-        _evaluateFile(file, importErrors, importStats, isExample);
+        _evaluateFile(file, importErrors, isExample);
       }
-    }
-
-    // A mismatch here identifies a potential issue with the import regex properly matching all import statements.
-    // If you're here for this error check out commented out code in _evaluateFile for troubleshooting.
-    if (importStats.totalImportKeywords !== importStats.totalImportStatements) {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
-      console.log('WARNING: Potential missed import statements.');
-      console.log(`Import keywords found: ${importStats.totalImportKeywords}`);
-      console.log(`Import statements found: ${importStats.totalImportStatements}`);
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
     }
 
     if (reportFilePathErrors(importErrors)) {
@@ -145,29 +125,14 @@ function lintImports() {
   /**
    * @param {string} filePath
    * @param {ImportErrors} importErrors
-   * @param {ImportStats} importStats
    * @param {boolean} isExample
    */
-  function _evaluateFile(filePath, importErrors, importStats, isExample) {
-    const importStatementRegex = /^import [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
+  function _evaluateFile(filePath, importErrors, isExample) {
+    const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
 
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const importKeywords = fileContent.match(/^import /gm);
     const importStatements = fileContent.match(new RegExp(importStatementRegex, 'gm'));
-
-    importStats.totalImportKeywords += importKeywords ? importKeywords.length : 0;
-    importStats.totalImportStatements += importStatements ? importStatements.length : 0;
-
-    // This code is left here to help troubleshoot any instances of mismatch import keywords and statements.
-    // if (importKeywords && (!importStatements || importKeywords.length !== importStatements.length)) {
-    //   console.log(`\r\nCould not detect import in ${filePath}! ('${importKeywords.length} keywords vs. ${importStatements ? importStatements.length : 0})`);
-    //   console.log(`importStatements: ${importStatements}`);
-    // }
-
-    importStatements.push(
-      ...(fileContent.match(new RegExp(importStatementRegex.source.replace('import', 'export'), 'gm')) || []),
-    );
 
     if (importStatements) {
       importStatements.forEach(statement => {
