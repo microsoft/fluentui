@@ -1,5 +1,5 @@
 import { IRawStyle, IStyleFunction, FontWeights, getFocusStyle } from 'office-ui-fabric-react';
-import { NeutralColors, MotionDurations, MotionTimings } from '@uifabric/fluent-theme';
+import { NeutralColors, MotionDurations, MotionTimings } from '@fluentui/theme';
 import { IColorPaletteStyleProps, IColorPaletteStyles } from './ColorPalette.types';
 
 const swatchGap = '4px';
