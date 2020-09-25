@@ -1,34 +1,59 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { TreeTitleStylesProps } from '../../../../components/Tree/TreeTitle';
+import { TreeTitleStylesProps, treeTitleSlotClassNames } from '../../../../components/Tree/TreeTitle';
 import { TreeTitleVariables } from './treeTitleVariables';
 import { pxToRem } from '../../../../utils';
 import { checkboxIndicatorUrl } from '../Checkbox/checkboxIndicatorUrl';
 import { checkboxIndicatorIndeterminatedUrl } from './checkboxIndicatorIndeterminatedUrl';
 
 export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
-    padding: v.padding,
-    cursor: 'pointer',
-    color: v.color,
-    position: 'relative',
-    marginLeft: pxToRem(1 + (p.level - 1) * 10),
-    paddingRight: v.paddingRight,
-    paddingLeft: v.paddingLeft,
-    ...(p.selectable && {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      ':hover': {
-        background: v.hoverBackground,
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
+
+    return {
+      padding: v.padding,
+      cursor: 'pointer',
+      color: v.color,
+      position: 'relative',
+      marginLeft: pxToRem(1 + (p.level - 1) * 10),
+      paddingRight: v.paddingRight,
+      paddingLeft: v.paddingLeft,
+      ...(p.selectable && {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }),
+      ':focus': {
+        ...(p.selectable && {
+          [`> .${treeTitleSlotClassNames.indicator}`]: {
+            visibility: 'visible',
+          },
+        }),
+        ...borderFocusStyles[':focus'],
       },
-    }),
-    ...getBorderFocusStyles({ variables: siteVariables }),
-  }),
+      ':focus-visible': {
+        ...borderFocusStyles[':focus-visible'],
+      },
+      ':hover': {
+        ...(p.selectable && {
+          background: v.hoverBackground,
+          [`> .${treeTitleSlotClassNames.indicator}`]: {
+            visibility: 'visible',
+          },
+        }),
+      },
+      ...(p.showIndicator && {
+        [`> .${treeTitleSlotClassNames.indicator}`]: {
+          visibility: 'visible',
+        },
+      }),
+    };
+  },
 
   selectionIndicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'inline-block',
+    visibility: 'hidden',
     float: 'right',
     verticalAlign: 'middle',
     boxShadow: 'unset',

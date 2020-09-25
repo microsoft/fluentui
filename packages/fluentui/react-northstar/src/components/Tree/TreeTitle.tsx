@@ -72,14 +72,14 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** For selectable parents define if all nested children are checked */
   indeterminate?: boolean;
-
-  showIndicator?: boolean;
 }
 
 export type TreeTitleStylesProps = Pick<
   TreeTitleProps,
   'selected' | 'selectable' | 'disabled' | 'indeterminate' | 'level'
->;
+> & {
+  showIndicator: boolean;
+};
 
 export const treeTitleClassName = 'ui-tree__title';
 
@@ -113,7 +113,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     selectable,
     expanded,
     indeterminate,
-    showIndicator,
   } = props;
 
   const getA11Props = useAccessibility<TreeTitleBehaviorProps>(accessibility, {
@@ -150,6 +149,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       selectable,
       indeterminate,
       level,
+      showIndicator: selectable && ((hasSubtree && expanded) || selected || indeterminate),
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -172,9 +172,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       selected,
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(_.isEmpty(selectionIndicator) && {
-          styles: resolvedStyles.selectionIndicator,
-        }),
+        styles: resolvedStyles.selectionIndicator,
       }),
     }),
   });
@@ -190,7 +188,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       })}
     >
       {childrenExist(children) ? children : content}
-      {selectable && (showIndicator || (hasSubtree && expanded) || selected || indeterminate) && selectIndicator}
+      {selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -212,7 +210,6 @@ TreeTitle.propTypes = {
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,
-  showIndicator: PropTypes.bool,
 };
 TreeTitle.defaultProps = {
   as: 'a',

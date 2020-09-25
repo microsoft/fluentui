@@ -429,7 +429,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
               expanded: isSubtreeExpanded,
               selected: isSelectedItem(item),
               selectable,
-              ...(isSubtree && !item.selectableParent && { selectable: false }),
               renderItemTitle,
               id,
               key: id,

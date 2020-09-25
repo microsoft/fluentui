@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, Text } from '@fluentui/react-northstar';
+import { Tree } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -72,11 +72,6 @@ const items = [
   {
     id: 'tree-item-2',
     title: 'House Targaryen',
-    selectionIndicator: {
-      children: (Component, { expanded, selected, ...props }) => {
-        return <Text {...props} content={selected ? 'unselect all' : 'select all'} />;
-      },
-    },
     items: [
       {
         id: 'tree-item-21',
