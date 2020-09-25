@@ -5,8 +5,6 @@ const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
 
-const gitRoot = findGitRoot();
-
 module.exports = (/** @type {webpack.Configuration} */ config) => {
   config.resolveLoader = {
     ...config.resolveLoader,
@@ -79,9 +77,7 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.alias = {
     ...getResolveAlias(),
-    '@fluentui/examples$': path.join(gitRoot, 'packages/examples/src'),
-    '@fluentui/examples/lib': path.join(gitRoot, 'packages/examples/src'),
-    '@fluentui/examples/src': path.join(gitRoot, 'packages/examples/src'),
+    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/examples')),
   };
 
   config.plugins.push(

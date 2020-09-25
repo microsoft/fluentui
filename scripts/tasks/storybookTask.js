@@ -54,7 +54,6 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
       quiet,
       port: port || 3000,
       ci,
-      debugWebpack: true,
     });
   };
 };
