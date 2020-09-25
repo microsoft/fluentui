@@ -37,7 +37,7 @@ export const breadcrumbVariables = (siteVars): BreadcrumbVariables => ({
   fontSizeLarge: pxToRem(18),
 
   // Breadcrumb Item
-  currentItemFontWeight: siteVars.fontWeightBold,
+  itemCurrentFontWeight: siteVars.fontWeightBold,
 
   // Breadcrumb Link
   linkPaddingTop: pxToRem(6),
