@@ -48,10 +48,7 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
       ':visited': {
         color: 'inherit',
       },
-      ':focus': borderFocusStyles[':focus'],
-      ':focus-visible': {
-        ...borderFocusStyles[':focus-visible'],
-      },
+      ...borderFocusStyles,
 
       ...(p.size === 'smaller' && {
         gap: v.linkSmallerGap,
