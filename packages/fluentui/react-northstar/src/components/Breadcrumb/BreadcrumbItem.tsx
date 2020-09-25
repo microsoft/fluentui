@@ -29,7 +29,7 @@ export interface BreadcrumbItemProps
   /** The Breadcrumb Link can be disabled. */
   disabled?: boolean;
 
-  /** Indicates if the link is the active */
+  /** Indicates if the link is the active. */
   active?: boolean;
 }
 
