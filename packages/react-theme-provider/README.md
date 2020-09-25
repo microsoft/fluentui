@@ -149,13 +149,13 @@ Deprecations remain to be functional as is but they will be removed in Fluent UI
 
 Before:
 
-```
+```jsx
 <Customizer settings={{ theme }} />
 ```
 
 After:
 
-```
+```jsx
 <ThemeProvider theme={theme} />
 ```
 
@@ -163,11 +163,11 @@ After:
 
 Before:
 
-```
+```jsx
 <Customizer
   scopedSettings={{
     Checkbox: {
-      styles: CheckboxStyles
+      styles: CheckboxStyles,
     },
   }}
 />
@@ -175,7 +175,7 @@ Before:
 
 After:
 
-```
+```jsx
 <ThemeProvider
   theme={{
     components: { Checkbox: { styles: CheckboxStyles } },
@@ -187,7 +187,7 @@ After:
 
 Before:
 
-```
+```jsx
   <CustomizerContext.Consumer>
     {(parentContext: ICustomizerContext) => {
       const theme = parentContext.customizations.settings;
@@ -205,7 +205,7 @@ See options in [Accessing theme](https://github.com/microsoft/fluentui/blob/mast
 
 To do that, instead of calling `loadTheme(your_theme)`, you will simply wrap the root component of your React application once with `ThemeProvider`:
 
-```
+```jsx
 <ThemeProvider theme={your_theme}>
   <App />
 </ThemeProvider>
@@ -213,9 +213,9 @@ To do that, instead of calling `loadTheme(your_theme)`, you will simply wrap the
 
 One caveat here is that if you app has styles which relies on `@microsoft/load-themed-styles`, `ThemeProvider` won't be able to replace `loadTheme` in this case.
 
-### Fabric
+### Fabric component
 
-Instead of using `Fabric`, you can now replace it fully with `ThemeProvider`. Here is how to replace each prop usage:
+Instead of using `Fabric` component, you can now replace it fully with `ThemeProvider`. Here is how to replace each prop usage:
 
 | Fabric             | ThemeProvider                                                                                                                                                                                       |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
