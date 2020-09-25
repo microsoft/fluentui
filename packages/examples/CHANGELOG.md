@@ -1,8 +1,20 @@
 # Change Log - @fluentui/examples
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.3.23)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.3.13..@fluentui/examples_v0.3.23)
+
+### Patches
+
+- Moving examples from all other package into this package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Updating a DetailsList example. ([PR #15221](https://github.com/microsoft/fluentui/pull/15221) by dzearing@hotmail.com)
+- Fix GroupedList expand/collapse behavior ([PR #15228](https://github.com/microsoft/fluentui/pull/15228) by tmichon@microsoft.com)
+- Updating examples for GroupedList. ([PR #14835](https://github.com/microsoft/fluentui/pull/14835) by dzearing@hotmail.com)
 
 ## [0.1.124](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.124)
 
