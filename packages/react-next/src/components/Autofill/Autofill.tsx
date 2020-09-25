@@ -65,7 +65,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   }
 
   public get value(): string {
-    return this.state.inputValue || (this.props.value as string) || '';
+    return this._getControlledValue() || this.state.inputValue || '';
   }
 
   public get selectionStart(): number | null {
@@ -325,6 +325,15 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     }
     return newValue;
   };
+
+  private _getControlledValue(): string | undefined {
+    const { value } = this.props;
+    if (value === undefined || typeof value === 'string') {
+      return value;
+    }
+
+    return value.toString();
+  }
 }
 /**
  * Returns a string that should be used as the display value.
