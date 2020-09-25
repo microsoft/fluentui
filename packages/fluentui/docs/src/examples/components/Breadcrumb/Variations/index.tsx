@@ -5,8 +5,8 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Variations = () => (
   <ExampleSection title="Variations">
     <ComponentExample
-      title="Default"
-      description="A default breadcrumb."
+      title="Breadcrumb sizes"
+      description="A breadcrumb can be sized."
       examplePath="components/Breadcrumb/Variations/BreadcrumbExampleSizes"
     />
   </ExampleSection>

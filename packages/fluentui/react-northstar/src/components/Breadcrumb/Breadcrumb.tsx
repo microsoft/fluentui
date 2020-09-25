@@ -61,6 +61,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     setStart();
     const { accessibility, children, content, className, design, styles, variables, size } = props;
 
+    const contextValue = React.useMemo(() => ({ size }), [size]);
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       rtl: context.rtl,
@@ -90,7 +91,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
           ...unhandledProps,
         })}
       >
-        <BreadcrumbContext.Provider value={{ size }}>
+        <BreadcrumbContext.Provider value={contextValue}>
           <div role="list">{childrenExist(children) ? children : content}</div>
         </BreadcrumbContext.Provider>
       </ElementType>,
