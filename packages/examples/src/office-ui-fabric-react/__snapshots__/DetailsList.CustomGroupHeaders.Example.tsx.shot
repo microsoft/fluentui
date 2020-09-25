@@ -34,7 +34,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={3}
+      aria-colcount={2}
       aria-readonly="true"
       aria-rowcount={521}
       role="grid"
@@ -403,7 +403,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 }
             data-is-focusable={true}
             onClick={[Function]}
-            role="columnheader"
+            role="button"
           >
             <i
               aria-hidden={true}
@@ -910,7 +910,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                       <div
                         className="ms-List"
                         id="GroupedListSection3"
-                        role="presentation"
+                        role="grid"
                       >
                         <div
                           className="ms-List-surface"
@@ -928,7 +928,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={1}
                                 aria-selected={false}
                                 className=
@@ -1244,7 +1243,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -1263,7 +1261,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -1344,7 +1342,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={2}
                                 aria-selected={false}
                                 className=
@@ -1660,7 +1657,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -1679,7 +1675,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -1760,7 +1756,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
                                 className=
@@ -2076,7 +2071,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -2095,7 +2089,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2176,7 +2170,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
                                 className=
@@ -2492,7 +2485,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -2511,7 +2503,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -2592,7 +2584,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={5}
                                 aria-selected={false}
                                 className=
@@ -2908,7 +2899,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -2927,7 +2917,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3008,7 +2998,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={6}
                                 aria-selected={false}
                                 className=
@@ -3324,7 +3313,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -3343,7 +3331,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3424,7 +3412,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={7}
                                 aria-selected={false}
                                 className=
@@ -3740,7 +3727,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -3759,7 +3745,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -3840,7 +3826,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={8}
                                 aria-selected={false}
                                 className=
@@ -4156,7 +4141,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -4175,7 +4159,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4256,7 +4240,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={9}
                                 aria-selected={false}
                                 className=
@@ -4572,7 +4555,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -4591,7 +4573,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -4672,7 +4654,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={10}
                                 aria-selected={false}
                                 className=
@@ -4988,7 +4969,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 </div>
                                 <span
                                   className="ms-GroupSpacer"
-                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5007,7 +4987,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={3}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
