@@ -2,7 +2,6 @@ import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import PerfExampleLayout from './components/PerfExampleLayout';
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
 import DocsBehaviorRoot from './components/DocsBehaviorRoot';
@@ -115,7 +114,6 @@ const Routes = () => (
     <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
       <Switch>
         <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
-        <Route exact path="/maximize-compiled/:exampleName/:rtl?" component={PerfExampleLayout} />
         <Route exact path="/builder" component={Builder} />
         <Route exact path="/builder/maximize" component={FullScreenPreview} />
 

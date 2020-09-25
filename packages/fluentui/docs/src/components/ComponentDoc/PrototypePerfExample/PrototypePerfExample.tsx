@@ -82,14 +82,23 @@ const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
                     };
                   },
                 },
-                content: (
-                  <Flex column>
-                    <Flex padding="padding.medium" fill hAlign="end">
-                      <PrototypeExampleControls examplePath={examplePath} />
+                content: {
+                  key: 'prototype',
+                  content: (
+                    <Flex column>
+                      <Flex padding="padding.medium" fill hAlign="end">
+                        <PrototypeExampleControls examplePath={examplePath} />
+                      </Flex>
+                      {renderPrototype ? (
+                        <React.Suspense fallback={<Loader />}>
+                          <Prototype />
+                        </React.Suspense>
+                      ) : (
+                        ''
+                      )}
                     </Flex>
-                    {renderPrototype ? <Prototype /> : ''}
-                  </Flex>
-                ),
+                  ),
+                },
               },
             ] as any[]
           }

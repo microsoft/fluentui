@@ -17,7 +17,7 @@ const PrototypeExampleControls: React.FC<PrototypeExampleControlsProps> = props 
         <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
       ),
       as: NavLink,
-      to: `/maximize-compiled/${_.kebabCase(
+      to: `/maximize/${_.kebabCase(
         props.examplePath
           .split('/')
           .slice(-1)
@@ -28,6 +28,6 @@ const PrototypeExampleControls: React.FC<PrototypeExampleControlsProps> = props 
     },
   ];
 
-  return <Menu iconOnly aria-label=" Actions for example" items={items} />;
+  return <Menu iconOnly aria-label="Actions for example" items={items} />;
 };
 export default PrototypeExampleControls;
