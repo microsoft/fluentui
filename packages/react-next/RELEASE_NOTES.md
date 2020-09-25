@@ -102,9 +102,14 @@ If you would like to continue using the previous button components for now, upda
   - If you need a former state property which is not included in the relevant `IComponentName` interface, please file an issue and we can consider adding it.
 - In your components which use the converted components, you may need to wrap certain test operations in `act` from `react-dom/test-utils`. [More details here.](https://reactjs.org/docs/test-utils.html#act)
 
+### ThemeProvider
+
+`ThemeProvider` is required to use if any button from `@fluentui/react/lib/Button` is used. We also deprecated `Fabric`, `Customizer` components in favor of using `ThemeProvider`.
+
+Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
+
 ### Others
 
-- `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
@@ -114,6 +119,10 @@ If you would like to continue using the previous button components for now, upda
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+### FocusTrapZone
+
+- `FocusTrapZone's` `FocusStack` now takes an ID instead of component object.
 
 ## New features
 

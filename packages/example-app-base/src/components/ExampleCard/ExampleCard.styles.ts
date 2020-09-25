@@ -3,7 +3,7 @@ import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors } from '@fluentui/theme';
 
 const globalClassNames = {
   root: 'ExampleCard',
