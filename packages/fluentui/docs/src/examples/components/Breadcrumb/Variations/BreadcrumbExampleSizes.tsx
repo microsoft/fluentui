@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb, Flex, ChevronEndIcon, CallControlShareIcon } from '@fluentui/react-northstar';
 
-const BreadcrumbExampleSizes = props => (
+const BreadcrumbExampleSizes = () => (
   <Flex column gap="gap.small">
     <Breadcrumb aria-label="breadcrumb" size="smaller">
       <Breadcrumb.Item>
