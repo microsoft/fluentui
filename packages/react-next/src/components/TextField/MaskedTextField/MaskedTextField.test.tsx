@@ -5,6 +5,7 @@ import { mockEvent } from '../../../common/testUtilities';
 import { act } from 'react-dom/test-utils';
 import { MaskedTextField } from './MaskedTextField';
 import { safeCreate } from '@uifabric/test-utilities';
+import { isConformant } from '../../../common/isConformant';
 
 describe('MaskedTextField', () => {
   it('renders correctly', () => {
@@ -12,6 +13,12 @@ describe('MaskedTextField', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: MaskedTextField,
+    displayName: 'MaskedTextField',
+    disabledTests: ['has-top-level-file'],
   });
 
   it('Moves caret on focus', () => {

@@ -142,3 +142,11 @@ export const Err = <R, E>(value: E): Err<R, E> => {
  * it would be returned in an Err. This allows the rest of the program to execute cleanly.
  */
 export type Result<R, E> = Err<R, E> | Ok<R, E>;
+
+export const isOk = <R, E>(r: Result<R, E>): r is Ok<R, E> => {
+  return r.ok;
+};
+
+export const isErr = <R, E>(r: Result<R, E>): r is Err<R, E> => {
+  return !r.ok;
+};

@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing calendarCellFormatString from date-time-utilities.",
+            "author": "karymes@microsoft.com",
+            "commit": "56d75c89dd99d1711ca6a4e538526f8c9b7db526",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/date-time-utilities_v7.8.1",
       "version": "7.8.1",

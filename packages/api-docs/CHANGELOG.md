@@ -1,8 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.5.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.3.40..@uifabric/api-docs_v7.5.17)
+
+### Patches
+
+- Fix references from theme package. ([PR #15213](https://github.com/microsoft/fluentui/pull/15213) by xgao@microsoft.com)
 
 ## [7.3.40](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.3.40)
 

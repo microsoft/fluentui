@@ -3,6 +3,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
 import { Icon } from '../Icon/Icon';
+import { isConformant } from '../../common/isConformant';
 
 describe('Breadcrumb', () => {
   const items: IBreadcrumbItem[] = [
@@ -87,6 +88,11 @@ describe('Breadcrumb', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: Breadcrumb,
+    displayName: 'Breadcrumb',
   });
 
   it('renders items with expected element type', () => {

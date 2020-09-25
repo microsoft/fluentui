@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonPageProps } from 'office-ui-fabric-react/lib/components/Button/Button.doc';
+import { ButtonPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Button/Button.doc';
 import { DemoPage } from '../DemoPage';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 

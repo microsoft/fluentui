@@ -127,7 +127,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
       measuredDimension = _measurementCache.getCachedMeasurement(nextMeasuredData);
 
-      // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+      // If the measurement isn't in the cache, we need to re-render with some data in a hidden div
       if (measuredDimension === undefined) {
         return {
           dataToMeasure: nextMeasuredData,
@@ -179,7 +179,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       }
 
       measuredDimension = _measurementCache.getCachedMeasurement(nextMeasuredData);
-      // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+      // If the measurement isn't in the cache, we need to re-render with some data in a hidden div
       if (measuredDimension === undefined) {
         return {
           dataToMeasure: nextMeasuredData,
@@ -359,7 +359,7 @@ function useResizeState(
     setMeasureContainer(true);
   }, [props.data]);
 
-  // Because it's possible that we may force more than one rerender per animation frame, we
+  // Because it's possible that we may force more than one re-render per animation frame, we
   // want to make sure that the RAF request is using the most recent data.
   const stateRef = React.useRef<IResizeGroupState>(initialStateData);
   stateRef.current = { renderedData, dataToMeasure, measureContainer, resizeDirection };

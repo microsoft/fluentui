@@ -10,6 +10,7 @@ import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { SizeValue } from '@fluentui/theme';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public
@@ -179,9 +180,6 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokenSet;
-
-// @public (undocumented)
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;

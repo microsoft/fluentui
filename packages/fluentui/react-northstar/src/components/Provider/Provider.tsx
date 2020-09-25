@@ -168,10 +168,14 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
       setUpWhatInput(props.target);
     }
 
+    outgoingContext.renderer.registerUsage();
+
     return () => {
       if (props.target) {
         tryCleanupWhatInput(props.target);
       }
+
+      outgoingContext.renderer.unregisterUsage();
     };
   }, []);
 

@@ -2,6 +2,39 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/examples_v0.3.23",
+      "version": "0.3.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples from all other package into this package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Updating a DetailsList example.",
+            "author": "dzearing@hotmail.com",
+            "commit": "a39779555a6fe5a8c0a33856190564a42f760fe2",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Fix GroupedList expand/collapse behavior",
+            "author": "tmichon@microsoft.com",
+            "commit": "242e7b237a025a7f534148d76f7822fb469f130d",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Updating examples for GroupedList.",
+            "author": "dzearing@hotmail.com",
+            "commit": "452a387dd9353763c6c2adc8946a9378fd654994",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Sep 2020 12:22:12 GMT",
       "tag": "@fluentui/examples_v0.3.13",
       "version": "0.3.13",

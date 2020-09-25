@@ -1,8 +1,51 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Sep 2020 12:22:29 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.141.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.141.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.140.0..office-ui-fabric-react_v7.141.0)
+
+### Minor changes
+
+- Update GroupList and Grouped DetailsList semantics to work with screen readers ([PR #14835](https://github.com/microsoft/fluentui/pull/14835) by sarah.higley@microsoft.com)
+- Support StrictMode in DetailsList hierarchy ([PR #14980](https://github.com/microsoft/fluentui/pull/14980) by tmichon@microsoft.com)
+- Add Callout prop allowDismissOnTargetClick boolean. ([PR #15077](https://github.com/microsoft/fluentui/pull/15077) by taenri@microsoft.com)
+- Adding an elementRef to BaseButton.tsx to allow access to the root DOM element. ([PR #15196](https://github.com/microsoft/fluentui/pull/15196) by czearing@outlook.com)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- DetailsList: reordering FocusZone and SelectionZone to resolve onItemInvoked not being called on pressing enter on an item. ([PR #15221](https://github.com/microsoft/fluentui/pull/15221) by dzearing@hotmail.com)
+- Fix GroupedList expand/collapse behavior ([PR #15228](https://github.com/microsoft/fluentui/pull/15228) by tmichon@microsoft.com)
+
+## [7.140.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.140.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.2..office-ui-fabric-react_v7.140.0)
+
+### Minor changes
+
+- Added a prop preventDismissOnEvent in Callout, and in favor of this deprecated the 3 existing props preventDismissOnScroll, preventDismissOnResize, and preventDismissOnLostFocus in Callout Component ([PR #14842](https://github.com/microsoft/fluentui/pull/14842) by lagoe@microsoft.com)
+- Callouts: Fix a breaking change where new functionality would cause dismissal on giving focus to an iframe ([PR #15192](https://github.com/microsoft/fluentui/pull/15192) by joschect@microsoft.com)
+
+### Patches
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+- Pivot: Fix HC styling for pivot tabs to show text when selected ([PR #15166](https://github.com/microsoft/fluentui/pull/15166) by ololubek@microsoft.com)
+
+## [7.139.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.1)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.139.0..office-ui-fabric-react_v7.139.1)
+
+### Patches
+
+- Add control to the set of keys which dismiss the tooltip ([PR #15000](https://github.com/microsoft/fluentui/pull/15000) by artber@microsoft.com)
+- Fix bug in useKeytipRef function ([PR #15113](https://github.com/microsoft/fluentui/pull/15113) by kinhln@microsoft.com)
 
 ## [7.139.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.139.0)
 

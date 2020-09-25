@@ -78,8 +78,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
-      // TODO: investigate removing
-      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
