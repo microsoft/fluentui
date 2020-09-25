@@ -85,7 +85,6 @@ const Routes = () => (
     <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
       <Switch>
         <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
-        <Route exact path="/maximize-compiled/:exampleName/:rtl?" component={PerfExampleLayout} />
         <Route exact path="/builder" component={Builder} />
         <Route exact path="/builder/maximize" component={FullScreenPreview} />
 
