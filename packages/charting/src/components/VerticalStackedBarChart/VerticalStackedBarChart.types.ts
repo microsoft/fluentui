@@ -7,7 +7,7 @@ import {
   ICartesianChartStyles,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
-} from '@uifabric/charting';
+} from '../../index';
 
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**

@@ -10,15 +10,15 @@ import {
   Async,
   EventGroup,
 } from '../../Utilities';
-import { FocusTrapZone, IFocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
+import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
-import { Overlay } from '@fluentui/react-next/lib/Overlay';
-import { ILayerProps, Layer } from '@fluentui/react-next/lib/Layer';
-import { Popup } from '@fluentui/react-next/lib/Popup';
+import { Overlay } from '../../Overlay';
+import { ILayerProps, Layer } from '../../Layer';
+import { Popup } from '../../Popup';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '@fluentui/react-next';
-import { Icon } from '@fluentui/react-next/lib/Icon';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { Icon } from '../../Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
 

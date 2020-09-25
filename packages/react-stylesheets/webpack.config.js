@@ -1,5 +1,5 @@
-const path = require('path');
-const resources = require('@uifabric/build/webpack/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
 const BUNDLE_NAME = 'react-stylesheets';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -20,10 +20,6 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   },
 
   resolve: {
-    alias: {
-      '@fluentui/react-stylesheets/src': path.join(__dirname, 'src'),
-      '@fluentui/react-stylesheets/lib': path.join(__dirname, 'lib'),
-      '@fluentui/react-stylesheets': path.join(__dirname, 'lib'),
-    },
+    alias: getResolveAlias(true /*useLib*/),
   },
 });

@@ -4,6 +4,7 @@ export interface TreeTitleVariables {
   color: string;
   indicatorColor: string;
   paddingRight: string;
+  paddingLeft: string;
 
   padding: string;
   selectionIndicatorMargin: string;
@@ -30,6 +31,7 @@ export const treeTitleVariables = (siteVars: any): TreeTitleVariables => {
     padding: `${pxToRem(1)} 0`,
 
     paddingRight: pxToRem(20),
+    paddingLeft: pxToRem(20),
     borderColor: siteVars.colorScheme.default.foreground1,
     borderStyle: 'solid',
     borderRadius: pxToRem(3),

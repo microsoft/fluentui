@@ -37,7 +37,6 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/storybook": "^0.4.20",
     "@uifabric/build": "^7.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
