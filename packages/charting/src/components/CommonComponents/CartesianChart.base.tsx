@@ -105,6 +105,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
       tickPadding: this.props.tickPadding,
+      xAxisPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
@@ -119,6 +120,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       tickPadding: 10,
       maxOfYVal: this.props.maxOfYVal,
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+      yAxisPadding: this.props.yAxisPadding,
     };
 
     /**

@@ -7,7 +7,7 @@ import {
   ICartesianChartStyles,
   IHeatMapChartData,
   ILegendsProps,
-} from '@uifabric/charting';
+} from '../../index';
 
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
   /**

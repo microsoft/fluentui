@@ -1,4 +1,10 @@
-import { CartesianChart, IChildProps } from '@uifabric/charting';
+import {
+  CartesianChart,
+  IChildProps,
+  IModifiedCartesianChartProps,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+} from '../../index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -8,7 +14,6 @@ import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
 import { ChartTypes, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
-import { IModifiedCartesianChartProps, IHeatMapChartData, IHeatMapChartDataPoint } from '@uifabric/charting';
 import { Target } from 'office-ui-fabric-react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -153,6 +158,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
+        xAxisPadding={0.02}
+        yAxisPadding={0.02}
         svgFocusZoneProps={{
           direction: FocusZoneDirection.bidirectional,
         }}

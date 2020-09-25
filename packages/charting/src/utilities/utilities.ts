@@ -71,6 +71,7 @@ export interface IXAxisParams {
   showRoundOffXTickValues?: boolean;
   xAxistickSize?: number;
   tickPadding?: number;
+  xAxisPadding?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[];
@@ -95,6 +96,7 @@ export interface IYAxisParams {
   tickPadding?: number;
   eventAnnotationProps?: IEventsAnnotationProps;
   eventLabelHeight?: number;
+  yAxisPadding?: number;
 }
 
 export interface IContainerValues {
@@ -183,11 +185,11 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @returns
  */
 export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
-  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10 } = xAxisParams;
+  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
-    .padding(0.1);
+    .padding(xAxisPadding);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
@@ -257,10 +259,11 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
 }
 
 export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom!, margins.top!]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPadding);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
     .tickPadding(tickPadding)

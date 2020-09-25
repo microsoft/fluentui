@@ -68,7 +68,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/GroupedVerticalBarChart',
         },
         {
-          component: require<any>('../components/HeatMapChart/HeatMapChartPage').HeatMapChart,
+          component: require<any>('../HeatMapChart/HeatMapChartPage').HeatMapChart,
           key: 'HeatMapChart',
           name: 'HeatMapChart',
           url: '#/examples/HeatMapChart',
