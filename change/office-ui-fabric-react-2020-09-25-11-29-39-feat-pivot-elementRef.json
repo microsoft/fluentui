@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Changing Button's span wrapper to a fragment.",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-25T18:29:39.099Z"
+}
