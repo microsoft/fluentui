@@ -9,6 +9,9 @@ variables:
 
 pool: 'Self Host Ubuntu'
 
+workspace:
+  clean: all
+
 steps:
   - template: .devops/templates/tools.yml
 
@@ -99,8 +102,4 @@ steps:
     env:
       STATS_URI: $(STATS_URI)
 
-  - task: DeleteFiles@1
-    inputs:
-      SourceFolder: $(Build.SourcesDirectory)
-      Contents: '**/*'
-    condition: always()
+  - template: .devops/templates/cleanup.yml

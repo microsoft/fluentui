@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/codemods_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: Fix config mod to run if no changes present",
+            "author": "joschect@microsoft.com",
+            "commit": "49d71d6b636bb5d8a71711af3a22ac7229174681",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "@fluentui/codemods_v0.11.3",
       "version": "0.11.3",

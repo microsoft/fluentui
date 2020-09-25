@@ -1,7 +1,7 @@
 // @ts-check
 
-const path = require('path');
-const resources = require('@uifabric/build/webpack/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
 
 const entryPointName = 'fabric-sitev5';
@@ -24,16 +24,7 @@ module.exports = resources.createServeConfig(
     },
 
     resolve: {
-      alias: {
-        '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-        '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-        '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
-        'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-        'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example',
-      },
+      alias: getResolveAlias(),
     },
   }),
 );

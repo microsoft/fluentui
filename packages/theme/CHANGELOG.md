@@ -1,8 +1,21 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.1.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v0.4.0..@fluentui/theme_v1.1.0)
+
+### Minor changes
+
+- Moving SizeValue const from react-button to theme package. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- Bump theme package version to be 1.0.0 since it's used by other major packages. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v0.4.0)
 

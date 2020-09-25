@@ -1,20 +1,18 @@
-let path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
-
-let entry = {
-  [BUNDLE_NAME]: './lib/index.bundle.js',
-};
 
 function createConfig(config, onlyProduction) {
   return resources.createConfig(
     BUNDLE_NAME,
     IS_PRODUCTION,
     {
-      entry,
+      entry: {
+        [BUNDLE_NAME]: './lib/index.bundle.js',
+      },
 
       externals: [
         {
@@ -26,13 +24,7 @@ function createConfig(config, onlyProduction) {
       ],
 
       resolve: {
-        alias: {
-          'office-ui-fabric-react$': path.join(__dirname, 'lib'),
-          'office-ui-fabric-react/src': path.join(__dirname, 'src'),
-          'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
-          'Props.ts.js': 'Props',
-          'Example.tsx.js': 'Example',
-        },
+        alias: getResolveAlias(true /*useLib*/),
       },
 
       ...config,
