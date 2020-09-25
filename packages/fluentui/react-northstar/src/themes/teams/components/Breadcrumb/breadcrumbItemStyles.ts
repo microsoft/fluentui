@@ -8,7 +8,7 @@ export const breadcrumbItemStyles: ComponentSlotStylesPrepared<BreadcrumbItemSty
     alignItems: 'center',
     verticalAlign: 'middle',
     ...(p.active && {
-      fontWeight: v.currentItemFontWeight,
+      fontWeight: v.itemCurrentFontWeight,
     }),
     ...(p.disabled && {
       color: v.disabledColor,

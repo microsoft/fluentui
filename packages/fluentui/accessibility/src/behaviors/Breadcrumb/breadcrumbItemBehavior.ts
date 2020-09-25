@@ -4,7 +4,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='listitem'.
  */
-export const breadcrumbItemBehavior: Accessibility<BreadcrumbItemBehaviorProps> = props => ({
+export const breadcrumbItemBehavior: Accessibility<BreadcrumbItemBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'listitem',

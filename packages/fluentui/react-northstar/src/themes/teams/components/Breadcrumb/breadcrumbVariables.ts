@@ -9,7 +9,7 @@ export interface BreadcrumbVariables {
   fontSizeLarge?: string;
 
   // Breadcrumb Item
-  currentItemFontWeight?: FontWeightProperty;
+  itemCurrentFontWeight?: FontWeightProperty;
 
   // Breadcrumb Link
   linkPaddingTop: string;

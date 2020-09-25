@@ -49,19 +49,6 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
         color: 'inherit',
       },
       ...borderFocusStyles,
-
-      ...(p.size === 'smaller' && {
-        gap: v.linkSmallerGap,
-      }),
-      ...(p.size === 'small' && {
-        gap: v.linkSmallGap,
-      }),
-      ...(p.size === 'medium' && {
-        gap: v.linkMediumGap,
-      }),
-      ...(p.size === 'large' && {
-        gap: v.linkLargeGap,
-      }),
     };
   },
 };

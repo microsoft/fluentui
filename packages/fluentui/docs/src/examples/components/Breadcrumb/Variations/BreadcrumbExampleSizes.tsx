@@ -6,7 +6,7 @@ const BreadcrumbExampleSizes = () => (
     <Breadcrumb aria-label="breadcrumb" size="smaller">
       <Breadcrumb.Item>
         <Breadcrumb.Link href="">
-          <CallControlShareIcon />
+          <CallControlShareIcon xSpacing="after" />
           Home
         </Breadcrumb.Link>
       </Breadcrumb.Item>
@@ -22,7 +22,7 @@ const BreadcrumbExampleSizes = () => (
     <Breadcrumb aria-label="breadcrumb" size="small">
       <Breadcrumb.Item>
         <Breadcrumb.Link href="">
-          <CallControlShareIcon />
+          <CallControlShareIcon xSpacing="after" />
           Home
         </Breadcrumb.Link>
       </Breadcrumb.Item>
@@ -38,7 +38,7 @@ const BreadcrumbExampleSizes = () => (
     <Breadcrumb aria-label="breadcrumb" size="medium">
       <Breadcrumb.Item>
         <Breadcrumb.Link href="">
-          <CallControlShareIcon />
+          <CallControlShareIcon xSpacing="after" />
           Home
         </Breadcrumb.Link>
       </Breadcrumb.Item>
@@ -54,7 +54,7 @@ const BreadcrumbExampleSizes = () => (
     <Breadcrumb aria-label="breadcrumb" size="large">
       <Breadcrumb.Item>
         <Breadcrumb.Link href="">
-          <CallControlShareIcon />
+          <CallControlShareIcon xSpacing="after" />
           Home
         </Breadcrumb.Link>
       </Breadcrumb.Item>

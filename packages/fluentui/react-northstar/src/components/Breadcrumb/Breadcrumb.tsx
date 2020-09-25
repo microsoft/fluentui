@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import {
   compose,
   useFluentContext,
@@ -35,7 +36,7 @@ export interface BreadcrumbProps
   accessibility?: Accessibility<BreadcrumbBehaviorProps>;
 
   /** Breadcrumb can be sized */
-  size?: SizeValue;
+  size?: Exclude<SizeValue, 'larger' | 'largest'>;
 }
 
 export type BreadcrumbStylesProps = Required<Pick<BreadcrumbProps, 'size'>>;
@@ -123,7 +124,10 @@ Breadcrumb.defaultProps = {
   accessibility: breadcrumbBehavior,
 };
 
-Breadcrumb.propTypes = commonPropTypes.createCommon();
+Breadcrumb.propTypes = {
+  ...commonPropTypes.createCommon(),
+  size: PropTypes.oneOf(['smaller', 'small', 'medium', 'large']),
+};
 
 Breadcrumb.Item = BreadcrumbItem;
 Breadcrumb.Divider = BreadcrumbDivider;
