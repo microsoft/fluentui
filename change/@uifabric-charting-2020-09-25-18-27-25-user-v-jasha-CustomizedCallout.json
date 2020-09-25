@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Custom callout for line chart and area chart",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-09-25T12:57:10.021Z"
+}
