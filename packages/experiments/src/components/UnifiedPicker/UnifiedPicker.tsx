@@ -118,8 +118,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return !focusedItemIndices.includes(dropContext!.index);
   };
 
-  const _onDrop = (item?: any, event?: DragEvent): void => {
+  const _onDropAutoFill = (event?: DragEvent) => {
+    insertIndex = selectedItems.length;
+    _onDropInner(event);
+  };
+
+  const _onDropList = (item?: any, event?: DragEvent): void => {
     insertIndex = selectedItems.indexOf(item);
+    _onDropInner(event);
+  };
+
+  const _onDropInner = (event?: DragEvent): void => {
     let isDropHandled = false;
     if (event?.dataTransfer) {
       event.preventDefault();
@@ -175,12 +184,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(-1);
   };
 
+  const _onDragOver = (event?: React.DragEvent<HTMLDivElement>) => {
+    event?.preventDefault();
+  };
+
   const defaultDragDropEvents: IDragDropEvents = {
     canDrop: _canDrop,
     canDrag: () => true,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
-    onDrop: _onDrop,
+    onDrop: _onDropList,
     onDragStart: _onDragStart,
     onDragEnd: _onDragEnd,
   };
@@ -364,6 +377,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   aria-haspopup="listbox"
                   role="combobox"
                   className={css('ms-BasePicker-div', classNames.pickerDiv)}
+                  onDrop={_onDropAutoFill}
+                  onDragOver={_onDragOver}
                 >
                   <Autofill
                     {...(inputProps as IInputProps)}

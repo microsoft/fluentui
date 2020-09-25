@@ -173,6 +173,11 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
           updatedItems.push(item);
         }
       }
+      if (insertIndex === currentItems.length) {
+        newItems.forEach(draggedItem => {
+          updatedItems.push(draggedItem);
+        });
+      }
       setPeopleSelectedItems(updatedItems);
     }
   };

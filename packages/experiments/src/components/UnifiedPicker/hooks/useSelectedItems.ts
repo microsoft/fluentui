@@ -49,6 +49,12 @@ export const useSelectedItems = <T extends {}>(
         updatedItems.push(item);
       }
     }
+    // if the insert index is at the end, add them now
+    if (insertIndex === currentItems.length) {
+      itemsToAdd.forEach(draggedItem => {
+        updatedItems.push(draggedItem);
+      });
+    }
     setSelectedItems(updatedItems);
     selection.setItems(updatedItems);
   };
