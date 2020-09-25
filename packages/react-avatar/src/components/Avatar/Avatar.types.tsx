@@ -89,6 +89,9 @@ export type AvatarTokenSet = {
   /** Background shown behind the initials or icon */
   background?: string;
 
+  /** Color of the initials or icon */
+  color?: string;
+
   /** Border radius */
   borderRadius?: string;
 

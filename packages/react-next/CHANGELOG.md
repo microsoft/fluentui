@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.116)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.115..@fluentui/react-next_v8.0.0-alpha.116)
+
+### Changes
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.115)
 

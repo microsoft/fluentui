@@ -41,7 +41,7 @@ export const makeVariants = <TTokenSetType extends TokenSetType>(
   prefix: string,
   variants: Variants | ((theme: Theme) => Variants),
 ) => {
-  const variantToClassName: Record<string, string> = {}; // useThemeSettings(id);
+  const variantToClassName: Record<string, string> = {};
 
   return (state: GenericDictionary) => {
     // Grab the theme.

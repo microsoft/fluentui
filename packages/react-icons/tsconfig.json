@@ -16,11 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"],
-    "paths": {
-      "@fluentui/react-icons/lib/*": ["./src/*"],
-      "@fluentui/react-icons": ["./src"]
-    }
+    "types": ["jest", "webpack-env"]
   },
   "include": ["src"]
 }
