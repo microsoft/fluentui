@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing imports so that they correctly point to moved @fluentui/examples examples.",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-19T01:58:34.953Z"
+}

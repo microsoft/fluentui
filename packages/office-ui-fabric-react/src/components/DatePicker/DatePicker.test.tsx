@@ -5,11 +5,11 @@ import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { resetIds, KeyCodes } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { PrimaryButton } from '../../Button';
 
 describe('DatePicker', () => {
   const DayPickerStrings: IDatePickerStrings = {

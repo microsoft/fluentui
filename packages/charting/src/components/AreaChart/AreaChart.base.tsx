@@ -12,7 +12,7 @@ import {
   IBasestate,
   ILineChartDataPoint,
   ILineChartPoints,
-} from '@uifabric/charting';
+} from '../../index';
 import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
 import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
