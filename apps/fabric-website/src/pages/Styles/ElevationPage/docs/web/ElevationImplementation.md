@@ -21,7 +21,7 @@ import { DefaultEffects } from '@fluentui/react';
 ```
 
 ```jsx
-import { Depths } from '@uifabric/fluent-theme';
+import { Depths } from '@fluentui/theme';
 
 <div style={{ boxShadow: Depths.depth8 }} />;
 ```
