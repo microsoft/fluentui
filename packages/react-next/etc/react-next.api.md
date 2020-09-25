@@ -2831,6 +2831,7 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
     onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     selectedId?: string;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;

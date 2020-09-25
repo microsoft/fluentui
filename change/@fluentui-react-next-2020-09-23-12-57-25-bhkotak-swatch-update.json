@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Exposed onRenderItem function for SwatchColorPicker",
+  "packageName": "@fluentui/react-next",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-09-23T07:27:25.011Z"
+}

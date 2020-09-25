@@ -62,6 +62,6 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
   }
 
   private _onRenderDetailsHeader(props: IDetailsHeaderProps) {
-    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
+    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Expand collapse groups'} />;
   }
 }
