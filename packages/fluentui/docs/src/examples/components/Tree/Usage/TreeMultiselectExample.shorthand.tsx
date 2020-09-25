@@ -27,21 +27,6 @@ const items = [
           {
             id: '4',
             title: 'Cersei',
-            selectionIndicator: {
-              children: (Component, { selected, onClick, ...props }) => {
-                return (
-                  <Component {...props}>
-                    <input
-                      data-is-focusable={false}
-                      type="checkbox"
-                      checked={selected}
-                      onClick={onClick}
-                      onChange={() => {}}
-                    />
-                  </Component>
-                );
-              },
-            },
           },
           {
             id: '5',
