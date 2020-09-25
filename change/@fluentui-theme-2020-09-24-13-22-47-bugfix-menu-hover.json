@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Disable pointer-events during slide animations",
+  "packageName": "@fluentui/theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-24T20:22:47.107Z"
+}
