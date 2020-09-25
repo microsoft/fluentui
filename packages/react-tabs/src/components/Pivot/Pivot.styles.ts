@@ -199,7 +199,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         [`&[data-is-overflowing='true']`]: {
           display: 'none',
           selectors: {
-            [`~ * .${classNames.overflowMenuButton}`]: {
+            [`~ .${classNames.overflowMenuButton}`]: {
               visibility: 'visible',
             },
           },
