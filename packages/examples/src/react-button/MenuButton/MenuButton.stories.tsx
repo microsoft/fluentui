@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
 import { Stack, Text } from 'office-ui-fabric-react';
-import * as classes from '../utils/Button.stories.scss';
+import * as classes from '../Button.stories.scss';
 
 const menuProps = {
   items: [

@@ -209,7 +209,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: ButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useButtonClasses: (state: ButtonState) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;

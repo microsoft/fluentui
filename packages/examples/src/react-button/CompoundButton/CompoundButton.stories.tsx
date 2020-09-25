@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CompoundButton, CompoundButtonProps } from '@fluentui/react-button';
-import * as classes from '../utils/Button.stories.scss';
+import * as classes from '../Button.stories.scss';
 
 /**
  * Temporary Stack until there's one in its own package.
