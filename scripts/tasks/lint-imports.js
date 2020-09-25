@@ -165,6 +165,10 @@ function lintImports() {
     //   console.log(`importStatements: ${importStatements}`);
     // }
 
+    importStatements.push(
+      ...(fileContent.match(new RegExp(importStatementRegex.source.replace('import', 'export'), 'gm')) || []),
+    );
+
     if (importStatements) {
       importStatements.forEach(statement => {
         const parts = importStatementRegex.exec(statement);
