@@ -27,10 +27,8 @@ import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
-import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -2376,7 +2374,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
-    clearButtonProps?: IButtonProps_2;
+    clearButtonProps?: IButtonProps;
     componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
@@ -2642,8 +2640,8 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     decrementButtonIcon?: IIconProps;
     defaultValue?: string;
     disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles_2>;
-    iconButtonProps?: IButtonProps_3;
+    downArrowButtonStyles?: Partial<IButtonStyles>;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -2654,16 +2652,16 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string) => string | void;
+    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string) => string | void;
+    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
     styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles_2>;
+    upArrowButtonStyles?: Partial<IButtonStyles>;
     value?: string;
 }
 
@@ -2808,6 +2806,7 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
     onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     selectedId?: string;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;

@@ -38,7 +38,7 @@ function sharedAfterEach() {
   }
   textField = undefined;
 
-  // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
+  // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
@@ -57,7 +57,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders multiline unresizable correctly', () => {
+  it('renders multiline non resizable correctly', () => {
     const component = create(<TextField label="Label" multiline={true} resizable={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -103,7 +103,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should resepect user component and subcomponent styling', () => {
+  it('should respect user component and subcomponent styling', () => {
     const styles: Partial<ITextFieldStyles> = {
       root: 'root-testClassName',
       subComponentStyles: {

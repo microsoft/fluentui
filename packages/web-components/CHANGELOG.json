@@ -2,6 +2,44 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/web-components_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Line endings on the api report are changing again...",
+            "author": "dzearing@hotmail.com",
+            "commit": "452a387dd9353763c6c2adc8946a9378fd654994",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/web-components_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "center align the start and end slot on tabs",
+            "author": "37851220+khamudom@users.noreply.github.com",
+            "commit": "7a02678df2c112ad182bb6e29179cefb79e8f5d1",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Feat: adds automatic card background color calculation",
+            "author": "jes@microsoft.com",
+            "commit": "c32b0e3402448c68ffb8db0d5386834b6c540239",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@fluentui/web-components_v0.3.1",
       "version": "0.3.1",

@@ -18,11 +18,7 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global", "node"],
-    "paths": {
-      "@uifabric/tsx-editor/lib/*": ["./src/*"],
-      "@uifabric/tsx-editor": ["./src"]
-    }
+    "types": ["jest", "webpack-env", "custom-global", "node"]
   },
   "include": ["src"]
 }

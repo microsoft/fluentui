@@ -66,5 +66,9 @@
   },
   "[handlebars]": {
     "editor.formatOnSave": false
-  }
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifierEnding": "index",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "index"
 }
