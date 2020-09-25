@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
 import { useFocusRects } from '@uifabric/utilities';
-import { useButtonVariants } from './useButtonVariants';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useButtonClasses } from './useButtonClasses';
 
