@@ -566,11 +566,13 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           setActiveItemIds(activeItemIds);
         }}
       />
+      {/*
+      TODO: enable after Nov 2020 when we have data
       <Flex column>
         <NavLink to="/perf-tests" exact style={topItemTheme}>
           <Box>Performance Tests</Box>
         </NavLink>
-      </Flex>
+      </Flex> */}
     </Segment>
   );
 };
