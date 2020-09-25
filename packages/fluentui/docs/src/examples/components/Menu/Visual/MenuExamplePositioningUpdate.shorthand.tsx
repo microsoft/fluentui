@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Menu, MenuProps, PopperRefHandle } from '@fluentui/react-northstar';
 
 const MenuExamplePositioningUpdateShorthand = () => {
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
   const [height, setHeight] = React.useState<number>(50);
   const popperRef = React.useRef<PopperRefHandle>();
 
@@ -22,7 +23,7 @@ const MenuExamplePositioningUpdateShorthand = () => {
         ],
         popper: { position: 'above', popperRef },
       },
-      menuOpen: true,
+      menuOpen,
     },
   ];
 
@@ -40,6 +41,9 @@ const MenuExamplePositioningUpdateShorthand = () => {
 
       <hr style={{ margin: 100 }} />
       <div style={{ float: 'right' }}>
+        <button id="open" onClick={() => setMenuOpen(true)}>
+          Set open
+        </button>
         <button id="set-height" onClick={() => setHeight(300)}>
           Set height
         </button>

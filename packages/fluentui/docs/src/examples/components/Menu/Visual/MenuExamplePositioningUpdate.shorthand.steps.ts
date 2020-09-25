@@ -4,6 +4,7 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
+        .click('#set-open')
         .click('#set-height')
         .snapshot('Updates height to collide with top edge')
         .click('#reposition')
