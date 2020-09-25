@@ -11,6 +11,7 @@ import {
   ILineChartPoints,
   IMargins,
   IRefArrayData,
+  ICustomizedCalloutData,
 } from '../../index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -30,6 +31,10 @@ export interface ILineChartState extends IBasestate {
   // This is a boolean value which is set to true
   // when at least one legend is selected
   isSelectedLegend: boolean;
+  // This value will be used as customized callout props - point callout.
+  dataPointCalloutProps?: ICustomizedCalloutData;
+  // This value will be used as Customized callout props - For stack callout.
+  stackCalloutProps?: ICustomizedCalloutData;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -125,6 +130,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         legendBars={legendBars}
         getmargins={this._getMargins}
         getGraphData={this._getLinesData}
+        customizedCallout={this._getCustomizedCallout()}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -170,6 +176,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     return (this.lines = this._createLines());
+  };
+
+  private _getCustomizedCallout = () => {
+    return this.props.onRenderCalloutPerStack
+      ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
+      : this.props.onRenderCalloutPerDataPoint
+      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+      : null;
   };
 
   private _canSelectOnlySingleLegend = (point: ILineChartPoints) => {
@@ -421,6 +435,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           refSelected: obj.refElement,
           hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
           YValueHover: found.values,
+          stackCalloutProps: found!,
+          dataPointCalloutProps: found!,
         });
       }
     });
@@ -451,6 +467,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       refSelected: mouseEvent,
       hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
       YValueHover: found.values,
+      stackCalloutProps: found!,
+      dataPointCalloutProps: found!,
     });
   };
 

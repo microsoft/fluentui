@@ -1,5 +1,12 @@
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IChartProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from '../../types/index';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  IChartProps,
+  ILineChartPoints,
+  IMargins,
+  IBasestate,
+  IRefArrayData,
+  ICustomizedCalloutData,
+} from '../../types/index';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
 import {
   ICartesianChartProps,
@@ -24,6 +31,16 @@ export interface ILineChartProps extends ICartesianChartProps {
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];

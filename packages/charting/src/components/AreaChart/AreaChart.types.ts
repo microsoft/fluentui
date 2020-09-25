@@ -1,4 +1,4 @@
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IChartProps,
   IRefArrayData,
@@ -6,6 +6,7 @@ import {
   ILineChartDataPoint,
   ILineChartPoints,
   IMargins,
+  ICustomizedCalloutData,
 } from '../../types/index';
 import {
   ICartesianChartStyles,
@@ -32,6 +33,16 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}
