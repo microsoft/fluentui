@@ -114,6 +114,10 @@ If you would like to continue using the previous button components for now, upda
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
 
+### FocusTrapZone
+
+- `FocusTrapZone's` `FocusStack` now takes an ID instead of component object.
+
 ## New features
 
 - Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
