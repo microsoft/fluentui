@@ -32,9 +32,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
         }),
         ...borderFocusStyles[':focus'],
       },
-      ':focus-visible': {
-        ...borderFocusStyles[':focus-visible'],
-      },
+      ':focus-visible': borderFocusStyles[':focus-visible'],
       ':hover': {
         ...(p.selectable && {
           background: v.hoverBackground,
