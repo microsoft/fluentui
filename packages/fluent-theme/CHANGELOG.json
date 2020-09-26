@@ -2,6 +2,29 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.16",
+      "version": "7.3.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/fluent-theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update FluentMotion import path from theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "7f1767d9469a917dcea9dbe3142c8fef3a36b8ad",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@uifabric/fluent-theme_v7.3.14",
       "version": "7.3.14",

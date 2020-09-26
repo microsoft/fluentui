@@ -189,7 +189,11 @@ describe('Callout', () => {
     let previousFocusElement;
     let isFocused;
     let restoreCalled = false;
-    const onRestoreFocus = (options: { originalElement: HTMLElement | Window | undefined; containsFocus: boolean }) => {
+    const onRestoreFocus = (options: {
+      originalElement: HTMLElement | Window | undefined;
+      containsFocus: boolean;
+      documentContainsFocus: boolean;
+    }) => {
       previousFocusElement = options.originalElement;
       isFocused = options.containsFocus;
       restoreCalled = true;

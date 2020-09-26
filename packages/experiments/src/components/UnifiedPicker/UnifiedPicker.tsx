@@ -363,6 +363,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   aria-expanded={isSuggestionsShown}
                   aria-haspopup="listbox"
                   role="combobox"
+                  className={css('ms-BasePicker-div', classNames.pickerDiv)}
                 >
                   <Autofill
                     {...(inputProps as IInputProps)}

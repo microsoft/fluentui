@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.117)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.116..@fluentui/react-next_v8.0.0-alpha.117)
+
+### Changes
+
+- Delete unneeded compat exports and move button migration guide ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Porting a patch to allow SpinButton to pass event information. ([PR #15164](https://github.com/microsoft/fluentui/pull/15164) by czearing@outlook.com)
 
 ## [8.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.116)
 

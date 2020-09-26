@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-button_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add migration guide to readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@fluentui/react-button_v0.14.0",
       "version": "0.14.0",
