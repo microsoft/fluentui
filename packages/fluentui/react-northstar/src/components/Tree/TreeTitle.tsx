@@ -26,6 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { TreeContext } from './utils/index';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -95,7 +96,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-
+  const { onFocusParent } = React.useContext(TreeContext);
   const {
     accessibility,
     children,
@@ -117,6 +118,11 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     indeterminate,
   } = props;
 
+  const handleFocusParent = e => {
+    _.invoke(props, 'onFocusParent', e, props);
+    onFocusParent(props.parent);
+  };
+
   const getA11Props = useAccessibility(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
@@ -126,6 +132,12 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         }
         e.stopPropagation();
         handleClick(e);
+      },
+      focusParent: e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        handleFocusParent(e);
       },
       performSelection: e => {
         e.preventDefault();
@@ -144,6 +156,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     }),
     rtl: context.rtl,
   });
+
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: treeTitleClassName,
     mapPropsToStyles: () => ({
