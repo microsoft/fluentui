@@ -6,7 +6,7 @@ import {
   IHeatMapChartDataPoint,
 } from '../../index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -18,6 +18,11 @@ import { Target } from 'office-ui-fabric-react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 
+type DataSet = {
+  dataSet: RectanglesGraphData;
+  yAxisPoints: string[];
+  xAxisPoints: string[];
+};
 type FlattenData = IHeatMapChartDataPoint & {
   legend: string;
 };
@@ -81,6 +86,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
   private _stringXAxisDataPoints: string[];
   private _stringYAxisDataPoints: string[];
+  private _createSet: (
+    data: IHeatMapChartData[],
+    xDate: string | undefined,
+    xNum: string | undefined,
+    yDate: string | undefined,
+    yNum: string | undefined,
+  ) => DataSet;
   private _dataSet: RectanglesGraphData;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _colorScale: any;
@@ -103,11 +115,18 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
      * and y-axis datapoints(which will render in the axis in graph)
-     *  and assign all of them to private variabel _dataSet , _stringXAxisDatapoints,
-     * _stringYAxisDataPoint rescpetively
+     * we store this in a memoized function, because we want to calulate
+     * this set whenever props changes.
      */
-    this._createNewDataSet();
-    this._colorScale = this._getColorScale();
+    this._createSet = memoizeFunction(
+      (
+        data: IHeatMapChartData[],
+        xDate: string | undefined,
+        xNum: string | undefined,
+        yDate: string | undefined,
+        yNum: string | undefined,
+      ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
+    );
     this.state = {
       isLegendSelected: false,
       activeLegend: '',
@@ -123,7 +142,24 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     };
   }
   public render(): React.ReactNode {
-    const { data } = this.props;
+    const {
+      data,
+      xAxisDateFormatString,
+      xAxisNumberFormatString,
+      yAxisDateFormatString,
+      yAxisNumberFormatString,
+    } = this.props;
+    this._colorScale = this._getColorScale();
+    const { dataSet, xAxisPoints, yAxisPoints } = this._createSet(
+      data,
+      xAxisDateFormatString,
+      xAxisNumberFormatString,
+      yAxisDateFormatString,
+      yAxisNumberFormatString,
+    );
+    this._dataSet = dataSet;
+    this._stringYAxisDataPoints = yAxisPoints;
+    this._stringXAxisDataPoints = xAxisPoints;
     this._classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
     const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isBeakVisible: false,
@@ -264,8 +300,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
             <text
               dominantBaseline={'middle'}
               textAnchor={'middle'}
-              fill={'white'}
-              fontSize={'14px'}
+              className={this._classNames.text}
               transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
             >
               {dataPointObject.rectText}
@@ -402,14 +437,19 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * data and build the heat map, it will support accessibility as
    * specified in the figma
    */
-  private _createNewDataSet = () => {
-    const {
-      data,
-      xAxisDateFormatString,
-      yAxisDateFormatString,
-      xAxisNumberFormatString,
-      yAxisNumberFormatString,
-    } = this.props;
+
+  private _createNewDataSet = (
+    data: IHeatMapChartData[],
+    xAxisDateFormatString: string | undefined,
+    xAxisNumberFormatString: string | undefined,
+    yAxisDateFormatString: string | undefined,
+    yAxisNumberFormatString: string | undefined,
+  ): DataSet => {
+    /**
+     * please do not destructure any of the props here,
+     * instead send them as parameter to this functions so that
+     * this functions get called whenever the prop changes
+     */
     const flattenData: FlattenData[] = [];
     /**
      * below for each loop will store all the datapoints in the one array.
@@ -506,18 +546,23 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     /**
      * assigning new data set
      */
-    this._dataSet = yPoints;
+    const dataSet = yPoints;
     /**
      * These are the Y axis data points which will get rendered in the
      * Y axis in graph
      */
-    this._stringYAxisDataPoints = this._getYAxisDataPoints(uniqueYPoints);
+    const yAxisPoints = this._getYAxisDataPoints(uniqueYPoints);
     /**
      * These are the x axis data points which will get rendered in the
      * x axis in the graph
      */
 
-    this._stringXAxisDataPoints = this._getXAxisDataPoints(uniqueXPoints);
+    const xAxisPoints = this._getXAxisDataPoints(uniqueXPoints);
+    return {
+      dataSet,
+      yAxisPoints,
+      xAxisPoints,
+    };
   };
 
   /**

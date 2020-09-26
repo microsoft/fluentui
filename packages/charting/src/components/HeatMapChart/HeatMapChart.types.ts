@@ -98,7 +98,8 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
 }
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {}
 export interface IHeatMapChartStyles {
-  root: IStyle;
+  root?: IStyle;
+  text?: IStyle;
   subComponentStyles: {
     cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
     calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
