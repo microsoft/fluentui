@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added examples for the heat map",
-  "packageName": "@fluentui/examples",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T04:42:28.282Z"
-}
