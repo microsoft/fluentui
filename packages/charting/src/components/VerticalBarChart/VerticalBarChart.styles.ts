@@ -1,4 +1,4 @@
-import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '@uifabric/charting';
+import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
   const { shouldHighlight } = props;

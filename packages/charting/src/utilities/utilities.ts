@@ -4,7 +4,7 @@ import {
   ILineChartDataPoint,
   IDataPoint,
   IVerticalBarChartDataPoint,
-} from '@uifabric/charting';
+} from '../index';
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';

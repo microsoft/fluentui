@@ -16,7 +16,7 @@ import {
   IVerticalBarChartStyles,
   IVerticalBarChartDataPoint,
   Legends,
-} from '@uifabric/charting';
+} from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartTypes, XAxisTypes, NumericAxis, StringAxis } from '../../utilities/index';
 
