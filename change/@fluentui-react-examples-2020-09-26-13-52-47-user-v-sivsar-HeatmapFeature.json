@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "adding heatmap example",
+  "packageName": "@fluentui/react-examples",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-26T08:22:47.746Z"
+}
