@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "import path changed after latest master puol",
+  "comment": "Code optimization of vertical bar chart - examples updated",
   "packageName": "@fluentui/react-examples",
   "email": "email not defined",
   "dependentChangeType": "patch",
