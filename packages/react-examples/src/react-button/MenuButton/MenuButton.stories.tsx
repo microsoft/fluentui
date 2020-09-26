@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
-import { Stack, Text } from 'office-ui-fabric-react';
+import { ContextualMenu, IContextualMenuProps, Stack, Text } from 'office-ui-fabric-react';
 import * as classes from '../utils/Button.stories.scss';
 
 const menuProps = {
@@ -16,24 +16,28 @@ const menuProps = {
   ],
 };
 
+const Menu = (defaultSlotType: string, props: IContextualMenuProps) => {
+  return <ContextualMenu {...props} {...menuProps} />;
+};
+
 const MenuButtonVariants = (props: MenuButtonProps) => (
   <div className={classes.hStack}>
-    <MenuButton {...props} icon="O" menu={menuProps}>
+    <MenuButton {...props} icon="O" menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" primary menu={menuProps}>
+    <MenuButton {...props} icon="O" primary menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" disabled menu={menuProps}>
+    <MenuButton {...props} icon="O" disabled menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" primary disabled menu={menuProps}>
+    <MenuButton {...props} icon="O" primary disabled menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" ghost menu={menuProps}>
+    <MenuButton {...props} icon="O" ghost menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" ghost disabled menu={menuProps}>
+    <MenuButton {...props} icon="O" ghost disabled menu={Menu}>
       Hello, world
     </MenuButton>
   </div>
@@ -49,22 +53,22 @@ export const MenuButtonCss = () => (
 
     <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
     <div className={classes.vStack}>
-      <MenuButton fluid menu={menuProps}>
+      <MenuButton fluid menu={Menu}>
         Hello, world
       </MenuButton>
-      <MenuButton fluid primary menu={menuProps}>
+      <MenuButton fluid primary menu={Menu}>
         Hello, world
       </MenuButton>
-      <MenuButton fluid disabled menu={menuProps}>
+      <MenuButton fluid disabled menu={Menu}>
         Hello, world
       </MenuButton>
-      <MenuButton fluid primary disabled menu={menuProps}>
+      <MenuButton fluid primary disabled menu={Menu}>
         Hello, world
       </MenuButton>
-      <MenuButton fluid ghost menu={menuProps}>
+      <MenuButton fluid ghost menu={Menu}>
         Hello, world
       </MenuButton>
-      <MenuButton fluid ghost disabled menu={menuProps}>
+      <MenuButton fluid ghost disabled menu={Menu}>
         Hello, world
       </MenuButton>
     </div>
