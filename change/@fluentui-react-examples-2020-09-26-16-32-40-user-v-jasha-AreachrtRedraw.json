@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "render method calling code optmized",
+  "comment": "area chart basic example code updated with change data button",
   "packageName": "@fluentui/react-examples",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-09-26T11:02:40.550Z"
 }
