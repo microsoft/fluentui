@@ -16,12 +16,12 @@
 # docs/  docs@example.com
 
 #### Core build stuff
-scripts/ @dzearing @ecraig12345
+scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/ @layershifter @miroslavstastny
 scripts/webpack/ @layershifter @miroslavstastny
-package.json @ecraig12345 @dzearing
+package.json @ecraig12345 @dzearing @xugao
 prettier.config.js @ecraig12345
 webpack.config.js @ecraig12345
 webpack.serve.config.js @ecraig12345
@@ -29,7 +29,7 @@ jest.config.js @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-*.yml @ecraig12345
+azure-pipelines* @ecraig12345
 .eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
