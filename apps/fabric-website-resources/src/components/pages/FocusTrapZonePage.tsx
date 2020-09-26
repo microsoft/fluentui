@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { FocusTrapZonePageProps } from '@fluentui/examples/lib/office-ui-fabric-react/FocusTrapZone/FocusTrapZone.doc';
+import { FocusTrapZonePageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/FocusTrapZone/FocusTrapZone.doc';
 
 export const FocusTrapZonePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

@@ -77,7 +77,7 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.alias = {
     ...getResolveAlias(),
-    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/examples')),
+    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
   };
 
   config.plugins.push(

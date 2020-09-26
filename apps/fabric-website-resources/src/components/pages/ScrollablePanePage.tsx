@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { ScrollablePanePageProps } from '@fluentui/examples/lib/office-ui-fabric-react/ScrollablePane/ScrollablePane.doc';
+import { ScrollablePanePageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ScrollablePane/ScrollablePane.doc';
 
 export const ScrollablePanePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

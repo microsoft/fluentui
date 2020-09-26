@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { PanelPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Panel/Panel.doc';
+import { PanelPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Panel/Panel.doc';
 
 export const PanelPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
