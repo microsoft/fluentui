@@ -48,6 +48,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         marginRight: 16,
         marginTop: 3,
         fontSize: FontSizes.small,
+        fontFamily: 'inherit',
         overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '& div': {

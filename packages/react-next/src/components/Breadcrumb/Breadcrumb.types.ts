@@ -142,6 +142,11 @@ export interface IBreadcrumbItem {
    * This is not generally recommended because it may prevent activating the link using the keyboard.
    */
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+
+  /**
+   * Optional role for the breadcrumb item (which renders as a button by default)
+   */
+  role?: string;
 }
 
 /**

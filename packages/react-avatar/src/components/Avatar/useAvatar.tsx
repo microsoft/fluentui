@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState } from './Avatar.types';
+import { AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
+import { calcAvatarStyleProps } from './calcAvatarStyleProps';
 import { useMergedRefs } from '@uifabric/react-hooks';
-import { getInitials, nullRender } from '@uifabric/utilities';
+import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
-import { ContactIcon } from '@fluentui/react-icons';
+import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons';
 
 const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
@@ -30,33 +31,36 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       label: { as: 'span' },
       image: { as: Image },
       badge: { as: nullRender },
-      icon: <ContactIcon />,
-      getInitials: getInitials,
+      activeDisplay: 'ring',
+      size: defaultAvatarSize,
+      getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
-      tokens: props.size && { size: `${props.size}px` },
     },
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
-  // Display the initials if the label has no children
+  // Add in props used for styling
+  mergeProps(state, calcAvatarStyleProps(state));
+
+  // Display the initials if there's no label
   if (!state.label.children) {
-    state.label.children = state.getInitials(props.name || '', /*isRtl: */ false);
+    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+    if (initials) {
+      state.label.children = initials;
+    } else if (state.display === 'label') {
+      state.display = 'icon'; // If there are no initials or image, fall back to the icon
+    }
   }
 
-  // Display the icon instead of the initials if requested or there are no initials
-  if (state.display === 'icon' || !state.label.children) {
-    state.label.children = state.icon;
-
-    // Make sure the display prop reflects what's being shown, so styles are applied appropriately
-    if (state.display === 'label') {
-      state.display = 'icon';
-    }
+  // Display the icon if requested
+  if (state.display === 'icon') {
+    state.label.children = state.icon || <DefaultAvatarIcon />;
   }
 
   // Don't show the image if it's not supposed to be displayed
   if (state.display !== 'image') {
-    state.image.as = nullRender;
+    state.image = { as: nullRender };
   }
 
   return { state, render: renderAvatar };

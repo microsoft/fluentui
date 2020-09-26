@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Autofill';
+import './version';
+export * from './components/Autofill/index';

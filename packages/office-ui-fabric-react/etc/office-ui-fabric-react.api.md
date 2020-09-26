@@ -923,6 +923,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
     protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps> | undefined) => JSX.Element;
@@ -930,9 +932,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-}
+    }
 
 // @public (undocumented)
 export enum DetailsListLayoutMode {
@@ -954,6 +954,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     componentWillUnmount(): void;
     // (undocumented)
     focus(forceIntoFirstElement?: boolean): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsRowBaseProps, previousState: IDetailsRowState): IDetailsRowState;
     measureCell(index: number, onMeasureDone: (width: number) => void): void;
     // (undocumented)
     protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
@@ -961,8 +963,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void;
     }
 
 // @public (undocumented)
@@ -1373,6 +1373,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps(nextProps: IGroupedListProps, previousState: IGroupedListState): IGroupedListState;
+    // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
     render(): JSX.Element;
@@ -1380,8 +1382,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     toggleCollapseAll(allCollapsed: boolean): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void;
     }
 
 // @public (undocumented)
@@ -1830,6 +1830,7 @@ export interface IBreadcrumbItem {
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    role?: string;
     text: string;
 }
 
@@ -1968,6 +1969,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLElement>;
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
     href?: string;
@@ -2205,6 +2208,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -2222,11 +2226,16 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
         documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
+    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
+    // @deprecated
     preventDismissOnLostFocus?: boolean;
+    // @deprecated
     preventDismissOnResize?: boolean;
+    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldDismissOnWindowFocus?: boolean;
     // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -3733,6 +3742,8 @@ export interface IDetailsListState {
     // (undocumented)
     focusedItemIndex: number;
     // (undocumented)
+    getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
     isSizing?: boolean;
@@ -4528,6 +4539,7 @@ export interface IDragDropTarget {
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
+    keepInBounds?: boolean;
     keyboardMoveIconProps?: IIconProps;
     menu: React.FunctionComponent<IContextualMenuProps>;
     moveMenuItemText: string;
@@ -4937,6 +4949,7 @@ export interface IGroup {
 
 // @public (undocumented)
 export interface IGroupDividerProps {
+    ariaColSpan?: number;
     className?: string;
     compact?: boolean;
     // (undocumented)
@@ -4992,6 +5005,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
     onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
     selection?: ISelection;
     selectionMode?: SelectionMode;
     styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
@@ -5046,6 +5060,8 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)
@@ -5162,6 +5178,7 @@ export interface IGroupShowAllStyles {
 export interface IGroupSpacerProps {
     count: number;
     indentWidth?: number;
+    role?: string;
     // @deprecated
     styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
     // @deprecated
@@ -5665,6 +5682,8 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
 
 // @public (undocumented)
 export interface IListState<T = any> {
+    // (undocumented)
+    getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
@@ -7852,6 +7871,7 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
@@ -8535,6 +8555,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
@@ -8546,6 +8568,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    static getDerivedStateFromProps<T = any>(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
@@ -8555,8 +8579,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void;
     }
 
 // @public (undocumented)

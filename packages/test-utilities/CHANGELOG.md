@@ -1,8 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.2.2..@uifabric/test-utilities_v7.3.0)
+
+### Minor changes
+
+- Add the ability to specify reder options to safeCreate ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
 
 ## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.2.2)
 

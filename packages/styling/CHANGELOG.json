@@ -2,6 +2,63 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/styling_v7.16.8",
+      "version": "7.16.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move AnimationStyles code to theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "7f1767d9469a917dcea9dbe3142c8fef3a36b8ad",
+            "package": "@uifabric/styling"
+          },
+          {
+            "comment": "Move createTheme from styling to theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "74e9fef29a1571489b8d46361dc503872d00d56d",
+            "package": "@uifabric/styling"
+          },
+          {
+            "comment": "Add missing index from import path in fonts.ts",
+            "author": "xgao@microsoft.com",
+            "commit": "71f0217030f05da28c2414e2d621606a6ba8ebe2",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/styling_v7.16.7",
+      "version": "7.16.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/styling_v7.16.6",
+      "version": "7.16.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move default fonts to theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "ef5e6c6d69af679f732abb9f13cf7fad2902fdb8",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/styling_v7.16.2",
       "version": "7.16.2",

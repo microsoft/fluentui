@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 import { expectNodes, findNodes } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
@@ -30,6 +31,12 @@ describe('SwatchColorPicker', () => {
     const component = create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: SwatchColorPicker,
+    displayName: 'SwatchColorPicker',
+    requiredProps: { colorCells: DEFAULT_OPTIONS, columnCount: 4 },
   });
 
   it('Can render in full without being parented to a button', () => {
@@ -69,7 +76,7 @@ describe('SwatchColorPicker', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
+  it('Can fire the hover event on a cell in non-collapsible swatch color picker ', () => {
     const onHover = jest.fn();
     const wrapper = mount(
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
@@ -82,7 +89,7 @@ describe('SwatchColorPicker', () => {
     expect(onHover).toHaveBeenCalledTimes(1);
   });
 
-  it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
+  it('Can fire the focus event on a cell in non-collapsible swatch color picker ', () => {
     const onFocus = jest.fn();
     const wrapper = mount(
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
@@ -93,5 +100,13 @@ describe('SwatchColorPicker', () => {
       .at(0)
       .simulate('focus');
     expect(onFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('Can render the color picker when onRenderCell props is passed to swatch color picker ', () => {
+    const onRenderColorCell = jest.fn();
+    mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onRenderColorCell={onRenderColorCell} columnCount={4} />,
+    );
+    expect(onRenderColorCell).toHaveBeenCalledTimes(1);
   });
 });

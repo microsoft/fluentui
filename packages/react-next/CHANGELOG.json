@@ -2,6 +2,210 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.117",
+      "version": "8.0.0-alpha.117",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Delete unneeded compat exports and move button migration guide",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Porting a patch to allow SpinButton to pass event information.",
+            "author": "czearing@outlook.com",
+            "commit": "0ef51b58adbcaea86482f9389554861881f742fc",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.116",
+      "version": "8.0.0-alpha.116",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Set font-family inherit on button and input elements.",
+            "author": "xgao@microsoft.com",
+            "commit": "fc211d8c6104f6f10948e6654513a6606bc35429",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Correcting typos in react-next package.",
+            "author": "czearing@outlook.com",
+            "commit": "2bffd2cad721360e272ff645c56d515dfb57c3fc",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.115",
+      "version": "8.0.0-alpha.115",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing issues revealed by conformance tests: add missing exports and displayNames.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Floating Pickers: Make strict mode compliant",
+            "author": "joschect@microsoft.com",
+            "commit": "861ba6c1b285a834fd08816b4ab6f6b29f491308",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.114",
+      "version": "8.0.0-alpha.114",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating Coachmark.Basic.Example.tsx to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "d204e565f6a2b3b736b1282579c2c702b2e35118",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating react-next component documentation to the newest versions found in office-ui-fabric-react.",
+            "author": "czearing@outlook.com",
+            "commit": "3a3e42bb10ca4bf70dac2ad5b2e7799df7f27372",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Autofill: Add to react-next",
+            "author": "joschect@microsoft.com",
+            "commit": "82c3d92a24340243035809050a90f0b52e5730c2",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating react-next example imports.",
+            "author": "czearing@outlook.com",
+            "commit": "ce3298f52386b71d7f793cc72aa5f2664d2d442a",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update release notes for Pivot and Slider.",
+            "author": "xgao@microsoft.com",
+            "commit": "1cff4ccd5d4c73ec0e1a9ae18dcb2beee28cb6e9",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Sep 2020 12:22:29 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.113",
+      "version": "8.0.0-alpha.113",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating Layer to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "b4aa409a1f1857932e7338bf612e9409600dd2b0",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Sep 2020 12:23:24 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.112",
+      "version": "8.0.0-alpha.112",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing unused eslint-disable rules from Picker files.",
+            "author": "czearing@outlook.com",
+            "commit": "a750540ac7903bfceb2ea6f4f1dece64386f135a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.111",
+      "version": "8.0.0-alpha.111",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix React StrictMode issues in ComboBox",
+            "author": "miclo@microsoft.com",
+            "commit": "2a65fb9d5df81f57e7289ebbcdfb8f52553402b3",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Adding Calendar and DatePicker to react-next compat folder.",
+            "author": "czearing@outlook.com",
+            "commit": "49b736214cdb26e19242613ccaa59cbcd0d2ea59",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Fix implicit merge conflict in ComboBox",
+            "author": "elcraig@microsoft.com",
+            "commit": "3d11ce74301cde200093714945376e1650c92a1a",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding release note tweaks.",
+            "author": "dzearing@hotmail.com",
+            "commit": "499321957f7e9c10baa3b769b5e1284fde48294d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.109",
+      "version": "8.0.0-alpha.109",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Floating/ExtendedPicker: added to react-next in prep for release",
+            "author": "joschect@microsoft.com",
+            "commit": "c1dfa563028bc36ec2b156b92f7b7f007516f467",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving Breadcrumb to react-next for future function component conversion.",
+            "author": "czearing@outlook.com",
+            "commit": "714236544d77f30c228e051559e145807f23e24a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.108",
       "version": "8.0.0-alpha.108",

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing unused parameter in storybook config.",
+  "packageName": "@fluentui/examples",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-25T02:01:44.337Z"
+}

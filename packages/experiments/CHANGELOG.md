@@ -1,8 +1,31 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.15..@uifabric/experiments_v7.33.0)
+
+### Minor changes
+
+- Add callback to SelectedItemsList for when item is edited ([PR #15160](https://github.com/microsoft/fluentui/pull/15160) by elvonspa@microsoft.com)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Fix bug where drag index is set to -1 when it's 0 ([PR #15225](https://github.com/microsoft/fluentui/pull/15225) by elvonspa@microsoft.com)
+
+## [7.32.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.15)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.10..@uifabric/experiments_v7.32.15)
+
+### Patches
+
+- Don't remove dropped items if they've already been moved within the same well ([PR #15098](https://github.com/microsoft/fluentui/pull/15098) by elvonspa@microsoft.com)
 
 ## [7.32.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.10)
 

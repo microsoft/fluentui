@@ -1,8 +1,30 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Fri, 21 Aug 2020 12:34:55 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.113.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.113.2)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.113.0..@uifabric/react-cards_v0.113.2)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [0.113.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.113.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.112.10..@uifabric/react-cards_v0.113.0)
+
+### Minor changes
+
+- Card: Adding initial implementation based on latest technology stack - compose, scss, tokens. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15181](https://github.com/microsoft/fluentui/pull/15181) by karymes@microsoft.com)
 
 ## [0.111.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.111.2)
 

@@ -8,7 +8,7 @@ import {
   IRawStyle,
   DefaultPalette,
 } from 'office-ui-fabric-react';
-import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
+import { NeutralColors, SharedColors } from '@fluentui/theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

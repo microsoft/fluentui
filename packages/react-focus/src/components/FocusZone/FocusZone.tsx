@@ -405,12 +405,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | null | undefined;
 
-    if (onFocus) {
-      onFocus(ev);
-    } else if (onFocusNotification) {
-      onFocusNotification();
-    }
-
     if (isImmediateDescendant) {
       newActiveElement = ev.target as HTMLElement;
     } else {
@@ -468,6 +462,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     if (stopFocusPropagation || doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
+    }
+
+    if (onFocus) {
+      onFocus(ev);
+    } else if (onFocusNotification) {
+      onFocusNotification();
     }
   };
 

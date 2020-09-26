@@ -61,7 +61,7 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
   const focusZone = React.useRef<FocusZone>(null);
 
   /**
-   * Remove the first rendered item past the overlow point and put it at the end the overflow set.
+   * Remove the first rendered item past the overflow point and put it and the end the overflow set.
    */
   const reduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     const movedItem = renderedItems[data.props.overflowIndex!];
@@ -132,6 +132,7 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
           aria-current={item.isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={onBreadcrumbClicked.bind(this, item)}
+          role={item.role}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...tooltipHostProps}>
             {item.text}

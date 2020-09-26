@@ -147,6 +147,11 @@ const mockNodeComponents = ['ScrollablePane'];
 /** Map from component name to alternative package name from which it should import a version file */
 const componentPackageMap: { [componentName: string]: string } = {
   FocusZone: '@fluentui/react-focus',
+  ChoiceGroupOption: 'office-ui-fabric-react',
+  PersonaPresence: 'office-ui-fabric-react',
+
+  Dropdown: 'office-ui-fabric-react',
+  OverflowSet: 'office-ui-fabric-react',
 };
 
 /**
@@ -291,14 +296,28 @@ describe('Top Level Component File Conformance', () => {
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
-    const packageName = componentPackageMap[componentName] || 'office-ui-fabric-react';
+    const packageName = componentPackageMap[componentName] || '@fluentui/react-next';
 
     it(`${componentName} imports the ${packageName} version file`, () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).__packages__ = null;
+      delete require.cache[require.resolve(file)];
       require(file);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      expect((window as any).__packages__[packageName]).not.toBeUndefined();
+
+      // If you are encountering an error you likely need to either:
+      //
+      // 1. Add a version import in your component's top level .ts file:
+      //    import './version'; or
+      // 2. Include the components unique package in componentPackageMap.
+
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        expect((window as any).__packages__[packageName]).not.toBeUndefined();
+      } catch (e) {
+        throw new Error(`Something went wrong when checking the version import.
+        Check to see if your component's top level file is importing a version file
+        or if is from a unique package besides react-next.`);
+      }
     });
   });
 });

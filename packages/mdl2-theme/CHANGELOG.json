@@ -2,6 +2,21 @@
   "name": "@uifabric/mdl2-theme",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.3.16",
+      "version": "0.3.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cleaning up tsconfig.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/mdl2-theme_v0.1.132",
       "version": "0.1.132",

@@ -2,10 +2,12 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
+import { Dialog } from './Dialog';
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
 import { setWarningCallback } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 
 describe('Dialog', () => {
   afterEach(() => {
@@ -49,6 +51,11 @@ describe('Dialog', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Dialog,
+    displayName: 'Dialog',
   });
 
   it('Fires dismissed after closing', () => {

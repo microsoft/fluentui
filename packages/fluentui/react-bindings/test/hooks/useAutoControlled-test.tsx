@@ -20,13 +20,20 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   });
 
   return (
-    <input
-      onChange={e => {
-        setValue(e.target.value);
-        if (props.onChange) props.onChange(e.target.value);
-      }}
-      value={value || ''}
-    />
+    <>
+      <input
+        onChange={e => {
+          setValue(e.target.value);
+          if (props.onChange) props.onChange(e.target.value);
+        }}
+        value={value || ''}
+      />
+      <button
+        onClick={() => {
+          setValue(state => `${state}onClick`);
+        }}
+      />
+    </>
   );
 };
 
@@ -55,7 +62,7 @@ describe('useAutoControlled', () => {
     expect(wrapper.find('input').prop('value')).toBe('foo');
   });
 
-  it('handles state updates', () => {
+  it('handles state updates based on values', () => {
     const wrapper = shallow(<TestComponent />);
 
     ReactTestUtils.act(() => {
@@ -63,6 +70,22 @@ describe('useAutoControlled', () => {
     });
 
     expect(wrapper.find('input').prop('value')).toBe('foo');
+  });
+
+  it('handles state updates based on function', () => {
+    const wrapper = shallow(<TestComponent />);
+
+    ReactTestUtils.act(() => {
+      wrapper.find('input').simulate('change', { target: { value: 'bar' } });
+    });
+
+    expect(wrapper.find('input').prop('value')).toBe('bar');
+
+    ReactTestUtils.act(() => {
+      wrapper.find('button').simulate('click');
+    });
+
+    expect(wrapper.find('input').prop('value')).toBe('baronClick');
   });
 
   it('handles state updates with a default value', () => {
