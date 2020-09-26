@@ -11,7 +11,7 @@ import {
   ILineChartPoints,
   IMargins,
   IRefArrayData,
-} from '@uifabric/charting';
+} from '../../index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';

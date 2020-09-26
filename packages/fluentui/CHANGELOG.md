@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
 
 ### Fixes
+- Fix scrollbar color to have higher contrast ratio @yuanboxue-amber ([#15209](https://github.com/microsoft/fluentui/pull/15209))
 - Fix `Tree` to have un-selectable `treeItem` with `selectable` prop false @yuanboxue-amber ([#15170](https://github.com/microsoft/fluentui/pull/15170))
 - Fix default focused outline in Safari @yuanboxue-amber ([#14917](https://github.com/microsoft/fluentui/pull/14917))
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
@@ -63,6 +64,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `BreadcrumbLink` component @assuncaocharles ([#15136](https://github.com/microsoft/fluentui/pull/15136))
 - Added `hoverBackground` and `paddingRight` variables to `treeTitleVariables` @assuncaocharles ([#15200](https://github.com/microsoft/fluentui/pull/15200))
 - Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
+- Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
 
 ### Documentation
 - Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))
@@ -90,6 +92,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
+
+<!--------------------------------[ v0.51.2 ]------------------------------- -->
+## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
+[Compare changes](https://github.com/microsoft/fluentui/compare/'@fluentui/react-northstar_v'0.51.1..'@fluentui/react-northstar_v'0.51.2)
+
+### Fixes
+- Add cleanup to Fela renderer to avoid memory leaks @layershifter @miroslavstastny ([#15211](https://github.com/microsoft/fluentui/pull/15211))
 
 <!--------------------------------[ v0.51.1 ]------------------------------- -->
 ## [v0.51.1](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.1) (2020-09-23)

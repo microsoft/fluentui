@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.8.17",
+      "version": "7.8.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing imports so that they correctly point to moved @fluentui/examples examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.122",
       "version": "7.6.122",

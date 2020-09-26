@@ -16,11 +16,6 @@
  *   exportMulti: ImportErrorGroup;
  *   exportDefault: ImportErrorGroup;
  * }} ImportErrors
- *
- * @typedef {{
- *   totalImportKeywords: number;
- *   totalImportStatements: number;
- * }} ImportStats
  */
 
 const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
@@ -41,20 +36,16 @@ function lintImports() {
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup',
-    'office-ui-fabric-react/lib/utilities/dateMath/DateMath',
-    'office-ui-fabric-react/lib/utilities/keytips/index',
-    'office-ui-fabric-react/lib/utilities/positioning',
+    '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
+    '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
+    '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
-    '@uifabric/date-time/lib/utilities/dateMath/DateMath',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',
-    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@uifabric/foundation/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.
-    '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
   ];
   const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
   const reExportedPackages = {
@@ -86,28 +77,13 @@ function lintImports() {
       exportMulti: { count: 0, matches: {} },
       exportDefault: { count: 0, matches: {} },
     };
-    /** @type {ImportStats} */
-    const importStats = {
-      totalImportKeywords: 0,
-      totalImportStatements: 0,
-    };
 
     for (const file of files) {
       const isExample = file.includes('.Example.') && !file.includes('.scss');
 
       if (!file.includes('.test.ts')) {
-        _evaluateFile(file, importErrors, importStats, isExample);
+        _evaluateFile(file, importErrors, isExample);
       }
-    }
-
-    // A mismatch here identifies a potential issue with the import regex properly matching all import statements.
-    // If you're here for this error check out commented out code in _evaluateFile for troubleshooting.
-    if (importStats.totalImportKeywords !== importStats.totalImportStatements) {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
-      console.log('WARNING: Potential missed import statements.');
-      console.log(`Import keywords found: ${importStats.totalImportKeywords}`);
-      console.log(`Import statements found: ${importStats.totalImportStatements}`);
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
     }
 
     if (reportFilePathErrors(importErrors)) {
@@ -149,25 +125,14 @@ function lintImports() {
   /**
    * @param {string} filePath
    * @param {ImportErrors} importErrors
-   * @param {ImportStats} importStats
    * @param {boolean} isExample
    */
-  function _evaluateFile(filePath, importErrors, importStats, isExample) {
-    const importStatementRegex = /^import [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
+  function _evaluateFile(filePath, importErrors, isExample) {
+    const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
 
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const importKeywords = fileContent.match(/^import /gm);
     const importStatements = fileContent.match(new RegExp(importStatementRegex, 'gm'));
-
-    importStats.totalImportKeywords += importKeywords ? importKeywords.length : 0;
-    importStats.totalImportStatements += importStatements ? importStatements.length : 0;
-
-    // This code is left here to help troubleshoot any instances of mismatch import keywords and statements.
-    // if (importKeywords && (!importStatements || importKeywords.length !== importStatements.length)) {
-    //   console.log(`\r\nCould not detect import in ${filePath}! ('${importKeywords.length} keywords vs. ${importStatements ? importStatements.length : 0})`);
-    //   console.log(`importStatements: ${importStatements}`);
-    // }
 
     if (importStatements) {
       importStatements.forEach(statement => {
@@ -276,7 +241,7 @@ function lintImports() {
         _addError(importErrors.pathRelative, relativePath, importPath);
       }
 
-      if (pathIsDeep && !allowedDeepImports.includes(importPath)) {
+      if (pathIsDeep && !isScss && !allowedDeepImports.includes(importPath)) {
         _addError(importErrors.pathDeep, relativePath, importPath);
       }
 
@@ -335,13 +300,13 @@ function lintImports() {
       pathAbsolute:
         'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
-        '{count} import path(s) do not reference physical files. This can break AMD imports. ' +
+        'import path(s) do not reference physical files. This can break AMD imports. ' +
         'Please ensure the following imports reference physical files:',
       pathRelative:
         'example files are using relative imports. For example portability, please ensure that the following imports are absolute:',
       pathDeep:
-        'example files are using deep imports. ' +
-        'To promote best practices, please only import from root-level files (<package-name> or <package-name>/lib/<file>).',
+        'example files are using deep imports. To promote best practices, ' +
+        `please only import from root-level files ('<package-name>' or '<package-name>/lib/<file>').`,
       pathReExported:
         'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
         'Please change the following imports to reference office-ui-fabric-react instead:',

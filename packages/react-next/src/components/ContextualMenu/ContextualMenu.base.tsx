@@ -480,6 +480,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {

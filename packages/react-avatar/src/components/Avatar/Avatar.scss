@@ -8,10 +8,11 @@ $default-borderRadius: $borderRadius-circle;
 $default-fontFamily: $fontFamily-base;
 $default-fontSize: $fontSize-body;
 $default-fontWeight: $fontWeight-semibold;
-$default-background: rgb(232, 232, 232);
+$default-background: $color-default-neutralBackgroundSextenary;
+$default-color: $color-default-neutralForegroundTertiary;
 
-$default-activeRingColor: #0078d4; // TODO: brand colors
-$default-activeGlowColor: rgba(0, 120, 212, 0.3); // TODO: brand colors
+$default-activeRingColor: $color-default-brand;
+$default-activeGlowColor: rgba($color-default-brand, 0.3);
 
 $default-inactiveOpacity: 0.8;
 $default-inactiveScaleFactor: 0.8;
@@ -54,6 +55,7 @@ $default-inactiveScaleFactor: 0.8;
   text-align: center;
   padding: 0px;
   border-radius: var(--avatar-borderRadius, $default-borderRadius);
+  color: var(--avatar-color, $default-color);
 }
 
 // Badge slot
@@ -132,12 +134,13 @@ $default-inactiveScaleFactor: 0.8;
   --avatar-fontSize: #{$fontSize-caption};
   --avatar-fontWeight: #{$fontWeight-semibold};
 }
-// default size:
-// ._size_32,
-// ._size_36,
-// ._size_40 {
-// defaults are in var() fallbacks
-// }
+._size_32,
+._size_36,
+._size_40 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-body};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
 ._size_48,
 ._size_56 {
   --avatar-iconSize: #{$iconSize-large};

@@ -6,7 +6,7 @@ import {
   IStyleFunction,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
+import { FontSizes, NeutralColors } from '@fluentui/theme';
 
 /**
  * The component props.

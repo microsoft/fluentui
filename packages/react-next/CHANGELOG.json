@@ -2,6 +2,33 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.117",
+      "version": "8.0.0-alpha.117",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Delete unneeded compat exports and move button migration guide",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Porting a patch to allow SpinButton to pass event information.",
+            "author": "czearing@outlook.com",
+            "commit": "0ef51b58adbcaea86482f9389554861881f742fc",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2020 00:46:56 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.116",
       "version": "8.0.0-alpha.116",

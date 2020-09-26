@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/experiments_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Fix bug where drag index is set to -1 when it's 0",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d5b214470577062469f4624ad4f4f892d432bb1a",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add callback to SelectedItemsList for when item is edited",
+            "author": "elvonspa@microsoft.com",
+            "commit": "b26950a2faab4ee8d9bbf506d32394032cfe355d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@uifabric/experiments_v7.32.15",
       "version": "7.32.15",
