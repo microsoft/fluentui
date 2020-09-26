@@ -25,7 +25,7 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
       staticDir: [path.join(process.cwd(), 'static')],
       configDir: fs.existsSync(localConfigDir)
         ? localConfigDir
-        : path.join(findGitRoot(), 'packages/examples/.storybook'),
+        : path.join(findGitRoot(), 'packages/react-examples/.storybook'),
       port: port || 3000,
       quiet,
       ci,
@@ -49,7 +49,7 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
       staticDir: [path.join(process.cwd(), 'static')],
       configDir: fs.existsSync(localConfigDir)
         ? localConfigDir
-        : path.join(findGitRoot(), 'packages/examples/.storybook'),
+        : path.join(findGitRoot(), 'packages/react-examples/.storybook'),
       outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,

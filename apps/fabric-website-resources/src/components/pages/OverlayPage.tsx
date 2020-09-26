@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { OverlayPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Overlay/Overlay.doc';
+import { OverlayPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Overlay/Overlay.doc';
 
 export const OverlayPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

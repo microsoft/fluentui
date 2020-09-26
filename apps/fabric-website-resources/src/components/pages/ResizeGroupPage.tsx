@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { ResizeGroupPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/ResizeGroup/ResizeGroup.doc';
+import { ResizeGroupPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ResizeGroup/ResizeGroup.doc';
 
 export const ResizeGroupPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>

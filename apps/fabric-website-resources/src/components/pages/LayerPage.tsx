@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
-import { LayerPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Layer/Layer.doc';
+import { LayerPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Layer/Layer.doc';
 
 export const LayerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
