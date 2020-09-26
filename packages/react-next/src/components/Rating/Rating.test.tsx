@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
+import { isConformant } from '../../common/isConformant';
 import { IRatingProps, IRating } from './Rating.types';
 
 describe('Rating', () => {
@@ -18,6 +19,11 @@ describe('Rating', () => {
     const component = renderer.create(<Rating defaultRating={2.5} componentRef={ref} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Rating,
+    displayName: 'Rating',
   });
 
   it('can change rating', () => {

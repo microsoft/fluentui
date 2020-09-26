@@ -4,12 +4,14 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import * as path from 'path';
 import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
 import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
+import { isConformant } from '../../common/isConformant';
 
 /**
  * The currently rendered ITextField.
@@ -36,7 +38,7 @@ function sharedAfterEach() {
   }
   textField = undefined;
 
-  // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
+  // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
@@ -55,7 +57,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders multiline unresizable correctly', () => {
+  it('renders multiline non resizable correctly', () => {
     const component = create(<TextField label="Label" multiline={true} resizable={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -101,7 +103,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should resepect user component and subcomponent styling', () => {
+  it('should respect user component and subcomponent styling', () => {
     const styles: Partial<ITextFieldStyles> = {
       root: 'root-testClassName',
       subComponentStyles: {
@@ -128,6 +130,12 @@ describe('TextField snapshots', () => {
 describe('TextField rendering values from props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  isConformant({
+    Component: TextField,
+    displayName: 'TextField',
+    componentPath: path.join(__dirname, 'TextField.ts'),
+  });
 
   it('can render a value', () => {
     const testText = 'initial value';

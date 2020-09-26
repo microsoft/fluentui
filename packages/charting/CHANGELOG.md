@@ -1,8 +1,30 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.2.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.4)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.0..@uifabric/charting_v4.2.4)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [4.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.0)
+
+Mon, 21 Sep 2020 12:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.1.1..@uifabric/charting_v4.2.0)
+
+### Minor changes
+
+- Vertical stacked bar chart code refactored - Cartesinan chart impletemented in base file. ([PR #15061](https://github.com/microsoft/fluentui/pull/15061) by v-jasha@microsoft.com)
+
+### Patches
+
+- To redraw the line chart after single legend selected, need to send updated points data to cartesian chart. Now updated. ([PR #15117](https://github.com/microsoft/fluentui/pull/15117) by v-jasha@microsoft.com)
 
 ## [4.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.1.0)
 

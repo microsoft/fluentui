@@ -4,11 +4,21 @@
 
 ```ts
 
+import { AnimationStyles } from '@fluentui/theme/lib/motion/AnimationStyles';
+import { AnimationVariables } from '@fluentui/theme/lib/motion/AnimationStyles';
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
-import { DefaultEffects } from '@fluentui/theme/lib/constants/DefaultEffects';
-import { DefaultPalette } from '@fluentui/theme/lib/constants/DefaultPalette';
+import { createFontStyles } from '@fluentui/theme/lib/fonts/index';
+import { createTheme } from '@fluentui/theme/lib/createTheme';
+import { DefaultEffects } from '@fluentui/theme/lib/effects/DefaultEffects';
+import { DefaultFontStyles } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+import { DefaultPalette } from '@fluentui/theme/lib/colors/DefaultPalette';
 import { fontFace } from '@uifabric/merge-styles';
+import { FontSizes } from '@fluentui/theme/lib/fonts/index';
+import { FontWeights } from '@fluentui/theme/lib/fonts/index';
+import { IAnimationStyles } from '@fluentui/theme/lib/types/IAnimationStyles';
+import { IAnimationVariables } from '@fluentui/theme/lib/types/IAnimationStyles';
+import { IconFontSizes } from '@fluentui/theme/lib/fonts/index';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
 import { IEffects } from '@fluentui/theme/lib/types/IEffects';
@@ -32,6 +42,7 @@ import { ITheme } from '@fluentui/theme/lib/types/ITheme';
 import { keyframes } from '@uifabric/merge-styles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { mergeStyleSets } from '@uifabric/merge-styles';
+import { registerDefaultFontFaces } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
 import { Stylesheet } from '@uifabric/merge-styles';
 
 // @public (undocumented)
@@ -39,11 +50,9 @@ export const AnimationClassNames: {
     [key in keyof IAnimationStyles]?: string;
 };
 
-// @public
-export const AnimationStyles: IAnimationStyles;
+export { AnimationStyles }
 
-// @public
-export const AnimationVariables: IAnimationVariables;
+export { AnimationVariables }
 
 // @public
 export function buildClassMap<T extends Object>(styles: T): {
@@ -59,16 +68,13 @@ export { concatStyleSets }
 
 export { concatStyleSetsWithProps }
 
-// @public (undocumented)
-export function createFontStyles(localeCode: string | null): IFontStyles;
+export { createFontStyles }
 
-// @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export { createTheme }
 
 export { DefaultEffects }
 
-// @public (undocumented)
-export const DefaultFontStyles: IFontStyles;
+export { DefaultFontStyles }
 
 export { DefaultPalette }
 
@@ -85,51 +91,9 @@ export const FontClassNames: {
 
 export { fontFace }
 
-// @public (undocumented)
-export namespace FontSizes {
-    const // (undocumented)
-    mini: string;
-    const // (undocumented)
-    xSmall: string;
-    const // (undocumented)
-    small: string;
-    const // (undocumented)
-    smallPlus: string;
-    const // (undocumented)
-    medium: string;
-    const // (undocumented)
-    mediumPlus: string;
-    const // (undocumented)
-    icon: string;
-    const // (undocumented)
-    large: string;
-    const // (undocumented)
-    xLarge: string;
-    const // (undocumented)
-    xLargePlus: string;
-    const // (undocumented)
-    xxLarge: string;
-    const // (undocumented)
-    xxLargePlus: string;
-    const // (undocumented)
-    superLarge: string;
-    const // (undocumented)
-    mega: string;
-}
+export { FontSizes }
 
-// @public (undocumented)
-export namespace FontWeights {
-    const // (undocumented)
-    light: IFontWeight;
-    const // (undocumented)
-    semilight: IFontWeight;
-    const // (undocumented)
-    regular: IFontWeight;
-    const // (undocumented)
-    semibold: IFontWeight;
-    const // (undocumented)
-    bold: IFontWeight;
-}
+export { FontWeights }
 
 // @public
 export function getEdgeChromiumNoHighContrastAdjustSelector(): {
@@ -189,113 +153,11 @@ export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: 
 // @public (undocumented)
 export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white)";
 
-// @public
-export interface IAnimationStyles {
-    // (undocumented)
-    fadeIn100: IRawStyle;
-    // (undocumented)
-    fadeIn200: IRawStyle;
-    // (undocumented)
-    fadeIn400: IRawStyle;
-    // (undocumented)
-    fadeIn500: IRawStyle;
-    // (undocumented)
-    fadeOut100: IRawStyle;
-    // (undocumented)
-    fadeOut200: IRawStyle;
-    // (undocumented)
-    fadeOut400: IRawStyle;
-    // (undocumented)
-    fadeOut500: IRawStyle;
-    // (undocumented)
-    rotate90deg: IRawStyle;
-    // (undocumented)
-    rotateN90deg: IRawStyle;
-    // (undocumented)
-    scaleDownIn100: IRawStyle;
-    // (undocumented)
-    scaleDownOut98: IRawStyle;
-    // (undocumented)
-    scaleUpIn100: IRawStyle;
-    // (undocumented)
-    scaleUpOut103: IRawStyle;
-    // (undocumented)
-    slideDownIn10: IRawStyle;
-    // (undocumented)
-    slideDownIn20: IRawStyle;
-    // (undocumented)
-    slideDownOut10: IRawStyle;
-    // (undocumented)
-    slideDownOut20: IRawStyle;
-    // (undocumented)
-    slideLeftIn10: IRawStyle;
-    // (undocumented)
-    slideLeftIn20: IRawStyle;
-    // (undocumented)
-    slideLeftIn40: IRawStyle;
-    // (undocumented)
-    slideLeftIn400: IRawStyle;
-    // (undocumented)
-    slideLeftOut10: IRawStyle;
-    // (undocumented)
-    slideLeftOut20: IRawStyle;
-    // (undocumented)
-    slideLeftOut40: IRawStyle;
-    // (undocumented)
-    slideLeftOut400: IRawStyle;
-    // (undocumented)
-    slideRightIn10: IRawStyle;
-    // (undocumented)
-    slideRightIn20: IRawStyle;
-    // (undocumented)
-    slideRightIn40: IRawStyle;
-    // (undocumented)
-    slideRightIn400: IRawStyle;
-    // (undocumented)
-    slideRightOut10: IRawStyle;
-    // (undocumented)
-    slideRightOut20: IRawStyle;
-    // (undocumented)
-    slideRightOut40: IRawStyle;
-    // (undocumented)
-    slideRightOut400: IRawStyle;
-    // (undocumented)
-    slideUpIn10: IRawStyle;
-    // (undocumented)
-    slideUpIn20: IRawStyle;
-    // (undocumented)
-    slideUpOut10: IRawStyle;
-    // (undocumented)
-    slideUpOut20: IRawStyle;
-}
+export { IAnimationStyles }
 
-// @public (undocumented)
-export interface IAnimationVariables {
-    // (undocumented)
-    durationValue1: string;
-    // (undocumented)
-    durationValue2: string;
-    // (undocumented)
-    durationValue3: string;
-    // (undocumented)
-    durationValue4: string;
-    // (undocumented)
-    easeFunction1: string;
-    // (undocumented)
-    easeFunction2: string;
-}
+export { IAnimationVariables }
 
-// @public (undocumented)
-export namespace IconFontSizes {
-    const // (undocumented)
-    xSmall: string;
-    const // (undocumented)
-    small: string;
-    const // (undocumented)
-    medium: string;
-    const // (undocumented)
-    large: string;
-}
+export { IconFontSizes }
 
 export { ICSPSettings }
 
@@ -403,8 +265,7 @@ export const PulsingBeaconAnimationStyles: {
     createDefaultAnimation: typeof _createDefaultAnimation;
 };
 
-// @public (undocumented)
-export function registerDefaultFontFaces(baseUrl: string): void;
+export { registerDefaultFontFaces }
 
 // @public
 export function registerIconAlias(iconName: string, mappedToName: string): void;

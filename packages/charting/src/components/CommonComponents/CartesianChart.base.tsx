@@ -7,7 +7,7 @@ import {
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-} from '@uifabric/charting';
+} from '../../index';
 import {
   createNumericXAxis,
   createStringXAxis,

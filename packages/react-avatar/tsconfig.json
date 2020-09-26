@@ -15,13 +15,9 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2015", "dom", "es2015.promise"],
+    "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"],
-    "paths": {
-      "@uifabric/react-avatar/lib/*": ["./src/*"],
-      "@uifabric/react-avatar": ["./src"]
-    }
+    "types": ["jest", "webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

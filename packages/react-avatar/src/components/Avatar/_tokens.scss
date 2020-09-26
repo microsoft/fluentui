@@ -1,14 +1,14 @@
 // TODO move to common styles
-$fontFamily-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$fontFamily-base: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
 $fontFamily-monospace: Consolas, 'Courier New', Courier, monospace;
 $fontFamily-numeric: Bahnschrift, $fontFamily-base;
 
 // TODO double-check icon sizes
 $iconSize-small: 12px;
 $iconSize-medium: 16px;
-$iconSize-large: 32px;
-$iconSize-larger: 48px;
-$iconSize-largest: 64px;
+$iconSize-large: 24px;
+$iconSize-larger: 40px;
+$iconSize-largest: 48px;
 
 $fontSize-100: 10px;
 $fontSize-200: 12px;
@@ -132,6 +132,13 @@ $stroke-thicker: 3px;
 $stroke-thickest: 4px;
 
 // TODO figure out palette colors
+$color-grey38: #616161;
+$color-grey90: #E5E5E5;
+$color-white: #FFFFFF;
+$color-default-brand: #0078D4;
+$color-default-neutralBackgroundSextenary: $color-grey90;
+$color-default-neutralForegroundTertiary: $color-grey38;
+$color-default-neutralForegroundInverted: $color-white;
 $color-default-shadowAmbient: rgba(0, 0, 0, 0.12);
 $color-default-shadowKey: rgba(0, 0, 0, 0.14);
 $color-default-shadowAmbientLighter: rgba(0, 0, 0, 0.06);

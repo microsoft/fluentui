@@ -8,7 +8,7 @@ import {
   classNamesFunction,
   styled,
 } from 'office-ui-fabric-react';
-import { FontSizes } from '@uifabric/fluent-theme';
+import { FontSizes } from '@fluentui/theme';
 import { appPaddingSm, appPaddingLg, pageHeaderFullHeight } from '../../styles/constants';
 
 const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {

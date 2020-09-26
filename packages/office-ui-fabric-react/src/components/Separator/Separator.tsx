@@ -11,3 +11,4 @@ export const Separator: React.FunctionComponent<ISeparatorProps> = styled<
 >(SeparatorBase, getStyles, undefined, {
   scope: 'Separator',
 });
+Separator.displayName = 'Separator';

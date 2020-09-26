@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "MenuButton: Removing office-ui-fabric-react dependency by having ContextualMenu as a JSX slot replacement instead of the default.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-26T01:05:57.464Z"
+}
