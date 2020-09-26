@@ -406,7 +406,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     useDebugWarnings(props);
 
     return (
-      (modalResponsiveMode! >= ResponsiveMode.small && (
+      (isModalOpen && modalResponsiveMode! >= ResponsiveMode.small && (
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
             role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
