@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { SearchBoxPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/SearchBox/SearchBox.doc';
+import { SearchBoxPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/SearchBox/SearchBox.doc';
 
 export const SearchBoxPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

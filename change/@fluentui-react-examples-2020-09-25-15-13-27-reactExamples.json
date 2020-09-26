@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "minor",
+  "date": "2020-09-25T22:13:27.321Z"
+}

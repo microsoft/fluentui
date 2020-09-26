@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ThemePageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Theme/Theme.doc';
+import { ThemePageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Theme/Theme.doc';
 import { defaultPalette, defaultSemanticColors } from 'office-ui-fabric-react/lib/components/Theme/defaultTheme';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';

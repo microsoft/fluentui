@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add callback to SelectedItemsList for when item is edited",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-21T21:56:03.758Z"
-}
