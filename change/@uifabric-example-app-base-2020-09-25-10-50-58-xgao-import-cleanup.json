@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`.",
-  "packageName": "@uifabric/example-app-base",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T17:48:52.785Z"
-}

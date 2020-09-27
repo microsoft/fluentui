@@ -1,6 +1,29 @@
 {
-  "name": "@fluentui/examples",
+  "name": "@fluentui/react-examples",
   "entries": [
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-examples_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing MenuButton examples to use ContextualMenu as JSX slot replacement instead of using menuProps for the menu slot.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a51b4255e077c6ac6b52eb16d64c01988cbfe81b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
     {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/examples_v0.3.23",

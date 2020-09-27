@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add FluentTheme and Depths exports.",
-  "packageName": "@fluentui/theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T17:50:48.927Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Porting a fix to callout dismissal when blurring to a new window.",
-  "packageName": "@fluentui/react-next",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-21T22:20:15.909Z"
-}

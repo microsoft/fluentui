@@ -2,6 +2,45 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.118",
+      "version": "8.0.0-alpha.118",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating FocusTrapZone to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "6366313ff72aecf5b0d33fa8c87f27a374aa416b",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Porting a fix to callout dismissal when blurring to a new window.",
+            "author": "czearing@outlook.com",
+            "commit": "8dae9b83ee738c43878993d43c7719910cbbb986",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Exposed onRenderItem function for SwatchColorPicker",
+            "author": "email not defined",
+            "commit": "1a84adac82add903a9deb6e430187e676aee40c9",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Breadcrumb: add role prop for items",
+            "author": "erabelle@microsoft.com",
+            "commit": "1a6887223e8223786236b6276754bbab6fc90790",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update release notes related to ThemeProvider.",
+            "author": "xgao@microsoft.com",
+            "commit": "cdc0aec2397bf1caa8d0730fef6baedf36c741eb",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.117",
       "version": "8.0.0-alpha.117",

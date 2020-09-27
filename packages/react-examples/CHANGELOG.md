@@ -1,8 +1,21 @@
-# Change Log - @fluentui/examples
+# Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.0)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.3.23..@fluentui/react-examples_v0.4.0)
+
+### Minor changes
+
+- Renaming @fluentui/examples to @fluentui/react-examples. ([PR #15254](https://github.com/microsoft/fluentui/pull/15254) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Changing MenuButton examples to use ContextualMenu as JSX slot replacement instead of using menuProps for the menu slot. ([PR #15257](https://github.com/microsoft/fluentui/pull/15257) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.3.23)
 

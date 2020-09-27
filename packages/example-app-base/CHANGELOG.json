@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/example-app-base_v7.15.18",
+      "version": "7.15.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Sep 2020 12:28:23 GMT",
       "tag": "@uifabric/example-app-base_v7.15.4",
       "version": "7.15.4",
