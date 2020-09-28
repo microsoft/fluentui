@@ -35,7 +35,7 @@ require('tsconfig-paths').register({
   paths: compilerOptions.paths,
 });
 
-const baseBranch = 'master';
+const baseBranch = '7.0';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner

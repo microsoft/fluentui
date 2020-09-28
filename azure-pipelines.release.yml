@@ -90,7 +90,7 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
