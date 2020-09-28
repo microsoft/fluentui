@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove examples for v8 component packages from v7",
+  "packageName": "@fluentui/react-examples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-28T04:45:39.977Z"
+}
