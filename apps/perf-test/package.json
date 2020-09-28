@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^0.14.3",
+    "@fluentui/react-theme-provider": "^0.14.2",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/experiments": "^7.33.1",
