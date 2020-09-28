@@ -28,6 +28,7 @@ export const defaultTests: TestObject = {
       });
     } catch (e) {
       // defaultErrorMessages['has-docblock'](componentInfo, testInfo);
+      // new Error (e)
     }
   },
 
@@ -70,8 +71,8 @@ export const defaultTests: TestObject = {
         // styled() typically have Base in their name, so remove that too.
         expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
       } catch (e) {
-        defaultErrorMessages['component-has-displayname'](componentInfo, testInfo);
-        throw new Error();
+        defaultErrorMessages['component-has-displayname'](componentInfo, testInfo, e);
+        throw new Error('component-has-displayname');
       }
     });
   },
@@ -97,8 +98,8 @@ export const defaultTests: TestObject = {
 
           expect(indexFile[displayName]).toBe(Component);
         } catch (e) {
-          defaultErrorMessages['exported-top-level'](componentInfo, testInfo);
-          throw new Error();
+          defaultErrorMessages['exported-top-level'](componentInfo, testInfo, e);
+          throw new Error('exported-top-level');
         }
       });
     }
@@ -115,8 +116,8 @@ export const defaultTests: TestObject = {
 
           expect(topLevelFile[displayName]).toBe(Component);
         } catch (e) {
-          defaultErrorMessages['has-top-level-file'](componentInfo, testInfo);
-          throw new Error();
+          defaultErrorMessages['has-top-level-file'](componentInfo, testInfo, e);
+          throw new Error('has-top-level-file');
         }
       });
     }

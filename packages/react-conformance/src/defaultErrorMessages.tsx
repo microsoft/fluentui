@@ -9,7 +9,7 @@ import * as path from 'path';
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultErrorMessages = {
-  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, Component, displayName } = testInfo;
     const constructorName = Component.prototype?.constructor.name;
     const componentDisplayName = Component.displayName || constructorName;
@@ -29,7 +29,8 @@ export const defaultErrorMessages = {
               ' contains ' +
               chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
               '.',
-          ]),
+          ]) +
+          receivedErrorMessage(error),
       );
     }
 
@@ -44,12 +45,13 @@ export const defaultErrorMessages = {
           resolveErrorMessages([
             'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
             'Make sure that your version.ts file is configured correctly.',
-          ]),
+          ]) +
+          receivedErrorMessage(error),
       );
     }
   },
 
-  'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+  'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const indexFile = path.join(rootPath, 'src', 'index');
@@ -70,10 +72,11 @@ export const defaultErrorMessages = {
             chalk.red.bold(' isInternal ') +
             'in your isConformant test.',
         ]),
+      receivedErrorMessage(error),
     );
   },
 
-  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const topLevelFile = path.join(rootPath, 'src', displayName);
@@ -86,11 +89,12 @@ export const defaultErrorMessages = {
         'top level file in:' + paragraph() + chalk.green.italic(topLevelFile),
       ) +
         resolveErrorMessages([
-          `Make sure that your components folder and name match it's displayName: ` + chalk.red.bold(displayName),
+          `Make sure that your components folder and name match it's displayName: ` + chalk.white.bold(displayName),
           'Check if your component is internal and consider enabling' +
-            chalk.red.bold(' isInternal ') +
+            chalk.white.bold(' isInternal ') +
             'in your isConformant test.',
-        ]),
+        ]) +
+        receivedErrorMessage(error),
     );
   },
 };
@@ -115,14 +119,20 @@ function resolveErrorMessages(resolveMessages: string[]) {
 function defaultErrorMessage(testName: string, displayName: string, errorMessage: string) {
   return (
     paragraph() +
-    chalk.white.bold.italic.underline(testName) +
+    chalk.white.bold.italic.bgHex('#2e2e2e')(testName) +
     paragraph() +
     chalk.yellow(`It appears that `) +
-    chalk.red.bold(displayName) +
-    chalk.yellow(` doesn't have a `) +
-    errorMessage +
+    chalk.white(displayName) +
+    chalk.yellow(` doesn't have a ` + errorMessage) +
     paragraph()
   );
+}
+
+/** Generates the caught error message.
+ *  @param error The caught error message in defaultTests.
+ */
+function receivedErrorMessage(error: string) {
+  return paragraph() + chalk.white.bold.bgRed(`Here's the full error message:`) + paragraph() + error + paragraph(2);
 }
 
 /** Generates a paragraph.
