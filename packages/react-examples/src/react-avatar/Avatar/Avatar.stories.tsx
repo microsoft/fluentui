@@ -14,6 +14,7 @@ import {
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 import { StoryExample } from '../utils/StoryExample';
+import { Stack } from '@fluentui/react-next';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
 const examplePeople = [
@@ -127,53 +128,73 @@ export const AllSizes = () => (
       <AvatarExampleList display="icon" />
       <AvatarExampleList display="icon" square exampleIndex={avatarSizeValues.length} />
     </StoryExample>
-    <StoryExample title="Active">
+  </>
+);
+
+export const Active = () => (
+  <>
+    <StoryExample title="ring">
       <AvatarExampleList display="image" active={true} activeDisplay="ring" exampleIndex={39} />
-      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
+    </StoryExample>
+    <StoryExample title="ring-shadow">
       <AvatarExampleList display="image" active={true} activeDisplay="ring-shadow" exampleIndex={52} />
-      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={78} />
+    </StoryExample>
+    <StoryExample title="ring-glow">
       <AvatarExampleList display="image" active={true} activeDisplay="ring-glow" exampleIndex={91} />
     </StoryExample>
-    <StoryExample title="Inactive">
+    <StoryExample title="shadow">
+      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={65} />
+    </StoryExample>
+    <StoryExample title="glow">
+      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={78} />
+    </StoryExample>
+    <StoryExample title="inactive">
       <AvatarExampleList display="image" active={false} exampleIndex={26} />
     </StoryExample>
   </>
 );
 
 export const ActiveAnimation = () => {
-  const [tick, setTick] = React.useState(0);
+  const [active, setActive] = React.useState(true);
 
   React.useEffect(() => {
-    const id = setInterval(() => setTick(t => t + 1), 2000);
+    const id = setInterval(() => setActive(a => !a), 2500);
     return () => clearInterval(id);
   }, []);
 
-  const active = !(tick % 2);
-  const { images } = examples;
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <span style={{ marginTop: '16px' }}>ring</span>
-      <Avatar style={{ margin: '8px' }} size={48} image={images[7]} active={active} activeDisplay="ring" />
-      <span style={{ marginTop: '16px' }}>ring-shadow</span>
-      <Avatar style={{ margin: '8px' }} size={48} image={images[8]} active={active} activeDisplay="ring-shadow" />
-      <span style={{ marginTop: '16px' }}>ring-glow</span>
-      <Avatar style={{ margin: '8px' }} size={48} image={images[9]} active={active} activeDisplay="ring-glow" />
-      <span style={{ marginTop: '16px' }}>shadow</span>
-      <Avatar style={{ margin: '8px' }} size={48} image={images[2]} active={active} activeDisplay="shadow" />
-      <span style={{ marginTop: '16px' }}>glow</span>
-      <Avatar style={{ margin: '8px' }} size={48} image={images[3]} active={active} activeDisplay="glow" />
-    </div>
+    <>
+      <StoryExample title="ring">
+        <Stack horizontal tokens={{ childrenGap: '24px' }}>
+          <Avatar size={64} {...examplePeople[9]} display="image" active={active} activeDisplay="ring" />
+          <Avatar size={64} {...examplePeople[9]} display="icon" active={active} activeDisplay="ring" />
+          <Avatar size={64} {...examplePeople[9]} display="label" active={active} activeDisplay="ring" />
+        </Stack>
+      </StoryExample>
+      <StoryExample title="ring-shadow">
+        <Avatar size={64} {...examplePeople[10]} active={active} activeDisplay="ring-shadow" />
+      </StoryExample>
+      <StoryExample title="ring-glow">
+        <Avatar size={64} {...examplePeople[11]} active={active} activeDisplay="ring-glow" />
+      </StoryExample>
+      <StoryExample title="shadow">
+        <Avatar size={64} {...examplePeople[15]} active={active} activeDisplay="shadow" />
+      </StoryExample>
+      <StoryExample title="glow">
+        <Avatar size={64} {...examplePeople[18]} active={active} activeDisplay="glow" />
+      </StoryExample>
+    </>
   );
 };
 
 export const CustomSizes = () => (
   <StoryExample title="Custom Size">
-    <Avatar name="Custom Size" badge="success" customSize={17} />
-    <Avatar name="Custom Size" badge="warning" customSize={42} />
-    <Avatar name="Custom Size" badge="error" customSize={55} />
-    <Avatar name="Custom Size" badge="success" customSize={100} />
-    <Avatar name="Custom Size" badge="success" customSize={150} />
+    <Avatar name="Custom Size" badge="success" customSize={13} />
+    <Avatar name="Custom Size" badge="warning" customSize={21} />
+    <Avatar name="Custom Size" badge="error" customSize={34} />
+    <Avatar name="Custom Size" badge="success" customSize={55} />
+    <Avatar name="Custom Size" badge="success" customSize={89} />
+    <Avatar name="Custom Size" badge="success" customSize={144} />
   </StoryExample>
 );
 
