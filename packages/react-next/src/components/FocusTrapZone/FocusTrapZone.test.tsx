@@ -4,43 +4,77 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 import { IFocusTrapZoneProps } from './FocusTrapZone.types';
+import { safeMount } from '@uifabric/test-utilities';
 import { isConformant } from '../../common/isConformant';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
   const r = window.setTimeout(callback, 0);
-  jest.runAllTimers();
+  ReactTestUtils.act(() => {
+    jest.runAllTimers();
+  });
   return r;
 };
 
-jest.useFakeTimers();
+ReactTestUtils.act(() => {
+  jest.useFakeTimers();
+});
 
-class FocusTrapZoneTestComponent extends React.Component<{}, { isShowingFirst: boolean; isShowingSecond: boolean }> {
+class FocusTrapZoneTestComponent extends React.Component<
+  {},
+  {
+    isShowingFirst: boolean;
+    isShowingSecond: boolean;
+    isShowingThird: boolean;
+    isShowingFourth: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
-    this.state = { isShowingFirst: true, isShowingSecond: false };
+    this.state = {
+      isShowingFirst: false,
+      isShowingSecond: false,
+      isShowingThird: false,
+      isShowingFourth: false,
+    };
   }
 
   public render() {
     return (
       <div>
-        <FocusTrapZone forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
-          <button className={'a'} onClick={this._toggleFirst}>
+        <FocusTrapZone id="fz1" forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
+          <button className="a" onClick={this._toggleFirst}>
             a
           </button>
-          <button className={'b'} onClick={this._toggleSecond}>
+          <button className="b" onClick={this._toggleSecond}>
             b
+          </button>
+          <button className="c" onClick={this._toggleThird}>
+            c
+          </button>
+          <button className="d" onClick={this._toggleFourth}>
+            d
           </button>
         </FocusTrapZone>
 
         {this.state.isShowingFirst && (
-          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={false}>
+          <FocusTrapZone id="fz2" forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
             <FocusZone data-is-visible={true}>First</FocusZone>
           </FocusTrapZone>
         )}
         {this.state.isShowingSecond && (
-          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true}>
-            <FocusZone data-is-visible={true}>First</FocusZone>
+          <FocusTrapZone id="fz3" forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
+            <FocusZone data-is-visible={true}>Second</FocusZone>
+          </FocusTrapZone>
+        )}
+        {this.state.isShowingThird && (
+          <FocusTrapZone id="fz4" forceFocusInsideTrap={false} isClickableOutsideFocusTrap={false}>
+            <FocusZone data-is-visible={true}>Third</FocusZone>
+          </FocusTrapZone>
+        )}
+        {this.state.isShowingFourth && (
+          <FocusTrapZone id="fz5" forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false} disabled={true}>
+            <FocusZone data-is-visible={true}>Fourth</FocusZone>
           </FocusTrapZone>
         )}
       </div>
@@ -53,6 +87,14 @@ class FocusTrapZoneTestComponent extends React.Component<{}, { isShowingFirst: b
 
   private _toggleSecond = () => {
     this.setState({ isShowingSecond: !this.state.isShowingSecond });
+  };
+
+  private _toggleThird = () => {
+    this.setState({ isShowingThird: !this.state.isShowingThird });
+  };
+
+  private _toggleFourth = () => {
+    this.setState({ isShowingFourth: !this.state.isShowingFourth });
   };
 }
 
@@ -92,19 +134,21 @@ describe('FocusTrapZone', () => {
       isVisible?: boolean;
     },
   ): void {
-    element.getBoundingClientRect = () =>
-      ({
-        top: clientRect.top,
-        left: clientRect.left,
-        bottom: clientRect.bottom,
-        right: clientRect.right,
-        width: clientRect.right - clientRect.left,
-        height: clientRect.bottom - clientRect.top,
-      } as DOMRect);
+    ReactTestUtils.act(() => {
+      element.getBoundingClientRect = () =>
+        ({
+          top: clientRect.top,
+          left: clientRect.left,
+          bottom: clientRect.bottom,
+          right: clientRect.right,
+          width: clientRect.right - clientRect.left,
+          height: clientRect.bottom - clientRect.top,
+        } as DOMRect);
 
-    element.setAttribute('data-is-visible', String(isVisible));
+      element.setAttribute('data-is-visible', String(isVisible));
 
-    element.focus = () => ReactTestUtils.Simulate.focus(element);
+      element.focus = () => ReactTestUtils.Simulate.focus(element);
+    });
   }
 
   /**
@@ -189,23 +233,41 @@ describe('FocusTrapZone', () => {
       const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
 
       // Assign bounding locations to buttons.
-      setupElement(buttonA, { clientRect: { top: 0, bottom: 30, left: 0, right: 30 } });
-      setupElement(buttonB, { clientRect: { top: 0, bottom: 30, left: 30, right: 60 } });
-      setupElement(buttonC, { clientRect: { top: 0, bottom: 30, left: 60, right: 90 } });
-      setupElement(buttonD, { clientRect: { top: 30, bottom: 60, left: 0, right: 30 } });
-      setupElement(buttonE, { clientRect: { top: 30, bottom: 60, left: 30, right: 60 } });
-      setupElement(buttonF, { clientRect: { top: 30, bottom: 60, left: 60, right: 90 } });
+      setupElement(buttonA, {
+        clientRect: { top: 0, bottom: 30, left: 0, right: 30 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 0, bottom: 30, left: 30, right: 60 },
+      });
+      setupElement(buttonC, {
+        clientRect: { top: 0, bottom: 30, left: 60, right: 90 },
+      });
+      setupElement(buttonD, {
+        clientRect: { top: 30, bottom: 60, left: 0, right: 30 },
+      });
+      setupElement(buttonE, {
+        clientRect: { top: 30, bottom: 60, left: 30, right: 60 },
+      });
+      setupElement(buttonF, {
+        clientRect: { top: 30, bottom: 60, left: 60, right: 90 },
+      });
 
-      ReactTestUtils.Simulate.focus(buttonA);
-      expect(lastFocusedElement).toBe(buttonA);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonA);
+        expect(lastFocusedElement).toBe(buttonA);
+      });
 
       // Simulate shift+tab event which would focus first bumper
-      ReactTestUtils.Simulate.focus(firstBumper);
-      expect(lastFocusedElement).toBe(buttonD);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(firstBumper);
+        expect(lastFocusedElement).toBe(buttonD);
+      });
 
       // Simulate tab event which would focus last bumper
-      ReactTestUtils.Simulate.focus(lastBumper);
-      expect(lastFocusedElement).toBe(buttonA);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(lastBumper);
+        expect(lastFocusedElement).toBe(buttonA);
+      });
     });
 
     it('can tab across a FocusZone with different button structures', async () => {
@@ -242,21 +304,37 @@ describe('FocusTrapZone', () => {
       const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
 
       // Assign bounding locations to buttons.
-      setupElement(buttonX, { clientRect: { top: 0, bottom: 30, left: 0, right: 30 } });
-      setupElement(buttonA, { clientRect: { top: 0, bottom: 30, left: 0, right: 30 } });
-      setupElement(buttonB, { clientRect: { top: 0, bottom: 30, left: 30, right: 60 } });
-      setupElement(buttonC, { clientRect: { top: 0, bottom: 30, left: 60, right: 90 } });
-      setupElement(buttonD, { clientRect: { top: 30, bottom: 60, left: 0, right: 30 } });
+      setupElement(buttonX, {
+        clientRect: { top: 0, bottom: 30, left: 0, right: 30 },
+      });
+      setupElement(buttonA, {
+        clientRect: { top: 0, bottom: 30, left: 0, right: 30 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 0, bottom: 30, left: 30, right: 60 },
+      });
+      setupElement(buttonC, {
+        clientRect: { top: 0, bottom: 30, left: 60, right: 90 },
+      });
+      setupElement(buttonD, {
+        clientRect: { top: 30, bottom: 60, left: 0, right: 30 },
+      });
 
-      ReactTestUtils.Simulate.focus(buttonX);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonX);
+      });
       expect(lastFocusedElement).toBe(buttonX);
 
       // Simulate shift+tab event which would focus first bumper
-      ReactTestUtils.Simulate.focus(firstBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(firstBumper);
+      });
       expect(lastFocusedElement).toBe(buttonA);
 
       // Simulate tab event which would focus last bumper
-      ReactTestUtils.Simulate.focus(lastBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(lastBumper);
+      });
       expect(lastFocusedElement).toBe(buttonX);
     });
 
@@ -297,32 +375,58 @@ describe('FocusTrapZone', () => {
       const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
 
       // Assign bounding locations to buttons.
-      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
-      setupElement(buttonA, { clientRect: { top: 10, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonB, { clientRect: { top: 10, bottom: 30, left: 10, right: 20 } });
-      setupElement(buttonC, { clientRect: { top: 10, bottom: 30, left: 20, right: 30 } });
-      setupElement(buttonD, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
-      setupElement(buttonE, { clientRect: { top: 40, bottom: 60, left: 0, right: 10 } });
-      setupElement(buttonF, { clientRect: { top: 40, bottom: 60, left: 10, right: 20 } });
-      setupElement(buttonG, { clientRect: { top: 40, bottom: 60, left: 20, right: 30 } });
-      setupElement(buttonZ2, { clientRect: { top: 60, bottom: 70, left: 0, right: 10 } });
+      setupElement(buttonZ1, {
+        clientRect: { top: 0, bottom: 10, left: 0, right: 10 },
+      });
+      setupElement(buttonA, {
+        clientRect: { top: 10, bottom: 30, left: 0, right: 10 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 10, bottom: 30, left: 10, right: 20 },
+      });
+      setupElement(buttonC, {
+        clientRect: { top: 10, bottom: 30, left: 20, right: 30 },
+      });
+      setupElement(buttonD, {
+        clientRect: { top: 30, bottom: 40, left: 0, right: 10 },
+      });
+      setupElement(buttonE, {
+        clientRect: { top: 40, bottom: 60, left: 0, right: 10 },
+      });
+      setupElement(buttonF, {
+        clientRect: { top: 40, bottom: 60, left: 10, right: 20 },
+      });
+      setupElement(buttonG, {
+        clientRect: { top: 40, bottom: 60, left: 20, right: 30 },
+      });
+      setupElement(buttonZ2, {
+        clientRect: { top: 60, bottom: 70, left: 0, right: 10 },
+      });
 
       // Focus the middle button in the first FZ.
-      ReactTestUtils.Simulate.focus(buttonA);
-      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.right });
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonA);
+        ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.right });
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Focus the middle button in the second FZ.
-      ReactTestUtils.Simulate.focus(buttonE);
-      ReactTestUtils.Simulate.keyDown(buttonE, { which: KeyCodes.right });
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonE);
+        ReactTestUtils.Simulate.keyDown(buttonE, { which: KeyCodes.right });
+      });
       expect(lastFocusedElement).toBe(buttonF);
 
       // Simulate tab event which would focus last bumper
-      ReactTestUtils.Simulate.focus(lastBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(lastBumper);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Simulate shift+tab event which would focus first bumper
-      ReactTestUtils.Simulate.focus(firstBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(firstBumper);
+      });
       expect(lastFocusedElement).toBe(buttonF);
     });
   });
@@ -358,17 +462,37 @@ describe('FocusTrapZone', () => {
       // Have to set bumpers as "visible" for focus utilities to find them.
       // This is needed for 0 tabbable element tests to make sure that next tabbable element
       // from one bumper is the other bumper.
-      firstBumper.setAttribute('data-is-visible', String(true));
-      lastBumper.setAttribute('data-is-visible', String(true));
+      ReactTestUtils.act(() => {
+        firstBumper.setAttribute('data-is-visible', String(true));
+        lastBumper.setAttribute('data-is-visible', String(true));
+      });
 
       // Assign bounding locations to buttons.
-      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
-      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
-      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
-      setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
+      setupElement(buttonZ1, {
+        clientRect: { top: 0, bottom: 10, left: 0, right: 10 },
+      });
+      setupElement(buttonA, {
+        clientRect: { top: 10, bottom: 20, left: 0, right: 10 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 20, bottom: 30, left: 0, right: 10 },
+      });
+      setupElement(buttonC, {
+        clientRect: { top: 30, bottom: 40, left: 0, right: 10 },
+      });
+      setupElement(buttonZ2, {
+        clientRect: { top: 40, bottom: 50, left: 0, right: 10 },
+      });
 
-      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2, firstBumper, lastBumper };
+      return {
+        buttonZ1,
+        buttonA,
+        buttonB,
+        buttonC,
+        buttonZ2,
+        firstBumper,
+        lastBumper,
+      };
     }
 
     it('focuses first focusable element when focusing first bumper', async () => {
@@ -376,11 +500,15 @@ describe('FocusTrapZone', () => {
 
       const { buttonA, buttonB, firstBumper } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Simulate shift+tab event which would focus first bumper
-      ReactTestUtils.Simulate.focus(firstBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(firstBumper);
+      });
       expect(lastFocusedElement).toBe(buttonA);
     });
 
@@ -389,11 +517,15 @@ describe('FocusTrapZone', () => {
 
       const { buttonA, buttonB, lastBumper } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Simulate tab event which would focus first bumper
-      ReactTestUtils.Simulate.focus(lastBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(lastBumper);
+      });
       expect(lastFocusedElement).toBe(buttonA);
     });
 
@@ -402,7 +534,9 @@ describe('FocusTrapZone', () => {
 
       const { buttonA, buttonB, buttonZ2 } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Directly call window listener to simulate focus leaving FTZ.
@@ -421,9 +555,13 @@ describe('FocusTrapZone', () => {
     it('focuses previously focused element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
 
-      const { buttonB, buttonZ2 } = setupTest({ focusPreviouslyFocusedInnerElement: true });
+      const { buttonB, buttonZ2 } = setupTest({
+        focusPreviouslyFocusedInnerElement: true,
+      });
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Directly call window listener to simulate focus leaving FTZ.
@@ -473,13 +611,31 @@ describe('FocusTrapZone', () => {
       const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
 
       // Assign bounding locations to buttons.
-      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
-      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
-      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
-      setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
+      setupElement(buttonZ1, {
+        clientRect: { top: 0, bottom: 10, left: 0, right: 10 },
+      });
+      setupElement(buttonA, {
+        clientRect: { top: 10, bottom: 20, left: 0, right: 10 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 20, bottom: 30, left: 0, right: 10 },
+      });
+      setupElement(buttonC, {
+        clientRect: { top: 30, bottom: 40, left: 0, right: 10 },
+      });
+      setupElement(buttonZ2, {
+        clientRect: { top: 40, bottom: 50, left: 0, right: 10 },
+      });
 
-      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2, firstBumper, lastBumper };
+      return {
+        buttonZ1,
+        buttonA,
+        buttonB,
+        buttonC,
+        buttonZ2,
+        firstBumper,
+        lastBumper,
+      };
     }
 
     it('Restores focus to FTZ when clicking outside FTZ', async () => {
@@ -487,7 +643,9 @@ describe('FocusTrapZone', () => {
 
       const { buttonA, buttonB, buttonZ2 } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Directly call window listener to simulate focus leaving FTZ.
@@ -516,36 +674,50 @@ describe('FocusTrapZone', () => {
     it('Focuses first element when FTZ does not have focus and first bumper receives focus', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonZ1, firstBumper } = setupTest({ isClickableOutsideFocusTrap: true });
+      const { buttonA, buttonZ1, firstBumper } = setupTest({
+        isClickableOutsideFocusTrap: true,
+      });
 
-      ReactTestUtils.Simulate.focus(buttonZ1);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonZ1);
+      });
       expect(lastFocusedElement).toBe(buttonZ1);
 
-      ReactTestUtils.Simulate.focus(firstBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(firstBumper);
+      });
       expect(lastFocusedElement).toBe(buttonA);
     });
 
     it('Focuses last element when FTZ does not have focus and last bumper receives focus', async () => {
       expect.assertions(2);
 
-      const { buttonC, buttonZ2, lastBumper } = setupTest({ isClickableOutsideFocusTrap: true });
+      const { buttonC, buttonZ2, lastBumper } = setupTest({
+        isClickableOutsideFocusTrap: true,
+      });
 
-      ReactTestUtils.Simulate.focus(buttonZ2);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonZ2);
+      });
       expect(lastFocusedElement).toBe(buttonZ2);
 
-      ReactTestUtils.Simulate.focus(lastBumper);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(lastBumper);
+      });
       expect(lastFocusedElement).toBe(buttonC);
     });
 
     it('Restores focus to FTZ when focusing outside FTZ', async () => {
       expect.assertions(2);
 
-      const { buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonB, buttonZ2 } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
-      // Focusing outside trap brings focus back to FTZ
+      // Directly call window listener to simulate focus leaving FTZ.
       componentEventListeners.focus({
         target: buttonZ2,
         preventDefault: () => {
@@ -555,7 +727,7 @@ describe('FocusTrapZone', () => {
           /*noop*/
         },
       });
-      expect(lastFocusedElement).toBe(buttonB);
+      expect(lastFocusedElement).toBe(buttonA);
     });
 
     it('Does not restore focus to FTZ when forceFocusInsideTrap is false', async () => {
@@ -621,7 +793,9 @@ describe('FocusTrapZone', () => {
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', async () => {
-      const { buttonA } = setupTest({ firstFocusableSelector: 'invalidSelector' });
+      const { buttonA } = setupTest({
+        firstFocusableSelector: 'invalidSelector',
+      });
 
       expect(document.activeElement).toBe(buttonA);
     });
@@ -629,14 +803,14 @@ describe('FocusTrapZone', () => {
 
   describe('Focusing the FTZ', () => {
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
-      const focusTrapZoneRef = React.createRef<FocusTrapZone>();
+      const focusTrapZoneRef = React.createRef<HTMLElement>();
       const topLevelDiv = (ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={_onFocus}>
           <FocusTrapZone
-            forceFocusInsideTrap={false}
+            forceFocusInsideTrap={true}
             focusPreviouslyFocusedInnerElement={focusPreviouslyFocusedInnerElement}
             data-is-focusable={true}
-            ref={focusTrapZoneRef}
+            componentRef={focusTrapZoneRef}
           >
             <button className={'f'}>f</button>
             <FocusZone>
@@ -654,12 +828,26 @@ describe('FocusTrapZone', () => {
       const buttonZ = topLevelDiv.querySelector('.z') as HTMLElement;
 
       // Assign bounding locations to buttons.
-      setupElement(buttonF, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
-      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
-      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonZ, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
+      setupElement(buttonF, {
+        clientRect: { top: 0, bottom: 10, left: 0, right: 10 },
+      });
+      setupElement(buttonA, {
+        clientRect: { top: 10, bottom: 20, left: 0, right: 10 },
+      });
+      setupElement(buttonB, {
+        clientRect: { top: 20, bottom: 30, left: 0, right: 10 },
+      });
+      setupElement(buttonZ, {
+        clientRect: { top: 30, bottom: 40, left: 0, right: 10 },
+      });
 
-      return { focusTrapZone: focusTrapZoneRef.current!, buttonF, buttonA, buttonB, buttonZ };
+      return {
+        focusTrapZone: focusTrapZoneRef.current!,
+        buttonF,
+        buttonA,
+        buttonB,
+        buttonZ,
+      };
     }
 
     it('goes to previously focused element when focusing the FTZ', async () => {
@@ -669,19 +857,28 @@ describe('FocusTrapZone', () => {
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
-      focusTrapZone.focus();
+      ReactTestUtils.act(() => {
+        focusTrapZone.focus();
+      });
       expect(lastFocusedElement).toBe(buttonF);
 
       // Focus inside the trap zone, not the first element.
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Focus outside the trap zone
-      ReactTestUtils.Simulate.focus(buttonZ);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonZ);
+      });
       expect(lastFocusedElement).toBe(buttonZ);
 
       // Manually focusing FTZ should return to originally focused inner element.
-      focusTrapZone.focus();
+      ReactTestUtils.act(() => {
+        focusTrapZone.focus();
+      });
+
       expect(lastFocusedElement).toBe(buttonB);
     });
 
@@ -692,79 +889,95 @@ describe('FocusTrapZone', () => {
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
-      focusTrapZone.focus();
+      ReactTestUtils.act(() => {
+        focusTrapZone.focus();
+      });
       expect(lastFocusedElement).toBe(buttonF);
 
       // Focus inside the trap zone, not the first element.
-      ReactTestUtils.Simulate.focus(buttonB);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonB);
+      });
       expect(lastFocusedElement).toBe(buttonB);
 
       // Focus outside the trap zone
-      ReactTestUtils.Simulate.focus(buttonZ);
+      ReactTestUtils.act(() => {
+        ReactTestUtils.Simulate.focus(buttonZ);
+      });
       expect(lastFocusedElement).toBe(buttonZ);
 
       // Manually focusing FTZ should go to the first focusable element.
-      focusTrapZone.focus();
+      ReactTestUtils.act(() => {
+        focusTrapZone?.focus();
+      });
       expect(lastFocusedElement).toBe(buttonF);
     });
   });
 
   describe('Nested FocusTrapZones Stack Behavior', () => {
-    function getFocusStack(): FocusTrapZone[] {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return (FocusTrapZone as any)._focusStack;
-    }
-
     beforeAll(() => {
-      getFocusStack().length = 0;
+      FocusTrapZone.focusStack = [];
     });
 
     it('FocusTrapZone maintains a proper stack of FocusTrapZones as more are mounted/unmounted.', async () => {
-      let focusTrapZoneFocusStack: FocusTrapZone[] = getFocusStack();
-      const topLevelDiv = (ReactTestUtils.renderIntoDocument(
-        <div>
-          <FocusTrapZoneTestComponent />
-        </div>,
-      ) as unknown) as HTMLElement;
+      safeMount(<FocusTrapZoneTestComponent />, wrapper => {
+        const buttonA = wrapper.find('.a');
+        const buttonB = wrapper.find('.b');
+        const buttonC = wrapper.find('.c');
+        const buttonD = wrapper.find('.d');
 
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
+        // There should now be one focus trap zone.
+        expect(FocusTrapZone.focusStack.length).toBe(1);
 
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
+        ReactTestUtils.act(() => {
+          buttonA.simulate('click');
+        });
 
-      expect(focusTrapZoneFocusStack.length).toBe(2);
-      const baseFocusTrapZone = focusTrapZoneFocusStack[0];
-      expect(baseFocusTrapZone.props.forceFocusInsideTrap).toBe(true);
-      expect(baseFocusTrapZone.props.isClickableOutsideFocusTrap).toBe(false);
+        // There should now be two focus trap zones.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1', 'fz2']);
 
-      const firstFocusTrapZone = focusTrapZoneFocusStack[1];
-      expect(firstFocusTrapZone.props.forceFocusInsideTrap).toBe(false);
-      expect(firstFocusTrapZone.props.isClickableOutsideFocusTrap).toBe(false);
+        ReactTestUtils.act(() => {
+          buttonB.simulate('click');
+        });
 
-      // There should be now 3 focus trap zones (base/first/second)
-      ReactTestUtils.Simulate.click(buttonB);
-      expect(focusTrapZoneFocusStack.length).toBe(3);
-      expect(focusTrapZoneFocusStack[0]).toBe(baseFocusTrapZone);
-      expect(focusTrapZoneFocusStack[1]).toBe(firstFocusTrapZone);
-      const secondFocusTrapZone = focusTrapZoneFocusStack[2];
-      expect(secondFocusTrapZone.props.forceFocusInsideTrap).toBe(false);
-      expect(secondFocusTrapZone.props.isClickableOutsideFocusTrap).toBe(true);
+        // There should now be three focus trap zones.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1', 'fz2', 'fz3']);
 
-      // we remove the middle one
-      // unmounting a focus trap zone should remove it from the focus stack.
-      // but we also check that it removes the right focustrapzone (the middle one)
-      ReactTestUtils.Simulate.click(buttonA);
-      focusTrapZoneFocusStack = getFocusStack();
+        ReactTestUtils.act(() => {
+          buttonA.simulate('click');
+        });
 
-      expect(focusTrapZoneFocusStack.length).toBe(2);
-      expect(focusTrapZoneFocusStack[0]).toBe(baseFocusTrapZone);
-      expect(focusTrapZoneFocusStack[1]).toBe(secondFocusTrapZone);
+        // There should now be two focus trap zones after removing second focusTrapZone.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1', 'fz3']);
 
-      // finally remove the last focus trap zone.
-      ReactTestUtils.Simulate.click(buttonB);
-      focusTrapZoneFocusStack = getFocusStack();
+        ReactTestUtils.act(() => {
+          buttonB.simulate('click');
+        });
 
-      expect(focusTrapZoneFocusStack.length).toBe(1);
-      expect(focusTrapZoneFocusStack[0]).toBe(baseFocusTrapZone);
+        // There should now be one focus trap zone after removing third focusTrapZone.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1']);
+
+        ReactTestUtils.act(() => {
+          buttonC.simulate('click');
+        });
+
+        // There should now be two focus trap zone. The FocusStack should correctly handle forceFocusInsideTrap prop.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1', 'fz4']);
+
+        ReactTestUtils.act(() => {
+          buttonC.simulate('click');
+        });
+
+        // There should now be two focus trap zones after removing third focusTrapZone.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1']);
+
+        ReactTestUtils.act(() => {
+          buttonD.simulate('click');
+        });
+
+        // There should only be one focus trap zone (base) since fz5 disabled prop is equal to true.
+        expect(FocusTrapZone.focusStack).toStrictEqual(['fz1']);
+      });
     });
   });
 });

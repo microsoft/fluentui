@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.141.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.141.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.138.0..@fluentui/react_v7.141.0)
+
+### Patches
+
+- Delete unneeded compat exports ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
 
 ## [7.138.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.138.0)
 

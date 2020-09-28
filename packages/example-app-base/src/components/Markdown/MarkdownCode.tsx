@@ -5,7 +5,7 @@ import {
   styled,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors } from '@fluentui/theme';
 import * as React from 'react';
 import { CodeSnippet } from '../CodeSnippet/index';
 import { baseCodeStyle } from '../CodeSnippet/CodeSnippet.styles';

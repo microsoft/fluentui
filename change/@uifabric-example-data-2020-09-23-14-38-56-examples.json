@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Using getResolveAlias for webpack config.",
-  "packageName": "@uifabric/example-data",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-23T21:38:29.659Z"
-}
