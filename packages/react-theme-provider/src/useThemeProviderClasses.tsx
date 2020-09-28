@@ -8,7 +8,7 @@ import { tokensToStyleObject } from './tokensToStyleObject';
 
 const useThemeProviderStyles = makeStyles(theme => {
   const { tokens } = theme;
-  const tokenStyles = tokensToStyleObject(tokens) as IRawStyle;
+  const tokenStyles = React.useMemo(() => tokensToStyleObject(tokens) as IRawStyle, [tokens]);
 
   return {
     root: tokenStyles,
@@ -62,8 +62,9 @@ function useApplyClassToBody(state: ThemeProviderState, classesToApply: string[]
 
 export function useThemeProviderClasses(state: ThemeProviderState): void {
   const classes = useThemeProviderStyles(state.theme, state.renderer);
+  const { className, applyTo } = state;
+
   useApplyClassToBody(state, [classes.root, classes.body]);
 
-  const { className, applyTo } = state;
   state.className = css(className, classes.root, applyTo === 'element' && classes.body);
 }

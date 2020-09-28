@@ -60,15 +60,20 @@ export const makeClasses = <TState extends {}>(
             break;
 
           case 2:
+            const modifierName = parts[1];
+
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            if ((state as any)[parts[1]]) {
+            if ((state as any)[modifierName] || (state as any).variant === modifierName) {
               _setClass(state, value);
             }
             break;
 
           case 3:
+            const enumName = parts[1];
+            const enumValue = parts[1];
+
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            if ((state as any)[parts[1]] === parts[2]) {
+            if ((state as any)[enumName] === enumValue) {
               _setClass(state, value);
             }
             break;

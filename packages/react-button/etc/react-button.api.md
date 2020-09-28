@@ -6,10 +6,12 @@
 
 import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { FontTokens } from '@fluentui/theme';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SizeValue } from '@fluentui/theme';
+import { Theme } from '@fluentui/react-theme-provider';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -46,7 +48,7 @@ export interface ButtonState extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ButtonTokens = ColorTokens & {
+export type ButtonTokens = ColorTokens & FontTokens & {
     paddingLeft?: string;
     paddingRight?: string;
     paddingTop?: string;
@@ -68,9 +70,6 @@ export type ButtonTokens = ColorTokens & {
     width?: string;
     transform?: string;
     transition?: string;
-    fontFamily?: string;
-    fontSize?: string;
-    fontWeight?: string;
     size?: {
         smallest?: string;
         smaller?: string;
@@ -88,11 +87,11 @@ export type ButtonTokens = ColorTokens & {
 
 // @public (undocumented)
 export type ButtonVariants<TTokens = ButtonTokens> = {
-    base?: RecursivePartial<TTokens>;
-    primary?: RecursivePartial<TTokens>;
-    iconOnly?: RecursivePartial<TTokens>;
-    circular?: RecursivePartial<TTokens>;
-    fluid?: RecursivePartial<TTokens>;
+    base?: TTokens;
+    primary?: TTokens;
+    iconOnly?: TTokens;
+    circular?: TTokens;
+    fluid?: TTokens;
 };
 
 // @public (undocumented)
@@ -220,7 +219,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: ButtonState) => void;
+export const useButtonClasses: (state: ButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;

@@ -16,6 +16,7 @@ import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
+import { Variants } from '@fluentui/theme';
 
 // @public
 export const createDefaultTheme: () => Theme;
@@ -25,9 +26,6 @@ export const FluentTheme: Theme;
 
 // @public (undocumented)
 export type FontFace = IFontFace;
-
-// @public (undocumented)
-export type GenericDictionary = Record<string, any>;
 
 // @public (undocumented)
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
@@ -54,7 +52,15 @@ export function makeStyles<TStyleSet extends {
 };
 
 // @public
-export const makeVariants: <TTokenSetType extends TokenSetType>(componentName: string, prefix: string, variants: Record<string, any> | ((theme: Theme) => Record<string, any>)) => (state: Record<string, any>) => void;
+export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+
+// @public
+export type MakeVariantClassesOptions = {
+    name?: string;
+    prefix?: string;
+    styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
+    variants?: Variants | ((theme: Theme) => Variants);
+};
 
 // @public (undocumented)
 export const MergeStylesProvider: ({ children }: {
@@ -125,7 +131,7 @@ export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
+export const tokensToStyleObject: (tokens?: React.CSSProperties | TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
 
 // @public
 export const useInlineTokens: (draftState: {

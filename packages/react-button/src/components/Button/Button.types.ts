@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokens, RecursivePartial, SizeValue } from '@fluentui/theme';
+import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
@@ -96,55 +96,52 @@ export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export type ButtonTokens = ColorTokens & {
-  /* sizing */
-  paddingLeft?: string;
-  paddingRight?: string;
-  paddingTop?: string;
-  paddingBottom?: string;
-  margin?: string;
-  height?: string;
-  minWidth?: string;
-  maxWidth?: string;
-  minHeight?: string;
-  contentGap?: string;
-  iconSize?: string;
-  borderRadius?: string;
-  borderTopLeftRadius?: string;
-  borderTopRightRadius?: string;
-  borderBottomLeftRadius?: string;
-  borderBottomRightRadius?: string;
-  borderWidth?: string;
-  boxShadow?: string;
-  width?: string;
+export type ButtonTokens = ColorTokens &
+  FontTokens & {
+    /* sizing */
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    margin?: string;
+    height?: string;
+    minWidth?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    contentGap?: string;
+    iconSize?: string;
+    borderRadius?: string;
+    borderTopLeftRadius?: string;
+    borderTopRightRadius?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
+    borderWidth?: string;
+    boxShadow?: string;
+    width?: string;
 
-  transform?: string;
-  transition?: string;
-
-  fontFamily?: string;
-  fontSize?: string;
-  fontWeight?: string;
-
-  size?: {
-    smallest?: string;
-    smaller?: string;
-    small?: string;
-    regular?: string;
-    large?: string;
-    larger?: string;
-    largest?: string;
-  };
-
-  pressed?: {
     transform?: string;
     transition?: string;
+
+    size?: {
+      smallest?: string;
+      smaller?: string;
+      small?: string;
+      regular?: string;
+      large?: string;
+      larger?: string;
+      largest?: string;
+    };
+
+    pressed?: {
+      transform?: string;
+      transition?: string;
+    };
   };
-};
 
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: RecursivePartial<TTokens>;
-  primary?: RecursivePartial<TTokens>;
-  iconOnly?: RecursivePartial<TTokens>;
-  circular?: RecursivePartial<TTokens>;
-  fluid?: RecursivePartial<TTokens>;
+  base?: TTokens;
+  primary?: TTokens;
+  iconOnly?: TTokens;
+  circular?: TTokens;
+  fluid?: TTokens;
 };
