@@ -317,7 +317,10 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   if (colorCells.length < 1 || columnCount < 1) {
     return null;
   }
-
+  const onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
+    const { onRenderColorCell = renderOption } = props;
+    return onRenderColorCell(item, renderOption) as JSX.Element;
+  };
   return (
     <ButtonGrid
       {...((props as unknown) as IButtonGridProps)}
@@ -326,7 +329,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       items={itemsWithIndex}
       columnCount={columnCount}
       // eslint-disable-next-line react/jsx-no-bind
-      onRenderItem={renderOption}
+      onRenderItem={onRenderItem}
       shouldFocusCircularNavigate={shouldFocusCircularNavigate}
       doNotContainWithinFocusZone={doNotContainWithinFocusZone}
       onBlur={onSwatchColorPickerBlur}
@@ -335,4 +338,5 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     />
   );
 });
+
 SwatchColorPickerBase.displayName = COMPONENT_NAME;

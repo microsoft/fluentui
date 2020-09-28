@@ -86,7 +86,7 @@ function fixDocFilePaths() {
         return substr;
       }
       const match = docRegex.exec(substr);
-      const result = path.posix.join('@fluentui/examples', match[2], match[1], _transformRelativePath(match[3]));
+      const result = path.posix.join('@fluentui/react-examples', match[2], match[1], _transformRelativePath(match[3]));
       console.log(`updating ${substr} to ${result}`);
       return result;
     },

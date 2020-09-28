@@ -25,6 +25,9 @@ export interface IGroupSpacerProps {
 
   /** How much to indent */
   indentWidth?: number;
+
+  /** Override the default role (presentation) */
+  role?: string;
 }
 
 /**
