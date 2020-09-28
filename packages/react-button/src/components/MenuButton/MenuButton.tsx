@@ -15,8 +15,6 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
   useButtonClasses(state);
   useMenuButtonClasses(state);
 
-  useFocusRects(state.ref);
-
   // TODO remove any
   /**
    * Type 'MenuButtonState' has no properties in common with type '{
