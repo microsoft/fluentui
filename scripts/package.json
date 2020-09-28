@@ -58,6 +58,7 @@
     "json-loader": "^0.5.7",
     "just-scripts": "0.44.5",
     "lerna-alias": "^3.0.3-0",
+    "lodash-es": "^4.17.15",
     "node-fetch": "^2.6.1",
     "node-plop": "^0.25.0",
     "node-sass": "^4.14.1",
