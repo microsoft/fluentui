@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Markdown } from '@uifabric/example-app-base';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({
   root: {
@@ -23,7 +23,7 @@ export const GettingStartedPage: React.FunctionComponent = () => {
   return (
     <div className={classNames.root}>
       <div className={classNames.banner}>
-        <h1>office-ui-fabric-react</h1>
+        <h1>@fluentui/react</h1>
         <h3>A library of reusable, generic React components</h3>
       </div>
       <Markdown>{require<string>('!raw-loader!./docs/GettingStartedOverview.md')}</Markdown>

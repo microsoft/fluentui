@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
+import { css } from '@fluentui/react';
 import {
   IPageSectionProps,
   Markdown,
