@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import { storiesOf } from '@storybook/react';
-import { Image, ImageFit, Label, Layer, IImageProps } from 'office-ui-fabric-react';
+import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { FabricDecorator } from '../utilities';

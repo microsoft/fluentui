@@ -1,6 +1,6 @@
 {
   "name": "theming-designer",
-  "description": "Theming designer for office-ui-fabric-react.",
+  "description": "Theming designer for @fluentui/react.",
   "version": "7.0.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "@fluentui/react": "^7.142.0",
     "@uifabric/react-cards": "^0.113.3",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/example-app-base": "^7.15.18",
@@ -28,7 +29,6 @@
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/icons": "^7.5.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.142.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

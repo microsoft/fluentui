@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { DefaultButton, PrimaryButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { CommandBar } from '@fluentui/react/lib/CommandBar';
+import { DefaultButton, PrimaryButton, IconButton } from '@fluentui/react/lib/Button';
+import { Dropdown } from '@fluentui/react/lib/Dropdown';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { Link } from '@fluentui/react/lib/Link';
 import { MainPanelInnerContent, MainPanelNumericalWidth } from '../../shared/MainPanelStyles';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
-import { Persona, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Persona, PersonaPresence } from '@fluentui/react/lib/Persona';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { Slider } from '@fluentui/react/lib/Slider';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Text } from '@fluentui/react/lib/Text';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 /* eslint-disable no-console */
 
