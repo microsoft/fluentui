@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Custom callout support for Horizontal bar chart and donut chart added",
+  "comment": "Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart",
   "packageName": "@uifabric/charting",
   "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
