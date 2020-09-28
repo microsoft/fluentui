@@ -25,7 +25,6 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-next": "^8.0.0-alpha.118",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",

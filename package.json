@@ -11,7 +11,7 @@
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "build": "lerna run build --stream",
     "build:fluentui:docs": "gulp build:docs",
-    "build:min": "yarn buildto @fluentui/react-next @fluentui/react-northstar --min",
+    "build:min": "yarn buildto @fluentui/react @fluentui/react-northstar --min",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
