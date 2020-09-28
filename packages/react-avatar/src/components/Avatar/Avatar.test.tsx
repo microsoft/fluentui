@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as path from 'path';
-import { isConformant } from '@fluentui/react-conformance';
+import { isConformant } from '../../common/isConformant';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
@@ -17,10 +16,9 @@ describe('Avatar', () => {
   });
 
   isConformant({
-    componentPath: path.join(__dirname, 'Avatar.tsx'),
     Component: Avatar,
     displayName: 'Avatar',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
+    asPropHandlesRef: true,
   });
 
   /**
