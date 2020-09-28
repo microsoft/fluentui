@@ -57,6 +57,53 @@ exports[`Button renders a default state 1`] = `
     className=
         ms-Button
         {
+          --button-background: #ffffff;
+          --button-borderColor: #8a8886;
+          --button-borderRadius: 2px;
+          --button-borderWidth: 1px;
+          --button-boxShadow: none;
+          --button-checked-background: #edebe9;
+          --button-checked-contentColor: #201f1e;
+          --button-checkedHovered-background: #edebe9;
+          --button-checkedHovered-contentColor: #000000;
+          --button-contentColor: #323130;
+          --button-contentGap: 8px;
+          --button-disabled-background: #f3f2f1;
+          --button-disabled-borderColor: #f3f2f1;
+          --button-disabled-contentColor: #a19f9d;
+          --button-disabled-secondaryContentColor: #a19f9d;
+          --button-dividerColor: #c8c6c4;
+          --button-focusColor: #000000;
+          --button-focusInnerColor: #ffffff;
+          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --button-fontSize: 14px;
+          --button-fontWeight: 600;
+          --button-hovered-background: #f3f2f1;
+          --button-hovered-contentColor: #201f1e;
+          --button-hovered-secondaryContentColor: #201f1e;
+          --button-iconColor: inherit;
+          --button-iconSize: 16px;
+          --button-margin: 0;
+          --button-maxWidth: 280px;
+          --button-minHeight: var(--button-size-regular);
+          --button-minWidth: 96px;
+          --button-paddingBottom: 0;
+          --button-paddingLeft: 20px;
+          --button-paddingRight: 20px;
+          --button-paddingTop: 0;
+          --button-pressed-background: #edebe9;
+          --button-pressed-contentColor: #201f1e;
+          --button-pressed-secondaryContentColor: #201f1e;
+          --button-secondaryContentColor: #605e5c;
+          --button-secondaryContentFontSize: 12px;
+          --button-size-large: 40px;
+          --button-size-larger: 48px;
+          --button-size-largest: 64px;
+          --button-size-regular: 32px;
+          --button-size-small: 24px;
+          --button-size-smaller: 24px;
+          --button-size-smallest: 24px;
+          --button-width: auto;
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
@@ -147,55 +194,6 @@ exports[`Button renders a default state 1`] = `
         }
         &[aria-disabled=true] .ms-Button-icon {
           color: var(--button-disabled-iconColor);
-        }
-        {
-          --button-background: #ffffff;
-          --button-borderColor: #8a8886;
-          --button-borderRadius: 2px;
-          --button-borderWidth: 1px;
-          --button-boxShadow: none;
-          --button-checked-background: #edebe9;
-          --button-checked-contentColor: #201f1e;
-          --button-checkedHovered-background: #edebe9;
-          --button-checkedHovered-contentColor: #000000;
-          --button-contentColor: #323130;
-          --button-contentGap: 8px;
-          --button-disabled-background: #f3f2f1;
-          --button-disabled-borderColor: #f3f2f1;
-          --button-disabled-contentColor: #a19f9d;
-          --button-disabled-secondaryContentColor: #a19f9d;
-          --button-dividerColor: #c8c6c4;
-          --button-focusColor: #000000;
-          --button-focusInnerColor: #ffffff;
-          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          --button-fontSize: 14px;
-          --button-fontWeight: 600;
-          --button-hovered-background: #f3f2f1;
-          --button-hovered-contentColor: #201f1e;
-          --button-hovered-secondaryContentColor: #201f1e;
-          --button-iconColor: inherit;
-          --button-iconSize: 16px;
-          --button-margin: 0;
-          --button-maxWidth: 280px;
-          --button-minHeight: var(--button-size-regular);
-          --button-minWidth: 96px;
-          --button-paddingBottom: 0;
-          --button-paddingLeft: 20px;
-          --button-paddingRight: 20px;
-          --button-paddingTop: 0;
-          --button-pressed-background: #edebe9;
-          --button-pressed-contentColor: #201f1e;
-          --button-pressed-secondaryContentColor: #201f1e;
-          --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
-          --button-size-large: 40px;
-          --button-size-larger: 48px;
-          --button-size-largest: 64px;
-          --button-size-regular: 32px;
-          --button-size-small: 24px;
-          --button-size-smaller: 24px;
-          --button-size-smallest: 24px;
-          --button-width: auto;
         }
   >
     <span
@@ -268,6 +266,53 @@ exports[`Button renders anchor when href prop is provided 1`] = `
     className=
         ms-Button
         {
+          --button-background: #ffffff;
+          --button-borderColor: #8a8886;
+          --button-borderRadius: 2px;
+          --button-borderWidth: 1px;
+          --button-boxShadow: none;
+          --button-checked-background: #edebe9;
+          --button-checked-contentColor: #201f1e;
+          --button-checkedHovered-background: #edebe9;
+          --button-checkedHovered-contentColor: #000000;
+          --button-contentColor: #323130;
+          --button-contentGap: 8px;
+          --button-disabled-background: #f3f2f1;
+          --button-disabled-borderColor: #f3f2f1;
+          --button-disabled-contentColor: #a19f9d;
+          --button-disabled-secondaryContentColor: #a19f9d;
+          --button-dividerColor: #c8c6c4;
+          --button-focusColor: #000000;
+          --button-focusInnerColor: #ffffff;
+          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --button-fontSize: 14px;
+          --button-fontWeight: 600;
+          --button-hovered-background: #f3f2f1;
+          --button-hovered-contentColor: #201f1e;
+          --button-hovered-secondaryContentColor: #201f1e;
+          --button-iconColor: inherit;
+          --button-iconSize: 16px;
+          --button-margin: 0;
+          --button-maxWidth: 280px;
+          --button-minHeight: var(--button-size-regular);
+          --button-minWidth: 96px;
+          --button-paddingBottom: 0;
+          --button-paddingLeft: 20px;
+          --button-paddingRight: 20px;
+          --button-paddingTop: 0;
+          --button-pressed-background: #edebe9;
+          --button-pressed-contentColor: #201f1e;
+          --button-pressed-secondaryContentColor: #201f1e;
+          --button-secondaryContentColor: #605e5c;
+          --button-secondaryContentFontSize: 12px;
+          --button-size-large: 40px;
+          --button-size-larger: 48px;
+          --button-size-largest: 64px;
+          --button-size-regular: 32px;
+          --button-size-small: 24px;
+          --button-size-smaller: 24px;
+          --button-size-smallest: 24px;
+          --button-width: auto;
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
@@ -358,55 +403,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         }
         &[aria-disabled=true] .ms-Button-icon {
           color: var(--button-disabled-iconColor);
-        }
-        {
-          --button-background: #ffffff;
-          --button-borderColor: #8a8886;
-          --button-borderRadius: 2px;
-          --button-borderWidth: 1px;
-          --button-boxShadow: none;
-          --button-checked-background: #edebe9;
-          --button-checked-contentColor: #201f1e;
-          --button-checkedHovered-background: #edebe9;
-          --button-checkedHovered-contentColor: #000000;
-          --button-contentColor: #323130;
-          --button-contentGap: 8px;
-          --button-disabled-background: #f3f2f1;
-          --button-disabled-borderColor: #f3f2f1;
-          --button-disabled-contentColor: #a19f9d;
-          --button-disabled-secondaryContentColor: #a19f9d;
-          --button-dividerColor: #c8c6c4;
-          --button-focusColor: #000000;
-          --button-focusInnerColor: #ffffff;
-          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          --button-fontSize: 14px;
-          --button-fontWeight: 600;
-          --button-hovered-background: #f3f2f1;
-          --button-hovered-contentColor: #201f1e;
-          --button-hovered-secondaryContentColor: #201f1e;
-          --button-iconColor: inherit;
-          --button-iconSize: 16px;
-          --button-margin: 0;
-          --button-maxWidth: 280px;
-          --button-minHeight: var(--button-size-regular);
-          --button-minWidth: 96px;
-          --button-paddingBottom: 0;
-          --button-paddingLeft: 20px;
-          --button-paddingRight: 20px;
-          --button-paddingTop: 0;
-          --button-pressed-background: #edebe9;
-          --button-pressed-contentColor: #201f1e;
-          --button-pressed-secondaryContentColor: #201f1e;
-          --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
-          --button-size-large: 40px;
-          --button-size-larger: 48px;
-          --button-size-largest: 64px;
-          --button-size-regular: 32px;
-          --button-size-small: 24px;
-          --button-size-smaller: 24px;
-          --button-size-smallest: 24px;
-          --button-width: auto;
         }
     href="https://www.bing.com"
     role="button"
