@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixed Info MessageBar's dismiss button background color",
+  "packageName": "@fluentui/react-examples",
+  "email": "67673432+q-xg@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-28T05:08:38.866Z"
+}
