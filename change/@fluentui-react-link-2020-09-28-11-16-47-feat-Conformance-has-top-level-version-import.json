@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding packageVersion type to isConformant and adding a version.ts file.",
+  "packageName": "@fluentui/react-link",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-28T18:15:14.754Z"
+}

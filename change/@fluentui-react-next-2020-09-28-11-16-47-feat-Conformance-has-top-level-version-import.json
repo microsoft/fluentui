@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Adding a packageVersion type to isConformant test file and removing ComponentConformance.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-28T18:16:08.601Z"
+}
