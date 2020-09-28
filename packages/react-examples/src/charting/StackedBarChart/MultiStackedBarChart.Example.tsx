@@ -127,12 +127,7 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       // eslint-disable-next-line react/jsx-no-bind
       onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
         props ? (
-          <ChartHoverCard
-            XValue={props.xAxisCalloutData}
-            Legend={props.legend}
-            YValue={props.yAxisCalloutData || props.data}
-            color={props.color}
-          />
+          <ChartHoverCard Legend={props.legend} YValue={props.yAxisCalloutData || props.data} color={props.color} />
         ) : null
       }
     />

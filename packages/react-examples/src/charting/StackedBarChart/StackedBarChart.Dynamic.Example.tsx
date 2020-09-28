@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IChartProps, StackedBarChart, IStackedBarChartProps } from '@uifabric/charting';
+import {
+  ChartHoverCard,
+  IChartDataPoint,
+  IChartProps,
+  StackedBarChart,
+  IStackedBarChartProps,
+} from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -65,7 +71,19 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   public render(): JSX.Element {
     return (
       <div>
-        <StackedBarChart data={this.state.dynamicData} />
+        <StackedBarChart
+          data={this.state.dynamicData}
+          // eslint-disable-next-line react/jsx-no-bind
+          onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+            props ? (
+              <ChartHoverCard
+                XValue={props.legend!}
+                YValue={props.yAxisCalloutData || props.data}
+                color={props.color!}
+              />
+            ) : null
+          }
+        />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
