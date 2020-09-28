@@ -17,7 +17,7 @@ schedules:
     displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
     branches:
       include:
-        - master
+        - 7.0
 
 workspace:
   clean: all
