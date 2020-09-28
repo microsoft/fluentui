@@ -5061,6 +5061,8 @@ export interface IGroupedListState {
     // (undocumented)
     lastSelectionMode?: SelectionMode;
     // (undocumented)
+    listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
     version: {};
 }
 
