@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { useCustomizationSettings } from '@uifabric/utilities';
-import { ITheme } from '@fluentui/theme';
+import { ITheme, createTheme } from '@fluentui/theme';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';
-import { createTheme } from './createTheme';
 
 /**
  * Get theme from CustomizerContext or Customizations singleton.
  */
-function useCompatTheme(): ITheme {
+function useCompatTheme(): ITheme | undefined {
   return useCustomizationSettings(['theme']).theme;
 }
 
@@ -19,5 +18,5 @@ export const useTheme = (): Theme => {
   const theme = useContext(ThemeContext);
   const legacyTheme = useCompatTheme();
 
-  return theme || legacyTheme || createTheme();
+  return theme || legacyTheme || createTheme({});
 };

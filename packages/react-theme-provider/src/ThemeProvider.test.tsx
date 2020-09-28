@@ -4,9 +4,9 @@ import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes } from '@fluentui/theme';
-import { createTheme } from './createTheme';
+import { mergeThemes, createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@uifabric/merge-styles';
+import { getTokens } from './getTokens';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -90,7 +90,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme = mergeThemes(createTheme(), lightTheme);
+    const expectedTheme: Theme = mergeThemes(createTheme({}), lightTheme);
+    expectedTheme.tokens = getTokens(expectedTheme);
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 

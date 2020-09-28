@@ -17,9 +17,6 @@ import * as React from 'react';
 import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 
-// @public
-export const createTheme: (partialTheme?: PartialTheme) => Theme;
-
 // @public (undocumented)
 export type FontFace = IFontFace;
 

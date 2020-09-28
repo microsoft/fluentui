@@ -1,4 +1,4 @@
-import { PartialTheme } from '@fluentui/react-theme-provider';
+import { PartialTheme } from '@fluentui/theme';
 
 export const TeamsTheme: PartialTheme = {
   tokens: {
