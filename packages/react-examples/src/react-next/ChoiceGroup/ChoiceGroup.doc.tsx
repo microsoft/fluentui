@@ -18,7 +18,7 @@ const ChoiceGroupIconExampleCode = require('!raw-loader!@fluentui/react-examples
 export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',
   componentName: 'ChoiceGroup',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/ChoiceGroup',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/ChoiceGroup',
   examples: [
     {
       title: 'Basic ChoiceGroup',

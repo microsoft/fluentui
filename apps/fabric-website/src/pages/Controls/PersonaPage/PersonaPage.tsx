@@ -8,7 +8,7 @@ import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PersonaPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/PersonaPage/';
 
 export const PersonaPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

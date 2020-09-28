@@ -5,7 +5,7 @@ import { ColorsPersonasPageProps } from './PersonasPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/Colors/docs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 const personaColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-personas.json');
 // eslint-disable-next-line import/no-extraneous-dependencies

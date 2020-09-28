@@ -12,7 +12,7 @@ export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ActivityItem',
   examples: [
     {
       title: 'Activity Items with Icons',

@@ -11,7 +11,7 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
   title: 'ExtendedPeoplePicker',
   componentName: 'ExtendedPeoplePicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ExtendedPicker/PeoplePicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ExtendedPicker/PeoplePicker',
   examples: [
     {
       title: 'Extended People Picker (uncontrolled)',

@@ -7,7 +7,7 @@ import * as styles from './LocalizationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
 
 const directionalIconsData = require<[string, string][]>('../../../data/directional-icons.json');
 const localizedFontsData = require<ITableContent>('../../../data/localized-fonts.json');

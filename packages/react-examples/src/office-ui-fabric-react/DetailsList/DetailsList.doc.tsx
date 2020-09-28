@@ -48,7 +48,7 @@ export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/DetailsList',
   examples: [
     {
       title: 'DetailsList with 500 documents, sorting, filtering, marquee selection, justified columns',
@@ -70,7 +70,7 @@ function generateProps(example: IExample): IDocPageProps {
     title: example.title,
     componentName: 'DetailsList',
     componentUrl:
-      'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
+      'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/DetailsList',
     examples: [example],
     isHeaderVisible: false,
     isFeedbackVisible: true,

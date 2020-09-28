@@ -8,7 +8,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './FileTypeIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const documentIcons = require<{ name: string }[]>('@uifabric/fabric-website/lib/data/brand-icons-documents.json');

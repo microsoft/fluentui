@@ -21,7 +21,7 @@ export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
   componentName: 'PeoplePicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/PeoplePicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/PeoplePicker',
   examples: [
     {
       title: 'Normal People Picker',

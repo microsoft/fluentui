@@ -25,8 +25,7 @@ const PivotOverflowMenuExampleCode = require('!raw-loader!@fluentui/react-exampl
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Pivot',
   examples: [
     {
       title: 'Default Pivot',

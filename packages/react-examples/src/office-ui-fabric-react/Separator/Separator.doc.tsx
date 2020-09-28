@@ -15,7 +15,7 @@ export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
   componentName: 'Separator',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Separator',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Separator',
   examples: [
     {
       title: 'Basic Separator with Text',
