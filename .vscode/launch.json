@@ -215,24 +215,6 @@
       },
       "sourceMaps": true,
       "console": "integratedTerminal"
-    },
-    {
-      "name": "Debug gulp task",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
-      "stopOnEntry": false,
-      "runtimeArgs": ["--nolazy", "--debug"],
-      // You can change the task name and cwd locally as needed
-      "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
-      "env": {
-        "NODE_ENV": "development",
-        // This is used in scripts/babel/index.js to enable sourcemaps
-        "DEBUG": "1"
-      },
-      "sourceMaps": true,
-      "console": "integratedTerminal"
     }
   ]
 }

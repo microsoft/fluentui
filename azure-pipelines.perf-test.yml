@@ -18,43 +18,11 @@ steps:
       yarn
     displayName: yarn
 
-  # @fluentui/perf-test needs build and bundle steps
-  - script: |
-      yarn lage build --scope @fluentui/perf-test --scope perf-test --no-deps --verbose --no-cache --grouped
-    displayName: build  @fluentui v0
-    env:
-      BACKFILL_CACHE_PROVIDER: 'azure-blob'
-      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
-
-  # Fluent perf-test must run before Fabric perf-test until they are consolidated.
-  # @fluentui/perf-test Baseline
-  - script: |
-      yarn perf:test:base
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
-    workingDirectory: packages/fluentui/perf-test
-    displayName: Perf Test Base (Fluent)
-
-  # @fluentui/perf-test PR
-  - script: |
-      yarn perf:test
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
-    workingDirectory: packages/fluentui/perf-test
-    displayName: Perf Test (Fluent)
-
   # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
     displayName: Perf Test
-
-  - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site (Fluent)
-    inputs:
-      SourcePath: 'packages/fluentui/perf-test/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-      storage: fabricweb
-      ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
@@ -83,13 +51,5 @@ steps:
       yarn perf
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
     displayName: Performance Tests (7.0 only)
-
-  # HEADS UP: also see tag-version-prefix in fluentui-publish.js
-  - script: |
-      yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
-    displayName: Save Statistics to DB (7.0 only)
-    env:
-      STATS_URI: $(STATS_URI)
 
   - template: .devops/templates/cleanup.yml

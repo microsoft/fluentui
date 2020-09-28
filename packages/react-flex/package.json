@@ -34,7 +34,6 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-theme-provider": "^0.14.2",

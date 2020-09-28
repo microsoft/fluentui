@@ -7,8 +7,6 @@ const scenarioIterations = require('../src/scenarioIterations');
 const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
 const { argv } = require('@uifabric/build').just;
 
-import { getFluentPerfRegressions } from './fluentPerfRegressions';
-
 // TODO: consolidate with newer version of fluent perf-test
 
 // Flamegrill Types
@@ -285,9 +283,7 @@ module.exports = async function getPerfRegressions() {
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  let comment = createReport(scenarioSettings, scenarioResults);
-
-  comment = comment.concat(getFluentPerfRegressions());
+  const comment = createReport(scenarioSettings, scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';

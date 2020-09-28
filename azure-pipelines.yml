@@ -109,40 +109,6 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  # Disable this for 7.0 because we're likely going to delete it (don't need to establish a baseline)
-  # - job: ScreenerFluent
-  #   workspace:
-  #     clean: all
-  #   variables:
-  #     - template: .devops/templates/variables.yml
-  #       parameters:
-  #         pathPrefix: SourceVersion
-  #   steps:
-  #     - template: .devops/templates/tools.yml
-
-  #     - script: npx midgard-yarn install
-  #       displayName: yarn
-
-  #     - script: yarn workspace @fluentui/docs vr:build
-  #       displayName: build FUI N* VR Test
-
-  #     - task: AzureUpload@2
-  #       displayName: Upload N* doc site
-  #       inputs:
-  #         azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-  #         BlobPrefix: '$(deployBasePath)/react-northstar'
-  #         CacheControl: 'public, max-age=600000'
-  #         ContainerName: '$web'
-  #         SourcePath: 'packages/fluentui/docs/dist'
-  #         storage: fabricweb
-
-  #     - script: yarn workspace @fluentui/docs vr:test
-  #       displayName: start FUI N* VR Test
-  #       env:
-  #         SCREENER_API_KEY: $(screener.key)
-
-  #     - template: .devops/templates/cleanup.yml
-
   - job: Screener
     workspace:
       clean: all

@@ -16,8 +16,6 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 //
 // Dependencies are listed here and NOT in package.json because we do not want to allow for partial builds for scoping
 const dependencies = [
-  '@fluentui/docs',
-  '@fluentui/perf-test',
   '@fluentui/react-button',
   '@fluentui/react-checkbox',
   '@fluentui/react-image',
@@ -55,12 +53,6 @@ repoDeps.forEach(dep => {
           path.join('dist', path.basename(dep.packagePath)),
         ),
       );
-      deployedPackages.add(dep.packageJson.name);
-    } else if (dep.packageJson.name === '@fluentui/docs') {
-      instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'react-northstar')));
-      deployedPackages.add(dep.packageJson.name);
-    } else if (dep.packageJson.name === '@fluentui/perf-test') {
-      instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'perf-test-northstar')));
       deployedPackages.add(dep.packageJson.name);
     } else {
       instructions.push(
