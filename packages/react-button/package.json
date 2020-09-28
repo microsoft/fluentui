@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.14.3",
+  "version": "0.14.4",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.15.18",
+    "@uifabric/example-app-base": "^7.15.19",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",

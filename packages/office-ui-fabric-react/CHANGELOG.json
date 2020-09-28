@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "office-ui-fabric-react_v7.142.1",
+      "version": "7.142.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove incorrect react-icons dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "511a202a3a3d2ff1c3a1e8ed41cb779adaf82ef2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "office-ui-fabric-react_v7.142.0",
       "version": "7.142.0",

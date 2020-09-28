@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.142.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.1)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.142.0..office-ui-fabric-react_v7.142.1)
+
+### Patches
+
+- Remove incorrect react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/511a202a3a3d2ff1c3a1e8ed41cb779adaf82ef2) by elcraig@microsoft.com)
 
 ## [7.142.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.0)
 

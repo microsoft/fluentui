@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@fluentui/react-examples_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect react-next references in OUFR docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "a56b6185efa1118ba2b36417a8dc6d30b6941b8d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@fluentui/react-examples_v0.4.0",
       "version": "0.4.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change doc links to point to 7.0 branch",
-  "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-28T04:05:34.234Z"
-}
