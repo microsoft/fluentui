@@ -91,6 +91,7 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y
+      git reset --hard origin/7.0
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
