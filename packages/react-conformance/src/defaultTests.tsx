@@ -102,7 +102,7 @@ export const defaultTests: TestObject = {
     }
   },
 
-  /** Ensures component has top level version import in package/src/componentName */
+  /** Ensures component has top level version import */
   'has-top-level-version-import': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level version import `, () => {
