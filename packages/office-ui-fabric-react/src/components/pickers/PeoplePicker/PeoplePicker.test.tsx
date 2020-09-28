@@ -102,6 +102,6 @@ describe('PeoplePicker', () => {
   isConformant({
     Component: NormalPeoplePicker,
     displayName: 'NormalPeoplePicker',
-    disabledTests: ['has-top-level-file', 'name-matches-filename'],
+    disabledTests: ['has-top-level-file', 'name-matches-filename', 'is-static-property-of-parent'],
   });
 });

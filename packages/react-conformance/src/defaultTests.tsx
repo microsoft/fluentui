@@ -102,6 +102,21 @@ export const defaultTests: TestObject = {
     }
   },
 
+  /** Ensures component has top level version import in package/src/componentName */
+  'has-top-level-version-import': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    if (!testInfo.isInternal) {
+      it(`has corresponding top-level version import `, () => {
+        const { componentPath, packageVersion } = testInfo;
+
+        delete require.cache[componentPath];
+        require(componentPath);
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        expect((window as any).__packages__[packageVersion]).not.toBeUndefined();
+      });
+    }
+  },
+
   /** If the component is a subcomponent, ensure its parent has the subcomponent as static property */
   'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { componentPath, displayName, Component } = testInfo;

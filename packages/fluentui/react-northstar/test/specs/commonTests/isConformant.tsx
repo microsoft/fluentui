@@ -1,7 +1,7 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
-import { isConformant as isConformantBase, IsConformantOptions } from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant, IsConformantOptions } from '@fluentui/react-conformance';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
@@ -79,11 +79,11 @@ export function isConformant(
       .replace(/.ts$/, '.tsx'),
     Component,
     displayName: constructorName,
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-version-import'],
     helperComponents: [Ref, RefFindNode, FocusZone],
   };
 
-  isConformantBase(defaultConfig, options);
+  baseIsConformant(defaultConfig, options);
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config

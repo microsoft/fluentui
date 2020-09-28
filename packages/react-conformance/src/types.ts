@@ -28,6 +28,10 @@ export interface IsConformantOptions<TProps = {}> {
    */
   displayName: string;
   /**
+   * The top level version name.
+   */
+  packageVersion: string;
+  /**
    * In case that the mount from enzyme does not work for the component, a custom mount function can be provided.
    */
   customMount?: typeof mount;
