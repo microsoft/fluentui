@@ -18,32 +18,33 @@ export const defaultErrorMessages = {
     // If the component doesn't receive a display name.
     if (componentDisplayName === (null || 'Styledundefined')) {
       console.log(
-        chalk.yellow(
-          defaultErrorMessage(displayName, 'display name in:' + paragraph() + chalk.green.italic(componentPath)) +
-            resolveErrorMessages([
-              'Make sure that ' +
-                chalk.red.bold(fileName) +
-                ' contains ' +
-                chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
-                '.',
-            ]),
-        ),
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'display name in:' + paragraph() + chalk.green.italic(componentPath),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' +
+              chalk.red.bold(fileName) +
+              ' contains ' +
+              chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
+              '.',
+          ]),
       );
     }
 
     // If the component receives a display name but it isn't correct.
     else {
       console.log(
-        chalk.yellow(
-          defaultErrorMessage(
-            displayName,
-            'correct display name. It received: ' + chalk.red.bold(componentDisplayName.replace('Styled', '')),
-          ) +
-            resolveErrorMessages([
-              'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
-              'Make sure that your version.ts file is configured correctly.',
-            ]),
-        ),
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'correct display name. It received: ' + chalk.red.bold(componentDisplayName.replace('Styled', '')),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
+            'Make sure that your version.ts file is configured correctly.',
+          ]),
       );
     }
   },
@@ -55,18 +56,20 @@ export const defaultErrorMessages = {
 
     // If wrong values are received when checking if there is a top level index.ts file.
     console.log(
-      chalk.yellow(
-        defaultErrorMessage(displayName, 'top level export in:' + paragraph() + chalk.green.italic(indexFile)) +
-          resolveErrorMessages([
-            `Make sure that your component's ` +
-              chalk.red.bold('index.ts') +
-              ' file contains ' +
-              chalk.red.bold(`export * from './` + displayName + `';`),
-            'Check if your component is internal and consider enabling' +
-              chalk.red.bold(' isInternal ') +
-              'in your isConformant test.',
-          ]),
-      ),
+      defaultErrorMessage(
+        `exported-top-level`,
+        displayName,
+        'top level export in:' + paragraph() + chalk.green.italic(indexFile),
+      ) +
+        resolveErrorMessages([
+          `Make sure that your component's ` +
+            chalk.red.bold('index.ts') +
+            ' file contains ' +
+            chalk.red.bold(`export * from './` + displayName + `';`),
+          'Check if your component is internal and consider enabling' +
+            chalk.red.bold(' isInternal ') +
+            'in your isConformant test.',
+        ]),
     );
   },
 
@@ -77,15 +80,17 @@ export const defaultErrorMessages = {
 
     // If wrong values are received when checking if the top level file exists.
     console.log(
-      chalk.yellow(
-        defaultErrorMessage(displayName, 'top level file in:' + paragraph() + chalk.green.italic(topLevelFile)) +
-          resolveErrorMessages([
-            `Make sure that your components folder matches it's displayName: ` + chalk.red.bold(displayName),
-            'Check if your component is internal and consider enabling' +
-              chalk.red.bold(' isInternal ') +
-              'in your isConformant test.',
-          ]),
-      ),
+      defaultErrorMessage(
+        `has-top-level-file`,
+        displayName,
+        'top level file in:' + paragraph() + chalk.green.italic(topLevelFile),
+      ) +
+        resolveErrorMessages([
+          `Make sure that your components folder and name match it's displayName: ` + chalk.red.bold(displayName),
+          'Check if your component is internal and consider enabling' +
+            chalk.red.bold(' isInternal ') +
+            'in your isConformant test.',
+        ]),
     );
   },
 };
@@ -100,15 +105,24 @@ function resolveErrorMessages(resolveMessages: string[]) {
     resolveMessage.push(paragraph() + chalk.cyan(i + 1 + '. ' + resolveMessages[i]));
   }
 
-  return paragraph() + chalk.yellow.bold('To resolve this issue:') + resolveMessage.join('');
+  return paragraph() + chalk.yellow.bold('To resolve this issue:') + resolveMessage.join('') + paragraph();
 }
 
 /** Generates the starting default error message.
  *  @param displayName The component's displayName.
  *  @param errorMessage Why the test is failing.
  */
-function defaultErrorMessage(displayName: string, errorMessage: string) {
-  return `It appears that ` + chalk.red.bold(displayName) + ` doesn't have a ` + errorMessage + ' ';
+function defaultErrorMessage(testName: string, displayName: string, errorMessage: string) {
+  return (
+    paragraph() +
+    chalk.white.bold.italic.underline(testName) +
+    paragraph() +
+    chalk.yellow(`It appears that `) +
+    chalk.red.bold(displayName) +
+    chalk.yellow(` doesn't have a `) +
+    errorMessage +
+    paragraph()
+  );
 }
 
 /** Generates a paragraph.
