@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adding a isConformant file and updating avatar's tests.",
+  "comment": "Adding a isConformant file and updating Avatar's tests.",
   "packageName": "@fluentui/react-avatar",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
