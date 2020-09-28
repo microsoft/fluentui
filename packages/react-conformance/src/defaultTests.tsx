@@ -1,4 +1,5 @@
 import { TestObject, IsConformantOptions } from './types';
+import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
@@ -14,16 +15,20 @@ import consoleUtil from './utils/consoleUtil';
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const maxWords = 25;
-    const minWords = 5;
+    try {
+      const maxWords = 25;
+      const minWords = 5;
 
-    // No need to check if the description is undefined, ComponentDoc.description is a "string" not "string | undefined"
-    it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
-      const docblock = parseDocblock(componentInfo.description);
+      // No need to check if the description is undefined, ComponentDoc.description is a "string".
+      it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
+        const docblock = parseDocblock(componentInfo.description);
 
-      expect(_.words(docblock.description).length).toBeGreaterThanOrEqual(minWords);
-      expect(_.words(docblock.description).length).toBeLessThanOrEqual(maxWords);
-    });
+        expect(_.words(docblock.description).length).toBeGreaterThanOrEqual(minWords);
+        expect(_.words(docblock.description).length).toBeLessThanOrEqual(maxWords);
+      });
+    } catch (e) {
+      defaultErrorMessages['has-docblock'](componentInfo, testInfo);
+    }
   },
 
   /** Component file exports a valid React element type  */
@@ -53,17 +58,22 @@ export const defaultTests: TestObject = {
    * Else: component's constructor is a named function and matches displayName
    */
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const { Component } = testInfo;
+    try {
+      const { Component } = testInfo;
 
-    it(`has a displayName or constructor name`, () => {
-      const constructorName = Component.prototype?.constructor.name;
-      const displayName = Component.displayName || constructorName;
+      it(`has a displayName or constructor name`, () => {
+        const constructorName = Component.prototype?.constructor.name;
+        const displayName = Component.displayName || constructorName;
 
-      // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
-      // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
-      // styled() typically have Base in their name, so remove that too.
-      expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
-    });
+        // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
+        // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
+        // styled() typically have Base in their name, so remove that too.
+        expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
+      });
+    } catch (e) {
+      defaultErrorMessages['component-has-displayname'](componentInfo, testInfo);
+      throw new Error();
+    }
   },
 
   /** Constructor/component name matches filename */

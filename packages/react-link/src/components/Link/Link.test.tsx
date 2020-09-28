@@ -71,7 +71,7 @@ describe('Link', () => {
 
   isConformant({
     Component: Link,
-    displayName: 'Link',
+    displayName: 'Link123',
     asPropHandlesRef: true,
   });
 

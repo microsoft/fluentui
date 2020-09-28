@@ -1,4 +1,4 @@
-import { IsConformantOptions } from './types';
+import { TestObject, IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
@@ -8,7 +8,7 @@ import * as path from 'path';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
-export const defaultTestErrorMessages = {
+export const defaultErrorMessages: TestObject = {
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { componentPath, Component, displayName } = testInfo;
     const constructorName = Component.prototype?.constructor.name;
@@ -92,12 +92,12 @@ function paragraph(numberOfParagraphs?: number) {
  *  @param obj The object to format.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function formatObject(obj: any) {
-  const results = [];
+// function formatObject(obj: any) {
+//   const results = [];
 
-  for (const libName of Object.keys(obj)) {
-    results.push(`${libName}: ${obj[libName].join(', ')}`);
-  }
+//   for (const libName of Object.keys(obj)) {
+//     results.push(`${libName}: ${obj[libName].join(', ')}`);
+//   }
 
-  return results.join('\n');
-}
+//   return results.join('\n');
+// }
