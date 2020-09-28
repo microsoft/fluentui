@@ -3,8 +3,8 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)

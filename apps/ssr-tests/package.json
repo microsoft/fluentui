@@ -1,7 +1,7 @@
 {
   "name": "ssr-tests",
   "version": "7.0.0",
-  "description": "Server-side rendering tests for office-ui-fabric-react.",
+  "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@fluentui/react": "^7.142.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "^7.0.2",
     "@types/webpack-env": "1.15.1",
@@ -20,7 +21,6 @@
     "@uifabric/fabric-website-resources": "^7.8.18",
     "just-scripts-utils": "^0.8.3",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": "^7.142.0",
     "raw-loader": "^0.5.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

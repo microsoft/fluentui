@@ -1,8 +1,8 @@
-Performance testing with flamegraphs is a feature that runs on all PRs opened against Fluent UI and was introduced with [PR #9550](https://github.com/OfficeDev/office-ui-fabric-react/pull/9550). This page provides an overview of this feature.
+Performance testing with flamegraphs is a feature that runs on all PRs opened against Fluent UI and was introduced with [PR #9550](https://github.com/microsoft/fluentui/pull/9550). This page provides an overview of this feature.
 
 ## Sample Performance Test Results Table
 
-Linked from [#9516](https://github.com/OfficeDev/office-ui-fabric-react/pull/9516#issuecomment-503795745), which made perf improvements to "New" Button components in `packages/experiments`, is a sample perf test comment:
+Linked from [#9516](https://github.com/microsoft/fluentui/pull/9516#issuecomment-503795745), which made perf improvements to "New" Button components in `packages/experiments`, is a sample perf test comment:
 
 Component Perf Analysis:
 
@@ -148,7 +148,7 @@ If we look at [`Master Ticks` for `SplitButtonNew`](http://fabricweb.z5.web.core
 
 ## Running Tests Locally
 
-The perf test app and some of its dependencies may not get built with default build commands. Make sure you do a [build to perf-test](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands) before running any perf tests.
+The perf test app and some of its dependencies may not get built with default build commands. Make sure you do a [build to perf-test](https://github.com/microsoft/fluentui/wiki/Build-Commands) before running any perf tests.
 
 After building to perf-test and its dependencies you can run perf-test from the `apps/perf-test` directory:
 
@@ -200,7 +200,7 @@ Perf testing generates flamegraphs using a rollup strategy, rolling together the
 
 ### How do I add a scenario test?
 
-You can add a scenario to [perf-test](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/perf-test/src/scenarios) similar to the others listed and it will automatically be picked up. Optionally, you can also add your scenario to [scenarioNames.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/apps/perf-test/src/scenarioNames.js) to give it a more readable name.
+You can add a scenario to [perf-test](https://github.com/microsoft/fluentui/tree/master/apps/perf-test/src/scenarios) similar to the others listed and it will automatically be picked up. Optionally, you can also add your scenario to [scenarioNames.ts](https://github.com/microsoft/fluentui/blob/master/apps/perf-test/src/scenarioNames.js) to give it a more readable name.
 
 Please note that each scenario will add 5-60 seconds to build time (assuming the current 5,000 iteration default holds.) In the future, scenarios may be more selectively filtered for CI integration in order to keep build time manageable.
 

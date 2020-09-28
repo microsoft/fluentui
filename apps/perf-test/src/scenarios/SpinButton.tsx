@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react';
+import { SpinButton } from '@fluentui/react';
 
 const Scenario = () => (
   <SpinButton

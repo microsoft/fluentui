@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Pivot, PivotItem, IPivotProps, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { Pivot, PivotItem, IPivotProps, PivotLinkSize } from '@fluentui/react/lib/Pivot';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { List } from '@fluentui/react/lib/List';
+import { KeyCodes } from '@fluentui/react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 

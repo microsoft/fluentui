@@ -3,8 +3,8 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
-import { DatePicker } from 'office-ui-fabric-react';
+import { Fabric } from '@fluentui/react';
+import { DatePicker } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
 storiesOf('DatePicker', module)

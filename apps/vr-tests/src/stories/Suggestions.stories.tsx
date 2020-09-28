@@ -4,8 +4,8 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { DevOnlyStoryHeader } from '../utilities';
-import { Suggestions, ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Suggestions, ISuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 
 type Province = {
   name: string;
@@ -105,7 +105,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
               makeProvinceIntoSuggestion(this.state.Provinces[key]),
             )}
             onSuggestionClick={(_: any, province: Province) => {
-              alert(`clicked ${province.name} `);
+              console.log(`clicked ${province.name} `);
             }}
             onRenderNoResultFound={NoResultFound}
             onRenderSuggestion={ProvinceSuggestionItem}
