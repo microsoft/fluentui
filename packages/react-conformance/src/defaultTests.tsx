@@ -27,7 +27,7 @@ export const defaultTests: TestObject = {
         expect(_.words(docblock.description).length).toBeLessThanOrEqual(maxWords);
       });
     } catch (e) {
-      defaultErrorMessages['has-docblock'](componentInfo, testInfo);
+      // defaultErrorMessages['has-docblock'](componentInfo, testInfo);
     }
   },
 
@@ -58,10 +58,10 @@ export const defaultTests: TestObject = {
    * Else: component's constructor is a named function and matches displayName
    */
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    try {
-      const { Component } = testInfo;
+    const { Component } = testInfo;
 
-      it(`has a displayName or constructor name`, () => {
+    it(`has a displayName or constructor name`, () => {
+      try {
         const constructorName = Component.prototype?.constructor.name;
         const displayName = Component.displayName || constructorName;
 
@@ -69,11 +69,11 @@ export const defaultTests: TestObject = {
         // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
         // styled() typically have Base in their name, so remove that too.
         expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
-      });
-    } catch (e) {
-      defaultErrorMessages['component-has-displayname'](componentInfo, testInfo);
-      throw new Error();
-    }
+      } catch (e) {
+        defaultErrorMessages['component-has-displayname'](componentInfo, testInfo);
+        throw new Error();
+      }
+    });
   },
 
   /** Constructor/component name matches filename */
@@ -90,11 +90,16 @@ export const defaultTests: TestObject = {
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
-        const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const indexFile = require(path.join(rootPath, 'src', 'index'));
+        try {
+          const { displayName, componentPath, Component } = testInfo;
+          const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
+          const indexFile = require(path.join(rootPath, 'src', 'index'));
 
-        expect(indexFile[displayName]).toBe(Component);
+          expect(indexFile[displayName]).toBe(Component);
+        } catch (e) {
+          defaultErrorMessages['exported-top-level'](componentInfo, testInfo);
+          throw new Error();
+        }
       });
     }
   },
@@ -103,11 +108,16 @@ export const defaultTests: TestObject = {
   'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level file 'package/src/Component'`, () => {
-        const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const topLevelFile = require(path.join(rootPath, 'src', displayName));
+        try {
+          const { displayName, componentPath, Component } = testInfo;
+          const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
+          const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
-        expect(topLevelFile[displayName]).toBe(Component);
+          expect(topLevelFile[displayName]).toBe(Component);
+        } catch (e) {
+          defaultErrorMessages['has-top-level-file'](componentInfo, testInfo);
+          throw new Error();
+        }
       });
     }
   },
