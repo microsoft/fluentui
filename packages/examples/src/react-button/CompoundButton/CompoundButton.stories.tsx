@@ -22,19 +22,19 @@ const CompoundButtonExamples = (props: CompoundButtonProps) => (
     <CompoundButton {...props} icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} primary icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} primary disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} ghost icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} ghost disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   </Stack>
@@ -49,26 +49,7 @@ export const CompoundButtons = () => (
     <CompoundButtonExamples circular />
 
     <Text>A CompoundButton can fill the width of its container using the `fluid` prop.</Text>
-    <Stack horizontal>
-      <CompoundButton fluid icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid primary icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid primary disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid ghost icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid ghost disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-    </Stack>
+    <CompoundButtonExamples fluid />
 
     <Text>A CompoundButton can contain only an icon using the `iconOnly` prop.</Text>
     <CompoundButtonExamples iconOnly />
