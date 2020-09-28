@@ -40,19 +40,19 @@ steps:
     displayName: yarn generate-version-files
 
   - script: |
-      yarn run:published build --production
+      yarn run build --production
     displayName: yarn build (Create production build)
 
   - script: |
-      yarn run:published test --production
+      yarn run test --production
     displayName: yarn test
 
   - script: |
-      yarn run:published lint
+      yarn run lint
     displayName: yarn lint
 
   - script: |
-      yarn run:published bundle --production
+      yarn run bundle --production
     displayName: yarn bundle
 
   - script: |
