@@ -12,7 +12,6 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   const { render, state } = useButton(props, ref);
 
   useButtonClasses(state);
-  useFocusRects(state.ref);
   useInlineTokens(state, '--button');
 
   return render(state);
