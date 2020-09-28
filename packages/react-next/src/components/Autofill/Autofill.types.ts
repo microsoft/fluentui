@@ -48,13 +48,6 @@ export interface IAutofill {
  */
 export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
   /**
-   * The same as an Input's value property.
-   * While it can be any of these types, only a string should be passed in.
-   * The rest of the types (string[], number) are currently provided to keep this inline
-   * with the type provided by InputHTMLAttributes but may be removed at a later time
-   */
-  value?: string | string[] | number | undefined;
-  /**
    * Gets the components ref.
    */
   componentRef?: IRefObject<IAutofill>;

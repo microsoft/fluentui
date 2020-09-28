@@ -563,7 +563,6 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     suggestedDisplayValue?: string;
     // @deprecated
     updateValueInWillReceiveProps?: () => string | null;
-    value?: string | string[] | number | undefined;
 }
 
 // @public (undocumented)
