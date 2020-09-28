@@ -2,6 +2,41 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "office-ui-fabric-react_v7.142.0",
+      "version": "7.142.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating FocusTrapZone.test 'Focusing the FTZ' tests to use componentRef instead of ref.",
+            "author": "czearing@outlook.com",
+            "commit": "6366313ff72aecf5b0d33fa8c87f27a374aa416b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix incorrect hover behavior during menu animation",
+            "author": "behowell@microsoft.com",
+            "commit": "730f0fc071f468fe6b3f552649b342f0131e3d25",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: Expose onRenderColorItem and override",
+            "author": "email not defined",
+            "commit": "1a84adac82add903a9deb6e430187e676aee40c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Breadcrumb: add role prop for items",
+            "author": "erabelle@microsoft.com",
+            "commit": "1a6887223e8223786236b6276754bbab6fc90790",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "office-ui-fabric-react_v7.141.0",
       "version": "7.141.0",

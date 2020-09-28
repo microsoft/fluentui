@@ -1,8 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.1)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.0..@uifabric/experiments_v7.33.1)
+
+### Patches
+
+- fixing input width in upp ([PR #15244](https://github.com/microsoft/fluentui/pull/15244) by nebhatna@microsoft.com)
+- Replace dep `@uifabric/fluent-theme` with `@fluentui/theme` and remove legacy theme examples. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+- Renaming @fluentui/examples to @fluentui/react-examples. ([PR #15254](https://github.com/microsoft/fluentui/pull/15254) by humbertomakotomorimoto@gmail.com)
 
 ## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.0)
 

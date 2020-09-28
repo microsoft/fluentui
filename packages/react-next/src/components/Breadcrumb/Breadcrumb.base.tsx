@@ -256,6 +256,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           aria-current={item.isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
+          role={item.role}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}

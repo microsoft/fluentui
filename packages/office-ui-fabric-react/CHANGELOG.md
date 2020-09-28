@@ -1,8 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.142.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.0)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.141.0..office-ui-fabric-react_v7.142.0)
+
+### Minor changes
+
+- SwatchColorPicker: Expose onRenderColorItem and override ([PR #15180](https://github.com/microsoft/fluentui/pull/15180) by email not defined)
+- Breadcrumb: add role prop for items ([PR #15199](https://github.com/microsoft/fluentui/pull/15199) by erabelle@microsoft.com)
+
+### Patches
+
+- Updating FocusTrapZone.test 'Focusing the FTZ' tests to use componentRef instead of ref. ([PR #14804](https://github.com/microsoft/fluentui/pull/14804) by czearing@outlook.com)
+- Fix incorrect hover behavior during menu animation ([PR #15219](https://github.com/microsoft/fluentui/pull/15219) by behowell@microsoft.com)
 
 ## [7.141.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.141.0)
 

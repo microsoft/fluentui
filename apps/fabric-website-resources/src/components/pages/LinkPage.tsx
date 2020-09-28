@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { LinkPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Link/Link.doc';
+import { LinkPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Link/Link.doc';
 
 export const LinkPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

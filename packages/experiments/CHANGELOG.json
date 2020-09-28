@@ -2,6 +2,33 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/experiments_v7.33.1",
+      "version": "7.33.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing input width in upp",
+            "author": "nebhatna@microsoft.com",
+            "commit": "be9ce6a186be6ea918257589984062348bb6e2fb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme` and remove legacy theme examples.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/experiments_v7.33.0",
       "version": "7.33.0",

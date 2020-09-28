@@ -75,15 +75,6 @@ steps:
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
 
-  - task: GithubPRStatus@0
-    displayName: 'Update Github Pull Request Status'
-    inputs:
-      githubOwner: microsoft
-      githubRepo: 'fluentui'
-      githubContext: 'Pull Request Deployed Site'
-      githubDescription: 'Click "Details" to go to the Deployed Site'
-      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
-
   - script: |
       yarn stats:build
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { ModalPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Modal/Modal.doc';
+import { ModalPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Modal/Modal.doc';
 
 export const ModalPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

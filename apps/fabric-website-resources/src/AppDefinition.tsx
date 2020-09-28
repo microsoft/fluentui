@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
-import { DetailsListBasicExample } from '@fluentui/examples/lib/office-ui-fabric-react/DetailsList/DetailsList.Basic.Example';
+import { DetailsListBasicExample } from '@fluentui/react-examples/lib/office-ui-fabric-react/DetailsList/DetailsList.Basic.Example';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
 

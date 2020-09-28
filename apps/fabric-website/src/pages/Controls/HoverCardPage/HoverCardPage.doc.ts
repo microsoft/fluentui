@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { HoverCardPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/HoverCard/HoverCard.doc';
+import { HoverCardPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/HoverCard/HoverCard.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/HoverCardPage/docs/HoverCardRelated.md') as string;
 

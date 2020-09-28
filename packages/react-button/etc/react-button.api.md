@@ -87,12 +87,12 @@ export type ButtonTokens = ColorTokens & {
 };
 
 // @public (undocumented)
-export type ButtonVariants = {
-    base?: RecursivePartial<ButtonTokens>;
-    primary?: RecursivePartial<ButtonTokens>;
-    iconOnly?: RecursivePartial<ButtonTokens>;
-    circular?: RecursivePartial<ButtonTokens>;
-    fluid?: RecursivePartial<ButtonTokens>;
+export type ButtonVariants<TTokens = ButtonTokens> = {
+    base?: RecursivePartial<TTokens>;
+    primary?: RecursivePartial<TTokens>;
+    iconOnly?: RecursivePartial<TTokens>;
+    circular?: RecursivePartial<TTokens>;
+    fluid?: RecursivePartial<TTokens>;
 };
 
 // @public (undocumented)
@@ -126,6 +126,17 @@ export const compoundButtonShorthandProps: string[];
 // @public (undocumented)
 export interface CompoundButtonState extends CompoundButtonProps {
 }
+
+// @public (undocumented)
+export type CompoundButtonTokens = ButtonTokens & {
+    secondaryContentColor: string;
+    secondaryContentFontSize: string;
+    secondaryContentFontWeight: string;
+    secondaryContentMarginTop: string;
+};
+
+// @public (undocumented)
+export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;
 
 // @public (undocumented)
 export type ExpandedState = {
@@ -217,6 +228,9 @@ export const useButtonState: (draftState: ButtonState) => void;
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
 
+// @public (undocumented)
+export const useClasses: (state: CompoundButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
 // @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
     state: Record<string, any>;
@@ -224,7 +238,7 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTML
 };
 
 // @public (undocumented)
-export const useCompoundButtonClasses: (state: CompoundButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
