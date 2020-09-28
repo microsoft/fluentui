@@ -26,9 +26,9 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "@fluentui/react": "^7.142.0",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/variants": "^7.2.21",
-    "office-ui-fabric-react": "^7.142.0",
     "tslib": "^1.10.0"
   }
 }
