@@ -28,7 +28,7 @@ export const calcAvatarStyleProps = (state: Readonly<AvatarState>): AvatarStyleP
     };
   }
 
-  if (state.active === true) {
+  if (state.active !== undefined) {
     switch (state.activeDisplay) {
       default:
       case 'ring':
@@ -49,8 +49,10 @@ export const calcAvatarStyleProps = (state: Readonly<AvatarState>): AvatarStyleP
         props.activeGlow = true;
         break;
     }
-  } else if (state.active === false) {
-    props.inactive = true;
+
+    if (state.active === false) {
+      props.inactive = true;
+    }
   }
 
   return props;
