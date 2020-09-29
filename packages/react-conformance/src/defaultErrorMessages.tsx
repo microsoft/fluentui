@@ -2,7 +2,6 @@ import { IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
-import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 
@@ -10,72 +9,69 @@ import * as path from 'path';
 
 export const defaultErrorMessages = {
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
-    const {
-      Component,
-
-      displayName,
-      componentPath,
-      requiredProps,
-    } = testInfo;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
+    const { displayName, componentPath, requiredProps } = testInfo;
     const typesFile = componentPath.replace('tsx', 'types.ts');
 
-    try {
-      // Used to test if the component is broken.
-      const testComponent = <Component {...requiredProps} />;
+    // It appears that Component doesn't have a valid return. It currently is receiving the requiredProps: ____
+    // Check to see if you are including all of the required props in your types file: ____
+    if (requiredProps) {
+      console.log(
+        defaultErrorMessage(
+          `component-renders`,
+          displayName,
+          'valid return. It currently is receiving the requiredProps:' +
+            paragraph() +
+            chalk.green.italic(formatObject(requiredProps)) +
+            paragraph() +
+            'Check to see if you are including all of the required props in your types file: ' +
+            paragraph() +
+            chalk.green.italic(typesFile),
+        ) +
+          resolveErrorMessages([
+            `Make sure that your are including all of the required props to render in isConformant ` +
+              chalk.hex('#f7ae65').bold('requiredProps') +
+              '.',
+            `Make sure that your component's ` +
+              chalk.red.bold(displayName + '.base.tsx') +
+              ' file contains a valid return statement.',
+            'Check to see if your component works as expected with' +
+              chalk.red.bold(' mount ') +
+              'and' +
+              chalk.red.bold(' safeMount') +
+              '.',
+          ]),
+        receivedErrorMessage(error),
+      );
+    }
 
-      // The component is receiving requiredProps.
-      if (requiredProps) {
-        console.log(
-          defaultErrorMessage(
-            `component-renders`,
-            displayName,
-            'valid output. It currently is receiving the requiredProps:' +
-              paragraph() +
-              chalk.green.italic(formatObject(testComponent.props)) +
-              paragraph() +
-              'Check to see if you are including all of the required props in your types file: ' +
-              paragraph() +
-              chalk.green.italic(typesFile),
-          ) +
-            resolveErrorMessages([
-              `Make sure that your are including all of the required props to render in isConformant ` +
-                chalk.red.bold('requiredProps') +
-                '.',
-              `Make sure that your component's ` +
-                chalk.red.bold(displayName + '.base.tsx') +
-                ' file contains a valid return statement.',
-              'Check to see if your component works as expected with' +
-                chalk.red.bold(' mount ') +
-                'and' +
-                chalk.red.bold(' safeMount') +
-                '.',
-            ]),
-          receivedErrorMessage(error),
-        );
-      }
-      // The component is not receiving required props.
-      else {
-        console.log(
-          defaultErrorMessage(
-            `component-renders`,
-            displayName,
-            'valid output' + paragraph() + chalk.green.italic(rootPath),
-          ) +
-            resolveErrorMessages([
-              `Make sure that your component's ` +
-                chalk.red.bold(displayName + '.base.tsx') +
-                ' file contains a valid return statement.',
-              'Check if your component is internal and consider enabling' +
-                chalk.red.bold(' isInternal ') +
-                'in your isConformant test.',
-            ]),
-          receivedErrorMessage(error),
-        );
-      }
-      // The component is likely broken.
-    } catch (e) {
-      console.log(e);
+    // It appears that "Component" doesn't have a valid return and is not receiving any requiredProps.
+    // Check to see if you are missing any required props in your component's types file: ___
+    else {
+      console.log(
+        defaultErrorMessage(
+          `component-renders`,
+          displayName,
+          'valid return and is not receiving any requiredProps.' +
+            paragraph() +
+            `Check to see if you are missing any required props in your component's types file:` +
+            paragraph() +
+            chalk.green.italic(typesFile),
+        ) +
+          resolveErrorMessages([
+            `Make sure that your are including all of the required props to render in isConformant ` +
+              chalk.red.bold('requiredProps') +
+              '.',
+            `Make sure that your component's ` +
+              chalk.red.bold(displayName + '.base.tsx') +
+              ' file contains a valid return statement.',
+            'Check to see if your component works as expected with' +
+              chalk.red.bold(' mount ') +
+              'and' +
+              chalk.red.bold(' safeMount') +
+              '.',
+          ]),
+        receivedErrorMessage(error),
+      );
     }
   },
 
