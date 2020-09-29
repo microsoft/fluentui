@@ -58,7 +58,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
     ],
   },
   variants: {
-    base: {
+    root: {
       height: 'auto',
       maxWidth: '280px',
       minWidth: '72px',
