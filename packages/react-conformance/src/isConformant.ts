@@ -2,6 +2,7 @@ import * as fs from 'fs';
 
 import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
+import { defaultErrorMessages } from './defaultErrorMessages';
 import { merge } from './utils/merge';
 import { getComponentDoc } from './utils/getComponentDoc';
 
@@ -22,13 +23,17 @@ export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
       disabledTests.push('exported-top-level');
     }
 
-    for (const test of Object.keys(defaultTests)) {
-      describe('isConformant', () => {
+    describe('isConformant', () => {
+      afterAll(() => {
+        defaultErrorMessages['display-failed-tests'](componentInfo, mergedOptions);
+      });
+
+      for (const test of Object.keys(defaultTests)) {
         if (!disabledTests.includes(test)) {
           defaultTests[test](componentInfo, mergedOptions);
         }
-      });
-    }
+      }
+    });
 
     if (extraTests) {
       describe('isConformant - extraTests', () => {

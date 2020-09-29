@@ -8,6 +8,9 @@ import parseDocblock from './utils/parseDocblock';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+// An array of all the failed isConformant tests for the component.
+const failedTests: string[] = [];
+
 export const defaultErrorMessages = {
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
@@ -71,6 +74,7 @@ export const defaultErrorMessages = {
         receivedErrorMessage(error),
       );
     }
+    failedTests.push('has-docblock');
   },
 
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -110,6 +114,7 @@ export const defaultErrorMessages = {
         ]),
       receivedErrorMessage(error),
     );
+    failedTests.push('exports-component');
   },
 
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -190,6 +195,7 @@ export const defaultErrorMessages = {
         receivedErrorMessage(error),
       );
     }
+    failedTests.push('component-renders');
   },
 
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -247,6 +253,7 @@ export const defaultErrorMessages = {
           receivedErrorMessage(error),
       );
     }
+    failedTests.push('component-has-displayname');
   },
 
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -276,6 +283,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('name-matches-filename');
   },
 
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -306,6 +314,7 @@ export const defaultErrorMessages = {
         ]),
       receivedErrorMessage(error),
     );
+    failedTests.push('exported-top-level');
   },
 
   'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -334,6 +343,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('has-top-level-file');
   },
 
   'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -365,6 +375,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('is-static-property-of-parent');
   },
 
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -406,6 +417,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('kebab-aria-attributes');
   },
 
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -449,6 +461,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('consistent-callback-names');
   },
 
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -481,6 +494,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('as-renders-fc');
   },
 
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -513,6 +527,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('as-renders-react-class');
   },
 
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -545,6 +560,7 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('as-passes-as-value');
   },
 
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -577,6 +593,20 @@ export const defaultErrorMessages = {
         ]) +
         receivedErrorMessage(error),
     );
+    failedTests.push('as-renders-html');
+  },
+
+  'display-failed-tests': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const { displayName } = testInfo;
+    if (failedTests.length > 0) {
+      console.log(
+        paragraph() +
+          chalk.red.bold.underline(displayName) +
+          chalk.white.bold(' seems to have failed during the following isConformant tests:') +
+          paragraph() +
+          chalk.white.bold.italic.bgHex('#2e2e2e')(formatObject(failedTests)),
+      );
+    }
   },
 };
 
@@ -635,12 +665,15 @@ function paragraph(numberOfParagraphs?: number) {
   }
 }
 
+/** Formats a given object to be displayed in the console.
+ *  @param obj The object to format.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function formatObject(obj: any) {
   const results = [];
 
   for (const libName of Object.keys(obj)) {
-    results.push(`${libName}: ${obj[libName] + ','}`);
+    results.push(parseInt(libName, 10) + 1 + `: ${obj[libName] + ', '}`);
   }
 
   return results.join('\n');

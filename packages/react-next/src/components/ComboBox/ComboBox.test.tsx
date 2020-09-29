@@ -77,6 +77,8 @@ describe('ComboBox', () => {
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
+    // Disabled due to being required to mount by safeCreate. A test called "renders" was added here as a replacement.
+    disabledTests: ['component-renders'],
   });
 
   it('Can flip between enabled and disabled.', () => {
