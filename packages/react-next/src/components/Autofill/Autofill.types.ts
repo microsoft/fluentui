@@ -48,7 +48,7 @@ export interface IAutofill {
  */
 export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
   /**
-   * Gets the compoonent ref.
+   * Gets the components ref.
    */
   componentRef?: IRefObject<IAutofill>;
 
@@ -58,7 +58,8 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   suggestedDisplayValue?: string;
 
   /**
-   * A callback for when the current input value changes.
+   * A callback for when the current input value changes. Called after
+   * the state has been changed.
    *
    * @param composing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
@@ -87,13 +88,15 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * Handler for checking and updating the value if needed
    * in componentWillReceiveProps
    *
+   * @deprecated use standard input Value prop instead if
+   * the autofill should act like a controlled component
    * @returns - the updated value to set, if needed
    */
   updateValueInWillReceiveProps?: () => string | null;
 
   /**
    * Handler for checking if the full value of the input should
-   * be seleced in componentDidUpdate
+   * be selected in componentDidUpdate
    *
    * @returns - should the full value of the input be selected?
    */
@@ -101,12 +104,15 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 
   /**
    * A callback used to modify the input string.
+   * Do not use this to return a string anymore. Instead pass in
+   * value like you would any other controlled component.
+   * Called before the state has been updated.
    *
    * @param composing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
    */
-  onInputChange?: (value: string, composing: boolean) => string;
+  onInputChange?: (value: string, composing: boolean) => string | void;
 
   /**
    * Should the value of the input be selected? True if we're focused on our input, false otherwise.

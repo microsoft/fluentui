@@ -18,12 +18,6 @@ import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 import { Variants } from '@fluentui/theme';
 
-// @public
-export const createDefaultTheme: () => Theme;
-
-// @public (undocumented)
-export const FluentTheme: Theme;
-
 // @public (undocumented)
 export type FontFace = IFontFace;
 
@@ -105,9 +99,6 @@ export type StyleRendererOptions = {
     rtl?: boolean;
     targetWindow: Window | undefined;
 };
-
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
 
 export { Theme }
 
