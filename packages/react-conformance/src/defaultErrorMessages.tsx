@@ -12,8 +12,9 @@ export const defaultErrorMessages = {
     const { displayName, componentPath, requiredProps } = testInfo;
     const typesFile = componentPath.replace('tsx', 'types.ts');
 
-    // It appears that Component doesn't have a valid return. It currently is receiving the requiredProps: ____
-    // Check to see if you are including all of the required props in your types file: ____
+    // It appears that displayName doesn't have a valid return.
+    // It currently is receiving the requiredProps: "requiredProps"
+    // Check to see if you are including all of the required props in your types file: typesFile
     if (requiredProps) {
       console.log(
         defaultErrorMessage(
@@ -21,7 +22,7 @@ export const defaultErrorMessages = {
           displayName,
           'valid return. It currently is receiving the requiredProps:' +
             paragraph() +
-            chalk.green.italic(formatObject(requiredProps)) +
+            chalk.green(formatObject(requiredProps)) +
             paragraph() +
             'Check to see if you are including all of the required props in your types file: ' +
             paragraph() +
@@ -32,20 +33,20 @@ export const defaultErrorMessages = {
               chalk.hex('#f7ae65').bold('requiredProps') +
               '.',
             `Make sure that your component's ` +
-              chalk.red.bold(displayName + '.base.tsx') +
+              chalk.hex('#e00000')(displayName + '.base.tsx') +
               ' file contains a valid return statement.',
             'Check to see if your component works as expected with' +
-              chalk.red.bold(' mount ') +
+              chalk.hex('#e00000')(' mount ') +
               'and' +
-              chalk.red.bold(' safeMount') +
+              chalk.hex('#e00000')(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
       );
     }
 
-    // It appears that "Component" doesn't have a valid return and is not receiving any requiredProps.
-    // Check to see if you are missing any required props in your component's types file: ___
+    // It appears that "displayName" doesn't have a valid return and is not receiving any requiredProps.
+    // Check to see if you are missing any required props in your component's types file: "typesFile"
     else {
       console.log(
         defaultErrorMessage(
@@ -59,15 +60,15 @@ export const defaultErrorMessages = {
         ) +
           resolveErrorMessages([
             `Make sure that your are including all of the required props to render in isConformant ` +
-              chalk.red.bold('requiredProps') +
+              chalk.hex('#e00000')('requiredProps') +
               '.',
             `Make sure that your component's ` +
-              chalk.red.bold(displayName + '.base.tsx') +
+              chalk.hex('#e00000')(displayName + '.base.tsx') +
               ' file contains a valid return statement.',
             'Check to see if your component works as expected with' +
-              chalk.red.bold(' mount ') +
+              chalk.hex('#e00000').bold(' mount ') +
               'and' +
-              chalk.red.bold(' safeMount') +
+              chalk.hex('#c70000').bold(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
@@ -80,7 +81,7 @@ export const defaultErrorMessages = {
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const indexFile = path.join(rootPath, 'src', 'index');
 
-    // If wrong values are received when checking if there is a top level index.ts file.
+    // It appears that "displayName" doesn't have a top level export in: "indexFile".
     console.log(
       defaultErrorMessage(
         `exported-top-level`,
@@ -89,11 +90,11 @@ export const defaultErrorMessages = {
       ) +
         resolveErrorMessages([
           `Make sure that your component's ` +
-            chalk.red.bold('index.ts') +
+            chalk.hex('#e00000')('index.ts') +
             ' file contains ' +
-            chalk.red.bold(`export * from './` + displayName + `';`),
+            chalk.hex('#e00000')(`export * from './` + displayName + `';`),
           'Check if your component is internal and consider enabling' +
-            chalk.red.bold(' isInternal ') +
+            chalk.hex('#e00000')(' isInternal ') +
             'in your isConformant test.',
         ]),
       receivedErrorMessage(error),
@@ -105,7 +106,7 @@ export const defaultErrorMessages = {
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const topLevelFile = path.join(rootPath, 'src', displayName);
 
-    // If wrong values are received when checking if the top level file exists.
+    // It appears that "displayName" doesn't have a top level file in: "topLevelFile"
     console.log(
       defaultErrorMessage(
         `has-top-level-file`,
@@ -115,7 +116,7 @@ export const defaultErrorMessages = {
         resolveErrorMessages([
           `Make sure that your components folder and name match it's displayName: ` + chalk.white.bold(displayName),
           'Check if your component is internal and consider enabling' +
-            chalk.white.bold(' isInternal ') +
+            chalk.hex('#e00000')(' isInternal ') +
             'in your isConformant test.',
         ]) +
         receivedErrorMessage(error),
@@ -128,7 +129,7 @@ export const defaultErrorMessages = {
     const componentDisplayName = Component.displayName || constructorName;
     const fileName = path.basename(componentPath);
 
-    // If the component doesn't receive a display name.
+    // It appears that "displayName" doesn't have a display name in: "componentPath"
     if (componentDisplayName === (null || 'Styledundefined')) {
       console.log(
         defaultErrorMessage(
@@ -138,25 +139,25 @@ export const defaultErrorMessages = {
         ) +
           resolveErrorMessages([
             'Make sure that ' +
-              chalk.red.bold(fileName) +
+              chalk.hex('#e00000')(fileName) +
               ' contains ' +
-              chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
+              chalk.hex('#e00000')(displayName + '.displayName = COMPONENT_NAME') +
               '.',
           ]) +
           receivedErrorMessage(error),
       );
     }
 
-    // If the component receives a display name but it isn't correct.
+    // It appears that "displayName" doesn't have a correct display name. It received: "componentDisplayName"
     else {
       console.log(
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received: ' + chalk.red.bold(componentDisplayName.replace('Styled', '')),
+          'correct display name. It received: ' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
         ) +
           resolveErrorMessages([
-            'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
+            'Make sure that ' + fileName + ' contains ' + chalk.hex('#e00000')('{ import ./version }') + '.',
             'Make sure that your version.ts file is configured correctly.',
           ]) +
           receivedErrorMessage(error),
