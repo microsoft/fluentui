@@ -3,7 +3,7 @@ import {
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
   getScreenSelector,
-} from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/Styling';
 
 export const borderWidth = '1px';
 export const borderWidthError = '2px';

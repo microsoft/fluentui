@@ -3,7 +3,7 @@ import {
   IExpandingCardStyles,
   IPlainCardStyleProps,
   IPlainCardStyles,
-} from 'office-ui-fabric-react/lib/HoverCard';
+} from '@fluentui/react/lib/HoverCard';
 import * as StyleConstants from '../Constants';
 
 export const ExpandingCardStyles = (props: IExpandingCardStyleProps): Partial<IExpandingCardStyles> => {

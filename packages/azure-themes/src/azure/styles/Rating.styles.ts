@@ -1,4 +1,4 @@
-import { IRatingStyleProps, IRatingStyles } from 'office-ui-fabric-react/lib/Rating';
+import { IRatingStyleProps, IRatingStyles } from '@fluentui/react/lib/Rating';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
