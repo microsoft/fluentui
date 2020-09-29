@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Sep 2020 12:27:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.143.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.143.0)
+
+Tue, 29 Sep 2020 12:27:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.142.1..office-ui-fabric-react_v7.143.0)
+
+### Minor changes
+
+- Ensure GroupedList version is invalidated when parent list is invalidated ([PR #15287](https://github.com/microsoft/fluentui/pull/15287) by tmichon@microsoft.com)
 
 ## [7.142.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.1)
 
