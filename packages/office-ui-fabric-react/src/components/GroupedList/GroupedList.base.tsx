@@ -23,6 +23,7 @@ const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_
 export interface IGroupedListState {
   lastSelectionMode?: SelectionMode;
   groups?: IGroup[];
+  listProps?: IGroupedListProps['listProps'];
   version: {};
 }
 
@@ -46,17 +47,20 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   ): IGroupedListState {
     let nextState = previousState;
 
-    const { listProps: { version = undefined } = {} } = nextProps;
-
-    if (version) {
-      nextState = {
-        ...nextState,
-        version,
-      };
-    }
-
     const { groups, selectionMode, compact } = nextProps;
     let shouldForceUpdates = false;
+
+    nextState = {
+      ...previousState,
+      listProps: nextProps.listProps,
+    };
+
+    const nextVersion = nextProps.listProps && nextProps.listProps.version;
+    const version = previousState.listProps && previousState.listProps.version;
+
+    if (nextVersion !== version) {
+      shouldForceUpdates = true;
+    }
 
     if (nextProps.groups !== groups) {
       nextState = {
@@ -90,6 +94,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this.state = {
       groups: props.groups,
+      listProps: props.listProps,
       version,
     };
   }
