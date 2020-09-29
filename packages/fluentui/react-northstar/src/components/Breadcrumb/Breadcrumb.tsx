@@ -110,7 +110,6 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
   {
     className: breadcrumbClassName,
     displayName: 'Breadcrumb',
-
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables', 'size'],
     mapPropsToStylesProps: ({ size }) => ({
       size,
