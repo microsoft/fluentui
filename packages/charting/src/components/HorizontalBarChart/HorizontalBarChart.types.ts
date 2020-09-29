@@ -1,6 +1,6 @@
 import { IChartProps } from './index';
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 export interface IHorizontalBarChartProps {
   /**
