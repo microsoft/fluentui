@@ -70,7 +70,7 @@ export const makeClasses = <TState extends {}>(
 
           case 3:
             const enumName = parts[1];
-            const enumValue = parts[1];
+            const enumValue = parts[2];
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             if ((state as any)[enumName] === enumValue) {
