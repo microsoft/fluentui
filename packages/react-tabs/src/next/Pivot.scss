@@ -70,7 +70,7 @@
 
 // Additional styles for Links NOT in the overflow menu
 .link,
-.overflowMenuButton {
+button.overflowMenuButton {
   text-align: center;
   display: inline-block;
   line-height: 44px;
@@ -184,11 +184,16 @@
 }
 
 // The overflow menu button is hidden until there's at least one link in the overflow
-.overflowMenuButton {
+// TODO after the extra span wrapper around the button is removed,
+// remove the 'span' selector here, and 'button' selector on the .overflowMenuButton class above
+span.overflowMenuButton {
   visibility: hidden;
+  position: absolute;
+  right: 0;
 }
-.link[data-is-overflowing='true'] ~ * .overflowMenuButton {
+.link[data-is-overflowing='true'] ~ .overflowMenuButton {
   visibility: visible;
+  position: relative;
 }
 
 .linkContent {

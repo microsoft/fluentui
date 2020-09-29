@@ -244,8 +244,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       (button: React.Component | null) => {
         const node = ReactDOM.findDOMNode(button);
         overflowMenuButtonRef(node instanceof HTMLElement ? node : null);
+        if (overflowMenuButtonRef.current) {
+          overflowMenuButtonRef.current.className = classNames.overflowMenuButton;
+        }
       },
-      [overflowMenuButtonRef],
+      [overflowMenuButtonRef, classNames.overflowMenuButton],
     );
 
     return (
