@@ -7,7 +7,7 @@ import {
   ISlottableProps,
   IStyleableComponentProps,
 } from '../../Foundation';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ILabelSlot } from '../../utilities/factoryComponents.types';

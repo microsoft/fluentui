@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from 'office-ui-fabric-react';
+import { Text } from '@fluentui/react';
 
 export const PersonaText = <T extends { children?: React.ReactChild; className?: string }>(
   props: T,

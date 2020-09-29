@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.types';
-import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
+import { IRawStyle, mergeStyles } from '@fluentui/react/lib/Styling';
+import { getNativeProps, divProperties } from '@fluentui/react/lib/Utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   public static defaultProps: ILayoutGroupProps = {

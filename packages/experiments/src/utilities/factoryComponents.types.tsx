@@ -7,7 +7,7 @@ import {
   IListProps,
   IPersonaPresenceProps,
   PersonaPresence,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { ISlotProp } from '../Foundation';
 
 // TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
