@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyles } from 'office-ui-fabric-react';
+import { mergeStyles } from '@fluentui/react';
 import { NeutralColors } from '@fluentui/theme';
 import { IBadgeProps } from './Badge.types';
 

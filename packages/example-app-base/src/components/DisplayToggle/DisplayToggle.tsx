@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyles, Toggle } from 'office-ui-fabric-react';
+import { mergeStyles, Toggle } from '@fluentui/react';
 import { IDisplayToggle } from './DisplayToggle.types';
 
 export const DisplayToggle = (props: IDisplayToggle) => {
