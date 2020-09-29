@@ -56,7 +56,6 @@
     "@uifabric/azure-themes": "^7.5.18",
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/file-type-icons": "^7.6.9",
-    "@uifabric/fluent-theme": "^7.3.17",
     "@uifabric/foundation": "^7.9.9",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
