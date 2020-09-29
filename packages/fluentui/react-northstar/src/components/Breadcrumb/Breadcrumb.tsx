@@ -91,7 +91,13 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
         })}
       >
         <BreadcrumbContext.Provider value={contextValue}>
-          <div role="list">{childrenExist(children) ? children : content}</div>
+          <div
+            {...getA11yProps('itemsContainer', {
+              className: classes.itemsContainerWrapper,
+            })}
+          >
+            {childrenExist(children) ? children : content}
+          </div>
         </BreadcrumbContext.Provider>
       </ElementType>,
     );
@@ -104,6 +110,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
   {
     className: breadcrumbClassName,
     displayName: 'Breadcrumb',
+
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables', 'size'],
     mapPropsToStylesProps: ({ size }) => ({
       size,
