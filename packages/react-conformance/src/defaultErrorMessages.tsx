@@ -402,9 +402,50 @@ export const defaultErrorMessages = {
           chalk.white(formatObject(ariaPropsDif)),
       ) +
         resolveErrorMessages([
-          'Make sure that ' +
-            chalk.hex('#e00000').bold(displayName + 's') +
-            ` aria attribute props are using kebab-case.`,
+          'Make sure that ' + chalk.hex('#e00000')(displayName + 's') + ` aria attribute props are using kebab-case.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName, testOptions = {} } = testInfo;
+    const propNames = Object.keys(componentInfo.props);
+    const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
+    const callbackNames = [];
+
+    for (const propName of propNames) {
+      if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        const words = propName.slice(2).match(/[A-Z][a-z]+/g);
+        if (words) {
+          const lastWord = words[words.length - 1];
+          if (!lastWord.endsWith('ed')) {
+            callbackNames.push(propName);
+          }
+        }
+      }
+    }
+
+    // Message Description: Handles scenario where the second word in a callback ends with 'ed'.
+    //
+    // It appears that "displayName" doesn't have a consistent callback name.
+    // The received callback needs to be renamed: "callbackNames"
+    // To Resolve this issue:
+    // 1. Rename "displayName"'s callback props that don't end with "ed".
+    // 2. Include the prop in TestOptions ignoreProps.
+    console.log(
+      defaultErrorMessage(
+        `consistent-callback-names`,
+        displayName,
+        'consistent callback name.' +
+          paragraph() +
+          'The received callback needs to be renamed:' +
+          paragraph() +
+          chalk.green(formatObject(callbackNames)),
+      ) +
+        resolveErrorMessages([
+          'Rename ' + chalk.hex('#e00000')(displayName + 's') + ` callback props that don't end with "ed".`,
+          `Include the prop in TestOptions` + chalk.hex('#e00000')(' ignoreProps') + '.',
         ]) +
         receivedErrorMessage(error),
     );

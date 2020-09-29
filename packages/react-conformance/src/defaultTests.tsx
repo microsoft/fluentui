@@ -175,20 +175,25 @@ export const defaultTests: TestObject = {
   /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`has consistent custom callback names`, () => {
-      const { testOptions = {} } = testInfo;
-      const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
+      try {
+        const { testOptions = {} } = testInfo;
+        const propNames = Object.keys(componentInfo.props);
+        const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
-      for (const propName of Object.keys(propNames)) {
-        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
-          const words = propName.slice(2).match(/[A-Z][a-z]+/g);
+        for (const propName of propNames) {
+          if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+            const words = propName.slice(2).match(/[A-Z][a-z]+/g);
 
-          if (words) {
-            // Make sure last word doesn't end with ed
-            const lastWord = words[words.length - 1];
-            expect(lastWord.endsWith('ed')).toBe(false);
+            if (words) {
+              // Make sure last word doesn't end with ed
+              const lastWord = words[words.length - 1];
+              expect(lastWord.endsWith('ed')).toBe(false);
+            }
           }
         }
+      } catch (e) {
+        defaultErrorMessages['consistent-callback-names'](componentInfo, testInfo, e);
+        throw new Error('consistent-callback-names');
       }
     });
   },
