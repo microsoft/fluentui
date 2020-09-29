@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { styled, classNamesFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from '@fluentui/react/lib/DetailsList';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { styled, classNamesFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType } from '../../utilities/parser/index';
 import { IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
 import { getStyles } from './PropertiesTableSet.styles';

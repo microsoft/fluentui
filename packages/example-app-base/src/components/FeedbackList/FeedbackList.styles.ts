@@ -1,6 +1,6 @@
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getFocusStyle, getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
+import { getFocusStyle, getTheme, FontWeights } from '@fluentui/react/lib/Styling';
+import { IPivotStyles } from '@fluentui/react/lib/Pivot';
 import { IFeedbackListStyleProps, IFeedbackListStyles } from './FeedbackList.types';
 
 const globalClassNames = {

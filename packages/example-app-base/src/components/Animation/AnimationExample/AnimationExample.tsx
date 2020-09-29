@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyleSets, css, Icon, IIconStyles, IStyleSet } from 'office-ui-fabric-react';
+import { mergeStyleSets, css, Icon, IIconStyles, IStyleSet } from '@fluentui/react';
 import { NeutralColors, MotionDurations, MotionTimings, Depths } from '@fluentui/theme';
 import { IAnimationExampleProps } from './AnimationExample.types';
 
