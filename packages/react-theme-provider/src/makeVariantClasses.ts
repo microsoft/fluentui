@@ -13,7 +13,6 @@ import { makeClasses } from './makeClasses';
  * @param objOrFunc - Function or object.
  * @param argument - Argument to pass if a function is provided.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
