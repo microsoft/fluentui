@@ -1,5 +1,5 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
-import { mergeProps } from '@fluentui/react-compose/lib/next';
+import { makeMergeProps } from '@fluentui/react-compose/lib/next';
 import { ComponentWithAs, ShorthandConfig, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -21,6 +21,8 @@ import { ButtonContent, ButtonContentProps } from './ButtonContent';
 // TODO: had to use deep path because SASS was trying to be compiled as a side effect
 import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
 import { useButtonStyles } from './useButtonStyles';
+
+const mergeProps = makeMergeProps()
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -89,7 +91,7 @@ export type ButtonStylesProps = Pick<
 > & {
   hasContent?: boolean;
 };
-
+//
 export const buttonClassName = 'ui-button';
 
 /**

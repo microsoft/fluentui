@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { mergeProps } from './mergeProps';
+import { makeMergeProps } from './makeMergeProps'
+
+const mergeProps = makeMergeProps()
 
 describe('mergeProps', () => {
   describe('merging same value type', () => {

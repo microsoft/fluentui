@@ -6,7 +6,7 @@ const ButtonExample = () => (
     // components={{
     //   icon: null,
     // }}
-    icon={null}
+    // icon={null}
     content="Click Here"
   />
 );
