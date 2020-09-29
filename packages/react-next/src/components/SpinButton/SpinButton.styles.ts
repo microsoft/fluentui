@@ -10,7 +10,7 @@ import { IButtonStyles } from '../../compat/Button';
 
 import { ISpinButtonStyles, ISpinButtonStyleProps } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 
 const ARROW_BUTTON_WIDTH = 23;
 const ARROW_BUTTON_ICON_SIZE = 8;

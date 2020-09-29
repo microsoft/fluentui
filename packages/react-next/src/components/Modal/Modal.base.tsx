@@ -16,10 +16,13 @@ import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.typ
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../../Popup';
-import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import {
+  withResponsiveMode,
+  ResponsiveMode,
+} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
-import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
+import { DraggableZone, IDragData } from '@fluentui/react-internal/lib/utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)

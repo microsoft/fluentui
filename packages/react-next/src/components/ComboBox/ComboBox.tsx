@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autofill, IAutofill } from 'office-ui-fabric-react/lib/Autofill';
+import { Autofill, IAutofill } from '@fluentui/react/lib/Autofill';
 import {
   initializeComponentRef,
   css,
@@ -25,12 +25,9 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
-import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import {
-  SelectableOptionMenuItemType,
-  getAllSelectedOptions,
-} from 'office-ui-fabric-react/lib/utilities/selectableOption/index';
+import { KeytipData } from '@fluentui/react/lib/KeytipData';
+import { Label } from '@fluentui/react/lib/Label';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '@fluentui/react/lib/SelectableOption';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
 import { useMergedRefs } from '@uifabric/react-hooks';

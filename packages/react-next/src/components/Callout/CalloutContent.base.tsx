@@ -22,7 +22,7 @@ import {
   RectangleEdge,
   positionCard,
   getBoundsFromTargetWindow,
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+} from '@fluentui/react/lib/Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';

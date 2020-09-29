@@ -77,4 +77,4 @@ export {
   ListPeoplePicker,
   MemberListPeoplePicker,
   NormalPeoplePicker,
-} from 'office-ui-fabric-react/lib/Pickers';
+} from '@fluentui/react/lib/Pickers';
