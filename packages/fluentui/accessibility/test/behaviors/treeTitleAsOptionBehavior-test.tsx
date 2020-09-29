@@ -2,7 +2,7 @@ import { treeTitleAsOptionBehavior } from '@fluentui/accessibility';
 
 describe('TreeTitleBehavior', () => {
   describe('role', () => {
-    test(`is 'option' when item does not hasSubtree and is selectable`, () => {
+    test(`is 'option' when item does not hasSubtree`, () => {
       const expectedResult = treeTitleAsOptionBehavior({ selectable: true });
       expect(expectedResult.attributes.root.role).toEqual('option');
     });

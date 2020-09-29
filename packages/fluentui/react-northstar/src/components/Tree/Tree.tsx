@@ -167,6 +167,8 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
  * [Aria-selected and aria-checked are not output correctly for trees #432](https://github.com/FreedomScientific/VFO-standards-support/issues/432)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
+ * [VoiceOver narrates "selected false" for DOM with role=option and no aria-selected attribute](http://www.openradar.me/FB8050959)
+ * [VoiceOver does not support Aria 1.2 listbox role owning unselectable group role](http://www.openradar.me/FB8050958)
  */
 export const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {

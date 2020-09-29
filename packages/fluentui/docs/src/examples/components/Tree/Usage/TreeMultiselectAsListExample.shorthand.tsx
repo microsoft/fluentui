@@ -1,127 +1,47 @@
 import * as React from 'react';
-import { Tree, Text, treeAsListboxBehavior } from '@fluentui/react-northstar';
+import { Tree, treeAsListboxBehavior } from '@fluentui/react-northstar';
 
 const items = [
   {
-    id: 'tree-item-1',
+    id: 'tree-as-list-item-1',
     title: 'House Lannister',
-    selectable: false,
     items: [
       {
-        id: 'tree-item-11',
+        id: 'tree-as-list-item-11',
         title: 'Tywin',
-        selectableParent: true,
-        items: [
-          {
-            id: '1',
-            title: 'Jaime',
-            selectable: false,
-            items: [
-              {
-                id: '2',
-                title: 'Jaime 2',
-              },
-              {
-                id: '3',
-                title: 'Jaime 3',
-              },
-            ],
-          },
-          {
-            id: '4',
-            title: 'Cersei',
-            selectionIndicator: {
-              children: (Component, { selected, onClick, ...props }) => {
-                return (
-                  <Component {...props}>
-                    <input
-                      data-is-focusable={false}
-                      type="checkbox"
-                      checked={selected}
-                      onClick={onClick}
-                      onChange={() => {}}
-                    />
-                  </Component>
-                );
-              },
-            },
-          },
-          {
-            id: '5',
-            title: 'Tyrion',
-          },
-        ],
+        selectable: true,
       },
       {
-        id: 'tree-item-12',
+        id: 'tree-as-list-item-12',
         title: 'Kevan',
-        selectable: false,
-        items: [
-          {
-            id: 'tree-item-121',
-            title: 'Lancel',
-          },
-          {
-            id: 'tree-item-122',
-            title: 'Willem',
-          },
-          {
-            id: 'tree-item-123',
-            title: 'Martyn',
-          },
-        ],
+        selectable: true,
       },
     ],
   },
   {
-    id: 'tree-item-2',
+    id: 'tree-as-list-item-2',
     title: 'House Targaryen',
-    selectionIndicator: {
-      children: (Component, { expanded, selected, ...props }) => {
-        return <Text {...props} content={selected ? 'unselect all' : 'select all'} />;
-      },
-    },
-    selectableParent: true,
     items: [
       {
-        id: 'tree-item-21',
+        id: 'tree-as-list-item-21',
         title: 'Aerys',
-        selectable: false,
         items: [
           {
-            id: 'tree-item-211',
+            id: 'tree-as-list-item-211',
             title: 'Rhaegar',
+            selectable: true,
           },
           {
-            id: 'tree-item-212',
+            id: 'tree-as-list-item-212',
             title: 'Viserys',
+            selectable: true,
           },
           {
-            id: 'tree-item-213',
+            id: 'tree-as-list-item-213',
             title: 'Daenerys',
-            selectable: false,
+            selectable: true,
           },
         ],
-      },
-    ],
-  },
-  {
-    id: '100',
-    title: 'House Skywalker',
-    selectableParent: true,
-    items: [
-      {
-        id: '102',
-        title: 'Leia',
-      },
-      {
-        id: '103',
-        title: 'Luke',
-      },
-      {
-        id: '104',
-        title: 'Rey',
-        selectable: false,
       },
     ],
   },

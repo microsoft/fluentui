@@ -2,8 +2,8 @@ import { treeItemAsOptionBehavior } from '@fluentui/accessibility';
 
 describe('treeItemAsOptionBehavior', () => {
   describe('role', () => {
-    test(`is 'option' when item hasSubtree and is selectable`, () => {
-      const expectedResult = treeItemAsOptionBehavior({ hasSubtree: true, selectable: true });
+    test(`is 'option' when item hasSubtree`, () => {
+      const expectedResult = treeItemAsOptionBehavior({ hasSubtree: true });
       expect(expectedResult.attributes.root.role).toEqual('option');
     });
   });
