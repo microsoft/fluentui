@@ -17,8 +17,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -30,7 +29,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
-        displayName: do syncpack and no-tslint checks
+        displayName: do syncpack and lint-files checks
 
       ## only do scoped builds with PRs
       - script: |
@@ -50,6 +49,8 @@ jobs:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
+      - template: .devops/templates/cleanup.yml
+
   - job: Deploy
     workspace:
       clean: all
@@ -58,8 +59,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -99,6 +99,15 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)'
 
+      - task: GithubPRStatus@0
+        displayName: 'Update PR deploy site github status'
+        inputs:
+          githubOwner: microsoft
+          githubRepo: fluentui
+          githubContext: 'Pull request demo site'
+          githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
+          githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
       - task: AzureUpload@2
         displayName: Upload demo images (master)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
@@ -110,6 +119,8 @@ jobs:
           SourcePath: 'packages/fluentui/docs/src/public'
           storage: fabricweb
 
+      - template: .devops/templates/cleanup.yml
+
   - job: ScreenerFluent
     workspace:
       clean: all
@@ -120,7 +131,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - script: yarn workspace @fluentui/docs vr:build
@@ -141,14 +152,15 @@ jobs:
         env:
           SCREENER_API_KEY: $(screener.key)
 
+      - template: .devops/templates/cleanup.yml
+
   - job: Screener
     workspace:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -160,3 +172,5 @@ jobs:
           SCREENER_API_KEY: $(screener.key)
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - template: .devops/templates/cleanup.yml

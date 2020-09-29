@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { PickersPageProps } from 'office-ui-fabric-react/lib/components/pickers/Pickers.doc';
+import { PickersPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Pickers/Pickers.doc';
 
 export const PickersPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

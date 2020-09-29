@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { DemoPage } from '../DemoPage';
 
-import { TooltipPageProps } from 'office-ui-fabric-react/lib/components/Tooltip/Tooltip.doc';
+import { TooltipPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Tooltip/Tooltip.doc';
 
 export const TooltipPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>

@@ -22,7 +22,7 @@ export interface IShallowUntilTarget {
 }
 
 /**
- * An extention of enzyme's shallow function which will fail to work
+ * An extension of enzyme's shallow function which will fail to work
  * with decorated components and/or components using the styled() function.
  * This function allows you to pass a 'target' component (e.g. ComponentBase)
  * and keep running shallow on each child component till a match is found.
@@ -51,7 +51,7 @@ export function shallowUntilTarget<P, S>(
 
   for (let tries = 1; tries <= maxTries; tries++) {
     // Check for target as a string to avoid conflicts
-    // with decoratored components name
+    // with decorated components name
     if (rootType.toString().indexOf(TargetComponent) !== -1) {
       // Now that we found the target component, render it.
       return root.first().shallow(shallowOptions);

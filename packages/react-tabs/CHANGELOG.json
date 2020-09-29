@@ -2,6 +2,51 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-tabs_v0.6.8",
+      "version": "0.6.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/react-tabs_v0.6.7",
+      "version": "0.6.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix HC styling for pivot tabs to show text when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "7b57bf749e164deabebe3ed9fe61804a6eeb0f4e",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-tabs_v0.6.6",
+      "version": "0.6.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding conformant tests to v8 component test files.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@fluentui/react-tabs_v0.6.5",
       "version": "0.6.5",

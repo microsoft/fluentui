@@ -155,11 +155,6 @@ const Routes = () => (
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />
-                <Route
-                  exact
-                  path="/unstable-datepicker"
-                  render={() => <Redirect to={`/components/datepicker/definition`} />}
-                />
 
                 <Route exact path="/faq" component={FAQ} />
                 <Route exact path="/accessibility" component={Accessibility} />

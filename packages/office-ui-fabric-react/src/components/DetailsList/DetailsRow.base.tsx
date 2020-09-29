@@ -57,6 +57,16 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
 
+  public static getDerivedStateFromProps(
+    nextProps: IDetailsRowBaseProps,
+    previousState: IDetailsRowState,
+  ): IDetailsRowState {
+    return {
+      ...previousState,
+      selectionState: getSelectionState(nextProps),
+    };
+  }
+
   constructor(props: IDetailsRowBaseProps) {
     super(props);
 
@@ -64,14 +74,13 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events = new EventGroup(this);
 
     this.state = {
-      selectionState: this._getSelectionState(props),
+      selectionState: getSelectionState(props),
       columnMeasureInfo: undefined,
       isDropping: false,
     };
 
     this._droppingClassNames = '';
   }
-
   public componentDidMount(): void {
     const { dragDropHelper, selection, item, onDidMount } = this.props;
 
@@ -150,15 +159,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events.dispose();
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
-    this.setState({
-      selectionState: this._getSelectionState(newProps),
-    });
-  }
-
   public shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean {
     if (this.props.useReducedRowRenderer) {
-      const newSelectionState = this._getSelectionState(nextProps);
+      const newSelectionState = getSelectionState(nextProps);
       if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
         return true;
       }
@@ -251,7 +254,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
-        columnStartIndex={showCheckbox ? 1 : 0}
+        columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
@@ -280,6 +283,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
+        aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
@@ -304,6 +308,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
         <GroupSpacer
           indentWidth={indentWidth}
+          role="gridcell"
           count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
         />
 
@@ -319,7 +324,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
-              columnStartIndex={(showCheckbox ? 1 : 0) + columns.length}
+              columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0) + columns.length}
               onRenderItemColumn={onRenderItemColumn}
               getCellValueKey={getCellValueKey}
             />
@@ -368,17 +373,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     return <DetailsRowCheck {...props} />;
   }
 
-  private _getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {
-    const { itemIndex, selection } = props;
-
-    return {
-      isSelected: !!selection?.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection?.isModal?.(),
-    };
-  }
-
   private _onSelectionChanged = (): void => {
-    const selectionState = this._getSelectionState(this.props);
+    const selectionState = getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
       this.setState({
@@ -431,5 +427,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     if (isDropping !== newValue) {
       this.setState({ isDropping: newValue });
     }
+  };
+}
+
+function getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {
+  const { itemIndex, selection } = props;
+
+  return {
+    isSelected: !!selection?.isIndexSelected(itemIndex),
+    isSelectionModal: !!selection?.isModal?.(),
   };
 }

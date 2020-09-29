@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { LabelPageProps } from 'office-ui-fabric-react/lib/components/Label/Label.doc';
+import { LabelPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Label/Label.doc';
 
 export const LabelPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

@@ -26,16 +26,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
+- Fix scrollbar color to have higher contrast ratio @yuanboxue-amber ([#15209](https://github.com/microsoft/fluentui/pull/15209))
 - Fix `Tree` to have un-selectable `treeItem` with `selectable` prop false @yuanboxue-amber ([#15170](https://github.com/microsoft/fluentui/pull/15170))
-- Fix `MenuItem` and `CarouselNavigationItem` to correctly map `active` prop to behavior @yuanboxue-amber ([#14970](https://github.com/microsoft/fluentui/pull/14970))
 - Fix default focused outline in Safari @yuanboxue-amber ([#14917](https://github.com/microsoft/fluentui/pull/14917))
-- Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
 - Fix `Menu` underlined focus style @assuncaocharles ([#14525](https://github.com/microsoft/fluentui/pull/14525))
 - Do not always `preventDefault()` in `RadioGroupItem` @layershifter ([#14717](https://github.com/microsoft/fluentui/pull/14717))
-- Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
-- Add `Popper` modifiers to fix initial positioning @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
-- Add `Popper` warning when children with `autoFocus` prop are present @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
 - Keep the width of the `Input` component fixed when the `error` prop is defined @rymeskar ([#14821](https://github.com/microsoft/fluentui/pull/14821))
 - Fix `treeTitleBehavior` to trigger `performClick` on `Enter` key @layershifter ([#14900](https://github.com/microsoft/fluentui/pull/14900))
 - Fix `dropdown` avoid switch into screen reader virtual cursor mode when navigate through selected items @kolaps33 ([#14864](https://github.com/microsoft/fluentui/pull/14864))
@@ -44,7 +40,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `shouldPreventDefault` on `keyDown` event for `TreeTitle` to allow enter trigger when `TreeTitle` is rendered as an `anchor` @assuncaocharles ([#15095](https://github.com/microsoft/fluentui/pull/15095))
 - Fix screen reader experience in multiple `dropdown` @kolaps33 ([#15066](https://github.com/microsoft/fluentui/pull/15066))
 - Fix `useAutoControlled` hook to suport functions updates @assuncaocharles ([#15137](https://github.com/microsoft/fluentui/pull/15137))
-- Fix of handling refs in `Ref` component for `react-test-render` @layershifter ([#15144](https://github.com/microsoft/fluentui/pull/15144))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -64,10 +59,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `checkedIndicator` prop to `RadioGroupItem` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Added `Breadcrumb` component @assuncaocharles ([#14922](https://github.com/microsoft/fluentui/pull/14922))
 - Added `BreadcrumbItem` and `BreadcrumbDivider` components @yuanboxue-amber ([#14926](https://github.com/microsoft/fluentui/pull/14926))
+- Add arrow navigation for `Breadcrumb` a11y behavior @yuanboxue-amber ([#15087](https://github.com/microsoft/fluentui/pull/15087))
 - Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
 - Added `CheckmarkCircleIcon`. Updated `ShareLocationIcon` @TanelVari ([#15119](https://github.com/microsoft/fluentui/pull/15119))
+- Added `BreadcrumbLink` component @assuncaocharles ([#15136](https://github.com/microsoft/fluentui/pull/15136))
+- Added `hoverBackground` and `paddingRight` variables to `treeTitleVariables` @assuncaocharles ([#15200](https://github.com/microsoft/fluentui/pull/15200))
+- Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
+- Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
 
 ### Documentation
+- Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))
 - Fixed icon margins after code change in UI builder @vyhnalekl ([#14859](https://github.com/microsoft/fluentui/pull/14859))
 - Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))
 - Added copy paste keyboard shortcuts to UI builder @vyhnalekl ([#14631](https://github.com/microsoft/fluentui/pull/14631))
@@ -92,6 +93,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
+
+<!--------------------------------[ v0.51.2 ]------------------------------- -->
+## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
+[Compare changes](https://github.com/microsoft/fluentui/compare/'@fluentui/react-northstar_v'0.51.1..'@fluentui/react-northstar_v'0.51.2)
+
+### Fixes
+- Add cleanup to Fela renderer to avoid memory leaks @layershifter @miroslavstastny ([#15211](https://github.com/microsoft/fluentui/pull/15211))
+
+<!--------------------------------[ v0.51.1 ]------------------------------- -->
+## [v0.51.1](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.1) (2020-09-23)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.0..'@fluentui/react-northstar_v'0.51.1)
+
+### Fixes
+- Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
+- Add `Popper` modifiers to fix initial positioning @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
+- Add `Popper` warning when children with `autoFocus` prop are present @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
+- Fela `disableAnimations` plugin should handle fallback values @layershifter ([#14778](https://github.com/microsoft/fluentui/pull/14778))
+- Fix of handling refs in `Ref` component for `react-test-render` @layershifter ([#15144](https://github.com/microsoft/fluentui/pull/15144))
+- Fix `MenuItem` and `CarouselNavigationItem` to correctly map `active` prop to behavior @yuanboxue-amber ([#14970](https://github.com/microsoft/fluentui/pull/14970))
+- Make `Popup` & `Tooltip` visible on disabled elements @layershifter ([#14756](https://github.com/microsoft/fluentui/pull/14756))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)

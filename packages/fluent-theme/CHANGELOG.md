@@ -1,8 +1,35 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.17](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.17)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.3.16..@uifabric/fluent-theme_v7.3.17)
+
+### Patches
+
+- Update README on deprecation. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+
+## [7.3.16](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.16)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.3.14..@uifabric/fluent-theme_v7.3.16)
+
+### Patches
+
+- Update FluentMotion import path from theme package. ([PR #15162](https://github.com/microsoft/fluentui/pull/15162) by xgao@microsoft.com)
+
+## [7.3.14](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.14)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.3.13..@uifabric/fluent-theme_v7.3.14)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
 
 ## [7.3.13](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.13)
 
