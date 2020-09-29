@@ -1,4 +1,4 @@
-import { IPivotStyleProps, IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Pivot';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

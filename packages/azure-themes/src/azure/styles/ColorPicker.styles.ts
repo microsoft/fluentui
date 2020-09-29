@@ -5,7 +5,7 @@ import {
   IColorRectangleStyles,
   IColorSliderStyleProps,
   IColorSliderStyles,
-} from 'office-ui-fabric-react/lib/ColorPicker';
+} from '@fluentui/react/lib/ColorPicker';
 import { Depths } from '../AzureDepths';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
