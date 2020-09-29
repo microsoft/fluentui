@@ -19,7 +19,7 @@ export type CompoundButtonTokens = ButtonTokens & {
   secondaryContentColor: string;
   secondaryContentFontSize: string;
   secondaryContentFontWeight: string;
-  secondaryContentMarginTop: string;
+  secondaryContentGap: string;
 };
 
 export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;

@@ -35,6 +35,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         fontSize: 'var(--button-secondaryContentFontSize)',
         fontWeight: 'var(--button-secondaryContentFontWeight)',
         lineHeight: '100%',
+        marginTop: 'var(--button-secondaryContentGap)',
 
         [`${GlobalClassNames.root}:hover &`]: {
           color: 'var(--button-hovered-secondaryContentColor, var(--button-secondaryContentColor))',
@@ -50,10 +51,6 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
           color: 'var(--button-disabled-secondaryContentColor, var(--button-disabled-contentColor))',
         },
-
-        '&:not(:first-child)': {
-          marginTop: 'var(--button-secondaryContentMarginTop)',
-        },
       },
     ],
   },
@@ -67,6 +64,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
       paddingRight: '12px',
       paddingTop: '16px',
       iconSize: '28px',
+      secondaryContentGap: '4px',
 
       disabled: {
         secondaryContentColor: 'var(--button-disabled-contentColor)',
