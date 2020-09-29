@@ -336,6 +336,37 @@ export const defaultErrorMessages = {
     );
   },
 
+  'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { componentPath, displayName } = testInfo;
+    const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
+    const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
+
+    // Message Description: Handles scenario where the child component is not a static property of the parent..
+    //
+    // It appears that "displayName" doesn't have a existing static property in: "dirName"
+    // To Resolve this issue:
+    // 1. Include the child component: "displayName" as a static property of the parent: "dirName".
+    // 2.Check to see if "displayName" is a parent component but contained in a directory with a different name.
+    console.log(
+      defaultErrorMessage(
+        `is-static-property-of-parent`,
+        displayName,
+        'existing static property in: ' + chalk.green.italic(dirName),
+      ) +
+        resolveErrorMessages([
+          'Include the child component: ' +
+            chalk.hex('#e00000')(displayName) +
+            ' as a static property of the parent: ' +
+            chalk.hex('#e00000')(dirName) +
+            '.',
+          'Check to see if ' +
+            chalk.hex('#e00000')(displayName) +
+            ` is a parent component but contained in a directory with a different name.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
     const props = Object.keys(componentInfo.props);

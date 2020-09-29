@@ -141,9 +141,14 @@ export const defaultTests: TestObject = {
     const isParent = displayName === dirName;
     if (!isParent) {
       it(`is a static property of its parent`, () => {
-        const parentComponentFile = require(path.join(componentFolder, dirName));
-        const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
-        expect(ParentComponent[displayName]).toBe(Component);
+        try {
+          const parentComponentFile = require(path.join(componentFolder, dirName));
+          const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
+          expect(ParentComponent[displayName]).toBe(Component);
+        } catch (e) {
+          defaultErrorMessages['is-static-property-of-parent'](componentInfo, testInfo, e);
+          throw new Error('is-static-property-of-parent');
+        }
       });
     }
   },
