@@ -198,28 +198,19 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       {
         [`&[data-is-overflowing='true']`]: {
           display: 'none',
-          selectors: {
-            [`~ .${classNames.overflowMenuButton}`]: {
-              visibility: 'visible',
-              position: 'relative',
-            },
-          },
         },
       },
     ],
     overflowMenuButton: [
       classNames.overflowMenuButton,
       {
-        // TODO after the extra span wrapper around the button is removed,
-        // remove the 'button&' and 'span&' selectors and combine the styles
-        ['button&']: [...getLinkStyles(props, classNames)],
-        ['span&']: [
-          {
-            visibility: 'hidden',
-            position: 'absolute',
-            right: 0,
-          },
-        ],
+        visibility: 'hidden',
+        position: 'absolute',
+        right: 0,
+        [`.${classNames.link}[data-is-overflowing='true'] ~ &`]: {
+          visibility: 'visible',
+          position: 'relative',
+        },
       },
     ],
     linkInMenu: [

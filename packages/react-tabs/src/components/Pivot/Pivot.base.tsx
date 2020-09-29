@@ -262,7 +262,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {items}
           {overflowBehavior === 'menu' && (
             <CommandButton
-              className={classNames.overflowMenuButton}
+              // TODO when the span wrapper is removed from <CommandButton>, set
+              // className={classNames.link + ' ' + classNames.overflowMenuButton}
+              className={classNames.link}
               ref={setOverflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
               menuProps={overflowMenuProps}

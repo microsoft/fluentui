@@ -14,8 +14,7 @@
 
 // Shared styles for tab links and links in the overflow menu
 .link,
-.linkInMenu,
-.overflowMenuButton {
+.linkInMenu {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
   padding: 0 8px;
@@ -69,8 +68,7 @@
 }
 
 // Additional styles for Links NOT in the overflow menu
-.link,
-button.overflowMenuButton {
+.link {
   text-align: center;
   display: inline-block;
   line-height: 44px;
@@ -184,9 +182,7 @@ button.overflowMenuButton {
 }
 
 // The overflow menu button is hidden until there's at least one link in the overflow
-// TODO after the extra span wrapper around the button is removed,
-// remove the 'span' selector here, and 'button' selector on the .overflowMenuButton class above
-span.overflowMenuButton {
+.overflowMenuButton {
   visibility: hidden;
   position: absolute;
   right: 0;
