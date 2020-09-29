@@ -85,10 +85,15 @@ export const defaultTests: TestObject = {
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {
-      const { componentPath, displayName } = testInfo;
-      const fileName = path.basename(componentPath, path.extname(componentPath));
+      try {
+        const { componentPath, displayName } = testInfo;
+        const fileName = path.basename(componentPath, path.extname(componentPath));
 
-      expect(displayName).toEqual(fileName);
+        expect(displayName).toMatch(fileName);
+      } catch (e) {
+        defaultErrorMessages['name-matches-filename'](componentInfo, testInfo, e);
+        throw new Error('name-matches-filename');
+      }
     });
   },
 

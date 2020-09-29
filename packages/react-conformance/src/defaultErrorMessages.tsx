@@ -8,13 +8,58 @@ import * as path from 'path';
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultErrorMessages = {
+  'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { componentPath, displayName } = testInfo;
+    const fileName = path.basename(componentPath);
+    const componentFile = require(componentPath);
+
+    // Message Description: There are no matching exported components that match the displayName.
+    //
+    // It appears that "Component" doesn't have a export in: "componentPath"
+    // Here are the available exported component's from your file: "componentFile"
+    // To Resolve this issue:
+    // 1. Make sure that your component's "fileName" file contains an export for "displayName".
+    // 2. Check to see if you component uses export default and consider enabling useDefaultExport in your
+    // isConformant test.
+    console.log(
+      defaultErrorMessage(
+        `exports-component`,
+        displayName,
+        'export in: ' +
+          paragraph() +
+          chalk.green.italic(componentPath) +
+          paragraph() +
+          `Here are the available exported component's from your file:` +
+          paragraph() +
+          chalk.green(formatObject(componentFile)),
+      ) +
+        resolveErrorMessages([
+          `Make sure that your component's ` +
+            chalk.hex('#e00000')(fileName) +
+            ' file contains an export for ' +
+            chalk.hex('#e00000')(displayName) +
+            '.',
+          'Check to see if you component uses export default and consider enabling' +
+            chalk.hex('#e00000')(' useDefaultExport ') +
+            'in your isConformant test.',
+        ]),
+      receivedErrorMessage(error),
+    );
+  },
+
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath, requiredProps } = testInfo;
     const typesFile = componentPath.replace('tsx', 'types.ts');
 
+    // Message Description: Handles scenario where a invalid return is received and the user provides requiredProps.
+    //
     // It appears that displayName doesn't have a valid return.
     // It currently is receiving the requiredProps: "requiredProps"
-    // Check to see if you are including all of the required props in your types file: typesFile
+    // Check to see if you are including all of the required props in your types file: "typesFile"
+    // To Resolve this issue:
+    // 1. Make sure that your are including all of the required props to render in isConformant.
+    // 2. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 3. Check to see if your component works as expected with mount and safeMount.
     if (requiredProps) {
       console.log(
         defaultErrorMessage(
@@ -45,8 +90,14 @@ export const defaultErrorMessages = {
       );
     }
 
+    // Message Description: Handles scenario where an invalid return is received and there are no requiredProps.
+    //
     // It appears that "displayName" doesn't have a valid return and is not receiving any requiredProps.
     // Check to see if you are missing any required props in your component's types file: "typesFile"
+    // To Resolve this issue:
+    // 1. Make sure that your are including all of the required props to render in isConformant requiredProps.
+    // 2. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 3. Check to see if your component works as expected with mount and safeMount.
     else {
       console.log(
         defaultErrorMessage(
@@ -76,12 +127,46 @@ export const defaultErrorMessages = {
     }
   },
 
+  'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName, componentPath } = testInfo;
+    const fileName = path.basename(componentPath, path.extname(componentPath));
+
+    // Message Description: Handles scenario where the displayName doesn't match the component's filename.
+    //
+    // It appears that "displayName" doesn't have a matching filename.
+    // It received a filename called "filename" instead of "displayName".
+    // To Resolve this issue:
+    // 1. Make sure that your component's filename matches the isConformant displayName: "displayName".
+    console.log(
+      defaultErrorMessage(
+        `name-matches-filename`,
+        displayName,
+        'matching filename.' +
+          paragraph() +
+          'It received a filename called ' +
+          chalk.green(fileName) +
+          ' instead of ' +
+          chalk.green(displayName),
+      ) +
+        resolveErrorMessages([
+          `Make sure that your component's filename matches the isConformant displayName: ` +
+            chalk.hex('#e00000')(displayName),
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const indexFile = path.join(rootPath, 'src', 'index');
 
+    // Message Description: Handles scenario where the displayName doesn't exist in the index file.
+    //
     // It appears that "displayName" doesn't have a top level export in: "indexFile".
+    // To Resolve this issue:
+    // 1. Make sure that your component's index'.ts file contains "export * from './"displayName"';
+    // 2.Check if your component is internal and consider enabling isInternal in your isConformant test.
     console.log(
       defaultErrorMessage(
         `exported-top-level`,
@@ -106,7 +191,12 @@ export const defaultErrorMessages = {
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const topLevelFile = path.join(rootPath, 'src', displayName);
 
+    // Message Description: Handles scenario where the displayName doesn't match the component's filename.
+    //
     // It appears that "displayName" doesn't have a top level file in: "topLevelFile"
+    // To Resolve this issue:
+    // 1. Make sure that your component's index'.ts file contains "export * from './"displayName"';
+    // 2.Check if your component is internal and consider enabling isInternal in your isConformant test.
     console.log(
       defaultErrorMessage(
         `has-top-level-file`,
@@ -114,7 +204,8 @@ export const defaultErrorMessages = {
         'top level file in:' + paragraph() + chalk.green.italic(topLevelFile),
       ) +
         resolveErrorMessages([
-          `Make sure that your components folder and name match it's displayName: ` + chalk.white.bold(displayName),
+          `Make sure that your component's folder and name match it's displayName: ` +
+            chalk.hex('#e00000').bold(displayName),
           'Check if your component is internal and consider enabling' +
             chalk.hex('#e00000')(' isInternal ') +
             'in your isConformant test.',
@@ -129,7 +220,12 @@ export const defaultErrorMessages = {
     const componentDisplayName = Component.displayName || constructorName;
     const fileName = path.basename(componentPath);
 
+    // Message Description: Handles scenario where the component's display name is undefined.
+    //
     // It appears that "displayName" doesn't have a display name in: "componentPath"
+    // To Resolve this issue:
+    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
+    // 2. Check to see if something is removing "displayName"'s displayName.
     if (componentDisplayName === (null || 'Styledundefined')) {
       console.log(
         defaultErrorMessage(
@@ -141,24 +237,34 @@ export const defaultErrorMessages = {
             'Make sure that ' +
               chalk.hex('#e00000')(fileName) +
               ' contains ' +
-              chalk.hex('#e00000')(displayName + '.displayName = COMPONENT_NAME') +
-              '.',
+              chalk.hex('#e00000')(displayName + '.displayName = ') +
+              chalk.hex('#e00000')(displayName) +
+              `'`,
+            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName) + `s displayName.`,
           ]) +
           receivedErrorMessage(error),
       );
     }
 
+    // Message Description: Handles scenario where the component's display name doesn't match isConformant's displayName
+    //
     // It appears that "displayName" doesn't have a correct display name. It received: "componentDisplayName"
+    // To Resolve this issue:
+    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
     else {
       console.log(
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received: ' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
+          'correct display name. It received:' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
         ) +
           resolveErrorMessages([
-            'Make sure that ' + fileName + ' contains ' + chalk.hex('#e00000')('{ import ./version }') + '.',
-            'Make sure that your version.ts file is configured correctly.',
+            'Make sure that ' +
+              chalk.hex('#e00000')(fileName) +
+              ' contains ' +
+              chalk.hex('#e00000')(displayName + '.displayName = ') +
+              chalk.hex('#e00000')(displayName) +
+              `'`,
           ]) +
           receivedErrorMessage(error),
       );
