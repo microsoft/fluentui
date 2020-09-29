@@ -450,6 +450,134 @@ export const defaultErrorMessages = {
         receivedErrorMessage(error),
     );
   },
+
+  'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+
+    // Message Description: Receives an error when attempting to render as a functional component
+    // or pass as to the next component.
+    //
+    // It appears that "displayName" doesn't have a valid return.
+    // To Resolve this issue:
+    // 1. Check if you are missing any requiredProps within the isConformant in your test file.
+    // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
+    // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 4. Check to see if your component works as expected with mount and safe mount.
+    console.log(
+      defaultErrorMessage(`as-renders-fc`, displayName, `valid return.`) +
+        resolveErrorMessages([
+          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          `If your component handles a forwardRef you will need to enable isConformant's ` +
+            chalk.hex('#e00000')('asPropHandlesRef') +
+            '.',
+          `Make sure that your component's ` +
+            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            ' file contains a valid return statement.',
+          'Check to see if your component works as expected with' +
+            chalk.hex('#e00000')(' mount ') +
+            'and' +
+            chalk.hex('#e00000')(' safeMount') +
+            '.',
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+
+    // Message Description: Receives an error when attempting to render as a class component
+    // or pass as to the next component.
+    //
+    // It appears that "displayName" doesn't have a valid return.
+    // To Resolve this issue:
+    // 1. Check if you are missing any requiredProps within the isConformant in your test file.
+    // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
+    // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 4. Check to see if your component works as expected with mount and safe mount.
+    console.log(
+      defaultErrorMessage(`as-renders-react-class`, displayName, `valid return.`) +
+        resolveErrorMessages([
+          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          `If your component handles a forwardRef you will need to enable isConformant's ` +
+            chalk.hex('#e00000')('asPropHandlesRef') +
+            '.',
+          `Make sure that your component's ` +
+            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            ' file contains a valid return statement.',
+          'Check to see if your component works as expected with' +
+            chalk.hex('#e00000')(' mount ') +
+            'and' +
+            chalk.hex('#e00000')(' safeMount') +
+            '.',
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+
+    // Message Description: Receives an error when attempting to render as a functional component
+    // or pass as to the next component.
+    //
+    // It appears that "displayName" doesn't have a valid return.
+    // To Resolve this issue:
+    // 1. Check if you are missing any requiredProps within the isConformant in your test file.
+    // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
+    // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 4. Check to see if your component works as expected with mount and safe mount.
+    console.log(
+      defaultErrorMessage(`as-passes-as-value`, displayName, `valid return.`) +
+        resolveErrorMessages([
+          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          `If your component handles a forwardRef you will need to enable isConformant's ` +
+            chalk.hex('#e00000')('asPropHandlesRef') +
+            '.',
+          `Make sure that your component's ` +
+            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            ' file contains a valid return statement.',
+          'Check to see if your component works as expected with' +
+            chalk.hex('#e00000')(' mount ') +
+            'and' +
+            chalk.hex('#e00000')(' safeMount') +
+            '.',
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+
+    // Message Description: Receives an error when attempting to render as a functional component
+    // or pass as to the next component.
+    //
+    // It appears that "displayName" doesn't have a 'as' property that can render HTML tags.
+    // To Resolve this issue:
+    // 1. Make sure that your component can correctly render as HTML tags.
+    // 2. Check if you are missing any requiredProps within the isConformant in your test file.
+    // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
+    // 4. Check to see if your component works as expected with mount and safe mount.
+    console.log(
+      defaultErrorMessage(`as-renders-html`, displayName, `'as' property that can render HTML tags.`) +
+        resolveErrorMessages([
+          'Make sure that your component can correctly render as' + chalk.hex('#e00000')(' HTML tags') + '.',
+          'Check if you are missing any' +
+            chalk.hex('#e00000')(' requiredProps ') +
+            'within the isConformant in your test file. ',
+          `Make sure that your component's ` +
+            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            ' file contains a valid return statement.',
+          'Check to see if your component works as expected with' +
+            chalk.hex('#e00000')(' mount ') +
+            'and' +
+            chalk.hex('#e00000')(' safeMount') +
+            '.',
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
 };
 
 /** Generates the message for resolving the test error.

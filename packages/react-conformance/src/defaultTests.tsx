@@ -202,29 +202,34 @@ export const defaultTests: TestObject = {
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
-        const {
-          requiredProps,
-          Component,
-          customMount = mount,
-          wrapperComponent,
-          helperComponents = [],
-          asPropHandlesRef,
-        } = testInfo;
-        const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, helperComponents, wrapperComponent);
-
         try {
-          expect(component.type()).toBe(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toBe(Component);
-          const comp = component
-            .find('[as]')
-            .last()
-            .prop('as');
-          expect(comp).toBe(MyComponent);
+          const {
+            requiredProps,
+            Component,
+            customMount = mount,
+            wrapperComponent,
+            helperComponents = [],
+            asPropHandlesRef,
+          } = testInfo;
+          const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
+
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
+          const component = getComponent(wrapper, helperComponents, wrapperComponent);
+
+          try {
+            expect(component.type()).toBe(MyComponent);
+          } catch (err) {
+            expect(component.type()).not.toBe(Component);
+            const comp = component
+              .find('[as]')
+              .last()
+              .prop('as');
+            expect(comp).toBe(MyComponent);
+          }
+        } catch (e) {
+          defaultErrorMessages['as-renders-fc'](componentInfo, testInfo, e);
+          throw new Error('as-renders-fc');
         }
       });
     }
@@ -234,23 +239,28 @@ export const defaultTests: TestObject = {
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as && !testInfo.asPropHandlesRef) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
-
-        class MyComponent extends React.Component {
-          public render() {
-            return <div data-my-react-class />;
-          }
-        }
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, helperComponents, wrapperComponent);
-
         try {
-          expect(component.type()).toBe(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toBe(Component);
-          expect(component.prop('as')).toBe(MyComponent);
+          const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
+
+          class MyComponent extends React.Component {
+            public render() {
+              return <div data-my-react-class />;
+            }
+          }
+
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
+          const component = getComponent(wrapper, helperComponents, wrapperComponent);
+
+          try {
+            expect(component.type()).toBe(MyComponent);
+          } catch (err) {
+            expect(component.type()).not.toBe(Component);
+            expect(component.prop('as')).toBe(MyComponent);
+          }
+        } catch (e) {
+          defaultErrorMessages['as-renders-react-class'](componentInfo, testInfo, e);
+          throw new Error('as-renders-react-class');
         }
       });
     }
@@ -260,19 +270,24 @@ export const defaultTests: TestObject = {
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`passes extra props to the component it is renders as`, () => {
-        const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo, asPropHandlesRef } = testInfo;
+        try {
+          const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo, asPropHandlesRef } = testInfo;
 
-        if (passesUnhandledPropsTo) {
-          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+          if (passesUnhandledPropsTo) {
+            const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
 
-          expect(el.prop('data-extra-prop')).toBe('foo');
-        } else {
-          const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
-          const el = customMount(
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
-          ).find(MyComponent);
-          expect(el.prop('data-extra-prop')).toBe('foo');
+            expect(el.prop('data-extra-prop')).toBe('foo');
+          } else {
+            const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
+            const el = customMount(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
+            ).find(MyComponent);
+            expect(el.prop('data-extra-prop')).toBe('foo');
+          }
+        } catch (e) {
+          defaultErrorMessages['as-passes-as-value'](componentInfo, testInfo, e);
+          throw new Error('as-passes-as-value');
         }
       });
     }
@@ -282,23 +297,28 @@ export const defaultTests: TestObject = {
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders component as HTML tags or passes "as" to the next component`, () => {
-        // silence element nesting warnings
-        consoleUtil.disableOnce();
-        const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
-        const { Component, customMount = mount, requiredProps, wrapperComponent, helperComponents = [] } = testInfo;
+        try {
+          // silence element nesting warnings
+          consoleUtil.disableOnce();
+          const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
+          const { Component, customMount = mount, requiredProps, wrapperComponent, helperComponents = [] } = testInfo;
 
-        tags.forEach(tag => {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
-          const component = getComponent(wrapper, helperComponents, wrapperComponent);
+          tags.forEach(tag => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
+            const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
-          try {
-            expect(component.is(tag)).toBe(true);
-          } catch (err) {
-            expect(component.type()).not.toBe(Component);
-            expect(component.prop('as')).toBe(tag);
-          }
-        });
+            try {
+              expect(component.is(tag)).toBe(true);
+            } catch (err) {
+              expect(component.type()).not.toBe(Component);
+              expect(component.prop('as')).toBe(tag);
+            }
+          });
+        } catch (e) {
+          defaultErrorMessages['as-renders-html'](componentInfo, testInfo, e);
+          throw new Error('as-renders-html');
+        }
       });
     }
   },
