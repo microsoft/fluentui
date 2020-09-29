@@ -4,10 +4,11 @@
   "version": "0.51.0",
   "private": true,
   "dependencies": {
-    "office-ui-fabric-react": "^7.138.0"
+    "office-ui-fabric-react": "^7.142.0"
   },
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
     "test": "just-scripts test",
     "perf:test": "just-scripts perf-test",

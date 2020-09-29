@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, IRenderFunction } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
 // Have to import this separately for mock purposes
@@ -11,8 +11,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
-import { IRenderFunction } from '@uifabric/utilities';
+import { DefaultButton, IButton } from '../../Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {

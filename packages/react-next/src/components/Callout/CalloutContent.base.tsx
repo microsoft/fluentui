@@ -105,7 +105,7 @@ function useMaxHeight(
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
 
-  // Updating targetRef won't rerender the component, but it's recalcuated (if needed) with every render
+  // Updating targetRef won't re-render the component, but it's recalculated (if needed) with every render
   // If it mutates, we want to re-run the effect
   const currentTarget = targetRef.current;
 
@@ -284,7 +284,18 @@ function useAutoFocus(
  * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
-  { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
+  {
+    hidden,
+    onDismiss,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnScroll,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnResize,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnLostFocus,
+    shouldDismissOnWindowFocus,
+    preventDismissOnEvent,
+  }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -345,6 +356,22 @@ function useDismissHandlers(
       }
     };
 
+    const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
+      // Do nothing
+      if (!shouldDismissOnWindowFocus) {
+        return;
+      }
+
+      if (
+        ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+          (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
+        !targetWindow?.document.hasFocus() &&
+        ev.relatedTarget === null
+      ) {
+        onDismiss?.(ev);
+      }
+    };
+
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -356,6 +383,7 @@ function useDismissHandlers(
           on(targetWindow, 'resize', dismissOnResize, true),
           on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
           on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
         ];
 
         return () => {
@@ -370,14 +398,18 @@ function useDismissHandlers(
     targetRef,
     targetWindow,
     onDismiss,
+    shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
     preventDismissOnScroll,
     positionsExists,
+    preventDismissOnEvent,
   ]);
 
   return mouseDownHandlers;
 }
+
+const COMPONENT_NAME = 'CalloutContentBase';
 
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.memo(
   React.forwardRef<HTMLDivElement, ICalloutProps>((propsWithoutDefaults, forwardedRef) => {
@@ -509,7 +541,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     return shallowCompare(previousProps, nextProps);
   },
 );
-CalloutContentBase.displayName = 'CalloutContentBase';
+CalloutContentBase.displayName = COMPONENT_NAME;
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPostionStyle: React.CSSProperties = {

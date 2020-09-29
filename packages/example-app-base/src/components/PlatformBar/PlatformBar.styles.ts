@@ -1,6 +1,6 @@
 import { getGlobalClassNames, getColorFromString, getShade, Shade } from 'office-ui-fabric-react';
 import { IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
-import { MotionDurations, MotionTimings } from '@uifabric/fluent-theme';
+import { MotionDurations, MotionTimings } from '@fluentui/theme';
 
 const GlobalClassNames: { [key in keyof IPlatformBarStyles]: string } = {
   root: 'ms-PlatformBar',

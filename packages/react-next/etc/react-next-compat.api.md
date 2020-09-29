@@ -6,8 +6,6 @@
 
 
 export * from "office-ui-fabric-react/lib/Button";
-export * from "office-ui-fabric-react/lib/Calendar";
-export * from "office-ui-fabric-react/lib/DatePicker";
 
 // (No @packageDocumentation comment for this package)
 

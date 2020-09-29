@@ -2,6 +2,21 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/foundation_v7.9.8",
+      "version": "7.9.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using getResolveAlias for webpack config.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@uifabric/foundation_v7.9.2",
       "version": "7.9.2",

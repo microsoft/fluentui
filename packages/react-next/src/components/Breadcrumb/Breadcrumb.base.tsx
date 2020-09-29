@@ -114,7 +114,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   }
 
   /**
-   * Remove the first rendered item past the overlow point and put it and the end the overflow set.
+   * Remove the first rendered item past the overflow point and put it and the end the overflow set.
    */
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
@@ -256,6 +256,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           aria-current={item.isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
+          role={item.role}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}

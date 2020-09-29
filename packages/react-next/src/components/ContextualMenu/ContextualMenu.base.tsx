@@ -480,6 +480,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {
@@ -494,7 +495,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   /**
    * Gets the focusZoneDirection by using the arrowDirection if specified,
-   * the direction specificed in the focusZoneProps, or defaults to FocusZoneDirection.vertical
+   * the direction specified in the focusZoneProps, or defaults to FocusZoneDirection.vertical
    */
   private _getFocusZoneDirection() {
     const { focusZoneProps } = this.props;
@@ -1309,7 +1310,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   }
 
   /**
-   * Returns the item that mathes a given key if any.
+   * Returns the item that matches a given key if any.
    * @param key - The key of the item to match
    * @param items - The items to look for the key
    */

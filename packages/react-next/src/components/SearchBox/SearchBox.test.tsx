@@ -5,6 +5,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
+import { isConformant } from '../../common/isConformant';
 
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;
@@ -23,6 +24,11 @@ describe('SearchBox', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+  });
+
+  isConformant({
+    Component: SearchBox,
+    displayName: 'SearchBox',
   });
 
   it('renders SearchBox correctly', () => {

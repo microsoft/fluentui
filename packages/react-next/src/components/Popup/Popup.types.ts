@@ -26,7 +26,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 
   /**
    * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
-   * handle escape keypresses and call this. The event will be stopped/canceled.
+   * handle escape key press and call this. The event will be stopped/canceled.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
@@ -51,5 +51,9 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
    * contains focus. If this is provided, focus will not be restored automatically,
    * you'll need to call originalElement.focus()
    */
-  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }

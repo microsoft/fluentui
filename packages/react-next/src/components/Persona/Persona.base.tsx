@@ -82,10 +82,10 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
      * @param text - text to render
      */
     const onRenderText = (text: string | undefined): IRenderFunction<IPersonaProps> | undefined => {
-      // return default render behaviour for valid text or undefined
+      // return default render behavior for valid text or undefined
       return text
         ? (): JSX.Element => {
-            // default onRender behaviour
+            // default onRender behavior
             return (
               <TooltipHost
                 content={text}
