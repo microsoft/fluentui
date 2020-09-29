@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
