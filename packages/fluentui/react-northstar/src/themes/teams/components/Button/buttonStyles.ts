@@ -23,7 +23,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
 
     return {
       height: v.height,
-      minWidth: _.isNil(p.loading) ? v.minWidth : v.loadingMinWidth,
+      minWidth: _.isNil(p.loading) || !p.loading ? v.minWidth : v.loadingMinWidth,
       maxWidth: v.maxWidth,
       color: v.color,
       backgroundColor: v.backgroundColor,
