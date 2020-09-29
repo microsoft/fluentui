@@ -16,7 +16,7 @@ import { makeClasses } from './makeClasses';
 const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
-const processVariants = (variants: Variants, theme: Theme, prefix: string) => {
+const processVariants = (variants: Variants, theme: Theme, name: string, prefix: string) => {
   const result: Record<string, IStyle> = {};
 
   if (variants) {
@@ -26,6 +26,10 @@ const processVariants = (variants: Variants, theme: Theme, prefix: string) => {
       const modifierName = variantName === 'root' ? variantName : '_' + variantName;
 
       result[modifierName] = tokensToStyleObject(variants[variantName], prefix) as IStyle;
+
+      if (name) {
+        (result[modifierName]! as any).displayName = variantName === 'root' ? name : `${name}--${variantName}`;
+      }
     }
   }
 
@@ -73,8 +77,8 @@ export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptio
 
     return [
       callOrReturn(styles, theme),
-      processVariants(variants!, theme, prefix!),
-      processVariants(themeVariants, theme, prefix!),
+      processVariants(variants!, theme, name!, prefix!),
+      processVariants(themeVariants, theme, name!, prefix!),
     ];
   };
 
