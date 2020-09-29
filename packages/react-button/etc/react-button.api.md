@@ -270,7 +270,7 @@ export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElem
 };
 
 // @public (undocumented)
-export const useToggleButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useToggleButtonClasses: (state: ToggleButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)
