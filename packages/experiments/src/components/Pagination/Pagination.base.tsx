@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
 import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
-import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
-import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+import { ComboBox, IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
+import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();

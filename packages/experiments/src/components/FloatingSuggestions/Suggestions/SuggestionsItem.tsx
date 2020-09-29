@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { CommandButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { classNamesFunction, css, styled } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { CommandButton, IconButton } from '@fluentui/react/lib/Button';
 import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 import { getStyles } from './SuggestionsItem.styles';
 

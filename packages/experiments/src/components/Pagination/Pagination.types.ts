@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject, IRenderFunction } from '../../Utilities';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IIconProps } from '@fluentui/react/lib/Icon';
 
 export interface IPaginationProps {
   /**

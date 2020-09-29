@@ -1,6 +1,6 @@
-import { IPersonaProps } from 'office-ui-fabric-react';
+import { IPersonaProps } from '@fluentui/react';
 import { IPersonaCoinComponent, IPersonaCoinStylesReturnType } from './PersonaCoin.types';
-import { getPersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
+import { getPersonaInitialsColor } from '@fluentui/react/lib/Persona';
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 
