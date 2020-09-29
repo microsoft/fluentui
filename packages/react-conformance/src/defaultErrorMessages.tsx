@@ -192,6 +192,63 @@ export const defaultErrorMessages = {
     }
   },
 
+  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { componentPath, Component, displayName } = testInfo;
+    const constructorName = Component.prototype?.constructor.name;
+    const componentDisplayName = Component.displayName || constructorName;
+    const fileName = path.basename(componentPath);
+
+    // Message Description: Handles scenario where the component's display name is undefined.
+    //
+    // It appears that "displayName" doesn't have a display name in: "componentPath"
+    // To Resolve this issue:
+    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
+    // 2. Check to see if something is removing "displayName"'s displayName.
+    if (componentDisplayName === (null || 'Styledundefined')) {
+      console.log(
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'display name in:' + paragraph() + chalk.green.italic(componentPath),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' +
+              chalk.hex('#e00000')(fileName) +
+              ' contains ' +
+              chalk.hex('#e00000')(displayName + '.displayName = ') +
+              chalk.hex('#e00000')(displayName) +
+              `'`,
+            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName) + `s displayName.`,
+          ]) +
+          receivedErrorMessage(error),
+      );
+    }
+
+    // Message Description: Handles scenario where the component's display name doesn't match isConformant's displayName
+    //
+    // It appears that "displayName" doesn't have a correct display name. It received: "componentDisplayName"
+    // To Resolve this issue:
+    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
+    else {
+      console.log(
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'correct display name. It received:' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' +
+              chalk.hex('#e00000')(fileName) +
+              ' contains ' +
+              chalk.hex('#e00000')(displayName + '.displayName = ') +
+              chalk.hex('#e00000')(displayName) +
+              `'`,
+          ]) +
+          receivedErrorMessage(error),
+      );
+    }
+  },
+
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
     const fileName = path.basename(componentPath, path.extname(componentPath));
@@ -279,61 +336,47 @@ export const defaultErrorMessages = {
     );
   },
 
-  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
-    const { componentPath, Component, displayName } = testInfo;
-    const constructorName = Component.prototype?.constructor.name;
-    const componentDisplayName = Component.displayName || constructorName;
-    const fileName = path.basename(componentPath);
+  'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+    const props = Object.keys(componentInfo.props);
+    const ariaProps = [];
+    const kebabAriaProps = [];
+    const ariaPropsDif = [];
 
-    // Message Description: Handles scenario where the component's display name is undefined.
-    //
-    // It appears that "displayName" doesn't have a display name in: "componentPath"
-    // To Resolve this issue:
-    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
-    // 2. Check to see if something is removing "displayName"'s displayName.
-    if (componentDisplayName === (null || 'Styledundefined')) {
-      console.log(
-        defaultErrorMessage(
-          `component-has-displayname`,
-          displayName,
-          'display name in:' + paragraph() + chalk.green.italic(componentPath),
-        ) +
-          resolveErrorMessages([
-            'Make sure that ' +
-              chalk.hex('#e00000')(fileName) +
-              ' contains ' +
-              chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(displayName) +
-              `'`,
-            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName) + `s displayName.`,
-          ]) +
-          receivedErrorMessage(error),
-      );
+    for (const prop of props) {
+      if (prop.startsWith('aria') && !/^aria-[a-z]+$/.test(prop)) {
+        ariaProps.push(prop);
+        kebabAriaProps.push(prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+      }
     }
 
-    // Message Description: Handles scenario where the component's display name doesn't match isConformant's displayName
-    //
-    // It appears that "displayName" doesn't have a correct display name. It received: "componentDisplayName"
-    // To Resolve this issue:
-    // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
-    else {
-      console.log(
-        defaultErrorMessage(
-          `component-has-displayname`,
-          displayName,
-          'correct display name. It received:' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
-        ) +
-          resolveErrorMessages([
-            'Make sure that ' +
-              chalk.hex('#e00000')(fileName) +
-              ' contains ' +
-              chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(displayName) +
-              `'`,
-          ]) +
-          receivedErrorMessage(error),
-      );
+    for (let i = 0; i < ariaProps.length; i++) {
+      ariaPropsDif.push(ariaProps[i] + ': ' + chalk.green(kebabAriaProps[i]));
     }
+
+    // Message Description: Handles scenario where an aria prop doesn't match kebab-casing.
+    //
+    // It appears that "displayName" doesn't have a aria attribute that uses kebab-casing.
+    // The received aria attributes should be renamed to: "ariaPropsDif"
+    // To Resolve this issue:
+    // 1. Make sure that Sliders aria attribute props are using kebab-case.
+    console.log(
+      defaultErrorMessage(
+        `kebab-aria-attributes`,
+        displayName,
+        'aria attribute that uses kebab-casing.' +
+          paragraph() +
+          'The received aria attributes should be renamed to:' +
+          paragraph() +
+          chalk.white(formatObject(ariaPropsDif)),
+      ) +
+        resolveErrorMessages([
+          'Make sure that ' +
+            chalk.hex('#e00000').bold(displayName + 's') +
+            ` aria attribute props are using kebab-case.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
   },
 };
 

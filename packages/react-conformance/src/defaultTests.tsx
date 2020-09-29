@@ -151,12 +151,17 @@ export const defaultTests: TestObject = {
   /** Ensures aria attributes are kebab cased */
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`uses kebab-case for aria attributes`, () => {
-      const props = Object.keys(componentInfo.props);
+      try {
+        const props = Object.keys(componentInfo.props);
 
-      for (const prop of props) {
-        if (prop.startsWith('aria')) {
-          expect(prop).toMatch(/^aria-[a-z]+$/);
+        for (const prop of props) {
+          if (prop.startsWith('aria')) {
+            expect(prop).toMatch(/^aria-[a-z]+$/);
+          }
         }
+      } catch (e) {
+        defaultErrorMessages['kebab-aria-attributes'](componentInfo, testInfo, e);
+        throw new Error('kebab-aria-attributes');
       }
     });
   },
