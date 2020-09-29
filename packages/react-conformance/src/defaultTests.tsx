@@ -15,21 +15,21 @@ import consoleUtil from './utils/consoleUtil';
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    try {
-      const maxWords = 25;
-      const minWords = 5;
+    const maxWords = 25;
+    const minWords = 5;
 
-      // No need to check if the description is undefined, ComponentDoc.description is a "string".
-      it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
+    // No need to check if the description is undefined, ComponentDoc.description is a "string".
+    it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
+      try {
         const docblock = parseDocblock(componentInfo.description);
 
         expect(_.words(docblock.description).length).toBeGreaterThanOrEqual(minWords);
         expect(_.words(docblock.description).length).toBeLessThanOrEqual(maxWords);
-      });
-    } catch (e) {
-      // defaultErrorMessages['has-docblock'](componentInfo, testInfo);
-      // new Error (e)
-    }
+      } catch (e) {
+        defaultErrorMessages['has-docblock'](componentInfo, testInfo, e);
+        throw new Error();
+      }
+    });
   },
 
   /** Component file exports a valid React element type  */

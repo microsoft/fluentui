@@ -4,10 +4,75 @@ import { ComponentDoc } from 'react-docgen-typescript';
 import chalk from 'chalk';
 import * as _ from 'lodash';
 import * as path from 'path';
+import parseDocblock from './utils/parseDocblock';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultErrorMessages = {
+  'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName, componentPath } = testInfo;
+    const fileName = path.basename(componentPath);
+    const docblock = parseDocblock(componentInfo.description);
+    const docBlockLength = _.words(docblock.description).length.toString();
+
+    // Message Description: Handles scenario where there is no existing docblock in the componentPath.
+    //
+    // It appears that "displayName" doesn't have a docblock in the file:: "componentPath".
+    // To Resolve this issue:
+    // 1. Consider adding a descriptive 5 to 25 word docblock in "fileName".
+    if (_.words(docblock.description).length === 0) {
+      console.log(
+        defaultErrorMessage(
+          `has-docblock`,
+          displayName,
+          'docblock in the file: ' + paragraph() + chalk.green.italic(componentPath),
+        ) +
+          resolveErrorMessages([
+            `Consider adding a descriptive` +
+              chalk.hex('#e00000')(' 5 ') +
+              'to' +
+              chalk.hex('#e00000')(' 25 ') +
+              'word docblock in ' +
+              chalk.hex('#e00000')(fileName),
+          ]),
+        receivedErrorMessage(error),
+      );
+    }
+
+    // Message Description: Handles scenario where a docblock is received but doesn't meet the min and max requirements.
+    //
+    // It appears that "displayName" doesn't have a docblock between 5 and 25 words.
+    // It has a word count of: "docBlockLength"
+    // Here is "displayName"'s docblock: "docblock.description"
+    // To Resolve this issue:
+    // 1. Make sure that your docblock meets the required word count of 5 to 25 words.
+    else {
+      console.log(
+        defaultErrorMessage(
+          `has-docblock`,
+          displayName,
+          'docblock between 5 and 25 words. It has a word count of: ' +
+            chalk.green.italic(docBlockLength) +
+            paragraph() +
+            'Here is ' +
+            chalk.white(displayName) +
+            chalk.white(`'s`) +
+            ' docblock: ' +
+            paragraph() +
+            chalk.green.italic(docblock.description),
+        ) +
+          resolveErrorMessages([
+            `Make sure that your docblock meets the required word count of ` +
+              chalk.hex('#e00000')('5') +
+              ' to ' +
+              chalk.hex('#e00000')(`25`) +
+              ' words.',
+          ]),
+        receivedErrorMessage(error),
+      );
+    }
+  },
+
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, displayName } = testInfo;
     const fileName = path.basename(componentPath);
